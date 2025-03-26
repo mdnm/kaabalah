@@ -1,7 +1,7 @@
 {
   "name": "kaabalah",
   "version": "0.1.0",
-  "description": "A comprehensive library for numerology, astrology, kaabalah, and tarot",
+  "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -33,7 +33,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "wasm/build",
+    "ephe"
   ],
   "scripts": {
     "build": "tsup",
@@ -47,12 +49,23 @@
   "keywords": [
     "numerology",
     "astrology",
-    "kaabalah",
+    "kabbalah",
+    "mayan",
+    "tzolkin",
+    "hunab ku",
+    "iching",
+    "fengshui",
+    "bagua",
+    "gematria",
+    "enneagram",
+    "qabalah",
+    "cabala",
     "tarot",
-    "esoteric"
+    "esoteric",
+    "mysticism"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "Mateus Moura <matmoura@kaabalah.com>",
+  "license": "AGPL-3.0",
   "directories": {
     "doc": "docs",
     "example": "examples"
