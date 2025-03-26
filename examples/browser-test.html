@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaabalah Library Browser Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .result {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .position-format {
+      display: flex;
+      gap: 20px;
+    }
+
+    .format-label {
+      font-weight: bold;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kaabalah Library Browser Test</h1>
+
+  <div>
+    <h2>Astrology Test</h2>
+    <button onclick="runAstrologyTest()">Run Astrology Test</button>
+    <div id="astrologyResult" class="result">Results will appear here...</div>
+  </div>
+
+  <script type="module">
+    import { getBirthChart, getZodiacPosition, getSwissEph } from '../dist/astrology/index.mjs';
+
+    const ephePath = './ephe';
+    // Make the function available globally
+    window.runAstrologyTest = async function () {
+      try {
+
+        await getSwissEph(ephePath);
+
+        const date = new Date('2000-01-01T12:00:00Z');
+
+        // Test birth chart calculation
+        const chartData = await getBirthChart({
+          date: date,
+          latitude: 20,
+          longitude: 77,
+          timezone: 0
+        });
+
+        // Format the results with zodiac positions
+        const formattedPlanets = Object.entries(chartData.planets).map(([planet, position]) => {
+          const zodiacPos = getZodiacPosition(position.longitude);
+          return {
+            planet,
+            position: {
+              sign: zodiacPos.sign,
+              decimal: zodiacPos.decimal,
+              traditional: zodiacPos.traditionalFormat
+            },
+            latitude: position.latitude.toFixed(2),
+            distance: position.distance.toFixed(2)
+          };
+        });
+
+        // Format houses
+        const formattedHouses = {
+          ascendant: getZodiacPosition(chartData.houses.ascendant),
+          mc: getZodiacPosition(chartData.houses.mc),
+          houses: chartData.houses.houses.map(h => getZodiacPosition(h))
+        };
+
+        // Display results
+        const resultDiv = document.getElementById('astrologyResult');
+        resultDiv.innerHTML = `
+          <h3>Birth Chart for JAN 1, 2000 12:00</h3>
+          <h4>Latitude: 20, Longitude: 77, Timezone: 0</h4>
+          <h4>Planets:</h4>
+          ${formattedPlanets.map(p => `
+            <div class="planet-position">
+              <strong>${p.planet}:</strong>
+              <div class="position-format">
+                <span class="format-label">Traditional:</span> ${p.position.sign} ${p.position.traditional}
+                <span class="format-label">Decimal:</span> ${p.position.sign} ${p.position.decimal}
+              </div>
+            </div>
+          `).join('')}
+          
+          <h4>Houses:</h4>
+          <div class="house-position">
+            <strong>Ascendant:</strong>
+            <div class="position-format">
+              <span class="format-label">Traditional:</span> ${formattedHouses.ascendant.sign} ${formattedHouses.ascendant.traditionalFormat}
+              <span class="format-label">Decimal:</span> ${formattedHouses.ascendant.sign} ${formattedHouses.ascendant.decimal}
+            </div>
+          </div>
+          <div class="house-position">
+            <strong>Midheaven:</strong>
+            <div class="position-format">
+              <span class="format-label">Traditional:</span> ${formattedHouses.mc.sign} ${formattedHouses.mc.traditionalFormat}
+              <span class="format-label">Decimal:</span> ${formattedHouses.mc.sign} ${formattedHouses.mc.decimal}
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        const resultDiv = document.getElementById('astrologyResult');
+        resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        console.error('Test failed:', error);
+      }
+    }
+  </script>
+</body>
+
+</html>

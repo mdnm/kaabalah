@@ -1,0 +1,10 @@
+/dist
+/wasm/build
+/wasm/swisseph
+
+/node_modules
+
+/examples/ephe
+/examples/swisseph.wasm
+
+/ephe/*

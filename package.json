@@ -1,0 +1,68 @@
+{
+  "name": "kaabalah",
+  "version": "0.1.0",
+  "description": "A comprehensive library for numerology, astrology, kabbalah, and tarot",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./numerology": {
+      "types": "./dist/numerology/index.d.ts",
+      "require": "./dist/numerology/index.js",
+      "import": "./dist/numerology/index.mjs"
+    },
+    "./astrology": {
+      "types": "./dist/astrology/index.d.ts",
+      "require": "./dist/astrology/index.js",
+      "import": "./dist/astrology/index.mjs"
+    },
+    "./kabbalah": {
+      "types": "./dist/kabbalah/index.d.ts",
+      "require": "./dist/kabbalah/index.js",
+      "import": "./dist/kabbalah/index.mjs"
+    },
+    "./tarot": {
+      "types": "./dist/tarot/index.d.ts",
+      "require": "./dist/tarot/index.js",
+      "import": "./dist/tarot/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/"
+  },
+  "keywords": [
+    "numerology",
+    "astrology",
+    "kabbalah",
+    "tarot",
+    "esoteric"
+  ],
+  "author": "",
+  "license": "MIT",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@vitest/coverage-v8": "^1.3.1",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  }
+}
