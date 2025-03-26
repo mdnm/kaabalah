@@ -1,12 +1,12 @@
 # Kaabalah
 
-A comprehensive TypeScript library for numerology, astrology, kabbalah, and tarot calculations and interpretations.
+A comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot calculations and interpretations.
 
 ## Features
 
 - **Numerology**: Calculate life path numbers and other numerological values
 - **Astrology**: Generate birth charts and planetary positions using Swiss Ephemeris
-- **Kabbalah**: Hebrew gematria calculations and mystical interpretations
+- **Kaabalah**: Hebrew gematria calculations and mystical interpretations
 - **Tarot**: Card meanings, spreads, and interpretations
 
 ## Installation
@@ -37,7 +37,7 @@ console.log('Tarot Spread:', spread);
 // Only import what you need
 import { calculateLifePath } from 'kaabalah/numerology';
 import { getBirthChart } from 'kaabalah/astrology';
-import { calculateGematria } from 'kaabalah/kabbalah';
+import { calculateGematria } from 'kaabalah/kaabalah';
 import { getRandomSpread } from 'kaabalah/tarot';
 
 // Calculate life path number
@@ -80,4 +80,9 @@ The astrological calculations use the Swiss Ephemeris library, compiled to WebAs
 
 ## License
 
-MIT 
+This project is licensed under the AGPL-3.0 license. See the LICENSE file for details.
+
+## Acknowledgments
+
+- [Swiss Ephemeris](https://www.astro.com/swisseph/) for providing the astronomical calculation library
+- [Astro.com](https://www.astro.com/) for the Swiss Ephemeris data

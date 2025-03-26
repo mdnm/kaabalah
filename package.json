@@ -1,7 +1,7 @@
 {
   "name": "kaabalah",
   "version": "0.1.0",
-  "description": "A comprehensive library for numerology, astrology, kabbalah, and tarot",
+  "description": "A comprehensive library for numerology, astrology, kaabalah, and tarot",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -21,10 +21,10 @@
       "require": "./dist/astrology/index.js",
       "import": "./dist/astrology/index.mjs"
     },
-    "./kabbalah": {
-      "types": "./dist/kabbalah/index.d.ts",
-      "require": "./dist/kabbalah/index.js",
-      "import": "./dist/kabbalah/index.mjs"
+    "./kaabalah": {
+      "types": "./dist/kaabalah/index.d.ts",
+      "require": "./dist/kaabalah/index.js",
+      "import": "./dist/kaabalah/index.mjs"
     },
     "./tarot": {
       "types": "./dist/tarot/index.d.ts",
@@ -47,7 +47,7 @@
   "keywords": [
     "numerology",
     "astrology",
-    "kabbalah",
+    "kaabalah",
     "tarot",
     "esoteric"
   ],

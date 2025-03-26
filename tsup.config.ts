@@ -5,7 +5,7 @@ export default defineConfig({
     'src/index.ts',
     'src/numerology/index.ts',
     'src/astrology/index.ts',
-    'src/kabbalah/index.ts',
+    'src/kaabalah/index.ts',
     'src/tarot/index.ts',
   ],
   format: ['cjs', 'esm'],

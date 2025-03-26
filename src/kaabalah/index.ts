@@ -1,5 +1,5 @@
 /**
- * Kabbalah-related functions
+ * Kaabalah-related functions
  */
 
 // Example function to calculate Hebrew gematria value

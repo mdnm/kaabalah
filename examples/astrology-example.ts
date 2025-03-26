@@ -22,18 +22,18 @@ async function main() {
     });
     
     // Display the ascendant
-    const ascendantPosition = getZodiacPosition(birthChart.ascendant);
-    console.log(`Ascendant: ${ascendantPosition.sign} ${ascendantPosition.degrees.toFixed(2)}°`);
+    const ascendantPosition = getZodiacPosition(birthChart.houses.ascendant);
+    console.log(`Ascendant: ${ascendantPosition.sign} ${ascendantPosition.traditionalFormat}`);
     
     // Display the MC (Medium Coeli)
-    const mcPosition = getZodiacPosition(birthChart.mc);
-    console.log(`Midheaven (MC): ${mcPosition.sign} ${mcPosition.degrees.toFixed(2)}°`);
+    const mcPosition = getZodiacPosition(birthChart.houses.mc);
+    console.log(`Midheaven (MC): ${mcPosition.sign} ${mcPosition.traditionalFormat}`);
     
     // Display houses
     console.log('\nHouse Cusps:');
-    birthChart.houses.forEach((house, index) => {
+    birthChart.houses.houses.forEach((house, index) => {
       const position = getZodiacPosition(house);
-      console.log(`House ${index + 1}: ${position.sign} ${position.degrees.toFixed(2)}°`);
+      console.log(`House ${index + 1}: ${position.sign} ${position.traditionalFormat}`);
     });
     
     // Display planetary positions
@@ -41,8 +41,8 @@ async function main() {
     Object.entries(birthChart.planets).forEach(([planet, position]) => {
       const zodiacPos = getZodiacPosition(position.longitude);
       console.log(
-        `${planet.charAt(0).toUpperCase() + planet.slice(1)}: ${zodiacPos.sign} ${zodiacPos.degrees.toFixed(2)}° ` +
-        `(${position.longitude.toFixed(2)}°, speed: ${position.longitudeSpeed?.toFixed(4) || 'N/A'}°/day)`
+        `${planet.charAt(0).toUpperCase() + planet.slice(1)}: ${zodiacPos.sign} ${zodiacPos.traditionalFormat} ` +
+        `(${position.longitude.toFixed(2)}°)`
       );
     });
   } catch (error) {

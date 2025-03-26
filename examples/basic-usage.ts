@@ -8,7 +8,7 @@ import * as Kaabalah from '../src';
 // Selective import examples (commented out to avoid conflict with above)
 // import { calculateLifePath } from '../src/numerology';
 // import { getBirthChart } from '../src/astrology';
-// import { calculateGematria } from '../src/kabbalah';
+// import { calculateGematria } from '../src/kaabalah';
 // import { getRandomSpread } from '../src/tarot';
 
 // Numerology example
@@ -16,7 +16,7 @@ const birthDate = new Date('1990-06-15');
 const lifePath = Kaabalah.calculateLifePath(birthDate);
 console.log(`Life Path Number for 1990-06-15: ${lifePath}`);
 
-// Kabbalah example
+// Kaabalah example
 const hebrewWord = 'שלום';
 const gematriaValue = Kaabalah.calculateGematria(hebrewWord);
 console.log(`Gematria value of "${hebrewWord}": ${gematriaValue}`);
