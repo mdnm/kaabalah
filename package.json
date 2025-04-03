@@ -30,6 +30,11 @@
       "types": "./dist/tarot/index.d.ts",
       "require": "./dist/tarot/index.js",
       "import": "./dist/tarot/index.mjs"
+    },
+    "./ifa": {
+      "types": "./dist/ifa/index.d.ts",
+      "require": "./dist/ifa/index.js",
+      "import": "./dist/ifa/index.mjs"
     }
   },
   "files": [

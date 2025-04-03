@@ -17,16 +17,15 @@ const lifePath = Kaabalah.calculateLifePath(birthDate);
 console.log(`Life Path Number for 1990-06-15: ${lifePath}`);
 
 // Kaabalah example
-const hebrewWord = 'שלום';
-const gematriaValue = Kaabalah.calculateGematria(hebrewWord);
-console.log(`Gematria value of "${hebrewWord}": ${gematriaValue}`);
+const name = 'Kaabalah';
+const gematriaValue = Kaabalah.calculateGematria(name);
+console.log(`Gematria value of "${name}": ${gematriaValue}`);
 
-// Tarot example
-const tarotSpread = Kaabalah.getRandomSpread(3);
-console.log('Three-card Tarot Spread:');
-tarotSpread.forEach((card, index) => {
-  console.log(`Card ${index + 1}: ${card.name}${card.isReversed ? ' (Reversed)' : ''}`);
-});
+// Tarot example TODO
+
+// IFA example TODO
+
+// Numerology heptad example TODO
 
 // Astrology example (placeholder until Swiss Ephemeris is implemented)
 const birthChart = Kaabalah.getBirthChart({
