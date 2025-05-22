@@ -363,6 +363,15 @@ const hebrewLetterMapping = new Map([
   ]
 ])
 
+// Add special mapping for O at start (Ayin)
+hebrewLetterMapping.set('O_START', {
+  letter: 'O',
+  hebrewName: 'Ayin',
+  hebrewCharacter: 'ע',
+  numericValue: 70,
+  majorArcana: 16
+})
+
 const reduceToSingleDigitWithSteps = (num: number) => {
   const steps = [num]
   let currentNum = num
@@ -393,6 +402,7 @@ export const calculateGematria = (word: string) => {
     const letter = letters[i]
     const nextLetter = letters[i + 1] || ""
 
+    // Digraphs
     if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
       const combinedLetter = (letter + nextLetter).toUpperCase()
       const isStarting = i === 0
@@ -407,16 +417,22 @@ export const calculateGematria = (word: string) => {
         } else if (isEnding && mapping.numericValueWhenEnding !== undefined) {
           value = mapping.numericValueWhenEnding
         }
-
         consonantsSum += value
         i++
         continue
       }
     }
 
+    // Special case: O at start (Ayin)
+    let mapping
+    if (letter === 'O' && i === 0 && hebrewLetterMapping.has('O_START')) {
+      mapping = hebrewLetterMapping.get('O_START')
+    } else {
+      mapping = hebrewLetterMapping.get(letter)
+    }
+
     const isStarting = i === 0
     const isEnding = i > 0 && i === letters.length - 1
-    const mapping = hebrewLetterMapping.get(letter)
 
     if (mapping) {
       let value = mapping.numericValue
