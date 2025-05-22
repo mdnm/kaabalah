@@ -84,6 +84,16 @@ const hebrewLetterMapping = new Map([
     }
   ],
   [
+    "O",
+    {
+      letter: "O",
+      hebrewName: "Vav",
+      hebrewCharacter: "ו",
+      numericValue: 6,
+      majorArcana: 6,
+    }
+  ],
+  [
     "Z",
     {
       letter: "Z",
@@ -121,6 +131,17 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "ת",
       numericValue: 400,
       majorArcana: 22
+    }
+  ],
+  [
+    "TS",
+    {
+      letter: "Ts",
+      hebrewName: "Tzaddi",
+      hebrewCharacter: "צ",
+      numericValue: 90,
+      numericValueWhenEnding: 900,
+      majorArcana: 18
     }
   ],
   [
@@ -218,16 +239,6 @@ const hebrewLetterMapping = new Map([
     }
   ],
   [
-    "SH",
-    {
-      letter: "Sh",
-      hebrewName: "Shin",
-      hebrewCharacter: "ש",
-      numericValue: 300,
-      majorArcana: 21
-    }
-  ],
-  [
     "\u00C7",
     {
       letter: "\u00C7",
@@ -267,6 +278,17 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "פ",
       numericValue: 80,
       majorArcana: 17
+    }
+  ],
+  [
+    "F",
+    {
+      letter: "F",
+      hebrewName: "Pe",
+      hebrewCharacter: "פ",
+      numericValue: 80,
+      numericValueWhenEnding: 800,
+      majorArcana: 17,
     }
   ],
   [
@@ -310,6 +332,26 @@ const hebrewLetterMapping = new Map([
     }
   ],
   [
+    "SH",
+    {
+      letter: "Sh",
+      hebrewName: "Shin",
+      hebrewCharacter: "ש",
+      numericValue: 300,
+      majorArcana: 21
+    }
+  ],
+  [
+    "CH",
+    {
+      letter: "Ch",
+      hebrewName: "Shin",
+      hebrewCharacter: "ש",
+      numericValue: 300,
+      majorArcana: 21
+    }
+  ],
+  [
     "X",
     {
       letter: "X",
@@ -339,7 +381,7 @@ const reduceToSingleDigitWithSteps = (num: number) => {
 }
 
 const isVowel = (letter: string) => {
-  return ["A", "E", "I", "O", "U", "Y"].includes(letter)
+  return ["A", "E", "I", "O", "U", "Y", "W"].includes(letter)
 }
 
 export const calculateGematria = (word: string) => {
@@ -350,20 +392,30 @@ export const calculateGematria = (word: string) => {
   for (let i = 0; i < letters.length; i++) {
     const letter = letters[i]
     const nextLetter = letters[i + 1] || ""
-    const isStarting = i === 0
-    const isEnding = i > 0 && i === letters.length - 1
 
-    if (["P", "T", "K", "S"].includes(letter) && nextLetter) {
+    if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
       const combinedLetter = (letter + nextLetter).toUpperCase()
+      const isStarting = i === 0
+      // -2 here since we're checking 2 letters
+      const isEnding = i > 0 && i === letters.length - 2
 
-      if (hebrewLetterMapping.has(combinedLetter)) {
-        const value = hebrewLetterMapping.get(combinedLetter)!.numericValue
+      const mapping = hebrewLetterMapping.get(combinedLetter)
+      if (mapping) {
+        let value = mapping.numericValue
+        if (isStarting && mapping.numericValueWhenStarting !== undefined) {
+          value = mapping.numericValueWhenStarting
+        } else if (isEnding && mapping.numericValueWhenEnding !== undefined) {
+          value = mapping.numericValueWhenEnding
+        }
+
         consonantsSum += value
         i++
         continue
       }
     }
 
+    const isStarting = i === 0
+    const isEnding = i > 0 && i === letters.length - 1
     const mapping = hebrewLetterMapping.get(letter)
 
     if (mapping) {
@@ -384,7 +436,7 @@ export const calculateGematria = (word: string) => {
   const vowelsReduction = reduceToSingleDigitWithSteps(vowelsSum)
   const consonantsReduction = reduceToSingleDigitWithSteps(consonantsSum)
   const synthesisReduction = reduceToSingleDigitWithSteps(
-    vowelsReduction.finalValue + consonantsReduction.finalValue
+    vowelsSum + consonantsSum
   )
 
   return {
@@ -399,7 +451,7 @@ export const calculateGematria = (word: string) => {
       finalValue: consonantsReduction.finalValue
     },
     synthesis: {
-      originalSum: vowelsReduction.finalValue + consonantsReduction.finalValue,
+      originalSum: vowelsSum + consonantsSum,
       reductionSteps: synthesisReduction.steps,
       finalValue: synthesisReduction.finalValue
     }
