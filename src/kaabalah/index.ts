@@ -249,17 +249,6 @@ const hebrewLetterMapping = new Map([
     }
   ],
   [
-    "O",
-    {
-      letter: "O",
-      hebrewName: "Ayin",
-      hebrewCharacter: "ע",
-      numericValue: 6,
-      numericValueWhenStarting: 70,
-      majorArcana: 16
-    }
-  ],
-  [
     "P",
     {
       letter: "P",
@@ -405,16 +394,13 @@ export const calculateGematria = (word: string) => {
     // Digraphs
     if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
       const combinedLetter = (letter + nextLetter).toUpperCase()
-      const isStarting = i === 0
       // -2 here since we're checking 2 letters
       const isEnding = i > 0 && i === letters.length - 2
 
       const mapping = hebrewLetterMapping.get(combinedLetter)
       if (mapping) {
         let value = mapping.numericValue
-        if (isStarting && mapping.numericValueWhenStarting !== undefined) {
-          value = mapping.numericValueWhenStarting
-        } else if (isEnding && mapping.numericValueWhenEnding !== undefined) {
+        if (isEnding && mapping.numericValueWhenEnding !== undefined) {
           value = mapping.numericValueWhenEnding
         }
         consonantsSum += value
@@ -431,14 +417,10 @@ export const calculateGematria = (word: string) => {
       mapping = hebrewLetterMapping.get(letter)
     }
 
-    const isStarting = i === 0
     const isEnding = i > 0 && i === letters.length - 1
-
     if (mapping) {
       let value = mapping.numericValue
-      if (isStarting && mapping.numericValueWhenStarting !== undefined) {
-        value = mapping.numericValueWhenStarting
-      } else if (isEnding && mapping.numericValueWhenEnding !== undefined) {
+      if (isEnding && mapping.numericValueWhenEnding !== undefined) {
         value = mapping.numericValueWhenEnding
       }
       if (isVowel(letter)) {
