@@ -1,12 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { calculateGematria } from './index'
 
-const getReducedValues = (result: ReturnType<typeof calculateGematria>) => ({
-  vowels: result.vowels.finalValue,
-  consonants: result.consonants.finalValue,
-  synthesis: result.synthesis.finalValue,
-})
-
 const getSums = (result: ReturnType<typeof calculateGematria>) => ({
   vowels: result.vowels.originalSum,
   consonants: result.consonants.originalSum,
@@ -88,10 +82,69 @@ describe('calculateGematria', () => {
     expect(getSums(calculateGematria('JOSHUA'))).toEqual({ vowels: 13, consonants: 310, synthesis: 323 })
     // Example: "RACHEL" = R(200)+A(1)+CH(300)+E(5)+L(30)
     expect(getSums(calculateGematria('RACHEL'))).toEqual({ vowels: 6, consonants: 530, synthesis: 536 })
+    // Example: "JOÃO" = J(10)+O(6)+Ã(5)+O(6)
+    expect(getSums(calculateGematria('JOÃO'))).toEqual({ vowels: 17, consonants: 10, synthesis: 27 })
   })
 
   it('should handle empty and non-letter input gracefully', () => {
     expect(getSums(calculateGematria(''))).toEqual({ vowels: 0, consonants: 0, synthesis: 0 })
     expect(getSums(calculateGematria('123!@#'))).toEqual({ vowels: 0, consonants: 0, synthesis: 0 })
+  })
+
+  it('should calculate missing letters', () => {
+    expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["Ts", "Tz"], "number": 90},
+      {"letters": ["Th"], "number": 400},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
+    expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ').missingGematriaNumbers).toEqual([
+      {"letters": ["Ts", "Tz"], "number": 90},
+      {"letters": ["Th"], "number": 400},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+    ])
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["P", "F", "Ph"], "number": 800},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP').missingGematriaNumbers).toEqual([
+      {"letters": ["O"], "number": 70},
+      {"letters": ["C"], "number": 500},
+      {"letters": ["M"], "number": 600},
+      {"letters": ["N"], "number": 700},
+      {"letters": ["Ts", "Tz"], "number": 900},
+    ])
   })
 }) 

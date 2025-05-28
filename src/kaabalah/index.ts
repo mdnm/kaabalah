@@ -10,7 +10,21 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Aleph",
       hebrewCharacter: "א",
       numericValue: 1,
-      majorArcana: 1
+      majorArcana: 1,
+      astrologicalEnergy: "Air",
+      letterType: "mother"
+    }
+  ],
+  [
+    "\u00C3",
+    {
+      letter: "Ã",
+      hebrewName: "Aleph",
+      hebrewCharacter: "א",
+      numericValue: 5,
+      majorArcana: 1,
+      astrologicalEnergy: "Air",
+      letterType: "mother"
     }
   ],
   [
@@ -20,7 +34,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Beth",
       hebrewCharacter: "ב",
       numericValue: 2,
-      majorArcana: 2
+      majorArcana: 2,
+      astrologicalEnergy: "Moon",
+      letterType: "double"
     }
   ],
   [
@@ -30,7 +46,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Gimel",
       hebrewCharacter: "ג",
       numericValue: 3,
-      majorArcana: 3
+      majorArcana: 3,
+      astrologicalEnergy: "Venus",
+      letterType: "double"
     }
   ],
   [
@@ -40,7 +58,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Daleth",
       hebrewCharacter: "ד",
       numericValue: 4,
-      majorArcana: 4
+      majorArcana: 4,
+      astrologicalEnergy: "Jupiter",
+      letterType: "double"
     }
   ],
   [
@@ -50,7 +70,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "He",
       hebrewCharacter: "ה",
       numericValue: 5,
-      majorArcana: 5
+      majorArcana: 5,
+      astrologicalEnergy: "Aries",
+      letterType: "simple"
     }
   ],
   [
@@ -60,7 +82,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Vav",
       hebrewCharacter: "ו",
       numericValue: 6,
-      majorArcana: 6
+      majorArcana: 6,
+      astrologicalEnergy: "Taurus",
+      letterType: "simple"
     }
   ],
   [
@@ -70,7 +94,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Vav",
       hebrewCharacter: "ו",
       numericValue: 6,
-      majorArcana: 6
+      majorArcana: 6,
+      astrologicalEnergy: "Taurus",
+      letterType: "simple"
     }
   ],
   [
@@ -80,7 +106,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Vav",
       hebrewCharacter: "ו",
       numericValue: 6,
-      majorArcana: 6
+      majorArcana: 6,
+      astrologicalEnergy: "Taurus",
+      letterType: "simple"
     }
   ],
   [
@@ -91,6 +119,8 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "ו",
       numericValue: 6,
       majorArcana: 6,
+      astrologicalEnergy: "Taurus",
+      letterType: "simple"
     }
   ],
   [
@@ -100,7 +130,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Zayin",
       hebrewCharacter: "ז",
       numericValue: 7,
-      majorArcana: 7
+      majorArcana: 7,
+      astrologicalEnergy: "Gemini",
+      letterType: "simple"
     }
   ],
   [
@@ -110,7 +142,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Cheth",
       hebrewCharacter: "ח",
       numericValue: 8,
-      majorArcana: 8
+      majorArcana: 8,
+      astrologicalEnergy: "Cancer",
+      letterType: "simple"
     }
   ],
   [
@@ -120,7 +154,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Teth",
       hebrewCharacter: "ט",
       numericValue: 9,
-      majorArcana: 9
+      majorArcana: 9,
+      astrologicalEnergy: "Leo",
+      letterType: "simple"
     }
   ],
   [
@@ -130,7 +166,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Tav",
       hebrewCharacter: "ת",
       numericValue: 400,
-      majorArcana: 22
+      majorArcana: 22,
+      astrologicalEnergy: "Sun",
+      letterType: "double"
     }
   ],
   [
@@ -141,7 +179,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "צ",
       numericValue: 90,
       numericValueWhenEnding: 900,
-      majorArcana: 18
+      majorArcana: 18,
+      astrologicalEnergy: "Aquarius",
+      letterType: "simple"
     }
   ],
   [
@@ -152,7 +192,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "צ",
       numericValue: 90,
       numericValueWhenEnding: 900,
-      majorArcana: 18
+      majorArcana: 18,
+      astrologicalEnergy: "Aquarius",
+      letterType: "simple"
     }
   ],
   [
@@ -162,7 +204,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Yod",
       hebrewCharacter: "י",
       numericValue: 10,
-      majorArcana: 10
+      majorArcana: 10,
+      astrologicalEnergy: "Virgo",
+      letterType: "simple"
     }
   ],
   [
@@ -172,7 +216,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Yod",
       hebrewCharacter: "י",
       numericValue: 10,
-      majorArcana: 10
+      majorArcana: 10,
+      astrologicalEnergy: "Virgo",
+      letterType: "simple"
     }
   ],
   [
@@ -182,7 +228,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Yod",
       hebrewCharacter: "י",
       numericValue: 10,
-      majorArcana: 10
+      majorArcana: 10,
+      astrologicalEnergy: "Virgo",
+      letterType: "simple"
     }
   ],
   [
@@ -193,7 +241,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "כ",
       numericValue: 20,
       numericValueWhenEnding: 500,
-      majorArcana: 11
+      majorArcana: 11,
+      astrologicalEnergy: "Mars",
+      letterType: "double"
     }
   ],
   [
@@ -203,7 +253,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Lamed",
       hebrewCharacter: "ל",
       numericValue: 30,
-      majorArcana: 12
+      majorArcana: 12,
+      astrologicalEnergy: "Libra",
+      letterType: "simple"
     }
   ],
   [
@@ -214,7 +266,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "מ",
       numericValue: 40,
       numericValueWhenEnding: 600,
-      majorArcana: 13
+      majorArcana: 13,
+      astrologicalEnergy: "Water",
+      letterType: "mother"
     }
   ],
   [
@@ -225,7 +279,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "נ",
       numericValue: 50,
       numericValueWhenEnding: 700,
-      majorArcana: 14
+      majorArcana: 14,
+      astrologicalEnergy: "Scorpio",
+      letterType: "simple"
     }
   ],
   [
@@ -235,17 +291,21 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Samekh",
       hebrewCharacter: "ס",
       numericValue: 60,
-      majorArcana: 15
+      majorArcana: 15,
+      astrologicalEnergy: "Sagittarius",
+      letterType: "simple"
     }
   ],
   [
     "\u00C7",
     {
-      letter: "\u00C7",
+      letter: "Ç",
       hebrewName: "Samekh",
       hebrewCharacter: "ס",
       numericValue: 60,
-      majorArcana: 15
+      majorArcana: 15,
+      astrologicalEnergy: "Sagittarius",
+      letterType: "simple"
     }
   ],
   [
@@ -256,7 +316,9 @@ const hebrewLetterMapping = new Map([
       hebrewCharacter: "פ",
       numericValue: 80,
       numericValueWhenEnding: 800,
-      majorArcana: 17
+      majorArcana: 17,
+      astrologicalEnergy: "Mercury",
+      letterType: "double"
     }
   ],
   [
@@ -266,7 +328,10 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Pe",
       hebrewCharacter: "פ",
       numericValue: 80,
-      majorArcana: 17
+      numericValueWhenEnding: 800,
+      majorArcana: 17,
+      astrologicalEnergy: "Mercury",
+      letterType: "double"
     }
   ],
   [
@@ -278,6 +343,8 @@ const hebrewLetterMapping = new Map([
       numericValue: 80,
       numericValueWhenEnding: 800,
       majorArcana: 17,
+      astrologicalEnergy: "Mercury",
+      letterType: "double"
     }
   ],
   [
@@ -287,7 +354,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Qoph",
       hebrewCharacter: "ק",
       numericValue: 100,
-      majorArcana: 19
+      majorArcana: 19,
+      astrologicalEnergy: "Pisces",
+      letterType: "simple"
     }
   ],
   [
@@ -297,7 +366,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Qoph",
       hebrewCharacter: "ק",
       numericValue: 100,
-      majorArcana: 19
+      majorArcana: 19,
+      astrologicalEnergy: "Pisces",
+      letterType: "simple"
     }
   ],
   [
@@ -307,7 +378,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Qoph",
       hebrewCharacter: "ק",
       numericValue: 100,
-      majorArcana: 19
+      majorArcana: 19,
+      astrologicalEnergy: "Pisces",
+      letterType: "simple"
     }
   ],
   [
@@ -317,7 +390,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Resh",
       hebrewCharacter: "ר",
       numericValue: 200,
-      majorArcana: 20
+      majorArcana: 20,
+      astrologicalEnergy: "Saturn",
+      letterType: "double"
     }
   ],
   [
@@ -327,7 +402,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Shin",
       hebrewCharacter: "ש",
       numericValue: 300,
-      majorArcana: 21
+      majorArcana: 21,
+      astrologicalEnergy: "Fire",
+      letterType: "mother"
     }
   ],
   [
@@ -337,7 +414,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Shin",
       hebrewCharacter: "ש",
       numericValue: 300,
-      majorArcana: 21
+      majorArcana: 21,
+      astrologicalEnergy: "Fire",
+      letterType: "mother"
     }
   ],
   [
@@ -347,7 +426,9 @@ const hebrewLetterMapping = new Map([
       hebrewName: "Shin",
       hebrewCharacter: "ש",
       numericValue: 300,
-      majorArcana: 21
+      majorArcana: 21,
+      astrologicalEnergy: "Fire",
+      letterType: "mother"
     }
   ]
 ])
@@ -358,8 +439,40 @@ hebrewLetterMapping.set('O_START', {
   hebrewName: 'Ayin',
   hebrewCharacter: 'ע',
   numericValue: 70,
-  majorArcana: 16
+  majorArcana: 16,
+  astrologicalEnergy: "Capricorn",
+  letterType: "simple"
 })
+
+const allGematriaNumbers = new Map<number, Set<string>>([
+  [1, new Set(["A"])],
+  [2, new Set(["B"])],
+  [3, new Set(["G"])],
+  [4, new Set(["D"])],
+  [5, new Set(["E", "Ã"])],
+  [6, new Set(["V", "U", "W", "O"])],
+  [7, new Set(["Z"])],
+  [8, new Set(["H"])],
+  [9, new Set(["T"])],
+  [10, new Set(["I", "J", "Y"])],
+  [20, new Set(["C"])],
+  [30, new Set(["L"])],
+  [40, new Set(["M"])],
+  [50, new Set(["N"])],
+  [60, new Set(["S"])],
+  [70, new Set(["O"])],
+  [80, new Set(["P", "F", "Ph"])],
+  [90, new Set(["Ts", "Tz"])],
+  [100, new Set(["K", "Kh", "Q"])],
+  [200, new Set(["R"])],
+  [300, new Set(["Sh", "Ch", "X", "Ç"])],
+  [400, new Set(["Th"])],
+  [500, new Set(["C"])],
+  [600, new Set(["M"])],
+  [700, new Set(["N"])],
+  [800, new Set(["P", "F", "Ph"])],
+  [900, new Set(["Ts", "Tz"])],
+])
 
 const reduceToSingleDigitWithSteps = (num: number) => {
   const steps = [num]
@@ -379,13 +492,15 @@ const reduceToSingleDigitWithSteps = (num: number) => {
 }
 
 const isVowel = (letter: string) => {
-  return ["A", "E", "I", "O", "U", "Y", "W"].includes(letter)
+  return ["A", "Ã", "E", "I", "O", "U", "Y", "W"].includes(letter)
 }
 
 export const calculateGematria = (word: string) => {
   const letters = word.toUpperCase().split("")
   let vowelsSum = 0
   let consonantsSum = 0
+
+  const presentGematriaNumbers = new Set<number>()
 
   for (let i = 0; i < letters.length; i++) {
     const letter = letters[i]
@@ -403,6 +518,7 @@ export const calculateGematria = (word: string) => {
         if (isEnding && mapping.numericValueWhenEnding !== undefined) {
           value = mapping.numericValueWhenEnding
         }
+        presentGematriaNumbers.add(value)
         consonantsSum += value
         i++
         continue
@@ -423,6 +539,9 @@ export const calculateGematria = (word: string) => {
       if (isEnding && mapping.numericValueWhenEnding !== undefined) {
         value = mapping.numericValueWhenEnding
       }
+
+      presentGematriaNumbers.add(value)
+
       if (isVowel(letter)) {
         vowelsSum += value
       } else {
@@ -436,6 +555,17 @@ export const calculateGematria = (word: string) => {
   const synthesisReduction = reduceToSingleDigitWithSteps(
     vowelsSum + consonantsSum
   )
+
+  const missingGematriaNumbers: { number: number, letters: string[] }[] = []
+  for (const [num, lettersSet] of allGematriaNumbers.entries()) {
+    if (!presentGematriaNumbers.has(num)) {
+      missingGematriaNumbers.push({
+        number: num,
+        letters: Array.from(lettersSet)
+      })
+    }
+  }
+  missingGematriaNumbers.sort((a, b) => a.number - b.number)
 
   return {
     vowels: {
@@ -452,6 +582,7 @@ export const calculateGematria = (word: string) => {
       originalSum: vowelsSum + consonantsSum,
       reductionSteps: synthesisReduction.steps,
       finalValue: synthesisReduction.finalValue
-    }
+    },
+    missingGematriaNumbers
   }
 }
