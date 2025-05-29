@@ -1,3 +1,11 @@
+// Core exports
+export { SPHERE_DATA, SPHERES } from './constants';
+export { TreeOfLife } from './tree-of-life';
+
+export { createTree, type TreeOptions } from '../core/factory';
+
+export { loadKaabalah } from './loaders/kaabalah';
+
 const hebrewLetterMapping = new Map([
   [
     "A",
