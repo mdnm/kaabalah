@@ -1,8 +1,8 @@
 type NodeId = string;          // 'Kether', 'color:#ff0000', 'num:1', etc
 
-export type NodeType = "sphere" | "path" | "number" | "planet" | "zodiacSign" | "element" | "color" | "majorArcana" | "minorArcana" | "daatRoyalship" | "musicalNote" | "hebrewLetter" | "latinLetter" | "sanskritLetter" | "archeometerLetter" | "chakra" | "subtleBody";
+export type NodeType = "sphere" | "path" | "world" | "number" | "planet" | "zodiacSign" | "element" | "color" | "majorArcana" | "minorArcana" | "daatRoyalship" | "musicalNote" | "hebrewLetter" | "latinLetter" | "sanskritLetter" | "archeometerLetter" | "chakra" | "subtleBody";
 
-export type NodeData<NodeType> = NodeType extends "sphere" ? SphereData : NodeType extends "path" ? PathData : NodeType extends "hebrewLetter" ? HebrewLetterData : never;
+export type NodeData<NodeType> = NodeType extends "sphere" ? SphereData : NodeType extends "path" ? PathData : NodeType extends "world" ? WorldData : NodeType extends "hebrewLetter" ? HebrewLetterData : NodeType extends "color" ? ColorData : never;
 
 interface Node<NodeType> {
   id: NodeId;
@@ -10,19 +10,50 @@ interface Node<NodeType> {
   data?: NodeData<NodeType>;
 }
 
-interface SphereData {
+interface HermeticQabalahSphereData {
+  /**
+   * In Atziluth
+  */
+  divineName: string;
+  /**
+   * In Briah
+  */
+  archangelicName: string;
+  /**
+   * In Yetzirah
+  */
+  angelicName: string;
+  /**
+   * In Assiah
+  */
+  mundaneName: string;
+}
+
+type SphereData = {
   hebrewName: string;
   englishName: string;
   number: number;
-}
+} & Partial<HermeticQabalahSphereData>;
 
 interface PathData {
   // [counting only paths, counting paths and spheres]
   numbers: [number, number];
 }
 
+interface WorldData {
+  element: "fire" | "air" | "water" | "earth";
+  hebrewName: string;
+  englishName: string;
+}
+
 interface HebrewLetterData {
   type: "mother" | "double" | "simple";
+}
+
+interface ColorData {
+  colorDescription: string;
+  colorNames: string[];
+  colorHexCodes: string[];
 }
 
 /**
@@ -53,6 +84,14 @@ export class TreeOfLife {
   link(firstNode: NodeId, secondNode: NodeId) {
     if (!this.nodes.has(firstNode) || !this.nodes.has(secondNode)) {
       throw new Error('unknown node id');
+    }
+
+    if (firstNode === secondNode) {
+      return;
+    }
+
+    if (this.adjacent.has(firstNode) && this.adjacent.get(firstNode)?.has(secondNode)) {
+      return;
     }
 
     const put = (leftNode: NodeId, rightNode: NodeId) => {
@@ -248,5 +287,29 @@ export class TreeOfLife {
     this.link(pathId, secondNumberId);
 
     return pathId;
+  }
+
+  addWorld(id: NodeId, data: NodeData<"world">) {
+    const worldId = `world:${id}`;
+
+    if (this.nodes.has(worldId)) {
+      return worldId;
+    }
+
+    this.addNode<"world">({ id: worldId, type: "world", data });
+
+    return worldId;
+  }
+
+  addSphereColor(sphere: NodeId, color: string, data: NodeData<"color">, world?: string) {
+    const colorId = `color:${color}`;
+
+    this.correspond(sphere, colorId, "color", data);
+
+    if (world) {
+      this.link(`world:${world}`, colorId);
+    }
+    
+    return colorId;
   }
 }

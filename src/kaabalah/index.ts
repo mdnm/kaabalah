@@ -1,10 +1,10 @@
 // Core exports
-export { SPHERE_DATA, SPHERES } from './constants';
+export { FOUR_WORLDS, HEBREW_LETTERS, LATIN_LETTERS, LURIANIC_PATHS, MELKITZEDEKI_PATHS, SPHERE_DATA, SPHERES } from './constants';
 export { TreeOfLife } from './tree-of-life';
 
-export { createTree, type TreeOptions } from '../core/factory';
-
-export { loadKaabalah } from './loaders/kaabalah';
+export { loadHermeticQabalah, loadColors as loadHermeticQabalahColors, unloadHermeticQabalah, unloadColors as unloadHermeticQabalahColors } from './loaders/hermetic-qabalah';
+export { loadKaabalah, loadColors as loadKaabalahColors, unloadKaabalah, unloadColors as unloadKaabalahColors } from './loaders/kaabalah';
+export { loadLurianicKabbalah, unloadLurianicKabbalah } from './loaders/lurianic-kabbalah';
 
 const hebrewLetterMapping = new Map([
   [

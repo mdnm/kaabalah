@@ -1,4 +1,4 @@
-import { HEBREW_LETTERS, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERE_DATA } from '../constants';
+import { FOUR_WORLDS, HEBREW_LETTERS, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERE_DATA } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
 
 /**
@@ -12,6 +12,36 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
     }
 
     tree.addSphere(SPHERES[key as keyof typeof SPHERES], data);
+  }
+
+  const worlds = Object.entries(FOUR_WORLDS);
+  const worldData = {
+    ATZILUTH: {
+      element: "fire",
+      hebrewName: "Atzilith",
+      englishName: "World of Emanation",
+    },
+    BRIAH: {
+      element: "water",
+      hebrewName: "Briah",
+      englishName: "World of Creation",
+    },
+    YETZIRAH: {
+      element: "air",
+      hebrewName: "Yetzirah",
+      englishName: "World of Formation",
+    },
+    ASSIAH: {
+      element: "earth",
+      hebrewName: "Assiah",
+      englishName: "World of Action",
+    },
+  } as const;
+  for (const [key] of worlds) {
+    tree.addWorld(
+      FOUR_WORLDS[key as keyof typeof FOUR_WORLDS],
+      worldData[key as keyof typeof worldData]
+    );
   }
 
   const path11 = tree.addPath(SPHERES.KETHER, SPHERES.CHOKMAH, LURIANIC_PATHS.KETHER_CHOKMAH);

@@ -1,5 +1,12 @@
 import { NodeData } from "./tree-of-life";
 
+export const FOUR_WORLDS = {
+  ATZILUTH: "Atziluth",
+  BRIAH: "Briah",
+  YETZIRAH: "Yetzirah",
+  ASSIAH: "Assiah",
+} as const;
+
 export const SPHERES = {
   KETHER: "Kether",
   CHOKMAH: "Chokmah",
@@ -51,7 +58,7 @@ export const MELKITZEDEKI_PATHS = {
   HOD_YESOD: 20,
   HOD_MALKUTH: 21,
   YESOD_MALKUTH: 22,
-}
+} as const;
 
 export const LURIANIC_PATHS = {
   KETHER_CHOKMAH: 1,
@@ -76,7 +83,7 @@ export const LURIANIC_PATHS = {
   NETZACH_YESOD: 20,
   HOD_YESOD: 21,
   YESOD_MALKUTH: 22,
-}
+} as const;
 
 export const LATIN_LETTERS = {
   A: "A",

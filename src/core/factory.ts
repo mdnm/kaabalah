@@ -1,12 +1,13 @@
-import { loadKaabalah } from '../kaabalah/loaders/kaabalah';
+import { loadHermeticQabalah, loadColors as loadHermeticQabalahColors } from '../kaabalah/loaders/hermetic-qabalah';
+import { loadKaabalah, loadColors as loadKaabalahColors } from '../kaabalah/loaders/kaabalah';
 import { loadLurianicKabbalah } from '../kaabalah/loaders/lurianic-kabbalah';
 import { TreeOfLife } from '../kaabalah/tree-of-life';
-import { loadIntoTreeOfLife as loadTarot, type TarotLoaderOptions } from '../tarot';
 
 export interface TreeOptions {
-  kaabalah?: "melkitzedki" | "lurianic";
-  tarot?: TarotLoaderOptions;
-  astrology?: boolean;
+  kaabalah?: "melkitzedki" | "lurianic" | "hermetic-qabalah";
+  colors?: boolean;
+  // tarot?: TarotLoaderOptions;
+  // astrology?: boolean;
 }
 
 /**
@@ -16,10 +17,7 @@ export interface TreeOptions {
  */
 export function createTree(opts: TreeOptions = {
   kaabalah: "melkitzedki",
-  tarot: {
-    includeMajorArcana: true,
-    includeCourtCards: true,
-  }
+  colors: true,
 }) {
   const tree = new TreeOfLife();
   
@@ -27,21 +25,29 @@ export function createTree(opts: TreeOptions = {
     switch (opts.kaabalah) {
       case "melkitzedki":
         loadKaabalah(tree);
+        if (opts.colors) {
+          loadKaabalahColors(tree);
+        }
         break;
       case "lurianic":
         loadLurianicKabbalah(tree);
         break;
+      case "hermetic-qabalah":
+        loadHermeticQabalah(tree);
+        if (opts.colors) {
+          loadHermeticQabalahColors(tree);
+        }
+        break;
     }
   }
   
-  if (opts.tarot) {
-    loadTarot(tree, {
-      includeMajorArcana: opts.tarot.includeMajorArcana,
-      includeCourtCards: opts.tarot.includeCourtCards,
-    });
-  }
-  
   // TODO: implement
+  // if (opts.tarot) {
+  //   loadTarot(tree, {
+  //     includeMajorArcana: opts.tarot.includeMajorArcana,
+  //     includeCourtCards: opts.tarot.includeCourtCards,
+  //   });
+  // }
   // if (opts.astrology) loadAstrology(tree);
   
   return tree;
