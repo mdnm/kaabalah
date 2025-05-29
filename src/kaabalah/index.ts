@@ -1,7 +1,3 @@
-/**
- * Kaabalah-related functions
- */
-
 const hebrewLetterMapping = new Map([
   [
     "A",
