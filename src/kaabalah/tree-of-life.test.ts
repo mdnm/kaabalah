@@ -8,22 +8,22 @@ describe('TreeOfLife', () => {
     treeOfLife.addSphere("Kether", { hebrewName: "Keter", englishName: "Crown", number: 1 });
     treeOfLife.addSphere("Chokmah", { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 });
 
-    const path11 = treeOfLife.addPath("Kether", "Chokmah", 1);
+    const path11 = treeOfLife.addPath("sphere:Kether", "sphere:Chokmah", 1);
 
-    expect(treeOfLife.related("Kether")).toEqual([
-      { id: "Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown", number: 1 } },
+    expect(treeOfLife.related("sphere:Kether")).toEqual([
+      { id: "sphere:Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown", number: 1 } },
       { id: "num:1", type: "number" },
       { id: path11, type: "path", data: { numbers: [1, 11] } },
     ]);
-    expect(treeOfLife.related("Chokmah")).toEqual([
-      { id: "Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
+    expect(treeOfLife.related("sphere:Chokmah")).toEqual([
+      { id: "sphere:Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
       { id: "num:2", type: "number" },
       { id: path11, type: "path", data: { numbers: [1, 11] } },
     ]);
     expect(treeOfLife.related(path11)).toEqual([
       { id: path11, type: "path", data: { numbers: [1, 11] } },
-      { id: "Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown", number: 1 } },
-      { id: "Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
+      { id: "sphere:Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown", number: 1 } },
+      { id: "sphere:Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
       { id: "num:1", type: "number" },
       { id: "num:11", type: "number" },
     ]);
@@ -32,7 +32,7 @@ describe('TreeOfLife', () => {
   it('should throw an error when trying to link unknown nodes', () => {
     const treeOfLife = new TreeOfLife();
 
-    expect(() => treeOfLife.addPath("Kether", "Unknown", 1)).toThrow();
+    expect(() => treeOfLife.addPath("sphere:Kether", "sphere:Unknown", 1)).toThrow();
   });
 
   it('should correctly correspond nodes', () => {
@@ -41,10 +41,10 @@ describe('TreeOfLife', () => {
     treeOfLife.addSphere("Chokmah", { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 });
     treeOfLife.addSphere("Binah", { hebrewName: "Binah", englishName: "Understanding", number: 3 });
 
-    const path14 = treeOfLife.addPath("Chokmah", "Binah", 4);
+    const path14 = treeOfLife.addPath("sphere:Chokmah", "sphere:Binah", 4);
 
-    treeOfLife.correspond(path14, "Aleph", "hebrewLetter");
-    treeOfLife.correspond(path14, "A", "latinLetter");
+    treeOfLife.correspond(path14, "letter:Aleph", "hebrewLetter");
+    treeOfLife.correspond(path14, "letter:A", "latinLetter");
 
     treeOfLife.correspond(path14, "Fire", "element");
 
@@ -54,12 +54,12 @@ describe('TreeOfLife', () => {
 
     expect(treeOfLife.related(path14)).toEqual([
       { id: path14, type: "path", data: { numbers: [4, 14] } },
-      { id: "Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
-      { id: "Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
+      { id: "sphere:Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 } },
+      { id: "sphere:Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
       { id: "num:4", type: "number" },
       { id: "num:14", type: "number" },
-      { id: "Aleph", type: "hebrewLetter" },
-      { id: "A", type: "latinLetter" },
+      { id: "letter:Aleph", type: "hebrewLetter" },
+      { id: "letter:A", type: "latinLetter" },
       { id: "Fire", type: "element" },
       { id: "Jupiter", type: "planet" },
       { id: "The Emperor", type: "majorArcana" },
@@ -77,19 +77,19 @@ describe('TreeOfLife', () => {
     treeOfLife.addSphere("Chokmah", { hebrewName: "Chokmah", englishName: "Wisdom", number: 2 });
     treeOfLife.addSphere("Binah", { hebrewName: "Binah", englishName: "Understanding", number: 3 });
 
-    const path14 = treeOfLife.addPath("Chokmah", "Binah", 4);
+    const path14 = treeOfLife.addPath("sphere:Chokmah", "sphere:Binah", 4);
 
-    treeOfLife.removeNode("Chokmah");
+    treeOfLife.removeNode("sphere:Chokmah");
 
-    expect(treeOfLife.related("Chokmah")).toEqual([]);
-    expect(treeOfLife.related("Binah")).toEqual([
-      { id: "Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
+    expect(treeOfLife.related("sphere:Chokmah")).toEqual([]);
+    expect(treeOfLife.related("sphere:Binah")).toEqual([
+      { id: "sphere:Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
       { id: "num:3", type: "number" },
       { id: path14, type: "path", data: { numbers: [4, 14] } },
     ]);
     expect(treeOfLife.related(path14)).toEqual([
       { id: path14, type: "path", data: { numbers: [4, 14] } },
-      { id: "Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
+      { id: "sphere:Binah", type: "sphere", data: { hebrewName: "Binah", englishName: "Understanding", number: 3 } },
       { id: "num:4", type: "number" },
       { id: "num:14", type: "number" },
     ]);

@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 
 import { SPHERES } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
-import { loadColors, loadKaabalah, unloadColors, unloadKaabalah } from './kaabalah';
+import { loadColors, loadHermeticQabalah, loadMusicalNotes, unloadColors, unloadHermeticQabalah, unloadMusicalNotes } from './hermetic-qabalah';
 
-describe('loadKaabalah', () => {
+describe('loadHermeticQabalah', () => {
   it('should load the Kaabalah system correctly', () => {
     const tree = new TreeOfLife();
-    loadKaabalah(tree);
+    loadHermeticQabalah(tree);
 
     expect(tree.related(SPHERES.KETHER, "path")).toHaveLength(3);
     expect(tree.related(SPHERES.CHOKMAH, "path")).toHaveLength(4);
@@ -23,9 +23,9 @@ describe('loadKaabalah', () => {
 
   it('should correctly unload the Kaabalah system', () => {
     const tree = new TreeOfLife();
-    loadKaabalah(tree);
+    loadHermeticQabalah(tree);
 
-    unloadKaabalah(tree);
+    unloadHermeticQabalah(tree);
 
     expect(tree.related(SPHERES.KETHER)).toHaveLength(0);
     expect(tree.related(SPHERES.CHOKMAH)).toHaveLength(0);
@@ -41,19 +41,37 @@ describe('loadKaabalah', () => {
 
   it('should correctly load the colors', () => {
     const tree = new TreeOfLife();
-    loadKaabalah(tree);
+    loadHermeticQabalah(tree);
     loadColors(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "color")).toHaveLength(1);
+    expect(tree.related(SPHERES.MALKUTH, "color")).toHaveLength(4);
   });
 
   it('should correctly unload the colors', () => {
     const tree = new TreeOfLife();
-    loadKaabalah(tree);
+    loadHermeticQabalah(tree);
     loadColors(tree);
 
     unloadColors(tree);
 
     expect(tree.related(SPHERES.MALKUTH, "color")).toHaveLength(0);
+  });
+
+  it('should correctly load the musical notes', () => {
+    const tree = new TreeOfLife();
+    loadHermeticQabalah(tree);
+    loadMusicalNotes(tree);
+
+    expect(tree.related(SPHERES.MALKUTH, "musicalNote")).toHaveLength(1);
+  });
+
+  it('should correctly unload the musical notes', () => {
+    const tree = new TreeOfLife();
+    loadHermeticQabalah(tree);
+    loadMusicalNotes(tree);
+
+    unloadMusicalNotes(tree);
+
+    expect(tree.related(SPHERES.MALKUTH, "musicalNote")).toHaveLength(0);
   });
 });

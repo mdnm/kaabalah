@@ -1,60 +1,14 @@
-type NodeId = string;          // 'Kether', 'color:#ff0000', 'num:1', etc
+import { PartKey } from "./systems/registry";
 
-export type NodeType = "sphere" | "path" | "world" | "number" | "planet" | "zodiacSign" | "element" | "color" | "majorArcana" | "minorArcana" | "daatRoyalship" | "musicalNote" | "hebrewLetter" | "latinLetter" | "sanskritLetter" | "archeometerLetter" | "chakra" | "subtleBody";
+import { Node, NodeData, NodeId, NodeType } from "./constants";
+import { ModuleManager } from "./systems/module-manager";
+import { SystemKey } from "./systems/registry";
 
-export type NodeData<NodeType> = NodeType extends "sphere" ? SphereData : NodeType extends "path" ? PathData : NodeType extends "world" ? WorldData : NodeType extends "hebrewLetter" ? HebrewLetterData : NodeType extends "color" ? ColorData : never;
+export type ModuleKey = 'colors'|'music';
 
-interface Node<NodeType> {
-  id: NodeId;
-  type: NodeType;
-  data?: NodeData<NodeType>;
-}
-
-interface HermeticQabalahSphereData {
-  /**
-   * In Atziluth
-  */
-  divineName: string;
-  /**
-   * In Briah
-  */
-  archangelicName: string;
-  /**
-   * In Yetzirah
-  */
-  angelicName: string;
-  /**
-   * In Assiah
-  */
-  mundaneName: string;
-}
-
-type SphereData = {
-  hebrewName: string;
-  englishName: string;
-  number: number;
-} & Partial<HermeticQabalahSphereData>;
-
-interface PathData {
-  // [counting only paths, counting paths and spheres]
-  numbers: [number, number];
-}
-
-interface WorldData {
-  element: "fire" | "air" | "water" | "earth";
-  hebrewName: string;
-  englishName: string;
-}
-
-interface HebrewLetterData {
-  type: "mother" | "double" | "simple";
-}
-
-interface ColorData {
-  colorDescription: string;
-  colorNames: string[];
-  colorHexCodes: string[];
-}
+export type Loader = (t: TreeOfLife) => TreeOfLife;
+export type Unloader = (t: TreeOfLife) => void;
+export type Bridge = { id: string, needs: ModuleKey[], run: (t: TreeOfLife) => void }
 
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
@@ -62,8 +16,26 @@ interface ColorData {
  * for different use cases or to isolate different sets of correspondences.
  */
 export class TreeOfLife {
-  private nodes = new Map<NodeId, Node<NodeType>>();
-  private adjacent = new Map<NodeId, Set<NodeId>>();
+  private nodes = new Map<string, Node<NodeType>>();
+  private adjacent = new Map<string, Set<string>>();
+  private modules = new ModuleManager(this)
+
+  /**
+   * Loads the tree of life system to be used
+   * @param systemKey - the key of the system to load
+   */
+  loadSystem(systemKey: SystemKey) { this.modules.loadSystem(systemKey) }
+
+  /**
+   * Loads a part of a system into the tree of life
+   * @param partKey - the key of the part to load
+   */
+  loadPart  (partKey: PartKey)     { this.modules.loadPart(partKey) }
+
+  /**
+   * Unloads the tree of life system and all its parts
+   */
+  unloadSystem()                   { this.modules.unloadSystem() }
 
   /**
    * Adds a node to the tree
@@ -227,26 +199,28 @@ export class TreeOfLife {
 
   /**
    * Adds a sphere (sephirah) to the tree with its Hebrew and English names
-   * @param id - the identifier for the sphere
+   * @param sphere - the identifier for the sphere
    * @param data - the sphere's Hebrew and English names
    * @returns the sphere's id
    */
-  addSphere(id: NodeId, data: NodeData<"sphere">) {
-    if (this.nodes.has(id)) {
-      return id;
+  addSphere(sphere: string, data: NodeData<"sphere">) {
+    const sphereId: NodeId = `sphere:${sphere}`;
+
+    if (this.nodes.has(sphereId)) {
+      return sphereId;
     }
 
-    this.addNode<"sphere">({ id, type: "sphere", data });
+    this.addNode<"sphere">({ id: sphereId, type: "sphere", data });
 
-    const numberId = `num:${data.number}`;
+    const numberId: NodeId = `num:${data.number}`;
 
     if (!this.nodes.has(numberId)) {
       this.addNode<"number">({ id: numberId, type: "number" });
     }
 
-    this.link(id, numberId);
+    this.link(sphereId, numberId);
 
-    return id;
+    return sphereId;
   }
 
   /**
@@ -257,7 +231,7 @@ export class TreeOfLife {
    * @returns the path's id
    */
   addPath(leftSphere: NodeId, rightSphere: NodeId, relatedNumber: number) {
-    const pathId = `path:${relatedNumber}`;
+    const pathId: NodeId = `path:${relatedNumber}`;
 
     if (this.nodes.has(pathId)) {
       return pathId;
@@ -272,8 +246,8 @@ export class TreeOfLife {
     this.link(leftSphere, pathId);
     this.link(rightSphere, pathId);
 
-    const firstNumberId = `num:${relatedNumber}`;
-    const secondNumberId = `num:${pathNumber}`;
+    const firstNumberId: NodeId = `num:${relatedNumber}`;
+    const secondNumberId: NodeId = `num:${pathNumber}`;
 
     if (!this.nodes.has(firstNumberId)) {
       this.addNode<"number">({ id: firstNumberId, type: "number" });
@@ -289,8 +263,16 @@ export class TreeOfLife {
     return pathId;
   }
 
-  addWorld(id: NodeId, data: NodeData<"world">) {
-    const worldId = `world:${id}`;
+  addLetters(path: NodeId, letters: { letter: string, type: NodeType, data?: NodeData<NodeType> }[]) {
+    for (const letter of letters) {
+      const letterId: NodeId = `letter:${letter.letter}`;
+
+      this.correspond(path, letterId, letter.type, letter.data);
+    }
+  }
+
+  addWorld(world: string, data: NodeData<"world">) {
+    const worldId: NodeId = `world:${world}`;
 
     if (this.nodes.has(worldId)) {
       return worldId;
@@ -302,7 +284,7 @@ export class TreeOfLife {
   }
 
   addSphereColor(sphere: NodeId, color: string, data: NodeData<"color">, world?: string) {
-    const colorId = `color:${color}`;
+    const colorId: NodeId = `color:${color}`;
 
     this.correspond(sphere, colorId, "color", data);
 
@@ -311,5 +293,13 @@ export class TreeOfLife {
     }
     
     return colorId;
+  }
+
+  addMusicalNote(sphere: NodeId, note: string, data: NodeData<"musicalNote">) {
+    const noteId: NodeId = `note:${note}`;
+
+    this.correspond(sphere, noteId, "musicalNote", data);
+
+    return noteId;
   }
 }

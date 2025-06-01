@@ -1,11 +1,9 @@
-import { loadHermeticQabalah, loadColors as loadHermeticQabalahColors } from '../kaabalah/loaders/hermetic-qabalah';
-import { loadKaabalah, loadColors as loadKaabalahColors } from '../kaabalah/loaders/kaabalah';
-import { loadLurianicKabbalah } from '../kaabalah/loaders/lurianic-kabbalah';
+import { PartKey, SystemKey } from '../kaabalah/systems/registry';
 import { TreeOfLife } from '../kaabalah/tree-of-life';
 
 export interface TreeOptions {
-  kaabalah?: "melkitzedki" | "lurianic" | "hermetic-qabalah";
-  colors?: boolean;
+  system: SystemKey;
+  parts?: PartKey[];
   // tarot?: TarotLoaderOptions;
   // astrology?: boolean;
 }
@@ -16,28 +14,16 @@ export interface TreeOptions {
  * @returns A new TreeOfLife instance with the requested systems loaded
  */
 export function createTree(opts: TreeOptions = {
-  kaabalah: "melkitzedki",
-  colors: true,
+  system: "kaabalah",
+  parts: [],
 }) {
   const tree = new TreeOfLife();
-  
-  if (opts.kaabalah) {
-    switch (opts.kaabalah) {
-      case "melkitzedki":
-        loadKaabalah(tree);
-        if (opts.colors) {
-          loadKaabalahColors(tree);
-        }
-        break;
-      case "lurianic":
-        loadLurianicKabbalah(tree);
-        break;
-      case "hermetic-qabalah":
-        loadHermeticQabalah(tree);
-        if (opts.colors) {
-          loadHermeticQabalahColors(tree);
-        }
-        break;
+
+  tree.loadSystem(opts.system);
+
+  if (opts.parts) {
+    for (const part of opts.parts) {
+      tree.loadPart(part);
     }
   }
   
