@@ -1,4 +1,4 @@
-import { FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERE_DATA } from '../constants';
+import { FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERES_DATA } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
 import { Bridge, Loader, Unloader } from './registry';
 
@@ -8,16 +8,16 @@ export const SYSTEM = 'lurianic-kabbalah' as const;
  * Loads the Lurianic Kabbalah system into the tree of life
  */
 export function loadLurianicKabbalah(tree: TreeOfLife) {
-  const kether = tree.addSphere(SPHERES.KETHER, SPHERE_DATA.KETHER, 1);
-  const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, SPHERE_DATA.CHOKHMAH, 2);
-  const binah = tree.addSphere(SPHERES.BINAH, SPHERE_DATA.BINAH, 3);
-  const chesed = tree.addSphere(SPHERES.CHESED, SPHERE_DATA.CHESED, 4);
-  const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERE_DATA.GEBURAH, 5);
-  const tiphareth = tree.addSphere(SPHERES.TIPHARETH, SPHERE_DATA.TIPHARETH, 6);
-  const netzach = tree.addSphere(SPHERES.NETZACH, SPHERE_DATA.NETZACH, 7);
-  const hod = tree.addSphere(SPHERES.HOD, SPHERE_DATA.HOD, 8);
-  const yesod = tree.addSphere(SPHERES.YESOD, SPHERE_DATA.YESOD, 9);
-  const malkuth = tree.addSphere(SPHERES.MALKUTH, SPHERE_DATA.MALKUTH, 10);
+  const kether = tree.addSphere(SPHERES.KETHER, SPHERES_DATA.KETHER, 1);
+  const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, SPHERES_DATA.CHOKHMAH, 2);
+  const binah = tree.addSphere(SPHERES.BINAH, SPHERES_DATA.BINAH, 3);
+  const chesed = tree.addSphere(SPHERES.CHESED, SPHERES_DATA.CHESED, 4);
+  const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERES_DATA.GEBURAH, 5);
+  const tiphareth = tree.addSphere(SPHERES.TIPHARETH, SPHERES_DATA.TIPHARETH, 6);
+  const netzach = tree.addSphere(SPHERES.NETZACH, SPHERES_DATA.NETZACH, 7);
+  const hod = tree.addSphere(SPHERES.HOD, SPHERES_DATA.HOD, 8);
+  const yesod = tree.addSphere(SPHERES.YESOD, SPHERES_DATA.YESOD, 9);
+  const malkuth = tree.addSphere(SPHERES.MALKUTH, SPHERES_DATA.MALKUTH, 10);
 
   const worlds = Object.entries(FOUR_WORLDS);
   const worldData = {

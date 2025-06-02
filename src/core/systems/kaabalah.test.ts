@@ -145,4 +145,96 @@ describe('loadKaabalah', () => {
 
     expect(tree.related(`westernElement:${WESTERN_ELEMENTS.FIRE}`, "tarotSuit")).toHaveLength(0);
   });
+
+  it('should correctly load the bridge between colors and musical notes (colors first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('colors');
+    tree.loadPart('music');
+
+    const malkuthColors = tree.related(SPHERES.MALKUTH, "color")
+
+    expect(malkuthColors).toHaveLength(1);
+
+    const malkuthMusicalNote = tree.related(SPHERES.MALKUTH, "musicalNote")
+
+    expect(malkuthMusicalNote).toHaveLength(1);
+    expect(tree.related(malkuthMusicalNote[0]?.id, "color")).toHaveLength(1);
+  });
+
+  it('should correctly load the bridge between colors and musical notes (music first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('music');
+    tree.loadPart('colors');
+
+    const malkuthColors = tree.related(SPHERES.MALKUTH, "color")
+
+    expect(malkuthColors).toHaveLength(1);
+
+    const malkuthMusicalNote = tree.related(SPHERES.MALKUTH, "musicalNote")
+
+    expect(malkuthMusicalNote).toHaveLength(1);
+    expect(tree.related(malkuthMusicalNote[0]?.id, "color")).toHaveLength(1);
+  });
+
+  it('should correctly load the bridge between colors and western astrology (colors first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('colors');
+    tree.loadPart('westernAstrology');
+
+    const hodColors = tree.related(SPHERES.HOD, "color");
+
+    expect(hodColors).toHaveLength(1);
+
+    const zodiacSign = tree.related(hodColors[0].id, "westernZodiacSign");
+
+    expect(zodiacSign).toHaveLength(1);
+  });
+
+  it('should correctly load the bridge between colors and western astrology (astrology first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('westernAstrology');
+    tree.loadPart('colors');
+
+    const hodColors = tree.related(SPHERES.HOD, "color");
+
+    expect(hodColors).toHaveLength(1);
+
+    const zodiacSign = tree.related(hodColors[0].id, "westernZodiacSign");
+
+    expect(zodiacSign).toHaveLength(1);
+  });
+
+  it('should correctly load the bridge between music and western astrology (music first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('music');
+    tree.loadPart('westernAstrology');
+
+    const path15ZodiacSign = tree.related(`path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`, "westernZodiacSign");
+
+    expect(path15ZodiacSign).toHaveLength(1);
+
+    const musicalNote = tree.related(path15ZodiacSign[0]?.id, "musicalNote");
+
+    expect(musicalNote).toHaveLength(1);
+  });
+
+  it('should correctly load the bridge between music and western astrology (astrology first)', () => {
+    const tree = new TreeOfLife();
+    tree.loadSystem('kaabalah');
+    tree.loadPart('westernAstrology');
+    tree.loadPart('music');
+
+    const path15ZodiacSign = tree.related(`path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`, "westernZodiacSign");
+
+    expect(path15ZodiacSign).toHaveLength(1);
+
+    const musicalNote = tree.related(path15ZodiacSign[0]?.id, "musicalNote");
+
+    expect(musicalNote).toHaveLength(1);
+  });
 });

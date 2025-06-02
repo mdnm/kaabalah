@@ -52,11 +52,20 @@ export class TreeOfLife {
   }
 
   /**
-   * Adds a node to the tree
-   * @param node - the node to add
+   * Upserts a node to the tree
+   * @param node - the node to upsert
    * @returns the id of the added node
    */
-  addNode<T extends NodeType>(node: Node<T>) { 
+  upsertNode<T extends NodeType>(node: Node<T>) {
+    if (this.nodes.has(node.id)) {
+      const existingNode = this.nodes.get(node.id)!;
+      const updatedData = { ...existingNode.data, ...node.data };
+
+      this.nodes.set(node.id, { ...existingNode, data: updatedData });
+
+      return node.id;
+    }
+
     this.nodes.set(node.id, node);
 
     return node.id;
@@ -211,7 +220,7 @@ export class TreeOfLife {
     if (!this.nodes.has(target)) {
       const node = data ? { id: target, type: targetType, data } : { id: target, type: targetType };
 
-      this.addNode<T>(node);
+      this.upsertNode<T>(node);
     }
 
     this.link(source, target);
@@ -230,12 +239,12 @@ export class TreeOfLife {
       return sphere;
     }
 
-    this.addNode<"sphere">({ id: sphere, type: "sphere", data });
+    this.upsertNode<"sphere">({ id: sphere, type: "sphere", data });
 
     const numberId: NodeId = `num:${relatedNumber}`;
 
     if (!this.nodes.has(numberId)) {
-      this.addNode<"number">({ id: numberId, type: "number" });
+      this.upsertNode<"number">({ id: numberId, type: "number" });
     }
 
     this.link(sphere, numberId);
@@ -261,7 +270,7 @@ export class TreeOfLife {
     const numberOfSpheres = 10;
     const pathNumber = relatedNumber + numberOfSpheres;
 
-    this.addNode<"path">({ id: pathId, type: "path", data });
+    this.upsertNode<"path">({ id: pathId, type: "path", data });
 
     this.link(leftSphere, pathId);
     this.link(rightSphere, pathId);
@@ -270,11 +279,11 @@ export class TreeOfLife {
     const secondNumberId: NodeId = `num:${pathNumber}`;
 
     if (!this.nodes.has(firstNumberId)) {
-      this.addNode<"number">({ id: firstNumberId, type: "number" });
+      this.upsertNode<"number">({ id: firstNumberId, type: "number" });
     }
 
     if (!this.nodes.has(secondNumberId)) {
-      this.addNode<"number">({ id: secondNumberId, type: "number" });
+      this.upsertNode<"number">({ id: secondNumberId, type: "number" });
     }
     
     this.link(pathId, firstNumberId);
@@ -295,7 +304,7 @@ export class TreeOfLife {
 
         for (const gematriaValue of gematriaValues) {
           if (!this.nodes.has(`num:${gematriaValue}`)) {
-            this.addNode<"number">({ id: `num:${gematriaValue}`, type: "number" });
+            this.upsertNode<"number">({ id: `num:${gematriaValue}`, type: "number" });
           }
 
           this.link(letterId, `num:${gematriaValue}`);
@@ -305,11 +314,7 @@ export class TreeOfLife {
   }
 
   addWorld(world: string, data: NodeData<"world">) {
-    if (this.nodes.has(world)) {
-      return world;
-    }
-
-    this.addNode<"world">({ id: world, type: "world", data });
+    this.upsertNode<"world">({ id: world, type: "world", data });
 
     return world;
   }
@@ -334,10 +339,10 @@ export class TreeOfLife {
     return colorId;
   }
 
-  addMusicalNote(sphere: NodeId, note: string, data: NodeData<"musicalNote">) {
+  addMusicalNote(id: NodeId, note: string, data: NodeData<"musicalNote">) {
     const noteId: NodeId = `note:${note}`;
 
-    this.correspond(sphere, noteId, "musicalNote", data);
+    this.correspond(id, noteId, "musicalNote", data);
 
     return noteId;
   }
@@ -357,14 +362,14 @@ export class TreeOfLife {
 
     const numberId: NodeId = `num:${relatedNumber}`;
     if (!this.nodes.has(numberId)) {
-      this.addNode<"number">({ id: numberId, type: "number" });
+      this.upsertNode<"number">({ id: numberId, type: "number" });
     }
     this.link(signId, numberId);
 
     if (data.element) {
       const elementId: NodeId = `westernElement:${data.element}`;
       if (!this.nodes.has(elementId)) {
-        this.addNode<"westernElement">({ id: elementId, type: "westernElement" });
+        this.upsertNode<"westernElement">({ id: elementId, type: "westernElement" });
       }
       this.link(signId, elementId);
     }
@@ -375,10 +380,6 @@ export class TreeOfLife {
   addWesternElement(path: NodeId, element: string, data?: NodeData<"westernElement">) {
     const elementId: NodeId = `westernElement:${element}`;
 
-    if (this.nodes.has(elementId)) {
-      return elementId;
-    }
-
     this.correspond(path, elementId, "westernElement", data);
 
     return elementId;
@@ -387,15 +388,11 @@ export class TreeOfLife {
   addTarotArkAnnu(sphereOrPath: NodeId, tarotArkAnnu: string, data: NodeData<"tarotArkAnnu">, relatedNumber: number, suit?: string) {
     const tarotArkAnnuId = `tarotArkAnnu:${tarotArkAnnu}`;
 
-    if (this.nodes.has(tarotArkAnnuId)) {
-      return tarotArkAnnuId;
-    }
-
     this.correspond(sphereOrPath, tarotArkAnnuId, "tarotArkAnnu", data);
 
     const numberId: NodeId = `num:${relatedNumber}`;
     if (!this.nodes.has(numberId)) {
-      this.addNode<"number">({ id: numberId, type: "number" });
+      this.upsertNode<"number">({ id: numberId, type: "number" });
     }
     this.link(tarotArkAnnuId, numberId);
 
@@ -409,15 +406,11 @@ export class TreeOfLife {
   addTarotSuit(suit: string, relatedElement: Exclude<typeof WESTERN_ELEMENTS[keyof typeof WESTERN_ELEMENTS], "Ether">) {
     const suitId: NodeId = `suit:${suit}`;
 
-    if (this.nodes.has(suitId)) {
-      return suitId;
-    }
-
-    this.addNode<"tarotSuit">({ id: suitId, type: "tarotSuit" });
+    this.upsertNode<"tarotSuit">({ id: suitId, type: "tarotSuit" });
 
     const elementId: NodeId = `westernElement:${relatedElement}`;
     if (!this.nodes.has(elementId)) {
-      this.addNode<"westernElement">({ id: elementId, type: "westernElement" });
+      this.upsertNode<"westernElement">({ id: elementId, type: "westernElement" });
     }
 
     this.link(suitId, `westernElement:${relatedElement}`);
