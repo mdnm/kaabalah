@@ -416,7 +416,7 @@ export const TAROT_ARKANNUS_DATA: Record<keyof typeof TAROT_ARKANNUS, NodeData<"
   THE_WHEEL_OF_FORTUNE: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Loops, extroversion, break the great wheel and ascend, seek externally" }] },
   STRENGTH: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "The strength of your subconscious, unity brings strength" }] },
   THE_HANGED_MAN: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Make valid sacrifices, adopt a new perspective" }] },
-  DEATH: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Merkaabah, take control and build your merkaabah (mind vehicle)" }] },
+  DEATH: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Death, renovation, kill that which kills your soul" }] },
   TEMPERANCE: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Balance, harmonize differences" }] },
   THE_DEVIL: { type: "major", descriptiveData: [{ deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Indecision between vice and virtue, transmute weakness and passions into strengths" }] },
   THE_TOWER: { type: "major", descriptiveData: [{ name: "The House of God", deck: TAROT_DECKS.PAPUS_KAABALISTIC, meaning: "Separation, destruction, separate from what's harmful and connect with what's helpful, make room for the new" }] },

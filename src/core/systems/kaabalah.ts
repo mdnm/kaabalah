@@ -657,11 +657,11 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   const path31 = `path:${MELKITZEDEKI_PATHS.HOD_MALKUTH}`;
   const path32 = `path:${MELKITZEDEKI_PATHS.YESOD_MALKUTH}`;
 
-  tree.addTarotArkAnnu(path11, TAROT_ARKANNUS.THE_MAGICIAN, TAROT_ARKANNUS_DATA.THE_MAGICIAN, 1);
-  tree.addTarotArkAnnu(path12, TAROT_ARKANNUS.THE_HIGH_PRIESTESS, TAROT_ARKANNUS_DATA.THE_HIGH_PRIESTESS, 2);
-  tree.addTarotArkAnnu(path13, TAROT_ARKANNUS.THE_EMPRESS, TAROT_ARKANNUS_DATA.THE_EMPRESS, 3);
-  tree.addTarotArkAnnu(path14, TAROT_ARKANNUS.THE_EMPEROR, TAROT_ARKANNUS_DATA.THE_EMPEROR, 4);
-  tree.addTarotArkAnnu(path15, TAROT_ARKANNUS.THE_HIEROPHANT, TAROT_ARKANNUS_DATA.THE_HIEROPHANT, 5);
+  const magician = tree.addTarotArkAnnu(path11, TAROT_ARKANNUS.THE_MAGICIAN, TAROT_ARKANNUS_DATA.THE_MAGICIAN, 1);
+  const highPriestess = tree.addTarotArkAnnu(path12, TAROT_ARKANNUS.THE_HIGH_PRIESTESS, TAROT_ARKANNUS_DATA.THE_HIGH_PRIESTESS, 2);
+  const empress = tree.addTarotArkAnnu(path13, TAROT_ARKANNUS.THE_EMPRESS, TAROT_ARKANNUS_DATA.THE_EMPRESS, 3);
+  const emperor = tree.addTarotArkAnnu(path14, TAROT_ARKANNUS.THE_EMPEROR, TAROT_ARKANNUS_DATA.THE_EMPEROR, 4);
+  const hierophant = tree.addTarotArkAnnu(path15, TAROT_ARKANNUS.THE_HIEROPHANT, TAROT_ARKANNUS_DATA.THE_HIEROPHANT, 5);
   tree.addTarotArkAnnu(path16, TAROT_ARKANNUS.THE_LOVER, TAROT_ARKANNUS_DATA.THE_LOVER, 6);
   tree.addTarotArkAnnu(path17, TAROT_ARKANNUS.THE_CHARIOT, TAROT_ARKANNUS_DATA.THE_CHARIOT, 7);
   tree.addTarotArkAnnu(path18, TAROT_ARKANNUS.JUSTICE, TAROT_ARKANNUS_DATA.JUSTICE, 8);
@@ -679,6 +679,12 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   tree.addTarotArkAnnu(path30, TAROT_ARKANNUS.JUDGMENT, TAROT_ARKANNUS_DATA.JUDGMENT, 20);
   tree.addTarotArkAnnu(path31, TAROT_ARKANNUS.THE_FOOL, TAROT_ARKANNUS_DATA.THE_FOOL, 21);
   tree.addTarotArkAnnu(path32, TAROT_ARKANNUS.THE_WORLD, TAROT_ARKANNUS_DATA.THE_WORLD, 22);
+
+  tree.correspond(magician, `westernElement:${WESTERN_ELEMENTS.EARTH}`, "westernElement");
+  tree.correspond(highPriestess, `westernElement:${WESTERN_ELEMENTS.AIR}`, "westernElement");
+  tree.correspond(empress, `westernElement:${WESTERN_ELEMENTS.WATER}`, "westernElement");
+  tree.correspond(emperor, `westernElement:${WESTERN_ELEMENTS.FIRE}`, "westernElement");
+  tree.correspond(hierophant, `westernElement:${WESTERN_ELEMENTS.ETHER}`, "westernElement");
 
   tree.addTarotSuit(TAROT_SUITS.WANDS, WESTERN_ELEMENTS.FIRE);
   tree.addTarotSuit(TAROT_SUITS.CUPS, WESTERN_ELEMENTS.WATER);
