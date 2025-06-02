@@ -1,11 +1,9 @@
-import { PartKey, SystemKey } from '../kaabalah/systems/registry';
-import { TreeOfLife } from '../kaabalah/tree-of-life';
+import { PartKey, SystemKey } from './systems/registry';
+import { TreeOfLife } from './tree-of-life';
 
 export interface TreeOptions {
   system: SystemKey;
-  parts?: PartKey[];
-  // tarot?: TarotLoaderOptions;
-  // astrology?: boolean;
+  parts?: Exclude<PartKey, "base">[];
 }
 
 /**
@@ -21,20 +19,9 @@ export function createTree(opts: TreeOptions = {
 
   tree.loadSystem(opts.system);
 
-  if (opts.parts) {
-    for (const part of opts.parts) {
-      tree.loadPart(part);
-    }
+  for (const part of opts.parts || []) {
+    tree.loadPart(part);
   }
-  
-  // TODO: implement
-  // if (opts.tarot) {
-  //   loadTarot(tree, {
-  //     includeMajorArcana: opts.tarot.includeMajorArcana,
-  //     includeCourtCards: opts.tarot.includeCourtCards,
-  //   });
-  // }
-  // if (opts.astrology) loadAstrology(tree);
   
   return tree;
 }

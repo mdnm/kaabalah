@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { SPHERES } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
-import { loadColors, loadHermeticQabalah, loadMusicalNotes, unloadColors, unloadHermeticQabalah, unloadMusicalNotes } from './hermetic-qabalah';
+import { loadColors, loadHermeticQabalah, loadMusicalNotes, loadWesternAstrology, unloadColors, unloadHermeticQabalah, unloadMusicalNotes, unloadWesternAstrology } from './hermetic-qabalah';
 
 describe('loadHermeticQabalah', () => {
   it('should load the Kaabalah system correctly', () => {
@@ -73,5 +73,23 @@ describe('loadHermeticQabalah', () => {
     unloadMusicalNotes(tree);
 
     expect(tree.related(SPHERES.MALKUTH, "musicalNote")).toHaveLength(0);
+  });
+
+  it('should correctly load the western astrology', () => {
+    const tree = new TreeOfLife();
+    loadHermeticQabalah(tree);
+    loadWesternAstrology(tree);
+
+    expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(1);
+  });
+
+  it('should correctly unload the western astrology', () => {
+    const tree = new TreeOfLife();
+    loadHermeticQabalah(tree);
+    loadWesternAstrology(tree);
+
+    unloadWesternAstrology(tree);
+
+    expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(0);
   });
 });

@@ -1,15 +1,15 @@
 
-import { SYSTEMS } from "./registry"
+import { SYSTEMS } from "./registry";
 
-import { TreeOfLife } from "../tree-of-life"
-import { SystemKey } from "./registry"
+import { TreeOfLife } from "../tree-of-life";
+import { SystemKey } from "./registry";
 
-import { PartKey } from "./registry"
+import { PartKey } from "./registry";
 
 export class ModuleManager {
-  private activeSystem: SystemKey | null = null
-  private loadedParts  = new Set<PartKey>()
-  private bridgedParts      = new Set<string>()
+  private activeSystem: SystemKey | null = null;
+  private loadedParts = new Set<PartKey>();
+  private bridgedParts = new Set<string>();
 
   constructor(private t: TreeOfLife) {}
 
@@ -53,8 +53,19 @@ export class ModuleManager {
       throw new Error(`System ${this.activeSystem} not found`);
     }
 
+    if (this.loadedParts.has(partKey)) {
+      return;
+    }
+
     system.LOADERS[partKey](this.t);
     this.loadedParts.add(partKey);
+
+    const possiblePartBridges = system.BRIDGES.filter(b => b.needs.includes(partKey) && !this.bridgedParts.has(b.id) && b.needs.every(n => this.loadedParts.has(n)));
+
+    for (const bridge of possiblePartBridges) {
+      bridge.run(this.t);
+      this.bridgedParts.add(bridge.id);
+    }
   }
 
   /**
@@ -105,11 +116,29 @@ export class ModuleManager {
   }
 
   listAvailableParts() {
-    return SYSTEMS.flatMap(s => Object.keys(s.LOADERS)).filter(p => p !== 'base');
+    if (!this.activeSystem) {
+      throw new Error('No system loaded');
+    }
+
+    const installedSystem = SYSTEMS.find(s => s.SYSTEM === this.activeSystem);
+    if (!installedSystem) {
+      throw new Error(`System ${this.activeSystem} not found`);
+    }
+
+    return Object.keys(installedSystem.LOADERS).filter(p => p !== 'base');
   }
 
   listAvailableBridges() {
-    return SYSTEMS.flatMap(s => s.BRIDGES);
+    if (!this.activeSystem) {
+      throw new Error('No system loaded');
+    }
+
+    const installedSystem = SYSTEMS.find(s => s.SYSTEM === this.activeSystem);
+    if (!installedSystem) {
+      throw new Error(`System ${this.activeSystem} not found`);
+    }
+
+    return installedSystem.BRIDGES;
   }
 
   listLoadedParts() {
@@ -118,5 +147,9 @@ export class ModuleManager {
 
   listBridgedParts() {
     return [...this.bridgedParts];
+  }
+  
+  getActiveSystem() {
+    return this.activeSystem;
   }
 }

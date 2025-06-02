@@ -5,7 +5,7 @@
 // Export from each module
 export * from './astrology';
 export * from './core';
-export * from './kaabalah';
+export * from './gematria';
 export * from './numerology';
 export * from './tarot';
 

@@ -1,14 +1,8 @@
 import { PartKey } from "./systems/registry";
 
-import { Node, NodeData, NodeId, NodeType } from "./constants";
+import { Node, NodeData, NodeId, NodeType, WESTERN_ELEMENTS } from "./constants";
 import { ModuleManager } from "./systems/module-manager";
 import { SystemKey } from "./systems/registry";
-
-export type ModuleKey = 'colors'|'music';
-
-export type Loader = (t: TreeOfLife) => TreeOfLife;
-export type Unloader = (t: TreeOfLife) => void;
-export type Bridge = { id: string, needs: ModuleKey[], run: (t: TreeOfLife) => void }
 
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
@@ -18,7 +12,9 @@ export type Bridge = { id: string, needs: ModuleKey[], run: (t: TreeOfLife) => v
 export class TreeOfLife {
   private nodes = new Map<string, Node<NodeType>>();
   private adjacent = new Map<string, Set<string>>();
-  private modules = new ModuleManager(this)
+  private modules = new ModuleManager(this);
+
+  public activeSystem: SystemKey | null = this.modules.getActiveSystem();
 
   /**
    * Loads the tree of life system to be used
@@ -37,6 +33,22 @@ export class TreeOfLife {
    */
   unloadSystem()                   { this.modules.unloadSystem() }
 
+  listAvailableParts() {
+    return this.modules.listAvailableParts();
+  }
+
+  listLoadedParts() {
+    return this.modules.listLoadedParts();
+  }
+
+  listAvailableBridges() {
+    return this.modules.listAvailableBridges();
+  }
+
+  listBridgedParts() {
+    return this.modules.listBridgedParts();
+  }
+
   /**
    * Adds a node to the tree
    * @param node - the node to add
@@ -46,6 +58,10 @@ export class TreeOfLife {
     this.nodes.set(node.id, node);
 
     return node.id;
+  }
+
+  getNode(id: NodeId) {
+    return this.nodes.get(id);
   }
 
   /**
@@ -203,24 +219,22 @@ export class TreeOfLife {
    * @param data - the sphere's Hebrew and English names
    * @returns the sphere's id
    */
-  addSphere(sphere: string, data: NodeData<"sphere">) {
-    const sphereId: NodeId = `sphere:${sphere}`;
-
-    if (this.nodes.has(sphereId)) {
-      return sphereId;
+  addSphere(sphere: string, data: NodeData<"sphere">, relatedNumber: number) {
+    if (this.nodes.has(sphere)) {
+      return sphere;
     }
 
-    this.addNode<"sphere">({ id: sphereId, type: "sphere", data });
+    this.addNode<"sphere">({ id: sphere, type: "sphere", data });
 
-    const numberId: NodeId = `num:${data.number}`;
+    const numberId: NodeId = `num:${relatedNumber}`;
 
     if (!this.nodes.has(numberId)) {
       this.addNode<"number">({ id: numberId, type: "number" });
     }
 
-    this.link(sphereId, numberId);
+    this.link(sphere, numberId);
 
-    return sphereId;
+    return sphere;
   }
 
   /**
@@ -230,7 +244,7 @@ export class TreeOfLife {
    * @param relatedNumber - the number associated with this path
    * @returns the path's id
    */
-  addPath(leftSphere: NodeId, rightSphere: NodeId, relatedNumber: number) {
+  addPath(leftSphere: NodeId, rightSphere: NodeId, relatedNumber: number, data?: Partial<NodeData<"path">>) {
     const pathId: NodeId = `path:${relatedNumber}`;
 
     if (this.nodes.has(pathId)) {
@@ -241,7 +255,7 @@ export class TreeOfLife {
     const numberOfSpheres = 10;
     const pathNumber = relatedNumber + numberOfSpheres;
 
-    this.addNode<"path">({ id: pathId, type: "path", data: { numbers: [relatedNumber, pathNumber] }});
+    this.addNode<"path">({ id: pathId, type: "path", data });
 
     this.link(leftSphere, pathId);
     this.link(rightSphere, pathId);
@@ -268,19 +282,30 @@ export class TreeOfLife {
       const letterId: NodeId = `letter:${letter.letter}`;
 
       this.correspond(path, letterId, letter.type, letter.data);
+
+      if (letter.type === "hebrewLetter") {
+        const data = letter.data as NodeData<"hebrewLetter">;
+        const gematriaValues = [data.gematriaValue, data.gematriaValueWhenEnding].filter(Boolean) as number[];
+
+        for (const gematriaValue of gematriaValues) {
+          if (!this.nodes.has(`num:${gematriaValue}`)) {
+            this.addNode<"number">({ id: `num:${gematriaValue}`, type: "number" });
+          }
+
+          this.link(letterId, `num:${gematriaValue}`);
+        }
+      }
     }
   }
 
   addWorld(world: string, data: NodeData<"world">) {
-    const worldId: NodeId = `world:${world}`;
-
-    if (this.nodes.has(worldId)) {
-      return worldId;
+    if (this.nodes.has(world)) {
+      return world;
     }
 
-    this.addNode<"world">({ id: worldId, type: "world", data });
+    this.addNode<"world">({ id: world, type: "world", data });
 
-    return worldId;
+    return world;
   }
 
   addSphereColor(sphere: NodeId, color: string, data: NodeData<"color">, world?: string) {
@@ -289,9 +314,17 @@ export class TreeOfLife {
     this.correspond(sphere, colorId, "color", data);
 
     if (world) {
-      this.link(`world:${world}`, colorId);
+      this.link(world, colorId);
     }
     
+    return colorId;
+  }
+
+  addPathColor(path: NodeId, color: string, data: NodeData<"color">) {
+    const colorId: NodeId = `color:${color}`;
+
+    this.correspond(path, colorId, "color", data);
+
     return colorId;
   }
 
@@ -301,5 +334,86 @@ export class TreeOfLife {
     this.correspond(sphere, noteId, "musicalNote", data);
 
     return noteId;
+  }
+
+  addWesternAstrologyPlanet(sphereOrPath: NodeId, planet: string, data?: NodeData<"planet">) {
+    const planetId: NodeId = `planet:${planet}`;
+
+    this.correspond(sphereOrPath, planetId, "planet", data);
+
+    return planetId;
+  }
+
+  addWesternAstrologySign(path: NodeId, sign: string, data: NodeData<"westernZodiacSign">, relatedNumber: number) {
+    const signId: NodeId = `westernZodiacSign:${sign}`;
+
+    this.correspond(path, signId, "westernZodiacSign", data);
+
+    const numberId: NodeId = `num:${relatedNumber}`;
+    if (!this.nodes.has(numberId)) {
+      this.addNode<"number">({ id: numberId, type: "number" });
+    }
+    this.link(signId, numberId);
+
+    if (data.element) {
+      const elementId: NodeId = `westernElement:${data.element}`;
+      if (!this.nodes.has(elementId)) {
+        this.addNode<"westernElement">({ id: elementId, type: "westernElement" });
+      }
+      this.link(signId, elementId);
+    }
+
+    return signId;
+  }
+
+  addWesternElement(path: NodeId, element: string, data?: NodeData<"westernElement">) {
+    const elementId: NodeId = `westernElement:${element}`;
+
+    if (this.nodes.has(elementId)) {
+      return elementId;
+    }
+
+    this.correspond(path, elementId, "westernElement", data);
+
+    return elementId;
+  }
+  
+  addTarotArkAnnu(sphereOrPath: NodeId, tarotArkAnnu: string, data: NodeData<"tarotArkAnnu">, relatedNumber: number, suit?: string) {
+    if (this.nodes.has(tarotArkAnnu)) {
+      return tarotArkAnnu;
+    }
+
+    this.correspond(sphereOrPath, tarotArkAnnu, "tarotArkAnnu", data);
+
+    const numberId: NodeId = `num:${relatedNumber}`;
+    if (!this.nodes.has(numberId)) {
+      this.addNode<"number">({ id: numberId, type: "number" });
+    }
+    this.link(tarotArkAnnu, numberId);
+
+    if (suit) {
+      this.link(tarotArkAnnu, `suit:${suit}`);
+    }
+
+    return tarotArkAnnu;
+  }
+
+  addTarotSuit(suit: string, relatedElement: Exclude<typeof WESTERN_ELEMENTS[keyof typeof WESTERN_ELEMENTS], "Ether">) {
+    const suitId: NodeId = `suit:${suit}`;
+
+    if (this.nodes.has(suitId)) {
+      return suitId;
+    }
+
+    this.addNode<"tarotSuit">({ id: suitId, type: "tarotSuit" });
+
+    const elementId: NodeId = `westernElement:${relatedElement}`;
+    if (!this.nodes.has(elementId)) {
+      this.addNode<"westernElement">({ id: elementId, type: "westernElement" });
+    }
+
+    this.link(suitId, `westernElement:${relatedElement}`);
+
+    return suitId;
   }
 }

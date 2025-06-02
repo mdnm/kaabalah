@@ -1,5 +1,6 @@
-import { FOUR_WORLDS, HEBREW_LETTERS, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERE_DATA } from '../constants';
-import { Bridge, Loader, TreeOfLife, Unloader } from '../tree-of-life';
+import { FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, LURIANIC_PATHS, SPHERES, SPHERE_DATA } from '../constants';
+import { TreeOfLife } from '../tree-of-life';
+import { Bridge, Loader, Unloader } from './registry';
 
 export const SYSTEM = 'lurianic-kabbalah' as const;
 
@@ -7,16 +8,16 @@ export const SYSTEM = 'lurianic-kabbalah' as const;
  * Loads the Lurianic Kabbalah system into the tree of life
  */
 export function loadLurianicKabbalah(tree: TreeOfLife) {
-  const kether = tree.addSphere(SPHERES.KETHER, SPHERE_DATA.KETHER);
-  const chokmah = tree.addSphere(SPHERES.CHOKMAH, SPHERE_DATA.CHOKMAH);
-  const binah = tree.addSphere(SPHERES.BINAH, SPHERE_DATA.BINAH);
-  const chesed = tree.addSphere(SPHERES.CHESED, SPHERE_DATA.CHESED);
-  const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERE_DATA.GEBURAH);
-  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, SPHERE_DATA.TIPHERETH);
-  const netzach = tree.addSphere(SPHERES.NETZACH, SPHERE_DATA.NETZACH);
-  const hod = tree.addSphere(SPHERES.HOD, SPHERE_DATA.HOD);
-  const yesod = tree.addSphere(SPHERES.YESOD, SPHERE_DATA.YESOD);
-  const malkuth = tree.addSphere(SPHERES.MALKUTH, SPHERE_DATA.MALKUTH);
+  const kether = tree.addSphere(SPHERES.KETHER, SPHERE_DATA.KETHER, 1);
+  const chokmah = tree.addSphere(SPHERES.CHOKMAH, SPHERE_DATA.CHOKMAH, 2);
+  const binah = tree.addSphere(SPHERES.BINAH, SPHERE_DATA.BINAH, 3);
+  const chesed = tree.addSphere(SPHERES.CHESED, SPHERE_DATA.CHESED, 4);
+  const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERE_DATA.GEBURAH, 5);
+  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, SPHERE_DATA.TIPHERETH, 6);
+  const netzach = tree.addSphere(SPHERES.NETZACH, SPHERE_DATA.NETZACH, 7);
+  const hod = tree.addSphere(SPHERES.HOD, SPHERE_DATA.HOD, 8);
+  const yesod = tree.addSphere(SPHERES.YESOD, SPHERE_DATA.YESOD, 9);
+  const malkuth = tree.addSphere(SPHERES.MALKUTH, SPHERE_DATA.MALKUTH, 10);
 
   const worlds = Object.entries(FOUR_WORLDS);
   const worldData = {
@@ -73,115 +74,125 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
 
   tree.addLetters(path11, [
     { letter: LATIN_LETTERS.E, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.HE, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.HE, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.HE }
   ]);
 
   tree.addLetters(path12, [
     { letter: LATIN_LETTERS.V, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.VAV, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.U, type: "latinLetter" },
+    { letter: LATIN_LETTERS.W, type: "latinLetter" },
+    { letter: LATIN_LETTERS.O, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.VAV, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.VAV }
   ]);
 
   tree.addLetters(path13, [
     { letter: LATIN_LETTERS.D, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.DALET, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.DALET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.DALET }
   ]);
 
   tree.addLetters(path14, [
     { letter: LATIN_LETTERS.CH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.SHIN, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: LATIN_LETTERS.SH, type: "latinLetter" },
+    { letter: LATIN_LETTERS.X, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.SHIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.SHIN }
   ]);
 
   tree.addLetters(path15, [
     { letter: LATIN_LETTERS.Z, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.ZAYIN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.ZAYIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.ZAYIN }
   ]);
 
   tree.addLetters(path16, [
     { letter: LATIN_LETTERS.T, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TET, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.TET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TET }
   ]);
 
   tree.addLetters(path17, [
     { letter: LATIN_LETTERS.B, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.BETH, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.BETH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.BETH }
   ]);
 
   tree.addLetters(path18, [
     { letter: LATIN_LETTERS.H, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.HET, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.HET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.HET }
   ]);
 
   tree.addLetters(path19, [
     { letter: LATIN_LETTERS.I, type: "latinLetter" },
+    { letter: LATIN_LETTERS.J, type: "latinLetter" },
     { letter: LATIN_LETTERS.Y, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.YOD, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.YOD, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.YOD }
   ]);
 
   tree.addLetters(path20, [
     { letter: LATIN_LETTERS.G, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.GIMEL, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.GIMEL, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.GIMEL }
   ]);
 
   tree.addLetters(path21, [
     { letter: LATIN_LETTERS.A, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.ALEPH, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: HEBREW_LETTERS.ALEPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.ALEPH }
   ]);
 
   tree.addLetters(path22, [
     { letter: LATIN_LETTERS.L, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.LAMED, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.LAMED, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.LAMED }
   ]);
 
   tree.addLetters(path23, [
     { letter: LATIN_LETTERS.C, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAF }
   ]);
 
   tree.addLetters(path24, [
     { letter: LATIN_LETTERS.N, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.NUN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.NUN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.NUN }
   ]);
 
   tree.addLetters(path25, [
     { letter: LATIN_LETTERS.P, type: "latinLetter" },
     { letter: LATIN_LETTERS.F, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.PE, type: "hebrewLetter", data: { type: "double" } }
+    { letter: LATIN_LETTERS.PH, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.PE, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.PE }
   ]);
 
   tree.addLetters(path26, [
     { letter: LATIN_LETTERS.S, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.SAMEKH, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.Ç, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.SAMEKH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.SAMEKH }
   ]);
 
   tree.addLetters(path27, [
     { letter: LATIN_LETTERS.R, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.RESH, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.RESH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.RESH }
   ]);
 
   tree.addLetters(path28, [
     { letter: LATIN_LETTERS.O, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AIN }
   ]);
 
   tree.addLetters(path29, [
     { letter: LATIN_LETTERS.M, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.MEM, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: HEBREW_LETTERS.MEM, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.MEM }
   ]);
 
   tree.addLetters(path30, [
     { letter: LATIN_LETTERS.TS, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TSADI, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.TZ, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.TSADI, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TSADI }
   ]);
 
   tree.addLetters(path31, [
     { letter: LATIN_LETTERS.K, type: "latinLetter" },
     { letter: LATIN_LETTERS.Q, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.KH, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOF }
   ]);
 
   tree.addLetters(path32, [
     { letter: LATIN_LETTERS.TH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TAV, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.TAV, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TAV }
   ]);
 
   return tree;

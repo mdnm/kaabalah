@@ -882,6 +882,3 @@ export async function shuffleTarotDeck(
 
   return shuffledCards;
 }
-
-export { loadIntoTreeOfLife, type TarotLoaderOptions } from './loader'
-

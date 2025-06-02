@@ -1,5 +1,6 @@
-import { FOUR_WORLDS, HEBREW_LETTERS, LATIN_LETTERS, MELKITZEDEKI_PATHS, PLANETS, SPHERES, SPHERE_DATA } from '../constants';
-import { Bridge, Loader, NodeData, TreeOfLife, Unloader } from '../tree-of-life';
+import { FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, MELKITZEDEKI_PATHS, PLANETS, SPHERES, SPHERE_DATA } from '../constants';
+import { TreeOfLife } from '../tree-of-life';
+import { Bridge, Loader, Unloader } from './registry';
 
 export const SYSTEM = 'hermetic-qabalah' as const;
 
@@ -7,76 +8,77 @@ export const SYSTEM = 'hermetic-qabalah' as const;
  * Loads the Hermetic Qabalah system into the tree of life
  */
 export function loadHermeticQabalah(tree: TreeOfLife) {
-  const spheres = Object.entries(SPHERE_DATA);
-  const sphereData: Record<keyof typeof SPHERES, Partial<NodeData<"sphere">>> = {
-    KETHER: {
-      divineName: "Eheieh",
-      archangelicName: "Metraton",
-      angelicName: "Chayouth Ha-Qadesh",
-      mundaneName: "Rashith Ha-Gilgalim"
-    },
-    CHOKMAH: {
-      divineName: "Yahve El Yah",
-      archangelicName: "Raziel",
-      angelicName: "Auphanim",
-      mundaneName: "Mazloth"
-    },
-    BINAH: {
-      divineName: "Yahve Elohim",
-      archangelicName: "Tzaphqiel",
-      angelicName: "Aralim",
-      mundaneName: "Shabbathai"
-    },
-    DAATH: {},
-    CHESED: {
-      divineName: "El",
-      archangelicName: "Tzadqiel",
-      angelicName: "Chasmalim",
-      mundaneName: "Tzedeq"
-    },
-    GEBURAH: {
-      divineName: "Elohim Gibor",
-      archangelicName: "Kamael",
-      angelicName: "Seraphim",
-      mundaneName: "Madim"
-    },
-    TIPHERETH: {
-      divineName: "Yahve Eloah Ve-Daath",
-      archangelicName: "Raphael",
-      angelicName: "Melekim",
-      mundaneName: "Shemesh"
-    },
-    NETZACH: {
-      divineName: "Yahve Tzabaoth",
-      archangelicName: "Haniel",
-      angelicName: "Elohim",
-      mundaneName: "Nogah"
-    },
-    HOD: {
-      divineName: "Elohim Tzabaoth",
-      archangelicName: "Mikael",
-      angelicName: "Beni Elohim",
-      mundaneName: "Kokab"
-    },
-    YESOD: {
-      divineName: "Shadai El Chai",
-      archangelicName: "Gabriel",
-      angelicName: "Kerubim",
-      mundaneName: "Levanah"
-    },
-    MALKUTH: {
-      divineName: "Adonai Malek",
-      archangelicName: "Sandalphon",
-      angelicName: "Ashim",
-      mundaneName: "Olam Yesodot"
-    },
-  }
-  for (const [key, data] of spheres) {
-    tree.addSphere(SPHERES[key as keyof typeof SPHERES], {
-      ...data,
-      ...sphereData[key as keyof typeof sphereData]
-    });
-  }
+  const kether = tree.addSphere(SPHERES.KETHER, {
+    ...SPHERE_DATA.KETHER,
+    divineName: "Eheieh",
+    archangelicName: "Metraton",
+    angelicName: "Chayouth Ha-Qadesh",
+    mundaneName: "Rashith Ha-Gilgalim"
+  }, 1);
+  const chokmah = tree.addSphere(SPHERES.CHOKMAH, {
+    ...SPHERE_DATA.CHOKMAH,
+    divineName: "Yahve El Yah",
+    archangelicName: "Raziel",
+    angelicName: "Auphanim",
+    mundaneName: "Mazloth"
+  }, 2);
+  const binah = tree.addSphere(SPHERES.BINAH, {
+    ...SPHERE_DATA.BINAH,
+    divineName: "Yahve Elohim",
+    archangelicName: "Tzaphqiel",
+    angelicName: "Aralim",
+    mundaneName: "Shabbathai"
+  }, 3);
+  tree.addSphere(SPHERES.DAATH, SPHERE_DATA.DAATH, 11);
+  const chesed = tree.addSphere(SPHERES.CHESED, {
+    ...SPHERE_DATA.CHESED,
+    divineName: "El",
+    archangelicName: "Tzadqiel",
+    angelicName: "Chasmalim",
+    mundaneName: "Tzedeq"
+  }, 4);
+  const geburah = tree.addSphere(SPHERES.GEBURAH, {
+    ...SPHERE_DATA.GEBURAH,
+    divineName: "Elohim Gibor",
+    archangelicName: "Kamael",
+    angelicName: "Seraphim",
+    mundaneName: "Madim"
+  }, 5);
+  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, {
+    ...SPHERE_DATA.TIPHERETH,
+    divineName: "Yahve Eloah Ve-Daath",
+    archangelicName: "Raphael",
+    angelicName: "Melekim",
+    mundaneName: "Shemesh"
+  }, 6);
+  const netzach = tree.addSphere(SPHERES.NETZACH, {
+    ...SPHERE_DATA.NETZACH,
+    divineName: "Yahve Tzabaoth",
+    archangelicName: "Haniel",
+    angelicName: "Elohim",
+    mundaneName: "Nogah"
+  }, 7);
+  const hod = tree.addSphere(SPHERES.HOD, {
+    ...SPHERE_DATA.HOD,
+    divineName: "Elohim Tzabaoth",
+    archangelicName: "Mikael",
+    angelicName: "Beni Elohim",
+    mundaneName: "Kokab"
+  }, 8);
+  const yesod = tree.addSphere(SPHERES.YESOD, {
+    ...SPHERE_DATA.YESOD,
+    divineName: "Shadai El Chai",
+    archangelicName: "Gabriel",
+    angelicName: "Kerubim",
+    mundaneName: "Levanah"
+  }, 9);
+  const malkuth = tree.addSphere(SPHERES.MALKUTH, {
+    ...SPHERE_DATA.MALKUTH,
+    divineName: "Adonai Malek",
+    archangelicName: "Sandalphon",
+    angelicName: "Ashim",
+    mundaneName: "Olam Yesodot"
+  }, 10);
 
   const worlds = Object.entries(FOUR_WORLDS);
   const worldData = {
@@ -108,140 +110,150 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
     );
   }
 
-  const path11 = tree.addPath(SPHERES.KETHER, SPHERES.CHOKMAH, MELKITZEDEKI_PATHS.KETHER_CHOKMAH);
-  const path12 = tree.addPath(SPHERES.KETHER, SPHERES.BINAH, MELKITZEDEKI_PATHS.KETHER_BINAH);
-  const path13 = tree.addPath(SPHERES.KETHER, SPHERES.TIPHERETH, MELKITZEDEKI_PATHS.KETHER_TIPHERETH);
-  const path14 = tree.addPath(SPHERES.CHOKMAH, SPHERES.BINAH, MELKITZEDEKI_PATHS.CHOKMAH_BINAH);
-  const path15 = tree.addPath(SPHERES.CHOKMAH, SPHERES.TIPHERETH, MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH);
-  const path16 = tree.addPath(SPHERES.CHOKMAH, SPHERES.CHESED, MELKITZEDEKI_PATHS.CHOKMAH_CHESED);
-  const path17 = tree.addPath(SPHERES.BINAH, SPHERES.TIPHERETH, MELKITZEDEKI_PATHS.BINAH_TIPHERETH);
-  const path18 = tree.addPath(SPHERES.BINAH, SPHERES.GEBURAH, MELKITZEDEKI_PATHS.BINAH_GEBURAH);
-  const path19 = tree.addPath(SPHERES.CHESED, SPHERES.GEBURAH, MELKITZEDEKI_PATHS.CHESED_GEBURAH);
-  const path20 = tree.addPath(SPHERES.CHESED, SPHERES.TIPHERETH, MELKITZEDEKI_PATHS.CHESED_TIPHERETH);
-  const path21 = tree.addPath(SPHERES.CHESED, SPHERES.NETZACH, MELKITZEDEKI_PATHS.CHESED_NETZACH);
-  const path22 = tree.addPath(SPHERES.GEBURAH, SPHERES.TIPHERETH, MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH);
-  const path23 = tree.addPath(SPHERES.GEBURAH, SPHERES.HOD, MELKITZEDEKI_PATHS.GEBURAH_HOD);
-  const path24 = tree.addPath(SPHERES.TIPHERETH, SPHERES.NETZACH, MELKITZEDEKI_PATHS.TIPHERETH_NETZACH);
-  const path25 = tree.addPath(SPHERES.TIPHERETH, SPHERES.YESOD, MELKITZEDEKI_PATHS.TIPHERETH_YESOD);
-  const path26 = tree.addPath(SPHERES.TIPHERETH, SPHERES.HOD, MELKITZEDEKI_PATHS.TIPHERETH_HOD);
-  const path27 = tree.addPath(SPHERES.NETZACH, SPHERES.HOD, MELKITZEDEKI_PATHS.NETZACH_HOD);
-  const path28 = tree.addPath(SPHERES.NETZACH, SPHERES.YESOD, MELKITZEDEKI_PATHS.NETZACH_YESOD);
-  const path29 = tree.addPath(SPHERES.NETZACH, SPHERES.MALKUTH, MELKITZEDEKI_PATHS.NETZACH_MALKUTH);
-  const path30 = tree.addPath(SPHERES.HOD, SPHERES.YESOD, MELKITZEDEKI_PATHS.HOD_YESOD);
-  const path31 = tree.addPath(SPHERES.HOD, SPHERES.MALKUTH, MELKITZEDEKI_PATHS.HOD_MALKUTH);
-  const path32 = tree.addPath(SPHERES.YESOD, SPHERES.MALKUTH, MELKITZEDEKI_PATHS.YESOD_MALKUTH);
+  const path11 = tree.addPath(kether, chokmah, MELKITZEDEKI_PATHS.KETHER_CHOKMAH);
+  const path12 = tree.addPath(kether, binah, MELKITZEDEKI_PATHS.KETHER_BINAH);
+  const path13 = tree.addPath(kether, tiphereth, MELKITZEDEKI_PATHS.KETHER_TIPHERETH);
+  const path14 = tree.addPath(chokmah, binah, MELKITZEDEKI_PATHS.CHOKMAH_BINAH);
+  const path15 = tree.addPath(chokmah, tiphereth, MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH);
+  const path16 = tree.addPath(chokmah, chesed, MELKITZEDEKI_PATHS.CHOKMAH_CHESED);
+  const path17 = tree.addPath(binah, tiphereth, MELKITZEDEKI_PATHS.BINAH_TIPHERETH);
+  const path18 = tree.addPath(binah, geburah, MELKITZEDEKI_PATHS.BINAH_GEBURAH);
+  const path19 = tree.addPath(chesed, geburah, MELKITZEDEKI_PATHS.CHESED_GEBURAH);
+  const path20 = tree.addPath(chesed, tiphereth, MELKITZEDEKI_PATHS.CHESED_TIPHERETH);
+  const path21 = tree.addPath(chesed, netzach, MELKITZEDEKI_PATHS.CHESED_NETZACH);
+  const path22 = tree.addPath(geburah, tiphereth, MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH);
+  const path23 = tree.addPath(geburah, hod, MELKITZEDEKI_PATHS.GEBURAH_HOD);
+  const path24 = tree.addPath(tiphereth, netzach, MELKITZEDEKI_PATHS.TIPHERETH_NETZACH);
+  const path25 = tree.addPath(tiphereth, yesod, MELKITZEDEKI_PATHS.TIPHERETH_YESOD);
+  const path26 = tree.addPath(tiphereth, hod, MELKITZEDEKI_PATHS.TIPHERETH_HOD);
+  const path27 = tree.addPath(netzach, hod, MELKITZEDEKI_PATHS.NETZACH_HOD);
+  const path28 = tree.addPath(netzach, yesod, MELKITZEDEKI_PATHS.NETZACH_YESOD);
+  const path29 = tree.addPath(netzach, malkuth, MELKITZEDEKI_PATHS.NETZACH_MALKUTH);
+  const path30 = tree.addPath(hod, yesod, MELKITZEDEKI_PATHS.HOD_YESOD);
+  const path31 = tree.addPath(hod, malkuth, MELKITZEDEKI_PATHS.HOD_MALKUTH);
+  const path32 = tree.addPath(yesod, malkuth, MELKITZEDEKI_PATHS.YESOD_MALKUTH);
 
   tree.addLetters(path11, [
     { letter: LATIN_LETTERS.A, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.ALEPH, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: HEBREW_LETTERS.ALEPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.ALEPH }
   ]);
 
   tree.addLetters(path12, [
     { letter: LATIN_LETTERS.B, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.BETH, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.BETH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.BETH }
   ]);
 
   tree.addLetters(path13, [
     { letter: LATIN_LETTERS.G, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.GIMEL, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.GIMEL, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.GIMEL }
   ]);
 
   tree.addLetters(path14, [
     { letter: LATIN_LETTERS.D, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.DALET, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.DALET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.DALET }
   ]);
 
   tree.addLetters(path15, [
     { letter: LATIN_LETTERS.E, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.HE, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.HE, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.HE }
   ]);
 
   tree.addLetters(path16, [
     { letter: LATIN_LETTERS.V, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.VAV, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.U, type: "latinLetter" },
+    { letter: LATIN_LETTERS.W, type: "latinLetter" },
+    { letter: LATIN_LETTERS.O, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.VAV, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.VAV }
   ]);
 
   tree.addLetters(path17, [
     { letter: LATIN_LETTERS.Z, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.ZAYIN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.ZAYIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.ZAYIN }
   ]);
 
   tree.addLetters(path18, [
     { letter: LATIN_LETTERS.H, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.HET, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.HET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.HET }
   ]);
 
   tree.addLetters(path19, [
     { letter: LATIN_LETTERS.T, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TET, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.TET, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TET }
   ]);
 
   tree.addLetters(path20, [
     { letter: LATIN_LETTERS.I, type: "latinLetter" },
+    { letter: LATIN_LETTERS.J, type: "latinLetter" },
     { letter: LATIN_LETTERS.Y, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.YOD, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.YOD, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.YOD }
   ]);
 
   tree.addLetters(path21, [
     { letter: LATIN_LETTERS.C, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAF }
   ]);
 
   tree.addLetters(path22, [
     { letter: LATIN_LETTERS.L, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.LAMED, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.LAMED, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.LAMED }
   ]);
 
   tree.addLetters(path23, [
     { letter: LATIN_LETTERS.M, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.MEM, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: HEBREW_LETTERS.MEM, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.MEM }
   ]);
 
   tree.addLetters(path24, [
     { letter: LATIN_LETTERS.N, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.NUN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.NUN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.NUN }
   ]);
 
   tree.addLetters(path25, [
     { letter: LATIN_LETTERS.S, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.SAMEKH, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.Ç, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.SAMEKH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.SAMEKH }
   ]);
 
   tree.addLetters(path26, [
     { letter: LATIN_LETTERS.O, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AIN }
   ]);
 
   tree.addLetters(path27, [
     { letter: LATIN_LETTERS.P, type: "latinLetter" },
     { letter: LATIN_LETTERS.F, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.PE, type: "hebrewLetter", data: { type: "double" } }
+    { letter: LATIN_LETTERS.PH, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.PE, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.PE }
   ]);
 
   tree.addLetters(path28, [
     { letter: LATIN_LETTERS.TS, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TSADI, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.TZ, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.TSADI, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TSADI }
   ]);
 
   tree.addLetters(path29, [
     { letter: LATIN_LETTERS.K, type: "latinLetter" },
     { letter: LATIN_LETTERS.Q, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: { type: "simple" } }
+    { letter: LATIN_LETTERS.KH, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOF }
   ]);
 
   tree.addLetters(path30, [
     { letter: LATIN_LETTERS.R, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.RESH, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.RESH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.RESH }
   ]);
 
   tree.addLetters(path31, [
     { letter: LATIN_LETTERS.CH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.SHIN, type: "hebrewLetter", data: { type: "mother" } }
+    { letter: LATIN_LETTERS.SH, type: "latinLetter" },
+    { letter: LATIN_LETTERS.X, type: "latinLetter" },
+    { letter: HEBREW_LETTERS.SHIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.SHIN }
   ]);
 
   tree.addLetters(path32, [
     { letter: LATIN_LETTERS.TH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.TAV, type: "hebrewLetter", data: { type: "double" } }
+    { letter: HEBREW_LETTERS.TAV, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.TAV }
   ]);
 
   return tree;
@@ -558,24 +570,24 @@ const linkColorsAndSigns = (t: TreeOfLife) => {
   return t;
 }
 
-export const loadPlanets: Loader = (tree: TreeOfLife) => {
-  tree.correspond(SPHERES.KETHER, PLANETS.NEPTUNE, "planet");
-  tree.correspond(SPHERES.CHOKMAH, PLANETS.URANUS, "planet");
-  tree.correspond(SPHERES.BINAH, PLANETS.SATURN, "planet");
-  tree.correspond(SPHERES.DAATH, PLANETS.PLUTO, "planet");
-  tree.correspond(SPHERES.CHESED, PLANETS.JUPITER, "planet");
-  tree.correspond(SPHERES.GEBURAH, PLANETS.MARS, "planet");
-  tree.correspond(SPHERES.TIPHERETH, PLANETS.SUN, "planet");
-  tree.correspond(SPHERES.NETZACH, PLANETS.VENUS, "planet");
-  tree.correspond(SPHERES.HOD, PLANETS.MERCURY, "planet");
-  tree.correspond(SPHERES.YESOD, PLANETS.MOON, "planet");
-  tree.correspond(SPHERES.MALKUTH, PLANETS.EARTH, "planet");
+export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
+  tree.addWesternAstrologyPlanet(SPHERES.KETHER, PLANETS.NEPTUNE);
+  tree.addWesternAstrologyPlanet(SPHERES.CHOKMAH, PLANETS.URANUS);
+  tree.addWesternAstrologyPlanet(SPHERES.BINAH, PLANETS.SATURN);
+  tree.addWesternAstrologyPlanet(SPHERES.DAATH, PLANETS.PLUTO);
+  tree.addWesternAstrologyPlanet(SPHERES.CHESED, PLANETS.JUPITER);
+  tree.addWesternAstrologyPlanet(SPHERES.GEBURAH, PLANETS.MARS);
+  tree.addWesternAstrologyPlanet(SPHERES.TIPHERETH, PLANETS.SUN);
+  tree.addWesternAstrologyPlanet(SPHERES.NETZACH, PLANETS.VENUS);
+  tree.addWesternAstrologyPlanet(SPHERES.HOD, PLANETS.MERCURY);
+  tree.addWesternAstrologyPlanet(SPHERES.YESOD, PLANETS.MOON);
+  tree.addWesternAstrologyPlanet(SPHERES.MALKUTH, PLANETS.EARTH);
 
   return tree;
 }
 
-export const unloadPlanets: Unloader = (tree: TreeOfLife) => {
-  const planets = Object.values(PLANETS).flatMap((planet) => tree.related(planet, "planet").map((planet) => planet.id));
+export const unloadWesternAstrology: Unloader = (tree: TreeOfLife) => {
+  const planets = Object.values(SPHERES).flatMap((sphere) => tree.related(sphere, "planet").map((planet) => planet.id));
   for (let i = 0; i < planets.length; i++) {
     tree.removeNode(planets[i]);
   }
@@ -585,14 +597,14 @@ export const LOADERS = {
   base: loadHermeticQabalah,
   colors: loadColors,
   music: loadMusicalNotes,
-  planets: loadPlanets,
+  westernAstrology: loadWesternAstrology,
 } satisfies Record<string, Loader>
 
 export const UNLOADERS = {
   base: unloadHermeticQabalah,
   colors: unloadColors,
   music: unloadMusicalNotes,
-  planets: unloadPlanets,
+  westernAstrology: unloadWesternAstrology,
 } satisfies Record<keyof typeof LOADERS, Unloader>
 
 

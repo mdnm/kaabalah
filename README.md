@@ -4,9 +4,10 @@ A comprehensive TypeScript library for numerology, astrology, kaabalah, and taro
 
 ## Features
 
+- **Tree of Life**: A modular and performant tree of life system to help you build correspondences across different systems
 - **Numerology**: Calculate life path numbers and other numerological values
 - **Astrology**: Generate birth charts and planetary positions using Swiss Ephemeris
-- **Kaabalah**: Hebrew gematria calculations and mystical interpretations
+- **Gematria**: Gematria (text numerology) calculations
 - **Tarot**: Card meanings, spreads, and interpretations
 
 ## Installation
@@ -17,18 +18,19 @@ npm install kaabalah
 
 ## Usage Examples
 
-### Full Library
+### Core Library
 
 ```typescript
-import * as Kaabalah from 'kaabalah';
+import { createTree } from 'kaabalah/core';
 
-// Calculate life path number
-const lifePath = Kaabalah.calculateLifePath(new Date('1990-01-15'));
-console.log(`Life Path Number: ${lifePath}`);
+const tree = createTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
 
-// Get a random tarot spread
-const spread = Kaabalah.getRandomSpread(3);
-console.log('Tarot Spread:', spread);
+const gematriaResult = calculateGematria('kaabalah', tree);
+
+console.log(gematriaResult);
 ```
 
 ### Direct Module Imports (Tree-Shakable)
@@ -52,7 +54,7 @@ const birthChart = getBirthChart({
 });
 
 // Calculate Hebrew gematria
-const gematriaValue = calculateGematria('שלום');
+const gematriaValue = calculateGematria('kaabalah');
 
 // Get a tarot spread
 const spread = getRandomSpread(3, true);

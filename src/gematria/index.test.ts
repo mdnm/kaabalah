@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { HEBREW_LETTERS } from '../core'
 import { calculateGematria } from './index'
 
 const getSums = (result: ReturnType<typeof calculateGematria>) => ({
@@ -92,59 +93,73 @@ describe('calculateGematria', () => {
   })
 
   it('should calculate missing letters', () => {
-    expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["Ts", "Tz"], "number": 90},
-      {"letters": ["Th"], "number": 400},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["P", "F", "Ph"], "number": 800},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": HEBREW_LETTERS.TSADI, "number": 90},
+      {"letter": HEBREW_LETTERS.TAV, "number": 400},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
-    expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ').missingGematriaNumbers).toEqual([
-      {"letters": ["Ts", "Tz"], "number": 90},
-      {"letters": ["Th"], "number": 400},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["P", "F", "Ph"], "number": 800},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.TSADI, "number": 90},
+      {"letter": HEBREW_LETTERS.TAV, "number": 400},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["P", "F", "Ph"], "number": 800},
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["P", "F", "Ph"], "number": 800},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["P", "F", "Ph"], "number": 800},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["P", "F", "Ph"], "number": 800},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.PE} (on ending)`, "number": 800},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP').missingGematriaNumbers).toEqual([
-      {"letters": ["O"], "number": 70},
-      {"letters": ["C"], "number": 500},
-      {"letters": ["M"], "number": 600},
-      {"letters": ["N"], "number": 700},
-      {"letters": ["Ts", "Tz"], "number": 900},
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP', { calculateMissingGematriaNumbers: true }).missingGematriaNumbers).toEqual([
+      {"letter": HEBREW_LETTERS.AIN, "number": 70},
+      {"letter": `${HEBREW_LETTERS.KAF} (on ending)`, "number": 500},
+      {"letter": `${HEBREW_LETTERS.MEM} (on ending)`, "number": 600},
+      {"letter": `${HEBREW_LETTERS.NUN} (on ending)`, "number": 700},
+      {"letter": `${HEBREW_LETTERS.TSADI} (on ending)`, "number": 900},
     ])
+  })
+
+  it('should calculate letter percentages', () => {
+    expect(calculateGematria('KAABALAH', { calculateLetterPercentage: true }).letterPercentages).toEqual({
+      percentageOfVowels: 50,
+      percentageOfConsonants: 50,
+      letters: {
+        "A": 50,
+        "B": 12.5,
+        "H": 12.5,
+        "K": 12.5,
+        "L": 12.5,
+      }
+    })
   })
 }) 

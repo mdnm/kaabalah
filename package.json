@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,6 +10,11 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "require": "./dist/core/index.js",
+      "import": "./dist/core/index.mjs"
     },
     "./numerology": {
       "types": "./dist/numerology/index.d.ts",
@@ -21,10 +26,10 @@
       "require": "./dist/astrology/index.js",
       "import": "./dist/astrology/index.mjs"
     },
-    "./kaabalah": {
-      "types": "./dist/kaabalah/index.d.ts",
-      "require": "./dist/kaabalah/index.js",
-      "import": "./dist/kaabalah/index.mjs"
+    "./gematria": {
+      "types": "./dist/gematria/index.d.ts",
+      "require": "./dist/gematria/index.js",
+      "import": "./dist/gematria/index.mjs"
     },
     "./tarot": {
       "types": "./dist/tarot/index.d.ts",
@@ -69,7 +74,7 @@
     "esoteric",
     "mysticism"
   ],
-  "author": "Mateus Moura <matmoura@kaabalah.com>",
+  "author": "Mat Moura <matmoura@kaabalah.com>",
   "license": "AGPL-3.0",
   "directories": {
     "doc": "docs",
