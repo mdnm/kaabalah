@@ -161,5 +161,36 @@ describe('calculateGematria', () => {
         "L": 12.5,
       }
     })
+
+    const { letterPercentages } = calculateGematria('MATEUS MOURA', { calculateLetterPercentage: true })
+
+    expect((letterPercentages?.percentageOfConsonants ?? 0) + (letterPercentages?.percentageOfVowels ?? 0)).toEqual(100)
+    expect(letterPercentages?.percentageOfConsonants).toEqual(40)
+    expect(letterPercentages?.percentageOfVowels).toEqual(60)
+    expect(letterPercentages?.letters.A).toEqual(20)
+    expect(letterPercentages?.letters.E?.toFixed(2)).toBeCloseTo(16.67)
+    expect(letterPercentages?.letters.M).toEqual(20)
+    expect(letterPercentages?.letters.O).toEqual(20)
+    expect(letterPercentages?.letters.R).toEqual(20)
+    expect(letterPercentages?.letters.S?.toFixed(2)).toBeCloseTo(16.67)
+    expect(letterPercentages?.letters.T?.toFixed(2)).toBeCloseTo(16.67)
+    expect(letterPercentages?.letters.U).toEqual(20)
+  })
+
+  it('should correctly handle multiple words', () => {
+    const { consonants, vowels } = calculateGematria('MATEUM OURA')
+
+    // M in the end on first word so 600 instead of 40 and O in the start on second word so 70 instead of 6
+    expect(consonants.originalSum).toEqual(849)
+    expect(vowels.originalSum).toEqual(89)
+  })
+
+  it('should correctly return the included letters', () => {
+    const { includedLetters } = calculateGematria('MATEUS MOURA')
+
+    // it's a map so letters only appear once
+    expect(includedLetters.size).toEqual(8)
+    expect(includedLetters.get('letter:M')).toMatchObject({ letter: 'M', value: 40, hebrewLetter: { id: 'letter:מ', data: { gematriaValue: 40 } }, isVowel: false })
+    expect(includedLetters.get('letter:O')).toMatchObject({ letter: 'O', value: 6, hebrewLetter: { id: 'letter:ו', data: { gematriaValue: 6 } }, isVowel: true })
   })
 }) 
