@@ -36,25 +36,61 @@ export const calculateGematria = (word: string, options: {
     tree = createTree({ system: KAABALAH_SYSTEM, parts: [] })
   }
 
-  const includedLetters = new Map<NodeId, { letter: string, value: number, hebrewLetter: NodeData<"hebrewLetter">, isVowel: boolean }>()
-  const letters = word.toUpperCase().split("")
+  const includedLetters = new Map<NodeId, { letter: string, value: number, hebrewLetter: { id: NodeId, data: NodeData<"hebrewLetter"> }, isVowel: boolean }>()
+  const words = word.toUpperCase().trim().split(" ")
   let vowelsSum = 0
   let consonantsSum = 0
 
   const presentGematriaNumbers = new Set<number>()
 
-  for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i].toLocaleUpperCase()
-    const nextLetter = letters[i + 1]?.toLocaleLowerCase() || ""
+  const letterPercentages: { percentageOfVowels: number, percentageOfConsonants: number, letters: Record<string, number> } = {
+    percentageOfVowels: 0,
+    percentageOfConsonants: 0,
+    letters: {},
+  }
 
-    // Digraphs
-    if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
-      const combinedLetter = letter + nextLetter
-      // -2 here since we're checking 2 letters
-      const isEnding = i > 0 && i === letters.length - 2
+  for (const word of words) {
+    const letters = word.split("")
 
-      // should only have a single connection
-      const [mapping] = tree.walk(`letter:${combinedLetter}`, 2, "hebrewLetter") as Node<"hebrewLetter">[]
+    for (let i = 0; i < letters.length; i++) {
+      const letter = letters[i].toLocaleUpperCase()
+      const nextLetter = letters[i + 1]?.toLocaleLowerCase() || ""
+
+      // Digraphs
+      if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
+        const combinedLetter = letter + nextLetter
+        // -2 here since we're checking 2 letters
+        const isEnding = i > 0 && i === letters.length - 2
+
+        // should only have a single connection
+        const latinLetterId = `letter:${combinedLetter}`;
+        const [mapping] = tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]
+        if (mapping?.data) {
+          let value = mapping.data.gematriaValue
+          if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined) {
+            value = mapping.data.gematriaValueWhenEnding
+          }
+
+          presentGematriaNumbers.add(value)
+          includedLetters.set(latinLetterId, { letter: combinedLetter, value, hebrewLetter: { id: mapping.id, data: mapping.data }, isVowel: isVowel(letter) })
+          consonantsSum += value
+          i++
+          continue
+        }
+      }
+
+      // only case we can have multiple connections is with O (Vav and Ayin, but considered Ayin only when starting the word)
+      let mapping: Node<"hebrewLetter"> | undefined;
+      let latinLetterId = `letter:${letter}`;
+      const isStarting = i === 0
+      if (isStarting && letter === 'O') {
+        latinLetterId = `letter:${HEBREW_LETTERS.AIN}`;
+        mapping = tree.getNode(latinLetterId) as Node<"hebrewLetter">;
+      } else {
+        mapping = (tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]).at(0)
+      }
+
+      const isEnding = i > 0 && i === letters.length - 1
       if (mapping?.data) {
         let value = mapping.data.gematriaValue
         if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined) {
@@ -62,37 +98,35 @@ export const calculateGematria = (word: string, options: {
         }
 
         presentGematriaNumbers.add(value)
-        includedLetters.set(mapping.id, { letter: combinedLetter, value, hebrewLetter: mapping.data, isVowel: isVowel(letter) })
-        consonantsSum += value
-        i++
-        continue
+        includedLetters.set(latinLetterId, { letter, value, hebrewLetter: { id: mapping.id, data: mapping.data }, isVowel: isVowel(letter) })
+
+        if (isVowel(letter)) {
+          vowelsSum += value
+        } else {
+          consonantsSum += value
+        }
       }
     }
 
-    // only case we can have multiple connections is with O (Vav and Ayin, but considered Ayin only when starting the word)
-    let mapping: Node<"hebrewLetter"> | undefined;
-    const isStarting = i === 0;
-    if (isStarting && letter === 'O') {
-      mapping = tree.getNode(`letter:${HEBREW_LETTERS.AIN}`) as Node<"hebrewLetter">
-    } else {
-      mapping = (tree.walk(`letter:${letter}`, 2, "hebrewLetter") as Node<"hebrewLetter">[]).at(0)
-    }
-
-    const isEnding = i > 0 && i === letters.length - 1
-    if (mapping?.data) {
-      let value = mapping.data.gematriaValue
-      if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined) {
-        value = mapping.data.gematriaValueWhenEnding
+    if (options?.calculateLetterPercentage) {
+      const letterCount = letters.length;
+      let vowelsCount = 0
+      let consonantsCount = 0
+  
+      for (const letter of new Set(letters)) {
+        const occurrences = letters.filter(l => l === letter).length
+  
+        letterPercentages.letters[letter] = (occurrences / letterCount) * 100
+  
+        if (isVowel(letter)) {
+          vowelsCount += occurrences
+        } else {
+          consonantsCount += occurrences
+        }
       }
-
-      presentGematriaNumbers.add(value)
-      includedLetters.set(mapping.id, { letter, value, hebrewLetter: mapping.data, isVowel: isVowel(letter) })
-
-      if (isVowel(letter)) {
-        vowelsSum += value
-      } else {
-        consonantsSum += value
-      }
+  
+      letterPercentages.percentageOfVowels = (vowelsCount / letterCount) * 100
+      letterPercentages.percentageOfConsonants = (consonantsCount / letterCount) * 100
     }
   }
 
@@ -125,32 +159,6 @@ export const calculateGematria = (word: string, options: {
       }
     }
     missingGematriaNumbers.sort((a, b) => a.number - b.number)
-  }
-  
-  const letterPercentages: { percentageOfVowels: number, percentageOfConsonants: number, letters: Record<string, number> } = {
-    percentageOfVowels: 0,
-    percentageOfConsonants: 0,
-    letters: {},
-  }
-  if (options?.calculateLetterPercentage) {
-    const letterCount = letters.length;
-    let vowelsCount = 0
-    let consonantsCount = 0
-
-    for (const [_, letter] of includedLetters) {
-      const occurrences = letters.filter(l => l === letter.letter).length
-
-      letterPercentages.letters[letter.letter] = (occurrences / letterCount) * 100
-
-      if (letter.isVowel) {
-        vowelsCount += occurrences
-      } else {
-        consonantsCount += occurrences
-      }
-    }
-
-    letterPercentages.percentageOfVowels = (vowelsCount / letterCount) * 100
-    letterPercentages.percentageOfConsonants = (consonantsCount / letterCount) * 100
   }
 
   return {
