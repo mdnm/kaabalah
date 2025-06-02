@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -54,7 +54,8 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/"
+    "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "numerology",
