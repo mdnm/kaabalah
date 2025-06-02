@@ -10,11 +10,11 @@ describe('loadLurianicKabbalah', () => {
     loadLurianicKabbalah(tree);
 
     expect(tree.related(SPHERES.KETHER, "path")).toHaveLength(3);
-    expect(tree.related(SPHERES.CHOKMAH, "path")).toHaveLength(5);
+    expect(tree.related(SPHERES.CHOKHMAH, "path")).toHaveLength(5);
     expect(tree.related(SPHERES.BINAH, "path")).toHaveLength(5);
     expect(tree.related(SPHERES.CHESED, "path")).toHaveLength(5);
     expect(tree.related(SPHERES.GEBURAH, "path")).toHaveLength(5);
-    expect(tree.related(SPHERES.TIPHERETH, "path")).toHaveLength(8);
+    expect(tree.related(SPHERES.TIPHARETH, "path")).toHaveLength(8);
     expect(tree.related(SPHERES.NETZACH, "path")).toHaveLength(4);
     expect(tree.related(SPHERES.HOD, "path")).toHaveLength(4);
     expect(tree.related(SPHERES.YESOD, "path")).toHaveLength(4);
@@ -28,9 +28,9 @@ describe('loadLurianicKabbalah', () => {
     unloadLurianicKabbalah(tree);
 
     expect(tree.related(SPHERES.KETHER)).toHaveLength(0);
-    expect(tree.related(SPHERES.CHOKMAH)).toHaveLength(0);
+    expect(tree.related(SPHERES.CHOKHMAH)).toHaveLength(0);
     expect(tree.related(SPHERES.BINAH)).toHaveLength(0);
-    expect(tree.related(SPHERES.TIPHERETH)).toHaveLength(0);
+    expect(tree.related(SPHERES.TIPHARETH)).toHaveLength(0);
     expect(tree.related(SPHERES.NETZACH)).toHaveLength(0);
     expect(tree.related(SPHERES.HOD)).toHaveLength(0);
     expect(tree.related(SPHERES.YESOD)).toHaveLength(0);

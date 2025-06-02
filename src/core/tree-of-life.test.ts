@@ -5,13 +5,13 @@ describe('TreeOfLife', () => {
   it('should add nodes and links, retrieving relations correctly', () => {
     const treeOfLife = new TreeOfLife();
 
-    treeOfLife.addSphere("Kether", { hebrewName: "Keter", englishName: "Crown" }, 1);
+    treeOfLife.addSphere("Kether", { hebrewName: "Kether", englishName: "Crown" }, 1);
     treeOfLife.addSphere("Chokmah", { hebrewName: "Chokmah", englishName: "Wisdom" }, 2);
 
     const path11 = treeOfLife.addPath("Kether", "Chokmah", 1);
 
     expect(treeOfLife.related("Kether")).toEqual([
-      { id: "Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown" } },
+      { id: "Kether", type: "sphere", data: { hebrewName: "Kether", englishName: "Crown" } },
       { id: "num:1", type: "number" },
       { id: path11, type: "path" },
     ]);
@@ -22,7 +22,7 @@ describe('TreeOfLife', () => {
     ]);
     expect(treeOfLife.related(path11)).toEqual([
       { id: path11, type: "path" },
-      { id: "Kether", type: "sphere", data: { hebrewName: "Keter", englishName: "Crown" } },
+      { id: "Kether", type: "sphere", data: { hebrewName: "Kether", englishName: "Crown" } },
       { id: "Chokmah", type: "sphere", data: { hebrewName: "Chokmah", englishName: "Wisdom" } },
       { id: "num:1", type: "number" },
       { id: "num:11", type: "number" },

@@ -10,11 +10,11 @@ describe('loadKaabalah', () => {
     loadKaabalah(tree);
 
     expect(tree.related(SPHERES.KETHER, "path")).toHaveLength(3);
-    expect(tree.related(SPHERES.CHOKMAH, "path")).toHaveLength(4);
+    expect(tree.related(SPHERES.CHOKHMAH, "path")).toHaveLength(4);
     expect(tree.related(SPHERES.BINAH, "path")).toHaveLength(4);
     expect(tree.related(SPHERES.CHESED, "path")).toHaveLength(4);
     expect(tree.related(SPHERES.GEBURAH, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.TIPHERETH, "path")).toHaveLength(8);
+    expect(tree.related(SPHERES.TIPHARETH, "path")).toHaveLength(8);
     expect(tree.related(SPHERES.NETZACH, "path")).toHaveLength(5);
     expect(tree.related(SPHERES.HOD, "path")).toHaveLength(5);
     expect(tree.related(SPHERES.YESOD, "path")).toHaveLength(4);
@@ -28,11 +28,11 @@ describe('loadKaabalah', () => {
     unloadKaabalah(tree);
 
     expect(tree.related(SPHERES.KETHER)).toHaveLength(0);
-    expect(tree.related(SPHERES.CHOKMAH)).toHaveLength(0);
+    expect(tree.related(SPHERES.CHOKHMAH)).toHaveLength(0);
     expect(tree.related(SPHERES.BINAH)).toHaveLength(0);
     expect(tree.related(SPHERES.CHESED)).toHaveLength(0);
     expect(tree.related(SPHERES.GEBURAH)).toHaveLength(0);
-    expect(tree.related(SPHERES.TIPHERETH)).toHaveLength(0);
+    expect(tree.related(SPHERES.TIPHARETH)).toHaveLength(0);
     expect(tree.related(SPHERES.NETZACH)).toHaveLength(0);
     expect(tree.related(SPHERES.HOD)).toHaveLength(0);
     expect(tree.related(SPHERES.YESOD)).toHaveLength(0);
@@ -82,9 +82,9 @@ describe('loadKaabalah', () => {
 
     expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(1);
 
-    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
     const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH }`;
-    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
+    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
     expect(tree.related(path11, "westernElement")).toHaveLength(1);
     expect(tree.related(path12, "planet")).toHaveLength(1);
     expect(tree.related(path15, "westernZodiacSign")).toHaveLength(1);
@@ -99,9 +99,9 @@ describe('loadKaabalah', () => {
 
     expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(0);
 
-    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
     const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH }`;
-    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
+    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
 
     expect(tree.related(path11, "westernElement")).toHaveLength(0);
     expect(tree.related(path12, "planet")).toHaveLength(0);
@@ -115,9 +115,9 @@ describe('loadKaabalah', () => {
 
     expect(tree.related(SPHERES.MALKUTH, "tarotArkAnnu")).toHaveLength(4);
 
-    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
     const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH }`;
-    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
+    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
 
     expect(tree.related(path11, "tarotArkAnnu")).toHaveLength(1);
     expect(tree.related(path12, "tarotArkAnnu")).toHaveLength(1);
@@ -135,9 +135,9 @@ describe('loadKaabalah', () => {
 
     expect(tree.related(SPHERES.MALKUTH, "tarotArkAnnu")).toHaveLength(0);
 
-    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+    const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
     const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH }`;
-    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
+    const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
 
     expect(tree.related(path11, "tarotArkAnnu")).toHaveLength(0);
     expect(tree.related(path12, "tarotArkAnnu")).toHaveLength(0);

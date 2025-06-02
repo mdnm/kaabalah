@@ -9,11 +9,11 @@ export const SYSTEM = 'lurianic-kabbalah' as const;
  */
 export function loadLurianicKabbalah(tree: TreeOfLife) {
   const kether = tree.addSphere(SPHERES.KETHER, SPHERE_DATA.KETHER, 1);
-  const chokmah = tree.addSphere(SPHERES.CHOKMAH, SPHERE_DATA.CHOKMAH, 2);
+  const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, SPHERE_DATA.CHOKHMAH, 2);
   const binah = tree.addSphere(SPHERES.BINAH, SPHERE_DATA.BINAH, 3);
   const chesed = tree.addSphere(SPHERES.CHESED, SPHERE_DATA.CHESED, 4);
   const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERE_DATA.GEBURAH, 5);
-  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, SPHERE_DATA.TIPHERETH, 6);
+  const tiphareth = tree.addSphere(SPHERES.TIPHARETH, SPHERE_DATA.TIPHARETH, 6);
   const netzach = tree.addSphere(SPHERES.NETZACH, SPHERE_DATA.NETZACH, 7);
   const hod = tree.addSphere(SPHERES.HOD, SPHERE_DATA.HOD, 8);
   const yesod = tree.addSphere(SPHERES.YESOD, SPHERE_DATA.YESOD, 9);
@@ -49,24 +49,24 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
     );
   }
 
-  const path11 = tree.addPath(kether, chokmah, LURIANIC_PATHS.KETHER_CHOKMAH);
+  const path11 = tree.addPath(kether, chokhmah, LURIANIC_PATHS.KETHER_CHOKHMAH);
   const path12 = tree.addPath(kether, binah, LURIANIC_PATHS.KETHER_BINAH);
-  const path13 = tree.addPath(kether, tiphereth, LURIANIC_PATHS.KETHER_TIPHERETH);
-  const path14 = tree.addPath(chokmah, binah, LURIANIC_PATHS.CHOKMAH_BINAH);
-  const path15 = tree.addPath(chokmah, geburah, LURIANIC_PATHS.CHOKMAH_GEBURAH);
-  const path16 = tree.addPath(chokmah, tiphereth, LURIANIC_PATHS.CHOKMAH_TIPHERETH);
-  const path17 = tree.addPath(chokmah, chesed, LURIANIC_PATHS.CHOKMAH_CHESED);
+  const path13 = tree.addPath(kether, tiphareth, LURIANIC_PATHS.KETHER_TIPHARETH);
+  const path14 = tree.addPath(chokhmah, binah, LURIANIC_PATHS.CHOKHMAH_BINAH);
+  const path15 = tree.addPath(chokhmah, geburah, LURIANIC_PATHS.CHOKHMAH_GEBURAH);
+  const path16 = tree.addPath(chokhmah, tiphareth, LURIANIC_PATHS.CHOKHMAH_TIPHARETH);
+  const path17 = tree.addPath(chokhmah, chesed, LURIANIC_PATHS.CHOKHMAH_CHESED);
   const path18 = tree.addPath(binah, chesed, LURIANIC_PATHS.BINAH_CHESED);
-  const path19 = tree.addPath(binah, tiphereth, LURIANIC_PATHS.BINAH_TIPHERETH);
+  const path19 = tree.addPath(binah, tiphareth, LURIANIC_PATHS.BINAH_TIPHARETH);
   const path20 = tree.addPath(binah, geburah, LURIANIC_PATHS.BINAH_GEBURAH);
   const path21 = tree.addPath(chesed, geburah, LURIANIC_PATHS.CHESED_GEBURAH);
-  const path22 = tree.addPath(chesed, tiphereth, LURIANIC_PATHS.CHESED_TIPHERETH);
+  const path22 = tree.addPath(chesed, tiphareth, LURIANIC_PATHS.CHESED_TIPHARETH);
   const path23 = tree.addPath(chesed, netzach, LURIANIC_PATHS.CHESED_NETZACH);
-  const path24 = tree.addPath(geburah, tiphereth, LURIANIC_PATHS.GEBURAH_TIPHERETH);
+  const path24 = tree.addPath(geburah, tiphareth, LURIANIC_PATHS.GEBURAH_TIPHARETH);
   const path25 = tree.addPath(geburah, hod, LURIANIC_PATHS.GEBURAH_HOD);
-  const path26 = tree.addPath(tiphereth, netzach, LURIANIC_PATHS.TIPHERETH_NETZACH);
-  const path27 = tree.addPath(tiphereth, yesod, LURIANIC_PATHS.TIPHERETH_YESOD);
-  const path28 = tree.addPath(tiphereth, hod, LURIANIC_PATHS.TIPHERETH_HOD);
+  const path26 = tree.addPath(tiphareth, netzach, LURIANIC_PATHS.TIPHARETH_NETZACH);
+  const path27 = tree.addPath(tiphareth, yesod, LURIANIC_PATHS.TIPHARETH_YESOD);
+  const path28 = tree.addPath(tiphareth, hod, LURIANIC_PATHS.TIPHARETH_HOD);
   const path29 = tree.addPath(netzach, hod, LURIANIC_PATHS.NETZACH_HOD);
   const path30 = tree.addPath(netzach, yesod, LURIANIC_PATHS.NETZACH_YESOD);
   const path31 = tree.addPath(hod, yesod, LURIANIC_PATHS.HOD_YESOD);

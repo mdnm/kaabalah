@@ -81,11 +81,10 @@ export const calculateGematria = (word: string, options: {
 
       // only case we can have multiple connections is with O (Vav and Ayin, but considered Ayin only when starting the word)
       let mapping: Node<"hebrewLetter"> | undefined;
-      let latinLetterId = `letter:${letter}`;
+      const latinLetterId = `letter:${letter}`;
       const isStarting = i === 0
       if (isStarting && letter === 'O') {
-        latinLetterId = `letter:${HEBREW_LETTERS.AIN}`;
-        mapping = tree.getNode(latinLetterId) as Node<"hebrewLetter">;
+        mapping = tree.getNode(`letter:${HEBREW_LETTERS.AIN}`) as Node<"hebrewLetter">;
       } else {
         mapping = (tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]).at(0)
       }
