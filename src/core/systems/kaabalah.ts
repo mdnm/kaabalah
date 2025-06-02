@@ -9,12 +9,12 @@ export const SYSTEM = 'kaabalah' as const;
  */
 export const loadKaabalah: Loader = (tree: TreeOfLife) => {
   const kether = tree.addSphere(SPHERES.KETHER, SPHERE_DATA.KETHER, 1);
-  const chokmah = tree.addSphere(SPHERES.CHOKMAH, SPHERE_DATA.CHOKMAH, 2);
+  const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, SPHERE_DATA.CHOKHMAH, 2);
   const binah = tree.addSphere(SPHERES.BINAH, SPHERE_DATA.BINAH, 3);
   tree.addSphere(SPHERES.DAATH, SPHERE_DATA.DAATH, 11);
   const chesed = tree.addSphere(SPHERES.CHESED, SPHERE_DATA.CHESED, 4);
   const geburah = tree.addSphere(SPHERES.GEBURAH, SPHERE_DATA.GEBURAH, 5);
-  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, SPHERE_DATA.TIPHERETH, 6);
+  const tiphareth = tree.addSphere(SPHERES.TIPHARETH, SPHERE_DATA.TIPHARETH, 6);
   const netzach = tree.addSphere(SPHERES.NETZACH, SPHERE_DATA.NETZACH, 7);
   const hod = tree.addSphere(SPHERES.HOD, SPHERE_DATA.HOD, 8);
   const yesod = tree.addSphere(SPHERES.YESOD, SPHERE_DATA.YESOD, 9);
@@ -50,25 +50,25 @@ export const loadKaabalah: Loader = (tree: TreeOfLife) => {
     );
   }
 
-  const path11 = tree.addPath(kether, chokmah, MELKITZEDEKI_PATHS.KETHER_CHOKMAH, {
+  const path11 = tree.addPath(kether, chokhmah, MELKITZEDEKI_PATHS.KETHER_CHOKHMAH, {
     meaning: "Crown's wisdom"
   });
   const path12 = tree.addPath(kether, binah, MELKITZEDEKI_PATHS.KETHER_BINAH, {
     meaning: "Transparency's intelligence"
   });
-  const path13 = tree.addPath(kether, tiphereth, MELKITZEDEKI_PATHS.KETHER_TIPHERETH, {
+  const path13 = tree.addPath(kether, tiphareth, MELKITZEDEKI_PATHS.KETHER_TIPHARETH, {
     meaning: "Great Ark Tekton (architect)"
   });
-  const path14 = tree.addPath(chokmah, binah, MELKITZEDEKI_PATHS.CHOKMAH_BINAH, {
+  const path14 = tree.addPath(chokhmah, binah, MELKITZEDEKI_PATHS.CHOKHMAH_BINAH, {
     meaning: "Light's wisdom that becomes sound"
   });
-  const path15 = tree.addPath(chokmah, tiphereth, MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH, {
+  const path15 = tree.addPath(chokhmah, tiphareth, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH, {
     meaning: "Light reaching equilibrium"
   });
-  const path16 = tree.addPath(chokmah, chesed, MELKITZEDEKI_PATHS.CHOKMAH_CHESED, {
+  const path16 = tree.addPath(chokhmah, chesed, MELKITZEDEKI_PATHS.CHOKHMAH_CHESED, {
     meaning: "Expansive light"
   });
-  const path17 = tree.addPath(binah, tiphereth, MELKITZEDEKI_PATHS.BINAH_TIPHERETH, {
+  const path17 = tree.addPath(binah, tiphareth, MELKITZEDEKI_PATHS.BINAH_TIPHARETH, {
     meaning: "Vibration that balances"
   });
   const path18 = tree.addPath(binah, geburah, MELKITZEDEKI_PATHS.BINAH_GEBURAH, {
@@ -77,25 +77,25 @@ export const loadKaabalah: Loader = (tree: TreeOfLife) => {
   const path19 = tree.addPath(chesed, geburah, MELKITZEDEKI_PATHS.CHESED_GEBURAH, {
     meaning: "Expansion towards duality"
   });
-  const path20 = tree.addPath(chesed, tiphereth, MELKITZEDEKI_PATHS.CHESED_TIPHERETH, {
+  const path20 = tree.addPath(chesed, tiphareth, MELKITZEDEKI_PATHS.CHESED_TIPHARETH, {
     meaning: "Expansion of equilibrium"
   });
   const path21 = tree.addPath(chesed, netzach, MELKITZEDEKI_PATHS.CHESED_NETZACH, {
     meaning: "Expansion of victory"
   });
-  const path22 = tree.addPath(geburah, tiphereth, MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH, {
+  const path22 = tree.addPath(geburah, tiphareth, MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH, {
     meaning: "Harmonizing duality"
   });
   const path23 = tree.addPath(geburah, hod, MELKITZEDEKI_PATHS.GEBURAH_HOD, {
     meaning: "Duality from above with duality from below"
   });
-  const path24 = tree.addPath(tiphereth, netzach, MELKITZEDEKI_PATHS.TIPHERETH_NETZACH, {
+  const path24 = tree.addPath(tiphareth, netzach, MELKITZEDEKI_PATHS.TIPHARETH_NETZACH, {
     meaning: "Illumination of victory"
   });
-  const path25 = tree.addPath(tiphereth, yesod, MELKITZEDEKI_PATHS.TIPHERETH_YESOD, {
+  const path25 = tree.addPath(tiphareth, yesod, MELKITZEDEKI_PATHS.TIPHARETH_YESOD, {
     meaning: "Illumination of foundations (secrets)"
   });
-  const path26 = tree.addPath(tiphereth, hod, MELKITZEDEKI_PATHS.TIPHERETH_HOD, {
+  const path26 = tree.addPath(tiphareth, hod, MELKITZEDEKI_PATHS.TIPHARETH_HOD, {
     meaning: "Illumination of reasons"
   });
   const path27 = tree.addPath(netzach, hod, MELKITZEDEKI_PATHS.NETZACH_HOD, {
@@ -263,7 +263,7 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     colorHexCodes: ["#cccccc"]
   });
 
-  tree.addSphereColor(SPHERES.CHOKMAH, "iridescent", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, "iridescent", { 
     colorDescription: "All the colors, in a iridescent manner. Can also be represented by all the other sphere colors in a pizza-like pattern, starting with Tiphereth on top, and going clockwise following the spheres on the right and left columns.",
     colorNames: ["iridescent", "yellow", "blue", "green", "purple", "orange", "red"],
     colorHexCodes: ["#EDBBE7", "#FFF50F", "#0000FF", "#14FF00", "#8F00FF", "#FFA800", "#FF0000"],
@@ -293,7 +293,7 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     colorHexCodes: ["#FF0000"]
   });
 
-  tree.addSphereColor(SPHERES.TIPHERETH, "yellow", { 
+  tree.addSphereColor(SPHERES.TIPHARETH, "yellow", { 
     colorDescription: "Yellow",
     colorNames: ["yellow"],
     colorHexCodes: ["#FFF50F"]
@@ -323,22 +323,22 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     colorHexCodes: ["#FFF659", "#70FF6E", "#422E29", "#FF5454"],
   });
 
-  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
   const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH}`;
-  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHERETH}`;
-  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_BINAH}`;
-  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
-  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_CHESED}`;
-  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHERETH}`;
+  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHARETH}`;
+  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_BINAH}`;
+  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
+  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_CHESED}`;
+  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHARETH}`;
   const path18 = `path:${MELKITZEDEKI_PATHS.BINAH_GEBURAH}`;
   const path19 = `path:${MELKITZEDEKI_PATHS.CHESED_GEBURAH}`;
-  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHERETH}`;
+  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHARETH}`;
   const path21 = `path:${MELKITZEDEKI_PATHS.CHESED_NETZACH}`;
-  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH}`;
+  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH}`;
   const path23 = `path:${MELKITZEDEKI_PATHS.GEBURAH_HOD}`;
-  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_NETZACH}`;
-  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_YESOD}`;
-  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_HOD}`;
+  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_NETZACH}`;
+  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_YESOD}`;
+  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_HOD}`;
   const path27 = `path:${MELKITZEDEKI_PATHS.NETZACH_HOD}`;
   const path28 = `path:${MELKITZEDEKI_PATHS.NETZACH_YESOD}`;
   const path29 = `path:${MELKITZEDEKI_PATHS.NETZACH_MALKUTH}`;
@@ -498,7 +498,7 @@ export const loadMusicalNotes: Loader = (tree: TreeOfLife) => {
     note: "Do",
     noteDescription: "C (Do)"
   });
-  tree.addMusicalNote(SPHERES.CHOKMAH, "Re", {
+  tree.addMusicalNote(SPHERES.CHOKHMAH, "Re", {
     note: "Re",
     noteDescription: "D (Re)"
   });
@@ -518,7 +518,7 @@ export const loadMusicalNotes: Loader = (tree: TreeOfLife) => {
     note: "Sol",
     noteDescription: "G (Sol)"
   });
-  tree.addMusicalNote(SPHERES.TIPHERETH, "The Thing-in-itself", {
+  tree.addMusicalNote(SPHERES.TIPHARETH, "The Thing-in-itself", {
     note: "The Thing-in-itself",
     noteDescription: "The central point of equilibrium; another interval"
   });
@@ -556,33 +556,33 @@ const linkColorsAndSigns = (t: TreeOfLife) => {
 
 export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   tree.addWesternAstrologyPlanet(SPHERES.KETHER, PLANETS.NEPTUNE);
-  tree.addWesternAstrologyPlanet(SPHERES.CHOKMAH, PLANETS.URANUS);
+  tree.addWesternAstrologyPlanet(SPHERES.CHOKHMAH, PLANETS.URANUS);
   tree.addWesternAstrologyPlanet(SPHERES.BINAH, PLANETS.SATURN);
   tree.addWesternAstrologyPlanet(SPHERES.DAATH, PLANETS.PLUTO);
   tree.addWesternAstrologyPlanet(SPHERES.CHESED, PLANETS.JUPITER);
   tree.addWesternAstrologyPlanet(SPHERES.GEBURAH, PLANETS.MARS);
-  tree.addWesternAstrologyPlanet(SPHERES.TIPHERETH, PLANETS.SUN);
+  tree.addWesternAstrologyPlanet(SPHERES.TIPHARETH, PLANETS.SUN);
   tree.addWesternAstrologyPlanet(SPHERES.NETZACH, PLANETS.VENUS);
   tree.addWesternAstrologyPlanet(SPHERES.HOD, PLANETS.MERCURY);
   tree.addWesternAstrologyPlanet(SPHERES.YESOD, PLANETS.MOON);
   tree.addWesternAstrologyPlanet(SPHERES.MALKUTH, PLANETS.EARTH);
 
-  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
   const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH}`;
-  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHERETH}`;
-  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_BINAH}`;
-  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
-  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_CHESED}`;
-  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHERETH}`;
+  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHARETH}`;
+  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_BINAH}`;
+  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
+  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_CHESED}`;
+  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHARETH}`;
   const path18 = `path:${MELKITZEDEKI_PATHS.BINAH_GEBURAH}`;
   const path19 = `path:${MELKITZEDEKI_PATHS.CHESED_GEBURAH}`;
-  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHERETH}`;
+  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHARETH}`;
   const path21 = `path:${MELKITZEDEKI_PATHS.CHESED_NETZACH}`;
-  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH}`;
+  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH}`;
   const path23 = `path:${MELKITZEDEKI_PATHS.GEBURAH_HOD}`;
-  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_NETZACH}`;
-  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_YESOD}`;
-  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_HOD}`;
+  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_NETZACH}`;
+  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_YESOD}`;
+  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_HOD}`;
   const path27 = `path:${MELKITZEDEKI_PATHS.NETZACH_HOD}`;
   const path28 = `path:${MELKITZEDEKI_PATHS.NETZACH_YESOD}`;
   const path29 = `path:${MELKITZEDEKI_PATHS.NETZACH_MALKUTH}`;
@@ -634,22 +634,22 @@ export const unloadWesternAstrology: Unloader = (tree: TreeOfLife) => {
 }
 
 export const loadTarot: Loader = (tree: TreeOfLife) => {
-  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKMAH}`;
+  const path11 = `path:${MELKITZEDEKI_PATHS.KETHER_CHOKHMAH}`;
   const path12 = `path:${MELKITZEDEKI_PATHS.KETHER_BINAH}`;
-  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHERETH}`;
-  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_BINAH}`;
-  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH}`;
-  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKMAH_CHESED}`;
-  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHERETH}`;
+  const path13 = `path:${MELKITZEDEKI_PATHS.KETHER_TIPHARETH}`;
+  const path14 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_BINAH}`;
+  const path15 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH}`;
+  const path16 = `path:${MELKITZEDEKI_PATHS.CHOKHMAH_CHESED}`;
+  const path17 = `path:${MELKITZEDEKI_PATHS.BINAH_TIPHARETH}`;
   const path18 = `path:${MELKITZEDEKI_PATHS.BINAH_GEBURAH}`;
   const path19 = `path:${MELKITZEDEKI_PATHS.CHESED_GEBURAH}`;
-  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHERETH}`;
+  const path20 = `path:${MELKITZEDEKI_PATHS.CHESED_TIPHARETH}`;
   const path21 = `path:${MELKITZEDEKI_PATHS.CHESED_NETZACH}`;
-  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH}`;
+  const path22 = `path:${MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH}`;
   const path23 = `path:${MELKITZEDEKI_PATHS.GEBURAH_HOD}`;
-  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_NETZACH}`;
-  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_YESOD}`;
-  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHERETH_HOD}`;
+  const path24 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_NETZACH}`;
+  const path25 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_YESOD}`;
+  const path26 = `path:${MELKITZEDEKI_PATHS.TIPHARETH_HOD}`;
   const path27 = `path:${MELKITZEDEKI_PATHS.NETZACH_HOD}`;
   const path28 = `path:${MELKITZEDEKI_PATHS.NETZACH_YESOD}`;
   const path29 = `path:${MELKITZEDEKI_PATHS.NETZACH_MALKUTH}`;
@@ -696,11 +696,11 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.KNIGHT_OF_WANDS, TAROT_ARKANNUS_DATA.KNIGHT_OF_WANDS, 25, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.PAGE_OF_WANDS, TAROT_ARKANNUS_DATA.PAGE_OF_WANDS, 26, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.KETHER, TAROT_ARKANNUS.ACE_OF_WANDS, TAROT_ARKANNUS_DATA.ACE_OF_WANDS, 27, TAROT_SUITS.WANDS);
-  tree.addTarotArkAnnu(SPHERES.CHOKMAH, TAROT_ARKANNUS.TWO_OF_WANDS, TAROT_ARKANNUS_DATA.TWO_OF_WANDS, 28, TAROT_SUITS.WANDS);
+  tree.addTarotArkAnnu(SPHERES.CHOKHMAH, TAROT_ARKANNUS.TWO_OF_WANDS, TAROT_ARKANNUS_DATA.TWO_OF_WANDS, 28, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.BINAH, TAROT_ARKANNUS.THREE_OF_WANDS, TAROT_ARKANNUS_DATA.THREE_OF_WANDS, 29, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.CHESED, TAROT_ARKANNUS.FOUR_OF_WANDS, TAROT_ARKANNUS_DATA.FOUR_OF_WANDS, 30, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.GEBURAH, TAROT_ARKANNUS.FIVE_OF_WANDS, TAROT_ARKANNUS_DATA.FIVE_OF_WANDS, 31, TAROT_SUITS.WANDS);
-  tree.addTarotArkAnnu(SPHERES.TIPHERETH, TAROT_ARKANNUS.SIX_OF_WANDS, TAROT_ARKANNUS_DATA.SIX_OF_WANDS, 32, TAROT_SUITS.WANDS);
+  tree.addTarotArkAnnu(SPHERES.TIPHARETH, TAROT_ARKANNUS.SIX_OF_WANDS, TAROT_ARKANNUS_DATA.SIX_OF_WANDS, 32, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.NETZACH, TAROT_ARKANNUS.SEVEN_OF_WANDS, TAROT_ARKANNUS_DATA.SEVEN_OF_WANDS, 33, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.HOD, TAROT_ARKANNUS.EIGHT_OF_WANDS, TAROT_ARKANNUS_DATA.EIGHT_OF_WANDS, 34, TAROT_SUITS.WANDS);
   tree.addTarotArkAnnu(SPHERES.YESOD, TAROT_ARKANNUS.NINE_OF_WANDS, TAROT_ARKANNUS_DATA.NINE_OF_WANDS, 35, TAROT_SUITS.WANDS);
@@ -711,11 +711,11 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.KNIGHT_OF_CUPS, TAROT_ARKANNUS_DATA.KNIGHT_OF_CUPS, 39, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.PAGE_OF_CUPS, TAROT_ARKANNUS_DATA.PAGE_OF_CUPS, 40, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.KETHER, TAROT_ARKANNUS.ACE_OF_CUPS, TAROT_ARKANNUS_DATA.ACE_OF_CUPS, 41, TAROT_SUITS.CUPS);
-  tree.addTarotArkAnnu(SPHERES.CHOKMAH, TAROT_ARKANNUS.TWO_OF_CUPS, TAROT_ARKANNUS_DATA.TWO_OF_CUPS, 42, TAROT_SUITS.CUPS);
+  tree.addTarotArkAnnu(SPHERES.CHOKHMAH, TAROT_ARKANNUS.TWO_OF_CUPS, TAROT_ARKANNUS_DATA.TWO_OF_CUPS, 42, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.BINAH, TAROT_ARKANNUS.THREE_OF_CUPS, TAROT_ARKANNUS_DATA.THREE_OF_CUPS, 43, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.CHESED, TAROT_ARKANNUS.FOUR_OF_CUPS, TAROT_ARKANNUS_DATA.FOUR_OF_CUPS, 44, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.GEBURAH, TAROT_ARKANNUS.FIVE_OF_CUPS, TAROT_ARKANNUS_DATA.FIVE_OF_CUPS, 45, TAROT_SUITS.CUPS);
-  tree.addTarotArkAnnu(SPHERES.TIPHERETH, TAROT_ARKANNUS.SIX_OF_CUPS, TAROT_ARKANNUS_DATA.SIX_OF_CUPS, 46, TAROT_SUITS.CUPS);
+  tree.addTarotArkAnnu(SPHERES.TIPHARETH, TAROT_ARKANNUS.SIX_OF_CUPS, TAROT_ARKANNUS_DATA.SIX_OF_CUPS, 46, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.NETZACH, TAROT_ARKANNUS.SEVEN_OF_CUPS, TAROT_ARKANNUS_DATA.SEVEN_OF_CUPS, 47, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.HOD, TAROT_ARKANNUS.EIGHT_OF_CUPS, TAROT_ARKANNUS_DATA.EIGHT_OF_CUPS, 48, TAROT_SUITS.CUPS);
   tree.addTarotArkAnnu(SPHERES.YESOD, TAROT_ARKANNUS.NINE_OF_CUPS, TAROT_ARKANNUS_DATA.NINE_OF_CUPS, 49, TAROT_SUITS.CUPS);
@@ -726,11 +726,11 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.KNIGHT_OF_SWORDS, TAROT_ARKANNUS_DATA.KNIGHT_OF_SWORDS, 53, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.PAGE_OF_SWORDS, TAROT_ARKANNUS_DATA.PAGE_OF_SWORDS, 54, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.KETHER, TAROT_ARKANNUS.ACE_OF_SWORDS, TAROT_ARKANNUS_DATA.ACE_OF_SWORDS, 55, TAROT_SUITS.SWORDS);
-  tree.addTarotArkAnnu(SPHERES.CHOKMAH, TAROT_ARKANNUS.TWO_OF_SWORDS, TAROT_ARKANNUS_DATA.TWO_OF_SWORDS, 56, TAROT_SUITS.SWORDS);
+  tree.addTarotArkAnnu(SPHERES.CHOKHMAH, TAROT_ARKANNUS.TWO_OF_SWORDS, TAROT_ARKANNUS_DATA.TWO_OF_SWORDS, 56, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.BINAH, TAROT_ARKANNUS.THREE_OF_SWORDS, TAROT_ARKANNUS_DATA.THREE_OF_SWORDS, 57, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.CHESED, TAROT_ARKANNUS.FOUR_OF_SWORDS, TAROT_ARKANNUS_DATA.FOUR_OF_SWORDS, 58, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.GEBURAH, TAROT_ARKANNUS.FIVE_OF_SWORDS, TAROT_ARKANNUS_DATA.FIVE_OF_SWORDS, 59, TAROT_SUITS.SWORDS);
-  tree.addTarotArkAnnu(SPHERES.TIPHERETH, TAROT_ARKANNUS.SIX_OF_SWORDS, TAROT_ARKANNUS_DATA.SIX_OF_SWORDS, 60, TAROT_SUITS.SWORDS);
+  tree.addTarotArkAnnu(SPHERES.TIPHARETH, TAROT_ARKANNUS.SIX_OF_SWORDS, TAROT_ARKANNUS_DATA.SIX_OF_SWORDS, 60, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.NETZACH, TAROT_ARKANNUS.SEVEN_OF_SWORDS, TAROT_ARKANNUS_DATA.SEVEN_OF_SWORDS, 61, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.HOD, TAROT_ARKANNUS.EIGHT_OF_SWORDS, TAROT_ARKANNUS_DATA.EIGHT_OF_SWORDS, 62, TAROT_SUITS.SWORDS);
   tree.addTarotArkAnnu(SPHERES.YESOD, TAROT_ARKANNUS.NINE_OF_SWORDS, TAROT_ARKANNUS_DATA.NINE_OF_SWORDS, 63, TAROT_SUITS.SWORDS);
@@ -741,11 +741,11 @@ export const loadTarot: Loader = (tree: TreeOfLife) => {
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.KNIGHT_OF_PENTACLES, TAROT_ARKANNUS_DATA.KNIGHT_OF_PENTACLES, 67, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.DAATH, TAROT_ARKANNUS.PAGE_OF_PENTACLES, TAROT_ARKANNUS_DATA.PAGE_OF_PENTACLES, 68, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.KETHER, TAROT_ARKANNUS.ACE_OF_PENTACLES, TAROT_ARKANNUS_DATA.ACE_OF_PENTACLES, 69, TAROT_SUITS.PENTACLES);
-  tree.addTarotArkAnnu(SPHERES.CHOKMAH, TAROT_ARKANNUS.TWO_OF_PENTACLES, TAROT_ARKANNUS_DATA.TWO_OF_PENTACLES, 70, TAROT_SUITS.PENTACLES);
+  tree.addTarotArkAnnu(SPHERES.CHOKHMAH, TAROT_ARKANNUS.TWO_OF_PENTACLES, TAROT_ARKANNUS_DATA.TWO_OF_PENTACLES, 70, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.BINAH, TAROT_ARKANNUS.THREE_OF_PENTACLES, TAROT_ARKANNUS_DATA.THREE_OF_PENTACLES, 71, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.CHESED, TAROT_ARKANNUS.FOUR_OF_PENTACLES, TAROT_ARKANNUS_DATA.FOUR_OF_PENTACLES, 72, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.GEBURAH, TAROT_ARKANNUS.FIVE_OF_PENTACLES, TAROT_ARKANNUS_DATA.FIVE_OF_PENTACLES, 73, TAROT_SUITS.PENTACLES);
-  tree.addTarotArkAnnu(SPHERES.TIPHERETH, TAROT_ARKANNUS.SIX_OF_PENTACLES, TAROT_ARKANNUS_DATA.SIX_OF_PENTACLES, 74, TAROT_SUITS.PENTACLES);
+  tree.addTarotArkAnnu(SPHERES.TIPHARETH, TAROT_ARKANNUS.SIX_OF_PENTACLES, TAROT_ARKANNUS_DATA.SIX_OF_PENTACLES, 74, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.NETZACH, TAROT_ARKANNUS.SEVEN_OF_PENTACLES, TAROT_ARKANNUS_DATA.SEVEN_OF_PENTACLES, 75, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.HOD, TAROT_ARKANNUS.EIGHT_OF_PENTACLES, TAROT_ARKANNUS_DATA.EIGHT_OF_PENTACLES, 76, TAROT_SUITS.PENTACLES);
   tree.addTarotArkAnnu(SPHERES.YESOD, TAROT_ARKANNUS.NINE_OF_PENTACLES, TAROT_ARKANNUS_DATA.NINE_OF_PENTACLES, 77, TAROT_SUITS.PENTACLES);

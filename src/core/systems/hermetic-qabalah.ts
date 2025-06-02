@@ -15,8 +15,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
     angelicName: "Chayouth Ha-Qadesh",
     mundaneName: "Rashith Ha-Gilgalim"
   }, 1);
-  const chokmah = tree.addSphere(SPHERES.CHOKMAH, {
-    ...SPHERE_DATA.CHOKMAH,
+  const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, {
+    ...SPHERE_DATA.CHOKHMAH,
     divineName: "Yahve El Yah",
     archangelicName: "Raziel",
     angelicName: "Auphanim",
@@ -44,8 +44,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
     angelicName: "Seraphim",
     mundaneName: "Madim"
   }, 5);
-  const tiphereth = tree.addSphere(SPHERES.TIPHERETH, {
-    ...SPHERE_DATA.TIPHERETH,
+  const tiphareth = tree.addSphere(SPHERES.TIPHARETH, {
+    ...SPHERE_DATA.TIPHARETH,
     divineName: "Yahve Eloah Ve-Daath",
     archangelicName: "Raphael",
     angelicName: "Melekim",
@@ -110,22 +110,22 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
     );
   }
 
-  const path11 = tree.addPath(kether, chokmah, MELKITZEDEKI_PATHS.KETHER_CHOKMAH);
+  const path11 = tree.addPath(kether, chokhmah, MELKITZEDEKI_PATHS.KETHER_CHOKHMAH);
   const path12 = tree.addPath(kether, binah, MELKITZEDEKI_PATHS.KETHER_BINAH);
-  const path13 = tree.addPath(kether, tiphereth, MELKITZEDEKI_PATHS.KETHER_TIPHERETH);
-  const path14 = tree.addPath(chokmah, binah, MELKITZEDEKI_PATHS.CHOKMAH_BINAH);
-  const path15 = tree.addPath(chokmah, tiphereth, MELKITZEDEKI_PATHS.CHOKMAH_TIPHERETH);
-  const path16 = tree.addPath(chokmah, chesed, MELKITZEDEKI_PATHS.CHOKMAH_CHESED);
-  const path17 = tree.addPath(binah, tiphereth, MELKITZEDEKI_PATHS.BINAH_TIPHERETH);
+  const path13 = tree.addPath(kether, tiphareth, MELKITZEDEKI_PATHS.KETHER_TIPHARETH);
+  const path14 = tree.addPath(chokhmah, binah, MELKITZEDEKI_PATHS.CHOKHMAH_BINAH);
+  const path15 = tree.addPath(chokhmah, tiphareth, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH);
+  const path16 = tree.addPath(chokhmah, chesed, MELKITZEDEKI_PATHS.CHOKHMAH_CHESED);
+  const path17 = tree.addPath(binah, tiphareth, MELKITZEDEKI_PATHS.BINAH_TIPHARETH);
   const path18 = tree.addPath(binah, geburah, MELKITZEDEKI_PATHS.BINAH_GEBURAH);
   const path19 = tree.addPath(chesed, geburah, MELKITZEDEKI_PATHS.CHESED_GEBURAH);
-  const path20 = tree.addPath(chesed, tiphereth, MELKITZEDEKI_PATHS.CHESED_TIPHERETH);
+  const path20 = tree.addPath(chesed, tiphareth, MELKITZEDEKI_PATHS.CHESED_TIPHARETH);
   const path21 = tree.addPath(chesed, netzach, MELKITZEDEKI_PATHS.CHESED_NETZACH);
-  const path22 = tree.addPath(geburah, tiphereth, MELKITZEDEKI_PATHS.GEBURAH_TIPHERETH);
+  const path22 = tree.addPath(geburah, tiphareth, MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH);
   const path23 = tree.addPath(geburah, hod, MELKITZEDEKI_PATHS.GEBURAH_HOD);
-  const path24 = tree.addPath(tiphereth, netzach, MELKITZEDEKI_PATHS.TIPHERETH_NETZACH);
-  const path25 = tree.addPath(tiphereth, yesod, MELKITZEDEKI_PATHS.TIPHERETH_YESOD);
-  const path26 = tree.addPath(tiphereth, hod, MELKITZEDEKI_PATHS.TIPHERETH_HOD);
+  const path24 = tree.addPath(tiphareth, netzach, MELKITZEDEKI_PATHS.TIPHARETH_NETZACH);
+  const path25 = tree.addPath(tiphareth, yesod, MELKITZEDEKI_PATHS.TIPHARETH_YESOD);
+  const path26 = tree.addPath(tiphareth, hod, MELKITZEDEKI_PATHS.TIPHARETH_HOD);
   const path27 = tree.addPath(netzach, hod, MELKITZEDEKI_PATHS.NETZACH_HOD);
   const path28 = tree.addPath(netzach, yesod, MELKITZEDEKI_PATHS.NETZACH_YESOD);
   const path29 = tree.addPath(netzach, malkuth, MELKITZEDEKI_PATHS.NETZACH_MALKUTH);
@@ -293,22 +293,22 @@ export function loadColors(tree: TreeOfLife) {
     colorHexCodes: ["#ffffff", "#FFD700"]
   }, FOUR_WORLDS.ASSIAH);
 
-  tree.addSphereColor(SPHERES.CHOKMAH, "blue", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, "blue", { 
     colorDescription: "Smooth blue, pure",
     colorNames: ["blue"],
     colorHexCodes: ["#0000FF"]
   }, FOUR_WORLDS.ATZILUTH);
-  tree.addSphereColor(SPHERES.CHOKMAH, "grey", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, "grey", { 
     colorDescription: "Grey",
     colorNames: ["grey"],
     colorHexCodes: ["#808080"]
   }, FOUR_WORLDS.BRIAH);
-  tree.addSphereColor(SPHERES.CHOKMAH, "grey-iridescent", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, "grey-iridescent", { 
     colorDescription: "Pearl grey iridescent",
     colorNames: ["grey", "iridescent"],
     colorHexCodes: ["#808080", "#EDBBE7"]
   }, FOUR_WORLDS.YETZIRAH);
-  tree.addSphereColor(SPHERES.CHOKMAH, "white-speckled-red-blue-yellow", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, "white-speckled-red-blue-yellow", { 
     colorDescription: "White speckled with red, blue and yellow",
     colorNames: ["white", "red", "blue", "yellow"],
     colorHexCodes: ["#FFFFFF", "#FF0000", "#0000FF", "#FFF50F"]
@@ -398,22 +398,22 @@ export function loadColors(tree: TreeOfLife) {
     colorHexCodes: ["#FF0000", "#000000"]
   }, FOUR_WORLDS.ASSIAH);
 
-  tree.addSphereColor(SPHERES.TIPHERETH, "gold-yellow", { 
+  tree.addSphereColor(SPHERES.TIPHARETH, "gold-yellow", { 
     colorDescription: "gold yellow",
     colorNames: ["gold-yellow"],
     colorHexCodes: ["#FFD700"]
   }, FOUR_WORLDS.ATZILUTH);
-  tree.addSphereColor(SPHERES.TIPHERETH, "rose-pink", { 
+  tree.addSphereColor(SPHERES.TIPHARETH, "rose-pink", { 
     colorDescription: "Rose pink",
     colorNames: ["rose-pink"],
     colorHexCodes: ["#FFC0CB"]
   }, FOUR_WORLDS.BRIAH);
-  tree.addSphereColor(SPHERES.TIPHERETH, "salmon-pink-reddish-carmine-amber-brown-mixed", { 
+  tree.addSphereColor(SPHERES.TIPHARETH, "salmon-pink-reddish-carmine-amber-brown-mixed", { 
     colorDescription: "Salmon pink, reddish carmine, amber, brown, mixed",
     colorNames: ["salmon-pink", "reddish-carmine", "amber", "brown", "mixed"],
     colorHexCodes: ["#FF9999", "#960018", "#996515"]
   }, FOUR_WORLDS.YETZIRAH);
-  tree.addSphereColor(SPHERES.TIPHERETH, "gold-speckled-green", { 
+  tree.addSphereColor(SPHERES.TIPHARETH, "gold-speckled-green", { 
     colorDescription: "Gold speckled with green",
     colorNames: ["gold", "green"],
     colorHexCodes: ["#FFD700", "#BDB76B"]
@@ -518,7 +518,7 @@ export function loadMusicalNotes(tree: TreeOfLife) {
     note: "The Sound of the Sphere",
     noteDescription: "The sound of the sphere"
   });
-  tree.addMusicalNote(SPHERES.CHOKMAH, "Mantras", {
+  tree.addMusicalNote(SPHERES.CHOKHMAH, "Mantras", {
     note: "Mantra",
     noteDescription: "All sounds considered devotional mantras"
   });
@@ -534,7 +534,7 @@ export function loadMusicalNotes(tree: TreeOfLife) {
     note: "Do",
     noteDescription: "C (Do), in the treble clef"
   });
-  tree.addMusicalNote(SPHERES.TIPHERETH, "Sol-treble", {
+  tree.addMusicalNote(SPHERES.TIPHARETH, "Sol-treble", {
     note: "Sol",
     noteDescription: "G (Sol), in the treble clef"
   });
@@ -572,12 +572,12 @@ const linkColorsAndSigns = (t: TreeOfLife) => {
 
 export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   tree.addWesternAstrologyPlanet(SPHERES.KETHER, PLANETS.NEPTUNE);
-  tree.addWesternAstrologyPlanet(SPHERES.CHOKMAH, PLANETS.URANUS);
+  tree.addWesternAstrologyPlanet(SPHERES.CHOKHMAH, PLANETS.URANUS);
   tree.addWesternAstrologyPlanet(SPHERES.BINAH, PLANETS.SATURN);
   tree.addWesternAstrologyPlanet(SPHERES.DAATH, PLANETS.PLUTO);
   tree.addWesternAstrologyPlanet(SPHERES.CHESED, PLANETS.JUPITER);
   tree.addWesternAstrologyPlanet(SPHERES.GEBURAH, PLANETS.MARS);
-  tree.addWesternAstrologyPlanet(SPHERES.TIPHERETH, PLANETS.SUN);
+  tree.addWesternAstrologyPlanet(SPHERES.TIPHARETH, PLANETS.SUN);
   tree.addWesternAstrologyPlanet(SPHERES.NETZACH, PLANETS.VENUS);
   tree.addWesternAstrologyPlanet(SPHERES.HOD, PLANETS.MERCURY);
   tree.addWesternAstrologyPlanet(SPHERES.YESOD, PLANETS.MOON);
