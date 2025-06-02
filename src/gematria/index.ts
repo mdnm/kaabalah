@@ -136,10 +136,11 @@ export const calculateGematria = (word: string, options: {
     vowelsSum + consonantsSum
   )
 
-  const missingGematriaValues: { value: number, hebrewLetter: string, whenEnding: boolean }[] = []
+  const missingGematriaValues: { value: number, hebrewLetterId: string, whenEnding: boolean }[] = []
   if (options?.calculateMissingGematriaValues) {
     for (const hebrewLetter of Object.values(HEBREW_LETTERS)) {
-      const hebrewLetterNode = tree.getNode(`letter:${hebrewLetter}`) as Node<"hebrewLetter">
+      const hebrewLetterId = `letter:${hebrewLetter}`;
+      const hebrewLetterNode = tree.getNode(hebrewLetterId) as Node<"hebrewLetter">
       if (!hebrewLetterNode?.data) {
         continue
       }
@@ -147,7 +148,7 @@ export const calculateGematria = (word: string, options: {
       if (!includedGematriaValues.has(hebrewLetterNode.data.gematriaValue)) {
         missingGematriaValues.push({
           value: hebrewLetterNode.data.gematriaValue,
-          hebrewLetter,
+          hebrewLetterId,
           whenEnding: false
         })
       }
@@ -155,7 +156,7 @@ export const calculateGematria = (word: string, options: {
       if (hebrewLetterNode.data.gematriaValueWhenEnding && !includedGematriaValues.has(hebrewLetterNode.data.gematriaValueWhenEnding)) {
         missingGematriaValues.push({
           value: hebrewLetterNode.data.gematriaValueWhenEnding,
-          hebrewLetter,
+          hebrewLetterId,
           whenEnding: true
         })
       }
@@ -180,7 +181,7 @@ export const calculateGematria = (word: string, options: {
       reductionSteps: synthesisReduction.steps,
       finalValue: synthesisReduction.finalValue
     },
-    includedLetters: includedLetters,
+    includedLetters,
     missingGematriaValues: options?.calculateMissingGematriaValues ? missingGematriaValues : undefined,
     letterPercentages: options?.calculateLetterPercentages ? letterPercentages : undefined,
   }
