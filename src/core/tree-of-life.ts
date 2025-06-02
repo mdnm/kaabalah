@@ -14,8 +14,6 @@ export class TreeOfLife {
   private adjacent = new Map<string, Set<string>>();
   private modules = new ModuleManager(this);
 
-  public activeSystem: SystemKey | null = this.modules.getActiveSystem();
-
   /**
    * Loads the tree of life system to be used
    * @param systemKey - the key of the system to load
@@ -33,19 +31,23 @@ export class TreeOfLife {
    */
   unloadSystem()                   { this.modules.unloadSystem() }
 
-  listAvailableParts() {
+  public get activeSystem(): SystemKey | null {
+    return this.modules.getActiveSystem();
+  }
+  
+  public get availableParts() {
     return this.modules.listAvailableParts();
   }
 
-  listLoadedParts() {
+  public get loadedParts() {
     return this.modules.listLoadedParts();
   }
 
-  listAvailableBridges() {
+  public get availableBridges() {
     return this.modules.listAvailableBridges();
   }
 
-  listBridgedParts() {
+  public get bridgedParts() {
     return this.modules.listBridgedParts();
   }
 
@@ -62,6 +64,10 @@ export class TreeOfLife {
 
   getNode(id: NodeId) {
     return this.nodes.get(id);
+  }
+
+  getNodes() {
+    return [...this.nodes.values()];
   }
 
   /**
