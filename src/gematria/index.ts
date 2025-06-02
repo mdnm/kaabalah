@@ -36,7 +36,7 @@ export const calculateGematria = (word: string, options: {
     tree = createTree({ system: KAABALAH_SYSTEM, parts: [] })
   }
 
-  const includedLetters: { latinLetterId: string, value: number, hebrewLetterId: string, isVowel: boolean }[] = []
+  const includedLetters: { latinLetterId: string, value: number, hebrewLetterId: string, hebrewCharacter: string, isVowel: boolean }[] = []
   const words = word.toUpperCase().trim().split(" ")
   let vowelsSum = 0
   let consonantsSum = 0
@@ -66,13 +66,15 @@ export const calculateGematria = (word: string, options: {
         const latinLetterId = `letter:${combinedLetter}`;
         const [mapping] = tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]
         if (mapping?.data) {
+          let hebrewCharacter = mapping.data.character
           let value = mapping.data.gematriaValue
-          if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined) {
+          if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined) {
+            hebrewCharacter = mapping.data.characterWhenEnding
             value = mapping.data.gematriaValueWhenEnding
           }
 
           includedGematriaValues.add(value)
-          includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, isVowel: isVowel(letter) })
+          includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, hebrewCharacter, isVowel: isVowel(letter) })
           consonantsSum += value
           i++
           continue
@@ -92,12 +94,14 @@ export const calculateGematria = (word: string, options: {
       const isEnding = i > 0 && i === letters.length - 1
       if (mapping?.data) {
         let value = mapping.data.gematriaValue
-        if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined) {
+        let hebrewCharacter = mapping.data.character
+        if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined) {
           value = mapping.data.gematriaValueWhenEnding
+          hebrewCharacter = mapping.data.characterWhenEnding
         }
 
         includedGematriaValues.add(value)
-        includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, isVowel: isVowel(letter) })
+        includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, hebrewCharacter, isVowel: isVowel(letter) })
 
         if (isVowel(letter)) {
           vowelsSum += value

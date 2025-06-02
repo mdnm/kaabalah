@@ -48,7 +48,6 @@ export type WorldData = {
 
 export type HebrewLetterData = {
   type: "mother" | "double" | "simple";
-  transliteration: string;
   gematriaValue: number;
   gematriaValueWhenEnding?: number;
   symbol: string;
@@ -288,28 +287,28 @@ export const HEBREW_LETTERS = {
 } as const;
 
 export const HEBREW_LETTERS_DATA: Record<keyof typeof HEBREW_LETTERS, NodeData<"hebrewLetter">> = {
-  ALEPH: { gematriaValue: 1, type: "mother", symbol: "Man", hieroglyph: "Unity, central point, abstract principle", yvritMeaning: "Universal man and the human gender", transliteration: "Aleph", character: "א" },
-  BETH: { gematriaValue: 2, type: "double", symbol: "Mouth", hieroglyph: "Woman's duality", yvritMeaning: "Man's mouth, habitation, interior", transliteration: "Beth", character: "ב" },
-  GIMEL: { gematriaValue: 3, type: "double", symbol: "Grasping hand", hieroglyph: "Expansion and growth", yvritMeaning: "Man's throat, channel", transliteration: "Gimel", character: "ג" },
-  DALET: { gematriaValue: 4, type: "double", symbol: "Breast", hieroglyph: "Universal quaternary, source of physical existence", yvritMeaning: "Abundance and nourishment", transliteration: "Dalet", character: "ד" },
-  HE: { gematriaValue: 5, type: "simple", symbol: "Breath", hieroglyph: "Universal life, men's breath, the breath, everything that animates and vivifies", yvritMeaning: "Window", transliteration: "He", character: "ה" },
-  VAV: { gematriaValue: 6, type: "simple", symbol: "Eye, ear", hieroglyph: "A point connection that separates being and non-being", yvritMeaning: "Construction nail", transliteration: "Vav", character: "ו" },
-  ZAYIN: { gematriaValue: 7, type: "simple", symbol: "Arrow", hieroglyph: "Goal, objective to achieve", yvritMeaning: "Dart, sword", transliteration: "Zayin", character: "ז" },
-  HET: { gematriaValue: 8, type: "simple", symbol: "Field", hieroglyph: "Elemental existence", yvritMeaning: "Fence", transliteration: "Het", character: "ח" },
-  TET: { gematriaValue: 9, type: "simple", symbol: "A house covering", hieroglyph: "Men's shelter, roof, shield, protection, resistance", yvritMeaning: "Serpent", transliteration: "Tet", character: "ט" },
-  YOD: { gematriaValue: 10, type: "simple", symbol: "Index finger", hieroglyph: "Potential manifestation, eternal worship", yvritMeaning: "Hand, index finger", transliteration: "Yod", character: "י" },
-  KAPH: { gematriaValue: 20, type: "double", gematriaValueWhenEnding: 500, symbol: "Closing hand", hieroglyph: "Reflective and fleeting life", yvritMeaning: "Palm closing in the act of grasping something", transliteration: "Kaph", character: "כ", characterWhenEnding: "ך" },
-  LAMED: { gematriaValue: 30, type: "simple", symbol: "Extending arm", hieroglyph: "Extension, elevation", yvritMeaning: "Sting rod, human arm representing extension, elevation", transliteration: "Lamed", character: "ל" },
-  MEM: { gematriaValue: 40, type: "mother", gematriaValueWhenEnding: 600, symbol: "Woman", hieroglyph: "External passive action, all formative and plastic principle when starting a word, collectiveness when ending one", yvritMeaning: "Waters, woman, mother, man's companion", transliteration: "Mem", character: "מ", characterWhenEnding: "ם" },
-  NUN: { gematriaValue: 50, type: "simple", gematriaValueWhenEnding: 700, symbol: "Fruit", hieroglyph: "Novelty, youth, grace, beauty", yvritMeaning: "Fish", transliteration: "Nun", character: "נ", characterWhenEnding: "ן" },
-  SAMEKH: { gematriaValue: 60, type: "simple", symbol: "Serpent", hieroglyph: "Cyclical circular movement", yvritMeaning: "Support, brace, crutch", transliteration: "Samekh", character: "ס" },
-  AYIN: { gematriaValue: 70, type: "simple", symbol: "Binding", hieroglyph: "Material side of things, emptiness, nothingness, all evil", yvritMeaning: "Eye", transliteration: "Ayin", character: "ע" },
-  PE: { gematriaValue: 80, type: "double", gematriaValueWhenEnding: 800, symbol: "Mouth, tongue", hieroglyph: "Power of the verb, spoken word", yvritMeaning: "Mouth releasing", transliteration: "Pe", character: "פ", characterWhenEnding: "ף" },
-  TSADI: { gematriaValue: 90, type: "simple", gematriaValueWhenEnding: 900, symbol: "Roof", hieroglyph: "Fixed thought upon a purpose", yvritMeaning: "Fishhook", transliteration: "Tsadi", character: "צ", characterWhenEnding: "ץ" },
-  QOPH: { gematriaValue: 100, type: "simple", symbol: "Axe", hieroglyph: "Repressive pressure", yvritMeaning: "Back of the head", transliteration: "Qoph", character: "ק" },
-  RESH: { gematriaValue: 200, type: "double", symbol: "Head", hieroglyph: "Feeling, wanting, thinking, movement, reflection, origin, repetition", yvritMeaning: "Illuminated head", transliteration: "Resh", character: "ר" },
-  SHIN: { gematriaValue: 300, type: "mother", symbol: "Crown", hieroglyph: "Relative duration, existence", yvritMeaning: "Part of the bow from which the arrow is released", transliteration: "Shin", character: "ש" },
-  TAV: { gematriaValue: 400, type: "double", symbol: "Thorax", hieroglyph: "Universal soul, reciprocity, protection, perfection, abundance", yvritMeaning: "Ankh Cross", transliteration: "Tav", character: "ת" },
+  ALEPH: { gematriaValue: 1, type: "mother", symbol: "Man", hieroglyph: "Unity, central point, abstract principle", yvritMeaning: "Universal man and the human gender", character: "א" },
+  BETH: { gematriaValue: 2, type: "double", symbol: "Mouth", hieroglyph: "Woman's duality", yvritMeaning: "Man's mouth, habitation, interior", character: "ב" },
+  GIMEL: { gematriaValue: 3, type: "double", symbol: "Grasping hand", hieroglyph: "Expansion and growth", yvritMeaning: "Man's throat, channel", character: "ג" },
+  DALET: { gematriaValue: 4, type: "double", symbol: "Breast", hieroglyph: "Universal quaternary, source of physical existence", yvritMeaning: "Abundance and nourishment", character: "ד" },
+  HE: { gematriaValue: 5, type: "simple", symbol: "Breath", hieroglyph: "Universal life, men's breath, the breath, everything that animates and vivifies", yvritMeaning: "Window", character: "ה" },
+  VAV: { gematriaValue: 6, type: "simple", symbol: "Eye, ear", hieroglyph: "A point connection that separates being and non-being", yvritMeaning: "Construction nail", character: "ו" },
+  ZAYIN: { gematriaValue: 7, type: "simple", symbol: "Arrow", hieroglyph: "Goal, objective to achieve", yvritMeaning: "Dart, sword", character: "ז" },
+  HET: { gematriaValue: 8, type: "simple", symbol: "Field", hieroglyph: "Elemental existence", yvritMeaning: "Fence", character: "ח" },
+  TET: { gematriaValue: 9, type: "simple", symbol: "A house covering", hieroglyph: "Men's shelter, roof, shield, protection, resistance", yvritMeaning: "Serpent", character: "ט" },
+  YOD: { gematriaValue: 10, type: "simple", symbol: "Index finger", hieroglyph: "Potential manifestation, eternal worship", yvritMeaning: "Hand, index finger", character: "י" },
+  KAPH: { gematriaValue: 20, type: "double", gematriaValueWhenEnding: 500, symbol: "Closing hand", hieroglyph: "Reflective and fleeting life", yvritMeaning: "Palm closing in the act of grasping something", character: "כ", characterWhenEnding: "ך" },
+  LAMED: { gematriaValue: 30, type: "simple", symbol: "Extending arm", hieroglyph: "Extension, elevation", yvritMeaning: "Sting rod, human arm representing extension, elevation", character: "ל" },
+  MEM: { gematriaValue: 40, type: "mother", gematriaValueWhenEnding: 600, symbol: "Woman", hieroglyph: "External passive action, all formative and plastic principle when starting a word, collectiveness when ending one", yvritMeaning: "Waters, woman, mother, man's companion", character: "מ", characterWhenEnding: "ם" },
+  NUN: { gematriaValue: 50, type: "simple", gematriaValueWhenEnding: 700, symbol: "Fruit", hieroglyph: "Novelty, youth, grace, beauty", yvritMeaning: "Fish", character: "נ", characterWhenEnding: "ן" },
+  SAMEKH: { gematriaValue: 60, type: "simple", symbol: "Serpent", hieroglyph: "Cyclical circular movement", yvritMeaning: "Support, brace, crutch", character: "ס" },
+  AYIN: { gematriaValue: 70, type: "simple", symbol: "Binding", hieroglyph: "Material side of things, emptiness, nothingness, all evil", yvritMeaning: "Eye", character: "ע" },
+  PE: { gematriaValue: 80, type: "double", gematriaValueWhenEnding: 800, symbol: "Mouth, tongue", hieroglyph: "Power of the verb, spoken word", yvritMeaning: "Mouth releasing", character: "פ", characterWhenEnding: "ף" },
+  TSADI: { gematriaValue: 90, type: "simple", gematriaValueWhenEnding: 900, symbol: "Roof", hieroglyph: "Fixed thought upon a purpose", yvritMeaning: "Fishhook", character: "צ", characterWhenEnding: "ץ" },
+  QOPH: { gematriaValue: 100, type: "simple", symbol: "Axe", hieroglyph: "Repressive pressure", yvritMeaning: "Back of the head", character: "ק" },
+  RESH: { gematriaValue: 200, type: "double", symbol: "Head", hieroglyph: "Feeling, wanting, thinking, movement, reflection, origin, repetition", yvritMeaning: "Illuminated head", character: "ר" },
+  SHIN: { gematriaValue: 300, type: "mother", symbol: "Crown", hieroglyph: "Relative duration, existence", yvritMeaning: "Part of the bow from which the arrow is released", character: "ש" },
+  TAV: { gematriaValue: 400, type: "double", symbol: "Thorax", hieroglyph: "Universal soul, reciprocity, protection, perfection, abundance", yvritMeaning: "Ankh Cross", character: "ת" },
 }
 
 export const TAROT_SUITS = {
