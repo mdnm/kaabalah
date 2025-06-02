@@ -1,4 +1,4 @@
-import { HEBREW_LETTERS, Node, NodeData, NodeId } from "../core/constants"
+import { HEBREW_LETTERS, Node } from "../core/constants"
 import { createTree } from "../core/factory"
 import { SYSTEM as KAABALAH_SYSTEM } from "../core/systems/kaabalah"
 import { TreeOfLife } from "../core/tree-of-life"
@@ -25,8 +25,8 @@ const isVowel = (letter: string) => {
 }
 
 export const calculateGematria = (word: string, options: {
-  calculateMissingGematriaNumbers?: boolean;
-  calculateLetterPercentage?: boolean;
+  calculateMissingGematriaValues?: boolean;
+  calculateLetterPercentages?: boolean;
 } = {}, tree?: TreeOfLife) => {
   if (tree && tree.activeSystem !== KAABALAH_SYSTEM) {
     throw new Error(`Gematria calculations require the ${KAABALAH_SYSTEM} system to be loaded`);
@@ -36,12 +36,12 @@ export const calculateGematria = (word: string, options: {
     tree = createTree({ system: KAABALAH_SYSTEM, parts: [] })
   }
 
-  const includedLetters = new Map<NodeId, { letter: string, value: number, hebrewLetter: { id: NodeId, data: NodeData<"hebrewLetter"> }, isVowel: boolean }>()
+  const includedLetters: { latinLetterId: string, value: number, hebrewLetterId: string, isVowel: boolean }[] = []
   const words = word.toUpperCase().trim().split(" ")
   let vowelsSum = 0
   let consonantsSum = 0
 
-  const presentGematriaNumbers = new Set<number>()
+  const includedGematriaValues = new Set<number>()
 
   const letterPercentages: { percentageOfVowels: number, percentageOfConsonants: number, letters: Record<string, number> } = {
     percentageOfVowels: 0,
@@ -71,8 +71,8 @@ export const calculateGematria = (word: string, options: {
             value = mapping.data.gematriaValueWhenEnding
           }
 
-          presentGematriaNumbers.add(value)
-          includedLetters.set(latinLetterId, { letter: combinedLetter, value, hebrewLetter: { id: mapping.id, data: mapping.data }, isVowel: isVowel(letter) })
+          includedGematriaValues.add(value)
+          includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, isVowel: isVowel(letter) })
           consonantsSum += value
           i++
           continue
@@ -97,8 +97,8 @@ export const calculateGematria = (word: string, options: {
           value = mapping.data.gematriaValueWhenEnding
         }
 
-        presentGematriaNumbers.add(value)
-        includedLetters.set(latinLetterId, { letter, value, hebrewLetter: { id: mapping.id, data: mapping.data }, isVowel: isVowel(letter) })
+        includedGematriaValues.add(value)
+        includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, isVowel: isVowel(letter) })
 
         if (isVowel(letter)) {
           vowelsSum += value
@@ -108,7 +108,7 @@ export const calculateGematria = (word: string, options: {
       }
     }
 
-    if (options?.calculateLetterPercentage) {
+    if (options?.calculateLetterPercentages) {
       const letterCount = letters.length;
       let vowelsCount = 0
       let consonantsCount = 0
@@ -136,29 +136,32 @@ export const calculateGematria = (word: string, options: {
     vowelsSum + consonantsSum
   )
 
-  const missingGematriaNumbers: { number: number, letter: string }[] = []
-  if (options?.calculateMissingGematriaNumbers) {
+  const missingGematriaValues: { value: number, hebrewLetter: string, whenEnding: boolean }[] = []
+  if (options?.calculateMissingGematriaValues) {
     for (const hebrewLetter of Object.values(HEBREW_LETTERS)) {
       const hebrewLetterNode = tree.getNode(`letter:${hebrewLetter}`) as Node<"hebrewLetter">
       if (!hebrewLetterNode?.data) {
         continue
       }
 
-      if (!presentGematriaNumbers.has(hebrewLetterNode.data.gematriaValue)) {
-        missingGematriaNumbers.push({
-          number: hebrewLetterNode.data.gematriaValue,
-          letter: hebrewLetter
+      if (!includedGematriaValues.has(hebrewLetterNode.data.gematriaValue)) {
+        missingGematriaValues.push({
+          value: hebrewLetterNode.data.gematriaValue,
+          hebrewLetter,
+          whenEnding: false
         })
       }
 
-      if (hebrewLetterNode.data.gematriaValueWhenEnding && !presentGematriaNumbers.has(hebrewLetterNode.data.gematriaValueWhenEnding)) {
-        missingGematriaNumbers.push({
-          number: hebrewLetterNode.data.gematriaValueWhenEnding,
-          letter: `${hebrewLetter} (on ending)`
+      if (hebrewLetterNode.data.gematriaValueWhenEnding && !includedGematriaValues.has(hebrewLetterNode.data.gematriaValueWhenEnding)) {
+        missingGematriaValues.push({
+          value: hebrewLetterNode.data.gematriaValueWhenEnding,
+          hebrewLetter,
+          whenEnding: true
         })
       }
     }
-    missingGematriaNumbers.sort((a, b) => a.number - b.number)
+
+    missingGematriaValues.sort((a, b) => a.value - b.value)
   }
 
   return {
@@ -178,7 +181,7 @@ export const calculateGematria = (word: string, options: {
       finalValue: synthesisReduction.finalValue
     },
     includedLetters: includedLetters,
-    missingGematriaNumbers: options?.calculateMissingGematriaNumbers ? missingGematriaNumbers : undefined,
-    letterPercentages: options?.calculateLetterPercentage ? letterPercentages : undefined,
+    missingGematriaValues: options?.calculateMissingGematriaValues ? missingGematriaValues : undefined,
+    letterPercentages: options?.calculateLetterPercentages ? letterPercentages : undefined,
   }
 }
