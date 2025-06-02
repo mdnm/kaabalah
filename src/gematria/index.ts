@@ -84,7 +84,7 @@ export const calculateGematria = (word: string, options: {
       const latinLetterId = `letter:${letter}`;
       const isStarting = i === 0
       if (isStarting && letter === 'O') {
-        mapping = tree.getNode(`letter:${HEBREW_LETTERS.AIN}`) as Node<"hebrewLetter">;
+        mapping = tree.getNode(`letter:${HEBREW_LETTERS.AYIN}`) as Node<"hebrewLetter">;
       } else {
         mapping = (tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]).at(0)
       }

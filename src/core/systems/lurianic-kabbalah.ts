@@ -141,7 +141,7 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
 
   tree.addLetters(path23, [
     { letter: LATIN_LETTERS.C, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAF }
+    { letter: HEBREW_LETTERS.KAPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAPH }
   ]);
 
   tree.addLetters(path24, [
@@ -169,7 +169,7 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
 
   tree.addLetters(path28, [
     { letter: LATIN_LETTERS.O, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AIN }
+    { letter: HEBREW_LETTERS.AYIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AYIN }
   ]);
 
   tree.addLetters(path29, [
@@ -187,7 +187,7 @@ export function loadLurianicKabbalah(tree: TreeOfLife) {
     { letter: LATIN_LETTERS.K, type: "latinLetter" },
     { letter: LATIN_LETTERS.Q, type: "latinLetter" },
     { letter: LATIN_LETTERS.KH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOF }
+    { letter: HEBREW_LETTERS.QOPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOPH }
   ]);
 
   tree.addLetters(path32, [
