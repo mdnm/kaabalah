@@ -34,7 +34,7 @@ export class TreeOfLife {
   public get activeSystem(): SystemKey | null {
     return this.modules.getActiveSystem();
   }
-  
+
   public get availableParts() {
     return this.modules.listAvailableParts();
   }
@@ -385,23 +385,25 @@ export class TreeOfLife {
   }
   
   addTarotArkAnnu(sphereOrPath: NodeId, tarotArkAnnu: string, data: NodeData<"tarotArkAnnu">, relatedNumber: number, suit?: string) {
-    if (this.nodes.has(tarotArkAnnu)) {
-      return tarotArkAnnu;
+    const tarotArkAnnuId = `tarotArkAnnu:${tarotArkAnnu}`;
+
+    if (this.nodes.has(tarotArkAnnuId)) {
+      return tarotArkAnnuId;
     }
 
-    this.correspond(sphereOrPath, tarotArkAnnu, "tarotArkAnnu", data);
+    this.correspond(sphereOrPath, tarotArkAnnuId, "tarotArkAnnu", data);
 
     const numberId: NodeId = `num:${relatedNumber}`;
     if (!this.nodes.has(numberId)) {
       this.addNode<"number">({ id: numberId, type: "number" });
     }
-    this.link(tarotArkAnnu, numberId);
+    this.link(tarotArkAnnuId, numberId);
 
     if (suit) {
-      this.link(tarotArkAnnu, `suit:${suit}`);
+      this.link(tarotArkAnnuId, `suit:${suit}`);
     }
 
-    return tarotArkAnnu;
+    return tarotArkAnnuId;
   }
 
   addTarotSuit(suit: string, relatedElement: Exclude<typeof WESTERN_ELEMENTS[keyof typeof WESTERN_ELEMENTS], "Ether">) {
