@@ -94,10 +94,10 @@ describe('calculateGematria', () => {
 
   it('should calculate missing letters', () => {
     expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 90, whenEnding: false },
       { hebrewLetter: HEBREW_LETTERS.TAV, value: 400, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
@@ -106,43 +106,43 @@ describe('calculateGematria', () => {
     expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 90, whenEnding: false },
       { hebrewLetter: HEBREW_LETTERS.TAV, value: 400, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 900, whenEnding: true },
     ])
     expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
     ])
     expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 900, whenEnding: true },
     ])
     expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 900, whenEnding: true },
     ])
     expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.PE, value: 800, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 900, whenEnding: true },
     ])
     expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
-      { hebrewLetter: HEBREW_LETTERS.AIN, value: 70, whenEnding: false },
-      { hebrewLetter: HEBREW_LETTERS.KAF, value: 500, whenEnding: true },
+      { hebrewLetter: HEBREW_LETTERS.AYIN, value: 70, whenEnding: false },
+      { hebrewLetter: HEBREW_LETTERS.KAPH, value: 500, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.MEM, value: 600, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.NUN, value: 700, whenEnding: true },
       { hebrewLetter: HEBREW_LETTERS.TSADI, value: 900, whenEnding: true },

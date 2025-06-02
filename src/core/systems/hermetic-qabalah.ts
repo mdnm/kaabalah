@@ -190,7 +190,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
 
   tree.addLetters(path21, [
     { letter: LATIN_LETTERS.C, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.KAF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAF }
+    { letter: HEBREW_LETTERS.KAPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.KAPH }
   ]);
 
   tree.addLetters(path22, [
@@ -216,7 +216,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
 
   tree.addLetters(path26, [
     { letter: LATIN_LETTERS.O, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.AIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AIN }
+    { letter: HEBREW_LETTERS.AYIN, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.AYIN }
   ]);
 
   tree.addLetters(path27, [
@@ -236,7 +236,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
     { letter: LATIN_LETTERS.K, type: "latinLetter" },
     { letter: LATIN_LETTERS.Q, type: "latinLetter" },
     { letter: LATIN_LETTERS.KH, type: "latinLetter" },
-    { letter: HEBREW_LETTERS.QOF, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOF }
+    { letter: HEBREW_LETTERS.QOPH, type: "hebrewLetter", data: HEBREW_LETTERS_DATA.QOPH }
   ]);
 
   tree.addLetters(path30, [
