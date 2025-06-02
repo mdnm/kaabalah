@@ -1,4 +1,4 @@
-import { FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, MELKITZEDEKI_PATHS, PLANETS, SPHERES, SPHERE_DATA } from '../constants';
+import { COLORS, COLORS_DATA, FOUR_WORLDS, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, MELKITZEDEKI_PATHS, MUSICAL_NOTES, MUSICAL_NOTES_DATA, PLANETS, SPHERES, SPHERES_DATA } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
 import { Bridge, Loader, Unloader } from './registry';
 
@@ -9,71 +9,71 @@ export const SYSTEM = 'hermetic-qabalah' as const;
  */
 export function loadHermeticQabalah(tree: TreeOfLife) {
   const kether = tree.addSphere(SPHERES.KETHER, {
-    ...SPHERE_DATA.KETHER,
+    ...SPHERES_DATA.KETHER,
     divineName: "Eheieh",
     archangelicName: "Metraton",
     angelicName: "Chayouth Ha-Qadesh",
     mundaneName: "Rashith Ha-Gilgalim"
   }, 1);
   const chokhmah = tree.addSphere(SPHERES.CHOKHMAH, {
-    ...SPHERE_DATA.CHOKHMAH,
+    ...SPHERES_DATA.CHOKHMAH,
     divineName: "Yahve El Yah",
     archangelicName: "Raziel",
     angelicName: "Auphanim",
     mundaneName: "Mazloth"
   }, 2);
   const binah = tree.addSphere(SPHERES.BINAH, {
-    ...SPHERE_DATA.BINAH,
+    ...SPHERES_DATA.BINAH,
     divineName: "Yahve Elohim",
     archangelicName: "Tzaphqiel",
     angelicName: "Aralim",
     mundaneName: "Shabbathai"
   }, 3);
-  tree.addSphere(SPHERES.DAATH, SPHERE_DATA.DAATH, 11);
+  tree.addSphere(SPHERES.DAATH, SPHERES_DATA.DAATH, 11);
   const chesed = tree.addSphere(SPHERES.CHESED, {
-    ...SPHERE_DATA.CHESED,
+    ...SPHERES_DATA.CHESED,
     divineName: "El",
     archangelicName: "Tzadqiel",
     angelicName: "Chasmalim",
     mundaneName: "Tzedeq"
   }, 4);
   const geburah = tree.addSphere(SPHERES.GEBURAH, {
-    ...SPHERE_DATA.GEBURAH,
+    ...SPHERES_DATA.GEBURAH,
     divineName: "Elohim Gibor",
     archangelicName: "Kamael",
     angelicName: "Seraphim",
     mundaneName: "Madim"
   }, 5);
   const tiphareth = tree.addSphere(SPHERES.TIPHARETH, {
-    ...SPHERE_DATA.TIPHARETH,
+    ...SPHERES_DATA.TIPHARETH,
     divineName: "Yahve Eloah Ve-Daath",
     archangelicName: "Raphael",
     angelicName: "Melekim",
     mundaneName: "Shemesh"
   }, 6);
   const netzach = tree.addSphere(SPHERES.NETZACH, {
-    ...SPHERE_DATA.NETZACH,
+    ...SPHERES_DATA.NETZACH,
     divineName: "Yahve Tzabaoth",
     archangelicName: "Haniel",
     angelicName: "Elohim",
     mundaneName: "Nogah"
   }, 7);
   const hod = tree.addSphere(SPHERES.HOD, {
-    ...SPHERE_DATA.HOD,
+    ...SPHERES_DATA.HOD,
     divineName: "Elohim Tzabaoth",
     archangelicName: "Mikael",
     angelicName: "Beni Elohim",
     mundaneName: "Kokab"
   }, 8);
   const yesod = tree.addSphere(SPHERES.YESOD, {
-    ...SPHERE_DATA.YESOD,
+    ...SPHERES_DATA.YESOD,
     divineName: "Shadai El Chai",
     archangelicName: "Gabriel",
     angelicName: "Kerubim",
     mundaneName: "Levanah"
   }, 9);
   const malkuth = tree.addSphere(SPHERES.MALKUTH, {
-    ...SPHERE_DATA.MALKUTH,
+    ...SPHERES_DATA.MALKUTH,
     divineName: "Adonai Malek",
     archangelicName: "Sandalphon",
     angelicName: "Ashim",
@@ -293,10 +293,10 @@ export function loadColors(tree: TreeOfLife) {
     colorHexCodes: ["#ffffff", "#FFD700"]
   }, FOUR_WORLDS.ASSIAH);
 
-  tree.addSphereColor(SPHERES.CHOKHMAH, "blue", { 
+  tree.addSphereColor(SPHERES.CHOKHMAH, COLORS.BLUE, { 
     colorDescription: "Smooth blue, pure",
-    colorNames: ["blue"],
-    colorHexCodes: ["#0000FF"]
+    colorNames: COLORS_DATA.BLUE.colorNames,
+    colorHexCodes: COLORS_DATA.BLUE.colorHexCodes
   }, FOUR_WORLDS.ATZILUTH);
   tree.addSphereColor(SPHERES.CHOKHMAH, "grey", { 
     colorDescription: "Grey",
@@ -310,8 +310,8 @@ export function loadColors(tree: TreeOfLife) {
   }, FOUR_WORLDS.YETZIRAH);
   tree.addSphereColor(SPHERES.CHOKHMAH, "white-speckled-red-blue-yellow", { 
     colorDescription: "White speckled with red, blue and yellow",
-    colorNames: ["white", "red", "blue", "yellow"],
-    colorHexCodes: ["#FFFFFF", "#FF0000", "#0000FF", "#FFF50F"]
+    colorNames: ["white", ...COLORS_DATA.RED.colorNames, ...COLORS_DATA.BLUE.colorNames, ...COLORS_DATA.YELLOW.colorNames],
+    colorHexCodes: ["#FFFFFF", ...COLORS_DATA.RED.colorHexCodes, ...COLORS_DATA.BLUE.colorHexCodes, ...COLORS_DATA.YELLOW.colorHexCodes]
   }, FOUR_WORLDS.ASSIAH);
 
   tree.addSphereColor(SPHERES.BINAH, "crimson", { 
@@ -361,11 +361,7 @@ export function loadColors(tree: TreeOfLife) {
     colorNames: ["intense-violet"],
     colorHexCodes: ["#9400D3"]
   }, FOUR_WORLDS.ATZILUTH);
-  tree.addSphereColor(SPHERES.CHESED, "blue", { 
-    colorDescription: "Blue",
-    colorNames: ["blue"],
-    colorHexCodes: ["#0000FF"]
-  }, FOUR_WORLDS.BRIAH);
+  tree.addSphereColor(SPHERES.CHESED, COLORS.BLUE, COLORS_DATA.BLUE, FOUR_WORLDS.BRIAH);
   tree.addSphereColor(SPHERES.CHESED, "intense-purple", { 
     colorDescription: "Intense purple",
     colorNames: ["intense-purple"],
@@ -373,15 +369,11 @@ export function loadColors(tree: TreeOfLife) {
   }, FOUR_WORLDS.YETZIRAH);
   tree.addSphereColor(SPHERES.CHESED, "intense-blue-speckled-yellow", { 
     colorDescription: "Intense blue speckled with yellow",
-    colorNames: ["intense-blue", "yellow"],
-    colorHexCodes: ["#0000FF", "#FFF50F"]
+    colorNames: ["intense-blue", ...COLORS_DATA.YELLOW.colorNames],
+    colorHexCodes: ["#0000FF", ...COLORS_DATA.YELLOW.colorHexCodes]
   }, FOUR_WORLDS.ASSIAH);
 
-  tree.addSphereColor(SPHERES.GEBURAH, "orange", { 
-    colorDescription: "Orange",
-    colorNames: ["orange"],
-    colorHexCodes: ["#FFA800"]
-  }, FOUR_WORLDS.ATZILUTH);
+  tree.addSphereColor(SPHERES.GEBURAH, COLORS.ORANGE, COLORS_DATA.ORANGE, FOUR_WORLDS.ATZILUTH);
   tree.addSphereColor(SPHERES.GEBURAH, "scarlet-red", { 
     colorDescription: "Scarlet red",
     colorNames: ["scarlet-red"],
@@ -394,8 +386,8 @@ export function loadColors(tree: TreeOfLife) {
   }, FOUR_WORLDS.YETZIRAH);
   tree.addSphereColor(SPHERES.GEBURAH, "red-speckled-black", { 
     colorDescription: "Red speckled with black",
-    colorNames: ["red", "black"],
-    colorHexCodes: ["#FF0000", "#000000"]
+    colorNames: [...COLORS_DATA.RED.colorNames, "black"],
+    colorHexCodes: [...COLORS_DATA.RED.colorHexCodes, "#000000"]
   }, FOUR_WORLDS.ASSIAH);
 
   tree.addSphereColor(SPHERES.TIPHARETH, "gold-yellow", { 
@@ -445,11 +437,7 @@ export function loadColors(tree: TreeOfLife) {
     colorNames: ["violet-purple"],
     colorHexCodes: ["#9B30FF"]
   }, FOUR_WORLDS.ATZILUTH);
-  tree.addSphereColor(SPHERES.HOD, "orange", { 
-    colorDescription: "Orange",
-    colorNames: ["orange"],
-    colorHexCodes: ["#FFA800"]
-  }, FOUR_WORLDS.BRIAH);
+  tree.addSphereColor(SPHERES.HOD, COLORS.ORANGE, COLORS_DATA.ORANGE, FOUR_WORLDS.BRIAH);
   tree.addSphereColor(SPHERES.HOD, "red-purple", { 
     colorDescription: "Red-purple",
     colorNames: ["red-purple"],
@@ -466,11 +454,7 @@ export function loadColors(tree: TreeOfLife) {
     colorNames: ["indigo"],
     colorHexCodes: ["#4B0082"]
   }, FOUR_WORLDS.YETZIRAH);
-  tree.addSphereColor(SPHERES.YESOD, "violet", { 
-    colorDescription: "Violet",
-    colorNames: ["violet"],
-    colorHexCodes: ["#8F00FF"]
-  }, FOUR_WORLDS.BRIAH);
+  tree.addSphereColor(SPHERES.YESOD, COLORS.VIOLET, COLORS_DATA.VIOLET, FOUR_WORLDS.BRIAH);
   tree.addSphereColor(SPHERES.YESOD, "purple", { 
     colorDescription: "Purple",
     colorNames: ["purple"],
@@ -482,11 +466,7 @@ export function loadColors(tree: TreeOfLife) {
     colorHexCodes: ["#E4D00A", "#1E90FF"]
   }, FOUR_WORLDS.ASSIAH);
 
-  tree.addSphereColor(SPHERES.MALKUTH, "yellow", { 
-    colorDescription: "Yellow",
-    colorNames: ["yellow"],
-    colorHexCodes: ["#FFF50F"]
-  }, FOUR_WORLDS.ATZILUTH);
+  tree.addSphereColor(SPHERES.MALKUTH, COLORS.YELLOW, COLORS_DATA.YELLOW, FOUR_WORLDS.ATZILUTH);
   tree.addSphereColor(SPHERES.MALKUTH, "brown", { 
     colorDescription: "Made up of the colors of earth, which is created from the 4 elements. Brown can be used to represent it, but, usually it is represented in a pizza-like pattern, starting with Olive on top, and going clockwise with Yellow, Black and Red, all with slightly less saturation.",
     colorNames: ["brown", "olive", "yellow", "black", "red"],
@@ -522,14 +502,8 @@ export function loadMusicalNotes(tree: TreeOfLife) {
     note: "Mantra",
     noteDescription: "All sounds considered devotional mantras"
   });
-  tree.addMusicalNote(SPHERES.BINAH, "Si", {
-    note: "Si",
-    noteDescription: "B (Si)"
-  });
-  tree.addMusicalNote(SPHERES.CHESED, "La", {
-    note: "La",
-    noteDescription: "A (La)"
-  });
+  tree.addMusicalNote(SPHERES.BINAH, MUSICAL_NOTES.SI, MUSICAL_NOTES_DATA.SI);
+  tree.addMusicalNote(SPHERES.CHESED, MUSICAL_NOTES.LA, MUSICAL_NOTES_DATA.LA);
   tree.addMusicalNote(SPHERES.GEBURAH, "Do-treble", {
     note: "Do",
     noteDescription: "C (Do), in the treble clef"
@@ -538,22 +512,10 @@ export function loadMusicalNotes(tree: TreeOfLife) {
     note: "Sol",
     noteDescription: "G (Sol), in the treble clef"
   });
-  tree.addMusicalNote(SPHERES.NETZACH, "Do", {
-    note: "Do",
-    noteDescription: "C (Do)"
-  });
-  tree.addMusicalNote(SPHERES.HOD, "Mi", {
-    note: "Mi",
-    noteDescription: "E (Mi)"
-  });
-  tree.addMusicalNote(SPHERES.YESOD, "Mi", {
-    note: "Mi",
-    noteDescription: "E (Mi)"
-  });
-  tree.addMusicalNote(SPHERES.MALKUTH, "Fa", {
-    note: "Fa",
-    noteDescription: "F (Fa)"
-  });
+  tree.addMusicalNote(SPHERES.NETZACH, MUSICAL_NOTES.DO, MUSICAL_NOTES_DATA.DO);
+  tree.addMusicalNote(SPHERES.HOD, MUSICAL_NOTES.MI, MUSICAL_NOTES_DATA.MI);
+  tree.addMusicalNote(SPHERES.YESOD, MUSICAL_NOTES.MI, MUSICAL_NOTES_DATA.MI);
+  tree.addMusicalNote(SPHERES.MALKUTH, MUSICAL_NOTES.FA, MUSICAL_NOTES_DATA.FA);
 
   return tree;
 }
@@ -565,7 +527,7 @@ export function unloadMusicalNotes(tree: TreeOfLife) {
   }
 }
 
-const linkColorsAndSigns = (t: TreeOfLife) => {
+const linkColorsAndSounds = (t: TreeOfLife) => {
   // TODO: implement
   return t;
 }
@@ -612,6 +574,6 @@ export const BRIDGES: Bridge[] = [
   {
     id: 'hermetic-qabalah-color-music',
     needs: ['colors', 'music'],
-    run: t => linkColorsAndSigns(t) 
+    run: t => linkColorsAndSounds(t) 
   },
 ]
