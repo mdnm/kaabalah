@@ -1,4 +1,4 @@
-import { ColorData, HebrewLetterData, MusicalNoteData, PathData, TarotArkAnnuData, WesternZodiacSignData, WorldData } from "./constants";
+import { ColorData, HebrewLetterData, LatinLetterData, MusicalNoteData, PathData, TarotArkAnnuData, WesternZodiacSignData, WorldData } from "./constants";
 
 import { SphereData } from "./constants";
 
@@ -58,7 +58,7 @@ export const id = <T extends NodeType>(
   value: string | number,
 ): NodeId<T> => `${type}:${value}` as NodeId<T>;
 
-export const parseId = <T extends NodeType>(nodeId: NodeId<T>) => {
+export const parseId = <T extends NodeType>(nodeId: NodeId<T>): string => {
   const parsedId = nodeId.split(':');
 
   if (parsedId.length !== 2) {
@@ -73,6 +73,7 @@ interface DataMap {
   path: PathData
   world: WorldData
   hebrewLetter: HebrewLetterData
+  latinLetter: LatinLetterData
   color: ColorData
   musicalNote: MusicalNoteData
   westernZodiacSign: WesternZodiacSignData

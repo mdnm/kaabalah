@@ -1,18 +1,26 @@
-import { HEBREW_LETTERS } from "../core/constants"
+import { HEBREW_LETTERS, LATIN_LETTERS } from "../core/constants"
 import { createTree } from "../core/factory"
 import { SYSTEM as KAABALAH_SYSTEM } from "../core/systems/kaabalah"
 import { TreeOfLife } from "../core/tree-of-life"
-import { id, LetterTypes, Node } from "../core/types"
+import { id, LetterTypes, Node, NodeId, parseId } from "../core/types"
+
+const DIGRAPHS = new Set<string>([
+  LATIN_LETTERS.PH,
+  LATIN_LETTERS.TS,
+  LATIN_LETTERS.TZ,
+  LATIN_LETTERS.SH,
+  LATIN_LETTERS.CH,
+  LATIN_LETTERS.TH,
+  LATIN_LETTERS.KH,
+]);
 
 const reduceToSingleDigitWithSteps = (num: number) => {
-  const steps = [num]
-  let currentNum = num
+  const steps = [num];
+  let currentNum = num;
 
   while (currentNum > 9) {
-    currentNum = String(currentNum)
-      .split("")
-      .reduce((acc, digit) => acc + parseInt(digit), 0)
-    steps.push(currentNum)
+    currentNum = String(currentNum).split("").reduce((acc, digit) => acc + parseInt(digit), 0);
+    steps.push(currentNum);
   }
 
   return {
@@ -21,172 +29,284 @@ const reduceToSingleDigitWithSteps = (num: number) => {
   }
 }
 
-const isVowel = (letter: string) => {
-  return ["A", "Ã", "E", "I", "O", "U", "Y", "W"].includes(letter)
+interface LetterResult {
+  latinLetterId: string;
+  value: number;
+  hebrewLetterId: string;
+  hebrewCharacter: string;
+  isVowel: boolean;
 }
 
-export const calculateGematria = (word: string, options: {
-  calculateMissingGematriaValues?: boolean;
-  calculateLetterPercentages?: boolean;
-} = {}, tree?: TreeOfLife) => {
-  if (tree && tree.activeSystem !== KAABALAH_SYSTEM) {
-    throw new Error(`Gematria calculations require the ${KAABALAH_SYSTEM} system to be loaded`);
+interface WordResult {
+  letters: LetterResult[];
+  vowelsSum: number;
+  consonantsSum: number;
+  includedGematriaValues: Set<number>;
+}
+
+interface GematriaState {
+  includedLetters: LetterResult[];
+  vowelsSum: number;
+  consonantsSum: number;
+  includedGematriaValues: Set<number>;
+}
+
+interface LetterPercentages {
+  percentageOfVowels: number;
+  percentageOfConsonants: number;
+  letters: Record<string, number>;
+}
+
+function normalizeLetter(letter: string): string {
+  if (letter.toUpperCase() === 'Ã') return 'Ã';
+  if (letter.toUpperCase() === 'Ç') return 'Ç';
+
+  return letter.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function getLetterMapping({
+  tree,
+  letterId,
+  isStarting,
+}: {
+  tree: TreeOfLife,
+  letterId: NodeId<LetterTypes.LATIN_LETTER>,
+  isStarting: boolean,
+}): Node<LetterTypes.HEBREW_LETTER> | undefined {
+  if (isStarting && parseId(letterId) === 'O') {
+    return tree.getNode(id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN))
   }
 
+  return tree.walk(letterId, 2, LetterTypes.HEBREW_LETTER).at(0)
+}
+
+function processLetter(
+  tree: TreeOfLife,
+  letters: string[],
+  i: number
+): { result?: LetterResult; skipNext: boolean } {
+  const letter = normalizeLetter(letters[i]).toLocaleUpperCase()
+  const nextLetter = letters[i + 1] ? normalizeLetter(letters[i + 1]).toLocaleLowerCase() : ""
+  const combinedLetter = letter + nextLetter
+
+  if (DIGRAPHS.has(combinedLetter)) {
+    const isEnding = i > 0 && i === letters.length - 2
+    const latinLetterId = id(LetterTypes.LATIN_LETTER, combinedLetter)
+    const mapping = getLetterMapping({ tree, letterId: latinLetterId, isStarting: false })
+
+    if (!mapping?.data) {
+      return { skipNext: false }
+    }
+
+    const useWhenEndingValue = isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined
+
+    return {
+      result: {
+        latinLetterId,
+        value: useWhenEndingValue ? mapping.data.gematriaValueWhenEnding! : mapping.data.gematriaValue,
+        hebrewCharacter: useWhenEndingValue ? mapping.data.characterWhenEnding! : mapping.data.character,
+        hebrewLetterId: mapping.id,
+        isVowel: false,
+      },
+      skipNext: true,
+    }
+  }
+
+  const isStarting = i === 0
+  const latinLetterId = id(LetterTypes.LATIN_LETTER, letter)
+  const mapping = getLetterMapping({ tree, letterId: latinLetterId, isStarting })
+  
+  if (!mapping?.data) {
+    return { skipNext: false }
+  }
+  
+  const isEnding = i > 0 && i === letters.length - 1
+  const latinLetter = tree.getNode(latinLetterId);
+  const useWhenEndingValue = isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined
+
+  return {
+    result: {
+      latinLetterId,
+      value: useWhenEndingValue ? mapping.data.gematriaValueWhenEnding! : mapping.data.gematriaValue,
+      hebrewCharacter: useWhenEndingValue ? mapping.data.characterWhenEnding! : mapping.data.character,
+      hebrewLetterId: mapping.id,
+      isVowel: latinLetter?.data?.isVowel ?? false,
+    },
+    skipNext: false,
+  }
+}
+
+function processWord(word: string, tree: TreeOfLife): WordResult {
+  const letters = word.split("")
+  let i = 0;
+
+  let wordState: WordResult = {
+    letters: [],
+    vowelsSum: 0,
+    consonantsSum: 0,
+    includedGematriaValues: new Set(),
+  }
+
+  while (i < letters.length) {
+    const { result, skipNext } = processLetter(tree, letters, i);
+
+    if (result) {
+      wordState = {
+        letters: [...wordState.letters, result],
+        vowelsSum: wordState.vowelsSum + (result.isVowel ? result.value : 0),
+        consonantsSum: wordState.consonantsSum + (result.isVowel ? 0 : result.value),
+        includedGematriaValues: new Set([...wordState.includedGematriaValues, result.value]),
+      }
+    }
+  
+    i += skipNext ? 2 : 1;
+  }
+
+  return wordState
+}
+
+function calculateLetterPercentages(
+  word: string,
+  tree: TreeOfLife,
+  prev: LetterPercentages
+): LetterPercentages {
+  const letters = word.split("");
+  const letterCount = letters.length;
+  
+  let vowelsCount = 0;
+  let consonantsCount = 0;
+  
+  const newLetters = { ...prev.letters };
+  
+  for (const letter of new Set(letters)) {
+    const occurrences = letters.filter(l => l === letter).length;
+    const latinLetter = tree.getNode(id(LetterTypes.LATIN_LETTER, letter));
+    newLetters[letter] = (occurrences / letterCount) * 100;
+
+    if (latinLetter?.data?.isVowel) {
+      vowelsCount += occurrences;
+    } else {
+      consonantsCount += occurrences;
+    }
+  }
+  return {
+    percentageOfVowels: (vowelsCount / letterCount) * 100,
+    percentageOfConsonants: (consonantsCount / letterCount) * 100,
+    letters: newLetters,
+  }
+}
+
+function getMissingGematriaValues(
+  tree: TreeOfLife,
+  includedGematriaValues: Set<number>,
+) {
+  const missingGematriaValues: { value: number, hebrewLetterId: string, whenEnding: boolean }[] = []
+
+  for (const hebrewLetter of Object.values(HEBREW_LETTERS)) {
+    const hebrewLetterId = id(LetterTypes.HEBREW_LETTER, hebrewLetter);
+    const hebrewLetterNode = tree.getNode(hebrewLetterId);
+
+    if (!hebrewLetterNode?.data) continue;
+
+    if (!includedGematriaValues.has(hebrewLetterNode.data.gematriaValue)) {
+      missingGematriaValues.push({
+        value: hebrewLetterNode.data.gematriaValue,
+        hebrewLetterId,
+        whenEnding: false,
+      });
+    }
+
+    if (
+      hebrewLetterNode.data.gematriaValueWhenEnding &&
+      !includedGematriaValues.has(hebrewLetterNode.data.gematriaValueWhenEnding)
+    ) {
+      missingGematriaValues.push({
+        value: hebrewLetterNode.data.gematriaValueWhenEnding,
+        hebrewLetterId,
+        whenEnding: true,
+      });
+    }
+  }
+
+  missingGematriaValues.sort((a, b) => a.value - b.value);
+
+  return missingGematriaValues;
+}
+
+export const calculateGematria = (
+  phrase: string,
+  options: {
+    missing?: boolean;
+    percentages?: boolean;
+  } = {
+    missing: false,
+    percentages: false,
+  },
+  tree?: TreeOfLife
+) => {
   if (!tree) {
+    // todo: study the possibility of pre-calculating the mappings
     tree = createTree({ system: KAABALAH_SYSTEM, parts: [] })
   }
+  const words = phrase.toUpperCase().trim().split(" ")
 
-  const includedLetters: { latinLetterId: string, value: number, hebrewLetterId: string, hebrewCharacter: string, isVowel: boolean }[] = []
-  const words = word.toUpperCase().trim().split(" ")
-  let vowelsSum = 0
-  let consonantsSum = 0
+  const initialState: GematriaState = {
+    includedLetters: [],
+    vowelsSum: 0,
+    consonantsSum: 0,
+    includedGematriaValues: new Set(),
+  }
 
-  const includedGematriaValues = new Set<number>()
+  const finalState = words.reduce<GematriaState>((state, word) => {
+    const wordResult = processWord(word, tree);
+    
+    return {
+      includedLetters: [...state.includedLetters, ...wordResult.letters],
+      vowelsSum: state.vowelsSum + wordResult.vowelsSum,
+      consonantsSum: state.consonantsSum + wordResult.consonantsSum,
+      includedGematriaValues: new Set([
+        ...Array.from(state.includedGematriaValues),
+        ...Array.from(wordResult.includedGematriaValues),
+      ]),
+    }
+  }, initialState)
 
-  const letterPercentages: { percentageOfVowels: number, percentageOfConsonants: number, letters: Record<string, number> } = {
+  let letterPercentages: LetterPercentages = {
     percentageOfVowels: 0,
     percentageOfConsonants: 0,
     letters: {},
-  }
+  };
 
-  for (const word of words) {
-    const letters = word.split("")
+  if (options?.percentages) {
+    letterPercentages = words.reduce<LetterPercentages>((acc, word) => {
+      return calculateLetterPercentages(word, tree, acc)
+    }, letterPercentages)
+  };
 
-    for (let i = 0; i < letters.length; i++) {
-      const letter = letters[i].toLocaleUpperCase()
-      const nextLetter = letters[i + 1]?.toLocaleLowerCase() || ""
-
-      // Digraphs
-      if (["P", "T", "K", "S", "C"].includes(letter) && nextLetter) {
-        const combinedLetter = letter + nextLetter
-        // -2 here since we're checking 2 letters
-        const isEnding = i > 0 && i === letters.length - 2
-
-        // should only have a single connection
-        const latinLetterId = id(LetterTypes.LATIN_LETTER, combinedLetter);
-        const [mapping] = tree.walk(latinLetterId, 2, LetterTypes.HEBREW_LETTER)
-        if (mapping?.data) {
-          let hebrewCharacter = mapping.data.character
-          let value = mapping.data.gematriaValue
-          if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined) {
-            hebrewCharacter = mapping.data.characterWhenEnding
-            value = mapping.data.gematriaValueWhenEnding
-          }
-
-          includedGematriaValues.add(value)
-          includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, hebrewCharacter, isVowel: isVowel(letter) })
-          consonantsSum += value
-          i++
-          continue
-        }
-      }
-
-      // only case we can have multiple connections is with O (Vav and Ayin, but considered Ayin only when starting the word)
-      let mapping: Node<LetterTypes.HEBREW_LETTER> | undefined;
-      const latinLetterId = id(LetterTypes.LATIN_LETTER, letter);
-      const isStarting = i === 0
-      if (isStarting && letter === 'O') {
-        mapping = tree.getNode(id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN));
-      } else {
-        mapping = (tree.walk(latinLetterId, 2, LetterTypes.HEBREW_LETTER)).at(0)
-      }
-
-      const isEnding = i > 0 && i === letters.length - 1
-      if (mapping?.data) {
-        let value = mapping.data.gematriaValue
-        let hebrewCharacter = mapping.data.character
-        if (isEnding && mapping.data.gematriaValueWhenEnding !== undefined && mapping.data.characterWhenEnding !== undefined) {
-          value = mapping.data.gematriaValueWhenEnding
-          hebrewCharacter = mapping.data.characterWhenEnding
-        }
-
-        includedGematriaValues.add(value)
-        includedLetters.push({ latinLetterId, value, hebrewLetterId: mapping.id, hebrewCharacter, isVowel: isVowel(letter) })
-
-        if (isVowel(letter)) {
-          vowelsSum += value
-        } else {
-          consonantsSum += value
-        }
-      }
-    }
-
-    if (options?.calculateLetterPercentages) {
-      const letterCount = letters.length;
-      let vowelsCount = 0
-      let consonantsCount = 0
+  const vowelsReduction = reduceToSingleDigitWithSteps(finalState.vowelsSum)
+  const consonantsReduction = reduceToSingleDigitWithSteps(finalState.consonantsSum)
+  const synthesisReduction = reduceToSingleDigitWithSteps(finalState.vowelsSum + finalState.consonantsSum)
   
-      for (const letter of new Set(letters)) {
-        const occurrences = letters.filter(l => l === letter).length
-  
-        letterPercentages.letters[letter] = (occurrences / letterCount) * 100
-  
-        if (isVowel(letter)) {
-          vowelsCount += occurrences
-        } else {
-          consonantsCount += occurrences
-        }
-      }
-  
-      letterPercentages.percentageOfVowels = (vowelsCount / letterCount) * 100
-      letterPercentages.percentageOfConsonants = (consonantsCount / letterCount) * 100
-    }
-  }
-
-  const vowelsReduction = reduceToSingleDigitWithSteps(vowelsSum)
-  const consonantsReduction = reduceToSingleDigitWithSteps(consonantsSum)
-  const synthesisReduction = reduceToSingleDigitWithSteps(
-    vowelsSum + consonantsSum
-  )
-
-  const missingGematriaValues: { value: number, hebrewLetterId: string, whenEnding: boolean }[] = []
-  if (options?.calculateMissingGematriaValues) {
-    for (const hebrewLetter of Object.values(HEBREW_LETTERS)) {
-      const hebrewLetterId = id(LetterTypes.HEBREW_LETTER, hebrewLetter);
-      const hebrewLetterNode = tree.getNode(hebrewLetterId);
-      if (!hebrewLetterNode?.data) {
-        continue
-      }
-
-      if (!includedGematriaValues.has(hebrewLetterNode.data.gematriaValue)) {
-        missingGematriaValues.push({
-          value: hebrewLetterNode.data.gematriaValue,
-          hebrewLetterId,
-          whenEnding: false
-        })
-      }
-
-      if (hebrewLetterNode.data.gematriaValueWhenEnding && !includedGematriaValues.has(hebrewLetterNode.data.gematriaValueWhenEnding)) {
-        missingGematriaValues.push({
-          value: hebrewLetterNode.data.gematriaValueWhenEnding,
-          hebrewLetterId,
-          whenEnding: true
-        })
-      }
-    }
-
-    missingGematriaValues.sort((a, b) => a.value - b.value)
-  }
+  const missingGematriaValues = options?.missing ? getMissingGematriaValues(tree, finalState.includedGematriaValues) : undefined;
 
   return {
     vowels: {
-      originalSum: vowelsSum,
+      originalSum: finalState.vowelsSum,
       reductionSteps: vowelsReduction.steps,
-      finalValue: vowelsReduction.finalValue
+      finalValue: vowelsReduction.finalValue,
     },
     consonants: {
-      originalSum: consonantsSum,
+      originalSum: finalState.consonantsSum,
       reductionSteps: consonantsReduction.steps,
-      finalValue: consonantsReduction.finalValue
+      finalValue: consonantsReduction.finalValue,
     },
     synthesis: {
-      originalSum: vowelsSum + consonantsSum,
+      originalSum: finalState.vowelsSum + finalState.consonantsSum,
       reductionSteps: synthesisReduction.steps,
-      finalValue: synthesisReduction.finalValue
+      finalValue: synthesisReduction.finalValue,
     },
-    includedLetters,
-    missingGematriaValues: options?.calculateMissingGematriaValues ? missingGematriaValues : undefined,
-    letterPercentages: options?.calculateLetterPercentages ? letterPercentages : undefined,
+    includedLetters: finalState.includedLetters,
+    missingGematriaValues,
+    letterPercentages: options?.percentages ? letterPercentages : undefined,
   }
 }

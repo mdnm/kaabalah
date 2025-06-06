@@ -1,4 +1,4 @@
-import { COLORS, COLORS_DATA, FOUR_WORLDS, FOUR_WORLDS_DATA, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, MELKITZEDEKI_PATHS, MUSICAL_NOTES, MUSICAL_NOTES_DATA, PLANETS, SPHERES, SPHERES_DATA, WESTERN_ELEMENTS } from '../constants';
+import { COLORS, COLORS_DATA, FOUR_WORLDS, FOUR_WORLDS_DATA, HEBREW_LETTERS, HEBREW_LETTERS_DATA, LATIN_LETTERS, LATIN_LETTERS_DATA, MELKITZEDEKI_PATHS, MUSICAL_NOTES, MUSICAL_NOTES_DATA, PLANETS, SPHERES, SPHERES_DATA, WESTERN_ELEMENTS } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
 import { BaseNode, id, KaabalahTypes, LetterTypes, MiscTypes, NodeData, NodeId, WesternAstrologyTypes } from '../types';
 import { Bridge, Loader, Unloader } from './registry';
@@ -115,8 +115,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.CHOKHMAH],
       relatedNumber: MELKITZEDEKI_PATHS.KETHER_CHOKHMAH,
       letters: [
-        { letter: LATIN_LETTERS.E, type: LetterTypes.LATIN_LETTER },
-        { letter: HEBREW_LETTERS.HE, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.HE }
+        { letter: LATIN_LETTERS.A, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.A },
+        { letter: HEBREW_LETTERS.ALEPH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.ALEPH }
       ],
     },
     {
@@ -124,7 +124,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.BINAH],
       relatedNumber: MELKITZEDEKI_PATHS.KETHER_BINAH,
       letters: [
-        { letter: LATIN_LETTERS.B, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.B, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.B },
         { letter: HEBREW_LETTERS.BETH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.BETH }
       ],
     },
@@ -133,7 +133,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.TIPHARETH],
       relatedNumber: MELKITZEDEKI_PATHS.KETHER_TIPHARETH,
       letters: [
-        { letter: LATIN_LETTERS.G, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.G, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.G },
         { letter: HEBREW_LETTERS.GIMEL, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.GIMEL }
       ],
     },
@@ -142,7 +142,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.BINAH],
       relatedNumber: MELKITZEDEKI_PATHS.CHOKHMAH_BINAH,
       letters: [
-        { letter: LATIN_LETTERS.D, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.D, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.D },
         { letter: HEBREW_LETTERS.DALET, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.DALET }
       ],
     },
@@ -151,8 +151,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.TIPHARETH],
       relatedNumber: MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH,
       letters: [
-        { letter: LATIN_LETTERS.E, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.Ã, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.E, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.E },
+        { letter: LATIN_LETTERS.Ã, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.Ã },
         { letter: HEBREW_LETTERS.HE, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.HE }
       ],
     },
@@ -161,10 +161,10 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.CHESED],
       relatedNumber: MELKITZEDEKI_PATHS.CHOKHMAH_CHESED,
       letters: [
-        { letter: LATIN_LETTERS.V, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.U, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.W, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.O, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.V, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.V },
+        { letter: LATIN_LETTERS.U, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.U },
+        { letter: LATIN_LETTERS.W, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.W },
+        { letter: LATIN_LETTERS.O, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.O },
         { letter: HEBREW_LETTERS.VAV, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.VAV }
       ],
     },
@@ -173,7 +173,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.TIPHARETH],
       relatedNumber: MELKITZEDEKI_PATHS.BINAH_TIPHARETH,
       letters: [
-        { letter: LATIN_LETTERS.Z, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.Z, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.Z },
         { letter: HEBREW_LETTERS.ZAYIN, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.ZAYIN }
       ],
     },
@@ -182,7 +182,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.GEBURAH],
       relatedNumber: MELKITZEDEKI_PATHS.BINAH_GEBURAH,
       letters: [
-        { letter: LATIN_LETTERS.H, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.H, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.H },
         { letter: HEBREW_LETTERS.HET, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.HET }
       ],
     },
@@ -191,7 +191,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.GEBURAH],
       relatedNumber: MELKITZEDEKI_PATHS.CHESED_GEBURAH,
       letters: [
-        { letter: LATIN_LETTERS.T, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.T, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.T },
         { letter: HEBREW_LETTERS.TET, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.TET }
       ],
     },
@@ -200,9 +200,9 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.TIPHARETH],
       relatedNumber: MELKITZEDEKI_PATHS.CHESED_TIPHARETH,
       letters: [
-        { letter: LATIN_LETTERS.I, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.Y, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.J, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.I, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.I },
+        { letter: LATIN_LETTERS.Y, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.Y },
+        { letter: LATIN_LETTERS.J, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.J },
         { letter: HEBREW_LETTERS.YOD, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.YOD }
       ],
     },
@@ -211,7 +211,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.NETZACH],
       relatedNumber: MELKITZEDEKI_PATHS.CHESED_NETZACH,
       letters: [
-        { letter: LATIN_LETTERS.C, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.C, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.C },
         { letter: HEBREW_LETTERS.KAPH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.KAPH }
       ],
     },
@@ -220,7 +220,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.TIPHARETH],
       relatedNumber: MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH,
       letters: [
-        { letter: LATIN_LETTERS.L, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.L, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.L },
         { letter: HEBREW_LETTERS.LAMED, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.LAMED }
       ],
     },
@@ -229,7 +229,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.HOD],
       relatedNumber: MELKITZEDEKI_PATHS.GEBURAH_HOD,
       letters: [
-        { letter: LATIN_LETTERS.M, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.M, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.M },
         { letter: HEBREW_LETTERS.MEM, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.MEM }
       ],
     },
@@ -238,7 +238,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.NETZACH],
       relatedNumber: MELKITZEDEKI_PATHS.TIPHARETH_NETZACH,
       letters: [
-        { letter: LATIN_LETTERS.N, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.N, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.N },
         { letter: HEBREW_LETTERS.NUN, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.NUN }
       ],
     },
@@ -247,8 +247,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.YESOD],
       relatedNumber: MELKITZEDEKI_PATHS.TIPHARETH_YESOD,
       letters: [
-        { letter: LATIN_LETTERS.S, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.Ç, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.S, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.S },
+        { letter: LATIN_LETTERS.Ç, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.Ç },
         { letter: HEBREW_LETTERS.SAMEKH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.SAMEKH }
       ],
     },
@@ -257,7 +257,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.HOD],
       relatedNumber: MELKITZEDEKI_PATHS.TIPHARETH_HOD,
       letters: [
-        { letter: LATIN_LETTERS.O, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.O, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.O },
         { letter: HEBREW_LETTERS.AYIN, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.AYIN }
       ],
     },
@@ -266,9 +266,9 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.HOD],
       relatedNumber: MELKITZEDEKI_PATHS.NETZACH_HOD,
       letters: [
-        { letter: LATIN_LETTERS.P, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.F, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.PH, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.P, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.P },
+        { letter: LATIN_LETTERS.F, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.F },
+        { letter: LATIN_LETTERS.PH, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.PH },
         { letter: HEBREW_LETTERS.PE, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.PE }
       ],
     },
@@ -277,8 +277,8 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.YESOD],
       relatedNumber: MELKITZEDEKI_PATHS.NETZACH_YESOD,
       letters: [
-        { letter: LATIN_LETTERS.TS, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.TZ, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.TS, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.TS },
+        { letter: LATIN_LETTERS.TZ, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.TZ },
         { letter: HEBREW_LETTERS.TSADI, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.TSADI }
       ],
     },
@@ -287,9 +287,9 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.MALKUTH],
       relatedNumber: MELKITZEDEKI_PATHS.NETZACH_MALKUTH,
       letters: [
-        { letter: LATIN_LETTERS.K, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.Q, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.KH, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.K, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.K },
+        { letter: LATIN_LETTERS.Q, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.Q },
+        { letter: LATIN_LETTERS.KH, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.KH },
         { letter: HEBREW_LETTERS.QOPH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.QOPH }
       ],
     },
@@ -298,7 +298,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.YESOD],
       relatedNumber: MELKITZEDEKI_PATHS.HOD_YESOD,
       letters: [
-        { letter: LATIN_LETTERS.R, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.R, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.R },
         { letter: HEBREW_LETTERS.RESH, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.RESH }
       ],
     },
@@ -307,9 +307,9 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.MALKUTH],
       relatedNumber: MELKITZEDEKI_PATHS.HOD_MALKUTH,
       letters: [
-        { letter: LATIN_LETTERS.CH, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.SH, type: LetterTypes.LATIN_LETTER },
-        { letter: LATIN_LETTERS.X, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.CH, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.CH },
+        { letter: LATIN_LETTERS.SH, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.SH },
+        { letter: LATIN_LETTERS.X, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.X },
         { letter: HEBREW_LETTERS.SHIN, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.SHIN }
       ],
     },
@@ -318,7 +318,7 @@ export function loadHermeticQabalah(tree: TreeOfLife) {
       rightSphere: sphereIds[SPHERES.MALKUTH],
       relatedNumber: MELKITZEDEKI_PATHS.YESOD_MALKUTH,
       letters: [
-        { letter: LATIN_LETTERS.TH, type: LetterTypes.LATIN_LETTER },
+        { letter: LATIN_LETTERS.TH, type: LetterTypes.LATIN_LETTER, data: LATIN_LETTERS_DATA.TH },
         { letter: HEBREW_LETTERS.TAV, type: LetterTypes.HEBREW_LETTER, data: HEBREW_LETTERS_DATA.TAV }
       ],
     },
@@ -599,6 +599,8 @@ export function loadColors(tree: TreeOfLife) {
       tree.link(colorId, id(KaabalahTypes.WORLD, worldColor.world));
     }
   }
+
+  // todo: add path colors (Israel Regardie's The Golden Dawn, Crowley's 777)
 
   return tree;
 }

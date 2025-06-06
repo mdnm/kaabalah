@@ -82,6 +82,10 @@ describe('calculateGematria', () => {
     expect(getSums(calculateGematria('RACHEL'))).toEqual({ vowels: 6, consonants: 530, synthesis: 536 })
     // Example: "JOÃO" = J(10)+O(6)+Ã(5)+O(6)
     expect(getSums(calculateGematria('JOÃO'))).toEqual({ vowels: 17, consonants: 10, synthesis: 27 })
+    // Example: "JOSÉ" = J(10)+O(6)+S(60)+E(5)
+    expect(getSums(calculateGematria('JOSÉ'))).toEqual({ vowels: 11, consonants: 70, synthesis: 81 })
+    // Example: "JUÇARA" = J(10)+U(6)+Ç(60)+A(1)+R(200)+A(1)
+    expect(getSums(calculateGematria('JUÇARA'))).toEqual({ vowels: 8, consonants: 270, synthesis: 278 })
   })
 
   it('should handle empty and non-letter input gracefully', () => {
@@ -90,7 +94,7 @@ describe('calculateGematria', () => {
   })
 
   it('should calculate missing letters', () => {
-    expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('ABCDEFGHIJKLMNOPQRSTUVWXYZ', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 90, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TAV), value: 400, whenEnding: false },
@@ -100,7 +104,7 @@ describe('calculateGematria', () => {
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 900, whenEnding: true },
     ])
-    expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('OABCDEFGHIJKLMNOPQRSTUVWXYZ', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 90, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TAV), value: 400, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.KAPH), value: 500, whenEnding: true },
@@ -109,35 +113,35 @@ describe('calculateGematria', () => {
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 900, whenEnding: true },
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZTS', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.KAPH), value: 500, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM), value: 600, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.NUN), value: 700, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZC', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM), value: 600, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.NUN), value: 700, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 900, whenEnding: true },
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZM', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.KAPH), value: 500, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.NUN), value: 700, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 900, whenEnding: true },
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZN', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.KAPH), value: 500, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM), value: 600, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.PE), value: 800, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.TSADI), value: 900, whenEnding: true },
     ])
-    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP', { calculateMissingGematriaValues: true }).missingGematriaValues).toEqual([
+    expect(calculateGematria('TZTHABCDEFGHIJKLMNOPQRSTUVWXYZP', { missing: true }).missingGematriaValues).toEqual([
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN), value: 70, whenEnding: false },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.KAPH), value: 500, whenEnding: true },
       { hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM), value: 600, whenEnding: true },
@@ -147,7 +151,7 @@ describe('calculateGematria', () => {
   })
 
   it('should calculate letter percentages', () => {
-    expect(calculateGematria('KAABALAH', { calculateLetterPercentages: true }).letterPercentages).toEqual({
+    expect(calculateGematria('KAABALAH', { percentages: true }).letterPercentages).toEqual({
       percentageOfVowels: 50,
       percentageOfConsonants: 50,
       letters: {
@@ -159,7 +163,7 @@ describe('calculateGematria', () => {
       }
     })
 
-    const { letterPercentages } = calculateGematria('MATEUS MOURA', { calculateLetterPercentages: true })
+    const { letterPercentages } = calculateGematria('MATEUS MOURA', { percentages: true })
 
     expect((letterPercentages?.percentageOfConsonants ?? 0) + (letterPercentages?.percentageOfVowels ?? 0)).toEqual(100)
     expect(letterPercentages?.percentageOfConsonants).toEqual(40)
@@ -186,7 +190,7 @@ describe('calculateGematria', () => {
     const { includedLetters } = calculateGematria('MATEUS MOURA')
 
     expect(includedLetters.length).toEqual(11)
-    expect(includedLetters.find(l => l.latinLetterId === id(LetterTypes.LATIN_LETTER, 'M'))).toMatchObject({ latinLetterId: id(LetterTypes.LATIN_LETTER, 'M'), value: 40, hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM), isVowel: false })
-    expect(includedLetters.find(l => l.latinLetterId === id(LetterTypes.LATIN_LETTER, 'O'))).toMatchObject({ latinLetterId: id(LetterTypes.LATIN_LETTER, 'O'), value: 6, hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.VAV), isVowel: true })
+    expect(includedLetters.find(l => l.latinLetterId === id(LetterTypes.LATIN_LETTER, 'M'))).toMatchObject({ latinLetterId: id(LetterTypes.LATIN_LETTER, 'M'), value: 40, hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.MEM) })
+    expect(includedLetters.find(l => l.latinLetterId === id(LetterTypes.LATIN_LETTER, 'O'))).toMatchObject({ latinLetterId: id(LetterTypes.LATIN_LETTER, 'O'), value: 6, hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.VAV) })
   })
 }) 
