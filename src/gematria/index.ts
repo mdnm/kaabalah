@@ -232,7 +232,7 @@ function getMissingGematriaValues(
 ) {
   const missingGematriaValues: {
     value: number;
-    hebrewLetterId: string;
+    hebrewLetterId: NodeId<LetterTypes.HEBREW_LETTER>;
     whenEnding: boolean;
   }[] = [];
 
