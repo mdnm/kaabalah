@@ -32,9 +32,9 @@ const reduceToSingleDigitWithSteps = (num: number) => {
 };
 
 interface LetterResult {
-  latinLetterId: string;
+  latinLetterId: NodeId<LetterTypes.LATIN_LETTER>;
   value: number;
-  hebrewLetterId: string;
+  hebrewLetterId: NodeId<LetterTypes.HEBREW_LETTER>;
   hebrewCharacter: string;
   isVowel: boolean;
 }
