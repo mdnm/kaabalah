@@ -11,7 +11,8 @@
     "lib": ["ES2020", "DOM"],
     "skipLibCheck": true,
     "allowJs": true,
-    "typeRoots": ["./node_modules/@types", "./wasm/src"]
+    "typeRoots": ["./node_modules/@types", "./wasm/src"],
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "wasm/src/**/*"],
   "exclude": ["node_modules", "dist"]

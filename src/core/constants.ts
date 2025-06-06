@@ -1,48 +1,5 @@
-export type NodeId = string;
+import { KaabalahTypes, LetterTypes, NodeData, NodeId, TarotTypes, WesternAstrologyTypes } from "./types";
 
-export type NodeType =
-  | "sphere"
-  | "path"
-  | "world"
-  | "number"
-  | "planet"
-  | "westernZodiacSign"
-  | "westernElement"
-  | "color"
-  | "tarotArkAnnu"
-  | "tarotSuit"
-  | "musicalNote"
-  | "hebrewLetter"
-  | "latinLetter"
-  | "sanskritLetter"
-  | "archeometerLetter"
-  | "chakra"
-  | "subtleBody"
-  | "uncategorized";
-
-export type NodeData<NodeType> = NodeType extends "sphere"
-  ? SphereData
-  : NodeType extends "path"
-  ? PathData
-  : NodeType extends "world"
-  ? WorldData
-  : NodeType extends "hebrewLetter"
-  ? HebrewLetterData
-  : NodeType extends "color"
-  ? ColorData
-  : NodeType extends "musicalNote"
-  ? MusicalNoteData
-  : NodeType extends "westernZodiacSign"
-  ? WesternZodiacSignData
-  : NodeType extends "tarotArkAnnu"
-  ? TarotArkAnnuData
-  : never;
-
-export interface Node<NodeType> {
-  id: NodeId;
-  type: NodeType;
-  data?: NodeData<NodeType>;
-}
 
 interface HermeticQabalahSphereData {
   /**
@@ -64,7 +21,7 @@ interface HermeticQabalahSphereData {
 }
 
 export type SphereData = {
-  hebrewName: string;
+  hebrewSpelling: string;
   englishName: string;
   // TODO: add magical images
   magicalImage?: string;
@@ -72,11 +29,11 @@ export type SphereData = {
 
 export type PathData = {
   meaning?: string;
+  from: NodeId<KaabalahTypes.SPHERE>;
+  to: NodeId<KaabalahTypes.SPHERE>;
 };
 
 export type WorldData = {
-  element: "fire" | "air" | "water" | "earth";
-  hebrewName: string;
   englishName: string;
 };
 
@@ -134,6 +91,13 @@ export const FOUR_WORLDS = {
   ASSIAH: "Assiah",
 } as const;
 
+export const FOUR_WORLDS_DATA: Record<keyof typeof FOUR_WORLDS, NodeData<KaabalahTypes.WORLD>> = {
+  ATZILUTH: { englishName: "World of Emanation" },
+  BRIAH: { englishName: "World of Creation" },
+  YETZIRAH: { englishName: "World of Formation" },
+  ASSIAH: { englishName: "World of Action" },
+} as const;
+
 export const SPHERES = {
   KETHER: "Kether",
   CHOKHMAH: "Chokhmah",
@@ -148,18 +112,18 @@ export const SPHERES = {
   MALKUTH: "Malkuth",
 } as const;
 
-export const SPHERES_DATA: Record<keyof typeof SPHERES, NodeData<"sphere">> = {
-  KETHER: { hebrewName: "כתר", englishName: "Crown" },
-  CHOKHMAH: { hebrewName: "חכמה", englishName: "Wisdom" },
-  BINAH: { hebrewName: "בינה", englishName: "Understanding" },
-  CHESED: { hebrewName: "חסד", englishName: "Mercy" },
-  GEBURAH: { hebrewName: "גבורה", englishName: "Severity" },
-  TIPHARETH: { hebrewName: "תפארת", englishName: "Beauty" },
-  NETZACH: { hebrewName: "נצח", englishName: "Victory" },
-  HOD: { hebrewName: "הוד", englishName: "Splendor" },
-  YESOD: { hebrewName: "יסוד", englishName: "Foundation" },
-  MALKUTH: { hebrewName: "מלכות", englishName: "Kingdom" },
-  DAATH: { hebrewName: "דעת", englishName: "Knowledge" },
+export const SPHERES_DATA: Record<keyof typeof SPHERES, NodeData<KaabalahTypes.SPHERE>> = {
+  KETHER: { hebrewSpelling: "כתר", englishName: "Crown" },
+  CHOKHMAH: { hebrewSpelling: "חכמה", englishName: "Wisdom" },
+  BINAH: { hebrewSpelling: "בינה", englishName: "Understanding" },
+  CHESED: { hebrewSpelling: "חסד", englishName: "Mercy" },
+  GEBURAH: { hebrewSpelling: "גבורה", englishName: "Severity" },
+  TIPHARETH: { hebrewSpelling: "תפארת", englishName: "Beauty" },
+  NETZACH: { hebrewSpelling: "נצח", englishName: "Victory" },
+  HOD: { hebrewSpelling: "הוד", englishName: "Splendor" },
+  YESOD: { hebrewSpelling: "יסוד", englishName: "Foundation" },
+  MALKUTH: { hebrewSpelling: "מלכות", englishName: "Kingdom" },
+  DAATH: { hebrewSpelling: "דעת", englishName: "Knowledge" },
 };
 
 export const PLANETS = {
@@ -201,7 +165,7 @@ export const WESTERN_ELEMENTS = {
 
 export const WESTERN_ZODIAC_SIGNS_DATA: Record<
   keyof typeof WESTERN_ZODIAC_SIGNS,
-  NodeData<"westernZodiacSign">
+  NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>
 > = {
   ARIES: {
     element: WESTERN_ELEMENTS.FIRE,
@@ -380,7 +344,7 @@ export const HEBREW_LETTERS = {
 
 export const HEBREW_LETTERS_DATA: Record<
   keyof typeof HEBREW_LETTERS,
-  NodeData<"hebrewLetter">
+  NodeData<LetterTypes.HEBREW_LETTER>
 > = {
   ALEPH: {
     gematriaValue: 1,
@@ -608,58 +572,58 @@ export const TAROT_ARKANNUS = {
   QUEEN_OF_WANDS: "Queen of Wands",
   KNIGHT_OF_WANDS: "Knight of Wands",
   PAGE_OF_WANDS: "Page of Wands",
-  ACE_OF_WANDS: "Ace of Wands",
-  TWO_OF_WANDS: "Two of Wands",
-  THREE_OF_WANDS: "Three of Wands",
-  FOUR_OF_WANDS: "Four of Wands",
-  FIVE_OF_WANDS: "Five of Wands",
-  SIX_OF_WANDS: "Six of Wands",
-  SEVEN_OF_WANDS: "Seven of Wands",
-  EIGHT_OF_WANDS: "Eight of Wands",
-  NINE_OF_WANDS: "Nine of Wands",
   TEN_OF_WANDS: "Ten of Wands",
+  NINE_OF_WANDS: "Nine of Wands",
+  EIGHT_OF_WANDS: "Eight of Wands",
+  SEVEN_OF_WANDS: "Seven of Wands",
+  SIX_OF_WANDS: "Six of Wands",
+  FIVE_OF_WANDS: "Five of Wands",
+  FOUR_OF_WANDS: "Four of Wands",
+  THREE_OF_WANDS: "Three of Wands",
+  TWO_OF_WANDS: "Two of Wands",
+  ACE_OF_WANDS: "Ace of Wands",
   KING_OF_CUPS: "King of Cups",
   QUEEN_OF_CUPS: "Queen of Cups",
   KNIGHT_OF_CUPS: "Knight of Cups",
   PAGE_OF_CUPS: "Page of Cups",
-  ACE_OF_CUPS: "Ace of Cups",
-  TWO_OF_CUPS: "Two of Cups",
-  THREE_OF_CUPS: "Three of Cups",
-  FOUR_OF_CUPS: "Four of Cups",
-  FIVE_OF_CUPS: "Five of Cups",
-  SIX_OF_CUPS: "Six of Cups",
-  SEVEN_OF_CUPS: "Seven of Cups",
-  EIGHT_OF_CUPS: "Eight of Cups",
-  NINE_OF_CUPS: "Nine of Cups",
   TEN_OF_CUPS: "Ten of Cups",
+  NINE_OF_CUPS: "Nine of Cups",
+  EIGHT_OF_CUPS: "Eight of Cups",
+  SEVEN_OF_CUPS: "Seven of Cups",
+  SIX_OF_CUPS: "Six of Cups",
+  FIVE_OF_CUPS: "Five of Cups",
+  FOUR_OF_CUPS: "Four of Cups",
+  THREE_OF_CUPS: "Three of Cups",
+  TWO_OF_CUPS: "Two of Cups",
+  ACE_OF_CUPS: "Ace of Cups",
   KING_OF_SWORDS: "King of Swords",
   QUEEN_OF_SWORDS: "Queen of Swords",
   KNIGHT_OF_SWORDS: "Knight of Swords",
   PAGE_OF_SWORDS: "Page of Swords",
-  ACE_OF_SWORDS: "Ace of Swords",
-  TWO_OF_SWORDS: "Two of Swords",
-  THREE_OF_SWORDS: "Three of Swords",
-  FOUR_OF_SWORDS: "Four of Swords",
-  FIVE_OF_SWORDS: "Five of Swords",
-  SIX_OF_SWORDS: "Six of Swords",
-  SEVEN_OF_SWORDS: "Seven of Swords",
-  EIGHT_OF_SWORDS: "Eight of Swords",
-  NINE_OF_SWORDS: "Nine of Swords",
   TEN_OF_SWORDS: "Ten of Swords",
+  NINE_OF_SWORDS: "Nine of Swords",
+  EIGHT_OF_SWORDS: "Eight of Swords",
+  SEVEN_OF_SWORDS: "Seven of Swords",
+  SIX_OF_SWORDS: "Six of Swords",
+  FIVE_OF_SWORDS: "Five of Swords",
+  FOUR_OF_SWORDS: "Four of Swords",
+  THREE_OF_SWORDS: "Three of Swords",
+  TWO_OF_SWORDS: "Two of Swords",
+  ACE_OF_SWORDS: "Ace of Swords",
   KING_OF_PENTACLES: "King of Pentacles",
   QUEEN_OF_PENTACLES: "Queen of Pentacles",
   KNIGHT_OF_PENTACLES: "Knight of Pentacles",
   PAGE_OF_PENTACLES: "Page of Pentacles",
-  ACE_OF_PENTACLES: "Ace of Pentacles",
-  TWO_OF_PENTACLES: "Two of Pentacles",
-  THREE_OF_PENTACLES: "Three of Pentacles",
-  FOUR_OF_PENTACLES: "Four of Pentacles",
-  FIVE_OF_PENTACLES: "Five of Pentacles",
-  SIX_OF_PENTACLES: "Six of Pentacles",
-  SEVEN_OF_PENTACLES: "Seven of Pentacles",
-  EIGHT_OF_PENTACLES: "Eight of Pentacles",
-  NINE_OF_PENTACLES: "Nine of Pentacles",
   TEN_OF_PENTACLES: "Ten of Pentacles",
+  NINE_OF_PENTACLES: "Nine of Pentacles",
+  EIGHT_OF_PENTACLES: "Eight of Pentacles",
+  SEVEN_OF_PENTACLES: "Seven of Pentacles",
+  SIX_OF_PENTACLES: "Six of Pentacles",
+  FIVE_OF_PENTACLES: "Five of Pentacles",
+  FOUR_OF_PENTACLES: "Four of Pentacles",
+  THREE_OF_PENTACLES: "Three of Pentacles",
+  TWO_OF_PENTACLES: "Two of Pentacles",
+  ACE_OF_PENTACLES: "Ace of Pentacles",
 } as const;
 
 export const TAROT_DECKS = {
@@ -669,7 +633,7 @@ export const TAROT_DECKS = {
 
 export const TAROT_ARKANNUS_DATA: Record<
   keyof typeof TAROT_ARKANNUS,
-  NodeData<"tarotArkAnnu">
+  NodeData<TarotTypes.TAROT_ARK_ANNU>
 > = {
   THE_MAGICIAN: {
     type: "major",
