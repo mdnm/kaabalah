@@ -48,6 +48,10 @@ export type HebrewLetterData = {
   characterWhenEnding?: string;
 };
 
+export type LatinLetterData = {
+  isVowel: boolean;
+};
+
 export type ColorData = {
   colorDescription: string;
   colorNames: string[];
@@ -316,6 +320,47 @@ export const LATIN_LETTERS = {
   Ç: "Ç",
   Ã: "Ã",
 } as const;
+
+export const LATIN_LETTERS_DATA: Record<
+  keyof typeof LATIN_LETTERS,
+  NodeData<LetterTypes.LATIN_LETTER>
+> = {
+  A: { isVowel: true },
+  B: { isVowel: false },
+  C: { isVowel: false },
+  D: { isVowel: false },
+  E: { isVowel: true },
+  F: { isVowel: false },
+  G: { isVowel: false },
+  H: { isVowel: false },
+  I: { isVowel: true },
+  J: { isVowel: false },
+  K: { isVowel: false },
+  L: { isVowel: false },
+  M: { isVowel: false },
+  N: { isVowel: false },
+  O: { isVowel: true },
+  P: { isVowel: false },
+  Q: { isVowel: false },
+  R: { isVowel: false },
+  S: { isVowel: false },
+  T: { isVowel: false },
+  U: { isVowel: true },
+  V: { isVowel: false },
+  W: { isVowel: true },
+  X: { isVowel: false },
+  Y: { isVowel: true },
+  Z: { isVowel: false },
+  PH: { isVowel: false },
+  TS: { isVowel: false },
+  TZ: { isVowel: false },
+  TH: { isVowel: false },
+  CH: { isVowel: false },
+  SH: { isVowel: false },
+  KH: { isVowel: false },
+  Ç: { isVowel: false },
+  Ã: { isVowel: true },
+};
 
 export const HEBREW_LETTERS = {
   ALEPH: "Aleph",
