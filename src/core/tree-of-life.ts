@@ -2,7 +2,18 @@ import { PartKey } from "./systems/registry";
 
 import { ModuleManager } from "./systems/module-manager";
 import { SystemKey } from "./systems/registry";
-import { BaseNode, KaabalahTypes, LetterTypes, Node, NodeData, NodeId, NodeType, NumerologyTypes, TarotTypes, WesternAstrologyTypes } from "./types";
+import {
+  BaseNode,
+  KaabalahTypes,
+  LetterTypes,
+  Node,
+  NodeData,
+  NodeId,
+  NodeType,
+  NumerologyTypes,
+  TarotTypes,
+  WesternAstrologyTypes,
+} from "./types";
 
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
@@ -19,18 +30,24 @@ export class TreeOfLife {
    * Loads the tree of life system to be used
    * @param systemKey - the key of the system to load
    */
-  loadSystem(systemKey: SystemKey) { this.modules.loadSystem(systemKey) }
+  loadSystem(systemKey: SystemKey) {
+    this.modules.loadSystem(systemKey);
+  }
 
   /**
    * Loads a part of a system into the tree of life
    * @param partKey - the key of the part to load
    */
-  loadPart  (partKey: PartKey)     { this.modules.loadPart(partKey) }
+  loadPart(partKey: PartKey) {
+    this.modules.loadPart(partKey);
+  }
 
   /**
    * Unloads the tree of life system and all its parts
    */
-  unloadSystem()                   { this.modules.unloadSystem() }
+  unloadSystem() {
+    this.modules.unloadSystem();
+  }
 
   public get activeSystem(): SystemKey | null {
     return this.modules.getActiveSystem();
@@ -62,7 +79,9 @@ export class TreeOfLife {
       const existingNode = this.nodes.get(node.id)!;
 
       if (existingNode.type !== node.type) {
-        throw new Error('node with existing id but different type already exists');
+        throw new Error(
+          "node with existing id but different type already exists"
+        );
       }
 
       const updatedData = { ...existingNode.data, ...node.data } as NodeData<T>;
@@ -92,14 +111,17 @@ export class TreeOfLife {
    */
   link(firstNode: NodeId<NodeType>, secondNode: NodeId<NodeType>) {
     if (!this.nodes.has(firstNode) || !this.nodes.has(secondNode)) {
-      throw new Error('unknown node id');
+      throw new Error("unknown node id");
     }
 
     if (firstNode === secondNode) {
       return;
     }
 
-    if (this.adjacent.has(firstNode) && this.adjacent.get(firstNode)?.has(secondNode)) {
+    if (
+      this.adjacent.has(firstNode) &&
+      this.adjacent.get(firstNode)?.has(secondNode)
+    ) {
       return;
     }
 
@@ -111,7 +133,6 @@ export class TreeOfLife {
 
     put(firstNode, secondNode);
     put(secondNode, firstNode);
-
   }
 
   /**
@@ -120,7 +141,10 @@ export class TreeOfLife {
    * @param nodeType - the node type to filter the relations by
    * @returns the current node and all its direct relations
    */
-  related<T extends NodeType, U extends NodeType>(id: NodeId<T>, nodeType?: U): Node<U>[] {
+  related<T extends NodeType, U extends NodeType>(
+    id: NodeId<T>,
+    nodeType?: U
+  ): Node<U>[] {
     if (!this.nodes.has(id)) {
       return [];
     }
@@ -131,9 +155,13 @@ export class TreeOfLife {
       return [];
     }
 
-    const relatedNodes = [...relations].map(i => this.nodes.get(i)! as Node<U>);
+    const relatedNodes = [...relations].map(
+      (i) => this.nodes.get(i)! as Node<U>
+    );
 
-    return nodeType ? relatedNodes.filter(n => n.type === nodeType) : relatedNodes;
+    return nodeType
+      ? relatedNodes.filter((n) => n.type === nodeType)
+      : relatedNodes;
   }
 
   /**
@@ -144,7 +172,7 @@ export class TreeOfLife {
    */
   relatedFirst<T extends NodeType, U extends NodeType>(
     id: NodeId<T>,
-    type: U,
+    type: U
   ): Node<U> | undefined {
     const related = this.related(id, type);
 
@@ -161,7 +189,13 @@ export class TreeOfLife {
       return [];
     }
 
-    return [...new Set([...this.adjacent.get(id)!.values()].map(nodeId => this.nodes.get(nodeId)!.type as T))];
+    return [
+      ...new Set(
+        [...this.adjacent.get(id)!.values()].map(
+          (nodeId) => this.nodes.get(nodeId)!.type as T
+        )
+      ),
+    ];
   }
 
   /**
@@ -171,7 +205,11 @@ export class TreeOfLife {
    * @param type - the type of the nodes to filter the result set by
    * @returns the current node and all its extended relations
    */
-  walk<T extends NodeType, U extends NodeType>(id: NodeId<T>, depth = 1, type?: U): Node<U>[] {
+  walk<T extends NodeType, U extends NodeType>(
+    id: NodeId<T>,
+    depth = 1,
+    type?: U
+  ): Node<U>[] {
     const visitedNodes = new Set<NodeId<NodeType>>([id]);
     const foundNodes: Node<NodeType>[] = [];
 
@@ -197,7 +235,9 @@ export class TreeOfLife {
       }
     }
 
-    return type ? foundNodes.filter(n => n.type === type) as Node<U>[] : foundNodes as Node<U>[];
+    return type
+      ? (foundNodes.filter((n) => n.type === type) as Node<U>[])
+      : (foundNodes as Node<U>[]);
   }
 
   /**
@@ -215,7 +255,7 @@ export class TreeOfLife {
         if (!set) {
           continue;
         }
-        
+
         set.delete(id);
         if (set.size === 0) {
           this.adjacent.delete(neighbor);
@@ -227,17 +267,13 @@ export class TreeOfLife {
     this.nodes.delete(id);
   }
 
-  addNumber({
-    number,
-    nodeId
-  }: {
-    number: number,
-    nodeId?: NodeId<NodeType>,
-  }) {
-    const numberId = this.upsertNode(new BaseNode({
-      id: number,
-      type: NumerologyTypes.NUMBER,
-    }));
+  addNumber({ number, nodeId }: { number: number; nodeId?: NodeId<NodeType> }) {
+    const numberId = this.upsertNode(
+      new BaseNode({
+        id: number,
+        type: NumerologyTypes.NUMBER,
+      })
+    );
 
     if (nodeId) {
       this.link(nodeId, numberId);
@@ -257,15 +293,17 @@ export class TreeOfLife {
     data,
     relatedNumber,
   }: {
-    sphere: string,
-    data: NodeData<KaabalahTypes.SPHERE>,
-    relatedNumber: number,
+    sphere: string;
+    data: NodeData<KaabalahTypes.SPHERE>;
+    relatedNumber: number;
   }) {
-    const sphereId = this.upsertNode(new BaseNode({
-      id: sphere,
-      type: KaabalahTypes.SPHERE,
-      data,
-    }));
+    const sphereId = this.upsertNode(
+      new BaseNode({
+        id: sphere,
+        type: KaabalahTypes.SPHERE,
+        data,
+      })
+    );
 
     this.addNumber({ number: relatedNumber, nodeId: sphereId });
 
@@ -285,20 +323,22 @@ export class TreeOfLife {
     relatedNumber,
     data,
   }: {
-    leftSphere: NodeId<KaabalahTypes.SPHERE>,
-    rightSphere: NodeId<KaabalahTypes.SPHERE>,
-    relatedNumber: number,
-    data?: Omit<NodeData<KaabalahTypes.PATH>, "from" | "to">,
+    leftSphere: NodeId<KaabalahTypes.SPHERE>;
+    rightSphere: NodeId<KaabalahTypes.SPHERE>;
+    relatedNumber: number;
+    data?: Omit<NodeData<KaabalahTypes.PATH>, "from" | "to">;
   }) {
-    const pathId = this.upsertNode(new BaseNode({
-      id: relatedNumber,
-      type: KaabalahTypes.PATH,
-      data: {
-        ...(data ?? {}),
-        from: leftSphere,
-        to: rightSphere,
-      },
-    }));
+    const pathId = this.upsertNode(
+      new BaseNode({
+        id: relatedNumber,
+        type: KaabalahTypes.PATH,
+        data: {
+          ...(data ?? {}),
+          from: leftSphere,
+          to: rightSphere,
+        },
+      })
+    );
 
     // If we count the spheres too (10 of them), we'll have an index up to 32
     const numberOfSpheres = 10;
@@ -317,15 +357,17 @@ export class TreeOfLife {
     path,
     letters,
   }: {
-    path: NodeId<KaabalahTypes.PATH>,
-    letters: { letter: string, type: NodeType, data?: NodeData<NodeType> }[],
+    path: NodeId<KaabalahTypes.PATH>;
+    letters: { letter: string; type: NodeType; data?: NodeData<NodeType> }[];
   }) {
     for (const letter of letters) {
-      const letterId = this.upsertNode(new BaseNode({
-        id: letter.letter,
-        type: letter.type,
-        data: letter.data,
-      }));
+      const letterId = this.upsertNode(
+        new BaseNode({
+          id: letter.letter,
+          type: letter.type,
+          data: letter.data,
+        })
+      );
 
       this.link(path, letterId);
 
@@ -339,7 +381,10 @@ export class TreeOfLife {
         this.addNumber({ number: data.gematriaValue, nodeId: letterId });
 
         if (data.gematriaValueWhenEnding) {
-          this.addNumber({ number: data.gematriaValueWhenEnding, nodeId: letterId });
+          this.addNumber({
+            number: data.gematriaValueWhenEnding,
+            nodeId: letterId,
+          });
         }
       }
     }
@@ -351,61 +396,69 @@ export class TreeOfLife {
     data,
     relatedNumber,
   }: {
-    path: NodeId<KaabalahTypes.PATH>,
-    sign: string,
-    data: NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>,
-    relatedNumber: number,
+    path: NodeId<KaabalahTypes.PATH>;
+    sign: string;
+    data: NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>;
+    relatedNumber: number;
   }) {
-    const signId = this.upsertNode(new BaseNode({
-      id: sign,
-      type: WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
-      data,
-    }));
+    const signId = this.upsertNode(
+      new BaseNode({
+        id: sign,
+        type: WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        data,
+      })
+    );
 
     this.link(path, signId);
 
     this.addNumber({ number: relatedNumber, nodeId: signId });
 
     if (data.element) {
-      const elementId = this.upsertNode(new BaseNode({
-        id: data.element,
-        type: WesternAstrologyTypes.WESTERN_ELEMENT,
-      }));
+      const elementId = this.upsertNode(
+        new BaseNode({
+          id: data.element,
+          type: WesternAstrologyTypes.WESTERN_ELEMENT,
+        })
+      );
 
       this.link(signId, elementId);
     }
 
     return signId;
   }
-  
-  addTarotArkAnnu({ 
+
+  addTarotArkAnnu({
     node,
     tarotArkAnnu,
     data,
     relatedNumber,
     suit,
   }: {
-    node: NodeId<NodeType>,
-    tarotArkAnnu: string,
-    data: NodeData<TarotTypes.TAROT_ARK_ANNU>,
-    relatedNumber: number,
-    suit?: string,
+    node: NodeId<NodeType>;
+    tarotArkAnnu: string;
+    data: NodeData<TarotTypes.TAROT_ARK_ANNU>;
+    relatedNumber: number;
+    suit?: string;
   }) {
-    const tarotArkAnnuId = this.upsertNode(new BaseNode({
-      id: tarotArkAnnu,
-      type: TarotTypes.TAROT_ARK_ANNU,
-      data,
-    }));
+    const tarotArkAnnuId = this.upsertNode(
+      new BaseNode({
+        id: tarotArkAnnu,
+        type: TarotTypes.TAROT_ARK_ANNU,
+        data,
+      })
+    );
 
     this.link(node, tarotArkAnnuId);
 
     this.addNumber({ number: relatedNumber, nodeId: tarotArkAnnuId });
 
     if (suit) {
-      const suitId = this.upsertNode(new BaseNode({
-        id: suit,
-        type: TarotTypes.TAROT_SUIT,
-      }));
+      const suitId = this.upsertNode(
+        new BaseNode({
+          id: suit,
+          type: TarotTypes.TAROT_SUIT,
+        })
+      );
 
       this.link(tarotArkAnnuId, suitId);
     }
