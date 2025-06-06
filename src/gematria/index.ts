@@ -1,7 +1,8 @@
-import { HEBREW_LETTERS, Node } from "../core/constants"
+import { HEBREW_LETTERS } from "../core/constants"
 import { createTree } from "../core/factory"
 import { SYSTEM as KAABALAH_SYSTEM } from "../core/systems/kaabalah"
 import { TreeOfLife } from "../core/tree-of-life"
+import { id, LetterTypes, Node } from "../core/types"
 
 const reduceToSingleDigitWithSteps = (num: number) => {
   const steps = [num]
@@ -63,8 +64,8 @@ export const calculateGematria = (word: string, options: {
         const isEnding = i > 0 && i === letters.length - 2
 
         // should only have a single connection
-        const latinLetterId = `letter:${combinedLetter}`;
-        const [mapping] = tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]
+        const latinLetterId = id(LetterTypes.LATIN_LETTER, combinedLetter);
+        const [mapping] = tree.walk(latinLetterId, 2, LetterTypes.HEBREW_LETTER)
         if (mapping?.data) {
           let hebrewCharacter = mapping.data.character
           let value = mapping.data.gematriaValue
@@ -82,13 +83,13 @@ export const calculateGematria = (word: string, options: {
       }
 
       // only case we can have multiple connections is with O (Vav and Ayin, but considered Ayin only when starting the word)
-      let mapping: Node<"hebrewLetter"> | undefined;
-      const latinLetterId = `letter:${letter}`;
+      let mapping: Node<LetterTypes.HEBREW_LETTER> | undefined;
+      const latinLetterId = id(LetterTypes.LATIN_LETTER, letter);
       const isStarting = i === 0
       if (isStarting && letter === 'O') {
-        mapping = tree.getNode(`letter:${HEBREW_LETTERS.AYIN}`) as Node<"hebrewLetter">;
+        mapping = tree.getNode(id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.AYIN));
       } else {
-        mapping = (tree.walk(latinLetterId, 2, "hebrewLetter") as Node<"hebrewLetter">[]).at(0)
+        mapping = (tree.walk(latinLetterId, 2, LetterTypes.HEBREW_LETTER)).at(0)
       }
 
       const isEnding = i > 0 && i === letters.length - 1
@@ -142,8 +143,8 @@ export const calculateGematria = (word: string, options: {
   const missingGematriaValues: { value: number, hebrewLetterId: string, whenEnding: boolean }[] = []
   if (options?.calculateMissingGematriaValues) {
     for (const hebrewLetter of Object.values(HEBREW_LETTERS)) {
-      const hebrewLetterId = `letter:${hebrewLetter}`;
-      const hebrewLetterNode = tree.getNode(hebrewLetterId) as Node<"hebrewLetter">
+      const hebrewLetterId = id(LetterTypes.HEBREW_LETTER, hebrewLetter);
+      const hebrewLetterNode = tree.getNode(hebrewLetterId);
       if (!hebrewLetterNode?.data) {
         continue
       }

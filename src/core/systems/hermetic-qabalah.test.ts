@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { SPHERES } from '../constants';
 import { TreeOfLife } from '../tree-of-life';
+import { id, KaabalahTypes, MiscTypes, WesternAstrologyTypes } from '../types';
 import { loadColors, loadHermeticQabalah, loadMusicalNotes, loadWesternAstrology, unloadColors, unloadHermeticQabalah, unloadMusicalNotes, unloadWesternAstrology } from './hermetic-qabalah';
 
 describe('loadHermeticQabalah', () => {
@@ -9,16 +10,16 @@ describe('loadHermeticQabalah', () => {
     const tree = new TreeOfLife();
     loadHermeticQabalah(tree);
 
-    expect(tree.related(SPHERES.KETHER, "path")).toHaveLength(3);
-    expect(tree.related(SPHERES.CHOKHMAH, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.BINAH, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.CHESED, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.GEBURAH, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.TIPHARETH, "path")).toHaveLength(8);
-    expect(tree.related(SPHERES.NETZACH, "path")).toHaveLength(5);
-    expect(tree.related(SPHERES.HOD, "path")).toHaveLength(5);
-    expect(tree.related(SPHERES.YESOD, "path")).toHaveLength(4);
-    expect(tree.related(SPHERES.MALKUTH, "path")).toHaveLength(3);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.KETHER), KaabalahTypes.PATH)).toHaveLength(3);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH), KaabalahTypes.PATH)).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.BINAH), KaabalahTypes.PATH)).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.CHESED), KaabalahTypes.PATH)).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.GEBURAH), KaabalahTypes.PATH)).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH), KaabalahTypes.PATH)).toHaveLength(8);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.NETZACH), KaabalahTypes.PATH)).toHaveLength(5);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.HOD), KaabalahTypes.PATH)).toHaveLength(5);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.YESOD), KaabalahTypes.PATH)).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), KaabalahTypes.PATH)).toHaveLength(3);
   });
 
   it('should correctly unload the Kaabalah system', () => {
@@ -27,16 +28,16 @@ describe('loadHermeticQabalah', () => {
 
     unloadHermeticQabalah(tree);
 
-    expect(tree.related(SPHERES.KETHER)).toHaveLength(0);
-    expect(tree.related(SPHERES.CHOKHMAH)).toHaveLength(0);
-    expect(tree.related(SPHERES.BINAH)).toHaveLength(0);
-    expect(tree.related(SPHERES.CHESED)).toHaveLength(0);
-    expect(tree.related(SPHERES.GEBURAH)).toHaveLength(0);
-    expect(tree.related(SPHERES.TIPHARETH)).toHaveLength(0);
-    expect(tree.related(SPHERES.NETZACH)).toHaveLength(0);
-    expect(tree.related(SPHERES.HOD)).toHaveLength(0);
-    expect(tree.related(SPHERES.YESOD)).toHaveLength(0);
-    expect(tree.related(SPHERES.MALKUTH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.KETHER), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.BINAH), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.CHESED), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.GEBURAH), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.NETZACH), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.HOD), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.YESOD), KaabalahTypes.PATH)).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), KaabalahTypes.PATH)).toHaveLength(0);
   });
 
   it('should correctly load the colors', () => {
@@ -44,7 +45,7 @@ describe('loadHermeticQabalah', () => {
     loadHermeticQabalah(tree);
     loadColors(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "color")).toHaveLength(4);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), MiscTypes.COLOR)).toHaveLength(4);
   });
 
   it('should correctly unload the colors', () => {
@@ -54,7 +55,7 @@ describe('loadHermeticQabalah', () => {
 
     unloadColors(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "color")).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), MiscTypes.COLOR)).toHaveLength(0);
   });
 
   it('should correctly load the musical notes', () => {
@@ -62,7 +63,7 @@ describe('loadHermeticQabalah', () => {
     loadHermeticQabalah(tree);
     loadMusicalNotes(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "musicalNote")).toHaveLength(1);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), MiscTypes.MUSICAL_NOTE)).toHaveLength(1);
   });
 
   it('should correctly unload the musical notes', () => {
@@ -72,7 +73,7 @@ describe('loadHermeticQabalah', () => {
 
     unloadMusicalNotes(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "musicalNote")).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), MiscTypes.MUSICAL_NOTE)).toHaveLength(0);
   });
 
   it('should correctly load the western astrology', () => {
@@ -80,7 +81,7 @@ describe('loadHermeticQabalah', () => {
     loadHermeticQabalah(tree);
     loadWesternAstrology(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(1);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), WesternAstrologyTypes.PLANET)).toHaveLength(1);
   });
 
   it('should correctly unload the western astrology', () => {
@@ -90,6 +91,6 @@ describe('loadHermeticQabalah', () => {
 
     unloadWesternAstrology(tree);
 
-    expect(tree.related(SPHERES.MALKUTH, "planet")).toHaveLength(0);
+    expect(tree.related(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), WesternAstrologyTypes.PLANET)).toHaveLength(0);
   });
 });

@@ -1,8 +1,8 @@
 import { PartKey } from "./systems/registry";
 
-import { Node, NodeData, NodeId, NodeType, WESTERN_ELEMENTS } from "./constants";
 import { ModuleManager } from "./systems/module-manager";
 import { SystemKey } from "./systems/registry";
+import { BaseNode, KaabalahTypes, LetterTypes, Node, NodeData, NodeId, NodeType, NumerologyTypes, TarotTypes, WesternAstrologyTypes } from "./types";
 
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
@@ -10,8 +10,9 @@ import { SystemKey } from "./systems/registry";
  * for different use cases or to isolate different sets of correspondences.
  */
 export class TreeOfLife {
-  private nodes = new Map<string, Node<NodeType>>();
-  private adjacent = new Map<string, Set<string>>();
+  private nodes = new Map<NodeId<NodeType>, Node<NodeType>>();
+  private adjacent = new Map<NodeId<NodeType>, Set<NodeId<NodeType>>>();
+
   private modules = new ModuleManager(this);
 
   /**
@@ -59,7 +60,12 @@ export class TreeOfLife {
   upsertNode<T extends NodeType>(node: Node<T>) {
     if (this.nodes.has(node.id)) {
       const existingNode = this.nodes.get(node.id)!;
-      const updatedData = { ...existingNode.data, ...node.data };
+
+      if (existingNode.type !== node.type) {
+        throw new Error('node with existing id but different type already exists');
+      }
+
+      const updatedData = { ...existingNode.data, ...node.data } as NodeData<T>;
 
       this.nodes.set(node.id, { ...existingNode, data: updatedData });
 
@@ -71,8 +77,8 @@ export class TreeOfLife {
     return node.id;
   }
 
-  getNode(id: NodeId) {
-    return this.nodes.get(id);
+  getNode<T extends NodeType>(id: NodeId<T>): Node<T> | undefined {
+    return this.nodes.get(id) as Node<T> | undefined;
   }
 
   getNodes() {
@@ -84,7 +90,7 @@ export class TreeOfLife {
    * @param firstNode - the id of the first node
    * @param secondNode - the id of the second node
    */
-  link(firstNode: NodeId, secondNode: NodeId) {
+  link(firstNode: NodeId<NodeType>, secondNode: NodeId<NodeType>) {
     if (!this.nodes.has(firstNode) || !this.nodes.has(secondNode)) {
       throw new Error('unknown node id');
     }
@@ -97,14 +103,15 @@ export class TreeOfLife {
       return;
     }
 
-    const put = (leftNode: NodeId, rightNode: NodeId) => {
-      const set = this.adjacent.get(leftNode) ?? new Set<NodeId>();
+    const put = (leftNode: NodeId<NodeType>, rightNode: NodeId<NodeType>) => {
+      const set = this.adjacent.get(leftNode) ?? new Set<NodeId<NodeType>>();
       set.add(rightNode);
       this.adjacent.set(leftNode, set);
     };
 
     put(firstNode, secondNode);
     put(secondNode, firstNode);
+
   }
 
   /**
@@ -113,22 +120,35 @@ export class TreeOfLife {
    * @param nodeType - the node type to filter the relations by
    * @returns the current node and all its direct relations
    */
-  related(id: NodeId, nodeType?: NodeType): Node<NodeType>[] {
+  related<T extends NodeType, U extends NodeType>(id: NodeId<T>, nodeType?: U): Node<U>[] {
     if (!this.nodes.has(id)) {
       return [];
     }
 
-    const node = this.nodes.get(id)!;
-
     const relations = this.adjacent.get(id);
-    
+
     if (!relations) {
-      return nodeType ? [] : [node];
+      return [];
     }
 
-    const filteredRelations = [...relations].map(i => this.nodes.get(i)!).filter(n => !nodeType || n.type === nodeType);
+    const relatedNodes = [...relations].map(i => this.nodes.get(i)! as Node<U>);
 
-    return nodeType ? filteredRelations : [node, ...filteredRelations];
+    return nodeType ? relatedNodes.filter(n => n.type === nodeType) : relatedNodes;
+  }
+
+  /**
+   * Sugar for `related(id, type)[0]`
+   * @param id - the id of the node to get the related node for
+   * @param type - the type of the node to get the related node for
+   * @returns the related node
+   */
+  relatedFirst<T extends NodeType, U extends NodeType>(
+    id: NodeId<T>,
+    type: U,
+  ): Node<U> | undefined {
+    const related = this.related(id, type);
+
+    return related?.[0];
   }
 
   /**
@@ -136,12 +156,12 @@ export class TreeOfLife {
    * @param id - the id of the node to get related types for
    * @returns array of node types that are directly connected
    */
-  relatedTypes(id: NodeId): NodeType[] {
+  relatedTypes<T extends NodeType>(id: NodeId<T>): T[] {
     if (!this.nodes.has(id)) {
       return [];
     }
 
-    return [...new Set([...this.adjacent.get(id)!.values()].map(nodeId => this.nodes.get(nodeId)!.type))];
+    return [...new Set([...this.adjacent.get(id)!.values()].map(nodeId => this.nodes.get(nodeId)!.type as T))];
   }
 
   /**
@@ -151,12 +171,12 @@ export class TreeOfLife {
    * @param type - the type of the nodes to filter the result set by
    * @returns the current node and all its extended relations
    */
-  walk(id: NodeId, depth = 1, type?: NodeType): Node<NodeType>[] {
-    const visitedNodes = new Set<NodeId>([id]);
+  walk<T extends NodeType, U extends NodeType>(id: NodeId<T>, depth = 1, type?: U): Node<U>[] {
+    const visitedNodes = new Set<NodeId<NodeType>>([id]);
     const foundNodes: Node<NodeType>[] = [];
 
     // [nodeId, depth]
-    let queue: [NodeId, number][] = [[id, 0]];
+    let queue: [NodeId<NodeType>, number][] = [[id, 0]];
 
     while (queue.length > 0) {
       const [current, currentDepth] = queue.shift()!;
@@ -165,26 +185,26 @@ export class TreeOfLife {
         continue;
       }
 
-      const neighbors = this.adjacent.get(current) ?? new Set<NodeId>();
+      const neighbors = this.adjacent.get(current) ?? new Set<NodeId<T>>();
       for (const neighbor of neighbors) {
         if (visitedNodes.has(neighbor)) {
           continue;
         }
 
         visitedNodes.add(neighbor);
-        foundNodes.push(this.nodes.get(neighbor)!);
         queue.push([neighbor, currentDepth + 1]);
+        foundNodes.push(this.nodes.get(neighbor)!);
       }
     }
 
-    return type ? foundNodes.filter(n => n.type === type) : foundNodes;
+    return type ? foundNodes.filter(n => n.type === type) as Node<U>[] : foundNodes as Node<U>[];
   }
 
   /**
    * Removes a node and all its relations from the graph, cleaning up adjacency sets.
    * @param id - the id of the node to remove
    */
-  removeNode(id: NodeId) {
+  removeNode(id: NodeId<NodeType>) {
     if (!this.nodes.has(id)) return;
 
     const neighbors = this.adjacent.get(id);
@@ -199,8 +219,6 @@ export class TreeOfLife {
         set.delete(id);
         if (set.size === 0) {
           this.adjacent.delete(neighbor);
-        } else {
-          this.adjacent.set(neighbor, set);
         }
       }
     }
@@ -209,23 +227,23 @@ export class TreeOfLife {
     this.nodes.delete(id);
   }
 
-  /**
-   * A helper to create two-way correspondences between nodes.
-   * @param source - the source node
-   * @param target - the target node
-   * @param targetType - the type of the target node
-   * @returns the target node
-   */
-  correspond<T extends NodeType>(source: NodeId, target: NodeId, targetType: T, data?: NodeData<T>) {
-    if (!this.nodes.has(target)) {
-      const node = data ? { id: target, type: targetType, data } : { id: target, type: targetType };
+  addNumber({
+    number,
+    nodeId
+  }: {
+    number: number,
+    nodeId?: NodeId<NodeType>,
+  }) {
+    const numberId = this.upsertNode(new BaseNode({
+      id: number,
+      type: NumerologyTypes.NUMBER,
+    }));
 
-      this.upsertNode<T>(node);
+    if (nodeId) {
+      this.link(nodeId, numberId);
     }
 
-    this.link(source, target);
-
-    return target;
+    return numberId;
   }
 
   /**
@@ -234,22 +252,24 @@ export class TreeOfLife {
    * @param data - the sphere's Hebrew and English names
    * @returns the sphere's id
    */
-  addSphere(sphere: string, data: NodeData<"sphere">, relatedNumber: number) {
-    if (this.nodes.has(sphere)) {
-      return sphere;
-    }
+  addSphere({
+    sphere,
+    data,
+    relatedNumber,
+  }: {
+    sphere: string,
+    data: NodeData<KaabalahTypes.SPHERE>,
+    relatedNumber: number,
+  }) {
+    const sphereId = this.upsertNode(new BaseNode({
+      id: sphere,
+      type: KaabalahTypes.SPHERE,
+      data,
+    }));
 
-    this.upsertNode<"sphere">({ id: sphere, type: "sphere", data });
+    this.addNumber({ number: relatedNumber, nodeId: sphereId });
 
-    const numberId: NodeId = `num:${relatedNumber}`;
-
-    if (!this.nodes.has(numberId)) {
-      this.upsertNode<"number">({ id: numberId, type: "number" });
-    }
-
-    this.link(sphere, numberId);
-
-    return sphere;
+    return sphereId;
   }
 
   /**
@@ -259,162 +279,137 @@ export class TreeOfLife {
    * @param relatedNumber - the number associated with this path
    * @returns the path's id
    */
-  addPath(leftSphere: NodeId, rightSphere: NodeId, relatedNumber: number, data?: Partial<NodeData<"path">>) {
-    const pathId: NodeId = `path:${relatedNumber}`;
-
-    if (this.nodes.has(pathId)) {
-      return pathId;
-    }
+  addPath({
+    leftSphere,
+    rightSphere,
+    relatedNumber,
+    data,
+  }: {
+    leftSphere: NodeId<KaabalahTypes.SPHERE>,
+    rightSphere: NodeId<KaabalahTypes.SPHERE>,
+    relatedNumber: number,
+    data?: Omit<NodeData<KaabalahTypes.PATH>, "from" | "to">,
+  }) {
+    const pathId = this.upsertNode(new BaseNode({
+      id: relatedNumber,
+      type: KaabalahTypes.PATH,
+      data: {
+        ...(data ?? {}),
+        from: leftSphere,
+        to: rightSphere,
+      },
+    }));
 
     // If we count the spheres too (10 of them), we'll have an index up to 32
     const numberOfSpheres = 10;
     const pathNumber = relatedNumber + numberOfSpheres;
 
-    this.upsertNode<"path">({ id: pathId, type: "path", data });
-
     this.link(leftSphere, pathId);
     this.link(rightSphere, pathId);
 
-    const firstNumberId: NodeId = `num:${relatedNumber}`;
-    const secondNumberId: NodeId = `num:${pathNumber}`;
-
-    if (!this.nodes.has(firstNumberId)) {
-      this.upsertNode<"number">({ id: firstNumberId, type: "number" });
-    }
-
-    if (!this.nodes.has(secondNumberId)) {
-      this.upsertNode<"number">({ id: secondNumberId, type: "number" });
-    }
-    
-    this.link(pathId, firstNumberId);
-    this.link(pathId, secondNumberId);
+    this.addNumber({ number: relatedNumber, nodeId: pathId });
+    this.addNumber({ number: pathNumber, nodeId: pathId });
 
     return pathId;
   }
 
-  addLetters(path: NodeId, letters: { letter: string, type: NodeType, data?: NodeData<NodeType> }[]) {
+  addLetters({
+    path,
+    letters,
+  }: {
+    path: NodeId<KaabalahTypes.PATH>,
+    letters: { letter: string, type: NodeType, data?: NodeData<NodeType> }[],
+  }) {
     for (const letter of letters) {
-      const letterId: NodeId = `letter:${letter.letter}`;
+      const letterId = this.upsertNode(new BaseNode({
+        id: letter.letter,
+        type: letter.type,
+        data: letter.data,
+      }));
 
-      this.correspond(path, letterId, letter.type, letter.data);
+      this.link(path, letterId);
 
-      if (letter.type === "hebrewLetter") {
-        const data = letter.data as NodeData<"hebrewLetter">;
-        const gematriaValues = [data.gematriaValue, data.gematriaValueWhenEnding].filter(Boolean) as number[];
+      if (letter.type === LetterTypes.HEBREW_LETTER) {
+        const data = letter.data as NodeData<LetterTypes.HEBREW_LETTER>;
 
-        for (const gematriaValue of gematriaValues) {
-          if (!this.nodes.has(`num:${gematriaValue}`)) {
-            this.upsertNode<"number">({ id: `num:${gematriaValue}`, type: "number" });
-          }
+        if (!data) {
+          continue;
+        }
 
-          this.link(letterId, `num:${gematriaValue}`);
+        this.addNumber({ number: data.gematriaValue, nodeId: letterId });
+
+        if (data.gematriaValueWhenEnding) {
+          this.addNumber({ number: data.gematriaValueWhenEnding, nodeId: letterId });
         }
       }
     }
   }
 
-  addWorld(world: string, data: NodeData<"world">) {
-    this.upsertNode<"world">({ id: world, type: "world", data });
+  addWesternAstrologySign({
+    path,
+    sign,
+    data,
+    relatedNumber,
+  }: {
+    path: NodeId<KaabalahTypes.PATH>,
+    sign: string,
+    data: NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>,
+    relatedNumber: number,
+  }) {
+    const signId = this.upsertNode(new BaseNode({
+      id: sign,
+      type: WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+      data,
+    }));
 
-    return world;
-  }
+    this.link(path, signId);
 
-  addSphereColor(sphere: NodeId, color: string, data: NodeData<"color">, world?: string) {
-    const colorId: NodeId = `color:${color}`;
-
-    this.correspond(sphere, colorId, "color", data);
-
-    if (world) {
-      this.link(world, colorId);
-    }
-    
-    return colorId;
-  }
-
-  addPathColor(path: NodeId, color: string, data: NodeData<"color">) {
-    const colorId: NodeId = `color:${color}`;
-
-    this.correspond(path, colorId, "color", data);
-
-    return colorId;
-  }
-
-  addMusicalNote(id: NodeId, note: string, data: NodeData<"musicalNote">) {
-    const noteId: NodeId = `note:${note}`;
-
-    this.correspond(id, noteId, "musicalNote", data);
-
-    return noteId;
-  }
-
-  addWesternAstrologyPlanet(sphereOrPath: NodeId, planet: string, data?: NodeData<"planet">) {
-    const planetId: NodeId = `planet:${planet}`;
-
-    this.correspond(sphereOrPath, planetId, "planet", data);
-
-    return planetId;
-  }
-
-  addWesternAstrologySign(path: NodeId, sign: string, data: NodeData<"westernZodiacSign">, relatedNumber: number) {
-    const signId: NodeId = `westernZodiacSign:${sign}`;
-
-    this.correspond(path, signId, "westernZodiacSign", data);
-
-    const numberId: NodeId = `num:${relatedNumber}`;
-    if (!this.nodes.has(numberId)) {
-      this.upsertNode<"number">({ id: numberId, type: "number" });
-    }
-    this.link(signId, numberId);
+    this.addNumber({ number: relatedNumber, nodeId: signId });
 
     if (data.element) {
-      const elementId: NodeId = `westernElement:${data.element}`;
-      if (!this.nodes.has(elementId)) {
-        this.upsertNode<"westernElement">({ id: elementId, type: "westernElement" });
-      }
+      const elementId = this.upsertNode(new BaseNode({
+        id: data.element,
+        type: WesternAstrologyTypes.WESTERN_ELEMENT,
+      }));
+
       this.link(signId, elementId);
     }
 
     return signId;
   }
-
-  addWesternElement(path: NodeId, element: string, data?: NodeData<"westernElement">) {
-    const elementId: NodeId = `westernElement:${element}`;
-
-    this.correspond(path, elementId, "westernElement", data);
-
-    return elementId;
-  }
   
-  addTarotArkAnnu(sphereOrPath: NodeId, tarotArkAnnu: string, data: NodeData<"tarotArkAnnu">, relatedNumber: number, suit?: string) {
-    const tarotArkAnnuId = `tarotArkAnnu:${tarotArkAnnu}`;
+  addTarotArkAnnu({ 
+    node,
+    tarotArkAnnu,
+    data,
+    relatedNumber,
+    suit,
+  }: {
+    node: NodeId<NodeType>,
+    tarotArkAnnu: string,
+    data: NodeData<TarotTypes.TAROT_ARK_ANNU>,
+    relatedNumber: number,
+    suit?: string,
+  }) {
+    const tarotArkAnnuId = this.upsertNode(new BaseNode({
+      id: tarotArkAnnu,
+      type: TarotTypes.TAROT_ARK_ANNU,
+      data,
+    }));
 
-    this.correspond(sphereOrPath, tarotArkAnnuId, "tarotArkAnnu", data);
+    this.link(node, tarotArkAnnuId);
 
-    const numberId: NodeId = `num:${relatedNumber}`;
-    if (!this.nodes.has(numberId)) {
-      this.upsertNode<"number">({ id: numberId, type: "number" });
-    }
-    this.link(tarotArkAnnuId, numberId);
+    this.addNumber({ number: relatedNumber, nodeId: tarotArkAnnuId });
 
     if (suit) {
-      this.link(tarotArkAnnuId, `suit:${suit}`);
+      const suitId = this.upsertNode(new BaseNode({
+        id: suit,
+        type: TarotTypes.TAROT_SUIT,
+      }));
+
+      this.link(tarotArkAnnuId, suitId);
     }
 
     return tarotArkAnnuId;
-  }
-
-  addTarotSuit(suit: string, relatedElement: Exclude<typeof WESTERN_ELEMENTS[keyof typeof WESTERN_ELEMENTS], "Ether">) {
-    const suitId: NodeId = `suit:${suit}`;
-
-    this.upsertNode<"tarotSuit">({ id: suitId, type: "tarotSuit" });
-
-    const elementId: NodeId = `westernElement:${relatedElement}`;
-    if (!this.nodes.has(elementId)) {
-      this.upsertNode<"westernElement">({ id: elementId, type: "westernElement" });
-    }
-
-    this.link(suitId, `westernElement:${relatedElement}`);
-
-    return suitId;
   }
 }
