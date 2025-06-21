@@ -11,7 +11,7 @@ export interface SwissEphModule {
 }
 
 export interface SwissEphModuleFactory {
-  (): Promise<SwissEphModule>;
+  (options?: { locateFile?: (path: string, scriptDirectory: string) => string }): Promise<SwissEphModule>;
 }
 
 // Wrapped function types

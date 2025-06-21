@@ -5,9 +5,7 @@ import { closeSwissEph, getSwissEph } from './swisseph';
 describe('Astrology Module', () => {
   beforeAll(async () => {
     try {
-      await getSwissEph(process.env.EPHE_PATH || './ephe');
-      // Add a small delay to ensure WASM is fully initialized
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await getSwissEph({ ephePath: EPHE_PATH, wasmPath: WASM_PATH });
     } catch (error) {
       console.error('Failed to initialize Swiss Ephemeris:', error);
       throw error;

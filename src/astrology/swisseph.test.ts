@@ -5,9 +5,7 @@ import { calculateHouses, calculatePlanetaryPositions, closeSwissEph, getSwissEp
 describe('Swiss Ephemeris Integration', () => {
   beforeAll(async () => {
     try {
-      // Initialize Swiss Ephemeris with the path to ephemeris files
-      // You'll need to download these files from https://www.astro.com/ftp/swisseph/ephe/
-      await getSwissEph(process.env.EPHE_PATH || './ephe');
+      await getSwissEph({ ephePath: EPHE_PATH, wasmPath: WASM_PATH });
       
       // Add a small delay to ensure WASM is fully initialized
       await new Promise(resolve => setTimeout(resolve, 500));

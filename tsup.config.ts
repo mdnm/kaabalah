@@ -12,7 +12,11 @@ export default defineConfig({
   ],
   format: ['cjs', 'esm'],
   dts: true,
-  splitting: false,
+  outDir: 'dist',
+  splitting: true,
+  treeshake: true,
+  loader: { ".wasm": "file" },
+  publicDir: 'wasm/build',
   sourcemap: true,
   clean: true,
 }); 

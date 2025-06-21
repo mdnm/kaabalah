@@ -9,8 +9,7 @@ import type {
   SweHouses,
   SweJulDay,
   SweSetEphePath,
-  SwissEphModule,
-  SwissEphModuleFactory
+  SwissEphModule
 } from './types';
 
 // Exported planet constants
@@ -73,81 +72,49 @@ export interface Houses {
 
 // Swiss Ephemeris class
 export class SwissEph {
-  private module: SwissEphModule | null = null;
+  private module: SwissEphModule;
   private swe_julday: SweJulDay | null = null;
   private swe_calc_ut: SweCalcUt | null = null;
   private swe_houses: SweHouses | null = null;
   private swe_house_pos: SweHousePos | null = null;
   private swe_set_ephe_path: SweSetEphePath | null = null;
   private swe_close: SweClose | null = null;
-  private ephePath: string;
-  private initialized = false;
   
   /**
-   * Constructor that takes an optional path to ephemeris files
+   * Constructor that accepts a pre-initialized Swiss Ephemeris module
    */
-  constructor(ephePath = '') {
-    this.ephePath = ephePath;
+  constructor(module: SwissEphModule) {
+    this.module = module;
+
+    // Create wrapped functions with specific types
+    this.swe_julday = this.module.cwrap<SweJulDay>('swe_julday', 'number', ['number', 'number', 'number', 'number', 'number']);
+    this.swe_calc_ut = this.module.cwrap<SweCalcUt>('swe_calc_ut', 'number', ['number', 'number', 'number', 'number']);
+    this.swe_houses = this.module.cwrap<SweHouses>('swe_houses', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
+    this.swe_house_pos = this.module.cwrap<SweHousePos>('swe_house_pos', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
+    this.swe_set_ephe_path = this.module.cwrap<SweSetEphePath>('swe_set_ephe_path', null, ['number']);
+    this.swe_close = this.module.cwrap<SweClose>('swe_close', null, []);
   }
   
   private checkInitialized(): void {
-    if (!this.initialized || !this.module) {
-      throw new Error('Swiss Ephemeris module not initialized. Call init() first.');
+    if (!this.module) {
+      throw new Error('Swiss Ephemeris module not available.');
     }
   }
-  
+
   /**
-   * Initialize the Swiss Ephemeris module
+   * Sets the path to the ephemeris data files.
+   * @param path - The path to the directory containing ephemeris files.
    */
-  async init(): Promise<void> {
-    if (this.initialized) {
-      return;
-    }
-    
-    try {
-      // Dynamic import to ensure compatibility with both Node.js and browsers
-      let moduleFactory: SwissEphModuleFactory;
-      if (typeof window !== 'undefined') {
-        const mod = await import(/* webpackIgnore: true */ '../build/swisseph.js');
-        moduleFactory = mod.default;
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        moduleFactory = require('../build/swisseph.js');
+  setEphemerisPath(path: string): void {
+    this.checkInitialized();
+    if (path && this.swe_set_ephe_path) {
+      const pathPtr = this.module._malloc(path.length + 1);
+      if (!pathPtr) {
+        throw new Error('Failed to allocate memory for ephemeris path');
       }
-      
-      const module = await moduleFactory();
-      
-      if (!module) {
-        throw new Error('Failed to initialize Swiss Ephemeris module');
-      }
-      
-      this.module = module;
-      
-      // Create wrapped functions with specific types
-      this.swe_julday = module.cwrap<SweJulDay>('swe_julday', 'number', ['number', 'number', 'number', 'number', 'number']);
-      this.swe_calc_ut = module.cwrap<SweCalcUt>('swe_calc_ut', 'number', ['number', 'number', 'number', 'number']);
-      this.swe_houses = module.cwrap<SweHouses>('swe_houses', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
-      this.swe_house_pos = module.cwrap<SweHousePos>('swe_house_pos', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
-      this.swe_set_ephe_path = module.cwrap<SweSetEphePath>('swe_set_ephe_path', null, ['number']);
-      this.swe_close = module.cwrap<SweClose>('swe_close', null, []);
-      
-      // Set ephemeris path if provided
-      if (this.ephePath) {
-        const pathPtr = module._malloc(this.ephePath.length + 1);
-        if (!pathPtr) {
-          throw new Error('Failed to allocate memory for ephemeris path');
-        }
-        module.stringToUTF8(this.ephePath, pathPtr, this.ephePath.length + 1);
-        if (this.swe_set_ephe_path) {
-          this.swe_set_ephe_path(pathPtr);
-        }
-        module._free(pathPtr);
-      }
-      
-      this.initialized = true;
-    } catch (error) {
-      console.error('Failed to initialize Swiss Ephemeris module:', error);
-      throw error;
+      this.module.stringToUTF8(path, pathPtr, path.length + 1);
+      this.swe_set_ephe_path(pathPtr);
+      this.module._free(pathPtr);
     }
   }
   
@@ -267,10 +234,9 @@ export class SwissEph {
    * Clean up and close the Swiss Ephemeris
    */
   close(): void {
-    if (this.initialized && this.swe_close) {
+    this.checkInitialized();
+    if (this.swe_close) {
       this.swe_close();
-      this.initialized = false;
-      this.module = null;
     }
   }
 } 

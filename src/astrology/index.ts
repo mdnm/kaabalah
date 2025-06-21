@@ -132,4 +132,4 @@ export function getZodiacPosition(longitude: number): {
     traditionalFormat: formatDegreeMinutes(degrees),
     decimal: degrees.toFixed(2) + '°'
   };
-} 
+}
