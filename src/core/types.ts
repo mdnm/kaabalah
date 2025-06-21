@@ -4,12 +4,11 @@ import {
   LatinLetterData,
   MusicalNoteData,
   PathData,
+  SphereData,
   TarotArkAnnuData,
   WesternZodiacSignData,
   WorldData,
 } from "./constants";
-
-import { SphereData } from "./constants";
 
 export enum KaabalahTypes {
   SPHERE = "sphere",
@@ -21,7 +20,7 @@ export enum LetterTypes {
   HEBREW_LETTER = "hebrewLetter",
   LATIN_LETTER = "latinLetter",
   SANSKRIT_LETTER = "sanskritLetter",
-  ARCHEOMETER_LETTER = "archeometerLetter",
+  VATTAN_LETTER = "vattanLetter",
 }
 
 export enum WesternAstrologyTypes {

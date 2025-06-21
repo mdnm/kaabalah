@@ -6,6 +6,10 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
+    "./swisseph-runtime": {
+      "default": "./wasm/build/swisseph.js"
+    },
+    "./swisseph-wasm": "./wasm/build/swisseph.wasm",
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
@@ -55,7 +59,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && cp -r ephe dist/ephe && cp wasm/build/swisseph.wasm dist/wasm/build/"
   },
   "keywords": [
     "numerology",

@@ -1,6 +1,9 @@
 /**
  * Integration with the Swiss Ephemeris WebAssembly module
  */
+import moduleFactory from '../../wasm/build/swisseph.js';
+import wasmPath from '../../wasm/build/swisseph.wasm?url';
+import type { SwissEphModuleFactory } from '../../wasm/src/types';
 
 // Note: In the production code, you'll need to include the compiled WASM files
 // and update the import path. This is a placeholder that would work once the
@@ -13,16 +16,35 @@ import { CalcFlag, Houses, HouseSystem, Planet, PlanetPosition, SwissEph } from 
 let swissEph: SwissEph | null = null;
 
 /**
- * Get the Swiss Ephemeris instance, initializing it if needed
+ * Initializes and returns the Swiss Ephemeris instance.
+ * In a browser environment, assets are loaded relative to the script.
+ * In Node.js, assets are loaded from the package's 'dist' directory.
+ * @param options - Optional overrides for asset paths.
+ * @param options.ephePath - Path to the directory containing ephemeris data files.
+ * @param options.wasmPath - Path to the `swisseph.wasm` file.
  */
-export async function getSwissEph(ephePath?: string): Promise<void> {
-  try {
-    if (swissEph) {
-      return;
-    }
+export async function getSwissEph(options: { ephePath?: string; wasmPath?: string } = {}): Promise<void> {
+  if (swissEph) {
+    return;
+  }
 
-    swissEph = new SwissEph(ephePath || '');
-    await swissEph.init();
+  try {
+    const isBrowser = typeof window !== 'undefined';
+    const finalWasmPath = options.wasmPath || (isBrowser ? wasmPath : require('path').resolve(__dirname, wasmPath));
+
+    const module = await (moduleFactory as SwissEphModuleFactory)({
+      locateFile: () => finalWasmPath,
+    });
+
+    const instance = new SwissEph(module);
+
+    // Default path for ephemeris files is relative to the bundled JS file.
+    // In `dist`, `astrology/index.js` needs to go up one level to find `ephe/`.
+    const defaultEphePath = isBrowser ? '../ephe' : require('path').resolve(__dirname, '../ephe');
+    const finalEphePath = options.ephePath || defaultEphePath;
+    instance.setEphemerisPath(finalEphePath);
+
+    swissEph = instance;
   } catch (error) {
     console.error('Error initializing Swiss Ephemeris:', error);
     throw error;
