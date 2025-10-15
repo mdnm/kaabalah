@@ -795,10 +795,10 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_BINAH),
-      color: COLORS.YELLOW,
+      color: "yellow-gold",
       colorData: {
-        colorDescription: "Yellow",
-        colorNames: ["Yellow"],
+        colorDescription: "Yellow gold",
+        colorNames: ["yellow gold"],
         colorHexCodes: ["#FFD700"],
       },
     },
@@ -822,10 +822,10 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH),
-      color: COLORS.RED,
+      color: "ruby-red-darker",
       colorData: {
-        colorDescription: "Red",
-        colorNames: ["Red"],
+        colorDescription: "Ruby red darker",
+        colorNames: ["ruby red darker"],
         colorHexCodes: ["#FF4927"],
       },
     },
@@ -840,10 +840,10 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_TIPHARETH),
-      color: COLORS.ORANGE,
+      color: "orange-yellow",
       colorData: {
-        colorDescription: "Orange",
-        colorNames: ["Orange"],
+        colorDescription: "Orange-yellow",
+        colorNames: ["orange-yellow"],
         colorHexCodes: ["#FFA500"],
       },
     },
@@ -949,19 +949,19 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_YESOD),
-      color: COLORS.ORANGE,
+      color: "orange-red",
       colorData: {
-        colorDescription: "Orange",
-        colorNames: ["Orange"],
+        colorDescription: "Orange-red",
+        colorNames: ["orange-red"],
         colorHexCodes: ["#FFBD0F"],
       },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_MALKUTH),
-      color: COLORS.RED,
+      color: "ruby-red",
       colorData: {
-        colorDescription: "Red",
-        colorNames: ["Red"],
+        colorDescription: "Ruby red",
+        colorNames: ["ruby red"],
         colorHexCodes: ["#FF6832"],
       },
     },
