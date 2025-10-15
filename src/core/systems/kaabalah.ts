@@ -790,13 +790,17 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
       colorData: {
         colorDescription: "Gold",
         colorNames: ["gold"],
-        colorHexCodes: ["#FFD700"],
+        colorHexCodes: ["#D4AF37"],
       },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_BINAH),
       color: COLORS.YELLOW,
-      colorData: COLORS_DATA.YELLOW,
+      colorData: {
+        colorDescription: "Yellow",
+        colorNames: ["Yellow"],
+        colorHexCodes: ["#FFD700"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_TIPHARETH),
@@ -819,7 +823,11 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH),
       color: COLORS.RED,
-      colorData: COLORS_DATA.RED,
+      colorData: {
+        colorDescription: "Red",
+        colorNames: ["Red"],
+        colorHexCodes: ["#FF4927"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_CHESED),
@@ -833,7 +841,11 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_TIPHARETH),
       color: COLORS.ORANGE,
-      colorData: COLORS_DATA.ORANGE,
+      colorData: {
+        colorDescription: "Orange",
+        colorNames: ["Orange"],
+        colorHexCodes: ["#FFA500"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_GEBURAH),
@@ -910,8 +922,12 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_HOD),
-      color: COLORS.RED,
-      colorData: COLORS_DATA.RED,
+      color: "rose",
+      colorData: {
+        colorDescription: "Rose",
+        colorNames: ["Rose"],
+        colorHexCodes: ["#E22283"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_YESOD),
@@ -928,18 +944,26 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
       colorData: {
         colorDescription: "Crimson",
         colorNames: ["crimson"],
-        colorHexCodes: ["#DC143C"],
+        colorHexCodes: ["#DC3823"],
       },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_YESOD),
       color: COLORS.ORANGE,
-      colorData: COLORS_DATA.ORANGE,
+      colorData: {
+        colorDescription: "Orange",
+        colorNames: ["Orange"],
+        colorHexCodes: ["#FFBD0F"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_MALKUTH),
       color: COLORS.RED,
-      colorData: COLORS_DATA.RED,
+      colorData: {
+        colorDescription: "Red",
+        colorNames: ["Red"],
+        colorHexCodes: ["#FF6832"],
+      },
     },
     {
       path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.YESOD_MALKUTH),
@@ -947,7 +971,7 @@ export const loadColors: Loader = (tree: TreeOfLife) => {
       colorData: {
         colorDescription: "Dark grey",
         colorNames: ["dark grey"],
-        colorHexCodes: ["#A9A9A9"],
+        colorHexCodes: ["#2F4F4F"],
       },
     },
   ];
