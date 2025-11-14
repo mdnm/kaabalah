@@ -31,6 +31,15 @@ const reduceToSingleDigitWithSteps = (num: number) => {
   };
 };
 
+const getLastArkAnnuStep = (steps: number[]) => {
+  if (steps.length === 0) return 0;
+
+  // reverse sort to get the last step
+  const step = steps.sort((a, b) => b - a).find((step) => step <= 22);
+
+  return step ?? steps.at(-1) ?? 0;
+}
+
 interface LetterResult {
   latinLetterId: NodeId<LetterTypes.LATIN_LETTER>;
   value: number;
@@ -322,7 +331,7 @@ export const calculateGematria = (
     finalState.consonantsSum
   );
   const synthesisReduction = reduceToSingleDigitWithSteps(
-    finalState.vowelsSum + finalState.consonantsSum
+    getLastArkAnnuStep(vowelsReduction.steps) + getLastArkAnnuStep(consonantsReduction.steps)
   );
 
   const missingGematriaValues = options?.missing

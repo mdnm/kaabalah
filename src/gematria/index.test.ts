@@ -165,6 +165,12 @@ describe("calculateGematria", () => {
       consonants: 270,
       synthesis: 278,
     });
+    // Example: "EZREACT" = E(5)+Z(7)+R(200)+E(5)+A(1)+C(20)+T(9)
+    expect(getSums(calculateGematria("EZREACT"))).toEqual({
+      vowels: 11,
+      consonants: 236,
+      synthesis: 247,
+    });
   });
 
   it("should handle empty and non-letter input gracefully", () => {
