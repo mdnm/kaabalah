@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "2.1.3",
+  "version": "3.0.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -54,10 +54,10 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui",
+    "test": "vitest run --silent",
+    "test:watch": "vitest watch --silent",
+    "test:coverage": "vitest run --coverage --silent",
+    "test:ui": "vitest --ui --silent",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
     "prepublishOnly": "npm run build && mkdir -p dist/wasm/build/ && cp dist/swisseph* dist/wasm/build/"
   },
