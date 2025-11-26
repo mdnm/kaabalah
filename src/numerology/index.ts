@@ -4,7 +4,7 @@
 
 import { calculateGematria } from "../gematria";
 
-type ReducedValueWithSteps = {
+export type ReducedValueWithSteps = {
   reducedValue: number;
   reductionSteps: number[];
 };
@@ -133,7 +133,7 @@ function reduceBlock(block: string): number {
   return reduceToSingle(n);
 }
 
-type KaabalisticLifePathResult = {
+export type KaabalisticLifePathResult = {
   parts: {
     day: string;
     month: string;
@@ -193,8 +193,11 @@ export function calculateKaabalisticLifePath(
   const personalMythologyNumbers = [
     parseInt(`${dayMonthSynthesis}${yearSynthesis}`, 10),
     finalSynthesis,
-    lifePath,
   ];
+
+  if (finalSynthesis !== lifePath) {
+    personalMythologyNumbers.push(lifePath);
+  }
 
   const reducedLifePath = reduceToSingle(lifePath);
   if (isMasterLifePath) {
@@ -216,7 +219,7 @@ export function calculateKaabalisticLifePath(
   };
 }
 
-type StraightAcrossReductionLifePathResult = {
+export type StraightAcrossReductionLifePathResult = {
   lifePath: number;
   reductionSteps: number[];
 };
@@ -240,7 +243,7 @@ export function calculateStraightAcrossReductionLifePath(
   };
 }
 
-type DateEnergies = {
+export type DateEnergies = {
   dayEnergy: ReducedValueWithSteps;
   monthEnergy: ReducedValueWithSteps;
   yearEnergy: ReducedValueWithSteps;
@@ -268,7 +271,7 @@ export function getDateEnergies(birthDate: Date): DateEnergies {
   };
 }
 
-type Challenges = {
+export type Challenges = {
   day: number;
   month: number;
   year: number;
@@ -532,7 +535,7 @@ function calculateAge(birthDate: Date, today: Date = new Date()): number {
   return today.getFullYear() - birthDate.getFullYear();
 }
 
-type FibonacciCycle = {
+export type FibonacciCycle = {
   currentAge: number;
   cycle1: ReducedValueWithSteps;
   cycle2: ReducedValueWithSteps;
@@ -579,18 +582,18 @@ export function calculateFibonacciCycle(
   };
 }
 
-type PersonalPeriod = {
+export type PersonalPeriod = {
   startMonth: number;
   endMonth: number;
   value: ReducedValueWithSteps;
 };
 
-type PersonalMonth = {
+export type PersonalMonth = {
   month: number;
   value: ReducedValueWithSteps;
 };
 
-type PersonalCycles = {
+export type PersonalCycles = {
   personalYear: ReducedValueWithSteps;
   personalPeriods: [PersonalPeriod, PersonalPeriod, PersonalPeriod];
   personalMonths: [
@@ -612,11 +615,17 @@ type PersonalCycles = {
   currentPersonalMonth: number;
   currentAge: number;
   lifePath: number;
-  soulNumber?: number;
+  soulNumber?: ReducedValueWithSteps;
+  yearUsedOnCalculations: number;
 };
 
-function calculateSoulNumber(firstName: string): number {
-  return calculateGematria(firstName).vowels.finalValue;
+function calculateSoulNumber(firstName: string): ReducedValueWithSteps {
+  const vowels = calculateGematria(firstName).vowels;
+
+  return {
+    reducedValue: vowels.finalValue,
+    reductionSteps: vowels.reductionSteps,
+  }
 }
 
 /**
@@ -707,7 +716,8 @@ function diffInPersonalMonths(birthDate: Date, today: Date): number {
   }
 
   if (k < 0) k = 0;
-  if (k > 12) k = 12; // 13th slot is the next birthday month
+  if (k > 12) k = 12; 
+
   return k;
 }
 
@@ -723,7 +733,7 @@ export function calculatePersonalMonths(
   const firstPersonalMonth = parseInt(month, 10);
 
   const personalMonths: PersonalMonth[] = [];
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 12; i++) {
     const m = wrapMonth(firstPersonalMonth + i);
     const value = reduceToSingleWithSteps(personalYear.reducedValue + m, {
       preserveMasters: true,
@@ -756,7 +766,7 @@ export function calculatePersonalCycles(
   const soulNumber = calculateSoulNumber(firstName);
 
   const personalPeriods =
-    calculatePersonalPeriods(birthDate, yearToUse, lifePath, soulNumber, currentAge);
+    calculatePersonalPeriods(birthDate, yearToUse, lifePath, soulNumber.reducedValue, currentAge);
 
   const {
     personalMonths,
@@ -775,5 +785,6 @@ export function calculatePersonalCycles(
     personalMonths,
     currentPersonalPeriod,
     currentPersonalMonth,
+    yearUsedOnCalculations: yearToUse,
   };
 }

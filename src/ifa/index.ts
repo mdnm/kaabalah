@@ -1,18 +1,20 @@
 
+export type OduNumbers = {
+  leftNumbers: number[],
+  rightNumbers: number[],
+  north: number,
+  south: number,
+  east: number,
+  west: number,
+  center: number
+}
+
 /**
  * Calculate the Odu numbers based on a date
  * @param date - Date object
  * @returns Odu numbers
  */
-export function calculateOdu(date: Date): {
-  leftNumbers: number[],
-  rightNumbers: number[],
-  north: number,  // O2 (reduced left sum)
-  south: number,  // reduced right sum
-  east: number,   // reduced sum of north and south
-  west: number,   // reduced sum of north, south, and east
-  center: number  // reduced sum of all directions
-} {
+export function calculateOdu(date: Date): OduNumbers {
   // Format the date into DD/MM/YYYY
   const day = date.getDate().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
