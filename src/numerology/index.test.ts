@@ -94,6 +94,11 @@ describe("Kaabalistic life path", () => {
       expect(res.personalMythologyNumbers).toEqual(personalMythologyNumbers);
     }
   );
+
+  it("should filter same numbers in personal mythology numbers", () => {
+    const res = calculateKaabalisticLifePath(dUTC(1902, 1, 2));
+    expect(res.personalMythologyNumbers).toEqual([2112, 33, 6]);
+  });
 });
 
 describe("Straight across reduction life path", () => {
@@ -218,12 +223,13 @@ describe("Fibonacci cycle", () => {
 
 describe("Personal cycles", () => {
   it.each([
-    // y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth
-    [2000, 9, 28, "2025-10-01", "John", 25, 1, [7, 3, 6], [1, 11, 3, 4, 2, 3, 4, 5, 6, 7, 8, 9, 1], 0, 0],
-    [2000, 12, 28, "2025-11-01", "John", 24, 3, [5, 5, 5], [6, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4, 5, 6], 2, 10],
+    // y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth, soulNumber
+    [2000, 9, 28, "2025-10-01", "John", 25, 1, [7, 3, 6], [1, 11, 3, 4, 2, 3, 4, 5, 6, 7, 8, 9], 0, 0, 6],
+    [2000, 12, 28, "2025-11-01", "John", 24, 3, [5, 5, 5], [6, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4, 5], 2, 10, 6],
+    [1999, 11, 29, "2025-11-25", "Abigail", 25, 3, [6, 4, 3], [5, 6, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4], 2, 11, 4],
   ])(
     "produces personal cycles %d-%d-%d → %o",
-    (y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth) => {
+    (y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth, soulNumber) => {
       const res = calculatePersonalCycles(dUTC(y, m, d), new Date(today), name);
       expect(res.currentAge).toBe(currentAge);
       expect(res.personalYear.reducedValue).toBe(personalYear);
@@ -231,6 +237,7 @@ describe("Personal cycles", () => {
       expect(res.personalMonths.map((m) => m.value.reducedValue)).toEqual(personalMonths);
       expect(res.currentPersonalPeriod).toBe(currentPersonalPeriod);
       expect(res.currentPersonalMonth).toBe(currentPersonalMonth);
+      expect(res.soulNumber?.reducedValue).toBe(soulNumber);
     }
   );
 });
