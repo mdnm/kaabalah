@@ -10,7 +10,7 @@ import type { SwissEphModuleFactory } from '../../wasm/src/types';
 // compilation is complete.
 
 // Import from the actual WASM wrapper
-import { CalcFlag, Houses, HouseSystem, parsFortunae, Planet, PlanetPosition, SwissEph } from '../../wasm/src/swisseph';
+import { CalcFlag, Houses, HouseSystem, normalizeAngle, parsFortunae, Planet, PlanetPosition, SwissEph } from '../../wasm/src/swisseph';
 
 // We'll use this singleton pattern to manage the Swiss Ephemeris instance
 let swissEph: SwissEph | null = null;
@@ -74,11 +74,11 @@ export async function calculatePlanetaryPositions(date: Date): Promise<Record<st
       neptune: Planet.NEPTUNE,
       pluto: Planet.PLUTO,
       meanNode: Planet.MEAN_NODE,
-      trueNode: Planet.TRUE_NODE,
+      // trueNode: Planet.TRUE_NODE,
       // TODO: add chiron through seas_18.se1, seas_18.se2 and seasnam.txt files
       // chiron: Planet.CHIRON,
       lilithMean: Planet.LILITH_MEAN,
-      lilithTrue: Planet.LILITH_TRUE,
+      // lilithTrue: Planet.LILITH_TRUE,
     };
 
     const positions: Record<string, PlanetPosition> = {};
@@ -161,5 +161,5 @@ function checkInitialization(): void {
 }
 
 // Re-export types and enums for convenience
-export { CalcFlag, HouseSystem, Planet };
+export { CalcFlag, HouseSystem, normalizeAngle, Planet };
 
