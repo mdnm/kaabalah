@@ -9,6 +9,8 @@ import type {
   SweHouses,
   SweJulDay,
   SweSetEphePath,
+  SweSetSidMode,
+  SweSetTopo,
   SwissEphModule
 } from './types';
 
@@ -26,6 +28,8 @@ export enum Planet {
   PLUTO = 9,
   MEAN_NODE = 10,
   TRUE_NODE = 11,
+  LILITH_MEAN = 12,
+  LILITH_TRUE = 13,
   CHIRON = 15
 }
 
@@ -46,11 +50,18 @@ export enum HouseSystem {
 
 // Calculation flag constants
 export enum CalcFlag {
+  JPL_EPH = 1,
   SWISS_EPH = 2,
   MOSHIER = 4,
   HELIOCENTRIC = 8,
   TRUE_POS = 16,
-  SPEED = 32
+  J2000 = 32,
+  NONUT = 64,
+  SPEED3 = 128,
+  SPEED = 256,
+  EQUATORIAL = 2048,
+  TOPOCTR = 32768,
+  SIDEREAL = 65536,
 }
 
 // Planet position result
@@ -68,7 +79,31 @@ export interface Houses {
   ascendant: number;
   mc: number;
   houses: number[];
+  // extras of ASCMC (useful for Vertex etc.)
+  ascmc?: {
+    armc: number;
+    vertex: number;
+    equasc: number;
+    coasc1: number;
+    coasc2: number;
+    polasc: number;
+  };
 }
+
+// Offset for asteroids (MPC)
+export const SE_AST_OFFSET = 10000;
+
+export const BODY = {
+  MEAN_APOGEE: 12,    // Lilith mean
+  OSC_APOGEE: 13,     // Lilith true
+  PHOLUS: 16,
+  CERES: 17,
+  PALLAS: 18,
+  JUNO: 19,
+  VESTA: 20,
+} as const;
+
+export const normalizeAngle = (deg: number) => ((deg % 360) + 360) % 360;
 
 // Swiss Ephemeris class
 export class SwissEph {
@@ -79,6 +114,8 @@ export class SwissEph {
   private swe_house_pos: SweHousePos | null = null;
   private swe_set_ephe_path: SweSetEphePath | null = null;
   private swe_close: SweClose | null = null;
+  private swe_set_topo: SweSetTopo | null = null;
+  private swe_set_sid_mode: SweSetSidMode | null = null;
   
   /**
    * Constructor that accepts a pre-initialized Swiss Ephemeris module
@@ -89,10 +126,12 @@ export class SwissEph {
     // Create wrapped functions with specific types
     this.swe_julday = this.module.cwrap<SweJulDay>('swe_julday', 'number', ['number', 'number', 'number', 'number', 'number']);
     this.swe_calc_ut = this.module.cwrap<SweCalcUt>('swe_calc_ut', 'number', ['number', 'number', 'number', 'number']);
-    this.swe_houses = this.module.cwrap<SweHouses>('swe_houses', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
+    this.swe_houses = this.module.cwrap<SweHouses>('swe_houses', 'number', ['number', 'number', 'number', 'number', 'number', 'number']);
     this.swe_house_pos = this.module.cwrap<SweHousePos>('swe_house_pos', 'number', ['number', 'number', 'number', 'string', 'number', 'number']);
     this.swe_set_ephe_path = this.module.cwrap<SweSetEphePath>('swe_set_ephe_path', null, ['number']);
     this.swe_close = this.module.cwrap<SweClose>('swe_close', null, []);
+    this.swe_set_topo = this.module.cwrap<SweSetTopo>('swe_set_topo', null, ['number', 'number', 'number']);
+    this.swe_set_sid_mode = this.module.cwrap<SweSetSidMode>('swe_set_sid_mode', null, ['number', 'number', 'number']);
   }
   
   private checkInitialized(): void {
@@ -140,7 +179,7 @@ export class SwissEph {
   /**
    * Calculate planet position at a given Julian day
    */
-  calculatePlanetPosition(julday: number, planet: Planet, flags = CalcFlag.SWISS_EPH): PlanetPosition {
+  calculatePlanetPosition(julday: number, planet: Planet | number, flags = CalcFlag.SWISS_EPH): PlanetPosition {
     this.checkInitialized();
     if (!this.swe_calc_ut || !this.module) {
       throw new Error('Planet calculation function not available');
@@ -207,7 +246,9 @@ export class SwissEph {
     
     try {
       // Calculate houses
-      const ret = this.swe_houses(julday, latitude, longitude, hsys.toString(), housesPtr, ascmcPtr);
+      // passar código do caractere (ex.: 'P' -> 80)
+      const hsysCode = hsys.charCodeAt(0);
+      const ret = this.swe_houses(julday, latitude, longitude, hsysCode, housesPtr, ascmcPtr);
       
       if (ret < 0) {
         throw new Error(`Houses calculation failed with error code ${ret}`);
@@ -220,10 +261,28 @@ export class SwissEph {
         houses.push(value);
       }
       
-      const ascendant = this.module.getValue(ascmcPtr, 'double');
-      const mc = this.module.getValue(ascmcPtr + 8, 'double');
+      const ascendant = this.module.getValue(ascmcPtr + 0, 'double');  // 0
+      const mc        = this.module.getValue(ascmcPtr + 8, 'double');  // 1
+      const armc      = this.module.getValue(ascmcPtr + 16, 'double'); // 2
+      const vertex    = this.module.getValue(ascmcPtr + 24, 'double'); // 3
+      const equasc    = this.module.getValue(ascmcPtr + 32, 'double'); // 4
+      const coasc1    = this.module.getValue(ascmcPtr + 40, 'double'); // 5
+      const coasc2    = this.module.getValue(ascmcPtr + 48, 'double'); // 6
+      const polasc    = this.module.getValue(ascmcPtr + 56, 'double'); // 7
       
-      return { ascendant, mc, houses };
+      return { 
+        ascendant,
+        mc,
+        houses,
+        ascmc: {
+          armc,
+          vertex,
+          equasc,
+          coasc1,
+          coasc2,
+          polasc
+        }
+      };
     } finally {
       // Always free memory
       this.module._free(memoryPtr);
@@ -239,4 +298,49 @@ export class SwissEph {
       this.swe_close();
     }
   }
+
+  /**
+   * Set topocentric observer
+   */
+  setTopocentric(longitude: number, latitude: number, altitudeMeters = 0): void {
+    this.checkInitialized();
+
+    if (!this.swe_set_topo) {
+      throw new Error('Topocentric calculation function not available');
+    }
+
+    this.swe_set_topo(longitude, latitude, altitudeMeters);
+  }
+
+  /**
+   * Set sidereal mode 
+   * Ex.: mode=1 (Lahiri). See Swiss Ephemeris mode table.
+   */
+  setSiderealMode(mode: number, t0 = 0, ayan_t0 = 0): void {
+    this.checkInitialized();
+    this.swe_set_sid_mode?.(mode, t0, ayan_t0);
+  }
+
+  /**
+   * Asteroid by MPC number
+   */
+  calculateAsteroidPosition(julday: number, mpcNumber: number, flags = CalcFlag.SWISS_EPH): PlanetPosition {
+    return this.calculatePlanetPosition(julday, SE_AST_OFFSET + mpcNumber, flags);
+  }
+
+  /**
+   * Lilith mean (12) and true (13)
+   */
+  calculateLilith(julday: number, kind: 'mean' | 'true' = 'mean', flags = CalcFlag.SWISS_EPH): PlanetPosition {
+    const id = kind === 'mean' ? BODY.MEAN_APOGEE : BODY.OSC_APOGEE;
+    return this.calculatePlanetPosition(julday, id, flags);
+  }
 } 
+
+/**
+ * Fortune part (in ecliptic longitude)
+*/
+export function parsFortunae(asc: number, sunLon: number, moonLon: number, diurnal: boolean): number {
+  const val = diurnal ? (asc + moonLon - sunLon) : (asc + sunLon - moonLon);
+  return normalizeAngle(val);
+}

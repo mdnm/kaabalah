@@ -17,7 +17,9 @@ export interface SwissEphModuleFactory {
 // Wrapped function types
 export type SweJulDay = (year: number, month: number, day: number, hour: number, flag: number) => number;
 export type SweCalcUt = (julday: number, planet: number, flag: number, result: number) => number;
-export type SweHouses = (julday: number, lat: number, lon: number, hsys: string, result: number, ascmc: number) => number;
+export type SweHouses = (julday: number, lat: number, lon: number, hsys: number, result: number, ascmc: number) => number;
 export type SweHousePos = (armc: number, lat: number, eps: number, hsys: string, lon: number, lat2: number) => number;
 export type SweSetEphePath = (path: number) => void;
 export type SweClose = () => void; 
+export type SweSetTopo = (lon: number, lat: number, altm: number) => void;
+export type SweSetSidMode = (mode: number, t0: number, ayan_t0: number) => void;
