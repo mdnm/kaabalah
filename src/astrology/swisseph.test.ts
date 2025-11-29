@@ -69,7 +69,8 @@ describe('Swiss Ephemeris Integration', () => {
       expect(houses).toBeDefined();
       expect(houses.ascendant).toBeDefined();
       expect(houses.mc).toBeDefined();
-      expect(houses.houses).toHaveLength(12);
+      expect(houses.houses[0]).toBe(0);
+      expect(houses.houses).toHaveLength(13);
       expect(houses.ascmc).toBeDefined();
       expect(houses.ascmc?.armc).toBeDefined();
       expect(houses.ascmc?.vertex).toBeDefined();
@@ -111,7 +112,7 @@ describe('Swiss Ephemeris Integration', () => {
       for (const system of houseSystems) {
         const houses = await calculateHouses(date, latitude, longitude, system);
         expect(houses).toBeDefined();
-        expect(houses.houses).toHaveLength(12);
+        expect(houses.houses).toHaveLength(13);
       }
     } catch (error) {
       console.error('Failed to calculate houses for different systems:', error);
@@ -132,7 +133,7 @@ describe('Swiss Ephemeris Integration', () => {
       for (const { lat, lon } of extremeLatitudes) {
         const houses = await calculateHouses(date, lat, lon, HouseSystem.PLACIDUS);
         expect(houses).toBeDefined();
-        expect(houses.houses).toHaveLength(12);
+        expect(houses.houses).toHaveLength(13);
       }
     } catch (error) {
       console.error('Failed to calculate houses for extreme latitudes:', error);
