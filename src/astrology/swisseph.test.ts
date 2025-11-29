@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { HouseSystem } from '../../wasm/src/swisseph';
-import { calculateHouses, calculatePlanetaryPositions, closeSwissEph, getSwissEph } from './swisseph';
+import { calcParsFortunae, calculateHouses, calculatePlanetaryPositions, closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Swiss Ephemeris Integration', () => {
   beforeAll(async () => {
@@ -37,6 +37,13 @@ describe('Swiss Ephemeris Integration', () => {
       expect(positions.mars).toBeDefined();
       expect(positions.jupiter).toBeDefined();
       expect(positions.saturn).toBeDefined();
+      expect(positions.uranus).toBeDefined();
+      expect(positions.neptune).toBeDefined();
+      expect(positions.pluto).toBeDefined();
+      expect(positions.meanNode).toBeDefined();
+      expect(positions.trueNode).toBeDefined();
+      expect(positions.lilithMean).toBeDefined();
+      expect(positions.lilithTrue).toBeDefined();
 
       // Check if positions are within valid ranges (0-360 degrees)
       Object.values(positions).forEach(position => {
@@ -65,6 +72,13 @@ describe('Swiss Ephemeris Integration', () => {
       expect(houses.ascendant).toBeDefined();
       expect(houses.mc).toBeDefined();
       expect(houses.houses).toHaveLength(12);
+      expect(houses.ascmc).toBeDefined();
+      expect(houses.ascmc?.armc).toBeDefined();
+      expect(houses.ascmc?.vertex).toBeDefined();
+      expect(houses.ascmc?.equasc).toBeDefined();
+      expect(houses.ascmc?.coasc1).toBeDefined();
+      expect(houses.ascmc?.coasc2).toBeDefined();
+      expect(houses.ascmc?.polasc).toBeDefined();
 
       // Check if house cusps are within valid range (0-360 degrees)
       houses.houses.forEach(cusp => {
@@ -124,6 +138,38 @@ describe('Swiss Ephemeris Integration', () => {
       }
     } catch (error) {
       console.error('Failed to calculate houses for extreme latitudes:', error);
+      throw error;
+    }
+  });
+
+  it('should calculate fortune part (diurnal)', async () => {
+    try {
+      const asc = 100;
+      const sunLon = 100;
+      const moonLon = 100;
+      const fortunePart = calcParsFortunae(asc, sunLon, moonLon, true);
+      expect(fortunePart).toBeDefined();
+      expect(fortunePart).toBeGreaterThanOrEqual(0);
+      expect(fortunePart).toBeLessThan(360);
+    }
+    catch (error) {
+      console.error('Failed to calculate fortune part:', error);
+      throw error;
+    }
+  });
+
+  it('should calculate fortune part (nocturnal)', async () => {
+    try {
+      const asc = 100;
+      const sunLon = 100;
+      const moonLon = 100;
+      const fortunePart = calcParsFortunae(asc, sunLon, moonLon, false);
+      expect(fortunePart).toBeDefined();
+      expect(fortunePart).toBeGreaterThanOrEqual(0);
+      expect(fortunePart).toBeLessThan(360);
+    }
+    catch (error) {
+      console.error('Failed to calculate fortune part:', error);
       throw error;
     }
   });

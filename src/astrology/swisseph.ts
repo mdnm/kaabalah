@@ -10,10 +10,12 @@ import type { SwissEphModuleFactory } from '../../wasm/src/types';
 // compilation is complete.
 
 // Import from the actual WASM wrapper
-import { CalcFlag, Houses, HouseSystem, Planet, PlanetPosition, SwissEph } from '../../wasm/src/swisseph';
+import { CalcFlag, Houses, HouseSystem, parsFortunae, Planet, PlanetPosition, SwissEph } from '../../wasm/src/swisseph';
 
 // We'll use this singleton pattern to manage the Swiss Ephemeris instance
 let swissEph: SwissEph | null = null;
+
+const DEFAULT_FLAGS = CalcFlag.SWISS_EPH | CalcFlag.SPEED;
 
 /**
  * Initializes and returns the Swiss Ephemeris instance.
@@ -59,6 +61,7 @@ export async function calculatePlanetaryPositions(date: Date): Promise<Record<st
     checkInitialization();
 
     const julday = swissEph!.getJulianDay(date);
+    const flags = DEFAULT_FLAGS;
     const planets = {
       sun: Planet.SUN,
       moon: Planet.MOON,
@@ -66,13 +69,22 @@ export async function calculatePlanetaryPositions(date: Date): Promise<Record<st
       venus: Planet.VENUS,
       mars: Planet.MARS,
       jupiter: Planet.JUPITER,
-      saturn: Planet.SATURN
+      saturn: Planet.SATURN,
+      uranus: Planet.URANUS,
+      neptune: Planet.NEPTUNE,
+      pluto: Planet.PLUTO,
+      meanNode: Planet.MEAN_NODE,
+      trueNode: Planet.TRUE_NODE,
+      // TODO: add chiron through seas_18.se1, seas_18.se2 and seasnam.txt files
+      // chiron: Planet.CHIRON,
+      lilithMean: Planet.LILITH_MEAN,
+      lilithTrue: Planet.LILITH_TRUE,
     };
 
     const positions: Record<string, PlanetPosition> = {};
     for (const [name, id] of Object.entries(planets)) {
       try {
-        positions[name] = swissEph!.calculatePlanetPosition(julday, id);
+        positions[name] = swissEph!.calculatePlanetPosition(julday, id, flags);
       } catch (error) {
         throw new Error(`Failed to calculate position for ${name}: ${error}`);
       }
@@ -103,6 +115,28 @@ export async function calculateHouses(
     console.error('Error calculating houses:', error);
     throw error;
   }
+}
+/**
+ * Calculate an asteroid by MPC number
+ */
+export async function calculateAsteroid(date: Date, mpcNumber: number): Promise<PlanetPosition> {
+  try {
+    checkInitialization();
+
+    const julday = swissEph!.getJulianDay(date);
+    return swissEph!.calculateAsteroidPosition(julday, mpcNumber, DEFAULT_FLAGS);
+  } catch (error) {
+    console.error('Error calculating asteroid:', error);
+    throw error;
+  }
+}
+
+/**
+ * Fortune part utility (requires Asc, Sun, Moon and diurnal/nocturnal)
+ * diurnal: Asc + Moon - Sun ; nocturnal: Asc + Sun - Moon
+ */
+export function calcParsFortunae(asc: number, sunLon: number, moonLon: number, isDiurnal: boolean): number {
+  return parsFortunae(asc, sunLon, moonLon, isDiurnal);
 }
 
 /**
