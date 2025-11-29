@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

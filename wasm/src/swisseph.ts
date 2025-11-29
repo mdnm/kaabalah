@@ -232,17 +232,19 @@ export class SwissEph {
       throw new Error('Longitude must be between -180 and 180 degrees');
     }
     
+    // Swiss Ephemeris: cusps[0..12] (0 not used), ascmc[0..9]
+    const HOUSES_DOUBLES = 13;
+    const ASCMC_DOUBLES  = 10;
+    const BYTES_PER_F64  = 8;
+    
     // Create a single contiguous memory block for both houses and ascmc
-    const totalBytes = (12 + 10) * 8; // 12 houses + 10 ascmc values, each 8 bytes (double)
-    const memoryPtr = this.module._malloc(totalBytes);
-    
-    if (!memoryPtr) {
-      throw new Error('Memory allocation failed');
-    }
-    
-    // Calculate offsets
-    const housesPtr = memoryPtr;
-    const ascmcPtr = memoryPtr + (12 * 8);
+    const totalBytes = (HOUSES_DOUBLES + ASCMC_DOUBLES) * BYTES_PER_F64;
+    const memoryPtr  = this.module._malloc(totalBytes);
+
+    if (!memoryPtr) throw new Error('Memory allocation failed');
+  
+    const housesPtr = memoryPtr;                                  // 13 * f64
+    const ascmcPtr  = memoryPtr + (HOUSES_DOUBLES * BYTES_PER_F64); // 10 * f64
     
     try {
       // Calculate houses
@@ -255,20 +257,19 @@ export class SwissEph {
       }
       
       // Extract all data before any memory operations
-      const houses: number[] = [];
-      for (let i = 0; i < 12; i++) {
-        const value = this.module.getValue(housesPtr + i * 8, 'double');
-        houses.push(value);
+      const houses: number[] = new Array(HOUSES_DOUBLES);
+      for (let i = 0; i < HOUSES_DOUBLES; i++) {
+        houses[i] = this.module.getValue(housesPtr + i * BYTES_PER_F64, 'double');
       }
       
-      const ascendant = this.module.getValue(ascmcPtr + 0, 'double');  // 0
-      const mc        = this.module.getValue(ascmcPtr + 8, 'double');  // 1
-      const armc      = this.module.getValue(ascmcPtr + 16, 'double'); // 2
-      const vertex    = this.module.getValue(ascmcPtr + 24, 'double'); // 3
-      const equasc    = this.module.getValue(ascmcPtr + 32, 'double'); // 4
-      const coasc1    = this.module.getValue(ascmcPtr + 40, 'double'); // 5
-      const coasc2    = this.module.getValue(ascmcPtr + 48, 'double'); // 6
-      const polasc    = this.module.getValue(ascmcPtr + 56, 'double'); // 7
+      const ascendant = this.module.getValue(ascmcPtr + 0 * BYTES_PER_F64, 'double'); // 0
+      const mc        = this.module.getValue(ascmcPtr + 1 * BYTES_PER_F64, 'double'); // 1
+      const armc      = this.module.getValue(ascmcPtr + 2 * BYTES_PER_F64, 'double'); // 2
+      const vertex    = this.module.getValue(ascmcPtr + 3 * BYTES_PER_F64, 'double'); // 3
+      const equasc    = this.module.getValue(ascmcPtr + 4 * BYTES_PER_F64, 'double'); // 4
+      const coasc1    = this.module.getValue(ascmcPtr + 5 * BYTES_PER_F64, 'double'); // 5
+      const coasc2    = this.module.getValue(ascmcPtr + 6 * BYTES_PER_F64, 'double'); // 6
+      const polasc    = this.module.getValue(ascmcPtr + 7 * BYTES_PER_F64, 'double'); // 7
       
       return { 
         ascendant,

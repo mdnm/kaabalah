@@ -47,7 +47,7 @@ describe('Astrology Module', () => {
       // Verify houses
       expect(chart.houses.ascendant).toBeDefined();
       expect(chart.houses.mc).toBeDefined();
-      expect(chart.houses.houses).toHaveLength(12);
+      expect(chart.houses.houses).toHaveLength(13);
 
       // Check valid ranges
       Object.values(chart.planets).forEach(planet => {
@@ -122,7 +122,7 @@ describe('Astrology Module', () => {
         const options = { ...baseOptions, houseSystem: system };
         const chart = await getBirthChart(options);
         expect(chart).toBeDefined();
-        expect(chart.houses.houses).toHaveLength(12);
+        expect(chart.houses.houses).toHaveLength(13);
       }
     } catch (error) {
       console.error('Failed to test different house systems:', error);
