@@ -74,27 +74,9 @@
           timezone: 0
         });
 
-        // Format the results with zodiac positions
-        const formattedPlanets = Object.entries(chartData.planets).map(([planet, position]) => {
-          const zodiacPos = getZodiacPosition(position.longitude);
-          return {
-            planet,
-            position: {
-              sign: zodiacPos.sign,
-              decimal: zodiacPos.decimal,
-              traditional: zodiacPos.traditionalFormat
-            },
-            latitude: position.latitude.toFixed(2),
-            distance: position.distance.toFixed(2)
-          };
-        });
+        console.info(chartData);
 
-        // Format houses
-        const formattedHouses = {
-          ascendant: getZodiacPosition(chartData.houses.ascendant),
-          mc: getZodiacPosition(chartData.houses.mc),
-          houses: chartData.houses.houses.map(h => getZodiacPosition(h))
-        };
+        const planets = Object.values(chartData.planets);
 
         // Display results
         const resultDiv = document.getElementById('astrologyResult');
@@ -102,12 +84,12 @@
           <h3>Birth Chart for JAN 1, 2000 12:00</h3>
           <h4>Latitude: 20, Longitude: 77, Timezone: 0</h4>
           <h4>Planets:</h4>
-          ${formattedPlanets.map(p => `
+          ${planets.map(p => `
             <div class="planet-position">
-              <strong>${p.planet}:</strong>
+              <strong>${p.name}:</strong>
               <div class="position-format">
-                <span class="format-label">Traditional:</span> ${p.position.sign} ${p.position.traditional}
-                <span class="format-label">Decimal:</span> ${p.position.sign} ${p.position.decimal}
+                <span class="format-label">Traditional:</span> ${p.zodiacPosition.sign} ${p.zodiacPosition.traditionalFormat}
+                <span class="format-label">Decimal:</span> ${p.zodiacPosition.sign} ${p.zodiacPosition.decimal}
               </div>
             </div>
           `).join('')}
@@ -116,15 +98,15 @@
           <div class="house-position">
             <strong>Ascendant:</strong>
             <div class="position-format">
-              <span class="format-label">Traditional:</span> ${formattedHouses.ascendant.sign} ${formattedHouses.ascendant.traditionalFormat}
-              <span class="format-label">Decimal:</span> ${formattedHouses.ascendant.sign} ${formattedHouses.ascendant.decimal}
+              <span class="format-label">Traditional:</span> ${chartData.houses.ascendant.sign} ${chartData.houses.ascendant.traditionalFormat}
+              <span class="format-label">Decimal:</span> ${chartData.houses.ascendant.sign} ${chartData.houses.ascendant.decimal}
             </div>
           </div>
           <div class="house-position">
             <strong>Midheaven:</strong>
             <div class="position-format">
-              <span class="format-label">Traditional:</span> ${formattedHouses.mc.sign} ${formattedHouses.mc.traditionalFormat}
-              <span class="format-label">Decimal:</span> ${formattedHouses.mc.sign} ${formattedHouses.mc.decimal}
+              <span class="format-label">Traditional:</span> ${chartData.houses.mc.sign} ${chartData.houses.mc.traditionalFormat}
+              <span class="format-label">Decimal:</span> ${chartData.houses.mc.sign} ${chartData.houses.mc.decimal}
             </div>
           </div>
         `;

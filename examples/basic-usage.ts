@@ -13,8 +13,8 @@ import * as Kaabalah from '../src';
 
 // Numerology example
 const birthDate = new Date('1990-06-15');
-const lifePath = Kaabalah.calculateLifePath(birthDate);
-console.log(`Life Path Number for 1990-06-15: ${lifePath}`);
+const lifePath = Kaabalah.calculateKaabalisticLifePath(birthDate);
+console.log(`Life Path Number for 1990-06-15: ${lifePath.lifePath}`);
 
 // Kaabalah example
 const name = 'Kaabalah';

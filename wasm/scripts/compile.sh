@@ -31,17 +31,18 @@ mkdir -p "$BUILD_DIR"
 # Compilation flags
 CFLAGS="-O3 -DUSE_STATIC -I$SWEPH_DIR"
 EXPORTED_FUNCTIONS="['_malloc', '_free', '_swe_set_ephe_path', '_swe_close', '_swe_julday', '_swe_calc_ut', '_swe_houses', '_swe_house_pos', '_swe_azalt', '_swe_calc', '_swe_fixstar', '_swe_get_planet_name', '_swe_set_sid_mode', '_swe_set_topo', '_swe_set_jpl_file']"
-EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap', 'setValue', 'getValue', 'stringToUTF8', 'UTF8ToString', 'lengthBytesUTF8']"
+EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap', 'setValue', 'getValue', 'stringToUTF8', 'UTF8ToString', 'lengthBytesUTF8', 'FS', 'NODEFS']"
 
-echo "Compiling Swiss Ephemeris to WebAssembly..."
+echo "Compiling Swiss Ephemeris to WebAssembly (web build)..."
 
-# Compile with Emscripten
+# Web build (no NODERAWFS)
 emcc $CFLAGS \
     -s WASM=1 \
     -s MODULARIZE=1 \
     -s EXPORT_NAME="SwissEphemerisModule" \
     -s EXPORTED_FUNCTIONS="$EXPORTED_FUNCTIONS" \
     -s EXPORTED_RUNTIME_METHODS="$EXPORTED_RUNTIME_METHODS" \
+    -s FORCE_FILESYSTEM=1 \
     -s ALLOW_MEMORY_GROWTH=1 \
     -s INITIAL_MEMORY=16MB \
     -s MAXIMUM_MEMORY=128MB \
@@ -59,7 +60,39 @@ emcc $CFLAGS \
     "$SWEPH_DIR/swemplan.c" \
     "$SWEPH_DIR/swecl.c" \
     "$SWEPH_DIR/swehel.c" \
-    -o "$BUILD_DIR/swisseph.js"
+    -o "$BUILD_DIR/swisseph.web.js"
+
+echo "Compiling Swiss Ephemeris to WebAssembly (node build)..."
+
+# Node build (with NODERAWFS)
+emcc $CFLAGS \
+    -s WASM=1 \
+    -s MODULARIZE=1 \
+    -s EXPORT_NAME="SwissEphemerisModule" \
+    -s EXPORTED_FUNCTIONS="$EXPORTED_FUNCTIONS" \
+    -s EXPORTED_RUNTIME_METHODS="$EXPORTED_RUNTIME_METHODS" \
+    -s FORCE_FILESYSTEM=1 \
+    -s ALLOW_MEMORY_GROWTH=1 \
+    -s INITIAL_MEMORY=16MB \
+    -s MAXIMUM_MEMORY=128MB \
+    -s ENVIRONMENT='web,node' \
+    -s NODERAWFS=1 \
+    -s SINGLE_FILE=0 \
+    -s ASSERTIONS=1 \
+    -s STACK_OVERFLOW_CHECK=1 \
+    -s SAFE_HEAP=1 \
+    "$SWEPH_DIR/sweph.c" \
+    "$SWEPH_DIR/swephlib.c" \
+    "$SWEPH_DIR/swedate.c" \
+    "$SWEPH_DIR/swehouse.c" \
+    "$SWEPH_DIR/swejpl.c" \
+    "$SWEPH_DIR/swemmoon.c" \
+    "$SWEPH_DIR/swemplan.c" \
+    "$SWEPH_DIR/swecl.c" \
+    "$SWEPH_DIR/swehel.c" \
+    -o "$BUILD_DIR/swisseph.node.js"
 
 echo "Successfully compiled Swiss Ephemeris to WebAssembly"
-echo "Output files: $BUILD_DIR/swisseph.js and $BUILD_DIR/swisseph.wasm" 
+echo "Output files:"
+echo " - Web:  $BUILD_DIR/swisseph.web.js and $BUILD_DIR/swisseph.web.wasm"
+echo " - Node: $BUILD_DIR/swisseph.node.js and $BUILD_DIR/swisseph.node.wasm"

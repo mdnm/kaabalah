@@ -159,6 +159,7 @@ export class SwissEph {
       "number",
       "number",
       "number",
+      "number",
     ]);
     this.swe_houses = this.module.cwrap<SweHouses>("swe_houses", "number", [
       "number",
@@ -254,13 +255,29 @@ export class SwissEph {
       throw new Error("Failed to allocate memory for planet position");
     }
 
+    // allocate an error buffer for swe_calc_ut to write into
+    const ERR_BYTES = 512;
+    const errPtr = this.module._malloc(ERR_BYTES);
+    if (!errPtr) {
+      this.module._free(resultPtr);
+      throw new Error("Failed to allocate memory for error buffer");
+    }
+    // zero the buffer to ensure a clean C string
+    this.module.HEAP8.fill(0, errPtr, errPtr + ERR_BYTES);
+
     try {
-      const ret = this.swe_calc_ut(julday, planet, flags, resultPtr);
+      let ret = this.swe_calc_ut(julday, planet, flags, resultPtr, errPtr);
+
+      // // If Chiron via SE_CHIRON (15) fails, retry using MPC 2060 (asteroid id = offset + 2060)
+      // if (ret < 0 && planet === Planet.CHIRON) {
+      //   const mpcPlanetId = SE_AST_OFFSET + 2060; // 2060 = Chiron
+      //   this.module.HEAP8.fill(0, errPtr, errPtr + ERR_BYTES);
+      //   ret = this.swe_calc_ut(julday, mpcPlanetId, flags, resultPtr, errPtr);
+      // }
 
       if (ret < 0) {
-        throw new Error(
-          `Swiss Ephemeris calculation failed with error code ${ret}`
-        );
+        const msg = this.module.UTF8ToString(errPtr);
+        throw new Error(msg && msg.length ? msg : `Swiss Ephemeris calculation failed with error code ${ret}`);
       }
 
       const position: PlanetPosition = {
@@ -270,16 +287,14 @@ export class SwissEph {
       };
 
       if (flags & CalcFlag.SPEED) {
-        position.longitudeSpeed = this.module.getValue(
-          resultPtr + 24,
-          "double"
-        );
+        position.longitudeSpeed = this.module.getValue(resultPtr + 24, "double");
         position.latitudeSpeed = this.module.getValue(resultPtr + 32, "double");
         position.distanceSpeed = this.module.getValue(resultPtr + 40, "double");
       }
 
       return position;
     } finally {
+      this.module._free(errPtr);
       this.module._free(resultPtr);
     }
   }
