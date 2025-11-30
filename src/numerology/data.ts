@@ -478,7 +478,7 @@ export const CHALLENGE_MEANING: Record<ChallengeNumbers, string> = {
   [ChallengeNumbers.Eight]: "Stinginess or dissipation. Can worry excessively about material life or show total carelessness. Has thirst for power, but lacks ambition. Needs to use common sense and play fair. Should not evaluate everything in terms of material value.",
 }
 
-export const CHALLENGE_HEALTH_MEANING: Record<ChallengeNumbers & NumerologyValues, string> = {
+export const CHALLENGE_HEALTH_MEANING: Record<ChallengeNumbers | NumerologyValues, string> = {
   [ChallengeNumbers.Zero]: "There is no illness associated with the number zero.",
   [ChallengeNumbers.One]: "Prone to diseases in the head, headaches, sinusitis, allergies, injuries to the eyes, ears and head.",
   [ChallengeNumbers.Two]: "Tendency to retain fluids in the body. Delicate nervous system and kidneys.",
