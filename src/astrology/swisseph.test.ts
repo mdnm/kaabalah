@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { HouseSystem } from '../../wasm/src/swisseph';
+import { HouseSystem, Planet } from '../../wasm/src/swisseph';
 import { calcParsFortunae, calculateHouses, calculatePlanetaryPositions, closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Swiss Ephemeris Integration', () => {
@@ -30,18 +30,18 @@ describe('Swiss Ephemeris Integration', () => {
 
       // Check if we got results for all planets
       expect(positions).toBeDefined();
-      expect(positions.sun).toBeDefined();
-      expect(positions.moon).toBeDefined();
-      expect(positions.mercury).toBeDefined();
-      expect(positions.venus).toBeDefined();
-      expect(positions.mars).toBeDefined();
-      expect(positions.jupiter).toBeDefined();
-      expect(positions.saturn).toBeDefined();
-      expect(positions.uranus).toBeDefined();
-      expect(positions.neptune).toBeDefined();
-      expect(positions.pluto).toBeDefined();
-      expect(positions.meanNode).toBeDefined();
-      expect(positions.lilithMean).toBeDefined();
+      expect(positions[Planet.SUN]).toBeDefined();
+      expect(positions[Planet.MOON]).toBeDefined();
+      expect(positions[Planet.MERCURY]).toBeDefined();
+      expect(positions[Planet.VENUS]).toBeDefined();
+      expect(positions[Planet.MARS]).toBeDefined();
+      expect(positions[Planet.JUPITER]).toBeDefined();
+      expect(positions[Planet.SATURN]).toBeDefined();
+      expect(positions[Planet.URANUS]).toBeDefined();
+      expect(positions[Planet.NEPTUNE]).toBeDefined();
+      expect(positions[Planet.PLUTO]).toBeDefined();
+      expect(positions[Planet.MEAN_NODE]).toBeDefined();
+      expect(positions[Planet.LILITH_MEAN]).toBeDefined();
 
       // Check if positions are within valid ranges (0-360 degrees)
       Object.values(positions).forEach(position => {
