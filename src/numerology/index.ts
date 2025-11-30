@@ -3,21 +3,8 @@
  */
 
 import { calculateGematria } from "../gematria";
-import * as data from "./data";
-import {
-  Challenges,
-  CYCLE_MEANINGS,
-  CycleInfo,
-  DateEnergies,
-  FibonacciCycle,
-  HeptadCycles,
-  KaabalisticLifePathResult,
-  PersonalCycles,
-  PersonalMonth,
-  PersonalPeriod,
-  ReducedValueWithSteps,
-  StraightAcrossReductionLifePathResult,
-} from "./data";
+import type * as NumerologyModuleTypes from "./data";
+import * as NumerologyData from "./data";
 
 function parseDate(date: Date): { day: string; month: string; year: string } {
   if (!date) {
@@ -103,7 +90,7 @@ export function reduceToSingle(
 export function reduceToSingleWithSteps(
   n: number,
   options: { preserveMasters?: boolean } = { preserveMasters: false }
-): ReducedValueWithSteps {
+): NumerologyModuleTypes.ReducedValueWithSteps {
   const steps = [n];
 
   if (n === 0) {
@@ -149,7 +136,7 @@ function reduceBlock(block: string): number {
  */
 export function calculateKaabalisticLifePath(
   birthDate: Date
-): KaabalisticLifePathResult {
+): NumerologyModuleTypes.KaabalisticLifePathResult {
   const { day, month, year1, year2 } = mapDatePartsToBlocksOfTwo(
     parseDate(birthDate)
   );
@@ -207,7 +194,7 @@ export function calculateKaabalisticLifePath(
  */
 export function calculateStraightAcrossReductionLifePath(
   birthDate: Date
-): StraightAcrossReductionLifePathResult {
+): NumerologyModuleTypes.StraightAcrossReductionLifePathResult {
   const { day, month, year } = parseDate(birthDate);
 
   const result = reduceToSingleWithSteps(
@@ -221,7 +208,7 @@ export function calculateStraightAcrossReductionLifePath(
   };
 }
 
-export function getDateEnergies(birthDate: Date): DateEnergies {
+export function getDateEnergies(birthDate: Date): NumerologyModuleTypes.DateEnergies {
   const { day, month, year1, year2 } = mapDatePartsToBlocksOfTwo(
     parseDate(birthDate)
   );
@@ -243,7 +230,7 @@ export function getDateEnergies(birthDate: Date): DateEnergies {
   };
 }
 
-export function calculateChallenges(birthDate: Date): Challenges {
+export function calculateChallenges(birthDate: Date): NumerologyModuleTypes.Challenges {
   const { day, month, year } = parseDate(birthDate);
 
   const reducedDay = reduceToSingle(parseInt(day, 10));
@@ -282,16 +269,16 @@ function getMostRecentStartDate(startDate: Date, today: Date): Date {
   return recentStart;
 }
 
-function numberToHeptadCycle(number: number): HeptadCycles {
+function numberToHeptadCycle(number: number): NumerologyModuleTypes.HeptadCycles {
   if (number < 1 || number > 7) {
     throw new Error("Number must be between 1 and 7");
   }
 
-  return number as HeptadCycles;
+  return number as NumerologyModuleTypes.HeptadCycles;
 }
 
 // Calculate cycles (annual and monthly)
-export function calculateCycles(startDate: Date, today: Date): CycleInfo {
+export function calculateCycles(startDate: Date, today: Date): NumerologyModuleTypes.CycleInfo {
   const mostRecentStart = getMostRecentStartDate(startDate, today);
   const cycleLength = 52; // Fixed cycle length for monthly cycles
 
@@ -299,8 +286,8 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
   const isFutureDate = startDate > today;
   let currentYearlyCycle = null;
   let currentAgeCycle = null;
-  const ageCycles: CycleInfo["ageCycles"] = [];
-  const yearlyCycles: CycleInfo["yearlyCycles"] = [];
+  const ageCycles: NumerologyModuleTypes.CycleInfo["ageCycles"] = [];
+  const yearlyCycles: NumerologyModuleTypes.CycleInfo["yearlyCycles"] = [];
   if (!isFutureDate) {
     const birthYear = startDate.getFullYear();
     const currentYear = today.getFullYear();
@@ -339,7 +326,7 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
 
           yearlyCycles.push({
             number: yearlyCycle,
-            description: CYCLE_MEANINGS[numberToHeptadCycle(yearlyCycle)],
+            description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(yearlyCycle)],
             isActive: isCurrentYearlyCycle,
             cycleStart: yearlyCycleStart,
           });
@@ -348,7 +335,7 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
 
       ageCycles.push({
         number: cycle,
-        description: CYCLE_MEANINGS[numberToHeptadCycle(cycle)],
+        description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(cycle)],
         isActive: isCurrentCycle,
         cycleStart,
       });
@@ -356,20 +343,20 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
   }
 
   // Monthly cycles (relative to start date)
-  const monthlyCycles: CycleInfo["monthlyCycles"] = [];
+  const monthlyCycles: NumerologyModuleTypes.CycleInfo["monthlyCycles"] = [];
   for (let i = 0; i < 7; i++) {
     const cycleStart = addDays(mostRecentStart, i * cycleLength);
 
     monthlyCycles.push({
       number: i + 1,
-      description: CYCLE_MEANINGS[numberToHeptadCycle(i + 1)],
+      description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(i + 1)],
       isActive: false,
       cycleStart: cycleStart,
     });
   }
 
   // Find current monthly cycle
-  let currentMonthlyCycle: CycleInfo["currentMonthlyCycle"] = null;
+  let currentMonthlyCycle: NumerologyModuleTypes.CycleInfo["currentMonthlyCycle"] = null;
   let daysInMonthlyCycle = 0;
   for (let i = 0; i < 7; i++) {
     const cycleStart = addDays(mostRecentStart, i * cycleLength);
@@ -412,7 +399,7 @@ function calculateAge(birthDate: Date, today: Date = new Date()): number {
 export function calculateFibonacciCycle(
   birthDate: Date,
   today: Date
-): FibonacciCycle {
+): NumerologyModuleTypes.FibonacciCycle {
   const currentAge = calculateAge(birthDate, today);
 
   const cycle1 = reduceToSingleWithSteps(currentAge);
@@ -445,7 +432,7 @@ export function calculateFibonacciCycle(
   };
 }
 
-function calculateSoulNumber(firstName: string): ReducedValueWithSteps {
+function calculateSoulNumber(firstName: string): NumerologyModuleTypes.ReducedValueWithSteps {
   const vowels = calculateGematria(firstName).vowels;
 
   return {
@@ -481,7 +468,7 @@ function getLastBirthdayYear(birthDate: Date, today: Date): number {
 export function calculatePersonalYear(
   birthDate: Date,
   today: Date = new Date()
-): ReducedValueWithSteps {
+): NumerologyModuleTypes.ReducedValueWithSteps {
   const { day, month } = parseDate(birthDate);
   const yearToUse = getLastBirthdayYear(birthDate, today);
 
@@ -497,11 +484,11 @@ export function calculatePersonalPeriods(
   lifePath: number,
   soulNumber: number,
   currentAge: number
-): [PersonalPeriod, PersonalPeriod, PersonalPeriod] {
+): [NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod] {
   const { month } = parseDate(birthDate);
   const birthMonth = parseInt(month, 10);
 
-  const periods: [PersonalPeriod, PersonalPeriod, PersonalPeriod] = [
+  const periods: [NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod] = [
     {
       startMonth: wrapMonth(birthMonth + 0),
       endMonth: wrapMonth(birthMonth + 3),
@@ -549,16 +536,16 @@ function diffInPersonalMonths(birthDate: Date, today: Date): number {
 
 export function calculatePersonalMonths(
   birthDate: Date,
-  personalYear: ReducedValueWithSteps,
+  personalYear: NumerologyModuleTypes.ReducedValueWithSteps,
   today: Date
 ): {
-  personalMonths: PersonalCycles["personalMonths"];
+  personalMonths: NumerologyModuleTypes.PersonalCycles["personalMonths"];
   currentPersonalMonthIndex: number;
 } {
   const { month } = parseDate(birthDate);
   const firstPersonalMonth = parseInt(month, 10);
 
-  const personalMonths: PersonalMonth[] = [];
+  const personalMonths: NumerologyModuleTypes.PersonalMonth[] = [];
   for (let i = 0; i < 12; i++) {
     const m = wrapMonth(firstPersonalMonth + i);
     const value = reduceToSingleWithSteps(personalYear.reducedValue + m, {
@@ -570,7 +557,7 @@ export function calculatePersonalMonths(
   const currentPersonalMonthIndex = diffInPersonalMonths(birthDate, today);
 
   return {
-    personalMonths: personalMonths as PersonalCycles["personalMonths"],
+    personalMonths: personalMonths as NumerologyModuleTypes.PersonalCycles["personalMonths"],
     currentPersonalMonthIndex,
   };
 }
@@ -579,7 +566,7 @@ export function calculatePersonalCycles(
   birthDate: Date,
   today: Date = new Date(),
   firstName: string
-): PersonalCycles {
+): NumerologyModuleTypes.PersonalCycles {
   const yearToUse = getLastBirthdayYear(birthDate, today);
 
   const personalYear = calculatePersonalYear(birthDate, today);
@@ -620,4 +607,6 @@ export function calculatePersonalCycles(
   };
 }
 
-export { data };
+export { NumerologyData };
+export type { NumerologyModuleTypes };
+
