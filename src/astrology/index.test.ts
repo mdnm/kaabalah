@@ -1,4 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { VirtualNodes } from '../../wasm/src/swisseph';
 import { BirthChartOptions, getBirthChart, HouseSystem } from './index';
 import { closeSwissEph, getSwissEph } from './swisseph';
 
@@ -47,7 +48,7 @@ describe('Astrology Module', () => {
       // Verify houses
       expect(chart.houses.ascendant).toBeDefined();
       expect(chart.houses.mc).toBeDefined();
-      expect(chart.houses.houses).toHaveLength(13);
+      expect(chart.houses.houses).toHaveLength(12);
 
       // Check valid ranges
       Object.values(chart.planets).forEach(planet => {
@@ -58,9 +59,11 @@ describe('Astrology Module', () => {
       });
 
       chart.houses.houses.forEach(cusp => {
-        expect(cusp).toBeGreaterThanOrEqual(0);
-        expect(cusp).toBeLessThan(360);
+        expect(cusp.longitude).toBeGreaterThanOrEqual(0);
+        expect(cusp.longitude).toBeLessThan(360);
       });
+
+      expect(chart.nodes[VirtualNodes.PARS_FORTUNAE]).toBeDefined();
     } catch (error) {
       console.error('Failed to calculate birth chart:', error);
       throw error;
@@ -92,7 +95,7 @@ describe('Astrology Module', () => {
       const laterChart = await getBirthChart(laterOptions);
       
       // MC should have moved approximately 15 degrees (rough approximation)
-      const mcDifference = Math.abs(laterChart.houses.mc - chart.houses.mc);
+      const mcDifference = Math.abs(laterChart.houses.mc.longitude - chart.houses.mc.longitude);
       expect(mcDifference).toBeGreaterThan(10);
       expect(mcDifference).toBeLessThan(20);
     } catch (error) {
@@ -122,7 +125,7 @@ describe('Astrology Module', () => {
         const options = { ...baseOptions, houseSystem: system };
         const chart = await getBirthChart(options);
         expect(chart).toBeDefined();
-        expect(chart.houses.houses).toHaveLength(13);
+        expect(chart.houses.houses).toHaveLength(12);
       }
     } catch (error) {
       console.error('Failed to test different house systems:', error);
