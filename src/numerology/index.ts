@@ -3,11 +3,21 @@
  */
 
 import { calculateGematria } from "../gematria";
-
-export type ReducedValueWithSteps = {
-  reducedValue: number;
-  reductionSteps: number[];
-};
+import * as data from "./data";
+import {
+  Challenges,
+  CYCLE_MEANINGS,
+  CycleInfo,
+  DateEnergies,
+  FibonacciCycle,
+  HeptadCycles,
+  KaabalisticLifePathResult,
+  PersonalCycles,
+  PersonalMonth,
+  PersonalPeriod,
+  ReducedValueWithSteps,
+  StraightAcrossReductionLifePathResult,
+} from "./data";
 
 function parseDate(date: Date): { day: string; month: string; year: string } {
   if (!date) {
@@ -133,33 +143,6 @@ function reduceBlock(block: string): number {
   return reduceToSingle(n);
 }
 
-export type KaabalisticLifePathResult = {
-  parts: {
-    day: string;
-    month: string;
-    year1: string;
-    year2: string;
-  };
-  reducedParts: {
-    reducedDay: number;
-    reducedMonth: number;
-    reducedYear1: number;
-    reducedYear2: number;
-  };
-  syntheses: {
-    dayMonthSynthesis: number;
-    yearSynthesis: number;
-    reducedDayMonthSynthesis: number;
-    reducedYearSynthesis: number;
-    finalSynthesis: number;
-  };
-  lifePath: number;
-  /**
-   * Last three syntheses
-   */
-  personalMythologyNumbers: number[];
-};
-
 /**
  * Calculate the Kaabalistic life path number based on a birth date.
  * Note: This method produces more master numbers and never produces life path 2s (or any life path that ends with 0 like 10, 20, 30, etc.)
@@ -219,11 +202,6 @@ export function calculateKaabalisticLifePath(
   };
 }
 
-export type StraightAcrossReductionLifePathResult = {
-  lifePath: number;
-  reductionSteps: number[];
-};
-
 /**
  * Calculate the traditional straight across reduction life path number based on a birth date.
  */
@@ -242,12 +220,6 @@ export function calculateStraightAcrossReductionLifePath(
     reductionSteps: result.reductionSteps,
   };
 }
-
-export type DateEnergies = {
-  dayEnergy: ReducedValueWithSteps;
-  monthEnergy: ReducedValueWithSteps;
-  yearEnergy: ReducedValueWithSteps;
-};
 
 export function getDateEnergies(birthDate: Date): DateEnergies {
   const { day, month, year1, year2 } = mapDatePartsToBlocksOfTwo(
@@ -271,15 +243,6 @@ export function getDateEnergies(birthDate: Date): DateEnergies {
   };
 }
 
-export type Challenges = {
-  day: number;
-  month: number;
-  year: number;
-  mainChallenge: number;
-  subChallenge1: number;
-  subChallenge2: number;
-};
-
 export function calculateChallenges(birthDate: Date): Challenges {
   const { day, month, year } = parseDate(birthDate);
 
@@ -301,103 +264,6 @@ export function calculateChallenges(birthDate: Date): Challenges {
   };
 }
 
-export const CYCLE_MEANINGS = [
-  {
-    title: "Learning",
-    shortDescription:
-      "A period for assertive action and learning through direct experience.",
-    personalDescription:
-      "This period emphasizes assertive action and learning through direct experience. Utilize personal influence to seek favors, loans, or recognition from influential individuals such as government officials or community leaders. Ideal for enhancing personal reputation and prestige, keeping in mind that all actions carry consequences.",
-    businessDescription:
-      "Ideal for promotional activities aimed at building goodwill, public recognition, and securing endorsements from prominent individuals. Prioritize the company's image and reputation over immediate profits.",
-    astrologySign: "Aries (Actions Have Consequences)",
-  },
-  {
-    title: "Hard Work",
-    shortDescription:
-      "A time for diligent effort and adaptability to temporary changes.",
-    personalDescription:
-      "A period where diligent effort and adaptability are crucial. Suitable for temporary changes such as moving homes, short trips, or career shifts. Avoid long-term commitments or significant investments unless carefully formalized.",
-    businessDescription:
-      "Ideal for short-term experiments, temporary staffing adjustments, and forming beneficial business connections. Steer clear of verbal agreements or long-term commitments unless formally documented. Flexibility leads to progress.",
-    astrologySign: "Taurus (Stop Being Stubborn)",
-  },
-  {
-    title: "Friendship",
-    shortDescription:
-      "A dynamic phase for ambitious projects and strengthening relationships.",
-    personalDescription:
-      "A dynamic and energetic phase ideal for initiating ambitious projects requiring persistence and physical strength. Effective communication strengthens relationships, but impulsiveness should be avoided to prevent conflicts.",
-    businessDescription:
-      "Ideal for expansion, energetic ventures, and assertive promotional activities. Excellent for debt collection but avoid legal conflicts. Maintain vigilance against accidents and disputes while leveraging strong communication.",
-    astrologySign: "Gemini (Communication is Power)",
-  },
-  {
-    title: "Opportunities",
-    shortDescription:
-      "An intellectually fertile time for creativity and quick decision-making.",
-    personalDescription:
-      "An intellectually fertile phase ideal for creative projects, innovation, and quick decision-making. Beware of deception, especially concerning documents or agreements. Foster mental growth and create valuable connections, but remain cautious.",
-    businessDescription:
-      "Perfect for launching impactful marketing campaigns and securing new agreements. Excellent for promotional activities and intellectual creativity, but carefully scrutinize documents to avoid fraud.",
-    astrologySign: "Cancer (Nurture Mental Growth)",
-  },
-  {
-    title: "Tears/Decision",
-    shortDescription:
-      "The most prosperous phase for financial resolution and spiritual advancement.",
-    personalDescription:
-      "The most prosperous phase of the year, suitable for resolving financial issues, starting long journeys, and advancing spiritually. Interact with influential figures, manage debts, and engage in expansive social activities. Keep ego and selfishness balanced for optimal outcomes.",
-    businessDescription:
-      "A prime time for investments, financial growth, global promotion, debt collection, and favorable legal outcomes. Emphasize fairness and generosity to enhance business success.",
-    astrologySign: "Leo (Balance Ego and Generosity)",
-  },
-  {
-    title: "Triple Blessing",
-    shortDescription:
-      "Perfect for pleasures, social activities, and creative pursuits.",
-    personalDescription:
-      "Ideal for enjoying pleasures, social activities, artistic endeavors, and short travels. Favorable for romantic interactions, relaxation, and creative pursuits. Organize personal life to balance enjoyment and refinement effectively.",
-    businessDescription:
-      "Excellent time for promoting luxury products, arts, entertainment, and speculative investments. Ideal for forming friendly business alliances and strategic partnerships.",
-    astrologySign: "Virgo (Organize Your Pleasures)",
-  },
-  {
-    title: "Rest",
-    shortDescription:
-      "A period of rest, introspection, and preparation for renewal.",
-    personalDescription:
-      "A critical period of rest, introspection, and cautious preparation for renewal. Avoid initiating new ventures and instead focus on completing pending matters, managing legal affairs carefully, and protecting existing resources. Balance and patience are essential.",
-    businessDescription:
-      "Period to conserve resources, avoid major expansions, and carefully manage internal restructuring. Postpone significant new ventures until the next cycle. Act diplomatically and cautiously to ensure stability.",
-    astrologySign: "Libra (Seek Balance and Reconstruction)",
-  },
-];
-
-export interface Cycle {
-  number: number;
-  description: {
-    title: string;
-    shortDescription: string;
-    personalDescription: string;
-    businessDescription: string;
-    astrologySign: string;
-  };
-  isActive?: boolean;
-  cycleStart?: Date;
-}
-
-export interface CycleInfo {
-  yearlyCycles: Cycle[];
-  ageCycles: Cycle[];
-  monthlyCycles: Cycle[];
-  currentYearlyCycle: number | null;
-  currentAgeCycle: number | null;
-  currentMonthlyCycle: number | null;
-  daysInMonthlyCycle: number;
-  totalDays: number;
-}
-
 // Add days to a date
 function addDays(date: Date, days: number): Date {
   const result = new Date(date);
@@ -416,6 +282,14 @@ function getMostRecentStartDate(startDate: Date, today: Date): Date {
   return recentStart;
 }
 
+function numberToHeptadCycle(number: number): HeptadCycles {
+  if (number < 1 || number > 7) {
+    throw new Error("Number must be between 1 and 7");
+  }
+
+  return number as HeptadCycles;
+}
+
 // Calculate cycles (annual and monthly)
 export function calculateCycles(startDate: Date, today: Date): CycleInfo {
   const mostRecentStart = getMostRecentStartDate(startDate, today);
@@ -425,8 +299,8 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
   const isFutureDate = startDate > today;
   let currentYearlyCycle = null;
   let currentAgeCycle = null;
-  const ageCycles: Cycle[] = [];
-  const yearlyCycles: Cycle[] = [];
+  const ageCycles: CycleInfo["ageCycles"] = [];
+  const yearlyCycles: CycleInfo["yearlyCycles"] = [];
   if (!isFutureDate) {
     const birthYear = startDate.getFullYear();
     const currentYear = today.getFullYear();
@@ -465,7 +339,7 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
 
           yearlyCycles.push({
             number: yearlyCycle,
-            description: CYCLE_MEANINGS[j],
+            description: CYCLE_MEANINGS[numberToHeptadCycle(yearlyCycle)],
             isActive: isCurrentYearlyCycle,
             cycleStart: yearlyCycleStart,
           });
@@ -474,7 +348,7 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
 
       ageCycles.push({
         number: cycle,
-        description: CYCLE_MEANINGS[i],
+        description: CYCLE_MEANINGS[numberToHeptadCycle(cycle)],
         isActive: isCurrentCycle,
         cycleStart,
       });
@@ -482,20 +356,20 @@ export function calculateCycles(startDate: Date, today: Date): CycleInfo {
   }
 
   // Monthly cycles (relative to start date)
-  const monthlyCycles: Cycle[] = [];
+  const monthlyCycles: CycleInfo["monthlyCycles"] = [];
   for (let i = 0; i < 7; i++) {
     const cycleStart = addDays(mostRecentStart, i * cycleLength);
 
     monthlyCycles.push({
       number: i + 1,
-      description: CYCLE_MEANINGS[i],
+      description: CYCLE_MEANINGS[numberToHeptadCycle(i + 1)],
       isActive: false,
       cycleStart: cycleStart,
     });
   }
 
   // Find current monthly cycle
-  let currentMonthlyCycle = null;
+  let currentMonthlyCycle: CycleInfo["currentMonthlyCycle"] = null;
   let daysInMonthlyCycle = 0;
   for (let i = 0; i < 7; i++) {
     const cycleStart = addDays(mostRecentStart, i * cycleLength);
@@ -535,17 +409,6 @@ function calculateAge(birthDate: Date, today: Date = new Date()): number {
   return today.getFullYear() - birthDate.getFullYear();
 }
 
-export type FibonacciCycle = {
-  currentAge: number;
-  cycle1: ReducedValueWithSteps;
-  cycle2: ReducedValueWithSteps;
-  cycle3: ReducedValueWithSteps;
-  cycle4: ReducedValueWithSteps;
-  cycle5: ReducedValueWithSteps;
-  cycle6: ReducedValueWithSteps;
-  cycle7: ReducedValueWithSteps;
-};
-
 export function calculateFibonacciCycle(
   birthDate: Date,
   today: Date
@@ -582,50 +445,13 @@ export function calculateFibonacciCycle(
   };
 }
 
-export type PersonalPeriod = {
-  startMonth: number;
-  endMonth: number;
-  value: ReducedValueWithSteps;
-};
-
-export type PersonalMonth = {
-  month: number;
-  value: ReducedValueWithSteps;
-};
-
-export type PersonalCycles = {
-  personalYear: ReducedValueWithSteps;
-  personalPeriods: [PersonalPeriod, PersonalPeriod, PersonalPeriod];
-  personalMonths: [
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth
-  ];
-  currentPersonalPeriod: number;
-  currentPersonalMonth: number;
-  currentAge: number;
-  lifePath: number;
-  soulNumber?: ReducedValueWithSteps;
-  yearUsedOnCalculations: number;
-};
-
 function calculateSoulNumber(firstName: string): ReducedValueWithSteps {
   const vowels = calculateGematria(firstName).vowels;
 
   return {
     reducedValue: vowels.finalValue,
     reductionSteps: vowels.reductionSteps,
-  }
+  };
 }
 
 /**
@@ -716,7 +542,7 @@ function diffInPersonalMonths(birthDate: Date, today: Date): number {
   }
 
   if (k < 0) k = 0;
-  if (k > 12) k = 12; 
+  if (k > 12) k = 12;
 
   return k;
 }
@@ -765,16 +591,21 @@ export function calculatePersonalCycles(
   const { lifePath } = calculateKaabalisticLifePath(birthDate);
   const soulNumber = calculateSoulNumber(firstName);
 
-  const personalPeriods =
-    calculatePersonalPeriods(birthDate, yearToUse, lifePath, soulNumber.reducedValue, currentAge);
+  const personalPeriods = calculatePersonalPeriods(
+    birthDate,
+    yearToUse,
+    lifePath,
+    soulNumber.reducedValue,
+    currentAge
+  );
 
-  const {
-    personalMonths,
-    currentPersonalMonthIndex: currentPersonalMonth,
-  } = calculatePersonalMonths(birthDate, personalYear, today);
-  
+  const { personalMonths, currentPersonalMonthIndex: currentPersonalMonth } =
+    calculatePersonalMonths(birthDate, personalYear, today);
+
   // Derive the period from the month index (0–12). Clamp 12 to last period.
-  const currentPersonalPeriod = Math.floor(Math.min(currentPersonalMonth, 11) / 4);
+  const currentPersonalPeriod = Math.floor(
+    Math.min(currentPersonalMonth, 11) / 4
+  );
 
   return {
     currentAge,
@@ -788,3 +619,5 @@ export function calculatePersonalCycles(
     yearUsedOnCalculations: yearToUse,
   };
 }
+
+export { data };

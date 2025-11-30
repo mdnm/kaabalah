@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calculateChallenges,
+  calculateCycles,
   calculateFibonacciCycle,
   calculateKaabalisticLifePath,
   calculatePersonalCycles,
@@ -12,6 +13,18 @@ import {
 // Helper: force UTC so toISOString() is stable
 const dUTC = (y: number, m: number, d: number) =>
   new Date(Date.UTC(y, m - 1, d));
+
+describe("Heptad cycles", () => {
+  it("should calculate the cycles correctly", () => {
+    const res = calculateCycles(dUTC(2000, 1, 1), dUTC(2025, 4, 16));
+    expect(res.ageCycles).toHaveLength(7);
+    expect(res.yearlyCycles).toHaveLength(7);
+    expect(res.monthlyCycles).toHaveLength(7);
+    expect(res.currentAgeCycle).toBe(4);
+    expect(res.currentYearlyCycle).toBe(5);
+    expect(res.currentMonthlyCycle).toBe(3);
+  });
+});
 
 describe("Kaabalistic life path", () => {
   it.each([
