@@ -301,6 +301,11 @@ export function findHouseOf(
   housePositions: number[]
 ): number {
   const L = normalizeAngle(longitude);
+
+  if (!housePositions || housePositions.length === 0) {
+    throw new Error("House positions are required");
+  }
+  
   const H = housePositions
     .map((c, i) => ({ i: i + 1, L: normalizeAngle(c) }))
     .sort((a, b) => a.L - b.L);

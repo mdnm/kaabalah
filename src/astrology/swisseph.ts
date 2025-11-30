@@ -1,8 +1,8 @@
 /**
  * Integration with the Swiss Ephemeris WebAssembly module
  */
-import moduleFactory from "../../wasm/build/swisseph.js";
-import wasmPath from "../../wasm/build/swisseph.wasm?url";
+import wasmPathNode from "../../wasm/build/swisseph.node.wasm?url";
+import wasmPathWeb from "../../wasm/build/swisseph.web.wasm?url";
 import type { SwissEphModuleFactory } from "../../wasm/src/types";
 
 // Note: In the production code, you'll need to include the compiled WASM files
@@ -45,23 +45,97 @@ export async function getSwissEph(
 
   try {
     const isBrowser = typeof window !== "undefined";
+    // Select proper build per environment
+    const wasmUrl = isBrowser ? wasmPathWeb : wasmPathNode;
     const finalWasmPath =
       options.wasmPath ||
-      (isBrowser ? wasmPath : require("path").resolve(__dirname, wasmPath));
+      (isBrowser ? wasmUrl : require("path").resolve(__dirname, wasmUrl));
 
-    const module = await (moduleFactory as SwissEphModuleFactory)({
+    const moduleFactory: SwissEphModuleFactory = isBrowser
+      ? (await import("../../wasm/build/swisseph.web.js")).default as unknown as SwissEphModuleFactory
+      : (await import("../../wasm/build/swisseph.node.js")).default as unknown as SwissEphModuleFactory;
+
+    const module = await moduleFactory({
       locateFile: () => finalWasmPath,
     });
 
     const instance = new SwissEph(module);
 
-    // Default path for ephemeris files is relative to the bundled JS file.
-    // In `dist`, `astrology/index.js` needs to go up one level to find `ephe/`.
+    // Default ephemeris path
     const defaultEphePath = isBrowser
       ? "../ephe"
       : require("path").resolve(__dirname, "../ephe");
     const finalEphePath = options.ephePath || defaultEphePath;
-    instance.setEphemerisPath(finalEphePath);
+
+    if (isBrowser) {
+      // In the browser, synchronously fetch and write ephemeris files into MEMFS
+      const epheFsPath = "/ephe";
+      try {
+        (module as any).FS?.mkdir?.(epheFsPath);
+      } catch {
+        // ignore if exists
+      }
+      const files = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"];
+      await Promise.all(
+        files.map(async (name) => {
+          const url = `${finalEphePath}/${name}`;
+          const res = await fetch(url);
+          if (!res.ok) {
+            throw new Error(`Failed to fetch ephemeris file: ${url}`);
+          }
+          const buf = await res.arrayBuffer();
+          (module as any).FS?.writeFile?.(
+            `${epheFsPath}/${name}`,
+            new Uint8Array(buf)
+          );
+        })
+      );
+      console.info(`Setting ephemeris path to: ${epheFsPath}`);
+      instance.setEphemerisPath(epheFsPath);
+    } else {
+      // In Node, prefer NODERAWFS host path; attempt NODEFS mount if available
+      // Debug info
+      console.info(
+        "Emscripten FS availability:",
+        Boolean((module as any).FS),
+        "mount:",
+        Boolean((module as any).FS?.mount),
+        "NODEFS:",
+        Boolean((module as any).FS?.filesystems?.NODEFS)
+      );
+      if (
+        (module as any).FS?.mount &&
+        (module as any).FS?.filesystems?.NODEFS
+      ) {
+        const mountPoint = "/ephefs";
+        try {
+          try {
+            (module as any).FS.mkdir(mountPoint);
+          } catch {
+            // ignore exists
+          }
+          (module as any).FS.mount(
+            (module as any).FS.filesystems.NODEFS,
+            { root: finalEphePath },
+            mountPoint
+          );
+          console.info(
+            `Setting ephemeris path to: ${mountPoint} (mounted from ${finalEphePath})`
+          );
+          instance.setEphemerisPath(mountPoint);
+        } catch (mountErr) {
+          console.warn(
+            `Failed to mount ephemeris directory, falling back to host path: ${finalEphePath}`,
+            mountErr
+          );
+          console.info(`Setting ephemeris path to: ${finalEphePath}`);
+          instance.setEphemerisPath(finalEphePath);
+        }
+      } else {
+        console.info(`Setting ephemeris path to: ${finalEphePath}`);
+        instance.setEphemerisPath(finalEphePath);
+      }
+    }
 
     swissEph = instance;
   } catch (error) {
@@ -94,7 +168,6 @@ export async function calculatePlanetaryPositions(
       pluto: Planet.PLUTO,
       meanNode: Planet.MEAN_NODE,
       trueNode: Planet.TRUE_NODE,
-      // TODO: add chiron through seas_18.se1, seas_18.se2 and seasnam.txt files
       chiron: Planet.CHIRON,
       lilithMean: Planet.LILITH_MEAN,
       lilithTrue: Planet.LILITH_TRUE,

@@ -5,7 +5,8 @@
 /node_modules
 
 /examples/ephe
-/examples/swisseph.wasm
+/examples/*.wasm
+/examples/*.js
 
 /ephe/*
 

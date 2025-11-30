@@ -41,7 +41,10 @@ describe('Swiss Ephemeris Integration', () => {
       expect(positions[Planet.NEPTUNE]).toBeDefined();
       expect(positions[Planet.PLUTO]).toBeDefined();
       expect(positions[Planet.MEAN_NODE]).toBeDefined();
+      expect(positions[Planet.TRUE_NODE]).toBeDefined();
       expect(positions[Planet.LILITH_MEAN]).toBeDefined();
+      expect(positions[Planet.LILITH_TRUE]).toBeDefined();
+      expect(positions[Planet.CHIRON]).toBeDefined();
 
       // Check if positions are within valid ranges (0-360 degrees)
       Object.values(positions).forEach(position => {
