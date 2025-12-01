@@ -53,7 +53,7 @@ export type KaabalisticLifePathResult = {
     reducedYearSynthesis: number;
     finalSynthesis: number;
   };
-  lifePath: number;
+  lifePath: ReducedValueWithSteps;
   /**
    * Last three syntheses
    */
@@ -61,8 +61,10 @@ export type KaabalisticLifePathResult = {
 };
 
 export type StraightAcrossReductionLifePathResult = {
-  lifePath: number;
-  reductionSteps: number[];
+  dayEnergy: ReducedValueWithSteps;
+  monthEnergy: ReducedValueWithSteps;
+  yearEnergy: ReducedValueWithSteps;
+  lifePath: ReducedValueWithSteps;
 };
 
 export type DateEnergies = {
@@ -128,7 +130,7 @@ export type PersonalCycles = {
   currentPersonalPeriod: number;
   currentPersonalMonth: number;
   currentAge: number;
-  lifePath: number;
+  lifePath: ReducedValueWithSteps;
   soulNumber?: ReducedValueWithSteps;
   yearUsedOnCalculations: number;
 };

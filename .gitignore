@@ -11,3 +11,5 @@
 /ephe/*
 
 .env
+
+.DS_Store

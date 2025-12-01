@@ -157,19 +157,19 @@ export function calculateKaabalisticLifePath(
     10
   );
 
-  const lifePath = reduceToSingle(finalSynthesis, { preserveMasters: true });
-  const isMasterLifePath = isMasterNumber(lifePath);
+  const lifePath = reduceToSingleWithSteps(finalSynthesis, { preserveMasters: true });
+  const isMasterLifePath = isMasterNumber(lifePath.reducedValue);
 
   const personalMythologyNumbers = [
     parseInt(`${dayMonthSynthesis}${yearSynthesis}`, 10),
     finalSynthesis,
   ];
 
-  if (finalSynthesis !== lifePath) {
-    personalMythologyNumbers.push(lifePath);
+  if (finalSynthesis !== lifePath.reducedValue) {
+    personalMythologyNumbers.push(lifePath.reducedValue);
   }
 
-  const reducedLifePath = reduceToSingle(lifePath);
+  const reducedLifePath = reduceToSingle(lifePath.reducedValue);
   if (isMasterLifePath) {
     personalMythologyNumbers.push(reducedLifePath);
   }
@@ -203,8 +203,10 @@ export function calculateStraightAcrossReductionLifePath(
   );
 
   return {
-    lifePath: result.reducedValue,
-    reductionSteps: result.reductionSteps,
+    dayEnergy: reduceToSingleWithSteps(parseInt(day, 10), { preserveMasters: true }),
+    monthEnergy: reduceToSingleWithSteps(parseInt(month, 10), { preserveMasters: true }),
+    yearEnergy: reduceToSingleWithSteps(parseInt(year, 10), { preserveMasters: true }),
+    lifePath: result,
   };
 }
 
@@ -581,7 +583,7 @@ export function calculatePersonalCycles(
   const personalPeriods = calculatePersonalPeriods(
     birthDate,
     yearToUse,
-    lifePath,
+    lifePath.reducedValue,
     soulNumber.reducedValue,
     currentAge
   );

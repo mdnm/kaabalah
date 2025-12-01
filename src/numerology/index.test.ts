@@ -42,7 +42,7 @@ describe("Kaabalistic life path", () => {
     "produces life path %d for %d-%02d-%02d",
     (lifePath, y, m, d, finalSyn) => {
       const res = calculateKaabalisticLifePath(dUTC(y, m, d));
-      expect(res.lifePath).toBe(lifePath);
+      expect(res.lifePath.reducedValue).toBe(lifePath);
       expect(res.syntheses.finalSynthesis).toBe(finalSyn);
     }
   );
@@ -55,7 +55,7 @@ describe("Kaabalistic life path", () => {
     [44, 1903, 1, 3, 44],
   ])("produces master %d for %d-%02d-%02d", (finalMaster, y, m, d, root) => {
     const res = calculateKaabalisticLifePath(dUTC(y, m, d));
-    expect(res.lifePath).toBe(root); // 11→2, 22→4, 33→6, 44→8
+    expect(res.lifePath.reducedValue).toBe(root); // 11→2, 22→4, 33→6, 44→8
     expect(res.syntheses.finalSynthesis).toBe(finalMaster);
   });
 
@@ -65,11 +65,11 @@ describe("Kaabalistic life path", () => {
 
     const b = calculateKaabalisticLifePath(dUTC(2000, 2, 29)); // leap day in a 00 year
     expect(b.syntheses.finalSynthesis).toBe(42);
-    expect(b.lifePath).toBe(6);
+    expect(b.lifePath.reducedValue).toBe(6);
 
     const c = calculateKaabalisticLifePath(dUTC(2000, 1, 1)); // common 00-year master
     expect(c.syntheses.finalSynthesis).toBe(22);
-    expect(c.lifePath).toBe(22);
+    expect(c.lifePath.reducedValue).toBe(22);
   });
 
   it.each([
@@ -84,7 +84,7 @@ describe("Kaabalistic life path", () => {
     (y, m, d, finalDouble, root) => {
       const r = calculateKaabalisticLifePath(dUTC(y, m, d));
       expect(r.syntheses.finalSynthesis).toBe(finalDouble);
-      expect(r.lifePath).toBe(root);
+      expect(r.lifePath.reducedValue).toBe(root);
     }
   );
 
@@ -128,8 +128,8 @@ describe("Straight across reduction life path", () => {
     [9, 1900, 1, 7],
   ])("produces life path %d for %d-%02d-%02d", (lifePath, y, m, d) => {
     const res = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
-    expect(res.lifePath).toBe(lifePath);
-    expect(isMasterNumber(res.lifePath)).toBe(false);
+    expect(res.lifePath.reducedValue).toBe(lifePath);
+    expect(isMasterNumber(res.lifePath.reducedValue)).toBe(false);
   });
 
   it.each([
@@ -139,19 +139,19 @@ describe("Straight across reduction life path", () => {
     [33, 1980, 6, 9],
   ])("produces master %d for %d-%02d-%02d", (finalMaster, y, m, d) => {
     const res = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
-    expect(res.lifePath).toBe(finalMaster);
-    expect(isMasterNumber(res.lifePath)).toBe(true);
+    expect(res.lifePath.reducedValue).toBe(finalMaster);
+    expect(isMasterNumber(res.lifePath.reducedValue)).toBe(true);
   });
 
   it("handles years ending with 00 (including leap-day in 2000)", () => {
     const a = calculateStraightAcrossReductionLifePath(dUTC(1900, 1, 1)); // Y2='00'
-    expect(a.lifePath).toBe(3);
+    expect(a.lifePath.reducedValue).toBe(3);
 
     const b = calculateStraightAcrossReductionLifePath(dUTC(2000, 2, 29)); // leap day in a 00 year
-    expect(b.lifePath).toBe(6);
+    expect(b.lifePath.reducedValue).toBe(6);
 
     const c = calculateStraightAcrossReductionLifePath(dUTC(2000, 1, 1)); // common 00-year master
-    expect(c.lifePath).toBe(4);
+    expect(c.lifePath.reducedValue).toBe(4);
   });
 
   it.each([
@@ -163,7 +163,7 @@ describe("Straight across reduction life path", () => {
     [1998, 9, 27, 9],
   ])("supports higher doubles %d-%02d-%02d → %d", (y, m, d, finalDouble) => {
     const r = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
-    expect(r.lifePath).toBe(finalDouble);
+    expect(r.lifePath.reducedValue).toBe(finalDouble);
   });
 
   it("ignores time-of-day (uses only the ISO date)", () => {
@@ -173,8 +173,8 @@ describe("Straight across reduction life path", () => {
     const b = calculateStraightAcrossReductionLifePath(
       new Date("2012-02-12T23:59:59Z")
     );
-    expect(a.lifePath).toBe(1);
-    expect(b.lifePath).toBe(1);
+    expect(a.lifePath.reducedValue).toBe(1);
+    expect(b.lifePath.reducedValue).toBe(1);
   });
 });
 
