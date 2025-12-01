@@ -1,18 +1,10 @@
-import { HEBREW_LETTERS, LATIN_LETTERS } from "../core/constants";
+import { HEBREW_LETTERS } from "../core/constants";
 import { createTree } from "../core/factory";
 import { SYSTEM as KAABALAH_SYSTEM } from "../core/systems/kaabalah";
 import { TreeOfLife } from "../core/tree-of-life";
 import { id, LetterTypes, Node, NodeId, parseId } from "../core/types";
-
-const DIGRAPHS = new Set<string>([
-  LATIN_LETTERS.PH,
-  LATIN_LETTERS.TS,
-  LATIN_LETTERS.TZ,
-  LATIN_LETTERS.SH,
-  LATIN_LETTERS.CH,
-  LATIN_LETTERS.TH,
-  LATIN_LETTERS.KH,
-]);
+import type * as GematriaTypes from "./data";
+import * as GematriaData from "./data";
 
 const reduceToSingleDigitWithSteps = (num: number) => {
   const steps = [num];
@@ -38,34 +30,6 @@ const getLastArkAnnuStep = (steps: number[]) => {
   const step = steps.sort((a, b) => b - a).find((step) => step <= 22);
 
   return step ?? steps.at(-1) ?? 0;
-}
-
-interface LetterResult {
-  latinLetterId: NodeId<LetterTypes.LATIN_LETTER>;
-  value: number;
-  hebrewLetterId: NodeId<LetterTypes.HEBREW_LETTER>;
-  hebrewCharacter: string;
-  isVowel: boolean;
-}
-
-interface WordResult {
-  letters: LetterResult[];
-  vowelsSum: number;
-  consonantsSum: number;
-  includedGematriaValues: Set<number>;
-}
-
-interface GematriaState {
-  includedLetters: LetterResult[];
-  vowelsSum: number;
-  consonantsSum: number;
-  includedGematriaValues: Set<number>;
-}
-
-interface LetterPercentages {
-  percentageOfVowels: number;
-  percentageOfConsonants: number;
-  letters: Record<string, number>;
 }
 
 function normalizeLetter(letter: string): string {
@@ -95,14 +59,14 @@ function processLetter(
   tree: TreeOfLife,
   letters: string[],
   i: number
-): { result?: LetterResult; skipNext: boolean } {
+): { result?: GematriaTypes.LetterResult; skipNext: boolean } {
   const letter = normalizeLetter(letters[i]).toLocaleUpperCase();
   const nextLetter = letters[i + 1]
     ? normalizeLetter(letters[i + 1]).toLocaleLowerCase()
     : "";
   const combinedLetter = letter + nextLetter;
 
-  if (DIGRAPHS.has(combinedLetter)) {
+  if (GematriaData.DIGRAPHS.has(combinedLetter)) {
     const isEnding = i > 0 && i === letters.length - 2;
     const latinLetterId = id(LetterTypes.LATIN_LETTER, combinedLetter);
     const mapping = getLetterMapping({
@@ -171,11 +135,11 @@ function processLetter(
   };
 }
 
-function processWord(word: string, tree: TreeOfLife): WordResult {
+function processWord(word: string, tree: TreeOfLife): GematriaTypes.WordResult {
   const letters = word.split("");
   let i = 0;
 
-  let wordState: WordResult = {
+  let wordState: GematriaTypes.WordResult = {
     letters: [],
     vowelsSum: 0,
     consonantsSum: 0,
@@ -207,8 +171,8 @@ function processWord(word: string, tree: TreeOfLife): WordResult {
 function calculateLetterPercentages(
   word: string,
   tree: TreeOfLife,
-  prev: LetterPercentages
-): LetterPercentages {
+  prev: GematriaTypes.LetterPercentages
+): GematriaTypes.LetterPercentages {
   const letters = word.split("");
   const letterCount = letters.length;
 
@@ -293,14 +257,14 @@ export const calculateGematria = (
   }
   const words = phrase.toUpperCase().trim().split(" ");
 
-  const initialState: GematriaState = {
+  const initialState: GematriaTypes.GematriaState = {
     includedLetters: [],
     vowelsSum: 0,
     consonantsSum: 0,
     includedGematriaValues: new Set(),
   };
 
-  const finalState = words.reduce<GematriaState>((state, word) => {
+  const finalState = words.reduce<GematriaTypes.GematriaState>((state, word) => {
     const wordResult = processWord(word, tree);
 
     return {
@@ -314,14 +278,14 @@ export const calculateGematria = (
     };
   }, initialState);
 
-  let letterPercentages: LetterPercentages = {
+  let letterPercentages: GematriaTypes.LetterPercentages = {
     percentageOfVowels: 0,
     percentageOfConsonants: 0,
     letters: {},
   };
 
   if (options?.percentages) {
-    letterPercentages = words.reduce<LetterPercentages>((acc, word) => {
+    letterPercentages = words.reduce<GematriaTypes.LetterPercentages>((acc, word) => {
       return calculateLetterPercentages(word, tree, acc);
     }, letterPercentages);
   }
@@ -359,3 +323,5 @@ export const calculateGematria = (
     letterPercentages: options?.percentages ? letterPercentages : undefined,
   };
 };
+
+export { GematriaData };
