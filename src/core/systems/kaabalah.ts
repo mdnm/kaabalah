@@ -1433,10 +1433,20 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   );
   tree.link(id(KaabalahTypes.SPHERE, SPHERES.HOD), planetsIds[PLANETS.MERCURY]);
   tree.link(id(KaabalahTypes.SPHERE, SPHERES.YESOD), planetsIds[PLANETS.MOON]);
+
+  const earth = tree.upsertNode(
+    new BaseNode({
+      id: WESTERN_ELEMENTS.EARTH,
+      type: WesternAstrologyTypes.WESTERN_ELEMENT,
+    })
+  );
+
   tree.link(
     id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
     planetsIds[PLANETS.EARTH]
   );
+  tree.link(planetsIds[PLANETS.EARTH], earth);
+  tree.link(earth, id(KaabalahTypes.SPHERE, SPHERES.MALKUTH));
 
   const air = tree.upsertNode(
     new BaseNode({
@@ -1459,36 +1469,54 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
     planetsIds[PLANETS.JUPITER]
   );
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.GEBURAH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH),
     sign: WESTERN_ZODIAC_SIGNS.ARIES,
     data: WESTERN_ZODIAC_SIGNS_DATA.ARIES,
     relatedNumber: 1,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.NETZACH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_CHESED),
     sign: WESTERN_ZODIAC_SIGNS.TAURUS,
     data: WESTERN_ZODIAC_SIGNS_DATA.TAURUS,
     relatedNumber: 2,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.HOD),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_TIPHARETH),
     sign: WESTERN_ZODIAC_SIGNS.GEMINI,
     data: WESTERN_ZODIAC_SIGNS_DATA.GEMINI,
     relatedNumber: 3,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.YESOD),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_GEBURAH),
     sign: WESTERN_ZODIAC_SIGNS.CANCER,
     data: WESTERN_ZODIAC_SIGNS_DATA.CANCER,
     relatedNumber: 4,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHESED_GEBURAH),
     sign: WESTERN_ZODIAC_SIGNS.LEO,
     data: WESTERN_ZODIAC_SIGNS_DATA.LEO,
     relatedNumber: 5,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHESED_TIPHARETH),
     sign: WESTERN_ZODIAC_SIGNS.VIRGO,
     data: WESTERN_ZODIAC_SIGNS_DATA.VIRGO,
@@ -1499,6 +1527,10 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
     planetsIds[PLANETS.MARS]
   );
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH),
+      id(KaabalahTypes.SPHERE, SPHERES.NETZACH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH),
     sign: WESTERN_ZODIAC_SIGNS.LIBRA,
     data: WESTERN_ZODIAC_SIGNS_DATA.LIBRA,
@@ -1514,18 +1546,27 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.GEBURAH_HOD), water);
 
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.DAATH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_NETZACH),
     sign: WESTERN_ZODIAC_SIGNS.SCORPIO,
     data: WESTERN_ZODIAC_SIGNS_DATA.SCORPIO,
     relatedNumber: 8,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.CHESED),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_YESOD),
     sign: WESTERN_ZODIAC_SIGNS.SAGITTARIUS,
     data: WESTERN_ZODIAC_SIGNS_DATA.SAGITTARIUS,
     relatedNumber: 9,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.BINAH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_HOD),
     sign: WESTERN_ZODIAC_SIGNS.CAPRICORN,
     data: WESTERN_ZODIAC_SIGNS_DATA.CAPRICORN,
@@ -1536,12 +1577,18 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
     planetsIds[PLANETS.MERCURY]
   );
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_YESOD),
     sign: WESTERN_ZODIAC_SIGNS.AQUARIUS,
     data: WESTERN_ZODIAC_SIGNS_DATA.AQUARIUS,
     relatedNumber: 11,
   });
   tree.addWesternAstrologySign({
+    spheres: [
+      id(KaabalahTypes.SPHERE, SPHERES.KETHER),
+    ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_MALKUTH),
     sign: WESTERN_ZODIAC_SIGNS.PISCES,
     data: WESTERN_ZODIAC_SIGNS_DATA.PISCES,

@@ -391,11 +391,13 @@ export class TreeOfLife {
   }
 
   addWesternAstrologySign({
+    spheres,
     path,
     sign,
     data,
     relatedNumber,
   }: {
+    spheres: NodeId<KaabalahTypes.SPHERE>[];
     path: NodeId<KaabalahTypes.PATH>;
     sign: string;
     data: NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>;
@@ -408,6 +410,10 @@ export class TreeOfLife {
         data,
       })
     );
+
+    for (const sphere of spheres) {
+      this.link(sphere, signId);
+    }
 
     this.link(path, signId);
 
