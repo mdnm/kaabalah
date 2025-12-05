@@ -1471,13 +1471,17 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
 
   const houses = Object.values(WESTERN_HOUSES);
   const houseIds: Record<string, NodeId<WesternAstrologyTypes.HOUSE>> = {};
-  for (const house of houses) {
+  for (let i = 0; i < houses.length; i++) {
+    const house = houses[i];
+    const relatedNumber = i + 1;
     const houseId = tree.upsertNode(
       new BaseNode({
         id: house,
         type: WesternAstrologyTypes.HOUSE,
       })
     );
+    tree.addNumber({ number: relatedNumber, nodeId: houseId });
+
     houseIds[house] = houseId;
   }
 
