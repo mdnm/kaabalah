@@ -202,7 +202,7 @@ export async function calculateHouses(
   latitude: number,
   longitude: number,
   houseSystem: HouseSystem,
-  options: TimeZoneOptions & { treatAsUTC?: boolean } = {}
+  options: TimeZoneOptions = {}
 ): Promise<Houses> {
   try {
     checkInitialization();
@@ -309,7 +309,7 @@ type LocalDateTimeParts = {
   second?: number; // 0-59
 };
 
-type TimeZoneOptions = {
+export type TimeZoneOptions = {
   /**
    * IANA time zone
    * If provided, DST is handled automatically via Intl API.
@@ -331,6 +331,10 @@ type TimeZoneOptions = {
    * if no explicit offset/timeZone is provided.
    */
   autoTimeZone?: boolean;
+  /**
+   * When true, the date is treated as UTC instead of local civil time.
+   */
+  treatAsUTC?: boolean;
 };
 
 function buildLocalParts(date: Date | LocalDateTimeParts): LocalDateTimeParts {
@@ -454,4 +458,17 @@ async function localToUtcDate(
   throw new Error(
     "Time zone information is required. Provide 'utcOffsetMinutes', 'timeZone', 'resolveTimeZone', or enable autoTimeZone with latitude/longitude."
   );
+}
+
+/**
+ * Public helper to convert a local civil date-time to a UTC Date using the same
+ * logic as house calculations.
+ */
+export async function toUtcDate(
+  local: Date | LocalDateTimeParts,
+  latitude?: number,
+  longitude?: number,
+  options: TimeZoneOptions = {}
+): Promise<Date> {
+  return localToUtcDate(local, latitude, longitude, options);
 }

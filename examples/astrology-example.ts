@@ -17,29 +17,29 @@ async function main() {
       date: new Date('1990-06-15T12:30:00'), // June 15, 1990, 12:30 PM
       latitude: 40.7128,                     // New York City latitude
       longitude: -74.0060,                   // New York City longitude
-      timezone: -4,                          // Eastern Daylight Time (EDT)
+      timeZoneSettings: { timeZone: 'America/New_York' }, // Eastern Daylight Time (EDT)
       houseSystem: HouseSystem.PLACIDUS      // House system
     });
     
     // Display the ascendant
-    const ascendantPosition = getZodiacPosition(birthChart.houses.ascendant);
+    const ascendantPosition = getZodiacPosition(birthChart.houses.ascendant.longitude, birthChart.houses.houses.map(house => house.longitude));
     console.log(`Ascendant: ${ascendantPosition.sign} ${ascendantPosition.traditionalFormat}`);
     
     // Display the MC (Medium Coeli)
-    const mcPosition = getZodiacPosition(birthChart.houses.mc);
+    const mcPosition = getZodiacPosition(birthChart.houses.mc.longitude, birthChart.houses.houses.map(house => house.longitude));
     console.log(`Midheaven (MC): ${mcPosition.sign} ${mcPosition.traditionalFormat}`);
     
     // Display houses
     console.log('\nHouse Cusps:');
     birthChart.houses.houses.forEach((house, index) => {
-      const position = getZodiacPosition(house);
+      const position = getZodiacPosition(house.longitude, birthChart.houses.houses.map(house => house.longitude));
       console.log(`House ${index + 1}: ${position.sign} ${position.traditionalFormat}`);
     });
     
     // Display planetary positions
     console.log('\nPlanetary Positions:');
     Object.entries(birthChart.planets).forEach(([planet, position]) => {
-      const zodiacPos = getZodiacPosition(position.longitude);
+      const zodiacPos = getZodiacPosition(position.longitude, birthChart.houses.houses.map(house => house.longitude));
       console.log(
         `${planet.charAt(0).toUpperCase() + planet.slice(1)}: ${zodiacPos.sign} ${zodiacPos.traditionalFormat} ` +
         `(${position.longitude.toFixed(2)}°)`
