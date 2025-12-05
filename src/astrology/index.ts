@@ -14,6 +14,8 @@ import {
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  TimeZoneOptions,
+  toUtcDate,
   VirtualNodes,
 } from "./swisseph";
 
@@ -32,8 +34,8 @@ export interface BirthChartOptions {
   date: Date;
   latitude: number;
   longitude: number;
-  timezone: number;
   houseSystem?: HouseSystem;
+  timeZoneSettings?: TimeZoneOptions;
 }
 
 export type ZodiacPosition = {
@@ -92,14 +94,6 @@ function validateInputs(options: BirthChartOptions): void {
   ) {
     throw new Error("Invalid longitude: must be between -180 and 180 degrees");
   }
-
-  if (
-    typeof options.timezone !== "number" ||
-    options.timezone < -12 ||
-    options.timezone > 14
-  ) {
-    throw new Error("Invalid timezone: must be between -12 and +14");
-  }
 }
 
 function hydratePlanet(
@@ -128,11 +122,9 @@ export async function getBirthChart(
     // Validate inputs
     validateInputs(options);
 
-    // Convert local time to UTC
-    const localDate = new Date(options.date);
-    const utcDate = new Date(
-      localDate.getTime() - options.timezone * 60 * 60 * 1000
-    );
+    // Determine time zone strategy: default to auto from lat/lon
+    const tzOptions: TimeZoneOptions = options.timeZoneSettings ?? { autoTimeZone: true };
+    const utcDate = await toUtcDate(options.date, options.latitude, options.longitude, tzOptions);
 
     // Calculate planetary positions
     const planetPositions = await calculatePlanetaryPositions(utcDate);
@@ -145,7 +137,8 @@ export async function getBirthChart(
       utcDate,
       options.latitude,
       options.longitude,
-      options.houseSystem || HouseSystem.PLACIDUS
+      options.houseSystem || HouseSystem.PLACIDUS,
+      { treatAsUTC: true }
     );
     if (!housesPositions) {
       throw new Error("Failed to calculate houses");

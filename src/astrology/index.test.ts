@@ -24,11 +24,12 @@ describe('Astrology Module', () => {
   it('should calculate a birth chart', async () => {
     try {
       const options: BirthChartOptions = {
-        date: new Date('2024-03-25T12:00:00Z'),
+        // Local civil time: 2024-03-25 12:00 at New York
+        date: new Date(2024, 2, 25, 12, 0, 0),
         latitude: 40.7128,
         longitude: -74.0060,
-        timezone: -4, // EDT
-        houseSystem: HouseSystem.PLACIDUS
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' }
       };
 
       const chart = await getBirthChart(options);
@@ -73,24 +74,25 @@ describe('Astrology Module', () => {
   it('should handle timezone conversion correctly', async () => {
     try {
       const options: BirthChartOptions = {
-        date: new Date('2024-03-25T08:00:00Z'), // Noon UTC
+        // Local civil time: 2024-03-25 08:00 at New York
+        date: new Date(2024, 2, 25, 8, 0, 0),
         latitude: 40.7128,
         longitude: -74.0060,
-        timezone: -4, // EDT
-        houseSystem: HouseSystem.PLACIDUS
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' }
       };
 
       const chart = await getBirthChart(options);
       expect(chart).toBeDefined();
 
-      // The chart should be calculated for 8:00 AM EDT (12:00 UTC - 4 hours)
+      // The chart should be calculated for 8:00 AM local (America/New_York)
       // Verify this by checking the MC position which is time-dependent
       expect(chart.houses.mc).toBeDefined();
       
       // Calculate another chart 1 hour later
       const laterOptions = {
         ...options,
-        date: new Date('2024-03-25T09:00:00Z') // 1 hour later UTC
+        date: new Date(2024, 2, 25, 9, 0, 0) // 1 hour later local time
       };
       const laterChart = await getBirthChart(laterOptions);
       
@@ -107,11 +109,11 @@ describe('Astrology Module', () => {
   it('should handle different house systems', async () => {
     try {
       const baseOptions: BirthChartOptions = {
-        date: new Date('2024-03-25T12:00:00Z'),
+        date: new Date(2024, 2, 25, 12, 0, 0),
         latitude: 40.7128,
         longitude: -74.0060,
-        timezone: -4,
-        houseSystem: HouseSystem.PLACIDUS
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' }
       };
 
       const houseSystems = [
@@ -136,11 +138,11 @@ describe('Astrology Module', () => {
   it('should handle edge cases and invalid inputs', async () => {
     try {
       const baseOptions: BirthChartOptions = {
-        date: new Date('2024-03-25T12:00:00Z'),
+        date: new Date(2024, 2, 25, 12, 0, 0),
         latitude: 40.7128,
         longitude: -74.0060,
-        timezone: -4,
-        houseSystem: HouseSystem.PLACIDUS
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' }
       };
 
       // Test invalid latitude
@@ -153,12 +155,6 @@ describe('Astrology Module', () => {
       await expect(getBirthChart({
         ...baseOptions,
         longitude: 181
-      })).rejects.toThrow();
-
-      // Test invalid timezone
-      await expect(getBirthChart({
-        ...baseOptions,
-        timezone: 15
       })).rejects.toThrow();
 
       // Test invalid date
