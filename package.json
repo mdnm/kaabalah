@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "4.4.3",
+  "version": "4.4.5",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -86,7 +86,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "geo-tz": "^7.0.0"
+    "tz-lookup": "^6.1.25"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",

@@ -441,13 +441,10 @@ async function localToUtcDate(
     typeof latitude === "number" &&
     typeof longitude === "number"
   ) {
-    // Dynamically import geo-tz to keep bundles small when not used.
-    const mod = await import("geo-tz");
-    const finder =
-      // Prefer named 'find', fallback to default export or module itself
-      mod.find ?? mod.default ?? mod;
-    const result = finder(latitude, longitude);
-    const tz = Array.isArray(result) ? result[0] : result;
+
+    const mod = await import("tz-lookup");
+    const lookup = mod.default ?? mod;
+    const tz = lookup(latitude, longitude);
     if (tz) {
       const naiveUtc = createUtcDateFromParts(parts);
       const offsetMs = getTimeZoneOffsetMs(naiveUtc, tz);
