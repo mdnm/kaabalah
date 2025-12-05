@@ -66,7 +66,7 @@ describe('Swiss Ephemeris Integration', () => {
       const latitude = 40.7128; // New York
       const longitude = -74.0060;
       
-      const houses = await calculateHouses(date, latitude, longitude, HouseSystem.PLACIDUS);
+      const houses = await calculateHouses(date, latitude, longitude, HouseSystem.PLACIDUS, { treatAsUTC: true });
 
       // Check house calculation results
       expect(houses).toBeDefined();
@@ -134,7 +134,7 @@ describe('Swiss Ephemeris Integration', () => {
       ];
 
       for (const { lat, lon } of extremeLatitudes) {
-        const houses = await calculateHouses(date, lat, lon, HouseSystem.PLACIDUS);
+        const houses = await calculateHouses(date, lat, lon, HouseSystem.PLACIDUS, { treatAsUTC: true });
         expect(houses).toBeDefined();
         expect(houses.houses).toHaveLength(13);
       }
@@ -174,5 +174,73 @@ describe('Swiss Ephemeris Integration', () => {
       console.error('Failed to calculate fortune part:', error);
       throw error;
     }
+  });
+
+  it('should calculate houses for a local time with DST via IANA zone', async () => {
+    // 2000-10-27 17:44 local in Formosa, GO, Brazil
+    const parts = { year: 2000, month: 10, day: 27, hour: 17, minute: 44 };
+    const lat = -15.54064;
+    const lon = -47.33571;
+    const houses = await calculateHouses(parts, lat, lon, HouseSystem.PLACIDUS, {
+      timeZone: 'America/Sao_Paulo'
+    });
+
+    expect(houses).toBeDefined();
+    expect(houses.houses).toHaveLength(13);
+
+    // Expect cusp 12 ≈ 15° Pisces (~345°)
+    const cusp12 = houses.houses[12];
+    expect(cusp12).toBeGreaterThan(340);
+    expect(cusp12).toBeLessThan(350);
+
+    // Expect cusp 6 ≈ 15° Virgo (~165°)
+    const cusp6 = houses.houses[6];
+    expect(cusp6).toBeGreaterThan(160);
+    expect(cusp6).toBeLessThan(170);
+  });
+
+  it('should auto-resolve time zone from lat/lon and match explicit zone', async () => {
+    const parts = { year: 2000, month: 10, day: 27, hour: 17, minute: 44 };
+    const lat = -15.54064;
+    const lon = -47.33571;
+
+    const explicit = await calculateHouses(parts, lat, lon, HouseSystem.PLACIDUS, {
+      timeZone: 'America/Sao_Paulo'
+    });
+    const auto = await calculateHouses(parts, lat, lon, HouseSystem.PLACIDUS, {
+      autoTimeZone: true
+    });
+
+    // Compare a couple of cusps within a small tolerance
+    const diff = (a: number, b: number) => {
+      const d = Math.abs(a - b) % 360;
+      return d > 180 ? 360 - d : d;
+    };
+    expect(diff(explicit.houses[12], auto.houses[12])).toBeLessThan(0.5);
+    expect(diff(explicit.houses[6], auto.houses[6])).toBeLessThan(0.5);
+  });
+
+  it('utcOffsetMinutes should override timeZone when both provided', async () => {
+    const parts = { year: 2000, month: 10, day: 27, hour: 17, minute: 44 };
+    const lat = -15.54064;
+    const lon = -47.33571;
+
+    // Using explicit offset UTC-2
+    const byOffset = await calculateHouses(parts, lat, lon, HouseSystem.PLACIDUS, {
+      utcOffsetMinutes: -120
+    });
+
+    // Providing both should match the offset result
+    const both = await calculateHouses(parts, lat, lon, HouseSystem.PLACIDUS, {
+      timeZone: 'America/Sao_Paulo',
+      utcOffsetMinutes: -120
+    });
+
+    const diff = (a: number, b: number) => {
+      const d = Math.abs(a - b) % 360;
+      return d > 180 ? 360 - d : d;
+    };
+    expect(diff(byOffset.houses[12], both.houses[12])).toBeLessThan(1e-6);
+    expect(diff(byOffset.houses[6], both.houses[6])).toBeLessThan(1e-6);
   });
 }); 
