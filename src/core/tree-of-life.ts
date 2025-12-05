@@ -393,21 +393,26 @@ export class TreeOfLife {
   addWesternAstrologySign({
     spheres,
     path,
+    house,
+    planets,
+    element,
+    modality,
     sign,
-    data,
     relatedNumber,
   }: {
     spheres: NodeId<KaabalahTypes.SPHERE>[];
     path: NodeId<KaabalahTypes.PATH>;
+    house: NodeId<WesternAstrologyTypes.HOUSE>;
+    planets: NodeId<WesternAstrologyTypes.PLANET>[];
+    element: NodeId<WesternAstrologyTypes.WESTERN_ELEMENT>;
+    modality: NodeId<WesternAstrologyTypes.MODALITIES>;
     sign: string;
-    data: NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>;
     relatedNumber: number;
   }) {
     const signId = this.upsertNode(
       new BaseNode({
         id: sign,
         type: WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
-        data,
       })
     );
 
@@ -417,18 +422,16 @@ export class TreeOfLife {
 
     this.link(path, signId);
 
+    this.link(house, signId);
+
+    for (const planet of planets) {
+      this.link(planet, signId);
+    }
+
     this.addNumber({ number: relatedNumber, nodeId: signId });
 
-    if (data.element) {
-      const elementId = this.upsertNode(
-        new BaseNode({
-          id: data.element,
-          type: WesternAstrologyTypes.WESTERN_ELEMENT,
-        })
-      );
-
-      this.link(signId, elementId);
-    }
+    this.link(element, signId);
+    this.link(modality, signId);
 
     return signId;
   }
