@@ -71,7 +71,7 @@ export async function getSwissEph(
       // In the browser, synchronously fetch and write ephemeris files into MEMFS
       const epheFsPath = "/ephe";
       try {
-        (module as any).FS?.mkdir?.(epheFsPath);
+        module.FS?.mkdir?.(epheFsPath);
       } catch {
         // ignore if exists
       }
@@ -84,7 +84,7 @@ export async function getSwissEph(
             throw new Error(`Failed to fetch ephemeris file: ${url}`);
           }
           const buf = await res.arrayBuffer();
-          (module as any).FS?.writeFile?.(
+          module.FS?.writeFile?.(
             `${epheFsPath}/${name}`,
             new Uint8Array(buf)
           );
@@ -97,25 +97,25 @@ export async function getSwissEph(
       // Debug info
       console.info(
         "Emscripten FS availability:",
-        Boolean((module as any).FS),
+        Boolean(module.FS),
         "mount:",
-        Boolean((module as any).FS?.mount),
+        Boolean(module.FS?.mount),
         "NODEFS:",
-        Boolean((module as any).FS?.filesystems?.NODEFS)
+        Boolean(module.FS?.filesystems?.NODEFS)
       );
       if (
-        (module as any).FS?.mount &&
-        (module as any).FS?.filesystems?.NODEFS
+        module.FS?.mount &&
+        module.FS?.filesystems?.NODEFS
       ) {
         const mountPoint = "/ephefs";
         try {
           try {
-            (module as any).FS.mkdir(mountPoint);
+            module.FS?.mkdir(mountPoint);
           } catch {
             // ignore exists
           }
-          (module as any).FS.mount(
-            (module as any).FS.filesystems.NODEFS,
+          module.FS?.mount(
+            module.FS?.filesystems.NODEFS,
             { root: finalEphePath },
             mountPoint
           );
@@ -198,16 +198,29 @@ export async function calculatePlanetaryPositions(
  * Calculate houses for a given date and location
  */
 export async function calculateHouses(
-  date: Date,
+  date: Date | LocalDateTimeParts,
   latitude: number,
   longitude: number,
-  houseSystem: HouseSystem
+  houseSystem: HouseSystem,
+  options: TimeZoneOptions & { treatAsUTC?: boolean } = {}
 ): Promise<Houses> {
   try {
     checkInitialization();
 
-    const julday = swissEph!.getJulianDay(date);
-    return swissEph!.calculateHouses(julday, latitude, longitude, houseSystem);
+    // Interpret the provided date as local civil time by default.
+    // For backward compatibility, allow callers to treat the date as UT.
+    const dateForUt =
+      options.treatAsUTC === true
+        ? (date instanceof Date ? date : createUtcDateFromParts(buildLocalParts(date)))
+        : await localToUtcDate(date, latitude, longitude, options);
+
+    const julday = swissEph!.getJulianDay(dateForUt);
+    return swissEph!.calculateHouses(
+      julday,
+      latitude,
+      longitude,
+      houseSystem
+    );
   } catch (error) {
     console.error("Error calculating houses:", error);
     throw error;
@@ -282,3 +295,163 @@ export {
   VirtualNodes
 };
 
+/**
+ * Local civil time handling (DST-aware)
+ * Convert a local date-time (given via IANA time zone, explicit UTC offset, or auto from lat/lon)
+ * into a UTC Date for Swiss Ephemeris (which expects UT).
+ */
+type LocalDateTimeParts = {
+  year: number;
+  month: number; // 1-12
+  day: number; // 1-31
+  hour?: number; // 0-23
+  minute?: number; // 0-59
+  second?: number; // 0-59
+};
+
+type TimeZoneOptions = {
+  /**
+   * IANA time zone
+   * If provided, DST is handled automatically via Intl API.
+   */
+  timeZone?: string;
+  /**
+   * Explicit UTC offset in minutes for the local civil time.
+   * Positive for east of Greenwich, negative for west (e.g., -180 for UTC-3).
+   * If provided, overrides timeZone.
+   */
+  utcOffsetMinutes?: number;
+  /**
+   * Optional resolver to derive an IANA time zone from coordinates and date.
+   * Use an external library (e.g., tz-lookup) and pass it here.
+   */
+  resolveTimeZone?: (latitude: number, longitude: number, local: LocalDateTimeParts) => string | undefined;
+  /**
+   * When true (default), try to auto-resolve the IANA time zone from lat/lon using tz-lookup
+   * if no explicit offset/timeZone is provided.
+   */
+  autoTimeZone?: boolean;
+};
+
+function buildLocalParts(date: Date | LocalDateTimeParts): LocalDateTimeParts {
+  if (date instanceof Date) {
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds(),
+    };
+  }
+  return date;
+}
+
+function createUtcDateFromParts(parts: LocalDateTimeParts): Date {
+  const { year, month, day, hour = 0, minute = 0, second = 0 } = parts;
+  return new Date(Date.UTC(year, month - 1, day, hour, minute, second));
+}
+
+/**
+ * Compute the time zone offset (in ms) for a given instant and IANA time zone.
+ * Based on the approach used by date-fns-tz.
+ */
+function getTimeZoneOffsetMs(instant: Date, timeZone: string): number {
+  const dtf = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+  const parts = dtf.formatToParts(instant);
+  const map: Record<string, string> = {};
+  for (const p of parts) {
+    map[p.type] = p.value;
+  }
+  const asUTC = Date.UTC(
+    Number(map.year),
+    Number(map.month) - 1,
+    Number(map.day),
+    Number(map.hour),
+    Number(map.minute),
+    Number(map.second)
+  );
+  return asUTC - instant.getTime();
+}
+
+/**
+ * Convert a local civil date-time to a UTC Date using either an explicit offset,
+ * an IANA time zone (DST-aware), a custom resolver, or auto lat/lon resolution.
+ * If no time zone information can be derived, throws.
+ */
+async function localToUtcDate(
+  local: Date | LocalDateTimeParts,
+  latitude?: number,
+  longitude?: number,
+  opts: TimeZoneOptions = {}
+): Promise<Date> {
+  const parts = buildLocalParts(local);
+  const auto = opts.autoTimeZone !== false;
+
+  // 1) Explicit offset takes precedence
+  if (typeof opts.utcOffsetMinutes === "number" && Number.isFinite(opts.utcOffsetMinutes)) {
+    const utcMs = Date.UTC(
+      parts.year,
+      parts.month - 1,
+      parts.day,
+      parts.hour ?? 0,
+      parts.minute ?? 0,
+      parts.second ?? 0
+    );
+    return new Date(utcMs - opts.utcOffsetMinutes * 60_000);
+  }
+
+  // 2) IANA time zone provided
+  if (opts.timeZone) {
+    const naiveUtc = createUtcDateFromParts(parts);
+    const offsetMs = getTimeZoneOffsetMs(naiveUtc, opts.timeZone);
+    return new Date(naiveUtc.getTime() - offsetMs);
+  }
+
+  // 3) Custom resolver
+  if (
+    opts.resolveTimeZone &&
+    typeof latitude === "number" &&
+    typeof longitude === "number"
+  ) {
+    const tz = opts.resolveTimeZone(latitude, longitude, parts);
+    if (tz) {
+      const naiveUtc = createUtcDateFromParts(parts);
+      const offsetMs = getTimeZoneOffsetMs(naiveUtc, tz);
+      return new Date(naiveUtc.getTime() - offsetMs);
+    }
+  }
+
+  // 4) Auto resolve with tz-lookup if allowed and coords available
+  if (
+    auto &&
+    typeof latitude === "number" &&
+    typeof longitude === "number"
+  ) {
+    // Dynamically import geo-tz to keep bundles small when not used.
+    const mod = await import("geo-tz");
+    const finder =
+      // Prefer named 'find', fallback to default export or module itself
+      mod.find ?? mod.default ?? mod;
+    const result = finder(latitude, longitude);
+    const tz = Array.isArray(result) ? result[0] : result;
+    if (tz) {
+      const naiveUtc = createUtcDateFromParts(parts);
+      const offsetMs = getTimeZoneOffsetMs(naiveUtc, tz);
+      return new Date(naiveUtc.getTime() - offsetMs);
+    }
+  }
+
+  throw new Error(
+    "Time zone information is required. Provide 'utcOffsetMinutes', 'timeZone', 'resolveTimeZone', or enable autoTimeZone with latitude/longitude."
+  );
+}
