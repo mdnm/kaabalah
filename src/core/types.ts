@@ -6,8 +6,7 @@ import {
   PathData,
   SphereData,
   TarotArkAnnuData,
-  WesternZodiacSignData,
-  WorldData,
+  WorldData
 } from "./constants";
 
 export enum KaabalahTypes {
@@ -27,6 +26,9 @@ export enum WesternAstrologyTypes {
   PLANET = "planet",
   WESTERN_ZODIAC_SIGN = "westernZodiacSign",
   WESTERN_ELEMENT = "westernElement",
+  HOUSE = "house",
+  ASPECT = "aspect",
+  MODALITIES = "modalities",
 }
 
 export enum TarotTypes {
@@ -84,7 +86,6 @@ interface DataMap {
   latinLetter: LatinLetterData;
   color: ColorData;
   musicalNote: MusicalNoteData;
-  westernZodiacSign: WesternZodiacSignData;
   tarotArkAnnu: TarotArkAnnuData;
 }
 

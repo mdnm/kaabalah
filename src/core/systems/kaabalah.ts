@@ -8,6 +8,7 @@ import {
   LATIN_LETTERS,
   LATIN_LETTERS_DATA,
   MELKITZEDEKI_PATHS,
+  MODALITIES,
   MUSICAL_NOTES,
   MUSICAL_NOTES_DATA,
   PLANETS,
@@ -17,9 +18,10 @@ import {
   TAROT_ARKANNUS_DATA,
   TAROT_SUITS,
   TarotArkAnnuData,
+  WESTERN_ASPECTS,
   WESTERN_ELEMENTS,
-  WESTERN_ZODIAC_SIGNS,
-  WESTERN_ZODIAC_SIGNS_DATA,
+  WESTERN_HOUSES,
+  WESTERN_ZODIAC_SIGNS
 } from "../constants";
 import { TreeOfLife } from "../tree-of-life";
 import {
@@ -1434,28 +1436,26 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   tree.link(id(KaabalahTypes.SPHERE, SPHERES.HOD), planetsIds[PLANETS.MERCURY]);
   tree.link(id(KaabalahTypes.SPHERE, SPHERES.YESOD), planetsIds[PLANETS.MOON]);
 
-  const earth = tree.upsertNode(
-    new BaseNode({
-      id: WESTERN_ELEMENTS.EARTH,
-      type: WesternAstrologyTypes.WESTERN_ELEMENT,
-    })
-  );
+  const elements = Object.values(WESTERN_ELEMENTS);
+  const elementIds: Record<string, NodeId<WesternAstrologyTypes.WESTERN_ELEMENT>> = {};
+  for (const element of elements) {
+    const elementId = tree.upsertNode(
+      new BaseNode({
+        id: element,
+        type: WesternAstrologyTypes.WESTERN_ELEMENT,
+      })
+    );
+    elementIds[element] = elementId;
+  }
 
   tree.link(
     id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
     planetsIds[PLANETS.EARTH]
   );
-  tree.link(planetsIds[PLANETS.EARTH], earth);
-  tree.link(earth, id(KaabalahTypes.SPHERE, SPHERES.MALKUTH));
+  tree.link(planetsIds[PLANETS.EARTH], elementIds[WESTERN_ELEMENTS.EARTH]);
+  tree.link(elementIds[WESTERN_ELEMENTS.EARTH], id(KaabalahTypes.SPHERE, SPHERES.MALKUTH));
 
-  const air = tree.upsertNode(
-    new BaseNode({
-      id: WESTERN_ELEMENTS.AIR,
-      type: WesternAstrologyTypes.WESTERN_ELEMENT,
-    })
-  );
-
-  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_CHOKHMAH), air);
+  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_CHOKHMAH), elementIds[WESTERN_ELEMENTS.AIR]);
   tree.link(
     id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.KETHER_BINAH),
     planetsIds[PLANETS.MOON]
@@ -1468,13 +1468,43 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
     id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_BINAH),
     planetsIds[PLANETS.JUPITER]
   );
+
+  const houses = Object.values(WESTERN_HOUSES);
+  const houseIds: Record<string, NodeId<WesternAstrologyTypes.HOUSE>> = {};
+  for (const house of houses) {
+    const houseId = tree.upsertNode(
+      new BaseNode({
+        id: house,
+        type: WesternAstrologyTypes.HOUSE,
+      })
+    );
+    houseIds[house] = houseId;
+  }
+
+  const modalities = Object.values(MODALITIES);
+  const modalityIds: Record<string, NodeId<WesternAstrologyTypes.MODALITIES>> = {};
+  for (const modality of modalities) {
+    const modalityId = tree.upsertNode(
+      new BaseNode({
+        id: modality,
+        type: WesternAstrologyTypes.MODALITIES,
+      })
+    );
+    modalityIds[modality] = modalityId;
+  }
+
   tree.addWesternAstrologySign({
     spheres: [
       id(KaabalahTypes.SPHERE, SPHERES.GEBURAH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_TIPHARETH),
+    house: houseIds[WESTERN_HOUSES.ASCENDANT],
+    planets: [
+      planetsIds[PLANETS.MARS],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.ARIES,
-    data: WESTERN_ZODIAC_SIGNS_DATA.ARIES,
+    element: elementIds[WESTERN_ELEMENTS.FIRE],
+    modality: modalityIds[MODALITIES.CARDINAL],
     relatedNumber: 1,
   });
   tree.addWesternAstrologySign({
@@ -1482,8 +1512,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.NETZACH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHOKHMAH_CHESED),
+    house: houseIds[WESTERN_HOUSES.SECOND_HOUSE],
+    planets: [
+      planetsIds[PLANETS.VENUS],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.TAURUS,
-    data: WESTERN_ZODIAC_SIGNS_DATA.TAURUS,
+    element: elementIds[WESTERN_ELEMENTS.EARTH],
+    modality: modalityIds[MODALITIES.FIXED],
     relatedNumber: 2,
   });
   tree.addWesternAstrologySign({
@@ -1491,8 +1526,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.HOD),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_TIPHARETH),
+    house: houseIds[WESTERN_HOUSES.THIRD_HOUSE],
+    planets: [
+      planetsIds[PLANETS.MERCURY],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.GEMINI,
-    data: WESTERN_ZODIAC_SIGNS_DATA.GEMINI,
+    element: elementIds[WESTERN_ELEMENTS.AIR],
+    modality: modalityIds[MODALITIES.MUTABLE],
     relatedNumber: 3,
   });
   tree.addWesternAstrologySign({
@@ -1500,8 +1540,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.YESOD),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.BINAH_GEBURAH),
+    house: houseIds[WESTERN_HOUSES.IMUM_COELI],
+    planets: [
+      planetsIds[PLANETS.MOON],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.CANCER,
-    data: WESTERN_ZODIAC_SIGNS_DATA.CANCER,
+    element: elementIds[WESTERN_ELEMENTS.WATER],
+    modality: modalityIds[MODALITIES.FIXED],
     relatedNumber: 4,
   });
   tree.addWesternAstrologySign({
@@ -1509,8 +1554,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHESED_GEBURAH),
+    house: houseIds[WESTERN_HOUSES.FIFTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.SUN],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.LEO,
-    data: WESTERN_ZODIAC_SIGNS_DATA.LEO,
+    element: elementIds[WESTERN_ELEMENTS.FIRE],
+    modality: modalityIds[MODALITIES.FIXED],
     relatedNumber: 5,
   });
   tree.addWesternAstrologySign({
@@ -1518,8 +1568,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.CHESED_TIPHARETH),
+    house: houseIds[WESTERN_HOUSES.SIXTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.MERCURY],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.VIRGO,
-    data: WESTERN_ZODIAC_SIGNS_DATA.VIRGO,
+    element: elementIds[WESTERN_ELEMENTS.EARTH],
+    modality: modalityIds[MODALITIES.MUTABLE],
     relatedNumber: 6,
   });
   tree.link(
@@ -1532,26 +1587,32 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.NETZACH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.GEBURAH_TIPHARETH),
+    house: houseIds[WESTERN_HOUSES.DESCENDANT],
+    planets: [
+      planetsIds[PLANETS.SUN],
+      planetsIds[PLANETS.VENUS],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.LIBRA,
-    data: WESTERN_ZODIAC_SIGNS_DATA.LIBRA,
+    element: elementIds[WESTERN_ELEMENTS.AIR],
+    modality: modalityIds[MODALITIES.CARDINAL],
     relatedNumber: 7,
   });
 
-  const water = tree.upsertNode(
-    new BaseNode({
-      id: WESTERN_ELEMENTS.WATER,
-      type: WesternAstrologyTypes.WESTERN_ELEMENT,
-    })
-  );
-  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.GEBURAH_HOD), water);
+  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.GEBURAH_HOD), elementIds[WESTERN_ELEMENTS.WATER]);
 
   tree.addWesternAstrologySign({
     spheres: [
       id(KaabalahTypes.SPHERE, SPHERES.DAATH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_NETZACH),
+    house: houseIds[WESTERN_HOUSES.EIGHTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.MARS],
+      planetsIds[PLANETS.PLUTO],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.SCORPIO,
-    data: WESTERN_ZODIAC_SIGNS_DATA.SCORPIO,
+    element: elementIds[WESTERN_ELEMENTS.WATER],
+    modality: modalityIds[MODALITIES.FIXED],
     relatedNumber: 8,
   });
   tree.addWesternAstrologySign({
@@ -1559,8 +1620,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.CHESED),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_YESOD),
+    house: houseIds[WESTERN_HOUSES.NINTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.JUPITER],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.SAGITTARIUS,
-    data: WESTERN_ZODIAC_SIGNS_DATA.SAGITTARIUS,
+    element: elementIds[WESTERN_ELEMENTS.FIRE],
+    modality: modalityIds[MODALITIES.MUTABLE],
     relatedNumber: 9,
   });
   tree.addWesternAstrologySign({
@@ -1568,8 +1634,13 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.BINAH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.TIPHARETH_HOD),
+    house: houseIds[WESTERN_HOUSES.MEDIUM_COELI],
+    planets: [
+      planetsIds[PLANETS.SATURN],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.CAPRICORN,
-    data: WESTERN_ZODIAC_SIGNS_DATA.CAPRICORN,
+    element: elementIds[WESTERN_ELEMENTS.EARTH],
+    modality: modalityIds[MODALITIES.CARDINAL],
     relatedNumber: 10,
   });
   tree.link(
@@ -1581,8 +1652,14 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_YESOD),
+    house: houseIds[WESTERN_HOUSES.ELEVENTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.SATURN],
+      planetsIds[PLANETS.URANUS],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.AQUARIUS,
-    data: WESTERN_ZODIAC_SIGNS_DATA.AQUARIUS,
+    element: elementIds[WESTERN_ELEMENTS.AIR],
+    modality: modalityIds[MODALITIES.FIXED],
     relatedNumber: 11,
   });
   tree.addWesternAstrologySign({
@@ -1590,25 +1667,47 @@ export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
       id(KaabalahTypes.SPHERE, SPHERES.KETHER),
     ],
     path: id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.NETZACH_MALKUTH),
+    house: houseIds[WESTERN_HOUSES.TWELFTH_HOUSE],
+    planets: [
+      planetsIds[PLANETS.JUPITER],
+      planetsIds[PLANETS.NEPTUNE],
+    ],
     sign: WESTERN_ZODIAC_SIGNS.PISCES,
-    data: WESTERN_ZODIAC_SIGNS_DATA.PISCES,
+    element: elementIds[WESTERN_ELEMENTS.WATER],
+    modality: modalityIds[MODALITIES.MUTABLE],
     relatedNumber: 12,
   });
   tree.link(
     id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_YESOD),
     planetsIds[PLANETS.SATURN]
   );
-  const fire = tree.upsertNode(
-    new BaseNode({
-      id: WESTERN_ELEMENTS.FIRE,
-      type: WesternAstrologyTypes.WESTERN_ELEMENT,
-    })
-  );
-  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_MALKUTH), fire);
+  tree.link(id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.HOD_MALKUTH), elementIds[WESTERN_ELEMENTS.FIRE]);
   tree.link(
     id(KaabalahTypes.PATH, MELKITZEDEKI_PATHS.YESOD_MALKUTH),
     planetsIds[PLANETS.SUN]
   );
+
+  const aspects = Object.values(WESTERN_ASPECTS);
+  const aspectIds: Record<string, NodeId<WesternAstrologyTypes.ASPECT>> = {};
+  for (const aspect of aspects) {
+    const aspectId = tree.upsertNode(
+      new BaseNode({
+        id: aspect,
+        type: WesternAstrologyTypes.ASPECT,
+      })
+    );
+    aspectIds[aspect] = aspectId;
+  }
+
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.KETHER), aspectIds[WESTERN_ASPECTS.CONJUNCTION]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH), aspectIds[WESTERN_ASPECTS.DUODECILE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.BINAH), aspectIds[WESTERN_ASPECTS.OCTILE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.CHESED), aspectIds[WESTERN_ASPECTS.SEXTILE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.GEBURAH), aspectIds[WESTERN_ASPECTS.SQUARE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.NETZACH), aspectIds[WESTERN_ASPECTS.TRINE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.HOD), aspectIds[WESTERN_ASPECTS.TRIOCTILE]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.YESOD), aspectIds[WESTERN_ASPECTS.QUINCUNX]);
+  tree.link(id(KaabalahTypes.SPHERE, SPHERES.MALKUTH), aspectIds[WESTERN_ASPECTS.OPPOSITION]);
 
   return tree;
 };

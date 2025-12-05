@@ -1,4 +1,4 @@
-import { KaabalahTypes, LetterTypes, NodeData, NodeId, TarotTypes, WesternAstrologyTypes } from "./types";
+import { KaabalahTypes, LetterTypes, NodeData, NodeId, TarotTypes } from "./types";
 
 
 interface HermeticQabalahSphereData {
@@ -63,17 +63,6 @@ export type MusicalNoteData = {
   noteDescription: string;
   // 9 octaves
   frequencies?: [string, string, string, string, string, string, string, string, string];
-};
-
-export type WesternZodiacSignData = {
-  element: Exclude<
-    (typeof WESTERN_ELEMENTS)[keyof typeof WESTERN_ELEMENTS],
-    "Ether"
-  >;
-  type: "cardinal" | "fixed" | "mutable";
-  rulingPlanets: Array<
-    Exclude<(typeof PLANETS)[keyof typeof PLANETS], "Earth">
-  >;
 };
 
 export type TarotArkAnnuData = {
@@ -143,6 +132,12 @@ export const PLANETS = {
   PLUTO: "Pluto",
 } as const;
 
+export const MODALITIES = {
+  CARDINAL: "Cardinal",
+  FIXED: "Fixed",
+  MUTABLE: "Mutable",
+} as const;
+
 export const WESTERN_ZODIAC_SIGNS = {
   ARIES: "Aries",
   TAURUS: "Taurus",
@@ -166,70 +161,31 @@ export const WESTERN_ELEMENTS = {
   ETHER: "Ether",
 } as const;
 
-export const WESTERN_ZODIAC_SIGNS_DATA: Record<
-  keyof typeof WESTERN_ZODIAC_SIGNS,
-  NodeData<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>
-> = {
-  ARIES: {
-    element: WESTERN_ELEMENTS.FIRE,
-    type: "cardinal",
-    rulingPlanets: [PLANETS.MARS],
-  },
-  TAURUS: {
-    element: WESTERN_ELEMENTS.EARTH,
-    type: "fixed",
-    rulingPlanets: [PLANETS.VENUS],
-  },
-  GEMINI: {
-    element: WESTERN_ELEMENTS.AIR,
-    type: "mutable",
-    rulingPlanets: [PLANETS.MERCURY],
-  },
-  CANCER: {
-    element: WESTERN_ELEMENTS.WATER,
-    type: "cardinal",
-    rulingPlanets: [PLANETS.MOON],
-  },
-  LEO: {
-    element: WESTERN_ELEMENTS.FIRE,
-    type: "fixed",
-    rulingPlanets: [PLANETS.SUN],
-  },
-  VIRGO: {
-    element: WESTERN_ELEMENTS.EARTH,
-    type: "mutable",
-    rulingPlanets: [PLANETS.MERCURY],
-  },
-  LIBRA: {
-    element: WESTERN_ELEMENTS.AIR,
-    type: "cardinal",
-    rulingPlanets: [PLANETS.VENUS],
-  },
-  SCORPIO: {
-    element: WESTERN_ELEMENTS.WATER,
-    type: "fixed",
-    rulingPlanets: [PLANETS.MARS, PLANETS.PLUTO],
-  },
-  SAGITTARIUS: {
-    element: WESTERN_ELEMENTS.FIRE,
-    type: "mutable",
-    rulingPlanets: [PLANETS.JUPITER],
-  },
-  CAPRICORN: {
-    element: WESTERN_ELEMENTS.EARTH,
-    type: "cardinal",
-    rulingPlanets: [PLANETS.SATURN],
-  },
-  AQUARIUS: {
-    element: WESTERN_ELEMENTS.AIR,
-    type: "fixed",
-    rulingPlanets: [PLANETS.SATURN, PLANETS.URANUS],
-  },
-  PISCES: {
-    element: WESTERN_ELEMENTS.WATER,
-    type: "mutable",
-    rulingPlanets: [PLANETS.JUPITER, PLANETS.NEPTUNE],
-  },
+export const WESTERN_HOUSES = {
+  ASCENDANT: "ascendant",
+  SECOND_HOUSE: "second house",
+  THIRD_HOUSE: "third house",
+  IMUM_COELI: "imum coeli",
+  FIFTH_HOUSE: "fifth house",
+  SIXTH_HOUSE: "sixth house",
+  DESCENDANT: "descendant",
+  EIGHTH_HOUSE: "eighth house",
+  NINTH_HOUSE: "ninth house",
+  MEDIUM_COELI: "medium coeli",
+  ELEVENTH_HOUSE: "eleventh house",
+  TWELFTH_HOUSE: "twelfth house",
+} as const;
+
+export const WESTERN_ASPECTS = {
+  CONJUNCTION: "conjunction",
+  DUODECILE: "duodecile",
+  OCTILE: "octile",
+  SEXTILE: "sextile",
+  SQUARE: "square",
+  TRINE: "trine",
+  TRIOCTILE: "trioctile",
+  QUINCUNX: "quincunx",
+  OPPOSITION: "opposition",
 } as const;
 
 export const MELKITZEDEKI_PATHS = {
