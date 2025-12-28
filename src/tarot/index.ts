@@ -369,7 +369,7 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Exchange",
     meaning: "Work in teams",
     papusMeaning:
-      "Obstacles to the enterprise. Nothing can be accomplished without obstacles. We therefore now find them appearing, and must prepare ourselves to overcome them.",
+      "Obstacles to the enterprise.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"

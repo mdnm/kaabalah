@@ -1135,7 +1135,7 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_DIVINATORY: {
         name: "Four of Wands",
         meaning:
-          "Obstacles to the enterprise. Nothing can be accomplished without obstacles. We therefore now find them appearing, and must prepare ourselves to overcome them.",
+          "Obstacles to the enterprise.",
       },
       KIER_EGYPTIAN: {
         name: "Exchange",
