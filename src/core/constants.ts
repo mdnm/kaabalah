@@ -628,6 +628,7 @@ export const TAROT_ARKANNUS = {
 
 export const TAROT_DECKS = {
   PAPUS_KAABALISTIC: "Papus Kaabalistic",
+  PAPUS_DIVINATORY: "Papus Divinatory",
   KIER_EGYPTIAN: "Kier Egyptian",
 } as const;
 
@@ -642,6 +643,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The Magician",
         meaning: "Abracadabra, the power to create reality through voice",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Magician",
+        meaning: "Male inquirer.",
+      },
       KIER_EGYPTIAN: {
         name: "The Magician",
       },
@@ -655,6 +660,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Intuition, the power to rewrite your book of life improving your life every instant",
       },
+      PAPUS_DIVINATORY: {
+        name: "The High Priestess",
+        meaning: "Female inquirer.",
+      },
       KIER_EGYPTIAN: {
         name: "The Priestess",
       },
@@ -666,6 +675,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "The Empress",
         meaning: "Adaptation, the power to geometrize through emotions",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The Empress",
+        meaning: "Action. Initiative.",
       },
       KIER_EGYPTIAN: {
         name: "The Empress",
@@ -680,6 +693,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Authority, the power to mark your territory with the sacred fire",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Emperor",
+        meaning: "Will.",
+      },
       KIER_EGYPTIAN: {
         name: "The Emperor",
       },
@@ -692,6 +709,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The Hierophant",
         meaning:
           "Magnetism, the power to ritualize life and circulate the quintessence",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The Hierophant",
+        meaning: "Inspiration.",
       },
       KIER_EGYPTIAN: {
         name: "The Hierarch",
@@ -706,6 +727,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Dichotomy, stay on the middle path by being neither a victim nor a villain",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Lover",
+        meaning: "Love.",
+      },
       KIER_EGYPTIAN: {
         name: "Indecision",
       },
@@ -719,6 +744,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Merkaabah, take control and build your merkaabah (mind vehicle)",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Chariot",
+        meaning: "Triumph. Providential protection.",
+      },
       KIER_EGYPTIAN: {
         name: "Triumph",
       },
@@ -731,6 +760,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Justice",
         meaning: "Justice, be just with yourself to be just with others",
       },
+      PAPUS_DIVINATORY: {
+        name: "Justice",
+        meaning: "Justice.",
+      },
       KIER_EGYPTIAN: {
         name: "Justice",
       },
@@ -742,6 +775,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "The Hermit",
         meaning: "Introspection, seek within, retreat",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The Hermit",
+        meaning: "Prudence.",
       },
       KIER_EGYPTIAN: {
         name: "The Hermit",
@@ -756,6 +793,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Loops, extroversion, break the great wheel and ascend, seek externally",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Wheel of Fortune",
+        meaning: "Fortune. Destiny.",
+      },
       KIER_EGYPTIAN: {
         name: "Retribution",
       },
@@ -767,6 +808,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Strength",
         meaning: "The strength of your subconscious, unity brings strength",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Strength",
+        meaning: "Strength. Fortitude.",
       },
       KIER_EGYPTIAN: {
         name: "Persuasion",
@@ -780,6 +825,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The Hanged Man",
         meaning: "Make valid sacrifices, adopt a new perspective",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Hanged Man",
+        meaning: "Trials. Sacrifice.",
+      },
       KIER_EGYPTIAN: {
         name: "The Apostolate",
       },
@@ -792,6 +841,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Death",
         meaning: "Death, renovation, kill that which kills your soul",
       },
+      PAPUS_DIVINATORY: {
+        name: "Death",
+        meaning: "Death.",
+      },
       KIER_EGYPTIAN: {
         name: "Immortality",
       },
@@ -803,6 +856,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Temperance",
         meaning: "Balance, harmonize differences",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Temperance",
+        meaning: "Temperance. Economy.",
       },
       KIER_EGYPTIAN: {
         name: "Temperance",
@@ -817,6 +874,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Indecision between vice and virtue, transmute weakness and passions into strengths",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Devil",
+        meaning: "Immense force. Illness.",
+      },
       KIER_EGYPTIAN: {
         name: "Passion",
       },
@@ -829,6 +890,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The House of God",
         meaning:
           "Separation, destruction, separate from what's harmful and connect with what's helpful, make room for the new",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The House of God",
+        meaning: "Ruin. Deception.",
       },
       KIER_EGYPTIAN: {
         name: "Fragility",
@@ -843,6 +908,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Fecundation, ecology, ecstasy, hope, renew yourself to maintain help, act according to your spiritual purpose",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Star",
+        meaning: "Hope.",
+      },
       KIER_EGYPTIAN: {
         name: "Hope",
       },
@@ -855,6 +924,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The Moon",
         meaning:
           "Hidden enemies, be vigilant, recognize where you're self sabotaging",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The Moon",
+        meaning: "Hidden enemies. Danger.",
       },
       KIER_EGYPTIAN: {
         name: "Twilight",
@@ -869,6 +942,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Be conscious of your alchemical band, transmute money into knowledge and vice versa",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Sun",
+        meaning: "Material happiness. Lucky marriage.",
+      },
       KIER_EGYPTIAN: {
         name: "Inspiration",
       },
@@ -880,6 +957,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Judgement",
         meaning: "Make retrospectives and learn from mistakes and successes",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Judgement",
+        meaning: "Change of position.",
       },
       KIER_EGYPTIAN: {
         name: "Resurrection",
@@ -893,6 +974,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "The Fool",
         meaning: "Stop walking in circles, create connections of knowledge",
       },
+      PAPUS_DIVINATORY: {
+        name: "The Fool",
+        meaning: "Inconsiderate actions. Madness.",
+      },
       KIER_EGYPTIAN: {
         name: "Return",
       },
@@ -904,6 +989,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "The World",
         meaning: "Win the world, start acting on the world of causes",
+      },
+      PAPUS_DIVINATORY: {
+        name: "The World",
+        meaning: "Assured success.",
       },
       KIER_EGYPTIAN: {
         name: "Transmutation",
@@ -917,6 +1006,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "King of Wands",
         meaning: "Get's the best out of every one, Idealism, Magnanimity",
+      },
+      PAPUS_DIVINATORY: {
+        name: "King of Wands",
+        meaning:
+          "A dark man, a friend. He generally represents a married man, the father of a family.",
       },
       KIER_EGYPTIAN: {
         name: "The Laborer",
@@ -932,6 +1026,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning:
           "Hold the line while the king goes to work, Preserve what was conquered",
       },
+      PAPUS_DIVINATORY: {
+        name: "Queen of Wands",
+        meaning:
+          "A dark woman, a friend. Represents a serious woman, a very good counsellor, often the mother of a family.",
+      },
       KIER_EGYPTIAN: {
         name: "The Weaver",
       },
@@ -944,6 +1043,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Knight of Wands",
         meaning: "Dreams that become reality",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Knight of Wands",
+        meaning: "A dark young man, a friend.",
       },
       KIER_EGYPTIAN: {
         name: "The Argonaut",
@@ -958,6 +1061,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Page of Wands",
         meaning: "Don't rush, the precipitations are the doors to failure",
       },
+      PAPUS_DIVINATORY: {
+        name: "Page of Wands",
+        meaning:
+          "A dark child, a friend. Also represents a message from a near relation.",
+      },
       KIER_EGYPTIAN: {
         name: "The Prodigy",
       },
@@ -970,6 +1078,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Ace of Wands",
         meaning: "Ignite the flames of ideals, Trust in your inner divinity",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Ace of Wands",
+        meaning: "Commencement of an enterprise.",
       },
       KIER_EGYPTIAN: {
         name: "The Unexpected",
@@ -984,6 +1096,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Two of Wands",
         meaning: "Formulate a strategy to use your own talents",
       },
+      PAPUS_DIVINATORY: {
+        name: "Two of Wands",
+        meaning:
+          "Opposition to the commencement of the enterprise. The enterprise is commenced when an unexpected obstacle suddenly prevents its execution.",
+      },
       KIER_EGYPTIAN: {
         name: "Uncertainty",
       },
@@ -996,6 +1113,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Three of Wands",
         meaning: "Keep going despite losing something apparently important",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Three of Wands",
+        meaning:
+          "Realization of the commencement of the enterprise. The basis of the work is now definitely established, and the undertaking can be fearlessly continued.",
       },
       KIER_EGYPTIAN: {
         name: "Domesticity",
@@ -1010,6 +1132,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Four of Wands",
         meaning: "Work in teams",
       },
+      PAPUS_DIVINATORY: {
+        name: "Four of Wands",
+        meaning:
+          "Obstacles to the enterprise. Nothing can be accomplished without obstacles. We therefore now find them appearing, and must prepare ourselves to overcome them.",
+      },
       KIER_EGYPTIAN: {
         name: "Exchange",
       },
@@ -1022,6 +1149,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Five of Wands",
         meaning: "Strengthen the root chakra, overcome internal fears",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Five of Wands",
+        meaning: "Opposition to the obstacles. Victory after surmounting them.",
       },
       KIER_EGYPTIAN: {
         name: "Impediment",
@@ -1036,6 +1167,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Six of Wands",
         meaning: "External victory, internal lack of internal self realization",
       },
+      PAPUS_DIVINATORY: {
+        name: "Six of Wands",
+        meaning:
+          "Realization of the opposition. At last the obstacles succeed. Failure of the enterprise in the midst of its execution.",
+      },
       KIER_EGYPTIAN: {
         name: "Magnificence",
       },
@@ -1048,6 +1184,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Seven of Wands",
         meaning: "Face competitors in an ethical and loyal way",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Seven of Wands",
+        meaning: "Certain success to the enterprise.",
       },
       KIER_EGYPTIAN: {
         name: "Alliance",
@@ -1062,6 +1202,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Eight of Wands",
         meaning: "Travel to the center of peace and intelligence",
       },
+      PAPUS_DIVINATORY: {
+        name: "Eight of Wands",
+        meaning:
+          "Opposition to its success. The enterprise will only partially succeed.",
+      },
       KIER_EGYPTIAN: {
         name: "Innovation",
       },
@@ -1074,6 +1219,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Nine of Wands",
         meaning: "Obstacle that precedes total victory, gather hidden forces",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Nine of Wands",
+        meaning: "Realization of success. Success is continued.",
       },
       KIER_EGYPTIAN: {
         name: "Desolation",
@@ -1088,6 +1237,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Ten of Wands",
         meaning: "Get out of apathy, create a new tree of life using the Lightning Path",
       },
+      PAPUS_DIVINATORY: {
+        name: "Ten of Wands",
+        meaning: "Uncertainty in the management of the enterprise.",
+      },
       KIER_EGYPTIAN: {
         name: "Initiation",
       },
@@ -1100,6 +1253,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "King of Cups",
         meaning: "Stop hurting yourself (related to The Lover), heals everyone and forgets about yourself, balm for your own wound",
+      },
+      PAPUS_DIVINATORY: {
+        name: "King of Cups",
+        meaning:
+          "A fair man, a friend. This card also represents a barrister, judge, or ecclesiastic. It symbolizes a bachelor.",
       },
       KIER_EGYPTIAN: {
         name: "Art and Science",
@@ -1114,6 +1272,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Queen of Cups",
         meaning: "Work with subtlety, positive challenges",
       },
+      PAPUS_DIVINATORY: {
+        name: "Queen of Cups",
+        meaning: "A fair woman, a friend. The woman loved. The mistress.",
+      },
       KIER_EGYPTIAN: {
         name: "Duplicity",
       },
@@ -1126,6 +1288,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Knight of Cups",
         meaning: "Alternative healing",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Knight of Cups",
+        meaning:
+          "A young fair man, a friend. The young man loved. The lover.",
       },
       KIER_EGYPTIAN: {
         name: "Testimony",
@@ -1140,6 +1307,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Page of Cups",
         meaning: "Increase of self-esteem, emotional courage",
       },
+      PAPUS_DIVINATORY: {
+        name: "Page of Cups",
+        meaning: "A fair child. A messenger. Birth.",
+      },
       KIER_EGYPTIAN: {
         name: "Premonition",
       },
@@ -1152,6 +1323,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Ace of Cups",
         meaning: "Renewal or new affection, alternative treatment for health",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Ace of Cups",
+        meaning: "Commencement of a love affair.",
       },
       KIER_EGYPTIAN: {
         name: "Dissension",
@@ -1166,6 +1341,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Two of Cups",
         meaning: "Do not poison yourself or the other person",
       },
+      PAPUS_DIVINATORY: {
+        name: "Two of Cups",
+        meaning:
+          "Opposition to this commencement. Unimportant obstacles raised by one of the lovers.",
+      },
       KIER_EGYPTIAN: {
         name: "Preeminence",
       },
@@ -1178,6 +1358,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Three of Cups",
         meaning: "Harmony between instinct and emotion, Be discreet",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Three of Cups",
+        meaning: "Realization of this commencement. The love is mutual.",
       },
       KIER_EGYPTIAN: {
         name: "Premonition",
@@ -1192,6 +1376,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Four of Cups",
         meaning: "Abundance in emotional life, do not listen to slander",
       },
+      PAPUS_DIVINATORY: {
+        name: "Four of Cups",
+        meaning:
+          "Serious obstacles to the love. They arise from other persons, not from the lovers.",
+      },
       KIER_EGYPTIAN: {
         name: "Expressiveness",
       },
@@ -1204,6 +1393,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Five of Cups",
         meaning: "Do not break your spiritual commitment (your purpose)",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Five of Cups",
+        meaning:
+          "Opposition to the obstacles. Victory over the obstacles after a struggle.",
       },
       KIER_EGYPTIAN: {
         name: "Regeneration",
@@ -1218,6 +1412,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Six of Cups",
         meaning: "Do not have self-pity",
       },
+      PAPUS_DIVINATORY: {
+        name: "Six of Cups",
+        meaning:
+          "The obstacles triumph. Love destroyed in the midst of happiness. Widowhood.",
+      },
       KIER_EGYPTIAN: {
         name: "Patrimony",
       },
@@ -1230,6 +1429,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Seven of Cups",
         meaning: "Gestations, related to The Star",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Seven of Cups",
+        meaning: "Success assured to the lovers.",
       },
       KIER_EGYPTIAN: {
         name: "Conjecture",
@@ -1244,6 +1447,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Eight of Cups",
         meaning: "Reflect on your emotional life after 18 hours",
       },
+      PAPUS_DIVINATORY: {
+        name: "Eight of Cups",
+        meaning: "Partial failure of love. Love only partially succeeds.",
+      },
       KIER_EGYPTIAN: {
         name: "Consummation",
       },
@@ -1256,6 +1463,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Nine of Cups",
         meaning: "Reconciliations and forgiveness",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Nine of Cups",
+        meaning: "Motherhood.",
       },
       KIER_EGYPTIAN: {
         name: "Versatility",
@@ -1270,6 +1481,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Ten of Cups",
         meaning: "Marriage of the spirit with the soul, Alchemical Weddings",
       },
+      PAPUS_DIVINATORY: {
+        name: "Ten of Cups",
+        meaning: "Uncertainty in the management of the love affair.",
+      },
       KIER_EGYPTIAN: {
         name: "Attraction",
       },
@@ -1282,6 +1497,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "King of Swords",
         meaning: "Actions of victorious strategies",
+      },
+      PAPUS_DIVINATORY: {
+        name: "King of Swords",
+        meaning:
+          "A dark, bad man. He is a soldier, a powerful enemy, who must be distrusted.",
       },
       KIER_EGYPTIAN: {
         name: "Advice",
@@ -1296,6 +1516,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Queen of Swords",
         meaning: "Supremacy of the feminine, related to Justice",
       },
+      PAPUS_DIVINATORY: {
+        name: "Queen of Swords",
+        meaning:
+          "A dark wicked woman. The card also indicates her actions, gossip and calumnies.",
+      },
       KIER_EGYPTIAN: {
         name: "Premeditation",
       },
@@ -1308,6 +1533,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Knight of Swords",
         meaning: "Joint victorious actions",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Knight of Swords",
+        meaning: "A young, dark man, an enemy. He is also a spy.",
       },
       KIER_EGYPTIAN: {
         name: "Hostility",
@@ -1322,6 +1551,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Page of Swords",
         meaning: "Follow your intuition",
       },
+      PAPUS_DIVINATORY: {
+        name: "Page of Swords",
+        meaning: "A child, an enemy. Bad news. Delay.",
+      },
       KIER_EGYPTIAN: {
         name: "Examination",
       },
@@ -1334,6 +1567,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Ace of Swords",
         meaning: "Conflicts before victory",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Ace of Swords",
+        meaning: "Commencement of enmity.",
       },
       KIER_EGYPTIAN: {
         name: "Contrition",
@@ -1348,6 +1585,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Two of Swords",
         meaning: "Traumas and conflicts to overcome",
       },
+      PAPUS_DIVINATORY: {
+        name: "Two of Swords",
+        meaning: "Opposition to this commencement. The enmity does not last.",
+      },
       KIER_EGYPTIAN: {
         name: "Pilgrimage",
       },
@@ -1360,6 +1601,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Three of Swords",
         meaning: "Death of yang, Fire, tendencies to depression",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Three of Swords",
+        meaning: "Realization of the enmity. Hatred.",
       },
       KIER_EGYPTIAN: {
         name: "Rivalry",
@@ -1374,6 +1619,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Four of Swords",
         meaning: "Reflection, related to The Hermit",
       },
+      PAPUS_DIVINATORY: {
+        name: "Four of Swords",
+        meaning: "Opposition to the hatred. Success against the enemy.",
+      },
       KIER_EGYPTIAN: {
         name: "Meditation",
       },
@@ -1386,6 +1635,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Five of Swords",
         meaning: "Healthy self-challenge, Self-demands",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Five of Swords",
+        meaning:
+          "Opposition to this opposition. The enemy triumphs at the moment one fancies the victory is secured.",
       },
       KIER_EGYPTIAN: {
         name: "Revelation",
@@ -1400,6 +1654,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Six of Swords",
         meaning: "External daily strategies, Future perspectives",
       },
+      PAPUS_DIVINATORY: {
+        name: "Six of Swords",
+        meaning:
+          "Equilibrium of the opposition. The enemy is rendered powerless at last.",
+      },
       KIER_EGYPTIAN: {
         name: "Evolution",
       },
@@ -1412,6 +1671,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Seven of Swords",
         meaning: "Internal nocturnal strategies, related to The Hermit",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Seven of Swords",
+        meaning: "Success assured to the enemy.",
       },
       KIER_EGYPTIAN: {
         name: "Solitude",
@@ -1426,6 +1689,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Eight of Swords",
         meaning: "Appeal to superior forces, Internal and external conflicts",
       },
+      PAPUS_DIVINATORY: {
+        name: "Eight of Swords",
+        meaning:
+          "Partial opposition to this success. The enemy only partially triumphs.",
+      },
       KIER_EGYPTIAN: {
         name: "Proscription",
       },
@@ -1438,6 +1706,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Nine of Swords",
         meaning: "The problems being imagined will never happen",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Nine of Swords",
+        meaning: "Certain duration of the hatred.",
       },
       KIER_EGYPTIAN: {
         name: "Communion",
@@ -1452,6 +1724,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Ten of Swords",
         meaning: "Death and rebirth, related to Death and The Tower",
       },
+      PAPUS_DIVINATORY: {
+        name: "Ten of Swords",
+        meaning: "Uncertainty in the enmity.",
+      },
       KIER_EGYPTIAN: {
         name: "Vehemence",
       },
@@ -1464,6 +1740,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "King of Pentacles",
         meaning: "Turns everything into gold",
+      },
+      PAPUS_DIVINATORY: {
+        name: "King of Pentacles",
+        meaning: "A fair man, inimical or indifferent.",
       },
       KIER_EGYPTIAN: {
         name: "Apprenticeship",
@@ -1478,6 +1758,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Queen of Pentacles",
         meaning: "Act with diplomacy",
       },
+      PAPUS_DIVINATORY: {
+        name: "Queen of Pentacles",
+        meaning: "A fair woman, indifferent, or inimical.",
+      },
       KIER_EGYPTIAN: {
         name: "Perplexity",
       },
@@ -1490,6 +1774,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Knight of Pentacles",
         meaning: "Invest into new things",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Knight of Pentacles",
+        meaning: "A young, fair man. A stranger. An arrival.",
       },
       KIER_EGYPTIAN: {
         name: "Veneration",
@@ -1504,6 +1792,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Page of Pentacles",
         meaning: "Prudence in the material life",
       },
+      PAPUS_DIVINATORY: {
+        name: "Page of Pentacles",
+        meaning: "A fair child. A messenger. A letter.",
+      },
       KIER_EGYPTIAN: {
         name: "Speculation",
       },
@@ -1516,6 +1808,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Ace of Pentacles",
         meaning: "Rebirth through a single material goal, Form clear material goals",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Ace of Pentacles",
+        meaning: "Commencement of fortune. Inheritance. Gifts. Economy.",
       },
       KIER_EGYPTIAN: {
         name: "The Unforeseen",
@@ -1530,6 +1826,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Two of Pentacles",
         meaning: "Light forming shadows, Duality asking for synthesis in the trinity, Don't put all the eggs in the same basket",
       },
+      PAPUS_DIVINATORY: {
+        name: "Two of Pentacles",
+        meaning:
+          "Opposition to this commencement. Difficulty in well establishing the first landmarks of good fortune.",
+      },
       KIER_EGYPTIAN: {
         name: "Cooperation",
       },
@@ -1542,6 +1843,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Three of Pentacles",
         meaning: "Light forming sound, Establish balance through the trinity becoming a great dispenser, Verbalize what should be done, Do not settle for the first results",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Three of Pentacles",
+        meaning: "Realization of this commencement of fortune. A small sum.",
       },
       KIER_EGYPTIAN: {
         name: "Avarice",
@@ -1556,6 +1861,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Four of Pentacles",
         meaning: "Avoid avarice / greed",
       },
+      PAPUS_DIVINATORY: {
+        name: "Four of Pentacles",
+        meaning: "Opposition of fortune. Loss of money.",
+      },
       KIER_EGYPTIAN: {
         name: "Purification",
       },
@@ -1568,6 +1877,11 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Five of Pentacles",
         meaning: "Only order will bring progress, Do not kick the barn without having something concrete in front of you",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Five of Pentacles",
+        meaning:
+          "Opposition to this opposition. A success coming which will balance the low.",
       },
       KIER_EGYPTIAN: {
         name: "Love and Desire",
@@ -1582,6 +1896,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Six of Pentacles",
         meaning: "Act with prudence",
       },
+      PAPUS_DIVINATORY: {
+        name: "Six of Pentacles",
+        meaning: "Realization of the opposition. Ruin.",
+      },
       KIER_EGYPTIAN: {
         name: "Offering",
       },
@@ -1594,6 +1912,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Seven of Pentacles",
         meaning: "Don't boast about your proposal or project",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Seven of Pentacles",
+        meaning: "Success assured. A large fortune.",
       },
       KIER_EGYPTIAN: {
         name: "Generosity",
@@ -1608,6 +1930,11 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Eight of Pentacles",
         meaning: "Keep doing what you always did",
       },
+      PAPUS_DIVINATORY: {
+        name: "Eight of Pentacles",
+        meaning:
+          "Partial success. Great loss of money at the moment apparently of definitely securing the fortune.",
+      },
       KIER_EGYPTIAN: {
         name: "The Provider",
       },
@@ -1621,6 +1948,10 @@ export const TAROT_ARKANNUS_DATA: Record<
         name: "Nine of Pentacles",
         meaning: "Work with what you like and earn something with it",
       },
+      PAPUS_DIVINATORY: {
+        name: "Nine of Pentacles",
+        meaning: "Equilibrium of equilibrium. A durable fortune.",
+      },
       KIER_EGYPTIAN: {
         name: "Confusion",
       },
@@ -1633,6 +1964,10 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "Ten of Pentacles",
         meaning: "Prosperity, Prosperous inheritance",
+      },
+      PAPUS_DIVINATORY: {
+        name: "Ten of Pentacles",
+        meaning: "Uncertainty in the fortune. Great success and great reverses.",
       },
       KIER_EGYPTIAN: {
         name: "Rebirth",
