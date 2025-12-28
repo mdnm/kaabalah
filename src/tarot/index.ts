@@ -34,6 +34,7 @@ export type TarotCard = {
   tarotCardFilename: string
   egyptianCardName?: string
   meaning: string
+  papusMeaning?: string
   type: "major" | "minor" | "daat+royalship"
   deck: string
   suit?: string
@@ -72,6 +73,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Magician",
     tarotCardFilename: "01_the_magician",
     meaning: "Abracadabra, the power to create reality through voice",
+    papusMeaning: "Male inquirer.",
     type: "major",
     deck: "mythic"
   },
@@ -81,6 +83,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "02_the_high_priestess",
     meaning:
       "Intuition, the power to rewrite your book of life improving your life every instant",
+    papusMeaning: "Female inquirer.",
     type: "major",
     deck: "mythic"
   },
@@ -89,6 +92,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Empress",
     tarotCardFilename: "03_the_empress",
     meaning: "Adaptation, the power to geometrize through emotions",
+    papusMeaning: "Action. Initiative.",
     type: "major",
     deck: "mythic"
   },
@@ -97,6 +101,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Emperor",
     tarotCardFilename: "04_the_emperor",
     meaning: "Authority, the power to mark your territory with the sacred fire",
+    papusMeaning: "Will.",
     type: "major",
     deck: "mythic"
   },
@@ -106,6 +111,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "05_the_hierophant",
     meaning:
       "Magnetism, the power to ritualize life and circulate the quintessence",
+    papusMeaning: "Inspiration.",
     type: "major",
     deck: "mythic"
   },
@@ -115,6 +121,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "06_the_lover",
     meaning:
       "Dichotomy, stay on the middle path by being neither a victim nor a villain",
+    papusMeaning: "Love.",
     type: "major",
     deck: "mythic"
   },
@@ -123,6 +130,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Chariot",
     tarotCardFilename: "07_the_chariot",
     meaning: "Merkaabah, take control and build your merkaabah (mind vehicle)",
+    papusMeaning: "Triumph. Providential protection.",
     type: "major",
     deck: "mythic"
   },
@@ -131,6 +139,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "Justice",
     tarotCardFilename: "08_justice",
     meaning: "Justice, be just with yourself to be just with others",
+    papusMeaning: "Justice.",
     type: "major",
     deck: "mythic"
   },
@@ -139,6 +148,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Hermit",
     tarotCardFilename: "09_the_hermit",
     meaning: "Introspection, seek within, retreat",
+    papusMeaning: "Prudence.",
     type: "major",
     deck: "mythic"
   },
@@ -148,6 +158,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "10_the_wheel_of_fortune",
     meaning:
       "Loops, extroversion, break the great wheel and ascend, seek externally",
+    papusMeaning: "Fortune. Destiny.",
     type: "major",
     deck: "mythic"
   },
@@ -156,6 +167,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "Strength",
     tarotCardFilename: "11_strength",
     meaning: "The strength of your subconscious, unity brings strength",
+    papusMeaning: "Strength. Fortitude.",
     type: "major",
     deck: "mythic"
   },
@@ -164,6 +176,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Hanged Man",
     tarotCardFilename: "12_the_hanged_man",
     meaning: "Make valid sacrifices, adopt a new perspective",
+    papusMeaning: "Trials. Sacrifice.",
     type: "major",
     deck: "mythic"
   },
@@ -172,6 +185,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "Death",
     tarotCardFilename: "13_death",
     meaning: "Death, renovation, kill that which kills your soul",
+    papusMeaning: "Death.",
     type: "major",
     deck: "mythic"
   },
@@ -180,6 +194,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "Temperance",
     tarotCardFilename: "14_temperance",
     meaning: "Balance, harmonize differences",
+    papusMeaning: "Temperance. Economy.",
     type: "major",
     deck: "mythic"
   },
@@ -189,6 +204,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "15_the_devil",
     meaning:
       "Indecision between vice and virtue, transmute weakness and passions into strengths",
+    papusMeaning: "Immense force. Illness.",
     type: "major",
     deck: "mythic"
   },
@@ -198,6 +214,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "16_the_house_of_god",
     meaning:
       "Separation, destruction, separate from what's harmful and connect with what's helpful, make room for the new",
+    papusMeaning: "Ruin. Deception.",
     type: "major",
     deck: "mythic"
   },
@@ -207,6 +224,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "17_the_star",
     meaning:
       "Fecundation, ecology, ecstasy, hope, renew yourself to maintain help, act according to your spiritual purpose",
+    papusMeaning: "Hope.",
     type: "major",
     deck: "mythic"
   },
@@ -216,6 +234,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "18_the_moon",
     meaning:
       "Hidden enemies, be vigilant, recognize where you're self sabotaging",
+    papusMeaning: "Hidden enemies. Danger.",
     type: "major",
     deck: "mythic"
   },
@@ -225,6 +244,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "19_the_sun",
     meaning:
       "Be conscious of your alchemical band, transmute money into knowledge and vice versa",
+    papusMeaning: "Material happiness. Lucky marriage.",
     type: "major",
     deck: "mythic"
   },
@@ -233,6 +253,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "Judgment",
     tarotCardFilename: "20_judgement",
     meaning: "Make retrospectives and learn from mistakes and successes",
+    papusMeaning: "Change of position.",
     type: "major",
     deck: "mythic"
   },
@@ -241,6 +262,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Fool",
     tarotCardFilename: "21_the_fool",
     meaning: "Stop walking in circles, create connections of knowledge",
+    papusMeaning: "Inconsiderate actions. Madness.",
     type: "major",
     deck: "mythic"
   },
@@ -249,6 +271,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The World",
     tarotCardFilename: "22_the_world",
     meaning: "Win the world, start acting on the world of causes",
+    papusMeaning: "Assured success.",
     type: "major",
     deck: "mythic"
   },
@@ -260,6 +283,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "king_wands",
     egyptianCardName: "The Laborer",
     meaning: "Get's the best out of every one, Idealism, Magnanimity",
+    papusMeaning:
+      "A dark man, a friend. He generally represents a married man, the father of a family.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -271,6 +296,8 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "The Weaver",
     meaning:
       "Hold the line while the king goes to work, Preserve what was conquered",
+    papusMeaning:
+      "A dark woman, a friend. Represents a serious woman, a very good counsellor, often the mother of a family.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -281,6 +308,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "knight_wands",
     egyptianCardName: "The Argonaut",
     meaning: "Dreams that become reality",
+    papusMeaning: "A dark young man, a friend.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -291,6 +319,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "page_wands",
     egyptianCardName: "The Prodigy",
     meaning: "Don't rush, the precipitations are the doors to failure",
+    papusMeaning:
+      "A dark child, a friend. Also represents a message from a near relation.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -303,6 +333,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "ace_wands",
     egyptianCardName: "The Unexpected",
     meaning: "Ignite the flames of ideals, Trust in your inner divinity",
+    papusMeaning: "Commencement of an enterprise.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -313,6 +344,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "2_wands",
     egyptianCardName: "Uncertainty",
     meaning: "Formulate a strategy to use your own talents",
+    papusMeaning:
+      "Opposition to the commencement of the enterprise. The enterprise is commenced when an unexpected obstacle suddenly prevents its execution.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -323,6 +356,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "3_wands",
     egyptianCardName: "Domesticity",
     meaning: "Keep going despite losing something apparently important",
+    papusMeaning:
+      "Realization of the commencement of the enterprise. The basis of the work is now definitely established, and the undertaking can be fearlessly continued.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -333,6 +368,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "4_wands",
     egyptianCardName: "Exchange",
     meaning: "Work in teams",
+    papusMeaning:
+      "Obstacles to the enterprise. Nothing can be accomplished without obstacles. We therefore now find them appearing, and must prepare ourselves to overcome them.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -343,6 +380,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "5_wands",
     egyptianCardName: "Impediment",
     meaning: "Strengthen the root chakra, overcome internal fears",
+    papusMeaning: "Opposition to the obstacles. Victory after surmounting them.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -353,6 +391,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "6_wands",
     egyptianCardName: "Magnificence",
     meaning: "External victory, internal lack of internal self realization",
+    papusMeaning:
+      "Realization of the opposition. At last the obstacles succeed. Failure of the enterprise in the midst of its execution.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -363,6 +403,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "7_wands",
     egyptianCardName: "Alliance",
     meaning: "Face competitors in an ethical and loyal way",
+    papusMeaning: "Certain success to the enterprise.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -373,6 +414,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "8_wands",
     egyptianCardName: "Innovation",
     meaning: "Travel to the center of peace and intelligence",
+    papusMeaning:
+      "Opposition to its success. The enterprise will only partially succeed.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -383,6 +426,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "9_wands",
     egyptianCardName: "Desolation",
     meaning: "Obstacle that precedes total victory, gather hidden forces",
+    papusMeaning: "Realization of success. Success is continued.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -394,6 +438,7 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Initiation",
     meaning:
       "Get out of apathy, create a new tree of life using the Lightning Path",
+    papusMeaning: "Uncertainty in the management of the enterprise.",
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -407,6 +452,8 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Art and Science",
     meaning:
       "Stop hurting yourself (related to The Lover), heals everyone and forgets about yourself, balm for your own wound",
+    papusMeaning:
+      "A fair man, a friend. This card also represents a barrister, judge, or ecclesiastic. It symbolizes a bachelor.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -417,6 +464,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "queen_cups",
     egyptianCardName: "Duplicity",
     meaning: "Work with subtlety, positive challenges",
+    papusMeaning:
+      "A fair woman, a friend. The woman loved. The mistress.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -427,6 +476,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "knight_cups",
     egyptianCardName: "Testimony",
     meaning: "Alternative healing",
+    papusMeaning:
+      "A young fair man, a friend. The young man loved. The lover.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -437,6 +488,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "page_cups",
     egyptianCardName: "Premonition",
     meaning: "Increase of self-esteem, emotional courage",
+    papusMeaning: "A fair child. A messenger. Birth.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -449,6 +501,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "ace_cups",
     egyptianCardName: "Dissension",
     meaning: "Renewal or new affection, alternative treatment for health",
+    papusMeaning: "Commencement of a love affair.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -459,6 +512,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "2_cups",
     egyptianCardName: "Preeminence",
     meaning: "Do not poison yourself or the other person",
+    papusMeaning:
+      "Opposition to this commencement. Unimportant obstacles raised by one of the lovers.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -469,6 +524,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "3_cups",
     egyptianCardName: "Delusion",
     meaning: "Harmony between instinct and emotion, Be discreet",
+    papusMeaning:
+      "Realization of this commencement. The love is mutual.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -479,6 +536,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "4_cups",
     egyptianCardName: "Expressiveness",
     meaning: "Abundance in emotional life, do not listen to slander",
+    papusMeaning:
+      "Serious obstacles to the love. They arise from other persons, not from the lovers.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -489,6 +548,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "5_cups",
     egyptianCardName: "Regeneration",
     meaning: "Do not break your spiritual commitment (your purpose)",
+    papusMeaning:
+      "Opposition to the obstacles. Victory over the obstacles after a struggle.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -499,6 +560,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "6_cups",
     egyptianCardName: "Patrimony",
     meaning: "Do not have self-pity",
+    papusMeaning:
+      "The obstacles triumph. Love destroyed in the midst of happiness. Widowhood.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -509,6 +572,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "7_cups",
     egyptianCardName: "Conjecture",
     meaning: "Gestations, related to The Star",
+    papusMeaning: "Success assured to the lovers.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -519,6 +583,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "8_cups",
     egyptianCardName: "Consummation",
     meaning: "Reflect on your emotional life after 18 hours",
+    papusMeaning:
+      "Partial failure of love. Love only partially succeeds.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -529,6 +595,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "9_cups",
     egyptianCardName: "Versatility",
     meaning: "Reconciliations and forgiveness",
+    papusMeaning: "Motherhood.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -539,6 +606,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "10_cups",
     egyptianCardName: "Attraction",
     meaning: "Marriage of the spirit with the soul, Alchemical Weddings",
+    papusMeaning:
+      "Uncertainty in the management of the love affair.",
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -551,6 +620,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "king_swords",
     egyptianCardName: "Advice",
     meaning: "Actions of victorious strategies",
+    papusMeaning:
+      "A dark, bad man. He is a soldier, a powerful enemy, who must be distrusted.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -561,6 +632,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "queen_swords",
     egyptianCardName: "Premeditation",
     meaning: "Supremacy of the feminine, related to Justice",
+    papusMeaning:
+      "A dark wicked woman. The card also indicates her actions, gossip and calumnies.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -571,6 +644,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "knight_swords",
     egyptianCardName: "Hostility",
     meaning: "Joint victorious actions",
+    papusMeaning:
+      "A young, dark man, an enemy. He is also a spy.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -581,6 +656,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "page_swords",
     egyptianCardName: "Examination",
     meaning: "Follow your intuition",
+    papusMeaning: "A child, an enemy. Bad news. Delay.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -593,6 +669,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "ace_swords",
     egyptianCardName: "Contrition",
     meaning: "Conflicts before victory",
+    papusMeaning: "Commencement of enmity.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -603,6 +680,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "2_swords",
     egyptianCardName: "Pilgrimage",
     meaning: "Traumas and conflicts to be overcome",
+    papusMeaning:
+      "Opposition to this commencement. The enmity does not last.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -613,6 +692,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "3_swords",
     egyptianCardName: "Rivalry",
     meaning: "Death of yang, Fire, tendencies to depression",
+    papusMeaning: "Realization of the enmity. Hatred.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -623,6 +703,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "4_swords",
     egyptianCardName: "Meditation",
     meaning: "Reflection, related to The Hermit",
+    papusMeaning: "Opposition to the hatred. Success against the enemy.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -633,6 +714,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "5_swords",
     egyptianCardName: "Revelation",
     meaning: "Healthy self-challenge, Self-demands",
+    papusMeaning:
+      "Opposition to this opposition. The enemy triumphs at the moment one fancies the victory is secured.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -643,6 +726,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "6_swords",
     egyptianCardName: "Evolution",
     meaning: "External daily strategies, Future perspectives",
+    papusMeaning:
+      "Equilibrium of the opposition. The enemy is rendered powerless at last.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -653,6 +738,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "7_swords",
     egyptianCardName: "Solitude",
     meaning: "Internal nocturnal strategies, related to The Hermit",
+    papusMeaning: "Success assured to the enemy.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -663,6 +749,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "8_swords",
     egyptianCardName: "Proscription",
     meaning: "Appeal to superior forces, Internal and external conflicts",
+    papusMeaning:
+      "Partial opposition to this success. The enemy only partially triumphs.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -673,6 +761,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "9_swords",
     egyptianCardName: "Communion",
     meaning: "The problems being imagined will never happen",
+    papusMeaning: "Certain duration of the hatred.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -683,6 +772,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "10_swords",
     egyptianCardName: "Vehemence",
     meaning: "Death and rebirth, related to Death and The Tower",
+    papusMeaning: "Uncertainty in the enmity.",
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -695,6 +785,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "king_pentacles",
     egyptianCardName: "Apprenticeship",
     meaning: "Turns everything into gold",
+    papusMeaning: "A fair man, inimical or indifferent.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -705,6 +796,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "queen_pentacles",
     egyptianCardName: "Perplexity",
     meaning: "Act with diplomacy",
+    papusMeaning: "A fair woman, indifferent, or inimical.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -715,6 +807,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "knight_pentacles",
     egyptianCardName: "Veneration",
     meaning: "Invest into new things",
+    papusMeaning: "A young, fair man. A stranger. An arrival.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -725,6 +818,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "page_pentacles",
     egyptianCardName: "Speculation",
     meaning: "Prudence in the material life",
+    papusMeaning: "A fair child. A messenger. A letter.",
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -738,6 +832,7 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "The Unforeseen",
     meaning:
       "Rebirth through a single material goal, Form clear material goals",
+    papusMeaning: "Commencement of fortune. Inheritance. Gifts. Economy.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -749,6 +844,8 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Cooperation",
     meaning:
       "Light forming shadows, Duality asking for synthesis in the trinity, Don't put all the eggs in the same basket",
+    papusMeaning:
+      "Opposition to this commencement. Difficulty in well establishing the first landmarks of good fortune.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -760,6 +857,8 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Avarice",
     meaning:
       "Light forming sound, Establish balance through the trinity becoming a great dispenser, Verbalize what should be done, Do not settle for the first results",
+    papusMeaning:
+      "Realization of this commencement of fortune. A small sum.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -770,6 +869,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "4_pentacles",
     egyptianCardName: "Purification",
     meaning: "Avoid avarice / greed",
+    papusMeaning: "Opposition of fortune. Loss of money.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -781,6 +881,8 @@ export const ARKANNUS: TarotCard[] = [
     egyptianCardName: "Love and Desire",
     meaning:
       "Only order will bring progress, Do not kick the barn without having something concrete in front of you",
+    papusMeaning:
+      "Opposition to this opposition. A success coming which will balance the low.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -791,6 +893,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "6_pentacles",
     egyptianCardName: "Offering",
     meaning: "Act with prudence",
+    papusMeaning: "Realization of the opposition. Ruin.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -801,6 +904,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "7_pentacles",
     egyptianCardName: "Generosity",
     meaning: "Don't boast about your proposal or project",
+    papusMeaning: "Success assured. A large fortune.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -811,6 +915,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "8_pentacles",
     egyptianCardName: "The Provider",
     meaning: "Keep doing what you always did",
+    papusMeaning:
+      "Partial success. Great loss of money at the moment apparently of definitely securing the fortune.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -821,6 +927,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "9_pentacles",
     egyptianCardName: "Confusion",
     meaning: "Work with what you like and earn something with it",
+    papusMeaning: "Equilibrium of equilibrium. A durable fortune.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -831,6 +938,8 @@ export const ARKANNUS: TarotCard[] = [
     tarotCardFilename: "10_pentacles",
     egyptianCardName: "Rebirth",
     meaning: "Prosperity, Prosperous inheritance",
+    papusMeaning:
+      "Uncertainty in the fortune. Great success and great reverses.",
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
