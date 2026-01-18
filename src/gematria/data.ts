@@ -1,6 +1,45 @@
 import { LATIN_LETTERS } from "../core/constants";
 import { LetterTypes, NodeId } from "../core/types";
 
+// =============================================================================
+// Reverse Gematria Types
+// =============================================================================
+
+export type ReverseGematriaOptions = {
+  /** Target individuality (vowels sum) */
+  targetVowels?: number;
+  /** Target personality (consonants sum) */
+  targetConsonants?: number;
+  /** Target synthesis (total) */
+  targetSynthesis?: number;
+  /** Minimum letters (default: 1) */
+  minLength?: number;
+  /** Maximum letters (default: 8) */
+  maxLength?: number;
+  /** Maximum results (default: 100) */
+  maxResults?: number;
+  /** Include digraphs like PH, SH, etc. (default: true) */
+  includeDigraphs?: boolean;
+};
+
+export type ReverseGematriaResult = {
+  letters: string;
+  letterDetails: LetterResult[];
+  vowelsSum: number;
+  consonantsSum: number;
+  synthesisSum: number;
+};
+
+export type ReverseGematriaOutput = {
+  results: ReverseGematriaResult[];
+  hasMore: boolean;
+  totalFound: number;
+};
+
+// =============================================================================
+// Existing Types
+// =============================================================================
+
 export const DIGRAPHS = new Set<string>([
   LATIN_LETTERS.PH,
   LATIN_LETTERS.TS,

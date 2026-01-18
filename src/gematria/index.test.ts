@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { id, LetterTypes } from "../core";
 import { HEBREW_LETTERS } from "../core/constants";
-import { calculateGematria } from "./index";
+import { calculateGematria, reverseGematria } from "./index";
 
 const getSums = (result: ReturnType<typeof calculateGematria>) => ({
   vowels: result.vowels.originalSum,
@@ -489,5 +489,186 @@ describe("calculateGematria", () => {
       value: 6,
       hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.VAV),
     });
+  });
+});
+
+describe("reverseGematria", () => {
+  it("should return empty results when no target is specified", () => {
+    const result = reverseGematria({});
+    expect(result.results).toHaveLength(0);
+    expect(result.hasMore).toBe(false);
+    expect(result.totalFound).toBe(0);
+  });
+
+  it("should find letters matching synthesis target", () => {
+    // A = 1, so targetSynthesis: 1 should find "A"
+    const result = reverseGematria({ targetSynthesis: 1, maxLength: 1 });
+    expect(result.results.length).toBeGreaterThan(0);
+    expect(result.results.some((r) => r.letters === "A")).toBe(true);
+    expect(result.results.find((r) => r.letters === "A")?.synthesisSum).toBe(1);
+  });
+
+  it("should find letters matching vowels target", () => {
+    // E = 5 (vowel)
+    const result = reverseGematria({ targetVowels: 5, maxLength: 1 });
+    expect(result.results.some((r) => r.letters === "E")).toBe(true);
+    expect(result.results.find((r) => r.letters === "E")?.vowelsSum).toBe(5);
+  });
+
+  it("should find letters matching consonants target", () => {
+    // B = 2 (consonant)
+    const result = reverseGematria({ targetConsonants: 2, maxLength: 1 });
+    expect(result.results.some((r) => r.letters === "B")).toBe(true);
+    expect(result.results.find((r) => r.letters === "B")?.consonantsSum).toBe(2);
+  });
+
+  it("should handle O at start (AYIN = 70) vs elsewhere (VAV = 6)", () => {
+    // O at start = 70
+    const resultO = reverseGematria({ targetVowels: 70, maxLength: 1 });
+    expect(resultO.results.some((r) => r.letters === "O")).toBe(true);
+    expect(resultO.results.find((r) => r.letters === "O")?.vowelsSum).toBe(70);
+
+    // AO = A(1) + O(6) = 7 vowels (O not at start)
+    const resultAO = reverseGematria({
+      targetVowels: 7,
+      targetConsonants: 0,
+      minLength: 2,
+      maxLength: 2,
+    });
+    expect(resultAO.results.some((r) => r.letters === "AO")).toBe(true);
+  });
+
+  it("should handle ending letter values", () => {
+    // C at end = 500 (Kaph sofit), C in middle = 20
+    // AC = A(1) + C(500) = 501 synthesis, 1 vowel, 500 consonants
+    const resultAC = reverseGematria({
+      targetConsonants: 500,
+      targetVowels: 1,
+      minLength: 2,
+      maxLength: 2,
+    });
+    expect(resultAC.results.some((r) => r.letters === "AC")).toBe(true);
+    const acResult = resultAC.results.find((r) => r.letters === "AC");
+    expect(acResult?.consonantsSum).toBe(500);
+    expect(acResult?.vowelsSum).toBe(1);
+
+    // M at end = 600 (Mem sofit)
+    const resultAM = reverseGematria({
+      targetConsonants: 600,
+      targetVowels: 1,
+      minLength: 2,
+      maxLength: 2,
+    });
+    expect(resultAM.results.some((r) => r.letters === "AM")).toBe(true);
+    expect(resultAM.results.find((r) => r.letters === "AM")?.consonantsSum).toBe(600);
+  });
+
+  it("should include digraphs when includeDigraphs is true", () => {
+    // SH = 300
+    const resultWithDigraphs = reverseGematria({
+      targetConsonants: 300,
+      maxLength: 2,
+      includeDigraphs: true,
+    });
+    expect(resultWithDigraphs.results.some((r) => r.letters === "SH")).toBe(true);
+  });
+
+  it("should exclude digraphs when includeDigraphs is false", () => {
+    const resultWithoutDigraphs = reverseGematria({
+      targetConsonants: 300,
+      maxLength: 2,
+      includeDigraphs: false,
+    });
+    // SH should not be present, but X (300) should be
+    expect(resultWithoutDigraphs.results.some((r) => r.letters === "SH")).toBe(false);
+    expect(resultWithoutDigraphs.results.some((r) => r.letters === "X")).toBe(true);
+  });
+
+  it("should respect maxResults limit", () => {
+    const result = reverseGematria({
+      targetSynthesis: 10,
+      maxResults: 5,
+      maxLength: 3,
+    });
+    expect(result.results.length).toBeLessThanOrEqual(5);
+  });
+
+  it("should set hasMore when more results exist", () => {
+    const result = reverseGematria({
+      targetSynthesis: 10,
+      maxResults: 1,
+      maxLength: 5,
+    });
+    // There are many ways to reach synthesis of 10
+    expect(result.hasMore).toBe(true);
+  });
+
+  it("should respect minLength", () => {
+    const result = reverseGematria({
+      targetSynthesis: 1,
+      minLength: 2,
+      maxLength: 3,
+    });
+    // A=1 alone won't be included since minLength is 2
+    expect(result.results.every((r) => r.letters.length >= 2)).toBe(true);
+  });
+
+  it("should respect maxLength", () => {
+    const result = reverseGematria({
+      targetSynthesis: 5,
+      maxLength: 2,
+    });
+    expect(result.results.every((r) => r.letters.length <= 2)).toBe(true);
+  });
+
+  it("should match combined targets (vowels + consonants)", () => {
+    // Find combinations with vowels=6 and consonants=2
+    // E.g., UB = U(6) + B(2) or WB = W(6) + B(2)
+    const result = reverseGematria({
+      targetVowels: 6,
+      targetConsonants: 2,
+      minLength: 2,
+      maxLength: 2,
+    });
+    expect(result.results.length).toBeGreaterThan(0);
+    result.results.forEach((r) => {
+      expect(r.vowelsSum).toBe(6);
+      expect(r.consonantsSum).toBe(2);
+    });
+  });
+
+  it("round-trip verification: calculateGematria should match reverseGematria results", () => {
+    const target = { targetVowels: 11, targetConsonants: 14 };
+    const reverseResults = reverseGematria({
+      ...target,
+      maxResults: 10,
+      maxLength: 5,
+    });
+
+    for (const result of reverseResults.results) {
+      const calculated = calculateGematria(result.letters);
+      expect(calculated.vowels.originalSum).toBe(result.vowelsSum);
+      expect(calculated.consonants.originalSum).toBe(result.consonantsSum);
+      expect(calculated.synthesis.originalSum).toBe(result.synthesisSum);
+    }
+  });
+
+  it("should correctly populate letterDetails", () => {
+    const result = reverseGematria({
+      targetSynthesis: 3,
+      maxLength: 2,
+    });
+
+    const found = result.results.find((r) => r.letters === "AB");
+    expect(found).toBeDefined();
+    expect(found?.letterDetails).toHaveLength(2);
+    expect(found?.letterDetails[0].latinLetterId).toBe(
+      id(LetterTypes.LATIN_LETTER, "A")
+    );
+    expect(found?.letterDetails[0].isVowel).toBe(true);
+    expect(found?.letterDetails[1].latinLetterId).toBe(
+      id(LetterTypes.LATIN_LETTER, "B")
+    );
+    expect(found?.letterDetails[1].isVowel).toBe(false);
   });
 });
