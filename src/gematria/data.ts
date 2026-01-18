@@ -5,6 +5,27 @@ import { LetterTypes, NodeId } from "../core/types";
 // Reverse Gematria Types
 // =============================================================================
 
+/**
+ * Extended master numbers used in gematria reduction.
+ * Includes traditional master numbers (11, 22, 33, 44) and extended ones (55, 66, 77, 88, 99).
+ */
+export const EXTENDED_MASTER_NUMBERS = [11, 22, 33, 44, 55, 66, 77, 88, 99] as const;
+
+/**
+ * Information about how a number was reduced, including all reduction steps
+ * and any master number found in the reduction path.
+ */
+export type ReductionInfo = {
+  /** The original sum before any reduction */
+  originalSum: number;
+  /** All steps in the reduction path, e.g., [289, 19, 10, 1] */
+  reductionSteps: number[];
+  /** The final reduced value (1-9, or a master number if preserved) */
+  finalValue: number;
+  /** The master number found in the reduction path, if any */
+  masterNumber?: number;
+};
+
 export type ReverseGematriaOptions = {
   /** Target individuality (vowels sum) */
   targetVowels?: number;
@@ -26,14 +47,35 @@ export type ReverseGematriaOptions = {
   suggestionText?: string;
   /** How to use the suggestion text: "subsequence" preserves order, "anagram" allows reordering */
   suggestionMode?: "subsequence" | "anagram";
+  /**
+   * When true, target values match any step in the reduction path.
+   * e.g., targetConsonants: 19 matches a result with consonantsSum: 289
+   * because 289 reduces to [289, 19, 10, 1].
+   * Default: true
+   */
+  matchReductionStep?: boolean;
+  /**
+   * Master numbers to preserve during reduction.
+   * Default: [11, 22, 33, 44, 55, 66, 77, 88, 99]
+   */
+  masterNumbers?: number[];
 };
 
 export type ReverseGematriaResult = {
   letters: string;
   letterDetails: LetterResult[];
+  /** @deprecated Use vowels.originalSum instead */
   vowelsSum: number;
+  /** @deprecated Use consonants.originalSum instead */
   consonantsSum: number;
+  /** @deprecated Use synthesis.originalSum instead */
   synthesisSum: number;
+  /** Reduction info for vowels (individuality) */
+  vowels: ReductionInfo;
+  /** Reduction info for consonants (personality) */
+  consonants: ReductionInfo;
+  /** Reduction info for synthesis (total) */
+  synthesis: ReductionInfo;
 };
 
 export type ReverseGematriaOutput = {

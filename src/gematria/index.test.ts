@@ -617,6 +617,7 @@ describe("reverseGematria", () => {
     const result = reverseGematria({
       targetSynthesis: 5,
       maxLength: 2,
+      matchReductionStep: false,
     });
     expect(result.results.every((r) => r.letters.length <= 2)).toBe(true);
   });
@@ -629,6 +630,7 @@ describe("reverseGematria", () => {
       targetConsonants: 2,
       minLength: 2,
       maxLength: 2,
+      matchReductionStep: false,
     });
     expect(result.results.length).toBeGreaterThan(0);
     result.results.forEach((r) => {
@@ -701,6 +703,7 @@ describe("reverseGematria", () => {
         maxLetterRepeat: 1,
         minLength: 2,
         maxLength: 3,
+        matchReductionStep: false,
       });
       // All results should have unique letters
       result.results.forEach((r) => {
@@ -901,6 +904,7 @@ describe("reverseGematria", () => {
         maxLetterRepeat: 1,
         minLength: 2,
         maxLength: 4,
+        matchReductionStep: false,
       });
 
       // All results should have no duplicate letters
@@ -915,6 +919,126 @@ describe("reverseGematria", () => {
         expect(r.vowelsSum).toBe(2);
         expect(r.consonantsSum).toBe(4);
       });
+    });
+  });
+
+  describe("reduction step matching", () => {
+    it("should match targets anywhere in reduction path by default", () => {
+      // With matchReductionStep: true (default), target 1 should match
+      // results that reduce to 1 (e.g., 10 → 1, 19 → 10 → 1, etc.)
+      const result = reverseGematria({
+        targetConsonants: 1,
+        minLength: 2,
+        maxLength: 3,
+        maxResults: 10,
+      });
+
+      expect(result.results.length).toBeGreaterThan(0);
+
+      // All results should have 1 somewhere in their consonants reduction steps
+      result.results.forEach((r) => {
+        expect(r.consonants.reductionSteps).toContain(1);
+      });
+    });
+
+    it("should include reduction info in results", () => {
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        maxLength: 2,
+        matchReductionStep: false,
+      });
+
+      const found = result.results.find((r) => r.letters === "AB");
+      expect(found).toBeDefined();
+
+      // Check that reduction info is present
+      expect(found?.vowels).toBeDefined();
+      expect(found?.vowels.originalSum).toBe(1); // A = 1
+      expect(found?.vowels.reductionSteps).toContain(1);
+      expect(found?.vowels.finalValue).toBe(1);
+
+      expect(found?.consonants).toBeDefined();
+      expect(found?.consonants.originalSum).toBe(2); // B = 2
+      expect(found?.consonants.reductionSteps).toContain(2);
+      expect(found?.consonants.finalValue).toBe(2);
+
+      expect(found?.synthesis).toBeDefined();
+      expect(found?.synthesis.originalSum).toBe(3);
+      expect(found?.synthesis.reductionSteps).toContain(3);
+      expect(found?.synthesis.finalValue).toBe(3);
+    });
+
+    it("should detect master numbers in reduction path", () => {
+      // Find a result with a master number in the path
+      // 11 = B(2) + I(9) = 11 (master number)
+      const result = reverseGematria({
+        targetSynthesis: 11,
+        minLength: 2,
+        maxLength: 3,
+        matchReductionStep: false,
+      });
+
+      // Find a result that has 11 as master number
+      const withMaster = result.results.find((r) => r.synthesis.masterNumber === 11);
+      if (withMaster) {
+        expect(withMaster.synthesis.masterNumber).toBe(11);
+        expect(withMaster.synthesis.finalValue).toBe(11); // Master number is preserved as finalValue
+      }
+    });
+
+    it("should use matchReductionStep: false for exact matching", () => {
+      // With matchReductionStep: false, target should match only the original sum
+      const result = reverseGematria({
+        targetConsonants: 2,
+        minLength: 1,
+        maxLength: 2,
+        matchReductionStep: false,
+      });
+
+      expect(result.results.length).toBeGreaterThan(0);
+
+      // All results should have exactly consonantsSum = 2
+      result.results.forEach((r) => {
+        expect(r.consonantsSum).toBe(2);
+      });
+    });
+
+    it("should allow custom master numbers", () => {
+      const result = reverseGematria({
+        targetSynthesis: 11,
+        minLength: 2,
+        maxLength: 3,
+        matchReductionStep: false,
+        masterNumbers: [11, 22], // Only recognize 11 and 22 as master numbers
+      });
+
+      // Results with synthesis = 11 should have masterNumber: 11
+      result.results.forEach((r) => {
+        if (r.synthesisSum === 11) {
+          expect(r.synthesis.masterNumber).toBe(11);
+        }
+      });
+    });
+
+    it("should include intermediate steps in reductionSteps", () => {
+      // Find a result with a larger sum that reduces through multiple steps
+      // Using exact match to get predictable results
+      const result = reverseGematria({
+        targetSynthesis: 19,
+        minLength: 2,
+        maxLength: 4,
+        matchReductionStep: false,
+        maxResults: 5,
+      });
+
+      if (result.results.length > 0) {
+        const r = result.results[0];
+        // 19 reduces to: 19 → 10 → 1
+        expect(r.synthesis.reductionSteps[0]).toBe(19);
+        expect(r.synthesis.reductionSteps).toContain(10);
+        expect(r.synthesis.reductionSteps).toContain(1);
+        expect(r.synthesis.finalValue).toBe(1);
+      }
     });
   });
 });
