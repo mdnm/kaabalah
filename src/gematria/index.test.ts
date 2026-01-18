@@ -715,8 +715,10 @@ describe("reverseGematria", () => {
 
     it("should treat digraphs as single units for maxLetterRepeat", () => {
       // Two SH digraphs (exactly 2 letter units)
+      // Use matchReductionStep: false to match exact raw sum (600)
       const result = reverseGematria({
         targetSynthesis: 600,
+        matchReductionStep: false,
         maxLetterRepeat: 2,
         minLength: 2,
         maxLength: 2,  // exactly 2 letter units
@@ -728,6 +730,7 @@ describe("reverseGematria", () => {
       // But with maxLetterRepeat: 1, SHSH should be filtered
       const result2 = reverseGematria({
         targetSynthesis: 600,
+        matchReductionStep: false,
         maxLetterRepeat: 1,
         minLength: 2,
         maxLength: 2,
