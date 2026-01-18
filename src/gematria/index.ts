@@ -300,6 +300,46 @@ function getAvailableLetters(tree: TreeOfLife, includeDigraphs: boolean): string
 }
 
 /**
+ * Parse a suggestion text into letter units (handling digraphs)
+ */
+function parseSuggestionToLetterUnits(text: string): string[] {
+  const upper = text.toUpperCase();
+  const units: string[] = [];
+  let i = 0;
+
+  while (i < upper.length) {
+    const char = upper[i];
+
+    // Check for digraphs (two-character combinations)
+    if (i + 1 < upper.length) {
+      const twoChar = char + upper[i + 1].toLowerCase();
+      if (GematriaData.DIGRAPHS.has(twoChar)) {
+        units.push(twoChar);
+        i += 2;
+        continue;
+      }
+    }
+
+    // Single character (including spaces)
+    units.push(char);
+    i += 1;
+  }
+
+  return units;
+}
+
+/**
+ * Count occurrences of each letter unit in an array
+ */
+function countLetterUnits(units: string[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const unit of units) {
+    counts.set(unit, (counts.get(unit) || 0) + 1);
+  }
+  return counts;
+}
+
+/**
  * Reverse gematria - find letter combinations that match target values
  */
 export const reverseGematria = (
@@ -314,6 +354,9 @@ export const reverseGematria = (
     maxLength = 8,
     maxResults = 100,
     includeDigraphs = true,
+    maxLetterRepeat,
+    suggestionText,
+    suggestionMode = "subsequence",
   } = options;
 
   // Validate that at least one target is specified
@@ -323,6 +366,15 @@ export const reverseGematria = (
 
   if (!tree) {
     tree = createTree({ system: KAABALAH_SYSTEM, parts: [] });
+  }
+
+  // If suggestionText is provided, use the appropriate mode
+  if (suggestionText !== undefined) {
+    if (suggestionMode === "subsequence") {
+      return reverseGematriaFromSubsequence(options, tree);
+    } else {
+      return reverseGematriaAnagram(options, tree);
+    }
   }
 
   const results: GematriaTypes.ReverseGematriaResult[] = [];
@@ -351,7 +403,8 @@ export const reverseGematria = (
     currentLetters: string[],
     currentInfos: LetterInfo[],
     runningVowelsSum: number,  // Sum using non-ending values
-    runningConsonantsSum: number
+    runningConsonantsSum: number,
+    letterCounts: Map<string, number>  // Track letter repetition counts
   ) => {
     // Early termination if we have enough results
     if (results.length >= maxResults) {
@@ -442,6 +495,14 @@ export const reverseGematria = (
       const letterInfo = getLetterInfoCached(letter, isStarting);
       if (!letterInfo) continue;
 
+      // Check maxLetterRepeat constraint
+      if (maxLetterRepeat !== undefined) {
+        const currentCount = letterCounts.get(letter) || 0;
+        if (currentCount >= maxLetterRepeat) {
+          continue;
+        }
+      }
+
       const value = letterInfo.normalValue;
       const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
       const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
@@ -459,11 +520,13 @@ export const reverseGematria = (
 
       currentLetters.push(letter);
       currentInfos.push(letterInfo);
+      letterCounts.set(letter, (letterCounts.get(letter) || 0) + 1);
 
-      backtrack(currentLetters, currentInfos, newVowelsSum, newConsonantsSum);
+      backtrack(currentLetters, currentInfos, newVowelsSum, newConsonantsSum, letterCounts);
 
       currentLetters.pop();
       currentInfos.pop();
+      letterCounts.set(letter, letterCounts.get(letter)! - 1);
 
       if (results.length >= maxResults) {
         // We found maxResults and there may be more - set hasMore
@@ -473,7 +536,7 @@ export const reverseGematria = (
     }
   };
 
-  backtrack([], [], 0, 0);
+  backtrack([], [], 0, 0, new Map());
 
   return {
     results,
@@ -481,6 +544,491 @@ export const reverseGematria = (
     totalFound,
   };
 };
+
+/**
+ * Reverse gematria from anagram mode - use letters from suggestion as a pool
+ */
+function reverseGematriaAnagram(
+  options: GematriaTypes.ReverseGematriaOptions,
+  tree: TreeOfLife
+): GematriaTypes.ReverseGematriaOutput {
+  const {
+    targetVowels,
+    targetConsonants,
+    targetSynthesis,
+    minLength = 1,
+    maxLength = 8,
+    maxResults = 100,
+    maxLetterRepeat,
+    suggestionText = "",
+  } = options;
+
+  const results: GematriaTypes.ReverseGematriaResult[] = [];
+  let totalFound = 0;
+  let hasMore = false;
+
+  // Parse suggestion into letter units
+  const suggestionUnits = parseSuggestionToLetterUnits(suggestionText);
+
+  // Separate spaces from letters
+  const letterUnits = suggestionUnits.filter((u) => u !== " ");
+  const maxSpaces = suggestionUnits.filter((u) => u === " ").length;
+
+  // Build available letter pool with counts
+  const availablePool = countLetterUnits(letterUnits);
+
+  // Get unique letters from the pool
+  const availableLetters = Array.from(availablePool.keys());
+
+  // Cache letter info
+  const letterInfoCache = new Map<string, LetterInfo | undefined>();
+
+  const getLetterInfoCached = (letter: string, isStarting: boolean): LetterInfo | undefined => {
+    const cacheKey = `${letter}-${isStarting}`;
+    if (!letterInfoCache.has(cacheKey)) {
+      letterInfoCache.set(cacheKey, buildLetterInfo(tree, letter, isStarting));
+    }
+    return letterInfoCache.get(cacheKey);
+  };
+
+  // Track which results we've already seen (to avoid duplicates from space insertion)
+  const seenResults = new Set<string>();
+
+  const backtrack = (
+    currentLetters: string[],
+    currentInfos: LetterInfo[],
+    runningVowelsSum: number,
+    runningConsonantsSum: number,
+    letterCounts: Map<string, number>,
+    usedFromPool: Map<string, number>,
+    spacesUsed: number
+  ) => {
+    if (results.length >= maxResults) {
+      hasMore = true;
+      return;
+    }
+
+    const letterOnlyLength = currentLetters.filter((l) => l !== " ").length;
+
+    // Check if current combination is valid
+    if (letterOnlyLength >= minLength && letterOnlyLength <= maxLength) {
+      let actualVowelsSum = runningVowelsSum;
+      let actualConsonantsSum = runningConsonantsSum;
+
+      // Adjust for ending value
+      if (currentInfos.length > 1) {
+        const lastInfo = currentInfos[currentInfos.length - 1];
+        if (lastInfo.endingValue !== undefined) {
+          const diff = lastInfo.endingValue - lastInfo.normalValue;
+          if (lastInfo.isVowel) {
+            actualVowelsSum += diff;
+          } else {
+            actualConsonantsSum += diff;
+          }
+        }
+      }
+
+      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
+
+      const matchesVowels = targetVowels === undefined || actualVowelsSum === targetVowels;
+      const matchesConsonants = targetConsonants === undefined || actualConsonantsSum === targetConsonants;
+      const matchesSynthesis = targetSynthesis === undefined || actualSynthesisSum === targetSynthesis;
+
+      if (matchesVowels && matchesConsonants && matchesSynthesis) {
+        const lettersStr = currentLetters.join("").toUpperCase();
+
+        if (!seenResults.has(lettersStr)) {
+          seenResults.add(lettersStr);
+          totalFound++;
+
+          if (results.length < maxResults) {
+            const letterDetails: GematriaTypes.LetterResult[] = currentInfos.map((info, idx) => {
+              const isEnding = idx === currentInfos.length - 1 && currentInfos.length > 1;
+              const useEndingValue = isEnding && info.endingValue !== undefined;
+
+              return {
+                latinLetterId: id(LetterTypes.LATIN_LETTER, info.letter),
+                value: useEndingValue ? info.endingValue! : info.normalValue,
+                hebrewLetterId: info.hebrewLetterId,
+                hebrewCharacter: useEndingValue && info.hebrewCharacterWhenEnding
+                  ? info.hebrewCharacterWhenEnding
+                  : info.hebrewCharacter,
+                isVowel: info.isVowel,
+              };
+            });
+
+            results.push({
+              letters: lettersStr,
+              letterDetails,
+              vowelsSum: actualVowelsSum,
+              consonantsSum: actualConsonantsSum,
+              synthesisSum: actualSynthesisSum,
+            });
+          } else {
+            hasMore = true;
+          }
+        }
+      }
+    }
+
+    // Stop if we've reached max letter length
+    if (letterOnlyLength >= maxLength) {
+      return;
+    }
+
+    // Pruning
+    if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
+      return;
+    }
+    if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
+      return;
+    }
+    if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
+      return;
+    }
+
+    // Try adding a space (if we have spaces available and have at least one letter)
+    if (spacesUsed < maxSpaces && currentLetters.length > 0 && currentLetters[currentLetters.length - 1] !== " ") {
+      currentLetters.push(" ");
+      backtrack(
+        currentLetters,
+        currentInfos,
+        runningVowelsSum,
+        runningConsonantsSum,
+        letterCounts,
+        usedFromPool,
+        spacesUsed + 1
+      );
+      currentLetters.pop();
+
+      if (results.length >= maxResults) {
+        hasMore = true;
+        return;
+      }
+    }
+
+    // Try adding each available letter
+    for (const letter of availableLetters) {
+      const poolLimit = availablePool.get(letter) || 0;
+      const usedCount = usedFromPool.get(letter) || 0;
+
+      // Check pool limit
+      if (usedCount >= poolLimit) {
+        continue;
+      }
+
+      // Check maxLetterRepeat constraint
+      if (maxLetterRepeat !== undefined) {
+        const currentCount = letterCounts.get(letter) || 0;
+        if (currentCount >= maxLetterRepeat) {
+          continue;
+        }
+      }
+
+      const isStarting = currentInfos.length === 0;
+      const letterInfo = getLetterInfoCached(letter, isStarting);
+      if (!letterInfo) continue;
+
+      const value = letterInfo.normalValue;
+      const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
+      const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
+
+      // Pruning
+      if (targetVowels !== undefined && newVowelsSum > targetVowels) {
+        continue;
+      }
+      if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
+        continue;
+      }
+      if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
+        continue;
+      }
+
+      currentLetters.push(letter);
+      currentInfos.push(letterInfo);
+      letterCounts.set(letter, (letterCounts.get(letter) || 0) + 1);
+      usedFromPool.set(letter, usedCount + 1);
+
+      backtrack(
+        currentLetters,
+        currentInfos,
+        newVowelsSum,
+        newConsonantsSum,
+        letterCounts,
+        usedFromPool,
+        spacesUsed
+      );
+
+      currentLetters.pop();
+      currentInfos.pop();
+      letterCounts.set(letter, letterCounts.get(letter)! - 1);
+      usedFromPool.set(letter, usedCount);
+
+      if (results.length >= maxResults) {
+        hasMore = true;
+        return;
+      }
+    }
+  };
+
+  backtrack([], [], 0, 0, new Map(), new Map(), 0);
+
+  return {
+    results,
+    hasMore,
+    totalFound,
+  };
+}
+
+/**
+ * Reverse gematria from subsequence mode - preserve letter order from suggestion
+ */
+function reverseGematriaFromSubsequence(
+  options: GematriaTypes.ReverseGematriaOptions,
+  tree: TreeOfLife
+): GematriaTypes.ReverseGematriaOutput {
+  const {
+    targetVowels,
+    targetConsonants,
+    targetSynthesis,
+    minLength = 1,
+    maxLength = 8,
+    maxResults = 100,
+    maxLetterRepeat,
+    suggestionText = "",
+  } = options;
+
+  const results: GematriaTypes.ReverseGematriaResult[] = [];
+  let totalFound = 0;
+  let hasMore = false;
+
+  // Parse suggestion into letter units
+  const suggestionUnits = parseSuggestionToLetterUnits(suggestionText);
+
+  // Separate spaces from letters but track original positions
+  const letterUnitsWithPositions: { unit: string; isSpace: boolean; originalIndex: number }[] = [];
+  for (let i = 0; i < suggestionUnits.length; i++) {
+    letterUnitsWithPositions.push({
+      unit: suggestionUnits[i],
+      isSpace: suggestionUnits[i] === " ",
+      originalIndex: i,
+    });
+  }
+
+  const letterOnlyUnits = letterUnitsWithPositions.filter((u) => !u.isSpace);
+  const maxSpaces = letterUnitsWithPositions.filter((u) => u.isSpace).length;
+
+  // Cache letter info
+  const letterInfoCache = new Map<string, LetterInfo | undefined>();
+
+  const getLetterInfoCached = (letter: string, isStarting: boolean): LetterInfo | undefined => {
+    const cacheKey = `${letter}-${isStarting}`;
+    if (!letterInfoCache.has(cacheKey)) {
+      letterInfoCache.set(cacheKey, buildLetterInfo(tree, letter, isStarting));
+    }
+    return letterInfoCache.get(cacheKey);
+  };
+
+  // Track seen results to avoid duplicates
+  const seenResults = new Set<string>();
+
+  // Generate subsequences by choosing which letters to include (preserving order)
+  // Also handle flexible space placement
+  const generateSubsequences = (
+    index: number,
+    currentLetters: string[],
+    currentInfos: LetterInfo[],
+    runningVowelsSum: number,
+    runningConsonantsSum: number,
+    letterCounts: Map<string, number>,
+    spacesUsed: number
+  ) => {
+    if (results.length >= maxResults) {
+      hasMore = true;
+      return;
+    }
+
+    const letterOnlyLength = currentLetters.filter((l) => l !== " ").length;
+
+    // Check if current combination is valid
+    if (letterOnlyLength >= minLength && letterOnlyLength <= maxLength) {
+      let actualVowelsSum = runningVowelsSum;
+      let actualConsonantsSum = runningConsonantsSum;
+
+      // Adjust for ending value
+      if (currentInfos.length > 1) {
+        const lastInfo = currentInfos[currentInfos.length - 1];
+        if (lastInfo.endingValue !== undefined) {
+          const diff = lastInfo.endingValue - lastInfo.normalValue;
+          if (lastInfo.isVowel) {
+            actualVowelsSum += diff;
+          } else {
+            actualConsonantsSum += diff;
+          }
+        }
+      }
+
+      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
+
+      const matchesVowels = targetVowels === undefined || actualVowelsSum === targetVowels;
+      const matchesConsonants = targetConsonants === undefined || actualConsonantsSum === targetConsonants;
+      const matchesSynthesis = targetSynthesis === undefined || actualSynthesisSum === targetSynthesis;
+
+      if (matchesVowels && matchesConsonants && matchesSynthesis) {
+        const lettersStr = currentLetters.join("").toUpperCase();
+
+        if (!seenResults.has(lettersStr)) {
+          seenResults.add(lettersStr);
+          totalFound++;
+
+          if (results.length < maxResults) {
+            const letterDetails: GematriaTypes.LetterResult[] = currentInfos.map((info, idx) => {
+              const isEnding = idx === currentInfos.length - 1 && currentInfos.length > 1;
+              const useEndingValue = isEnding && info.endingValue !== undefined;
+
+              return {
+                latinLetterId: id(LetterTypes.LATIN_LETTER, info.letter),
+                value: useEndingValue ? info.endingValue! : info.normalValue,
+                hebrewLetterId: info.hebrewLetterId,
+                hebrewCharacter: useEndingValue && info.hebrewCharacterWhenEnding
+                  ? info.hebrewCharacterWhenEnding
+                  : info.hebrewCharacter,
+                isVowel: info.isVowel,
+              };
+            });
+
+            results.push({
+              letters: lettersStr,
+              letterDetails,
+              vowelsSum: actualVowelsSum,
+              consonantsSum: actualConsonantsSum,
+              synthesisSum: actualSynthesisSum,
+            });
+          } else {
+            hasMore = true;
+          }
+        }
+      }
+    }
+
+    // Stop if we've processed all letters or reached max length
+    if (index >= letterOnlyUnits.length || letterOnlyLength >= maxLength) {
+      return;
+    }
+
+    // Pruning
+    if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
+      return;
+    }
+    if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
+      return;
+    }
+    if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
+      return;
+    }
+
+    // Option 1: Skip the current letter
+    generateSubsequences(
+      index + 1,
+      currentLetters,
+      currentInfos,
+      runningVowelsSum,
+      runningConsonantsSum,
+      letterCounts,
+      spacesUsed
+    );
+
+    if (results.length >= maxResults) {
+      hasMore = true;
+      return;
+    }
+
+    // Option 2: Include the current letter (optionally with a space before it)
+    const letter = letterOnlyUnits[index].unit;
+
+    // Check maxLetterRepeat constraint
+    if (maxLetterRepeat !== undefined) {
+      const currentCount = letterCounts.get(letter) || 0;
+      if (currentCount >= maxLetterRepeat) {
+        return;
+      }
+    }
+
+    const isStarting = currentInfos.length === 0;
+    const letterInfo = getLetterInfoCached(letter, isStarting);
+    if (!letterInfo) return;
+
+    const value = letterInfo.normalValue;
+    const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
+    const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
+
+    // Pruning
+    if (targetVowels !== undefined && newVowelsSum > targetVowels) {
+      return;
+    }
+    if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
+      return;
+    }
+    if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
+      return;
+    }
+
+    // Include without space
+    currentLetters.push(letter);
+    currentInfos.push(letterInfo);
+    letterCounts.set(letter, (letterCounts.get(letter) || 0) + 1);
+
+    generateSubsequences(
+      index + 1,
+      currentLetters,
+      currentInfos,
+      newVowelsSum,
+      newConsonantsSum,
+      letterCounts,
+      spacesUsed
+    );
+
+    currentLetters.pop();
+    currentInfos.pop();
+    letterCounts.set(letter, letterCounts.get(letter)! - 1);
+
+    if (results.length >= maxResults) {
+      hasMore = true;
+      return;
+    }
+
+    // Include with space before (if we have spaces available and it's not the first letter)
+    if (spacesUsed < maxSpaces && currentLetters.length > 0 && currentLetters[currentLetters.length - 1] !== " ") {
+      currentLetters.push(" ");
+      currentLetters.push(letter);
+      currentInfos.push(letterInfo);
+      letterCounts.set(letter, (letterCounts.get(letter) || 0) + 1);
+
+      generateSubsequences(
+        index + 1,
+        currentLetters,
+        currentInfos,
+        newVowelsSum,
+        newConsonantsSum,
+        letterCounts,
+        spacesUsed + 1
+      );
+
+      currentLetters.pop();
+      currentLetters.pop();
+      currentInfos.pop();
+      letterCounts.set(letter, letterCounts.get(letter)! - 1);
+    }
+  };
+
+  generateSubsequences(0, [], [], 0, 0, new Map(), 0);
+
+  return {
+    results,
+    hasMore,
+    totalFound,
+  };
+}
 
 export const calculateGematria = (
   phrase: string,

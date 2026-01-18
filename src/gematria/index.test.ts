@@ -671,4 +671,250 @@ describe("reverseGematria", () => {
     );
     expect(found?.letterDetails[1].isVowel).toBe(false);
   });
+
+  describe("maxLetterRepeat", () => {
+    it("should allow letters up to maxLetterRepeat times", () => {
+      // AAB = A(1)+A(1)+B(2) = 4 synthesis
+      const result = reverseGematria({
+        targetSynthesis: 4,
+        maxLetterRepeat: 2,
+        minLength: 3,
+        maxLength: 3,
+      });
+      expect(result.results.some((r) => r.letters === "AAB")).toBe(true);
+    });
+
+    it("should filter results where a letter repeats more than maxLetterRepeat times", () => {
+      // AAAB would have 3 A's
+      const result = reverseGematria({
+        targetSynthesis: 5,
+        maxLetterRepeat: 2,
+        minLength: 4,
+        maxLength: 4,
+      });
+      expect(result.results.some((r) => r.letters === "AAAB")).toBe(false);
+    });
+
+    it("should work with maxLetterRepeat: 1 (no repeats allowed)", () => {
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        maxLetterRepeat: 1,
+        minLength: 2,
+        maxLength: 3,
+      });
+      // All results should have unique letters
+      result.results.forEach((r) => {
+        const letters = r.letters.split("");
+        const unique = new Set(letters);
+        expect(letters.length).toBe(unique.size);
+      });
+    });
+
+    it("should treat digraphs as single units for maxLetterRepeat", () => {
+      // Two SH digraphs (exactly 2 letter units)
+      const result = reverseGematria({
+        targetSynthesis: 600,
+        maxLetterRepeat: 2,
+        minLength: 2,
+        maxLength: 2,  // exactly 2 letter units
+        includeDigraphs: true,
+      });
+      // SHSH = 300+300 = 600
+      expect(result.results.some((r) => r.letters === "SHSH")).toBe(true);
+
+      // But with maxLetterRepeat: 1, SHSH should be filtered
+      const result2 = reverseGematria({
+        targetSynthesis: 600,
+        maxLetterRepeat: 1,
+        minLength: 2,
+        maxLength: 2,
+        includeDigraphs: true,
+      });
+      expect(result2.results.some((r) => r.letters === "SHSH")).toBe(false);
+    });
+  });
+
+  describe("suggestionText - anagram mode", () => {
+    it("should only use letters from the suggestion text", () => {
+      // "ABC" has A(1), B(2), C(20)
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "ABC",
+        suggestionMode: "anagram",
+        minLength: 2,
+        maxLength: 3,
+      });
+
+      // AB = 3 should be found
+      expect(result.results.some((r) => r.letters === "AB")).toBe(true);
+      // BA = 3 should also be found (anagram allows reordering)
+      expect(result.results.some((r) => r.letters === "BA")).toBe(true);
+      // AD should NOT be found (D is not in suggestion)
+      expect(result.results.some((r) => r.letters.includes("D"))).toBe(false);
+    });
+
+    it("should respect letter counts from suggestion", () => {
+      // "AB" has only one A and one B
+      const result = reverseGematria({
+        targetSynthesis: 2,
+        suggestionText: "AB",
+        suggestionMode: "anagram",
+        minLength: 2,
+        maxLength: 2,
+      });
+
+      // AA would need 2 A's but we only have 1
+      expect(result.results.some((r) => r.letters === "AA")).toBe(false);
+    });
+
+    it("should allow using duplicate letters from suggestion", () => {
+      // "AAB" has two A's
+      const result = reverseGematria({
+        targetSynthesis: 2,
+        suggestionText: "AAB",
+        suggestionMode: "anagram",
+        minLength: 2,
+        maxLength: 2,
+      });
+
+      // AA should be found since we have 2 A's
+      expect(result.results.some((r) => r.letters === "AA")).toBe(true);
+    });
+
+    it("should handle spaces in suggestion text", () => {
+      // "A B" has one space
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "A B",
+        suggestionMode: "anagram",
+        minLength: 2,
+        maxLength: 3,
+      });
+
+      // "A B" should be a valid result (one space allowed)
+      expect(result.results.some((r) => r.letters === "A B")).toBe(true);
+    });
+
+    it("should respect maxLetterRepeat in anagram mode", () => {
+      // "AAA" has 3 A's, but maxLetterRepeat: 2
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "AAA",
+        suggestionMode: "anagram",
+        maxLetterRepeat: 2,
+        minLength: 3,
+        maxLength: 3,
+      });
+
+      // AAA should be filtered
+      expect(result.results.some((r) => r.letters === "AAA")).toBe(false);
+    });
+  });
+
+  describe("suggestionText - subsequence mode", () => {
+    it("should preserve letter order from suggestion", () => {
+      // "ABCD" subsequences should maintain order
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "ABCD",
+        suggestionMode: "subsequence",
+        minLength: 2,
+        maxLength: 2,
+      });
+
+      // AB should be found (preserves order)
+      expect(result.results.some((r) => r.letters === "AB")).toBe(true);
+      // BA should NOT be found (violates order)
+      expect(result.results.some((r) => r.letters === "BA")).toBe(false);
+    });
+
+    it("should generate valid subsequences", () => {
+      // "ABCD" subsequences include AD (skipping B and C)
+      const result = reverseGematria({
+        targetSynthesis: 5,
+        suggestionText: "ABCD",
+        suggestionMode: "subsequence",
+        minLength: 2,
+        maxLength: 2,
+      });
+
+      // AD = A(1) + D(4) = 5 (skipping B and C in the subsequence)
+      expect(result.results.some((r) => r.letters === "AD")).toBe(true);
+      // DA should NOT be found (violates order)
+      expect(result.results.some((r) => r.letters === "DA")).toBe(false);
+    });
+
+    it("should handle spaces in subsequence mode", () => {
+      // "AB CD" - can include/exclude the space
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "AB CD",
+        suggestionMode: "subsequence",
+        minLength: 2,
+        maxLength: 3,
+      });
+
+      // "A B" could be a valid result with space between A and B (from different parts)
+      // Note: This tests flexible space placement
+      expect(result.results.some((r) => r.letters === "AB")).toBe(true);
+    });
+
+    it("should respect maxLetterRepeat in subsequence mode", () => {
+      // "AAA" with maxLetterRepeat: 2
+      const result = reverseGematria({
+        targetSynthesis: 3,
+        suggestionText: "AAA",
+        suggestionMode: "subsequence",
+        maxLetterRepeat: 2,
+        minLength: 3,
+        maxLength: 3,
+      });
+
+      // AAA should be filtered
+      expect(result.results.some((r) => r.letters === "AAA")).toBe(false);
+    });
+
+    it("round-trip verification: calculateGematria should match subsequence results", () => {
+      const result = reverseGematria({
+        targetVowels: 11,
+        targetConsonants: 14,
+        suggestionText: "DAVID",
+        suggestionMode: "subsequence",
+        maxResults: 10,
+        maxLength: 5,
+      });
+
+      for (const res of result.results) {
+        const calculated = calculateGematria(res.letters);
+        expect(calculated.vowels.originalSum).toBe(res.vowelsSum);
+        expect(calculated.consonants.originalSum).toBe(res.consonantsSum);
+        expect(calculated.synthesis.originalSum).toBe(res.synthesisSum);
+      }
+    });
+  });
+
+  describe("combined options", () => {
+    it("should work with maxLetterRepeat and other filters", () => {
+      const result = reverseGematria({
+        targetVowels: 2,
+        targetConsonants: 4,
+        maxLetterRepeat: 1,
+        minLength: 2,
+        maxLength: 4,
+      });
+
+      // All results should have no duplicate letters
+      result.results.forEach((r) => {
+        const letters = r.letters.split("");
+        const unique = new Set(letters);
+        expect(letters.length).toBe(unique.size);
+      });
+
+      // And match the targets
+      result.results.forEach((r) => {
+        expect(r.vowelsSum).toBe(2);
+        expect(r.consonantsSum).toBe(4);
+      });
+    });
+  });
 });
