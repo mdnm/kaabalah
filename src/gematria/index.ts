@@ -23,6 +23,54 @@ const reduceToSingleDigitWithSteps = (num: number) => {
   };
 };
 
+/**
+ * Reduce a number to a single digit, preserving master numbers.
+ * Tracks all reduction steps and detects master numbers in the path.
+ *
+ * @param num - The number to reduce
+ * @param masterNumbers - Master numbers to preserve (default: EXTENDED_MASTER_NUMBERS)
+ * @returns ReductionInfo with originalSum, reductionSteps, finalValue, and optional masterNumber
+ */
+const reduceWithMasterNumbers = (
+  num: number,
+  masterNumbers: readonly number[] | number[] = GematriaData.EXTENDED_MASTER_NUMBERS
+): GematriaTypes.ReductionInfo => {
+  const steps = [num];
+  let current = num;
+  let masterNumber: number | undefined;
+
+  while (current > 9) {
+    // Check if current is a master number
+    if (masterNumbers.includes(current)) {
+      masterNumber = current;
+      break;
+    }
+    // Reduce by summing digits
+    current = String(current)
+      .split("")
+      .reduce((acc, digit) => acc + parseInt(digit), 0);
+    steps.push(current);
+  }
+
+  // Continue reducing past master number to get finalValue (1-9)
+  let finalValue = current;
+  if (masterNumber && finalValue > 9) {
+    while (finalValue > 9) {
+      finalValue = String(finalValue)
+        .split("")
+        .reduce((acc, d) => acc + parseInt(d), 0);
+      steps.push(finalValue);
+    }
+  }
+
+  return {
+    originalSum: num,
+    reductionSteps: steps,
+    finalValue: masterNumber ?? steps[steps.length - 1],
+    masterNumber,
+  };
+};
+
 const getLastArkAnnuStep = (steps: number[]) => {
   if (steps.length === 0) return 0;
 
@@ -357,6 +405,8 @@ export const reverseGematria = (
     maxLetterRepeat,
     suggestionText,
     suggestionMode = "subsequence",
+    matchReductionStep = true,
+    masterNumbers = GematriaData.EXTENDED_MASTER_NUMBERS as unknown as number[],
   } = options;
 
   // Validate that at least one target is specified
@@ -435,9 +485,24 @@ export const reverseGematria = (
 
       const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
-      const matchesVowels = targetVowels === undefined || actualVowelsSum === targetVowels;
-      const matchesConsonants = targetConsonants === undefined || actualConsonantsSum === targetConsonants;
-      const matchesSynthesis = targetSynthesis === undefined || actualSynthesisSum === targetSynthesis;
+      // Calculate reduction info for matching
+      const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
+      const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
+      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+
+      // Match against reduction steps if enabled, otherwise exact match
+      const matchesVowels = targetVowels === undefined ||
+        (matchReductionStep
+          ? vowelsReduction.reductionSteps.includes(targetVowels)
+          : actualVowelsSum === targetVowels);
+      const matchesConsonants = targetConsonants === undefined ||
+        (matchReductionStep
+          ? consonantsReduction.reductionSteps.includes(targetConsonants)
+          : actualConsonantsSum === targetConsonants);
+      const matchesSynthesis = targetSynthesis === undefined ||
+        (matchReductionStep
+          ? synthesisReduction.reductionSteps.includes(targetSynthesis)
+          : actualSynthesisSum === targetSynthesis);
 
       if (matchesVowels && matchesConsonants && matchesSynthesis) {
         totalFound++;
@@ -464,6 +529,9 @@ export const reverseGematria = (
             vowelsSum: actualVowelsSum,
             consonantsSum: actualConsonantsSum,
             synthesisSum: actualSynthesisSum,
+            vowels: vowelsReduction,
+            consonants: consonantsReduction,
+            synthesis: synthesisReduction,
           });
         } else {
           hasMore = true;
@@ -477,15 +545,17 @@ export const reverseGematria = (
     }
 
     // Pruning: if running sums already exceed targets, no point continuing
-    // Note: we use running sums (non-ending) for pruning since ending values are >= normal values
-    if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
-      return;
-    }
-    if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
-      return;
-    }
-    if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
-      return;
+    // Note: only prune when not using reduction step matching
+    if (!matchReductionStep) {
+      if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
+        return;
+      }
+      if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
+        return;
+      }
+      if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
+        return;
+      }
     }
 
     // Try adding each letter
@@ -507,15 +577,17 @@ export const reverseGematria = (
       const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
       const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
 
-      // Pruning
-      if (targetVowels !== undefined && newVowelsSum > targetVowels) {
-        continue;
-      }
-      if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
-        continue;
-      }
-      if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
-        continue;
+      // Pruning - only prune when not using reduction step matching
+      if (!matchReductionStep) {
+        if (targetVowels !== undefined && newVowelsSum > targetVowels) {
+          continue;
+        }
+        if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
+          continue;
+        }
+        if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
+          continue;
+        }
       }
 
       currentLetters.push(letter);
@@ -561,6 +633,8 @@ function reverseGematriaAnagram(
     maxResults = 100,
     maxLetterRepeat,
     suggestionText = "",
+    matchReductionStep = true,
+    masterNumbers = GematriaData.EXTENDED_MASTER_NUMBERS as unknown as number[],
   } = options;
 
   const results: GematriaTypes.ReverseGematriaResult[] = [];
@@ -630,9 +704,24 @@ function reverseGematriaAnagram(
 
       const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
-      const matchesVowels = targetVowels === undefined || actualVowelsSum === targetVowels;
-      const matchesConsonants = targetConsonants === undefined || actualConsonantsSum === targetConsonants;
-      const matchesSynthesis = targetSynthesis === undefined || actualSynthesisSum === targetSynthesis;
+      // Calculate reduction info for matching
+      const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
+      const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
+      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+
+      // Match against reduction steps if enabled, otherwise exact match
+      const matchesVowels = targetVowels === undefined ||
+        (matchReductionStep
+          ? vowelsReduction.reductionSteps.includes(targetVowels)
+          : actualVowelsSum === targetVowels);
+      const matchesConsonants = targetConsonants === undefined ||
+        (matchReductionStep
+          ? consonantsReduction.reductionSteps.includes(targetConsonants)
+          : actualConsonantsSum === targetConsonants);
+      const matchesSynthesis = targetSynthesis === undefined ||
+        (matchReductionStep
+          ? synthesisReduction.reductionSteps.includes(targetSynthesis)
+          : actualSynthesisSum === targetSynthesis);
 
       if (matchesVowels && matchesConsonants && matchesSynthesis) {
         const lettersStr = currentLetters.join("").toUpperCase();
@@ -663,6 +752,9 @@ function reverseGematriaAnagram(
               vowelsSum: actualVowelsSum,
               consonantsSum: actualConsonantsSum,
               synthesisSum: actualSynthesisSum,
+              vowels: vowelsReduction,
+              consonants: consonantsReduction,
+              synthesis: synthesisReduction,
             });
           } else {
             hasMore = true;
@@ -676,15 +768,18 @@ function reverseGematriaAnagram(
       return;
     }
 
-    // Pruning
-    if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
-      return;
-    }
-    if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
-      return;
-    }
-    if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
-      return;
+    // Pruning - only prune if not using reduction step matching
+    // (with reduction matching, we can't prune based on sum since we need all reduction steps)
+    if (!matchReductionStep) {
+      if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
+        return;
+      }
+      if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
+        return;
+      }
+      if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
+        return;
+      }
     }
 
     // Try adding a space (if we have spaces available and have at least one letter)
@@ -733,15 +828,17 @@ function reverseGematriaAnagram(
       const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
       const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
 
-      // Pruning
-      if (targetVowels !== undefined && newVowelsSum > targetVowels) {
-        continue;
-      }
-      if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
-        continue;
-      }
-      if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
-        continue;
+      // Pruning - only prune when not using reduction step matching
+      if (!matchReductionStep) {
+        if (targetVowels !== undefined && newVowelsSum > targetVowels) {
+          continue;
+        }
+        if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
+          continue;
+        }
+        if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
+          continue;
+        }
       }
 
       currentLetters.push(letter);
@@ -796,6 +893,8 @@ function reverseGematriaFromSubsequence(
     maxResults = 100,
     maxLetterRepeat,
     suggestionText = "",
+    matchReductionStep = true,
+    masterNumbers = GematriaData.EXTENDED_MASTER_NUMBERS as unknown as number[],
   } = options;
 
   const results: GematriaTypes.ReverseGematriaResult[] = [];
@@ -870,9 +969,24 @@ function reverseGematriaFromSubsequence(
 
       const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
-      const matchesVowels = targetVowels === undefined || actualVowelsSum === targetVowels;
-      const matchesConsonants = targetConsonants === undefined || actualConsonantsSum === targetConsonants;
-      const matchesSynthesis = targetSynthesis === undefined || actualSynthesisSum === targetSynthesis;
+      // Calculate reduction info for matching
+      const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
+      const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
+      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+
+      // Match against reduction steps if enabled, otherwise exact match
+      const matchesVowels = targetVowels === undefined ||
+        (matchReductionStep
+          ? vowelsReduction.reductionSteps.includes(targetVowels)
+          : actualVowelsSum === targetVowels);
+      const matchesConsonants = targetConsonants === undefined ||
+        (matchReductionStep
+          ? consonantsReduction.reductionSteps.includes(targetConsonants)
+          : actualConsonantsSum === targetConsonants);
+      const matchesSynthesis = targetSynthesis === undefined ||
+        (matchReductionStep
+          ? synthesisReduction.reductionSteps.includes(targetSynthesis)
+          : actualSynthesisSum === targetSynthesis);
 
       if (matchesVowels && matchesConsonants && matchesSynthesis) {
         const lettersStr = currentLetters.join("").toUpperCase();
@@ -903,6 +1017,9 @@ function reverseGematriaFromSubsequence(
               vowelsSum: actualVowelsSum,
               consonantsSum: actualConsonantsSum,
               synthesisSum: actualSynthesisSum,
+              vowels: vowelsReduction,
+              consonants: consonantsReduction,
+              synthesis: synthesisReduction,
             });
           } else {
             hasMore = true;
@@ -916,15 +1033,17 @@ function reverseGematriaFromSubsequence(
       return;
     }
 
-    // Pruning
-    if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
-      return;
-    }
-    if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
-      return;
-    }
-    if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
-      return;
+    // Pruning - only prune if not using reduction step matching
+    if (!matchReductionStep) {
+      if (targetVowels !== undefined && runningVowelsSum > targetVowels) {
+        return;
+      }
+      if (targetConsonants !== undefined && runningConsonantsSum > targetConsonants) {
+        return;
+      }
+      if (targetSynthesis !== undefined && runningVowelsSum + runningConsonantsSum > targetSynthesis) {
+        return;
+      }
     }
 
     // Option 1: Skip the current letter
@@ -962,15 +1081,17 @@ function reverseGematriaFromSubsequence(
     const newVowelsSum = runningVowelsSum + (letterInfo.isVowel ? value : 0);
     const newConsonantsSum = runningConsonantsSum + (letterInfo.isVowel ? 0 : value);
 
-    // Pruning
-    if (targetVowels !== undefined && newVowelsSum > targetVowels) {
-      return;
-    }
-    if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
-      return;
-    }
-    if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
-      return;
+    // Pruning - only prune when not using reduction step matching
+    if (!matchReductionStep) {
+      if (targetVowels !== undefined && newVowelsSum > targetVowels) {
+        return;
+      }
+      if (targetConsonants !== undefined && newConsonantsSum > targetConsonants) {
+        return;
+      }
+      if (targetSynthesis !== undefined && newVowelsSum + newConsonantsSum > targetSynthesis) {
+        return;
+      }
     }
 
     // Include without space
