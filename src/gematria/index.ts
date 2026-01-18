@@ -483,12 +483,15 @@ export const reverseGematria = (
         }
       }
 
-      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
-
       // Calculate reduction info for matching
       const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
       const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
-      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+      // Synthesis uses Arkannu steps for reduction (same as calculateGematria)
+      const synthesisArkannuSum = getLastArkAnnuStep(vowelsReduction.reductionSteps) +
+                                  getLastArkAnnuStep(consonantsReduction.reductionSteps);
+      const synthesisReduction = reduceWithMasterNumbers(synthesisArkannuSum, masterNumbers);
+      // Raw sum for backward compatibility (matches calculateGematria.synthesis.originalSum)
+      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
       // Match against reduction steps if enabled, otherwise exact match
       const matchesVowels = targetVowels === undefined ||
@@ -702,12 +705,15 @@ function reverseGematriaAnagram(
         }
       }
 
-      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
-
       // Calculate reduction info for matching
       const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
       const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
-      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+      // Synthesis uses Arkannu steps for reduction (same as calculateGematria)
+      const synthesisArkannuSum = getLastArkAnnuStep(vowelsReduction.reductionSteps) +
+                                  getLastArkAnnuStep(consonantsReduction.reductionSteps);
+      const synthesisReduction = reduceWithMasterNumbers(synthesisArkannuSum, masterNumbers);
+      // Raw sum for backward compatibility (matches calculateGematria.synthesis.originalSum)
+      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
       // Match against reduction steps if enabled, otherwise exact match
       const matchesVowels = targetVowels === undefined ||
@@ -967,12 +973,15 @@ function reverseGematriaFromSubsequence(
         }
       }
 
-      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
-
       // Calculate reduction info for matching
       const vowelsReduction = reduceWithMasterNumbers(actualVowelsSum, masterNumbers);
       const consonantsReduction = reduceWithMasterNumbers(actualConsonantsSum, masterNumbers);
-      const synthesisReduction = reduceWithMasterNumbers(actualSynthesisSum, masterNumbers);
+      // Synthesis uses Arkannu steps for reduction (same as calculateGematria)
+      const synthesisArkannuSum = getLastArkAnnuStep(vowelsReduction.reductionSteps) +
+                                  getLastArkAnnuStep(consonantsReduction.reductionSteps);
+      const synthesisReduction = reduceWithMasterNumbers(synthesisArkannuSum, masterNumbers);
+      // Raw sum for backward compatibility (matches calculateGematria.synthesis.originalSum)
+      const actualSynthesisSum = actualVowelsSum + actualConsonantsSum;
 
       // Match against reduction steps if enabled, otherwise exact match
       const matchesVowels = targetVowels === undefined ||
