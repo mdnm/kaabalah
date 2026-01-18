@@ -20,6 +20,12 @@ export type ReverseGematriaOptions = {
   maxResults?: number;
   /** Include digraphs like PH, SH, etc. (default: true) */
   includeDigraphs?: boolean;
+  /** Maximum times a single letter/digraph can repeat (e.g., 2 = "AAB" ok, "AAAB" filtered) */
+  maxLetterRepeat?: number;
+  /** Source text to derive results from */
+  suggestionText?: string;
+  /** How to use the suggestion text: "subsequence" preserves order, "anagram" allows reordering */
+  suggestionMode?: "subsequence" | "anagram";
 };
 
 export type ReverseGematriaResult = {
