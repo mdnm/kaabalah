@@ -16,6 +16,12 @@ A comprehensive TypeScript library for numerology, astrology, kaabalah, and taro
 npm install kaabalah
 ```
 
+## Support us on Ko-Fi
+
+If you find this package useful, you can support it on Ko-Fi too (or just star the repo):
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/matmoura19)
+
 ## Usage Examples
 
 ### Core Library
