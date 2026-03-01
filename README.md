@@ -2,6 +2,10 @@
 
 A comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot calculations and interpretations.
 
+## Docs
+
+Complete documentation here [https://docs.kaabalah.com/](https://docs.kaabalah.com/)
+
 ## Features
 
 - **Tree of Life**: A modular and performant tree of life system to help you build correspondences across different systems
@@ -15,6 +19,12 @@ A comprehensive TypeScript library for numerology, astrology, kaabalah, and taro
 ```bash
 npm install kaabalah
 ```
+
+## Support us on Ko-Fi
+
+If you find this package useful, you can support it on Ko-Fi too (or just star the repo):
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/matmoura19)
 
 ## Usage Examples
 
