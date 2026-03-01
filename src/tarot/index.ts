@@ -223,7 +223,7 @@ export const ARKANNUS: TarotCard[] = [
     tarotCard: "The Star",
     tarotCardFilename: "17_the_star",
     meaning:
-      "Fecundation, ecology, ecstasy, hope, renew yourself to maintain help, act according to your spiritual purpose",
+      "Fecundation, ecology, ecstasy, hope, renew yourself to maintain health, act according to your spiritual purpose",
     papusMeaning: "Hope.",
     type: "major",
     deck: "mythic"

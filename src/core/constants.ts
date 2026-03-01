@@ -906,7 +906,7 @@ export const TAROT_ARKANNUS_DATA: Record<
       PAPUS_KAABALISTIC: {
         name: "The Star",
         meaning:
-          "Fecundation, ecology, ecstasy, hope, renew yourself to maintain help, act according to your spiritual purpose",
+          "Fecundation, ecology, ecstasy, hope, renew yourself to maintain health, act according to your spiritual purpose",
       },
       PAPUS_DIVINATORY: {
         name: "The Star",
