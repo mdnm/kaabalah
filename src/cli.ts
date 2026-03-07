@@ -63,7 +63,7 @@ const COMMANDS: CommandSchema[] = [
       { name: "missing", type: "boolean", default: false, description: "Show missing gematria values" },
       { name: "percentages", type: "boolean", default: false, description: "Show letter percentages" },
     ],
-    examples: ['kaabalah gematria "Mat Moura"', 'kaabalah gematria "Mat Moura" --json'],
+    examples: ['kaabalah gematria "Hello World"', 'kaabalah gematria "Hello World" --json'],
   },
   {
     name: "gematria:reverse",
@@ -99,7 +99,7 @@ const COMMANDS: CommandSchema[] = [
       { name: "firstName", type: "string", required: false, description: "First name for personal cycles" },
     ],
     flags: [],
-    examples: ["kaabalah numerology:cycles 1990-01-15", "kaabalah numerology:cycles 1990-01-15 Mateus"],
+    examples: ["kaabalah numerology:cycles 1990-01-15", "kaabalah numerology:cycles 1990-01-15 John"],
   },
   {
     name: "numerology:challenges",
@@ -141,10 +141,32 @@ const COMMANDS: CommandSchema[] = [
   },
   {
     name: "tree",
-    description: "Show Tree of Life structure",
+    description: "Show Tree of Life structure with all nodes, data, and edges",
     args: [],
     flags: [],
-    examples: ["kaabalah tree", "kaabalah tree --json"],
+    examples: ["kaabalah tree --json --compact", "kaabalah tree --json --fields=nodes"],
+  },
+  {
+    name: "tree:node",
+    description: "Look up a node and all its correspondences",
+    args: [{ name: "id", type: "string", required: true, description: "Node ID (e.g. path:1, sphere:Kether, tarotArkAnnu:The Magician)" }],
+    flags: [
+      { name: "type", type: "string", description: "Filter related nodes by type (e.g. hebrewLetter, planet, tarotArkAnnu)" },
+      { name: "depth", type: "number", default: 1, description: "Traversal depth (default: 1)" },
+    ],
+    examples: [
+      "kaabalah tree:node path:1 --json",
+      "kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json",
+      'kaabalah tree:node "tarotArkAnnu:The Magician" --json',
+      "kaabalah tree:node path:1 --depth=2 --json",
+    ],
+  },
+  {
+    name: "tree:types",
+    description: "List all node types and their counts",
+    args: [],
+    flags: [],
+    examples: ["kaabalah tree:types --json"],
   },
   {
     name: "astrology",
@@ -161,8 +183,8 @@ const COMMANDS: CommandSchema[] = [
       { name: "timezone", type: "string", description: "IANA timezone string (e.g. America/New_York). Auto-resolved from coordinates if omitted" },
     ],
     examples: [
-      "kaabalah astrology 1990-01-15 14:30 --lat=-23.5505 --lon=-46.6333",
-      'kaabalah astrology 1990-01-15 14:30 --location="São Paulo, Brazil"',
+      "kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006",
+      'kaabalah astrology 1990-01-15 14:30 --location="New York, USA"',
       "kaabalah astrology 1990-01-15 --lat=40.7128 --lon=-74.006 --json",
     ],
   },
@@ -374,15 +396,15 @@ function generateHelp(): string {
 
   lines.push("");
   lines.push("EXAMPLES");
-  lines.push('  kaabalah gematria "Mat Moura"');
+  lines.push('  kaabalah gematria "Hello World"');
   lines.push("  kaabalah numerology 1990-01-15");
-  lines.push("  kaabalah numerology:cycles 1990-01-15 Mateus");
+  lines.push("  kaabalah numerology:cycles 1990-01-15 John");
   lines.push("  kaabalah tarot 5 --inverted");
   lines.push("  kaabalah tarot:card 7");
   lines.push("  kaabalah gematria:reverse 22");
   lines.push("  kaabalah ifa 1990-01-15");
-  lines.push("  kaabalah astrology 1990-01-15 14:30 --lat=-23.5505 --lon=-46.6333");
-  lines.push('  kaabalah astrology 1990-01-15 14:30 --location="São Paulo, Brazil"');
+  lines.push("  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006");
+  lines.push('  kaabalah astrology 1990-01-15 14:30 --location="New York, USA"');
   lines.push("  kaabalah help --json");
   lines.push("");
 
@@ -852,12 +874,48 @@ function cmdIfa(dateStr: string, flags: Flags) {
   console.log();
 }
 
+function getTree() {
+  return createTree({ system: KAABALAH_SYSTEM, parts: ["westernAstrology", "tarot"] });
+}
+
+function serializeNode(n: { id: string; type: string; data?: unknown; name?: string }) {
+  const result: Record<string, unknown> = { id: n.id, type: n.type };
+  if (n.data && typeof n.data === "object" && Object.keys(n.data as object).length > 0) {
+    result.data = n.data;
+  }
+  if (n.name) result.name = n.name;
+  return result;
+}
+
 function cmdTree(flags: Flags) {
-  const tree = createTree({ system: KAABALAH_SYSTEM, parts: ["westernAstrology", "tarot"] });
+  const tree = getTree();
   const allNodes = tree.getNodes();
 
   if (isJsonMode(flags)) {
-    outputJson(allNodes.map((n) => ({ id: n.id, type: n.type, name: n.data && "name" in n.data ? n.data?.name : undefined })), flags);
+    const nodes = allNodes.map((n) => {
+      const node = serializeNode(n);
+      const relatedTypes = tree.relatedTypes(n.id);
+      if (relatedTypes.length > 0) {
+        node.relatedTypes = relatedTypes;
+      }
+      return node;
+    });
+
+    // Build edges (deduplicated: only include a→b where a.id < b.id)
+    const edgeSet = new Set<string>();
+    const edges: { from: string; to: string }[] = [];
+    for (const n of allNodes) {
+      const related = tree.related(n.id);
+      for (const r of related) {
+        const key = n.id < r.id ? `${n.id}|${r.id}` : `${r.id}|${n.id}`;
+        if (!edgeSet.has(key)) {
+          edgeSet.add(key);
+          edges.push({ from: n.id, to: r.id });
+        }
+      }
+    }
+
+    outputJson({ system: KAABALAH_SYSTEM, totalNodes: allNodes.length, totalEdges: edges.length, nodes, edges }, flags);
     return;
   }
 
@@ -881,6 +939,84 @@ function cmdTree(flags: Flags) {
     if (nodes.length > 15) {
       console.log(`    ... and ${nodes.length - 15} more`);
     }
+  }
+  console.log();
+}
+
+function cmdTreeNode(idStr: string, flags: Flags) {
+  const tree = getTree();
+  const node = tree.getNode(idStr as any);
+
+  if (!node) {
+    exitWithError("INVALID_ARGUMENT", `Node "${idStr}" not found. Use "kaabalah tree:types --json" to see valid node types, or "kaabalah tree --json --fields=nodes" to list all node IDs.`, flags);
+  }
+
+  const typeFilter = getFlagString(flags, "type");
+  const depth = getFlagNumber(flags, "depth") ?? 1;
+
+  const related = depth > 1
+    ? tree.walk(node!.id, depth, typeFilter as any || undefined)
+    : typeFilter
+      ? tree.related(node!.id, typeFilter as any)
+      : tree.related(node!.id);
+
+  if (isJsonMode(flags)) {
+    outputJson({
+      node: serializeNode(node!),
+      relatedTypes: tree.relatedTypes(node!.id),
+      related: related.map(serializeNode),
+    }, flags);
+    return;
+  }
+
+  console.log(`\n  ${node!.id}`);
+  const d = node!.data as Record<string, unknown> | undefined;
+  if (d) {
+    for (const [k, v] of Object.entries(d)) {
+      if (v != null && typeof v !== "object") console.log(`    ${k}: ${v}`);
+    }
+  }
+
+  const relatedTypes = tree.relatedTypes(node!.id);
+  console.log(`\n  Related types: ${relatedTypes.join(", ")}`);
+
+  // Group related by type
+  const byType = new Map<string, typeof related>();
+  for (const r of related) {
+    if (!byType.has(r.type)) byType.set(r.type, []);
+    byType.get(r.type)!.push(r);
+  }
+
+  for (const [type, nodes] of byType) {
+    console.log(`\n  ${type}:`);
+    for (const n of nodes) {
+      const rd = n.data as Record<string, unknown> | undefined;
+      const label = (rd?.name ?? rd?.character ?? rd?.englishName ?? rd?.meaning ?? "") as string;
+      console.log(`    ${n.id}${label ? ` — ${label}` : ""}`);
+    }
+  }
+  console.log();
+}
+
+function cmdTreeTypes(flags: Flags) {
+  const tree = getTree();
+  const allNodes = tree.getNodes();
+
+  const counts: Record<string, { count: number; ids: string[] }> = {};
+  for (const n of allNodes) {
+    if (!counts[n.type]) counts[n.type] = { count: 0, ids: [] };
+    counts[n.type].count++;
+    counts[n.type].ids.push(n.id);
+  }
+
+  if (isJsonMode(flags)) {
+    outputJson(counts, flags);
+    return;
+  }
+
+  console.log(`\nNode types (${Object.keys(counts).length}):\n`);
+  for (const [type, info] of Object.entries(counts)) {
+    console.log(`  ${type}: ${info.count}`);
   }
   console.log();
 }
@@ -1156,6 +1292,17 @@ async function main() {
 
     case "tree":
       cmdTree(flags);
+      break;
+
+    case "tree:node":
+      if (!args[1] && !inputPayload?.id) {
+        exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node "tarotArkAnnu:The Magician")', flags);
+      }
+      cmdTreeNode((inputPayload?.id as string) ?? args.slice(1).join(" "), flags);
+      break;
+
+    case "tree:types":
+      cmdTreeTypes(flags);
       break;
 
     case "astrology":

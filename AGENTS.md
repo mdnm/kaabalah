@@ -104,9 +104,9 @@ kaabalah help astrology --json
 Calculate Hebrew letter values for Latin text.
 
 ```bash
-kaabalah gematria "Mat Moura" --json --compact
+kaabalah gematria "Hello World" --json --compact
 # Input-json alternative:
-kaabalah gematria --input-json='{"text":"Mat Moura"}' --json --compact
+kaabalah gematria --input-json='{"text":"Hello World"}' --json --compact
 ```
 
 #### gematria:reverse
@@ -136,7 +136,7 @@ Sub-commands for specific numerology calculations.
 kaabalah numerology:lifepath 1990-01-15 --json --compact
 kaabalah numerology:challenges 1990-01-15 --json --compact
 kaabalah numerology:fibonacci 1990-01-15 --json --compact
-kaabalah numerology:cycles 1990-01-15 Mateus --json --compact
+kaabalah numerology:cycles 1990-01-15 John --json --compact
 ```
 
 #### astrology
@@ -145,10 +145,10 @@ Calculate a birth chart using Swiss Ephemeris (WASM).
 
 ```bash
 # With explicit coordinates (no API key needed)
-kaabalah astrology 1990-01-15 14:30 --lat=-23.5505 --lon=-46.6333 --json --compact
+kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --compact
 
 # With geocoding (requires GOOGLE_MAPS_API_KEY env var in .env)
-kaabalah astrology 1990-01-15 14:30 --location="Sao Paulo, Brazil" --json --compact
+kaabalah astrology 1990-01-15 14:30 --location="New York, USA" --json --compact
 
 # Custom house system and timezone
 kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --house-system=koch --timezone=America/New_York --json --compact
@@ -182,10 +182,33 @@ kaabalah ifa 1990-01-15 --json --compact
 
 #### tree
 
-Show Tree of Life structure.
+Show the full Tree of Life graph — all nodes with data and edges.
 
 ```bash
 kaabalah tree --json --compact
+```
+
+#### tree:node
+
+Look up a node and traverse its correspondences. This is the primary way to explore relationships between systems (tarot ↔ paths ↔ hebrew letters ↔ elements ↔ spheres ↔ planets ↔ zodiac).
+
+```bash
+# Direct correspondences of a path
+kaabalah tree:node path:1 --json --compact
+
+# Tarot card correspondences (depth=2 to reach hebrew letters, elements, etc.)
+kaabalah tree:node "tarotArkAnnu:The Magician" --depth=2 --json --compact
+
+# Filter by type
+kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json --compact
+```
+
+#### tree:types
+
+List all node types and their IDs. Useful to discover valid node IDs for `tree:node`.
+
+```bash
+kaabalah tree:types --json --compact
 ```
 
 ### Error Contract
