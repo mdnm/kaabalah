@@ -191,7 +191,7 @@ export class TreeOfLife {
 
     return [
       ...new Set(
-        [...this.adjacent.get(id)!.values()].map(
+        [...(this.adjacent.get(id) ?? new Set<NodeId<NodeType>>()).values()].map(
           (nodeId) => this.nodes.get(nodeId)!.type as T
         )
       ),
@@ -462,9 +462,10 @@ export class TreeOfLife {
     this.addNumber({ number: relatedNumber, nodeId: tarotArkAnnuId });
 
     if (suit) {
+      const suitValue = suit.includes(":") ? suit.split(":").pop()! : suit;
       const suitId = this.upsertNode(
         new BaseNode({
-          id: suit,
+          id: suitValue,
           type: TarotTypes.TAROT_SUIT,
         })
       );
