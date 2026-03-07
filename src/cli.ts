@@ -14,7 +14,7 @@ import {
   calculateStraightAcrossReductionLifePath,
   getDateEnergies,
 } from "./numerology";
-import { ARKANNUS, shuffleTarotDeck } from "./tarot";
+import { ARKANNUS, shuffleTarotDeck, type TarotCard } from "./tarot";
 
 const VERSION = "4.9.1";
 
@@ -127,10 +127,20 @@ const COMMANDS: CommandSchema[] = [
   },
   {
     name: "tarot:card",
-    description: "Look up a specific card (1-78)",
-    args: [{ name: "number", type: "number", required: true, description: "Card number (1-78)" }],
+    description: "Look up a specific card by number or name",
+    args: [{ name: "query", type: "string", required: true, description: "Card number (1-78) or name (e.g. 'The Chariot', 'Two of Cups')" }],
     flags: [],
-    examples: ["kaabalah tarot:card 7", "kaabalah tarot:card 22 --json"],
+    examples: ["kaabalah tarot:card 7", "kaabalah tarot:card \"The Chariot\" --json", "kaabalah tarot:card chariot --json"],
+  },
+  {
+    name: "tarot:spread",
+    description: "Look up multiple tarot cards by name or number",
+    args: [{ name: "cards", type: "string", required: true, description: "Card names or numbers, space-separated (quote multi-word names)" }],
+    flags: [],
+    examples: [
+      'kaabalah tarot:spread "Two of Cups" "The Chariot" 7',
+      "kaabalah tarot:spread --input-json='{\"cards\":[\"Two of Cups\",\"The Chariot\",\"7\"]}'",
+    ],
   },
   {
     name: "ifa",
@@ -833,25 +843,73 @@ async function cmdTarot(countStr: string | undefined, flags: Flags) {
   }
 }
 
-function cmdTarotCard(numberStr: string, flags: Flags) {
-  const num = parseInt(numberStr, 10);
-  const card = ARKANNUS.find((c) => c.number === num);
+function findCardsByQuery(query: string): { cards: TarotCard[]; exact: boolean } {
+  const num = parseInt(query, 10);
+  if (!isNaN(num)) {
+    const card = ARKANNUS.find((c) => c.number === num);
+    return card ? { cards: [card], exact: true } : { cards: [], exact: false };
+  }
 
-  if (!card) {
-    exitWithError("CARD_NOT_FOUND", `Card #${num} not found. Valid range: 1-78.`, flags);
+  const q = query.toLowerCase();
+  const exactMatch = ARKANNUS.find((c) => c.tarotCard.toLowerCase() === q);
+  if (exactMatch) return { cards: [exactMatch], exact: true };
+
+  const substringMatches = ARKANNUS.filter((c) => c.tarotCard.toLowerCase().includes(q));
+  return { cards: substringMatches, exact: false };
+}
+
+function printCard(card: TarotCard) {
+  console.log(`\n  #${String(card.number).padStart(2, "0")} ${card.tarotCard}`);
+  console.log(`  Type: ${card.type} | Suit: ${card.suit ?? "major"} | Deck: ${card.deck}`);
+  console.log(`  Meaning: ${card.meaning}`);
+  if (card.egyptianCardName) console.log(`  Egyptian: ${card.egyptianCardName}`);
+  if (card.papusMeaning) console.log(`  Papus: ${card.papusMeaning}`);
+  console.log();
+}
+
+function cmdTarotCard(query: string, flags: Flags) {
+  const { cards } = findCardsByQuery(query);
+
+  if (cards.length === 0) {
+    exitWithError("CARD_NOT_FOUND", `No card found for "${query}". Use a number (1-78) or card name.`, flags);
   }
 
   if (isJsonMode(flags)) {
-    outputJson(card, flags);
+    outputJson(cards.length === 1 ? cards[0] : cards, flags);
     return;
   }
 
-  console.log(`\n  #${String(card!.number).padStart(2, "0")} ${card!.tarotCard}`);
-  console.log(`  Type: ${card!.type} | Suit: ${card!.suit ?? "major"} | Deck: ${card!.deck}`);
-  console.log(`  Meaning: ${card!.meaning}`);
-  if (card!.egyptianCardName) console.log(`  Egyptian: ${card!.egyptianCardName}`);
-  if (card!.papusMeaning) console.log(`  Papus: ${card!.papusMeaning}`);
-  console.log();
+  for (const card of cards) {
+    printCard(card);
+  }
+}
+
+function cmdTarotSpread(cardQueries: string[], flags: Flags) {
+  const results: (TarotCard | { query: string; error: true; code: string; message: string })[] = [];
+
+  for (const q of cardQueries) {
+    const { cards } = findCardsByQuery(q);
+    if (cards.length === 0) {
+      results.push({ query: q, error: true, code: "CARD_NOT_FOUND", message: `No card found for "${q}".` });
+    } else if (cards.length === 1) {
+      results.push(cards[0]);
+    } else {
+      results.push(...cards);
+    }
+  }
+
+  if (isJsonMode(flags)) {
+    outputJson(results, flags);
+    return;
+  }
+
+  for (const item of results) {
+    if ("error" in item && item.error) {
+      console.log(`\n  ✗ "${item.query}": ${item.message}`);
+    } else {
+      printCard(item as TarotCard);
+    }
+  }
 }
 
 function cmdIfa(dateStr: string, flags: Flags) {
@@ -1277,11 +1335,22 @@ async function main() {
       break;
 
     case "tarot:card":
-      if (!args[1] && inputPayload?.number == null) {
-        exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:card <number>", flags);
+      if (!args[1] && inputPayload?.query == null) {
+        exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:card <query>", flags);
       }
-      cmdTarotCard((inputPayload?.number != null ? String(inputPayload.number) : undefined) ?? args[1], flags);
+      cmdTarotCard((inputPayload?.query != null ? String(inputPayload.query) : undefined) ?? args.slice(1).join(" "), flags);
       break;
+
+    case "tarot:spread": {
+      const cardQueries = Array.isArray(inputPayload?.cards)
+        ? (inputPayload.cards as string[]).map(String)
+        : args.slice(1);
+      if (cardQueries.length === 0) {
+        exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:spread <card1> [card2] ...", flags);
+      }
+      cmdTarotSpread(cardQueries, flags);
+      break;
+    }
 
     case "ifa":
       if (!args[1] && !inputPayload?.date) {
