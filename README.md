@@ -70,6 +70,76 @@ const gematriaValue = calculateGematria('kaabalah');
 const spread = getRandomSpread(3, true);
 ```
 
+## CLI
+
+Kaabalah includes a command-line interface for quick calculations without writing code.
+
+```bash
+# Install globally
+npm install -g kaabalah
+
+# Or run directly with npx
+npx kaabalah help
+```
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `gematria <text>` | Calculate gematria for a word or phrase |
+| `gematria:reverse <number>` | Find letter combinations matching a gematria value |
+| `numerology <date>` | Full numerological profile for a birth date |
+| `numerology:lifepath <date>` | Life path number (kaabalistic method) |
+| `numerology:cycles <date> [name]` | Personal cycles (year, month, periods) |
+| `numerology:challenges <date>` | Challenges from birth date |
+| `numerology:fibonacci <date>` | Fibonacci cycle for current age |
+| `astrology <date> [time]` | Calculate birth chart using Swiss Ephemeris |
+| `tarot [count]` | Draw tarot cards (default: 3) |
+| `tarot:card <number>` | Look up a specific card (1-78) |
+| `ifa <date>` | Calculate Odu from a date |
+| `tree` | Show Tree of Life structure with all nodes, data, and edges |
+| `tree:node <id>` | Look up a node and all its correspondences |
+| `tree:types` | List all node types and their counts |
+
+### Examples
+
+```bash
+kaabalah gematria "Hello World"
+kaabalah numerology 1990-01-15
+kaabalah numerology:cycles 1990-01-15 John
+kaabalah tarot 5 --inverted
+kaabalah tarot:card 7
+kaabalah gematria:reverse 22
+kaabalah ifa 1990-01-15
+kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
+kaabalah astrology 1990-01-15 14:30 --location="New York, USA"
+
+# Tree of Life correspondences
+kaabalah tree:node path:1 --json
+kaabalah tree:node "tarotArkAnnu:The Magician" --depth=2 --json
+kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json
+```
+
+### Global Flags
+
+| Flag | Description |
+|------|-------------|
+| `--json` | JSON output (auto-enabled when stdout is not a TTY) |
+| `--no-json` | Force human-readable output even when piped |
+| `--compact` | Minified JSON (no indentation) |
+| `--fields=a.b,c.d` | Filter JSON output to specified dot-paths |
+| `--input-json='{"key":"val"}'` | Pass all parameters as a JSON object |
+
+### Schema Introspection
+
+```bash
+# Full schema of all commands
+kaabalah help --json
+
+# Schema for a specific command
+kaabalah help astrology --json
+```
+
 ## Development
 
 This project uses TypeScript and WebAssembly for the Swiss Ephemeris calculations.
