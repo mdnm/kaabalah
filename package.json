@@ -1,7 +1,10 @@
 {
   "name": "kaabalah",
-  "version": "4.9.1",
+  "version": "5.0.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
+  "bin": {
+    "kaabalah": "dist/cli.js"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -49,7 +52,8 @@
   "files": [
     "dist",
     "wasm/build",
-    "ephe"
+    "ephe",
+    "dist/cli.js"
   ],
   "scripts": {
     "build": "tsup",
@@ -59,6 +63,7 @@
     "test:coverage": "vitest run --coverage --silent",
     "test:ui": "vitest --ui --silent",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
+    "postbuild": "printf '#!/usr/bin/env node\n' | cat - dist/cli.js > dist/cli.tmp && mv dist/cli.tmp dist/cli.js && chmod +x dist/cli.js",
     "prepublishOnly": "npm run build && mkdir -p dist/wasm/build/ && cp dist/swisseph* dist/wasm/build/"
   },
   "keywords": [
@@ -86,6 +91,7 @@
     "example": "examples"
   },
   "dependencies": {
+    "dotenv": "^17.3.1",
     "tz-lookup": "^6.1.25"
   },
   "devDependencies": {
