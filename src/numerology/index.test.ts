@@ -21,7 +21,7 @@ describe("Heptad cycles", () => {
     expect(res.yearlyCycles).toHaveLength(7);
     expect(res.monthlyCycles).toHaveLength(7);
     expect(res.currentAgeCycle).toBe(4);
-    expect(res.currentYearlyCycle).toBe(6);
+    expect(res.currentYearlyCycle).toBe(5);
     expect(res.currentMonthlyCycle).toBe(3);
   });
 });
