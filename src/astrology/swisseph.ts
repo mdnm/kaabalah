@@ -3,7 +3,7 @@
  */
 import wasmPathNode from "../../wasm/build/swisseph.node.wasm?url";
 import wasmPathWeb from "../../wasm/build/swisseph.web.wasm?url";
-import type { SwissEphModuleFactory } from "../../wasm/src/types";
+import type { SwissEphModule, SwissEphModuleFactory } from "../../wasm/src/types";
 
 // Note: In the production code, you'll need to include the compiled WASM files
 // and update the import path. This is a placeholder that would work once the
@@ -27,6 +27,279 @@ import {
 let swissEph: SwissEph | null = null;
 
 const DEFAULT_FLAGS = CalcFlag.SWISS_EPH | CalcFlag.SPEED;
+export const REQUIRED_EPHE_FILES = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"] as const;
+
+const NODE_EPHE_MOUNT_POINT = "/ephefs";
+const NODE_EPHE_MEMFS_PATH = "/ephemem";
+
+type EmscriptenFs = NonNullable<SwissEphModule["FS"]>;
+
+type NodeEphemerisStrategy = "nodefs-mount" | "host-path" | "memfs-copy";
+
+interface VirtualEphemerisCheck {
+  rootExists: boolean | null;
+  visibleEntries: string[];
+  missingFiles: string[];
+}
+
+interface ResolvedNodeEphemerisPath {
+  path: string;
+  strategy: NodeEphemerisStrategy;
+}
+
+interface NodeFsLike {
+  readFileSync(path: string): Uint8Array;
+}
+
+interface PathModuleLike {
+  join(...paths: string[]): string;
+}
+
+interface ResolveNodeEphemerisPathOptions {
+  nodeFs?: NodeFsLike;
+  pathModule?: PathModuleLike;
+  mountPoint?: string;
+  memfsPath?: string;
+  requiredFiles?: readonly string[];
+}
+
+function normalizeVirtualPath(path: string): string {
+  if (path === "/") {
+    return path;
+  }
+
+  return path.replace(/\/+$/, "") || "/";
+}
+
+function joinVirtualPath(rootPath: string, leaf: string): string {
+  const normalizedRoot = normalizeVirtualPath(rootPath);
+  return normalizedRoot === "/" ? `/${leaf}` : `${normalizedRoot}/${leaf}`;
+}
+
+function ensureVirtualDir(fs: EmscriptenFs, path: string): void {
+  try {
+    fs.mkdir(path);
+  } catch {
+    // Ignore existing directories and readonly mount roots.
+  }
+}
+
+function safeAnalyzePath(fs: EmscriptenFs, path: string): boolean | null {
+  if (!fs.analyzePath) {
+    return null;
+  }
+
+  try {
+    return fs.analyzePath(path).exists === true;
+  } catch {
+    return false;
+  }
+}
+
+function safeReaddir(fs: EmscriptenFs, path: string): string[] {
+  if (!fs.readdir) {
+    return [];
+  }
+
+  try {
+    return fs.readdir(path).filter((entry) => entry !== "." && entry !== "..");
+  } catch {
+    return [];
+  }
+}
+
+export function inspectVirtualEphemerisPath(
+  fs: EmscriptenFs | undefined,
+  rootPath: string,
+  requiredFiles: readonly string[] = REQUIRED_EPHE_FILES
+): VirtualEphemerisCheck {
+  if (!fs) {
+    return {
+      rootExists: null,
+      visibleEntries: [],
+      missingFiles: [...requiredFiles],
+    };
+  }
+
+  const rootExists = safeAnalyzePath(fs, rootPath);
+  const visibleEntries = safeReaddir(fs, rootPath);
+  const missingFiles = requiredFiles.filter((file) => {
+    const filePath = joinVirtualPath(rootPath, file);
+    return !visibleEntries.includes(file) && safeAnalyzePath(fs, filePath) !== true;
+  });
+
+  return {
+    rootExists,
+    visibleEntries,
+    missingFiles,
+  };
+}
+
+function formatVirtualPathCheck(label: string, path: string, check: VirtualEphemerisCheck | null): string {
+  if (!check) {
+    return `${label} "${path}" could not be inspected.`;
+  }
+
+  const exists = check.rootExists == null ? "unknown" : check.rootExists ? "yes" : "no";
+  const visibleEntries = check.visibleEntries.length > 0 ? check.visibleEntries.join(", ") : "(none)";
+  const missingFiles = check.missingFiles.length > 0 ? check.missingFiles.join(", ") : "(none)";
+
+  return `${label} "${path}" exists: ${exists}; visible entries: ${visibleEntries}; missing required files: ${missingFiles}.`;
+}
+
+function normalizeHostFileData(data: Uint8Array): Uint8Array {
+  return data instanceof Uint8Array ? data : new Uint8Array(data);
+}
+
+function loadHostEphemerisFiles(
+  ephePath: string,
+  requiredFiles: readonly string[],
+  nodeFs: NodeFsLike,
+  pathModule: PathModuleLike
+): Map<string, Uint8Array> {
+  const files = new Map<string, Uint8Array>();
+
+  for (const file of requiredFiles) {
+    files.set(file, normalizeHostFileData(nodeFs.readFileSync(pathModule.join(ephePath, file))));
+  }
+
+  return files;
+}
+
+function writeEphemerisFilesToMemfs(
+  fs: EmscriptenFs,
+  targetPath: string,
+  files: Map<string, Uint8Array>
+): void {
+  ensureVirtualDir(fs, targetPath);
+
+  for (const [fileName, fileData] of files.entries()) {
+    fs.writeFile(joinVirtualPath(targetPath, fileName), fileData);
+  }
+}
+
+function toError(err: unknown): Error {
+  return err instanceof Error ? err : new Error(String(err));
+}
+
+function buildEphemerisResolutionError(
+  finalEphePath: string,
+  requiredFiles: readonly string[],
+  details: {
+    mountAttempted: boolean;
+    mountPoint: string;
+    mountCheck: VirtualEphemerisCheck | null;
+    mountError: Error | null;
+    hostCheck: VirtualEphemerisCheck | null;
+    memfsPath: string;
+    memfsCheck: VirtualEphemerisCheck | null;
+    hostReadError: Error | null;
+  }
+): string {
+  const parts = [
+    `Unable to resolve Swiss Ephemeris data files. Expected ${requiredFiles.join(", ")} under "${finalEphePath}".`,
+  ];
+
+  if (details.mountAttempted) {
+    parts.push(
+      `${formatVirtualPathCheck("Mounted ephemeris path", details.mountPoint, details.mountCheck)} The NODEFS mount may have failed silently.`
+    );
+  }
+
+  if (details.mountError) {
+    parts.push(`Mounting the ephemeris directory failed: ${details.mountError.message}.`);
+  }
+
+  parts.push(formatVirtualPathCheck("Direct host ephemeris path", finalEphePath, details.hostCheck));
+
+  if (details.memfsCheck) {
+    parts.push(formatVirtualPathCheck("MEMFS ephemeris copy", details.memfsPath, details.memfsCheck));
+  }
+
+  if (details.hostReadError) {
+    parts.push(`Reading host ephemeris files failed: ${details.hostReadError.message}.`);
+  }
+
+  parts.push(
+    `Pass an explicit ephePath that contains ${requiredFiles.join(", ")} or ensure the packaged ephemeris directory is readable.`
+  );
+
+  return parts.join(" ");
+}
+
+export function resolveNodeEphemerisPath(
+  module: SwissEphModule,
+  finalEphePath: string,
+  options: ResolveNodeEphemerisPathOptions = {}
+): ResolvedNodeEphemerisPath {
+  const fs = module.FS;
+  const requiredFiles = options.requiredFiles ?? REQUIRED_EPHE_FILES;
+  const mountPoint = options.mountPoint ?? NODE_EPHE_MOUNT_POINT;
+  const memfsPath = options.memfsPath ?? NODE_EPHE_MEMFS_PATH;
+  const nodeFs = options.nodeFs ?? (require("fs") as NodeFsLike);
+  const pathModule = options.pathModule ?? (require("path") as PathModuleLike);
+
+  let mountAttempted = false;
+  let mountCheck: VirtualEphemerisCheck | null = null;
+  let mountError: Error | null = null;
+  let hostCheck: VirtualEphemerisCheck | null = null;
+  let memfsCheck: VirtualEphemerisCheck | null = null;
+  let hostReadError: Error | null = null;
+
+  if (fs?.mount && fs.filesystems?.NODEFS) {
+    mountAttempted = true;
+    ensureVirtualDir(fs, mountPoint);
+
+    try {
+      fs.mount(fs.filesystems.NODEFS, { root: finalEphePath }, mountPoint);
+      mountCheck = inspectVirtualEphemerisPath(fs, mountPoint, requiredFiles);
+
+      if (mountCheck.missingFiles.length === 0) {
+        return { path: mountPoint, strategy: "nodefs-mount" };
+      }
+    } catch (mountErr) {
+      mountError = toError(mountErr);
+    }
+  }
+
+  hostCheck = inspectVirtualEphemerisPath(fs, finalEphePath, requiredFiles);
+  if (fs && hostCheck.missingFiles.length === 0) {
+    return { path: finalEphePath, strategy: "host-path" };
+  }
+
+  let hostFiles: Map<string, Uint8Array> | null = null;
+  try {
+    hostFiles = loadHostEphemerisFiles(finalEphePath, requiredFiles, nodeFs, pathModule);
+  } catch (err) {
+    hostReadError = toError(err);
+  }
+
+  if (hostFiles && fs?.writeFile) {
+    writeEphemerisFilesToMemfs(fs, memfsPath, hostFiles);
+    memfsCheck = inspectVirtualEphemerisPath(fs, memfsPath, requiredFiles);
+
+    if (memfsCheck.missingFiles.length === 0) {
+      return { path: memfsPath, strategy: "memfs-copy" };
+    }
+  }
+
+  if (hostFiles) {
+    return { path: finalEphePath, strategy: "host-path" };
+  }
+
+  throw new Error(
+    buildEphemerisResolutionError(finalEphePath, requiredFiles, {
+      mountAttempted,
+      mountPoint,
+      mountCheck,
+      mountError,
+      hostCheck,
+      memfsPath,
+      memfsCheck,
+      hostReadError,
+    })
+  );
+}
 
 /**
  * Initializes and returns the Swiss Ephemeris instance.
@@ -90,51 +363,24 @@ export async function getSwissEph(
           );
         })
       );
+      const browserCheck = inspectVirtualEphemerisPath(module.FS, epheFsPath, REQUIRED_EPHE_FILES);
+      if (browserCheck.missingFiles.length > 0) {
+        throw new Error(
+          `Failed to materialize browser ephemeris files at "${epheFsPath}". Missing: ${browserCheck.missingFiles.join(", ")}.`
+        );
+      }
       console.info(`Setting ephemeris path to: ${epheFsPath}`);
       instance.setEphemerisPath(epheFsPath);
     } else {
-      // In Node, prefer NODERAWFS host path; attempt NODEFS mount if available
-      // Debug info
-      console.info(
-        "Emscripten FS availability:",
-        Boolean(module.FS),
-        "mount:",
-        Boolean(module.FS?.mount),
-        "NODEFS:",
-        Boolean(module.FS?.filesystems?.NODEFS)
-      );
-      if (
-        module.FS?.mount &&
-        module.FS?.filesystems?.NODEFS
-      ) {
-        const mountPoint = "/ephefs";
-        try {
-          try {
-            module.FS?.mkdir(mountPoint);
-          } catch {
-            // ignore exists
-          }
-          module.FS?.mount(
-            module.FS?.filesystems.NODEFS,
-            { root: finalEphePath },
-            mountPoint
-          );
-          console.info(
-            `Setting ephemeris path to: ${mountPoint} (mounted from ${finalEphePath})`
-          );
-          instance.setEphemerisPath(mountPoint);
-        } catch (mountErr) {
-          console.warn(
-            `Failed to mount ephemeris directory, falling back to host path: ${finalEphePath}`,
-            mountErr
-          );
-          console.info(`Setting ephemeris path to: ${finalEphePath}`);
-          instance.setEphemerisPath(finalEphePath);
-        }
+      const resolution = resolveNodeEphemerisPath(module, finalEphePath);
+      if (resolution.strategy === "nodefs-mount") {
+        console.info(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
+      } else if (resolution.strategy === "memfs-copy") {
+        console.info(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
       } else {
-        console.info(`Setting ephemeris path to: ${finalEphePath}`);
-        instance.setEphemerisPath(finalEphePath);
+        console.info(`Setting ephemeris path to: ${resolution.path}`);
       }
+      instance.setEphemerisPath(resolution.path);
     }
 
     swissEph = instance;

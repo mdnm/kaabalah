@@ -14,6 +14,10 @@ export interface SwissEphModule {
   FS?: {
     mkdir(path: string): void;
     mount(fs: unknown, opts: { root: string }, mountPoint: string): void;
+    readdir(path: string): string[];
+    analyzePath(path: string): {
+      exists: boolean;
+    };
     createPreloadedFile(
       parent: string,
       name: string,
@@ -22,8 +26,8 @@ export interface SwissEphModule {
       canWrite: boolean
     ): void;
     writeFile(path: string, data: Uint8Array | string, opts?: unknown): void;
-    filesystems: {
-      NODEFS: unknown;
+    filesystems?: {
+      NODEFS?: unknown;
     };
   };
 }

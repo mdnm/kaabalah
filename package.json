@@ -1,10 +1,21 @@
 {
   "name": "kaabalah",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "bin": {
     "kaabalah": "dist/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdnm/kaabalah.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mdnm/kaabalah/issues"
+  },
+  "homepage": "https://github.com/mdnm/kaabalah#readme",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -63,7 +74,6 @@
     "test:coverage": "vitest run --coverage --silent",
     "test:ui": "vitest --ui --silent",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
-    "postbuild": "printf '#!/usr/bin/env node\n' | cat - dist/cli.js > dist/cli.tmp && mv dist/cli.tmp dist/cli.js && chmod +x dist/cli.js",
     "prepublishOnly": "npm run build && mkdir -p dist/wasm/build/ && cp dist/swisseph* dist/wasm/build/"
   },
   "keywords": [
