@@ -1179,49 +1179,60 @@ async function initWasm() {
   await getSwissEph({ wasmPath, ephePath });
 }
 
-async function cmdAstrologySynastry(flags: Flags, inputPayload: Record<string, unknown> | null) {
-  if (!inputPayload?.chartA || !inputPayload?.chartB) {
-    exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah astrology:synastry --input-json=\'{"chartA":{...},"chartB":{...}}\'', flags);
-  }
+type ParsedChartInput = ReturnType<typeof parseChartInput>;
 
+async function parseTwoChartCommand(
+  flags: Flags,
+  inputPayload: Record<string, unknown> | null,
+  commandName: string
+) {
+  if (!inputPayload?.chartA || !inputPayload?.chartB) {
+    exitWithError("MISSING_ARGUMENT", `Usage: kaabalah ${commandName} --input-json='{"chartA":{...},"chartB":{...}}'`, flags);
+  }
   const chartAInput = parseChartInput(inputPayload!.chartA as Record<string, unknown>, "chartA", flags);
   const chartBInput = parseChartInput(inputPayload!.chartB as Record<string, unknown>, "chartB", flags);
-
-  const { getSynastryChart, closeSwissEph, HouseSystem } = await import("./astrology");
-
+  const astroModule = await import("./astrology");
   try {
     await initWasm();
   } catch (err) {
     exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
   }
+  return { chartAInput, chartBInput, astroModule, aspectSpecs: inputPayload!.aspectSpecs as any };
+}
+
+function buildBirthChartOptions(
+  input: ParsedChartInput,
+  HouseSystem: typeof import("./astrology").HouseSystem
+) {
+  return {
+    date: input.birthDate,
+    latitude: input.latitude,
+    longitude: input.longitude,
+    houseSystem: input.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+    timeZoneSettings: input.timeZoneSettings as any,
+  };
+}
+
+function formatInputEcho(chartAInput: ParsedChartInput, chartBInput: ParsedChartInput) {
+  return {
+    chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr, lat: chartAInput.latitude, lon: chartAInput.longitude, houseSystem: chartAInput.houseSystem },
+    chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr, lat: chartBInput.latitude, lon: chartBInput.longitude, houseSystem: chartBInput.houseSystem },
+  };
+}
+
+async function cmdAstrologySynastry(flags: Flags, inputPayload: Record<string, unknown> | null) {
+  const { chartAInput, chartBInput, astroModule, aspectSpecs } = await parseTwoChartCommand(flags, inputPayload, "astrology:synastry");
+  const { getSynastryChart, closeSwissEph, HouseSystem } = astroModule;
 
   try {
     const result = await getSynastryChart({
-      chartA: {
-        date: chartAInput.birthDate,
-        latitude: chartAInput.latitude,
-        longitude: chartAInput.longitude,
-        houseSystem: chartAInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
-        timeZoneSettings: chartAInput.timeZoneSettings as any,
-      },
-      chartB: {
-        date: chartBInput.birthDate,
-        latitude: chartBInput.latitude,
-        longitude: chartBInput.longitude,
-        houseSystem: chartBInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
-        timeZoneSettings: chartBInput.timeZoneSettings as any,
-      },
-      aspectSpecs: inputPayload!.aspectSpecs as any,
+      chartA: buildBirthChartOptions(chartAInput, HouseSystem),
+      chartB: buildBirthChartOptions(chartBInput, HouseSystem),
+      aspectSpecs,
     });
 
     if (isJsonMode(flags)) {
-      outputJson({
-        ...result,
-        input: {
-          chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr, lat: chartAInput.latitude, lon: chartAInput.longitude, houseSystem: chartAInput.houseSystem },
-          chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr, lat: chartBInput.latitude, lon: chartBInput.longitude, houseSystem: chartBInput.houseSystem },
-        },
-      }, flags);
+      outputJson({ ...result, input: formatInputEcho(chartAInput, chartBInput) }, flags);
     } else {
       console.log(`\nSynastry Chart\n`);
       console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
@@ -1238,48 +1249,18 @@ async function cmdAstrologySynastry(flags: Flags, inputPayload: Record<string, u
 }
 
 async function cmdAstrologyComposite(flags: Flags, inputPayload: Record<string, unknown> | null) {
-  if (!inputPayload?.chartA || !inputPayload?.chartB) {
-    exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah astrology:composite --input-json=\'{"chartA":{...},"chartB":{...}}\'', flags);
-  }
-
-  const chartAInput = parseChartInput(inputPayload!.chartA as Record<string, unknown>, "chartA", flags);
-  const chartBInput = parseChartInput(inputPayload!.chartB as Record<string, unknown>, "chartB", flags);
-
-  const { getCompositeChart, closeSwissEph, HouseSystem } = await import("./astrology");
-
-  try {
-    await initWasm();
-  } catch (err) {
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
-  }
+  const { chartAInput, chartBInput, astroModule, aspectSpecs } = await parseTwoChartCommand(flags, inputPayload, "astrology:composite");
+  const { getCompositeChart, closeSwissEph, HouseSystem } = astroModule;
 
   try {
     const result = await getCompositeChart({
-      chartA: {
-        date: chartAInput.birthDate,
-        latitude: chartAInput.latitude,
-        longitude: chartAInput.longitude,
-        houseSystem: chartAInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
-        timeZoneSettings: chartAInput.timeZoneSettings as any,
-      },
-      chartB: {
-        date: chartBInput.birthDate,
-        latitude: chartBInput.latitude,
-        longitude: chartBInput.longitude,
-        houseSystem: chartBInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
-        timeZoneSettings: chartBInput.timeZoneSettings as any,
-      },
-      aspectSpecs: inputPayload!.aspectSpecs as any,
+      chartA: buildBirthChartOptions(chartAInput, HouseSystem),
+      chartB: buildBirthChartOptions(chartBInput, HouseSystem),
+      aspectSpecs,
     });
 
     if (isJsonMode(flags)) {
-      outputJson({
-        ...result,
-        input: {
-          chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr, lat: chartAInput.latitude, lon: chartAInput.longitude, houseSystem: chartAInput.houseSystem },
-          chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr, lat: chartBInput.latitude, lon: chartBInput.longitude, houseSystem: chartBInput.houseSystem },
-        },
-      }, flags);
+      outputJson({ ...result, input: formatInputEcho(chartAInput, chartBInput) }, flags);
     } else {
       console.log(`\nComposite Chart (Midpoint Method)\n`);
       console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);

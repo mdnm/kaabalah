@@ -118,6 +118,14 @@ export function computeSynastryAspects(
   return edges;
 }
 
+/** Shorter-arc midpoint of two ecliptic longitudes. */
+export function shorterArcMidpoint(a: number, b: number): number {
+  let diff = b - a;
+  if (diff > 180) diff -= 360;
+  if (diff < -180) diff += 360;
+  return normalizeAngle(a + diff / 2);
+}
+
 export function computeMidpoints(
   planetsA: Record<string, { longitude: number }>,
   planetsB: Record<string, { longitude: number }>
@@ -125,12 +133,7 @@ export function computeMidpoints(
   const result: Record<string, number> = {};
   for (const key of Object.keys(planetsA)) {
     if (!(key in planetsB)) continue;
-    const a = planetsA[key].longitude;
-    const b = planetsB[key].longitude;
-    let diff = b - a;
-    if (diff > 180) diff -= 360;
-    if (diff < -180) diff += 360;
-    result[key] = normalizeAngle(a + diff / 2);
+    result[key] = shorterArcMidpoint(planetsA[key].longitude, planetsB[key].longitude);
   }
   return result;
 }
