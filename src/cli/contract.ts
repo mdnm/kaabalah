@@ -1,0 +1,222 @@
+import packageJson from "../../package.json";
+
+export const VERSION = packageJson.version;
+
+export interface CommandArg {
+  name: string;
+  type: "string" | "number" | "date";
+  required: boolean;
+  description: string;
+}
+
+export interface CommandFlag {
+  name: string;
+  type: "boolean" | "string" | "number";
+  default?: string | boolean | number;
+  description: string;
+}
+
+export interface CommandSchema {
+  name: string;
+  description: string;
+  args: CommandArg[];
+  flags: CommandFlag[];
+  examples: string[];
+}
+
+export const GLOBAL_FLAGS: CommandFlag[] = [
+  { name: "json", type: "boolean", default: false, description: "Output as JSON (auto-enabled when stdout is not a TTY)" },
+  { name: "no-json", type: "boolean", default: false, description: "Force human-readable output even when piped" },
+  { name: "compact", type: "boolean", default: false, description: "Minified JSON output (no indentation)" },
+  { name: "fields", type: "string", description: "Comma-separated dot-paths to filter JSON output (e.g. --fields=a.b,c.d)" },
+  { name: "input-json", type: "string", description: "JSON string, or - to read a JSON object from stdin" },
+  { name: "debug", type: "boolean", default: false, description: "Emit debug logs to stderr (same effect as DEBUG=kaabalah:*)" },
+  { name: "trace", type: "boolean", default: false, description: "Print stack traces for unexpected fatal errors in human-readable mode" },
+];
+
+export const COMMANDS: CommandSchema[] = [
+  {
+    name: "gematria",
+    description: "Calculate gematria for a word/phrase",
+    args: [{ name: "text", type: "string", required: true, description: "Text to calculate gematria for" }],
+    flags: [
+      { name: "missing", type: "boolean", default: false, description: "Show missing gematria values" },
+      { name: "percentages", type: "boolean", default: false, description: "Show letter percentages" },
+    ],
+    examples: ['kaabalah gematria "Hello World"', "kaabalah gematria --json --compact < phrase.txt"],
+  },
+  {
+    name: "gematria:reverse",
+    description: "Find letter combos matching a gematria value",
+    args: [{ name: "target", type: "number", required: true, description: "Target synthesis number" }],
+    flags: [
+      { name: "max-results", type: "number", default: 20, description: "Maximum results to return (max 10000)" },
+      { name: "min-length", type: "number", default: 2, description: "Minimum letters per combination" },
+      { name: "max-length", type: "number", default: 6, description: "Maximum letters per combination" },
+      { name: "include-digraphs", type: "boolean", default: false, description: "Include digraphs like PH, SH" },
+    ],
+    examples: ["kaabalah gematria:reverse 22", "kaabalah gematria:reverse 22 --max-results=50 --json"],
+  },
+  {
+    name: "numerology",
+    description: "Full numerological profile for a birth date",
+    args: [{ name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" }],
+    flags: [],
+    examples: [
+      "kaabalah numerology 1990-01-15",
+      "kaabalah numerology 1990-01-15 --json --fields=kaabalistic.lifePath.reducedValue",
+      "kaabalah numerology --input-json=- --json --compact < numerology.json",
+    ],
+  },
+  {
+    name: "numerology:lifepath",
+    description: "Life path number (kaabalistic method)",
+    args: [{ name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" }],
+    flags: [],
+    examples: ["kaabalah numerology:lifepath 1990-01-15"],
+  },
+  {
+    name: "numerology:cycles",
+    description: "Personal cycles (year, month, periods)",
+    args: [
+      { name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" },
+      { name: "firstName", type: "string", required: false, description: "First name for personal cycles" },
+    ],
+    flags: [],
+    examples: ["kaabalah numerology:cycles 1990-01-15", "kaabalah numerology:cycles 1990-01-15 John"],
+  },
+  {
+    name: "numerology:challenges",
+    description: "Challenges from birth date",
+    args: [{ name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" }],
+    flags: [],
+    examples: ["kaabalah numerology:challenges 1990-01-15"],
+  },
+  {
+    name: "numerology:fibonacci",
+    description: "Fibonacci cycle for current age",
+    args: [{ name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" }],
+    flags: [],
+    examples: ["kaabalah numerology:fibonacci 1990-01-15"],
+  },
+  {
+    name: "tarot",
+    description: "Draw tarot cards (default: 3)",
+    args: [{ name: "count", type: "number", required: false, description: "Number of cards to draw (1-78, default: 3)" }],
+    flags: [
+      { name: "inverted", type: "boolean", default: false, description: "Include inverted cards" },
+      { name: "shuffle-count", type: "number", default: 7, description: "Number of times to shuffle the deck" },
+    ],
+    examples: ["kaabalah tarot 5 --inverted", "kaabalah tarot --json"],
+  },
+  {
+    name: "tarot:card",
+    description: "Look up a specific card by number or name",
+    args: [{ name: "query", type: "string", required: true, description: "Card number (1-78) or name (e.g. 'The Chariot', 'Two of Cups')" }],
+    flags: [],
+    examples: ["kaabalah tarot:card 7", 'kaabalah tarot:card "The Chariot" --json', "kaabalah tarot:card chariot --json"],
+  },
+  {
+    name: "tarot:spread",
+    description: "Look up multiple tarot cards by name or number",
+    args: [{ name: "cards", type: "string", required: true, description: "Card names or numbers, space-separated (quote multi-word names)" }],
+    flags: [],
+    examples: [
+      'kaabalah tarot:spread "Two of Cups" "The Chariot" 7',
+      "kaabalah tarot:spread --input-json=- --json --compact < cards.json",
+    ],
+  },
+  {
+    name: "ifa",
+    description: "Calculate Odu from a date",
+    args: [{ name: "date", type: "date", required: true, description: "Date in YYYY-MM-DD format" }],
+    flags: [],
+    examples: ["kaabalah ifa 1990-01-15"],
+  },
+  {
+    name: "tree",
+    description: "Show Tree of Life structure with all nodes, data, and edges",
+    args: [],
+    flags: [],
+    examples: ["kaabalah tree --json --compact", "kaabalah tree --json --fields=nodes"],
+  },
+  {
+    name: "tree:node",
+    description: "Look up a node and all its correspondences",
+    args: [{ name: "id", type: "string", required: true, description: "Node ID (e.g. path:1, sphere:Kether, tarotArkAnnu:The Magician)" }],
+    flags: [
+      { name: "type", type: "string", description: "Filter related nodes by type (e.g. hebrewLetter, planet, tarotArkAnnu)" },
+      { name: "depth", type: "number", default: 1, description: "Traversal depth (default: 1)" },
+    ],
+    examples: [
+      "kaabalah tree:node path:1 --json",
+      "kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json",
+      'kaabalah tree:node "tarotArkAnnu:The Magician" --json',
+      "kaabalah tree:node path:1 --depth=2 --json",
+    ],
+  },
+  {
+    name: "tree:types",
+    description: "List all node types and their counts",
+    args: [],
+    flags: [],
+    examples: ["kaabalah tree:types --json"],
+  },
+  {
+    name: "astrology",
+    description: "Calculate birth chart using Swiss Ephemeris",
+    args: [
+      { name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" },
+      { name: "time", type: "string", required: false, description: "Birth time in HH:MM format (default: 12:00)" },
+    ],
+    flags: [
+      { name: "lat", type: "number", description: "Latitude (-90 to 90)" },
+      { name: "lon", type: "number", description: "Longitude (-180 to 180)" },
+      { name: "location", type: "string", description: "Location string for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)" },
+      { name: "house-system", type: "string", default: "placidus", description: "House system: placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius" },
+      { name: "timezone", type: "string", description: "IANA timezone string (e.g. America/New_York). Auto-resolved from coordinates if omitted" },
+      { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
+      { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
+    ],
+    examples: [
+      "kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006",
+      'kaabalah astrology 1990-01-15 14:30 --location="New York, USA"',
+      "kaabalah astrology 1990-01-15 --lat=40.7128 --lon=-74.006 --json",
+    ],
+  },
+  {
+    name: "astrology:synastry",
+    description: "Calculate synastry (cross-chart aspects) between two birth charts",
+    args: [],
+    flags: [
+      { name: "house-system", type: "string", default: "placidus", description: "House system for both charts" },
+      { name: "timezone", type: "string", description: "Default timezone for both charts when omitted in chartA/chartB" },
+      { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
+      { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
+    ],
+    examples: [
+      "kaabalah astrology:synastry --input-json=- --json --compact < synastry.json",
+    ],
+  },
+  {
+    name: "astrology:composite",
+    description: "Calculate midpoint composite chart from two birth charts",
+    args: [],
+    flags: [
+      { name: "house-system", type: "string", default: "placidus", description: "House system for both charts" },
+      { name: "timezone", type: "string", description: "Default timezone for both charts when omitted in chartA/chartB" },
+      { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
+      { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
+    ],
+    examples: [
+      "kaabalah astrology:composite --input-json=- --json --compact < composite.json",
+    ],
+  },
+  {
+    name: "help",
+    description: "Show help message",
+    args: [{ name: "command", type: "string", required: false, description: "Command to show help for" }],
+    flags: [],
+    examples: ["kaabalah help", "kaabalah help --json", "kaabalah help astrology --json"],
+  },
+];

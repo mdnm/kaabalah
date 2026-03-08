@@ -20,6 +20,8 @@ Complete documentation here [https://docs.kaabalah.com/](https://docs.kaabalah.c
 npm install kaabalah
 ```
 
+Node.js 18.18+ is required for the bundled CLI and runtime helpers.
+
 ## Support us on Ko-Fi
 
 If you find this package useful, you can support it on Ko-Fi too (or just star the repo):
@@ -117,10 +119,10 @@ kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
 kaabalah astrology 1990-01-15 14:30 --location="New York, USA"
 
 # Synastry (cross-chart aspects)
-kaabalah astrology:synastry --input-json='{"chartA":{"date":"2001-10-02","time":"19:45","lat":-22.74,"lon":-47.33,"timezone":"America/Sao_Paulo"},"chartB":{"date":"1999-02-01","time":"14:30","lat":-23.96,"lon":-46.33,"timezone":"America/Sao_Paulo"}}' --json
+kaabalah astrology:synastry --input-json=- --json < synastry.json
 
 # Composite (midpoint chart)
-kaabalah astrology:composite --input-json='{"chartA":{"date":"2001-10-02","time":"19:45","lat":-22.74,"lon":-47.33},"chartB":{"date":"1999-02-01","time":"14:30","lat":-23.96,"lon":-46.33}}' --json
+kaabalah astrology:composite --input-json=- --json < composite.json
 
 # Tree of Life correspondences
 kaabalah tree:node path:1 --json
@@ -136,7 +138,9 @@ kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json
 | `--no-json` | Force human-readable output even when piped |
 | `--compact` | Minified JSON (no indentation) |
 | `--fields=a.b,c.d` | Filter JSON output to specified dot-paths |
-| `--input-json='{"key":"val"}'` | Pass all parameters as a JSON object |
+| `--input-json=-` | Read a JSON object from stdin |
+| `--debug` | Emit debug logs to stderr (same effect as `DEBUG=kaabalah:*`) |
+| `--trace` | Print stack traces for unexpected fatal errors in human-readable mode |
 
 ### Schema Introspection
 
@@ -146,6 +150,19 @@ kaabalah help --json
 
 # Schema for a specific command
 kaabalah help astrology --json
+```
+
+### Debugging
+
+```bash
+# Emit parser/config/astrology debug logs to stderr
+DEBUG=kaabalah:* kaabalah help --json
+
+# Same as above, but from the CLI flag
+kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --debug
+
+# Add --trace while reproducing an unexpected fatal error locally
+kaabalah <command> --trace --no-json
 ```
 
 ## Development
