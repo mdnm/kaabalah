@@ -30,6 +30,9 @@ export {
   VirtualNodes
 };
 
+export * from "./aspects";
+import { computeAspects, computeSynastryAspects, computeMidpoints, type AspectEdge, type AspectSpec } from "./aspects";
+
 export interface BirthChartOptions {
   date: Date;
   latitude: number;
@@ -72,6 +75,7 @@ export interface BirthChart {
       polasc?: ZodiacPosition;
     };
   };
+  aspects: AspectEdge[];
 }
 
 function validateInputs(options: BirthChartOptions): void {
@@ -220,11 +224,17 @@ export async function getBirthChart(
       },
     };
 
+    const allPoints: Record<string, { longitude: number }> = { ...planets };
+    allPoints["ascendant"] = { longitude: houses.ascendant.longitude };
+    allPoints["mc"] = { longitude: houses.mc.longitude };
+    const aspects = computeAspects(allPoints);
+
     return {
       dateUtc: utcDate,
       planets,
       houses,
       nodes,
+      aspects,
     };
   } catch (error) {
     console.error("Error calculating birth chart:", error);
@@ -298,7 +308,7 @@ export function findHouseOf(
   if (!housePositions || housePositions.length === 0) {
     throw new Error("House positions are required");
   }
-  
+
   const H = housePositions
     .map((c, i) => ({ i: i + 1, L: normalizeAngle(c) }))
     .sort((a, b) => a.L - b.L);
@@ -313,4 +323,105 @@ export function findHouseOf(
     }
   }
   return 1;
+}
+
+function getAspectPoints(chart: BirthChart): Record<string, { longitude: number }> {
+  const points: Record<string, { longitude: number }> = {};
+  for (const [k, v] of Object.entries(chart.planets)) {
+    points[k] = v;
+  }
+  points["ascendant"] = { longitude: chart.houses.ascendant.longitude };
+  points["mc"] = { longitude: chart.houses.mc.longitude };
+  return points;
+}
+
+// ── Synastry ──────────────────────────────────────────────────────────
+
+export interface SynastryChartOptions {
+  chartA: BirthChartOptions;
+  chartB: BirthChartOptions;
+  aspectSpecs?: AspectSpec[];
+}
+
+export interface SynastryChart {
+  chartA: BirthChart;
+  chartB: BirthChart;
+  aspects: AspectEdge[];
+}
+
+export async function getSynastryChart(
+  options: SynastryChartOptions
+): Promise<SynastryChart> {
+  const chartA = await getBirthChart(options.chartA);
+  const chartB = await getBirthChart(options.chartB);
+  const aspects = computeSynastryAspects(
+    getAspectPoints(chartA),
+    getAspectPoints(chartB),
+    options.aspectSpecs
+  );
+  return { chartA, chartB, aspects };
+}
+
+// ── Composite ─────────────────────────────────────────────────────────
+
+export interface CompositeChartOptions {
+  chartA: BirthChartOptions;
+  chartB: BirthChartOptions;
+  aspectSpecs?: AspectSpec[];
+}
+
+export interface CompositeChart {
+  chartA: BirthChart;
+  chartB: BirthChart;
+  compositePlanets: Record<
+    string,
+    { name: string; longitude: number; zodiacPosition: ZodiacPosition }
+  >;
+  compositeHouses: ZodiacPosition[];
+  aspects: AspectEdge[];
+}
+
+export async function getCompositeChart(
+  options: CompositeChartOptions
+): Promise<CompositeChart> {
+  const chartA = await getBirthChart(options.chartA);
+  const chartB = await getBirthChart(options.chartB);
+
+  // Midpoint planets
+  const midpointLongitudes = computeMidpoints(chartA.planets, chartB.planets);
+
+  // Midpoint house cusps (shorter-arc midpoint of corresponding cusps)
+  const cuspsA = chartA.houses.houses.map((h) => h.longitude);
+  const cuspsB = chartB.houses.houses.map((h) => h.longitude);
+  const compositeCusps: number[] = [];
+  for (let i = 0; i < Math.min(cuspsA.length, cuspsB.length); i++) {
+    let diff = cuspsB[i] - cuspsA[i];
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+    compositeCusps.push(normalizeAngle(cuspsA[i] + diff / 2));
+  }
+
+  // Hydrate composite planets with zodiac positions using midpoint cusps
+  const compositePlanets: CompositeChart["compositePlanets"] = {};
+  for (const [key, lon] of Object.entries(midpointLongitudes)) {
+    compositePlanets[key] = {
+      name: key,
+      longitude: lon,
+      zodiacPosition: getZodiacPosition(lon, compositeCusps),
+    };
+  }
+
+  const compositeHouses = compositeCusps.map((lon) =>
+    getZodiacPosition(lon, compositeCusps)
+  );
+
+  const aspects = computeAspects(compositePlanets, options.aspectSpecs);
+
+  return {
+    chartA,
+    chartB,
+    compositePlanets,
+    compositeHouses,
+    aspects,
+  };
 }
