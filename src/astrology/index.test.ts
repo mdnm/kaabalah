@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { VirtualNodes } from '../../wasm/src/swisseph';
-import { BirthChartOptions, getBirthChart, HouseSystem } from './index';
+import { BirthChartOptions, getBirthChart, getCompositeChart, getSynastryChart, HouseSystem } from './index';
 import { closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Astrology Module', () => {
@@ -165,6 +165,105 @@ describe('Astrology Module', () => {
     } catch (error) {
       console.error('Failed to test edge cases:', error);
       throw error;
+    }
+  });
+
+  it('should include aspects in birth chart', async () => {
+    const chart = await getBirthChart({
+      date: new Date(2024, 2, 25, 12, 0, 0),
+      latitude: 40.7128,
+      longitude: -74.0060,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/New_York' },
+    });
+
+    expect(chart.aspects).toBeDefined();
+    expect(Array.isArray(chart.aspects)).toBe(true);
+    expect(chart.aspects.length).toBeGreaterThan(0);
+
+    for (const a of chart.aspects) {
+      expect(a.planetA).toBeDefined();
+      expect(a.planetB).toBeDefined();
+      expect(a.aspect).toBeDefined();
+      expect(a.longitudeA).toBeGreaterThanOrEqual(0);
+      expect(a.longitudeA).toBeLessThan(360);
+      expect(a.longitudeB).toBeGreaterThanOrEqual(0);
+      expect(a.longitudeB).toBeLessThan(360);
+      expect(a.orb).toBeGreaterThanOrEqual(0);
+    }
+  });
+
+  it('should calculate synastry chart', async () => {
+    const synastry = await getSynastryChart({
+      chartA: {
+        date: new Date(1990, 0, 15, 14, 30, 0),
+        latitude: 40.7128,
+        longitude: -74.006,
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' },
+      },
+      chartB: {
+        date: new Date(1992, 5, 20, 9, 0, 0),
+        latitude: 51.5074,
+        longitude: -0.1278,
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'Europe/London' },
+      },
+    });
+
+    expect(synastry.chartA).toBeDefined();
+    expect(synastry.chartB).toBeDefined();
+    expect(synastry.aspects).toBeDefined();
+    expect(Array.isArray(synastry.aspects)).toBe(true);
+    expect(synastry.aspects.length).toBeGreaterThan(0);
+
+    // Cross-chart aspects: planetA from chartA points, planetB from chartB points
+    const chartAKeys = [...Object.keys(synastry.chartA.planets), 'ascendant', 'mc'];
+    const chartBKeys = [...Object.keys(synastry.chartB.planets), 'ascendant', 'mc'];
+    for (const a of synastry.aspects) {
+      expect(chartAKeys).toContain(a.planetA);
+      expect(chartBKeys).toContain(a.planetB);
+    }
+  });
+
+  it('should calculate composite chart', async () => {
+    const composite = await getCompositeChart({
+      chartA: {
+        date: new Date(1990, 0, 15, 14, 30, 0),
+        latitude: 40.7128,
+        longitude: -74.006,
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'America/New_York' },
+      },
+      chartB: {
+        date: new Date(1992, 5, 20, 9, 0, 0),
+        latitude: 51.5074,
+        longitude: -0.1278,
+        houseSystem: HouseSystem.PLACIDUS,
+        timeZoneSettings: { timeZone: 'Europe/London' },
+      },
+    });
+
+    expect(composite.chartA).toBeDefined();
+    expect(composite.chartB).toBeDefined();
+    expect(composite.compositePlanets).toBeDefined();
+    expect(composite.compositeHouses).toBeDefined();
+    expect(composite.aspects).toBeDefined();
+
+    // Composite planets are midpoints between chartA and chartB
+    for (const [key, cp] of Object.entries(composite.compositePlanets)) {
+      expect(cp.longitude).toBeGreaterThanOrEqual(0);
+      expect(cp.longitude).toBeLessThan(360);
+      expect(cp.zodiacPosition).toBeDefined();
+      // Midpoint should be between the two charts' planets (shorter arc)
+      expect(key in composite.chartA.planets).toBe(true);
+      expect(key in composite.chartB.planets).toBe(true);
+    }
+
+    expect(composite.compositeHouses).toHaveLength(12);
+    for (const h of composite.compositeHouses) {
+      expect(h.longitude).toBeGreaterThanOrEqual(0);
+      expect(h.longitude).toBeLessThan(360);
     }
   });
 });

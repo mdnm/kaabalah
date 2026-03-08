@@ -199,6 +199,28 @@ const COMMANDS: CommandSchema[] = [
     ],
   },
   {
+    name: "astrology:synastry",
+    description: "Calculate synastry (cross-chart aspects) between two birth charts",
+    args: [],
+    flags: [
+      { name: "house-system", type: "string", default: "placidus", description: "House system for both charts" },
+    ],
+    examples: [
+      `kaabalah astrology:synastry --input-json='{"chartA":{"date":"1990-01-15","time":"14:30","lat":40.71,"lon":-74},"chartB":{"date":"1992-06-20","time":"09:00","lat":51.5,"lon":-0.12}}' --json --compact`,
+    ],
+  },
+  {
+    name: "astrology:composite",
+    description: "Calculate midpoint composite chart from two birth charts",
+    args: [],
+    flags: [
+      { name: "house-system", type: "string", default: "placidus", description: "House system for both charts" },
+    ],
+    examples: [
+      `kaabalah astrology:composite --input-json='{"chartA":{"date":"1990-01-15","time":"14:30","lat":40.71,"lon":-74},"chartB":{"date":"1992-06-20","time":"09:00","lat":51.5,"lon":-0.12}}' --json --compact`,
+    ],
+  },
+  {
     name: "help",
     description: "Show help message",
     args: [{ name: "command", type: "string", required: false, description: "Command to show help for" }],
@@ -1079,6 +1101,210 @@ function cmdTreeTypes(flags: Flags) {
   console.log();
 }
 
+function parseChartInput(
+  input: Record<string, unknown>,
+  label: string,
+  flags: Flags
+): {
+  birthDate: Date;
+  latitude: number;
+  longitude: number;
+  houseSystem: string;
+  houseSystemCode: string;
+  timeZoneSettings: Record<string, unknown>;
+  dateStr: string;
+  timeStr: string;
+} {
+  const dateStr = input.date as string | undefined;
+  if (!dateStr) {
+    exitWithError("MISSING_ARGUMENT", `${label}: "date" is required (YYYY-MM-DD).`, flags);
+  }
+  parseDate(dateStr, flags);
+
+  const timeStr = (input.time as string) ?? "12:00";
+  const timeMatch = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+  if (!timeMatch) {
+    exitWithError("INVALID_ARGUMENT", `${label}: Invalid time format "${timeStr}". Use HH:MM.`, flags);
+  }
+  const hour = parseInt(timeMatch![1], 10);
+  const minute = parseInt(timeMatch![2], 10);
+  if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+    exitWithError("INVALID_ARGUMENT", `${label}: Invalid time "${timeStr}". Hours 0-23, minutes 0-59.`, flags);
+  }
+
+  const latitude = input.lat != null ? Number(input.lat) : undefined;
+  const longitude = input.lon != null ? Number(input.lon) : undefined;
+  if (latitude == null || longitude == null) {
+    exitWithError("MISSING_ARGUMENT", `${label}: "lat" and "lon" are required.`, flags);
+  }
+  if (latitude! < -90 || latitude! > 90) {
+    exitWithError("INVALID_ARGUMENT", `${label}: Latitude must be between -90 and 90, got ${latitude!}.`, flags);
+  }
+  if (longitude! < -180 || longitude! > 180) {
+    exitWithError("INVALID_ARGUMENT", `${label}: Longitude must be between -180 and 180, got ${longitude!}.`, flags);
+  }
+
+  const houseSystem = (input.houseSystem as string) ?? "placidus";
+  const houseSystemCode = HOUSE_SYSTEM_MAP[houseSystem.toLowerCase()];
+  if (!houseSystemCode) {
+    exitWithError("INVALID_ARGUMENT", `${label}: Unknown house system "${houseSystem}". Valid: ${Object.keys(HOUSE_SYSTEM_MAP).join(", ")}`, flags);
+  }
+
+  const timezoneStr = input.timezone as string | undefined;
+  const timeZoneSettings: Record<string, unknown> = {};
+  if (timezoneStr) {
+    timeZoneSettings.timeZone = timezoneStr;
+  } else {
+    timeZoneSettings.autoTimeZone = true;
+  }
+
+  const dateParts = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/)!;
+  const birthDate = new Date(
+    parseInt(dateParts[1], 10),
+    parseInt(dateParts[2], 10) - 1,
+    parseInt(dateParts[3], 10),
+    hour,
+    minute,
+    0
+  );
+
+  return { birthDate, latitude: latitude!, longitude: longitude!, houseSystem, houseSystemCode: houseSystemCode!, timeZoneSettings, dateStr, timeStr };
+}
+
+async function initWasm() {
+  const path = require("path");
+  const wasmPath = path.resolve(__dirname, "../wasm/build/swisseph.node.wasm");
+  const ephePath = path.resolve(__dirname, "../ephe");
+  const { getSwissEph } = await import("./astrology");
+  await getSwissEph({ wasmPath, ephePath });
+}
+
+async function cmdAstrologySynastry(flags: Flags, inputPayload: Record<string, unknown> | null) {
+  if (!inputPayload?.chartA || !inputPayload?.chartB) {
+    exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah astrology:synastry --input-json=\'{"chartA":{...},"chartB":{...}}\'', flags);
+  }
+
+  const chartAInput = parseChartInput(inputPayload!.chartA as Record<string, unknown>, "chartA", flags);
+  const chartBInput = parseChartInput(inputPayload!.chartB as Record<string, unknown>, "chartB", flags);
+
+  const { getSynastryChart, closeSwissEph, HouseSystem } = await import("./astrology");
+
+  try {
+    await initWasm();
+  } catch (err) {
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const result = await getSynastryChart({
+      chartA: {
+        date: chartAInput.birthDate,
+        latitude: chartAInput.latitude,
+        longitude: chartAInput.longitude,
+        houseSystem: chartAInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+        timeZoneSettings: chartAInput.timeZoneSettings as any,
+      },
+      chartB: {
+        date: chartBInput.birthDate,
+        latitude: chartBInput.latitude,
+        longitude: chartBInput.longitude,
+        houseSystem: chartBInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+        timeZoneSettings: chartBInput.timeZoneSettings as any,
+      },
+      aspectSpecs: inputPayload!.aspectSpecs as any,
+    });
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr, lat: chartAInput.latitude, lon: chartAInput.longitude, houseSystem: chartAInput.houseSystem },
+          chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr, lat: chartBInput.latitude, lon: chartBInput.longitude, houseSystem: chartBInput.houseSystem },
+        },
+      }, flags);
+    } else {
+      console.log(`\nSynastry Chart\n`);
+      console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
+      console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
+      console.log(`\n  Cross-chart Aspects (${result.aspects.length}):\n`);
+      for (const a of result.aspects) {
+        console.log(`    ${a.planetA.padEnd(14)} ${a.aspect.padEnd(12)} ${a.planetB.padEnd(14)} orb ${a.orb.toFixed(2)}°`);
+      }
+      console.log();
+    }
+  } finally {
+    closeSwissEph();
+  }
+}
+
+async function cmdAstrologyComposite(flags: Flags, inputPayload: Record<string, unknown> | null) {
+  if (!inputPayload?.chartA || !inputPayload?.chartB) {
+    exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah astrology:composite --input-json=\'{"chartA":{...},"chartB":{...}}\'', flags);
+  }
+
+  const chartAInput = parseChartInput(inputPayload!.chartA as Record<string, unknown>, "chartA", flags);
+  const chartBInput = parseChartInput(inputPayload!.chartB as Record<string, unknown>, "chartB", flags);
+
+  const { getCompositeChart, closeSwissEph, HouseSystem } = await import("./astrology");
+
+  try {
+    await initWasm();
+  } catch (err) {
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const result = await getCompositeChart({
+      chartA: {
+        date: chartAInput.birthDate,
+        latitude: chartAInput.latitude,
+        longitude: chartAInput.longitude,
+        houseSystem: chartAInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+        timeZoneSettings: chartAInput.timeZoneSettings as any,
+      },
+      chartB: {
+        date: chartBInput.birthDate,
+        latitude: chartBInput.latitude,
+        longitude: chartBInput.longitude,
+        houseSystem: chartBInput.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+        timeZoneSettings: chartBInput.timeZoneSettings as any,
+      },
+      aspectSpecs: inputPayload!.aspectSpecs as any,
+    });
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr, lat: chartAInput.latitude, lon: chartAInput.longitude, houseSystem: chartAInput.houseSystem },
+          chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr, lat: chartBInput.latitude, lon: chartBInput.longitude, houseSystem: chartBInput.houseSystem },
+        },
+      }, flags);
+    } else {
+      console.log(`\nComposite Chart (Midpoint Method)\n`);
+      console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
+      console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
+      console.log(`\n  Composite Planets:`);
+      for (const [name, planet] of Object.entries(result.compositePlanets)) {
+        const zp = planet.zodiacPosition;
+        console.log(`    ${name.padEnd(14)} ${zp.sign.padEnd(12)} ${zp.traditionalFormat.padEnd(8)} House ${zp.house}`);
+      }
+      console.log(`\n  Composite House Cusps:`);
+      for (let i = 0; i < result.compositeHouses.length; i++) {
+        const h = result.compositeHouses[i];
+        console.log(`    House ${String(i + 1).padStart(2)}:  ${h.sign.padEnd(12)} ${h.traditionalFormat}`);
+      }
+      console.log(`\n  Composite Aspects (${result.aspects.length}):\n`);
+      for (const a of result.aspects) {
+        console.log(`    ${a.planetA.padEnd(14)} ${a.aspect.padEnd(12)} ${a.planetB.padEnd(14)} orb ${a.orb.toFixed(2)}°`);
+      }
+      console.log();
+    }
+  } finally {
+    closeSwissEph();
+  }
+}
+
 async function cmdAstrology(args: string[], flags: Flags, inputPayload: Record<string, unknown> | null) {
   // Parse date
   const dateStr = (inputPayload?.date as string) ?? args[0];
@@ -1376,6 +1602,14 @@ async function main() {
 
     case "astrology":
       await cmdAstrology(args.slice(1), flags, inputPayload);
+      break;
+
+    case "astrology:synastry":
+      await cmdAstrologySynastry(flags, inputPayload);
+      break;
+
+    case "astrology:composite":
+      await cmdAstrologyComposite(flags, inputPayload);
       break;
 
     case "--version":

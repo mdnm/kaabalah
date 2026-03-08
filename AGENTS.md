@@ -47,6 +47,17 @@ Uses Swiss Ephemeris compiled to WebAssembly. Requires environment variables for
 
 The WASM files are in `wasm/build/` and ephemeris data in `ephe/`.
 
+**Aspect Engine** (`src/astrology/aspects.ts`): Pure functions (no WASM) for computing aspects between planet longitudes.
+- `getAspectMatch(lonA, lonB, specs?)` — check if two longitudes form an aspect
+- `computeAspects(planets, specs?)` — all intra-chart aspects (unique pairs)
+- `computeSynastryAspects(planetsA, planetsB, specs?)` — cross-chart aspects (every A vs every B)
+- `computeMidpoints(planetsA, planetsB)` — shorter-arc midpoint for each common planet
+- `DEFAULT_ASPECT_SPECS` — default aspect definitions with standard orbs
+
+**Synastry & Composite** (`src/astrology/index.ts`):
+- `getSynastryChart(options)` — computes two birth charts + cross-chart aspects
+- `getCompositeChart(options)` — computes two birth charts + midpoint composite (planets, houses, aspects)
+
 ### Numerology Module (`src/numerology/`)
 
 All reduction functions support master number preservation (11, 22, 33, 44). The `reduceToSingleWithSteps()` function tracks reduction steps for transparency.
@@ -161,6 +172,28 @@ kaabalah astrology 1990-01-15 --lat=40.7128 --lon=-74.006 --json --compact
 
 **Note:** The `--location` flag makes a network call to Google Places API (New). All other parameters are local-only.
 
+**Note:** Birth charts now include an `aspects` array with all intra-chart aspects (conjunction, duodecile, octile, sextile, square, trine, trioctile, quincunx, opposition).
+
+#### astrology:synastry
+
+Calculate cross-chart aspects between two birth charts. Requires `--input-json` with `chartA` and `chartB` objects.
+
+```bash
+kaabalah astrology:synastry --input-json='{"chartA":{"date":"1990-01-15","time":"14:30","lat":40.71,"lon":-74},"chartB":{"date":"1992-06-20","time":"09:00","lat":51.5,"lon":-0.12}}' --json --compact
+```
+
+Each chart object accepts: `date` (YYYY-MM-DD, required), `time` (HH:MM, default "12:00"), `lat`/`lon` (required), `timezone` (IANA, optional), `houseSystem` (optional). An optional top-level `aspectSpecs` array can override default aspect orbs.
+
+#### astrology:composite
+
+Calculate a midpoint composite chart from two birth charts. Same input format as `astrology:synastry`.
+
+```bash
+kaabalah astrology:composite --input-json='{"chartA":{"date":"1990-01-15","time":"14:30","lat":40.71,"lon":-74},"chartB":{"date":"1992-06-20","time":"09:00","lat":51.5,"lon":-0.12}}' --json --compact
+```
+
+Returns `compositePlanets` (midpoint longitudes with zodiac positions), `compositeHouses` (midpoint house cusps), and `aspects` (aspects within the composite chart).
+
 #### tarot
 
 Draw random tarot cards.
@@ -265,3 +298,18 @@ Exit code is always `1` on error.
 ### Constraints
 - **Pre-existing numerology test failure**: `src/numerology/index.test.ts > Heptad cycles > should calculate the cycles correctly` fails because test expectations are hardcoded for a specific date range that has passed. Not related to CLI changes.
 - **Pre-existing TS type issue in tree command**: `n.data?.name` triggers TS error because `HebrewLetterData` doesn't have a `name` property. Worked around with `Record<string, unknown>` cast + `"name" in n.data` check.
+
+---
+
+## Session Learnings — 2026-03-08
+
+### Architecture
+- **Aspect engine is pure (no WASM)**: `src/astrology/aspects.ts` has zero WASM dependency — it only needs `normalizeAngle()`. This means aspect tests (`aspects.test.ts`) run instantly without WASM init. Keep this separation: WASM for ephemeris, pure math for aspects/midpoints.
+- **Angles (ASC, MC) must be included as aspect points**: Synastry and single-chart aspect computation include ASC and MC alongside planets via `getAspectPoints(chart)`. Without this, angle-to-planet aspects (e.g. ASC opposition Mars) are missed — these are astrologically significant.
+- **`parseChartInput()` helper in CLI**: Reusable function that extracts and validates date/time/lat/lon/timezone/houseSystem from a chart input object. Used by `cmdAstrologySynastry` and `cmdAstrologyComposite`. `cmdAstrology` still has its own parsing due to supporting both positional args and `--location` geocoding.
+- **`initWasm()` helper in CLI**: Shared WASM init for synastry/composite commands. Resolves paths relative to `__dirname` like the original `cmdAstrology`.
+
+### Gotchas
+- **Aspect orbs: decimal degrees vs DMS**: Orbs in the code are decimal degrees (e.g. `0.12°`). Astrology tools display them as degrees-minutes (e.g. `0°07'`). Convert: `0.12° × 60 = 7.2' ≈ 0°07'`. This caused initial confusion when comparing with reference tools.
+- **Composite midpoint algorithm**: Must use shorter-arc midpoint, not naive average. Formula: `diff = b - a; if (diff > 180) diff -= 360; if (diff < -180) diff += 360; midpoint = normalizeAngle(a + diff / 2)`. Naive `(a+b)/2` breaks for wrap-around cases (e.g. 350° + 10° should give 0°, not 180°).
+- **Synastry/composite CLI require `--input-json`**: These commands take two chart objects, which can't be expressed as positional args. The `--input-json` flag is mandatory. Schema: `{"chartA":{"date","time","lat","lon","timezone?","houseSystem?"},"chartB":{...},"aspectSpecs?":[...]}`.

@@ -93,7 +93,9 @@ npx kaabalah help
 | `numerology:cycles <date> [name]` | Personal cycles (year, month, periods) |
 | `numerology:challenges <date>` | Challenges from birth date |
 | `numerology:fibonacci <date>` | Fibonacci cycle for current age |
-| `astrology <date> [time]` | Calculate birth chart using Swiss Ephemeris |
+| `astrology <date> [time]` | Calculate birth chart with aspects using Swiss Ephemeris |
+| `astrology:synastry` | Cross-chart aspects between two birth charts (via `--input-json`) |
+| `astrology:composite` | Midpoint composite chart from two birth charts (via `--input-json`) |
 | `tarot [count]` | Draw tarot cards (default: 3) |
 | `tarot:card <number>` | Look up a specific card (1-78) |
 | `ifa <date>` | Calculate Odu from a date |
@@ -113,6 +115,12 @@ kaabalah gematria:reverse 22
 kaabalah ifa 1990-01-15
 kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
 kaabalah astrology 1990-01-15 14:30 --location="New York, USA"
+
+# Synastry (cross-chart aspects)
+kaabalah astrology:synastry --input-json='{"chartA":{"date":"2001-10-02","time":"19:45","lat":-22.74,"lon":-47.33,"timezone":"America/Sao_Paulo"},"chartB":{"date":"1999-02-01","time":"14:30","lat":-23.96,"lon":-46.33,"timezone":"America/Sao_Paulo"}}' --json
+
+# Composite (midpoint chart)
+kaabalah astrology:composite --input-json='{"chartA":{"date":"2001-10-02","time":"19:45","lat":-22.74,"lon":-47.33},"chartB":{"date":"1999-02-01","time":"14:30","lat":-23.96,"lon":-46.33}}' --json
 
 # Tree of Life correspondences
 kaabalah tree:node path:1 --json
