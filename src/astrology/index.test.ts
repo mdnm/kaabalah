@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { VirtualNodes } from '../../wasm/src/swisseph';
-import { BirthChartOptions, getBirthChart, getCompositeChart, getSynastryChart, HouseSystem } from './index';
+import { BirthChartOptions, getBirthChart, getCompositeChart, getSolarReturnChart, getSynastryChart, getTransitChart, getTransitRange, HouseSystem } from './index';
 import { closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Astrology Module', () => {
@@ -65,6 +65,7 @@ describe('Astrology Module', () => {
       });
 
       expect(chart.nodes[VirtualNodes.PARS_FORTUNAE]).toBeDefined();
+      expect(chart.sect).toMatch(/^(diurnal|nocturnal)$/);
     } catch (error) {
       console.error('Failed to calculate birth chart:', error);
       throw error;
@@ -264,6 +265,302 @@ describe('Astrology Module', () => {
     for (const h of composite.compositeHouses) {
       expect(h.longitude).toBeGreaterThanOrEqual(0);
       expect(h.longitude).toBeLessThan(360);
+    }
+  });
+
+  it('should calculate transit chart with natal house placement', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(2001, 9, 2, 19, 45, 0),
+      latitude: -22.738,
+      longitude: -47.334,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+    };
+
+    const result = await getTransitChart({
+      natal,
+      transitDate: new Date(2026, 2, 17, 12, 0, 0),
+    });
+
+    expect(result.natalChart).toBeDefined();
+    expect(result.transitDateUtc).toBeInstanceOf(Date);
+    expect(result.transitPlanets).toBeDefined();
+    expect(result.aspects).toBeDefined();
+
+    // Transit planets have retrograde flag and natalHouse
+    for (const [, planet] of Object.entries(result.transitPlanets)) {
+      expect(typeof planet.retrograde).toBe('boolean');
+      expect(typeof planet.natalHouse).toBe('number');
+      expect(planet.natalHouse).toBeGreaterThanOrEqual(1);
+      expect(planet.natalHouse).toBeLessThanOrEqual(12);
+      expect(planet.longitude).toBeGreaterThanOrEqual(0);
+      expect(planet.longitude).toBeLessThan(360);
+    }
+
+    // Aspects are transit-to-natal (planetA = transit, planetB = natal/angle)
+    const transitKeys = Object.keys(result.transitPlanets);
+    const natalKeys = [...Object.keys(result.natalChart.planets), 'ascendant', 'mc'];
+    for (const a of result.aspects) {
+      expect(transitKeys).toContain(a.planetA);
+      expect(natalKeys).toContain(a.planetB);
+      expect(typeof a.applying).toBe('boolean');
+      expect(typeof a.retrograde).toBe('boolean');
+      expect(['slow', 'fast']).toContain(a.category);
+    }
+    expect(result.aspects.length).toBeGreaterThan(0);
+  });
+
+  it('should filter transits by maxOrb, aspect type, and planets', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(2001, 9, 2, 19, 45, 0),
+      latitude: -22.738,
+      longitude: -47.334,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+    };
+
+    const result = await getTransitChart({
+      natal,
+      transitDate: new Date(2026, 2, 17, 12, 0, 0),
+      maxOrb: 3,
+      aspectFilter: ['conjunction', 'opposition', 'square'],
+      transitPlanets: ['saturn', 'pluto'],
+    });
+
+    for (const a of result.aspects) {
+      expect(a.orb).toBeLessThanOrEqual(3);
+      expect(['conjunction', 'opposition', 'square']).toContain(a.aspect);
+      expect(['saturn', 'pluto']).toContain(a.planetA);
+    }
+  });
+
+  it('should find aspect perfections in date range', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(2001, 9, 2, 19, 45, 0),
+      latitude: -22.738,
+      longitude: -47.334,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+    };
+
+    const result = await getTransitRange({
+      natal,
+      from: new Date(2026, 2, 1),
+      to: new Date(2026, 3, 1), // 1 month
+      stepDays: 1,
+    });
+
+    expect(result.natalChart).toBeDefined();
+    expect(result.from).toBeInstanceOf(Date);
+    expect(result.to).toBeInstanceOf(Date);
+    expect(Array.isArray(result.perfections)).toBe(true);
+    expect(result.perfections.length).toBeGreaterThan(0);
+
+    for (const p of result.perfections) {
+      expect(p.exactDate).toBeInstanceOf(Date);
+      expect(p.exactDate.getTime()).toBeGreaterThanOrEqual(result.from.getTime());
+      expect(p.exactDate.getTime()).toBeLessThanOrEqual(result.to.getTime());
+      expect(typeof p.exactOrb).toBe('number');
+      expect(typeof p.retrograde).toBe('boolean');
+      expect(['slow', 'fast']).toContain(p.category);
+      // Perfections are now filtered: exactOrb must be within the aspect's standard orb
+      expect(p.exactOrb).toBeLessThan(6);
+    }
+
+    // At least some perfections should be near exact (orb < 0.5°)
+    const tightPerfections = result.perfections.filter((p) => p.exactOrb < 0.5);
+    expect(tightPerfections.length).toBeGreaterThan(0);
+
+    // Perfections are sorted by date
+    for (let i = 1; i < result.perfections.length; i++) {
+      expect(result.perfections[i].exactDate.getTime()).toBeGreaterThanOrEqual(
+        result.perfections[i - 1].exactDate.getTime()
+      );
+    }
+  }, 30000);
+
+  it('should calculate a solar return chart', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(1990, 0, 15, 14, 30, 0),
+      latitude: 40.7128,
+      longitude: -74.006,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/New_York' },
+    };
+
+    const result = await getSolarReturnChart({ natal, year: 2026 });
+
+    expect(result.natalChart).toBeDefined();
+    expect(result.solarReturnChart).toBeDefined();
+    expect(result.exactReturnDate).toBeInstanceOf(Date);
+    expect(result.year).toBe(2026);
+
+    // SR Sun should be within 0.02° of natal Sun
+    const srSunLon = result.solarReturnChart.planets.sun.longitude;
+    const diff = Math.abs(srSunLon - result.natalSunLongitude);
+    const angularDiff = Math.min(diff, 360 - diff);
+    expect(angularDiff).toBeLessThan(0.02);
+
+    // Return date should be in January 2026 (natal is Jan 15)
+    expect(result.exactReturnDate.getUTCFullYear()).toBe(2026);
+    expect(result.exactReturnDate.getUTCMonth()).toBe(0); // January
+
+    // SR chart should have all components
+    expect(Object.keys(result.solarReturnChart.planets).length).toBeGreaterThan(0);
+    expect(result.solarReturnChart.houses.houses).toHaveLength(12);
+    expect(result.solarReturnChart.aspects.length).toBeGreaterThan(0);
+  });
+
+  it('should produce different ascendants for different SR locations', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(1990, 0, 15, 14, 30, 0),
+      latitude: 40.7128,
+      longitude: -74.006,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/New_York' },
+    };
+
+    const srNYC = await getSolarReturnChart({
+      natal,
+      year: 2026,
+      solarReturnLatitude: 40.7128,
+      solarReturnLongitude: -74.006,
+    });
+
+    const srLA = await getSolarReturnChart({
+      natal,
+      year: 2026,
+      solarReturnLatitude: 34.0522,
+      solarReturnLongitude: -118.2437,
+    });
+
+    // Exact return dates should be very close (within 2 minutes)
+    const timeDiffMs = Math.abs(srNYC.exactReturnDate.getTime() - srLA.exactReturnDate.getTime());
+    expect(timeDiffMs).toBeLessThan(2 * 60 * 1000);
+
+    // Ascendants should differ because of different locations
+    const ascNYC = srNYC.solarReturnChart.houses.ascendant.longitude;
+    const ascLA = srLA.solarReturnChart.houses.ascendant.longitude;
+    expect(ascNYC).not.toBeCloseTo(ascLA, 0);
+  });
+
+  it('should handle Aries point wrap-around for solar return', async () => {
+    // Natal with Sun near 0° Aries (~ March 21)
+    const natal: BirthChartOptions = {
+      date: new Date(1990, 2, 21, 12, 0, 0),
+      latitude: 40.7128,
+      longitude: -74.006,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/New_York' },
+    };
+
+    const result = await getSolarReturnChart({ natal, year: 2026 });
+
+    // SR Sun should still be within 0.02° of natal Sun
+    const srSunLon = result.solarReturnChart.planets.sun.longitude;
+    const diff = Math.abs(srSunLon - result.natalSunLongitude);
+    const angularDiff = Math.min(diff, 360 - diff);
+    expect(angularDiff).toBeLessThan(0.02);
+
+    // Return date should be in March 2026
+    expect(result.exactReturnDate.getUTCFullYear()).toBe(2026);
+    expect(result.exactReturnDate.getUTCMonth()).toBe(2); // March
+  });
+
+  it('should not inherit natal timezone for transit chart', async () => {
+    // Natal with fixed UTC offset (EST = -300 min)
+    const natal: BirthChartOptions = {
+      date: new Date(2000, 0, 1, 12, 0, 0),
+      latitude: 40.7128,
+      longitude: -74.006,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { utcOffsetMinutes: -300 },
+    };
+
+    // Transit without explicit timezone should use autoTimeZone, not natal's -300
+    const withAuto = await getTransitChart({
+      natal,
+      transitDate: new Date(2026, 6, 1, 12, 0, 0),
+    });
+
+    // Transit with explicit NYC timezone
+    const withExplicit = await getTransitChart({
+      natal,
+      transitDate: new Date(2026, 6, 1, 12, 0, 0),
+      transitTimeZoneSettings: { timeZone: 'America/New_York' },
+    });
+
+    // Both should produce the same UTC date (auto-detect and explicit should agree for NYC)
+    // The key assertion: they should NOT differ by 1 hour (which was the old bug
+    // when natal's fixed -300 was reused during EDT when actual offset is -240)
+    const sunDiff = Math.abs(
+      withAuto.transitPlanets.sun.longitude - withExplicit.transitPlanets.sun.longitude
+    );
+    expect(sunDiff).toBeLessThan(0.01);
+  });
+
+  it('should detect Moon perfections with default step size', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(2001, 9, 2, 19, 45, 0),
+      latitude: -22.738,
+      longitude: -47.334,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+    };
+
+    // 1-week range with Moon filtering — should find at least one Moon-Sun aspect
+    // Previously with daily step, fast Moon could be missed entirely
+    const result = await getTransitRange({
+      natal,
+      from: new Date(2026, 2, 1),
+      to: new Date(2026, 2, 7),
+      transitPlanets: ['moon'],
+      natalPlanets: ['sun'],
+    });
+
+    // The Moon-Sun conjunction on ~March 5 should be detected
+    expect(result.perfections.length).toBeGreaterThanOrEqual(1);
+    for (const p of result.perfections) {
+      expect(p.transitPlanet).toBe('moon');
+      expect(p.natalPlanet).toBe('sun');
+    }
+
+    // Broader test: Moon to all natal points over 2 weeks should find many perfections
+    const broadResult = await getTransitRange({
+      natal,
+      from: new Date(2026, 2, 1),
+      to: new Date(2026, 2, 14),
+      transitPlanets: ['moon'],
+    });
+
+    // Moon should have many aspects to various natal points over 2 weeks
+    expect(broadResult.perfections.length).toBeGreaterThanOrEqual(5);
+    for (const p of broadResult.perfections) {
+      expect(p.transitPlanet).toBe('moon');
+      expect(p.category).toBe('fast');
+    }
+  }, 60000);
+
+  it('should zero natal planet speeds for transit applying/separating', async () => {
+    const natal: BirthChartOptions = {
+      date: new Date(2001, 9, 2, 19, 45, 0),
+      latitude: -22.738,
+      longitude: -47.334,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+    };
+
+    const result = await getTransitChart({
+      natal,
+      transitDate: new Date(2026, 2, 17, 12, 0, 0),
+    });
+
+    // All aspects should have applying/separating computed correctly.
+    // The main assertion is that this doesn't throw and the values are booleans —
+    // the underlying fix ensures natal Moon speed doesn't leak into the calc.
+    for (const a of result.aspects) {
+      expect(typeof a.applying).toBe('boolean');
+      expect(typeof a.retrograde).toBe('boolean');
     }
   });
 });

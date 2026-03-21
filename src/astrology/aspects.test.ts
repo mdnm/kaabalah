@@ -3,8 +3,10 @@ import {
   computeAspects,
   computeMidpoints,
   computeSynastryAspects,
+  computeTransitAspects,
   DEFAULT_ASPECT_SPECS,
   getAspectMatch,
+  SLOW_PLANETS,
 } from "./aspects";
 
 describe("getAspectMatch", () => {
@@ -226,5 +228,140 @@ describe("computeMidpoints", () => {
     const b = { sun: { longitude: 45 } };
     const mid = computeMidpoints(a, b);
     expect(mid.sun).toBeCloseTo(45, 5);
+  });
+});
+
+describe("computeTransitAspects", () => {
+  it("detects applying aspect (transit moving toward exact)", () => {
+    // Transit Saturn at 88° moving at +0.05°/day toward natal Sun at 0° (square = 90°)
+    // Current orb: |88 - 0| = 88, aspect angle 90, orb = |88 - 90| = 2° — applying
+    const transit = { saturn: { longitude: 88, longitudeSpeed: 0.05 } };
+    const natal = { sun: { longitude: 0, longitudeSpeed: 0 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].aspect).toBe("square");
+    expect(edges[0].applying).toBe(true);
+    expect(edges[0].orb).toBeCloseTo(2, 1);
+  });
+
+  it("detects separating aspect (transit moving away from exact)", () => {
+    // Transit Saturn at 92° moving at +0.05°/day, natal Sun at 0° (square = 90°)
+    // orb = |92 - 90| = 2° and increasing
+    const transit = { saturn: { longitude: 92, longitudeSpeed: 0.05 } };
+    const natal = { sun: { longitude: 0, longitudeSpeed: 0 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].applying).toBe(false);
+  });
+
+  it("handles retrograde transit (negative speed, applying)", () => {
+    // Transit Saturn at 92° retrograding at -0.05°/day toward exact 90° square with natal Sun at 0°
+    const transit = { saturn: { longitude: 92, longitudeSpeed: -0.05 } };
+    const natal = { sun: { longitude: 0, longitudeSpeed: 0 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].retrograde).toBe(true);
+    expect(edges[0].applying).toBe(true);
+  });
+
+  it("classifies slow planets correctly", () => {
+    const transit = {
+      saturn: { longitude: 88, longitudeSpeed: 0.05 },
+      pluto: { longitude: 178, longitudeSpeed: 0.01 },
+    };
+    const natal = { sun: { longitude: 0, longitudeSpeed: 0 } };
+    const edges = computeTransitAspects(transit, natal);
+
+    const saturnEdge = edges.find((e) => e.planetA === "saturn");
+    const plutoEdge = edges.find((e) => e.planetA === "pluto");
+    expect(saturnEdge?.category).toBe("slow");
+    expect(plutoEdge?.category).toBe("slow");
+  });
+
+  it("classifies fast planets correctly", () => {
+    const transit = {
+      sun: { longitude: 88, longitudeSpeed: 1.0 },
+      mars: { longitude: 178, longitudeSpeed: 0.6 },
+    };
+    const natal = { moon: { longitude: 0, longitudeSpeed: 0 } };
+    const edges = computeTransitAspects(transit, natal);
+
+    const sunEdge = edges.find((e) => e.planetA === "sun");
+    const marsEdge = edges.find((e) => e.planetA === "mars");
+    expect(sunEdge?.category).toBe("fast");
+    expect(marsEdge?.category).toBe("fast");
+  });
+
+  it("handles wrap-around conjunction (358° transit, 2° natal)", () => {
+    // Transit at 358° moving +1°/day, natal at 2° — conjunction with delta = 4°, applying
+    const transit = { sun: { longitude: 358, longitudeSpeed: 1.0 } };
+    const natal = { moon: { longitude: 2, longitudeSpeed: 0 } };
+    const specs = [{ name: "conjunction" as const, angle: 0, orb: 8 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].aspect).toBe("conjunction");
+    expect(edges[0].applying).toBe(true);
+    expect(edges[0].delta).toBe(4);
+  });
+
+  it("labels planetA as transit, planetB as natal", () => {
+    const transit = { jupiter: { longitude: 120, longitudeSpeed: 0.1 } };
+    const natal = { mars: { longitude: 0, longitudeSpeed: 0 } };
+    const edges = computeTransitAspects(transit, natal);
+    expect(edges).toHaveLength(1);
+    expect(edges[0].planetA).toBe("jupiter");
+    expect(edges[0].planetB).toBe("mars");
+  });
+
+  it("returns empty when no aspects match", () => {
+    const transit = { sun: { longitude: 20, longitudeSpeed: 1.0 } };
+    const natal = { moon: { longitude: 0, longitudeSpeed: 0 } };
+    const edges = computeTransitAspects(transit, natal);
+    expect(edges).toHaveLength(0);
+  });
+
+  it("handles exact aspect (orb = 0)", () => {
+    const transit = { saturn: { longitude: 90, longitudeSpeed: 0.05 } };
+    const natal = { sun: { longitude: 0, longitudeSpeed: 0 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].orb).toBe(0);
+    // Moving direct past exact = separating
+    expect(edges[0].applying).toBe(false);
+  });
+
+  it("applying/separating ignores natal speed when natal speed is zero", () => {
+    // Transit Sun at 88° moving +1°/day toward square with natal Moon at 0°
+    // Natal Moon speed = 0 (fixed target) → should be applying
+    const transit = { sun: { longitude: 88, longitudeSpeed: 1.0 } };
+    const natal = { moon: { longitude: 0, longitudeSpeed: 0 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natal, specs);
+
+    expect(edges).toHaveLength(1);
+    expect(edges[0].applying).toBe(true);
+  });
+
+  it("applying/separating result changes when natal has non-zero speed", () => {
+    // Same transit, but natal Moon moves at 13°/day — flips the result
+    // This tests the raw function behavior; in practice natal speeds should
+    // be zeroed by the caller (getNatalAspectPoints) for transit work.
+    const transit = { sun: { longitude: 88, longitudeSpeed: 1.0 } };
+    const natalMoving = { moon: { longitude: 0, longitudeSpeed: 13 } };
+    const specs = [{ name: "square" as const, angle: 90, orb: 6 }];
+    const edges = computeTransitAspects(transit, natalMoving, specs);
+
+    expect(edges).toHaveLength(1);
+    // With natal Moon racing ahead at 13°/day, the orb widens → separating
+    expect(edges[0].applying).toBe(false);
   });
 });

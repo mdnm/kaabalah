@@ -393,6 +393,19 @@ export async function getSwissEph(
 /**
  * Calculate planetary positions for a given date
  */
+/**
+ * Calculate the position of a single planet by its enum ID.
+ * Much cheaper than calculatePlanetaryPositions when only one body is needed.
+ */
+export function calculateSinglePlanetPosition(
+  date: Date,
+  planet: Planet
+): PlanetPosition {
+  checkInitialization();
+  const julday = swissEph!.getJulianDay(date);
+  return swissEph!.calculatePlanetPosition(julday, planet, DEFAULT_FLAGS);
+}
+
 export async function calculatePlanetaryPositions(
   date: Date
 ): Promise<Record<Planet, PlanetPosition>> {
@@ -644,6 +657,11 @@ async function localToUtcDate(
   longitude?: number,
   opts: TimeZoneOptions = {}
 ): Promise<Date> {
+  // Treat the date as already UTC — no conversion needed
+  if (opts.treatAsUTC === true) {
+    return local instanceof Date ? local : createUtcDateFromParts(buildLocalParts(local));
+  }
+
   const parts = buildLocalParts(local);
   const auto = opts.autoTimeZone !== false;
 

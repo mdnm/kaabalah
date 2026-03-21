@@ -13,3 +13,5 @@
 .env
 
 .DS_Store
+
+.tgz
