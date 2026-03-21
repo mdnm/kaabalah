@@ -1,5 +1,5 @@
 import { VERSION } from "./contract";
-import { cmdAstrology, cmdAstrologyComposite, cmdAstrologySynastry } from "./commands/astrology";
+import { cmdAstrology, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIfa } from "./commands/ifa";
@@ -200,6 +200,27 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "astrology:composite":
         await cmdAstrologyComposite(flags, inputPayload, execution);
+        return;
+      case "astrology:transits":
+        await cmdAstrologyTransits(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:solar-return":
+        await cmdAstrologySolarReturn(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:profections":
+        await cmdAstrologyProfections(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:profections:monthly":
+        await cmdAstrologyProfectionsMonthly(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:firdaria":
+        await cmdAstrologyFirdaria(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:decans":
+        cmdAstrologyDecans(args.slice(1), flags, inputPayload);
+        return;
+      case "astrology:dodecatemoria":
+        cmdAstrologyDodecatemoria(args.slice(1), flags, inputPayload);
         return;
       default:
         exitWithError("UNKNOWN_COMMAND", `Unknown command: "${command}". Run "kaabalah help" for usage.`, flags);

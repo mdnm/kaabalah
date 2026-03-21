@@ -124,6 +124,13 @@ describe("CLI contract", () => {
       "astrology",
       "astrology:synastry",
       "astrology:composite",
+      "astrology:transits",
+      "astrology:solar-return",
+      "astrology:profections",
+      "astrology:profections:monthly",
+      "astrology:firdaria",
+      "astrology:decans",
+      "astrology:dodecatemoria",
       "help",
     ]);
     expect(payload.globalFlags.map((flag) => flag.name)).toEqual([

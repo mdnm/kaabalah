@@ -408,6 +408,649 @@ export async function cmdAstrologyComposite(
   }
 }
 
+const MAJOR_ASPECTS = ["conjunction", "sextile", "square", "trine", "opposition"];
+
+export async function cmdAstrologyTransits(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  // Support --input-json with nested natal object
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload
+    ? { ...natalPayload }
+    : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getTransitChart, getTransitRange, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    // Parse transit-specific options
+    const transitDateStr = (inputPayload?.transitDate as string) ?? getFlagString(flags, "transit-date");
+    const transitTimeStr = (inputPayload?.transitTime as string) ?? getFlagString(flags, "transit-time") ?? "12:00";
+    const transitLatFlag = inputPayload?.transitLat != null ? Number(inputPayload.transitLat) : getFlagNumber(flags, "transit-lat");
+    const transitLonFlag = inputPayload?.transitLon != null ? Number(inputPayload.transitLon) : getFlagNumber(flags, "transit-lon");
+    const transitTzStr = (inputPayload?.transitTimezone as string) ?? getFlagString(flags, "transit-timezone");
+
+    const maxOrbFlag = inputPayload?.maxOrb != null ? Number(inputPayload.maxOrb) : getFlagNumber(flags, "max-orb");
+    const aspectsStr = (inputPayload?.aspects as string | string[]) ?? getFlagString(flags, "aspects");
+    const transitPlanetsStr = (inputPayload?.transitPlanets as string | string[]) ?? getFlagString(flags, "transit-planets");
+    const natalPlanetsStr = (inputPayload?.natalPlanets as string | string[]) ?? getFlagString(flags, "natal-planets");
+
+    const fromStr = (inputPayload?.from as string) ?? getFlagString(flags, "from");
+    const toStr = (inputPayload?.to as string) ?? getFlagString(flags, "to");
+    const stepDaysFlag = inputPayload?.stepDays != null ? Number(inputPayload.stepDays) : getFlagNumber(flags, "step-days");
+    if (stepDaysFlag != null && (isNaN(stepDaysFlag) || stepDaysFlag <= 0)) {
+      exitWithError("INVALID_ARGUMENT", `--step-days must be a positive number, got "${stepDaysFlag}".`, flags);
+    }
+
+    // Parse aspect filter
+    let aspectFilter: string[] | undefined;
+    if (aspectsStr) {
+      const raw = Array.isArray(aspectsStr) ? aspectsStr : aspectsStr.split(",").map((s) => s.trim());
+      aspectFilter = raw.flatMap((a) => (a === "major" ? MAJOR_ASPECTS : [a]));
+    }
+
+    // Parse planet filters
+    const transitPlanets = transitPlanetsStr
+      ? (Array.isArray(transitPlanetsStr) ? transitPlanetsStr : transitPlanetsStr.split(",").map((s) => s.trim().toLowerCase()))
+      : undefined;
+    const natalPlanets = natalPlanetsStr
+      ? (Array.isArray(natalPlanetsStr) ? natalPlanetsStr : natalPlanetsStr.split(",").map((s) => s.trim().toLowerCase()))
+      : undefined;
+
+    // Build natal chart options
+    const natalOpts = buildBirthChartOptions(natalInput, HouseSystem);
+
+    // Transit timezone settings
+    const transitTz = transitTzStr ? { timeZone: transitTzStr } : undefined;
+
+    const isRangeMode = fromStr != null;
+
+    if (isRangeMode) {
+      if (!toStr) {
+        exitWithError("MISSING_ARGUMENT", "--to is required when --from is specified.", flags);
+      }
+      parseDate(fromStr, flags);
+      parseDate(toStr, flags);
+
+      const fromDate = new Date(fromStr + "T00:00:00");
+      const toDate = new Date(toStr + "T23:59:59.999");
+
+      debugLog("astrology", "Running astrology:transits (range mode).", {
+        natal: { date: natalInput.dateStr, time: natalInput.timeStr },
+        from: fromStr,
+        to: toStr,
+        stepDays: stepDaysFlag ?? 1,
+      });
+
+      const result = await getTransitRange({
+        natal: natalOpts,
+        from: fromDate,
+        to: toDate,
+        stepDays: stepDaysFlag ?? undefined,
+        transitLatitude: transitLatFlag ?? undefined,
+        transitLongitude: transitLonFlag ?? undefined,
+        transitTimeZoneSettings: transitTz,
+        aspectSpecs: inputPayload?.aspectSpecs as any,
+        maxOrb: maxOrbFlag ?? undefined,
+        transitPlanets,
+        natalPlanets,
+        aspectFilter: aspectFilter as any,
+      });
+      executionContext.throwIfInterrupted();
+
+      debugLog("astrology", "Completed astrology:transits (range).", {
+        perfections: result.perfections.length,
+      });
+
+      if (isJsonMode(flags)) {
+        outputJson({
+          ...result,
+          input: {
+            natal: { date: natalInput.dateStr, time: natalInput.timeStr, lat: natalInput.latitude, lon: natalInput.longitude },
+            from: fromStr,
+            to: toStr,
+            stepDays: stepDaysFlag ?? 1,
+          },
+        }, flags);
+        return;
+      }
+
+      // Human-readable range output
+      console.log(`\nTransit Range: ${fromStr} to ${toStr}`);
+      console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})\n`);
+      if (result.perfections.length === 0) {
+        console.log("  No aspect perfections found in range.\n");
+      } else {
+        console.log(`  Aspect Perfections (${result.perfections.length}):\n`);
+        for (const p of result.perfections) {
+          const date = p.exactDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+          const rx = p.retrograde ? " R" : "";
+          console.log(
+            `    ${date}  ${p.transitPlanet.padEnd(14)}${rx.padEnd(3)} ${p.aspect.padEnd(12)} ${p.natalPlanet.padEnd(14)} orb ${p.exactOrb.toFixed(3)}°  [${p.category}]`
+          );
+        }
+        console.log();
+      }
+    } else {
+      // Single transit date mode
+      let transitDate: Date;
+      const effectiveTransitDateStr = transitDateStr ?? new Date().toISOString().split("T")[0];
+      parseDate(effectiveTransitDateStr, flags);
+      const { hour: tHour, minute: tMin } = parseTimeValue(transitTimeStr, flags, {
+        invalidFormat: (v) => `Invalid transit time format: "${v}". Use HH:MM.`,
+        invalidValue: (v) => `Invalid transit time: "${v}". Hours 0-23, minutes 0-59.`,
+      });
+      transitDate = buildBirthDate(effectiveTransitDateStr, tHour, tMin);
+
+      debugLog("astrology", "Running astrology:transits.", {
+        natal: { date: natalInput.dateStr, time: natalInput.timeStr },
+        transitDate: transitDate.toISOString(),
+      });
+
+      const result = await getTransitChart({
+        natal: natalOpts,
+        transitDate,
+        transitLatitude: transitLatFlag ?? undefined,
+        transitLongitude: transitLonFlag ?? undefined,
+        transitTimeZoneSettings: transitTz,
+        aspectSpecs: inputPayload?.aspectSpecs as any,
+        maxOrb: maxOrbFlag ?? undefined,
+        transitPlanets,
+        natalPlanets,
+        aspectFilter: aspectFilter as any,
+      });
+      executionContext.throwIfInterrupted();
+
+      debugLog("astrology", "Completed astrology:transits.", {
+        transitPlanets: Object.keys(result.transitPlanets).length,
+        aspects: result.aspects.length,
+      });
+
+      if (isJsonMode(flags)) {
+        outputJson({
+          ...result,
+          input: {
+            natal: { date: natalInput.dateStr, time: natalInput.timeStr, lat: natalInput.latitude, lon: natalInput.longitude },
+            transitDate: transitDate.toISOString(),
+          },
+        }, flags);
+        return;
+      }
+
+      // Human-readable single transit output
+      const tdStr = transitDateStr ?? transitDate.toISOString().split("T")[0];
+      console.log(`\nTransit Chart for ${tdStr} ${transitTimeStr}`);
+      console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})\n`);
+
+      console.log("  Transit Planets (in natal houses):");
+      for (const [name, planet] of Object.entries(result.transitPlanets)) {
+        const zp = planet.zodiacPosition;
+        const rx = planet.retrograde ? "  R" : "   ";
+        console.log(
+          `    ${name.padEnd(14)}${rx} ${zp.sign.padEnd(12)} ${zp.traditionalFormat.padEnd(8)} Natal House ${planet.natalHouse}`
+        );
+      }
+
+      console.log(`\n  Transit-to-Natal Aspects (${result.aspects.length}):\n`);
+      for (const a of result.aspects) {
+        const dir = a.applying ? "applying  " : "separating";
+        const rx = a.retrograde ? " R" : "  ";
+        console.log(
+          `    ${a.planetA.padEnd(14)}${rx} ${a.aspect.padEnd(12)} ${a.planetB.padEnd(14)} orb ${a.orb.toFixed(2)}°  ${dir}  [${a.category}]`
+        );
+      }
+      console.log();
+    }
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export async function cmdAstrologySolarReturn(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  // Support --input-json with nested natal object
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload
+    ? { ...natalPayload }
+    : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getSolarReturnChart, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const yearFlag = inputPayload?.year != null ? Number(inputPayload.year) : getFlagNumber(flags, "year");
+    const year = yearFlag ?? new Date().getFullYear();
+
+    // SR location override
+    const srLatFlag = inputPayload?.srLat != null ? Number(inputPayload.srLat) : getFlagNumber(flags, "sr-lat");
+    const srLonFlag = inputPayload?.srLon != null ? Number(inputPayload.srLon) : getFlagNumber(flags, "sr-lon");
+    const srLocationStr = (inputPayload?.srLocation as string) ?? getFlagString(flags, "sr-location");
+    const srHouseSystemStr = (inputPayload?.srHouseSystem as string) ?? getFlagString(flags, "sr-house-system");
+
+    let srLat = srLatFlag;
+    let srLon = srLonFlag;
+
+    if (srLat == null || srLon == null) {
+      if (srLocationStr) {
+        const geocoded = await geocodeLocation(srLocationStr, flags, executionContext);
+        srLat = geocoded.latitude;
+        srLon = geocoded.longitude;
+      }
+    }
+
+    const srHouseSystem = srHouseSystemStr
+      ? parseHouseSystem(srHouseSystemStr, flags, (value, valid) => `Unknown SR house system: "${value}". Valid: ${valid.join(", ")}`).houseSystemCode
+      : undefined;
+
+    debugLog("astrology", "Running astrology:solar-return.", {
+      natal: { date: natalInput.dateStr, time: natalInput.timeStr },
+      year,
+      srLat,
+      srLon,
+    });
+
+    const result = await getSolarReturnChart({
+      natal: buildBirthChartOptions(natalInput, HouseSystem),
+      year,
+      solarReturnLatitude: srLat ?? undefined,
+      solarReturnLongitude: srLon ?? undefined,
+      solarReturnHouseSystem: srHouseSystem as any,
+    });
+    executionContext.throwIfInterrupted();
+
+    debugLog("astrology", "Completed astrology:solar-return.", {
+      exactReturnDate: result.exactReturnDate.toISOString(),
+      natalSunLongitude: result.natalSunLongitude,
+    });
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          natal: { date: natalInput.dateStr, time: natalInput.timeStr, lat: natalInput.latitude, lon: natalInput.longitude },
+          year,
+          srLat: srLat ?? natalInput.latitude,
+          srLon: srLon ?? natalInput.longitude,
+        },
+      }, flags);
+      return;
+    }
+
+    // Human-readable output
+    const srChart = result.solarReturnChart;
+    const natalSun = result.natalChart.planets.sun.zodiacPosition;
+    const returnDateStr = result.exactReturnDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+
+    console.log(`\nSolar Return ${year}\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(`  Natal Sun: ${natalSun.sign} ${natalSun.traditionalFormat} (${result.natalSunLongitude.toFixed(4)}°)`);
+    console.log(`  Exact Return: ${returnDateStr}`);
+    console.log(`  SR Sun: ${srChart.planets.sun.zodiacPosition.sign} ${srChart.planets.sun.zodiacPosition.traditionalFormat} (${srChart.planets.sun.longitude.toFixed(4)}°)`);
+
+    console.log(`\n  Solar Return Planets:`);
+    for (const [name, planet] of Object.entries(srChart.planets)) {
+      const zp = planet.zodiacPosition;
+      console.log(`    ${name.padEnd(14)} ${zp.sign.padEnd(12)} ${zp.traditionalFormat.padEnd(8)} House ${zp.house}`);
+    }
+
+    console.log(`\n  Solar Return Houses:`);
+    console.log(`    Ascendant:  ${srChart.houses.ascendant.sign} ${srChart.houses.ascendant.traditionalFormat}`);
+    console.log(`    Midheaven:  ${srChart.houses.mc.sign} ${srChart.houses.mc.traditionalFormat}`);
+    console.log(`    Descendant: ${srChart.houses.dc.sign} ${srChart.houses.dc.traditionalFormat}`);
+    console.log(`    IC:         ${srChart.houses.ic.sign} ${srChart.houses.ic.traditionalFormat}`);
+    console.log(`\n  House Cusps:`);
+    for (let i = 0; i < srChart.houses.houses.length; i++) {
+      const house = srChart.houses.houses[i];
+      console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
+    }
+
+    console.log(`\n  Solar Return Aspects (${srChart.aspects.length}):\n`);
+    for (const aspect of srChart.aspects) {
+      console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
+    }
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export async function cmdAstrologyProfections(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload ? { ...natalPayload } : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getBirthChart, getAnnualProfection, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const yearFlag = inputPayload?.year != null ? Number(inputPayload.year) : getFlagNumber(flags, "year");
+    const year = yearFlag ?? new Date().getFullYear();
+
+    // Force whole-sign houses for profections
+    const chart = await getBirthChart({
+      date: natalInput.birthDate,
+      latitude: natalInput.latitude,
+      longitude: natalInput.longitude,
+      houseSystem: HouseSystem.WHOLE_SIGN,
+      timeZoneSettings: natalInput.timeZoneSettings as any,
+    });
+    executionContext.throwIfInterrupted();
+
+    const result = getAnnualProfection(chart, chart.dateUtc, year);
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          date: natalInput.dateStr,
+          time: natalInput.timeStr,
+          lat: natalInput.latitude,
+          lon: natalInput.longitude,
+          year,
+        },
+      }, flags);
+      return;
+    }
+
+    console.log(`\nAnnual Profection (${year})\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(`  Age: ${result.age}`);
+    console.log(`  Profected House: ${result.house}`);
+    console.log(`  Sign: ${result.sign}`);
+    console.log(`  Time Lord: ${result.ruler}`);
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export async function cmdAstrologyProfectionsMonthly(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload ? { ...natalPayload } : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getBirthChart, getMonthlyProfections, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const yearFlag = inputPayload?.year != null ? Number(inputPayload.year) : getFlagNumber(flags, "year");
+    const year = yearFlag ?? new Date().getFullYear();
+
+    const chart = await getBirthChart({
+      date: natalInput.birthDate,
+      latitude: natalInput.latitude,
+      longitude: natalInput.longitude,
+      houseSystem: HouseSystem.WHOLE_SIGN,
+      timeZoneSettings: natalInput.timeZoneSettings as any,
+    });
+    executionContext.throwIfInterrupted();
+
+    const result = getMonthlyProfections(chart, chart.dateUtc, year);
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          date: natalInput.dateStr,
+          time: natalInput.timeStr,
+          lat: natalInput.latitude,
+          lon: natalInput.longitude,
+          year,
+        },
+      }, flags);
+      return;
+    }
+
+    const ap = result.annualProfection;
+    console.log(`\nMonthly Profections (${year})\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(`  Annual: House ${ap.house}, ${ap.sign} (${ap.ruler}), Age ${ap.age}\n`);
+    for (const m of result.months) {
+      const dateStr = m.startDate.toISOString().split("T")[0];
+      console.log(`    Month ${String(m.month).padStart(2)}:  ${dateStr}  ${m.sign.padEnd(12)} ${m.ruler}`);
+    }
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export async function cmdAstrologyFirdaria(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload ? { ...natalPayload } : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getBirthChart, getFirdaria, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const chart = await getBirthChart(buildBirthChartOptions(natalInput, HouseSystem));
+    executionContext.throwIfInterrupted();
+
+    // Sect: auto-detect from chart or override
+    const sectOverride = (inputPayload?.sect as string) ?? getFlagString(flags, "sect");
+    let isDiurnal: boolean;
+    if (sectOverride === "diurnal") {
+      isDiurnal = true;
+    } else if (sectOverride === "nocturnal") {
+      isDiurnal = false;
+    } else if (sectOverride) {
+      exitWithError("INVALID_ARGUMENT", `Invalid sect value: "${sectOverride}". Use "diurnal" or "nocturnal".`, flags);
+    } else {
+      isDiurnal = chart.sect === "diurnal";
+    }
+
+    // Target date
+    const targetDateStr = (inputPayload?.targetDate as string) ?? getFlagString(flags, "target-date");
+    let targetDate: Date | undefined;
+    if (targetDateStr) {
+      parseDate(targetDateStr, flags);
+      targetDate = new Date(targetDateStr + "T12:00:00");
+    }
+
+    const result = getFirdaria(chart.dateUtc, isDiurnal, targetDate);
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          date: natalInput.dateStr,
+          time: natalInput.timeStr,
+          lat: natalInput.latitude,
+          lon: natalInput.longitude,
+          sect: isDiurnal ? "diurnal" : "nocturnal",
+          targetDate: targetDateStr ?? "today",
+        },
+      }, flags);
+      return;
+    }
+
+    console.log(`\nFirdaria (${isDiurnal ? "Diurnal" : "Nocturnal"})\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(`  Current Major: ${result.currentMajor.planet} (${result.currentMajor.years}y)`);
+    console.log(`  Current Sub: ${result.currentSub.planet}`);
+    console.log(`\n  All Periods:\n`);
+    for (const p of result.allPeriods) {
+      const start = p.startDate.toISOString().split("T")[0];
+      const end = p.endDate.toISOString().split("T")[0];
+      const marker = p === result.currentMajor ? " <--" : "";
+      console.log(`    ${p.planet.padEnd(12)} ${start} to ${end} (${p.years}y)${marker}`);
+    }
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export function cmdAstrologyDecans(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload
+): void {
+  const lonStr = (inputPayload?.longitude as string) ?? args[0];
+  if (lonStr == null) {
+    exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology:decans <longitude>", flags);
+  }
+  const longitude = Number(lonStr);
+  if (isNaN(longitude)) {
+    exitWithError("INVALID_ARGUMENT", `Invalid longitude: "${lonStr}". Must be a number.`, flags);
+  }
+
+  // Lazy-import to keep the module tree-shakable at the CLI level
+  const { getDecan } = require("../../astrology");
+  const result = getDecan(longitude);
+
+  if (isJsonMode(flags)) {
+    outputJson(result, flags);
+    return;
+  }
+
+  console.log(`\nDecan for ${longitude}°\n`);
+  console.log(`  Sign: ${result.sign}`);
+  console.log(`  Decan: ${result.decanNumber}`);
+  console.log(`  Ruler: ${result.ruler}`);
+  console.log(`  Tarot: ${result.tarotCard}`);
+  console.log(`  Range: ${result.startDegree}° – ${result.endDegree}°`);
+  console.log();
+}
+
+export function cmdAstrologyDodecatemoria(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload
+): void {
+  const lonStr = (inputPayload?.longitude as string) ?? args[0];
+  if (lonStr == null) {
+    exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology:dodecatemoria <longitude>", flags);
+  }
+  const longitude = Number(lonStr);
+  if (isNaN(longitude)) {
+    exitWithError("INVALID_ARGUMENT", `Invalid longitude: "${lonStr}". Must be a number.`, flags);
+  }
+
+  const { getDodecatemoria } = require("../../astrology");
+  const result = getDodecatemoria(longitude);
+
+  if (isJsonMode(flags)) {
+    outputJson(result, flags);
+    return;
+  }
+
+  console.log(`\nDodecatemoria for ${longitude}°\n`);
+  console.log(`  Original Sign: ${result.originalSign} (${result.originalDegree.toFixed(2)}°)`);
+  console.log(`  12th Part: ${result.dodecatemoriaSign} (index ${result.dodecatemoriaIndex})`);
+  console.log();
+}
+
 export async function cmdAstrology(
   args: string[],
   flags: Flags,

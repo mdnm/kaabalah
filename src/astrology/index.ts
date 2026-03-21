@@ -7,6 +7,7 @@ import {
   calcParsFortunae,
   calculateHouses,
   calculatePlanetaryPositions,
+  calculateSinglePlanetPosition,
   closeSwissEph,
   getSwissEph,
   HouseSystem,
@@ -31,7 +32,25 @@ export {
 };
 
 export * from "./aspects";
-import { computeAspects, computeSynastryAspects, computeMidpoints, shorterArcMidpoint, type AspectEdge, type AspectSpec } from "./aspects";
+export * from "./dignity";
+export * from "./decans";
+export * from "./dodecatemoria";
+export * from "./profections";
+export * from "./firdaria";
+import {
+  computeAspects,
+  computeSynastryAspects,
+  computeTransitAspects,
+  computeMidpoints,
+  shorterArcMidpoint,
+  DEFAULT_ASPECT_SPECS,
+  SLOW_PLANETS,
+  type AspectEdge,
+  type AspectName,
+  type AspectSpec,
+  type TransitAspectEdge,
+  type TransitAspectPoint,
+} from "./aspects";
 
 export interface BirthChartOptions {
   date: Date;
@@ -76,6 +95,7 @@ export interface BirthChart {
     };
   };
   aspects: AspectEdge[];
+  sect: "diurnal" | "nocturnal";
 }
 
 function validateInputs(options: BirthChartOptions): void {
@@ -232,6 +252,7 @@ export async function getBirthChart(
       houses,
       nodes,
       aspects,
+      sect: isDiurnal ? "diurnal" as const : "nocturnal" as const,
     };
   } catch (error) {
     console.error("Error calculating birth chart:", error);
@@ -412,5 +433,529 @@ export async function getCompositeChart(
     compositePlanets,
     compositeHouses,
     aspects,
+  };
+}
+
+// ── Transits ────────────────────────────────────────────────────────────
+
+export interface TransitChartOptions {
+  natal: BirthChartOptions;
+  transitDate: Date;
+  transitLatitude?: number;
+  transitLongitude?: number;
+  transitTimeZoneSettings?: TimeZoneOptions;
+  aspectSpecs?: AspectSpec[];
+  maxOrb?: number;
+  transitPlanets?: string[];
+  natalPlanets?: string[];
+  aspectFilter?: AspectName[];
+}
+
+export interface TransitPlanet extends HydratedPlanet {
+  retrograde: boolean;
+  natalHouse: number;
+}
+
+export interface TransitChart {
+  natalChart: BirthChart;
+  transitDateUtc: Date;
+  transitPlanets: Record<string, TransitPlanet>;
+  aspects: TransitAspectEdge[];
+}
+
+export interface TransitRangeOptions extends Omit<TransitChartOptions, "transitDate"> {
+  from: Date;
+  to: Date;
+  stepDays?: number;
+}
+
+export interface AspectPerfection {
+  transitPlanet: string;
+  natalPlanet: string;
+  aspect: AspectName;
+  exactDate: Date;
+  exactOrb: number;
+  retrograde: boolean;
+  category: "slow" | "fast";
+}
+
+export interface TransitRangeResult {
+  natalChart: BirthChart;
+  from: Date;
+  to: Date;
+  perfections: AspectPerfection[];
+}
+
+function getTransitAspectPoints(
+  planets: Record<string, HydratedPlanet>
+): Record<string, TransitAspectPoint> {
+  const points: Record<string, TransitAspectPoint> = {};
+  for (const [key, p] of Object.entries(planets)) {
+    points[key] = { longitude: p.longitude, longitudeSpeed: p.longitudeSpeed };
+  }
+  return points;
+}
+
+function getNatalAspectPoints(
+  planets: Record<string, HydratedPlanet>,
+  ascLon: number,
+  mcLon: number
+): Record<string, TransitAspectPoint> {
+  // Natal positions are fixed targets — zero out speeds so applying/separating
+  // is computed solely from transit planet motion.
+  const points: Record<string, TransitAspectPoint> = {};
+  for (const [key, p] of Object.entries(planets)) {
+    points[key] = { longitude: p.longitude, longitudeSpeed: 0 };
+  }
+  points.ascendant = { longitude: ascLon, longitudeSpeed: 0 };
+  points.mc = { longitude: mcLon, longitudeSpeed: 0 };
+  return points;
+}
+
+function filterByNames(
+  points: Record<string, TransitAspectPoint>,
+  names?: string[]
+): Record<string, TransitAspectPoint> {
+  if (!names || names.length === 0) return points;
+  const allowed = new Set(names.map((n) => n.toLowerCase()));
+  const result: Record<string, TransitAspectPoint> = {};
+  for (const [key, val] of Object.entries(points)) {
+    if (allowed.has(key)) result[key] = val;
+  }
+  return result;
+}
+
+export async function getTransitChart(
+  options: TransitChartOptions
+): Promise<TransitChart> {
+  const natalChart = await getBirthChart(options.natal);
+
+  const transitChart = await getBirthChart({
+    date: options.transitDate,
+    latitude: options.transitLatitude ?? options.natal.latitude,
+    longitude: options.transitLongitude ?? options.natal.longitude,
+    houseSystem: options.natal.houseSystem,
+    timeZoneSettings: options.transitTimeZoneSettings ?? { autoTimeZone: true },
+  });
+
+  const natalCusps = natalChart.houses.houses.map((h) => h.longitude);
+
+  // Place transit planets in natal houses
+  const transitPlanets: Record<string, TransitPlanet> = {};
+  for (const [key, planet] of Object.entries(transitChart.planets)) {
+    const natalZodiac = getZodiacPosition(planet.longitude, natalCusps);
+    transitPlanets[key] = {
+      ...planet,
+      retrograde: (planet.longitudeSpeed ?? 0) < 0,
+      natalHouse: natalZodiac.house,
+      zodiacPosition: {
+        ...planet.zodiacPosition,
+        house: natalZodiac.house,
+      },
+    };
+  }
+
+  // Build aspect points with filters
+  let tPoints = getTransitAspectPoints(transitChart.planets);
+  let nPoints = getNatalAspectPoints(
+    natalChart.planets,
+    natalChart.houses.ascendant.longitude,
+    natalChart.houses.mc.longitude
+  );
+  tPoints = filterByNames(tPoints, options.transitPlanets);
+  nPoints = filterByNames(nPoints, options.natalPlanets);
+
+  let aspects = computeTransitAspects(tPoints, nPoints, options.aspectSpecs);
+
+  if (options.maxOrb != null) {
+    aspects = aspects.filter((a) => a.orb <= options.maxOrb!);
+  }
+  if (options.aspectFilter && options.aspectFilter.length > 0) {
+    const allowed = new Set(options.aspectFilter);
+    aspects = aspects.filter((a) => allowed.has(a.aspect));
+  }
+
+  return {
+    natalChart,
+    transitDateUtc: transitChart.dateUtc,
+    transitPlanets,
+    aspects,
+  };
+}
+
+export async function getTransitRange(
+  options: TransitRangeOptions
+): Promise<TransitRangeResult> {
+  const natalChart = await getBirthChart(options.natal);
+  const natalCusps = natalChart.houses.houses.map((h) => h.longitude);
+
+  const nPoints = filterByNames(
+    getNatalAspectPoints(
+      natalChart.planets,
+      natalChart.houses.ascendant.longitude,
+      natalChart.houses.mc.longitude
+    ),
+    options.natalPlanets
+  );
+  const natalKeys = Object.keys(nPoints);
+
+  const rawStep = options.stepDays ?? 1;
+  if (rawStep <= 0) throw new Error("stepDays must be greater than 0");
+  const fromMs = options.from.getTime();
+  const toMs = options.to.getTime();
+  const specs = options.aspectSpecs;
+
+  // Collect positions at each step
+  type StepData = {
+    time: number;
+    positions: Record<string, TransitAspectPoint>;
+  };
+  const steps: StepData[] = [];
+
+  const transitLat = options.transitLatitude ?? options.natal.latitude;
+  const transitLon = options.transitLongitude ?? options.natal.longitude;
+  const transitTz = options.transitTimeZoneSettings ?? { autoTimeZone: true };
+
+  // Auto-reduce step for fast planets (Moon moves ~13°/day, can enter and exit
+  // an aspect between daily samples). Cap at 0.25 days (~6h) when fast planets
+  // are in the transit set so we don't miss perfections.
+  const FAST_PLANET_MAX_STEP = 0.25; // days
+  let effectiveStepDays = rawStep;
+  // Check if any requested transit planet is fast (not in SLOW_PLANETS)
+  const requestedTransitPlanets = options.transitPlanets?.map((n) => n.toLowerCase());
+  const hasFastPlanets = requestedTransitPlanets
+    ? requestedTransitPlanets.some((n) => !SLOW_PLANETS.has(n))
+    : true; // if no filter, assume fast planets present
+  if (hasFastPlanets && effectiveStepDays > FAST_PLANET_MAX_STEP) {
+    effectiveStepDays = FAST_PLANET_MAX_STEP;
+  }
+  const stepMs = effectiveStepDays * 86400000;
+
+  // Scan one extra step beyond toMs so perfections near the boundary can be detected
+  // (binary search needs two consecutive steps to spot the orb increase after a minimum).
+  // Perfections are still filtered to [from, to] at the end.
+  const scanEndMs = toMs + stepMs;
+  for (let ms = fromMs; ms <= scanEndMs; ms += stepMs) {
+    const date = new Date(ms);
+    const utcDate = await toUtcDate(date, transitLat, transitLon, transitTz ?? { autoTimeZone: true });
+    const positions = await calculatePlanetaryPositions(utcDate);
+    if (!positions) continue;
+
+    const points: Record<string, TransitAspectPoint> = {};
+    for (const [planetId, pos] of Object.entries(positions)) {
+      const id = planetId as unknown as Planet;
+      const name = PLANET_AND_NODE_NAMES[id].toLowerCase();
+      points[name] = { longitude: pos.longitude, longitudeSpeed: pos.longitudeSpeed };
+    }
+    steps.push({ time: ms, positions: filterByNames(points, options.transitPlanets) });
+  }
+
+  // Track orbs across steps and find perfections via binary search
+  const perfections: AspectPerfection[] = [];
+  const transitKeys = steps.length > 0 ? Object.keys(steps[0].positions) : [];
+
+  for (const tKey of transitKeys) {
+    for (const nKey of natalKeys) {
+      let prevOrb: number | null = null;
+      let prevDecreasing = false;
+      let prevStep: StepData | null = null;
+
+      for (const step of steps) {
+        const tPos = step.positions[tKey];
+        const nPos = nPoints[nKey];
+        if (!tPos || !nPos) continue;
+
+        // Check all aspect specs for the closest match
+        const match = specs
+          ? findClosestAspectOrb(tPos.longitude, nPos.longitude, specs)
+          : findClosestAspectOrb(tPos.longitude, nPos.longitude);
+
+        if (!match) {
+          prevOrb = null;
+          prevStep = step;
+          continue;
+        }
+
+        const currentOrb = match.orb;
+        if (prevOrb != null && prevStep) {
+          const wasDecreasing = prevOrb > currentOrb;
+          // Perfection: orb was decreasing and is now increasing
+          if (prevDecreasing && !wasDecreasing && currentOrb <= (match.spec.orb)) {
+            const exactResult = await binarySearchPerfection(
+              tKey, nKey, match.spec,
+              prevStep.time, step.time,
+              nPos, transitLat, transitLon, transitTz
+            );
+            if (exactResult) perfections.push(exactResult);
+          }
+          prevDecreasing = wasDecreasing;
+        } else {
+          prevDecreasing = false;
+        }
+        prevOrb = currentOrb;
+        prevStep = step;
+      }
+    }
+  }
+
+  // Filter perfections to the requested [from, to] range (scan extends beyond for detection)
+  let filtered = perfections.filter((p) => {
+    const t = p.exactDate.getTime();
+    return t >= fromMs && t <= toMs;
+  });
+  if (options.maxOrb != null) {
+    filtered = filtered.filter((p) => p.exactOrb <= options.maxOrb!);
+  }
+  if (options.aspectFilter && options.aspectFilter.length > 0) {
+    const allowed = new Set(options.aspectFilter);
+    filtered = filtered.filter((p) => allowed.has(p.aspect));
+  }
+
+  // Sort by date
+  filtered.sort((a, b) => a.exactDate.getTime() - b.exactDate.getTime());
+
+  return {
+    natalChart,
+    from: options.from,
+    to: options.to,
+    perfections: filtered,
+  };
+}
+
+function findClosestAspectOrb(
+  lonA: number,
+  lonB: number,
+  specs: AspectSpec[] = DEFAULT_ASPECT_SPECS
+): { spec: AspectSpec; orb: number; delta: number } | null {
+  const a = normalizeAngle(lonA);
+  const b = normalizeAngle(lonB);
+  const delta = Math.min(normalizeAngle(b - a), normalizeAngle(a - b));
+
+  let best: { spec: AspectSpec; orb: number; delta: number } | null = null;
+  for (const spec of specs) {
+    const orb = Math.abs(delta - spec.angle);
+    // Use a generous search orb (spec.orb + 2) to catch approaching aspects
+    if (orb <= spec.orb + 2) {
+      if (!best || orb < best.orb) {
+        best = { spec, orb, delta };
+      }
+    }
+  }
+  return best;
+}
+
+function computeOrbForAspect(
+  transitLon: number,
+  natalLon: number,
+  aspectAngle: number
+): number {
+  const delta = Math.min(
+    normalizeAngle(transitLon - natalLon),
+    normalizeAngle(natalLon - transitLon)
+  );
+  return Math.abs(delta - aspectAngle);
+}
+
+// Reverse map: lowercase name → Planet enum, built once
+const NAME_TO_PLANET: Record<string, Planet> = {};
+for (const [id, name] of Object.entries(PLANET_AND_NODE_NAMES)) {
+  const numId = Number(id);
+  if (!isNaN(numId)) NAME_TO_PLANET[name.toLowerCase()] = numId as Planet;
+}
+
+async function getTransitLongitudeAt(
+  ms: number,
+  transitKey: string,
+  transitLat: number,
+  transitLon: number,
+  transitTz: TimeZoneOptions
+): Promise<PlanetPosition | null> {
+  const date = new Date(ms);
+  const utc = await toUtcDate(date, transitLat, transitLon, transitTz);
+
+  // Use single-planet calculation when possible (much cheaper than full ephemeris)
+  const planetId = NAME_TO_PLANET[transitKey];
+  if (planetId != null) {
+    try {
+      return calculateSinglePlanetPosition(utc, planetId);
+    } catch {
+      return null;
+    }
+  }
+
+  // Fallback for non-standard names (shouldn't happen in practice)
+  const positions = await calculatePlanetaryPositions(utc);
+  if (!positions) return null;
+  return findPlanetByName(positions, transitKey) ?? null;
+}
+
+async function binarySearchPerfection(
+  transitKey: string,
+  natalKey: string,
+  spec: AspectSpec,
+  startMs: number,
+  endMs: number,
+  natalPoint: TransitAspectPoint,
+  transitLat: number,
+  transitLon: number,
+  transitTz?: TimeZoneOptions
+): Promise<AspectPerfection | null> {
+  const tz = transitTz ?? { autoTimeZone: true };
+  const maxIterations = 30;
+
+  // Ternary search: find the time that minimizes the orb (unimodal function)
+  let lo = startMs;
+  let hi = endMs;
+
+  for (let i = 0; i < maxIterations; i++) {
+    if (hi - lo < 60000) break; // < 1 minute precision
+
+    const m1 = lo + Math.floor((hi - lo) / 3);
+    const m2 = hi - Math.floor((hi - lo) / 3);
+
+    const pos1 = await getTransitLongitudeAt(m1, transitKey, transitLat, transitLon, tz);
+    const pos2 = await getTransitLongitudeAt(m2, transitKey, transitLat, transitLon, tz);
+    if (!pos1 || !pos2) break;
+
+    const orb1 = computeOrbForAspect(pos1.longitude, natalPoint.longitude, spec.angle);
+    const orb2 = computeOrbForAspect(pos2.longitude, natalPoint.longitude, spec.angle);
+
+    if (orb1 < orb2) {
+      hi = m2;
+    } else {
+      lo = m1;
+    }
+  }
+
+  // Final evaluation at converged point
+  const finalMs = Math.floor((lo + hi) / 2);
+  const finalPos = await getTransitLongitudeAt(finalMs, transitKey, transitLat, transitLon, tz);
+  if (!finalPos) return null;
+
+  const finalOrb = computeOrbForAspect(finalPos.longitude, natalPoint.longitude, spec.angle);
+
+  // Reject near-miss local minima that never got close to exact
+  if (finalOrb > spec.orb) return null;
+
+  return {
+    transitPlanet: transitKey,
+    natalPlanet: natalKey,
+    aspect: spec.name,
+    exactDate: new Date(finalMs),
+    exactOrb: finalOrb,
+    retrograde: (finalPos.longitudeSpeed ?? 0) < 0,
+    category: SLOW_PLANETS.has(transitKey) ? "slow" : "fast",
+  };
+}
+
+function findPlanetByName(
+  positions: Record<string, PlanetPosition>,
+  name: string
+): PlanetPosition | undefined {
+  for (const [planetId, pos] of Object.entries(positions)) {
+    const id = planetId as unknown as Planet;
+    if (PLANET_AND_NODE_NAMES[id].toLowerCase() === name) return pos;
+  }
+  return undefined;
+}
+
+// ── Solar Return ─────────────────────────────────────────────────────────
+
+export interface SolarReturnOptions {
+  natal: BirthChartOptions;
+  year: number;
+  solarReturnLatitude?: number;
+  solarReturnLongitude?: number;
+  solarReturnHouseSystem?: HouseSystem;
+}
+
+export interface SolarReturnChart {
+  natalChart: BirthChart;
+  solarReturnChart: BirthChart;
+  exactReturnDate: Date;
+  natalSunLongitude: number;
+  year: number;
+}
+
+/**
+ * Get the Sun's ecliptic longitude at a given UTC millisecond timestamp.
+ */
+async function getSunLongitudeAtMs(ms: number): Promise<number> {
+  const positions = await calculatePlanetaryPositions(new Date(ms));
+  const sun = findPlanetByName(positions, "sun");
+  if (!sun) throw new Error("Failed to compute Sun position");
+  return sun.longitude;
+}
+
+/**
+ * Signed angular delta in (-180, 180].
+ * Positive means `current` is ahead of `target` (Sun has passed the return point).
+ */
+function signedAngularDelta(current: number, target: number): number {
+  let d = normalizeAngle(current - target);
+  if (d > 180) d -= 360;
+  return d;
+}
+
+/**
+ * Calculate a Solar Return chart — the moment the transiting Sun returns
+ * to its natal longitude in the given year.
+ */
+export async function getSolarReturnChart(
+  options: SolarReturnOptions
+): Promise<SolarReturnChart> {
+  // 1. Compute natal chart to get natal Sun longitude
+  const natalChart = await getBirthChart(options.natal);
+  const natalSunLongitude = natalChart.planets.sun.longitude;
+
+  // 2. Build search window: natal birthday in target year ± 2 days
+  const natalDate = options.natal.date;
+  const approxReturn = new Date(Date.UTC(
+    options.year,
+    natalDate.getMonth(),
+    natalDate.getDate(),
+    12, 0, 0
+  ));
+  let lo = approxReturn.getTime() - 2 * 86400000;
+  let hi = approxReturn.getTime() + 2 * 86400000;
+
+  // 3. Binary search (max 30 iterations, converge to < 60s)
+  for (let i = 0; i < 30; i++) {
+    if (hi - lo < 60000) break;
+
+    const mid = Math.floor((lo + hi) / 2);
+    const sunLon = await getSunLongitudeAtMs(mid);
+    const delta = signedAngularDelta(sunLon, natalSunLongitude);
+
+    if (delta < 0) {
+      // Sun hasn't arrived yet → search forward
+      lo = mid;
+    } else {
+      // Sun has passed → search backward
+      hi = mid;
+    }
+  }
+
+  const exactMs = Math.floor((lo + hi) / 2);
+  const exactReturnDate = new Date(exactMs);
+
+  // 4. Cast full BirthChart at converged timestamp using SR location
+  const solarReturnChart = await getBirthChart({
+    date: exactReturnDate,
+    latitude: options.solarReturnLatitude ?? options.natal.latitude,
+    longitude: options.solarReturnLongitude ?? options.natal.longitude,
+    houseSystem: options.solarReturnHouseSystem ?? options.natal.houseSystem,
+    // Always treatAsUTC: the binary search converged on a UTC millisecond timestamp.
+    // Passing a caller timezone here would re-interpret the already-UTC instant as local,
+    // shifting planetary positions by hours.
+    timeZoneSettings: { treatAsUTC: true },
+  });
+
+  return {
+    natalChart,
+    solarReturnChart,
+    exactReturnDate,
+    natalSunLongitude,
+    year: options.year,
   };
 }

@@ -137,3 +137,78 @@ export function computeMidpoints(
   }
   return result;
 }
+
+// ── Transit aspects ─────────────────────────────────────────────────────
+
+export interface TransitAspectEdge extends AspectEdge {
+  applying: boolean;
+  retrograde: boolean;
+  category: "slow" | "fast";
+}
+
+export interface TransitAspectPoint {
+  longitude: number;
+  longitudeSpeed?: number;
+}
+
+export const SLOW_PLANETS = new Set([
+  "pluto", "neptune", "uranus", "saturn", "jupiter", "chiron",
+  "mean node", "true node", "lilith true", "lilith mean",
+]);
+
+// Deferred transit features (future releases):
+// - Theme tagging: planet-pair -> archetypal theme (Mars-Pluto = POWER, Neptune-Mercury = DECEPTION, etc.)
+// - Ingress detection: transit planet crossing natal house cusp boundaries
+// - Multi-pass tracking: 3-hit retrograde patterns (direct, retrograde, direct exact dates)
+// - Secondary progressions (--progressed flag)
+// - Arabic parts / fixed stars / eclipses as transit targets
+// - Batch mode: multiple natal charts in one invocation
+
+/**
+ * Compute transit-to-natal aspects with applying/separating, retrograde, and speed category.
+ *
+ * planetA = transit planet, planetB = natal planet/point.
+ */
+export function computeTransitAspects(
+  transitPlanets: Record<string, TransitAspectPoint>,
+  natalPlanets: Record<string, TransitAspectPoint>,
+  specs: AspectSpec[] = DEFAULT_ASPECT_SPECS
+): TransitAspectEdge[] {
+  const keysT = Object.keys(transitPlanets);
+  const keysN = Object.keys(natalPlanets);
+  const edges: TransitAspectEdge[] = [];
+
+  for (const kT of keysT) {
+    const t = transitPlanets[kT];
+    for (const kN of keysN) {
+      const n = natalPlanets[kN];
+      const match = getAspectMatch(t.longitude, n.longitude, specs);
+      if (!match) continue;
+
+      const tSpeed = t.longitudeSpeed ?? 0;
+      const nSpeed = n.longitudeSpeed ?? 0;
+
+      // Epsilon projection: check if orb is decreasing (applying) or increasing (separating)
+      const dt = 0.01; // ~14 minutes
+      const tLonFuture = t.longitude + tSpeed * dt;
+      const nLonFuture = n.longitude + nSpeed * dt;
+      const futureMatch = getAspectMatch(tLonFuture, nLonFuture, [match.spec]);
+      const applying = futureMatch != null ? futureMatch.orb < match.orb : false;
+
+      edges.push({
+        planetA: kT,
+        planetB: kN,
+        longitudeA: t.longitude,
+        longitudeB: n.longitude,
+        aspect: match.spec.name,
+        aspectAngle: match.spec.angle,
+        delta: match.delta,
+        orb: match.orb,
+        applying,
+        retrograde: tSpeed < 0,
+        category: SLOW_PLANETS.has(kT) ? "slow" : "fast",
+      });
+    }
+  }
+  return edges;
+}
