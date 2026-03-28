@@ -131,6 +131,8 @@ describe("CLI contract", () => {
       "astrology:firdaria",
       "astrology:decans",
       "astrology:dodecatemoria",
+      "astrology:astrocartography",
+      "astrology:astrocartography:query",
       "help",
     ]);
     expect(payload.globalFlags.map((flag) => flag.name)).toEqual([

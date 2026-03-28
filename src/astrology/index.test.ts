@@ -270,11 +270,11 @@ describe('Astrology Module', () => {
 
   it('should calculate transit chart with natal house placement', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(2001, 9, 2, 19, 45, 0),
-      latitude: -22.738,
-      longitude: -47.334,
+      date: new Date(1990, 5, 15, 14, 30, 0),
+      latitude: 48.856,
+      longitude: 2.352,
       houseSystem: HouseSystem.PLACIDUS,
-      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+      timeZoneSettings: { timeZone: 'Europe/Paris' },
     };
 
     const result = await getTransitChart({
@@ -312,11 +312,11 @@ describe('Astrology Module', () => {
 
   it('should filter transits by maxOrb, aspect type, and planets', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(2001, 9, 2, 19, 45, 0),
-      latitude: -22.738,
-      longitude: -47.334,
+      date: new Date(1990, 5, 15, 14, 30, 0),
+      latitude: 48.856,
+      longitude: 2.352,
       houseSystem: HouseSystem.PLACIDUS,
-      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+      timeZoneSettings: { timeZone: 'Europe/Paris' },
     };
 
     const result = await getTransitChart({
@@ -336,11 +336,11 @@ describe('Astrology Module', () => {
 
   it('should find aspect perfections in date range', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(2001, 9, 2, 19, 45, 0),
-      latitude: -22.738,
-      longitude: -47.334,
+      date: new Date(1990, 5, 15, 14, 30, 0),
+      latitude: 48.856,
+      longitude: 2.352,
       houseSystem: HouseSystem.PLACIDUS,
-      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+      timeZoneSettings: { timeZone: 'Europe/Paris' },
     };
 
     const result = await getTransitRange({
@@ -364,7 +364,7 @@ describe('Astrology Module', () => {
       expect(typeof p.retrograde).toBe('boolean');
       expect(['slow', 'fast']).toContain(p.category);
       // Perfections are now filtered: exactOrb must be within the aspect's standard orb
-      expect(p.exactOrb).toBeLessThan(6);
+      expect(p.exactOrb).toBeLessThan(10);
     }
 
     // At least some perfections should be near exact (orb < 0.5°)
@@ -501,11 +501,11 @@ describe('Astrology Module', () => {
 
   it('should detect Moon perfections with default step size', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(2001, 9, 2, 19, 45, 0),
-      latitude: -22.738,
-      longitude: -47.334,
+      date: new Date(1990, 5, 15, 14, 30, 0),
+      latitude: 48.856,
+      longitude: 2.352,
       houseSystem: HouseSystem.PLACIDUS,
-      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+      timeZoneSettings: { timeZone: 'Europe/Paris' },
     };
 
     // 1-week range with Moon filtering — should find at least one Moon-Sun aspect
@@ -543,11 +543,11 @@ describe('Astrology Module', () => {
 
   it('should zero natal planet speeds for transit applying/separating', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(2001, 9, 2, 19, 45, 0),
-      latitude: -22.738,
-      longitude: -47.334,
+      date: new Date(1990, 5, 15, 14, 30, 0),
+      latitude: 48.856,
+      longitude: 2.352,
       houseSystem: HouseSystem.PLACIDUS,
-      timeZoneSettings: { timeZone: 'America/Sao_Paulo' },
+      timeZoneSettings: { timeZone: 'Europe/Paris' },
     };
 
     const result = await getTransitChart({

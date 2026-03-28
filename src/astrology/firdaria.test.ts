@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getFirdaria } from "./firdaria";
 
 describe("Firdaria", () => {
-  const birthDate = new Date(2001, 9, 2); // Oct 2, 2001
+  const birthDate = new Date(1990, 5, 15); // Jun 15, 1990
 
   it("day chart: first major = Sun (10y), second = Venus (8y)", () => {
     const result = getFirdaria(birthDate, true);
@@ -28,13 +28,14 @@ describe("Firdaria", () => {
     expect(subPlanets).toEqual(["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"]);
   });
 
-  it("target date 2026-03-21 falls in Mercury major period (day chart)", () => {
+  it("target date 2026-03-21 falls in Moon major period (day chart)", () => {
     const target = new Date(2026, 2, 21);
     const result = getFirdaria(birthDate, true, target);
-    // Sun: 2001-10-02 to ~2011-10-02 (10y)
-    // Venus: ~2011-10-02 to ~2019-10-02 (8y)
-    // Mercury: ~2019-10-02 to ~2032-10-02 (13y)
-    expect(result.currentMajor.planet).toBe("Mercury");
+    // Sun: 1990-06-15 to ~2000-06-15 (10y)
+    // Venus: ~2000-06-15 to ~2008-06-15 (8y)
+    // Mercury: ~2008-06-15 to ~2021-06-15 (13y)
+    // Moon: ~2021-06-15 to ~2030-06-15 (9y)
+    expect(result.currentMajor.planet).toBe("Moon");
   });
 
   it("all periods are contiguous (no gaps)", () => {
@@ -83,7 +84,7 @@ describe("Firdaria", () => {
 
   it("75-year cycle: age 76 falls in second cycle (Sun again)", () => {
     // 75 years total in one cycle. At age 76, we're 1 year into cycle 2 → still Sun (10y).
-    const target = new Date(2001 + 76, 9, 2);
+    const target = new Date(1990 + 76, 5, 15);
     const result = getFirdaria(birthDate, true, target);
     expect(result.currentMajor.planet).toBe("Sun");
     // Verify it's the second Sun period (index 9, not 0)
@@ -92,7 +93,7 @@ describe("Firdaria", () => {
   });
 
   it("current sub-period is identified correctly", () => {
-    const target = new Date(2003, 5, 1); // mid-2003, during Sun major
+    const target = new Date(1995, 5, 1); // mid-1995, during Sun major (1990-2000)
     const result = getFirdaria(birthDate, true, target);
     expect(result.currentMajor.planet).toBe("Sun");
     expect(result.currentSub).toBeDefined();

@@ -1,5 +1,5 @@
 import { VERSION } from "./contract";
-import { cmdAstrology, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits } from "./commands/astrology";
+import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIfa } from "./commands/ifa";
@@ -215,6 +215,12 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "astrology:firdaria":
         await cmdAstrologyFirdaria(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:astrocartography":
+        await cmdAstrologyAstrocartography(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:astrocartography:query":
+        await cmdAstrologyAstrocartographyQuery(args.slice(1), flags, inputPayload, execution);
         return;
       case "astrology:decans":
         cmdAstrologyDecans(args.slice(1), flags, inputPayload);

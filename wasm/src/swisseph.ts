@@ -3,11 +3,13 @@
  */
 
 import type {
+  SweAzalt,
   SweCalcUt,
   SweClose,
   SweHousePos,
   SweHouses,
   SweJulDay,
+  SweRiseTrans,
   SweSetEphePath,
   SweSetSidMode,
   SweSetTopo,
@@ -87,6 +89,27 @@ export enum CalcFlag {
   SIDEREAL = 65536,
 }
 
+// Rise/set/meridian transit flags for swe_rise_trans
+export enum RiseTransitFlag {
+  RISE = 1,
+  SET = 2,
+  UPPER_MERIDIAN = 4,
+  LOWER_MERIDIAN = 8,
+  DISC_CENTER = 256,
+  NO_REFRACTION = 512,
+}
+
+// Azimuth/altitude result from swe_azalt
+export interface AzaltResult {
+  azimuth: number;
+  trueAltitude: number;
+  apparentAltitude: number;
+}
+
+// SE_ECL2HOR / SE_EQU2HOR constants for swe_azalt
+export const SE_ECL2HOR = 0;
+export const SE_EQU2HOR = 1;
+
 // Planet position result
 export interface PlanetPosition {
   longitude: number;
@@ -139,6 +162,8 @@ export class SwissEph {
   private swe_close: SweClose | null = null;
   private swe_set_topo: SweSetTopo | null = null;
   private swe_set_sid_mode: SweSetSidMode | null = null;
+  private swe_azalt_fn: SweAzalt | null = null;
+  private swe_rise_trans_fn: SweRiseTrans | null = null;
 
   /**
    * Constructor that accepts a pre-initialized Swiss Ephemeris module
@@ -189,6 +214,16 @@ export class SwissEph {
       "swe_set_sid_mode",
       null,
       ["number", "number", "number"]
+    );
+    this.swe_azalt_fn = this.module.cwrap<SweAzalt>(
+      "swe_azalt",
+      null,
+      ["number", "number", "number", "number", "number", "number", "number"]
+    );
+    this.swe_rise_trans_fn = this.module.cwrap<SweRiseTrans>(
+      "swe_rise_trans",
+      "number",
+      ["number", "number", "number", "number", "number", "number", "number", "number", "number", "number"]
     );
   }
 
@@ -468,6 +503,131 @@ export class SwissEph {
   ): PlanetPosition {
     const id = kind === "mean" ? BODY.MEAN_APOGEE : BODY.OSC_APOGEE;
     return this.calculatePlanetPosition(julday, id, flags);
+  }
+  /**
+   * Convert ecliptic (or equatorial) coordinates to horizon coordinates.
+   * Returns azimuth (0=south, 90=west, 180=north, 270=east) and altitude.
+   */
+  azalt(
+    julday: number,
+    longitude: number,
+    latitude: number,
+    altitude: number,
+    xinLon: number,
+    xinLat: number,
+    xinDist: number,
+    fromEquatorial = false
+  ): AzaltResult {
+    this.checkInitialized();
+    if (!this.swe_azalt_fn) {
+      throw new Error("swe_azalt function not available");
+    }
+
+    const BYTES = 8;
+    const geoPtr = this.module._malloc(3 * BYTES);
+    const xinPtr = this.module._malloc(3 * BYTES);
+    const xazPtr = this.module._malloc(3 * BYTES);
+
+    if (!geoPtr || !xinPtr || !xazPtr) {
+      if (geoPtr) this.module._free(geoPtr);
+      if (xinPtr) this.module._free(xinPtr);
+      if (xazPtr) this.module._free(xazPtr);
+      throw new Error("Memory allocation failed for azalt");
+    }
+
+    try {
+      this.module.setValue(geoPtr, longitude, "double");
+      this.module.setValue(geoPtr + BYTES, latitude, "double");
+      this.module.setValue(geoPtr + 2 * BYTES, altitude, "double");
+
+      this.module.setValue(xinPtr, xinLon, "double");
+      this.module.setValue(xinPtr + BYTES, xinLat, "double");
+      this.module.setValue(xinPtr + 2 * BYTES, xinDist, "double");
+
+      this.swe_azalt_fn(
+        julday,
+        fromEquatorial ? SE_EQU2HOR : SE_ECL2HOR,
+        geoPtr,
+        0, // atpress (0 = default 1013.25 mbar)
+        0, // attemp (0 = default 15°C)
+        xinPtr,
+        xazPtr
+      );
+
+      return {
+        azimuth: this.module.getValue(xazPtr, "double"),
+        trueAltitude: this.module.getValue(xazPtr + BYTES, "double"),
+        apparentAltitude: this.module.getValue(xazPtr + 2 * BYTES, "double"),
+      };
+    } finally {
+      this.module._free(geoPtr);
+      this.module._free(xinPtr);
+      this.module._free(xazPtr);
+    }
+  }
+
+  /**
+   * Find the next rise, set, or meridian transit of a planet.
+   * Returns the Julian day of the event.
+   */
+  riseTransit(
+    julday: number,
+    planet: Planet | number,
+    rsmi: RiseTransitFlag,
+    longitude: number,
+    latitude: number,
+    altitude = 0,
+    flags = CalcFlag.SWISS_EPH
+  ): number {
+    this.checkInitialized();
+    if (!this.swe_rise_trans_fn) {
+      throw new Error("swe_rise_trans function not available");
+    }
+
+    const BYTES = 8;
+    const geoPtr = this.module._malloc(3 * BYTES);
+    const tretPtr = this.module._malloc(BYTES);
+    const ERR_BYTES = 512;
+    const errPtr = this.module._malloc(ERR_BYTES);
+
+    if (!geoPtr || !tretPtr || !errPtr) {
+      if (geoPtr) this.module._free(geoPtr);
+      if (tretPtr) this.module._free(tretPtr);
+      if (errPtr) this.module._free(errPtr);
+      throw new Error("Memory allocation failed for riseTransit");
+    }
+
+    this.module.HEAP8.fill(0, errPtr, errPtr + ERR_BYTES);
+
+    try {
+      this.module.setValue(geoPtr, longitude, "double");
+      this.module.setValue(geoPtr + BYTES, latitude, "double");
+      this.module.setValue(geoPtr + 2 * BYTES, altitude, "double");
+
+      const ret = this.swe_rise_trans_fn(
+        julday,
+        planet,
+        0,       // starname pointer (0 = planet, not fixed star)
+        flags,
+        rsmi,
+        geoPtr,
+        0,       // atpress
+        0,       // attemp
+        tretPtr,
+        errPtr
+      );
+
+      if (ret < 0) {
+        const msg = this.module.UTF8ToString(errPtr);
+        throw new Error(msg || `swe_rise_trans failed with code ${ret}`);
+      }
+
+      return this.module.getValue(tretPtr, "double");
+    } finally {
+      this.module._free(geoPtr);
+      this.module._free(tretPtr);
+      this.module._free(errPtr);
+    }
   }
 }
 

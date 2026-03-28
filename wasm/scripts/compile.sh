@@ -30,7 +30,7 @@ mkdir -p "$BUILD_DIR"
 
 # Compilation flags
 CFLAGS="-O3 -DUSE_STATIC -I$SWEPH_DIR"
-EXPORTED_FUNCTIONS="['_malloc', '_free', '_swe_set_ephe_path', '_swe_close', '_swe_julday', '_swe_calc_ut', '_swe_houses', '_swe_house_pos', '_swe_azalt', '_swe_calc', '_swe_fixstar', '_swe_get_planet_name', '_swe_set_sid_mode', '_swe_set_topo', '_swe_set_jpl_file']"
+EXPORTED_FUNCTIONS="['_malloc', '_free', '_swe_set_ephe_path', '_swe_close', '_swe_julday', '_swe_calc_ut', '_swe_houses', '_swe_house_pos', '_swe_azalt', '_swe_rise_trans', '_swe_calc', '_swe_fixstar', '_swe_get_planet_name', '_swe_set_sid_mode', '_swe_set_topo', '_swe_set_jpl_file']"
 EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap', 'setValue', 'getValue', 'stringToUTF8', 'UTF8ToString', 'lengthBytesUTF8', 'FS', 'NODEFS']"
 
 echo "Compiling Swiss Ephemeris to WebAssembly (web build)..."
