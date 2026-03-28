@@ -241,7 +241,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
     ],
     examples: [
-      "kaabalah astrology:transits 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --transit-date=2026-03-17 --json --compact",
+      "kaabalah astrology:transits 1990-06-15 14:30 --lat=48.856 --lon=2.352 --transit-date=2026-03-17 --json --compact",
       "kaabalah astrology:transits 1990-01-15 14:30 --lat=40.71 --lon=-74 --from=2026-03-01 --to=2026-04-01 --json",
       "kaabalah astrology:transits 1990-01-15 --lat=40.71 --lon=-74 --aspects=major --transit-planets=saturn,pluto --json",
     ],
@@ -268,7 +268,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
     ],
     examples: [
-      "kaabalah astrology:solar-return 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2025 --json --compact",
+      "kaabalah astrology:solar-return 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2025 --json --compact",
       "kaabalah astrology:solar-return 1990-01-15 14:30 --lat=40.71 --lon=-74 --year=2026 --sr-lat=34.05 --sr-lon=-118.24 --json",
     ],
   },
@@ -289,7 +289,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
     ],
     examples: [
-      "kaabalah astrology:profections 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2026 --json --compact",
+      "kaabalah astrology:profections 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2026 --json --compact",
     ],
   },
   {
@@ -309,7 +309,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
     ],
     examples: [
-      "kaabalah astrology:profections:monthly 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2026 --json --compact",
+      "kaabalah astrology:profections:monthly 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2026 --json --compact",
     ],
   },
   {
@@ -330,8 +330,8 @@ export const COMMANDS: CommandSchema[] = [
       { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
     ],
     examples: [
-      "kaabalah astrology:firdaria 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --json --compact",
-      "kaabalah astrology:firdaria 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --target-date=2030-01-01 --json",
+      "kaabalah astrology:firdaria 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact",
+      "kaabalah astrology:firdaria 1990-06-15 14:30 --lat=48.856 --lon=2.352 --target-date=2030-01-01 --json",
     ],
   },
   {
@@ -356,6 +356,54 @@ export const COMMANDS: CommandSchema[] = [
     examples: [
       "kaabalah astrology:dodecatemoria 5 --json --compact",
       "kaabalah astrology:dodecatemoria 227.5 --json",
+    ],
+  },
+  {
+    name: "astrology:astrocartography",
+    description: "Generate Astro*Carto*Graphy map (MC/IC/AC/DC lines for all planets)",
+    args: [
+      { name: "date", type: "date", required: true, description: "Natal birth date in YYYY-MM-DD format" },
+      { name: "time", type: "string", required: false, description: "Natal birth time in HH:MM format (default: 12:00)" },
+    ],
+    flags: [
+      { name: "lat", type: "number", description: "Natal latitude (-90 to 90)" },
+      { name: "lon", type: "number", description: "Natal longitude (-180 to 180)" },
+      { name: "location", type: "string", description: "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY)" },
+      { name: "timezone", type: "string", description: "Natal IANA timezone (auto-resolved if omitted)" },
+      { name: "latitude-step", type: "number", description: "Degrees between latitude samples for AC/DC lines (default: 1)" },
+      { name: "latitude-range", type: "number", description: "Maximum latitude to sweep (default: 66.5)" },
+      { name: "house-system", type: "string", description: "House system (default: placidus)" },
+      { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
+      { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
+    ],
+    examples: [
+      "kaabalah astrology:astrocartography 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact",
+      "kaabalah astrology:astrocartography 1990-01-15 14:30 --lat=40.71 --lon=-74 --latitude-step=5 --json",
+    ],
+  },
+  {
+    name: "astrology:astrocartography:query",
+    description: "Query a location for nearby astrocartography planetary lines and parans",
+    args: [
+      { name: "date", type: "date", required: true, description: "Natal birth date in YYYY-MM-DD format" },
+      { name: "time", type: "string", required: false, description: "Natal birth time in HH:MM format (default: 12:00)" },
+    ],
+    flags: [
+      { name: "lat", type: "number", description: "Natal latitude (-90 to 90)" },
+      { name: "lon", type: "number", description: "Natal longitude (-180 to 180)" },
+      { name: "location", type: "string", description: "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY)" },
+      { name: "timezone", type: "string", description: "Natal IANA timezone (auto-resolved if omitted)" },
+      { name: "query-lat", type: "number", description: "Query latitude (-90 to 90)" },
+      { name: "query-lon", type: "number", description: "Query longitude (-180 to 180)" },
+      { name: "orb", type: "number", description: "Maximum distance in degrees to consider a line active (default: 2)" },
+      { name: "paran-orb", type: "number", description: "Paran crossing orb in degrees (default: 1)" },
+      { name: "house-system", type: "string", description: "House system (default: placidus)" },
+      { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
+      { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
+    ],
+    examples: [
+      "kaabalah astrology:astrocartography:query 1990-06-15 14:30 --lat=48.856 --lon=2.352 --query-lat=51.5 --query-lon=-0.12 --orb=3 --json --compact",
+      "kaabalah astrology:astrocartography:query --input-json='{\"natal\":{\"date\":\"1990-06-15\",\"time\":\"14:30\",\"lat\":48.856,\"lon\":2.352},\"queryLat\":51.5,\"queryLon\":-0.12,\"orb\":3}' --json --compact",
     ],
   },
   {

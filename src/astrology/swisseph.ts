@@ -11,6 +11,7 @@ import type { SwissEphModule, SwissEphModuleFactory } from "../../wasm/src/types
 
 // Import from the actual WASM wrapper
 import {
+  type AzaltResult,
   CalcFlag,
   Houses,
   HouseSystem,
@@ -19,6 +20,7 @@ import {
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  RiseTransitFlag,
   SwissEph,
   VirtualNodes,
 } from "../../wasm/src/swisseph";
@@ -406,6 +408,75 @@ export function calculateSinglePlanetPosition(
   return swissEph!.calculatePlanetPosition(julday, planet, DEFAULT_FLAGS);
 }
 
+/**
+ * Calculate equatorial coordinates (Right Ascension / Declination) for a planet.
+ * Uses the existing EQUATORIAL flag — RA is returned in the longitude field,
+ * Dec in the latitude field by Swiss Ephemeris convention.
+ */
+export interface EquatorialPosition {
+  rightAscension: number;
+  declination: number;
+  distance: number;
+}
+
+export function calculateEquatorialPosition(
+  date: Date,
+  planet: Planet
+): EquatorialPosition {
+  checkInitialization();
+  const julday = swissEph!.getJulianDay(date);
+  const pos = swissEph!.calculatePlanetPosition(
+    julday,
+    planet,
+    CalcFlag.SWISS_EPH | CalcFlag.EQUATORIAL
+  );
+  return {
+    rightAscension: pos.longitude,
+    declination: pos.latitude,
+    distance: pos.distance,
+  };
+}
+
+/**
+ * Get the Julian day for a Date (UTC).
+ */
+export function getJulianDay(date: Date): number {
+  checkInitialization();
+  return swissEph!.getJulianDay(date);
+}
+
+/**
+ * Find the next rise, set, or meridian transit of a planet at a location.
+ * Returns the Julian day of the event.
+ */
+export function calculateRiseTransit(
+  date: Date,
+  planet: Planet,
+  latitude: number,
+  longitude: number,
+  event: RiseTransitFlag
+): number {
+  checkInitialization();
+  const julday = swissEph!.getJulianDay(date);
+  return swissEph!.riseTransit(julday, planet, event, longitude, latitude);
+}
+
+/**
+ * Convert ecliptic coordinates to horizon coordinates (azimuth/altitude).
+ */
+export function calculateAzalt(
+  date: Date,
+  latitude: number,
+  longitude: number,
+  eclLon: number,
+  eclLat: number,
+  dist: number
+): AzaltResult {
+  checkInitialization();
+  const julday = swissEph!.getJulianDay(date);
+  return swissEph!.azalt(julday, longitude, latitude, 0, eclLon, eclLat, dist);
+}
+
 export async function calculatePlanetaryPositions(
   date: Date
 ): Promise<Record<Planet, PlanetPosition>> {
@@ -545,12 +616,14 @@ function checkInitialization(): void {
 
 // Re-export types and enums for convenience
 export {
+  type AzaltResult,
   CalcFlag,
   HouseSystem,
   normalizeAngle,
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  RiseTransitFlag,
   VirtualNodes
 };
 

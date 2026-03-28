@@ -54,6 +54,16 @@ The WASM files are in `wasm/build/` and ephemeris data in `ephe/`.
 - `computeMidpoints(planetsA, planetsB)` — shorter-arc midpoint for each common planet
 - `DEFAULT_ASPECT_SPECS` — default aspect definitions with standard orbs
 
+**Astro\*Carto\*Graphy** (`src/astrology/astrocartography.ts`): Locational astrology — planetary angle lines and location queries.
+- `queryAstrocartographyLocation(date, { latitude, longitude, orb?, paranOrb?, planets? })` — **primary API**: for each planet, how close is each angle line (MC/IC/AC/DC) to the query location; returns sorted lines, active lines (within orb), and paran crossings
+- `computeAstrocartographyMap(date, { latitudeStep?, latitudeRange?, planets? })` — full map: MC/IC as constant longitudes, AC/DC as lat/lon point arrays from a latitude sweep
+- `computeEquatorialPositions(date, planets?)` — RA/Dec for all planets (uses `CalcFlag.EQUATORIAL`)
+- `computeGMST(julianDay)` — Greenwich Mean Sidereal Time in degrees
+- `computeMCLongitude(gmst, ra)` / `computeICLongitude(gmst, ra)` — geographic longitude of MC/IC lines
+- `computeHorizonLongitude(gmst, ra, dec, latitude, "AC"|"DC")` — geographic longitude of AC/DC lines (null if circumpolar)
+- `findParansAtLatitude(positions, gmst, latitude, paranOrb?)` — paran crossings at a latitude
+- `ASTROCARTOGRAPHY_DEFAULT_PLANETS` — default planet set (Sun–Pluto + Chiron + True Node)
+
 **Synastry & Composite** (`src/astrology/index.ts`):
 - `getSynastryChart(options)` — computes two birth charts + cross-chart aspects
 - `getCompositeChart(options)` — computes two birth charts + midpoint composite (planets, houses, aspects)
@@ -225,16 +235,16 @@ Calculate transit aspects to a natal chart. Transit planets are placed in **nata
 
 ```bash
 # Single transit snapshot (transit date defaults to today if omitted)
-kaabalah astrology:transits 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --transit-date=2026-03-17 --json --compact
+kaabalah astrology:transits 1990-06-15 14:30 --lat=48.856 --lon=2.352 --transit-date=2026-03-17 --json --compact
 
 # With filters: max orb, aspect types, planet filters
-kaabalah astrology:transits 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --transit-date=2026-03-17 --max-orb=3 --aspects=major --transit-planets=saturn,pluto --json
+kaabalah astrology:transits 1990-06-15 14:30 --lat=48.856 --lon=2.352 --transit-date=2026-03-17 --max-orb=3 --aspects=major --transit-planets=saturn,pluto --json
 
 # Date range mode with binary search for exact aspect perfection dates
-kaabalah astrology:transits 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --from=2026-03-01 --to=2026-04-01 --json --compact
+kaabalah astrology:transits 1990-06-15 14:30 --lat=48.856 --lon=2.352 --from=2026-03-01 --to=2026-04-01 --json --compact
 
 # Custom transit location and timezone
-kaabalah astrology:transits 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --transit-date=2026-03-17 --transit-lat=40.71 --transit-lon=-74 --transit-timezone=America/New_York --json
+kaabalah astrology:transits 1990-06-15 14:30 --lat=48.856 --lon=2.352 --transit-date=2026-03-17 --transit-lat=40.71 --transit-lon=-74 --transit-timezone=America/New_York --json
 ```
 
 Positional args are natal date/time. Transit date is specified via `--transit-date` (default: today) and `--transit-time` (default: 12:00). Transit location defaults to natal location.
@@ -245,7 +255,7 @@ Positional args are natal date/time. Transit date is specified via `--transit-da
 
 **`--input-json` alternative:**
 ```bash
-kaabalah astrology:transits --input-json='{"natal":{"date":"2001-10-02","time":"19:45","lat":-22.738,"lon":-47.334},"transitDate":"2026-03-17","maxOrb":3,"aspects":["conjunction","square"],"transitPlanets":["saturn","pluto"]}' --json --compact
+kaabalah astrology:transits --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"transitDate":"2026-03-17","maxOrb":3,"aspects":["conjunction","square"],"transitPlanets":["saturn","pluto"]}' --json --compact
 ```
 
 **Library API:** `getTransitChart(options)` and `getTransitRange(options)` are exported from `kaabalah/astrology`.
@@ -256,7 +266,7 @@ Calculate a Solar Return chart — the exact moment the transiting Sun returns t
 
 ```bash
 # Basic solar return for year 2025
-kaabalah astrology:solar-return 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2025 --json --compact
+kaabalah astrology:solar-return 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2025 --json --compact
 
 # With SR location override (relocated solar return)
 kaabalah astrology:solar-return 1990-01-15 14:30 --lat=40.71 --lon=-74 --year=2026 --sr-lat=34.05 --sr-lon=-118.24 --json
@@ -269,7 +279,7 @@ Positional args are natal date/time. `--year` defaults to current year. SR locat
 
 **`--input-json` alternative:**
 ```bash
-kaabalah astrology:solar-return --input-json='{"natal":{"date":"2001-10-02","time":"19:45","lat":-22.738,"lon":-47.334},"year":2025,"srLat":40.71,"srLon":-74}' --json --compact
+kaabalah astrology:solar-return --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"year":2025,"srLat":40.71,"srLon":-74}' --json --compact
 ```
 
 **Library API:** `getSolarReturnChart(options)` is exported from `kaabalah/astrology`. Returns `{ natalChart, solarReturnChart, exactReturnDate, natalSunLongitude, year }`.
@@ -279,17 +289,17 @@ kaabalah astrology:solar-return --input-json='{"natal":{"date":"2001-10-02","tim
 Calculate the annual profection for a given year. Forces whole-sign houses internally.
 
 ```bash
-kaabalah astrology:profections 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2026 --json --compact
+kaabalah astrology:profections 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2026 --json --compact
 
 # Default year is current year; time defaults to 12:00
-kaabalah astrology:profections 2001-10-02 --lat=-22.738 --lon=-47.334 --json --compact
+kaabalah astrology:profections 1990-06-15 --lat=48.856 --lon=2.352 --json --compact
 ```
 
 Returns `age`, `house` (1-12), `sign`, `ruler` (domicile ruler = time lord), `targetYear`.
 
 **`--input-json` alternative:**
 ```bash
-kaabalah astrology:profections --input-json='{"natal":{"date":"2001-10-02","time":"19:45","lat":-22.738,"lon":-47.334},"year":2026}' --json --compact
+kaabalah astrology:profections --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"year":2026}' --json --compact
 ```
 
 **Library API:** `getAnnualProfection(natalChart, birthDate, targetYear?)` — requires a whole-sign BirthChart.
@@ -299,7 +309,7 @@ kaabalah astrology:profections --input-json='{"natal":{"date":"2001-10-02","time
 Calculate monthly profections (12 months from birthday to birthday) for a given year.
 
 ```bash
-kaabalah astrology:profections:monthly 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --year=2026 --json --compact
+kaabalah astrology:profections:monthly 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2026 --json --compact
 ```
 
 Returns `annualProfection` (same as above) plus `months[]` — 12 entries with `month` (1-12), `startDate`, `sign`, `ruler`.
@@ -311,20 +321,52 @@ Returns `annualProfection` (same as above) plus `months[]` — 12 entries with `
 Calculate firdaria planetary periods. Sect is auto-detected from the chart; override with `--sect=diurnal` or `--sect=nocturnal`.
 
 ```bash
-kaabalah astrology:firdaria 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --json --compact
+kaabalah astrology:firdaria 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact
 
 # With target date and sect override
-kaabalah astrology:firdaria 2001-10-02 19:45 --lat=-22.738 --lon=-47.334 --target-date=2030-01-01 --sect=nocturnal --json
+kaabalah astrology:firdaria 1990-06-15 14:30 --lat=48.856 --lon=2.352 --target-date=2030-01-01 --sect=nocturnal --json
 ```
 
 Returns `sect`, `currentMajor` (planet, years, start/end, subPeriods[]), `currentSub` (planet, start/end), `allPeriods[]`.
 
 **`--input-json` alternative:**
 ```bash
-kaabalah astrology:firdaria --input-json='{"natal":{"date":"2001-10-02","time":"19:45","lat":-22.738,"lon":-47.334},"targetDate":"2030-01-01"}' --json --compact
+kaabalah astrology:firdaria --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"targetDate":"2030-01-01"}' --json --compact
 ```
 
 **Library API:** `getFirdaria(birthDate, isDiurnal, targetDate?, options?)`. Options: `{ nodeSubPeriodStart?: "jupiter-saturn" | "sun-mars" }`.
+
+#### astrology:astrocartography
+
+Generate the full Astro\*Carto\*Graphy map — MC/IC lines (constant longitudes) and AC/DC curves (latitude-swept points) for all planets.
+
+```bash
+kaabalah astrology:astrocartography1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact
+
+# Custom resolution
+kaabalah astrology:astrocartography1990-01-15 14:30 --lat=40.71 --lon=-74 --latitude-step=5 --json
+```
+
+Returns `meridianLines[]` (planet, angle, longitude) and `horizonLines[]` (planet, angle, points[]).
+
+**Library API:** `computeAstrocartographyMap(date, options?)`.
+
+#### astrology:astrocartography:query
+
+Query a specific location for nearby astrocartography planetary lines and paran crossings. This is the primary locational astrology command.
+
+```bash
+kaabalah astrology:astrocartography:query 1990-06-15 14:30 --lat=48.856 --lon=2.352 --query-lat=51.5 --query-lon=-0.12 --orb=3 --json --compact
+
+# With --input-json:
+kaabalah astrology:astrocartography:query --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"queryLat":51.5,"queryLon":-0.12,"orb":3}' --json --compact
+```
+
+Returns `lines[]` (all planet/angle lines sorted by distance from query location), `activeLines[]` (within orb), and `parans[]` (paran crossings at query latitude). Each line includes `planet`, `angle` (MC/IC/AC/DC), `distance` (degrees), `active` (boolean), `longitude` (geographic).
+
+**Flags:** `--query-lat=N`, `--query-lon=N` (required), `--orb=N` (default 2), `--paran-orb=N` (default 1).
+
+**Library API:** `queryAstrocartographyLocation(date, { latitude, longitude, orb?, paranOrb?, planets? })`.
 
 #### astrology:decans
 

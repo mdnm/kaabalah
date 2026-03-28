@@ -1151,3 +1151,187 @@ export async function cmdAstrology(
     closeSwissEph();
   }
 }
+
+export async function cmdAstrologyAstrocartography(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload ? { ...natalPayload } : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { closeSwissEph } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const { computeAstrocartographyMap } = await import("../../astrology/astrocartography");
+    const { toUtcDate } = await import("../../astrology/swisseph");
+
+    const latStep = inputPayload?.latitudeStep != null ? Number(inputPayload.latitudeStep) : getFlagNumber(flags, "latitude-step");
+    const latRange = inputPayload?.latitudeRange != null ? Number(inputPayload.latitudeRange) : getFlagNumber(flags, "latitude-range");
+
+    const utcDate = await toUtcDate(natalInput.birthDate, natalInput.latitude, natalInput.longitude, natalInput.timeZoneSettings as any);
+
+    const map = computeAstrocartographyMap(utcDate, {
+      latitudeStep: latStep ?? 1,
+      latitudeRange: latRange ?? 66.5,
+    });
+    executionContext.throwIfInterrupted();
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...map,
+        input: {
+          date: natalInput.dateStr,
+          time: natalInput.timeStr,
+          lat: natalInput.latitude,
+          lon: natalInput.longitude,
+        },
+      }, flags);
+      return;
+    }
+
+    console.log(`\nAstro*Carto*Graphy Map\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+
+    console.log(`\n  Meridian Lines (MC/IC):\n`);
+    for (const line of map.meridianLines) {
+      console.log(`    ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.longitude > 0 ? "+" : ""}${line.longitude.toFixed(2)}°`);
+    }
+
+    console.log(`\n  Horizon Lines (AC/DC): ${map.horizonLines.length} lines with ${map.horizonLines.reduce((s, l) => s + l.points.length, 0)} total points`);
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}
+
+export async function cmdAstrologyAstrocartographyQuery(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const natalPayload = inputPayload?.natal as Record<string, unknown> | undefined;
+  const effectiveArgs = natalPayload ? [] : args;
+  const effectiveInputPayload = natalPayload ? { ...natalPayload } : inputPayload;
+
+  const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { closeSwissEph } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    const { queryAstrocartographyLocation } = await import("../../astrology/astrocartography");
+    const { toUtcDate } = await import("../../astrology/swisseph");
+
+    const queryLat = inputPayload?.queryLat != null ? Number(inputPayload.queryLat) : getFlagNumber(flags, "query-lat");
+    const queryLon = inputPayload?.queryLon != null ? Number(inputPayload.queryLon) : getFlagNumber(flags, "query-lon");
+    const orb = inputPayload?.orb != null ? Number(inputPayload.orb) : getFlagNumber(flags, "orb");
+    const paranOrb = inputPayload?.paranOrb != null ? Number(inputPayload.paranOrb) : getFlagNumber(flags, "paran-orb");
+
+    if (queryLat == null || queryLon == null) {
+      exitWithError("MISSING_ARGUMENT", "Query location is required. Use --query-lat=<N> --query-lon=<N>.", flags);
+    }
+    if (queryLat < -90 || queryLat > 90) {
+      exitWithError("INVALID_ARGUMENT", `query-lat must be between -90 and 90, got ${queryLat}.`, flags);
+    }
+    if (queryLon < -180 || queryLon > 180) {
+      exitWithError("INVALID_ARGUMENT", `query-lon must be between -180 and 180, got ${queryLon}.`, flags);
+    }
+
+    const utcDate = await toUtcDate(natalInput.birthDate, natalInput.latitude, natalInput.longitude, natalInput.timeZoneSettings as any);
+
+    const result = queryAstrocartographyLocation(utcDate, {
+      latitude: queryLat,
+      longitude: queryLon,
+      orb: orb ?? 2,
+      paranOrb: paranOrb ?? 1,
+    });
+    executionContext.throwIfInterrupted();
+
+    if (isJsonMode(flags)) {
+      outputJson({
+        ...result,
+        input: {
+          natal: {
+            date: natalInput.dateStr,
+            time: natalInput.timeStr,
+            lat: natalInput.latitude,
+            lon: natalInput.longitude,
+          },
+          queryLat,
+          queryLon,
+          orb: orb ?? 2,
+        },
+      }, flags);
+      return;
+    }
+
+    console.log(`\nAstrocartography Location Query\n`);
+    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(`  Query: (${queryLat}, ${queryLon})  Orb: ${orb ?? 2}°`);
+
+    if (result.activeLines.length > 0) {
+      console.log(`\n  Active Lines (within ${orb ?? 2}° orb):\n`);
+      for (const line of result.activeLines) {
+        console.log(`    ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.distance.toFixed(2)}° away  (line at ${line.longitude > 0 ? "+" : ""}${line.longitude.toFixed(2)}°)`);
+      }
+    } else {
+      console.log(`\n  No active lines within ${orb ?? 2}° orb.`);
+    }
+
+    console.log(`\n  All Lines (sorted by proximity):\n`);
+    for (const line of result.lines.slice(0, 20)) {
+      const marker = line.active ? "*" : " ";
+      console.log(`    ${marker} ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.distance.toFixed(2)}°`);
+    }
+    if (result.lines.length > 20) {
+      console.log(`    ... and ${result.lines.length - 20} more`);
+    }
+
+    if (result.parans.length > 0) {
+      console.log(`\n  Parans at latitude ${queryLat}°:\n`);
+      for (const p of result.parans) {
+        console.log(`    ${p.planetA} ${p.angleA} x ${p.planetB} ${p.angleB}`);
+      }
+    }
+    console.log();
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
+}

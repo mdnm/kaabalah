@@ -6,6 +6,7 @@ export interface SwissEphModule {
   _malloc(size: number): number;
   _free(ptr: number): void;
   getValue(ptr: number, type: string): number;
+  setValue(ptr: number, value: number, type: string): void;
   stringToUTF8(str: string, ptr: number, maxLength: number): void;
   cwrap<T>(name: string, returnType: string | null, paramTypes: (string | null)[]): T;
   UTF8ToString(ptr: number): string;
@@ -45,3 +46,5 @@ export type SweSetEphePath = (path: number) => void;
 export type SweClose = () => void; 
 export type SweSetTopo = (lon: number, lat: number, altm: number) => void;
 export type SweSetSidMode = (mode: number, t0: number, ayan_t0: number) => void;
+export type SweAzalt = (tjd_ut: number, calc_flag: number, geopos: number, atpress: number, attemp: number, xin: number, xaz: number) => void;
+export type SweRiseTrans = (tjd_ut: number, ipl: number, starname: number, epheflag: number, rsmi: number, geopos: number, atpress: number, attemp: number, tret: number, serr: number) => number;

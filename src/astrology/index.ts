@@ -3,6 +3,7 @@
  */
 
 import {
+  type AzaltResult,
   CalcFlag,
   calcParsFortunae,
   calculateHouses,
@@ -15,12 +16,14 @@ import {
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  RiseTransitFlag,
   TimeZoneOptions,
   toUtcDate,
   VirtualNodes,
 } from "./swisseph";
 
 export {
+  type AzaltResult,
   CalcFlag,
   closeSwissEph,
   getSwissEph,
@@ -28,9 +31,11 @@ export {
   normalizeAngle,
   Planet,
   PLANET_AND_NODE_NAMES,
+  RiseTransitFlag,
   VirtualNodes
 };
 
+export * from "./astrocartography";
 export * from "./aspects";
 export * from "./dignity";
 export * from "./decans";
