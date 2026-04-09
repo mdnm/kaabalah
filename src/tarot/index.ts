@@ -2,7 +2,20 @@
  * Tarot interpretation functions
  */
 
+import {
+  createTree,
+  id,
+  KaabalahTypes,
+  LetterTypes,
+  parseId,
+  TarotTypes,
+  type NodeId,
+  type Node,
+  WesternAstrologyTypes
+} from "../core";
+
 export type Deck = "papus_pt" | "papus" | "mythic" | "egyptian" | "rider-waite"
+export type TarotDeckId = Deck;
 
 export type MajorArcana =
   | "01_the_magician"
@@ -36,7 +49,7 @@ export type TarotCard = {
   meaning: string
   papusMeaning?: string
   type: "major" | "minor" | "daat+royalship"
-  deck: string
+  deck: Deck
   suit?: string
   isInverted?: boolean
 }
@@ -991,4 +1004,319 @@ export async function shuffleTarotDeck(
   }
 
   return shuffledCards;
+}
+
+type TarotDescriptiveDeckKey =
+  | "PAPUS_KAABALISTIC"
+  | "PAPUS_DIVINATORY"
+  | "KIER_EGYPTIAN";
+
+export interface TarotDeckMetadata {
+  id: TarotDeckId;
+  label: string;
+}
+
+export interface TarotDeckDescription {
+  name?: string;
+  meaning?: string;
+  reversedMeaning?: string;
+  keywords?: string[];
+}
+
+export type TarotAstrologyCorrespondenceType =
+  | WesternAstrologyTypes.PLANET
+  | WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+  | WesternAstrologyTypes.WESTERN_ELEMENT;
+
+export interface TarotAstrologyCorrespondence {
+  type: TarotAstrologyCorrespondenceType;
+  id: NodeId<TarotAstrologyCorrespondenceType>;
+  label: string;
+}
+
+export interface TarotArchetype {
+  canonicalId: NodeId<KaabalahTypes.PATH>;
+  kind: "major";
+  pathId: NodeId<KaabalahTypes.PATH>;
+  pathNumber: number;
+  pathSlug: string;
+  hebrewLetterId: NodeId<LetterTypes.HEBREW_LETTER>;
+  hebrewLetter: string;
+  pathMeaning?: string;
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  tarotCardNumber: number;
+  tarotCardName: string;
+  tarotCardFilename: MajorArcana;
+  tarotMeaning?: string;
+  astrology: TarotAstrologyCorrespondence[];
+  availableDeckIds: TarotDeckId[];
+  descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
+}
+
+export type TarotArchetypeLookup =
+  | { pathSlug: string }
+  | { pathId: NodeId<KaabalahTypes.PATH> }
+  | { tarotCardFilename: MajorArcana | string }
+  | { tarotCardNumber: number };
+
+export interface TarotRepresentation {
+  archetype: TarotArchetype;
+  deck: TarotDeckMetadata;
+  imageUrl: string;
+  label: string;
+  altText: string;
+  cardLabel: string;
+  description?: TarotDeckDescription;
+}
+
+export const TAROT_IMAGE_BASE_URL =
+  "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot";
+
+type TarotDeckConfig = TarotDeckMetadata & {
+  imagePath: "major";
+  descriptiveDataKey?: TarotDescriptiveDeckKey;
+};
+
+const TAROT_DECK_METADATA: readonly TarotDeckConfig[] = [
+  {
+    id: "papus_pt",
+    label: "Papus Kaabalistic",
+    imagePath: "major",
+    descriptiveDataKey: "PAPUS_KAABALISTIC"
+  },
+  {
+    id: "papus",
+    label: "Papus Divinatory",
+    imagePath: "major",
+    descriptiveDataKey: "PAPUS_DIVINATORY"
+  },
+  {
+    id: "mythic",
+    label: "Mythic",
+    imagePath: "major"
+  },
+  {
+    id: "egyptian",
+    label: "Egyptian",
+    imagePath: "major",
+    descriptiveDataKey: "KIER_EGYPTIAN"
+  },
+  {
+    id: "rider-waite",
+    label: "Rider Waite",
+    imagePath: "major"
+  }
+] as const;
+
+type TarotMajorCard = TarotCard & {
+  type: "major";
+  tarotCardFilename: MajorArcana;
+};
+
+type TarotArchetypeCache = {
+  archetypes: TarotArchetype[];
+  byPathId: Map<string, TarotArchetype>;
+  byPathSlug: Map<string, TarotArchetype>;
+  byTarotCardFilename: Map<string, TarotArchetype>;
+  byTarotCardNumber: Map<number, TarotArchetype>;
+};
+
+const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
+  (card): card is TarotMajorCard =>
+    card.type === "major" &&
+    majorArcana.includes(card.tarotCardFilename as MajorArcana)
+);
+
+let tarotArchetypeCache: TarotArchetypeCache | undefined;
+
+function normalizePathSlug(pathSlug: string): string {
+  return pathSlug
+    .trim()
+    .replace(/^\/?path\//i, "")
+    .toLowerCase();
+}
+
+function toAstrologyCorrespondence<T extends TarotAstrologyCorrespondenceType>(
+  node: Node<T>
+): TarotAstrologyCorrespondence {
+  return {
+    type: node.type,
+    id: node.id,
+    label: parseId(node.id)
+  };
+}
+
+function buildDescriptionsByDeck(
+  tarotArkAnnu: Node<TarotTypes.TAROT_ARK_ANNU>
+): Partial<Record<TarotDeckId, TarotDeckDescription>> {
+  const descriptions: Partial<Record<TarotDeckId, TarotDeckDescription>> = {};
+
+  for (const deck of TAROT_DECK_METADATA) {
+    if (!deck.descriptiveDataKey) {
+      continue;
+    }
+
+    const description =
+      tarotArkAnnu.data?.descriptiveData?.[deck.descriptiveDataKey];
+
+    if (!description) {
+      continue;
+    }
+
+    descriptions[deck.id] = { ...description };
+  }
+
+  return descriptions;
+}
+
+function getTarotArchetypeCache(): TarotArchetypeCache {
+  if (tarotArchetypeCache) {
+    return tarotArchetypeCache;
+  }
+
+  const tree = createTree({
+    system: "kaabalah",
+    parts: ["westernAstrology", "tarot"]
+  });
+
+  const archetypes = MAJOR_ARCANA_CARDS.map((card) => {
+    const pathId = id(KaabalahTypes.PATH, card.number);
+    const path = tree.getNode(pathId);
+    const hebrewLetter = tree.relatedFirst(pathId, LetterTypes.HEBREW_LETTER);
+    const tarotArkAnnu = tree.relatedFirst(pathId, TarotTypes.TAROT_ARK_ANNU);
+
+    if (!path || !hebrewLetter || !tarotArkAnnu) {
+      throw new Error(
+        `Missing canonical tarot archetype metadata for ${pathId}.`
+      );
+    }
+
+    const astrology = [
+      ...tree.related(pathId, WesternAstrologyTypes.WESTERN_ELEMENT),
+      ...tree.related(pathId, WesternAstrologyTypes.PLANET),
+      ...tree.related(pathId, WesternAstrologyTypes.WESTERN_ZODIAC_SIGN)
+    ].map((node) =>
+      toAstrologyCorrespondence(
+        node as Node<TarotAstrologyCorrespondenceType>
+      )
+    );
+
+    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu);
+
+    return {
+      canonicalId: pathId,
+      kind: "major" as const,
+      pathId,
+      pathNumber: card.number,
+      pathSlug: parseId(hebrewLetter.id).toLowerCase(),
+      hebrewLetterId: hebrewLetter.id,
+      hebrewLetter: parseId(hebrewLetter.id),
+      pathMeaning: path.data?.meaning,
+      tarotArkAnnuId: tarotArkAnnu.id,
+      tarotCardNumber: card.number,
+      tarotCardName: parseId(tarotArkAnnu.id),
+      tarotCardFilename: card.tarotCardFilename,
+      tarotMeaning:
+        descriptionsByDeck.papus_pt?.meaning ??
+        card.meaning,
+      astrology,
+      availableDeckIds: TAROT_DECK_METADATA.map((deck) => deck.id),
+      descriptionsByDeck
+    };
+  });
+
+  tarotArchetypeCache = {
+    archetypes,
+    byPathId: new Map(archetypes.map((archetype) => [archetype.pathId, archetype])),
+    byPathSlug: new Map(
+      archetypes.map((archetype) => [archetype.pathSlug, archetype])
+    ),
+    byTarotCardFilename: new Map(
+      archetypes.map((archetype) => [archetype.tarotCardFilename, archetype])
+    ),
+    byTarotCardNumber: new Map(
+      archetypes.map((archetype) => [archetype.tarotCardNumber, archetype])
+    )
+  };
+
+  return tarotArchetypeCache;
+}
+
+function buildTarotRepresentation(
+  archetype: TarotArchetype,
+  deck: TarotDeckConfig
+): TarotRepresentation {
+  const description = archetype.descriptionsByDeck[deck.id];
+  const imageUrl = `${TAROT_IMAGE_BASE_URL}/${deck.id}/${deck.imagePath}/${archetype.tarotCardFilename}.jpg`;
+
+  return {
+    archetype,
+    deck: { id: deck.id, label: deck.label },
+    imageUrl,
+    label: `${archetype.tarotCardName} - ${deck.label}`,
+    altText: `${archetype.tarotCardName} - ${deck.label}`,
+    cardLabel: description?.name ?? archetype.tarotCardName,
+    description
+  };
+}
+
+export function listTarotDecks(): TarotDeckMetadata[] {
+  return TAROT_DECK_METADATA.map(({ id, label }) => ({ id, label }));
+}
+
+export function getTarotArchetype(
+  lookup: TarotArchetypeLookup
+): TarotArchetype | undefined {
+  const cache = getTarotArchetypeCache();
+
+  if ("pathSlug" in lookup) {
+    return cache.byPathSlug.get(normalizePathSlug(lookup.pathSlug));
+  }
+
+  if ("pathId" in lookup) {
+    return cache.byPathId.get(String(lookup.pathId));
+  }
+
+  if ("tarotCardFilename" in lookup) {
+    return cache.byTarotCardFilename.get(
+      lookup.tarotCardFilename.toLowerCase()
+    );
+  }
+
+  return cache.byTarotCardNumber.get(lookup.tarotCardNumber);
+}
+
+export function getTarotRepresentations(
+  lookup: TarotArchetypeLookup
+): TarotRepresentation[] {
+  const archetype = getTarotArchetype(lookup);
+
+  if (!archetype) {
+    return [];
+  }
+
+  return TAROT_DECK_METADATA.map((deck) =>
+    buildTarotRepresentation(archetype, deck)
+  );
+}
+
+export function getTarotRepresentation(
+  lookup: TarotArchetypeLookup,
+  deckId: TarotDeckId
+): TarotRepresentation | undefined {
+  const archetype = getTarotArchetype(lookup);
+  const deck = TAROT_DECK_METADATA.find((candidate) => candidate.id === deckId);
+
+  if (!archetype || !deck) {
+    return undefined;
+  }
+
+  return buildTarotRepresentation(archetype, deck);
+}
+
+export function resolveTarotImageUrl(
+  lookup: TarotArchetypeLookup,
+  deckId: TarotDeckId
+): string | undefined {
+  return getTarotRepresentation(lookup, deckId)?.imageUrl;
 }

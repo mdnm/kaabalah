@@ -72,6 +72,31 @@ const gematriaValue = calculateGematria('kaabalah');
 const spread = getRandomSpread(3, true);
 ```
 
+### Canonical Tarot Image Resolution
+
+```typescript
+import { id, KaabalahTypes } from "kaabalah/core";
+import {
+  getTarotArchetype,
+  getTarotRepresentation,
+  resolveTarotImageUrl
+} from "kaabalah/tarot";
+
+const archetype = getTarotArchetype({
+  pathId: id(KaabalahTypes.PATH, 2)
+});
+
+const riderWaite = getTarotRepresentation({ pathSlug: "beth" }, "rider-waite");
+const papusImageUrl = resolveTarotImageUrl(
+  { tarotCardFilename: "02_the_high_priestess" },
+  "papus_pt"
+);
+
+// Persist the canonical archetype ID (for example `path:2`), not the image URL.
+```
+
+The tarot resolver currently supports major-card archetypes only. Use `path:<1-22>` as the canonical persisted key, and treat path slugs, major-card filenames, and major-card numbers as lookup aliases.
+
 ## CLI
 
 Kaabalah includes a command-line interface for quick calculations without writing code.
