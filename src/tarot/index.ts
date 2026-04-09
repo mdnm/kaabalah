@@ -3,7 +3,7 @@
  */
 
 import {
-  createTree,
+  getCanonicalTree,
   id,
   KaabalahTypes,
   LetterTypes,
@@ -1174,7 +1174,7 @@ function getTarotArchetypeCache(): TarotArchetypeCache {
     return tarotArchetypeCache;
   }
 
-  const tree = createTree({
+  const tree = getCanonicalTree({
     system: "kaabalah",
     parts: ["westernAstrology", "tarot"]
   });
@@ -1182,8 +1182,14 @@ function getTarotArchetypeCache(): TarotArchetypeCache {
   const archetypes = MAJOR_ARCANA_CARDS.map((card) => {
     const pathId = id(KaabalahTypes.PATH, card.number);
     const path = tree.getNode(pathId);
-    const hebrewLetter = tree.relatedFirst(pathId, LetterTypes.HEBREW_LETTER);
-    const tarotArkAnnu = tree.relatedFirst(pathId, TarotTypes.TAROT_ARK_ANNU);
+    const hebrewLetter = tree.getCorrespondences(pathId, {
+      type: LetterTypes.HEBREW_LETTER,
+      limit: 1
+    })[0]?.node;
+    const tarotArkAnnu = tree.getCorrespondences(pathId, {
+      type: TarotTypes.TAROT_ARK_ANNU,
+      limit: 1
+    })[0]?.node;
 
     if (!path || !hebrewLetter || !tarotArkAnnu) {
       throw new Error(
@@ -1191,11 +1197,13 @@ function getTarotArchetypeCache(): TarotArchetypeCache {
       );
     }
 
-    const astrology = [
-      ...tree.related(pathId, WesternAstrologyTypes.WESTERN_ELEMENT),
-      ...tree.related(pathId, WesternAstrologyTypes.PLANET),
-      ...tree.related(pathId, WesternAstrologyTypes.WESTERN_ZODIAC_SIGN)
-    ].map((node) =>
+    const astrology = tree.getCorrespondences(pathId, {
+      type: [
+        WesternAstrologyTypes.WESTERN_ELEMENT,
+        WesternAstrologyTypes.PLANET,
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+      ]
+    }).map(({ node }) =>
       toAstrologyCorrespondence(
         node as Node<TarotAstrologyCorrespondenceType>
       )

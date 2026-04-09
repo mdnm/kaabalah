@@ -120,6 +120,7 @@ describe("CLI contract", () => {
       "ifa",
       "tree",
       "tree:node",
+      "tree:find",
       "tree:types",
       "astrology",
       "astrology:synastry",
@@ -207,6 +208,94 @@ describe("CLI contract", () => {
       synthesis: { originalSum: 25 },
       includedLetters: expect.any(Array),
     });
+  });
+
+  it("exposes tree correspondences with descriptor and edge provenance", () => {
+    const result = runCli([
+      "tree",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      descriptor: { system: string; parts: string[] };
+      edges: Array<{ from: string; to: string; sources?: Array<{ kind: string; system?: string }> }>;
+    };
+    const systemEdge = payload.edges.find(
+      (edge) =>
+        edge.from === "number:1" && edge.to === "sphere:Kether" ||
+        edge.from === "sphere:Kether" && edge.to === "number:1"
+    );
+
+    expect(payload.descriptor).toMatchObject({
+      system: "kaabalah",
+      parts: ["westernAstrology", "tarot"],
+    });
+    expect(systemEdge?.sources).toContainEqual({
+      kind: "system",
+      system: "kaabalah",
+    });
+  });
+
+  it("returns correspondence paths and grouped maps for tree nodes", () => {
+    const result = runCli([
+      "tree:node",
+      "number:1",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree:node --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      node: { id: string };
+      directEdges: Array<{ from: string; to: string; sources?: Array<{ kind: string; part?: string }> }>;
+      correspondenceMap: Record<string, Array<{ node: { id: string }; distance: number; path: Array<{ edge: { sources?: Array<{ kind: string; part?: string }> } }> }>>;
+    };
+
+    expect(payload.node.id).toBe("number:1");
+    expect(payload.correspondenceMap.sphere?.[0]).toMatchObject({
+      node: { id: "sphere:Kether" },
+      distance: 1,
+    });
+    expect(
+      payload.directEdges.some(
+        (edge) =>
+          (edge.from === "number:1" && edge.to === "tarotArkAnnu:The Magician") ||
+          (edge.from === "tarotArkAnnu:The Magician" && edge.to === "number:1")
+      )
+    ).toBe(true);
+  });
+
+  it("supports tree:find for ergonomic node lookup", () => {
+    const result = runCli([
+      "tree:find",
+      "magician",
+      "--type=tarotArkAnnu",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree:find --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      query: string | null;
+      typeFilter?: string;
+      totalMatches: number;
+      matches: Array<{ id: string; type: string }>;
+    };
+
+    expect(payload).toMatchObject({
+      query: "magician",
+      typeFilter: "tarotArkAnnu",
+    });
+    expect(payload.totalMatches).toBeGreaterThan(0);
+    expect(
+      payload.matches.some(
+        (match) =>
+          match.id === "tarotArkAnnu:The Magician" &&
+          match.type === "tarotArkAnnu"
+      )
+    ).toBe(true);
   });
 
   it("supports --input-json=- to read a JSON object from stdin", () => {

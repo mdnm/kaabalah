@@ -5,7 +5,7 @@ import { cmdHelp } from "./commands/help";
 import { cmdIfa } from "./commands/ifa";
 import { cmdChallenges, cmdCycles, cmdFibonacci, cmdLifePath, cmdNumerology } from "./commands/numerology";
 import { cmdTarot, cmdTarotCard, cmdTarotSpread } from "./commands/tarot";
-import { cmdTree, cmdTreeNode, cmdTreeTypes } from "./commands/tree";
+import { cmdTree, cmdTreeFind, cmdTreeNode, cmdTreeTypes } from "./commands/tree";
 import { getFlagBool, isCliParseError, isJsonMode, parseArgs } from "./runtime/args";
 import { isCliConfigError, resolveRuntimeConfig } from "./runtime/config";
 import { configureDebugRuntime } from "./runtime/debug";
@@ -188,6 +188,13 @@ export async function runCli(argv: string[]): Promise<void> {
           exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node "tarotArkAnnu:The Magician")', flags);
         }
         cmdTreeNode((inputPayload?.id as string) ?? args.slice(1).join(" "), flags);
+        return;
+      case "tree:find":
+        cmdTreeFind(
+          (inputPayload?.query as string | undefined) ??
+            (args.slice(1).join(" ") || undefined),
+          flags
+        );
         return;
       case "tree:types":
         cmdTreeTypes(flags);

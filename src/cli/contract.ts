@@ -135,7 +135,7 @@ export const COMMANDS: CommandSchema[] = [
   },
   {
     name: "tree",
-    description: "Show Tree of Life structure with all nodes, data, and edges",
+    description: "Show Tree of Life structure with nodes and first-class correspondence edges",
     args: [],
     flags: [],
     examples: ["kaabalah tree --json --compact", "kaabalah tree --json --fields=nodes"],
@@ -153,6 +153,20 @@ export const COMMANDS: CommandSchema[] = [
       "kaabalah tree:node sphere:Kether --type=tarotArkAnnu --json",
       'kaabalah tree:node "tarotArkAnnu:The Magician" --json',
       "kaabalah tree:node path:1 --depth=2 --json",
+    ],
+  },
+  {
+    name: "tree:find",
+    description: "Find tree nodes by ID, name, or type",
+    args: [{ name: "query", type: "string", required: false, description: "Search string matched against node IDs and names" }],
+    flags: [
+      { name: "type", type: "string", description: "Filter matches by node type (e.g. sphere, tarotArkAnnu, planet)" },
+      { name: "limit", type: "number", default: 20, description: "Maximum matches to return (default: 20)" },
+    ],
+    examples: [
+      'kaabalah tree:find magician --json',
+      'kaabalah tree:find --type=planet --json',
+      'kaabalah tree:find kether --type=sphere --json --compact',
     ],
   },
   {
