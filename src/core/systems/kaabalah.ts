@@ -1391,6 +1391,111 @@ const linkColorsAndWesternAstrology = (tree: TreeOfLife) => {
   return tree;
 };
 
+const linkTarotAndWesternAstrology = (tree: TreeOfLife) => {
+  if (
+    !tree.loadedParts.includes("tarot") ||
+    !tree.loadedParts.includes("westernAstrology")
+  ) {
+    throw new Error("Both parts must be loaded for a bridge to happen");
+  }
+
+  const courtCardsSigns: {
+    courtCard: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+    sign: NodeId<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>;
+  }[] = [
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KING_OF_WANDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.ARIES
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.QUEEN_OF_WANDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.LEO
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KNIGHT_OF_WANDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.SAGITTARIUS
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KING_OF_CUPS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.CANCER
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.QUEEN_OF_CUPS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.SCORPIO
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KNIGHT_OF_CUPS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.PISCES
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KING_OF_SWORDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.LIBRA
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.QUEEN_OF_SWORDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.AQUARIUS
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KNIGHT_OF_SWORDS),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.GEMINI
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KING_OF_PENTACLES),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.CAPRICORN
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.QUEEN_OF_PENTACLES),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.TAURUS
+      ),
+    },
+    {
+      courtCard: id(TarotTypes.TAROT_ARK_ANNU, TAROT_ARKANNUS.KNIGHT_OF_PENTACLES),
+      sign: id(
+        WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
+        WESTERN_ZODIAC_SIGNS.VIRGO
+      ),
+    },
+  ];
+
+  for (const { courtCard, sign } of courtCardsSigns) {
+    tree.link(courtCard, sign);
+  }
+
+  return tree;
+};
+
 export const loadWesternAstrology: Loader = (tree: TreeOfLife) => {
   const planets = Object.values(PLANETS);
   const planetsIds: Record<string, NodeId<WesternAstrologyTypes.PLANET>> = {};
@@ -2465,5 +2570,10 @@ export const BRIDGES: Bridge[] = [
     id: "kaabalah-music-westernAstrology",
     needs: ["music", "westernAstrology"],
     run: (t) => linkSoundsAndWesternAstrology(t),
+  },
+  {
+    id: "kaabalah-tarot-westernAstrology",
+    needs: ["tarot", "westernAstrology"],
+    run: (t) => linkTarotAndWesternAstrology(t),
   },
 ];
