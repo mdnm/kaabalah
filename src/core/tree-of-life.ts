@@ -1,5 +1,11 @@
 import { PartKey } from "./systems/registry";
 
+import {
+  CorrespondenceEdge,
+  CorrespondenceMetadata,
+  CorrespondenceSource,
+  makeCorrespondenceId,
+} from "./correspondence-model";
 import { ModuleManager } from "./systems/module-manager";
 import { SystemKey } from "./systems/registry";
 import {
@@ -15,6 +21,53 @@ import {
   WesternAstrologyTypes,
 } from "./types";
 
+function mergeCorrespondenceMetadata(
+  current?: CorrespondenceMetadata,
+  next?: CorrespondenceMetadata
+) {
+  if (!current) {
+    return next ? { ...next } : undefined;
+  }
+
+  if (!next) {
+    return { ...current };
+  }
+
+  return {
+    ...current,
+    ...next,
+    tags: [...new Set([...(current.tags ?? []), ...(next.tags ?? [])])],
+    attributes: {
+      ...(current.attributes ?? {}),
+      ...(next.attributes ?? {}),
+    },
+  };
+}
+
+function mergeCorrespondenceSources(
+  current: readonly CorrespondenceSource[],
+  next: CorrespondenceSource
+) {
+  const seen = new Set<string>();
+  const merged: CorrespondenceSource[] = [];
+
+  for (const source of [...current, next]) {
+    const key = JSON.stringify(source);
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    merged.push({
+      ...source,
+      ...(source.kind === "bridge" ? { parts: [...source.parts] } : {}),
+    } as CorrespondenceSource);
+  }
+
+  return merged;
+}
+
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
  * esoteric correspondences. It can be used to create multiple independent instances
@@ -23,8 +76,26 @@ import {
 export class TreeOfLife {
   private nodes = new Map<NodeId<NodeType>, Node<NodeType>>();
   private adjacent = new Map<NodeId<NodeType>, Set<NodeId<NodeType>>>();
+  private edges = new Map<string, CorrespondenceEdge>();
+  private mutationSources: CorrespondenceSource[] = [{ kind: "manual" }];
 
   private modules = new ModuleManager(this);
+
+  private getCurrentMutationSource() {
+    return this.mutationSources[this.mutationSources.length - 1] ?? {
+      kind: "manual",
+    };
+  }
+
+  runWithMutationSource<T>(source: CorrespondenceSource, fn: () => T) {
+    this.mutationSources.push(source);
+
+    try {
+      return fn();
+    } finally {
+      this.mutationSources.pop();
+    }
+  }
 
   /**
    * Loads the tree of life system to be used
@@ -104,12 +175,33 @@ export class TreeOfLife {
     return [...this.nodes.values()];
   }
 
+  getEdge(left: NodeId<NodeType>, right: NodeId<NodeType>) {
+    return this.edges.get(makeCorrespondenceId(left, right));
+  }
+
+  getEdges(nodeId?: NodeId<NodeType>) {
+    if (!nodeId) {
+      return [...this.edges.values()];
+    }
+
+    return [...(this.adjacent.get(nodeId) ?? [])]
+      .map((relatedNodeId) => this.getEdge(nodeId, relatedNodeId))
+      .filter((edge): edge is CorrespondenceEdge => Boolean(edge));
+  }
+
   /**
    * Links two nodes bi-directionally
    * @param firstNode - the id of the first node
    * @param secondNode - the id of the second node
    */
-  link(firstNode: NodeId<NodeType>, secondNode: NodeId<NodeType>) {
+  link(
+    firstNode: NodeId<NodeType>,
+    secondNode: NodeId<NodeType>,
+    options: {
+      metadata?: CorrespondenceMetadata;
+      source?: CorrespondenceSource;
+    } = {}
+  ) {
     if (!this.nodes.has(firstNode) || !this.nodes.has(secondNode)) {
       throw new Error("unknown node id");
     }
@@ -118,12 +210,9 @@ export class TreeOfLife {
       return;
     }
 
-    if (
-      this.adjacent.has(firstNode) &&
-      this.adjacent.get(firstNode)?.has(secondNode)
-    ) {
-      return;
-    }
+    const edgeId = makeCorrespondenceId(firstNode, secondNode);
+    const source = options.source ?? this.getCurrentMutationSource();
+    const existingEdge = this.edges.get(edgeId);
 
     const put = (leftNode: NodeId<NodeType>, rightNode: NodeId<NodeType>) => {
       const set = this.adjacent.get(leftNode) ?? new Set<NodeId<NodeType>>();
@@ -131,8 +220,31 @@ export class TreeOfLife {
       this.adjacent.set(leftNode, set);
     };
 
+    if (existingEdge) {
+      this.edges.set(edgeId, {
+        ...existingEdge,
+        metadata: mergeCorrespondenceMetadata(
+          existingEdge.metadata,
+          options.metadata
+        ),
+        sources: mergeCorrespondenceSources(existingEdge.sources, source),
+      });
+      put(firstNode, secondNode);
+      put(secondNode, firstNode);
+
+      return;
+    }
+
     put(firstNode, secondNode);
     put(secondNode, firstNode);
+
+    this.edges.set(edgeId, {
+      id: edgeId,
+      left: firstNode,
+      right: secondNode,
+      metadata: mergeCorrespondenceMetadata(undefined, options.metadata),
+      sources: mergeCorrespondenceSources([], source),
+    });
   }
 
   /**
@@ -250,6 +362,8 @@ export class TreeOfLife {
     const neighbors = this.adjacent.get(id);
     if (neighbors) {
       for (const neighbor of neighbors) {
+        this.edges.delete(makeCorrespondenceId(id, neighbor));
+
         const set = this.adjacent.get(neighbor);
 
         if (!set) {

@@ -30,7 +30,13 @@ export class ModuleManager {
       throw new Error(`System ${systemKey} not found`);
     }
 
-    loadedSystem.LOADERS.base(this.t);
+    this.t.runWithMutationSource(
+      {
+        kind: "system",
+        system: systemKey,
+      },
+      () => loadedSystem.LOADERS.base(this.t)
+    );
 
     this.activeSystem = systemKey;
 
@@ -56,7 +62,14 @@ export class ModuleManager {
       return;
     }
 
-    system.LOADERS[partKey](this.t);
+    this.t.runWithMutationSource(
+      {
+        kind: "part",
+        system: this.activeSystem,
+        part: partKey,
+      },
+      () => system.LOADERS[partKey](this.t)
+    );
     this.loadedParts.add(partKey);
 
     const possiblePartBridges = system.BRIDGES.filter(
@@ -67,7 +80,15 @@ export class ModuleManager {
     );
 
     for (const bridge of possiblePartBridges) {
-      bridge.run(this.t);
+      this.t.runWithMutationSource(
+        {
+          kind: "bridge",
+          system: this.activeSystem,
+          bridgeId: bridge.id,
+          parts: [...bridge.needs],
+        },
+        () => bridge.run(this.t)
+      );
       this.bridgedParts.add(bridge.id);
     }
   }
@@ -116,7 +137,15 @@ export class ModuleManager {
       !this.bridgedParts.has(bridge.id) &&
       bridge.needs.every((n) => this.loadedParts.has(n))
     ) {
-      bridge.run(this.t);
+      this.t.runWithMutationSource(
+        {
+          kind: "bridge",
+          system: this.activeSystem,
+          bridgeId: bridge.id,
+          parts: [...bridge.needs],
+        },
+        () => bridge.run(this.t)
+      );
       this.bridgedParts.add(bridge.id);
     }
   }
