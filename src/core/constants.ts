@@ -1084,7 +1084,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Commencement of an enterprise.",
       },
       KIER_EGYPTIAN: {
-        name: "The Unexpected",
+        name: "Initiation",
       },
     },
   },
@@ -1102,7 +1102,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to the commencement of the enterprise. The enterprise is commenced when an unexpected obstacle suddenly prevents its execution.",
       },
       KIER_EGYPTIAN: {
-        name: "Uncertainty",
+        name: "Desolation",
       },
     },
   },
@@ -1120,7 +1120,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Realization of the commencement of the enterprise. The basis of the work is now definitely established, and the undertaking can be fearlessly continued.",
       },
       KIER_EGYPTIAN: {
-        name: "Domesticity",
+        name: "Innovation",
       },
     },
   },
@@ -1138,7 +1138,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Obstacles to the enterprise.",
       },
       KIER_EGYPTIAN: {
-        name: "Exchange",
+        name: "Alliance",
       },
     },
   },
@@ -1155,7 +1155,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Opposition to the obstacles. Victory after surmounting them.",
       },
       KIER_EGYPTIAN: {
-        name: "Impediment",
+        name: "Magnificence",
       },
     },
   },
@@ -1173,7 +1173,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Realization of the opposition. At last the obstacles succeed. Failure of the enterprise in the midst of its execution.",
       },
       KIER_EGYPTIAN: {
-        name: "Magnificence",
+        name: "Impediment",
       },
     },
   },
@@ -1190,7 +1190,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Certain success to the enterprise.",
       },
       KIER_EGYPTIAN: {
-        name: "Alliance",
+        name: "Exchange",
       },
     },
   },
@@ -1208,7 +1208,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to its success. The enterprise will only partially succeed.",
       },
       KIER_EGYPTIAN: {
-        name: "Innovation",
+        name: "Domesticity",
       },
     },
   },
@@ -1225,7 +1225,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Realization of success. Success is continued.",
       },
       KIER_EGYPTIAN: {
-        name: "Desolation",
+        name: "Uncertainty",
       },
     },
   },
@@ -1242,7 +1242,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Uncertainty in the management of the enterprise.",
       },
       KIER_EGYPTIAN: {
-        name: "Initiation",
+        name: "The Unexpected",
       },
     },
   },
@@ -1329,7 +1329,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Commencement of a love affair.",
       },
       KIER_EGYPTIAN: {
-        name: "Dissension",
+        name: "Attraction",
       },
     },
   },
@@ -1347,7 +1347,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to this commencement. Unimportant obstacles raised by one of the lovers.",
       },
       KIER_EGYPTIAN: {
-        name: "Preeminence",
+        name: "Versatility",
       },
     },
   },
@@ -1364,7 +1364,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Realization of this commencement. The love is mutual.",
       },
       KIER_EGYPTIAN: {
-        name: "Premonition",
+        name: "Consummation",
       },
     },
   },
@@ -1382,7 +1382,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Serious obstacles to the love. They arise from other persons, not from the lovers.",
       },
       KIER_EGYPTIAN: {
-        name: "Expressiveness",
+        name: "Conjecture",
       },
     },
   },
@@ -1400,7 +1400,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to the obstacles. Victory over the obstacles after a struggle.",
       },
       KIER_EGYPTIAN: {
-        name: "Regeneration",
+        name: "Patrimony",
       },
     },
   },
@@ -1418,7 +1418,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "The obstacles triumph. Love destroyed in the midst of happiness. Widowhood.",
       },
       KIER_EGYPTIAN: {
-        name: "Patrimony",
+        name: "Regeneration",
       },
     },
   },
@@ -1435,7 +1435,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Success assured to the lovers.",
       },
       KIER_EGYPTIAN: {
-        name: "Conjecture",
+        name: "Expressiveness",
       },
     },
   },
@@ -1452,7 +1452,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Partial failure of love. Love only partially succeeds.",
       },
       KIER_EGYPTIAN: {
-        name: "Consummation",
+        name: "Delusion",
       },
     },
   },
@@ -1469,7 +1469,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Motherhood.",
       },
       KIER_EGYPTIAN: {
-        name: "Versatility",
+        name: "Preeminence",
       },
     },
   },
@@ -1486,7 +1486,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Uncertainty in the management of the love affair.",
       },
       KIER_EGYPTIAN: {
-        name: "Attraction",
+        name: "Dissension",
       },
     },
   },
@@ -1573,7 +1573,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Commencement of enmity.",
       },
       KIER_EGYPTIAN: {
-        name: "Contrition",
+        name: "Vehemence",
       },
     },
   },
@@ -1590,7 +1590,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Opposition to this commencement. The enmity does not last.",
       },
       KIER_EGYPTIAN: {
-        name: "Pilgrimage",
+        name: "Communion",
       },
     },
   },
@@ -1607,7 +1607,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Realization of the enmity. Hatred.",
       },
       KIER_EGYPTIAN: {
-        name: "Rivalry",
+        name: "Proscription",
       },
     },
   },
@@ -1624,7 +1624,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Opposition to the hatred. Success against the enemy.",
       },
       KIER_EGYPTIAN: {
-        name: "Meditation",
+        name: "Solitude",
       },
     },
   },
@@ -1642,7 +1642,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to this opposition. The enemy triumphs at the moment one fancies the victory is secured.",
       },
       KIER_EGYPTIAN: {
-        name: "Revelation",
+        name: "Evolution",
       },
     },
   },
@@ -1660,7 +1660,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Equilibrium of the opposition. The enemy is rendered powerless at last.",
       },
       KIER_EGYPTIAN: {
-        name: "Evolution",
+        name: "Revelation",
       },
     },
   },
@@ -1677,7 +1677,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Success assured to the enemy.",
       },
       KIER_EGYPTIAN: {
-        name: "Solitude",
+        name: "Meditation",
       },
     },
   },
@@ -1695,7 +1695,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Partial opposition to this success. The enemy only partially triumphs.",
       },
       KIER_EGYPTIAN: {
-        name: "Proscription",
+        name: "Rivalry",
       },
     },
   },
@@ -1712,7 +1712,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Certain duration of the hatred.",
       },
       KIER_EGYPTIAN: {
-        name: "Communion",
+        name: "Pilgrimage",
       },
     },
   },
@@ -1729,7 +1729,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Uncertainty in the enmity.",
       },
       KIER_EGYPTIAN: {
-        name: "Vehemence",
+        name: "Contrition",
       },
     },
   },
@@ -1814,7 +1814,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Commencement of fortune. Inheritance. Gifts. Economy.",
       },
       KIER_EGYPTIAN: {
-        name: "The Unforeseen",
+        name: "Rebirth",
       },
     },
   },
@@ -1832,7 +1832,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to this commencement. Difficulty in well establishing the first landmarks of good fortune.",
       },
       KIER_EGYPTIAN: {
-        name: "Cooperation",
+        name: "Confusion",
       },
     },
   },
@@ -1849,7 +1849,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Realization of this commencement of fortune. A small sum.",
       },
       KIER_EGYPTIAN: {
-        name: "Avarice",
+        name: "The Provider",
       },
     },
   },
@@ -1866,7 +1866,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Opposition of fortune. Loss of money.",
       },
       KIER_EGYPTIAN: {
-        name: "Purification",
+        name: "Generosity",
       },
     },
   },
@@ -1884,7 +1884,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Opposition to this opposition. A success coming which will balance the low.",
       },
       KIER_EGYPTIAN: {
-        name: "Love and Desire",
+        name: "Offering",
       },
     },
   },
@@ -1901,7 +1901,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Realization of the opposition. Ruin.",
       },
       KIER_EGYPTIAN: {
-        name: "Offering",
+        name: "Love and Desire",
       },
     },
   },
@@ -1918,7 +1918,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Success assured. A large fortune.",
       },
       KIER_EGYPTIAN: {
-        name: "Generosity",
+        name: "Purification",
       },
     },
   },
@@ -1936,7 +1936,7 @@ export const TAROT_ARKANNUS_DATA: Record<
           "Partial success. Great loss of money at the moment apparently of definitely securing the fortune.",
       },
       KIER_EGYPTIAN: {
-        name: "The Provider",
+        name: "Avarice",
       },
     },
   },
@@ -1953,7 +1953,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Equilibrium of equilibrium. A durable fortune.",
       },
       KIER_EGYPTIAN: {
-        name: "Confusion",
+        name: "Cooperation",
       },
     },
   },
@@ -1970,7 +1970,7 @@ export const TAROT_ARKANNUS_DATA: Record<
         meaning: "Uncertainty in the fortune. Great success and great reverses.",
       },
       KIER_EGYPTIAN: {
-        name: "Rebirth",
+        name: "The Unforeseen",
       },
     },
   },
