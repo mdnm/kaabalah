@@ -68,6 +68,8 @@ export type MusicalNoteData = {
 export type TarotArkAnnuData = {
   type: "major" | "minor" | "court";
   suit?: (typeof TAROT_SUITS)[keyof typeof TAROT_SUITS];
+  aliases?: readonly string[];
+  keywords?: readonly string[];
   descriptiveData?: Partial<Record<keyof typeof TAROT_DECKS, {
     name?: string;
     meaning?: string;
@@ -632,12 +634,243 @@ export const TAROT_DECKS = {
   KIER_EGYPTIAN: "Kier Egyptian",
 } as const;
 
+const TAROT_MAJOR_ARKANNUS_ALIASES = {
+  THE_MAGICIAN: ["O Mago"],
+  THE_HIGH_PRIESTESS: ["A Sacerdotisa", "Papisa"],
+  THE_EMPRESS: ["A Imperatriz"],
+  THE_EMPEROR: ["O Imperador"],
+  THE_HIEROPHANT: ["O Hierofante", "Papa"],
+  THE_LOVER: ["Os Enamorados", "The Lovers"],
+  THE_CHARIOT: ["O Carro", "Merkaabah"],
+  JUSTICE: ["A Justiça"],
+  THE_HERMIT: ["O Eremita"],
+  THE_WHEEL_OF_FORTUNE: ["A Roda da Fortuna"],
+  STRENGTH: ["A Força"],
+  THE_HANGED_MAN: ["O Enforcado", "Sacro Ofício"],
+  DEATH: ["A Morte"],
+  TEMPERANCE: ["A Temperança"],
+  THE_DEVIL: ["O Diabo"],
+  THE_TOWER: ["A Torre", "The House of God"],
+  THE_STAR: ["A Estrela"],
+  THE_MOON: ["A Lua"],
+  THE_SUN: ["O Sol"],
+  JUDGMENT: ["O Julgamento", "Judgement"],
+  THE_FOOL: ["O Louco"],
+  THE_WORLD: ["O Mundo"],
+} as const;
+
+const TAROT_MAJOR_ARKANNUS_KEYWORDS = {
+  THE_MAGICIAN: [
+    "co-creation",
+    "molecular waves",
+    "first act of will",
+    "Hermes",
+    "knowledge",
+    "will",
+  ],
+  THE_HIGH_PRIESTESS: [
+    "veiled feminine principle",
+    "intuition",
+    "Isis",
+    "mysteries",
+    "feminine principle",
+    "memory rewriting",
+    "history rewriting",
+  ],
+  THE_EMPRESS: [
+    "manifestation",
+    "fecundity",
+    "adaptation",
+    "generative power",
+    "fertility",
+    "nurturing",
+    "creative manifestation",
+  ],
+  THE_EMPEROR: [
+    "dominion of will",
+    "four elements",
+    "authority",
+    "territory marking",
+    "divine authority",
+    "sovereignty",
+    "sacred fire",
+  ],
+  THE_HIEROPHANT: [
+    "ritualization",
+    "fifth essences",
+    "spiritual communion",
+    "ritual science",
+    "magnetism",
+    "bridge between worlds",
+    "Agnus Dei",
+  ],
+  THE_LOVER: [
+    "sexual alchemy",
+    "ascension of energy",
+    "union of opposites",
+    "choice",
+    "balance of Eva and Lilith",
+    "sacred sexuality",
+    "decision",
+  ],
+  THE_CHARIOT: [
+    "mastery of duality",
+    "chariot of consciousness",
+    "solar energy",
+    "willpower",
+    "transmutation",
+    "interdimensional vehicles",
+    "Merkabah",
+  ],
+  JUSTICE: [
+    "cosmic law",
+    "mercy and severity",
+    "impartial divine judgment",
+    "divine balance",
+    "karma enforcement",
+    "Uriel",
+  ],
+  THE_HERMIT: [
+    "solitary quest",
+    "self-knowledge",
+    "inner illumination",
+    "inner light",
+    "wisdom",
+    "disciplined introspection",
+    "Lamp of Hermes",
+  ],
+  THE_WHEEL_OF_FORTUNE: [
+    "cycle of reincarnation",
+    "evolution",
+    "108 existences",
+    "metempsychosis",
+    "destiny",
+    "karma",
+    "turning wheel of souls",
+  ],
+  STRENGTH: [
+    "subtle persuasion",
+    "mastery of instinct",
+    "spiritual force",
+    "control of raw power",
+    "kindness",
+    "lion taming",
+  ],
+  THE_HANGED_MAN: [
+    "sacrifice",
+    "transmutation",
+    "voluntary suspension",
+    "surrender",
+    "apostolate",
+    "sacred duty",
+    "death of ego",
+    "Christ on cross",
+  ],
+  DEATH: [
+    "transformation",
+    "immortality",
+    "dissolution of the personality",
+    "resurrection",
+    "sickle of Anubis",
+    "cycle change",
+  ],
+  TEMPERANCE: [
+    "alchemical transmutation",
+    "elixir of long life",
+    "balance",
+    "harmony",
+    "blending of opposites",
+    "alchemist's work",
+    "divine balance",
+  ],
+  THE_DEVIL: [
+    "involution",
+    "materiality",
+    "shadow self",
+    "transmutation",
+    "testing",
+    "shadow work",
+    "sexual force",
+    "Pan",
+  ],
+  THE_TOWER: [
+    "destruction of false foundations",
+    "karmic correction",
+    "cosmic justice",
+    "collapse of illusions",
+    "divine lightning",
+    "Babel confusion",
+  ],
+  THE_STAR: [
+    "hope",
+    "inner light",
+    "guiding the path",
+    "innocence recovered",
+    "faith",
+    "renewal",
+    "Venusian initiation",
+    "cosmic seeding",
+    "divine hope",
+  ],
+  THE_MOON: [
+    "illusion",
+    "confusion",
+    "subconscious waters",
+    "deception",
+    "dreams",
+    "psychic dangers",
+    "Hecate",
+  ],
+  THE_SUN: [
+    "philosophical gold",
+    "enlightenment",
+    "victory",
+    "child-like innocence reborn",
+    "divine truth",
+    "triumph",
+    "golden philosophical stone",
+    "soulmate",
+    "Apollo",
+  ],
+  JUDGMENT: [
+    "resurrection",
+    "retrospectives",
+    "karmic accounting",
+    "second birth of consciousness",
+    "rebirth",
+    "awakening",
+    "trumpet call",
+    "transformation of ages",
+  ],
+  THE_FOOL: [
+    "chaos",
+    "bridges of knowledge",
+    "fall before ascension",
+    "divinity",
+    "wandering",
+    "innocence before knowledge",
+    "dark night of soul",
+  ],
+  THE_WORLD: [
+    "completion",
+    "mastery of all four elements",
+    "Hermaphroditic unity",
+    "perfection",
+    "wholeness",
+    "Ouroboros",
+    "Isis unveiled",
+    "Great Work",
+  ],
+} as const;
+
 export const TAROT_ARKANNUS_DATA: Record<
   keyof typeof TAROT_ARKANNUS,
   NodeData<TarotTypes.TAROT_ARK_ANNU>
 > = {
   THE_MAGICIAN: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_MAGICIAN,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_MAGICIAN,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Magician",
@@ -654,6 +887,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_HIGH_PRIESTESS: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HIGH_PRIESTESS,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HIGH_PRIESTESS,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The High Priestess",
@@ -671,6 +906,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_EMPRESS: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_EMPRESS,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_EMPRESS,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Empress",
@@ -687,6 +924,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_EMPEROR: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_EMPEROR,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_EMPEROR,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Emperor",
@@ -704,6 +943,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_HIEROPHANT: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HIEROPHANT,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HIEROPHANT,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Hierophant",
@@ -721,6 +962,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_LOVER: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_LOVER,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_LOVER,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Lover",
@@ -738,6 +981,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_CHARIOT: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_CHARIOT,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_CHARIOT,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Chariot",
@@ -755,6 +1000,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   JUSTICE: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.JUSTICE,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.JUSTICE,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "Justice",
@@ -771,6 +1018,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_HERMIT: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HERMIT,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HERMIT,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Hermit",
@@ -787,6 +1036,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_WHEEL_OF_FORTUNE: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_WHEEL_OF_FORTUNE,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_WHEEL_OF_FORTUNE,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Wheel of Fortune",
@@ -804,6 +1055,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   STRENGTH: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.STRENGTH,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.STRENGTH,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "Strength",
@@ -820,6 +1073,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_HANGED_MAN: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HANGED_MAN,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HANGED_MAN,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Hanged Man",
@@ -836,6 +1091,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   DEATH: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.DEATH,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.DEATH,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "Death",
@@ -852,6 +1109,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   TEMPERANCE: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.TEMPERANCE,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.TEMPERANCE,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "Temperance",
@@ -868,6 +1127,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_DEVIL: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_DEVIL,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_DEVIL,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Devil",
@@ -885,6 +1146,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_TOWER: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_TOWER,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_TOWER,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The House of God",
@@ -902,6 +1165,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_STAR: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_STAR,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_STAR,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Star",
@@ -919,6 +1184,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_MOON: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_MOON,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_MOON,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Moon",
@@ -936,6 +1203,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_SUN: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_SUN,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_SUN,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Sun",
@@ -953,6 +1222,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   JUDGMENT: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.JUDGMENT,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.JUDGMENT,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "Judgement",
@@ -969,6 +1240,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_FOOL: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_FOOL,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_FOOL,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The Fool",
@@ -985,6 +1258,8 @@ export const TAROT_ARKANNUS_DATA: Record<
   },
   THE_WORLD: {
     type: "major",
+    aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_WORLD,
+    keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_WORLD,
     descriptiveData: {
       PAPUS_KAABALISTIC: {
         name: "The World",

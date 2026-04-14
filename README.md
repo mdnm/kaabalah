@@ -13,6 +13,7 @@ Complete documentation here [https://docs.kaabalah.com/](https://docs.kaabalah.c
 - **Astrology**: Generate birth charts and planetary positions using Swiss Ephemeris
 - **Gematria**: Gematria (text numerology) calculations
 - **Tarot**: Card meanings, spreads, and interpretations
+- **Semantic profiles**: Canonical house and tarot theme metadata for deterministic matching
 
 ## Installation
 
@@ -52,6 +53,7 @@ console.log(gematriaResult);
 import { calculateLifePath } from 'kaabalah/numerology';
 import { getBirthChart } from 'kaabalah/astrology';
 import { calculateGematria } from 'kaabalah/kaabalah';
+import { getHouseThemeProfile } from 'kaabalah/semantic';
 import { getRandomSpread } from 'kaabalah/tarot';
 
 // Calculate life path number
@@ -67,6 +69,7 @@ const birthChart = getBirthChart({
 
 // Calculate Hebrew gematria
 const gematriaValue = calculateGematria('kaabalah');
+const fourthHouse = getHouseThemeProfile(4);
 
 // Get a tarot spread
 const spread = getRandomSpread(3, true);
@@ -96,6 +99,28 @@ const papusImageUrl = resolveTarotImageUrl(
 ```
 
 The tarot resolver currently supports major-card archetypes only. Use `path:<1-22>` as the canonical persisted key, and treat path slugs, major-card filenames, and major-card numbers as lookup aliases.
+
+### Canonical Semantic Profiles
+
+```typescript
+import {
+  getHouseThemeProfile,
+  getTarotThemeProfile,
+  listHouseThemeProfiles,
+  tokenizeOccultThemeText
+} from "kaabalah/semantic";
+
+const dreamTokens = tokenizeOccultThemeText(
+  "I dreamed about family, roots, and hidden rooms."
+);
+
+const fourthHouse = getHouseThemeProfile(4);
+const tower = getTarotThemeProfile("The House of God");
+const houseProfiles = listHouseThemeProfiles();
+```
+
+Semantic profiles are deterministic, library-owned metadata layered on top of canonical correspondences. Downstream apps should consume the profile `id`, `houseNumber` or `cardNumber`, `keywords`, `tokens`, and grouped `correspondences`, while keeping scoring, ranking, and UI presentation app-side.
+For houses, `primaryLabel` is the semantic life-area label and `houseLabel` preserves the structural astrological label (`Ascendant`, `Imum Coeli`, `Descendant`, `Medium Coeli`, etc.).
 
 ### Canonical Tarot Spreads
 

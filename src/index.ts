@@ -8,5 +8,5 @@ export * from './core';
 export * from './gematria';
 export * from './ifa';
 export * from './numerology';
+export * from './semantic';
 export * from './tarot';
-
