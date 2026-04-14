@@ -1,3 +1,4 @@
+import { TimeZoneOptions } from "../../astrology/swisseph";
 import { exitWithError } from "./errors";
 import type { Flags } from "./types";
 
@@ -48,7 +49,7 @@ export interface ParsedChartInput {
   longitude: number;
   houseSystem: string;
   houseSystemCode: string;
-  timeZoneSettings: Record<string, unknown>;
+  timeZoneSettings: TimeZoneOptions;
   dateStr: string;
   timeStr: string;
 }

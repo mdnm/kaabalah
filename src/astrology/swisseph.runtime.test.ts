@@ -1,7 +1,14 @@
-import { describe, expect, it, vi } from "vitest";
+import { existsSync, mkdtempSync, mkdirSync, rmSync, writeFileSync } from "fs";
+import { join } from "path";
+import { tmpdir } from "os";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import type { SwissEphModule } from "../../wasm/src/types";
-import { REQUIRED_EPHE_FILES, resolveNodeEphemerisPath } from "./swisseph";
+import {
+  REQUIRED_EPHE_FILES,
+  resolveNodeEphemerisPath,
+  resolveSwissEphRuntimeAssets
+} from "./swisseph";
 
 function normalizePath(path: string): string {
   if (path === "/") {
@@ -140,5 +147,102 @@ describe("resolveNodeEphemerisPath", () => {
         pathModule,
       })
     ).toThrow(/seas_18\.se1, semo_18\.se1, sepl_18\.se1/);
+  });
+});
+
+describe("resolveSwissEphRuntimeAssets", () => {
+  const tempPaths: string[] = [];
+
+  afterEach(() => {
+    for (const path of tempPaths.splice(0)) {
+      rmSync(path, { force: true, recursive: true });
+    }
+  });
+
+  function createTempSwissEphAssets(prefix: string) {
+    const root = mkdtempSync(join(tmpdir(), prefix));
+    const wasmPath = join(root, "swisseph.node.wasm");
+    const ephePath = join(root, "ephe");
+
+    mkdirSync(ephePath, { recursive: true });
+    writeFileSync(wasmPath, new Uint8Array([1, 2, 3]));
+    for (const file of REQUIRED_EPHE_FILES) {
+      writeFileSync(join(ephePath, file), new Uint8Array([1, 2, 3]));
+    }
+
+    tempPaths.push(root);
+
+    return { root, wasmPath, ephePath };
+  }
+
+  it("prefers explicit candidate paths before bundled package assets", () => {
+    const assets = createTempSwissEphAssets("kaabalah-swisseph-candidate-");
+
+    const resolved = resolveSwissEphRuntimeAssets({
+      env: {},
+      wasmPathCandidates: [assets.wasmPath],
+      ephePathCandidates: [assets.ephePath]
+    });
+
+    expect(resolved).toEqual({
+      wasmPath: assets.wasmPath,
+      ephePath: assets.ephePath,
+      wasmPathSource: "candidate",
+      ephePathSource: "candidate"
+    });
+  });
+
+  it("prefers environment overrides before candidate paths", () => {
+    const envAssets = createTempSwissEphAssets("kaabalah-swisseph-env-");
+    const candidateAssets = createTempSwissEphAssets("kaabalah-swisseph-candidate-");
+
+    const resolved = resolveSwissEphRuntimeAssets({
+      env: {
+        KAABALAH_SWISSEPH_WASM_PATH: envAssets.wasmPath,
+        KAABALAH_SWISSEPH_EPHE_PATH: envAssets.ephePath
+      },
+      wasmPathCandidates: [candidateAssets.wasmPath],
+      ephePathCandidates: [candidateAssets.ephePath]
+    });
+
+    expect(resolved).toEqual({
+      wasmPath: envAssets.wasmPath,
+      ephePath: envAssets.ephePath,
+      wasmPathSource: "env",
+      ephePathSource: "env"
+    });
+  });
+
+  it("falls back to the bundled package assets when no app overrides are provided", () => {
+    const resolved = resolveSwissEphRuntimeAssets({
+      env: {}
+    });
+
+    expect(resolved.wasmPathSource).toBe("bundled");
+    expect(resolved.ephePathSource).toBe("bundled");
+    expect(existsSync(resolved.wasmPath)).toBe(true);
+    expect(existsSync(resolved.ephePath)).toBe(true);
+  });
+
+  it("keeps browser resolution filesystem-free and returns bundled browser defaults", () => {
+    const originalWindow = (globalThis as typeof globalThis & { window?: object }).window;
+    (globalThis as typeof globalThis & { window?: object }).window = {};
+
+    try {
+      const resolved = resolveSwissEphRuntimeAssets({
+        env: {}
+      });
+
+      expect(resolved.wasmPathSource).toBe("bundled");
+      expect(resolved.ephePathSource).toBe("bundled");
+      expect(resolved.ephePath).toBe("../ephe");
+      expect(resolved.wasmPath).toMatch(/swisseph\.web/i);
+    } finally {
+      if (originalWindow === undefined) {
+        delete (globalThis as typeof globalThis & { window?: object }).window;
+      } else {
+        (globalThis as typeof globalThis & { window?: object }).window = originalWindow;
+      }
+    }
   });
 });

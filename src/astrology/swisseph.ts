@@ -34,6 +34,15 @@ export const REQUIRED_EPHE_FILES = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"]
 const NODE_EPHE_MOUNT_POINT = "/ephefs";
 const NODE_EPHE_MEMFS_PATH = "/ephemem";
 
+function emitRuntimeNotice(message: string): void {
+  if (typeof process !== "undefined" && process.stderr && typeof process.stderr.write === "function") {
+    process.stderr.write(`${message}\n`);
+    return;
+  }
+
+  console.info(message);
+}
+
 type EmscriptenFs = NonNullable<SwissEphModule["FS"]>;
 
 type NodeEphemerisStrategy = "nodefs-mount" | "host-path" | "memfs-copy";
@@ -63,6 +72,244 @@ interface ResolveNodeEphemerisPathOptions {
   mountPoint?: string;
   memfsPath?: string;
   requiredFiles?: readonly string[];
+}
+
+type RuntimeAssetSource = "explicit" | "env" | "candidate" | "bundled";
+
+export interface SwissEphRuntimeAssetPaths {
+  wasmPath: string;
+  ephePath: string;
+  wasmPathSource: RuntimeAssetSource;
+  ephePathSource: RuntimeAssetSource;
+}
+
+export interface ResolveSwissEphRuntimeAssetsOptions {
+  wasmPath?: string;
+  ephePath?: string;
+  wasmPathCandidates?: string[];
+  ephePathCandidates?: string[];
+  env?: Record<string, string | undefined>;
+}
+
+interface ResolveSwissEphRuntimeAssetsInternalOptions
+  extends ResolveSwissEphRuntimeAssetsOptions {
+  isBrowser?: boolean;
+  existsSync?: (path: string) => boolean;
+  nodePathResolve?: (...paths: string[]) => string;
+  bundledNodeWasmPath?: string;
+  bundledNodeEphePath?: string;
+  bundledBrowserWasmPath?: string;
+  bundledBrowserEphePath?: string;
+}
+
+const SWISS_EPH_RUNTIME_WASM_ENV_KEYS = [
+  "KAABALAH_SWISSEPH_WASM_PATH",
+  "KAABALAH_WASM_PATH"
+] as const;
+
+const SWISS_EPH_RUNTIME_EPHE_ENV_KEYS = [
+  "KAABALAH_SWISSEPH_EPHE_PATH",
+  "KAABALAH_EPHE_PATH"
+] as const;
+
+function getRuntimeEnv(
+  env: ResolveSwissEphRuntimeAssetsOptions["env"]
+): Record<string, string | undefined> {
+  if (env) {
+    return env;
+  }
+
+  if (typeof process !== "undefined" && process.env) {
+    return process.env;
+  }
+
+  return {};
+}
+
+function firstDefinedEnvValue(
+  env: Record<string, string | undefined>,
+  keys: readonly string[]
+): string | undefined {
+  for (const key of keys) {
+    const value = env[key];
+    if (typeof value === "string" && value.length > 0) {
+      return value;
+    }
+  }
+
+  return undefined;
+}
+
+function getBundledNodeSwissEphAssets(
+  options: ResolveSwissEphRuntimeAssetsInternalOptions
+): { wasmPaths: string[]; ephePaths: string[] } {
+  if (options.bundledNodeWasmPath && options.bundledNodeEphePath) {
+    return {
+      wasmPaths: [options.bundledNodeWasmPath],
+      ephePaths: [options.bundledNodeEphePath]
+    };
+  }
+
+  const resolvePath =
+    options.nodePathResolve ??
+    ((...paths: string[]) => (require("path") as typeof import("path")).resolve(...paths));
+
+  return {
+    wasmPaths: [
+      options.bundledNodeWasmPath,
+      resolvePath(__dirname, wasmPathNode),
+      resolvePath(__dirname, "../../wasm/build/swisseph.node.wasm"),
+      resolvePath(__dirname, "../wasm/build/swisseph.node.wasm")
+    ].filter((value): value is string => typeof value === "string"),
+    ephePaths: [
+      options.bundledNodeEphePath,
+      resolvePath(__dirname, "../../ephe"),
+      resolvePath(__dirname, "../ephe")
+    ].filter((value): value is string => typeof value === "string")
+  };
+}
+
+function getBundledBrowserSwissEphAssets(
+  options: ResolveSwissEphRuntimeAssetsInternalOptions
+): { wasmPath: string; ephePath: string } {
+  return {
+    wasmPath: options.bundledBrowserWasmPath ?? wasmPathWeb,
+    ephePath: options.bundledBrowserEphePath ?? "../ephe"
+  };
+}
+
+function formatCandidatePaths(paths: string[]): string {
+  return paths.length > 0 ? paths.join(", ") : "(none)";
+}
+
+function resolveBundledRuntimeAssetPath(
+  label: "wasmPath" | "ephePath",
+  bundledPaths: string[],
+  existsSync: (path: string) => boolean
+): { path: string; source: RuntimeAssetSource } {
+  for (const bundledPath of bundledPaths) {
+    if (existsSync(bundledPath)) {
+      return {
+        path: bundledPath,
+        source: "bundled"
+      };
+    }
+  }
+
+  throw new Error(
+    `Unable to resolve Swiss Ephemeris ${label}. Bundled paths checked: ${formatCandidatePaths(
+      bundledPaths
+    )}.`
+  );
+}
+
+function resolveRuntimeAssetPath(
+  label: "wasmPath" | "ephePath",
+  explicitPath: string | undefined,
+  envPath: string | undefined,
+  candidatePaths: string[],
+  bundledPaths: string[],
+  existsSync: (path: string) => boolean
+): { path: string; source: RuntimeAssetSource } {
+  if (explicitPath) {
+    if (!existsSync(explicitPath)) {
+      throw new Error(
+        `Swiss Ephemeris ${label} override does not exist: "${explicitPath}".`
+      );
+    }
+
+    return {
+      path: explicitPath,
+      source: "explicit"
+    };
+  }
+
+  if (envPath) {
+    if (!existsSync(envPath)) {
+      throw new Error(
+        `Swiss Ephemeris ${label} from environment does not exist: "${envPath}".`
+      );
+    }
+
+    return {
+      path: envPath,
+      source: "env"
+    };
+  }
+
+  for (const candidatePath of candidatePaths) {
+    if (existsSync(candidatePath)) {
+      return {
+        path: candidatePath,
+        source: "candidate"
+      };
+    }
+  }
+
+  try {
+    return resolveBundledRuntimeAssetPath(label, bundledPaths, existsSync);
+  } catch (error) {
+    throw new Error(
+      `Unable to resolve Swiss Ephemeris ${label}. Checked candidate paths: ${formatCandidatePaths(
+        candidatePaths
+      )}. ${toError(error).message}`
+    );
+  }
+}
+
+function resolveSwissEphRuntimeAssetsInternal(
+  options: ResolveSwissEphRuntimeAssetsInternalOptions = {}
+): SwissEphRuntimeAssetPaths {
+  const isBrowser =
+    options.isBrowser ?? typeof window !== "undefined";
+
+  if (isBrowser) {
+    const bundledAssets = getBundledBrowserSwissEphAssets(options);
+    return {
+      wasmPath: options.wasmPath ?? bundledAssets.wasmPath,
+      ephePath: options.ephePath ?? bundledAssets.ephePath,
+      wasmPathSource: options.wasmPath ? "explicit" : "bundled",
+      ephePathSource: options.ephePath ? "explicit" : "bundled"
+    };
+  }
+
+  const env = getRuntimeEnv(options.env);
+  const existsSync =
+    options.existsSync ??
+    ((path: string) =>
+      (require("fs") as typeof import("fs")).existsSync(path));
+  const bundledAssets = getBundledNodeSwissEphAssets(options);
+  const envWasmPath = firstDefinedEnvValue(env, SWISS_EPH_RUNTIME_WASM_ENV_KEYS);
+  const envEphePath = firstDefinedEnvValue(env, SWISS_EPH_RUNTIME_EPHE_ENV_KEYS);
+  const resolvedWasm = resolveRuntimeAssetPath(
+    "wasmPath",
+    options.wasmPath,
+    envWasmPath,
+    options.wasmPathCandidates ?? [],
+    bundledAssets.wasmPaths,
+    existsSync
+  );
+  const resolvedEphe = resolveRuntimeAssetPath(
+    "ephePath",
+    options.ephePath,
+    envEphePath,
+    options.ephePathCandidates ?? [],
+    bundledAssets.ephePaths,
+    existsSync
+  );
+
+  return {
+    wasmPath: resolvedWasm.path,
+    ephePath: resolvedEphe.path,
+    wasmPathSource: resolvedWasm.source,
+    ephePathSource: resolvedEphe.source
+  };
+}
+
+export function resolveSwissEphRuntimeAssets(
+  options: ResolveSwissEphRuntimeAssetsOptions = {}
+): SwissEphRuntimeAssetPaths {
+  return resolveSwissEphRuntimeAssetsInternal(options);
 }
 
 function normalizeVirtualPath(path: string): string {
@@ -320,11 +567,11 @@ export async function getSwissEph(
 
   try {
     const isBrowser = typeof window !== "undefined";
-    // Select proper build per environment
-    const wasmUrl = isBrowser ? wasmPathWeb : wasmPathNode;
-    const finalWasmPath =
-      options.wasmPath ||
-      (isBrowser ? wasmUrl : require("path").resolve(__dirname, wasmUrl));
+    const runtimeAssets = resolveSwissEphRuntimeAssets({
+      wasmPath: options.wasmPath,
+      ephePath: options.ephePath
+    });
+    const finalWasmPath = runtimeAssets.wasmPath;
 
     const moduleFactory: SwissEphModuleFactory = isBrowser
       ? (await import("../../wasm/build/swisseph.web.js")).default as unknown as SwissEphModuleFactory
@@ -336,11 +583,7 @@ export async function getSwissEph(
 
     const instance = new SwissEph(module);
 
-    // Default ephemeris path
-    const defaultEphePath = isBrowser
-      ? "../ephe"
-      : require("path").resolve(__dirname, "../ephe");
-    const finalEphePath = options.ephePath || defaultEphePath;
+    const finalEphePath = runtimeAssets.ephePath;
 
     if (isBrowser) {
       // In the browser, synchronously fetch and write ephemeris files into MEMFS
@@ -371,16 +614,16 @@ export async function getSwissEph(
           `Failed to materialize browser ephemeris files at "${epheFsPath}". Missing: ${browserCheck.missingFiles.join(", ")}.`
         );
       }
-      console.info(`Setting ephemeris path to: ${epheFsPath}`);
+      emitRuntimeNotice(`Setting ephemeris path to: ${epheFsPath}`);
       instance.setEphemerisPath(epheFsPath);
     } else {
       const resolution = resolveNodeEphemerisPath(module, finalEphePath);
       if (resolution.strategy === "nodefs-mount") {
-        console.info(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
+        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
       } else if (resolution.strategy === "memfs-copy") {
-        console.info(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
+        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
       } else {
-        console.info(`Setting ephemeris path to: ${resolution.path}`);
+        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path}`);
       }
       instance.setEphemerisPath(resolution.path);
     }

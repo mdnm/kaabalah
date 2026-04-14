@@ -4,6 +4,7 @@ import { debugLog } from "../runtime/debug";
 import { exitWithError } from "../runtime/errors";
 import { isAbortError, type ExecutionContext } from "../runtime/execution";
 import { outputJson } from "../runtime/output";
+import type { Flags, InputPayload } from "../runtime/types";
 import {
   buildBirthDate,
   parseChartInput,
@@ -13,7 +14,12 @@ import {
   parseTimeValue,
   type ParsedChartInput,
 } from "../runtime/validation";
-import type { Flags, InputPayload } from "../runtime/types";
+
+type AspectLike = {
+  aspect: string;
+  orb?: number;
+  exactOrb?: number;
+};
 
 function rethrowInterruptedOrError(err: unknown, executionContext: ExecutionContext): never {
   executionContext.throwIfInterrupted();
@@ -21,7 +27,7 @@ function rethrowInterruptedOrError(err: unknown, executionContext: ExecutionCont
 }
 
 function describeTimeZoneSettings(timeZoneSettings: ParsedChartInput["timeZoneSettings"]): string {
-  return "timeZone" in timeZoneSettings ? timeZoneSettings.timeZone : "auto";
+  return "timeZone" in timeZoneSettings && timeZoneSettings.timeZone != null ? timeZoneSettings.timeZone : "auto";
 }
 
 async function geocodeLocation(
@@ -152,6 +158,72 @@ function formatInputEcho(chartAInput: ParsedChartInput, chartBInput: ParsedChart
       lon: chartBInput.longitude,
       houseSystem: chartBInput.houseSystem,
     },
+  };
+}
+
+const MAJOR_ASPECTS = ["conjunction", "sextile", "square", "trine", "opposition"];
+
+function parseMaxOrb(flags: Flags, inputPayload: InputPayload): number | undefined {
+  const maxOrb = inputPayload?.maxOrb != null ? Number(inputPayload.maxOrb) : getFlagNumber(flags, "max-orb");
+
+  if (maxOrb == null) {
+    return undefined;
+  }
+
+  if (Number.isNaN(maxOrb) || maxOrb < 0) {
+    exitWithError("INVALID_ARGUMENT", `--max-orb must be a non-negative number, got "${maxOrb}".`, flags);
+  }
+
+  return maxOrb;
+}
+
+function parseAspectTypeFilter(flags: Flags, inputPayload: InputPayload): string[] | undefined {
+  const rawValue =
+    (inputPayload?.aspectTypes as string | string[] | undefined) ??
+    (inputPayload?.aspects as string | string[] | undefined) ??
+    getFlagString(flags, "aspect-types") ??
+    getFlagString(flags, "aspects");
+
+  if (!rawValue) {
+    return undefined;
+  }
+
+  const items = Array.isArray(rawValue) ? rawValue : rawValue.split(",");
+  const normalized = items
+    .map((item) => item.trim().toLowerCase())
+    .filter(Boolean)
+    .flatMap((item) => (item === "major" ? MAJOR_ASPECTS : [item]));
+
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function filterAspects<T extends AspectLike>(
+  aspects: T[],
+  { maxOrb, aspectFilter }: { maxOrb?: number; aspectFilter?: string[] }
+): T[] {
+  return aspects.filter((aspect) => {
+    if (maxOrb != null) {
+      const orb = aspect.orb ?? aspect.exactOrb;
+      if (orb == null || orb > maxOrb) {
+        return false;
+      }
+    }
+
+    if (aspectFilter && !aspectFilter.includes(aspect.aspect)) {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+function filterChartAspects<T extends { aspects: AspectLike[] }>(
+  chart: T,
+  options: { maxOrb?: number; aspectFilter?: string[] }
+): T {
+  return {
+    ...chart,
+    aspects: filterAspects(chart.aspects, options),
   };
 }
 
@@ -308,6 +380,8 @@ export async function cmdAstrologySynastry(
     releaseSwissEphCleanup,
   } = await parseTwoChartCommand(flags, inputPayload, "astrology:synastry", executionContext);
   const { getSynastryChart, closeSwissEph, HouseSystem } = astroModule;
+  const maxOrb = parseMaxOrb(flags, inputPayload);
+  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
 
   try {
     debugLog("astrology", "Running astrology:synastry.", {
@@ -320,21 +394,27 @@ export async function cmdAstrologySynastry(
       chartB: buildBirthChartOptions(chartBInput, HouseSystem),
       aspectSpecs,
     });
+    const filteredResult = {
+      ...result,
+      chartA: filterChartAspects(result.chartA, { maxOrb, aspectFilter }),
+      chartB: filterChartAspects(result.chartB, { maxOrb, aspectFilter }),
+      aspects: filterAspects(result.aspects, { maxOrb, aspectFilter }),
+    };
     executionContext.throwIfInterrupted();
     debugLog("astrology", "Completed astrology:synastry.", {
-      aspects: result.aspects.length,
+      aspects: filteredResult.aspects.length,
     });
 
     if (isJsonMode(flags)) {
-      outputJson({ ...result, input: formatInputEcho(chartAInput, chartBInput) }, flags);
+      outputJson({ ...filteredResult, input: formatInputEcho(chartAInput, chartBInput) }, flags);
       return;
     }
 
     console.log(`\nSynastry Chart\n`);
     console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
     console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
-    console.log(`\n  Cross-chart Aspects (${result.aspects.length}):\n`);
-    for (const aspect of result.aspects) {
+    console.log(`\n  Cross-chart Aspects (${filteredResult.aspects.length}):\n`);
+    for (const aspect of filteredResult.aspects) {
       console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
     }
     console.log();
@@ -359,6 +439,8 @@ export async function cmdAstrologyComposite(
     releaseSwissEphCleanup,
   } = await parseTwoChartCommand(flags, inputPayload, "astrology:composite", executionContext);
   const { getCompositeChart, closeSwissEph, HouseSystem } = astroModule;
+  const maxOrb = parseMaxOrb(flags, inputPayload);
+  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
 
   try {
     debugLog("astrology", "Running astrology:composite.", {
@@ -371,14 +453,20 @@ export async function cmdAstrologyComposite(
       chartB: buildBirthChartOptions(chartBInput, HouseSystem),
       aspectSpecs,
     });
+    const filteredResult = {
+      ...result,
+      chartA: filterChartAspects(result.chartA, { maxOrb, aspectFilter }),
+      chartB: filterChartAspects(result.chartB, { maxOrb, aspectFilter }),
+      aspects: filterAspects(result.aspects, { maxOrb, aspectFilter }),
+    };
     executionContext.throwIfInterrupted();
     debugLog("astrology", "Completed astrology:composite.", {
-      aspects: result.aspects.length,
-      compositePlanets: Object.keys(result.compositePlanets).length,
+      aspects: filteredResult.aspects.length,
+      compositePlanets: Object.keys(filteredResult.compositePlanets).length,
     });
 
     if (isJsonMode(flags)) {
-      outputJson({ ...result, input: formatInputEcho(chartAInput, chartBInput) }, flags);
+      outputJson({ ...filteredResult, input: formatInputEcho(chartAInput, chartBInput) }, flags);
       return;
     }
 
@@ -386,17 +474,17 @@ export async function cmdAstrologyComposite(
     console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
     console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
     console.log(`\n  Composite Planets:`);
-    for (const [name, planet] of Object.entries(result.compositePlanets)) {
+    for (const [name, planet] of Object.entries(filteredResult.compositePlanets)) {
       const zodiacPosition = planet.zodiacPosition;
       console.log(`    ${name.padEnd(14)} ${zodiacPosition.sign.padEnd(12)} ${zodiacPosition.traditionalFormat.padEnd(8)} House ${zodiacPosition.house}`);
     }
     console.log(`\n  Composite House Cusps:`);
-    for (let i = 0; i < result.compositeHouses.length; i++) {
-      const house = result.compositeHouses[i];
+    for (let i = 0; i < filteredResult.compositeHouses.length; i++) {
+      const house = filteredResult.compositeHouses[i];
       console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
     }
-    console.log(`\n  Composite Aspects (${result.aspects.length}):\n`);
-    for (const aspect of result.aspects) {
+    console.log(`\n  Composite Aspects (${filteredResult.aspects.length}):\n`);
+    for (const aspect of filteredResult.aspects) {
       console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
     }
     console.log();
@@ -407,8 +495,6 @@ export async function cmdAstrologyComposite(
     closeSwissEph();
   }
 }
-
-const MAJOR_ASPECTS = ["conjunction", "sextile", "square", "trine", "opposition"];
 
 export async function cmdAstrologyTransits(
   args: string[],
@@ -448,8 +534,8 @@ export async function cmdAstrologyTransits(
     const transitLonFlag = inputPayload?.transitLon != null ? Number(inputPayload.transitLon) : getFlagNumber(flags, "transit-lon");
     const transitTzStr = (inputPayload?.transitTimezone as string) ?? getFlagString(flags, "transit-timezone");
 
-    const maxOrbFlag = inputPayload?.maxOrb != null ? Number(inputPayload.maxOrb) : getFlagNumber(flags, "max-orb");
-    const aspectsStr = (inputPayload?.aspects as string | string[]) ?? getFlagString(flags, "aspects");
+    const maxOrbFlag = parseMaxOrb(flags, inputPayload);
+    const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
     const transitPlanetsStr = (inputPayload?.transitPlanets as string | string[]) ?? getFlagString(flags, "transit-planets");
     const natalPlanetsStr = (inputPayload?.natalPlanets as string | string[]) ?? getFlagString(flags, "natal-planets");
 
@@ -458,13 +544,6 @@ export async function cmdAstrologyTransits(
     const stepDaysFlag = inputPayload?.stepDays != null ? Number(inputPayload.stepDays) : getFlagNumber(flags, "step-days");
     if (stepDaysFlag != null && (isNaN(stepDaysFlag) || stepDaysFlag <= 0)) {
       exitWithError("INVALID_ARGUMENT", `--step-days must be a positive number, got "${stepDaysFlag}".`, flags);
-    }
-
-    // Parse aspect filter
-    let aspectFilter: string[] | undefined;
-    if (aspectsStr) {
-      const raw = Array.isArray(aspectsStr) ? aspectsStr : aspectsStr.split(",").map((s) => s.trim());
-      aspectFilter = raw.flatMap((a) => (a === "major" ? MAJOR_ASPECTS : [a]));
     }
 
     // Parse planet filters
@@ -643,6 +722,8 @@ export async function cmdAstrologySolarReturn(
   const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
   const astroModule = await import("../../astrology");
   const { getSolarReturnChart, closeSwissEph, HouseSystem } = astroModule;
+  const maxOrb = parseMaxOrb(flags, inputPayload);
+  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
   const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
     astroModule.closeSwissEph();
   });
@@ -696,16 +777,21 @@ export async function cmdAstrologySolarReturn(
       solarReturnLongitude: srLon ?? undefined,
       solarReturnHouseSystem: srHouseSystem as any,
     });
+    const filteredResult = {
+      ...result,
+      natalChart: filterChartAspects(result.natalChart, { maxOrb, aspectFilter }),
+      solarReturnChart: filterChartAspects(result.solarReturnChart, { maxOrb, aspectFilter }),
+    };
     executionContext.throwIfInterrupted();
 
     debugLog("astrology", "Completed astrology:solar-return.", {
-      exactReturnDate: result.exactReturnDate.toISOString(),
-      natalSunLongitude: result.natalSunLongitude,
+      exactReturnDate: filteredResult.exactReturnDate.toISOString(),
+      natalSunLongitude: filteredResult.natalSunLongitude,
     });
 
     if (isJsonMode(flags)) {
       outputJson({
-        ...result,
+        ...filteredResult,
         input: {
           natal: { date: natalInput.dateStr, time: natalInput.timeStr, lat: natalInput.latitude, lon: natalInput.longitude },
           year,
@@ -717,13 +803,13 @@ export async function cmdAstrologySolarReturn(
     }
 
     // Human-readable output
-    const srChart = result.solarReturnChart;
-    const natalSun = result.natalChart.planets.sun.zodiacPosition;
-    const returnDateStr = result.exactReturnDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+    const srChart = filteredResult.solarReturnChart;
+    const natalSun = filteredResult.natalChart.planets.sun.zodiacPosition;
+    const returnDateStr = filteredResult.exactReturnDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
 
     console.log(`\nSolar Return ${year}\n`);
     console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Natal Sun: ${natalSun.sign} ${natalSun.traditionalFormat} (${result.natalSunLongitude.toFixed(4)}°)`);
+    console.log(`  Natal Sun: ${natalSun.sign} ${natalSun.traditionalFormat} (${filteredResult.natalSunLongitude.toFixed(4)}°)`);
     console.log(`  Exact Return: ${returnDateStr}`);
     console.log(`  SR Sun: ${srChart.planets.sun.zodiacPosition.sign} ${srChart.planets.sun.zodiacPosition.traditionalFormat} (${srChart.planets.sun.longitude.toFixed(4)}°)`);
 
@@ -1060,6 +1146,8 @@ export async function cmdAstrology(
   const input = await parseSingleChartRequest(args, flags, inputPayload, executionContext);
   const astroModule = await import("../../astrology");
   const { getSwissEph, closeSwissEph, getBirthChart, HouseSystem } = astroModule;
+  const maxOrb = parseMaxOrb(flags, inputPayload);
+  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
   const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
     astroModule.closeSwissEph();
   });
@@ -1091,15 +1179,16 @@ export async function cmdAstrology(
       houseSystem: input.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
       timeZoneSettings: input.timeZoneSettings as any,
     });
+    const filteredChart = filterChartAspects(chart, { maxOrb, aspectFilter });
     executionContext.throwIfInterrupted();
     debugLog("astrology", "Completed astrology.", {
-      planets: Object.keys(chart.planets).length,
-      nodes: Object.keys(chart.nodes ?? {}).length,
-      aspects: chart.aspects.length,
+      planets: Object.keys(filteredChart.planets).length,
+      nodes: Object.keys(filteredChart.nodes ?? {}).length,
+      aspects: filteredChart.aspects.length,
     });
 
     if (isJsonMode(flags)) {
-      const result: Record<string, unknown> = { ...chart };
+      const result: Record<string, unknown> = { ...filteredChart };
       if (input.resolvedLocation) {
         result.resolvedLocation = input.resolvedLocation;
       }
@@ -1121,25 +1210,25 @@ export async function cmdAstrology(
     }
     console.log(`  Coordinates: ${input.latitude.toFixed(4)}, ${input.longitude.toFixed(4)}`);
     console.log(`  House System: ${input.houseSystem}`);
-    console.log(`  UTC Date: ${chart.dateUtc.toISOString()}`);
+    console.log(`  UTC Date: ${filteredChart.dateUtc.toISOString()}`);
     console.log(`\n  Planets:`);
-    for (const [name, planet] of Object.entries(chart.planets)) {
+    for (const [name, planet] of Object.entries(filteredChart.planets)) {
       const zodiacPosition = planet.zodiacPosition;
       console.log(`    ${name.padEnd(14)} ${zodiacPosition.sign.padEnd(12)} ${zodiacPosition.traditionalFormat.padEnd(8)} House ${zodiacPosition.house}`);
     }
     console.log(`\n  Houses:`);
-    console.log(`    Ascendant:  ${chart.houses.ascendant.sign} ${chart.houses.ascendant.traditionalFormat}`);
-    console.log(`    Midheaven:  ${chart.houses.mc.sign} ${chart.houses.mc.traditionalFormat}`);
-    console.log(`    Descendant: ${chart.houses.dc.sign} ${chart.houses.dc.traditionalFormat}`);
-    console.log(`    IC:         ${chart.houses.ic.sign} ${chart.houses.ic.traditionalFormat}`);
+    console.log(`    Ascendant:  ${filteredChart.houses.ascendant.sign} ${filteredChart.houses.ascendant.traditionalFormat}`);
+    console.log(`    Midheaven:  ${filteredChart.houses.mc.sign} ${filteredChart.houses.mc.traditionalFormat}`);
+    console.log(`    Descendant: ${filteredChart.houses.dc.sign} ${filteredChart.houses.dc.traditionalFormat}`);
+    console.log(`    IC:         ${filteredChart.houses.ic.sign} ${filteredChart.houses.ic.traditionalFormat}`);
     console.log(`\n  House Cusps:`);
-    for (let i = 0; i < chart.houses.houses.length; i++) {
-      const house = chart.houses.houses[i];
+    for (let i = 0; i < filteredChart.houses.houses.length; i++) {
+      const house = filteredChart.houses.houses[i];
       console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
     }
-    if (chart.nodes && Object.keys(chart.nodes).length > 0) {
+    if (filteredChart.nodes && Object.keys(filteredChart.nodes).length > 0) {
       console.log(`\n  Nodes:`);
-      for (const [, node] of Object.entries(chart.nodes)) {
+      for (const [, node] of Object.entries(filteredChart.nodes)) {
         console.log(`    ${node.name.padEnd(18)} ${node.sign.padEnd(12)} ${node.traditionalFormat.padEnd(8)} House ${node.house}`);
       }
     }
