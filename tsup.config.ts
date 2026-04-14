@@ -7,6 +7,7 @@ const libraryEntries = [
   "src/astrology/index.ts",
   "src/gematria/index.ts",
   "src/ifa/index.ts",
+  "src/semantic/index.ts",
   "src/tarot/index.ts",
 ];
 

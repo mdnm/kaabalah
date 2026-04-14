@@ -58,6 +58,11 @@
       "types": "./dist/ifa/index.d.ts",
       "require": "./dist/ifa/index.js",
       "import": "./dist/ifa/index.mjs"
+    },
+    "./semantic": {
+      "types": "./dist/semantic/index.d.ts",
+      "require": "./dist/semantic/index.js",
+      "import": "./dist/semantic/index.mjs"
     }
   },
   "files": [
