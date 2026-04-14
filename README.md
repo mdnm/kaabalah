@@ -97,6 +97,38 @@ const papusImageUrl = resolveTarotImageUrl(
 
 The tarot resolver currently supports major-card archetypes only. Use `path:<1-22>` as the canonical persisted key, and treat path slugs, major-card filenames, and major-card numbers as lookup aliases.
 
+### Canonical Tarot Spreads
+
+```typescript
+import {
+  drawTarotSpread,
+  getTarotSpread,
+  listTarotSpreads,
+  validateTarotSpreadSelection
+} from "kaabalah/tarot";
+
+const spreads = listTarotSpreads();
+const treeOfLife = getTarotSpread("tree-of-life-reading");
+
+const drawn = drawTarotSpread({
+  spreadId: "event-reading",
+  context: { inquirerGender: "man" },
+  includeInverted: true
+});
+
+const validation = validateTarotSpreadSelection({
+  spreadId: drawn.spread.spreadId,
+  context: drawn.context,
+  cards: drawn.cards.map((card) => ({
+    slotKey: card.slotKey,
+    cardNumber: card.cardNumber,
+    isInverted: card.isInverted
+  }))
+});
+```
+
+Downstream apps should consume `spreadId`, `slotKey`, and the slot constraint metadata from the library instead of hardcoding spread semantics. Persist the reading state as canonical spread/card data such as `spreadId`, `slotKey`, `cardNumber`, `isInverted`, and app-side notes.
+
 ## CLI
 
 Kaabalah includes a command-line interface for quick calculations without writing code.
@@ -209,6 +241,21 @@ npm run dev
 ## Swiss Ephemeris Integration
 
 The astrological calculations use the Swiss Ephemeris library, compiled to WebAssembly for use in both Node.js and browser environments.
+
+For Node apps that need stable runtime asset paths, use the exported helper instead of probing `node_modules/kaabalah` manually:
+
+```typescript
+import { getSwissEph, resolveSwissEphRuntimeAssets } from "kaabalah/astrology";
+
+const assets = resolveSwissEphRuntimeAssets({
+  wasmPathCandidates: ["./vendor/kaabalah/swisseph.node.wasm"],
+  ephePathCandidates: ["./vendor/kaabalah/ephe"]
+});
+
+await getSwissEph(assets);
+```
+
+If no app-specific candidates are provided, the helper falls back to the package-bundled Node assets. In browser environments it stays filesystem-free and returns the bundled browser defaults.
 
 ## License
 

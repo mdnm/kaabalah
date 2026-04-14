@@ -76,12 +76,7 @@ function runCliWithOptions(args: string[], options: RunOptions): ProcessResult {
 }
 
 function parseJsonOutput(stdout: string): unknown {
-  try {
-    return JSON.parse(stdout);
-  } catch {
-    const fallbackStart = Math.max(stdout.lastIndexOf("\n{"), stdout.lastIndexOf("\n["));
-    return JSON.parse(fallbackStart === -1 ? stdout : stdout.slice(fallbackStart + 1));
-  }
+  return JSON.parse(stdout);
 }
 
 beforeAll(() => {
@@ -153,6 +148,8 @@ describe("CLI contract", () => {
         { name: "location" },
         { name: "house-system" },
         { name: "timezone" },
+        { name: "max-orb" },
+        { name: "aspect-types" },
         { name: "wasm-path" },
         { name: "ephe-path" },
       ],
@@ -543,6 +540,109 @@ describe("CLI contract", () => {
     });
     expect(result.stderr).toContain("[kaabalah:parser]");
     expect(result.stderr).toContain("[kaabalah:config]");
+  });
+
+  it("keeps astrology JSON stdout parseable while sending ephemeris notices to stderr", () => {
+    const result = runCli([
+      "astrology",
+      "1990-01-15",
+      "14:30",
+      "--lat=40.7128",
+      "--lon=-74.006",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      "--json",
+      "--compact",
+      "--fields=aspects",
+    ]);
+    assertSuccess(result, "astrology JSON purity");
+
+    expect(JSON.parse(result.stdout)).toMatchObject({
+      aspects: expect.any(Array),
+    });
+    expect(result.stderr).toContain("Setting ephemeris path to:");
+  });
+
+  it("filters synastry aspects by orb and aspect type in a single call", () => {
+    const payload = JSON.stringify({
+      chartA: {
+        date: "1990-01-15",
+        time: "14:30",
+        lat: 40.7128,
+        lon: -74.006,
+        timezone: "America/New_York",
+      },
+      chartB: {
+        date: "1992-06-20",
+        time: "09:00",
+        lat: 51.5074,
+        lon: -0.1278,
+        timezone: "Europe/London",
+      },
+    });
+    const result = runCli([
+      "astrology:synastry",
+      "--input-json=-",
+      "--json",
+      "--compact",
+      "--max-orb=3",
+      "--aspect-types=conjunction",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      "--fields=aspects",
+    ], payload);
+    assertSuccess(result, "synastry aspect filters");
+
+    const json = JSON.parse(result.stdout) as { aspects: Array<{ aspect: string; orb: number }> };
+    expect(json.aspects.length).toBeGreaterThan(0);
+    for (const aspect of json.aspects) {
+      expect(aspect.aspect).toBe("conjunction");
+      expect(aspect.orb).toBeLessThanOrEqual(3);
+    }
+  });
+
+  it("filters composite aspects by orb and aspect type in a single call", () => {
+    const payload = JSON.stringify({
+      chartA: {
+        date: "1990-01-15",
+        time: "14:30",
+        lat: 40.7128,
+        lon: -74.006,
+        timezone: "America/New_York",
+      },
+      chartB: {
+        date: "1992-06-20",
+        time: "09:00",
+        lat: 51.5074,
+        lon: -0.1278,
+        timezone: "Europe/London",
+      },
+    });
+    const result = runCli([
+      "astrology:composite",
+      "--input-json=-",
+      "--json",
+      "--compact",
+      "--max-orb=3",
+      "--aspect-types=opposition",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      "--fields=aspects",
+    ], payload);
+    assertSuccess(result, "composite aspect filters");
+
+    const json = JSON.parse(result.stdout) as { aspects: Array<{ aspect: string; orb: number }> };
+    expect(json.aspects.length).toBeGreaterThan(0);
+    for (const aspect of json.aspects) {
+      expect(aspect.aspect).toBe("opposition");
+      expect(aspect.orb).toBeLessThanOrEqual(3);
+    }
   });
 
   it("keeps the CLI shebang in the built entrypoint", () => {
