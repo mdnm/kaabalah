@@ -90,15 +90,23 @@ const archetype = getTarotArchetype({
 });
 
 const riderWaite = getTarotRepresentation({ pathSlug: "beth" }, "rider-waite");
+const queenOfCups = getTarotRepresentation(
+  { tarotCardName: "Queen of Cups" },
+  "rider-waite"
+);
 const papusImageUrl = resolveTarotImageUrl(
   { tarotCardFilename: "02_the_high_priestess" },
+  "papus_pt"
+);
+const aceOfWandsUrl = resolveTarotImageUrl(
+  { tarotCardFilename: "ace_wands" },
   "papus_pt"
 );
 
 // Persist the canonical archetype ID (for example `path:2`), not the image URL.
 ```
 
-The tarot resolver currently supports major-card archetypes only. Use `path:<1-22>` as the canonical persisted key, and treat path slugs, major-card filenames, and major-card numbers as lookup aliases.
+`getTarotArchetype()` remains major-only. The image helpers (`getTarotRepresentation()`, `getTarotRepresentations()`, and `resolveTarotImageUrl()`) support all 78 cards, using `major/` for the 22 archetypes and `minor/` for court plus pip cards.
 
 ### Canonical Semantic Profiles
 
