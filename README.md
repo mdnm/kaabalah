@@ -94,6 +94,10 @@ const queenOfCups = getTarotRepresentation(
   { tarotCardName: "Queen of Cups" },
   "rider-waite"
 );
+const tenOfSwords = getTarotRepresentation(
+  { tarotCardNumber: 64 },
+  "mythic"
+);
 const papusImageUrl = resolveTarotImageUrl(
   { tarotCardFilename: "02_the_high_priestess" },
   "papus_pt"
@@ -106,7 +110,13 @@ const aceOfWandsUrl = resolveTarotImageUrl(
 // Persist the canonical archetype ID (for example `path:2`), not the image URL.
 ```
 
-`getTarotArchetype()` remains major-only. The image helpers (`getTarotRepresentation()`, `getTarotRepresentations()`, and `resolveTarotImageUrl()`) support all 78 cards, using `major/` for the 22 archetypes and `minor/` for court plus pip cards.
+`getTarotArchetype()` remains major-only. The image helpers (`getTarotRepresentation()`, `getTarotRepresentations()`, and `resolveTarotImageUrl()`) support all 78 cards and own the canonical asset rules:
+
+- majors: `major/<filename>.jpg`
+- minors: `minor/<suit>/<filename>.jpg`
+- courts: `daat+royalship/<suit>/<filename>.jpg`
+
+Downstream apps should consume the returned `imageUrl` (or `assetPath`) from the library instead of reconstructing S3 paths locally.
 
 ### Canonical Semantic Profiles
 

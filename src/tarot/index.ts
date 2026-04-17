@@ -1061,6 +1061,8 @@ export type TarotArchetypeLookup =
 
 export type TarotCardKind = "major" | "court" | "minor";
 
+export type TarotAssetPathType = "major" | "minor" | "daat+royalship";
+
 export interface TarotCardProfile {
   tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
   tarotCardNumber: number;
@@ -1068,6 +1070,7 @@ export interface TarotCardProfile {
   tarotCardFilename: string;
   tarotMeaning?: string;
   kind: TarotCardKind;
+  assetPathType: TarotAssetPathType;
   suit?: string;
   availableDeckIds: TarotDeckId[];
   descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
@@ -1082,6 +1085,7 @@ export interface TarotRepresentation {
   card: TarotCardProfile;
   archetype?: TarotArchetype;
   deck: TarotDeckMetadata;
+  assetPath: string;
   imageUrl: string;
   label: string;
   altText: string;
@@ -1171,8 +1175,22 @@ function toTarotCardKind(card: TarotCard): TarotCardKind {
   return card.type === "minor" ? "minor" : "court";
 }
 
-function getTarotImagePath(card: TarotCardProfile): "major" | "minor" {
-  return card.kind === "major" ? "major" : "minor";
+function toTarotAssetPathType(card: TarotCard): TarotAssetPathType {
+  return card.type;
+}
+
+function buildTarotAssetPath(card: TarotCardProfile): string {
+  if (card.assetPathType === "major") {
+    return `major/${card.tarotCardFilename}`;
+  }
+
+  if (!card.suit) {
+    throw new Error(
+      `Missing suit metadata required to resolve tarot image path for ${card.tarotCardName}.`
+    );
+  }
+
+  return `${card.assetPathType}/${card.suit}/${card.tarotCardFilename}`;
 }
 
 function toAstrologyCorrespondence<T extends TarotAstrologyCorrespondenceType>(
@@ -1298,7 +1316,6 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
     system: "kaabalah",
     parts: ["westernAstrology", "tarot"]
   });
-  const archetypesByTarotCardNumber = getTarotArchetypeCache().byTarotCardNumber;
   const availableDeckIds = TAROT_DECK_METADATA.map((deck) => deck.id);
 
   const profiles = ARKANNUS.map((card) => {
@@ -1320,10 +1337,10 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
         descriptionsByDeck.papus_pt?.meaning ??
         card.meaning,
       kind: toTarotCardKind(card),
+      assetPathType: toTarotAssetPathType(card),
       suit: card.suit,
       availableDeckIds,
-      descriptionsByDeck,
-      archetype: archetypesByTarotCardNumber.get(card.number)
+      descriptionsByDeck
     };
   });
 
@@ -1357,7 +1374,8 @@ function buildTarotRepresentation(
   deck: TarotDeckConfig
 ): TarotRepresentation {
   const description = card.descriptionsByDeck[deck.id];
-  const imageUrl = `${TAROT_IMAGE_BASE_URL}/${deck.id}/${getTarotImagePath(card)}/${card.tarotCardFilename}.jpg`;
+  const assetPath = buildTarotAssetPath(card);
+  const imageUrl = `${TAROT_IMAGE_BASE_URL}/${deck.id}/${assetPath}.jpg`;
 
   return {
     card,
@@ -1365,6 +1383,7 @@ function buildTarotRepresentation(
       ? getTarotArchetype({ tarotCardNumber: card.tarotCardNumber })
       : undefined,
     deck: { id: deck.id, label: deck.label },
+    assetPath,
     imageUrl,
     label: `${card.tarotCardName} - ${deck.label}`,
     altText: `${card.tarotCardName} - ${deck.label}`,
