@@ -1059,8 +1059,28 @@ export type TarotArchetypeLookup =
   | { tarotCardFilename: MajorArcana | string }
   | { tarotCardNumber: number };
 
+export type TarotCardKind = "major" | "court" | "minor";
+
+export interface TarotCardProfile {
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  tarotCardNumber: number;
+  tarotCardName: string;
+  tarotCardFilename: string;
+  tarotMeaning?: string;
+  kind: TarotCardKind;
+  suit?: string;
+  availableDeckIds: TarotDeckId[];
+  descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
+}
+
+export type TarotImageLookup =
+  | TarotArchetypeLookup
+  | { tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU> }
+  | { tarotCardName: string };
+
 export interface TarotRepresentation {
-  archetype: TarotArchetype;
+  card: TarotCardProfile;
+  archetype?: TarotArchetype;
   deck: TarotDeckMetadata;
   imageUrl: string;
   label: string;
@@ -1073,7 +1093,6 @@ export const TAROT_IMAGE_BASE_URL =
   "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot";
 
 type TarotDeckConfig = TarotDeckMetadata & {
-  imagePath: "major";
   descriptiveDataKey?: TarotDescriptiveDeckKey;
 };
 
@@ -1081,30 +1100,25 @@ const TAROT_DECK_METADATA: readonly TarotDeckConfig[] = [
   {
     id: "papus_pt",
     label: "Papus Kaabalistic",
-    imagePath: "major",
     descriptiveDataKey: "PAPUS_KAABALISTIC"
   },
   {
     id: "papus",
     label: "Papus Divinatory",
-    imagePath: "major",
     descriptiveDataKey: "PAPUS_DIVINATORY"
   },
   {
     id: "mythic",
-    label: "Mythic",
-    imagePath: "major"
+    label: "Mythic"
   },
   {
     id: "egyptian",
     label: "Egyptian",
-    imagePath: "major",
     descriptiveDataKey: "KIER_EGYPTIAN"
   },
   {
     id: "rider-waite",
-    label: "Rider Waite",
-    imagePath: "major"
+    label: "Rider Waite"
   }
 ] as const;
 
@@ -1121,6 +1135,14 @@ type TarotArchetypeCache = {
   byTarotCardNumber: Map<number, TarotArchetype>;
 };
 
+type TarotCardProfileCache = {
+  profiles: TarotCardProfile[];
+  byTarotArkAnnuId: Map<string, TarotCardProfile>;
+  byTarotCardName: Map<string, TarotCardProfile>;
+  byTarotCardFilename: Map<string, TarotCardProfile>;
+  byTarotCardNumber: Map<number, TarotCardProfile>;
+};
+
 const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
   (card): card is TarotMajorCard =>
     card.type === "major" &&
@@ -1128,12 +1150,29 @@ const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
 );
 
 let tarotArchetypeCache: TarotArchetypeCache | undefined;
+let tarotCardProfileCache: TarotCardProfileCache | undefined;
 
 function normalizePathSlug(pathSlug: string): string {
   return pathSlug
     .trim()
     .replace(/^\/?path\//i, "")
     .toLowerCase();
+}
+
+function normalizeTarotLookupKey(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function toTarotCardKind(card: TarotCard): TarotCardKind {
+  if (card.type === "major") {
+    return "major";
+  }
+
+  return card.type === "minor" ? "minor" : "court";
+}
+
+function getTarotImagePath(card: TarotCardProfile): "major" | "minor" {
+  return card.kind === "major" ? "major" : "minor";
 }
 
 function toAstrologyCorrespondence<T extends TarotAstrologyCorrespondenceType>(
@@ -1250,22 +1289,119 @@ function getTarotArchetypeCache(): TarotArchetypeCache {
   return tarotArchetypeCache;
 }
 
+function getTarotCardProfileCache(): TarotCardProfileCache {
+  if (tarotCardProfileCache) {
+    return tarotCardProfileCache;
+  }
+
+  const tree = getCanonicalTree({
+    system: "kaabalah",
+    parts: ["westernAstrology", "tarot"]
+  });
+  const archetypesByTarotCardNumber = getTarotArchetypeCache().byTarotCardNumber;
+  const availableDeckIds = TAROT_DECK_METADATA.map((deck) => deck.id);
+
+  const profiles = ARKANNUS.map((card) => {
+    const tarotArkAnnuId = id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard);
+    const tarotArkAnnu = tree.getNode(tarotArkAnnuId);
+
+    if (!tarotArkAnnu) {
+      throw new Error(`Missing canonical tarot metadata for ${tarotArkAnnuId}.`);
+    }
+
+    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu);
+
+    return {
+      tarotArkAnnuId,
+      tarotCardNumber: card.number,
+      tarotCardName: card.tarotCard,
+      tarotCardFilename: card.tarotCardFilename,
+      tarotMeaning:
+        descriptionsByDeck.papus_pt?.meaning ??
+        card.meaning,
+      kind: toTarotCardKind(card),
+      suit: card.suit,
+      availableDeckIds,
+      descriptionsByDeck,
+      archetype: archetypesByTarotCardNumber.get(card.number)
+    };
+  });
+
+  tarotCardProfileCache = {
+    profiles,
+    byTarotArkAnnuId: new Map(
+      profiles.map((profile) => [String(profile.tarotArkAnnuId), profile])
+    ),
+    byTarotCardName: new Map(
+      profiles.map((profile) => [
+        normalizeTarotLookupKey(profile.tarotCardName),
+        profile
+      ])
+    ),
+    byTarotCardFilename: new Map(
+      profiles.map((profile) => [
+        normalizeTarotLookupKey(profile.tarotCardFilename),
+        profile
+      ])
+    ),
+    byTarotCardNumber: new Map(
+      profiles.map((profile) => [profile.tarotCardNumber, profile])
+    )
+  };
+
+  return tarotCardProfileCache;
+}
+
 function buildTarotRepresentation(
-  archetype: TarotArchetype,
+  card: TarotCardProfile,
   deck: TarotDeckConfig
 ): TarotRepresentation {
-  const description = archetype.descriptionsByDeck[deck.id];
-  const imageUrl = `${TAROT_IMAGE_BASE_URL}/${deck.id}/${deck.imagePath}/${archetype.tarotCardFilename}.jpg`;
+  const description = card.descriptionsByDeck[deck.id];
+  const imageUrl = `${TAROT_IMAGE_BASE_URL}/${deck.id}/${getTarotImagePath(card)}/${card.tarotCardFilename}.jpg`;
 
   return {
-    archetype,
+    card,
+    archetype: card.kind === "major"
+      ? getTarotArchetype({ tarotCardNumber: card.tarotCardNumber })
+      : undefined,
     deck: { id: deck.id, label: deck.label },
     imageUrl,
-    label: `${archetype.tarotCardName} - ${deck.label}`,
-    altText: `${archetype.tarotCardName} - ${deck.label}`,
-    cardLabel: description?.name ?? archetype.tarotCardName,
+    label: `${card.tarotCardName} - ${deck.label}`,
+    altText: `${card.tarotCardName} - ${deck.label}`,
+    cardLabel: description?.name ?? card.tarotCardName,
     description
   };
+}
+
+function getTarotCardProfile(
+  lookup: TarotImageLookup
+): TarotCardProfile | undefined {
+  const cache = getTarotCardProfileCache();
+
+  if ("pathSlug" in lookup || "pathId" in lookup) {
+    const archetype = getTarotArchetype(lookup);
+    return archetype
+      ? cache.byTarotCardNumber.get(archetype.tarotCardNumber)
+      : undefined;
+  }
+
+  if ("tarotArkAnnuId" in lookup) {
+    return cache.byTarotArkAnnuId.get(String(lookup.tarotArkAnnuId));
+  }
+
+  if ("tarotCardName" in lookup) {
+    return cache.byTarotCardName.get(
+      normalizeTarotLookupKey(lookup.tarotCardName)
+    );
+  }
+
+  if ("tarotCardFilename" in lookup) {
+    return cache.byTarotCardFilename.get(
+      normalizeTarotLookupKey(lookup.tarotCardFilename)
+    );
+  }
+
+  return cache.byTarotCardNumber.get(lookup.tarotCardNumber);
 }
 
 export function listTarotDecks(): TarotDeckMetadata[] {
@@ -1295,35 +1431,35 @@ export function getTarotArchetype(
 }
 
 export function getTarotRepresentations(
-  lookup: TarotArchetypeLookup
+  lookup: TarotImageLookup
 ): TarotRepresentation[] {
-  const archetype = getTarotArchetype(lookup);
+  const card = getTarotCardProfile(lookup);
 
-  if (!archetype) {
+  if (!card) {
     return [];
   }
 
   return TAROT_DECK_METADATA.map((deck) =>
-    buildTarotRepresentation(archetype, deck)
+    buildTarotRepresentation(card, deck)
   );
 }
 
 export function getTarotRepresentation(
-  lookup: TarotArchetypeLookup,
+  lookup: TarotImageLookup,
   deckId: TarotDeckId
 ): TarotRepresentation | undefined {
-  const archetype = getTarotArchetype(lookup);
+  const card = getTarotCardProfile(lookup);
   const deck = TAROT_DECK_METADATA.find((candidate) => candidate.id === deckId);
 
-  if (!archetype || !deck) {
+  if (!card || !deck) {
     return undefined;
   }
 
-  return buildTarotRepresentation(archetype, deck);
+  return buildTarotRepresentation(card, deck);
 }
 
 export function resolveTarotImageUrl(
-  lookup: TarotArchetypeLookup,
+  lookup: TarotImageLookup,
   deckId: TarotDeckId
 ): string | undefined {
   return getTarotRepresentation(lookup, deckId)?.imageUrl;

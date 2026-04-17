@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { id, KaabalahTypes } from "../core";
+import { id, KaabalahTypes, TarotTypes } from "../core";
 import {
   getTarotArchetype,
   getTarotRepresentation,
@@ -66,9 +66,15 @@ describe("tarot archetype resolver", () => {
       label: "The Magician - Papus Kaabalistic",
       altText: "The Magician - Papus Kaabalistic",
       cardLabel: "The Magician",
+      card: {
+        kind: "major",
+        tarotCardNumber: 1,
+        tarotCardFilename: "01_the_magician"
+      },
       imageUrl:
         "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/papus_pt/major/01_the_magician.jpg"
     });
+    expect(papusKaabalistic?.archetype?.pathSlug).toBe("aleph");
 
     expect(
       resolveTarotImageUrl(
@@ -80,8 +86,51 @@ describe("tarot archetype resolver", () => {
     );
   });
 
-  it("returns no archetype for non-major tarot card numbers", () => {
+  it("resolves court and minor cards to the non-major image paths", () => {
+    const court = getTarotRepresentation(
+      { tarotArkAnnuId: id(TarotTypes.TAROT_ARK_ANNU, "Page of Cups") },
+      "rider-waite"
+    );
+    const minor = getTarotRepresentation(
+      { tarotCardName: "Ace of Wands" },
+      "papus_pt"
+    );
+
+    expect(court).toMatchObject({
+      label: "Page of Cups - Rider Waite",
+      altText: "Page of Cups - Rider Waite",
+      cardLabel: "Page of Cups",
+      card: {
+        kind: "court",
+        tarotCardNumber: 40,
+        tarotCardFilename: "page_cups"
+      },
+      imageUrl:
+        "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/minor/page_cups.jpg"
+    });
+    expect(court?.archetype).toBeUndefined();
+
+    expect(minor).toMatchObject({
+      label: "Ace of Wands - Papus Kaabalistic",
+      altText: "Ace of Wands - Papus Kaabalistic",
+      cardLabel: "Ace of Wands",
+      card: {
+        kind: "minor",
+        tarotCardNumber: 27,
+        tarotCardFilename: "ace_wands"
+      },
+      imageUrl:
+        "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/papus_pt/minor/ace_wands.jpg"
+    });
+  });
+
+  it("keeps archetype lookup major-only while image lookup supports all tarot cards", () => {
     expect(getTarotArchetype({ tarotCardNumber: 40 })).toBeUndefined();
-    expect(getTarotRepresentations({ tarotCardNumber: 40 })).toEqual([]);
+    expect(getTarotRepresentations({ tarotCardNumber: 40 })).toHaveLength(5);
+    expect(
+      resolveTarotImageUrl({ tarotCardNumber: 40 }, "egyptian")
+    ).toBe(
+      "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/egyptian/minor/page_cups.jpg"
+    );
   });
 });
