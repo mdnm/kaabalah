@@ -7,7 +7,9 @@ import {
   id,
   KaabalahTypes,
   LetterTypes,
+  NumerologyTypes,
   parseId,
+  type SystemKey,
   TarotTypes,
   type NodeId,
   type Node,
@@ -16,6 +18,15 @@ import {
 
 export type Deck = "papus_pt" | "papus" | "mythic" | "egyptian" | "rider-waite"
 export type TarotDeckId = Deck;
+export type TarotTreeId = SystemKey;
+
+export const DEFAULT_TAROT_TREE_ID: TarotTreeId = "kaabalah";
+
+export const TAROT_TREE_IDS = [
+  "kaabalah",
+  "hermetic-qabalah",
+  "lurianic-kabbalah"
+] as const satisfies readonly TarotTreeId[];
 
 export type MajorArcana =
   | "01_the_magician"
@@ -79,7 +90,9 @@ export const majorArcana: MajorArcana[] = [
   "22_the_world"
 ]
 
-export const ARKANNUS: TarotCard[] = [
+// Base card catalog. The exported ARKANNUS list is normalized below so its
+// numbers always reflect the canonical kaabalah tree correspondences.
+const RAW_ARKANNUS: TarotCard[] = [
   // Major Arcana (1-22)
   {
     number: 1,
@@ -1147,12 +1160,6 @@ type TarotCardProfileCache = {
   byTarotCardNumber: Map<number, TarotCardProfile>;
 };
 
-const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
-  (card): card is TarotMajorCard =>
-    card.type === "major" &&
-    majorArcana.includes(card.tarotCardFilename as MajorArcana)
-);
-
 let tarotArchetypeCache: TarotArchetypeCache | undefined;
 let tarotCardProfileCache: TarotCardProfileCache | undefined;
 
@@ -1166,6 +1173,105 @@ function normalizePathSlug(pathSlug: string): string {
 function normalizeTarotLookupKey(value: string): string {
   return value.trim().toLowerCase();
 }
+
+const TAROT_TREE_PARTS: Partial<Record<TarotTreeId, readonly ["tarot"]>> = {
+  kaabalah: ["tarot"]
+};
+
+const TAROT_ARK_ANNU_ID_BY_NAME = new Map(
+  RAW_ARKANNUS.map((card) => [
+    normalizeTarotLookupKey(card.tarotCard),
+    id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard)
+  ] as const)
+);
+
+const TAROT_ARK_ANNU_ID_BY_FILENAME = new Map(
+  RAW_ARKANNUS.map((card) => [
+    normalizeTarotLookupKey(card.tarotCardFilename),
+    id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard)
+  ] as const)
+);
+
+function getTarotTreeWorkspace(treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID) {
+  const parts = TAROT_TREE_PARTS[treeId];
+
+  if (!parts) {
+    return undefined;
+  }
+
+  return getCanonicalTree({
+    system: treeId,
+    parts: [...parts]
+  });
+}
+
+function getDirectTarotCardNumber(
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>,
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+): number | undefined {
+  const tree = getTarotTreeWorkspace(treeId);
+
+  if (!tree) {
+    return undefined;
+  }
+
+  const match = tree.getCorrespondences(tarotArkAnnuId, {
+    type: NumerologyTypes.NUMBER,
+    depth: 1,
+    limit: 1
+  })[0];
+
+  if (!match) {
+    return undefined;
+  }
+
+  return Number.parseInt(parseId(match.node.id), 10);
+}
+
+function buildDefaultArkannus(cards: TarotCard[]): TarotCard[] {
+  const tree = getTarotTreeWorkspace(DEFAULT_TAROT_TREE_ID);
+  const resolveNumber = (tarotCardName: string) => {
+    if (!tree) {
+      return undefined;
+    }
+
+    const match = tree.getCorrespondences(
+      id(TarotTypes.TAROT_ARK_ANNU, tarotCardName),
+      {
+        type: NumerologyTypes.NUMBER,
+        depth: 1,
+        limit: 1
+      }
+    )[0];
+
+    if (!match) {
+      return undefined;
+    }
+
+    return Number.parseInt(parseId(match.node.id), 10);
+  };
+
+  return [...cards]
+    .map((card) => ({
+      ...card,
+      number: resolveNumber(card.tarotCard) ?? card.number
+    }))
+    .sort((left, right) => {
+      if (left.number !== right.number) {
+        return left.number - right.number;
+      }
+
+      return left.tarotCard.localeCompare(right.tarotCard);
+    });
+}
+
+export const ARKANNUS: TarotCard[] = buildDefaultArkannus(RAW_ARKANNUS);
+
+const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
+  (card): card is TarotMajorCard =>
+    card.type === "major" &&
+    majorArcana.includes(card.tarotCardFilename as MajorArcana)
+);
 
 function toTarotCardKind(card: TarotCard): TarotCardKind {
   if (card.type === "major") {
@@ -1392,7 +1498,33 @@ function buildTarotRepresentation(
   };
 }
 
-function getTarotCardProfile(
+function resolveTarotArkAnnuId(
+  lookup: TarotImageLookup
+): NodeId<TarotTypes.TAROT_ARK_ANNU> | undefined {
+  if ("pathSlug" in lookup || "pathId" in lookup) {
+    return getTarotArchetype(lookup)?.tarotArkAnnuId;
+  }
+
+  if ("tarotArkAnnuId" in lookup) {
+    return lookup.tarotArkAnnuId;
+  }
+
+  if ("tarotCardName" in lookup) {
+    return TAROT_ARK_ANNU_ID_BY_NAME.get(
+      normalizeTarotLookupKey(lookup.tarotCardName)
+    );
+  }
+
+  if ("tarotCardFilename" in lookup) {
+    return TAROT_ARK_ANNU_ID_BY_FILENAME.get(
+      normalizeTarotLookupKey(lookup.tarotCardFilename)
+    );
+  }
+
+  return undefined;
+}
+
+export function getTarotCardProfile(
   lookup: TarotImageLookup
 ): TarotCardProfile | undefined {
   const cache = getTarotCardProfileCache();
@@ -1420,11 +1552,67 @@ function getTarotCardProfile(
     );
   }
 
-  return cache.byTarotCardNumber.get(lookup.tarotCardNumber);
+  return getTarotCardByNumber(lookup.tarotCardNumber);
 }
 
 export function listTarotDecks(): TarotDeckMetadata[] {
   return TAROT_DECK_METADATA.map(({ id, label }) => ({ id, label }));
+}
+
+export function listTarotTrees(): TarotTreeId[] {
+  return [...TAROT_TREE_IDS];
+}
+
+export function getTarotCardNumber(
+  lookup: TarotImageLookup,
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+): number | undefined {
+  if ("tarotCardNumber" in lookup) {
+    return getTarotCardByNumber(lookup.tarotCardNumber, treeId)
+      ?.tarotCardNumber;
+  }
+
+  const tarotArkAnnuId = resolveTarotArkAnnuId(lookup);
+
+  if (!tarotArkAnnuId) {
+    return undefined;
+  }
+
+  return getDirectTarotCardNumber(tarotArkAnnuId, treeId);
+}
+
+export function getTarotCardByNumber(
+  cardNumber: number,
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+): TarotCardProfile | undefined {
+  const tree = getTarotTreeWorkspace(treeId);
+
+  if (!tree) {
+    return undefined;
+  }
+
+  const match = tree.getCorrespondences(id(NumerologyTypes.NUMBER, cardNumber), {
+    type: TarotTypes.TAROT_ARK_ANNU,
+    depth: 1,
+    limit: 1
+  })[0];
+
+  if (!match) {
+    return undefined;
+  }
+
+  const profile = getTarotCardProfile({
+    tarotArkAnnuId: match.node.id as NodeId<TarotTypes.TAROT_ARK_ANNU>
+  });
+
+  if (!profile || profile.tarotCardNumber === cardNumber) {
+    return profile;
+  }
+
+  return {
+    ...profile,
+    tarotCardNumber: cardNumber
+  };
 }
 
 export function getTarotArchetype(
@@ -2352,7 +2540,7 @@ function cloneSpreadDefinition(
   };
 }
 
-function getTarotCardByNumber(cardNumber: number): TarotCard | undefined {
+function getTarotDeckCardByNumber(cardNumber: number): TarotCard | undefined {
   return TAROT_CARD_BY_NUMBER.get(cardNumber);
 }
 
@@ -2724,7 +2912,7 @@ export function validateTarotSpreadSelection(
       continue;
     }
 
-    const tarotCard = getTarotCardByNumber(selectedCard.cardNumber);
+    const tarotCard = getTarotDeckCardByNumber(selectedCard.cardNumber);
 
     if (!tarotCard) {
       errors.push({
