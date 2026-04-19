@@ -1,11 +1,15 @@
 import { describe, expect, it } from "vitest";
 
-import { id, KaabalahTypes, TarotTypes } from "../core";
+import { getCanonicalTree, id, KaabalahTypes, NumerologyTypes, TarotTypes } from "../core";
 import {
   getTarotArchetype,
+  getTarotCardByNumber,
+  getTarotCardNumber,
+  getTarotCardProfile,
   getTarotRepresentation,
   getTarotRepresentations,
   listTarotDecks,
+  listTarotTrees,
   resolveTarotImageUrl
 } from "./index";
 
@@ -18,6 +22,29 @@ describe("tarot archetype resolver", () => {
       { id: "egyptian", label: "Egyptian" },
       { id: "rider-waite", label: "Rider Waite" }
     ]);
+  });
+
+  it("lists tarot trees and keeps card-number correspondences direct in the kaabalah tree", () => {
+    expect(listTarotTrees()).toEqual([
+      "kaabalah",
+      "hermetic-qabalah",
+      "lurianic-kabbalah"
+    ]);
+
+    const tree = getCanonicalTree({
+      system: "kaabalah",
+      parts: ["tarot"]
+    });
+
+    expect(
+      tree.getCorrespondences(
+        id(TarotTypes.TAROT_ARK_ANNU, "Ace of Pentacles"),
+        {
+          type: NumerologyTypes.NUMBER,
+          depth: 1
+        }
+      )[0]?.node.id
+    ).toBe(id(NumerologyTypes.NUMBER, 78));
   });
 
   it("resolves Beth to the canonical path-backed archetype metadata", () => {
@@ -90,7 +117,7 @@ describe("tarot archetype resolver", () => {
 
   it("resolves minor cards to the published suit-scoped asset path", () => {
     const minor = getTarotRepresentation(
-      { tarotCardNumber: 64 },
+      { tarotCardNumber: 55 },
       "mythic"
     );
 
@@ -101,7 +128,7 @@ describe("tarot archetype resolver", () => {
       card: {
         kind: "minor",
         assetPathType: "minor",
-        tarotCardNumber: 64,
+        tarotCardNumber: 55,
         tarotCardFilename: "10_swords",
         suit: "swords"
       },
@@ -109,7 +136,7 @@ describe("tarot archetype resolver", () => {
       imageUrl:
         "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/minor/swords/10_swords.jpg"
     });
-    expect(resolveTarotImageUrl({ tarotCardNumber: 64 }, "mythic")).toBe(
+    expect(resolveTarotImageUrl({ tarotCardNumber: 55 }, "mythic")).toBe(
       "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/minor/swords/10_swords.jpg"
     );
   });
@@ -151,5 +178,47 @@ describe("tarot archetype resolver", () => {
     ).toBe(
       "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/egyptian/daat+royalship/cups/page_cups.jpg"
     );
+  });
+
+  it("surfaces kaabalah-default numbering through profile and explicit helpers", () => {
+    expect(
+      getTarotCardProfile({ tarotCardName: "Ace of Pentacles" })
+    ).toMatchObject({
+      tarotCardName: "Ace of Pentacles",
+      tarotCardNumber: 78,
+      tarotCardFilename: "ace_pentacles"
+    });
+
+    expect(getTarotCardNumber({ tarotCardName: "The Magician" })).toBe(1);
+    expect(getTarotCardNumber({ tarotCardName: "King of Swords" })).toBe(51);
+    expect(getTarotCardNumber({ tarotCardName: "Ten of Pentacles" })).toBe(69);
+    expect(getTarotCardNumber({ tarotCardName: "Ace of Pentacles" })).toBe(78);
+  });
+
+  it("round-trips major, court, and minor cards through tree-scoped number lookups", () => {
+    const roundTripCases = [
+      { name: "The Magician", number: 1 },
+      { name: "King of Swords", number: 51 },
+      { name: "Ace of Pentacles", number: 78 }
+    ] as const;
+
+    for (const testCase of roundTripCases) {
+      expect(getTarotCardNumber({ tarotCardName: testCase.name })).toBe(
+        testCase.number
+      );
+      expect(getTarotCardByNumber(testCase.number)?.tarotCardName).toBe(
+        testCase.name
+      );
+    }
+  });
+
+  it("returns undefined for trees without tarot numbering mappings yet", () => {
+    expect(
+      getTarotCardNumber(
+        { tarotCardName: "Ace of Pentacles" },
+        "hermetic-qabalah"
+      )
+    ).toBeUndefined();
+    expect(getTarotCardByNumber(78, "lurianic-kabbalah")).toBeUndefined();
   });
 });

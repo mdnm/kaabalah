@@ -81,7 +81,11 @@ const spread = getRandomSpread(3, true);
 import { id, KaabalahTypes } from "kaabalah/core";
 import {
   getTarotArchetype,
+  getTarotCardByNumber,
+  getTarotCardNumber,
+  getTarotCardProfile,
   getTarotRepresentation,
+  listTarotTrees,
   resolveTarotImageUrl
 } from "kaabalah/tarot";
 
@@ -95,9 +99,17 @@ const queenOfCups = getTarotRepresentation(
   "rider-waite"
 );
 const tenOfSwords = getTarotRepresentation(
-  { tarotCardNumber: 64 },
+  { tarotCardNumber: 55 },
   "mythic"
 );
+const aceOfPentacles = getTarotCardProfile({
+  tarotCardName: "Ace of Pentacles"
+});
+const aceOfPentaclesNumber = getTarotCardNumber({
+  tarotCardName: "Ace of Pentacles"
+});
+const kingOfSwords = getTarotCardByNumber(51);
+const tarotTrees = listTarotTrees();
 const papusImageUrl = resolveTarotImageUrl(
   { tarotCardFilename: "02_the_high_priestess" },
   "papus_pt"
@@ -117,6 +129,14 @@ const aceOfWandsUrl = resolveTarotImageUrl(
 - courts: `daat+royalship/<suit>/<filename>.jpg`
 
 Downstream apps should consume the returned `imageUrl` (or `assetPath`) from the library instead of reconstructing S3 paths locally.
+
+Tarot numbering is tree-scoped. In the current library release the canonical default tree is `kaabalah`, and `getTarotCardProfile()` resolves its `tarotCardNumber` from the direct `tarotArkAnnu ↔ number` correspondence in that tree. Use `getTarotCardNumber()` / `getTarotCardByNumber()` for forward and reverse numbering lookups, and treat raw `ARKANNUS` entries as compatibility data rather than the source of truth.
+
+Observable kaabalah-default renumbering:
+
+- `Ten of Swords` is `55` and `Ace of Swords` is `64`
+- `Ten of Pentacles` is `69` and `Ace of Pentacles` is `78`
+- court/minor suit blocks run `King → Queen → Knight → Page → Ten → ... → Ace`
 
 ### Canonical Semantic Profiles
 
