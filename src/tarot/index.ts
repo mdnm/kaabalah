@@ -1073,6 +1073,7 @@ export type TarotArchetypeLookup =
   | { tarotCardNumber: number };
 
 export type TarotCardKind = "major" | "court" | "minor";
+export type TarotCourtRank = "king" | "queen" | "knight" | "page";
 
 export type TarotAssetPathType = "major" | "minor" | "daat+royalship";
 
@@ -1085,6 +1086,7 @@ export interface TarotCardProfile {
   kind: TarotCardKind;
   assetPathType: TarotAssetPathType;
   suit?: string;
+  courtRank?: TarotCourtRank;
   availableDeckIds: TarotDeckId[];
   descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
 }
@@ -1093,6 +1095,80 @@ export type TarotImageLookup =
   | TarotArchetypeLookup
   | { tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU> }
   | { tarotCardName: string };
+
+export type TarotCorrespondenceNodeType =
+  | KaabalahTypes.SPHERE
+  | LetterTypes.HEBREW_LETTER
+  | WesternAstrologyTypes.PLANET
+  | WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+  | WesternAstrologyTypes.WESTERN_ELEMENT;
+
+export interface TarotCorrespondenceNode<T extends TarotCorrespondenceNodeType> {
+  id: NodeId<T>;
+  label: string;
+}
+
+export interface TarotPathCorrespondence {
+  pathId: NodeId<KaabalahTypes.PATH>;
+  pathNumber: number;
+  pathSlug: string;
+  meaning?: string;
+  hebrewLetter: TarotCorrespondenceNode<LetterTypes.HEBREW_LETTER>;
+  fromSphere: TarotCorrespondenceNode<KaabalahTypes.SPHERE>;
+  toSphere: TarotCorrespondenceNode<KaabalahTypes.SPHERE>;
+}
+
+export interface TarotCorrespondenceProfileBase {
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  tarotCardNumber: number;
+  tarotCardName: string;
+  tarotCardFilename: string;
+  tarotMeaning?: string;
+  suit?: string;
+}
+
+export interface TarotMajorCorrespondenceProfile
+  extends TarotCorrespondenceProfileBase {
+  kind: "major";
+  correspondences: {
+    astrology: TarotAstrologyCorrespondence[];
+    path: TarotPathCorrespondence;
+  };
+}
+
+export interface TarotPageCorrespondenceProfile
+  extends TarotCorrespondenceProfileBase {
+  kind: "court";
+  courtRank: "page";
+  correspondences: {
+    element: TarotCorrespondenceNode<WesternAstrologyTypes.WESTERN_ELEMENT>;
+  };
+}
+
+export interface TarotCourtAstrologyCorrespondenceProfile
+  extends TarotCorrespondenceProfileBase {
+  kind: "court";
+  courtRank: Exclude<TarotCourtRank, "page">;
+  correspondences: {
+    sign: TarotCorrespondenceNode<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>;
+    planets: TarotCorrespondenceNode<WesternAstrologyTypes.PLANET>[];
+  };
+}
+
+export interface TarotMinorCorrespondenceProfile
+  extends TarotCorrespondenceProfileBase {
+  kind: "minor";
+  correspondences: {
+    sphere: TarotCorrespondenceNode<KaabalahTypes.SPHERE>;
+    planets: TarotCorrespondenceNode<WesternAstrologyTypes.PLANET>[];
+  };
+}
+
+export type TarotCorrespondenceProfile =
+  | TarotMajorCorrespondenceProfile
+  | TarotPageCorrespondenceProfile
+  | TarotCourtAstrologyCorrespondenceProfile
+  | TarotMinorCorrespondenceProfile;
 
 export interface TarotRepresentation {
   card: TarotCardProfile;
@@ -1267,6 +1343,13 @@ function buildDefaultArkannus(cards: TarotCard[]): TarotCard[] {
 
 export const ARKANNUS: TarotCard[] = buildDefaultArkannus(RAW_ARKANNUS);
 
+const TAROT_COURT_RANKS = [
+  "king",
+  "queen",
+  "knight",
+  "page"
+] as const satisfies readonly TarotCourtRank[];
+
 const MAJOR_ARCANA_CARDS = ARKANNUS.filter(
   (card): card is TarotMajorCard =>
     card.type === "major" &&
@@ -1279,6 +1362,17 @@ function toTarotCardKind(card: TarotCard): TarotCardKind {
   }
 
   return card.type === "minor" ? "minor" : "court";
+}
+
+function toTarotCourtRank(card: TarotCard): TarotCourtRank | undefined {
+  if (card.type !== "daat+royalship") {
+    return undefined;
+  }
+
+  const [rank] = card.tarotCardFilename.split("_");
+  return TAROT_COURT_RANKS.includes(rank as TarotCourtRank)
+    ? (rank as TarotCourtRank)
+    : undefined;
 }
 
 function toTarotAssetPathType(card: TarotCard): TarotAssetPathType {
@@ -1306,6 +1400,274 @@ function toAstrologyCorrespondence<T extends TarotAstrologyCorrespondenceType>(
     type: node.type,
     id: node.id,
     label: parseId(node.id)
+  };
+}
+
+function getTarotCorrespondenceTree(
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+) {
+  return getCanonicalTree({
+    system: treeId,
+    parts: ["westernAstrology", "tarot"]
+  });
+}
+
+type TarotCorrespondenceResolvedNodeType =
+  | TarotCorrespondenceNodeType
+  | KaabalahTypes.PATH
+  | NumerologyTypes.NUMBER
+  | TarotTypes.TAROT_SUIT;
+
+type TarotCorrespondenceSourceId = NodeId<
+  | TarotTypes.TAROT_ARK_ANNU
+  | KaabalahTypes.PATH
+  | KaabalahTypes.SPHERE
+  | TarotTypes.TAROT_SUIT
+  | WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+>;
+
+function getCorrespondenceNodes<T extends TarotCorrespondenceResolvedNodeType>(
+  tree: ReturnType<typeof getCanonicalTree>,
+  sourceId: TarotCorrespondenceSourceId,
+  type: T | readonly T[],
+  depth: number = 1,
+  limit?: number
+): Node<T>[] {
+  return tree.getCorrespondences(sourceId, {
+    type,
+    depth,
+    limit
+  }).map(({ node }) => node as Node<T>);
+}
+
+function getFirstCorrespondenceNode<
+  T extends TarotCorrespondenceResolvedNodeType
+>(
+  tree: ReturnType<typeof getCanonicalTree>,
+  sourceId: TarotCorrespondenceSourceId,
+  type: T,
+  depth: number = 1
+): Node<T> | undefined {
+  return getCorrespondenceNodes(tree, sourceId, type, depth, 1)[0];
+}
+
+function toCorrespondenceNode<T extends TarotCorrespondenceNodeType>(
+  node: Node<T> | undefined
+): TarotCorrespondenceNode<T> | undefined {
+  if (!node) {
+    return undefined;
+  }
+
+  return {
+    id: node.id,
+    label: parseId(node.id)
+  };
+}
+
+function toUniqueCorrespondenceNodes<T extends TarotCorrespondenceNodeType>(
+  nodes: Node<T>[]
+): TarotCorrespondenceNode<T>[] {
+  const seen = new Set<string>();
+
+  return nodes.flatMap((node) => {
+    const key = String(node.id);
+
+    if (seen.has(key)) {
+      return [];
+    }
+
+    seen.add(key);
+    return [toCorrespondenceNode(node)!];
+  });
+}
+
+function toTarotCorrespondenceProfileBase(
+  card: TarotCardProfile
+): TarotCorrespondenceProfileBase {
+  return {
+    tarotArkAnnuId: card.tarotArkAnnuId,
+    tarotCardNumber: card.tarotCardNumber,
+    tarotCardName: card.tarotCardName,
+    tarotCardFilename: card.tarotCardFilename,
+    tarotMeaning: card.tarotMeaning,
+    suit: card.suit
+  };
+}
+
+function resolveTarotCardProfileForTree(
+  lookup: TarotImageLookup,
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+): TarotCardProfile | undefined {
+  if ("tarotCardNumber" in lookup) {
+    return getTarotCardByNumber(lookup.tarotCardNumber, treeId);
+  }
+
+  return getTarotCardProfile(lookup);
+}
+
+function buildMajorCorrespondenceProfile(
+  card: TarotCardProfile,
+  tree: ReturnType<typeof getCanonicalTree>
+): TarotMajorCorrespondenceProfile | undefined {
+  const pathNode = getFirstCorrespondenceNode(
+    tree,
+    card.tarotArkAnnuId,
+    KaabalahTypes.PATH
+  );
+  const hebrewLetterNode = pathNode
+    ? getFirstCorrespondenceNode(
+        tree,
+        pathNode.id,
+        LetterTypes.HEBREW_LETTER
+      )
+    : undefined;
+  const pathNumberNode = pathNode
+    ? getFirstCorrespondenceNode(tree, pathNode.id, NumerologyTypes.NUMBER)
+    : undefined;
+  const pathNumber = pathNumberNode
+    ? Number.parseInt(parseId(pathNumberNode.id), 10)
+    : Number.NaN;
+  const fromSphereNode = pathNode?.data?.from
+    ? tree.getNode(pathNode.data.from)
+    : undefined;
+  const toSphereNode = pathNode?.data?.to
+    ? tree.getNode(pathNode.data.to)
+    : undefined;
+
+  if (
+    !pathNode ||
+    !hebrewLetterNode ||
+    !fromSphereNode ||
+    !toSphereNode ||
+    !Number.isFinite(pathNumber)
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...toTarotCorrespondenceProfileBase(card),
+    kind: "major",
+    correspondences: {
+      astrology: getCorrespondenceNodes(
+        tree,
+        pathNode.id,
+        [
+          WesternAstrologyTypes.WESTERN_ELEMENT,
+          WesternAstrologyTypes.PLANET,
+          WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+        ]
+      ).map((node) =>
+        toAstrologyCorrespondence(
+          node as Node<TarotAstrologyCorrespondenceType>
+        )
+      ),
+      path: {
+        pathId: pathNode.id,
+        pathNumber,
+        pathSlug: parseId(hebrewLetterNode.id).toLowerCase(),
+        meaning: pathNode.data?.meaning,
+        hebrewLetter: toCorrespondenceNode(hebrewLetterNode)!,
+        fromSphere: toCorrespondenceNode(
+          fromSphereNode as Node<KaabalahTypes.SPHERE>
+        )!,
+        toSphere: toCorrespondenceNode(
+          toSphereNode as Node<KaabalahTypes.SPHERE>
+        )!
+      }
+    }
+  };
+}
+
+function buildCourtCorrespondenceProfile(
+  card: TarotCardProfile,
+  tree: ReturnType<typeof getCanonicalTree>
+):
+  | TarotPageCorrespondenceProfile
+  | TarotCourtAstrologyCorrespondenceProfile
+  | undefined {
+  const suitNode = getFirstCorrespondenceNode(
+    tree,
+    card.tarotArkAnnuId,
+    TarotTypes.TAROT_SUIT
+  );
+
+  if (!card.courtRank) {
+    return undefined;
+  }
+
+  if (card.courtRank === "page") {
+    const elementNode = suitNode
+      ? getFirstCorrespondenceNode(
+          tree,
+          suitNode.id,
+          WesternAstrologyTypes.WESTERN_ELEMENT
+        )
+      : undefined;
+
+    if (!elementNode) {
+      return undefined;
+    }
+
+    return {
+      ...toTarotCorrespondenceProfileBase(card),
+      kind: "court",
+      courtRank: "page",
+      correspondences: {
+        element: toCorrespondenceNode(elementNode)!
+      }
+    };
+  }
+
+  const signNode = getFirstCorrespondenceNode(
+    tree,
+    card.tarotArkAnnuId,
+    WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+  );
+
+  if (!signNode) {
+    return undefined;
+  }
+
+  return {
+    ...toTarotCorrespondenceProfileBase(card),
+    kind: "court",
+    courtRank: card.courtRank,
+    correspondences: {
+      sign: toCorrespondenceNode(signNode)!,
+      planets: toUniqueCorrespondenceNodes(
+        getCorrespondenceNodes(
+          tree,
+          signNode.id,
+          WesternAstrologyTypes.PLANET
+        )
+      )
+    }
+  };
+}
+
+function buildMinorCorrespondenceProfile(
+  card: TarotCardProfile,
+  tree: ReturnType<typeof getCanonicalTree>
+): TarotMinorCorrespondenceProfile | undefined {
+  const sphereNode = getFirstCorrespondenceNode(
+    tree,
+    card.tarotArkAnnuId,
+    KaabalahTypes.SPHERE
+  );
+
+  if (!sphereNode) {
+    return undefined;
+  }
+
+  return {
+    ...toTarotCorrespondenceProfileBase(card),
+    kind: "minor",
+    correspondences: {
+      sphere: toCorrespondenceNode(sphereNode)!,
+      planets: toUniqueCorrespondenceNodes(
+        getCorrespondenceNodes(tree, sphereNode.id, WesternAstrologyTypes.PLANET)
+      )
+    }
   };
 }
 
@@ -1445,6 +1807,7 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
       kind: toTarotCardKind(card),
       assetPathType: toTarotAssetPathType(card),
       suit: card.suit,
+      courtRank: toTarotCourtRank(card),
       availableDeckIds,
       descriptionsByDeck
     };
@@ -1635,6 +1998,28 @@ export function getTarotArchetype(
   }
 
   return cache.byTarotCardNumber.get(lookup.tarotCardNumber);
+}
+
+export function getTarotCorrespondenceProfile(
+  lookup: TarotImageLookup,
+  treeId: TarotTreeId = DEFAULT_TAROT_TREE_ID
+): TarotCorrespondenceProfile | undefined {
+  const card = resolveTarotCardProfileForTree(lookup, treeId);
+
+  if (!card) {
+    return undefined;
+  }
+
+  const tree = getTarotCorrespondenceTree(treeId);
+
+  switch (card.kind) {
+    case "major":
+      return buildMajorCorrespondenceProfile(card, tree);
+    case "court":
+      return buildCourtCorrespondenceProfile(card, tree);
+    case "minor":
+      return buildMinorCorrespondenceProfile(card, tree);
+  }
 }
 
 export function getTarotRepresentations(

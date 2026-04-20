@@ -83,6 +83,7 @@ import {
   getTarotArchetype,
   getTarotCardByNumber,
   getTarotCardNumber,
+  getTarotCorrespondenceProfile,
   getTarotCardProfile,
   getTarotRepresentation,
   listTarotTrees,
@@ -131,6 +132,29 @@ const aceOfWandsUrl = resolveTarotImageUrl(
 Downstream apps should consume the returned `imageUrl` (or `assetPath`) from the library instead of reconstructing S3 paths locally.
 
 Tarot numbering is tree-scoped. In the current library release the canonical default tree is `kaabalah`, and `getTarotCardProfile()` resolves its `tarotCardNumber` from the direct `tarotArkAnnu ↔ number` correspondence in that tree. Use `getTarotCardNumber()` / `getTarotCardByNumber()` for forward and reverse numbering lookups, and treat raw `ARKANNUS` entries as compatibility data rather than the source of truth.
+
+For display-facing correspondences, use `getTarotCorrespondenceProfile()` instead of rebuilding card bundles in the app:
+
+```typescript
+const pageOfWands = getTarotCorrespondenceProfile({
+  tarotCardName: "Page of Wands"
+});
+// {
+//   kind: "court",
+//   courtRank: "page",
+//   correspondences: {
+//     element: { id: "westernElement:Fire", label: "Fire" }
+//   }
+// }
+
+const magician = getTarotCorrespondenceProfile({
+  tarotCardName: "The Magician"
+});
+// includes typed astrology correspondences plus path metadata
+// { pathId, pathNumber, pathSlug, hebrewLetter, fromSphere, toSphere, meaning }
+```
+
+Downstream apps no longer need to parse card-name prefixes like `Page of ...` to determine court rank, or rebuild the same major/court/minor correspondence collapsing logic from raw tree traversals.
 
 Observable kaabalah-default renumbering:
 

@@ -1,10 +1,19 @@
 import { describe, expect, it } from "vitest";
 
-import { getCanonicalTree, id, KaabalahTypes, NumerologyTypes, TarotTypes } from "../core";
+import {
+  getCanonicalTree,
+  id,
+  KaabalahTypes,
+  LetterTypes,
+  NumerologyTypes,
+  TarotTypes,
+  WesternAstrologyTypes
+} from "../core";
 import {
   getTarotArchetype,
   getTarotCardByNumber,
   getTarotCardNumber,
+  getTarotCorrespondenceProfile,
   getTarotCardProfile,
   getTarotRepresentation,
   getTarotRepresentations,
@@ -193,6 +202,120 @@ describe("tarot archetype resolver", () => {
     expect(getTarotCardNumber({ tarotCardName: "King of Swords" })).toBe(51);
     expect(getTarotCardNumber({ tarotCardName: "Ten of Pentacles" })).toBe(69);
     expect(getTarotCardNumber({ tarotCardName: "Ace of Pentacles" })).toBe(78);
+  });
+
+  it("returns a normalized major correspondence profile with astrology and path metadata", () => {
+    const magician = getTarotCorrespondenceProfile({
+      tarotCardName: "The Magician"
+    });
+
+    expect(magician?.kind).toBe("major");
+
+    if (!magician || magician.kind !== "major") {
+      throw new Error("Expected The Magician to resolve as a major profile.");
+    }
+
+    expect(magician.correspondences.astrology).toContainEqual({
+      type: WesternAstrologyTypes.WESTERN_ELEMENT,
+      id: id(WesternAstrologyTypes.WESTERN_ELEMENT, "Air"),
+      label: "Air"
+    });
+    expect(magician.correspondences.path).toEqual({
+      pathId: id(KaabalahTypes.PATH, 1),
+      pathNumber: 1,
+      pathSlug: "aleph",
+      meaning: "Crown's wisdom",
+      hebrewLetter: {
+        id: id(LetterTypes.HEBREW_LETTER, "Aleph"),
+        label: "Aleph"
+      },
+      fromSphere: {
+        id: id(KaabalahTypes.SPHERE, "Kether"),
+        label: "Kether"
+      },
+      toSphere: {
+        id: id(KaabalahTypes.SPHERE, "Chokhmah"),
+        label: "Chokhmah"
+      }
+    });
+  });
+
+  it("returns pages with explicit court rank and only their suit element", () => {
+    expect(
+      getTarotCardProfile({ tarotCardName: "Page of Wands" })?.courtRank
+    ).toBe("page");
+
+    const page = getTarotCorrespondenceProfile({
+      tarotCardName: "Page of Wands"
+    });
+
+    expect(page?.kind).toBe("court");
+
+    if (!page || page.kind !== "court" || page.courtRank !== "page") {
+      throw new Error("Expected Page of Wands to resolve as a page profile.");
+    }
+
+    expect(page.correspondences).toEqual({
+      element: {
+        id: id(WesternAstrologyTypes.WESTERN_ELEMENT, "Fire"),
+        label: "Fire"
+      }
+    });
+  });
+
+  it("returns non-page court cards with explicit rank, sign, and planet correspondences", () => {
+    expect(
+      getTarotCardProfile({ tarotCardName: "King of Wands" })?.courtRank
+    ).toBe("king");
+
+    const king = getTarotCorrespondenceProfile({
+      tarotCardName: "King of Wands"
+    });
+
+    expect(king?.kind).toBe("court");
+
+    if (!king || king.kind !== "court" || king.courtRank === "page") {
+      throw new Error("Expected King of Wands to resolve as a non-page court profile.");
+    }
+
+    expect(king.courtRank).toBe("king");
+    expect(king.correspondences).toEqual({
+      sign: {
+        id: id(WesternAstrologyTypes.WESTERN_ZODIAC_SIGN, "Aries"),
+        label: "Aries"
+      },
+      planets: [
+        {
+          id: id(WesternAstrologyTypes.PLANET, "Mars"),
+          label: "Mars"
+        }
+      ]
+    });
+  });
+
+  it("returns minor cards with their sphere and sphere planets", () => {
+    const ace = getTarotCorrespondenceProfile({
+      tarotCardName: "Ace of Pentacles"
+    });
+
+    expect(ace?.kind).toBe("minor");
+
+    if (!ace || ace.kind !== "minor") {
+      throw new Error("Expected Ace of Pentacles to resolve as a minor profile.");
+    }
+
+    expect(ace.correspondences).toEqual({
+      sphere: {
+        id: id(KaabalahTypes.SPHERE, "Kether"),
+        label: "Kether"
+      },
+      planets: [
+        {
+          id: id(WesternAstrologyTypes.PLANET, "Neptune"),
+          label: "Neptune"
+        }
+      ]
+    });
   });
 
   it("round-trips major, court, and minor cards through tree-scoped number lookups", () => {
