@@ -875,14 +875,14 @@ export {
  * Convert a local date-time (given via IANA time zone, explicit UTC offset, or auto from lat/lon)
  * into a UTC Date for Swiss Ephemeris (which expects UT).
  */
-type LocalDateTimeParts = {
+export interface LocalDateTimeParts {
   year: number;
   month: number; // 1-12
   day: number; // 1-31
   hour?: number; // 0-23
   minute?: number; // 0-59
   second?: number; // 0-59
-};
+}
 
 export type TimeZoneOptions = {
   /**

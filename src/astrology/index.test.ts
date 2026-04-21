@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { VirtualNodes } from '../../wasm/src/swisseph';
-import { BirthChartOptions, getBirthChart, getCompositeChart, getSolarReturnChart, getSynastryChart, getTransitChart, getTransitRange, HouseSystem } from './index';
+import { BirthChartOptions, getBirthChart, getCompositeChart, getSolarReturnChart, getSynastryChart, getTransitChart, getTransitRange, HouseSystem, type LocalDateTimeParts } from './index';
 import { closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Astrology Module', () => {
@@ -105,6 +105,38 @@ describe('Astrology Module', () => {
       console.error('Failed to test timezone conversion:', error);
       throw error;
     }
+  });
+
+  it('should accept explicit local civil date-time parts', async () => {
+    const baseOptions = {
+      latitude: 40.7128,
+      longitude: -74.0060,
+      houseSystem: HouseSystem.PLACIDUS,
+      timeZoneSettings: { timeZone: 'America/New_York' as const },
+    };
+
+    const fromDate = await getBirthChart({
+      ...baseOptions,
+      date: new Date(2024, 2, 25, 8, 0, 0),
+    });
+
+    const localParts: LocalDateTimeParts = {
+      year: 2024,
+      month: 3,
+      day: 25,
+      hour: 8,
+      minute: 0,
+      second: 0,
+    };
+    const fromParts = await getBirthChart({
+      ...baseOptions,
+      date: localParts,
+    });
+
+    expect(fromParts.dateUtc.getTime()).toBe(fromDate.dateUtc.getTime());
+    expect(fromParts.houses.ascendant.longitude).toBeCloseTo(fromDate.houses.ascendant.longitude, 8);
+    expect(fromParts.houses.mc.longitude).toBeCloseTo(fromDate.houses.mc.longitude, 8);
+    expect(fromParts.planets.sun.longitude).toBeCloseTo(fromDate.planets.sun.longitude, 8);
   });
 
   it('should handle different house systems', async () => {
@@ -381,7 +413,14 @@ describe('Astrology Module', () => {
 
   it('should calculate a solar return chart', async () => {
     const natal: BirthChartOptions = {
-      date: new Date(1990, 0, 15, 14, 30, 0),
+      date: {
+        year: 1990,
+        month: 1,
+        day: 15,
+        hour: 14,
+        minute: 30,
+        second: 0,
+      },
       latitude: 40.7128,
       longitude: -74.006,
       houseSystem: HouseSystem.PLACIDUS,
