@@ -17,6 +17,7 @@ import {
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  type LocalDateTimeParts,
   type ResolveSwissEphRuntimeAssetsOptions,
   RiseTransitFlag,
   type SwissEphRuntimeAssetPaths,
@@ -27,6 +28,7 @@ import {
 
 export {
   type AzaltResult,
+  type LocalDateTimeParts,
   CalcFlag,
   closeSwissEph,
   getSwissEph,
@@ -64,7 +66,13 @@ import {
 } from "./aspects";
 
 export interface BirthChartOptions {
-  date: Date;
+  /**
+   * Local civil date-time for the chart moment.
+   * Prefer `LocalDateTimeParts` when the source data comes from separate
+   * date/time inputs so callers do not have to encode wall-clock parts into a
+   * browser-local `Date`.
+   */
+  date: Date | LocalDateTimeParts;
   latitude: number;
   longitude: number;
   houseSystem?: HouseSystem;
@@ -109,8 +117,66 @@ export interface BirthChart {
   sect: "diurnal" | "nocturnal";
 }
 
+function isValidLocalDateTimeParts(date: LocalDateTimeParts): boolean {
+  const hour = date.hour ?? 0;
+  const minute = date.minute ?? 0;
+  const second = date.second ?? 0;
+
+  if (
+    !Number.isInteger(date.year) ||
+    !Number.isInteger(date.month) ||
+    !Number.isInteger(date.day) ||
+    !Number.isInteger(hour) ||
+    !Number.isInteger(minute) ||
+    !Number.isInteger(second)
+  ) {
+    return false;
+  }
+
+  if (
+    date.month < 1 || date.month > 12 ||
+    date.day < 1 || date.day > 31 ||
+    hour < 0 || hour > 23 ||
+    minute < 0 || minute > 59 ||
+    second < 0 || second > 59
+  ) {
+    return false;
+  }
+
+  const utcDate = new Date(Date.UTC(date.year, date.month - 1, date.day, hour, minute, second));
+  return (
+    !Number.isNaN(utcDate.getTime()) &&
+    utcDate.getUTCFullYear() === date.year &&
+    utcDate.getUTCMonth() === date.month - 1 &&
+    utcDate.getUTCDate() === date.day &&
+    utcDate.getUTCHours() === hour &&
+    utcDate.getUTCMinutes() === minute &&
+    utcDate.getUTCSeconds() === second
+  );
+}
+
+function getCivilMonthDay(date: Date | LocalDateTimeParts): { monthIndex: number; day: number } {
+  if (date instanceof Date) {
+    return {
+      monthIndex: date.getMonth(),
+      day: date.getDate(),
+    };
+  }
+
+  return {
+    monthIndex: date.month - 1,
+    day: date.day,
+  };
+}
+
 function validateInputs(options: BirthChartOptions): void {
-  if (!(options.date instanceof Date) || isNaN(options.date.getTime())) {
+  const { date } = options;
+
+  if (date instanceof Date) {
+    if (Number.isNaN(date.getTime())) {
+      throw new Error("Invalid date provided");
+    }
+  } else if (!isValidLocalDateTimeParts(date)) {
     throw new Error("Invalid date provided");
   }
 
@@ -920,11 +986,11 @@ export async function getSolarReturnChart(
   const natalSunLongitude = natalChart.planets.sun.longitude;
 
   // 2. Build search window: natal birthday in target year ± 2 days
-  const natalDate = options.natal.date;
+  const natalDate = getCivilMonthDay(options.natal.date);
   const approxReturn = new Date(Date.UTC(
     options.year,
-    natalDate.getMonth(),
-    natalDate.getDate(),
+    natalDate.monthIndex,
+    natalDate.day,
     12, 0, 0
   ));
   let lo = approxReturn.getTime() - 2 * 86400000;
