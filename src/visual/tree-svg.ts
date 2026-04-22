@@ -1,0 +1,757 @@
+import {
+  createTree,
+  id,
+  KaabalahTypes,
+  MiscTypes,
+  type NodeId,
+  type SystemKey,
+} from "../core";
+
+export interface TreeSvgViewBox {
+  minX?: number;
+  minY?: number;
+  width: number;
+  height: number;
+}
+
+export interface TreeLayoutCoordinate {
+  x: number;
+  y: number;
+}
+
+export type TreeSphereName =
+  | "Kether"
+  | "Chokhmah"
+  | "Binah"
+  | "Daath"
+  | "Chesed"
+  | "Geburah"
+  | "Tiphareth"
+  | "Netzach"
+  | "Hod"
+  | "Yesod"
+  | "Malkuth";
+
+export type TreeSphereId = NodeId<KaabalahTypes.SPHERE>;
+export type TreePathId = NodeId<KaabalahTypes.PATH>;
+
+export interface TreeLayoutPath {
+  fromId: TreeSphereId;
+  toId: TreeSphereId;
+  from: TreeLayoutCoordinate;
+  to: TreeLayoutCoordinate;
+}
+
+export interface TreeLayoutMap {
+  spheres: Record<TreeSphereId, TreeLayoutCoordinate>;
+  paths: Record<TreePathId, TreeLayoutPath>;
+}
+
+export interface TreeLayout {
+  system: SystemKey;
+  viewBox: Required<TreeSvgViewBox>;
+  sphereOrder: TreeSphereId[];
+  pathOrder: TreePathId[];
+  percentages: TreeLayoutMap;
+  viewBoxUnits: TreeLayoutMap;
+}
+
+export interface TreeSvgCustomPalette {
+  defaultSphereFill?: string;
+  defaultPathColor?: string;
+  sphereFills?: Partial<Record<TreeSphereId, string | string[]>>;
+  pathColors?: Partial<Record<TreePathId, string>>;
+  pathEdgeColor?: string;
+  sphereStrokeColor?: string;
+  sphereStrokeWidth?: number;
+  pathHighlightColor?: string;
+  pathHighlightOpacity?: number;
+  specialSphereMode?: "preserve" | "plain";
+}
+
+export type TreeSvgPalette = "color" | "monochrome" | TreeSvgCustomPalette;
+export type TreeSvgDaathLayer = "front" | "back";
+
+export interface TreeSvgOptions {
+  width?: number | string;
+  height?: number | string;
+  viewBox?: TreeSvgViewBox;
+  background?: string | "transparent";
+  palette?: TreeSvgPalette;
+  system?: SystemKey;
+  daathLayer?: TreeSvgDaathLayer;
+}
+
+export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
+  minX: 0,
+  minY: 0,
+  width: 286,
+  height: 561,
+};
+
+export const TREE_SPHERE_NAMES = [
+  "Kether",
+  "Chokhmah",
+  "Binah",
+  "Daath",
+  "Chesed",
+  "Geburah",
+  "Tiphareth",
+  "Netzach",
+  "Hod",
+  "Yesod",
+  "Malkuth",
+] as const satisfies readonly TreeSphereName[];
+
+const TREE_PATH_NUMBERS = Array.from({ length: 22 }, (_, index) => index + 1);
+const CANONICAL_X_PERCENTAGES = { left: 13.25, mid: 49.94, right: 86.66 } as const;
+const CANONICAL_ROW_Y_PERCENTAGES = [
+  6.83,
+  17.68,
+  28.42,
+  39.26,
+  50.06,
+  60.85,
+  71.68,
+  93.2,
+] as const;
+
+const DEFAULT_SPHERE_RADIUS = 30;
+const DEFAULT_PATH_EDGE_WIDTH = 26;
+const DEFAULT_PATH_MAIN_WIDTH = 22;
+const DEFAULT_PATH_HIGHLIGHT_WIDTH = 8;
+
+const sphereId = (name: TreeSphereName) =>
+  id(KaabalahTypes.SPHERE, name) as TreeSphereId;
+const pathId = (pathNumber: number) =>
+  id(KaabalahTypes.PATH, String(pathNumber)) as TreePathId;
+
+export const TREE_SPHERE_IDS = TREE_SPHERE_NAMES.map((name) =>
+  sphereId(name)
+) as TreeSphereId[];
+export const TREE_PATH_IDS = TREE_PATH_NUMBERS.map((pathNumber) =>
+  pathId(pathNumber)
+) as TreePathId[];
+
+const CANONICAL_SPHERE_PERCENTAGES = {
+  [sphereId("Kether")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[0] },
+  [sphereId("Chokhmah")]: { x: CANONICAL_X_PERCENTAGES.right, y: CANONICAL_ROW_Y_PERCENTAGES[1] },
+  [sphereId("Binah")]: { x: CANONICAL_X_PERCENTAGES.left, y: CANONICAL_ROW_Y_PERCENTAGES[1] },
+  [sphereId("Daath")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[2] },
+  [sphereId("Chesed")]: { x: CANONICAL_X_PERCENTAGES.right, y: CANONICAL_ROW_Y_PERCENTAGES[3] },
+  [sphereId("Geburah")]: { x: CANONICAL_X_PERCENTAGES.left, y: CANONICAL_ROW_Y_PERCENTAGES[3] },
+  [sphereId("Tiphareth")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[4] },
+  [sphereId("Netzach")]: { x: CANONICAL_X_PERCENTAGES.right, y: CANONICAL_ROW_Y_PERCENTAGES[5] },
+  [sphereId("Hod")]: { x: CANONICAL_X_PERCENTAGES.left, y: CANONICAL_ROW_Y_PERCENTAGES[5] },
+  [sphereId("Yesod")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[6] },
+  [sphereId("Malkuth")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[7] },
+} as Record<TreeSphereId, TreeLayoutCoordinate>;
+
+interface ResolvedPalette {
+  mode: "color" | "monochrome" | "custom";
+  defaultSphereFill: string;
+  defaultPathColor: string;
+  sphereFills: Partial<Record<TreeSphereId, string | string[]>>;
+  pathColors: Partial<Record<TreePathId, string>>;
+  pathEdgeColor: string;
+  pathEdgeUseFilter: boolean;
+  sphereStrokeColor?: string;
+  sphereStrokeWidth?: number;
+  pathHighlightColor: string;
+  pathHighlightOpacity: number;
+  specialSphereMode: "preserve" | "plain";
+}
+
+export function getTreeLayout(system: SystemKey = "kaabalah"): TreeLayout {
+  const tree = createTree({ system });
+  const percentages = buildLayoutMap(tree, CANONICAL_SPHERE_PERCENTAGES);
+  const viewBoxUnits = buildLayoutMap(
+    tree,
+    scaleCoordinates(CANONICAL_SPHERE_PERCENTAGES, TREE_SVG_DEFAULT_VIEWBOX)
+  );
+
+  return {
+    system,
+    viewBox: { ...TREE_SVG_DEFAULT_VIEWBOX },
+    sphereOrder: [...TREE_SPHERE_IDS],
+    pathOrder: [...TREE_PATH_IDS],
+    percentages,
+    viewBoxUnits,
+  };
+}
+
+export function generateTreeSvg(options: TreeSvgOptions = {}): string {
+  const system = options.system ?? "kaabalah";
+  const daathLayer = options.daathLayer ?? "front";
+  const tree = createTree({ system, parts: ["colors"] });
+  const viewBox = normalizeViewBox(options.viewBox);
+  const palette = resolvePalette(options.palette);
+  const spherePositions = scaleCoordinates(CANONICAL_SPHERE_PERCENTAGES, viewBox);
+  const layout = buildLayoutMap(tree, spherePositions);
+  const scale = Math.min(
+    viewBox.width / TREE_SVG_DEFAULT_VIEWBOX.width,
+    viewBox.height / TREE_SVG_DEFAULT_VIEWBOX.height
+  );
+
+  const radius = round(DEFAULT_SPHERE_RADIUS * scale);
+  const pathEdgeWidth = round(DEFAULT_PATH_EDGE_WIDTH * scale);
+  const pathMainWidth = round(DEFAULT_PATH_MAIN_WIDTH * scale);
+  const pathHighlightWidth = round(DEFAULT_PATH_HIGHLIGHT_WIDTH * scale);
+  const sphereStrokeWidth = palette.sphereStrokeWidth
+    ? round(palette.sphereStrokeWidth * scale)
+    : undefined;
+
+  const lines: string[] = [];
+  const push = (line: string) => lines.push(line);
+  const svgAttributes = [
+    `xmlns="http://www.w3.org/2000/svg"`,
+    options.width !== undefined ? `width="${escapeAttr(String(options.width))}"` : "",
+    options.height !== undefined ? `height="${escapeAttr(String(options.height))}"` : "",
+    `viewBox="${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}"`,
+    `preserveAspectRatio="xMidYMid meet"`,
+  ].filter(Boolean);
+
+  push(`<svg ${svgAttributes.join(" ")}>`);
+  push(`<defs>`);
+  push(`<filter id="pathDarken">
+  <feComponentTransfer>
+    <feFuncR type="linear" slope="0.65"/>
+    <feFuncG type="linear" slope="0.65"/>
+    <feFuncB type="linear" slope="0.65"/>
+  </feComponentTransfer>
+</filter>`);
+
+  for (const sphereName of TREE_SPHERE_NAMES) {
+    const currentSphereId = sphereId(sphereName);
+    const slug = sphereName.toLowerCase();
+    const point = spherePositions[currentSphereId];
+    if (!point) {
+      continue;
+    }
+
+    push(`<radialGradient id="spec-${slug}" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>`);
+
+    push(`<radialGradient id="shad-${slug}" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>`);
+
+    push(
+      `<clipPath id="clip-${slug}"><circle cx="${point.x}" cy="${point.y}" r="${radius}"/></clipPath>`
+    );
+  }
+
+  push(`<radialGradient id="kether-glow" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="45%" stop-color="white" stop-opacity="0.6"/>
+  <stop offset="80%" stop-color="white" stop-opacity="0.15"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>`);
+
+  push(`<linearGradient id="kether-facet" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.5"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0.1"/>
+</linearGradient>`);
+
+  push(`<radialGradient id="kether-rim" cx="50%" cy="50%" r="75%">
+  <stop offset="60%" stop-color="black" stop-opacity="0"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
+</radialGradient>`);
+  push(`</defs>`);
+
+  const background = options.background ?? "white";
+  if (background !== "transparent") {
+    push(
+      `<rect x="${viewBox.minX}" y="${viewBox.minY}" width="${viewBox.width}" height="${viewBox.height}" fill="${escapeAttr(background)}"/>`
+    );
+  }
+
+  if (daathLayer === "back") {
+    push(`<g id="spheres-behind-paths">`);
+    renderSphere(push, {
+      tree,
+      palette,
+      radius,
+      sphereStrokeWidth,
+      spherePositions,
+      sphereName: "Daath",
+    });
+    push(`</g>`);
+  }
+
+  push(`<g id="paths">`);
+  for (const currentPathId of TREE_PATH_IDS) {
+    const path = layout.paths[currentPathId];
+    const color = resolvePathColor({
+      palette,
+      tree,
+      pathId: currentPathId,
+    });
+
+    push(
+      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(palette.pathEdgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : ""}/>`
+    );
+    push(
+      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-width="${pathMainWidth}" stroke-linecap="round"/>`
+    );
+    push(
+      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(palette.pathHighlightColor)}" stroke-opacity="${palette.pathHighlightOpacity}" stroke-width="${pathHighlightWidth}" stroke-linecap="round"/>`
+    );
+  }
+  push(`</g>`);
+
+  const frontSphereNames =
+    daathLayer === "back"
+      ? TREE_SPHERE_NAMES.filter((name): name is Exclude<TreeSphereName, "Daath"> => name !== "Daath")
+      : TREE_SPHERE_NAMES;
+
+  push(`<g id="spheres">`);
+  for (const sphereName of frontSphereNames) {
+    renderSphere(push, {
+      tree,
+      palette,
+      radius,
+      sphereStrokeWidth,
+      spherePositions,
+      sphereName,
+    });
+  }
+  push(`</g>`);
+  if (daathLayer === "back") {
+    const daathPoint = spherePositions[sphereId("Daath")];
+    push(
+      `<circle id="sphere-daath-hit-area" data-node-id="sphere:Daath" cx="${daathPoint.x}" cy="${daathPoint.y}" r="${radius}" fill="transparent" pointer-events="all"/>`
+    );
+  }
+  push(`</svg>`);
+
+  return lines.join("\n");
+}
+
+function renderSphere(
+  push: (line: string) => void,
+  params: {
+    tree: ReturnType<typeof createTree>;
+    palette: ResolvedPalette;
+    radius: number;
+    sphereStrokeWidth?: number;
+    spherePositions: Record<TreeSphereId, TreeLayoutCoordinate>;
+    sphereName: TreeSphereName;
+  }
+) {
+  const currentSphereId = sphereId(params.sphereName);
+  const point = params.spherePositions[currentSphereId];
+  const slug = params.sphereName.toLowerCase();
+  const colorData =
+    params.tree.relatedFirst(currentSphereId, MiscTypes.COLOR)?.data?.colorHexCodes ?? [];
+  const sphereFill = resolveSphereFill({
+    palette: params.palette,
+    sphereId: currentSphereId,
+    defaultColors: colorData,
+  });
+
+  push(`<g id="sphere-${slug}" clip-path="url(#clip-${slug})">`);
+  if (params.palette.specialSphereMode === "preserve") {
+    if (params.sphereName === "Kether") {
+      renderKether(push, point, params.radius);
+    } else if (params.sphereName === "Chokhmah") {
+      renderIridescent(push, point, params.radius);
+    } else if (params.sphereName === "Daath") {
+      renderYinYang(push, point, params.radius);
+    } else if (params.sphereName === "Malkuth" && colorData.length >= 4) {
+      const slicedColors = Array.isArray(sphereFill)
+        ? sphereFill
+        : colorData.slice(0, 4);
+      renderSlicedSphere(push, point, params.radius, slicedColors, -135);
+    } else {
+      push(
+        `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(sphereFill, params.palette.defaultSphereFill))}"/>`
+      );
+    }
+  } else {
+    push(
+      `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(sphereFill, params.palette.defaultSphereFill))}"/>`
+    );
+  }
+
+  push(
+    `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="url(#spec-${slug})"/>`
+  );
+  if (
+    params.palette.specialSphereMode !== "preserve" ||
+    (params.sphereName !== "Kether" && params.sphereName !== "Chokhmah")
+  ) {
+    push(
+      `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="url(#shad-${slug})"/>`
+    );
+  }
+  push(`</g>`);
+  if (params.palette.sphereStrokeColor && params.sphereStrokeWidth) {
+    push(
+      `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="none" stroke="${escapeAttr(params.palette.sphereStrokeColor)}" stroke-width="${params.sphereStrokeWidth}"/>`
+    );
+  }
+}
+
+function buildLayoutMap(
+  tree: ReturnType<typeof createTree>,
+  spherePositions: Record<TreeSphereId, TreeLayoutCoordinate>
+): TreeLayoutMap {
+  const paths = {} as Record<TreePathId, TreeLayoutPath>;
+
+  for (const currentPathId of TREE_PATH_IDS) {
+    const path = tree.getNode(currentPathId);
+    const fromId = path?.data?.from as TreeSphereId | undefined;
+    const toId = path?.data?.to as TreeSphereId | undefined;
+
+    if (!fromId || !toId) {
+      throw new Error(`Tree path ${currentPathId} is missing endpoints.`);
+    }
+
+    const from = spherePositions[fromId];
+    const to = spherePositions[toId];
+
+    if (!from || !to) {
+      throw new Error(
+        `Tree path ${currentPathId} references unknown layout spheres: ${fromId}, ${toId}.`
+      );
+    }
+
+    paths[currentPathId] = {
+      fromId,
+      toId,
+      from: { ...from },
+      to: { ...to },
+    };
+  }
+
+  return {
+    spheres: cloneCoordinateMap(spherePositions),
+    paths,
+  };
+}
+
+function cloneCoordinateMap(
+  coordinates: Record<TreeSphereId, TreeLayoutCoordinate>
+): Record<TreeSphereId, TreeLayoutCoordinate> {
+  const clone = {} as Record<TreeSphereId, TreeLayoutCoordinate>;
+  for (const currentSphereId of TREE_SPHERE_IDS) {
+    const point = coordinates[currentSphereId];
+    clone[currentSphereId] = { ...point };
+  }
+  return clone;
+}
+
+function scaleCoordinates(
+  coordinates: Record<TreeSphereId, TreeLayoutCoordinate>,
+  viewBox: Required<TreeSvgViewBox>
+): Record<TreeSphereId, TreeLayoutCoordinate> {
+  const scaled = {} as Record<TreeSphereId, TreeLayoutCoordinate>;
+
+  for (const currentSphereId of TREE_SPHERE_IDS) {
+    const point = coordinates[currentSphereId];
+    scaled[currentSphereId] = {
+      x: round(viewBox.minX + (point.x / 100) * viewBox.width),
+      y: round(viewBox.minY + (point.y / 100) * viewBox.height),
+    };
+  }
+
+  return scaled;
+}
+
+function normalizeViewBox(
+  viewBox: TreeSvgViewBox | undefined
+): Required<TreeSvgViewBox> {
+  return {
+    minX: viewBox?.minX ?? TREE_SVG_DEFAULT_VIEWBOX.minX,
+    minY: viewBox?.minY ?? TREE_SVG_DEFAULT_VIEWBOX.minY,
+    width: viewBox?.width ?? TREE_SVG_DEFAULT_VIEWBOX.width,
+    height: viewBox?.height ?? TREE_SVG_DEFAULT_VIEWBOX.height,
+  };
+}
+
+function resolvePalette(palette: TreeSvgPalette | undefined): ResolvedPalette {
+  if (palette === undefined || palette === "color") {
+    return {
+      mode: "color",
+      defaultSphereFill: "#888888",
+      defaultPathColor: "#888888",
+      sphereFills: {},
+      pathColors: {},
+      pathEdgeColor: "#888888",
+      pathEdgeUseFilter: true,
+      pathHighlightColor: "white",
+      pathHighlightOpacity: 0.25,
+      specialSphereMode: "preserve",
+    };
+  }
+
+  if (palette === "monochrome") {
+    return {
+      mode: "monochrome",
+      defaultSphereFill: "#e6ddd0",
+      defaultPathColor: "#e0d7ca",
+      sphereFills: {},
+      pathColors: {},
+      pathEdgeColor: "#2f271e",
+      pathEdgeUseFilter: false,
+      sphereStrokeColor: "#2f271e",
+      sphereStrokeWidth: 2.4,
+      pathHighlightColor: "white",
+      pathHighlightOpacity: 0.2,
+      specialSphereMode: "plain",
+    };
+  }
+
+  return {
+    mode: "custom",
+    defaultSphereFill: palette.defaultSphereFill ?? "#111111",
+    defaultPathColor: palette.defaultPathColor ?? "#111111",
+    sphereFills: palette.sphereFills ?? {},
+    pathColors: palette.pathColors ?? {},
+    pathEdgeColor: palette.pathEdgeColor ?? (palette.defaultPathColor ?? "#111111"),
+    pathEdgeUseFilter: false,
+    sphereStrokeColor: palette.sphereStrokeColor,
+    sphereStrokeWidth: palette.sphereStrokeWidth,
+    pathHighlightColor: palette.pathHighlightColor ?? "white",
+    pathHighlightOpacity: palette.pathHighlightOpacity ?? 0.18,
+    specialSphereMode: palette.specialSphereMode ?? "plain",
+  };
+}
+
+function resolvePathColor(params: {
+  palette: ResolvedPalette;
+  tree: ReturnType<typeof createTree>;
+  pathId: TreePathId;
+}) {
+  const override = params.palette.pathColors[params.pathId];
+  if (override) {
+    return override;
+  }
+
+  if (params.palette.mode === "monochrome" || params.palette.mode === "custom") {
+    return params.palette.defaultPathColor;
+  }
+
+  const treeColor =
+    params.tree.relatedFirst(params.pathId, MiscTypes.COLOR)?.data?.colorHexCodes?.[0];
+
+  return treeColor ?? params.palette.defaultPathColor;
+}
+
+function resolveSphereFill(params: {
+  palette: ResolvedPalette;
+  sphereId: TreeSphereId;
+  defaultColors: string[];
+}) {
+  const override = params.palette.sphereFills[params.sphereId];
+  if (override) {
+    return override;
+  }
+
+  if (params.palette.mode === "monochrome" || params.palette.mode === "custom") {
+    return params.palette.defaultSphereFill;
+  }
+
+  if (params.defaultColors.length > 0) {
+    return params.defaultColors;
+  }
+
+  return params.palette.defaultSphereFill;
+}
+
+function toPrimaryFill(fill: string | string[], fallback: string) {
+  if (Array.isArray(fill)) {
+    return fill[0] ?? fallback;
+  }
+
+  return fill;
+}
+
+function round(value: number) {
+  return Math.round(value * 100) / 100;
+}
+
+function polarToCartesian(
+  cx: number,
+  cy: number,
+  radius: number,
+  degrees: number
+) {
+  const radians = (Math.PI / 180) * degrees;
+  return {
+    x: round(cx + radius * Math.cos(radians)),
+    y: round(cy + radius * Math.sin(radians)),
+  };
+}
+
+function arcPath(
+  cx: number,
+  cy: number,
+  radius: number,
+  startDegrees: number,
+  endDegrees: number
+) {
+  const start = polarToCartesian(cx, cy, radius, startDegrees);
+  const end = polarToCartesian(cx, cy, radius, endDegrees);
+  const largeArc = endDegrees - startDegrees <= 180 ? 0 : 1;
+  return `M ${cx} ${cy} L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArc} 1 ${end.x} ${end.y} Z`;
+}
+
+function renderKether(
+  push: (line: string) => void,
+  point: TreeLayoutCoordinate,
+  radius: number
+) {
+  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="#e0e0e0"/>`);
+  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="url(#kether-glow)"/>`);
+
+  const spokes = 16;
+  const innerRadius = round(radius * 0.18);
+  const outerRadius = round(radius * 0.92);
+  const innerWidth = round(radius * 0.04);
+  const angleStep = 360 / spokes;
+
+  push(`<g opacity="0.85">`);
+  for (let index = 0; index < spokes; index++) {
+    const angle = index * angleStep;
+    push(`<g transform="rotate(${angle} ${point.x} ${point.y})">`);
+    const x0 = round(point.x - innerWidth);
+    const y0 = round(point.y - innerRadius);
+    const x1 = point.x;
+    const y1 = round(point.y - outerRadius);
+    const x2 = round(point.x + innerWidth);
+    const y2 = round(point.y - innerRadius);
+    push(
+      `<polygon points="${x0},${y0} ${x1},${y1} ${x2},${y2} ${point.x},${point.y}" fill="url(#kether-facet)"/>`
+    );
+    push(`</g>`);
+  }
+  push(`</g>`);
+  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="url(#kether-rim)"/>`);
+}
+
+function renderSlicedSphere(
+  push: (line: string) => void,
+  point: TreeLayoutCoordinate,
+  radius: number,
+  colors: string[],
+  startAngle: number
+) {
+  const segmentCount = colors.length;
+  const step = 360 / segmentCount;
+  let currentAngle = startAngle;
+
+  for (let index = 0; index < segmentCount; index++) {
+    const path = arcPath(point.x, point.y, radius * 0.96, currentAngle, currentAngle + step);
+    push(`<path d="${path}" fill="${escapeAttr(colors[index])}" stroke="none"/>`);
+    currentAngle += step;
+  }
+}
+
+function renderIridescent(
+  push: (line: string) => void,
+  point: TreeLayoutCoordinate,
+  radius: number
+) {
+  const stops: [number, string][] = [
+    [0.0, "#F0E8EE"],
+    [0.1, "#ffa3e6"],
+    [0.22, "#a7e0ff"],
+    [0.34, "#baff9a"],
+    [0.46, "#ffe28a"],
+    [0.58, "#c6a4ff"],
+    [0.7, "#9ad6ff"],
+    [0.82, "#ffa3e6"],
+    [1.0, "#F0E8EE"],
+  ];
+
+  const slices = 72;
+  const sphereRadius = round(radius * 0.96);
+
+  for (let index = 0; index < slices; index++) {
+    const t = index / slices;
+    const color = interpolateColorStops(stops, t);
+    const startDegrees = t * 360 - 90;
+    const endDegrees = startDegrees + 360 / slices + 0.5;
+    const path = arcPath(point.x, point.y, sphereRadius, startDegrees, endDegrees);
+    push(`<path d="${path}" fill="${color}" stroke="none"/>`);
+  }
+}
+
+function interpolateColorStops(stops: [number, string][], t: number): string {
+  let lower = stops[0];
+  let upper = stops[stops.length - 1];
+
+  for (let index = 0; index < stops.length - 1; index++) {
+    if (t >= stops[index][0] && t <= stops[index + 1][0]) {
+      lower = stops[index];
+      upper = stops[index + 1];
+      break;
+    }
+  }
+
+  const range = upper[0] - lower[0] || 1;
+  return interpolateColor(lower[1], upper[1], (t - lower[0]) / range);
+}
+
+function interpolateColor(start: string, end: string, factor: number) {
+  const parse = (hex: string) => {
+    const match = hex.match(/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    return match
+      ? [
+          Number.parseInt(match[1], 16),
+          Number.parseInt(match[2], 16),
+          Number.parseInt(match[3], 16),
+        ]
+      : [0, 0, 0];
+  };
+
+  const [r1, g1, b1] = parse(start);
+  const [r2, g2, b2] = parse(end);
+  const mix = (left: number, right: number) =>
+    Math.round(left + (right - left) * factor);
+
+  return `#${mix(r1, r2).toString(16).padStart(2, "0")}${mix(g1, g2)
+    .toString(16)
+    .padStart(2, "0")}${mix(b1, b2).toString(16).padStart(2, "0")}`;
+}
+
+function renderYinYang(
+  push: (line: string) => void,
+  point: TreeLayoutCoordinate,
+  radius: number
+) {
+  const scale = radius / 50;
+  const circleRadius = round(48 * scale);
+  const halfRadius = round(24 * scale);
+  const dotRadius = round(6 * scale);
+
+  push(`<g transform="rotate(180 ${point.x} ${point.y})">`);
+  push(`<circle cx="${point.x}" cy="${point.y}" r="${circleRadius}" fill="white"/>`);
+  push(
+    `<path d="M${point.x},${round(point.y - circleRadius)} A${circleRadius},${circleRadius} 0 1,1 ${point.x},${round(point.y + circleRadius)} A${halfRadius},${halfRadius} 0 1,0 ${point.x},${point.y} A${halfRadius},${halfRadius} 0 1,1 ${point.x},${round(point.y - circleRadius)}" fill="black"/>`
+  );
+  push(
+    `<circle cx="${point.x}" cy="${round(point.y - halfRadius)}" r="${dotRadius}" fill="white"/>`
+  );
+  push(
+    `<circle cx="${point.x}" cy="${round(point.y + halfRadius)}" r="${dotRadius}" fill="black"/>`
+  );
+  push(`</g>`);
+}
+
+function escapeAttr(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}

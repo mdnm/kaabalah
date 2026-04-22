@@ -137,6 +137,22 @@ describe("loadKaabalah", () => {
     ).toHaveLength(1);
   });
 
+  it("should use the canonical svg path palette for melkitzedeki path colors", () => {
+    const tree = new TreeOfLife();
+    loadKaabalah(tree);
+    loadColors(tree);
+
+    expect(
+      tree.related(id(KaabalahTypes.PATH, "4"), MiscTypes.COLOR)[0]?.data?.colorHexCodes
+    ).toEqual(["#E06080"]);
+    expect(
+      tree.related(id(KaabalahTypes.PATH, "15"), MiscTypes.COLOR)[0]?.data?.colorHexCodes
+    ).toEqual(["#8050A8"]);
+    expect(
+      tree.related(id(KaabalahTypes.PATH, "22"), MiscTypes.COLOR)[0]?.data?.colorHexCodes
+    ).toEqual(["#30B898"]);
+  });
+
   it("should correctly unload the colors", () => {
     const tree = new TreeOfLife();
     loadKaabalah(tree);

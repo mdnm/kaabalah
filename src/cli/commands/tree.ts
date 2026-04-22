@@ -1,3 +1,6 @@
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+
 import {
   getCanonicalTree,
   type CorrespondenceEdge,
@@ -7,8 +10,20 @@ import {
   type NodeId,
   type NodeType,
 } from "../../core";
+import { SYSTEMS, type SystemKey } from "../../core/systems/registry";
 import { SYSTEM as KAABALAH_SYSTEM } from "../../core/systems/kaabalah";
-import { getFlagNumber, getFlagString, isJsonMode } from "../runtime/args";
+import {
+  generateTreeSvg,
+  getTreeLayout,
+  type TreeLayout,
+  type TreeSvgOptions,
+} from "../../visual";
+import {
+  getFlagBool,
+  getFlagNumber,
+  getFlagString,
+  isJsonMode,
+} from "../runtime/args";
 import { exitWithError } from "../runtime/errors";
 import { outputJson } from "../runtime/output";
 import type { Flags } from "../runtime/types";
@@ -145,6 +160,214 @@ function describeSources(edge: CorrespondenceEdge) {
   }
 
   return [...parts].join(", ");
+}
+
+function resolveSystem(flags: Flags): SystemKey {
+  const value = getFlagString(flags, "system");
+  if (!value) {
+    return KAABALAH_SYSTEM;
+  }
+
+  if (
+    SYSTEMS.some((candidate) => candidate.SYSTEM === value)
+  ) {
+    return value as SystemKey;
+  }
+
+  exitWithError(
+    "INVALID_ARGUMENT",
+    `Unknown tree system "${value}". Expected one of: ${SYSTEMS.map((candidate) => candidate.SYSTEM).join(", ")}.`,
+    flags
+  );
+}
+
+function resolveLayoutUnits(
+  flags: Flags
+): "percentages" | "viewBoxUnits" | "both" {
+  const units = getFlagString(flags, "units");
+  if (!units || units === "both") {
+    return "both";
+  }
+
+  if (units === "percentages" || units === "viewBoxUnits") {
+    return units;
+  }
+
+  exitWithError(
+    "INVALID_ARGUMENT",
+    `Unknown layout units "${units}". Expected one of: percentages, viewBoxUnits, both.`,
+    flags
+  );
+}
+
+function serializeLayout(
+  layout: TreeLayout,
+  units: "percentages" | "viewBoxUnits" | "both"
+) {
+  const base: Record<string, unknown> = {
+    system: layout.system,
+    viewBox: layout.viewBox,
+    sphereOrder: layout.sphereOrder,
+    pathOrder: layout.pathOrder,
+  };
+
+  if (units === "both" || units === "percentages") {
+    base.percentages = layout.percentages;
+  }
+
+  if (units === "both" || units === "viewBoxUnits") {
+    base.viewBoxUnits = layout.viewBoxUnits;
+  }
+
+  return base;
+}
+
+function buildViewBox(flags: Flags) {
+  const width = getFlagNumber(flags, "viewbox-width");
+  const height = getFlagNumber(flags, "viewbox-height");
+  const minX = getFlagNumber(flags, "viewbox-min-x");
+  const minY = getFlagNumber(flags, "viewbox-min-y");
+
+  if (width == null && height == null && minX == null && minY == null) {
+    return undefined;
+  }
+
+  if (width == null || height == null) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      'Both "--viewbox-width" and "--viewbox-height" are required when overriding the SVG viewBox.',
+      flags
+    );
+  }
+
+  return {
+    minX: minX ?? 0,
+    minY: minY ?? 0,
+    width,
+    height,
+  };
+}
+
+function buildSvgOptions(flags: Flags): TreeSvgOptions {
+  const palette = getFlagString(flags, "palette");
+  if (palette && palette !== "color" && palette !== "monochrome") {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Unknown SVG palette "${palette}". Expected "color" or "monochrome".`,
+      flags
+    );
+  }
+
+  const daathLayer = getFlagString(flags, "daath-layer");
+  if (daathLayer && daathLayer !== "front" && daathLayer !== "back") {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Unknown Daath layer "${daathLayer}". Expected "front" or "back".`,
+      flags
+    );
+  }
+
+  return {
+    system: resolveSystem(flags),
+    width: getFlagString(flags, "width"),
+    height: getFlagString(flags, "height"),
+    background: getFlagString(flags, "background") ?? undefined,
+    palette: (palette as "color" | "monochrome" | undefined) ?? undefined,
+    viewBox: buildViewBox(flags),
+    daathLayer: (daathLayer as "front" | "back" | undefined) ?? undefined,
+  };
+}
+
+function renderAsciiTree(layout: TreeLayout, columns: number, rows: number): string[] {
+  const grid = Array.from({ length: rows }, () =>
+    Array.from({ length: columns }, () => " ")
+  );
+  const points = layout.percentages.spheres;
+
+  const toGridX = (percentage: number) =>
+    Math.max(0, Math.min(columns - 1, Math.round((percentage / 100) * (columns - 1))));
+  const toGridY = (percentage: number) =>
+    Math.max(0, Math.min(rows - 1, Math.round((percentage / 100) * (rows - 1))));
+
+  const plot = (x: number, y: number, char: string) => {
+    if (x < 0 || x >= columns || y < 0 || y >= rows) {
+      return;
+    }
+
+    if (char === "O") {
+      grid[y][x] = char;
+      return;
+    }
+
+    const current = grid[y][x];
+    if (current === " " || current === char) {
+      grid[y][x] = char;
+      return;
+    }
+
+    if (current === "O") {
+      return;
+    }
+
+    grid[y][x] = "+";
+  };
+
+  const drawLine = (x0: number, y0: number, x1: number, y1: number) => {
+    const dx = x1 - x0;
+    const dy = y1 - y0;
+    const lineChar =
+      dx === 0 ? "|" : dy === 0 ? "-" : Math.sign(dx) === Math.sign(dy) ? "\\" : "/";
+
+    let currentX = x0;
+    let currentY = y0;
+    const stepX = Math.sign(dx);
+    const stepY = Math.sign(dy);
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    if (absDx > absDy) {
+      let error = absDx / 2;
+      while (currentX !== x1) {
+        plot(currentX, currentY, lineChar);
+        error -= absDy;
+        if (error < 0) {
+          currentY += stepY;
+          error += absDx;
+        }
+        currentX += stepX;
+      }
+    } else {
+      let error = absDy / 2;
+      while (currentY !== y1) {
+        plot(currentX, currentY, lineChar);
+        error -= absDx;
+        if (error < 0) {
+          currentX += stepX;
+          error += absDy;
+        }
+        currentY += stepY;
+      }
+    }
+
+    plot(x1, y1, lineChar);
+  };
+
+  for (const pathId of layout.pathOrder) {
+    const path = layout.percentages.paths[pathId];
+    drawLine(
+      toGridX(path.from.x),
+      toGridY(path.from.y),
+      toGridX(path.to.x),
+      toGridY(path.to.y)
+    );
+  }
+
+  for (const sphereId of layout.sphereOrder) {
+    const point = points[sphereId];
+    plot(toGridX(point.x), toGridY(point.y), "O");
+  }
+
+  return grid.map((row) => row.join("").replace(/\s+$/, ""));
 }
 
 export function cmdTree(flags: Flags): void {
@@ -369,4 +592,115 @@ export function cmdTreeFind(query: string | undefined, flags: Flags): void {
     console.log(`\n  ... and ${matches.length - limitedMatches.length} more`);
   }
   console.log();
+}
+
+export function cmdTreeLayout(flags: Flags): void {
+  const system = resolveSystem(flags);
+  const units = resolveLayoutUnits(flags);
+  const layout = getTreeLayout(system);
+  const payload = serializeLayout(layout, units);
+
+  if (isJsonMode(flags)) {
+    outputJson(payload, flags);
+    return;
+  }
+
+  console.log(`\nTree layout (${system})\n`);
+  console.log(`  Spheres: ${layout.sphereOrder.length}`);
+  console.log(`  Paths: ${layout.pathOrder.length}`);
+  console.log(`  Units: ${units}`);
+  console.log(
+    `  ViewBox: ${layout.viewBox.minX} ${layout.viewBox.minY} ${layout.viewBox.width} ${layout.viewBox.height}\n`
+  );
+
+  const activeSpace =
+    units === "viewBoxUnits" ? layout.viewBoxUnits.spheres : layout.percentages.spheres;
+  for (const sphereId of layout.sphereOrder) {
+    const point = activeSpace[sphereId];
+    console.log(`  ${sphereId}: (${point.x}, ${point.y})`);
+  }
+  console.log();
+}
+
+export function cmdTreeSvg(flags: Flags): void {
+  const svgOptions = buildSvgOptions(flags);
+  const svg = generateTreeSvg(svgOptions);
+  const outputPathFlag = getFlagString(flags, "output");
+  const system = svgOptions.system ?? KAABALAH_SYSTEM;
+
+  if (outputPathFlag) {
+    const outputPath = resolve(outputPathFlag);
+    mkdirSync(dirname(outputPath), { recursive: true });
+    writeFileSync(outputPath, svg, "utf8");
+
+    if (isJsonMode(flags)) {
+      outputJson(
+        {
+          system,
+          outputPath,
+          bytes: Buffer.byteLength(svg, "utf8"),
+          options: {
+            width: svgOptions.width ?? null,
+            height: svgOptions.height ?? null,
+            background: svgOptions.background ?? null,
+            palette: svgOptions.palette ?? "color",
+            viewBox: svgOptions.viewBox ?? null,
+            daathLayer: svgOptions.daathLayer ?? "front",
+          },
+        },
+        flags
+      );
+      return;
+    }
+
+    console.log(`Wrote ${outputPath} (${Buffer.byteLength(svg, "utf8")} bytes)`);
+    return;
+  }
+
+  if (isJsonMode(flags)) {
+    outputJson(
+      {
+        system,
+        svg,
+      },
+      flags
+    );
+    return;
+  }
+
+  process.stdout.write(svg.endsWith("\n") ? svg : `${svg}\n`);
+}
+
+export function cmdTreeAscii(flags: Flags): void {
+  const system = resolveSystem(flags);
+  const columns = getFlagNumber(flags, "columns") ?? 61;
+  const rows = getFlagNumber(flags, "rows") ?? 31;
+
+  if (columns < 21 || rows < 11) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      'ASCII grid too small. Use at least "--columns=21 --rows=11".',
+      flags
+    );
+  }
+
+  const layout = getTreeLayout(system);
+  const lines = renderAsciiTree(layout, columns, rows);
+  const ascii = lines.join("\n");
+
+  if (isJsonMode(flags)) {
+    outputJson(
+      {
+        system,
+        columns,
+        rows,
+        ascii,
+        lines,
+      },
+      flags
+    );
+    return;
+  }
+
+  process.stdout.write(`${ascii}\n`);
 }

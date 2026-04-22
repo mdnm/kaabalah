@@ -9,6 +9,7 @@ const libraryEntries = [
   "src/ifa/index.ts",
   "src/semantic/index.ts",
   "src/tarot/index.ts",
+  "src/visual/index.ts",
 ];
 
 export default defineConfig([

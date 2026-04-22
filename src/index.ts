@@ -10,3 +10,4 @@ export * from './ifa';
 export * from './numerology';
 export * from './semantic';
 export * from './tarot';
+export * from './visual';
