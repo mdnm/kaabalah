@@ -1,0 +1,48 @@
+---
+title: Getting Started
+description: Get started with the Kaabalah TypeScript library
+sidebar:
+  order: 1
+  label: "Getting Started"
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Kaabalah is a comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot calculations.
+
+## Installation
+
+<Tabs>
+  <TabItem label="npm">
+    ```bash
+    npm install kaabalah
+    ```
+  </TabItem>
+  <TabItem label="pnpm">
+    ```bash
+    pnpm install kaabalah
+    ```
+  </TabItem>
+  <TabItem label="yarn">
+    ```bash
+    yarn add kaabalah
+    ```
+  </TabItem>
+</Tabs>
+
+## Quick Example
+
+```typescript
+import { createTree } from 'kaabalah/core';
+
+const tree = createTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+```
+
+### Practical next steps
+
+- If the terminology feels foreign, start with [Concepts and terminology](/getting-started/concepts/).
+- If you want copy-paste workflows, jump to [Practical recipes](/getting-started/recipes/).
+- If you're doing astrology in the browser, read [WebAssembly Integration](/guides/webassembly/).

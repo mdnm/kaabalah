@@ -1,0 +1,45 @@
+---
+title: Ifa
+description: Calculate Odu numbers based on dates for Ifa divination
+sidebar:
+  order: 5
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## Import
+
+```typescript
+import { calculateOdu } from 'kaabalah/ifa';
+```
+
+## Exports
+
+- `calculateOdu`
+
+## How Odu Calculation Works
+
+The Odu numbers are calculated from a date by:
+
+1. Splitting the date (DD/MM/YYYY) into left and right digit columns
+2. Summing each column and reducing to 1-16
+3. Calculating directional values:
+   - **North**: Sum of left column
+   - **South**: Sum of right column
+   - **East**: North + South
+   - **West**: North + South + East
+   - **Center**: Sum of all directions
+
+## Usage Example
+
+```typescript
+import { calculateOdu } from 'kaabalah/ifa';
+
+const odu = calculateOdu(new Date('1990-06-15'));
+console.log(odu.north);  // North direction Odu
+console.log(odu.center); // Center/synthesis Odu
+```
+
+## Live example
+
+<LinkCard title="Try Ifa" description="Interactive Odu calculator" href="https://numerology.kaabalah.com/odu" />

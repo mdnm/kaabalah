@@ -1,0 +1,137 @@
+---
+title: Practical Recipes
+description: Copy-paste workflows for building real features with Kaabalah.
+sidebar:
+  order: 7
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+These recipes focus on _product features_.
+
+Not theory.
+
+### Recipe: "profile" from name + birth date
+
+Use this when you want a compact "esoteric profile" card.
+
+```ts
+import { calculateGematria } from 'kaabalah/gematria';
+import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
+
+export function buildProfile(input: { name: string; birthDate: Date }) {
+  const name = input.name.trim().toUpperCase();
+
+  const gematria = calculateGematria(name);
+  const lifePath = calculateKaabalisticLifePath(input.birthDate);
+
+  return {
+    name,
+    lifePath: {
+      reduced: lifePath.lifePath.reducedValue,
+      synthesis: lifePath.syntheses.finalSynthesis,
+    },
+    gematria: {
+      total: gematria.synthesis.originalSum,
+      vowels: gematria.vowels.originalSum,
+      consonants: gematria.consonants.originalSum,
+    },
+  };
+}
+```
+
+What to show in UI:
+
+- Life path `reduced` as the headline.
+- Name gematria `total` as a secondary badge.
+- A "How it's computed" drawer using reduction steps.
+
+### Recipe: "daily numerology" (personal cycles)
+
+Use this when you want a daily / monthly widget.
+
+```ts
+import { calculatePersonalCycles } from 'kaabalah/numerology';
+
+const cycles = calculatePersonalCycles({
+  birthDate: new Date('1990-06-15'),
+  date: new Date(),
+});
+
+console.log(cycles);
+```
+
+Practical tip:
+
+- Cache results per day.
+- Recompute at midnight in the user's local time zone.
+
+### Recipe: birth chart (timezone-safe)
+
+Use this when you have local birth time + place.
+
+```ts
+import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
+
+const chart = await getBirthChart({
+  // Local time (not UTC)
+  date: new Date(1990, 5, 15, 12, 30, 0),
+  latitude: 40.7128,
+  longitude: -74.0060,
+  houseSystem: HouseSystem.PLACIDUS,
+  timeZoneSettings: { timeZone: 'America/New_York' },
+});
+
+console.log(chart.planets.sun.longitude);
+console.log(chart.houses.ascendant.longitude);
+```
+
+<Aside type="caution">
+Astrology calculations rely on Swiss Ephemeris.
+
+For browser usage, you'll need the [WebAssembly setup](/guides/webassembly/).
+</Aside>
+
+### Recipe: draw tarot cards
+
+Use this when you want a quick "3 cards" feature.
+
+```ts
+import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
+
+const shuffled = await shuffleTarotDeck(ARKANNUS, true);
+const spread = shuffled.slice(0, 3);
+
+for (const card of spread) {
+  console.log(card.tarotCard, card.meaning);
+}
+```
+
+Practical tip:
+
+- Store the drawn card IDs in your DB.
+- Don't reshuffle on every rerender.
+
+### Recipe: build correspondences with the Tree of Life
+
+Use this when you want "click a tarot card → show linked planet/element/etc."
+
+```ts
+import { TreeOfLife, SPHERES, SPHERES_DATA } from 'kaabalah/core';
+
+const tree = new TreeOfLife();
+
+const kether = tree.addSphere({
+  sphere: SPHERES.KETHER,
+  data: SPHERES_DATA.KETHER,
+  relatedNumber: 1,
+});
+
+const related = tree.related(kether);
+console.log(related);
+```
+
+Practical tip:
+
+- Treat `TreeOfLife` as your in-memory knowledge graph.
+- Serialize only what you need.

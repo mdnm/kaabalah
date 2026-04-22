@@ -1,4 +1,9 @@
-# Swiss Ephemeris WebAssembly Integration
+---
+title: WebAssembly Integration
+description: How to set up and use the Swiss Ephemeris WebAssembly integration
+sidebar:
+  order: 2
+---
 
 This document explains how to set up and use the Swiss Ephemeris WebAssembly integration in the Kaabalah library.
 
@@ -12,26 +17,22 @@ To compile the Swiss Ephemeris to WebAssembly, you will need:
 
 1. **Emscripten SDK (emsdk)**: The compiler toolchain for WebAssembly
    - Installation instructions: https://emscripten.org/docs/getting_started/downloads.html
-
 2. **Swiss Ephemeris Source Code**: The C code that will be compiled
    - Download from: https://www.astro.com/swisseph/swesrc.htm
-
 3. **Ephemeris Files**: Data files used by Swiss Ephemeris for calculations
    - Download from: https://www.astro.com/ftp/swisseph/ephe/
 
 ## Compilation Process
 
 1. **Download the Swiss Ephemeris source code** and extract it to the `wasm/swisseph` directory
-
 2. **Install Emscripten SDK** by following their installation instructions
-
 3. **Compile the code** using the provided script:
-   ```bash
-   cd wasm/scripts
-   chmod +x compile.sh
-   ./compile.sh
-   ```
 
+    ```bash
+    cd wasm/scripts
+    chmod +x compile.sh
+    ./compile.sh
+    ```
 4. **Verify the output files**:
    - `wasm/build/swisseph.js`: JavaScript glue code
    - `wasm/build/swisseph.wasm`: WebAssembly binary
@@ -60,9 +61,7 @@ To use the Swiss Ephemeris in a browser environment:
 1. **Copy the WebAssembly files** to a location accessible by your web application:
    - `swisseph.js`
    - `swisseph.wasm`
-
 2. **Handle cross-origin issues**: Ensure your web server is configured to serve WebAssembly files with the correct MIME type (`application/wasm`)
-
 3. **Provide the ephemeris files** that Swiss Ephemeris needs for calculations:
    - Create a directory accessible by your web application
    - Place the ephemeris files (*.se1) in that directory
@@ -75,7 +74,6 @@ For Node.js environments:
 1. **Include the built WebAssembly files** in your published package:
    - Add them to the `files` array in `package.json`
    - Make sure they're copied to the `dist` directory during build
-
 2. **Place ephemeris files** in a known location:
    - For example, in a subdirectory named `ephe` within your package
    - Set the ephemeris path when initializing the module
@@ -112,11 +110,9 @@ console.log(`Sun position: ${chart.planets.sun.longitude}`);
 1. **"WebAssembly module not found"**:
    - Ensure the .wasm and .js files are properly included in your distribution
    - Check the paths in your code
-
 2. **"Cannot find ephemeris files"**:
    - Make sure the ephemeris files are available at the specified path
    - Check file permissions
-
 3. **"Calculation error"**:
    - Verify the input parameters (date, location) are valid
    - Ensure you have the correct ephemeris files for the date range
@@ -124,4 +120,4 @@ console.log(`Sun position: ${chart.planets.sun.longitude}`);
 ### Debugging Tools
 
 - Use browser developer tools to check for WASM-related errors in the console
-- Enable the `ASSERTIONS=1` flag during compilation for more verbose error messages 
+- Enable the `ASSERTIONS=1` flag during compilation for more verbose error messages

@@ -1,0 +1,56 @@
+---
+title: Numerology
+description: Calculate life path numbers, cycles, challenges, and other numerological values
+sidebar:
+  order: 1
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## Import
+
+```typescript
+import { calculateKaabalisticLifePath, calculateStraightAcrossReductionLifePath, calculateCycles, ... } from 'kaabalah/numerology';
+```
+
+## Exports
+
+- `calculateKaabalisticLifePath`
+- `calculateStraightAcrossReductionLifePath`
+- `calculateCycles`
+- `calculateChallenges`
+- `calculateFibonacciCycle`
+- `calculatePersonalCycles`
+- `getDateEnergies`
+- `isMasterNumber`
+
+## Life Path Calculation Methods
+
+### Kaabalistic Method
+
+The `calculateKaabalisticLifePath` function uses a synthesis-based approach that:
+
+- Preserves master numbers (11, 22, 33, 44, etc.)
+- Calculates personal mythology numbers
+- Provides detailed reduction steps
+
+### Straight Across Reduction
+
+The `calculateStraightAcrossReductionLifePath` function uses the traditional method of reducing each component (day, month, year) before summing.
+
+## Usage Example
+
+```typescript
+import { calculateKaabalisticLifePath, calculateCycles } from 'kaabalah/numerology';
+
+const birthDate = new Date('1990-06-15');
+const lifePath = calculateKaabalisticLifePath(birthDate);
+
+console.log(lifePath.lifePath.reducedValue);  // Life path number
+console.log(lifePath.syntheses.finalSynthesis);  // Final synthesis
+console.log(lifePath.personalMythologyNumbers);  // Personal mythology
+```
+
+## Live example
+
+<LinkCard title="Try Numerology" description="Interactive numerology calculator" href="https://numerology.kaabalah.com" />

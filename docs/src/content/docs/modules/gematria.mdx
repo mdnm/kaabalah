@@ -1,0 +1,50 @@
+---
+title: Gematria
+description: Calculate Hebrew gematria values for names and words, with reverse gematria lookup
+sidebar:
+  order: 2
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## Import
+
+```typescript
+import { calculateGematria, reverseGematria } from 'kaabalah/gematria';
+```
+
+## Exports
+
+- `calculateGematria`
+- `reverseGematria`
+
+## How Gematria Works
+
+Latin letters are mapped to Hebrew letter values:
+
+- Vowels (A, E, I, O, U, W, Y) have specific values
+- Consonants map to Hebrew consonant values
+- Position-dependent values (e.g., O at start = 70, elsewhere = 6)
+- Final letter forms (sofit) when at word end
+
+## Usage Example
+
+```typescript
+import { calculateGematria, reverseGematria } from 'kaabalah/gematria';
+
+// Calculate gematria for a name
+const result = calculateGematria('DAVID');
+console.log(result.synthesis.originalSum);  // Total value
+console.log(result.vowels.originalSum);     // Vowels value
+console.log(result.consonants.originalSum); // Consonants value
+
+// Find words with specific values
+const matches = reverseGematria({
+  targetSynthesis: 25,
+  maxLength: 5
+});
+```
+
+## Live example
+
+<LinkCard title="Try Gematria" description="Interactive gematria calculator" href="https://gematria.kaabalah.com" />
