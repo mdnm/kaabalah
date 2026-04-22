@@ -72,6 +72,11 @@ export interface TreeSvgCustomPalette {
 export type TreeSvgPalette = "color" | "monochrome" | TreeSvgCustomPalette;
 export type TreeSvgDaathLayer = "front" | "back";
 
+export interface TreeSvgHighlights {
+  paths?: Partial<Record<TreePathId, string>>;
+  spheres?: Partial<Record<TreeSphereId, string | string[]>>;
+}
+
 export interface TreeSvgOptions {
   width?: number | string;
   height?: number | string;
@@ -80,6 +85,7 @@ export interface TreeSvgOptions {
   palette?: TreeSvgPalette;
   system?: SystemKey;
   daathLayer?: TreeSvgDaathLayer;
+  highlights?: TreeSvgHighlights;
 }
 
 export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
@@ -162,6 +168,11 @@ interface ResolvedPalette {
   specialSphereMode: "preserve" | "plain";
 }
 
+interface ResolvedHighlights {
+  pathColors: Partial<Record<TreePathId, string>>;
+  sphereFills: Partial<Record<TreeSphereId, string | string[]>>;
+}
+
 export function getTreeLayout(system: SystemKey = "kaabalah"): TreeLayout {
   const tree = createTree({ system });
   const percentages = buildLayoutMap(tree, CANONICAL_SPHERE_PERCENTAGES);
@@ -186,6 +197,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   const tree = createTree({ system, parts: ["colors"] });
   const viewBox = normalizeViewBox(options.viewBox);
   const palette = resolvePalette(options.palette);
+  const highlights = resolveHighlights(options.highlights);
   const spherePositions = scaleCoordinates(CANONICAL_SPHERE_PERCENTAGES, viewBox);
   const layout = buildLayoutMap(tree, spherePositions);
   const scale = Math.min(
@@ -276,6 +288,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   if (daathLayer === "back") {
     push(`<g id="spheres-behind-paths">`);
     renderSphere(push, {
+      highlights,
       tree,
       palette,
       radius,
@@ -290,13 +303,18 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   for (const currentPathId of TREE_PATH_IDS) {
     const path = layout.paths[currentPathId];
     const color = resolvePathColor({
+      highlights,
       palette,
       tree,
       pathId: currentPathId,
     });
+    const edgeColor = resolvePathEdgeColor({
+      palette,
+      pathColor: color,
+    });
 
     push(
-      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(palette.pathEdgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : ""}/>`
+      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(edgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : ""}/>`
     );
     push(
       `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-width="${pathMainWidth}" stroke-linecap="round"/>`
@@ -315,6 +333,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   push(`<g id="spheres">`);
   for (const sphereName of frontSphereNames) {
     renderSphere(push, {
+      highlights,
       tree,
       palette,
       radius,
@@ -338,6 +357,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
 function renderSphere(
   push: (line: string) => void,
   params: {
+    highlights: ResolvedHighlights;
     tree: ReturnType<typeof createTree>;
     palette: ResolvedPalette;
     radius: number;
@@ -356,28 +376,40 @@ function renderSphere(
     sphereId: currentSphereId,
     defaultColors: colorData,
   });
+  const highlightFill = params.highlights.sphereFills[currentSphereId];
+  const activeFill = highlightFill ?? sphereFill;
 
   push(`<g id="sphere-${slug}" clip-path="url(#clip-${slug})">`);
   if (params.palette.specialSphereMode === "preserve") {
     if (params.sphereName === "Kether") {
-      renderKether(push, point, params.radius);
+      renderKether(
+        push,
+        point,
+        params.radius,
+        highlightFill ? toPrimaryFill(highlightFill, "#e0e0e0") : undefined
+      );
     } else if (params.sphereName === "Chokhmah") {
       renderIridescent(push, point, params.radius);
+      if (highlightFill) {
+        renderSphereTintOverlay(push, point, params.radius, highlightFill, 0.62);
+      }
     } else if (params.sphereName === "Daath") {
-      renderYinYang(push, point, params.radius);
+      renderYinYang(push, point, params.radius, highlightFill);
     } else if (params.sphereName === "Malkuth" && colorData.length >= 4) {
-      const slicedColors = Array.isArray(sphereFill)
-        ? sphereFill
-        : colorData.slice(0, 4);
+      const slicedColors = resolveMalkuthColors({
+        highlightFill,
+        paletteFill: sphereFill,
+        defaultColors: colorData.slice(0, 4),
+      });
       renderSlicedSphere(push, point, params.radius, slicedColors, -135);
     } else {
       push(
-        `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(sphereFill, params.palette.defaultSphereFill))}"/>`
+        `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(activeFill, params.palette.defaultSphereFill))}"/>`
       );
     }
   } else {
     push(
-      `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(sphereFill, params.palette.defaultSphereFill))}"/>`
+      `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="${escapeAttr(toPrimaryFill(activeFill, params.palette.defaultSphereFill))}"/>`
     );
   }
 
@@ -526,11 +558,26 @@ function resolvePalette(palette: TreeSvgPalette | undefined): ResolvedPalette {
   };
 }
 
+function resolveHighlights(
+  highlights: TreeSvgHighlights | undefined
+): ResolvedHighlights {
+  return {
+    pathColors: highlights?.paths ?? {},
+    sphereFills: highlights?.spheres ?? {},
+  };
+}
+
 function resolvePathColor(params: {
+  highlights: ResolvedHighlights;
   palette: ResolvedPalette;
   tree: ReturnType<typeof createTree>;
   pathId: TreePathId;
 }) {
+  const highlightOverride = params.highlights.pathColors[params.pathId];
+  if (highlightOverride) {
+    return highlightOverride;
+  }
+
   const override = params.palette.pathColors[params.pathId];
   if (override) {
     return override;
@@ -544,6 +591,17 @@ function resolvePathColor(params: {
     params.tree.relatedFirst(params.pathId, MiscTypes.COLOR)?.data?.colorHexCodes?.[0];
 
   return treeColor ?? params.palette.defaultPathColor;
+}
+
+function resolvePathEdgeColor(params: {
+  palette: ResolvedPalette;
+  pathColor: string;
+}) {
+  if (params.palette.mode === "color") {
+    return params.pathColor;
+  }
+
+  return params.palette.pathEdgeColor;
 }
 
 function resolveSphereFill(params: {
@@ -573,6 +631,48 @@ function toPrimaryFill(fill: string | string[], fallback: string) {
   }
 
   return fill;
+}
+
+function resolveMalkuthColors(params: {
+  highlightFill?: string | string[];
+  paletteFill: string | string[];
+  defaultColors: string[];
+}) {
+  if (params.highlightFill) {
+    return expandColors(
+      params.highlightFill,
+      params.defaultColors.length,
+      params.defaultColors
+    );
+  }
+
+  if (Array.isArray(params.paletteFill)) {
+    return expandColors(
+      params.paletteFill,
+      params.defaultColors.length,
+      params.defaultColors
+    );
+  }
+
+  return params.defaultColors;
+}
+
+function expandColors(
+  fill: string | string[],
+  count: number,
+  fallbackColors: string[]
+) {
+  if (Array.isArray(fill)) {
+    if (fill.length === 0) {
+      return fallbackColors.slice(0, count);
+    }
+
+    return Array.from({ length: count }, (_, index) => {
+      return fill[index] ?? fill[fill.length - 1];
+    });
+  }
+
+  return Array.from({ length: count }, () => fill);
 }
 
 function round(value: number) {
@@ -608,9 +708,12 @@ function arcPath(
 function renderKether(
   push: (line: string) => void,
   point: TreeLayoutCoordinate,
-  radius: number
+  radius: number,
+  baseFill = "#e0e0e0"
 ) {
-  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="#e0e0e0"/>`);
+  push(
+    `<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="${escapeAttr(baseFill)}"/>`
+  );
   push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="url(#kether-glow)"/>`);
 
   const spokes = 16;
@@ -727,25 +830,53 @@ function interpolateColor(start: string, end: string, factor: number) {
 function renderYinYang(
   push: (line: string) => void,
   point: TreeLayoutCoordinate,
-  radius: number
+  radius: number,
+  fill?: string | string[]
 ) {
   const scale = radius / 50;
   const circleRadius = round(48 * scale);
   const halfRadius = round(24 * scale);
   const dotRadius = round(6 * scale);
+  const [lightFill, darkFill] = resolveDualToneFill(fill);
 
   push(`<g transform="rotate(180 ${point.x} ${point.y})">`);
-  push(`<circle cx="${point.x}" cy="${point.y}" r="${circleRadius}" fill="white"/>`);
   push(
-    `<path d="M${point.x},${round(point.y - circleRadius)} A${circleRadius},${circleRadius} 0 1,1 ${point.x},${round(point.y + circleRadius)} A${halfRadius},${halfRadius} 0 1,0 ${point.x},${point.y} A${halfRadius},${halfRadius} 0 1,1 ${point.x},${round(point.y - circleRadius)}" fill="black"/>`
+    `<circle cx="${point.x}" cy="${point.y}" r="${circleRadius}" fill="${escapeAttr(lightFill)}"/>`
   );
   push(
-    `<circle cx="${point.x}" cy="${round(point.y - halfRadius)}" r="${dotRadius}" fill="white"/>`
+    `<path d="M${point.x},${round(point.y - circleRadius)} A${circleRadius},${circleRadius} 0 1,1 ${point.x},${round(point.y + circleRadius)} A${halfRadius},${halfRadius} 0 1,0 ${point.x},${point.y} A${halfRadius},${halfRadius} 0 1,1 ${point.x},${round(point.y - circleRadius)}" fill="${escapeAttr(darkFill)}"/>`
   );
   push(
-    `<circle cx="${point.x}" cy="${round(point.y + halfRadius)}" r="${dotRadius}" fill="black"/>`
+    `<circle cx="${point.x}" cy="${round(point.y - halfRadius)}" r="${dotRadius}" fill="${escapeAttr(lightFill)}"/>`
+  );
+  push(
+    `<circle cx="${point.x}" cy="${round(point.y + halfRadius)}" r="${dotRadius}" fill="${escapeAttr(darkFill)}"/>`
   );
   push(`</g>`);
+}
+
+function renderSphereTintOverlay(
+  push: (line: string) => void,
+  point: TreeLayoutCoordinate,
+  radius: number,
+  fill: string | string[],
+  opacity: number
+) {
+  push(
+    `<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="${escapeAttr(toPrimaryFill(fill, "#ffffff"))}" fill-opacity="${opacity}"/>`
+  );
+}
+
+function resolveDualToneFill(fill: string | string[] | undefined) {
+  if (Array.isArray(fill)) {
+    return [fill[0] ?? "white", fill[1] ?? "black"] as const;
+  }
+
+  if (fill) {
+    return [fill, "black"] as const;
+  }
+
+  return ["white", "black"] as const;
 }
 
 function escapeAttr(value: string) {

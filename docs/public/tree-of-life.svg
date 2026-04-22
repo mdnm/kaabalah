@@ -155,71 +155,72 @@
   <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
 </radialGradient>
 </defs>
+<rect x="0" y="0" width="286" height="561" fill="white"/>
 <g id="paths">
-<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#E8C848" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#E8C848" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#8098B0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#8098B0" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#E06080" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#E06080" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#E87050" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#E87050" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#C82030" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#C82030" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#A8B840" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#A8B840" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#B6BD9A" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#B6BD9A" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#5080C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#5080C0" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#48A860" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#48A860" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#8878B8" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#8878B8" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#28A880" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#28A880" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#8050A8" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#8050A8" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#C850A0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#C850A0" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#D06088" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#D06088" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#8848C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#8848C0" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
-<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#30B898" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#30B898" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 </g>
