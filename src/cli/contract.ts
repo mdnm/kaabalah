@@ -177,6 +177,56 @@ export const COMMANDS: CommandSchema[] = [
     examples: ["kaabalah tree:types --json"],
   },
   {
+    name: "tree:layout",
+    description: "Return the canonical Tree of Life layout coordinates for overlays and rendering",
+    args: [],
+    flags: [
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "units", type: "string", default: "both", description: "Coordinate space: percentages, viewBoxUnits, or both" },
+    ],
+    examples: [
+      "kaabalah tree:layout --json --compact",
+      "kaabalah tree:layout --system=hermetic-qabalah --units=percentages --json",
+    ],
+  },
+  {
+    name: "tree:svg",
+    description: "Generate a structural Tree of Life SVG from the canonical library renderer",
+    args: [],
+    flags: [
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "width", type: "string", description: 'SVG width attribute (e.g. 1110mm, 800, 100%)' },
+      { name: "height", type: "string", description: 'SVG height attribute (e.g. 2220mm, 600, 100%)' },
+      { name: "background", type: "string", default: "white", description: 'Background fill color, or "transparent"' },
+      { name: "palette", type: "string", default: "color", description: 'Palette: "color" or "monochrome"' },
+      { name: "daath-layer", type: "string", default: "front", description: 'Render Daath in front of or behind the paths: "front" or "back"' },
+      { name: "output", type: "string", description: "Write the SVG to a file instead of stdout" },
+      { name: "viewbox-width", type: "number", description: "Override SVG viewBox width" },
+      { name: "viewbox-height", type: "number", description: "Override SVG viewBox height" },
+      { name: "viewbox-min-x", type: "number", default: 0, description: "Override SVG viewBox min-x" },
+      { name: "viewbox-min-y", type: "number", default: 0, description: "Override SVG viewBox min-y" },
+    ],
+    examples: [
+      "kaabalah tree:svg --json --compact --fields=svg",
+      "kaabalah tree:svg --background=transparent --palette=monochrome --output=tree.svg --json",
+      "kaabalah tree:svg --background=transparent --daath-layer=back --json --compact",
+    ],
+  },
+  {
+    name: "tree:ascii",
+    description: "Render a lightweight ASCII Tree of Life preview from the canonical layout",
+    args: [],
+    flags: [
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "columns", type: "number", default: 61, description: "ASCII canvas width in characters (minimum 21)" },
+      { name: "rows", type: "number", default: 31, description: "ASCII canvas height in lines (minimum 11)" },
+    ],
+    examples: [
+      "kaabalah tree:ascii --no-json",
+      "kaabalah tree:ascii --columns=41 --rows=21 --json --compact",
+    ],
+  },
+  {
     name: "astrology",
     description: "Calculate birth chart using Swiss Ephemeris",
     args: [

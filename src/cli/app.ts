@@ -5,7 +5,15 @@ import { cmdHelp } from "./commands/help";
 import { cmdIfa } from "./commands/ifa";
 import { cmdChallenges, cmdCycles, cmdFibonacci, cmdLifePath, cmdNumerology } from "./commands/numerology";
 import { cmdTarot, cmdTarotCard, cmdTarotSpread } from "./commands/tarot";
-import { cmdTree, cmdTreeFind, cmdTreeNode, cmdTreeTypes } from "./commands/tree";
+import {
+  cmdTree,
+  cmdTreeAscii,
+  cmdTreeFind,
+  cmdTreeLayout,
+  cmdTreeNode,
+  cmdTreeSvg,
+  cmdTreeTypes,
+} from "./commands/tree";
 import { getFlagBool, isCliParseError, isJsonMode, parseArgs } from "./runtime/args";
 import { isCliConfigError, resolveRuntimeConfig } from "./runtime/config";
 import { configureDebugRuntime } from "./runtime/debug";
@@ -198,6 +206,15 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "tree:types":
         cmdTreeTypes(flags);
+        return;
+      case "tree:layout":
+        cmdTreeLayout(flags);
+        return;
+      case "tree:svg":
+        cmdTreeSvg(flags);
+        return;
+      case "tree:ascii":
+        cmdTreeAscii(flags);
         return;
       case "astrology":
         await cmdAstrology(args.slice(1), flags, inputPayload, execution);

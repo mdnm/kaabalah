@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "6.2.4",
+  "version": "6.3.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "engines": {
     "node": ">=18.18.0"
@@ -63,6 +63,11 @@
       "types": "./dist/semantic/index.d.ts",
       "require": "./dist/semantic/index.js",
       "import": "./dist/semantic/index.mjs"
+    },
+    "./visual": {
+      "types": "./dist/visual/index.d.ts",
+      "require": "./dist/visual/index.js",
+      "import": "./dist/visual/index.mjs"
     }
   },
   "files": [

@@ -2,6 +2,10 @@
 
 A comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot calculations and interpretations.
 
+<p align="center">
+  <img src="./examples/tree-of-life-readme.svg" alt="Color Tree of Life rendered from kaabalah/visual" width="420" />
+</p>
+
 ## Docs
 
 Complete documentation here [https://docs.kaabalah.com/](https://docs.kaabalah.com/)
@@ -183,6 +187,32 @@ const houseProfiles = listHouseThemeProfiles();
 
 Semantic profiles are deterministic, library-owned metadata layered on top of canonical correspondences. Downstream apps should consume the profile `id`, `houseNumber` or `cardNumber`, `keywords`, `tokens`, and grouped `correspondences`, while keeping scoring, ranking, and UI presentation app-side.
 For houses, `primaryLabel` is the semantic life-area label and `houseLabel` preserves the structural astrological label (`Ascendant`, `Imum Coeli`, `Descendant`, `Medium Coeli`, etc.).
+
+### Canonical Tree SVG Rendering
+
+```typescript
+import { generateTreeSvg, getTreeLayout } from "kaabalah/visual";
+
+const svg = generateTreeSvg({
+  background: "transparent",
+  palette: "monochrome",
+  daathLayer: "back",
+});
+
+const layout = getTreeLayout();
+const tiphareth = layout.percentages.spheres["sphere:Tiphareth"];
+const path15 = layout.percentages.paths["path:15"];
+```
+
+`generateTreeSvg()` renders the structural tree only: paths and spheres, with no astrology, numerology, gematria, or app-specific overlays. Use it when an app needs a reusable base SVG, then place badges or glyphs using `getTreeLayout()` rather than reimplementing the coordinate math.
+
+Contract notes:
+
+- the exported `percentages` map is the canonical frontend grid shared with the existing app tree views
+- `viewBoxUnits` exposes the same positions in the default `286 x 561` SVG coordinate space
+- `palette: "color"` preserves the full-color Melkitzedeki rendering, including the special Kether, Chokhmah, Daath, and Malkuth sphere treatments
+- `palette: "monochrome"` simplifies the tree to plain-circle spheres with a light body and dark outline, so it still reads as a luminous tree on transparent or dark backgrounds
+- `daathLayer: "back"` places the Daath sphere behind the paths while still emitting a transparent top hit area for inline SVG interaction
 
 ### Canonical Tarot Spreads
 

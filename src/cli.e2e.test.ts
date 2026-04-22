@@ -117,6 +117,9 @@ describe("CLI contract", () => {
       "tree:node",
       "tree:find",
       "tree:types",
+      "tree:layout",
+      "tree:svg",
+      "tree:ascii",
       "astrology",
       "astrology:synastry",
       "astrology:composite",
@@ -293,6 +296,121 @@ describe("CLI contract", () => {
           match.type === "tarotArkAnnu"
       )
     ).toBe(true);
+  });
+
+  it("returns canonical tree layout data for downstream overlays", () => {
+    const result = runCli([
+      "tree:layout",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree:layout --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      system: string;
+      sphereOrder: string[];
+      pathOrder: string[];
+      percentages: {
+        spheres: Record<string, { x: number; y: number }>;
+        paths: Record<string, { fromId: string; toId: string }>;
+      };
+      viewBoxUnits: {
+        spheres: Record<string, { x: number; y: number }>;
+      };
+    };
+
+    expect(payload.system).toBe("kaabalah");
+    expect(payload.sphereOrder).toHaveLength(11);
+    expect(payload.pathOrder).toHaveLength(22);
+    expect(payload.percentages.spheres["sphere:Kether"]).toEqual({ x: 49.94, y: 6.83 });
+    expect(payload.viewBoxUnits.spheres["sphere:Chokhmah"]).toEqual({ x: 247.85, y: 99.18 });
+    expect(payload.percentages.paths["path:1"]).toMatchObject({
+      fromId: "sphere:Kether",
+      toId: "sphere:Chokhmah",
+    });
+  });
+
+  it("generates tree SVG JSON and supports file output", () => {
+    const directResult = runCli([
+      "tree:svg",
+      "--json",
+      "--compact",
+      "--background=transparent",
+      "--palette=monochrome",
+      "--fields=svg",
+    ]);
+    assertSuccess(directResult, "tree:svg --json");
+
+    expect(JSON.parse(directResult.stdout)).toEqual({
+      svg: expect.stringContaining(`<svg xmlns="http://www.w3.org/2000/svg"`),
+    });
+    expect(JSON.parse(directResult.stdout).svg).toContain(`stroke="#2f271e"`);
+    expect(JSON.parse(directResult.stdout).svg).toContain(`fill="#e6ddd0"`);
+
+    const cwd = makeTempDir();
+    const outputPath = join(cwd, "tree.svg");
+    const fileResult = runCli([
+      "tree:svg",
+      "--json",
+      "--compact",
+      `--output=${outputPath}`,
+    ]);
+    assertSuccess(fileResult, "tree:svg --output");
+
+    const payload = JSON.parse(fileResult.stdout) as {
+      outputPath: string;
+      bytes: number;
+    };
+
+    expect(payload.outputPath).toBe(outputPath);
+    expect(payload.bytes).toBeGreaterThan(1000);
+    expect(readFileSync(outputPath, "utf8")).toContain(`<svg xmlns="http://www.w3.org/2000/svg"`);
+  });
+
+  it("supports rendering Daath behind the paths with a top hit area", () => {
+    const result = runCli([
+      "tree:svg",
+      "--json",
+      "--compact",
+      "--background=transparent",
+      "--daath-layer=back",
+      "--fields=svg",
+    ]);
+    assertSuccess(result, "tree:svg --daath-layer=back");
+
+    const payload = JSON.parse(result.stdout) as { svg: string };
+    const daathSphereIndex = payload.svg.indexOf(`<g id="sphere-daath"`);
+    const pathsIndex = payload.svg.indexOf(`<g id="paths">`);
+    const hitAreaIndex = payload.svg.indexOf(`id="sphere-daath-hit-area"`);
+
+    expect(payload.svg).toContain(`<g id="spheres-behind-paths">`);
+    expect(daathSphereIndex).toBeGreaterThan(-1);
+    expect(pathsIndex).toBeGreaterThan(daathSphereIndex);
+    expect(hitAreaIndex).toBeGreaterThan(pathsIndex);
+    expect(payload.svg).toContain(`data-node-id="sphere:Daath"`);
+  });
+
+  it("renders a lightweight tree ascii preview", () => {
+    const result = runCli([
+      "tree:ascii",
+      "--json",
+      "--compact",
+      "--columns=41",
+      "--rows=21",
+    ]);
+    assertSuccess(result, "tree:ascii --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      columns: number;
+      rows: number;
+      ascii: string;
+      lines: string[];
+    };
+
+    expect(payload.columns).toBe(41);
+    expect(payload.rows).toBe(21);
+    expect(payload.lines).toHaveLength(21);
+    expect(payload.ascii).toContain("O");
   });
 
   it("supports --input-json=- to read a JSON object from stdin", () => {
