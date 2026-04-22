@@ -1,55 +1,698 @@
 ---
 title: Astrology
-description: Generate birth charts and planetary positions using Swiss Ephemeris
+description: Birth charts, synastry, transits, solar returns, profections, firdaria, aspects, astrocartography, essential dignity, decans, and dodecatemoria via Swiss Ephemeris WASM
 sidebar:
   order: 3
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
 
-### WebAssembly usage
+### WebAssembly requirement
 
-This library uses the Swiss Ephemeris for astrological calculations, find the integration guide here:
+Most functions in this module use the Swiss Ephemeris compiled to WebAssembly. See the integration guide before using them.
 
 <LinkCard title="WebAssembly Integration" href="/guides/webassembly/" />
 
-## Import
+Functions that are **pure math** (no WASM) are noted in each section.
+
+---
+
+## 1. Birth Charts
 
 ```typescript
 import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
 ```
 
-## Exports
+### `getBirthChart(options): Promise<BirthChart>`
 
-- `getBirthChart`
-- `HouseSystem`
-
-## House Systems
-
-The library supports multiple house systems:
-
-- `HouseSystem.PLACIDUS` - Most commonly used
-- `HouseSystem.KOCH` - Koch system
-- `HouseSystem.EQUAL` - Equal house system
-- `HouseSystem.WHOLE_SIGN` - Whole sign houses
-
-## Usage Example
+Calculates a full natal chart. Timezone is auto-detected from latitude/longitude by default.
 
 ```typescript
-import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
-
 const chart = await getBirthChart({
-  date: new Date('1990-06-15T12:30:00'),
-  latitude: 40.7128,
-  longitude: -74.0060,
-  houseSystem: HouseSystem.PLACIDUS,
-  timeZoneSettings: { timeZone: 'America/New_York' }
+  date: { year: 1990, month: 6, day: 15, hour: 14, minute: 30 },
+  latitude: 48.856,
+  longitude: 2.352,
+  houseSystem: HouseSystem.PLACIDUS,           // optional, defaults to PLACIDUS
+  timeZoneSettings: { autoTimeZone: true },    // default — or { timeZone: 'America/Paris' }
 });
 
-console.log(chart.planets.sun);  // Sun position
-console.log(chart.houses.ascendant);  // Ascendant
+chart.planets.sun.zodiacPosition.sign         // "Gemini"
+chart.planets.sun.zodiacPosition.house        // 10
+chart.houses.ascendant.sign                   // "Virgo"
+chart.houses.mc.sign                          // "Gemini"
+chart.nodes.parsfortunae.zodiacPosition.sign  // Part of Fortune
+chart.aspects                                 // AspectEdge[]
+chart.sect                                    // "diurnal" | "nocturnal"
+chart.dateUtc                                 // Date (UTC)
 ```
 
-## Live example
+**`BirthChartOptions`**
+
+| Field | Type | Description |
+|---|---|---|
+| `date` | `Date \| LocalDateTimeParts` | Local civil date-time. Use `LocalDateTimeParts` (`{ year, month, day, hour?, minute?, second? }`) to avoid timezone ambiguity. |
+| `latitude` | `number` | −90 to 90 |
+| `longitude` | `number` | −180 to 180 |
+| `houseSystem` | `HouseSystem` | Optional. Defaults to `PLACIDUS`. |
+| `timeZoneSettings` | `TimeZoneOptions` | Optional. Defaults to `{ autoTimeZone: true }`. |
+
+**`BirthChart` return type**
+
+| Field | Type | Description |
+|---|---|---|
+| `dateUtc` | `Date` | Chart moment in UTC. |
+| `planets` | `Record<string, HydratedPlanet>` | Keyed by lowercase planet name (e.g. `"sun"`, `"moon"`, `"true node"`). |
+| `nodes` | `Record<string, HydratedNode>` | Currently contains `parsfortunae` (Part of Fortune). |
+| `houses` | `object` | Contains `ascendant`, `mc`, `dc`, `ic`, `houses[]`, and optional `ascmc` auxiliary points. |
+| `aspects` | `AspectEdge[]` | All intra-chart aspects including Ascendant and MC. |
+| `sect` | `"diurnal" \| "nocturnal"` | Sun above horizon = diurnal. |
+
+**`ZodiacPosition`** (used throughout):
+
+```typescript
+{
+  sign: string;          // e.g. "Scorpio"
+  decimalDegrees: number; // 0–30 within sign
+  traditionalFormat: string; // "9°48'"
+  decimal: string;       // "9.80°"
+  longitude: number;     // 0–360
+  house: number;         // 1–12
+}
+```
+
+### House systems
+
+| Constant | Description |
+|---|---|
+| `HouseSystem.PLACIDUS` | Default, most widely used |
+| `HouseSystem.WHOLE_SIGN` | Required for profections and firdaria |
+| `HouseSystem.KOCH` | Koch |
+| `HouseSystem.EQUAL` | Equal from Ascendant |
+| `HouseSystem.REGIOMONTANUS` | Regiomontanus |
+| `HouseSystem.CAMPANUS` | Campanus |
+| `HouseSystem.PORPHYRIUS` | Porphyry |
+| `HouseSystem.MORINUS` | Morinus |
+| `HouseSystem.MERIDIAN` | Meridian |
+| `HouseSystem.KRUSINSKI` | Krusinski |
+| `HouseSystem.ALCABITIUS` | Alcabitius |
+
+---
+
+## 2. Synastry
+
+```typescript
+import { getSynastryChart } from 'kaabalah/astrology';
+```
+
+### `getSynastryChart(options): Promise<SynastryChart>`
+
+Calculates two birth charts and computes all cross-chart aspects (every planet/angle in chart A against every planet/angle in chart B).
+
+```typescript
+const synastry = await getSynastryChart({
+  chartA: { date: new Date('1990-06-15'), latitude: 48.856, longitude: 2.352 },
+  chartB: { date: new Date('1992-03-21'), latitude: 51.5, longitude: -0.12 },
+  aspectSpecs: DEFAULT_ASPECT_SPECS, // optional override
+});
+
+synastry.chartA    // BirthChart
+synastry.chartB    // BirthChart
+synastry.aspects   // AspectEdge[] — cross-chart aspects
+```
+
+**`SynastryChartOptions`** extends `TwoChartOptions`:
+
+| Field | Type | Description |
+|---|---|---|
+| `chartA` | `BirthChartOptions` | First person's chart options. |
+| `chartB` | `BirthChartOptions` | Second person's chart options. |
+| `aspectSpecs` | `AspectSpec[]` | Optional. Overrides default aspect orbs. |
+
+---
+
+## 3. Composite Charts
+
+```typescript
+import { getCompositeChart } from 'kaabalah/astrology';
+```
+
+### `getCompositeChart(options): Promise<CompositeChart>`
+
+Calculates a midpoint composite chart from two birth charts. Planets and house cusps are computed as the shorter-arc midpoint of the corresponding points in each chart.
+
+```typescript
+const composite = await getCompositeChart({
+  chartA: { date: new Date('1990-06-15'), latitude: 48.856, longitude: 2.352 },
+  chartB: { date: new Date('1992-03-21'), latitude: 51.5, longitude: -0.12 },
+});
+
+composite.chartA             // BirthChart
+composite.chartB             // BirthChart
+composite.compositePlanets   // Record<string, { name, longitude, zodiacPosition }>
+composite.compositeHouses    // ZodiacPosition[]
+composite.aspects            // AspectEdge[] — aspects within composite chart
+```
+
+---
+
+## 4. Transits
+
+```typescript
+import { getTransitChart, getTransitRange } from 'kaabalah/astrology';
+```
+
+### `getTransitChart(options): Promise<TransitChart>`
+
+Places current (or any date's) transiting planets against a natal chart. Transit planets are placed into **natal houses**.
+
+```typescript
+const transit = await getTransitChart({
+  natal: { date: new Date('1990-06-15'), latitude: 48.856, longitude: 2.352 },
+  transitDate: new Date('2026-04-22'),
+  maxOrb: 3,
+  aspectFilter: ['conjunction', 'square', 'opposition'],
+  transitPlanets: ['saturn', 'pluto'],
+  natalPlanets: ['sun', 'moon', 'ascendant', 'mc'],
+  transitLatitude: 48.856,    // optional, defaults to natal location
+  transitLongitude: 2.352,
+});
+
+transit.natalChart            // BirthChart
+transit.transitDateUtc        // Date
+transit.transitPlanets        // Record<string, TransitPlanet>
+transit.aspects               // TransitAspectEdge[]
+```
+
+**`TransitChartOptions`**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `natal` | `BirthChartOptions` | required | Natal chart options. |
+| `transitDate` | `Date` | required | The transit moment. |
+| `transitLatitude` | `number` | natal latitude | Override transit location. |
+| `transitLongitude` | `number` | natal longitude | Override transit location. |
+| `aspectSpecs` | `AspectSpec[]` | `DEFAULT_ASPECT_SPECS` | Override orbs. |
+| `maxOrb` | `number` | — | Filter to aspects tighter than this orb. |
+| `aspectFilter` | `AspectName[]` | — | Keep only these aspect types. |
+| `transitPlanets` | `string[]` | all | Lowercase planet names to include as transit points. |
+| `natalPlanets` | `string[]` | all | Lowercase natal points to use as targets (includes `"ascendant"`, `"mc"`). |
+
+**`TransitAspectEdge`** (extends `AspectEdge`):
+
+| Field | Type | Description |
+|---|---|---|
+| `applying` | `boolean` | True when the orb is decreasing. |
+| `retrograde` | `boolean` | True when the transit planet is moving retrograde. |
+| `category` | `"slow" \| "fast"` | Slow: Saturn, Jupiter, Uranus, Neptune, Pluto, Chiron, Nodes. |
+
+### `getTransitRange(options): Promise<TransitRangeResult>`
+
+Scans a date range and returns exact aspect **perfection dates** found via binary search (minute precision). The Moon and other fast planets auto-reduce the scan step to 0.25 days to avoid missed perfections.
+
+```typescript
+const range = await getTransitRange({
+  natal: { date: new Date('1990-06-15'), latitude: 48.856, longitude: 2.352 },
+  from: new Date('2026-04-01'),
+  to: new Date('2026-06-01'),
+  stepDays: 1,
+  maxOrb: 2,
+  transitPlanets: ['saturn', 'neptune'],
+});
+
+range.natalChart     // BirthChart
+range.from           // Date
+range.to             // Date
+range.perfections    // AspectPerfection[]
+```
+
+**`AspectPerfection`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `transitPlanet` | `string` | Name of transiting planet. |
+| `natalPlanet` | `string` | Name of natal point. |
+| `aspect` | `AspectName` | Aspect type. |
+| `exactDate` | `Date` | Moment of closest approach. |
+| `exactOrb` | `number` | Orb at perfection (degrees). |
+| `retrograde` | `boolean` | Whether transit planet was retrograde at perfection. |
+| `category` | `"slow" \| "fast"` | Planet speed category. |
+
+---
+
+## 5. Solar Returns
+
+```typescript
+import { getSolarReturnChart } from 'kaabalah/astrology';
+```
+
+### `getSolarReturnChart(options): Promise<SolarReturnChart>`
+
+Finds the exact UTC moment when the transiting Sun returns to its natal longitude in the specified year (binary search, minute precision), then casts a full chart at that moment.
+
+```typescript
+const sr = await getSolarReturnChart({
+  natal: {
+    date: { year: 1990, month: 6, day: 15, hour: 14, minute: 30 },
+    latitude: 48.856,
+    longitude: 2.352,
+  },
+  year: 2026,
+  solarReturnLatitude: 40.7128,   // optional relocated SR
+  solarReturnLongitude: -74.006,
+  solarReturnHouseSystem: HouseSystem.WHOLE_SIGN, // optional
+});
+
+sr.natalChart          // BirthChart
+sr.solarReturnChart    // BirthChart — cast at exactReturnDate, SR location
+sr.exactReturnDate     // Date (UTC)
+sr.natalSunLongitude   // number — natal Sun longitude used for search
+sr.year                // number
+```
+
+**`SolarReturnOptions`**
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `natal` | `BirthChartOptions` | required | Natal chart options. |
+| `year` | `number` | required | Target year for the return. |
+| `solarReturnLatitude` | `number` | natal latitude | Relocated SR location. |
+| `solarReturnLongitude` | `number` | natal longitude | Relocated SR location. |
+| `solarReturnHouseSystem` | `HouseSystem` | natal house system | SR chart house system. |
+
+---
+
+## 6. Profections
+
+> **Pure math** — requires a whole-sign `BirthChart`, but no additional WASM calls.
+
+```typescript
+import { getAnnualProfection, getMonthlyProfections } from 'kaabalah/astrology';
+```
+
+Profections are a Hellenistic time-lord technique that advances the Ascendant one house per year. Each house corresponds to a sign, and that sign's domicile ruler becomes the **time lord** for the year.
+
+### `getAnnualProfection(natalChart, birthDate, targetYear?): AnnualProfection`
+
+```typescript
+// natalChart must use HouseSystem.WHOLE_SIGN
+const chart = await getBirthChart({
+  date: new Date('1990-06-15'),
+  latitude: 48.856,
+  longitude: 2.352,
+  houseSystem: HouseSystem.WHOLE_SIGN,
+});
+
+const profection = getAnnualProfection(chart, new Date('1990-06-15'), 2026);
+// { age: 36, house: 1, sign: "Virgo", ruler: "Mercury", targetYear: 2026 }
+```
+
+| Return field | Type | Description |
+|---|---|---|
+| `age` | `number` | Age at start of the profection year. |
+| `house` | `number` | Activated house (1–12). |
+| `sign` | `string` | Sign on the activated house cusp. |
+| `ruler` | `TraditionalPlanet` | Domicile ruler = time lord for the year. |
+| `targetYear` | `number` | The year queried. |
+
+### `getMonthlyProfections(natalChart, birthDate, targetYear?): MonthlyProfectionsResult`
+
+Returns the annual profection plus 12 monthly sub-profections, each advancing one sign from the annual sign, starting on the birthday each month.
+
+```typescript
+const monthly = getMonthlyProfections(chart, new Date('1990-06-15'), 2026);
+
+monthly.annualProfection  // AnnualProfection
+monthly.months            // MonthlyProfection[]
+// monthly.months[0] = { month: 1, startDate: Date, sign: "Virgo", ruler: "Mercury" }
+```
+
+---
+
+## 7. Firdaria
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import { getFirdaria } from 'kaabalah/astrology';
+```
+
+### `getFirdaria(birthDate, isDiurnal, targetDate?, options?): FirdariaResult`
+
+Computes the 75-year planetary period cycle. Sect determines the sequence order: diurnal charts begin with the Sun; nocturnal charts begin with the Moon. Sub-periods follow Chaldean descent from the major period ruler.
+
+```typescript
+const firdaria = getFirdaria(
+  new Date('1990-06-15'),
+  true,               // isDiurnal — use chart.sect === 'diurnal'
+  new Date('2026-04-22'),
+  { nodeSubPeriodStart: 'jupiter-saturn' } // optional
+);
+
+firdaria.sect           // "diurnal"
+firdaria.currentMajor   // FirdariaMajorPeriod
+firdaria.currentSub     // FirdariaSubPeriod
+firdaria.allPeriods     // FirdariaMajorPeriod[]
+```
+
+**Diurnal sequence** (75 years total): Sun 10y → Venus 8y → Mercury 13y → Moon 9y → Saturn 11y → Jupiter 12y → Mars 7y → North Node 3y → South Node 2y
+
+**Nocturnal sequence**: Moon 9y → Saturn 11y → Jupiter 12y → Mars 7y → North Node 3y → South Node 2y → Sun 10y → Venus 8y → Mercury 13y
+
+**`FirdariaMajorPeriod`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `planet` | `FirdariaPlanet` | Major period ruler. |
+| `years` | `number` | Duration of the major period. |
+| `startDate` | `Date` | Period start. |
+| `endDate` | `Date` | Period end. |
+| `subPeriods` | `FirdariaSubPeriod[]` | 7 equal sub-periods in Chaldean descent. |
+
+**`FirdariaOptions`**:
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `nodeSubPeriodStart` | `"jupiter-saturn" \| "sun-mars"` | `"jupiter-saturn"` | Controls which Chaldean position the North/South Node sub-periods start from. |
+
+---
+
+## 8. Aspects
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import {
+  computeAspects,
+  computeSynastryAspects,
+  computeMidpoints,
+  getAspectMatch,
+  DEFAULT_ASPECT_SPECS,
+} from 'kaabalah/astrology';
+```
+
+### `getAspectMatch(lonA, lonB, specs?)`
+
+Check whether two ecliptic longitudes form any aspect. Returns the matching spec and orb, or `null`.
+
+```typescript
+const match = getAspectMatch(15, 105);
+// { spec: { name: "square", angle: 90, orb: 6 }, orb: 0, delta: 90 }
+```
+
+### `computeAspects(planets, specs?): AspectEdge[]`
+
+All unique intra-chart aspects among a set of points.
+
+```typescript
+const aspects = computeAspects({
+  sun: { longitude: 84.5 },
+  moon: { longitude: 210.3 },
+  ascendant: { longitude: 165.0 },
+});
+```
+
+### `computeSynastryAspects(planetsA, planetsB, specs?): AspectEdge[]`
+
+All cross-chart aspects — every point in A vs every point in B.
+
+```typescript
+const crossAspects = computeSynastryAspects(
+  { sun: { longitude: 84.5 }, moon: { longitude: 210.3 } },
+  { sun: { longitude: 120.1 }, moon: { longitude: 300.0 } }
+);
+```
+
+### `computeMidpoints(planetsA, planetsB): Record<string, number>`
+
+Shorter-arc midpoint longitude for each planet that exists in both maps. Used internally by `getCompositeChart`.
+
+```typescript
+const midpoints = computeMidpoints(
+  { sun: { longitude: 84.5 }, moon: { longitude: 210.3 } },
+  { sun: { longitude: 120.1 }, moon: { longitude: 300.0 } }
+);
+// { sun: 102.3, moon: 255.15 }
+```
+
+### `DEFAULT_ASPECT_SPECS`
+
+| Aspect | Angle | Default orb |
+|---|---|---|
+| conjunction | 0° | 8° |
+| duodecile | 30° | 2° |
+| octile | 45° | 3° |
+| sextile | 60° | 5° |
+| square | 90° | 6° |
+| trine | 120° | 7° |
+| trioctile | 135° | 3° |
+| quincunx | 150° | 3° |
+| opposition | 180° | 8° |
+
+**`AspectEdge`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `planetA` | `string` | First point name. |
+| `planetB` | `string` | Second point name. |
+| `longitudeA` | `number` | Longitude of point A. |
+| `longitudeB` | `number` | Longitude of point B. |
+| `aspect` | `AspectName` | Aspect name. |
+| `aspectAngle` | `number` | Exact aspect angle. |
+| `delta` | `number` | Shorter arc between the two points. |
+| `orb` | `number` | Deviation from exact (degrees). |
+
+---
+
+## 9. Astrocartography
+
+> **Pure math** — no WASM dependency (uses pre-computed equatorial positions synchronously).
+
+```typescript
+import {
+  queryAstrocartographyLocation,
+  computeAstrocartographyMap,
+  computeGMST,
+  computeMCLongitude,
+  computeICLongitude,
+  computeHorizonLongitude,
+  findParansAtLatitude,
+  ASTROCARTOGRAPHY_DEFAULT_PLANETS,
+} from 'kaabalah/astrology';
+```
+
+### `queryAstrocartographyLocation(date, options): AstrocartographyQueryResult`
+
+**Primary API.** For a natal UTC date and a query location, returns how close each planet/angle line is to that location, which lines are active (within orb), and any paran crossings at the query latitude.
+
+```typescript
+const result = queryAstrocartographyLocation(chart.dateUtc, {
+  latitude: 51.5,
+  longitude: -0.12,
+  orb: 3,      // default 2
+  paranOrb: 1, // default 1
+  planets: ASTROCARTOGRAPHY_DEFAULT_PLANETS, // optional subset
+});
+
+result.lines        // AstrocartographyLineProximity[] — sorted by distance
+result.activeLines  // AstrocartographyLineProximity[] — within orb
+result.parans       // AstrocartographyParan[]
+```
+
+**`AstrocartographyLineProximity`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `planet` | `string` | Planet name. |
+| `angle` | `"MC" \| "IC" \| "AC" \| "DC"` | Angle line type. |
+| `distance` | `number` | Degrees of longitude separation (0–180). |
+| `active` | `boolean` | True when distance ≤ orb. |
+| `longitude` | `number` | Geographic longitude of the line (−180 to 180). |
+
+**`AstrocartographyParan`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `latitude` | `number` | Query latitude. |
+| `planetA` / `planetB` | `string` | Two planets sharing this latitude. |
+| `angleA` / `angleB` | `AngleType` | Their respective angle types. |
+| `longitudeA` / `longitudeB` | `number` | Their geographic longitudes. |
+
+### `computeAstrocartographyMap(date, options?): AstrocartographyMap`
+
+Generates the complete ACG map: MC/IC lines as constant longitudes, AC/DC lines as arrays of latitude/longitude points from a latitude sweep.
+
+```typescript
+const map = computeAstrocartographyMap(chart.dateUtc, {
+  latitudeStep: 1,     // default 1 degree
+  latitudeRange: 66.5, // default 66.5 (polar circle)
+});
+
+map.meridianLines  // AstrocartographyMeridianLine[]
+map.horizonLines   // AstrocartographyHorizonLine[]
+```
+
+### Lower-level helpers
+
+| Function | Signature | Description |
+|---|---|---|
+| `computeGMST` | `(julianDay) → number` | Greenwich Mean Sidereal Time in degrees. |
+| `computeMCLongitude` | `(gmst, ra) → number` | Geographic longitude of a planet's MC line (−180..180). |
+| `computeICLongitude` | `(gmst, ra) → number` | Geographic longitude of a planet's IC line. |
+| `computeHorizonLongitude` | `(gmst, ra, dec, latitude, "AC"\|"DC") → number \| null` | Geographic longitude of AC or DC line at a latitude. Returns `null` if circumpolar. |
+| `findParansAtLatitude` | `(positions, gmst, latitude, paranOrb?) → AstrocartographyParan[]` | Paran crossings at a latitude from pre-computed equatorial positions. |
+
+**`ASTROCARTOGRAPHY_DEFAULT_PLANETS`**: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, True Node.
+
+---
+
+## 10. Essential Dignity
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import {
+  getEssentialDignity,
+  getDomicileRuler,
+  getExaltation,
+  getDetriment,
+  getFall,
+  getOppositeSign,
+  DOMICILE_RULERS,
+  EXALTATIONS,
+} from 'kaabalah/astrology';
+```
+
+Traditional Hellenistic rulership data for the seven classical planets.
+
+### `getEssentialDignity(planet, sign): EssentialDignityResult`
+
+Comprehensive dignity assessment for a planet in a sign.
+
+```typescript
+const dignity = getEssentialDignity('Saturn', 'Libra');
+// { domicile: false, exaltation: true, detriment: false, fall: false,
+//   domicileRuler: "Venus", peregrine: false }
+```
+
+**`EssentialDignityResult`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `domicile` | `boolean` | Planet rules this sign. |
+| `exaltation` | `boolean` | Planet is exalted here. |
+| `detriment` | `boolean` | Planet is in detriment here. |
+| `fall` | `boolean` | Planet is in fall here. |
+| `domicileRuler` | `TraditionalPlanet` | The sign's domicile ruler (may differ from the queried planet). |
+| `peregrine` | `boolean` | None of domicile, exaltation, detriment, or fall. |
+
+### Individual lookup functions
+
+```typescript
+getDomicileRuler('Scorpio')   // "Mars"
+getExaltation('Saturn')       // { sign: "Libra", degree: 21 }
+getDetriment('Mars')          // ["Libra", "Taurus"]
+getFall('Jupiter')            // "Capricorn"
+getOppositeSign('Aries')      // "Libra"
+```
+
+**`TraditionalPlanet`** values: `"Sun"`, `"Moon"`, `"Mercury"`, `"Venus"`, `"Mars"`, `"Jupiter"`, `"Saturn"`.
+
+---
+
+## 11. Decans
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import { getDecan } from 'kaabalah/astrology';
+```
+
+### `getDecan(longitude): DecanResult`
+
+Returns the decan (face) for an ecliptic longitude using Chaldean rulers and the Golden Dawn tarot correspondence.
+
+```typescript
+const decan = getDecan(84.5); // 24°30' Gemini
+// {
+//   sign: "Gemini",
+//   decanNumber: 3,
+//   ruler: "Saturn",
+//   tarotCard: "Ten of Swords",
+//   startDegree: 80,
+//   endDegree: 90,
+//   degreeWithinSign: 24.5,
+// }
+```
+
+**`DecanResult`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `sign` | `string` | Zodiac sign. |
+| `decanNumber` | `1 \| 2 \| 3` | Which decan within the sign. |
+| `ruler` | `TraditionalPlanet` | Chaldean ruler of this decan. |
+| `tarotCard` | `string` | Golden Dawn minor arcana card (e.g. `"Five of Wands"`). |
+| `startDegree` | `number` | Absolute ecliptic longitude start (0–360). |
+| `endDegree` | `number` | Absolute ecliptic longitude end (0–360). |
+| `degreeWithinSign` | `number` | Position within the sign (0–30). |
+
+---
+
+## 12. Dodecatemoria
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import { getDodecatemoria } from 'kaabalah/astrology';
+```
+
+### `getDodecatemoria(longitude): DodecatemoriaResult`
+
+Computes the 12th-part (dodecatemoria) for an ecliptic longitude. Each 2.5° segment of a sign maps to one of the 12 signs starting from the sign itself.
+
+```typescript
+const result = getDodecatemoria(5.0); // 5° Aries
+// {
+//   originalSign: "Aries",
+//   originalDegree: 5,
+//   dodecatemoriaSign: "Taurus",
+//   dodecatemoriaIndex: 1,
+// }
+```
+
+**`DodecatemoriaResult`**:
+
+| Field | Type | Description |
+|---|---|---|
+| `originalSign` | `string` | Sign of the input longitude. |
+| `originalDegree` | `number` | Degree within the original sign (0–30). |
+| `dodecatemoriaSign` | `string` | The 12th-part sign. |
+| `dodecatemoriaIndex` | `number` | 0–11 offset from the original sign. |
+
+---
+
+## 13. Utility functions
+
+> **Pure math** — no WASM dependency.
+
+```typescript
+import {
+  formatDegreeMinutes,
+  getZodiacPosition,
+  findHouseOf,
+  normalizeAngle,
+  SIGNS,
+} from 'kaabalah/astrology';
+```
+
+| Function | Signature | Description |
+|---|---|---|
+| `formatDegreeMinutes` | `(decimalDegrees) → string` | Formats a decimal degree as `"9°48'"`. |
+| `getZodiacPosition` | `(longitude, houseCusps) → ZodiacPosition` | Converts a 0–360 longitude to a full `ZodiacPosition` including house. |
+| `findHouseOf` | `(longitude, housePositions) → number` | Returns the house number (1–12) for a longitude given cusp array. |
+| `normalizeAngle` | `(angle) → number` | Wraps any angle to 0–360. |
+| `SIGNS` | `readonly string[]` | `["Aries", ..., "Pisces"]` — 12 sign names in order. |
+
+---
 
 <LinkCard title="Try Astrology" description="Interactive birth chart calculator" href="https://astrology.kaabalah.com" />

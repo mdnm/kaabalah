@@ -1,6 +1,6 @@
 ---
 title: Tarot
-description: 78 tarot cards with meanings, spreads, and interpretations
+description: 78-card tarot deck with profiles, archetypes, esoteric correspondences, multi-deck image URLs, and structured spread engine
 sidebar:
   order: 4
 ---
@@ -10,60 +10,737 @@ import { LinkCard } from '@astrojs/starlight/components';
 ## Import
 
 ```typescript
-import { ARKANNUS, majorArcana, shuffleTarotDeck } from 'kaabalah/tarot';
+import {
+  ARKANNUS,
+  majorArcana,
+  shuffleTarotDeck,
+  getTarotCardProfile,
+  getTarotCardByNumber,
+  getTarotCardNumber,
+  getTarotArchetype,
+  getTarotCorrespondenceProfile,
+  getTarotRepresentations,
+  getTarotRepresentation,
+  resolveTarotImageUrl,
+  listTarotDecks,
+  listTarotTrees,
+  listTarotSpreads,
+  getTarotSpread,
+  drawTarotSpread,
+  validateTarotSpreadSelection,
+  TAROT_IMAGE_BASE_URL,
+} from 'kaabalah/tarot';
 ```
 
-## Exports
+---
 
-- `ARKANNUS`
-- `majorArcana`
-- `shuffleTarotDeck`
+## Card catalog
 
-## Card Structure
+### `ARKANNUS`
 
-The `ARKANNUS` array contains all 78 tarot cards with the following structure:
+The full 78-card deck as a `TarotCard[]`, sorted by canonical kaabalah tree number. Card numbers are resolved from the Tree of Life graph rather than being hard-coded.
+
+```typescript
+import { ARKANNUS } from 'kaabalah/tarot';
+
+// all major arcana
+const majors = ARKANNUS.filter(c => c.type === 'major');
+
+// all wands
+const wands = ARKANNUS.filter(c => c.suit === 'wands');
+```
+
+**`TarotCard` shape:**
 
 ```typescript
 type TarotCard = {
-  number: number
-  tarotCard: string
-  tarotCardFilename: string
-  egyptianCardName?: string
-  meaning: string
-  papusMeaning?: string
+  number: number                           // canonical card number
+  tarotCard: string                        // display name, e.g. "The Magician"
+  tarotCardFilename: string                // asset slug, e.g. "01_the_magician"
+  egyptianCardName?: string                // Kier Egyptian title, e.g. "Initiation"
+  meaning: string                          // kaabalah interpretation
+  papusMeaning?: string                    // Papus divinatory meaning
   type: 'major' | 'minor' | 'daat+royalship'
-  deck: string
-  suit?: string
+  deck: Deck
+  suit?: string                            // 'wands' | 'cups' | 'swords' | 'pentacles'
   isInverted?: boolean
 }
 ```
 
-## Card Types
+**Card ranges:**
 
-- **Major Arcana** (1-22): The 22 trump cards
-- **Da'at Royalship** (23-26, 37-40, 51-54, 65-68): Court cards for each suit
-- **Minor Arcana** (27-36, 41-50, 55-64, 69-78): Pip cards for each suit
+| Range | Type | Description |
+|---|---|---|
+| 1–22 | `major` | Major Arcana (The Magician → The World) |
+| 23–26, 37–40, 51–54, 65–68 | `daat+royalship` | Court cards (King/Queen/Knight/Page per suit) |
+| 27–36, 41–50, 55–64, 69–78 | `minor` | Pip cards (Ace–10 per suit) |
 
-## Suits
+<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-end; margin: 1rem 0 0.5rem;">
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/minor/wands/ace_wands.jpg" alt="Ace of Wands" width="100" style="border-radius: 8px;" />
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/daat+royalship/wands/king_wands.jpg" alt="King of Wands" width="100" style="border-radius: 8px;" />
+</div>
 
-- Wands (Fire)
-- Cups (Water)
-- Swords (Air)
-- Pentacles (Earth)
+### `majorArcana`
 
-## Usage Example
+Ordered `MajorArcana[]` — the 22 filename slugs from `"01_the_magician"` to `"22_the_world"`.
+
+```typescript
+import { majorArcana } from 'kaabalah/tarot';
+// ["01_the_magician", "02_the_high_priestess", ..., "22_the_world"]
+```
+
+<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0;">
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician" width="120" style="border-radius: 8px;" />
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/02_the_high_priestess.jpg" alt="The High Priestess" width="120" style="border-radius: 8px;" />
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/05_the_hierophant.jpg" alt="The Hierophant" width="120" style="border-radius: 8px;" />
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/10_the_wheel_of_fortune.jpg" alt="Wheel of Fortune" width="120" style="border-radius: 8px;" />
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/09_the_hermit.jpg" alt="The Hermit" width="120" style="border-radius: 8px;" />
+</div>
+
+---
+
+## Deck & tree metadata
+
+### `listTarotDecks()`
+
+```typescript
+function listTarotDecks(): TarotDeckMetadata[]
+```
+
+Returns metadata for all supported decks.
+
+```typescript
+import { listTarotDecks } from 'kaabalah/tarot';
+
+const decks = listTarotDecks();
+// [
+//   { id: 'papus_pt',    label: 'Papus Kaabalistic' },
+//   { id: 'papus',       label: 'Papus Divinatory' },
+//   { id: 'mythic',      label: 'Mythic' },
+//   { id: 'egyptian',    label: 'Egyptian' },
+//   { id: 'rider-waite', label: 'Rider Waite' },
+// ]
+```
+
+**`TarotDeckMetadata`:**
+
+```typescript
+interface TarotDeckMetadata {
+  id: TarotDeckId;   // 'papus_pt' | 'papus' | 'mythic' | 'egyptian' | 'rider-waite'
+  label: string;
+}
+```
+
+### `listTarotTrees()`
+
+```typescript
+function listTarotTrees(): TarotTreeId[]
+```
+
+Returns the tree system IDs that carry tarot correspondences.
+
+```typescript
+import { listTarotTrees } from 'kaabalah/tarot';
+
+listTarotTrees();
+// ['kaabalah', 'hermetic-qabalah', 'lurianic-kabbalah']
+```
+
+---
+
+## Card lookup
+
+### `getTarotCardProfile(lookup)`
+
+```typescript
+function getTarotCardProfile(lookup: TarotImageLookup): TarotCardProfile | undefined
+```
+
+Fetches the rich profile for any card. Accepts multiple lookup strategies via a discriminated union:
+
+```typescript
+type TarotImageLookup =
+  | { pathSlug: string }                                     // e.g. { pathSlug: 'aleph' }
+  | { pathId: NodeId<KaabalahTypes.PATH> }
+  | { tarotCardFilename: string }                            // e.g. { tarotCardFilename: '01_the_magician' }
+  | { tarotCardNumber: number }                              // e.g. { tarotCardNumber: 1 }
+  | { tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU> }
+  | { tarotCardName: string }                                // e.g. { tarotCardName: 'The Magician' }
+```
+
+```typescript
+import { getTarotCardProfile } from 'kaabalah/tarot';
+
+const profile = getTarotCardProfile({ tarotCardName: 'The Magician' });
+// {
+//   tarotArkAnnuId: ...,
+//   tarotCardNumber: 1,
+//   tarotCardName: 'The Magician',
+//   tarotCardFilename: '01_the_magician',
+//   tarotMeaning: '...',
+//   kind: 'major',
+//   assetPathType: 'major',
+//   suit: undefined,
+//   courtRank: undefined,
+//   availableDeckIds: ['papus_pt', 'papus', 'mythic', 'egyptian', 'rider-waite'],
+//   descriptionsByDeck: { papus_pt: { meaning: '...', keywords: [...] }, ... }
+// }
+```
+
+**`TarotCardProfile` shape:**
+
+```typescript
+interface TarotCardProfile {
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  tarotCardNumber: number;
+  tarotCardName: string;
+  tarotCardFilename: string;
+  tarotMeaning?: string;
+  kind: 'major' | 'court' | 'minor';
+  assetPathType: 'major' | 'minor' | 'daat+royalship';
+  suit?: string;
+  courtRank?: 'king' | 'queen' | 'knight' | 'page';
+  availableDeckIds: TarotDeckId[];
+  descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
+}
+
+interface TarotDeckDescription {
+  name?: string;
+  meaning?: string;
+  reversedMeaning?: string;
+  keywords?: string[];
+}
+```
+
+### `getTarotCardByNumber(cardNumber, treeId?)`
+
+```typescript
+function getTarotCardByNumber(
+  cardNumber: number,
+  treeId?: TarotTreeId   // default: 'kaabalah'
+): TarotCardProfile | undefined
+```
+
+Looks up a card profile by its canonical number in the specified tree system.
+
+```typescript
+import { getTarotCardByNumber } from 'kaabalah/tarot';
+
+const card = getTarotCardByNumber(5);
+// TarotCardProfile for The Hierophant
+```
+
+### `getTarotCardNumber(lookup, treeId?)`
+
+```typescript
+function getTarotCardNumber(
+  lookup: TarotImageLookup,
+  treeId?: TarotTreeId   // default: 'kaabalah'
+): number | undefined
+```
+
+Resolves a card's canonical number from any lookup strategy and tree system.
+
+```typescript
+import { getTarotCardNumber } from 'kaabalah/tarot';
+
+getTarotCardNumber({ tarotCardFilename: '05_the_hierophant' }); // 5
+getTarotCardNumber({ tarotCardName: 'The Hierophant' });        // 5
+```
+
+---
+
+## Archetypes (Major Arcana)
+
+### `getTarotArchetype(lookup)`
+
+```typescript
+function getTarotArchetype(lookup: TarotArchetypeLookup): TarotArchetype | undefined
+```
+
+Returns the full esoteric archetype for a major arcana card — its canonical path on the Tree of Life, Hebrew letter, path number, and astrological correspondences.
+
+```typescript
+type TarotArchetypeLookup =
+  | { pathSlug: string }
+  | { pathId: NodeId<KaabalahTypes.PATH> }
+  | { tarotCardFilename: MajorArcana | string }
+  | { tarotCardNumber: number }
+```
+
+```typescript
+import { getTarotArchetype } from 'kaabalah/tarot';
+
+const archetype = getTarotArchetype({ tarotCardNumber: 1 });
+// {
+//   canonicalId: ...,
+//   kind: 'major',
+//   pathId: ...,
+//   pathNumber: 1,
+//   pathSlug: 'aleph',
+//   hebrewLetterId: ...,
+//   hebrewLetter: 'Aleph',
+//   pathMeaning: '...',
+//   tarotArkAnnuId: ...,
+//   tarotCardNumber: 1,
+//   tarotCardName: 'The Magician',
+//   tarotCardFilename: '01_the_magician',
+//   tarotMeaning: '...',
+//   astrology: [
+//     { type: 'planet', id: ..., label: 'Mercury' }
+//   ],
+//   availableDeckIds: [...],
+//   descriptionsByDeck: { ... }
+// }
+```
+
+**`TarotArchetype` shape:**
+
+```typescript
+interface TarotArchetype {
+  canonicalId: NodeId<KaabalahTypes.PATH>;
+  kind: 'major';
+  pathId: NodeId<KaabalahTypes.PATH>;
+  pathNumber: number;
+  pathSlug: string;                                  // lowercase Hebrew letter name
+  hebrewLetterId: NodeId<LetterTypes.HEBREW_LETTER>;
+  hebrewLetter: string;
+  pathMeaning?: string;
+  tarotArkAnnuId: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  tarotCardNumber: number;
+  tarotCardName: string;
+  tarotCardFilename: MajorArcana;
+  tarotMeaning?: string;
+  astrology: TarotAstrologyCorrespondence[];          // planet, sign, or element
+  availableDeckIds: TarotDeckId[];
+  descriptionsByDeck: Partial<Record<TarotDeckId, TarotDeckDescription>>;
+}
+
+interface TarotAstrologyCorrespondence {
+  type: WesternAstrologyTypes.PLANET
+    | WesternAstrologyTypes.WESTERN_ZODIAC_SIGN
+    | WesternAstrologyTypes.WESTERN_ELEMENT;
+  id: NodeId<...>;
+  label: string;
+}
+```
+
+---
+
+## Correspondences
+
+### `getTarotCorrespondenceProfile(lookup, treeId?)`
+
+```typescript
+function getTarotCorrespondenceProfile(
+  lookup: TarotImageLookup,
+  treeId?: TarotTreeId   // default: 'kaabalah'
+): TarotCorrespondenceProfile | undefined
+```
+
+Returns the full esoteric correspondence profile for any card — the shape varies by card kind:
+
+- **Major** — path on the Tree of Life (from/to spheres, Hebrew letter, path number, path meaning) + astrology (element/planet/sign)
+- **Court — Page** — element via suit
+- **Court — King/Queen/Knight** — zodiac sign + ruling planets
+- **Minor** — Kabbalistic sphere + ruling planets
+
+```typescript
+import { getTarotCorrespondenceProfile } from 'kaabalah/tarot';
+
+// Major arcana
+const major = getTarotCorrespondenceProfile({ tarotCardNumber: 1 });
+// {
+//   kind: 'major',
+//   tarotCardNumber: 1,
+//   tarotCardName: 'The Magician',
+//   ...
+//   correspondences: {
+//     astrology: [{ type: 'planet', label: 'Mercury', id: ... }],
+//     path: {
+//       pathId: ..., pathNumber: 1, pathSlug: 'aleph',
+//       meaning: '...',
+//       hebrewLetter: { id: ..., label: 'Aleph' },
+//       fromSphere: { id: ..., label: 'Kether' },
+//       toSphere:   { id: ..., label: 'Chokhmah' }
+//     }
+//   }
+// }
+
+// Minor arcana
+const minor = getTarotCorrespondenceProfile({ tarotCardName: 'Ace of Wands' });
+// {
+//   kind: 'minor',
+//   ...
+//   correspondences: {
+//     sphere:  { id: ..., label: 'Kether' },
+//     planets: [{ id: ..., label: 'Neptune' }]
+//   }
+// }
+
+// Court card (King)
+const court = getTarotCorrespondenceProfile({ tarotCardName: 'King of Wands' });
+// {
+//   kind: 'court', courtRank: 'king',
+//   correspondences: {
+//     sign:    { id: ..., label: 'Aries' },
+//     planets: [{ id: ..., label: 'Mars' }]
+//   }
+// }
+```
+
+**`TarotCorrespondenceProfile` union:**
+
+```typescript
+type TarotCorrespondenceProfile =
+  | TarotMajorCorrespondenceProfile
+  | TarotPageCorrespondenceProfile
+  | TarotCourtAstrologyCorrespondenceProfile
+  | TarotMinorCorrespondenceProfile;
+```
+
+---
+
+## Deck representations & image URLs
+
+### `TAROT_IMAGE_BASE_URL`
+
+```typescript
+const TAROT_IMAGE_BASE_URL = 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot';
+```
+
+Image URLs follow the pattern:
+
+```
+{TAROT_IMAGE_BASE_URL}/{deckId}/{assetPath}.jpg
+```
+
+Where `assetPath` is:
+- `major/{tarotCardFilename}` for major arcana
+- `{assetPathType}/{suit}/{tarotCardFilename}` for court and minor cards
+
+For example, resolving The Magician from the Rider-Waite deck:
+
+```
+https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg
+```
+
+<div style="display: flex; align-items: flex-start; gap: 1.25rem; margin: 1rem 0;">
+  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician — Rider-Waite" width="100" style="border-radius: 8px; flex-shrink: 0;" />
+  <p style="margin: 0; font-size: 0.9rem; color: inherit;">The Magician (<code>01_the_magician</code>) from the Rider-Waite deck. The URL is assembled from <code>TAROT_IMAGE_BASE_URL + "/" + deckId + "/major/" + tarotCardFilename + ".jpg"</code>.</p>
+</div>
+
+### `getTarotRepresentations(lookup)`
+
+```typescript
+function getTarotRepresentations(lookup: TarotImageLookup): TarotRepresentation[]
+```
+
+Returns one `TarotRepresentation` per deck (five total) for the matched card. Each entry carries the deck-specific image URL, label, and description.
+
+```typescript
+import { getTarotRepresentations } from 'kaabalah/tarot';
+
+const reps = getTarotRepresentations({ tarotCardNumber: 1 });
+// [
+//   {
+//     card: TarotCardProfile,
+//     archetype: TarotArchetype | undefined,   // populated for major arcana
+//     deck: { id: 'papus_pt', label: 'Papus Kaabalistic' },
+//     assetPath: 'major/01_the_magician',
+//     imageUrl: 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/papus_pt/major/01_the_magician.jpg',
+//     label: 'The Magician - Papus Kaabalistic',
+//     altText: 'The Magician - Papus Kaabalistic',
+//     cardLabel: 'The Magician',
+//     description: { meaning: '...', keywords: [...] }
+//   },
+//   ... (one per deck)
+// ]
+```
+
+### `getTarotRepresentation(lookup, deckId)`
+
+```typescript
+function getTarotRepresentation(
+  lookup: TarotImageLookup,
+  deckId: TarotDeckId
+): TarotRepresentation | undefined
+```
+
+Single-deck variant — returns the representation for the specified deck only.
+
+```typescript
+import { getTarotRepresentation } from 'kaabalah/tarot';
+
+const rep = getTarotRepresentation({ tarotCardNumber: 1 }, 'rider-waite');
+// TarotRepresentation for The Magician in the Rider-Waite deck
+```
+
+**`TarotRepresentation` shape:**
+
+```typescript
+interface TarotRepresentation {
+  card: TarotCardProfile;
+  archetype?: TarotArchetype;            // only for major arcana
+  deck: TarotDeckMetadata;
+  assetPath: string;
+  imageUrl: string;
+  label: string;
+  altText: string;
+  cardLabel: string;                     // deck-specific card name if available
+  description?: TarotDeckDescription;
+}
+```
+
+### `resolveTarotImageUrl(lookup, deckId)`
+
+```typescript
+function resolveTarotImageUrl(
+  lookup: TarotImageLookup,
+  deckId: TarotDeckId
+): string | undefined
+```
+
+Convenience shorthand that returns just the image URL string for a card + deck combination.
+
+```typescript
+import { resolveTarotImageUrl } from 'kaabalah/tarot';
+
+const url = resolveTarotImageUrl({ tarotCardFilename: '01_the_magician' }, 'mythic');
+// 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/major/01_the_magician.jpg'
+```
+
+---
+
+## Deck shuffling
+
+### `shuffleTarotDeck(cards, includeInvertedCards?, shuffleCount?, shuffleDelay?)`
+
+```typescript
+async function shuffleTarotDeck(
+  cards: TarotCard[],
+  includeInvertedCards?: boolean,   // default: false
+  shuffleCount?: number,            // default: 6
+  shuffleDelay?: number             // delay between passes in ms, default: 300
+): Promise<TarotCard[]>
+```
+
+Shuffles the deck using a Fisher-Yates algorithm applied `shuffleCount` times. When `includeInvertedCards` is `true`, the bottom half of the deck after the first shuffle is marked `isInverted: true`.
 
 ```typescript
 import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
 
-// Get all major arcana
-const majorArcana = ARKANNUS.filter(card => card.type === 'major');
-
-// Shuffle and draw 3 cards
 const shuffled = await shuffleTarotDeck(ARKANNUS, true);
-const spread = shuffled.slice(0, 3);
+const threeCardSpread = shuffled.slice(0, 3);
 ```
 
-## Live example
+---
+
+## Spread engine
+
+The spread engine provides structured spread definitions, deterministic drawing, and validation.
+
+### `listTarotSpreads()`
+
+```typescript
+function listTarotSpreads(): TarotSpreadDefinition[]
+```
+
+Returns definitions for all built-in spreads:
+
+| `spreadId` | Label | Slots |
+|---|---|---|
+| `quick-insight` | Quick Insight | 1 (any) |
+| `conscious-reading` | Conscious Reading | 3 — major, court, minor |
+| `time-reading` | Time Reading | 3 major arcana (past/present/future) |
+| `dialectic-reading` | Dialectic Reading | 3 major arcana (thesis/antithesis/synthesis) |
+| `tree-of-life-reading` | Tree of Life Reading | 10 minor (Aces–Tens) + 4 court (Daath) |
+| `celtic-cross` | Celtic Cross | 10 (any) |
+| `event-reading` | Event Reading | 12 outer minor/court + 7 inner major + 1 inquirer |
+
+### `getTarotSpread(spreadId)`
+
+```typescript
+function getTarotSpread(spreadId: TarotSpreadId): TarotSpreadDefinition | undefined
+```
+
+Returns a single spread definition by ID.
+
+```typescript
+import { getTarotSpread } from 'kaabalah/tarot';
+
+const spread = getTarotSpread('celtic-cross');
+// { spreadId: 'celtic-cross', label: 'Celtic Cross', slots: [...], ... }
+```
+
+**`TarotSpreadDefinition` shape:**
+
+```typescript
+interface TarotSpreadDefinition {
+  spreadId: TarotSpreadId;
+  label: string;
+  description?: string;
+  contextRequirements?: TarotSpreadContextKey[];   // e.g. ['inquirerGender']
+  slots: TarotSpreadSlotDefinition[];
+  specialRules?: {
+    inquirerCard?: TarotSpreadInquirerRule;
+  };
+}
+
+interface TarotSpreadSlotDefinition {
+  slotKey: string;
+  label: string;
+  order: number;
+  minCards: number;
+  maxCards: number;
+  validationRules?: TarotSpreadCardConstraint;
+  manualSelectionRules?: TarotSpreadCardConstraint;
+  drawRules?: TarotSpreadCardConstraint;
+  metadata?: TarotSpreadSlotMetadata;
+}
+
+interface TarotSpreadCardConstraint {
+  allowedTypes?: ('major' | 'minor' | 'daat+royalship')[];
+  requiredRank?: 'ace' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10';
+  allowedCardFilenames?: string[];
+  excludedCardFilenames?: string[];
+}
+```
+
+### `drawTarotSpread(options)`
+
+```typescript
+function drawTarotSpread(options: DrawTarotSpreadOptions): TarotSpreadDrawResult
+```
+
+Draws a complete spread by randomly selecting cards that satisfy each slot's draw rules. Throws if the spread ID is unknown or the resulting selection is invalid.
+
+```typescript
+interface DrawTarotSpreadOptions {
+  spreadId: TarotSpreadId;
+  deckId?: TarotDeckId;             // default: 'rider-waite'
+  includeInverted?: boolean;        // default: false
+  rng?: () => number;               // default: Math.random
+  context?: TarotSpreadSelectionContext;
+}
+```
+
+```typescript
+import { drawTarotSpread } from 'kaabalah/tarot';
+
+// Basic draw
+const result = drawTarotSpread({ spreadId: 'celtic-cross' });
+
+// Event Reading requires inquirerGender context
+const eventResult = drawTarotSpread({
+  spreadId: 'event-reading',
+  includeInverted: true,
+  context: { inquirerGender: 'woman' }
+});
+
+// Deterministic draw (for tests)
+let seed = 0;
+const deterministicResult = drawTarotSpread({
+  spreadId: 'time-reading',
+  rng: () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff
+});
+```
+
+**`TarotSpreadDrawResult` shape:**
+
+```typescript
+interface TarotSpreadDrawResult {
+  spread: TarotSpreadDefinition;
+  deckId: TarotDeckId;
+  context?: TarotSpreadSelectionContext;
+  cards: TarotSpreadResolvedSelectionCard[];
+}
+
+interface TarotSpreadResolvedSelectionCard {
+  slotKey: string;
+  cardNumber: number;
+  isInverted?: boolean;
+  card: TarotCard;
+  slot: TarotSpreadSlotDefinition;
+}
+```
+
+### `validateTarotSpreadSelection(input)`
+
+```typescript
+function validateTarotSpreadSelection(
+  input: TarotSpreadValidationInput
+): TarotSpreadValidationResult
+```
+
+Validates a manually composed card selection against a spread's rules. Supports partial validation via `allowPartial: true`.
+
+```typescript
+interface TarotSpreadValidationInput {
+  spreadId: TarotSpreadId;
+  cards: TarotSpreadSelectionCard[];    // { slotKey, cardNumber, isInverted? }[]
+  context?: TarotSpreadSelectionContext;
+  allowPartial?: boolean;
+}
+```
+
+```typescript
+import { validateTarotSpreadSelection } from 'kaabalah/tarot';
+
+const result = validateTarotSpreadSelection({
+  spreadId: 'time-reading',
+  cards: [
+    { slotKey: 'past',    cardNumber: 1 },
+    { slotKey: 'present', cardNumber: 5 },
+    { slotKey: 'future',  cardNumber: 12 }
+  ]
+});
+
+// {
+//   ok: true,
+//   isComplete: true,
+//   spread: TarotSpreadDefinition,
+//   resolvedCards: TarotSpreadResolvedSelectionCard[],
+//   errors: []
+// }
+```
+
+**Validation error codes:**
+
+| Code | Description |
+|---|---|
+| `UNKNOWN_SPREAD` | The `spreadId` does not exist |
+| `UNKNOWN_SLOT` | A `slotKey` is not defined on the spread |
+| `CARD_NOT_FOUND` | `cardNumber` does not map to a known card |
+| `DUPLICATE_CARD` | Same card used in multiple slots |
+| `MISSING_REQUIRED_CARDS` | Slot has fewer cards than `minCards` |
+| `TOO_MANY_CARDS` | Slot has more cards than `maxCards` |
+| `INVALID_CARD_TYPE` | Card type not in slot's `allowedTypes` |
+| `INVALID_CARD_RANK` | Minor arcana card does not match `requiredRank` |
+| `DISALLOWED_CARD` | Card is excluded or not in `allowedCardFilenames` |
+| `MISSING_CONTEXT` | Spread requires `context.inquirerGender` but it was not supplied |
+| `INVALID_INQUIRER_CARD` | Event Reading inquirer card placement rule violated |
+
+---
+
+## Types reference
+
+```typescript
+type Deck = 'papus_pt' | 'papus' | 'mythic' | 'egyptian' | 'rider-waite';
+type TarotDeckId = Deck;
+type TarotTreeId = 'kaabalah' | 'hermetic-qabalah' | 'lurianic-kabbalah';
+type TarotCardKind = 'major' | 'court' | 'minor';
+type TarotCourtRank = 'king' | 'queen' | 'knight' | 'page';
+type TarotAssetPathType = 'major' | 'minor' | 'daat+royalship';
+type TarotInquirerGender = 'man' | 'woman';
+type TarotSpreadId =
+  | 'quick-insight'
+  | 'conscious-reading'
+  | 'time-reading'
+  | 'dialectic-reading'
+  | 'tree-of-life-reading'
+  | 'celtic-cross'
+  | 'event-reading';
+```
 
 <LinkCard title="Try Tarot" description="Interactive tarot card drawing" href="https://tarot.kaabalah.com" />

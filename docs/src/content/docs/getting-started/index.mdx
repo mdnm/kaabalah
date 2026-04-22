@@ -8,7 +8,7 @@ sidebar:
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-Kaabalah is a comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot calculations.
+Kaabalah is a comprehensive TypeScript library for esoteric calculations — numerology, astrology, kabbalah, gematria, tarot, Ifa, and more.
 
 ## Installation
 
@@ -30,6 +30,21 @@ Kaabalah is a comprehensive TypeScript library for numerology, astrology, kaabal
   </TabItem>
 </Tabs>
 
+## Modules
+
+Each module is tree-shakable and can be imported independently:
+
+| Import path | What it provides |
+|---|---|
+| `kaabalah/core` | Tree of Life graph — spheres, paths, and cross-system correspondences |
+| `kaabalah/numerology` | Life path, challenges, cycles, personal year calculations |
+| `kaabalah/astrology` | Birth charts, synastry, transits, profections, firdaria, ACG (Swiss Ephemeris) |
+| `kaabalah/gematria` | Hebrew numerology for Latin text, reverse gematria |
+| `kaabalah/tarot` | 78-card deck, profiles, archetypes, correspondences, multi-deck images, spread engine |
+| `kaabalah/ifa` | Ifa divination — Odu numbers from a date |
+| `kaabalah/semantic` | Occult theme profiles for NLP, search, and content tagging |
+| `kaabalah/visual` | Tree of Life SVG generation |
+
 ## Quick Example
 
 ```typescript
@@ -46,3 +61,4 @@ const tree = createTree({
 - If the terminology feels foreign, start with [Concepts and terminology](/getting-started/concepts/).
 - If you want copy-paste workflows, jump to [Practical recipes](/getting-started/recipes/).
 - If you're doing astrology in the browser, read [WebAssembly Integration](/guides/webassembly/).
+- For the full list of features, see [Features](/getting-started/features/).

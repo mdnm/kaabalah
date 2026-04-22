@@ -1,6 +1,6 @@
 ---
 title: Core
-description: Tree of Life system for building correspondences across different esoteric systems
+description: Graph-based Tree of Life for mapping correspondences across Kabbalah, astrology, tarot, Hebrew letters, numerology, and more.
 sidebar:
   order: 6
 ---
@@ -10,43 +10,519 @@ import { LinkCard } from '@astrojs/starlight/components';
 ## Import
 
 ```typescript
-import { TreeOfLife, BaseNode, SPHERES, ... } from 'kaabalah/core';
+import {
+  createTree,
+  getCanonicalTree,
+  createTreeWorkspace,
+  id,
+  parseId,
+  SPHERES,
+  SPHERES_DATA,
+  HEBREW_LETTERS,
+  HEBREW_LETTERS_DATA,
+  TAROT_ARKANNUS,
+  PLANETS,
+  WESTERN_ZODIAC_SIGNS,
+  WESTERN_HOUSES,
+  WESTERN_ASPECTS,
+  WESTERN_ELEMENTS,
+  MELKITZEDEKI_PATHS,
+  LURIANIC_PATHS,
+  FOUR_WORLDS,
+  KaabalahTypes,
+  WesternAstrologyTypes,
+  TarotTypes,
+  LetterTypes,
+  NumerologyTypes,
+  MiscTypes,
+} from 'kaabalah/core';
 ```
 
-## Exports
+## Overview
 
-- `TreeOfLife`
-- `BaseNode`
-- `SPHERES`
-- `SPHERES_DATA`
-- `HEBREW_LETTERS_DATA`
+The Core module provides a graph structure — `TreeOfLife` — for mapping correspondences across esoteric systems. Each node in the graph represents an entity (a sphere, a tarot card, a Hebrew letter, a zodiac sign, a planet, a number, etc.) and edges represent correspondences between them.
 
-## Tree of Life Structure
+You never instantiate `TreeOfLife` directly. Use the `createTree` factory to get a configured instance, or use `getCanonicalTree` for a cached, read-only `TreeWorkspace`.
 
-The Tree of Life consists of:
-
-- **10 Sephiroth (Spheres)**: Kether, Chokhmah, Binah, Chesed, Geburah, Tiphareth, Netzach, Hod, Yesod, Malkuth
-- **22 Paths**: Connecting the Sephiroth, associated with Hebrew letters
-- **Correspondences**: Links to tarot, astrology, numerology, and more
-
-## Usage Example
+## Factory: `createTree`
 
 ```typescript
-import { TreeOfLife, SPHERES, SPHERES_DATA } from 'kaabalah/core';
-
-const tree = new TreeOfLife();
-
-// Add spheres
-const kether = tree.addSphere({
-  sphere: SPHERES.KETHER,
-  data: SPHERES_DATA.KETHER,
-  relatedNumber: 1
-});
-
-// Get related nodes
-const related = tree.related(kether);
+function createTree(opts?: TreeOptions): TreeOfLife
 ```
 
-## Live example
+Creates a new `TreeOfLife` and loads the requested system and optional parts into it.
+
+```typescript
+import { createTree } from 'kaabalah/core';
+
+// Kaabalah system with tarot and western astrology parts
+const tree = createTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+```
+
+### `TreeOptions`
+
+| Field    | Type                        | Description                                       |
+|----------|-----------------------------|---------------------------------------------------|
+| `system` | `SystemKey`                 | Which system to load (required)                   |
+| `parts`  | `PartKey[]` (optional)      | Additional parts to load on top of the base system |
+
+### Available systems (`SystemKey`)
+
+| Value                  | Description                              |
+|------------------------|------------------------------------------|
+| `"kaabalah"`           | Traditional Kaabalah (Melkitzedeki paths)|
+| `"hermetic-qabalah"`   | Western Hermetic Qabalah                 |
+| `"lurianic-kabbalah"`  | Lurianic Kabbalah (alternate path layout)|
+
+### Available parts (`PartKey`)
+
+Parts extend the base system with additional nodes and correspondences. Not all parts are available for every system.
+
+| Part key           | Available in                            | Adds                                         |
+|--------------------|-----------------------------------------|----------------------------------------------|
+| `"westernAstrology"` | `kaabalah`, `hermetic-qabalah`        | Planets, zodiac signs, houses, elements, modalities, aspects |
+| `"tarot"`          | `kaabalah`                              | 78-card tarot deck (major, minor, court) with meanings |
+| `"colors"`         | `kaabalah`, `hermetic-qabalah`          | 12 spectral colors with hex codes            |
+| `"music"`          | `kaabalah`, `hermetic-qabalah`          | 12 musical notes with frequencies            |
+
+When multiple parts are loaded, bridges automatically link compatible parts (e.g. colors + music, colors + westernAstrology).
+
+## Canonical tree: `getCanonicalTree`
+
+```typescript
+function getCanonicalTree(opts?: TreeOptions): TreeWorkspace
+```
+
+Returns a cached, read-only `TreeWorkspace` built from the given options. Repeated calls with the same options return the same instance. This is the preferred API for read-only access — it is more efficient than `createTree` for scenarios where you do not need to mutate the graph.
+
+```typescript
+import { getCanonicalTree } from 'kaabalah/core';
+
+const workspace = getCanonicalTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+
+const node = workspace.getNode(id('sphere', 'Tiphareth'));
+```
+
+## `TreeWorkspace` API
+
+`TreeWorkspace` is an immutable, query-oriented view of the graph. It is what `getCanonicalTree` and `createTreeWorkspace` return.
+
+### Node queries
+
+```typescript
+// Get a single node by its NodeId
+workspace.getNode<T extends NodeType>(id: NodeId<T>): Node<T> | undefined
+
+// Check existence
+workspace.hasNode(id: NodeId<NodeType>): boolean
+
+// Get all nodes, optionally filtered by type
+workspace.getNodes<T extends NodeType>(type?: T): Node<T>[]
+
+// Search nodes by type, id list, text search, or predicate
+workspace.findNodes<T extends NodeType>(options?: TreeFindNodesOptions<T>): Node<T>[]
+```
+
+`TreeFindNodesOptions` fields:
+
+| Field       | Type                           | Description                              |
+|-------------|--------------------------------|------------------------------------------|
+| `type`      | `T \| readonly T[]` (optional) | Filter to one or more node types         |
+| `ids`       | `readonly NodeId<T>[]` (optional) | Filter to specific node IDs           |
+| `search`    | `string` (optional)            | Substring search on id and name          |
+| `predicate` | `(node: Node<T>) => boolean` (optional) | Custom filter function          |
+
+### Edge queries
+
+```typescript
+// Get a single edge between two nodes (order-independent)
+workspace.getEdge(left: NodeId<NodeType>, right: NodeId<NodeType>): CorrespondenceEdge | undefined
+
+// Get all edges, or all edges touching a specific node
+workspace.getEdges(nodeId?: NodeId<NodeType>): CorrespondenceEdge[]
+```
+
+### Correspondence queries
+
+The primary way to explore relationships. Performs BFS from a node and returns typed matches with distance and traversal path.
+
+```typescript
+workspace.getCorrespondences<T extends NodeType, U extends NodeType>(
+  nodeId: NodeId<T>,
+  options?: TreeCorrespondenceQueryOptions<U>
+): CorrespondenceMatch<U>[]
+```
+
+`TreeCorrespondenceQueryOptions` fields:
+
+| Field         | Type                        | Default | Description                                  |
+|---------------|-----------------------------|---------|----------------------------------------------|
+| `type`        | `U \| readonly U[]` (optional) | —    | Filter results to these node type(s)         |
+| `depth`       | `number` (optional)         | `1`     | BFS depth (hops from source node)            |
+| `includeSelf` | `boolean` (optional)        | `false` | Include the source node itself in results    |
+| `limit`       | `number` (optional)         | `Infinity` | Max number of matches to return          |
+
+`CorrespondenceMatch` shape:
+
+```typescript
+interface CorrespondenceMatch<T extends NodeType> {
+  node: Node<T>;      // the matched node
+  distance: number;   // BFS hops from source
+  path: readonly CorrespondenceStep[];  // edges traversed
+}
+```
+
+For a grouped view by node type:
+
+```typescript
+workspace.getCorrespondenceMap<T extends NodeType>(
+  nodeId: NodeId<T>,
+  options?: Omit<TreeCorrespondenceQueryOptions, 'type'>
+): CorrespondenceMap
+```
+
+Returns an object keyed by `NodeType` (e.g. `{ sphere: [...], tarotArkAnnu: [...], hebrewLetter: [...] }`).
+
+### Notes queries
+
+```typescript
+workspace.getNotes(target?: TreeNoteTarget): TreeNote[]
+```
+
+Returns notes attached to a node (`{ kind: "node", nodeId }`) or a correspondence (`{ kind: "correspondence", left, right }`). Overlays can attach notes to the graph.
+
+## `TreeOfLife` instance methods
+
+`createTree` returns a `TreeOfLife`, which is mutable. In addition to all of `TreeWorkspace`'s read methods, it exposes mutation methods used internally by system loaders. The main read methods on `TreeOfLife` are:
+
+| Method | Description |
+|--------|-------------|
+| `getNode(id)` | Look up a node by id |
+| `getNodes()` | All nodes as an array |
+| `getEdge(left, right)` | Edge between two nodes |
+| `getEdges(nodeId?)` | All edges or edges for a node |
+| `related(id, type?)` | Direct neighbors, optionally filtered by type |
+| `relatedFirst(id, type)` | Convenience: `related(id, type)[0]` |
+| `relatedTypes(id)` | All distinct types directly connected to a node |
+| `walk(id, depth?, type?)` | BFS to `depth` hops, optional type filter |
+| `activeSystem` | The currently loaded `SystemKey` |
+| `availableParts` | All parts that can be loaded |
+| `loadedParts` | Parts currently loaded |
+
+## Branded NodeId system
+
+Every node has an `id` of type `NodeId<T>` — a branded string in the format `"type:value"` (e.g. `"sphere:Kether"`, `"tarotArkAnnu:The Magician"`). Branding provides compile-time type safety.
+
+### `id(type, value)` — create a NodeId
+
+```typescript
+import { id, KaabalahTypes, TarotTypes, WesternAstrologyTypes } from 'kaabalah/core';
+
+const sphereId = id(KaabalahTypes.SPHERE, 'Tiphareth');
+// => NodeId<"sphere"> = "sphere:Tiphareth"
+
+const cardId = id(TarotTypes.TAROT_ARK_ANNU, 'The Magician');
+// => NodeId<"tarotArkAnnu"> = "tarotArkAnnu:The Magician"
+
+const planetId = id(WesternAstrologyTypes.PLANET, 'Mars');
+// => NodeId<"planet"> = "planet:Mars"
+```
+
+### `parseId(nodeId)` — extract the value
+
+```typescript
+import { parseId } from 'kaabalah/core';
+
+parseId(id(KaabalahTypes.SPHERE, 'Tiphareth'));
+// => "Tiphareth"
+```
+
+## Node types
+
+### `KaabalahTypes`
+
+| Enum value           | String value | Description              |
+|----------------------|--------------|--------------------------|
+| `KaabalahTypes.SPHERE` | `"sphere"` | Sephirah (e.g. Kether)   |
+| `KaabalahTypes.PATH`   | `"path"`   | Path between two spheres |
+| `KaabalahTypes.WORLD`  | `"world"`  | One of the Four Worlds   |
+
+### `WesternAstrologyTypes`
+
+| Enum value                              | String value           |
+|-----------------------------------------|------------------------|
+| `WesternAstrologyTypes.PLANET`          | `"planet"`             |
+| `WesternAstrologyTypes.WESTERN_ZODIAC_SIGN` | `"westernZodiacSign"` |
+| `WesternAstrologyTypes.WESTERN_ELEMENT` | `"westernElement"`     |
+| `WesternAstrologyTypes.HOUSE`           | `"house"`              |
+| `WesternAstrologyTypes.ASPECT`          | `"aspect"`             |
+| `WesternAstrologyTypes.MODALITIES`      | `"modalities"`         |
+
+### `TarotTypes`
+
+| Enum value                | String value     |
+|---------------------------|------------------|
+| `TarotTypes.TAROT_ARK_ANNU` | `"tarotArkAnnu"` |
+| `TarotTypes.TAROT_SUIT`     | `"tarotSuit"`    |
+
+### `LetterTypes`
+
+| Enum value                    | String value        |
+|-------------------------------|---------------------|
+| `LetterTypes.HEBREW_LETTER`   | `"hebrewLetter"`    |
+| `LetterTypes.LATIN_LETTER`    | `"latinLetter"`     |
+| `LetterTypes.SANSKRIT_LETTER` | `"sanskritLetter"`  |
+| `LetterTypes.VATTAN_LETTER`   | `"vattanLetter"`    |
+
+### `NumerologyTypes`
+
+| Enum value              | String value |
+|-------------------------|--------------|
+| `NumerologyTypes.NUMBER` | `"number"`  |
+
+### `MiscTypes`
+
+| Enum value              | String value      |
+|-------------------------|-------------------|
+| `MiscTypes.COLOR`       | `"color"`         |
+| `MiscTypes.MUSICAL_NOTE`| `"musicalNote"`   |
+| `MiscTypes.UNCATEGORIZED` | `"uncategorized"` |
+
+## Constants
+
+All constants are exported from `kaabalah/core`.
+
+### Spheres
+
+```typescript
+import { SPHERES, SPHERES_DATA } from 'kaabalah/core';
+
+// SPHERES: keys are identifiers, values are sphere names
+SPHERES.KETHER       // "Kether"
+SPHERES.TIPHARETH    // "Tiphareth"
+SPHERES.MALKUTH      // "Malkuth"
+// ... Chokhmah, Binah, Daath, Chesed, Geburah, Netzach, Hod, Yesod
+
+// SPHERES_DATA: contains hebrewSpelling and englishName per sphere
+SPHERES_DATA.KETHER  // { hebrewSpelling: "כתר", englishName: "Crown" }
+```
+
+### Paths
+
+```typescript
+import { MELKITZEDEKI_PATHS, LURIANIC_PATHS } from 'kaabalah/core';
+
+// 22 paths numbered 1–22
+MELKITZEDEKI_PATHS.KETHER_CHOKHMAH   // 1
+MELKITZEDEKI_PATHS.YESOD_MALKUTH     // 22
+
+LURIANIC_PATHS.KETHER_CHOKHMAH       // 1
+LURIANIC_PATHS.YESOD_MALKUTH         // 22
+```
+
+### Hebrew letters
+
+```typescript
+import { HEBREW_LETTERS, HEBREW_LETTERS_DATA } from 'kaabalah/core';
+
+HEBREW_LETTERS.ALEPH  // "Aleph"
+HEBREW_LETTERS.TAV    // "Tav"
+
+// HEBREW_LETTERS_DATA contains: type ("mother"|"double"|"simple"),
+// gematriaValue, gematriaValueWhenEnding?, symbol, hieroglyph,
+// yvritMeaning, character, characterWhenEnding?
+HEBREW_LETTERS_DATA.ALEPH
+// { type: "mother", gematriaValue: 1, symbol: "Man", character: "א", ... }
+```
+
+### Tarot
+
+```typescript
+import { TAROT_ARKANNUS, TAROT_ARKANNUS_DATA, TAROT_SUITS, TAROT_DECKS } from 'kaabalah/core';
+
+TAROT_ARKANNUS.THE_MAGICIAN     // "The Magician"
+TAROT_ARKANNUS.ACE_OF_WANDS    // "Ace of Wands"
+
+// TAROT_ARKANNUS_DATA: type ("major"|"minor"|"court"), suit?,
+// aliases?, keywords?, descriptiveData? (per-deck names/meanings)
+TAROT_ARKANNUS_DATA.THE_MAGICIAN.type       // "major"
+TAROT_ARKANNUS_DATA.THE_MAGICIAN.keywords   // ["co-creation", "will", ...]
+
+TAROT_SUITS.WANDS       // "Wands"
+TAROT_DECKS.PAPUS_KAABALISTIC  // "Papus Kaabalistic"
+```
+
+### Astrology
+
+```typescript
+import {
+  PLANETS,
+  WESTERN_ZODIAC_SIGNS,
+  WESTERN_HOUSES,
+  WESTERN_ASPECTS,
+  WESTERN_ELEMENTS,
+  MODALITIES,
+} from 'kaabalah/core';
+
+PLANETS.SUN           // "Sun"
+WESTERN_ZODIAC_SIGNS.ARIES  // "Aries"
+WESTERN_HOUSES.ASCENDANT    // "ascendant"
+WESTERN_ASPECTS.TRINE       // "trine"
+WESTERN_ELEMENTS.FIRE       // "Fire"
+MODALITIES.CARDINAL         // "Cardinal"
+```
+
+### Four Worlds
+
+```typescript
+import { FOUR_WORLDS, FOUR_WORLDS_DATA } from 'kaabalah/core';
+
+FOUR_WORLDS.ATZILUTH  // "Atziluth"
+FOUR_WORLDS_DATA.ATZILUTH  // { englishName: "World of Emanation" }
+```
+
+### Colors and musical notes
+
+```typescript
+import { COLORS, COLORS_DATA, MUSICAL_NOTES, MUSICAL_NOTES_DATA } from 'kaabalah/core';
+
+COLORS.RED    // "RED"
+COLORS_DATA.RED  // { colorDescription: "Red", colorNames: ["Red"], colorHexCodes: ["#FF0000"] }
+
+MUSICAL_NOTES.DO  // "DO"
+MUSICAL_NOTES_DATA.DO  // { note: "C", noteDescription: "C (Do)", frequencies: [...] }
+```
+
+## Usage examples
+
+### Look up a sphere and its correspondences
+
+```typescript
+import {
+  getCanonicalTree,
+  id,
+  KaabalahTypes,
+  TarotTypes,
+  WesternAstrologyTypes,
+  SPHERES,
+} from 'kaabalah/core';
+
+const workspace = getCanonicalTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+
+const tipharethId = id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH);
+
+// Direct correspondences (depth = 1 by default)
+const correspondences = workspace.getCorrespondences(tipharethId);
+
+// Filter to tarot cards only, going 2 hops deep
+const tarotCards = workspace.getCorrespondences(tipharethId, {
+  type: TarotTypes.TAROT_ARK_ANNU,
+  depth: 2,
+});
+
+// Grouped by type
+const byType = workspace.getCorrespondenceMap(tipharethId, { depth: 2 });
+// byType.planet, byType.westernZodiacSign, byType.tarotArkAnnu, ...
+```
+
+### Traverse from a tarot card to its Hebrew letter and planet
+
+```typescript
+import {
+  getCanonicalTree,
+  id,
+  TarotTypes,
+  LetterTypes,
+  WesternAstrologyTypes,
+} from 'kaabalah/core';
+
+const workspace = getCanonicalTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+
+const magicianId = id(TarotTypes.TAROT_ARK_ANNU, 'The Magician');
+
+const hebrewLetter = workspace.getCorrespondences(magicianId, {
+  type: LetterTypes.HEBREW_LETTER,
+  depth: 2,
+})[0];
+
+const planet = workspace.getCorrespondences(magicianId, {
+  type: WesternAstrologyTypes.PLANET,
+  depth: 3,
+})[0];
+```
+
+### Find all nodes of a type
+
+```typescript
+import { getCanonicalTree, KaabalahTypes } from 'kaabalah/core';
+
+const workspace = getCanonicalTree({ system: 'kaabalah' });
+
+const allSpheres = workspace.getNodes(KaabalahTypes.SPHERE);
+// Node<"sphere">[] — all 11 spheres (including Daath)
+```
+
+### Text search across nodes
+
+```typescript
+import { getCanonicalTree, TarotTypes } from 'kaabalah/core';
+
+const workspace = getCanonicalTree({
+  system: 'kaabalah',
+  parts: ['tarot'],
+});
+
+const swordCards = workspace.findNodes({
+  type: TarotTypes.TAROT_ARK_ANNU,
+  search: 'swords',
+});
+```
+
+### Custom workspace with overlays
+
+Use `createTreeWorkspace` when you need to add, remove, or annotate correspondences on top of a canonical base without mutating it.
+
+```typescript
+import { createTreeWorkspace, getCanonicalTree, id, KaabalahTypes } from 'kaabalah/core';
+
+const base = getCanonicalTree({ system: 'kaabalah' });
+
+const workspace = createTreeWorkspace({
+  base,
+  overlays: [
+    {
+      id: 'my-overlay',
+      name: 'My custom correspondences',
+      correspondences: [
+        {
+          op: 'annotate',
+          left: id(KaabalahTypes.SPHERE, 'Kether'),
+          right: id(KaabalahTypes.SPHERE, 'Malkuth'),
+          metadata: { tags: ['lightning-path'] },
+        },
+      ],
+      notes: [
+        {
+          id: 'note-1',
+          text: 'The crown and kingdom are mirrors of each other.',
+          target: { kind: 'node', nodeId: id(KaabalahTypes.SPHERE, 'Kether') },
+        },
+      ],
+    },
+  ],
+});
+```
 
 <LinkCard title="Try Core" description="Interactive Tree of Life explorer" href="https://archetypes.kaabalah.com" />

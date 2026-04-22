@@ -12,6 +12,21 @@ If you're new to the domain, read:
 - [Concepts and terminology](/getting-started/concepts/)
 - [Practical recipes](/getting-started/recipes/)
 
+### Core (Tree of Life)
+
+```typescript
+import { createTree } from 'kaabalah/core';
+
+const tree = createTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
+});
+
+// Traverse correspondences from a sphere
+const kether = tree.getNode('sphere:Kether');
+console.log(kether?.name);
+```
+
 ### Numerology (life path)
 
 ```typescript
@@ -38,12 +53,16 @@ console.log(gematria.consonants.originalSum);
 ### Tarot (shuffle + draw)
 
 ```typescript
-import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
+import { ARKANNUS, shuffleTarotDeck, getTarotCardProfile } from 'kaabalah/tarot';
 
-const shuffled = await shuffleTarotDeck(ARKANNUS, true);
+const shuffled = await shuffleTarotDeck(ARKANNUS, /* inverted */ true);
 const spread = shuffled.slice(0, 3);
 
 console.log(spread.map((c) => c.tarotCard));
+
+// Rich card metadata (meanings, keywords, deck descriptions)
+const profile = getTarotCardProfile(ARKANNUS[0]);
+console.log(profile.descriptions);
 ```
 
 ### Astrology (birth chart)
@@ -52,14 +71,52 @@ console.log(spread.map((c) => c.tarotCard));
 import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
 
 const chart = await getBirthChart({
-  // Local time
-  date: new Date(1990, 5, 15, 12, 30, 0),
+  date: { year: 1990, month: 6, day: 15, hour: 12, minute: 30 },
   latitude: 40.7128,
   longitude: -74.0060,
   houseSystem: HouseSystem.PLACIDUS,
   timeZoneSettings: { timeZone: 'America/New_York' },
 });
 
-console.log(chart.planets.sun.longitude);
-console.log(chart.houses.ascendant.longitude);
+console.log(chart.planets.sun.zodiacPosition.sign);
+console.log(chart.houses.ascendant.sign);
+console.log(chart.sect); // "diurnal" | "nocturnal"
+```
+
+### Ifa
+
+```typescript
+import { calculateOdu } from 'kaabalah/ifa';
+
+const odu = calculateOdu(new Date('1990-01-15'));
+
+console.log(odu.north, odu.south, odu.east, odu.west, odu.center);
+```
+
+### Semantic (occult theme search)
+
+```typescript
+import { getTarotThemeProfile, tokenizeOccultThemeText } from 'kaabalah/semantic';
+
+// Lookup by card number, name, filename, or path slug
+const profile = getTarotThemeProfile(1); // The Magician
+console.log(profile?.keywords);
+console.log(profile?.correspondences.planets);
+
+// Tokenize free text for search indexing
+const tokens = tokenizeOccultThemeText('transformation and hidden power');
+console.log(tokens);
+```
+
+### Visual (Tree of Life SVG)
+
+```typescript
+import { generateTreeSvg } from 'kaabalah/visual';
+
+const svg = generateTreeSvg({
+  palette: 'color',
+  system: 'kaabalah',
+});
+
+// Write to file or serve as an HTTP response
 ```

@@ -267,6 +267,51 @@ describe("CLI contract", () => {
     ).toBe(true);
   });
 
+  it("keeps sign correspondence inspection on the existing tree CLI surface", () => {
+    const result = runCli([
+      "tree:node",
+      "westernZodiacSign:Libra",
+      "--depth=2",
+      "--json",
+      "--compact",
+      "--fields=correspondenceMap.sphere,correspondenceMap.path,correspondenceMap.westernElement",
+    ]);
+    assertSuccess(result, "tree:node westernZodiacSign:Libra --json");
+
+    const payload = JSON.parse(result.stdout) as {
+      correspondenceMap: {
+        sphere?: Array<{ node: { id: string }; distance: number }>;
+        path?: Array<{ node: { id: string }; distance: number }>;
+        westernElement?: Array<{ node: { id: string }; distance: number }>;
+      };
+    };
+
+    expect(
+      payload.correspondenceMap.sphere?.some(
+        (entry) => entry.node.id === "sphere:Netzach" && entry.distance === 1
+      )
+    ).toBe(true);
+    expect(
+      payload.correspondenceMap.sphere?.some(
+        (entry) => entry.node.id === "sphere:Tiphareth" && entry.distance === 1
+      )
+    ).toBe(true);
+    expect(
+      payload.correspondenceMap.path?.some(
+        (entry) => entry.node.id === "path:12" && entry.distance === 1
+      )
+    ).toBe(true);
+    expect(
+      payload.correspondenceMap.path?.some(
+        (entry) => entry.node.id === "path:1" && entry.distance === 2
+      )
+    ).toBe(true);
+    expect(payload.correspondenceMap.westernElement?.[0]).toMatchObject({
+      node: { id: "westernElement:Air" },
+      distance: 1,
+    });
+  });
+
   it("supports tree:find for ergonomic node lookup", () => {
     const result = runCli([
       "tree:find",

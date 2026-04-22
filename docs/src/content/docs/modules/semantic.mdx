@@ -1,0 +1,348 @@
+---
+title: Semantic
+description: Occult theme profiles with keyword tokens and cross-system correspondences for NLP and search use cases
+sidebar:
+  order: 7
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## Import
+
+```typescript
+import {
+  getHouseThemeProfile,
+  listHouseThemeProfiles,
+  getTarotThemeProfile,
+  listTarotThemeProfiles,
+  tokenizeOccultThemeText,
+  OCCULT_THEME_STOPWORDS,
+} from 'kaabalah/semantic';
+```
+
+## Exports
+
+- `getHouseThemeProfile`
+- `listHouseThemeProfiles`
+- `getTarotThemeProfile`
+- `listTarotThemeProfiles`
+- `tokenizeOccultThemeText`
+- `OCCULT_THEME_STOPWORDS`
+- Types: `HouseThemeProfile`, `TarotThemeProfile`, `HouseThemeLookup`, `TarotThemeLookup`, `HouseThemeAxis`, `HouseThemeScope`, `HouseNumber`, `OccultThemeCorrespondence`, `OccultThemeCorrespondences`, `TarotThemeCorrespondences`, `TarotMajorArchetypeReference`, `TokenizeOccultThemeTextOptions`
+
+## Overview
+
+The semantic module produces rich theme profiles for astrological houses and tarot cards. Each profile contains human-readable labels, aliases (including Portuguese), curated keywords, pre-tokenized search surfaces (`tokens`), and typed cross-system correspondences pulled from the Tree of Life graph (planets, signs, elements, spheres, paths, suits).
+
+Profiles are built lazily on first access and cached in memory for the lifetime of the process.
+
+---
+
+## House Theme Profiles
+
+### `listHouseThemeProfiles()`
+
+Returns all 12 house theme profiles as a frozen array, one for each house from the 1st through the 12th.
+
+```typescript
+const profiles = listHouseThemeProfiles();
+// profiles.length === 12
+```
+
+### `getHouseThemeProfile(lookup)`
+
+Returns the `HouseThemeProfile` for a single house, or `undefined` if the lookup does not match.
+
+**`HouseThemeLookup`** — accepts:
+
+| Form | Example |
+|------|---------|
+| House number (1–12) | `4` |
+| Node ID string | `id(WesternAstrologyTypes.HOUSE, WESTERN_HOUSES.IMUM_COELI)` |
+
+```typescript
+// Look up by house number
+const profile = getHouseThemeProfile(4);
+
+// Look up by node ID
+import { id, WesternAstrologyTypes, WESTERN_HOUSES } from 'kaabalah/core';
+const profile = getHouseThemeProfile(
+  id(WesternAstrologyTypes.HOUSE, WESTERN_HOUSES.IMUM_COELI)
+);
+```
+
+### `HouseThemeProfile` shape
+
+```typescript
+interface HouseThemeProfile {
+  kind: "house";
+  id: NodeId<WesternAstrologyTypes.HOUSE>;
+  houseNumber: HouseNumber;           // 1–12
+  houseLabel: string;                 // e.g. "Imum Coeli"
+  primaryLabel: string;               // e.g. "Family"
+  scope: HouseThemeScope;             // "personal" | "transition" | "transpersonal"
+  axis: HouseThemeAxis;               // polarity axis with opposite house
+  aliases: readonly string[];         // English + Portuguese name variants
+  keywords: readonly string[];        // curated thematic keywords
+  tokens: readonly string[];          // normalized token surface for search/NLP
+  correspondences: OccultThemeCorrespondences;
+}
+```
+
+`tokens` is a superset of `keywords` — it also includes normalized names of the house's correspondent planets, signs, elements, spheres, and paths from the Tree of Life.
+
+**`HouseThemeScope`** classifies the house's orientation:
+- `"personal"` — Houses 1–6, focused on the individual
+- `"transition"` — House 7, the cusp between self and other
+- `"transpersonal"` — Houses 8–12, focused beyond the self
+
+**`HouseThemeAxis`** describes the polarity with the opposite house:
+
+```typescript
+interface HouseThemeAxis {
+  key: "self-other" | "resources-initiation" | "communication-journey"
+     | "private-public" | "pleasure-friendship" | "health-occult";
+  label: string;               // e.g. "Private and Public Life"
+  oppositeHouseNumber: HouseNumber;
+}
+```
+
+### Correspondences
+
+`OccultThemeCorrespondences` contains typed arrays of nodes from the Tree of Life, each with an id, display label, and graph distance from the house node:
+
+```typescript
+interface OccultThemeCorrespondences {
+  planets: readonly OccultThemeCorrespondence<WesternAstrologyTypes.PLANET>[];
+  signs:   readonly OccultThemeCorrespondence<WesternAstrologyTypes.WESTERN_ZODIAC_SIGN>[];
+  elements: readonly OccultThemeCorrespondence<WesternAstrologyTypes.WESTERN_ELEMENT>[];
+  spheres: readonly OccultThemeCorrespondence<KaabalahTypes.SPHERE>[];
+  paths:   readonly OccultThemeCorrespondence<KaabalahTypes.PATH>[];
+}
+
+interface OccultThemeCorrespondence<T extends NodeType> {
+  id: NodeId<T>;
+  label: string;
+  distance: number;   // graph distance from the source node
+}
+```
+
+### Example
+
+```typescript
+import { getHouseThemeProfile } from 'kaabalah/semantic';
+
+const profile = getHouseThemeProfile(4);
+
+console.log(profile?.primaryLabel);       // "Family"
+console.log(profile?.scope);             // "personal"
+console.log(profile?.axis.label);        // "Private and Public Life"
+console.log(profile?.axis.oppositeHouseNumber); // 10
+
+// Semantic search surface
+console.log(profile?.tokens);
+// ["family", "familia", "home", "roots", ..., "moon", "cancer", "water", "yesod", ...]
+
+// Astrological correspondences
+console.log(profile?.correspondences.planets[0]);
+// { id: "planet:Moon", label: "Moon", distance: 2 }
+```
+
+### House primary labels and scopes
+
+| House | Primary Label | Scope |
+|-------|--------------|-------|
+| 1 | Images | personal |
+| 2 | Money | personal |
+| 3 | Communication | personal |
+| 4 | Family | personal |
+| 5 | Hobbies | personal |
+| 6 | Health | personal |
+| 7 | Associations | transition |
+| 8 | Sex and Initiations | transpersonal |
+| 9 | Travel and Knowledge | transpersonal |
+| 10 | Career and Work | transpersonal |
+| 11 | Friends | transpersonal |
+| 12 | Past Lives | transpersonal |
+
+---
+
+## Tarot Theme Profiles
+
+### `listTarotThemeProfiles()`
+
+Returns the complete list of tarot theme profiles as a frozen array. The array covers all 78 cards — 22 Major Arcana and 56 Minor Arcana.
+
+```typescript
+const profiles = listTarotThemeProfiles();
+// profiles.length === 78
+```
+
+### `getTarotThemeProfile(lookup)`
+
+Returns the `TarotThemeProfile` for a single card, or `undefined` if not found.
+
+**`TarotThemeLookup`** — the most flexible lookup in the library. Accepts:
+
+| Form | Example |
+|------|---------|
+| Card number (integer) | `16` |
+| Card name string | `"The Tower"` |
+| Alias / Egyptian name | `"The House of God"` |
+| Filename string | `"16_the_house_of_god"` |
+| Path slug string | `"pe"` |
+| Node ID string | `"tarotArkAnnu:The Tower"` |
+| Path node ID string | `"path:16"` |
+| Object with `tarotCardNumber` | `{ tarotCardNumber: 16 }` |
+| Object with `tarotCardFilename` | `{ tarotCardFilename: "16_the_house_of_god" }` |
+| Object with `tarotCardName` | `{ tarotCardName: "The Tower" }` |
+| Object with `tarotArkAnnuId` | `{ tarotArkAnnuId: id(TarotTypes.TAROT_ARK_ANNU, "The Tower") }` |
+| Object with `pathId` | `{ pathId: id(KaabalahTypes.PATH, "16") }` |
+| Object with `pathSlug` | `{ pathSlug: "pe" }` |
+
+String lookups for names, aliases, and filenames are case-insensitive and diacritic-insensitive.
+
+```typescript
+import { getTarotThemeProfile } from 'kaabalah/semantic';
+
+// All of these return the same profile for The Tower
+getTarotThemeProfile(16);
+getTarotThemeProfile("The Tower");
+getTarotThemeProfile("The House of God");   // Egyptian name / alias
+getTarotThemeProfile("16_the_house_of_god");  // filename
+getTarotThemeProfile("tarotArkAnnu:The Tower");  // node ID
+getTarotThemeProfile({ tarotCardNumber: 16 });
+getTarotThemeProfile({ pathSlug: "pe" });
+```
+
+### `TarotThemeProfile` shape
+
+```typescript
+interface TarotThemeProfile {
+  kind: "tarot";
+  id: NodeId<TarotTypes.TAROT_ARK_ANNU>;
+  cardNumber: number;
+  cardType: "major" | "minor";
+  tarotCardFilename: string;
+  primaryLabel: string;              // canonical card name, e.g. "The Tower"
+  aliases: readonly string[];        // alternate names including Portuguese variants
+  keywords: readonly string[];       // curated keyword tokens
+  tokens: readonly string[];         // full normalized search surface
+  correspondences: TarotThemeCorrespondences;
+  majorArchetype?: TarotMajorArchetypeReference;  // only for Major Arcana
+}
+```
+
+`TarotThemeCorrespondences` extends `OccultThemeCorrespondences` with a `suits` array:
+
+```typescript
+interface TarotThemeCorrespondences extends OccultThemeCorrespondences {
+  suits: readonly OccultThemeCorrespondence<TarotTypes.TAROT_SUIT>[];
+}
+```
+
+For Major Arcana cards, `majorArchetype` links the card to its path on the Tree of Life:
+
+```typescript
+interface TarotMajorArchetypeReference {
+  pathId: NodeId<KaabalahTypes.PATH>;
+  pathNumber: number;
+  pathSlug: string;      // Hebrew letter slug, e.g. "pe"
+  hebrewLetter: string;  // e.g. "Peh"
+}
+```
+
+### Example
+
+```typescript
+import { getTarotThemeProfile } from 'kaabalah/semantic';
+
+const profile = getTarotThemeProfile("The Tower");
+
+console.log(profile?.cardNumber);          // 16
+console.log(profile?.cardType);            // "major"
+console.log(profile?.tarotCardFilename);   // "16_the_house_of_god"
+console.log(profile?.majorArchetype?.pathNumber); // 16
+console.log(profile?.majorArchetype?.hebrewLetter); // "Peh"
+
+// Cross-system correspondences
+console.log(profile?.correspondences.planets[0]);
+// { id: "planet:Saturn", label: "Saturn", distance: 3 }
+console.log(profile?.correspondences.signs[0]);
+// { id: "westernZodiacSign:Capricorn", label: "Capricorn", distance: 2 }
+```
+
+---
+
+## Text Tokenization
+
+### `tokenizeOccultThemeText(input, options?)`
+
+Normalizes and tokenizes a string (or array of strings) into a deduplicated list of lowercase ASCII tokens suitable for search indexing or fuzzy matching. Performs:
+
+1. Unicode NFD normalization and diacritic stripping (`á` → `a`)
+2. Lowercasing
+3. Splitting on non-alphanumeric characters
+4. Filtering by minimum length (default: 3)
+5. Removing stopwords (default: `OCCULT_THEME_STOPWORDS`)
+6. Deduplication in order of first occurrence
+
+```typescript
+function tokenizeOccultThemeText(
+  input: string | null | undefined | readonly (string | null | undefined)[],
+  options?: TokenizeOccultThemeTextOptions
+): string[]
+
+interface TokenizeOccultThemeTextOptions {
+  minTokenLength?: number;    // default: 3
+  stopwords?: readonly string[];  // default: OCCULT_THEME_STOPWORDS
+}
+```
+
+```typescript
+import { tokenizeOccultThemeText } from 'kaabalah/semantic';
+
+tokenizeOccultThemeText("Família, sonhos e retreat no subconscious");
+// ["familia", "sonhos", "retreat", "subconscious"]
+
+// Batch tokenization across multiple strings
+tokenizeOccultThemeText(["The Tower", "The House of God", "Mars", "Capricorn"]);
+// ["tower", "house", "god", "mars", "capricorn"]
+
+// Custom stopwords and minimum length
+tokenizeOccultThemeText("my dream of gold", {
+  minTokenLength: 2,
+  stopwords: ["my", "of"],
+});
+// ["dream", "gold"]
+```
+
+### `OCCULT_THEME_STOPWORDS`
+
+A readonly string array of common English and Portuguese stopwords filtered during tokenization. Includes: `"the"`, `"and"`, `"for"`, `"with"`, `"com"`, `"sem"`, `"por"`, `"que"`, `"não"`, `"como"`, `"mais"`, and many others. Pass a custom `stopwords` option to `tokenizeOccultThemeText` to override.
+
+---
+
+## NLP / Search patterns
+
+The `tokens` arrays on each profile are the main interface for text-matching occult themes against free-form user input. A typical pattern:
+
+```typescript
+import { listHouseThemeProfiles, tokenizeOccultThemeText } from 'kaabalah/semantic';
+
+const query = "I'm worried about my career and public reputation";
+const queryTokens = new Set(tokenizeOccultThemeText(query));
+
+const profiles = listHouseThemeProfiles();
+const ranked = profiles
+  .map((profile) => {
+    const matches = profile.tokens.filter((token) => queryTokens.has(token));
+    return { profile, score: matches.length };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score);
+
+// ranked[0].profile.houseNumber === 10  (Career and Work)
+```
+
+The same approach works for tarot profiles via `listTarotThemeProfiles()`.

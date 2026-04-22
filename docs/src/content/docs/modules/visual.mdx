@@ -1,0 +1,340 @@
+---
+title: Visual
+description: Generate Tree of Life SVG diagrams and access canonical layout data for custom renderers
+sidebar:
+  order: 8
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## Import
+
+```typescript
+import {
+  generateTreeSvg,
+  getTreeLayout,
+  TREE_SVG_DEFAULT_VIEWBOX,
+  TREE_SPHERE_NAMES,
+  TREE_SPHERE_IDS,
+  TREE_PATH_IDS,
+} from 'kaabalah/visual';
+```
+
+## Exports
+
+- `generateTreeSvg`
+- `getTreeLayout`
+- `TREE_SVG_DEFAULT_VIEWBOX`
+- `TREE_SPHERE_NAMES`
+- `TREE_SPHERE_IDS`
+- `TREE_PATH_IDS`
+- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+
+---
+
+## `generateTreeSvg(options?)`
+
+Generates a complete Tree of Life SVG string. The SVG contains 11 sphere circles and 22 path lines laid out on the canonical Kabbalistic grid, with radial gradient highlights baked in.
+
+```typescript
+function generateTreeSvg(options?: TreeSvgOptions): string
+```
+
+All options are optional. Calling `generateTreeSvg()` with no arguments produces a full-color SVG at the default viewBox size with a white background.
+
+### `TreeSvgOptions`
+
+```typescript
+interface TreeSvgOptions {
+  width?: number | string;         // SVG width attribute (omitted if not set)
+  height?: number | string;        // SVG height attribute (omitted if not set)
+  viewBox?: TreeSvgViewBox;        // override coordinate space (default: 0 0 286 561)
+  background?: string | "transparent";  // fill color or "transparent" (default: "white")
+  palette?: TreeSvgPalette;        // color scheme (default: "color")
+  system?: SystemKey;              // "kaabalah" | "hermetic-qabalah" | "lurianic-kabbalah" (default: "kaabalah")
+  daathLayer?: TreeSvgDaathLayer;  // "front" | "back" (default: "front")
+}
+```
+
+### Basic usage
+
+```typescript
+import { generateTreeSvg } from 'kaabalah/visual';
+
+// Full-color SVG, white background, default size
+const svg = generateTreeSvg();
+
+// Monochrome, transparent background, explicit pixel dimensions
+const svg = generateTreeSvg({
+  width: 400,
+  height: 785,
+  background: "transparent",
+  palette: "monochrome",
+});
+
+// Write to file (Node.js)
+import { writeFileSync } from 'node:fs';
+writeFileSync("tree.svg", generateTreeSvg({ background: "transparent" }));
+```
+
+<img src="/tree-color.svg" alt="Default color palette Tree of Life" width="200" />
+
+### ViewBox
+
+The default coordinate space is `0 0 286 561` (exported as `TREE_SVG_DEFAULT_VIEWBOX`). You can override it without affecting the `width`/`height` pixel size — the SVG uses `preserveAspectRatio="xMidYMid meet"`.
+
+```typescript
+interface TreeSvgViewBox {
+  minX?: number;   // default: 0
+  minY?: number;   // default: 0
+  width: number;
+  height: number;
+}
+```
+
+```typescript
+// Embed in a larger canvas with padding
+const svg = generateTreeSvg({
+  viewBox: { minX: -20, minY: -20, width: 326, height: 601 },
+});
+```
+
+---
+
+## Palette
+
+`TreeSvgPalette` is a union of three forms:
+
+```typescript
+type TreeSvgPalette = "color" | "monochrome" | TreeSvgCustomPalette;
+```
+
+### `"color"` (default)
+
+Sphere and path colors are read from the Tree of Life color data. Special spheres receive distinctive rendering:
+- **Kether** — white sunburst with radial facets
+- **Chokhmah** — iridescent shimmer
+- **Daath** — yin-yang symbol
+- **Malkuth** — four-quadrant color slices
+
+### `"monochrome"`
+
+All spheres render in warm off-white (`#e6ddd0`) with dark outlines (`#2f271e`). Paths are uniform (`#e0d7ca`). Special sphere rendering is disabled.
+
+### Custom palette — `TreeSvgCustomPalette`
+
+Fine-grained control over every visual element:
+
+```typescript
+interface TreeSvgCustomPalette {
+  defaultSphereFill?: string;
+  defaultPathColor?: string;
+  sphereFills?: Partial<Record<TreeSphereId, string | string[]>>;
+  pathColors?: Partial<Record<TreePathId, string>>;
+  pathEdgeColor?: string;
+  sphereStrokeColor?: string;
+  sphereStrokeWidth?: number;
+  pathHighlightColor?: string;
+  pathHighlightOpacity?: number;
+  specialSphereMode?: "preserve" | "plain";
+}
+```
+
+`sphereFills` accepts either a single hex string or an array of hex strings (used for multi-color rendering like Malkuth's four quadrants). Unspecified spheres fall back to `defaultSphereFill`.
+
+`specialSphereMode`:
+- `"preserve"` — Kether, Chokhmah, Daath, and Malkuth render with their special effects
+- `"plain"` — all spheres render as simple filled circles (default for custom palettes)
+
+```typescript
+import { generateTreeSvg, TREE_SPHERE_IDS, TREE_PATH_IDS } from 'kaabalah/visual';
+import { id, KaabalahTypes } from 'kaabalah/core';
+
+const svg = generateTreeSvg({
+  background: "#0d0d0d",
+  palette: {
+    defaultSphereFill: "#d9d4c7",
+    defaultPathColor: "#a68b5b",
+    pathEdgeColor: "#2a2418",
+    sphereStrokeColor: "#2a2418",
+    sphereStrokeWidth: 2,
+    specialSphereMode: "plain",
+    // Override a specific path color
+    pathColors: {
+      [id(KaabalahTypes.PATH, "1")]: "#ffd700",
+    },
+    // Override a specific sphere fill
+    sphereFills: {
+      [id(KaabalahTypes.SPHERE, "Tiphareth")]: "#f5c518",
+    },
+  },
+});
+```
+
+### Palette comparison
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-color.svg" alt="Color palette" width="180" />
+    <figcaption>"color" (default)</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-monochrome.svg" alt="Monochrome palette" width="180" />
+    <figcaption>"monochrome"</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-custom.svg" alt="Custom gold palette" width="180" />
+    <figcaption>custom (gold)</figcaption>
+  </figure>
+</div>
+
+---
+
+## Daath Layer
+
+By default (`daathLayer: "front"`), Daath renders in the normal front sphere layer above all paths. Setting `daathLayer: "back"` moves Daath behind the paths — useful when you want paths to visually cross over Daath. A transparent hit-area circle (`pointer-events="all"`, `data-node-id="sphere:Daath"`) is placed last in the SVG so interactive clicks on Daath still work.
+
+```typescript
+const svg = generateTreeSvg({ daathLayer: "back" });
+```
+
+### Daath layer comparison
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-color.svg" alt="Daath in front (default)" width="180" />
+    <figcaption>daathLayer="front" (default)</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-daath-back.svg" alt="Daath behind paths" width="180" />
+    <figcaption>daathLayer="back"</figcaption>
+  </figure>
+</div>
+
+---
+
+## `getTreeLayout(system?)`
+
+Returns the canonical layout data for the Tree of Life without rendering any SVG. Use this to build custom renderers, overlays, or interactive diagrams.
+
+```typescript
+function getTreeLayout(system?: SystemKey): TreeLayout
+```
+
+`system` defaults to `"kaabalah"`. Valid values: `"kaabalah"`, `"hermetic-qabalah"`, `"lurianic-kabbalah"`.
+
+### `TreeLayout`
+
+```typescript
+interface TreeLayout {
+  system: SystemKey;
+  viewBox: Required<TreeSvgViewBox>;  // { minX, minY, width, height }
+  sphereOrder: TreeSphereId[];        // 11 sphere IDs in draw order
+  pathOrder: TreePathId[];            // 22 path IDs in draw order
+  percentages: TreeLayoutMap;         // coordinates as 0–100 percentages
+  viewBoxUnits: TreeLayoutMap;        // coordinates in viewBox pixel units
+}
+
+interface TreeLayoutMap {
+  spheres: Record<TreeSphereId, TreeLayoutCoordinate>;
+  paths:   Record<TreePathId,   TreeLayoutPath>;
+}
+
+interface TreeLayoutCoordinate {
+  x: number;
+  y: number;
+}
+
+interface TreeLayoutPath {
+  fromId: TreeSphereId;
+  toId:   TreeSphereId;
+  from:   TreeLayoutCoordinate;
+  to:     TreeLayoutCoordinate;
+}
+```
+
+`percentages` gives coordinates as percentages of the viewBox dimensions (0–100), making them resolution-independent. `viewBoxUnits` gives the same coordinates already scaled to the default `286 × 561` viewBox.
+
+### Example
+
+```typescript
+import { getTreeLayout, TREE_SVG_DEFAULT_VIEWBOX } from 'kaabalah/visual';
+import { id, KaabalahTypes } from 'kaabalah/core';
+
+const layout = getTreeLayout();
+
+// Kether sits at roughly the top-center of the canvas
+layout.percentages.spheres[id(KaabalahTypes.SPHERE, "Kether")];
+// { x: 49.94, y: 6.83 }
+
+layout.viewBoxUnits.spheres[id(KaabalahTypes.SPHERE, "Kether")];
+// { x: 142.83, y: 38.32 }
+
+// Path 1 connects Kether to Chokhmah
+layout.percentages.paths[id(KaabalahTypes.PATH, "1")];
+// { fromId: "sphere:Kether", toId: "sphere:Chokhmah",
+//   from: { x: 49.94, y: 6.83 }, to: { x: 86.66, y: 17.68 } }
+
+// Scale to a custom canvas
+const canvasWidth = 600;
+const canvasHeight = 1175;
+const ketherX = layout.percentages.spheres[id(KaabalahTypes.SPHERE, "Kether")].x / 100 * canvasWidth;
+```
+
+---
+
+## Constants
+
+### `TREE_SVG_DEFAULT_VIEWBOX`
+
+The canonical viewBox for all SVG output:
+
+```typescript
+const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
+  minX: 0,
+  minY: 0,
+  width: 286,
+  height: 561,
+};
+```
+
+### `TREE_SPHERE_NAMES`
+
+A readonly tuple of all 11 sphere names in draw order:
+
+```typescript
+const TREE_SPHERE_NAMES = [
+  "Kether", "Chokhmah", "Binah", "Daath",
+  "Chesed", "Geburah", "Tiphareth",
+  "Netzach", "Hod", "Yesod", "Malkuth",
+] as const;
+```
+
+### `TREE_SPHERE_IDS`
+
+Sphere node IDs corresponding to `TREE_SPHERE_NAMES`, in the same order. Each ID has the form `"sphere:<Name>"`.
+
+```typescript
+TREE_SPHERE_IDS[0]  // "sphere:Kether"
+TREE_SPHERE_IDS[6]  // "sphere:Tiphareth"
+```
+
+### `TREE_PATH_IDS`
+
+Path node IDs for paths 1–22 in ascending order. Each ID has the form `"path:<N>"`.
+
+```typescript
+TREE_PATH_IDS[0]   // "path:1"
+TREE_PATH_IDS[21]  // "path:22"
+```
+
+---
+
+## CLI
+
+The `tree` command outputs the Tree of Life graph. To generate an SVG from the CLI, use the example script bundled in the repository:
+
+```bash
+# Generate an SVG file
+npx ts-node examples/generate-tree-svg.ts > tree.svg
+```
