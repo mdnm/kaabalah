@@ -130,6 +130,65 @@ describe("kaabalistic semantic helpers", () => {
     )
   })
 
+  it("projects current signs onto carrier spheres for planets and the ascendant", () => {
+    const sun = getKaabalisticCorrespondenceTargets({
+      kind: "planet",
+      planet: "Sun",
+      sign: "Aries",
+    })
+    const moon = getKaabalisticCorrespondenceTargets({
+      kind: "planet",
+      planet: "Moon",
+      sign: "Taurus",
+    })
+    const mercury = getKaabalisticCorrespondenceTargets({
+      kind: "planet",
+      planet: "Mercury",
+      sign: "Pisces",
+    })
+    const ascendant = getKaabalisticCorrespondenceTargets({
+      kind: "angle",
+      angle: "ASC",
+      sign: "Cancer",
+    })
+
+    expect(sun?.targets).toContainEqual(
+      expect.objectContaining({
+        targetId: id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH),
+        targetType: "sphere",
+        mapping: "carrier-sphere",
+        sign: "Aries",
+        planet: "Sun",
+      })
+    )
+    expect(moon?.targets).toContainEqual(
+      expect.objectContaining({
+        targetId: id(KaabalahTypes.SPHERE, SPHERES.YESOD),
+        targetType: "sphere",
+        mapping: "carrier-sphere",
+        sign: "Taurus",
+        planet: "Moon",
+      })
+    )
+    expect(mercury?.targets).toContainEqual(
+      expect.objectContaining({
+        targetId: id(KaabalahTypes.SPHERE, SPHERES.HOD),
+        targetType: "sphere",
+        mapping: "carrier-sphere",
+        sign: "Pisces",
+        planet: "Mercury",
+      })
+    )
+    expect(ascendant?.targets).toContainEqual(
+      expect.objectContaining({
+        targetId: id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
+        targetType: "sphere",
+        mapping: "carrier-sphere",
+        sign: "Cancer",
+      })
+    )
+  })
+
   it("builds astrology markers and combined map data with sphere and path descriptors", () => {
     const chart = {
       planets: [
@@ -196,6 +255,38 @@ describe("kaabalistic semantic helpers", () => {
           sourceName: "ASC",
           mapping: "sign-sphere",
           label: "ASC",
+          sign: "Aries",
+        }),
+        expect.objectContaining({
+          kind: "astrology",
+          targetId: id(KaabalahTypes.SPHERE, SPHERES.TIPHARETH),
+          targetType: "sphere",
+          sourceType: "planet",
+          sourceName: "Sun",
+          mapping: "carrier-sphere",
+          label: "♎",
+          sign: "Libra",
+          planet: "Sun",
+        }),
+        expect.objectContaining({
+          kind: "astrology",
+          targetId: id(KaabalahTypes.SPHERE, SPHERES.YESOD),
+          targetType: "sphere",
+          sourceType: "planet",
+          sourceName: "Moon",
+          mapping: "carrier-sphere",
+          label: "♈",
+          sign: "Aries",
+          planet: "Moon",
+        }),
+        expect.objectContaining({
+          kind: "astrology",
+          targetId: id(KaabalahTypes.SPHERE, SPHERES.MALKUTH),
+          targetType: "sphere",
+          sourceType: "angle",
+          sourceName: "ASC",
+          mapping: "carrier-sphere",
+          label: "♈",
           sign: "Aries",
         }),
       ])

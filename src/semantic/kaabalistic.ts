@@ -53,6 +53,7 @@ export type KaabalisticMarkerMapping =
   | "sign-path"
   | "element-sphere"
   | "element-path"
+  | "carrier-sphere"
   | "planet-sign-path"
   | "number-sphere"
   | "number-path"
@@ -331,7 +332,9 @@ const defaultExcludedAstrologyPoints = new Set([
   normalizeLookupKey("Lilith True"),
 ])
 
+const planetCarrierSphereIdsByKey = createPlanetCarrierSphereIdsByKey(canonicalTree)
 const classicalPlanetPathIdsByKey = createClassicalPlanetPathIdsByKey(canonicalTree)
+const angleCarrierSphereIdsByKey = createAngleCarrierSphereIdsByKey()
 
 function normalizeLookupKey(value: string) {
   return value.trim().toLowerCase()
@@ -403,6 +406,41 @@ function createClassicalPlanetPathIdsByKey(tree: CanonicalTree) {
   }
 
   return registry
+}
+
+function createPlanetCarrierSphereIdsByKey(tree: CanonicalTree) {
+  const registry = new Map<string, readonly NodeId<KaabalahTypes.SPHERE>[]>()
+
+  for (const symbol of PLANET_SYMBOLS) {
+    if (!("id" in symbol) || !symbol.id) {
+      continue
+    }
+
+    const sphereIds = tree.getCorrespondences(symbol.id, {
+      type: KaabalahTypes.SPHERE,
+      depth: 1,
+    }).map((match) => match.node.id as NodeId<KaabalahTypes.SPHERE>)
+
+    if (!sphereIds.length) {
+      continue
+    }
+
+    registry.set(
+      normalizeLookupKey(symbol.label),
+      Object.freeze([...new Set(sphereIds)])
+    )
+  }
+
+  return registry
+}
+
+function createAngleCarrierSphereIdsByKey() {
+  return new Map<string, readonly NodeId<KaabalahTypes.SPHERE>[]>([
+    [
+      normalizeLookupKey("ASC"),
+      Object.freeze([id(KaabalahTypes.SPHERE, SPHERES.MALKUTH)]),
+    ],
+  ])
 }
 
 function getTargetType(targetId: KaabalisticTargetId): KaabalisticTargetType {
@@ -499,6 +537,15 @@ function lookupSignSymbolMetadata(sign: KaabalisticSignLookup) {
         : parseId(sign)
   const metadata = symbolRegistry.byKey.get(normalizeLookupKey(rawSign))
   return metadata?.kind === "sign" ? metadata : undefined
+}
+
+function normalizeAngleName(angle: string) {
+  const rawAngle = angle.startsWith(`${WesternAstrologyTypes.HOUSE}:`)
+    ? parseId(angle as NodeId<WesternAstrologyTypes.HOUSE>)
+    : angle
+  const metadata = symbolRegistry.byKey.get(normalizeLookupKey(rawAngle))
+
+  return metadata?.kind === "angle" ? metadata.label : rawAngle
 }
 
 export function listPlanetSymbolMetadata() {
@@ -644,6 +691,34 @@ function buildSignTargets(sign: (typeof SIGNS)[number]) {
   }
 
   return dedupeTargets(result)
+}
+
+function buildCarrierSphereTargets(
+  lookup: KaabalisticPlanetCorrespondenceLookup | KaabalisticAngleCorrespondenceLookup,
+  sign: (typeof SIGNS)[number]
+) {
+  const isPlanetLookup = lookup.kind === "planet"
+  const sourceLabel = isPlanetLookup
+    ? normalizePlanetName(lookup.planet)
+    : normalizeAngleName(lookup.angle)
+  const sourceKey = normalizeLookupKey(sourceLabel)
+  const sphereIds = isPlanetLookup
+    ? planetCarrierSphereIdsByKey.get(sourceKey)
+    : angleCarrierSphereIdsByKey.get(sourceKey)
+
+  if (!sphereIds?.length) {
+    return []
+  }
+
+  return sphereIds.map<KaabalisticCorrespondenceTarget>((targetId) => ({
+    targetId,
+    targetType: "sphere",
+    targetName: getTargetName(targetId),
+    mapping: "carrier-sphere",
+    distance: 1,
+    sign,
+    ...(isPlanetLookup ? { planet: sourceLabel } : {}),
+  }))
 }
 
 function dedupeTargets(targets: readonly KaabalisticCorrespondenceTarget[]) {
@@ -829,10 +904,20 @@ export function getKaabalisticCorrespondenceTargets(
       sign,
       planet,
     }))
+    const carrierSphereTargets = buildCarrierSphereTargets(lookup, sign)
 
     return {
       source: createCorrespondenceSource(lookup, sign, element),
-      targets: dedupeTargets([...signTargets, ...planetPathTargets]),
+      targets: dedupeTargets([...signTargets, ...planetPathTargets, ...carrierSphereTargets]),
+    }
+  }
+
+  if (lookup.kind === "angle") {
+    const carrierSphereTargets = buildCarrierSphereTargets(lookup, sign)
+
+    return {
+      source: createCorrespondenceSource(lookup, sign, element),
+      targets: dedupeTargets([...signTargets, ...carrierSphereTargets]),
     }
   }
 
@@ -858,7 +943,10 @@ function toAstrologyMarkers(
     sourceType: source.sourceType,
     sourceName: source.sourceName,
     mapping: target.mapping,
-    label: target.mapping === "planet-sign-path" ? signGlyph : sourceGlyph,
+    label:
+      target.mapping === "planet-sign-path" || target.mapping === "carrier-sphere"
+        ? signGlyph
+        : sourceGlyph,
     ...(target.sign ? { sign: target.sign } : {}),
     ...(target.element ? { element: target.element } : {}),
     ...(target.planet ? { planet: target.planet } : {}),
