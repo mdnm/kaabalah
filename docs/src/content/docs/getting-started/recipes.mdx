@@ -53,12 +53,14 @@ Use this when you want a daily / monthly widget.
 ```ts
 import { calculatePersonalCycles } from 'kaabalah/numerology';
 
-const cycles = calculatePersonalCycles({
-  birthDate: new Date('1990-06-15'),
-  date: new Date(),
-});
+const cycles = calculatePersonalCycles(
+  new Date('1990-06-15'), // birth date
+  new Date(),             // today
+  'John',                 // first name (used for soul number)
+);
 
-console.log(cycles);
+console.log(cycles.personalYear.reducedValue);
+console.log(cycles.currentPersonalMonth);
 ```
 
 Practical tip:
@@ -74,16 +76,17 @@ Use this when you have local birth time + place.
 import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
 
 const chart = await getBirthChart({
-  // Local time (not UTC)
-  date: new Date(1990, 5, 15, 12, 30, 0),
+  // Use LocalDateTimeParts to avoid browser-local-time ambiguity
+  date: { year: 1990, month: 6, day: 15, hour: 12, minute: 30 },
   latitude: 40.7128,
   longitude: -74.0060,
   houseSystem: HouseSystem.PLACIDUS,
   timeZoneSettings: { timeZone: 'America/New_York' },
 });
 
-console.log(chart.planets.sun.longitude);
-console.log(chart.houses.ascendant.longitude);
+console.log(chart.planets.sun.zodiacPosition.sign);
+console.log(chart.houses.ascendant.sign);
+console.log(chart.sect); // "diurnal" | "nocturnal"
 ```
 
 <Aside type="caution">
@@ -99,7 +102,7 @@ Use this when you want a quick "3 cards" feature.
 ```ts
 import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
 
-const shuffled = await shuffleTarotDeck(ARKANNUS, true);
+const shuffled = await shuffleTarotDeck(ARKANNUS, /* inverted */ true);
 const spread = shuffled.slice(0, 3);
 
 for (const card of spread) {
@@ -117,21 +120,66 @@ Practical tip:
 Use this when you want "click a tarot card → show linked planet/element/etc."
 
 ```ts
-import { TreeOfLife, SPHERES, SPHERES_DATA } from 'kaabalah/core';
+import { createTree, id, KaabalahTypes, TarotTypes } from 'kaabalah/core';
 
-const tree = new TreeOfLife();
-
-const kether = tree.addSphere({
-  sphere: SPHERES.KETHER,
-  data: SPHERES_DATA.KETHER,
-  relatedNumber: 1,
+const tree = createTree({
+  system: 'kaabalah',
+  parts: ['westernAstrology', 'tarot'],
 });
 
-const related = tree.related(kether);
-console.log(related);
+// Walk from The Magician to its Hebrew letter and element (depth 2)
+const magicianId = id(TarotTypes.TAROT_ARK_ANNU, 'The Magician');
+const related = tree.walk(magicianId, 2);
+
+console.log(related.map((n) => n.id));
 ```
 
 Practical tip:
 
-- Treat `TreeOfLife` as your in-memory knowledge graph.
-- Serialize only what you need.
+- Use `tree.walk(nodeId, depth, filterType)` to traverse the graph.
+- Serialize only what you need — the full tree can be large.
+
+### Recipe: semantic search for tarot cards
+
+Use this when you want to match free-form user text to a tarot card.
+
+```ts
+import { listTarotThemeProfiles, tokenizeOccultThemeText } from 'kaabalah/semantic';
+
+const profiles = listTarotThemeProfiles();
+
+function findCards(query: string) {
+  const queryTokens = new Set(tokenizeOccultThemeText(query));
+
+  return profiles
+    .map((profile) => {
+      const overlap = profile.tokens.filter((t) => queryTokens.has(t)).length;
+      return { card: profile.primaryLabel, score: overlap };
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score);
+}
+
+console.log(findCards('transformation hidden occult'));
+```
+
+### Recipe: generate a Tree of Life SVG
+
+Use this when you want to render or export the Tree of Life.
+
+```ts
+import { generateTreeSvg } from 'kaabalah/visual';
+import { writeFileSync } from 'node:fs';
+
+const svg = generateTreeSvg({
+  palette: 'color',
+  system: 'kaabalah',
+});
+
+writeFileSync('tree-of-life.svg', svg);
+```
+
+Practical tip:
+
+- Pass `palette: 'monochrome'` for print or dark-mode use.
+- Use `getTreeLayout` from `kaabalah/visual` if you need the raw coordinate data for a custom renderer.

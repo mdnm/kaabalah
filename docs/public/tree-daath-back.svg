@@ -1,0 +1,415 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 561" preserveAspectRatio="xMidYMid meet">
+<defs>
+<filter id="pathDarken">
+  <feComponentTransfer>
+    <feFuncR type="linear" slope="0.65"/>
+    <feFuncG type="linear" slope="0.65"/>
+    <feFuncB type="linear" slope="0.65"/>
+  </feComponentTransfer>
+</filter>
+<radialGradient id="spec-kether" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-kether" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-kether"><circle cx="142.83" cy="38.32" r="30"/></clipPath>
+<radialGradient id="spec-chokhmah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-chokhmah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-chokhmah"><circle cx="247.85" cy="99.18" r="30"/></clipPath>
+<radialGradient id="spec-binah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-binah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-binah"><circle cx="37.9" cy="99.18" r="30"/></clipPath>
+<radialGradient id="spec-daath" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-daath" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-daath"><circle cx="142.83" cy="159.44" r="30"/></clipPath>
+<radialGradient id="spec-chesed" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-chesed" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-chesed"><circle cx="247.85" cy="220.25" r="30"/></clipPath>
+<radialGradient id="spec-geburah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-geburah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-geburah"><circle cx="37.9" cy="220.25" r="30"/></clipPath>
+<radialGradient id="spec-tiphareth" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-tiphareth" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-tiphareth"><circle cx="142.83" cy="280.84" r="30"/></clipPath>
+<radialGradient id="spec-netzach" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-netzach" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-netzach"><circle cx="247.85" cy="341.37" r="30"/></clipPath>
+<radialGradient id="spec-hod" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-hod" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-hod"><circle cx="37.9" cy="341.37" r="30"/></clipPath>
+<radialGradient id="spec-yesod" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-yesod" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-yesod"><circle cx="142.83" cy="402.12" r="30"/></clipPath>
+<radialGradient id="spec-malkuth" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-malkuth" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-malkuth"><circle cx="142.83" cy="522.85" r="30"/></clipPath>
+<radialGradient id="kether-glow" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="45%" stop-color="white" stop-opacity="0.6"/>
+  <stop offset="80%" stop-color="white" stop-opacity="0.15"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="kether-facet" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.5"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0.1"/>
+</linearGradient>
+<radialGradient id="kether-rim" cx="50%" cy="50%" r="75%">
+  <stop offset="60%" stop-color="black" stop-opacity="0"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
+</radialGradient>
+</defs>
+<g id="spheres-behind-paths">
+<g id="sphere-daath" clip-path="url(#clip-daath)">
+<g transform="rotate(180 142.83 159.44)">
+<circle cx="142.83" cy="159.44" r="28.8" fill="white"/>
+<path d="M142.83,130.64 A28.8,28.8 0 1,1 142.83,188.24 A14.4,14.4 0 1,0 142.83,159.44 A14.4,14.4 0 1,1 142.83,130.64" fill="black"/>
+<circle cx="142.83" cy="145.04" r="3.6" fill="white"/>
+<circle cx="142.83" cy="173.84" r="3.6" fill="black"/>
+</g>
+<circle cx="142.83" cy="159.44" r="30" fill="url(#spec-daath)"/>
+<circle cx="142.83" cy="159.44" r="30" fill="url(#shad-daath)"/>
+</g>
+</g>
+<g id="paths">
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#E8C848" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#8098B0" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#E06080" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#E87050" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#C82030" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#A8B840" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#B6BD9A" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#5080C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#48A860" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#8878B8" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#28A880" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#8050A8" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#C850A0" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#D06088" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#8848C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#888888" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#30B898" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
+</g>
+<g id="spheres">
+<g id="sphere-kether" clip-path="url(#clip-kether)">
+<circle cx="142.83" cy="38.32" r="30" fill="#e0e0e0"/>
+<circle cx="142.83" cy="38.32" r="30" fill="url(#kether-glow)"/>
+<g opacity="0.85">
+<g transform="rotate(0 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(22.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(45 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(67.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(90 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(112.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(135 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(157.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(180 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(202.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(225 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(247.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(270 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(292.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(315 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+<g transform="rotate(337.5 142.83 38.32)">
+<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
+</g>
+</g>
+<circle cx="142.83" cy="38.32" r="30" fill="url(#kether-rim)"/>
+<circle cx="142.83" cy="38.32" r="30" fill="url(#spec-kether)"/>
+</g>
+<g id="sphere-chokhmah" clip-path="url(#clip-chokhmah)">
+<path d="M 247.85 99.18 L 247.85 70.38 A 28.8 28.8 0 0 1 250.61 70.51 Z" fill="#f0e8ee" stroke="none"/>
+<path d="M 247.85 99.18 L 250.36 70.49 A 28.8 28.8 0 0 1 253.1 70.86 Z" fill="#f2deed" stroke="none"/>
+<path d="M 247.85 99.18 L 252.85 70.82 A 28.8 28.8 0 0 1 255.55 71.43 Z" fill="#f4d5ec" stroke="none"/>
+<path d="M 247.85 99.18 L 255.3 71.36 A 28.8 28.8 0 0 1 257.94 72.2 Z" fill="#f6cbeb" stroke="none"/>
+<path d="M 247.85 99.18 L 257.7 72.12 A 28.8 28.8 0 0 1 260.25 73.19 Z" fill="#f8c2ea" stroke="none"/>
+<path d="M 247.85 99.18 L 260.02 73.08 A 28.8 28.8 0 0 1 262.47 74.37 Z" fill="#fab8e8" stroke="none"/>
+<path d="M 247.85 99.18 L 262.25 74.24 A 28.8 28.8 0 0 1 264.57 75.73 Z" fill="#fdafe7" stroke="none"/>
+<path d="M 247.85 99.18 L 264.37 75.59 A 28.8 28.8 0 0 1 266.55 77.28 Z" fill="#ffa5e6" stroke="none"/>
+<path d="M 247.85 99.18 L 266.36 77.12 A 28.8 28.8 0 0 1 268.39 78.99 Z" fill="#f7a9e8" stroke="none"/>
+<path d="M 247.85 99.18 L 268.21 78.82 A 28.8 28.8 0 0 1 270.07 80.86 Z" fill="#edb0eb" stroke="none"/>
+<path d="M 247.85 99.18 L 269.91 80.67 A 28.8 28.8 0 0 1 271.58 82.87 Z" fill="#e2b7ee" stroke="none"/>
+<path d="M 247.85 99.18 L 271.44 82.66 A 28.8 28.8 0 0 1 272.92 85 Z" fill="#d8bef1" stroke="none"/>
+<path d="M 247.85 99.18 L 272.79 84.78 A 28.8 28.8 0 0 1 274.06 87.24 Z" fill="#cec5f4" stroke="none"/>
+<path d="M 247.85 99.18 L 273.95 87.01 A 28.8 28.8 0 0 1 275 89.57 Z" fill="#c4ccf7" stroke="none"/>
+<path d="M 247.85 99.18 L 274.91 89.33 A 28.8 28.8 0 0 1 275.73 91.97 Z" fill="#bad3fa" stroke="none"/>
+<path d="M 247.85 99.18 L 275.67 91.73 A 28.8 28.8 0 0 1 276.26 94.43 Z" fill="#b0dafd" stroke="none"/>
+<path d="M 247.85 99.18 L 276.21 94.18 A 28.8 28.8 0 0 1 276.56 96.92 Z" fill="#a7e1fd" stroke="none"/>
+<path d="M 247.85 99.18 L 276.54 96.67 A 28.8 28.8 0 0 1 276.65 99.43 Z" fill="#aae4f1" stroke="none"/>
+<path d="M 247.85 99.18 L 276.65 99.18 A 28.8 28.8 0 0 1 276.52 101.94 Z" fill="#ace8e6" stroke="none"/>
+<path d="M 247.85 99.18 L 276.54 101.69 A 28.8 28.8 0 0 1 276.17 104.43 Z" fill="#aeebda" stroke="none"/>
+<path d="M 247.85 99.18 L 276.21 104.18 A 28.8 28.8 0 0 1 275.6 106.88 Z" fill="#b0efce" stroke="none"/>
+<path d="M 247.85 99.18 L 275.67 106.63 A 28.8 28.8 0 0 1 274.83 109.27 Z" fill="#b2f3c3" stroke="none"/>
+<path d="M 247.85 99.18 L 274.91 109.03 A 28.8 28.8 0 0 1 273.84 111.58 Z" fill="#b5f6b7" stroke="none"/>
+<path d="M 247.85 99.18 L 273.95 111.35 A 28.8 28.8 0 0 1 272.66 113.8 Z" fill="#b7faab" stroke="none"/>
+<path d="M 247.85 99.18 L 272.79 113.58 A 28.8 28.8 0 0 1 271.3 115.9 Z" fill="#b9fda0" stroke="none"/>
+<path d="M 247.85 99.18 L 271.44 115.7 A 28.8 28.8 0 0 1 269.75 117.88 Z" fill="#befd99" stroke="none"/>
+<path d="M 247.85 99.18 L 269.91 117.69 A 28.8 28.8 0 0 1 268.04 119.72 Z" fill="#c6fa97" stroke="none"/>
+<path d="M 247.85 99.18 L 268.21 119.54 A 28.8 28.8 0 0 1 266.17 121.4 Z" fill="#cef795" stroke="none"/>
+<path d="M 247.85 99.18 L 266.36 121.24 A 28.8 28.8 0 0 1 264.16 122.91 Z" fill="#d6f393" stroke="none"/>
+<path d="M 247.85 99.18 L 264.37 122.77 A 28.8 28.8 0 0 1 262.03 124.25 Z" fill="#def092" stroke="none"/>
+<path d="M 247.85 99.18 L 262.25 124.12 A 28.8 28.8 0 0 1 259.79 125.39 Z" fill="#e6ec90" stroke="none"/>
+<path d="M 247.85 99.18 L 260.02 125.28 A 28.8 28.8 0 0 1 257.46 126.33 Z" fill="#eee98e" stroke="none"/>
+<path d="M 247.85 99.18 L 257.7 126.24 A 28.8 28.8 0 0 1 255.06 127.06 Z" fill="#f6e68c" stroke="none"/>
+<path d="M 247.85 99.18 L 255.3 127 A 28.8 28.8 0 0 1 252.6 127.59 Z" fill="#fee28a" stroke="none"/>
+<path d="M 247.85 99.18 L 252.85 127.54 A 28.8 28.8 0 0 1 250.11 127.89 Z" fill="#f9dc96" stroke="none"/>
+<path d="M 247.85 99.18 L 250.36 127.87 A 28.8 28.8 0 0 1 247.6 127.98 Z" fill="#f3d5a3" stroke="none"/>
+<path d="M 247.85 99.18 L 247.85 127.98 A 28.8 28.8 0 0 1 245.09 127.85 Z" fill="#eccdb1" stroke="none"/>
+<path d="M 247.85 99.18 L 245.34 127.87 A 28.8 28.8 0 0 1 242.6 127.5 Z" fill="#e5c6bf" stroke="none"/>
+<path d="M 247.85 99.18 L 242.85 127.54 A 28.8 28.8 0 0 1 240.15 126.93 Z" fill="#dfbfcc" stroke="none"/>
+<path d="M 247.85 99.18 L 240.4 127 A 28.8 28.8 0 0 1 237.76 126.16 Z" fill="#d8b8da" stroke="none"/>
+<path d="M 247.85 99.18 L 238 126.24 A 28.8 28.8 0 0 1 235.45 125.17 Z" fill="#d2b1e7" stroke="none"/>
+<path d="M 247.85 99.18 L 235.68 125.28 A 28.8 28.8 0 0 1 233.23 123.99 Z" fill="#cba9f5" stroke="none"/>
+<path d="M 247.85 99.18 L 233.45 124.12 A 28.8 28.8 0 0 1 231.13 122.63 Z" fill="#c5a5ff" stroke="none"/>
+<path d="M 247.85 99.18 L 231.33 122.77 A 28.8 28.8 0 0 1 229.15 121.08 Z" fill="#c0abff" stroke="none"/>
+<path d="M 247.85 99.18 L 229.34 121.24 A 28.8 28.8 0 0 1 227.31 119.37 Z" fill="#bbb1ff" stroke="none"/>
+<path d="M 247.85 99.18 L 227.49 119.54 A 28.8 28.8 0 0 1 225.63 117.5 Z" fill="#b6b7ff" stroke="none"/>
+<path d="M 247.85 99.18 L 225.79 117.69 A 28.8 28.8 0 0 1 224.12 115.49 Z" fill="#b0bdff" stroke="none"/>
+<path d="M 247.85 99.18 L 224.26 115.7 A 28.8 28.8 0 0 1 222.78 113.36 Z" fill="#abc2ff" stroke="none"/>
+<path d="M 247.85 99.18 L 222.91 113.58 A 28.8 28.8 0 0 1 221.64 111.12 Z" fill="#a6c8ff" stroke="none"/>
+<path d="M 247.85 99.18 L 221.75 111.35 A 28.8 28.8 0 0 1 220.7 108.79 Z" fill="#a1ceff" stroke="none"/>
+<path d="M 247.85 99.18 L 220.79 109.03 A 28.8 28.8 0 0 1 219.97 106.39 Z" fill="#9cd4ff" stroke="none"/>
+<path d="M 247.85 99.18 L 220.03 106.63 A 28.8 28.8 0 0 1 219.44 103.93 Z" fill="#a1d2fd" stroke="none"/>
+<path d="M 247.85 99.18 L 219.49 104.18 A 28.8 28.8 0 0 1 219.14 101.44 Z" fill="#adcdfa" stroke="none"/>
+<path d="M 247.85 99.18 L 219.16 101.69 A 28.8 28.8 0 0 1 219.05 98.93 Z" fill="#b8c7f7" stroke="none"/>
+<path d="M 247.85 99.18 L 219.05 99.18 A 28.8 28.8 0 0 1 219.18 96.42 Z" fill="#c4c1f5" stroke="none"/>
+<path d="M 247.85 99.18 L 219.16 96.67 A 28.8 28.8 0 0 1 219.53 93.93 Z" fill="#d0bbf2" stroke="none"/>
+<path d="M 247.85 99.18 L 219.49 94.18 A 28.8 28.8 0 0 1 220.1 91.48 Z" fill="#dbb5ef" stroke="none"/>
+<path d="M 247.85 99.18 L 220.03 91.73 A 28.8 28.8 0 0 1 220.87 89.09 Z" fill="#e7afec" stroke="none"/>
+<path d="M 247.85 99.18 L 220.79 89.33 A 28.8 28.8 0 0 1 221.86 86.78 Z" fill="#f3a9e9" stroke="none"/>
+<path d="M 247.85 99.18 L 221.75 87.01 A 28.8 28.8 0 0 1 223.04 84.56 Z" fill="#ffa3e6" stroke="none"/>
+<path d="M 247.85 99.18 L 222.91 84.78 A 28.8 28.8 0 0 1 224.4 82.46 Z" fill="#fea8e7" stroke="none"/>
+<path d="M 247.85 99.18 L 224.26 82.66 A 28.8 28.8 0 0 1 225.95 80.48 Z" fill="#fdade7" stroke="none"/>
+<path d="M 247.85 99.18 L 225.79 80.67 A 28.8 28.8 0 0 1 227.66 78.64 Z" fill="#fcb3e8" stroke="none"/>
+<path d="M 247.85 99.18 L 227.49 78.82 A 28.8 28.8 0 0 1 229.53 76.96 Z" fill="#fab8e8" stroke="none"/>
+<path d="M 247.85 99.18 L 229.34 77.12 A 28.8 28.8 0 0 1 231.54 75.45 Z" fill="#f9bde9" stroke="none"/>
+<path d="M 247.85 99.18 L 231.33 75.59 A 28.8 28.8 0 0 1 233.67 74.11 Z" fill="#f8c3ea" stroke="none"/>
+<path d="M 247.85 99.18 L 233.45 74.24 A 28.8 28.8 0 0 1 235.91 72.97 Z" fill="#f7c8ea" stroke="none"/>
+<path d="M 247.85 99.18 L 235.68 73.08 A 28.8 28.8 0 0 1 238.24 72.03 Z" fill="#f6cdeb" stroke="none"/>
+<path d="M 247.85 99.18 L 238 72.12 A 28.8 28.8 0 0 1 240.64 71.3 Z" fill="#f5d3ec" stroke="none"/>
+<path d="M 247.85 99.18 L 240.4 71.36 A 28.8 28.8 0 0 1 243.1 70.77 Z" fill="#f3d8ec" stroke="none"/>
+<path d="M 247.85 99.18 L 242.85 70.82 A 28.8 28.8 0 0 1 245.59 70.47 Z" fill="#f2dded" stroke="none"/>
+<path d="M 247.85 99.18 L 245.34 70.49 A 28.8 28.8 0 0 1 248.1 70.38 Z" fill="#f1e3ed" stroke="none"/>
+<circle cx="247.85" cy="99.18" r="30" fill="url(#spec-chokhmah)"/>
+</g>
+<g id="sphere-binah" clip-path="url(#clip-binah)">
+<circle cx="37.9" cy="99.18" r="30" fill="#000000"/>
+<circle cx="37.9" cy="99.18" r="30" fill="url(#spec-binah)"/>
+<circle cx="37.9" cy="99.18" r="30" fill="url(#shad-binah)"/>
+</g>
+<g id="sphere-chesed" clip-path="url(#clip-chesed)">
+<circle cx="247.85" cy="220.25" r="30" fill="#0000FF"/>
+<circle cx="247.85" cy="220.25" r="30" fill="url(#spec-chesed)"/>
+<circle cx="247.85" cy="220.25" r="30" fill="url(#shad-chesed)"/>
+</g>
+<g id="sphere-geburah" clip-path="url(#clip-geburah)">
+<circle cx="37.9" cy="220.25" r="30" fill="#FF0000"/>
+<circle cx="37.9" cy="220.25" r="30" fill="url(#spec-geburah)"/>
+<circle cx="37.9" cy="220.25" r="30" fill="url(#shad-geburah)"/>
+</g>
+<g id="sphere-tiphareth" clip-path="url(#clip-tiphareth)">
+<circle cx="142.83" cy="280.84" r="30" fill="#FFFF00"/>
+<circle cx="142.83" cy="280.84" r="30" fill="url(#spec-tiphareth)"/>
+<circle cx="142.83" cy="280.84" r="30" fill="url(#shad-tiphareth)"/>
+</g>
+<g id="sphere-netzach" clip-path="url(#clip-netzach)">
+<circle cx="247.85" cy="341.37" r="30" fill="#00FF00"/>
+<circle cx="247.85" cy="341.37" r="30" fill="url(#spec-netzach)"/>
+<circle cx="247.85" cy="341.37" r="30" fill="url(#shad-netzach)"/>
+</g>
+<g id="sphere-hod" clip-path="url(#clip-hod)">
+<circle cx="37.9" cy="341.37" r="30" fill="#FF8000"/>
+<circle cx="37.9" cy="341.37" r="30" fill="url(#spec-hod)"/>
+<circle cx="37.9" cy="341.37" r="30" fill="url(#shad-hod)"/>
+</g>
+<g id="sphere-yesod" clip-path="url(#clip-yesod)">
+<circle cx="142.83" cy="402.12" r="30" fill="#8F00FF"/>
+<circle cx="142.83" cy="402.12" r="30" fill="url(#spec-yesod)"/>
+<circle cx="142.83" cy="402.12" r="30" fill="url(#shad-yesod)"/>
+</g>
+<g id="sphere-malkuth" clip-path="url(#clip-malkuth)">
+<path d="M 142.83 522.85 L 122.47 502.49 A 28.799999999999997 28.799999999999997 0 0 1 163.19 502.49 Z" fill="#FFF659" stroke="none"/>
+<path d="M 142.83 522.85 L 163.19 502.49 A 28.799999999999997 28.799999999999997 0 0 1 163.19 543.21 Z" fill="#70FF6E" stroke="none"/>
+<path d="M 142.83 522.85 L 163.19 543.21 A 28.799999999999997 28.799999999999997 0 0 1 122.47 543.21 Z" fill="#422E29" stroke="none"/>
+<path d="M 142.83 522.85 L 122.47 543.21 A 28.799999999999997 28.799999999999997 0 0 1 122.47 502.49 Z" fill="#FF5454" stroke="none"/>
+<circle cx="142.83" cy="522.85" r="30" fill="url(#spec-malkuth)"/>
+<circle cx="142.83" cy="522.85" r="30" fill="url(#shad-malkuth)"/>
+</g>
+</g>
+<circle id="sphere-daath-hit-area" data-node-id="sphere:Daath" cx="142.83" cy="159.44" r="30" fill="transparent" pointer-events="all"/>
+</svg>

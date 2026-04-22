@@ -17,6 +17,8 @@ import {
   type TarotCard,
 } from "../tarot"
 
+export * from "./kaabalistic"
+
 export const OCCULT_THEME_STOPWORDS = [
   "the",
   "and",

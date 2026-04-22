@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 561" preserveAspectRatio="xMidYMid meet">
+<defs>
+<filter id="pathDarken">
+  <feComponentTransfer>
+    <feFuncR type="linear" slope="0.65"/>
+    <feFuncG type="linear" slope="0.65"/>
+    <feFuncB type="linear" slope="0.65"/>
+  </feComponentTransfer>
+</filter>
+<radialGradient id="spec-kether" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-kether" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-kether"><circle cx="142.83" cy="38.32" r="30"/></clipPath>
+<radialGradient id="spec-chokhmah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-chokhmah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-chokhmah"><circle cx="247.85" cy="99.18" r="30"/></clipPath>
+<radialGradient id="spec-binah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-binah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-binah"><circle cx="37.9" cy="99.18" r="30"/></clipPath>
+<radialGradient id="spec-daath" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-daath" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-daath"><circle cx="142.83" cy="159.44" r="30"/></clipPath>
+<radialGradient id="spec-chesed" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-chesed" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-chesed"><circle cx="247.85" cy="220.25" r="30"/></clipPath>
+<radialGradient id="spec-geburah" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-geburah" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-geburah"><circle cx="37.9" cy="220.25" r="30"/></clipPath>
+<radialGradient id="spec-tiphareth" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-tiphareth" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-tiphareth"><circle cx="142.83" cy="280.84" r="30"/></clipPath>
+<radialGradient id="spec-netzach" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-netzach" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-netzach"><circle cx="247.85" cy="341.37" r="30"/></clipPath>
+<radialGradient id="spec-hod" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-hod" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-hod"><circle cx="37.9" cy="341.37" r="30"/></clipPath>
+<radialGradient id="spec-yesod" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-yesod" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-yesod"><circle cx="142.83" cy="402.12" r="30"/></clipPath>
+<radialGradient id="spec-malkuth" cx="30%" cy="25%" r="55%" fx="30%" fy="25%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="25%" stop-color="white" stop-opacity="0.45"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.08"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="shad-malkuth" cx="78%" cy="80%" r="55%" fx="78%" fy="80%">
+  <stop offset="0%" stop-color="black" stop-opacity="0.32"/>
+  <stop offset="40%" stop-color="black" stop-opacity="0.12"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip-malkuth"><circle cx="142.83" cy="522.85" r="30"/></clipPath>
+<radialGradient id="kether-glow" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
+  <stop offset="45%" stop-color="white" stop-opacity="0.6"/>
+  <stop offset="80%" stop-color="white" stop-opacity="0.15"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="kether-facet" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+  <stop offset="50%" stop-color="white" stop-opacity="0.5"/>
+  <stop offset="100%" stop-color="white" stop-opacity="0.1"/>
+</linearGradient>
+<radialGradient id="kether-rim" cx="50%" cy="50%" r="75%">
+  <stop offset="60%" stop-color="black" stop-opacity="0"/>
+  <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
+</radialGradient>
+</defs>
+<g id="paths">
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#1a1500" stroke-width="26" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#b8860b" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.15" stroke-width="8" stroke-linecap="round"/>
+</g>
+<g id="spheres">
+<g id="sphere-kether" clip-path="url(#clip-kether)">
+<circle cx="142.83" cy="38.32" r="30" fill="#ffd700"/>
+<circle cx="142.83" cy="38.32" r="30" fill="url(#spec-kether)"/>
+<circle cx="142.83" cy="38.32" r="30" fill="url(#shad-kether)"/>
+</g>
+<circle cx="142.83" cy="38.32" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-chokhmah" clip-path="url(#clip-chokhmah)">
+<circle cx="247.85" cy="99.18" r="30" fill="#ffd700"/>
+<circle cx="247.85" cy="99.18" r="30" fill="url(#spec-chokhmah)"/>
+<circle cx="247.85" cy="99.18" r="30" fill="url(#shad-chokhmah)"/>
+</g>
+<circle cx="247.85" cy="99.18" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-binah" clip-path="url(#clip-binah)">
+<circle cx="37.9" cy="99.18" r="30" fill="#ffd700"/>
+<circle cx="37.9" cy="99.18" r="30" fill="url(#spec-binah)"/>
+<circle cx="37.9" cy="99.18" r="30" fill="url(#shad-binah)"/>
+</g>
+<circle cx="37.9" cy="99.18" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-daath" clip-path="url(#clip-daath)">
+<circle cx="142.83" cy="159.44" r="30" fill="#ffd700"/>
+<circle cx="142.83" cy="159.44" r="30" fill="url(#spec-daath)"/>
+<circle cx="142.83" cy="159.44" r="30" fill="url(#shad-daath)"/>
+</g>
+<circle cx="142.83" cy="159.44" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-chesed" clip-path="url(#clip-chesed)">
+<circle cx="247.85" cy="220.25" r="30" fill="#ffd700"/>
+<circle cx="247.85" cy="220.25" r="30" fill="url(#spec-chesed)"/>
+<circle cx="247.85" cy="220.25" r="30" fill="url(#shad-chesed)"/>
+</g>
+<circle cx="247.85" cy="220.25" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-geburah" clip-path="url(#clip-geburah)">
+<circle cx="37.9" cy="220.25" r="30" fill="#ffd700"/>
+<circle cx="37.9" cy="220.25" r="30" fill="url(#spec-geburah)"/>
+<circle cx="37.9" cy="220.25" r="30" fill="url(#shad-geburah)"/>
+</g>
+<circle cx="37.9" cy="220.25" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-tiphareth" clip-path="url(#clip-tiphareth)">
+<circle cx="142.83" cy="280.84" r="30" fill="#ffd700"/>
+<circle cx="142.83" cy="280.84" r="30" fill="url(#spec-tiphareth)"/>
+<circle cx="142.83" cy="280.84" r="30" fill="url(#shad-tiphareth)"/>
+</g>
+<circle cx="142.83" cy="280.84" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-netzach" clip-path="url(#clip-netzach)">
+<circle cx="247.85" cy="341.37" r="30" fill="#ffd700"/>
+<circle cx="247.85" cy="341.37" r="30" fill="url(#spec-netzach)"/>
+<circle cx="247.85" cy="341.37" r="30" fill="url(#shad-netzach)"/>
+</g>
+<circle cx="247.85" cy="341.37" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-hod" clip-path="url(#clip-hod)">
+<circle cx="37.9" cy="341.37" r="30" fill="#ffd700"/>
+<circle cx="37.9" cy="341.37" r="30" fill="url(#spec-hod)"/>
+<circle cx="37.9" cy="341.37" r="30" fill="url(#shad-hod)"/>
+</g>
+<circle cx="37.9" cy="341.37" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-yesod" clip-path="url(#clip-yesod)">
+<circle cx="142.83" cy="402.12" r="30" fill="#ffd700"/>
+<circle cx="142.83" cy="402.12" r="30" fill="url(#spec-yesod)"/>
+<circle cx="142.83" cy="402.12" r="30" fill="url(#shad-yesod)"/>
+</g>
+<circle cx="142.83" cy="402.12" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+<g id="sphere-malkuth" clip-path="url(#clip-malkuth)">
+<circle cx="142.83" cy="522.85" r="30" fill="#ffd700"/>
+<circle cx="142.83" cy="522.85" r="30" fill="url(#spec-malkuth)"/>
+<circle cx="142.83" cy="522.85" r="30" fill="url(#shad-malkuth)"/>
+</g>
+<circle cx="142.83" cy="522.85" r="30" fill="none" stroke="#1a1500" stroke-width="2"/>
+</g>
+</svg>
