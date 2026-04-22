@@ -1,0 +1,109 @@
+---
+title: Introduction
+description: A comprehensive TypeScript library for numerology, astrology, kaabalah, and tarot
+sidebar:
+  order: 0
+  label: Introduction
+---
+
+import { Card, CardGrid, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
+
+<div style="text-align: center; margin-bottom: 1.5rem;">
+  <img src="/tree-of-life.svg" alt="Kaabalah Tree of Life" width="180" style="margin: 0 auto;" />
+</div>
+
+<p align="center"><strong>The de-facto library for esoteric calculations and tooling</strong></p>
+
+## Install
+
+<Tabs>
+  <TabItem label="npm">
+    ```bash
+    npm install kaabalah
+    ```
+  </TabItem>
+  <TabItem label="pnpm">
+    ```bash
+    pnpm install kaabalah
+    ```
+  </TabItem>
+  <TabItem label="yarn">
+    ```bash
+    yarn add kaabalah
+    ```
+  </TabItem>
+</Tabs>
+
+## Modules
+
+<CardGrid>
+  <Card title="🔢 Numerology">
+    Life path, cycles, challenges, and personal mythology calculations
+
+    [Learn more →](/modules/numerology/)
+  </Card>
+  <Card title="✡️ Gematria">
+    Hebrew letter values with reverse gematria lookup
+
+    [Learn more →](/modules/gematria/)
+  </Card>
+  <Card title="🌟 Astrology">
+    Birth charts and planetary positions via Swiss Ephemeris
+
+    [Learn more →](/modules/astrology/)
+  </Card>
+  <Card title="🃏 Tarot">
+    78 cards with meanings, spreads, and interpretations
+
+    [Learn more →](/modules/tarot/)
+  </Card>
+  <Card title="🐚 Ifa">
+    Odu calculations based on dates for Ifa divination
+
+    [Learn more →](/modules/ifa/)
+  </Card>
+  <Card title="🌳 Core">
+    Tree of Life system linking all esoteric correspondences
+
+    [Learn more →](/modules/core/)
+  </Card>
+</CardGrid>
+
+## Quick Start
+
+```typescript title="example.ts"
+import { calculateGematria } from 'kaabalah/gematria';
+import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
+
+// Calculate gematria for a name
+const gematria = calculateGematria('DAVID');
+console.log(gematria.synthesis.originalSum); // 25
+
+// Calculate life path from birth date
+const lifePath = calculateKaabalisticLifePath(new Date('1990-06-15'));
+console.log(lifePath.lifePath.reducedValue);
+```
+
+## Features
+
+<CardGrid>
+  <Card title="Tree-Shakable">
+    Import only what you need. Each module is independently tree-shakable for optimal bundle size.
+  </Card>
+  <Card title="TypeScript First">
+    Full TypeScript support with comprehensive type definitions for all functions and return values.
+  </Card>
+</CardGrid>
+
+## Learn More
+
+<CardGrid>
+  <LinkCard title="📚 Documentation" description="Complete guides and tutorials for all modules" href="/getting-started/" />
+  <LinkCard title="🔧 WebAssembly" description="Swiss Ephemeris WASM integration guide" href="/guides/webassembly/" />
+  <LinkCard title="📖 API Reference" description="Detailed API documentation for all exports" href="/reference/api/" />
+</CardGrid>
+
+### New to esoterism?
+
+- [Concepts and terminology](/getting-started/concepts/)
+- [Practical recipes](/getting-started/recipes/)

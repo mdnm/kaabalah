@@ -10,8 +10,8 @@ import {
   type NodeId,
   type NodeType,
 } from "../../core";
-import { SYSTEMS, type SystemKey } from "../../core/systems/registry";
 import { SYSTEM as KAABALAH_SYSTEM } from "../../core/systems/kaabalah";
+import { SYSTEMS, type SystemKey } from "../../core/systems/registry";
 import {
   generateTreeSvg,
   getTreeLayout,
@@ -19,10 +19,9 @@ import {
   type TreeSvgOptions,
 } from "../../visual";
 import {
-  getFlagBool,
   getFlagNumber,
   getFlagString,
-  isJsonMode,
+  isJsonMode
 } from "../runtime/args";
 import { exitWithError } from "../runtime/errors";
 import { outputJson } from "../runtime/output";

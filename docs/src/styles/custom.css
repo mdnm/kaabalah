@@ -1,0 +1,24 @@
+:root[data-theme='dark'] {
+  --sl-color-bg: #000010;
+  --sl-color-bg-nav: #00000d;
+  --sl-color-bg-sidebar: #00000d;
+  --sl-color-hairline-shade: rgba(255, 215, 0, 0.08);
+  --sl-color-hairline-light: rgba(255, 215, 0, 0.06);
+  --sl-color-accent-low: #1a1500;
+  --sl-color-accent: #f2ba05;
+  --sl-color-accent-high: #ffd700;
+  --sl-color-white: #fffef5;
+  --sl-color-gray-1: #e8e0c8;
+  --sl-color-gray-2: #b8b09a;
+  --sl-color-gray-3: #8a8270;
+  --sl-color-gray-4: #4a4535;
+  --sl-color-gray-5: #25201a;
+  --sl-color-gray-6: #151210;
+  --sl-color-black: #0a0810;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #fdf4d8;
+  --sl-color-accent: #7a5c00;
+  --sl-color-accent-high: #2d2100;
+}
