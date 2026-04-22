@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 import { describe, expect, it } from "vitest";
 
 import { id, KaabalahTypes } from "../core";
@@ -114,4 +116,72 @@ describe("tree svg visual module", () => {
     expect(svg).toContain(`fill="#654321"`);
     expect(svg).toContain(`fill="#d9d4c7"`);
   });
+
+  it("keeps the default svg output unchanged when no highlights are passed", () => {
+    const svg = generateTreeSvg();
+
+    expect(hash(svg)).toBe("49bc877129ab77142deb42122ec3a1588d9dc817577eeb7d35da0348a33038d1");
+  });
+
+  it("recolors only the highlighted path without changing unrelated paths", () => {
+    const defaultSvg = generateTreeSvg({
+      background: "transparent",
+    });
+    const svg = generateTreeSvg({
+      background: "transparent",
+      highlights: {
+        paths: {
+          [id(KaabalahTypes.PATH, "1")]: "#ff0055",
+        },
+      },
+    });
+
+    const defaultMainPathStrokes = extractMainPathStrokes(defaultSvg);
+    const highlightedMainPathStrokes = extractMainPathStrokes(svg);
+    const defaultEdgePathStrokes = extractEdgePathStrokes(defaultSvg);
+    const highlightedEdgePathStrokes = extractEdgePathStrokes(svg);
+
+    expect(defaultMainPathStrokes).toHaveLength(22);
+    expect(highlightedMainPathStrokes).toHaveLength(22);
+    expect(defaultEdgePathStrokes).toHaveLength(22);
+    expect(highlightedEdgePathStrokes).toHaveLength(22);
+    expect(highlightedMainPathStrokes[0]).toBe("#ff0055");
+    expect(defaultMainPathStrokes[0]).not.toBe("#ff0055");
+    expect(highlightedEdgePathStrokes[0]).toBe("#ff0055");
+    expect(highlightedMainPathStrokes.slice(1)).toEqual(defaultMainPathStrokes.slice(1));
+    expect(highlightedEdgePathStrokes.slice(1)).toEqual(defaultEdgePathStrokes.slice(1));
+  });
+
+  it("keeps a highlighted special sphere on its special renderer", () => {
+    const svg = generateTreeSvg({
+      background: "transparent",
+      highlights: {
+        spheres: {
+          [id(KaabalahTypes.SPHERE, "Kether")]: "#ffcc00",
+        },
+      },
+    });
+
+    expect(svg).toContain(`<g id="sphere-kether"`);
+    expect(svg).toContain(`<polygon points="`);
+    expect(svg).toContain(`fill="#ffcc00"`);
+  });
 });
+
+function hash(value: string) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function extractMainPathStrokes(svg: string) {
+  return Array.from(
+    svg.matchAll(/<line [^>]*stroke="([^"]+)"[^>]*stroke-width="22"[^>]*\/>/g),
+    (match) => match[1]
+  );
+}
+
+function extractEdgePathStrokes(svg: string) {
+  return Array.from(
+    svg.matchAll(/<line [^>]*stroke="([^"]+)"[^>]*stroke-width="26"[^>]*\/>/g),
+    (match) => match[1]
+  );
+}

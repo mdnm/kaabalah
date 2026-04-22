@@ -28,7 +28,7 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -53,6 +53,7 @@ interface TreeSvgOptions {
   palette?: TreeSvgPalette;        // color scheme (default: "color")
   system?: SystemKey;              // "kaabalah" | "hermetic-qabalah" | "lurianic-kabbalah" (default: "kaabalah")
   daathLayer?: TreeSvgDaathLayer;  // "front" | "back" (default: "front")
+  highlights?: TreeSvgHighlights;  // targeted path/sphere recolors layered on top of the base renderer
 }
 ```
 
@@ -116,6 +117,7 @@ Sphere and path colors are read from the Tree of Life color data. Special sphere
 - **Chokhmah** — iridescent shimmer
 - **Daath** — yin-yang symbol
 - **Malkuth** — four-quadrant color slices
+- Paths keep their layered treatment, with the outer edge rendered as a darker version of the path hue instead of a neutral outline.
 
 ### `"monochrome"`
 
@@ -147,29 +149,63 @@ interface TreeSvgCustomPalette {
 - `"plain"` — all spheres render as simple filled circles (default for custom palettes)
 
 ```typescript
-import { generateTreeSvg, TREE_SPHERE_IDS, TREE_PATH_IDS } from 'kaabalah/visual';
-import { id, KaabalahTypes } from 'kaabalah/core';
+import { generateTreeSvg } from 'kaabalah/visual';
 
 const svg = generateTreeSvg({
-  background: "#0d0d0d",
+  background: "#050315",
   palette: {
-    defaultSphereFill: "#d9d4c7",
-    defaultPathColor: "#a68b5b",
+    defaultSphereFill: "#ffd700",
+    defaultPathColor: "#ffd700",
     pathEdgeColor: "#2a2418",
     sphereStrokeColor: "#2a2418",
     sphereStrokeWidth: 2,
     specialSphereMode: "plain",
-    // Override a specific path color
-    pathColors: {
-      [id(KaabalahTypes.PATH, "1")]: "#ffd700",
+  },
+});
+```
+
+---
+
+## Highlights
+
+`highlights` is the additive way to selectively recolor only the paths and spheres you care about while leaving every unmentioned element exactly as the current renderer would draw it.
+
+```typescript
+interface TreeSvgHighlights {
+  paths?: Partial<Record<TreePathId, string>>;
+  spheres?: Partial<Record<TreeSphereId, string | string[]>>;
+}
+```
+
+- `highlights.paths` overrides only the main color of the specified path lines. The existing edge and highlight layers stay intact.
+- `highlights.spheres` overrides only the specified sphere fills. Unmentioned spheres keep their normal renderer output.
+- When the active palette preserves special spheres, highlighted `Kether`, `Chokhmah`, `Daath`, and `Malkuth` keep their special renderer structure instead of collapsing to plain circles.
+- Arrays are mainly useful for multi-fill spheres like `Malkuth`; a single string works for ordinary sphere tinting.
+
+```typescript
+import { generateTreeSvg } from 'kaabalah/visual';
+import { id, KaabalahTypes } from 'kaabalah/core';
+
+const svg = generateTreeSvg({
+  background: "#fff",
+  highlights: {
+    paths: {
+      [id(KaabalahTypes.PATH, "1")]: "#d97706",
     },
-    // Override a specific sphere fill
-    sphereFills: {
-      [id(KaabalahTypes.SPHERE, "Tiphareth")]: "#f5c518",
+    spheres: {
+      [id(KaabalahTypes.SPHERE, "Kether")]: "#fde68a",
+      [id(KaabalahTypes.SPHERE, "Malkuth")]: [
+        "#facc15",
+        "#f59e0b",
+        "#b45309",
+        "#fef3c7",
+      ],
     },
   },
 });
 ```
+
+This is the intended downstream contract for apps like Gamu: request selective recolors from `kaabalah-lib` instead of masking or rebuilding the SVG app-side.
 
 ### Palette comparison
 
