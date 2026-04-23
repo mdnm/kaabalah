@@ -155,7 +155,6 @@
   <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
 </radialGradient>
 </defs>
-<rect x="0" y="0" width="286" height="561" fill="white"/>
 <g id="paths">
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="22" stroke-linecap="round"/>

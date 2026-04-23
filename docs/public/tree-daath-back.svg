@@ -155,7 +155,6 @@
   <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
 </radialGradient>
 </defs>
-<rect x="0" y="0" width="286" height="561" fill="white"/>
 <g id="spheres-behind-paths">
 <g id="sphere-daath" clip-path="url(#clip-daath)">
 <g transform="rotate(180 142.83 159.44)">
