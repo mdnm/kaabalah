@@ -174,12 +174,13 @@ const svg = generateTreeSvg({
 interface TreeSvgHighlights {
   paths?: Partial<Record<TreePathId, string>>;
   spheres?: Partial<Record<TreeSphereId, string | string[]>>;
+  specialSphereMode?: "preserve" | "plain";
 }
 ```
 
 - `highlights.paths` overrides only the main color of the specified path lines. The existing edge and highlight layers stay intact.
 - `highlights.spheres` overrides only the specified sphere fills. Unmentioned spheres keep their normal renderer output.
-- When the active palette preserves special spheres, highlighted `Kether`, `Chokhmah`, `Daath`, and `Malkuth` keep their special renderer structure instead of collapsing to plain circles.
+- `highlights.specialSphereMode` controls only highlighted special spheres. It defaults to `"preserve"`, so highlighted `Kether`, `Chokhmah`, `Daath`, and `Malkuth` keep their special renderer structure unless you opt into `"plain"`.
 - Arrays are mainly useful for multi-fill spheres like `Malkuth`; a single string works for ordinary sphere tinting.
 
 ```typescript
@@ -206,6 +207,39 @@ const svg = generateTreeSvg({
 ```
 
 This is the intended downstream contract for apps like Gamu: request selective recolors from `kaabalah-lib` instead of masking or rebuilding the SVG app-side.
+
+When you want to mute every non-selected node to a single neutral color while keeping selected special spheres canonical, set `highlights.specialSphereMode: "plain"` and leave the selected nodes unmentioned:
+
+```typescript
+import { generateTreeSvg, TREE_PATH_IDS, TREE_SPHERE_IDS } from 'kaabalah/visual';
+import { id, KaabalahTypes } from 'kaabalah/core';
+
+const muted = "#aaa";
+const selectedPathId = id(KaabalahTypes.PATH, "1");
+const selectedSphereIds = [
+  id(KaabalahTypes.SPHERE, "Kether"),
+  id(KaabalahTypes.SPHERE, "Chokhmah"),
+];
+
+const svg = generateTreeSvg({
+  background: "#fff",
+  highlights: {
+    specialSphereMode: "plain",
+    paths: Object.fromEntries(
+      TREE_PATH_IDS
+        .filter((pathId) => pathId !== selectedPathId)
+        .map((pathId) => [pathId, muted])
+    ),
+    spheres: Object.fromEntries(
+      TREE_SPHERE_IDS
+        .filter((sphereId) => !selectedSphereIds.includes(sphereId))
+        .map((sphereId) => [sphereId, muted])
+    ),
+  },
+});
+```
+
+This lets downstream apps mute `Daath`, `Chokhmah`, and the other special spheres with the same single fill string and removes the need for app-side dual-fill or overlay workarounds.
 
 ### Palette comparison
 

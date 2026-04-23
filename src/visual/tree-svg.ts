@@ -75,6 +75,7 @@ export type TreeSvgDaathLayer = "front" | "back";
 export interface TreeSvgHighlights {
   paths?: Partial<Record<TreePathId, string>>;
   spheres?: Partial<Record<TreeSphereId, string | string[]>>;
+  specialSphereMode?: "preserve" | "plain";
 }
 
 export interface TreeSvgOptions {
@@ -171,6 +172,7 @@ interface ResolvedPalette {
 interface ResolvedHighlights {
   pathColors: Partial<Record<TreePathId, string>>;
   sphereFills: Partial<Record<TreeSphereId, string | string[]>>;
+  specialSphereMode: "preserve" | "plain";
 }
 
 export function getTreeLayout(system: SystemKey = "kaabalah"): TreeLayout {
@@ -378,9 +380,15 @@ function renderSphere(
   });
   const highlightFill = params.highlights.sphereFills[currentSphereId];
   const activeFill = highlightFill ?? sphereFill;
+  const preserveSpecialRenderer =
+    params.palette.specialSphereMode === "preserve"
+    && (
+      highlightFill === undefined
+      || params.highlights.specialSphereMode === "preserve"
+    );
 
   push(`<g id="sphere-${slug}" clip-path="url(#clip-${slug})">`);
-  if (params.palette.specialSphereMode === "preserve") {
+  if (preserveSpecialRenderer) {
     if (params.sphereName === "Kether") {
       renderKether(
         push,
@@ -417,7 +425,7 @@ function renderSphere(
     `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="url(#spec-${slug})"/>`
   );
   if (
-    params.palette.specialSphereMode !== "preserve" ||
+    !preserveSpecialRenderer ||
     (params.sphereName !== "Kether" && params.sphereName !== "Chokhmah")
   ) {
     push(
@@ -564,6 +572,7 @@ function resolveHighlights(
   return {
     pathColors: highlights?.paths ?? {},
     sphereFills: highlights?.spheres ?? {},
+    specialSphereMode: highlights?.specialSphereMode ?? "preserve",
   };
 }
 

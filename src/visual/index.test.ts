@@ -166,6 +166,81 @@ describe("tree svg visual module", () => {
     expect(svg).toContain(`<polygon points="`);
     expect(svg).toContain(`fill="#ffcc00"`);
   });
+
+  it("can mute Daath with a single flat highlight fill", () => {
+    const svg = generateTreeSvg({
+      background: "transparent",
+      highlights: {
+        specialSphereMode: "plain",
+        spheres: {
+          [id(KaabalahTypes.SPHERE, "Daath")]: "#aaa",
+        },
+      },
+    });
+
+    const daathSection = extractSphereSection(svg, "daath");
+
+    expect(daathSection).toContain(`fill="#aaa"`);
+    expect(daathSection).not.toContain(`transform="rotate(180 142.83 159.44)"`);
+    expect(daathSection).not.toContain(`fill="black"`);
+  });
+
+  it("can mute Chokhmah with a single flat highlight fill", () => {
+    const svg = generateTreeSvg({
+      background: "transparent",
+      highlights: {
+        specialSphereMode: "plain",
+        spheres: {
+          [id(KaabalahTypes.SPHERE, "Chokhmah")]: "#aaa",
+        },
+      },
+    });
+
+    const chokhmahSection = extractSphereSection(svg, "chokhmah");
+
+    expect(chokhmahSection).toContain(`fill="#aaa"`);
+    expect(chokhmahSection).not.toContain(`fill-opacity="0.62"`);
+    expect(chokhmahSection).not.toContain(`path d="M 247.85 99.18 L`);
+  });
+
+  it("supports downstream muting of non-selected nodes without svg post-processing", () => {
+    const selectedPathId = id(KaabalahTypes.PATH, "1");
+    const selectedSphereIds = [
+      id(KaabalahTypes.SPHERE, "Kether"),
+      id(KaabalahTypes.SPHERE, "Chokhmah"),
+    ];
+    const mutedColor = "#aaa";
+
+    const svg = generateTreeSvg({
+      background: "#fff",
+      highlights: {
+        specialSphereMode: "plain",
+        paths: Object.fromEntries(
+          TREE_PATH_IDS
+            .filter((pathId) => pathId !== selectedPathId)
+            .map((pathId) => [pathId, mutedColor])
+        ),
+        spheres: Object.fromEntries(
+          TREE_SPHERE_IDS
+            .filter((sphereId) => !selectedSphereIds.includes(sphereId))
+            .map((sphereId) => [sphereId, mutedColor])
+        ),
+      },
+    });
+
+    const mainPathStrokes = extractMainPathStrokes(svg);
+    const ketherSection = extractSphereSection(svg, "kether");
+    const chokhmahSection = extractSphereSection(svg, "chokhmah");
+    const daathSection = extractSphereSection(svg, "daath");
+
+    expect(svg).toContain(`<rect x="0" y="0" width="286" height="561" fill="#fff"/>`);
+    expect(mainPathStrokes[0]).not.toBe(mutedColor);
+    expect(mainPathStrokes.slice(1)).toEqual(Array.from({ length: 21 }, () => mutedColor));
+    expect(ketherSection).toContain(`<polygon points="`);
+    expect(chokhmahSection).toContain(`path d="M 247.85 99.18 L`);
+    expect(daathSection).toContain(`fill="#aaa"`);
+    expect(daathSection).not.toContain(`transform="rotate(180 142.83 159.44)"`);
+  });
 });
 
 function hash(value: string) {
@@ -184,4 +259,38 @@ function extractEdgePathStrokes(svg: string) {
     svg.matchAll(/<line [^>]*stroke="([^"]+)"[^>]*stroke-width="26"[^>]*\/>/g),
     (match) => match[1]
   );
+}
+
+function extractSphereSection(svg: string, slug: string) {
+  const sphereOrder = [
+    "kether",
+    "chokhmah",
+    "binah",
+    "daath",
+    "chesed",
+    "geburah",
+    "tiphareth",
+    "netzach",
+    "hod",
+    "yesod",
+    "malkuth",
+  ];
+  const startMarker = `<g id="sphere-${slug}"`;
+  const startIndex = svg.indexOf(startMarker);
+
+  if (startIndex === -1) {
+    throw new Error(`Sphere section not found for ${slug}`);
+  }
+
+  const currentIndex = sphereOrder.indexOf(slug);
+  const nextSlug = sphereOrder[currentIndex + 1];
+  const endIndex = nextSlug
+    ? svg.indexOf(`<g id="sphere-${nextSlug}"`, startIndex + startMarker.length)
+    : svg.indexOf(`</g>\n</svg>`, startIndex + startMarker.length);
+
+  if (endIndex === -1) {
+    throw new Error(`Sphere section end not found for ${slug}`);
+  }
+
+  return svg.slice(startIndex, endIndex);
 }
