@@ -111,12 +111,20 @@ console.log(tokens);
 ### Visual (Tree of Life SVG)
 
 ```typescript
-import { generateTreeSvg } from 'kaabalah/visual';
+import { generateTreeSvg, getTreeRenderModel } from 'kaabalah/visual';
 
+// Basic colored tree
 const svg = generateTreeSvg({
   palette: 'color',
   system: 'kaabalah',
 });
 
-// Write to file or serve as an HTTP response
+// Render model for interactive overlays: hit targets, tooltip anchors,
+// canonical colors, and geometry — all in SVG viewBox units
+const model = getTreeRenderModel();
+const kether = model.sphereById['sphere:Kether'];
+console.log(kether.geometry.viewBoxUnits.hitTarget);  // { kind: 'circle', cx, cy, r }
+console.log(kether.geometry.viewBoxUnits.anchor);      // { x, y, vertical: 'below' }
+console.log(kether.canonicalColor);                    // '#cccccc'
+console.log(kether.material.kind);                     // 'special'
 ```

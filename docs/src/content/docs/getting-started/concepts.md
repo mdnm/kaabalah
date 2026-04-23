@@ -115,6 +115,8 @@ Practical tip:
 
 ### Visual
 
-- **Tree SVG**: a server-rendered SVG of the Tree of Life, including all spheres, paths, and labels.
+- **Tree SVG**: a rendered SVG of the Tree of Life with spheres, paths, 3D shading, and special sphere materials (iridescent, crystal, yin-yang, quartered).
 - Choose a `palette` (`"color"` or `"monochrome"`) or pass a custom `TreeSvgCustomPalette`.
-- Use `getTreeLayout` if you want to drive your own renderer with the same coordinate data.
+- **Highlights**: override specific sphere/path colors. `specialSphereMode: 'plain'` flattens only highlighted special spheres to standard circles — unhighlighted special spheres keep their full material. This lets you selectively mute inactive targets while preserving active ones.
+- **Render model**: `getTreeRenderModel` returns the canonical viewBox, sphere/path geometry in SVG units, circular hit targets, tooltip anchor points (with vertical placement hints), and canonical color/material metadata. Use this to build interactive overlays that stay aligned with the base SVG.
+- Use `getTreeLayout` if you want raw coordinate data for a fully custom renderer.

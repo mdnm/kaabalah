@@ -15,6 +15,8 @@ sidebar:
 | [Tarot](/modules/tarot/) | 78 tarot cards with meanings, spreads, and interpretations |
 | [Ifa](/modules/ifa/) | Calculate Odu numbers based on dates for Ifa divination |
 | [Core](/modules/core/) | Tree of Life system for building correspondences across different esoteric systems |
+| [Visual](/modules/visual/) | Tree of Life SVG generation, interactive render model with hit targets and tooltip anchors |
+| [Semantic](/modules/semantic/) | Occult theme profiles for search, content tagging, and Kaabalistic map data |
 
 ## TypeDoc
 
