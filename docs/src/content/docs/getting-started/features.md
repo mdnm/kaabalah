@@ -87,11 +87,13 @@ Occult theme profiles for NLP, search, and content tagging.
 
 ### Visual
 
-Server-side SVG generation for the Tree of Life.
+SVG generation and interactive render model for the Tree of Life.
 
-- `generateTreeSvg`: produces a fully rendered Tree of Life SVG with spheres, paths, and labels
-- Configurable palette (`color`, `monochrome`, or custom), viewbox, and Daath layer
+- `generateTreeSvg`: fully rendered Tree of Life SVG with spheres, paths, and 3D material (iridescent, crystal, yin-yang, quartered treatments for special spheres)
+- Configurable palette (`color`, `monochrome`, or custom), viewbox, Daath layer, highlights, and activations
+- `getTreeRenderModel`: returns the canonical viewBox, sphere/path geometry in SVG units, hit target circles/lines, tooltip anchor points, canonical colors, and material metadata — everything needed for interactive overlays
 - `getTreeLayout`: returns the coordinate layout for custom rendering
+- Highlights with `specialSphereMode: 'plain'` selectively flatten only highlighted special spheres to plain circles — unhighlighted special spheres keep their full material
 
 ### CLI
 
