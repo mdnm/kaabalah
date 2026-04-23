@@ -183,10 +183,19 @@ export const COMMANDS: CommandSchema[] = [
     flags: [
       { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
       { name: "units", type: "string", default: "both", description: "Coordinate space: percentages, viewBoxUnits, or both" },
+      { name: "render-model", type: "boolean", default: false, description: "Return activation-aware render model geometry instead of the basic layout" },
+      { name: "activations", type: "string", description: "Path to activation JSON array or object with an activations array" },
+      { name: "palette", type: "string", default: "color", description: 'Render-model palette metadata: "color" or "monochrome"' },
+      { name: "daath-layer", type: "string", default: "front", description: 'Render-model Daath layer: "front" or "back"' },
+      { name: "viewbox-width", type: "number", description: "Override render-model viewBox width" },
+      { name: "viewbox-height", type: "number", description: "Override render-model viewBox height" },
+      { name: "viewbox-min-x", type: "number", default: 0, description: "Override render-model viewBox min-x" },
+      { name: "viewbox-min-y", type: "number", default: 0, description: "Override render-model viewBox min-y" },
     ],
     examples: [
       "kaabalah tree:layout --json --compact",
       "kaabalah tree:layout --system=hermetic-qabalah --units=percentages --json",
+      "kaabalah tree:layout --render-model --activations=activations.json --json --compact",
     ],
   },
   {
@@ -200,6 +209,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "background", type: "string", default: "white", description: 'Background fill color, or "transparent"' },
       { name: "palette", type: "string", default: "color", description: 'Palette: "color" or "monochrome"' },
       { name: "daath-layer", type: "string", default: "front", description: 'Render Daath in front of or behind the paths: "front" or "back"' },
+      { name: "activations", type: "string", description: "Path to activation JSON array or object with an activations array" },
       { name: "output", type: "string", description: "Write the SVG to a file instead of stdout" },
       { name: "viewbox-width", type: "number", description: "Override SVG viewBox width" },
       { name: "viewbox-height", type: "number", description: "Override SVG viewBox height" },
@@ -210,6 +220,7 @@ export const COMMANDS: CommandSchema[] = [
       "kaabalah tree:svg --json --compact --fields=svg",
       "kaabalah tree:svg --background=transparent --palette=monochrome --output=tree.svg --json",
       "kaabalah tree:svg --background=transparent --daath-layer=back --json --compact",
+      "kaabalah tree:svg --background=transparent --activations=activations.json --json --compact --fields=svg",
     ],
   },
   {

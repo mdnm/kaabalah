@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
 import {
@@ -15,10 +15,18 @@ import { SYSTEMS, type SystemKey } from "../../core/systems/registry";
 import {
   generateTreeSvg,
   getTreeLayout,
+  getTreeRenderModel,
+  TREE_PATH_IDS,
+  TREE_SPHERE_IDS,
+  type TreePathId,
   type TreeLayout,
+  type TreeRenderModel,
+  type TreeSphereId,
+  type TreeTargetActivationInput,
   type TreeSvgOptions,
 } from "../../visual";
 import {
+  getFlagBool,
   getFlagNumber,
   getFlagString,
   isJsonMode
@@ -221,6 +229,21 @@ function serializeLayout(
   return base;
 }
 
+function serializeRenderModel(model: TreeRenderModel) {
+  return {
+    system: model.system,
+    viewBox: model.viewBox,
+    scale: model.scale,
+    layerOrder: model.layerOrder,
+    layers: model.layers,
+    layout: model.layout,
+    spheres: model.spheres,
+    paths: model.paths,
+    sphereById: model.sphereById,
+    pathById: model.pathById,
+  };
+}
+
 function buildViewBox(flags: Flags) {
   const width = getFlagNumber(flags, "viewbox-width");
   const height = getFlagNumber(flags, "viewbox-height");
@@ -245,6 +268,134 @@ function buildViewBox(flags: Flags) {
     width,
     height,
   };
+}
+
+const TREE_SPHERE_ID_SET = new Set<string>(TREE_SPHERE_IDS);
+const TREE_PATH_ID_SET = new Set<string>(TREE_PATH_IDS);
+const TREE_TARGET_STATES = new Set(["active", "hovered", "selected", "inactive"]);
+
+function readJsonFile(pathFlag: string, flags: Flags) {
+  const filePath = resolve(pathFlag);
+
+  let raw: string;
+  try {
+    raw = readFileSync(filePath, "utf8");
+  } catch (err) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Could not read activations file "${filePath}": ${err instanceof Error ? err.message : String(err)}.`,
+      flags
+    );
+  }
+
+  try {
+    return JSON.parse(raw) as unknown;
+  } catch {
+    exitWithError(
+      "INVALID_JSON",
+      `Invalid JSON in activations file "${filePath}".`,
+      flags
+    );
+  }
+}
+
+function validateActivationEntry(
+  entry: unknown,
+  index: number,
+  flags: Flags
+): TreeTargetActivationInput {
+  const label = `activations[${index}]`;
+  if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+    exitWithError("INVALID_JSON", `${label} must be a JSON object.`, flags);
+  }
+
+  const raw = entry as Record<string, unknown>;
+  const targetId = raw.targetId;
+  const targetType = raw.targetType;
+  const count = raw.count;
+  const total = raw.total;
+  const strength = raw.strength;
+  const state = raw.state;
+  const color = raw.color;
+
+  if (typeof targetId !== "string" || !targetId) {
+    exitWithError("INVALID_JSON", `${label}.targetId must be a non-empty string.`, flags);
+  }
+
+  if (targetType !== "sphere" && targetType !== "path") {
+    exitWithError("INVALID_JSON", `${label}.targetType must be "sphere" or "path".`, flags);
+  }
+
+  if (targetType === "sphere" && !TREE_SPHERE_ID_SET.has(targetId)) {
+    exitWithError("INVALID_ARGUMENT", `${label}.targetId "${targetId}" is not a known sphere target.`, flags);
+  }
+
+  if (targetType === "path" && !TREE_PATH_ID_SET.has(targetId)) {
+    exitWithError("INVALID_ARGUMENT", `${label}.targetId "${targetId}" is not a known path target.`, flags);
+  }
+
+  if (!Number.isFinite(count) || typeof count !== "number" || count < 0) {
+    exitWithError("INVALID_JSON", `${label}.count must be a non-negative number.`, flags);
+  }
+
+  if (!Number.isFinite(total) || typeof total !== "number" || total < 0) {
+    exitWithError("INVALID_JSON", `${label}.total must be a non-negative number.`, flags);
+  }
+
+  if (
+    strength !== undefined
+    && (
+      typeof strength !== "number"
+      || !Number.isFinite(strength)
+      || strength < 0
+      || strength > 1
+    )
+  ) {
+    exitWithError("INVALID_JSON", `${label}.strength must be a number between 0 and 1.`, flags);
+  }
+
+  if (state !== undefined && (typeof state !== "string" || !TREE_TARGET_STATES.has(state))) {
+    exitWithError("INVALID_JSON", `${label}.state must be active, hovered, selected, or inactive.`, flags);
+  }
+
+  if (color !== undefined && typeof color !== "string") {
+    exitWithError("INVALID_JSON", `${label}.color must be a string when provided.`, flags);
+  }
+
+  return {
+    targetId: targetId as TreeSphereId | TreePathId,
+    targetType,
+    count,
+    total,
+    ...(strength !== undefined ? { strength } : {}),
+    ...(state !== undefined ? { state: state as TreeTargetActivationInput["state"] } : {}),
+    ...(color !== undefined ? { color } : {}),
+  };
+}
+
+function readActivations(flags: Flags): TreeTargetActivationInput[] | undefined {
+  const activationsPath = getFlagString(flags, "activations");
+  if (!activationsPath) {
+    return undefined;
+  }
+
+  const parsed = readJsonFile(activationsPath, flags);
+  const payload =
+    Array.isArray(parsed)
+      ? parsed
+      : typeof parsed === "object" && parsed !== null && Array.isArray((parsed as Record<string, unknown>).activations)
+        ? (parsed as { activations: unknown[] }).activations
+        : null;
+
+  if (!payload) {
+    exitWithError(
+      "INVALID_JSON",
+      'Activations file must be a JSON array or an object with an "activations" array.',
+      flags
+    );
+  }
+
+  return payload.map((entry, index) => validateActivationEntry(entry, index, flags));
 }
 
 function buildSvgOptions(flags: Flags): TreeSvgOptions {
@@ -274,6 +425,35 @@ function buildSvgOptions(flags: Flags): TreeSvgOptions {
     palette: (palette as "color" | "monochrome" | undefined) ?? undefined,
     viewBox: buildViewBox(flags),
     daathLayer: (daathLayer as "front" | "back" | undefined) ?? undefined,
+    activations: readActivations(flags),
+  };
+}
+
+function buildRenderModelOptions(flags: Flags): TreeSvgOptions {
+  const palette = getFlagString(flags, "palette");
+  if (palette && palette !== "color" && palette !== "monochrome") {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Unknown SVG palette "${palette}". Expected "color" or "monochrome".`,
+      flags
+    );
+  }
+
+  const daathLayer = getFlagString(flags, "daath-layer");
+  if (daathLayer && daathLayer !== "front" && daathLayer !== "back") {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Unknown Daath layer "${daathLayer}". Expected "front" or "back".`,
+      flags
+    );
+  }
+
+  return {
+    system: resolveSystem(flags),
+    palette: (palette as "color" | "monochrome" | undefined) ?? undefined,
+    viewBox: buildViewBox(flags),
+    daathLayer: (daathLayer as "front" | "back" | undefined) ?? undefined,
+    activations: readActivations(flags),
   };
 }
 
@@ -594,6 +774,32 @@ export function cmdTreeFind(query: string | undefined, flags: Flags): void {
 }
 
 export function cmdTreeLayout(flags: Flags): void {
+  if (getFlagBool(flags, "render-model")) {
+    const modelOptions = buildRenderModelOptions(flags);
+    const model = getTreeRenderModel(modelOptions);
+    const payload = serializeRenderModel(model);
+
+    if (isJsonMode(flags)) {
+      outputJson(payload, flags);
+      return;
+    }
+
+    console.log(`\nTree render model (${model.system})\n`);
+    console.log(
+      `  ViewBox: ${model.viewBox.minX} ${model.viewBox.minY} ${model.viewBox.width} ${model.viewBox.height}`
+    );
+    console.log(`  Layers: ${model.layerOrder.join(" -> ")}`);
+    console.log(`  Spheres: ${model.spheres.length}`);
+    console.log(`  Paths: ${model.paths.length}`);
+    console.log(
+      `  Activations: ${
+        model.spheres.filter((sphere) => sphere.activation).length
+        + model.paths.filter((path) => path.activation).length
+      }\n`
+    );
+    return;
+  }
+
   const system = resolveSystem(flags);
   const units = resolveLayoutUnits(flags);
   const layout = getTreeLayout(system);
@@ -645,6 +851,7 @@ export function cmdTreeSvg(flags: Flags): void {
             palette: svgOptions.palette ?? "color",
             viewBox: svgOptions.viewBox ?? null,
             daathLayer: svgOptions.daathLayer ?? "front",
+            activationCount: svgOptions.activations?.length ?? 0,
           },
         },
         flags
@@ -661,6 +868,7 @@ export function cmdTreeSvg(flags: Flags): void {
       {
         system,
         svg,
+        activationCount: svgOptions.activations?.length ?? 0,
       },
       flags
     );

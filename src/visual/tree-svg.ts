@@ -19,6 +19,8 @@ export interface TreeLayoutCoordinate {
   y: number;
 }
 
+export type TreeTargetState = "active" | "hovered" | "selected" | "inactive";
+
 export type TreeSphereName =
   | "Kether"
   | "Chokhmah"
@@ -78,6 +80,130 @@ export interface TreeSvgHighlights {
   specialSphereMode?: "preserve" | "plain";
 }
 
+export interface TreeTargetActivationInput {
+  targetId: TreeSphereId | TreePathId;
+  targetType: "sphere" | "path";
+  count: number;
+  total: number;
+  strength?: number;
+  state?: TreeTargetState;
+  color?: string;
+}
+
+export interface TreeRenderAnchor {
+  x: number;
+  y: number;
+  vertical: "above" | "below";
+}
+
+export interface TreeRenderCircleHitTarget {
+  kind: "circle";
+  cx: number;
+  cy: number;
+  r: number;
+}
+
+export interface TreeRenderLineHitTarget {
+  kind: "line";
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  strokeWidth: number;
+}
+
+export type TreeRenderHitTarget = TreeRenderCircleHitTarget | TreeRenderLineHitTarget;
+
+export interface TreeRenderActivationState {
+  state: TreeTargetState;
+  count: number;
+  total: number;
+  strength: number;
+  canonicalColor: string;
+  displayColor: string;
+  colorOverride?: string;
+  mutedColor: string;
+  visible: boolean;
+  emphasis: number;
+}
+
+export interface TreeRenderSphereGeometry {
+  percentages: {
+    center: TreeLayoutCoordinate;
+    anchor: TreeRenderAnchor;
+  };
+  viewBoxUnits: {
+    center: TreeLayoutCoordinate;
+    anchor: TreeRenderAnchor;
+    hitTarget: TreeRenderCircleHitTarget;
+  };
+  radius: {
+    viewBoxUnits: number;
+  };
+}
+
+export interface TreeRenderPathGeometry {
+  percentages: {
+    from: TreeLayoutCoordinate;
+    to: TreeLayoutCoordinate;
+    anchor: TreeRenderAnchor;
+  };
+  viewBoxUnits: {
+    from: TreeLayoutCoordinate;
+    to: TreeLayoutCoordinate;
+    anchor: TreeRenderAnchor;
+    hitTarget: TreeRenderLineHitTarget;
+  };
+  widths: {
+    edge: number;
+    main: number;
+    highlight: number;
+    hitTarget: number;
+  };
+}
+
+export interface TreeRenderSphere {
+  id: TreeSphereId;
+  name: TreeSphereName;
+  slug: string;
+  canonicalColor: string;
+  displayFill: string | string[];
+  geometry: TreeRenderSphereGeometry;
+  material: {
+    kind: "standard" | "special";
+    specialSphereName?: Extract<TreeSphereName, "Kether" | "Chokhmah" | "Daath" | "Malkuth">;
+    preserveOnActivation: boolean;
+  };
+  activation: TreeRenderActivationState | null;
+}
+
+export interface TreeRenderPath {
+  id: TreePathId;
+  geometry: TreeRenderPathGeometry;
+  canonicalColor: string;
+  displayColor: string;
+  activation: TreeRenderActivationState | null;
+}
+
+export interface TreeRenderLayer {
+  name: "background" | "paths" | "spheres-behind-paths" | "spheres" | "hit-targets";
+  order: number;
+  description: string;
+}
+
+export interface TreeRenderModel {
+  system: SystemKey;
+  viewBox: Required<TreeSvgViewBox>;
+  scale: number;
+  layout: TreeLayout;
+  layerOrder: readonly TreeRenderLayer["name"][];
+  layers: readonly TreeRenderLayer[];
+  spheres: readonly TreeRenderSphere[];
+  paths: readonly TreeRenderPath[];
+  sphereById: Record<TreeSphereId, TreeRenderSphere>;
+  pathById: Record<TreePathId, TreeRenderPath>;
+}
+
 export interface TreeSvgOptions {
   width?: number | string;
   height?: number | string;
@@ -87,6 +213,7 @@ export interface TreeSvgOptions {
   system?: SystemKey;
   daathLayer?: TreeSvgDaathLayer;
   highlights?: TreeSvgHighlights;
+  activations?: readonly TreeTargetActivationInput[];
 }
 
 export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
@@ -127,6 +254,9 @@ const DEFAULT_SPHERE_RADIUS = 30;
 const DEFAULT_PATH_EDGE_WIDTH = 26;
 const DEFAULT_PATH_MAIN_WIDTH = 22;
 const DEFAULT_PATH_HIGHLIGHT_WIDTH = 8;
+const DEFAULT_SPHERE_HIT_RADIUS = DEFAULT_SPHERE_RADIUS + 8;
+const DEFAULT_PATH_HIT_STROKE_WIDTH = DEFAULT_PATH_EDGE_WIDTH + 8;
+const MUTED_TARGET_COLOR = "#AAA";
 
 const sphereId = (name: TreeSphereName) =>
   id(KaabalahTypes.SPHERE, name) as TreeSphereId;
@@ -193,6 +323,163 @@ export function getTreeLayout(system: SystemKey = "kaabalah"): TreeLayout {
   };
 }
 
+export function getTreeRenderModel(options: TreeSvgOptions = {}): TreeRenderModel {
+  const system = options.system ?? "kaabalah";
+  const tree = createTree({ system, parts: ["colors"] });
+  const viewBox = normalizeViewBox(options.viewBox);
+  const palette = resolvePalette(options.palette);
+  const highlights = resolveHighlights(options.highlights);
+  const activationMap = resolveActivationMap(options.activations);
+  const layout = getTreeLayout(system);
+  const spherePositions = scaleCoordinates(CANONICAL_SPHERE_PERCENTAGES, viewBox);
+  const viewBoxLayout = buildLayoutMap(tree, spherePositions);
+  const scale = Math.min(
+    viewBox.width / TREE_SVG_DEFAULT_VIEWBOX.width,
+    viewBox.height / TREE_SVG_DEFAULT_VIEWBOX.height
+  );
+  const radius = round(DEFAULT_SPHERE_RADIUS * scale);
+  const pathEdgeWidth = round(DEFAULT_PATH_EDGE_WIDTH * scale);
+  const pathMainWidth = round(DEFAULT_PATH_MAIN_WIDTH * scale);
+  const pathHighlightWidth = round(DEFAULT_PATH_HIGHLIGHT_WIDTH * scale);
+  const sphereHitRadius = round(DEFAULT_SPHERE_HIT_RADIUS * scale);
+  const pathHitStrokeWidth = round(DEFAULT_PATH_HIT_STROKE_WIDTH * scale);
+  const layers: TreeRenderLayer[] = [
+    { name: "background" as const, order: 0, description: "Background rectangle when requested." },
+    ...(options.daathLayer === "back"
+      ? [{ name: "spheres-behind-paths" as const, order: 1, description: "Daath behind the paths." }]
+      : []),
+    { name: "paths" as const, order: options.daathLayer === "back" ? 2 : 1, description: "Canonical paths and activation emphasis." },
+    { name: "spheres" as const, order: options.daathLayer === "back" ? 3 : 2, description: "Canonical sphere material and activation halos." },
+    { name: "hit-targets" as const, order: options.daathLayer === "back" ? 4 : 3, description: "Invisible anchors for interaction." },
+  ];
+  const layerOrder = layers.map((layer) => layer.name);
+  const spheres = TREE_SPHERE_NAMES.map((sphereName) => {
+    const sphereIdValue = sphereId(sphereName);
+    const canonicalColor = resolveSphereCanonicalColor({
+      palette,
+      sphereId: sphereIdValue,
+      tree,
+    });
+    const point = spherePositions[sphereIdValue];
+    const activation = resolveTargetActivation({
+      activation: activationMap.get(sphereIdValue),
+      canonicalColor,
+    });
+    const activeFill = resolveSphereDisplayFill({
+      palette,
+      highlights,
+      sphereId: sphereIdValue,
+      canonicalColor,
+      activation,
+    });
+    return {
+      id: sphereIdValue,
+      name: sphereName,
+      slug: sphereName.toLowerCase(),
+      canonicalColor,
+      geometry: {
+        percentages: {
+          center: { ...layout.percentages.spheres[sphereIdValue] },
+          anchor: getPercentageAnchor(layout.percentages.spheres[sphereIdValue]),
+        },
+        viewBoxUnits: {
+          center: { ...point },
+          anchor: getViewBoxAnchor(point, viewBox),
+          hitTarget: {
+            kind: "circle" as const,
+            cx: point.x,
+            cy: point.y,
+            r: sphereHitRadius,
+          },
+        },
+        radius: {
+          viewBoxUnits: radius,
+        },
+      },
+      material: getSphereMaterial({
+        sphereName,
+        preserveSpecialMaterial: shouldPreserveSpecialRenderer({
+          palette,
+          highlights,
+          hasPaintOverride:
+            activation !== null || highlights.sphereFills[sphereIdValue] !== undefined,
+          activation,
+        }),
+      }),
+      activation,
+      displayFill: activeFill,
+    };
+  });
+
+  const paths = TREE_PATH_IDS.map((pathIdValue) => {
+    const canonicalColor = resolvePathCanonicalColor({
+      palette,
+      tree,
+      pathId: pathIdValue,
+    });
+    const path = viewBoxLayout.paths[pathIdValue];
+    const activation = resolveTargetActivation({
+      activation: activationMap.get(pathIdValue),
+      canonicalColor,
+    });
+    const displayColor = activation
+      ? resolvePathDisplayColor({
+          canonicalColor,
+          activation,
+        })
+      : resolvePathBaseColor({
+          canonicalColor,
+          highlights,
+          pathId: pathIdValue,
+        });
+    return {
+      id: pathIdValue,
+      canonicalColor,
+      geometry: {
+        percentages: {
+          from: { ...layout.percentages.paths[pathIdValue].from },
+          to: { ...layout.percentages.paths[pathIdValue].to },
+          anchor: getPercentagePathAnchor(layout.percentages.paths[pathIdValue]),
+        },
+        viewBoxUnits: {
+          from: { ...path.from },
+          to: { ...path.to },
+          anchor: getViewBoxPathAnchor(path, viewBox),
+          hitTarget: {
+            kind: "line" as const,
+            x1: path.from.x,
+            y1: path.from.y,
+            x2: path.to.x,
+            y2: path.to.y,
+            strokeWidth: pathHitStrokeWidth,
+          },
+        },
+        widths: {
+          edge: pathEdgeWidth,
+          main: pathMainWidth,
+          highlight: pathHighlightWidth,
+          hitTarget: pathHitStrokeWidth,
+        },
+      },
+      activation,
+      displayColor,
+    };
+  });
+
+  return {
+    system,
+    viewBox,
+    scale,
+    layout,
+    layerOrder,
+    layers,
+    spheres,
+    paths,
+    sphereById: Object.fromEntries(spheres.map((entry) => [entry.id, entry])) as Record<TreeSphereId, TreeRenderSphere>,
+    pathById: Object.fromEntries(paths.map((entry) => [entry.id, entry])) as Record<TreePathId, TreeRenderPath>,
+  };
+}
+
 export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   const system = options.system ?? "kaabalah";
   const daathLayer = options.daathLayer ?? "front";
@@ -200,6 +487,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   const viewBox = normalizeViewBox(options.viewBox);
   const palette = resolvePalette(options.palette);
   const highlights = resolveHighlights(options.highlights);
+  const activationMap = resolveActivationMap(options.activations);
   const spherePositions = scaleCoordinates(CANONICAL_SPHERE_PERCENTAGES, viewBox);
   const layout = buildLayoutMap(tree, spherePositions);
   const scale = Math.min(
@@ -291,6 +579,14 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
     push(`<g id="spheres-behind-paths">`);
     renderSphere(push, {
       highlights,
+      activation: resolveTargetActivation({
+        activation: activationMap.get(sphereId("Daath")),
+        canonicalColor: resolveSphereCanonicalColor({
+          palette,
+          sphereId: sphereId("Daath"),
+          tree,
+        }),
+      }),
       tree,
       palette,
       radius,
@@ -304,12 +600,26 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   push(`<g id="paths">`);
   for (const currentPathId of TREE_PATH_IDS) {
     const path = layout.paths[currentPathId];
-    const color = resolvePathColor({
-      highlights,
+    const canonicalColor = resolvePathCanonicalColor({
       palette,
       tree,
       pathId: currentPathId,
     });
+    const baseColor = resolvePathBaseColor({
+      canonicalColor,
+      highlights,
+      pathId: currentPathId,
+    });
+    const activation = resolveTargetActivation({
+      activation: activationMap.get(currentPathId),
+      canonicalColor,
+    });
+    const color = activation
+      ? resolvePathDisplayColor({
+          canonicalColor,
+          activation,
+        })
+      : baseColor;
     const edgeColor = resolvePathEdgeColor({
       palette,
       pathColor: color,
@@ -318,6 +628,11 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
     push(
       `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(edgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : ""}/>`
     );
+    if (activation?.visible && activation.emphasis > 0) {
+      push(
+        `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-opacity="${round(0.18 + activation.emphasis * 0.28)}" stroke-width="${round(pathEdgeWidth + activation.emphasis * 10)}" stroke-linecap="round"/>`
+      );
+    }
     push(
       `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-width="${pathMainWidth}" stroke-linecap="round"/>`
     );
@@ -334,8 +649,18 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
 
   push(`<g id="spheres">`);
   for (const sphereName of frontSphereNames) {
+    const currentSphereId = sphereId(sphereName);
+    const canonicalColor = resolveSphereCanonicalColor({
+      palette,
+      sphereId: currentSphereId,
+      tree,
+    });
     renderSphere(push, {
       highlights,
+      activation: resolveTargetActivation({
+        activation: activationMap.get(currentSphereId),
+        canonicalColor,
+      }),
       tree,
       palette,
       radius,
@@ -360,6 +685,7 @@ function renderSphere(
   push: (line: string) => void,
   params: {
     highlights: ResolvedHighlights;
+    activation: TreeRenderActivationState | null;
     tree: ReturnType<typeof createTree>;
     palette: ResolvedPalette;
     radius: number;
@@ -378,15 +704,28 @@ function renderSphere(
     sphereId: currentSphereId,
     defaultColors: colorData,
   });
-  const highlightFill = params.highlights.sphereFills[currentSphereId];
-  const activeFill = highlightFill ?? sphereFill;
+  const activationFill = params.activation
+    && (params.activation.state === "inactive" || params.activation.colorOverride)
+      ? params.activation.displayColor
+      : undefined;
+  const highlightFill = activationFill ?? params.highlights.sphereFills[currentSphereId];
+  const activeFill = params.activation ? params.activation.displayColor : highlightFill ?? sphereFill;
   const preserveSpecialRenderer =
-    params.palette.specialSphereMode === "preserve"
-    && (
-      highlightFill === undefined
-      || params.highlights.specialSphereMode === "preserve"
-    );
+    shouldPreserveSpecialRenderer({
+      palette: params.palette,
+      highlights: params.highlights,
+      hasPaintOverride: highlightFill !== undefined,
+      activation: params.activation,
+    });
 
+  if (params.activation?.visible && params.activation.emphasis > 0) {
+    const haloStrokeWidth = round(3.2 + params.activation.emphasis * 4.8);
+    const haloRadius = round(params.radius + haloStrokeWidth / 2 + 0.7);
+    const haloColor = params.activation.displayColor;
+    push(
+      `<circle cx="${point.x}" cy="${point.y}" r="${haloRadius}" fill="none" stroke="${escapeAttr(haloColor)}" stroke-opacity="${round(0.24 + params.activation.emphasis * 0.28)}" stroke-width="${haloStrokeWidth}"/>`
+    );
+  }
   push(`<g id="sphere-${slug}" clip-path="url(#clip-${slug})">`);
   if (preserveSpecialRenderer) {
     if (params.sphereName === "Kether") {
@@ -515,6 +854,255 @@ function normalizeViewBox(
     width: viewBox?.width ?? TREE_SVG_DEFAULT_VIEWBOX.width,
     height: viewBox?.height ?? TREE_SVG_DEFAULT_VIEWBOX.height,
   };
+}
+
+function resolveActivationMap(
+  activations: readonly TreeTargetActivationInput[] | undefined
+) {
+  const map = new Map<TreeSphereId | TreePathId, TreeTargetActivationInput>();
+
+  for (const activation of activations ?? []) {
+    map.set(activation.targetId, activation);
+  }
+
+  return map;
+}
+
+function resolveTargetActivation(params: {
+  activation: TreeTargetActivationInput | undefined;
+  canonicalColor: string;
+}): TreeRenderActivationState | null {
+  if (!params.activation) {
+    return null;
+  }
+
+  const state = params.activation.state ?? (params.activation.count > 0 ? "active" : "inactive");
+  const strength = clamp01(
+    params.activation.strength ?? (params.activation.total > 0 ? params.activation.count / params.activation.total : 0)
+  );
+  const displayColor =
+    state === "inactive"
+      ? params.activation.color ?? MUTED_TARGET_COLOR
+      : params.activation.color ?? params.canonicalColor;
+
+  return {
+    state,
+    count: params.activation.count,
+    total: params.activation.total,
+    strength,
+    canonicalColor: params.canonicalColor,
+    displayColor,
+    colorOverride: params.activation.color,
+    mutedColor: MUTED_TARGET_COLOR,
+    visible: state !== "inactive",
+    emphasis: state === "selected"
+      ? clamp01(Math.max(strength, 0.9))
+      : state === "hovered"
+        ? clamp01(Math.max(strength, 0.72))
+        : state === "active"
+          ? clamp01(Math.max(strength, 0.56))
+          : 0,
+  };
+}
+
+function resolveSphereCanonicalColor(params: {
+  palette: ResolvedPalette;
+  sphereId: TreeSphereId;
+  tree: ReturnType<typeof createTree>;
+}) {
+  const override = params.palette.sphereFills[params.sphereId];
+  if (override) {
+    return toPrimaryFill(override, params.palette.defaultSphereFill);
+  }
+
+  if (params.palette.mode === "monochrome" || params.palette.mode === "custom") {
+    return params.palette.defaultSphereFill;
+  }
+
+  const treeColor =
+    params.tree.relatedFirst(params.sphereId, MiscTypes.COLOR)?.data?.colorHexCodes?.[0];
+
+  return treeColor ?? params.palette.defaultSphereFill;
+}
+
+function resolvePathCanonicalColor(params: {
+  palette: ResolvedPalette;
+  tree: ReturnType<typeof createTree>;
+  pathId: TreePathId;
+}) {
+  const override = params.palette.pathColors[params.pathId];
+  if (override) {
+    return override;
+  }
+
+  if (params.palette.mode === "monochrome" || params.palette.mode === "custom") {
+    return params.palette.defaultPathColor;
+  }
+
+  const treeColor =
+    params.tree.relatedFirst(params.pathId, MiscTypes.COLOR)?.data?.colorHexCodes?.[0];
+
+  return treeColor ?? params.palette.defaultPathColor;
+}
+
+function resolvePathBaseColor(params: {
+  canonicalColor: string;
+  highlights: ResolvedHighlights;
+  pathId: TreePathId;
+}) {
+  const highlightOverride = params.highlights.pathColors[params.pathId];
+  if (highlightOverride) {
+    return highlightOverride;
+  }
+
+  return params.canonicalColor;
+}
+
+function resolveSphereDisplayFill(params: {
+  palette: ResolvedPalette;
+  highlights: ResolvedHighlights;
+  sphereId: TreeSphereId;
+  canonicalColor: string | string[];
+  activation: TreeRenderActivationState | null;
+}) {
+  const highlightOverride = params.highlights.sphereFills[params.sphereId];
+  const fallbackFill = Array.isArray(params.canonicalColor)
+    ? params.canonicalColor[0] ?? params.palette.defaultSphereFill
+    : params.canonicalColor;
+
+  if (params.activation) {
+    if (params.activation.state !== "inactive" && !params.activation.colorOverride) {
+      return params.canonicalColor ?? fallbackFill;
+    }
+
+    return params.activation.displayColor;
+  }
+
+  if (highlightOverride) {
+    return highlightOverride;
+  }
+
+  return params.canonicalColor ?? fallbackFill;
+}
+
+function resolvePathDisplayColor(params: {
+  canonicalColor: string;
+  activation: TreeRenderActivationState | null;
+}) {
+  if (!params.activation) {
+    return params.canonicalColor;
+  }
+
+  return params.activation.displayColor;
+}
+
+function getPercentageAnchor(point: TreeLayoutCoordinate): TreeRenderAnchor {
+  return {
+    x: point.x,
+    y: point.y,
+    vertical: point.y < 18 ? "below" : "above",
+  };
+}
+
+function getViewBoxAnchor(
+  point: TreeLayoutCoordinate,
+  viewBox: Required<TreeSvgViewBox>
+): TreeRenderAnchor {
+  return {
+    x: point.x,
+    y: point.y,
+    vertical: point.y - viewBox.minY < viewBox.height * 0.18 ? "below" : "above",
+  };
+}
+
+function getPercentagePathAnchor(path: TreeLayoutPath): TreeRenderAnchor {
+  const y = round((path.from.y + path.to.y) / 2);
+  return {
+    x: round((path.from.x + path.to.x) / 2),
+    y,
+    vertical: y < 18 ? "below" : "above",
+  };
+}
+
+function getViewBoxPathAnchor(
+  path: TreeLayoutPath,
+  viewBox: Required<TreeSvgViewBox>
+): TreeRenderAnchor {
+  const y = round((path.from.y + path.to.y) / 2);
+  return {
+    x: round((path.from.x + path.to.x) / 2),
+    y,
+    vertical: y - viewBox.minY < viewBox.height * 0.18 ? "below" : "above",
+  };
+}
+
+function shouldPreserveSpecialRenderer(params: {
+  palette: ResolvedPalette;
+  highlights: ResolvedHighlights;
+  hasPaintOverride: boolean;
+  activation: TreeRenderActivationState | null;
+}) {
+  return (
+    params.palette.specialSphereMode === "preserve"
+    && (
+      params.activation !== null
+      || !params.hasPaintOverride
+      || params.highlights.specialSphereMode === "preserve"
+    )
+  );
+}
+
+function getSphereMaterial(params: {
+  sphereName: TreeSphereName;
+  preserveSpecialMaterial: boolean;
+}) {
+  if (!params.preserveSpecialMaterial) {
+    return {
+      kind: "standard" as const,
+      preserveOnActivation: false,
+    };
+  }
+
+  if (params.sphereName === "Kether") {
+    return {
+      kind: "special" as const,
+      specialSphereName: "Kether" as const,
+      preserveOnActivation: true,
+    };
+  }
+
+  if (params.sphereName === "Chokhmah") {
+    return {
+      kind: "special" as const,
+      specialSphereName: "Chokhmah" as const,
+      preserveOnActivation: true,
+    };
+  }
+
+  if (params.sphereName === "Daath") {
+    return {
+      kind: "special" as const,
+      specialSphereName: "Daath" as const,
+      preserveOnActivation: true,
+    };
+  }
+
+  if (params.sphereName === "Malkuth") {
+    return {
+      kind: "special" as const,
+      specialSphereName: "Malkuth" as const,
+      preserveOnActivation: true,
+    };
+  }
+
+  return {
+    kind: "standard" as const,
+    preserveOnActivation: false,
+  };
+}
+
+function clamp01(value: number) {
+  return Math.max(0, Math.min(1, value));
 }
 
 function resolvePalette(palette: TreeSvgPalette | undefined): ResolvedPalette {

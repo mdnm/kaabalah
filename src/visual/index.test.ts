@@ -6,6 +6,7 @@ import { id, KaabalahTypes } from "../core";
 import {
   generateTreeSvg,
   getTreeLayout,
+  getTreeRenderModel,
   TREE_PATH_IDS,
   TREE_SPHERE_IDS,
   TREE_SVG_DEFAULT_VIEWBOX,
@@ -240,6 +241,162 @@ describe("tree svg visual module", () => {
     expect(chokhmahSection).toContain(`path d="M 247.85 99.18 L`);
     expect(daathSection).toContain(`fill="#aaa"`);
     expect(daathSection).not.toContain(`transform="rotate(180 142.83 159.44)"`);
+  });
+
+  it("exposes activation-aware render geometry with stable anchors and hit targets", () => {
+    const model = getTreeRenderModel({
+      activations: [
+        {
+          targetId: id(KaabalahTypes.SPHERE, "Kether"),
+          targetType: "sphere",
+          count: 3,
+          total: 11,
+          state: "selected",
+        },
+        {
+          targetId: id(KaabalahTypes.PATH, "1"),
+          targetType: "path",
+          count: 2,
+          total: 22,
+          state: "hovered",
+        },
+      ],
+    });
+
+    expect(model.viewBox).toEqual(TREE_SVG_DEFAULT_VIEWBOX);
+    expect(model.layerOrder).toEqual(["background", "paths", "spheres", "hit-targets"]);
+    expect(model.spheres).toHaveLength(11);
+    expect(model.paths).toHaveLength(22);
+
+    const kether = model.sphereById[id(KaabalahTypes.SPHERE, "Kether")];
+    const pathOne = model.pathById[id(KaabalahTypes.PATH, "1")];
+
+    expect(kether.geometry.percentages.center).toEqual({ x: 49.94, y: 6.83 });
+    expect(kether.geometry.percentages.anchor).toEqual({
+      x: 49.94,
+      y: 6.83,
+      vertical: "below",
+    });
+    expect(kether.geometry.viewBoxUnits.hitTarget).toEqual({
+      kind: "circle",
+      cx: 142.83,
+      cy: 38.32,
+      r: 38,
+    });
+    expect(kether.geometry.radius.viewBoxUnits).toBe(30);
+    expect(kether.material.kind).toBe("special");
+    expect(kether.activation?.state).toBe("selected");
+
+    expect(pathOne.geometry.percentages.anchor.vertical).toBe("below");
+    expect(pathOne.geometry.viewBoxUnits.hitTarget).toEqual({
+      kind: "line",
+      x1: 142.83,
+      y1: 38.32,
+      x2: 247.85,
+      y2: 99.18,
+      strokeWidth: 34,
+    });
+    expect(pathOne.geometry.widths.hitTarget).toBe(34);
+    expect(pathOne.activation?.state).toBe("hovered");
+
+    for (const sphere of model.spheres) {
+      expect(sphere.geometry.viewBoxUnits.anchor.vertical).toMatch(/above|below/);
+      expect(sphere.geometry.viewBoxUnits.hitTarget.kind).toBe("circle");
+      expect(sphere.geometry.viewBoxUnits.hitTarget.cx).toBe(sphere.geometry.viewBoxUnits.center.x);
+      expect(sphere.geometry.viewBoxUnits.hitTarget.cy).toBe(sphere.geometry.viewBoxUnits.center.y);
+      expect(sphere.geometry.viewBoxUnits.hitTarget.r)
+        .toBeGreaterThan(sphere.geometry.radius.viewBoxUnits);
+    }
+
+    for (const path of model.paths) {
+      expect(path.geometry.viewBoxUnits.anchor.vertical).toMatch(/above|below/);
+      expect(path.geometry.viewBoxUnits.hitTarget.kind).toBe("line");
+      expect(path.geometry.viewBoxUnits.hitTarget.strokeWidth)
+        .toBeGreaterThan(path.geometry.widths.edge);
+    }
+  });
+
+  it("keeps sphere interaction geometry circular in custom viewBox units", () => {
+    const model = getTreeRenderModel({
+      viewBox: {
+        minX: -10,
+        minY: 20,
+        width: TREE_SVG_DEFAULT_VIEWBOX.width * 2,
+        height: TREE_SVG_DEFAULT_VIEWBOX.height * 2,
+      },
+    });
+    const kether = model.sphereById[id(KaabalahTypes.SPHERE, "Kether")];
+
+    expect(kether.geometry.viewBoxUnits.hitTarget.kind).toBe("circle");
+    expect(kether.geometry.radius.viewBoxUnits).toBe(60);
+    expect(kether.geometry.viewBoxUnits.hitTarget.r).toBe(76);
+    expect(kether.geometry.viewBoxUnits.hitTarget.cx).toBe(kether.geometry.viewBoxUnits.center.x);
+    expect(kether.geometry.viewBoxUnits.hitTarget.cy).toBe(kether.geometry.viewBoxUnits.center.y);
+  });
+
+  it("mutes inactive targets without muting active ones and preserves special sphere markup under activation", () => {
+    const svg = generateTreeSvg({
+      background: "transparent",
+      activations: [
+        ...TREE_SPHERE_IDS.map((sphereId, index) => ({
+          targetId: sphereId,
+          targetType: "sphere" as const,
+          count: sphereId === id(KaabalahTypes.SPHERE, "Kether") ? 2 : 0,
+          total: TREE_SPHERE_IDS.length,
+          state: sphereId === id(KaabalahTypes.SPHERE, "Kether") ? "selected" as const : "inactive" as const,
+          ...(sphereId === id(KaabalahTypes.SPHERE, "Kether") ? { color: "#ffcc00" } : {}),
+        })),
+        ...TREE_PATH_IDS.map((pathId, index) => ({
+          targetId: pathId,
+          targetType: "path" as const,
+          count: pathId === id(KaabalahTypes.PATH, "1") ? 5 : 0,
+          total: TREE_PATH_IDS.length,
+          state: pathId === id(KaabalahTypes.PATH, "1") ? "selected" as const : "inactive" as const,
+        })),
+      ],
+    });
+
+    const ketherSection = extractSphereSection(svg, "kether");
+    const chokhmahSection = extractSphereSection(svg, "chokhmah");
+    const daathSection = extractSphereSection(svg, "daath");
+    const binahSection = extractSphereSection(svg, "binah");
+    const malkuthSection = extractSphereSection(svg, "malkuth");
+    const mainPathStrokes = extractMainPathStrokes(svg);
+    const pathsIndex = svg.indexOf(`<g id="paths">`);
+    const spheresIndex = svg.indexOf(`<g id="spheres">`);
+
+    expect(pathsIndex).toBeGreaterThan(-1);
+    expect(spheresIndex).toBeGreaterThan(pathsIndex);
+    expect(ketherSection).toContain(`<polygon points="`);
+    expect(ketherSection).toContain(`fill="#ffcc00"`);
+    expect(ketherSection).not.toContain(`fill="#AAA"`);
+    expect(chokhmahSection).toContain(`path d="M 247.85 99.18 L`);
+    expect(chokhmahSection).toContain(`fill-opacity="0.62"`);
+    expect(daathSection).toContain(`transform="rotate(180 142.83 159.44)"`);
+    expect(malkuthSection).toContain(`path d="M 142.83 522.85 L`);
+    expect(binahSection).toContain(`fill="#AAA"`);
+    expect(mainPathStrokes[0]).not.toBe(`#AAA`);
+    expect(mainPathStrokes.slice(1)).toEqual(Array.from({ length: 21 }, () => `#AAA`));
+  });
+
+  it("preserves special sphere material when active without a custom fill override", () => {
+    const defaultSvg = generateTreeSvg({ background: "transparent" });
+    const svg = generateTreeSvg({
+      background: "transparent",
+      activations: [
+        {
+          targetId: id(KaabalahTypes.SPHERE, "Malkuth"),
+          targetType: "sphere",
+          count: 4,
+          total: 8,
+          state: "active",
+        },
+      ],
+    });
+
+    expect(extractSphereSection(svg, "malkuth"))
+      .toBe(extractSphereSection(defaultSvg, "malkuth"));
+    expect(svg).toContain(`stroke-opacity="0.4"`);
   });
 });
 

@@ -375,6 +375,62 @@ describe("CLI contract", () => {
     });
   });
 
+  it("returns activation-aware tree render model data from an activations file", () => {
+    const cwd = makeTempDir();
+    const activationsPath = join(cwd, "activations.json");
+    writeJson(activationsPath, {
+      activations: [
+        {
+          targetId: "sphere:Kether",
+          targetType: "sphere",
+          count: 3,
+          total: 6,
+          state: "selected",
+        },
+        {
+          targetId: "path:1",
+          targetType: "path",
+          count: 2,
+          total: 6,
+          state: "hovered",
+        },
+      ],
+    });
+
+    const result = runCli([
+      "tree:layout",
+      "--render-model",
+      `--activations=${activationsPath}`,
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree:layout --render-model --activations");
+
+    const payload = JSON.parse(result.stdout) as {
+      layerOrder: string[];
+      sphereById: Record<string, {
+        activation: { state: string };
+        geometry: { viewBoxUnits: { hitTarget: { kind: string; r: number } } };
+      }>;
+      pathById: Record<string, {
+        activation: { state: string };
+        geometry: { viewBoxUnits: { hitTarget: { kind: string; strokeWidth: number } } };
+      }>;
+    };
+
+    expect(payload.layerOrder).toEqual(["background", "paths", "spheres", "hit-targets"]);
+    expect(payload.sphereById["sphere:Kether"].activation.state).toBe("selected");
+    expect(payload.sphereById["sphere:Kether"].geometry.viewBoxUnits.hitTarget).toMatchObject({
+      kind: "circle",
+      r: 38,
+    });
+    expect(payload.pathById["path:1"].activation.state).toBe("hovered");
+    expect(payload.pathById["path:1"].geometry.viewBoxUnits.hitTarget).toMatchObject({
+      kind: "line",
+      strokeWidth: 34,
+    });
+  });
+
   it("generates tree SVG JSON and supports file output", () => {
     const directResult = runCli([
       "tree:svg",
@@ -410,6 +466,45 @@ describe("CLI contract", () => {
     expect(payload.outputPath).toBe(outputPath);
     expect(payload.bytes).toBeGreaterThan(1000);
     expect(readFileSync(outputPath, "utf8")).toContain(`<svg xmlns="http://www.w3.org/2000/svg"`);
+  });
+
+  it("generates activation-aware tree SVG from an activations file", () => {
+    const cwd = makeTempDir();
+    const activationsPath = join(cwd, "activations.json");
+    writeJson(activationsPath, [
+      {
+        targetId: "sphere:Kether",
+        targetType: "sphere",
+        count: 2,
+        total: 4,
+        state: "selected",
+        color: "#ffcc00",
+      },
+      {
+        targetId: "path:2",
+        targetType: "path",
+        count: 0,
+        total: 4,
+        state: "inactive",
+      },
+    ]);
+
+    const result = runCli([
+      "tree:svg",
+      "--json",
+      "--compact",
+      "--background=transparent",
+      `--activations=${activationsPath}`,
+      "--fields=svg,activationCount",
+    ]);
+    assertSuccess(result, "tree:svg --activations");
+
+    const payload = JSON.parse(result.stdout) as { svg: string; activationCount: number };
+
+    expect(payload.activationCount).toBe(2);
+    expect(payload.svg).toContain(`fill="#ffcc00"`);
+    expect(payload.svg).toContain(`<polygon points="`);
+    expect(payload.svg).toContain(`stroke="#AAA"`);
   });
 
   it("supports rendering Daath behind the paths with a top hit area", () => {
