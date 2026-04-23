@@ -1,6 +1,6 @@
 ---
 title: Visual
-description: Generate Tree of Life SVG diagrams and access canonical layout data for custom renderers
+description: Generate astrology wheel and Tree of Life SVG diagrams, standalone symbol glyphs, and canonical layout data for custom renderers
 sidebar:
   order: 8
 ---
@@ -11,6 +11,21 @@ import { LinkCard } from '@astrojs/starlight/components';
 
 ```typescript
 import {
+  // Astro wheel
+  generateAstroWheelSvg,
+  getAstroWheelRenderModel,
+  ASTRO_WHEEL_DEFAULT_VIEWBOX,
+  ASTRO_WHEEL_DEFAULT_ASPECT_SPECS,
+  ASTRO_WHEEL_ZODIAC_SIGNS,
+  ASTRO_WHEEL_POINT_GLYPHS,
+
+  // Glyphs
+  generateGlyphSvg,
+  ZODIAC_GLYPH_PRIMITIVES,
+  PLANET_GLYPH_PRIMITIVES,
+  ASPECT_GLYPH_PRIMITIVES,
+
+  // Tree of Life
   generateTreeSvg,
   getTreeLayout,
   getTreeRenderModel,
@@ -23,6 +38,16 @@ import {
 
 ## Exports
 
+- `generateAstroWheelSvg`
+- `getAstroWheelRenderModel`
+- `generateGlyphSvg`
+- `ASTRO_WHEEL_DEFAULT_VIEWBOX`
+- `ASTRO_WHEEL_DEFAULT_ASPECT_SPECS`
+- `ASTRO_WHEEL_ZODIAC_SIGNS`
+- `ASTRO_WHEEL_POINT_GLYPHS`
+- `ZODIAC_GLYPH_PRIMITIVES`
+- `PLANET_GLYPH_PRIMITIVES`
+- `ASPECT_GLYPH_PRIMITIVES`
 - `generateTreeSvg`
 - `getTreeLayout`
 - `getTreeRenderModel`
@@ -30,13 +55,446 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
-## `generateTreeSvg(options?)`
+## Astrology Wheel
 
-Generates a complete Tree of Life SVG string. The SVG contains 11 sphere circles and 22 path lines laid out on the canonical Kabbalistic grid, with radial gradient highlights baked in.
+### `generateAstroWheelSvg(chart, options?)`
+
+Renders a complete radial astrology wheel as an SVG string from a `BirthChart` returned by `kaabalah/astrology`. The output contains zodiac sign segments colored by element, house cusp lines, planet and node glyphs positioned around the wheel, and aspect lines connecting related planets. Part of Fortune and Vertex are included automatically when the chart provides them.
+
+```typescript
+function generateAstroWheelSvg(chart: BirthChart, options?: AstroWheelSvgOptions): string
+```
+
+#### Basic usage
+
+```typescript
+import { getBirthChart, HouseSystem } from 'kaabalah/astrology';
+import { generateAstroWheelSvg } from 'kaabalah/visual';
+
+const chart = await getBirthChart({
+  date: { year: 1990, month: 1, day: 1, hour: 12, minute: 0 },
+  latitude: 40.7128,
+  longitude: -74.006,
+  houseSystem: HouseSystem.PLACIDUS,
+  timeZoneSettings: { timeZone: "America/New_York" },
+});
+
+const svg = generateAstroWheelSvg(chart, {
+  width: 600,
+  height: 600,
+  background: "transparent",
+});
+```
+
+The returned string can be written to a `.svg` file, embedded in an HTML page, or used as the base layer below custom overlays. No React, DOM, or WASM runtime is required by the visual renderer itself — the only input is the already-computed `BirthChart`.
+
+<img src="/wheel-default.svg" alt="Default astrology wheel" width="280" />
+
+#### `AstroWheelSvgOptions`
+
+```typescript
+interface AstroWheelSvgOptions {
+  width?: number | string;
+  height?: number | string;
+  viewBox?: AstroWheelViewBox;         // default: 0 0 600 600
+  background?: string | "transparent"; // default: "transparent"
+  palette?: AstroWheelPalette;
+  zodiac?: boolean | AstroWheelZodiacOptions;  // segments/glyphs/ticks
+  aspects?: boolean | AstroWheelAspectOptions;  // default: true
+  houses?: boolean | AstroWheelHouseOptions;    // labels/cusp lines/angle labels
+  points?: boolean | AstroWheelPointOptions;    // birth planets/nodes/vertex
+  pointLayers?: readonly AstroWheelPointLayerInput[];
+  aspectLayers?: readonly AstroWheelAspectLayerInput[];
+  padding?: number;
+  title?: string;
+}
+```
+
+#### Layer controls
+
+Each visual layer is independent. Toggle any layer off without affecting the others:
+
+```typescript
+generateAstroWheelSvg(chart, { zodiac: false });   // strip zodiac segments, glyphs, and ticks
+generateAstroWheelSvg(chart, { houses: false });   // strip house cusps and ASC/MC labels
+generateAstroWheelSvg(chart, { points: false });   // strip birth planets/nodes/vertex
+generateAstroWheelSvg(chart, { aspects: false });  // strip aspect lines
+
+generateAstroWheelSvg(chart, {
+  zodiac: { glyphs: false },   // keep colored sign segments and ticks
+  houses: { labels: false },   // keep cusp lines, hide house numbers
+  points: { nodes: false },    // keep planets, hide nodes
+});
+```
+
+#### Aspect orbs
+
+Pass `aspectSpecs` to override which aspects are drawn and their orbs. The renderer recomputes planet-to-planet aspects from the chart positions:
+
+```typescript
+const svg = generateAstroWheelSvg(chart, {
+  aspects: {
+    aspectSpecs: [
+      { name: "conjunction", angle: 0, orb: 6 },
+      { name: "opposition", angle: 180, orb: 7 },
+    ],
+  },
+});
+```
+
+#### Composable overlays
+
+`pointLayers` and `aspectLayers` let you compose transits, synastry, or any custom calculated points over a base chart without rebuilding the SVG. Extra point layers share the base chart's Ascendant orientation and can be placed inside, on, or outside the normal planet ring.
+
+```typescript
+const svg = generateAstroWheelSvg(birthChart, {
+  pointLayers: [
+    {
+      id: "transit",
+      label: "Transits",
+      chart: transitChart,
+      color: "#f97316",
+      radius: "outer",
+      radiusOffset: 24,
+      glyphScale: 0.85,
+    },
+  ],
+  aspectLayers: [
+    {
+      id: "transit",
+      label: "Transit aspects",
+      chart: transitChart,
+      pointLayerId: "transit",
+      color: "#f97316",
+      aspectSpecs: [
+        { name: "conjunction", angle: 0, orb: 6 },
+        { name: "opposition", angle: 180, orb: 7 },
+      ],
+      radiusScale: 1.08,
+    },
+    {
+      id: "birth-transit",
+      label: "Birth to transit aspects",
+      edges: transitToBirthAspects,
+      pointLayerIdA: "birth",
+      pointLayerIdB: "transit",
+      color: "#7c3aed",
+    },
+  ],
+});
+```
+
+Use `pointLayerIdA` / `pointLayerIdB` with explicit `edges` for cross-chart lines (synastry, transit-to-birth). The shorthand `pointLayerId: "transit"` works when both endpoints come from the same overlay layer.
+
+For fully custom overlays, pass `points` instead of `chart`:
+
+```typescript
+const svg = generateAstroWheelSvg(birthChart, {
+  pointLayers: [
+    {
+      id: "progressed",
+      color: "#7c3aed",
+      points: [
+        { key: "progressed-moon", name: "Progressed Moon", longitude: 214.5, glyph: "☽" },
+      ],
+    },
+  ],
+});
+```
+
+#### Wheel comparison
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/wheel-default.svg" alt="Default palette wheel" width="220" />
+    <figcaption>"default" palette</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/wheel-monochrome.svg" alt="Monochrome palette wheel" width="220" />
+    <figcaption>"monochrome" palette</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/wheel-no-aspects.svg" alt="Wheel with aspects hidden" width="220" />
+    <figcaption>aspects: false</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/wheel-transit.svg" alt="Wheel with transit overlay" width="220" />
+    <figcaption>transit overlay</figcaption>
+  </figure>
+</div>
+
+---
+
+### `getAstroWheelRenderModel(chart, options?)`
+
+Returns the computed geometry for every element of the wheel without producing an SVG string. Use this when an app needs interactive overlays, hover targets, or custom tooltips without rebuilding wheel geometry.
+
+```typescript
+import { getAstroWheelRenderModel } from 'kaabalah/visual';
+
+const model = getAstroWheelRenderModel(chart);
+
+model.viewBox;        // { minX: 0, minY: 0, width: 600, height: 600 }
+model.points;         // planet/node glyph positions and exact tick lines
+model.pointLayers;    // grouped birth/transit/synastry/custom point layers
+model.houseCusps;     // cusp line geometry in SVG units
+model.aspectLines;    // aspect line geometry and colors
+model.aspectLayers;   // grouped aspect overlays
+```
+
+All coordinates live in the same SVG viewBox units as `generateAstroWheelSvg(...)`, so overlays can be drawn in a sibling `<svg>` using the same `viewBox` and `preserveAspectRatio="xMidYMid meet"`.
+
+---
+
+## Glyphs
+
+The visual module ships vector glyph definitions for zodiac signs, planets, and aspects as normalized primitive arrays. Each glyph is defined in a `-1…1` coordinate space and can be rendered at any size.
+
+### `generateGlyphSvg(primitives, options?)`
+
+Renders any glyph primitive array as a standalone SVG string.
+
+```typescript
+function generateGlyphSvg(primitives: readonly AstroGlyphPrimitive[], options?: GlyphSvgOptions): string
+```
+
+```typescript
+interface GlyphSvgOptions {
+  size?: number;                       // default: 48
+  color?: string;                      // stroke color, default: "#111827"
+  strokeWidth?: number;                // default: 0.14
+  fill?: "none" | string;             // default: "none"
+  background?: string | "transparent"; // default: "transparent"
+}
+```
+
+```typescript
+import { generateGlyphSvg, PLANET_GLYPH_PRIMITIVES } from 'kaabalah/visual';
+
+const svg = generateGlyphSvg(PLANET_GLYPH_PRIMITIVES.sun, {
+  size: 64,
+  color: "#1f2933",
+});
+```
+
+### `ZODIAC_GLYPH_PRIMITIVES`
+
+Vector primitives for all 12 zodiac signs. These are also used internally by the astrology wheel renderer for zodiac segment labels.
+
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-aries.svg" alt="Aries" width="36" />
+    <figcaption style="font-size: 0.7em;">Aries</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-taurus.svg" alt="Taurus" width="36" />
+    <figcaption style="font-size: 0.7em;">Taurus</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-gemini.svg" alt="Gemini" width="36" />
+    <figcaption style="font-size: 0.7em;">Gemini</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-cancer.svg" alt="Cancer" width="36" />
+    <figcaption style="font-size: 0.7em;">Cancer</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-leo.svg" alt="Leo" width="36" />
+    <figcaption style="font-size: 0.7em;">Leo</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-virgo.svg" alt="Virgo" width="36" />
+    <figcaption style="font-size: 0.7em;">Virgo</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-libra.svg" alt="Libra" width="36" />
+    <figcaption style="font-size: 0.7em;">Libra</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-scorpio.svg" alt="Scorpio" width="36" />
+    <figcaption style="font-size: 0.7em;">Scorpio</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-sagittarius.svg" alt="Sagittarius" width="36" />
+    <figcaption style="font-size: 0.7em;">Sagittarius</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-capricorn.svg" alt="Capricorn" width="36" />
+    <figcaption style="font-size: 0.7em;">Capricorn</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-aquarius.svg" alt="Aquarius" width="36" />
+    <figcaption style="font-size: 0.7em;">Aquarius</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-zodiac-pisces.svg" alt="Pisces" width="36" />
+    <figcaption style="font-size: 0.7em;">Pisces</figcaption>
+  </figure>
+</div>
+
+```typescript
+import { ZODIAC_GLYPH_PRIMITIVES } from 'kaabalah/visual';
+
+ZODIAC_GLYPH_PRIMITIVES.Aries;   // AstroGlyphPrimitive[]
+ZODIAC_GLYPH_PRIMITIVES.Pisces;
+```
+
+### `PLANET_GLYPH_PRIMITIVES`
+
+Vector primitives for planets and special points.
+
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-sun.svg" alt="Sun" width="36" />
+    <figcaption style="font-size: 0.7em;">Sun</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-moon.svg" alt="Moon" width="36" />
+    <figcaption style="font-size: 0.7em;">Moon</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-mercury.svg" alt="Mercury" width="36" />
+    <figcaption style="font-size: 0.7em;">Mercury</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-venus.svg" alt="Venus" width="36" />
+    <figcaption style="font-size: 0.7em;">Venus</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-mars.svg" alt="Mars" width="36" />
+    <figcaption style="font-size: 0.7em;">Mars</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-jupiter.svg" alt="Jupiter" width="36" />
+    <figcaption style="font-size: 0.7em;">Jupiter</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-saturn.svg" alt="Saturn" width="36" />
+    <figcaption style="font-size: 0.7em;">Saturn</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-uranus.svg" alt="Uranus" width="36" />
+    <figcaption style="font-size: 0.7em;">Uranus</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-neptune.svg" alt="Neptune" width="36" />
+    <figcaption style="font-size: 0.7em;">Neptune</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-pluto.svg" alt="Pluto" width="36" />
+    <figcaption style="font-size: 0.7em;">Pluto</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-chiron.svg" alt="Chiron" width="36" />
+    <figcaption style="font-size: 0.7em;">Chiron</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-north-node.svg" alt="North Node" width="36" />
+    <figcaption style="font-size: 0.7em;">North Node</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-south-node.svg" alt="South Node" width="36" />
+    <figcaption style="font-size: 0.7em;">South Node</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-pars-fortunae.svg" alt="Pars Fortunae" width="36" />
+    <figcaption style="font-size: 0.7em;">Pars Fortunae</figcaption>
+  </figure>
+</div>
+
+```typescript
+import { PLANET_GLYPH_PRIMITIVES } from 'kaabalah/visual';
+
+PLANET_GLYPH_PRIMITIVES.sun;             // AstroGlyphPrimitive[]
+PLANET_GLYPH_PRIMITIVES.saturn;
+PLANET_GLYPH_PRIMITIVES["north node"];
+PLANET_GLYPH_PRIMITIVES["pars fortunae"];
+```
+
+### `ASPECT_GLYPH_PRIMITIVES`
+
+Vector primitives for aspect symbols.
+
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-conjunction.svg" alt="Conjunction" width="36" />
+    <figcaption style="font-size: 0.7em;">Conjunction</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-opposition.svg" alt="Opposition" width="36" />
+    <figcaption style="font-size: 0.7em;">Opposition</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-trine.svg" alt="Trine" width="36" />
+    <figcaption style="font-size: 0.7em;">Trine</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-square.svg" alt="Square" width="36" />
+    <figcaption style="font-size: 0.7em;">Square</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-sextile.svg" alt="Sextile" width="36" />
+    <figcaption style="font-size: 0.7em;">Sextile</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-semisquare.svg" alt="Semisquare" width="36" />
+    <figcaption style="font-size: 0.7em;">Semisquare</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-sesquisquare.svg" alt="Sesquisquare" width="36" />
+    <figcaption style="font-size: 0.7em;">Sesquisquare</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-inconjunct.svg" alt="Inconjunct" width="36" />
+    <figcaption style="font-size: 0.7em;">Inconjunct</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-semisextile.svg" alt="Semisextile" width="36" />
+    <figcaption style="font-size: 0.7em;">Semisextile</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-quintile.svg" alt="Quintile" width="36" />
+    <figcaption style="font-size: 0.7em;">Quintile</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-biquintile.svg" alt="Biquintile" width="36" />
+    <figcaption style="font-size: 0.7em;">Biquintile</figcaption>
+  </figure>
+</div>
+
+```typescript
+import { ASPECT_GLYPH_PRIMITIVES } from 'kaabalah/visual';
+
+ASPECT_GLYPH_PRIMITIVES.conjunction;    // AstroGlyphPrimitive[]
+ASPECT_GLYPH_PRIMITIVES.trine;
+ASPECT_GLYPH_PRIMITIVES.biquintile;
+```
+
+### `AstroGlyphPrimitive`
+
+All glyph maps share the same primitive type:
+
+```typescript
+type AstroGlyphPrimitive =
+  | { kind: "path"; d: string }
+  | { kind: "circle"; cx: number; cy: number; r: number }
+  | { kind: "line"; x1: number; y1: number; x2: number; y2: number }
+  | { kind: "polyline"; points: string };
+```
+
+Coordinates are normalized to roughly `-1…1`. Scale and translate to your target viewport before rendering.
+
+---
+
+## Tree of Life
+
+### `generateTreeSvg(options?)`
+
+Generates a complete Tree of Life SVG string. The output contains 11 sphere circles and 22 path lines laid out on the canonical Kabbalistic grid, with radial gradient highlights baked in.
 
 ```typescript
 function generateTreeSvg(options?: TreeSvgOptions): string
@@ -44,7 +502,7 @@ function generateTreeSvg(options?: TreeSvgOptions): string
 
 All options are optional. Calling `generateTreeSvg()` with no arguments produces a full-color SVG at the default viewBox size with a white background.
 
-### `TreeSvgOptions`
+#### `TreeSvgOptions`
 
 ```typescript
 interface TreeSvgOptions {
@@ -60,7 +518,7 @@ interface TreeSvgOptions {
 }
 ```
 
-### Basic usage
+#### Basic usage
 
 ```typescript
 import { generateTreeSvg } from 'kaabalah/visual';
@@ -83,7 +541,7 @@ writeFileSync("tree.svg", generateTreeSvg({ background: "transparent" }));
 
 <img src="/tree-color.svg" alt="Default color palette Tree of Life" width="200" />
 
-### ViewBox
+#### ViewBox
 
 The default coordinate space is `0 0 286 561` (exported as `TREE_SVG_DEFAULT_VIEWBOX`). You can override it without affecting the `width`/`height` pixel size — the SVG uses `preserveAspectRatio="xMidYMid meet"`.
 
@@ -105,7 +563,7 @@ const svg = generateTreeSvg({
 
 ---
 
-## Palette
+### Palette
 
 `TreeSvgPalette` is a union of three forms:
 
@@ -113,7 +571,7 @@ const svg = generateTreeSvg({
 type TreeSvgPalette = "color" | "monochrome" | TreeSvgCustomPalette;
 ```
 
-### `"color"` (default)
+#### `"color"` (default)
 
 Sphere and path colors are read from the Tree of Life color data. Special spheres receive distinctive rendering:
 - **Kether** — white sunburst with radial facets
@@ -122,11 +580,11 @@ Sphere and path colors are read from the Tree of Life color data. Special sphere
 - **Malkuth** — four-quadrant color slices
 - Paths keep their layered treatment, with the outer edge rendered as a darker version of the path hue instead of a neutral outline.
 
-### `"monochrome"`
+#### `"monochrome"`
 
 All spheres render in warm off-white (`#e6ddd0`) with dark outlines (`#2f271e`). Paths are uniform (`#e0d7ca`). Special sphere rendering is disabled.
 
-### Custom palette — `TreeSvgCustomPalette`
+#### Custom palette — `TreeSvgCustomPalette`
 
 Fine-grained control over every visual element:
 
@@ -167,9 +625,26 @@ const svg = generateTreeSvg({
 });
 ```
 
+#### Palette comparison
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-color.svg" alt="Color palette" width="180" />
+    <figcaption>"color" (default)</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-monochrome.svg" alt="Monochrome palette" width="180" />
+    <figcaption>"monochrome"</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-custom.svg" alt="Custom gold palette" width="180" />
+    <figcaption>custom (gold)</figcaption>
+  </figure>
+</div>
+
 ---
 
-## Highlights
+### Highlights
 
 `highlights` is the additive way to selectively recolor only the paths and spheres you care about while leaving every unmentioned element exactly as the current renderer would draw it.
 
@@ -242,11 +717,32 @@ const svg = generateTreeSvg({
 });
 ```
 
-This lets downstream apps mute `Daath`, `Chokhmah`, and the other special spheres with the same single fill string and removes the need for app-side dual-fill or overlay workarounds.
+---
+
+### Daath Layer
+
+By default (`daathLayer: "front"`), Daath renders in the normal front sphere layer above all paths. Setting `daathLayer: "back"` moves Daath behind the paths — useful when you want paths to visually cross over Daath. A transparent hit-area circle (`pointer-events="all"`, `data-node-id="sphere:Daath"`) is placed last in the SVG so interactive clicks on Daath still work.
+
+```typescript
+const svg = generateTreeSvg({ daathLayer: "back" });
+```
+
+#### Daath layer comparison
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-color.svg" alt="Daath in front (default)" width="180" />
+    <figcaption>daathLayer="front" (default)</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/tree-daath-back.svg" alt="Daath behind paths" width="180" />
+    <figcaption>daathLayer="back"</figcaption>
+  </figure>
+</div>
 
 ---
 
-## `getTreeRenderModel(options?)`
+### `getTreeRenderModel(options?)`
 
 Returns the canonical layout together with activation-aware geometry and metadata for every sphere and path. Use this when an app needs stable tooltip anchors, hit targets, or prominence information without rebuilding the tree math locally.
 
@@ -266,7 +762,7 @@ The model includes:
 
 This is the intended downstream contract for interactive tree surfaces that need to place their own overlays or tooltips. Use `geometry.viewBoxUnits` for SVG rings, hit targets, and path strokes so circles stay circular. Use `geometry.percentages.anchor` when you need CSS-positioned HTML tooltips above the map.
 
-### Activation usage with semantic map data
+#### Activation usage with semantic map data
 
 `kaabalah/semantic` owns the marker and correspondence rules. `kaabalah/visual` owns the target geometry and activation rendering.
 
@@ -307,49 +803,9 @@ const svg = generateTreeSvg({
 const model = getTreeRenderModel({ activations });
 ```
 
-### Palette comparison
-
-<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-  <figure style="text-align: center; margin: 0;">
-    <img src="/tree-color.svg" alt="Color palette" width="180" />
-    <figcaption>"color" (default)</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/tree-monochrome.svg" alt="Monochrome palette" width="180" />
-    <figcaption>"monochrome"</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/tree-custom.svg" alt="Custom gold palette" width="180" />
-    <figcaption>custom (gold)</figcaption>
-  </figure>
-</div>
-
 ---
 
-## Daath Layer
-
-By default (`daathLayer: "front"`), Daath renders in the normal front sphere layer above all paths. Setting `daathLayer: "back"` moves Daath behind the paths — useful when you want paths to visually cross over Daath. A transparent hit-area circle (`pointer-events="all"`, `data-node-id="sphere:Daath"`) is placed last in the SVG so interactive clicks on Daath still work.
-
-```typescript
-const svg = generateTreeSvg({ daathLayer: "back" });
-```
-
-### Daath layer comparison
-
-<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-  <figure style="text-align: center; margin: 0;">
-    <img src="/tree-color.svg" alt="Daath in front (default)" width="180" />
-    <figcaption>daathLayer="front" (default)</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/tree-daath-back.svg" alt="Daath behind paths" width="180" />
-    <figcaption>daathLayer="back"</figcaption>
-  </figure>
-</div>
-
----
-
-## `getTreeLayout(system?)`
+### `getTreeLayout(system?)`
 
 Returns the canonical layout data for the Tree of Life without rendering any SVG. Use this to build custom renderers, overlays, or interactive diagrams.
 
@@ -359,7 +815,7 @@ function getTreeLayout(system?: SystemKey): TreeLayout
 
 `system` defaults to `"kaabalah"`. Valid values: `"kaabalah"`, `"hermetic-qabalah"`, `"lurianic-kabbalah"`.
 
-### `TreeLayout`
+#### `TreeLayout`
 
 ```typescript
 interface TreeLayout {
@@ -391,7 +847,7 @@ interface TreeLayoutPath {
 
 `percentages` gives coordinates as percentages of the viewBox dimensions (0–100), making them resolution-independent. `viewBoxUnits` gives the same coordinates already scaled to the default `286 × 561` viewBox.
 
-### Example
+#### Example
 
 ```typescript
 import { getTreeLayout, TREE_SVG_DEFAULT_VIEWBOX } from 'kaabalah/visual';
