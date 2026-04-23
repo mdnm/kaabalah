@@ -9,37 +9,80 @@ export type OduNumbers = {
   center: number
 }
 
+function isMidnight(date: Date, mode: "local" | "utc"): boolean {
+  if (mode === "utc") {
+    return (
+      date.getUTCHours() === 0 &&
+      date.getUTCMinutes() === 0 &&
+      date.getUTCSeconds() === 0 &&
+      date.getUTCMilliseconds() === 0
+    );
+  }
+
+  return (
+    date.getHours() === 0 &&
+    date.getMinutes() === 0 &&
+    date.getSeconds() === 0 &&
+    date.getMilliseconds() === 0
+  );
+}
+
+function extractDateParts(date: Date): { day: string; month: string; year: string } {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    throw new Error("Date must be a valid Date object");
+  }
+
+  const useLocalDate = isMidnight(date, "local") && !isMidnight(date, "utc");
+
+  if (useLocalDate) {
+    return {
+      day: date.getDate().toString().padStart(2, "0"),
+      month: (date.getMonth() + 1).toString().padStart(2, "0"),
+      year: date.getFullYear().toString().padStart(4, "0"),
+    };
+  }
+
+  const formattedDate = date.toISOString().split("T")[0];
+  const [year, month, day] = formattedDate.split("-");
+
+  return { day, month, year };
+}
+
+function reduceNumber(num: number): number {
+  if (num <= 16) {
+    return num;
+  }
+
+  return reduceNumber(
+    num
+      .toString()
+      .split("")
+      .reduce((sum, digit) => sum + Number.parseInt(digit, 10), 0)
+  );
+}
+
 /**
  * Calculate the Odu numbers based on a date
  * @param date - Date object
  * @returns Odu numbers
  */
 export function calculateOdu(date: Date): OduNumbers {
-  // Format the date into DD/MM/YYYY
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString();
+  const { day, month, year } = extractDateParts(date);
 
   // Split into left and right columns
   const leftNumbers = [
-    parseInt(day[0]),    // First digit of day
-    parseInt(month[0]),  // First digit of month
-    parseInt(year[0]),   // First digit of year
-    parseInt(year[2])    // Third digit of year
+    Number.parseInt(day[0], 10),    // First digit of day
+    Number.parseInt(month[0], 10),  // First digit of month
+    Number.parseInt(year[0], 10),   // First digit of year
+    Number.parseInt(year[2], 10)    // Third digit of year
   ];
 
   const rightNumbers = [
-    parseInt(day[1]),    // Second digit of day
-    parseInt(month[1]),  // Second digit of month
-    parseInt(year[1]),   // Second digit of year
-    parseInt(year[3])    // Fourth digit of year
+    Number.parseInt(day[1], 10),    // Second digit of day
+    Number.parseInt(month[1], 10),  // Second digit of month
+    Number.parseInt(year[1], 10),   // Second digit of year
+    Number.parseInt(year[3], 10)    // Fourth digit of year
   ];
-
-  // Reduce numbers if they're greater than 16
-  function reduceNumber(num: number): number {
-    if (num <= 16) return num;
-    return reduceNumber(num.toString().split('').reduce((a, b) => a + parseInt(b), 0));
-  }
 
   // Calculate initial sums
   const rawLeftSum = leftNumbers.reduce((a, b) => a + b, 0);
