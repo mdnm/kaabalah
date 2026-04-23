@@ -567,12 +567,21 @@ Return the canonical Tree of Life layout coordinates. Useful for overlays and cu
 ```bash
 kaabalah tree:layout --json --compact
 kaabalah tree:layout --system=hermetic-qabalah --units=percentages --json
+kaabalah tree:layout --render-model --activations=activations.json --json --compact
 ```
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
 | `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
 | `--units` | string | both | Coordinate space: `percentages`, `viewBoxUnits`, or `both` |
+| `--render-model` | boolean | false | Return activation-aware render model geometry instead of the basic layout |
+| `--activations` | string | - | Path to activation JSON array or object with an `activations` array |
+| `--palette` | string | color | Render-model palette metadata: `color` or `monochrome` |
+| `--daath-layer` | string | front | Render-model Daath layer: `front` or `back` |
+| `--viewbox-width` | number | - | Override render-model viewBox width |
+| `--viewbox-height` | number | - | Override render-model viewBox height |
+| `--viewbox-min-x` | number | 0 | Override render-model viewBox min-x |
+| `--viewbox-min-y` | number | 0 | Override render-model viewBox min-y |
 
 ### tree:svg
 
@@ -582,6 +591,7 @@ Generate a structural Tree of Life SVG from the canonical library renderer.
 kaabalah tree:svg --json --compact --fields=svg
 kaabalah tree:svg --background=transparent --palette=monochrome --output=tree.svg --json
 kaabalah tree:svg --background=transparent --daath-layer=back --json --compact
+kaabalah tree:svg --background=transparent --activations=activations.json --json --compact --fields=svg
 ```
 
 | Flag | Type | Default | Description |
@@ -592,11 +602,23 @@ kaabalah tree:svg --background=transparent --daath-layer=back --json --compact
 | `--background` | string | white | Background fill color, or `transparent` |
 | `--palette` | string | color | Palette: `color` or `monochrome` |
 | `--daath-layer` | string | front | Render Daath in front of or behind the paths: `front` or `back` |
+| `--activations` | string | - | Path to activation JSON array or object with an `activations` array |
 | `--output` | string | - | Write SVG to a file instead of stdout |
 | `--viewbox-width` | number | - | Override SVG viewBox width |
 | `--viewbox-height` | number | - | Override SVG viewBox height |
 | `--viewbox-min-x` | number | 0 | Override SVG viewBox min-x |
 | `--viewbox-min-y` | number | 0 | Override SVG viewBox min-y |
+
+`--activations` accepts either a JSON array or an object with an `activations` array:
+
+```json
+{
+  "activations": [
+    { "targetId": "sphere:Kether", "targetType": "sphere", "count": 3, "total": 12, "state": "selected" },
+    { "targetId": "path:1", "targetType": "path", "count": 2, "total": 12, "strength": 0.6 }
+  ]
+}
+```
 
 ### tree:ascii
 

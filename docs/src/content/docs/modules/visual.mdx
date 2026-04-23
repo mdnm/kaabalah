@@ -13,6 +13,7 @@ import { LinkCard } from '@astrojs/starlight/components';
 import {
   generateTreeSvg,
   getTreeLayout,
+  getTreeRenderModel,
   TREE_SVG_DEFAULT_VIEWBOX,
   TREE_SPHERE_NAMES,
   TREE_SPHERE_IDS,
@@ -24,11 +25,12 @@ import {
 
 - `generateTreeSvg`
 - `getTreeLayout`
+- `getTreeRenderModel`
 - `TREE_SVG_DEFAULT_VIEWBOX`
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -54,6 +56,7 @@ interface TreeSvgOptions {
   system?: SystemKey;              // "kaabalah" | "hermetic-qabalah" | "lurianic-kabbalah" (default: "kaabalah")
   daathLayer?: TreeSvgDaathLayer;  // "front" | "back" (default: "front")
   highlights?: TreeSvgHighlights;  // targeted path/sphere recolors layered on top of the base renderer
+  activations?: readonly TreeTargetActivationInput[];  // activation-aware prominence and hit geometry metadata
 }
 ```
 
@@ -206,7 +209,7 @@ const svg = generateTreeSvg({
 });
 ```
 
-This is the intended downstream contract for apps like Gamu: request selective recolors from `kaabalah-lib` instead of masking or rebuilding the SVG app-side.
+This is the intended downstream contract for apps: request selective recolors from `kaabalah-lib` instead of masking or rebuilding the SVG app-side.
 
 When you want to mute every non-selected node to a single neutral color while keeping selected special spheres canonical, set `highlights.specialSphereMode: "plain"` and leave the selected nodes unmentioned:
 
@@ -240,6 +243,69 @@ const svg = generateTreeSvg({
 ```
 
 This lets downstream apps mute `Daath`, `Chokhmah`, and the other special spheres with the same single fill string and removes the need for app-side dual-fill or overlay workarounds.
+
+---
+
+## `getTreeRenderModel(options?)`
+
+Returns the canonical layout together with activation-aware geometry and metadata for every sphere and path. Use this when an app needs stable tooltip anchors, hit targets, or prominence information without rebuilding the tree math locally.
+
+```typescript
+function getTreeRenderModel(options?: TreeSvgOptions): TreeRenderModel
+```
+
+The model includes:
+
+- canonical viewBox and rendered scale
+- layer order
+- sphere and path geometry in both percentage space and viewBox units
+- tooltip anchors
+- invisible hit target geometry in the same viewBox coordinate system as the base SVG
+- canonical color and material metadata
+- activation state with normalized strength
+
+This is the intended downstream contract for interactive tree surfaces that need to place their own overlays or tooltips. Use `geometry.viewBoxUnits` for SVG rings, hit targets, and path strokes so circles stay circular. Use `geometry.percentages.anchor` when you need CSS-positioned HTML tooltips above the map.
+
+### Activation usage with semantic map data
+
+`kaabalah/semantic` owns the marker and correspondence rules. `kaabalah/visual` owns the target geometry and activation rendering.
+
+```typescript
+import { buildKaabalisticMapData } from 'kaabalah/semantic';
+import { generateTreeSvg, getTreeRenderModel } from 'kaabalah/visual';
+
+const mapData = buildKaabalisticMapData({
+  numerology: new Date("1990-01-01T12:00:00Z"),
+});
+
+const targets = [
+  ...mapData.spheres.map((sphere) => ({ id: sphere.id, type: "sphere" as const })),
+  ...mapData.paths.map((path) => ({ id: path.id, type: "path" as const })),
+];
+const maxCount = Math.max(
+  1,
+  ...targets.map((target) => mapData.countsById[target.id]?.total ?? 0)
+);
+
+const activations = targets.map((target) => {
+  const count = mapData.countsById[target.id]?.total ?? 0;
+
+  return {
+    targetId: target.id,
+    targetType: target.type,
+    count,
+    total: mapData.markers.length,
+    strength: count / maxCount,
+    state: count > 0 ? "active" as const : "inactive" as const,
+  };
+});
+
+const svg = generateTreeSvg({
+  background: "transparent",
+  activations,
+});
+const model = getTreeRenderModel({ activations });
+```
 
 ### Palette comparison
 
@@ -402,9 +468,17 @@ TREE_PATH_IDS[21]  // "path:22"
 
 ## CLI
 
-The `tree` command outputs the Tree of Life graph. To generate an SVG from the CLI, use the example script bundled in the repository:
+The existing `tree:*` CLI namespace can inspect the same visual contracts:
 
 ```bash
 # Generate an SVG file
-npx ts-node examples/generate-tree-svg.ts > tree.svg
+kaabalah tree:svg --background=transparent --output=tree.svg --json
+
+# Preview an activated SVG from a reusable activation payload
+kaabalah tree:svg --background=transparent --activations=activations.json --json --compact --fields=svg
+
+# Inspect anchors and hit targets for agents or custom renderers
+kaabalah tree:layout --render-model --activations=activations.json --json --compact
 ```
+
+`--activations` accepts either a raw JSON array of `TreeTargetActivationInput` objects or an object with an `activations` array. Keep semantic marker creation in `kaabalah/semantic`; use the CLI activation payload only as a visual inspection format.
