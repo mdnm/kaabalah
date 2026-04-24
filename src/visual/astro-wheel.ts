@@ -7,6 +7,18 @@ import type {
   HydratedPlanet,
   ZodiacPosition,
 } from "../astrology";
+import {
+  ANGLE_GLYPHS,
+  PLANET_GLYPHS,
+  ZODIAC_GLYPHS,
+  getAstroGlyph,
+} from "./astro-glyph-registry";
+import type {
+  AstroGlyphDefinition,
+  AstroGlyphPrimitive,
+  AstroWheelPlanetGlyphKey,
+  AstroWheelZodiacSign,
+} from "./astro-glyph-types";
 
 export interface AstroWheelViewBox {
   minX?: number;
@@ -16,20 +28,6 @@ export interface AstroWheelViewBox {
 }
 
 export type AstroWheelElement = "fire" | "earth" | "air" | "water";
-
-export type AstroWheelZodiacSign =
-  | "Aries"
-  | "Taurus"
-  | "Gemini"
-  | "Cancer"
-  | "Leo"
-  | "Virgo"
-  | "Libra"
-  | "Scorpio"
-  | "Sagittarius"
-  | "Capricorn"
-  | "Aquarius"
-  | "Pisces";
 
 export interface AstroWheelPaletteOverrides {
   ringStroke?: string;
@@ -168,14 +166,6 @@ export interface AstroWheelZodiacSegment {
   labelFontSize: number;
 }
 
-export type AstroGlyphPrimitive =
-  | { kind: "path"; d: string }
-  | { kind: "circle"; cx: number; cy: number; r: number }
-  | { kind: "line"; x1: number; y1: number; x2: number; y2: number }
-  | { kind: "polyline"; points: string };
-
-type ZodiacGlyphPrimitive = AstroGlyphPrimitive;
-
 export interface AstroWheelHouseCusp {
   house: number;
   longitude: number;
@@ -201,6 +191,7 @@ export interface AstroWheelPoint {
   name: string;
   kind: AstroWheelPointKind;
   glyph: string;
+  glyphKey?: string;
   longitude: number;
   displayLongitude: number;
   zodiacPosition?: ZodiacPosition;
@@ -348,235 +339,25 @@ export const ASTRO_WHEEL_POINT_GLYPHS: Record<string, string> = {
   neptune: "♆",
   pluto: "♇",
   earth: "⊕",
+  chiron: "⚷",
   "mean node": "☊",
   "true node": "☊",
+  "north node": "☊",
+  "south node": "☋",
+  lilith: "⚸",
   "lilith mean": "⚸",
   "lilith true": "⚸",
-  chiron: "⚷",
+  "black moon lilith": "⚸",
   "wheel of fortune": "⊗",
+  "part of fortune": "⊗",
   "pars fortunae": "⊗",
-  vertex: "Vtx",
-};
-
-export const ZODIAC_GLYPH_PRIMITIVES: Record<AstroWheelZodiacSign, readonly AstroGlyphPrimitive[]> = {
-  Aries: [
-    { kind: "path", d: "M 0 0.8 V -0.1" },
-    { kind: "path", d: "M 0 -0.1 C -0.12 -0.58 -0.62 -0.92 -0.86 -0.42 C -1.02 -0.08 -0.58 0.2 0 0.02" },
-    { kind: "path", d: "M 0 -0.1 C 0.12 -0.58 0.62 -0.92 0.86 -0.42 C 1.02 -0.08 0.58 0.2 0 0.02" },
-  ],
-  Taurus: [
-    { kind: "circle", cx: 0, cy: 0.28, r: 0.42 },
-    { kind: "path", d: "M -0.78 -0.34 C -0.58 -0.88 -0.2 -0.72 0 -0.24 C 0.2 -0.72 0.58 -0.88 0.78 -0.34" },
-  ],
-  Gemini: [
-    { kind: "line", x1: -0.68, y1: -0.72, x2: 0.68, y2: -0.72 },
-    { kind: "line", x1: -0.68, y1: 0.72, x2: 0.68, y2: 0.72 },
-    { kind: "line", x1: -0.34, y1: -0.72, x2: -0.34, y2: 0.72 },
-    { kind: "line", x1: 0.34, y1: -0.72, x2: 0.34, y2: 0.72 },
-  ],
-  Cancer: [
-    { kind: "circle", cx: -0.34, cy: 0.22, r: 0.24 },
-    { kind: "circle", cx: 0.34, cy: -0.22, r: 0.24 },
-    { kind: "path", d: "M -0.86 -0.14 C -0.34 -0.58 0.54 -0.56 0.88 -0.08" },
-    { kind: "path", d: "M 0.86 0.14 C 0.34 0.58 -0.54 0.56 -0.88 0.08" },
-  ],
-  Leo: [
-    { kind: "circle", cx: -0.36, cy: -0.18, r: 0.27 },
-    { kind: "path", d: "M -0.1 -0.06 C 0.22 -0.72 0.88 -0.42 0.62 0.14 C 0.42 0.56 0.74 0.86 0.96 0.52" },
-    { kind: "path", d: "M -0.26 0.08 C -0.44 0.42 -0.72 0.62 -0.96 0.62" },
-  ],
-  Virgo: [
-    { kind: "path", d: "M -0.82 0.7 V -0.38 C -0.62 -0.72 -0.42 -0.52 -0.42 -0.08 V 0.7" },
-    { kind: "path", d: "M -0.42 -0.08 C -0.22 -0.72 0.02 -0.52 0.02 -0.08 V 0.7" },
-    { kind: "path", d: "M 0.02 -0.08 C 0.22 -0.72 0.48 -0.5 0.48 -0.1 V 0.56" },
-    { kind: "path", d: "M 0.48 0.28 C 0.7 0.86 1 0.58 0.74 0.16" },
-  ],
-  Libra: [
-    { kind: "path", d: "M -0.54 0 C -0.48 -0.58 0.48 -0.58 0.54 0" },
-    { kind: "line", x1: -0.9, y1: 0.24, x2: 0.9, y2: 0.24 },
-    { kind: "line", x1: -0.9, y1: 0.62, x2: 0.9, y2: 0.62 },
-  ],
-  Scorpio: [
-    { kind: "path", d: "M -0.82 0.64 V -0.36 C -0.62 -0.72 -0.42 -0.5 -0.42 -0.08 V 0.64" },
-    { kind: "path", d: "M -0.42 -0.08 C -0.2 -0.72 0.02 -0.5 0.02 -0.08 V 0.64" },
-    { kind: "path", d: "M 0.02 -0.08 C 0.22 -0.72 0.48 -0.5 0.48 -0.08 V 0.5 L 0.86 0.84" },
-    { kind: "path", d: "M 0.86 0.84 H 0.52" },
-    { kind: "path", d: "M 0.86 0.84 V 0.5" },
-  ],
-  Sagittarius: [
-    { kind: "line", x1: -0.7, y1: 0.72, x2: 0.68, y2: -0.66 },
-    { kind: "line", x1: 0.68, y1: -0.66, x2: 0.1, y2: -0.58 },
-    { kind: "line", x1: 0.68, y1: -0.66, x2: 0.58, y2: -0.08 },
-    { kind: "line", x1: -0.34, y1: -0.08, x2: 0.24, y2: 0.5 },
-  ],
-  Capricorn: [
-    { kind: "path", d: "M -0.86 -0.42 C -0.62 -0.78 -0.34 -0.54 -0.34 0.46" },
-    { kind: "path", d: "M -0.34 -0.08 C -0.1 -0.58 0.18 -0.42 0.18 0.2" },
-    { kind: "path", d: "M 0.18 0.2 C 0.34 -0.24 0.86 -0.2 0.86 0.24 C 0.86 0.82 0.18 0.86 0.18 0.2" },
-  ],
-  Aquarius: [
-    { kind: "polyline", points: "-0.88,-0.32 -0.56,-0.56 -0.24,-0.32 0.08,-0.56 0.4,-0.32 0.72,-0.56" },
-    { kind: "polyline", points: "-0.72,0.18 -0.4,-0.06 -0.08,0.18 0.24,-0.06 0.56,0.18 0.88,-0.06" },
-  ],
-  Pisces: [
-    { kind: "path", d: "M -0.5 -0.76 C -0.86 -0.32 -0.86 0.32 -0.5 0.76" },
-    { kind: "path", d: "M 0.5 -0.76 C 0.86 -0.32 0.86 0.32 0.5 0.76" },
-    { kind: "line", x1: -0.78, y1: 0, x2: 0.78, y2: 0 },
-  ],
-};
-
-export type AstroWheelPlanetGlyphKey =
-  | "sun"
-  | "moon"
-  | "mercury"
-  | "venus"
-  | "mars"
-  | "jupiter"
-  | "saturn"
-  | "uranus"
-  | "neptune"
-  | "pluto"
-  | "chiron"
-  | "north node"
-  | "south node"
-  | "pars fortunae";
-
-export const PLANET_GLYPH_PRIMITIVES: Record<AstroWheelPlanetGlyphKey, readonly AstroGlyphPrimitive[]> = {
-  sun: [
-    { kind: "circle", cx: 0, cy: 0, r: 0.62 },
-    { kind: "circle", cx: 0, cy: 0, r: 0.04 },
-  ],
-  moon: [
-    { kind: "path", d: "M 0.1 -0.66 C -0.54 -0.5 -0.54 0.5 0.1 0.66 C -0.28 0.4 -0.28 -0.4 0.1 -0.66" },
-  ],
-  mercury: [
-    { kind: "circle", cx: 0, cy: 0, r: 0.36 },
-    { kind: "line", x1: 0, y1: 0.36, x2: 0, y2: 0.82 },
-    { kind: "line", x1: -0.26, y1: 0.64, x2: 0.26, y2: 0.64 },
-    { kind: "path", d: "M -0.32 -0.14 C -0.32 -0.56 0.32 -0.56 0.32 -0.14" },
-  ],
-  venus: [
-    { kind: "circle", cx: 0, cy: -0.2, r: 0.38 },
-    { kind: "line", x1: 0, y1: 0.18, x2: 0, y2: 0.78 },
-    { kind: "line", x1: -0.26, y1: 0.52, x2: 0.26, y2: 0.52 },
-  ],
-  mars: [
-    { kind: "circle", cx: -0.12, cy: 0.12, r: 0.4 },
-    { kind: "line", x1: 0.16, y1: -0.16, x2: 0.66, y2: -0.66 },
-    { kind: "line", x1: 0.66, y1: -0.66, x2: 0.3, y2: -0.66 },
-    { kind: "line", x1: 0.66, y1: -0.66, x2: 0.66, y2: -0.3 },
-  ],
-  jupiter: [
-    { kind: "path", d: "M -0.54 -0.48 C -0.26 -0.48 0.04 -0.28 -0.06 -0.04 C -0.16 0.2 -0.44 0.28 -0.54 0.14" },
-    { kind: "line", x1: -0.54, y1: 0.14, x2: 0.64, y2: 0.14 },
-    { kind: "line", x1: 0.3, y1: -0.52, x2: 0.3, y2: 0.68 },
-  ],
-  saturn: [
-    { kind: "line", x1: -0.32, y1: -0.68, x2: 0.32, y2: -0.68 },
-    { kind: "line", x1: 0, y1: -0.68, x2: 0, y2: 0.22 },
-    { kind: "path", d: "M 0 0.22 C 0.48 0.22 0.48 0.72 0 0.72 C -0.2 0.72 -0.32 0.56 -0.24 0.4" },
-  ],
-  uranus: [
-    { kind: "circle", cx: 0, cy: 0.52, r: 0.16 },
-    { kind: "line", x1: 0, y1: 0.36, x2: 0, y2: -0.38 },
-    { kind: "path", d: "M -0.48 -0.62 C -0.48 -0.2 -0.48 0.02 -0.48 0.02" },
-    { kind: "path", d: "M 0.48 -0.62 C 0.48 -0.2 0.48 0.02 0.48 0.02" },
-    { kind: "line", x1: -0.48, y1: -0.38, x2: 0.48, y2: -0.38 },
-  ],
-  neptune: [
-    { kind: "line", x1: 0, y1: -0.68, x2: 0, y2: 0.68 },
-    { kind: "line", x1: -0.36, y1: 0.44, x2: 0.36, y2: 0.44 },
-    { kind: "path", d: "M -0.5 0.04 C -0.5 -0.56 0 -0.78 0 -0.68" },
-    { kind: "path", d: "M 0.5 0.04 C 0.5 -0.56 0 -0.78 0 -0.68" },
-  ],
-  pluto: [
-    { kind: "circle", cx: 0, cy: -0.16, r: 0.26 },
-    { kind: "path", d: "M -0.42 -0.16 C -0.42 -0.56 0.42 -0.56 0.42 -0.16" },
-    { kind: "line", x1: 0, y1: 0.1, x2: 0, y2: 0.72 },
-    { kind: "line", x1: -0.26, y1: 0.44, x2: 0.26, y2: 0.44 },
-  ],
-  chiron: [
-    { kind: "circle", cx: 0, cy: 0.44, r: 0.28 },
-    { kind: "line", x1: 0, y1: 0.16, x2: 0, y2: -0.52 },
-    { kind: "line", x1: 0, y1: -0.24, x2: 0.42, y2: -0.66 },
-    { kind: "line", x1: 0.42, y1: -0.66, x2: 0.14, y2: -0.5 },
-    { kind: "line", x1: 0.42, y1: -0.66, x2: 0.3, y2: -0.36 },
-  ],
-  "north node": [
-    { kind: "path", d: "M -0.52 0.14 C -0.52 -0.38 0 -0.58 0 -0.22" },
-    { kind: "path", d: "M 0.52 0.14 C 0.52 -0.38 0 -0.58 0 -0.22" },
-    { kind: "path", d: "M -0.52 0.14 C -0.52 0.54 0 0.68 0 0.36" },
-    { kind: "path", d: "M 0.52 0.14 C 0.52 0.54 0 0.68 0 0.36" },
-  ],
-  "south node": [
-    { kind: "path", d: "M -0.52 -0.14 C -0.52 0.38 0 0.58 0 0.22" },
-    { kind: "path", d: "M 0.52 -0.14 C 0.52 0.38 0 0.58 0 0.22" },
-    { kind: "path", d: "M -0.52 -0.14 C -0.52 -0.54 0 -0.68 0 -0.36" },
-    { kind: "path", d: "M 0.52 -0.14 C 0.52 -0.54 0 -0.68 0 -0.36" },
-  ],
-  "pars fortunae": [
-    { kind: "circle", cx: 0, cy: 0, r: 0.56 },
-    { kind: "line", x1: -0.56, y1: 0, x2: 0.56, y2: 0 },
-    { kind: "line", x1: 0, y1: -0.56, x2: 0, y2: 0.56 },
-  ],
-};
-
-export type AstroWheelAspectGlyphKey =
-  | "conjunction"
-  | "opposition"
-  | "square"
-  | "trine"
-  | "sextile"
-  | "semisquare"
-  | "sesquisquare"
-  | "inconjunct"
-  | "semisextile"
-  | "quintile"
-  | "biquintile";
-
-export const ASPECT_GLYPH_PRIMITIVES: Record<AstroWheelAspectGlyphKey, readonly AstroGlyphPrimitive[]> = {
-  conjunction: [
-    { kind: "circle", cx: 0, cy: -0.22, r: 0.36 },
-    { kind: "line", x1: 0, y1: 0.14, x2: 0, y2: 0.78 },
-  ],
-  opposition: [
-    { kind: "circle", cx: 0, cy: -0.38, r: 0.26 },
-    { kind: "line", x1: 0, y1: -0.12, x2: 0, y2: 0.52 },
-    { kind: "circle", cx: 0, cy: 0.52, r: 0.26 },
-  ],
-  square: [
-    { kind: "path", d: "M -0.48 -0.48 L 0.48 -0.48 L 0.48 0.48 L -0.48 0.48 Z" },
-  ],
-  trine: [
-    { kind: "path", d: "M 0 -0.62 L 0.58 0.46 L -0.58 0.46 Z" },
-  ],
-  sextile: [
-    { kind: "path", d: "M 0 -0.66 L 0.58 -0.32 L 0.58 0.32 L 0 0.66 L -0.58 0.32 L -0.58 -0.32 Z" },
-  ],
-  semisquare: [
-    { kind: "path", d: "M 0 -0.56 L 0.56 0 L 0 0.56 L -0.56 0 Z" },
-    { kind: "line", x1: 0, y1: 0.56, x2: 0, y2: 0.82 },
-  ],
-  sesquisquare: [
-    { kind: "path", d: "M -0.44 -0.46 L 0.44 -0.46 L 0.44 0.32 L -0.44 0.32 Z" },
-    { kind: "line", x1: 0, y1: 0.32, x2: 0, y2: 0.78 },
-  ],
-  inconjunct: [
-    { kind: "path", d: "M -0.4 -0.38 C -0.4 -0.76 0.4 -0.76 0.4 -0.38 L 0.4 0.08 L -0.4 0.08 Z" },
-    { kind: "line", x1: 0, y1: 0.08, x2: 0, y2: 0.78 },
-  ],
-  semisextile: [
-    { kind: "path", d: "M 0 -0.62 L 0.58 0.46 L -0.58 0.46 Z" },
-    { kind: "line", x1: 0, y1: 0.46, x2: 0, y2: 0.82 },
-  ],
-  quintile: [
-    { kind: "path", d: "M 0 0.72 L -0.22 0.06 L 0.36 -0.42" },
-    { kind: "path", d: "M 0 0.72 L 0.22 0.06 L -0.36 -0.42" },
-    { kind: "path", d: "M -0.36 -0.42 L 0.36 -0.42" },
-  ],
-  biquintile: [
-    { kind: "path", d: "M 0 -0.72 L 0.22 -0.06 L 0.72 0.22 L 0.44 0.62 L -0.44 0.62 L -0.72 0.22 L -0.22 -0.06 Z" },
-  ],
+  "lot of fortune": "⊗",
+  ascendant: "AC",
+  midheaven: "MC",
+  descendant: "DC",
+  nadir: "IC",
+  vertex: "Vx",
+  retrograde: "Rx",
 };
 
 const DEFAULT_PALETTE: ResolvedAstroWheelPalette = {
@@ -672,21 +453,23 @@ export function generateGlyphSvg(
   if (bg !== "transparent") {
     push(`<rect width="${size}" height="${size}" fill="${escapeAttr(bg)}"/>`);
   }
-  push(`<g transform="translate(${cx} ${cy}) scale(${fmt(scale)})" fill="${escapeAttr(fillVal)}" stroke="${escapeAttr(color)}" stroke-width="${fmt(sw)}" stroke-linecap="round" stroke-linejoin="round">`);
-  for (const p of primitives) {
-    if (p.kind === "path") {
-      push(`<path d="${escapeAttr(p.d)}"/>`);
-    } else if (p.kind === "circle") {
-      push(`<circle cx="${fmt(p.cx)}" cy="${fmt(p.cy)}" r="${fmt(p.r)}"/>`);
-    } else if (p.kind === "line") {
-      push(`<line x1="${fmt(p.x1)}" y1="${fmt(p.y1)}" x2="${fmt(p.x2)}" y2="${fmt(p.y2)}"/>`);
-    } else {
-      push(`<polyline points="${escapeAttr(p.points)}"/>`);
-    }
-  }
+  push(`<g transform="translate(${cx} ${cy}) scale(${fmt(scale)})" color="${escapeAttr(color)}" fill="${escapeAttr(fillVal)}" stroke="${escapeAttr(color)}" stroke-width="${fmt(sw)}" stroke-linecap="round" stroke-linejoin="round">`);
+  renderGlyphPrimitives(push, primitives, { color, fill: fillVal });
   push(`</g>`);
   push(`</svg>`);
   return lines.join("\n");
+}
+
+export function generateAstroGlyphSvg(
+  keyOrGlyph: string | AstroGlyphDefinition,
+  options: GlyphSvgOptions = {}
+): string {
+  const glyph = typeof keyOrGlyph === "string" ? getAstroGlyph(keyOrGlyph) : keyOrGlyph;
+  if (!glyph) {
+    throw new Error(`Unknown astrology glyph: ${String(keyOrGlyph)}`);
+  }
+  const svg = generateGlyphSvg(glyph.primitives, options);
+  return svg.replace("<svg ", `<svg data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" `);
 }
 
 export function getAstroWheelRenderModel(
@@ -936,25 +719,15 @@ function renderZodiacGlyph(
   segment: AstroWheelZodiacSegment,
   palette: ResolvedAstroWheelPalette
 ) {
-  const primitives = ZODIAC_GLYPH_PRIMITIVES[segment.sign];
+  const glyph = ZODIAC_GLYPHS[segment.sign];
   const scale = segment.labelFontSize * 0.56;
   const strokeWidth = clamp(0.12 / Math.max(scale / 10, 0.6), 0.1, 0.18);
 
   push(
-    `<g data-zodiac-glyph="${escapeAttr(segment.sign)}" data-zodiac-symbol="${escapeAttr(segment.glyph)}" transform="translate(${fmt(segment.labelPosition.x)} ${fmt(segment.labelPosition.y)}) scale(${fmt(scale)})" fill="none" stroke="${escapeAttr(palette.zodiacGlyph)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
+    `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-zodiac-glyph="${escapeAttr(segment.sign)}" data-zodiac-symbol="${escapeAttr(segment.glyph)}" transform="translate(${fmt(segment.labelPosition.x)} ${fmt(segment.labelPosition.y)}) scale(${fmt(scale)})" color="${escapeAttr(palette.zodiacGlyph)}" fill="none" stroke="${escapeAttr(palette.zodiacGlyph)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
   );
   push(`<title>${escapeText(`${segment.sign} ${segment.glyph}`)}</title>`);
-  for (const primitive of primitives) {
-    if (primitive.kind === "path") {
-      push(`<path d="${escapeAttr(primitive.d)}"/>`);
-    } else if (primitive.kind === "circle") {
-      push(`<circle cx="${fmt(primitive.cx)}" cy="${fmt(primitive.cy)}" r="${fmt(primitive.r)}"/>`);
-    } else if (primitive.kind === "line") {
-      push(`<line x1="${fmt(primitive.x1)}" y1="${fmt(primitive.y1)}" x2="${fmt(primitive.x2)}" y2="${fmt(primitive.y2)}"/>`);
-    } else {
-      push(`<polyline points="${escapeAttr(primitive.points)}"/>`);
-    }
-  }
+  renderGlyphPrimitives(push, glyph.primitives, { color: palette.zodiacGlyph });
   push(`</g>`);
 }
 
@@ -1032,25 +805,15 @@ function renderPointGlyph(
   push: (line: string) => void,
   point: AstroWheelPoint
 ) {
-  const primitives = resolvePointGlyphPrimitives(point.name);
+  const glyph = point.glyphKey ? getAstroGlyph(point.glyphKey) : resolvePointGlyph(point.name);
 
-  if (primitives) {
+  if (glyph) {
     const glyphScale = point.glyphFontSize * 0.56;
     const strokeWidth = clamp(0.12 / Math.max(glyphScale / 10, 0.6), 0.1, 0.18);
     push(
-      `<g data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)}) scale(${fmt(glyphScale)})" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
+      `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(point.color)}" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
     );
-    for (const p of primitives) {
-      if (p.kind === "path") {
-        push(`<path d="${escapeAttr(p.d)}"/>`);
-      } else if (p.kind === "circle") {
-        push(`<circle cx="${fmt(p.cx)}" cy="${fmt(p.cy)}" r="${fmt(p.r)}"/>`);
-      } else if (p.kind === "line") {
-        push(`<line x1="${fmt(p.x1)}" y1="${fmt(p.y1)}" x2="${fmt(p.x2)}" y2="${fmt(p.y2)}"/>`);
-      } else {
-        push(`<polyline points="${escapeAttr(p.points)}"/>`);
-      }
-    }
+    renderGlyphPrimitives(push, glyph.primitives, { color: point.color });
     push(`</g>`);
   } else {
     push(
@@ -1062,13 +825,36 @@ function renderPointGlyph(
 const POINT_GLYPH_ALIASES: Record<string, AstroWheelPlanetGlyphKey> = {
   "mean node": "north node",
   "true node": "north node",
+  "ascending node": "north node",
+  "north lunar node": "north node",
+  "descending node": "south node",
+  "south lunar node": "south node",
   "wheel of fortune": "pars fortunae",
+  "part of fortune": "pars fortunae",
+  "lot of fortune": "pars fortunae",
+  "fortune": "pars fortunae",
+  "black moon lilith": "lilith",
+  "mean lilith": "lilith",
+  "true lilith": "lilith",
+  "lilith mean": "lilith",
+  "lilith true": "lilith",
+  "asc": "ascendant",
+  "ac": "ascendant",
+  "mc": "midheaven",
+  "medium coeli": "midheaven",
+  "dsc": "descendant",
+  "dc": "descendant",
+  "ic": "nadir",
+  "imum coeli": "nadir",
+  "vx": "vertex",
+  "vtx": "vertex",
+  "rx": "retrograde",
 };
 
-function resolvePointGlyphPrimitives(name: string): readonly AstroGlyphPrimitive[] | null {
+function resolvePointGlyph(name: string): AstroGlyphDefinition | null {
   const key = name.trim().toLocaleLowerCase().replace(/[_-]+/g, " ").replace(/\s+/g, " ");
   const resolved = POINT_GLYPH_ALIASES[key] ?? key;
-  return (PLANET_GLYPH_PRIMITIVES as Record<string, readonly AstroGlyphPrimitive[] | undefined>)[resolved] ?? null;
+  return PLANET_GLYPHS[resolved as AstroWheelPlanetGlyphKey] ?? ANGLE_GLYPHS[resolved as keyof typeof ANGLE_GLYPHS] ?? null;
 }
 
 function buildZodiacSegments(params: {
@@ -1209,6 +995,7 @@ function buildPointLayer(params: {
         name: seed.name,
         kind: seed.kind,
         glyph: seed.glyph,
+        glyphKey: seed.glyphKey,
         longitude: normalizeAngle(seed.longitude),
         displayLongitude,
         zodiacPosition: seed.zodiacPosition,
@@ -1328,6 +1115,7 @@ function getPointSeeds(
       name: "Vertex",
       kind: "vertex",
       glyph: ASTRO_WHEEL_POINT_GLYPHS.vertex,
+      glyphKey: "vertex",
       longitude: chart.houses.ascmc.vertex.longitude,
       zodiacPosition: chart.houses.ascmc.vertex,
     });
@@ -1341,6 +1129,7 @@ interface PointSeed {
   name: string;
   kind: AstroWheelPointKind;
   glyph: string;
+  glyphKey?: string;
   longitude: number;
   zodiacPosition?: ZodiacPosition;
 }
@@ -1351,6 +1140,7 @@ function planetSeed(key: string, planet: HydratedPlanet, layerId: string): Point
     name: planet.name,
     kind: "planet",
     glyph: pointGlyph(planet.name),
+    glyphKey: pointGlyphKey(planet.name),
     longitude: planet.longitude,
     zodiacPosition: planet.zodiacPosition,
   };
@@ -1362,6 +1152,7 @@ function nodeSeed(key: string, node: HydratedNode, layerId: string): PointSeed {
     name: node.name,
     kind: "node",
     glyph: pointGlyph(node.name),
+    glyphKey: pointGlyphKey(node.name),
     longitude: node.longitude,
     zodiacPosition: node,
   };
@@ -1373,6 +1164,7 @@ function pointSeed(point: AstroWheelPointSource, layerId: string): PointSeed {
     name: point.name,
     kind: point.kind ?? "planet",
     glyph: point.glyph ?? pointGlyph(point.name),
+    glyphKey: point.glyph ? undefined : pointGlyphKey(point.name),
     longitude: point.longitude,
     zodiacPosition: point.zodiacPosition,
   };
@@ -1653,6 +1445,11 @@ function pointGlyph(name: string) {
   return ASTRO_WHEEL_POINT_GLYPHS[normalizePointKey(name)] ?? name.charAt(0).toUpperCase();
 }
 
+function pointGlyphKey(name: string) {
+  const key = normalizePointKey(name);
+  return POINT_GLYPH_ALIASES[key] ?? key;
+}
+
 function normalizePointKey(value: string) {
   return value
     .trim()
@@ -1668,6 +1465,30 @@ function layerPointKey(layerId: string, value: string) {
 
 function pointKeyPrefix(layerId: string | undefined) {
   return !layerId || layerId === "birth" ? "" : `${layerId}:`;
+}
+
+function renderGlyphPrimitives(
+  push: (line: string) => void,
+  primitives: readonly AstroGlyphPrimitive[],
+  options: { color: string; fill?: string }
+) {
+  for (const p of primitives) {
+    if (p.kind === "path") {
+      push(`<path d="${escapeAttr(p.d)}"/>`);
+    } else if (p.kind === "circle") {
+      push(`<circle cx="${fmt(p.cx)}" cy="${fmt(p.cy)}" r="${fmt(p.r)}"/>`);
+    } else if (p.kind === "line") {
+      push(`<line x1="${fmt(p.x1)}" y1="${fmt(p.y1)}" x2="${fmt(p.x2)}" y2="${fmt(p.y2)}"/>`);
+    } else if (p.kind === "polyline") {
+      push(`<polyline points="${escapeAttr(p.points)}"/>`);
+    } else if (p.kind === "text") {
+      push(
+        `<text x="${fmt(p.x ?? 0)}" y="${fmt(p.y ?? 0)}" font-family="${textFontFamily()}" font-size="${fmt(p.fontSize ?? 0.72)}" font-weight="${escapeAttr(String(p.fontWeight ?? 500))}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(options.color)}" stroke="none">${escapeText(p.text)}</text>`
+      );
+    } else {
+      push(p.markup);
+    }
+  }
 }
 
 function normalizeAngle(value: number) {

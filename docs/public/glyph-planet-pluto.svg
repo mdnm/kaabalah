@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="0" cy="-0.16" r="0.26"/>
-<path d="M -0.42 -0.16 C -0.42 -0.56 0.42 -0.56 0.42 -0.16"/>
-<line x1="0" y1="0.1" x2="0" y2="0.72"/>
-<line x1="-0.26" y1="0.44" x2="0.26" y2="0.44"/>
+<svg data-astro-glyph="pluto" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.0209524) translate(-165.000000 -195.000000)"><path d="M 157,205 L 173,205" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 165,213 L 165,196" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 172 184 A 7 7 0 1 1  158,184 A 7 7 0 1 1  172 184 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 177,184 A 12,12 0 1 1 153,184" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg>

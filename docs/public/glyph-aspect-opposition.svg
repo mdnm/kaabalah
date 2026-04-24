@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="0" cy="-0.38" r="0.26"/>
-<line x1="0" y1="-0.12" x2="0" y2="0.52"/>
-<circle cx="0" cy="0.52" r="0.26"/>
+<svg data-astro-glyph="opposition" data-astro-glyph-category="aspect" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.01)"><circle cx="-26" cy="26" r="11" fill="none" stroke="currentColor" stroke-width="7"/><circle cx="26" cy="-26" r="11" fill="none" stroke="currentColor" stroke-width="7"/><path d="M-18,18 L18,-18" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
 </g>
 </svg>

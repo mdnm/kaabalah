@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<polyline points="-0.88,-0.32 -0.56,-0.56 -0.24,-0.32 0.08,-0.56 0.4,-0.32 0.72,-0.56"/>
-<polyline points="-0.72,0.18 -0.4,-0.06 -0.08,0.18 0.24,-0.06 0.56,0.18 0.88,-0.06"/>
+<svg data-astro-glyph="aquarius" data-astro-glyph-category="zodiac" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.0172973) translate(-244.125000 -292.429570)"><path d="M 236.04688,288.74207 L 232.42188,282.49207 L 221.60938,288.74207 L 219.26562,284.71082 L 234.17188,276.11707 L 237.76562,282.36707 L 248.60938,276.11707 L 252.20312,282.36707 L 263.04688,276.11707 L 268.98438,286.39832 L 264.92188,288.74207 L 261.29688,282.49207 L 250.48438,288.74207 L 246.85938,282.49207 L 236.04688,288.74207 M 236.04688,308.74207 L 232.42188,302.49207 L 221.60938,308.74207 L 219.26562,304.71082 L 234.17188,296.11707 L 237.76562,302.36707 L 248.60938,296.11707 L 252.20312,302.36707 L 263.04688,296.11707 L 268.98438,306.39832 L 264.92188,308.74207 L 261.29688,302.49207 L 250.48438,308.74207 L 246.85938,302.49207 L 236.04688,308.74207" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg>

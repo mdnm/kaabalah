@@ -10,11 +10,18 @@ import {
 } from "../astrology";
 import {
   ASPECT_GLYPH_PRIMITIVES,
+  ASPECT_GLYPHS,
+  ANGLE_GLYPHS,
   ASTRO_WHEEL_DEFAULT_VIEWBOX,
+  PLANET_GLYPHS,
   PLANET_GLYPH_PRIMITIVES,
+  ZODIAC_GLYPHS,
+  generateAstroGlyphSvg,
   generateAstroWheelSvg,
   generateGlyphSvg,
   getAstroWheelRenderModel,
+  getAstroGlyph,
+  listAstroGlyphs,
   type AstroWheelZodiacSign,
 } from "./index";
 
@@ -234,7 +241,7 @@ describe("astro wheel visual module", () => {
       const primitives = PLANET_GLYPH_PRIMITIVES[key];
       expect(primitives.length).toBeGreaterThan(0);
       for (const p of primitives) {
-        expect(["path", "circle", "line", "polyline"]).toContain(p.kind);
+        expect(["path", "circle", "line", "polyline", "text", "raw"]).toContain(p.kind);
       }
     }
   });
@@ -243,7 +250,6 @@ describe("astro wheel visual module", () => {
     const expected: (keyof typeof ASPECT_GLYPH_PRIMITIVES)[] = [
       "conjunction", "opposition", "square", "trine", "sextile",
       "semisquare", "sesquisquare", "inconjunct", "semisextile",
-      "quintile", "biquintile",
     ];
 
     for (const key of expected) {
@@ -262,10 +268,31 @@ describe("astro wheel visual module", () => {
     expect(svg).toContain(`width="64"`);
     expect(svg).toContain(`height="64"`);
     expect(svg).toContain(`stroke="#333"`);
-    expect(svg).toContain(`<circle`);
+    expect(svg).toContain(`currentColor`);
     expect(svg).not.toContain("NaN");
     expect(svg).not.toContain("undefined");
     expect(svg.endsWith("</svg>")).toBe(true);
+  });
+
+  it("exports reusable astrology glyph definitions and aliases", () => {
+    expect(ZODIAC_GLYPHS.Aries.primitives.length).toBeGreaterThan(0);
+    expect(PLANET_GLYPHS.sun.primitives).toBe(PLANET_GLYPH_PRIMITIVES.sun);
+    expect(ASPECT_GLYPHS.semisextile.primitives.length).toBeGreaterThan(0);
+    expect(ANGLE_GLYPHS.asc.primitives.length).toBeGreaterThan(0);
+    expect(generateAstroGlyphSvg("asc")).toContain("AC");
+    expect(getAstroGlyph("wheel-of-fortune")).toBe(PLANET_GLYPHS["pars fortunae"]);
+    expect(getAstroGlyph("quincunx")).toBe(ASPECT_GLYPHS.inconjunct);
+    expect(listAstroGlyphs("aspect").some((glyph) => glyph.key === "inconjunct")).toBe(true);
+  });
+
+  it("generates standalone SVGs from exported glyph definitions", () => {
+    const svg = generateAstroGlyphSvg("asc", { size: 40, color: "#b1468d" });
+
+    expect(svg).toContain(`data-astro-glyph="asc"`);
+    expect(svg).toContain(`data-astro-glyph-category="angle"`);
+    expect(svg).toContain(`AC`);
+    expect(svg).toContain(`#b1468d`);
+    expect(svg).not.toContain("undefined");
   });
 
   it("renders every planet and aspect glyph to valid SVG without NaN or undefined", () => {

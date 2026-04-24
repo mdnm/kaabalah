@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<line x1="-0.7" y1="0.72" x2="0.68" y2="-0.66"/>
-<line x1="0.68" y1="-0.66" x2="0.1" y2="-0.58"/>
-<line x1="0.68" y1="-0.66" x2="0.58" y2="-0.08"/>
-<line x1="-0.34" y1="-0.08" x2="0.24" y2="0.5"/>
+<svg data-astro-glyph="sagittarius" data-astro-glyph-category="zodiac" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.0218934) translate(-66.625000 -292.429565)"><path d="M 81.5625,280.82019 L 64.6875,297.69519 L 73.15625,306.16394 L 69.84375,309.47644 L 61.375,301.00769 L 50.3125,312.07019 L 47,308.75769 L 58.0625,297.69519 L 49.59375,289.22644 L 52.90625,285.91394 L 61.375,294.38269 L 78.28125,277.47644 L 65.4375,277.47644 L 65.4375,272.78894 L 86.25,272.78894 L 86.25,293.60144 L 81.5625,293.60144 L 81.5625,280.82019" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg>

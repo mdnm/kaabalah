@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<path d="M -0.4 -0.38 C -0.4 -0.76 0.4 -0.76 0.4 -0.38 L 0.4 0.08 L -0.4 0.08 Z"/>
-<line x1="0" y1="0.08" x2="0" y2="0.78"/>
+<svg data-astro-glyph="inconjunct" data-astro-glyph-category="aspect" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.01)"><path d="M-34,-32 L34,-32 M-24,-26 L-8,36 M24,-26 L8,36" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg>
