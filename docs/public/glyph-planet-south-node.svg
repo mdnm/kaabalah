@@ -1,5 +1,5 @@
 <svg data-astro-glyph="south node" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0095)"><path d="M-30,-20 C-38,12 -28,44 0,44 C28,44 38,12 30,-20" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-30" cy="-31" r="9" fill="none" stroke="currentColor" stroke-width="7"/><circle cx="30" cy="-31" r="9" fill="none" stroke="currentColor" stroke-width="7"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-30,-18 C-39,14 -29,43 0,43 C29,43 39,14 30,-18" fill="none"/><circle cx="-30" cy="-31" r="10" fill="#fff"/><circle cx="30" cy="-31" r="10" fill="#fff"/></g>
 </g>
 </svg>

@@ -1,5 +1,5 @@
 <svg data-astro-glyph="moon" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0244444) translate(-227.000000 -37.000000)"><path d="M 226.375 21 C 225.04184 21.050727 223.76172 21.267003 222.53125 21.625 C 229.15932 23.580213 234 29.7412 234 37 C 234 44.2588 229.15932 50.419787 222.53125 52.375 C 223.95102 52.788074 225.4475 53 227 53 C 235.832 53 243 45.832 243 37 C 243 28.168 235.832 21 227 21 C 226.793 21 226.5801 20.992196 226.375 21 z " fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-16,-38 C6,-34 24,-17 24,0 C24,17 6,34 -16,38 C-4,27 2,14 2,0 C2,-14 -4,-27 -16,-38 Z" fill="#fff"/></g>
 </g>
 </svg>

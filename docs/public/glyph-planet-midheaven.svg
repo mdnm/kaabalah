@@ -1,5 +1,5 @@
 <svg data-astro-glyph="midheaven" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="78" font-weight="500" fill="currentColor" stroke="none">MC</text></g>
+<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="90" font-weight="500" fill="currentColor" stroke="none">MC</text></g>
 </g>
 </svg>

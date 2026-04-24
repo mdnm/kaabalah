@@ -558,7 +558,7 @@
 </g>
 <g id="astro-wheel-glyph-layer" aria-label="chart glyphs">
 <g id="astro-wheel-angle-glyphs" aria-label="angle glyphs">
-<g class="astro-wheel-angle-glyph-label" data-angle-marker="ASC" data-longitude="10" transform="translate(9 300)" filter="url(#astro-wheel-glyph-outline)">
+<g class="astro-wheel-angle-glyph-label" data-angle-marker="ASC" data-longitude="10" transform="translate(9 300) rotate(0)" filter="url(#astro-wheel-glyph-outline)">
 <title>AC 10° Aries 00'</title>
 <text class="astro-wheel-angle-label" x="-20.94" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" text-anchor="start" dominant-baseline="middle" fill="#0f172a" font-weight="700">AC</text>
 <text class="astro-wheel-angle-degree" x="-8.78" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">10°</text>
@@ -567,7 +567,7 @@
 </g>
 <text class="astro-wheel-angle-minutes" x="11.7" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">00'</text>
 </g>
-<g class="astro-wheel-angle-glyph-label" data-angle-marker="MC" data-longitude="280" transform="translate(300 9)" filter="url(#astro-wheel-glyph-outline)">
+<g class="astro-wheel-angle-glyph-label" data-angle-marker="MC" data-longitude="280" transform="translate(300 9) rotate(270)" filter="url(#astro-wheel-glyph-outline)">
 <title>MC 10° Capricorn 00'</title>
 <text class="astro-wheel-angle-label" x="-20.94" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" text-anchor="start" dominant-baseline="middle" fill="#0f172a" font-weight="700">MC</text>
 <text class="astro-wheel-angle-degree" x="-8.78" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">10°</text>
@@ -576,7 +576,7 @@
 </g>
 <text class="astro-wheel-angle-minutes" x="11.7" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">00'</text>
 </g>
-<g class="astro-wheel-angle-glyph-label" data-angle-marker="DSC" data-longitude="190" transform="translate(591 300)" filter="url(#astro-wheel-glyph-outline)">
+<g class="astro-wheel-angle-glyph-label" data-angle-marker="DSC" data-longitude="190" transform="translate(591 300) rotate(0)" filter="url(#astro-wheel-glyph-outline)">
 <title>DC 10° Libra 00'</title>
 <text class="astro-wheel-angle-label" x="-20.94" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" text-anchor="start" dominant-baseline="middle" fill="#0f172a" font-weight="700">DC</text>
 <text class="astro-wheel-angle-degree" x="-8.78" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">10°</text>
@@ -585,7 +585,7 @@
 </g>
 <text class="astro-wheel-angle-minutes" x="11.7" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">00'</text>
 </g>
-<g class="astro-wheel-angle-glyph-label" data-angle-marker="IC" data-longitude="100" transform="translate(300 591)" filter="url(#astro-wheel-glyph-outline)">
+<g class="astro-wheel-angle-glyph-label" data-angle-marker="IC" data-longitude="100" transform="translate(300 591) rotate(90)" filter="url(#astro-wheel-glyph-outline)">
 <title>IC 10° Cancer 00'</title>
 <text class="astro-wheel-angle-label" x="-20.94" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" text-anchor="start" dominant-baseline="middle" fill="#0f172a" font-weight="700">IC</text>
 <text class="astro-wheel-angle-degree" x="-8.78" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.5" text-anchor="start" dominant-baseline="middle" fill="#0f172a">10°</text>
@@ -600,7 +600,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="sun" data-point-name="Sun" data-point-kind="planet" data-longitude="10" transform="translate(111.06 300)" filter="url(#astro-wheel-glyph-outline)">
 <title>Sun 10° Aries 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="sun" data-astro-glyph-category="planet" data-point-glyph="Sun" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0244444) translate(-34.000000 -37.000000)"><path d="M 49.396475 36.70454 A 15.623922 16.319134 0 1 1  18.14863,36.70454 A 15.623922 16.319134 0 1 1  49.396475 36.70454 z" transform="matrix(1.022388,0,0,0.979597,-0.532287,1.029379)" fill="none" stroke="currentColor" stroke-width="1.99847329" stroke-linecap="round" stroke-linejoin="round"/><path d="M 38 37 A 4 5 0 1 1  30,37 A 4 5 0 1 1  38 37 z" transform="matrix(1,0,0,0.8,-5.551115e-16,7.4)" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="0" r="34" fill="#fff"/><circle cx="0" cy="0" r="8.5" fill="currentColor" stroke="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="aries" data-astro-glyph-category="zodiac" data-zodiac-glyph="Aries" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -611,7 +611,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="mercury" data-point-name="Mercury" data-point-kind="planet" data-longitude="42" transform="translate(150.71 393.29)" filter="url(#astro-wheel-glyph-outline)">
 <title>Mercury 12° Taurus 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="mercury" data-astro-glyph-category="planet" data-point-glyph="Mercury" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0176000) translate(-100.000000 -37.000000)"><path d="M 112 36.5 A 11.5 11.5 0 1 1  89,36.5 A 11.5 11.5 0 1 1  112 36.5 z" transform="matrix(0.96,0,0,0.96,3.52,0.96)" fill="none" stroke="currentColor" stroke-width="2.08333325" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111.9469,37.603862 A 11.5,11.5 0 0 1 89.052015,37.592533" transform="matrix(0.96,0,0,0.96,3.56,-22.08)" fill="none" stroke="currentColor" stroke-width="2.08333325" stroke-linecap="round" stroke-linejoin="round"/><path d="M 100,47 L 100,59" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 95,54 L 105,54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-20,-40 C-10,-18 10,-18 20,-40" fill="none"/><circle cx="0" cy="0" r="22" fill="#fff"/><path d="M0,22 L0,48 M-14,38 L14,38" fill="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">12°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="taurus" data-astro-glyph-category="zodiac" data-zodiac-glyph="Taurus" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -622,7 +622,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="venus" data-point-name="Venus" data-point-kind="planet" data-longitude="45" transform="translate(134.66 415.77)" filter="url(#astro-wheel-glyph-outline)">
 <title>Venus 15° Taurus 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="venus" data-astro-glyph-category="planet" data-point-glyph="Venus" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0258824) translate(-165.000000 -44.000000)"><path d="M 176 33 A 11 11 0 1 1  154,33 A 11 11 0 1 1  176 33 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 165,44 L 165,58" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 159,52 L 171,52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-12" r="25" fill="#fff"/><path d="M0,13 L0,48 M-17,34 L17,34" fill="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">15°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="taurus" data-astro-glyph-category="zodiac" data-zodiac-glyph="Taurus" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -633,7 +633,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="vertex" data-point-name="Vertex" data-point-kind="vertex" data-longitude="75" transform="translate(220.15 471.24)" filter="url(#astro-wheel-glyph-outline)">
 <title>Vertex 15° Gemini 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="vertex" data-astro-glyph-category="angle" data-point-glyph="Vertex" transform="translate(-16.85 0) scale(12.28)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="78" font-weight="500" fill="currentColor" stroke="none">Vx</text></g>
+<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="90" font-weight="500" fill="currentColor" stroke="none">Vx</text></g>
 </g>
 <text class="astro-wheel-point-degree" x="-7.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="5.77" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">15°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="gemini" data-astro-glyph-category="zodiac" data-zodiac-glyph="Gemini" transform="translate(7.74 0) scale(4.73)" color="#111827" fill="none" stroke="#111827" stroke-width="0.16" stroke-linecap="round" stroke-linejoin="round">
@@ -644,7 +644,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="mars" data-point-name="Mars" data-point-kind="planet" data-longitude="100" transform="translate(300 488.94)" filter="url(#astro-wheel-glyph-outline)">
 <title>Mars 10° Cancer 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="mars" data-astro-glyph-category="planet" data-point-glyph="Mars" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0209524) translate(-101.000000 -116.000000)"><path d="M 110 115.5 A 11.5 11.5 0 1 1  87,115.5 A 11.5 11.5 0 1 1  110 115.5 z" transform="matrix(1.04,0,0,1.04,-3.44,-4.12)" fill="none" stroke="currentColor" stroke-width="1.92307687" stroke-linecap="round" stroke-linejoin="round"/><path d="M 109.63106,110.4341 L 118.49032,105.79584" fill="none" stroke="currentColor" stroke-width="1.99999928" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111.74156,103.68534 L 118.49032,105.79584 L 116.37982,112.5446" fill="none" stroke="currentColor" stroke-width="1.99999928" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="-10" cy="10" r="25" fill="#fff"/><path d="M8,-8 L38,-38 M20,-38 L38,-38 L38,-20" fill="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="cancer" data-astro-glyph-category="zodiac" data-zodiac-glyph="Cancer" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -655,7 +655,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="pars fortunae" data-point-name="Pars Fortunae" data-point-kind="node" data-longitude="155" transform="translate(454.77 408.37)" filter="url(#astro-wheel-glyph-outline)">
 <title>Pars Fortunae 5° Virgo 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="pars fortunae" data-astro-glyph-category="planet" data-point-glyph="Pars Fortunae" transform="translate(-21.09 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.01)"><circle cx="0" cy="0" r="38" fill="none" stroke="currentColor" stroke-width="7"/><path d="M-27,-27 L27,27 M27,-27 L-27,27" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="0" r="34" fill="#fff"/><path d="M-24,-24 L24,24 M24,-24 L-24,24" fill="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-7.99" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">5°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="virgo" data-astro-glyph-category="zodiac" data-zodiac-glyph="Virgo" transform="translate(8.98 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -666,7 +666,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="moon" data-point-name="Moon" data-point-kind="planet" data-longitude="190" transform="translate(488.94 300)" filter="url(#astro-wheel-glyph-outline)">
 <title>Moon 10° Libra 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="moon" data-astro-glyph-category="planet" data-point-glyph="Moon" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0244444) translate(-227.000000 -37.000000)"><path d="M 226.375 21 C 225.04184 21.050727 223.76172 21.267003 222.53125 21.625 C 229.15932 23.580213 234 29.7412 234 37 C 234 44.2588 229.15932 50.419787 222.53125 52.375 C 223.95102 52.788074 225.4475 53 227 53 C 235.832 53 243 45.832 243 37 C 243 28.168 235.832 21 227 21 C 226.793 21 226.5801 20.992196 226.375 21 z " fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-16,-38 C6,-34 24,-17 24,0 C24,17 6,34 -16,38 C-4,27 2,14 2,0 C2,-14 -4,-27 -16,-38 Z" fill="#fff"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="libra" data-astro-glyph-category="zodiac" data-zodiac-glyph="Libra" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -677,7 +677,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="jupiter" data-point-name="Jupiter" data-point-kind="planet" data-longitude="250" transform="translate(394.47 136.37)" filter="url(#astro-wheel-glyph-outline)">
 <title>Jupiter 10° Sagittarius 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="jupiter" data-astro-glyph-category="planet" data-point-glyph="Jupiter" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0209524) translate(-165.000000 -115.000000)"><path d="M 174,95 L 174,134" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 180,124 L 151,124" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 154,109 C 153,109 151,108 151,104 C 151,100 155,96 159,96 C 163,96 167,99 167,106 C 167,113 162,124 152,124" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 156 109.5 A 0.5 0.5 0 1 1  155,109.5 A 0.5 0.5 0 1 1  156 109.5 z" transform="matrix(3.85432,0,0,3.99998,-445.3468,-329.9978)" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.0209524) translate(-165.000000 -115.000000)"><path d="M 174,95 L 174,134" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 180,124 L 151,124" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 154,109 C 153,109 151,108 151,104 C 151,100 155,96 159,96 C 163,96 167,99 167,106 C 167,113 162,124 152,124" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 156 109.5 A 0.5 0.5 0 1 1  155,109.5 A 0.5 0.5 0 1 1  156 109.5 z" transform="matrix(3.85432,0,0,3.99998,-445.3468,-329.9978)" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="sagittarius" data-astro-glyph-category="zodiac" data-zodiac-glyph="Sagittarius" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -688,7 +688,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="saturn" data-point-name="Saturn" data-point-kind="planet" data-longitude="280" transform="translate(300 111.06)" filter="url(#astro-wheel-glyph-outline)">
 <title>Saturn 10° Capricorn 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="saturn" data-astro-glyph-category="planet" data-point-glyph="Saturn" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0209524) translate(-226.000000 -116.000000)"><path d="M 226,98 L 226,127" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 222,104 L 234,104" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 240,133 C 239,134 238,135 237,135 C 236,135 234,134 234,132 C 234,130 235,128 237,126 C 239,124 241,120 241,116 C 241,112 239,108 235,108 C 231.21681,108 228,110 226,114" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.0209524) translate(-226.000000 -116.000000)"><path d="M 226,98 L 226,127" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 222,104 L 234,104" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 240,133 C 239,134 238,135 237,135 C 236,135 234,134 234,132 C 234,130 235,128 237,126 C 239,124 241,120 241,116 C 241,112 239,108 235,108 C 231.21681,108 228,110 226,114" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="capricorn" data-astro-glyph-category="zodiac" data-zodiac-glyph="Capricorn" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -699,7 +699,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="chiron" data-point-name="Chiron" data-point-kind="planet" data-longitude="315" transform="translate(191.63 145.23)" filter="url(#astro-wheel-glyph-outline)">
 <title>Chiron 15° Aquarius 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="chiron" data-astro-glyph-category="planet" data-point-glyph="Chiron" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.003) translate(0 -20)"><circle cx="0" cy="145" r="75" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="70" x2="0" y2="-180" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="-60" x2="100" y2="-180" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="-60" x2="100" y2="40" stroke="currentColor" stroke-width="18" stroke-linecap="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="28" r="19" fill="#fff"/><path d="M0,9 L0,-48 M0,-22 L28,-48 M0,-22 L28,4" fill="none"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">15°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="aquarius" data-astro-glyph-category="zodiac" data-zodiac-glyph="Aquarius" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">
@@ -710,7 +710,7 @@
 <g class="astro-wheel-point-label" data-point-layer="birth" data-point-key="mean node" data-point-name="Mean Node" data-point-kind="planet" data-longitude="340" transform="translate(136.37 205.53)" filter="url(#astro-wheel-glyph-outline)">
 <title>Mean Node 10° Pisces 00'</title>
 <g class="astro-wheel-glyph" data-astro-glyph="north node" data-astro-glyph-category="planet" data-point-glyph="Mean Node" transform="translate(-23.61 0) scale(19.8)" color="#111827" fill="none" stroke="#111827" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0095)"><path d="M-30,20 C-38,-12 -28,-44 0,-44 C28,-44 38,-12 30,20" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-30" cy="31" r="9" fill="none" stroke="currentColor" stroke-width="7"/><circle cx="30" cy="31" r="9" fill="none" stroke="currentColor" stroke-width="7"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-30,18 C-39,-14 -29,-43 0,-43 C29,-43 39,-14 30,18" fill="none"/><circle cx="-30" cy="31" r="10" fill="#fff"/><circle cx="30" cy="31" r="10" fill="#fff"/></g>
 </g>
 <text class="astro-wheel-point-degree" x="-10.51" y="0" font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" text-anchor="start" dominant-baseline="middle" fill="#111827" fill-opacity="0.9">10°</text>
 <g class="astro-wheel-point-sign-glyph" data-astro-glyph="pisces" data-astro-glyph-category="zodiac" data-zodiac-glyph="Pisces" transform="translate(11.5 0) scale(7.38)" color="#111827" fill="none" stroke="#111827" stroke-width="0.15" stroke-linecap="round" stroke-linejoin="round">

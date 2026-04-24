@@ -12,9 +12,16 @@ const rawGlyph = (markup: string): readonly AstroGlyphPrimitive[] => [
 const raw100 = (markup: string): readonly AstroGlyphPrimitive[] =>
   rawGlyph(`<g transform="scale(0.01)">${markup}</g>`);
 
+export const GLYPH_FILL = "var(--astro-glyph-fill, #fff)";
+
+const rawPlanet = (markup: string): readonly AstroGlyphPrimitive[] =>
+  rawGlyph(
+    `<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">${markup}</g>`
+  );
+
 const SOURCE_POINT_TEXT_GLYPH = (text: string): readonly AstroGlyphPrimitive[] =>
   rawGlyph(
-    `<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="78" font-weight="500" fill="currentColor" stroke="none">${text}</text></g>`
+    `<g transform="scale(0.01)"><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Arial Narrow, Liberation Sans Narrow, Arial, Helvetica, sans-serif" font-size="90" font-weight="500" fill="currentColor" stroke="none">${text}</text></g>`
   );
 
 export const SOURCE_ZODIAC_GLYPH_PRIMITIVES = {
@@ -33,22 +40,66 @@ export const SOURCE_ZODIAC_GLYPH_PRIMITIVES = {
 } satisfies Record<AstroWheelZodiacSign, readonly AstroGlyphPrimitive[]>;
 
 export const SOURCE_PLANET_GLYPH_PRIMITIVES = {
-  "sun": [{ kind: "raw", markup: "<g transform=\"scale(0.0244444) translate(-34.000000 -37.000000)\"><path d=\"M 49.396475 36.70454 A 15.623922 16.319134 0 1 1  18.14863,36.70454 A 15.623922 16.319134 0 1 1  49.396475 36.70454 z\" transform=\"matrix(1.022388,0,0,0.979597,-0.532287,1.029379)\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.99847329\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 38 37 A 4 5 0 1 1  30,37 A 4 5 0 1 1  38 37 z\" transform=\"matrix(1,0,0,0.8,-5.551115e-16,7.4)\" fill=\"currentColor\" stroke=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "moon": [{ kind: "raw", markup: "<g transform=\"scale(0.0244444) translate(-227.000000 -37.000000)\"><path d=\"M 226.375 21 C 225.04184 21.050727 223.76172 21.267003 222.53125 21.625 C 229.15932 23.580213 234 29.7412 234 37 C 234 44.2588 229.15932 50.419787 222.53125 52.375 C 223.95102 52.788074 225.4475 53 227 53 C 235.832 53 243 45.832 243 37 C 243 28.168 235.832 21 227 21 C 226.793 21 226.5801 20.992196 226.375 21 z \" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "mercury": [{ kind: "raw", markup: "<g transform=\"scale(0.0176000) translate(-100.000000 -37.000000)\"><path d=\"M 112 36.5 A 11.5 11.5 0 1 1  89,36.5 A 11.5 11.5 0 1 1  112 36.5 z\" transform=\"matrix(0.96,0,0,0.96,3.52,0.96)\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.08333325\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 111.9469,37.603862 A 11.5,11.5 0 0 1 89.052015,37.592533\" transform=\"matrix(0.96,0,0,0.96,3.56,-22.08)\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.08333325\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 100,47 L 100,59\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 95,54 L 105,54\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "venus": [{ kind: "raw", markup: "<g transform=\"scale(0.0258824) translate(-165.000000 -44.000000)\"><path d=\"M 176 33 A 11 11 0 1 1  154,33 A 11 11 0 1 1  176 33 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 165,44 L 165,58\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 159,52 L 171,52\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "mars": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-101.000000 -116.000000)\"><path d=\"M 110 115.5 A 11.5 11.5 0 1 1  87,115.5 A 11.5 11.5 0 1 1  110 115.5 z\" transform=\"matrix(1.04,0,0,1.04,-3.44,-4.12)\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.92307687\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 109.63106,110.4341 L 118.49032,105.79584\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.99999928\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 111.74156,103.68534 L 118.49032,105.79584 L 116.37982,112.5446\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.99999928\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "jupiter": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-165.000000 -115.000000)\"><path d=\"M 174,95 L 174,134\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 180,124 L 151,124\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 154,109 C 153,109 151,108 151,104 C 151,100 155,96 159,96 C 163,96 167,99 167,106 C 167,113 162,124 152,124\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 156 109.5 A 0.5 0.5 0 1 1  155,109.5 A 0.5 0.5 0 1 1  156 109.5 z\" transform=\"matrix(3.85432,0,0,3.99998,-445.3468,-329.9978)\" fill=\"currentColor\" stroke=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "saturn": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-226.000000 -116.000000)\"><path d=\"M 226,98 L 226,127\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 222,104 L 234,104\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 240,133 C 239,134 238,135 237,135 C 236,135 234,134 234,132 C 234,130 235,128 237,126 C 239,124 241,120 241,116 C 241,112 239,108 235,108 C 231.21681,108 228,110 226,114\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "uranus": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-36.000000 -195.000000)\"><path d=\"M 25,204 L 18,204 L 18,203 L 23,202 L 23,182 L 18,181 L 18,180 L 25,180 L 25,204 z \" fill=\"currentColor\" stroke=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 47,204 L 54,204 L 54,203 L 49,202 L 49,182 L 54,181 L 54,180 L 47,180 L 47,204 z \" fill=\"currentColor\" stroke=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 24,192 L 48,192\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 36,180 L 36,206\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 40 211 A 4 4 0 1 1  32,211 A 4 4 0 1 1  40 211 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "neptune": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-101.000000 -195.000000)\"><path d=\"M 89,176 C 86,196 91,199 101,199 C 111,199 116,196 113,176\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 101,178 L 101,215\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 93,207 L 109,207\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "pluto": [{ kind: "raw", markup: "<g transform=\"scale(0.0209524) translate(-165.000000 -195.000000)\"><path d=\"M 157,205 L 173,205\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 165,213 L 165,196\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 172 184 A 7 7 0 1 1  158,184 A 7 7 0 1 1  172 184 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 177,184 A 12,12 0 1 1 153,184\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "earth": [{ kind: "raw", markup: "<g transform=\"scale(0.0244444) translate(-34.000000 -117.000000)\"><path d=\"M 49 116.5 A 15.5 15.5 0 1 1  18,116.5 A 15.5 15.5 0 1 1  49 116.5 z\" transform=\"matrix(1.030303,0,0,1.030303,-0.515152,-3.030303)\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.94117641\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 18,117 L 50,117\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M 34,101 L 34,133\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>" }],
-  "chiron": [{ kind: "raw", markup: "<g transform=\"scale(0.003) translate(0 -20)\"><circle cx=\"0\" cy=\"145\" r=\"75\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\"/><line x1=\"0\" y1=\"70\" x2=\"0\" y2=\"-180\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\"/><line x1=\"0\" y1=\"-60\" x2=\"100\" y2=\"-180\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\"/><line x1=\"0\" y1=\"-60\" x2=\"100\" y2=\"40\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\"/></g>" }],
-  "north node": rawGlyph("<g transform=\"scale(0.0095)\"><path d=\"M-30,20 C-38,-12 -28,-44 0,-44 C28,-44 38,-12 30,20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"-30\" cy=\"31\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/><circle cx=\"30\" cy=\"31\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/></g>"),
-  "south node": rawGlyph("<g transform=\"scale(0.0095)\"><path d=\"M-30,-20 C-38,12 -28,44 0,44 C28,44 38,12 30,-20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"-30\" cy=\"-31\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/><circle cx=\"30\" cy=\"-31\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/></g>"),
-  "lilith": rawGlyph("<g transform=\"scale(0.0085)\"><path d=\"M12,-47 C-13,-42 -31,-20 -31,3 C-31,21 -18,34 -2,37 C-15,20 -14,-16 17,-39 C23,-43 20,-49 12,-47 Z\" fill=\"currentColor\"/><path d=\"M-2,35 L-2,55 M-16,46 L12,46\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>"),
-  "pars fortunae": rawGlyph("<g transform=\"scale(0.01)\"><circle cx=\"0\" cy=\"0\" r=\"38\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/><path d=\"M-27,-27 L27,27 M27,-27 L-27,27\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g>"),
+  "sun": rawPlanet(
+    `<circle cx="0" cy="0" r="34" fill="${GLYPH_FILL}"/><circle cx="0" cy="0" r="8.5" fill="currentColor" stroke="none"/>`
+  ),
+
+  "moon": rawPlanet(
+    `<path d="M-16,-38 C6,-34 24,-17 24,0 C24,17 6,34 -16,38 C-4,27 2,14 2,0 C2,-14 -4,-27 -16,-38 Z" fill="${GLYPH_FILL}"/>`
+  ),
+
+  "mercury": rawPlanet(
+    `<path d="M-20,-40 C-10,-18 10,-18 20,-40" fill="none"/><circle cx="0" cy="0" r="22" fill="${GLYPH_FILL}"/><path d="M0,22 L0,48 M-14,38 L14,38" fill="none"/>`
+  ),
+
+  "venus": rawPlanet(
+    `<circle cx="0" cy="-12" r="25" fill="${GLYPH_FILL}"/><path d="M0,13 L0,48 M-17,34 L17,34" fill="none"/>`
+  ),
+
+  "mars": rawPlanet(
+    `<circle cx="-10" cy="10" r="25" fill="${GLYPH_FILL}"/><path d="M8,-8 L38,-38 M20,-38 L38,-38 L38,-20" fill="none"/>`
+  ),
+
+  "jupiter": rawGlyph(`<g transform="scale(0.0209524) translate(-165.000000 -115.000000)"><path d="M 174,95 L 174,134" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 180,124 L 151,124" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 154,109 C 153,109 151,108 151,104 C 151,100 155,96 159,96 C 163,96 167,99 167,106 C 167,113 162,124 152,124" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 156 109.5 A 0.5 0.5 0 1 1  155,109.5 A 0.5 0.5 0 1 1  156 109.5 z" transform="matrix(3.85432,0,0,3.99998,-445.3468,-329.9978)" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>`),
+
+  "saturn": rawGlyph(`<g transform="scale(0.0209524) translate(-226.000000 -116.000000)"><path d="M 226,98 L 226,127" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 222,104 L 234,104" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M 240,133 C 239,134 238,135 237,135 C 236,135 234,134 234,132 C 234,130 235,128 237,126 C 239,124 241,120 241,116 C 241,112 239,108 235,108 C 231.21681,108 228,110 226,114" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>`),
+
+  "uranus": rawPlanet(
+    `<path d="M0,-42 L0,22 M-30,-25 L30,-25 M-40,-42 L-40,8 M40,-42 L40,8 M-40,-10 L-26,-10 M26,-10 L40,-10" fill="none"/><circle cx="0" cy="37" r="12" fill="${GLYPH_FILL}"/>`
+  ),
+
+  "neptune": rawPlanet(
+    `<path d="M-34,-38 C-38,-4 -21,10 0,10 C21,10 38,-4 34,-38" fill="none"/><path d="M0,-42 L0,48 M-18,34 L18,34" fill="none"/>`
+  ),
+
+  "pluto": rawPlanet(
+    `<circle cx="0" cy="-26" r="17" fill="${GLYPH_FILL}"/><path d="M-34,-26 C-31,0 31,0 34,-26" fill="none"/><path d="M0,-9 L0,48 M-20,30 L20,30" fill="none"/>`
+  ),
+
+  "earth": rawPlanet(
+    `<circle cx="0" cy="0" r="34" fill="${GLYPH_FILL}"/><path d="M-34,0 L34,0 M0,-34 L0,34" fill="none"/>`
+  ),
+
+  "chiron": rawPlanet(
+    `<circle cx="0" cy="28" r="19" fill="${GLYPH_FILL}"/><path d="M0,9 L0,-48 M0,-22 L28,-48 M0,-22 L28,4" fill="none"/>`
+  ),
+
+  "north node": rawPlanet(
+    `<path d="M-30,18 C-39,-14 -29,-43 0,-43 C29,-43 39,-14 30,18" fill="none"/><circle cx="-30" cy="31" r="10" fill="${GLYPH_FILL}"/><circle cx="30" cy="31" r="10" fill="${GLYPH_FILL}"/>`
+  ),
+
+  "south node": rawPlanet(
+    `<path d="M-30,-18 C-39,14 -29,43 0,43 C29,43 39,14 30,-18" fill="none"/><circle cx="-30" cy="-31" r="10" fill="${GLYPH_FILL}"/><circle cx="30" cy="-31" r="10" fill="${GLYPH_FILL}"/>`
+  ),
+
+  "lilith": rawPlanet(
+    `<path d="M15,-44 C-10,-40 -30,-18 -30,4 C-30,23 -15,36 4,38 C-12,19 -10,-14 20,-38 C26,-43 23,-48 15,-44 Z" fill="currentColor" stroke="none"/><path d="M0,36 L0,50 M-15,44 L15,44" fill="none"/>`
+  ),
+
+  "pars fortunae": rawPlanet(
+    `<circle cx="0" cy="0" r="34" fill="${GLYPH_FILL}"/><path d="M-24,-24 L24,24 M24,-24 L-24,24" fill="none"/>`
+  ),
+
   "ascendant": SOURCE_POINT_TEXT_GLYPH("AC"),
   "midheaven": SOURCE_POINT_TEXT_GLYPH("MC"),
   "descendant": SOURCE_POINT_TEXT_GLYPH("DC"),

@@ -1,5 +1,5 @@
 <svg data-astro-glyph="pars fortunae" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.01)"><circle cx="0" cy="0" r="38" fill="none" stroke="currentColor" stroke-width="7"/><path d="M-27,-27 L27,27 M27,-27 L-27,27" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="0" r="34" fill="#fff"/><path d="M-24,-24 L24,24 M24,-24 L-24,24" fill="none"/></g>
 </g>
 </svg>
