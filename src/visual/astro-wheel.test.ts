@@ -97,6 +97,7 @@ describe("astro wheel visual module", () => {
     expect(svg).not.toContain(`id="astro-wheel-aspects"`);
     expect(svg).toContain(`data-zodiac-sign="Aries"`);
     expect(svg).toContain(`fill="#123456"`);
+    expect(svg).toContain(`flood-color="#fff"`);
   });
 
   it("filters excluded bodies from points and aspect lines without mutating chart data", () => {
@@ -153,6 +154,20 @@ describe("astro wheel visual module", () => {
     expect(svg).toContain(`filter="url(#astro-wheel-glyph-outline)"`);
     expect(svg).toContain(`flood-color="#fff"`);
     expect(svg).not.toContain(`class="astro-wheel-glyph-halo"`);
+  });
+
+  it("keeps default angle labels inside the viewBox padding", () => {
+    const chart = sampleBirthChart();
+    const model = getAstroWheelRenderModel(chart);
+
+    expect(model.palette.glyphHalo).toBe("#fff");
+    expect(model.outerRadius).toBeLessThan(270);
+    for (const marker of model.angleMarkers) {
+      expect(marker.labelPosition.x).toBeGreaterThanOrEqual(28);
+      expect(marker.labelPosition.x).toBeLessThanOrEqual(572);
+      expect(marker.labelPosition.y).toBeGreaterThanOrEqual(28);
+      expect(marker.labelPosition.y).toBeLessThanOrEqual(572);
+    }
   });
 
   it("spreads clustered planet labels radially and draws leader lines from true longitude", () => {

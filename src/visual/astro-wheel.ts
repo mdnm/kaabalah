@@ -7,21 +7,21 @@ import type {
   HydratedPlanet,
   ZodiacPosition,
 } from "../astrology";
-
-export type { AspectSpec };
+import { GLYPH_FILL } from "./astro-glyph-assets";
 import {
   ANGLE_GLYPHS,
   PLANET_GLYPHS,
   ZODIAC_GLYPHS,
   getAstroGlyph,
 } from "./astro-glyph-registry";
-import { GLYPH_FILL } from "./astro-glyph-assets";
 import type {
   AstroGlyphDefinition,
   AstroGlyphPrimitive,
   AstroWheelPlanetGlyphKey,
   AstroWheelZodiacSign,
 } from "./astro-glyph-types";
+
+export type { AspectSpec };
 
 export interface AstroWheelViewBox {
   minX?: number;
@@ -2116,7 +2116,7 @@ function resolvePalette(
 }
 
 function defaultGlyphHalo(background: string | "transparent") {
-  return background === "transparent" ? "#0a1628" : background;
+  return background === "transparent" ? "#fff" : background;
 }
 
 function clonePalette(palette: ResolvedAstroWheelPalette): ResolvedAstroWheelPalette {
