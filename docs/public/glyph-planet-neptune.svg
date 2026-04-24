@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-<g transform="translate(24 24) scale(24)" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<line x1="0" y1="-0.68" x2="0" y2="0.68"/>
-<line x1="-0.36" y1="0.44" x2="0.36" y2="0.44"/>
-<path d="M -0.5 0.04 C -0.5 -0.56 0 -0.78 0 -0.68"/>
-<path d="M 0.5 0.04 C 0.5 -0.56 0 -0.78 0 -0.68"/>
+<svg data-astro-glyph="neptune" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.0209524) translate(-101.000000 -195.000000)"><path d="M 89,176 C 86,196 91,199 101,199 C 111,199 116,196 113,176" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 101,178 L 101,215" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 93,207 L 109,207" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>
 </svg>

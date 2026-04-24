@@ -21,6 +21,13 @@ import {
 
   // Glyphs
   generateGlyphSvg,
+  generateAstroGlyphSvg,
+  getAstroGlyph,
+  listAstroGlyphs,
+  ZODIAC_GLYPHS,
+  PLANET_GLYPHS,
+  ASPECT_GLYPHS,
+  ANGLE_GLYPHS,
   ZODIAC_GLYPH_PRIMITIVES,
   PLANET_GLYPH_PRIMITIVES,
   ASPECT_GLYPH_PRIMITIVES,
@@ -41,10 +48,17 @@ import {
 - `generateAstroWheelSvg`
 - `getAstroWheelRenderModel`
 - `generateGlyphSvg`
+- `generateAstroGlyphSvg`
+- `getAstroGlyph`
+- `listAstroGlyphs`
 - `ASTRO_WHEEL_DEFAULT_VIEWBOX`
 - `ASTRO_WHEEL_DEFAULT_ASPECT_SPECS`
 - `ASTRO_WHEEL_ZODIAC_SIGNS`
 - `ASTRO_WHEEL_POINT_GLYPHS`
+- `ZODIAC_GLYPHS`
+- `PLANET_GLYPHS`
+- `ASPECT_GLYPHS`
+- `ANGLE_GLYPHS`
 - `ZODIAC_GLYPH_PRIMITIVES`
 - `PLANET_GLYPH_PRIMITIVES`
 - `ASPECT_GLYPH_PRIMITIVES`
@@ -252,7 +266,35 @@ All coordinates live in the same SVG viewBox units as `generateAstroWheelSvg(...
 
 ## Glyphs
 
-The visual module ships vector glyph definitions for zodiac signs, planets, and aspects as normalized primitive arrays. Each glyph is defined in a `-1…1` coordinate space and can be rendered at any size.
+The visual module ships vector glyph definitions for zodiac signs, planets, aspects, and chart angles. The wheel renderer uses these same exported definitions, so downstream apps can render matching standalone icons or compose transit/synastry overlays without copying SVG files from the docs site.
+
+### `getAstroGlyph(key)` / `listAstroGlyphs(category?)`
+
+Looks up reusable glyph definitions by canonical key or alias. Examples: `"sun"`, `"wheel-of-fortune"`, `"quincunx"`, `"asc"`.
+
+```typescript
+import { getAstroGlyph, listAstroGlyphs } from 'kaabalah/visual';
+
+const fortune = getAstroGlyph("wheel-of-fortune"); // PLANET_GLYPHS["pars fortunae"]
+const aspects = listAstroGlyphs("aspect");
+```
+
+### `generateAstroGlyphSvg(keyOrGlyph, options?)`
+
+Renders a named glyph definition as a standalone SVG string.
+
+```typescript
+import { generateAstroGlyphSvg } from 'kaabalah/visual';
+
+const asc = generateAstroGlyphSvg("asc", { size: 48, color: "#b1468d" });
+const quincunx = generateAstroGlyphSvg("quincunx", { size: 32 });
+```
+
+### `ZODIAC_GLYPHS`, `PLANET_GLYPHS`, `ASPECT_GLYPHS`, `ANGLE_GLYPHS`
+
+Exported glyph-definition maps. Each value has `{ key, label, category, primitives, aliases }`. Angle glyphs include circled `ASC`/`MC` style markers and a plain `Vx` Vertex glyph.
+
+The lower-level primitive maps remain exported for custom renderers that want direct drawing instructions.
 
 ### `generateGlyphSvg(primitives, options?)`
 
@@ -389,6 +431,10 @@ Vector primitives for planets and special points.
     <figcaption style="font-size: 0.7em;">Pluto</figcaption>
   </figure>
   <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-planet-earth.svg" alt="Earth" width="36" />
+    <figcaption style="font-size: 0.7em;">Earth</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
     <img src="/glyph-planet-chiron.svg" alt="Chiron" width="36" />
     <figcaption style="font-size: 0.7em;">Chiron</figcaption>
   </figure>
@@ -464,6 +510,14 @@ Vector primitives for aspect symbols.
     <img src="/glyph-aspect-biquintile.svg" alt="Biquintile" width="36" />
     <figcaption style="font-size: 0.7em;">Biquintile</figcaption>
   </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-parallel.svg" alt="Parallel" width="36" />
+    <figcaption style="font-size: 0.7em;">Parallel</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-aspect-contraparallel.svg" alt="Contraparallel" width="36" />
+    <figcaption style="font-size: 0.7em;">Contraparallel</figcaption>
+  </figure>
 </div>
 
 ```typescript
@@ -474,6 +528,33 @@ ASPECT_GLYPH_PRIMITIVES.trine;
 ASPECT_GLYPH_PRIMITIVES.biquintile;
 ```
 
+### `ANGLE_GLYPHS`
+
+Reusable chart angle glyphs for overlay controls, legends, and custom chart layers.
+
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-angle-asc.svg" alt="ASC" width="36" />
+    <figcaption style="font-size: 0.7em;">ASC</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-angle-mc.svg" alt="MC" width="36" />
+    <figcaption style="font-size: 0.7em;">MC</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-angle-dsc.svg" alt="DSC" width="36" />
+    <figcaption style="font-size: 0.7em;">DSC</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-angle-ic.svg" alt="IC" width="36" />
+    <figcaption style="font-size: 0.7em;">IC</figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="/glyph-angle-vertex.svg" alt="Vertex" width="36" />
+    <figcaption style="font-size: 0.7em;">Vertex</figcaption>
+  </figure>
+</div>
+
 ### `AstroGlyphPrimitive`
 
 All glyph maps share the same primitive type:
@@ -483,7 +564,9 @@ type AstroGlyphPrimitive =
   | { kind: "path"; d: string }
   | { kind: "circle"; cx: number; cy: number; r: number }
   | { kind: "line"; x1: number; y1: number; x2: number; y2: number }
-  | { kind: "polyline"; points: string };
+  | { kind: "polyline"; points: string }
+  | { kind: "text"; text: string; x?: number; y?: number; fontSize?: number; fontWeight?: string | number }
+  | { kind: "raw"; markup: string };
 ```
 
 Coordinates are normalized to roughly `-1…1`. Scale and translate to your target viewport before rendering.

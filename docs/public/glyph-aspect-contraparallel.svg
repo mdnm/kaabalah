@@ -1,0 +1,7 @@
+<svg data-astro-glyph="contraparallel" data-astro-glyph-category="aspect" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<line x1="-0.32" y1="-0.72" x2="-0.32" y2="0.72"/>
+<line x1="0.32" y1="-0.72" x2="0.32" y2="0.72"/>
+<line x1="-0.54" y1="0" x2="0.54" y2="0"/>
+</g>
+</svg>

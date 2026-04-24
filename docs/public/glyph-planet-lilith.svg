@@ -1,0 +1,5 @@
+<svg data-astro-glyph="lilith" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
+<g transform="scale(0.0085)"><path d="M12,-47 C-13,-42 -31,-20 -31,3 C-31,21 -18,34 -2,37 C-15,20 -14,-16 17,-39 C23,-43 20,-49 12,-47 Z" fill="currentColor"/><path d="M-2,35 L-2,55 M-16,46 L12,46" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g>
+</svg>

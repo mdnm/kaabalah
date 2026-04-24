@@ -1,146 +1,310 @@
+
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 
+const Planet = { SUN: 0, MOON: 1, MERCURY: 2, VENUS: 3, MARS: 4, JUPITER: 5, SATURN: 6, CHIRON: 15, MEAN_NODE: 10 } as const;
+const VirtualNodes = { PARS_FORTUNAE: "parsFortunae" } as const;
 import {
-  ASPECT_GLYPH_PRIMITIVES,
-  PLANET_GLYPH_PRIMITIVES,
-  ZODIAC_GLYPH_PRIMITIVES,
+  ANGLE_GLYPHS,
+  ASPECT_GLYPHS,
+  PLANET_GLYPHS,
+  ZODIAC_GLYPHS,
+  generateAstroGlyphSvg,
   generateAstroWheelSvg,
-  generateGlyphSvg,
   type AstroWheelZodiacSign,
-} from "../src/visual/index.js";
+} from "../src/visual/index";
 
-const docsPublic = path.resolve(
-  import.meta.dirname ?? path.dirname(new URL(import.meta.url).pathname),
-  "../docs/public"
-);
+type WheelChart = Parameters<typeof generateAstroWheelSvg>[0];
+type WheelPlanet = WheelChart["planets"][keyof WheelChart["planets"]];
+type WheelNode = WheelChart["nodes"][keyof WheelChart["nodes"]];
+type WheelZodiacPosition = WheelPlanet["zodiacPosition"];
+
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const docsPublic = path.resolve(scriptDir, "../docs/public");
+
+fs.mkdirSync(docsPublic, { recursive: true });
 
 const chart = sampleBirthChart();
 const transitChart = shiftedChart(chart, 42);
 
 const svgs: Record<string, string> = {
-  "wheel-default.svg": generateAstroWheelSvg(chart, { background: "#fff" }),
-  "wheel-monochrome.svg": generateAstroWheelSvg(chart, { background: "#fff", palette: "monochrome" }),
-  "wheel-no-aspects.svg": generateAstroWheelSvg(chart, { background: "#fff", aspects: false }),
+  "wheel-default.svg": generateAstroWheelSvg(chart, {
+    background: "#fff",
+  }),
+
+  "wheel-monochrome.svg": generateAstroWheelSvg(chart, {
+    background: "#fff",
+    palette: "monochrome",
+  }),
+
+  "wheel-no-aspects.svg": generateAstroWheelSvg(chart, {
+    background: "#fff",
+    aspects: false,
+  }),
+
   "wheel-transit.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
-    pointLayers: [{
-      id: "transit",
-      label: "Transits",
-      chart: transitChart,
-      color: "#c2410c",
-      tickColor: "#c2410c",
-      radius: "outer",
-      radiusOffset: 24,
-      glyphScale: 0.85,
-    }],
-    aspectLayers: [{
-      id: "transit",
-      label: "Transit aspects",
-      chart: transitChart,
-      pointLayerId: "transit",
-      color: "#c2410c",
-      radiusScale: 1.08,
-    }],
+    pointLayers: [
+      {
+        id: "transit",
+        label: "Transits",
+        chart: transitChart,
+        color: "#c2410c",
+        tickColor: "#c2410c",
+        radius: "outer",
+        radiusOffset: 24,
+        glyphScale: 0.85,
+      },
+    ],
+    aspectLayers: [
+      {
+        id: "transit",
+        label: "Transit aspects",
+        chart: transitChart,
+        pointLayerId: "transit",
+        color: "#c2410c",
+        radiusScale: 1.08,
+      },
+    ],
   }),
 };
 
 for (const [file, svg] of Object.entries(svgs)) {
   const target = path.join(docsPublic, file);
   fs.writeFileSync(target, svg, "utf-8");
-  console.log(`✔ ${file}  (${(svg.length / 1024).toFixed(1)} KB)`);
+  console.log(`✔ ${file} (${(svg.length / 1024).toFixed(1)} KB)`);
 }
 
-const glyphFiles: string[] = [];
-const allGlyphs = [
-  ...Object.entries(PLANET_GLYPH_PRIMITIVES).map(([key, prims]) => ({ cat: "planet", key, prims })),
-  ...Object.entries(ZODIAC_GLYPH_PRIMITIVES).map(([key, prims]) => ({ cat: "zodiac", key: key.toLowerCase(), prims })),
-  ...Object.entries(ASPECT_GLYPH_PRIMITIVES).map(([key, prims]) => ({ cat: "aspect", key, prims })),
-];
+const allGlyphs = uniqueGlyphs([
+  ...Object.values(PLANET_GLYPHS),
+  ...Object.values(ZODIAC_GLYPHS),
+  ...Object.values(ASPECT_GLYPHS),
+  ...Object.values(ANGLE_GLYPHS),
+]);
 
-for (const { cat, key, prims } of allGlyphs) {
-  const svg = generateGlyphSvg(prims, { size: 48, color: "#1f2933" });
-  const file = `glyph-${cat}-${key.replace(/\s+/g, "-")}.svg`;
+const glyphFiles: string[] = [];
+
+for (const glyph of allGlyphs) {
+  const svg = generateAstroGlyphSvg(glyph, {
+    size: 48,
+    color: "#1f2933",
+  });
+
+  const file = `glyph-${safeFilePart(glyph.category)}-${safeFilePart(glyph.key)}.svg`;
   fs.writeFileSync(path.join(docsPublic, file), svg, "utf-8");
   glyphFiles.push(file);
 }
+
 console.log(`✔ ${glyphFiles.length} glyph SVGs generated`);
 
-// --- helpers (self-contained, no astrology WASM dependency) ---
+// --- helpers ---
 
-function sampleBirthChart(): any {
+function sampleBirthChart(): WheelChart {
   const houseLongitudes = [10, 40, 70, 100, 130, 160, 190, 220, 250, 280, 310, 340];
-  const houses = houseLongitudes.map((lon, i) => zodiacPosition(signAt(lon), lon, i + 1));
+
+  const houses = houseLongitudes.map((longitude, index) =>
+    zodiacPosition(signAt(longitude), longitude, index + 1)
+  );
+
   return {
     dateUtc: new Date("2024-03-25T16:00:00.000Z"),
+
     planets: {
-      sun: planet("Sun", 10, 1),
-      moon: planet("Moon", 190, 7),
-      mercury: planet("Mercury", 42, 2),
-      venus: planet("Venus", 45, 2),
-      mars: planet("Mars", 100, 4),
-      jupiter: planet("Jupiter", 250, 9),
-      saturn: planet("Saturn", 280, 10),
-      chiron: planet("Chiron", 315, 11),
-      "mean node": planet("Mean Node", 340, 12),
-    },
+      sun: planet(Planet.SUN, "Sun", 10, 1),
+      moon: planet(Planet.MOON, "Moon", 190, 7),
+      mercury: planet(Planet.MERCURY, "Mercury", 42, 2),
+      venus: planet(Planet.VENUS, "Venus", 45, 2),
+      mars: planet(Planet.MARS, "Mars", 100, 4),
+      jupiter: planet(Planet.JUPITER, "Jupiter", 250, 9),
+      saturn: planet(Planet.SATURN, "Saturn", 280, 10),
+      chiron: planet(Planet.CHIRON, "Chiron", 315, 11),
+      "mean node": planet(Planet.MEAN_NODE, "Mean Node", 340, 12),
+    } as WheelChart["planets"],
+
     nodes: {
-      "pars fortunae": { id: "pars_fortunae", name: "Pars Fortunae", ...zodiacPosition("Virgo" as any, 155, 5) },
-    },
+      [VirtualNodes.PARS_FORTUNAE]: node(
+        VirtualNodes.PARS_FORTUNAE,
+        "Pars Fortunae",
+        155,
+        5
+      ),
+    } as WheelChart["nodes"],
+
     houses: {
       ascendant: houses[0],
       mc: houses[9],
       dc: houses[6],
       ic: houses[3],
       houses,
-      ascmc: { vertex: zodiacPosition("Gemini" as any, 75, 3) },
+      ascmc: {
+        vertex: zodiacPosition(signAt(75), 75, 3),
+      },
     },
+
     aspects: [
-      { planetA: "sun", planetB: "moon", longitudeA: 10, longitudeB: 190, aspect: "opposition", aspectAngle: 180, delta: 180, orb: 0 },
-    ],
+      {
+        planetA: "sun",
+        planetB: "moon",
+        longitudeA: 10,
+        longitudeB: 190,
+        aspect: "opposition",
+        aspectAngle: 180,
+        delta: 180,
+        orb: 0,
+      },
+    ] as WheelChart["aspects"],
+
     sect: "diurnal",
-  };
+  } as WheelChart;
 }
 
-function shiftedChart(base: any, offset: number): any {
+function shiftedChart(base: WheelChart, offset: number): WheelChart {
+  const planets = Object.fromEntries(
+    typedEntries(base.planets).map(([key, value]) => {
+      const longitude = normalizeLongitude(value.longitude + offset);
+
+      return [
+        key,
+        {
+          ...value,
+          longitude,
+          zodiacPosition: zodiacPosition(
+            signAt(longitude),
+            longitude,
+            value.zodiacPosition.house
+          ),
+        },
+      ];
+    })
+  ) as WheelChart["planets"];
+
+  const nodes = Object.fromEntries(
+    typedEntries(base.nodes).map(([key, value]) => {
+      const longitude = normalizeLongitude(value.longitude + offset);
+
+      return [
+        key,
+        {
+          ...value,
+          ...zodiacPosition(signAt(longitude), longitude, value.house),
+          longitude,
+        },
+      ];
+    })
+  ) as WheelChart["nodes"];
+
   return {
     ...base,
-    planets: Object.fromEntries(
-      Object.entries(base.planets).map(([k, v]: [string, any]) => [
-        k,
-        planet(v.name, (v.longitude + offset) % 360, v.zodiacPosition.house),
-      ])
-    ),
-    nodes: Object.fromEntries(
-      Object.entries(base.nodes).map(([k, v]: [string, any]) => [
-        k,
-        { ...v, longitude: (v.longitude + offset) % 360 },
-      ])
-    ),
-    aspects: [],
+    planets,
+    nodes,
+    aspects: [] as WheelChart["aspects"],
   };
 }
 
-function planet(name: string, longitude: number, house: number): any {
+function planet(
+  id: (typeof Planet)[keyof typeof Planet],
+  name: string,
+  longitude: number,
+  house: number
+): WheelPlanet {
   return {
-    id: name.toLowerCase().replace(/\s+/g, "_"),
+    id,
     name,
     longitude,
     latitude: 0,
     distance: 1,
     zodiacPosition: zodiacPosition(signAt(longitude), longitude, house),
-  };
+  } as WheelPlanet;
 }
 
-function zodiacPosition(sign: string, longitude: number, house: number) {
-  const deg = longitude % 30;
-  return { sign, decimalDegrees: deg, traditionalFormat: `${Math.floor(deg)}°00'`, decimal: `${deg.toFixed(2)}°`, longitude, house };
+function node(
+  id: (typeof VirtualNodes)[keyof typeof VirtualNodes],
+  name: string,
+  longitude: number,
+  house: number
+): WheelNode {
+  return {
+    id,
+    name,
+    ...zodiacPosition(signAt(longitude), longitude, house),
+  } as WheelNode;
+}
+
+function zodiacPosition(
+  sign: AstroWheelZodiacSign,
+  longitude: number,
+  house: number
+): WheelZodiacPosition {
+  const normalizedLongitude = normalizeLongitude(longitude);
+  const decimalDegrees = normalizedLongitude % 30;
+
+  return {
+    sign,
+    decimalDegrees,
+    traditionalFormat: `${Math.floor(decimalDegrees)}°00'`,
+    decimal: `${decimalDegrees.toFixed(2)}°`,
+    longitude: normalizedLongitude,
+    house,
+  } as WheelZodiacPosition;
 }
 
 function signAt(longitude: number): AstroWheelZodiacSign {
   const signs: AstroWheelZodiacSign[] = [
-    "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
-    "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+    "Aries",
+    "Taurus",
+    "Gemini",
+    "Cancer",
+    "Leo",
+    "Virgo",
+    "Libra",
+    "Scorpio",
+    "Sagittarius",
+    "Capricorn",
+    "Aquarius",
+    "Pisces",
   ];
-  return signs[Math.floor((((longitude % 360) + 360) % 360) / 30)];
+
+  return signs[Math.floor(normalizeLongitude(longitude) / 30)];
+}
+
+function normalizeLongitude(value: number): number {
+  return ((value % 360) + 360) % 360;
+}
+
+function safeFilePart(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[_\s]+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function uniqueGlyphs<T extends { category: string; key: string }>(
+  glyphs: readonly T[]
+): T[] {
+  const seen = new Set<string>();
+  const result: T[] = [];
+
+  for (const glyph of glyphs) {
+    const id = `${glyph.category}:${glyph.key}`;
+    if (seen.has(id)) continue;
+
+    seen.add(id);
+    result.push(glyph);
+  }
+
+  return result.sort((a, b) =>
+    `${a.category}:${a.key}`.localeCompare(`${b.category}:${b.key}`)
+  );
+}
+
+function typedEntries<T extends object>(
+  object: T
+): Array<[Extract<keyof T, string>, T[Extract<keyof T, string>]]> {
+  return Object.entries(object) as Array<
+    [Extract<keyof T, string>, T[Extract<keyof T, string>]]
+  >;
 }
