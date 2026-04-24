@@ -1005,6 +1005,31 @@ TREE_PATH_IDS[21]  // "path:22"
 
 ## CLI
 
+The CLI can render both visual modules directly.
+
+### Astrology wheel
+
+Use `astrology:wheel` to calculate a chart and pass it through `generateAstroWheelSvg`:
+
+```bash
+# Emit a compact JSON payload containing only the SVG
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --compact --fields=svg
+
+# Write the SVG to disk
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --background=transparent --output=chart.svg --json
+
+# Inspect the geometry used by the SVG renderer
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --render-model --json --compact
+```
+
+Pass advanced visual options through `--input-json` as `wheelOptions`:
+
+```bash
+kaabalah astrology:wheel --input-json='{"date":"1990-01-15","time":"14:30","lat":40.7128,"lon":-74.006,"wheelOptions":{"background":"transparent","aspects":false}}' --json --compact --fields=svg
+```
+
+### Tree of Life
+
 The existing `tree:*` CLI namespace can inspect the same visual contracts:
 
 ```bash

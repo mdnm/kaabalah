@@ -30,6 +30,7 @@ npx kaabalah help
 | `numerology:challenges <date>` | Challenges from birth date |
 | `numerology:fibonacci <date>` | Fibonacci cycle for current age |
 | `astrology <date> [time]` | Calculate birth chart using Swiss Ephemeris |
+| `astrology:wheel <date> [time]` | Render a birth chart as an astrology wheel SVG |
 | `astrology:synastry` | Cross-chart aspects between two birth charts |
 | `astrology:composite` | Midpoint composite chart from two birth charts |
 | `astrology:transits <date> [time]` | Transit aspects to a natal chart |
@@ -66,6 +67,7 @@ kaabalah gematria:reverse 22
 kaabalah ifa 1990-01-15
 kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
 kaabalah astrology 1990-01-15 14:30 --location="New York, USA"
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --output=chart.svg --json
 
 # Hellenistic techniques
 kaabalah astrology:profections 1990-06-15 14:30 --lat=48.856 --lon=2.352 --year=2026 --json --compact
@@ -207,6 +209,55 @@ kaabalah astrology 1990-01-15 --lat=40.7128 --lon=-74.006
 **House systems:** placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius
 
 Birth charts include an `aspects` array (conjunction, duodecile, octile, sextile, square, trine, trioctile, quincunx, opposition) and a `sect` field (`"diurnal"` or `"nocturnal"`).
+
+### astrology:wheel
+
+Render a calculated birth chart with the canonical `kaabalah/visual` astrology wheel renderer.
+
+```bash
+# Return only the SVG string for agent consumers
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --compact --fields=svg
+
+# Write directly to a file
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --background=transparent --output=chart.svg --json
+
+# Inspect geometry for custom renderers
+kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --render-model --json --compact
+
+# Input-json alternative, including visual options
+kaabalah astrology:wheel --input-json='{"date":"1990-01-15","time":"14:30","lat":40.7128,"lon":-74.006,"wheelOptions":{"background":"transparent","aspects":false}}' --json --compact --fields=svg
+```
+
+The command uses the same chart calculation inputs as `astrology`, then renders the resulting `BirthChart`. In JSON mode, normal SVG output is `{ svg, bytes, input, options }`; with `--output`, the SVG is written to disk and JSON returns `{ outputPath, bytes, input, options }`.
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--lat` | number | - | Latitude (-90 to 90) |
+| `--lon` | number | - | Longitude (-180 to 180) |
+| `--location` | string | - | Location for geocoding (requires `GOOGLE_MAPS_API_KEY`) |
+| `--house-system` | string | placidus | House system |
+| `--timezone` | string | - | IANA timezone; auto-resolved from coordinates if omitted |
+| `--max-orb` | number | - | Maximum orb in degrees to include in rendered aspect lines |
+| `--aspect-types` | string | - | Comma-separated aspect names, or `major` |
+| `--width` | string | - | SVG width attribute |
+| `--height` | string | - | SVG height attribute |
+| `--background` | string | transparent | Background fill color, or `transparent` |
+| `--palette` | string | default | `default` or `monochrome` |
+| `--title` | string | - | Accessible SVG title and aria-label |
+| `--padding` | number | - | Override wheel padding in viewBox units |
+| `--exclude-bodies` | string | - | Comma-separated planet/point names to omit from points and aspect lines |
+| `--no-zodiac` | boolean | false | Hide zodiac segments, glyphs, and ticks |
+| `--no-houses` | boolean | false | Hide house cusps, labels, and angle markers |
+| `--no-points` | boolean | false | Hide birth planets, nodes, and vertex |
+| `--no-aspects` | boolean | false | Hide aspect lines |
+| `--render-model` | boolean | false | Return wheel geometry JSON instead of SVG |
+| `--output` | string | - | Write SVG to a file instead of stdout |
+| `--viewbox-width` | number | - | Override SVG viewBox width |
+| `--viewbox-height` | number | - | Override SVG viewBox height |
+| `--viewbox-min-x` | number | 0 | Override SVG viewBox min-x |
+| `--viewbox-min-y` | number | 0 | Override SVG viewBox min-y |
+
+For advanced renderer options such as custom palettes, transit layers, custom point layers, or explicit `aspectSpecs`, pass a `wheelOptions` object through `--input-json`. CLI flags override matching top-level options.
 
 ### astrology:synastry
 

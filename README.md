@@ -31,7 +31,7 @@ All modules are tree-shakable and can be imported independently:
 | Tarot | `kaabalah/tarot` | 78-card deck with profiles, archetypes, correspondences, multi-deck images, spread engine |
 | Ifa | `kaabalah/ifa` | Odu divination |
 | Semantic | `kaabalah/semantic` | Theme profiles, kaabalistic overlay correspondences, symbol metadata |
-| Visual | `kaabalah/visual` | Tree of Life SVG generation and layout data |
+| Visual | `kaabalah/visual` | Tree of Life and astrology wheel SVG generation plus layout/render-model data |
 
 ## Quick Example
 
@@ -40,7 +40,7 @@ import { createTree, id, KaabalahTypes } from 'kaabalah/core';
 import { getBirthChart } from 'kaabalah/astrology';
 import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
 import { getTarotCorrespondenceProfile } from 'kaabalah/tarot';
-import { generateTreeSvg } from 'kaabalah/visual';
+import { generateAstroWheelSvg, generateTreeSvg } from 'kaabalah/visual';
 
 const tree = createTree({ system: 'kaabalah', parts: ['westernAstrology', 'tarot'] });
 const correspondences = tree.getCorrespondences(id(KaabalahTypes.SPHERE, 'Tiphareth'), { depth: 2 });
@@ -53,6 +53,7 @@ const chart = await getBirthChart({
 const lifePath = calculateKaabalisticLifePath(new Date('1990-06-15'));
 const magician = getTarotCorrespondenceProfile({ tarotCardName: 'The Magician' });
 const svg = generateTreeSvg({ background: 'transparent', palette: 'monochrome' });
+const wheelSvg = generateAstroWheelSvg(chart, { background: 'transparent' });
 ```
 
 ## CLI
@@ -62,10 +63,11 @@ npx kaabalah help                    # list all commands
 npx kaabalah help --json             # full schema introspection
 npx kaabalah numerology 1990-01-15 --json --compact
 npx kaabalah astrology 1990-01-15 14:30 --lat=40.71 --lon=-74 --json
+npx kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.71 --lon=-74 --json --compact --fields=svg
 npx kaabalah tree:node "tarotArkAnnu:The Magician" --depth=2 --json
 ```
 
-27 commands covering all modules. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
+28 commands covering all modules. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
 
 ## Support
 

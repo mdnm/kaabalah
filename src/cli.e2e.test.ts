@@ -121,6 +121,7 @@ describe("CLI contract", () => {
       "tree:svg",
       "tree:ascii",
       "astrology",
+      "astrology:wheel",
       "astrology:synastry",
       "astrology:composite",
       "astrology:transits",
@@ -156,6 +157,20 @@ describe("CLI contract", () => {
         { name: "wasm-path" },
         { name: "ephe-path" },
       ],
+    });
+    expect(payload.commands.find((command) => command.name === "astrology:wheel")).toMatchObject({
+      args: [{ name: "date" }, { name: "time" }],
+      flags: expect.arrayContaining([
+        expect.objectContaining({ name: "lat" }),
+        expect.objectContaining({ name: "lon" }),
+        expect.objectContaining({ name: "width" }),
+        expect.objectContaining({ name: "height" }),
+        expect.objectContaining({ name: "background" }),
+        expect.objectContaining({ name: "palette" }),
+        expect.objectContaining({ name: "no-aspects" }),
+        expect.objectContaining({ name: "render-model" }),
+        expect.objectContaining({ name: "output" }),
+      ]),
     });
   });
 
@@ -551,6 +566,110 @@ describe("CLI contract", () => {
     expect(payload.rows).toBe(21);
     expect(payload.lines).toHaveLength(21);
     expect(payload.ascii).toContain("O");
+  });
+
+  it("generates astrology wheel SVG JSON and supports file output", () => {
+    const directResult = runCli([
+      "astrology:wheel",
+      "1990-01-15",
+      "14:30",
+      "--lat",
+      "40.7128",
+      "--lon=-74.006",
+      "--timezone",
+      "America/New_York",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      "--json",
+      "--compact",
+      "--background=transparent",
+      "--palette=monochrome",
+      "--no-aspects",
+      "--fields=svg",
+    ]);
+    assertSuccess(directResult, "astrology:wheel --json");
+
+    const directPayload = JSON.parse(directResult.stdout) as { svg: string };
+
+    expect(directPayload.svg).toContain(`<svg xmlns="http://www.w3.org/2000/svg"`);
+    expect(directPayload.svg).toContain(`id="astro-wheel-zodiac"`);
+    expect(directPayload.svg).toContain(`id="astro-wheel-planets"`);
+    expect(directPayload.svg).toContain(`data-point-name="Sun"`);
+    expect(directPayload.svg).not.toContain(`<rect`);
+    expect(directPayload.svg).not.toContain(`id="astro-wheel-aspects"`);
+    expect(directPayload.svg).not.toContain("NaN");
+    expect(directPayload.svg).not.toContain("undefined");
+
+    const cwd = makeTempDir();
+    const outputPath = join(cwd, "chart.svg");
+    const fileResult = runCli([
+      "astrology:wheel",
+      "1990-01-15",
+      "14:30",
+      "--lat=40.7128",
+      "--lon=-74.006",
+      "--timezone=America/New_York",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      `--output=${outputPath}`,
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(fileResult, "astrology:wheel --output");
+
+    const filePayload = JSON.parse(fileResult.stdout) as {
+      outputPath: string;
+      bytes: number;
+      input: { date: string; houseSystem: string };
+      options: { background: string; palette: string };
+    };
+
+    expect(filePayload.outputPath).toBe(outputPath);
+    expect(filePayload.bytes).toBeGreaterThan(1000);
+    expect(filePayload.input).toMatchObject({
+      date: "1990-01-15",
+      houseSystem: "placidus",
+    });
+    expect(filePayload.options).toMatchObject({
+      background: "transparent",
+      palette: "default",
+    });
+    expect(readFileSync(outputPath, "utf8")).toContain(`id="astro-wheel-zodiac"`);
+  });
+
+  it("returns astrology wheel render-model geometry for custom consumers", () => {
+    const result = runCli([
+      "astrology:wheel",
+      "1990-01-15",
+      "14:30",
+      "--lat=40.7128",
+      "--lon=-74.006",
+      "--timezone=America/New_York",
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+      "--render-model",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "astrology:wheel --render-model");
+
+    const payload = JSON.parse(result.stdout) as {
+      viewBox: { width: number; height: number };
+      pointLayers: Array<{ id: string }>;
+      points: Array<{ name: string }>;
+      aspectLines: unknown[];
+    };
+
+    expect(payload.viewBox).toMatchObject({ width: 600, height: 600 });
+    expect(payload.pointLayers[0]).toMatchObject({ id: "birth" });
+    expect(payload.points[0]?.name).toBeTruthy();
+    expect(payload.aspectLines.length).toBeGreaterThan(0);
   });
 
   it("supports --input-json=- to read a JSON object from stdin", () => {
