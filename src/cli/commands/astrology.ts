@@ -1,4 +1,7 @@
-import { getFlagNumber, getFlagString, isJsonMode } from "../runtime/args";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+
+import { getFlagBool, getFlagNumber, getFlagString, isJsonMode } from "../runtime/args";
 import { getGoogleMapsApiKey } from "../runtime/config";
 import { debugLog } from "../runtime/debug";
 import { exitWithError } from "../runtime/errors";
@@ -20,6 +23,10 @@ type AspectLike = {
   orb?: number;
   exactOrb?: number;
 };
+
+type AstroWheelSvgOptions = import("../../visual").AstroWheelSvgOptions;
+type AstroWheelViewBox = import("../../visual").AstroWheelViewBox;
+type AstroWheelAspectSpec = import("../../visual").AspectSpec;
 
 function rethrowInterruptedOrError(err: unknown, executionContext: ExecutionContext): never {
   executionContext.throwIfInterrupted();
@@ -224,6 +231,236 @@ function filterChartAspects<T extends { aspects: AspectLike[] }>(
   return {
     ...chart,
     aspects: filterAspects(chart.aspects, options),
+  };
+}
+
+function getInputValue(
+  inputPayload: InputPayload,
+  key: string
+): unknown {
+  return inputPayload && Object.prototype.hasOwnProperty.call(inputPayload, key)
+    ? inputPayload[key]
+    : undefined;
+}
+
+function getInputString(inputPayload: InputPayload, key: string): string | undefined {
+  const value = getInputValue(inputPayload, key);
+  return typeof value === "string" && value.length > 0 ? value : undefined;
+}
+
+function getInputStringOrNumber(
+  inputPayload: InputPayload,
+  key: string
+): string | number | undefined {
+  const value = getInputValue(inputPayload, key);
+  if (typeof value === "string" && value.length > 0) {
+    return value;
+  }
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+  return undefined;
+}
+
+function getInputNumber(inputPayload: InputPayload, key: string): number | undefined {
+  const value = getInputValue(inputPayload, key);
+  if (value == null) {
+    return undefined;
+  }
+  const number = Number(value);
+  return Number.isFinite(number) ? number : undefined;
+}
+
+function getInputBoolean(inputPayload: InputPayload, key: string): boolean | undefined {
+  const value = getInputValue(inputPayload, key);
+  return typeof value === "boolean" ? value : undefined;
+}
+
+function readAstroWheelOptionsPayload(
+  inputPayload: InputPayload,
+  flags: Flags
+): AstroWheelSvgOptions {
+  const raw = inputPayload?.wheelOptions ?? inputPayload?.svgOptions;
+
+  if (raw == null) {
+    return {};
+  }
+
+  if (typeof raw !== "object" || Array.isArray(raw)) {
+    exitWithError("INVALID_JSON", '"wheelOptions" must be a JSON object when provided.', flags);
+  }
+
+  return raw as AstroWheelSvgOptions;
+}
+
+function buildAstroWheelViewBox(
+  flags: Flags,
+  inputPayload: InputPayload,
+  baseViewBox: AstroWheelViewBox | undefined
+): AstroWheelViewBox | undefined {
+  const width = getFlagNumber(flags, "viewbox-width") ?? getInputNumber(inputPayload, "viewboxWidth");
+  const height = getFlagNumber(flags, "viewbox-height") ?? getInputNumber(inputPayload, "viewboxHeight");
+  const minX = getFlagNumber(flags, "viewbox-min-x") ?? getInputNumber(inputPayload, "viewboxMinX");
+  const minY = getFlagNumber(flags, "viewbox-min-y") ?? getInputNumber(inputPayload, "viewboxMinY");
+
+  if (width == null && height == null && minX == null && minY == null) {
+    return undefined;
+  }
+
+  const resolvedWidth = width ?? baseViewBox?.width;
+  const resolvedHeight = height ?? baseViewBox?.height;
+
+  if (resolvedWidth == null || resolvedHeight == null) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      'Both "--viewbox-width" and "--viewbox-height" are required when overriding the astrology wheel SVG viewBox.',
+      flags
+    );
+  }
+
+  if (resolvedWidth <= 0 || resolvedHeight <= 0) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      "Astrology wheel viewBox width and height must be positive numbers.",
+      flags
+    );
+  }
+
+  return {
+    minX: minX ?? baseViewBox?.minX ?? 0,
+    minY: minY ?? baseViewBox?.minY ?? 0,
+    width: resolvedWidth,
+    height: resolvedHeight,
+  };
+}
+
+function parseExcludedBodies(
+  flags: Flags,
+  inputPayload: InputPayload
+): string[] | undefined {
+  const raw =
+    getInputValue(inputPayload, "excludeBodies") ??
+    getInputValue(inputPayload, "exclude-bodies") ??
+    getFlagString(flags, "exclude-bodies");
+
+  if (raw == null) {
+    return undefined;
+  }
+
+  const values = Array.isArray(raw) ? raw : String(raw).split(",");
+  const excluded = values
+    .map((value) => String(value).trim())
+    .filter(Boolean);
+
+  return excluded.length > 0 ? excluded : undefined;
+}
+
+function buildAstroWheelSvgOptions(
+  flags: Flags,
+  inputPayload: InputPayload
+): AstroWheelSvgOptions {
+  const options: AstroWheelSvgOptions = {
+    ...readAstroWheelOptionsPayload(inputPayload, flags),
+  };
+
+  const palette = getInputString(inputPayload, "palette") ?? getFlagString(flags, "palette");
+  if (palette) {
+    if (palette !== "default" && palette !== "monochrome") {
+      exitWithError(
+        "INVALID_ARGUMENT",
+        `Unknown astrology wheel palette "${palette}". Expected "default" or "monochrome".`,
+        flags
+      );
+    }
+    options.palette = palette;
+  }
+
+  const width = getInputStringOrNumber(inputPayload, "width") ?? getFlagString(flags, "width");
+  const height = getInputStringOrNumber(inputPayload, "height") ?? getFlagString(flags, "height");
+  const background = getInputString(inputPayload, "background") ?? getFlagString(flags, "background");
+  const title = getInputString(inputPayload, "title") ?? getFlagString(flags, "title");
+  const padding = getInputNumber(inputPayload, "padding") ?? getFlagNumber(flags, "padding");
+  const viewBox = buildAstroWheelViewBox(flags, inputPayload, options.viewBox);
+  const excludedBodies = parseExcludedBodies(flags, inputPayload);
+
+  if (width !== undefined) {
+    options.width = width;
+  }
+  if (height !== undefined) {
+    options.height = height;
+  }
+  if (background !== undefined) {
+    options.background = background;
+  }
+  if (title !== undefined) {
+    options.title = title;
+  }
+  if (padding !== undefined) {
+    if (padding < 0) {
+      exitWithError("INVALID_ARGUMENT", "--padding must be a non-negative number.", flags);
+    }
+    options.padding = padding;
+  }
+  if (viewBox !== undefined) {
+    options.viewBox = viewBox;
+  }
+  if (excludedBodies !== undefined) {
+    options.excludeBodies = excludedBodies;
+  }
+
+  if (getInputBoolean(inputPayload, "noZodiac") === true || getFlagBool(flags, "no-zodiac")) {
+    options.zodiac = false;
+  }
+  if (getInputBoolean(inputPayload, "noHouses") === true || getFlagBool(flags, "no-houses")) {
+    options.houses = false;
+  }
+  if (getInputBoolean(inputPayload, "noPoints") === true || getFlagBool(flags, "no-points")) {
+    options.points = false;
+  }
+  if (getInputBoolean(inputPayload, "noAspects") === true || getFlagBool(flags, "no-aspects")) {
+    options.aspects = false;
+    options.aspectLayers = [];
+  }
+  if (
+    options.aspects !== false &&
+    inputPayload?.aspectSpecs != null &&
+    Array.isArray(inputPayload.aspectSpecs)
+  ) {
+    options.aspects = {
+      ...(typeof options.aspects === "object" ? options.aspects : {}),
+      aspectSpecs: inputPayload.aspectSpecs as readonly AstroWheelAspectSpec[],
+    };
+  }
+
+  return options;
+}
+
+function serializeAstroWheelOptions(options: AstroWheelSvgOptions) {
+  return {
+    width: options.width ?? null,
+    height: options.height ?? null,
+    background: options.background ?? "transparent",
+    palette: typeof options.palette === "string" ? options.palette : options.palette ? "custom" : "default",
+    viewBox: options.viewBox ?? null,
+    zodiac: options.zodiac ?? true,
+    houses: options.houses ?? true,
+    points: options.points ?? true,
+    aspects: options.aspects ?? true,
+    excludeBodies: options.excludeBodies ?? [],
+    padding: options.padding ?? null,
+    title: options.title ?? null,
+  };
+}
+
+function formatSingleChartInputEcho(input: ParsedChartInput & { resolvedLocation?: string }) {
+  return {
+    date: input.dateStr,
+    time: input.timeStr,
+    latitude: input.latitude,
+    longitude: input.longitude,
+    houseSystem: input.houseSystem,
+    timezone: "timeZone" in input.timeZoneSettings ? input.timeZoneSettings.timeZone : "auto",
+    ...(input.resolvedLocation ? { resolvedLocation: input.resolvedLocation } : {}),
   };
 }
 
@@ -1135,6 +1372,143 @@ export function cmdAstrologyDodecatemoria(
   console.log(`  Original Sign: ${result.originalSign} (${result.originalDegree.toFixed(2)}°)`);
   console.log(`  12th Part: ${result.dodecatemoriaSign} (index ${result.dodecatemoriaIndex})`);
   console.log();
+}
+
+export async function cmdAstrologyWheel(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<void> {
+  const input = await parseSingleChartRequest(args, flags, inputPayload, executionContext);
+  const astroModule = await import("../../astrology");
+  const { getBirthChart, closeSwissEph, HouseSystem } = astroModule;
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+  const maxOrb = parseMaxOrb(flags, inputPayload);
+  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
+  const wheelOptions = buildAstroWheelSvgOptions(flags, inputPayload);
+  const outputPathFlag = getFlagString(flags, "output") ?? getInputString(inputPayload, "output");
+  const renderModel = getFlagBool(flags, "render-model") || getInputBoolean(inputPayload, "renderModel") === true;
+
+  if (renderModel && outputPathFlag) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      "--output is only supported when generating an astrology wheel SVG. Omit --render-model to write an SVG file.",
+      flags
+    );
+  }
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+  }
+
+  try {
+    debugLog("astrology", "Running astrology:wheel.", {
+      date: input.dateStr,
+      time: input.timeStr,
+      latitude: input.latitude,
+      longitude: input.longitude,
+      houseSystem: input.houseSystem,
+      renderModel,
+      output: outputPathFlag,
+    });
+
+    const chart = await getBirthChart({
+      date: input.birthDate,
+      latitude: input.latitude,
+      longitude: input.longitude,
+      houseSystem: input.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
+      timeZoneSettings: input.timeZoneSettings as any,
+    });
+    const filteredChart = filterChartAspects(chart, { maxOrb, aspectFilter });
+    const { generateAstroWheelSvg, getAstroWheelRenderModel } = await import("../../visual");
+    executionContext.throwIfInterrupted();
+
+    const inputEcho = formatSingleChartInputEcho(input);
+    const serializedOptions = serializeAstroWheelOptions(wheelOptions);
+
+    if (renderModel) {
+      const model = getAstroWheelRenderModel(filteredChart, wheelOptions);
+      executionContext.throwIfInterrupted();
+
+      if (isJsonMode(flags)) {
+        outputJson(
+          {
+            ...model,
+            input: inputEcho,
+            options: serializedOptions,
+          },
+          flags
+        );
+        return;
+      }
+
+      console.log(`\nAstrology Wheel Render Model: ${input.dateStr} ${input.timeStr}\n`);
+      console.log(
+        `  ViewBox: ${model.viewBox.minX} ${model.viewBox.minY} ${model.viewBox.width} ${model.viewBox.height}`
+      );
+      console.log(`  Points: ${model.points.length}`);
+      console.log(`  Houses: ${model.houseCusps.length}`);
+      console.log(`  Aspects: ${model.aspectLines.length}`);
+      console.log(`  Point layers: ${model.pointLayers.map((layer) => layer.id).join(", ") || "none"}`);
+      console.log();
+      return;
+    }
+
+    const svg = generateAstroWheelSvg(filteredChart, wheelOptions);
+    executionContext.throwIfInterrupted();
+    const bytes = Buffer.byteLength(svg, "utf8");
+
+    if (outputPathFlag) {
+      const outputPath = resolve(outputPathFlag);
+      mkdirSync(dirname(outputPath), { recursive: true });
+      writeFileSync(outputPath, svg, "utf8");
+
+      if (isJsonMode(flags)) {
+        outputJson(
+          {
+            outputPath,
+            bytes,
+            input: inputEcho,
+            options: serializedOptions,
+          },
+          flags
+        );
+        return;
+      }
+
+      console.log(`Wrote ${outputPath} (${bytes} bytes)`);
+      return;
+    }
+
+    if (isJsonMode(flags)) {
+      outputJson(
+        {
+          svg,
+          bytes,
+          input: inputEcho,
+          options: serializedOptions,
+        },
+        flags
+      );
+      return;
+    }
+
+    process.stdout.write(svg.endsWith("\n") ? svg : `${svg}\n`);
+  } catch (err) {
+    rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    closeSwissEph();
+  }
 }
 
 export async function cmdAstrology(

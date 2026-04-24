@@ -1,5 +1,5 @@
 import { VERSION } from "./contract";
-import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits } from "./commands/astrology";
+import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIfa } from "./commands/ifa";
@@ -218,6 +218,9 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "astrology":
         await cmdAstrology(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:wheel":
+        await cmdAstrologyWheel(args.slice(1), flags, inputPayload, execution);
         return;
       case "astrology:synastry":
         await cmdAstrologySynastry(flags, inputPayload, execution);
