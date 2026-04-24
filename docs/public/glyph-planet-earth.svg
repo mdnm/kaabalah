@@ -1,5 +1,5 @@
 <svg data-astro-glyph="earth" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0244444) translate(-34.000000 -117.000000)"><path d="M 49 116.5 A 15.5 15.5 0 1 1  18,116.5 A 15.5 15.5 0 1 1  49 116.5 z" transform="matrix(1.030303,0,0,1.030303,-0.515152,-3.030303)" fill="none" stroke="currentColor" stroke-width="1.94117641" stroke-linecap="round" stroke-linejoin="round"/><path d="M 18,117 L 50,117" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 34,101 L 34,133" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="0" r="34" fill="#fff"/><path d="M-34,0 L34,0 M0,-34 L0,34" fill="none"/></g>
 </g>
 </svg>

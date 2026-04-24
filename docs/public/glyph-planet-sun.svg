@@ -1,5 +1,5 @@
 <svg data-astro-glyph="sun" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0244444) translate(-34.000000 -37.000000)"><path d="M 49.396475 36.70454 A 15.623922 16.319134 0 1 1  18.14863,36.70454 A 15.623922 16.319134 0 1 1  49.396475 36.70454 z" transform="matrix(1.022388,0,0,0.979597,-0.532287,1.029379)" fill="none" stroke="currentColor" stroke-width="1.99847329" stroke-linecap="round" stroke-linejoin="round"/><path d="M 38 37 A 4 5 0 1 1  30,37 A 4 5 0 1 1  38 37 z" transform="matrix(1,0,0,0.8,-5.551115e-16,7.4)" fill="currentColor" stroke="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="0" r="34" fill="#fff"/><circle cx="0" cy="0" r="8.5" fill="currentColor" stroke="none"/></g>
 </g>
 </svg>

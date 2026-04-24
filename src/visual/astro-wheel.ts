@@ -15,6 +15,7 @@ import {
   ZODIAC_GLYPHS,
   getAstroGlyph,
 } from "./astro-glyph-registry";
+import { GLYPH_FILL } from "./astro-glyph-assets";
 import type {
   AstroGlyphDefinition,
   AstroGlyphPrimitive,
@@ -189,6 +190,7 @@ export interface AstroWheelAngleMarker {
   line: AstroWheelLine;
   labelPosition: AstroWheelCoordinate;
   labelFontSize: number;
+  labelRotation: number;
 }
 
 export type AstroWheelPointKind = "planet" | "node" | "vertex";
@@ -474,8 +476,9 @@ export function generateGlyphSvg(
   if (bg !== "transparent") {
     push(`<rect width="${size}" height="${size}" fill="${escapeAttr(bg)}"/>`);
   }
+  const glyphFill = bg === "transparent" ? "#fff" : bg;
   push(`<g transform="translate(${cx} ${cy}) scale(${fmt(scale)})" color="${escapeAttr(color)}" fill="${escapeAttr(fillVal)}" stroke="${escapeAttr(color)}" stroke-width="${fmt(sw)}" stroke-linecap="round" stroke-linejoin="round">`);
-  renderGlyphPrimitives(push, primitives, { color, fill: fillVal });
+  renderGlyphPrimitives(push, primitives, { color, fill: fillVal, glyphFill });
   push(`</g>`);
   push(`</svg>`);
   return lines.join("\n");
@@ -976,7 +979,7 @@ function renderAngleGlyph(
   const minutesX = signX + signScale / 2 + gap;
 
   push(
-    `<g class="astro-wheel-angle-glyph-label" data-angle-marker="${marker.key}" data-longitude="${fmt(marker.longitude)}" transform="translate(${fmt(marker.labelPosition.x)} ${fmt(marker.labelPosition.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
+    `<g class="astro-wheel-angle-glyph-label" data-angle-marker="${marker.key}" data-longitude="${fmt(marker.longitude)}" transform="translate(${fmt(marker.labelPosition.x)} ${fmt(marker.labelPosition.y)}) rotate(${fmt(marker.labelRotation)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
   );
 
   push(`<title>${escapeText(`${label} ${position.degreesText} ${position.sign} ${position.minutesText}`)}</title>`);
@@ -1024,7 +1027,7 @@ function renderPointLabelGroup(
 
   push(`<title>${escapeText(pointLabelTitle(point))}</title>`);
 
-  renderPointGlyph(push, point, layout.glyphX, 0, layout.glyphScale);
+  renderPointGlyph(push, point, layout.glyphX, 0, layout.glyphScale, model.palette.glyphHalo);
 
   if (point.retrograde) {
     push(
@@ -1041,7 +1044,8 @@ function renderPointGlyph(
   point: AstroWheelPoint,
   x: number,
   y: number,
-  glyphScale: number
+  glyphScale: number,
+  glyphFill: string
 ) {
   const glyph = point.glyphKey ? getAstroGlyph(point.glyphKey) : resolvePointGlyph(point.name);
 
@@ -1050,7 +1054,7 @@ function renderPointGlyph(
     push(
       `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(x)} ${fmt(y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(point.color)}" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
     );
-    renderGlyphPrimitives(push, glyph.primitives, { color: point.color });
+    renderGlyphPrimitives(push, glyph.primitives, { color: point.color, glyphFill });
     push(`</g>`);
   } else {
     push(
@@ -1323,6 +1327,11 @@ function buildAngleMarkers(params: {
 
   return markers.map((marker) => {
     const angle = angleOf(marker.position.longitude);
+    const angleDeg = clamp360(angle * (180 / Math.PI));
+    let labelRotation = angleDeg;
+    if (labelRotation > 90 && labelRotation < 270) {
+      labelRotation -= 180;
+    }
 
     return {
       key: marker.key,
@@ -1338,6 +1347,7 @@ function buildAngleMarkers(params: {
         0
       ),
       labelFontSize,
+      labelRotation,
     };
   });
 }
@@ -1940,7 +1950,7 @@ function pointKeyPrefix(layerId: string | undefined) {
 function renderGlyphPrimitives(
   push: (line: string) => void,
   primitives: readonly AstroGlyphPrimitive[],
-  options: { color: string; fill?: string }
+  options: { color: string; fill?: string; glyphFill?: string }
 ) {
   for (const p of primitives) {
     if (p.kind === "path") {
@@ -1956,7 +1966,11 @@ function renderGlyphPrimitives(
         `<text x="${fmt(p.x ?? 0)}" y="${fmt(p.y ?? 0)}" font-family="${textFontFamily()}" font-size="${fmt(p.fontSize ?? 0.72)}" font-weight="${escapeAttr(String(p.fontWeight ?? 500))}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(options.color)}" stroke="none">${escapeText(p.text)}</text>`
       );
     } else {
-      push(p.markup);
+      let markup = p.markup;
+      if (options.glyphFill) {
+        markup = markup.split(GLYPH_FILL).join(options.glyphFill);
+      }
+      push(markup);
     }
   }
 }

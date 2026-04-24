@@ -1,5 +1,5 @@
 <svg data-astro-glyph="mercury" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0176000) translate(-100.000000 -37.000000)"><path d="M 112 36.5 A 11.5 11.5 0 1 1  89,36.5 A 11.5 11.5 0 1 1  112 36.5 z" transform="matrix(0.96,0,0,0.96,3.52,0.96)" fill="none" stroke="currentColor" stroke-width="2.08333325" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111.9469,37.603862 A 11.5,11.5 0 0 1 89.052015,37.592533" transform="matrix(0.96,0,0,0.96,3.56,-22.08)" fill="none" stroke="currentColor" stroke-width="2.08333325" stroke-linecap="round" stroke-linejoin="round"/><path d="M 100,47 L 100,59" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 95,54 L 105,54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-20,-40 C-10,-18 10,-18 20,-40" fill="none"/><circle cx="0" cy="0" r="22" fill="#fff"/><path d="M0,22 L0,48 M-14,38 L14,38" fill="none"/></g>
 </g>
 </svg>

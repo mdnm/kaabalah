@@ -1,5 +1,5 @@
 <svg data-astro-glyph="neptune" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.0209524) translate(-101.000000 -195.000000)"><path d="M 89,176 C 86,196 91,199 101,199 C 111,199 116,196 113,176" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 101,178 L 101,215" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 93,207 L 109,207" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M-34,-38 C-38,-4 -21,10 0,10 C21,10 38,-4 34,-38" fill="none"/><path d="M0,-42 L0,48 M-18,34 L18,34" fill="none"/></g>
 </g>
 </svg>

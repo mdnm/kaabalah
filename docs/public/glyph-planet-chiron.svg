@@ -1,5 +1,5 @@
 <svg data-astro-glyph="chiron" data-astro-glyph-category="planet" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 <g transform="translate(24 24) scale(24)" color="#1f2933" fill="none" stroke="#1f2933" stroke-width="0.14" stroke-linecap="round" stroke-linejoin="round">
-<g transform="scale(0.003) translate(0 -20)"><circle cx="0" cy="145" r="75" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="70" x2="0" y2="-180" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="-60" x2="100" y2="-180" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><line x1="0" y1="-60" x2="100" y2="40" stroke="currentColor" stroke-width="18" stroke-linecap="round"/></g>
+<g transform="scale(0.01)" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="28" r="19" fill="#fff"/><path d="M0,9 L0,-48 M0,-22 L28,-48 M0,-22 L28,4" fill="none"/></g>
 </g>
 </svg>
