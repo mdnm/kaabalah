@@ -12,6 +12,7 @@ import {
   ZODIAC_GLYPHS,
   generateAstroGlyphSvg,
   generateAstroWheelSvg,
+  type AspectSpec,
   type AstroWheelZodiacSign,
 } from "../src/visual/index";
 
@@ -25,17 +26,44 @@ const docsPublic = path.resolve(scriptDir, "../docs/public");
 
 fs.mkdirSync(docsPublic, { recursive: true });
 
+const DEMO_ASPECT_SPECS: AspectSpec[] = [
+  { name: "conjunction", angle: 0, orb: 8 },
+  { name: "sextile", angle: 60, orb: 5 },
+  { name: "square", angle: 90, orb: 6 },
+  { name: "trine", angle: 120, orb: 7 },
+  { name: "quincunx", angle: 150, orb: 3 },
+  { name: "opposition", angle: 180, orb: 8 },
+];
+
+const DEMO_ASPECT_COLORS = {
+  conjunction: "#6b7280",
+  sextile: "#2563eb",
+  square: "#dc2626",
+  trine: "#16a34a",
+  quincunx: "#7c3aed",
+  opposition: "#dc2626",
+};
+
 const chart = sampleBirthChart();
 const transitChart = shiftedChart(chart, 42);
 
 const svgs: Record<string, string> = {
   "wheel-default.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
+    aspects: {
+      aspectSpecs: DEMO_ASPECT_SPECS,
+    },
+    palette: {
+      aspects: DEMO_ASPECT_COLORS,
+    },
   }),
 
   "wheel-monochrome.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
     palette: "monochrome",
+    aspects: {
+      aspectSpecs: DEMO_ASPECT_SPECS,
+    },
   }),
 
   "wheel-no-aspects.svg": generateAstroWheelSvg(chart, {
@@ -45,13 +73,19 @@ const svgs: Record<string, string> = {
 
   "wheel-transit.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
+    aspects: {
+      aspectSpecs: DEMO_ASPECT_SPECS,
+    },
+    palette: {
+      aspects: DEMO_ASPECT_COLORS,
+    },
     pointLayers: [
       {
         id: "transit",
         label: "Transits",
         chart: transitChart,
-        color: "#c2410c",
-        tickColor: "#c2410c",
+        color: "#ea580c",
+        tickColor: "#ea580c",
         radius: "outer",
         radiusOffset: 24,
         glyphScale: 0.85,
@@ -63,8 +97,11 @@ const svgs: Record<string, string> = {
         label: "Transit aspects",
         chart: transitChart,
         pointLayerId: "transit",
-        color: "#c2410c",
+        aspectSpecs: DEMO_ASPECT_SPECS,
+        colors: DEMO_ASPECT_COLORS,
         radiusScale: 1.08,
+        strokeWidth: 1.35,
+        opacityScale: 0.85,
       },
     ],
   }),
