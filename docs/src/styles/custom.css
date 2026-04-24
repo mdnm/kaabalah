@@ -22,3 +22,7 @@
   --sl-color-accent: #7a5c00;
   --sl-color-accent-high: #2d2100;
 }
+
+:root[data-theme='dark'] .glyph-gallery img {
+  filter: invert(0.85) hue-rotate(180deg);
+}

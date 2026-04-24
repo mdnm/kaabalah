@@ -86,9 +86,9 @@ const svgs: Record<string, string> = {
         chart: transitChart,
         color: "#ea580c",
         tickColor: "#ea580c",
-        radius: "outer",
-        radiusOffset: 24,
-        glyphScale: 0.85,
+        radius: "external",
+        radiusOffset: 18,
+        glyphScale: 0.82,
       },
     ],
     aspectLayers: [

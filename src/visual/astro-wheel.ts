@@ -43,6 +43,7 @@ export interface AstroWheelPaletteOverrides {
   angleLabel?: string;
   planetGlyph?: string;
   planetTick?: string;
+  glyphHalo?: string;
   aspectGuide?: string;
   signColors?: Partial<Record<AstroWheelZodiacSign, string>>;
   elementColors?: Partial<Record<AstroWheelElement, string>>;
@@ -78,6 +79,7 @@ export interface AstroWheelPointOptions {
   enabled?: boolean;
   nodes?: boolean;
   vertex?: boolean;
+  collisionThresholdDegrees?: number;
 }
 
 export interface AstroWheelPointSource {
@@ -86,6 +88,7 @@ export interface AstroWheelPointSource {
   longitude: number;
   kind?: AstroWheelPointKind;
   glyph?: string;
+  retrograde?: boolean;
   zodiacPosition?: ZodiacPosition;
 }
 
@@ -96,9 +99,10 @@ export interface AstroWheelPointLayerInput {
   points?: readonly AstroWheelPointSource[];
   color?: string;
   tickColor?: string;
-  radius?: number | "inner" | "base" | "outer";
+  radius?: number | "inner" | "base" | "outer" | "external";
   radiusOffset?: number;
   glyphScale?: number;
+  collisionThresholdDegrees?: number;
   nodes?: boolean;
   vertex?: boolean;
 }
@@ -132,6 +136,7 @@ export interface AstroWheelSvgOptions {
   points?: boolean | AstroWheelPointOptions;
   pointLayers?: readonly AstroWheelPointLayerInput[];
   aspectLayers?: readonly AstroWheelAspectLayerInput[];
+  excludeBodies?: readonly string[];
   padding?: number;
   title?: string;
 }
@@ -180,6 +185,7 @@ export interface AstroWheelHouseCusp {
 export interface AstroWheelAngleMarker {
   key: "ASC" | "MC" | "DSC" | "IC";
   longitude: number;
+  zodiacPosition: ZodiacPosition;
   line: AstroWheelLine;
   labelPosition: AstroWheelCoordinate;
   labelFontSize: number;
@@ -198,8 +204,10 @@ export interface AstroWheelPoint {
   displayLongitude: number;
   zodiacPosition?: ZodiacPosition;
   tickLine: AstroWheelLine;
+  leaderLine?: AstroWheelLine;
   glyphPosition: AstroWheelCoordinate;
   glyphFontSize: number;
+  retrograde?: boolean;
   color: string;
   tickColor: string;
 }
@@ -283,13 +291,22 @@ export interface ResolvedAstroWheelPalette {
   angleLabel: string;
   planetGlyph: string;
   planetTick: string;
+  glyphHalo: string;
   aspectGuide: string;
   signColors: Partial<Record<AstroWheelZodiacSign, string>>;
   elementColors: Record<AstroWheelElement, string>;
   aspects: Record<string, string>;
 }
 
+interface ResolvedPointOptions {
+  enabled: boolean;
+  nodes: boolean;
+  vertex: boolean;
+  collisionThresholdDegrees?: number;
+}
+
 const TAU = Math.PI * 2;
+const GLYPH_OUTLINE_FILTER_ID = "astro-wheel-glyph-outline";
 
 export const ASTRO_WHEEL_DEFAULT_VIEWBOX: Required<AstroWheelViewBox> = {
   minX: 0,
@@ -374,6 +391,7 @@ const DEFAULT_PALETTE: ResolvedAstroWheelPalette = {
   angleLabel: "#0f172a",
   planetGlyph: "#111827",
   planetTick: "#111827",
+  glyphHalo: "#0a1628",
   aspectGuide: "#d7d0c6",
   elementColors: {
     fire: "#e27657",
@@ -407,6 +425,7 @@ const MONOCHROME_PALETTE: ResolvedAstroWheelPalette = {
   angleLabel: "#111111",
   planetGlyph: "#111111",
   planetTick: "#111111",
+  glyphHalo: "#0a1628",
   aspectGuide: "#c9c9c9",
   elementColors: {
     fire: "#ececec",
@@ -479,12 +498,13 @@ export function getAstroWheelRenderModel(
   options: AstroWheelSvgOptions = {}
 ): AstroWheelRenderModel {
   const viewBox = normalizeViewBox(options.viewBox);
-  const palette = resolvePalette(options.palette);
+  const palette = resolvePalette(options.palette, options.background ?? "transparent");
+  const excludedBodies = resolveExcludedBodies(options.excludeBodies);
   const scale = Math.min(
     viewBox.width / ASTRO_WHEEL_DEFAULT_VIEWBOX.width,
     viewBox.height / ASTRO_WHEEL_DEFAULT_VIEWBOX.height
   );
-  const padding = options.padding ?? round(18 * scale);
+  const padding = options.padding ?? round(18 * scale + getExternalPointPadding(options, scale));
   const center = {
     x: round(viewBox.minX + viewBox.width / 2),
     y: round(viewBox.minY + viewBox.height / 2),
@@ -525,12 +545,14 @@ export function getAstroWheelRenderModel(
       radius: "base",
       nodes: resolvedPoints.nodes,
       vertex: resolvedPoints.vertex,
+      collisionThresholdDegrees: resolvedPoints.collisionThresholdDegrees,
     },
     center,
     angleOf,
     rings,
     scale,
     palette,
+    excludedBodies,
   });
   const extraPointLayers = (options.pointLayers ?? []).map((layer) =>
     buildPointLayer({
@@ -540,6 +562,7 @@ export function getAstroWheelRenderModel(
       rings,
       scale,
       palette,
+      excludedBodies,
     })
   );
   const pointLayers = [
@@ -563,6 +586,7 @@ export function getAstroWheelRenderModel(
         angleOf,
         rings,
         palette,
+        excludedBodies,
       })
     : null;
   const extraAspectLayers = (options.aspectLayers ?? []).map((layer) =>
@@ -574,6 +598,7 @@ export function getAstroWheelRenderModel(
       angleOf,
       rings,
       palette,
+      excludedBodies,
     })
   );
   const aspectLayers = [
@@ -625,6 +650,8 @@ export function generateAstroWheelSvg(
   push(`<svg ${svgAttributes.join(" ")}>`);
   push(`<title>${escapeText(options.title ?? "Astrological birth chart wheel")}</title>`);
 
+  renderSvgDefs(push, model);
+
   if (background !== "transparent") {
     push(
       `<rect x="${fmt(viewBox.minX)}" y="${fmt(viewBox.minY)}" width="${fmt(viewBox.width)}" height="${fmt(viewBox.height)}" fill="${escapeAttr(background)}"/>`
@@ -635,9 +662,35 @@ export function generateAstroWheelSvg(
   renderZodiac(push, model, zodiacOptions);
   renderHouses(push, model, houseOptions);
   renderPlanets(push, model);
+  renderGlyphOverlay(push, model);
   push(`</svg>`);
 
   return lines.join("\n");
+}
+
+function renderSvgDefs(
+  push: (line: string) => void,
+  model: AstroWheelRenderModel
+) {
+  push(`<defs>`);
+  push(
+    `<filter id="${GLYPH_OUTLINE_FILTER_ID}" x="-45%" y="-45%" width="190%" height="190%">`
+  );
+  push(
+    `<feMorphology in="SourceAlpha" operator="dilate" radius="${fmt(1.75 * model.scale)}" result="dilated"/>`
+  );
+  push(
+    `<feFlood flood-color="${escapeAttr(model.palette.glyphHalo)}" result="haloColor"/>`
+  );
+  push(
+    `<feComposite in="haloColor" in2="dilated" operator="in" result="outline"/>`
+  );
+  push(`<feMerge>`);
+  push(`<feMergeNode in="outline"/>`);
+  push(`<feMergeNode in="SourceGraphic"/>`);
+  push(`</feMerge>`);
+  push(`</filter>`);
+  push(`</defs>`);
 }
 
 function renderAspects(
@@ -801,9 +854,6 @@ function renderHouses(
       push(
         `<line x1="${fmt(marker.line.x1)}" y1="${fmt(marker.line.y1)}" x2="${fmt(marker.line.x2)}" y2="${fmt(marker.line.y2)}" stroke="${escapeAttr(model.palette.angleLine)}" stroke-width="${fmt(2 * model.scale)}"/>`
       );
-      push(
-        `<text x="${fmt(marker.labelPosition.x)}" y="${fmt(marker.labelPosition.y)}" font-family="${textFontFamily()}" font-size="${fmt(marker.labelFontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}">${marker.key}</text>`
-      );
       push(`</g>`);
     }
   }
@@ -821,17 +871,78 @@ function renderPlanets(
   push(`<g id="astro-wheel-planets" aria-label="planets">`);
 
   for (const layer of model.pointLayers) {
+    renderPointLayerGuide(push, layer, model);
+  }
+
+  for (const layer of model.pointLayers) {
     push(`<g class="astro-wheel-point-layer" data-point-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
+
     for (const point of layer.points) {
       push(
         `<g class="astro-wheel-point" data-point-layer="${escapeAttr(point.layerId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}">`
       );
+
       push(`<title>${escapeText(point.name)} ${fmt(point.longitude)}°</title>`);
+
       push(
-        `<line x1="${fmt(point.tickLine.x1)}" y1="${fmt(point.tickLine.y1)}" x2="${fmt(point.tickLine.x2)}" y2="${fmt(point.tickLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.85" stroke-width="${fmt(model.scale)}"/>`
+        `<line x1="${fmt(point.tickLine.x1)}" y1="${fmt(point.tickLine.y1)}" x2="${fmt(point.tickLine.x2)}" y2="${fmt(point.tickLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.82" stroke-width="${fmt(model.scale)}" stroke-linecap="round"/>`
       );
-      renderPointGlyph(push, point);
-      renderPointDegreeLabel(push, point, model.scale);
+
+      if (point.leaderLine) {
+        push(
+          `<line class="astro-wheel-point-leader" x1="${fmt(point.leaderLine.x1)}" y1="${fmt(point.leaderLine.y1)}" x2="${fmt(point.leaderLine.x2)}" y2="${fmt(point.leaderLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.52" stroke-width="${fmt(0.9 * model.scale)}" stroke-linecap="round"/>`
+        );
+      }
+
+      push(`</g>`);
+    }
+
+    push(`</g>`);
+  }
+
+  push(`</g>`);
+}
+
+function renderPointLayerGuide(
+  push: (line: string) => void,
+  layer: AstroWheelPointLayer,
+  model: AstroWheelRenderModel
+) {
+  const isExternal = layer.radius > model.rings.houses.r2 + model.scale;
+  if (!isExternal) {
+    return;
+  }
+
+  push(
+    `<circle class="astro-wheel-external-point-ring" data-point-layer="${escapeAttr(layer.id)}" cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(layer.radius)}" fill="none" stroke="${escapeAttr(layer.tickColor)}" stroke-opacity="0.32" stroke-width="${fmt(1.15 * model.scale)}"/>`
+  );
+}
+
+function renderGlyphOverlay(
+  push: (line: string) => void,
+  model: AstroWheelRenderModel
+) {
+  if (model.angleMarkers.length === 0 && model.pointLayers.length === 0) {
+    return;
+  }
+
+  push(`<g id="astro-wheel-glyph-layer" aria-label="chart glyphs">`);
+
+  if (model.angleMarkers.length > 0) {
+    push(`<g id="astro-wheel-angle-glyphs" aria-label="angle glyphs">`);
+    for (const marker of model.angleMarkers) {
+      renderAngleGlyph(push, marker, model);
+    }
+    push(`</g>`);
+  }
+
+  if (model.pointLayers.length > 0) {
+    push(`<g id="astro-wheel-point-glyphs" aria-label="planet glyphs">`);
+    for (const layer of model.pointLayers) {
+      push(`<g class="astro-wheel-point-glyph-layer" data-point-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)} glyphs"` : ""}>`);
+      for (const point of layer.points) {
+        renderPointLabelGroup(push, point, model);
+      }
       push(`</g>`);
     }
     push(`</g>`);
@@ -840,37 +951,210 @@ function renderPlanets(
   push(`</g>`);
 }
 
+function renderAngleGlyph(
+  push: (line: string) => void,
+  marker: AstroWheelAngleMarker,
+  model: AstroWheelRenderModel
+) {
+  const label = angleDisplayLabel(marker.key);
+  const position = formatInlinePosition(marker.zodiacPosition);
+
+  const labelFontSize = marker.labelFontSize;
+  const positionFontSize = clamp(marker.labelFontSize * 0.52, 5.5 * model.scale, 9 * model.scale);
+  const signScale = positionFontSize * 0.88;
+  const gap = clamp(3.2 * model.scale, 2.5, 5);
+
+  const labelWidth = estimateTextWidth(label, labelFontSize);
+  const degreeWidth = estimateTextWidth(position.degreesText, positionFontSize);
+  const minutesWidth = estimateTextWidth(position.minutesText, positionFontSize);
+  const totalWidth = labelWidth + gap + degreeWidth + gap + signScale + gap + minutesWidth;
+  const startX = -totalWidth / 2;
+
+  const labelX = startX;
+  const degreeX = labelX + labelWidth + gap;
+  const signX = degreeX + degreeWidth + gap + signScale / 2;
+  const minutesX = signX + signScale / 2 + gap;
+
+  push(
+    `<g class="astro-wheel-angle-glyph-label" data-angle-marker="${marker.key}" data-longitude="${fmt(marker.longitude)}" transform="translate(${fmt(marker.labelPosition.x)} ${fmt(marker.labelPosition.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
+  );
+
+  push(`<title>${escapeText(`${label} ${position.degreesText} ${position.sign} ${position.minutesText}`)}</title>`);
+
+  push(
+    `<text class="astro-wheel-angle-label" x="${fmt(labelX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(labelFontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}" font-weight="700">${escapeText(label)}</text>`
+  );
+
+  push(
+    `<text class="astro-wheel-angle-degree" x="${fmt(degreeX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(positionFontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}">${escapeText(position.degreesText)}</text>`
+  );
+
+  renderInlineSignGlyph(
+    push,
+    position.sign,
+    signX,
+    0,
+    signScale,
+    model.palette.angleLabel
+  );
+
+  push(
+    `<text class="astro-wheel-angle-minutes" x="${fmt(minutesX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(positionFontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}">${escapeText(position.minutesText)}</text>`
+  );
+
+  push(`</g>`);
+}
+
+function angleDisplayLabel(key: AstroWheelAngleMarker["key"]) {
+  if (key === "ASC") return "AC";
+  if (key === "DSC") return "DC";
+  return key;
+}
+
+function renderPointLabelGroup(
+  push: (line: string) => void,
+  point: AstroWheelPoint,
+  model: AstroWheelRenderModel
+) {
+  const layout = getPointLabelLayout(point, model.scale);
+
+  push(
+    `<g class="astro-wheel-point-label" data-point-layer="${escapeAttr(point.layerId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
+  );
+
+  push(`<title>${escapeText(pointLabelTitle(point))}</title>`);
+
+  renderPointGlyph(push, point, layout.glyphX, 0, layout.glyphScale);
+
+  if (point.retrograde) {
+    push(
+      `<text class="astro-wheel-point-retrograde" x="${fmt(layout.retrogradeX)}" y="${fmt(layout.retrogradeY)}" font-family="${textFontFamily()}" font-size="${fmt(layout.retrogradeFontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}" font-weight="700">R</text>`
+    );
+  }
+
+  renderPointInlineDegreeLabel(push, point, layout);
+  push(`</g>`);
+}
+
 function renderPointGlyph(
   push: (line: string) => void,
-  point: AstroWheelPoint
+  point: AstroWheelPoint,
+  x: number,
+  y: number,
+  glyphScale: number
 ) {
   const glyph = point.glyphKey ? getAstroGlyph(point.glyphKey) : resolvePointGlyph(point.name);
 
   if (glyph) {
-    const glyphScale = point.glyphFontSize * 0.66;
     const strokeWidth = clamp(0.12 / Math.max(glyphScale / 10, 0.6), 0.1, 0.18);
     push(
-      `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(point.color)}" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
+      `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(x)} ${fmt(y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(point.color)}" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
     );
     renderGlyphPrimitives(push, glyph.primitives, { color: point.color });
     push(`</g>`);
   } else {
     push(
-      `<text x="${fmt(point.glyphPosition.x)}" y="${fmt(point.glyphPosition.y)}" font-family="${symbolFontFamily()}" font-size="${fmt(point.glyphFontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}">${escapeText(point.glyph)}</text>`
+      `<text class="astro-wheel-glyph" data-point-glyph="${escapeAttr(point.name)}" x="${fmt(x)}" y="${fmt(y)}" font-family="${symbolFontFamily()}" font-size="${fmt(point.glyphFontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}">${escapeText(point.glyph)}</text>`
     );
   }
 }
 
-function renderPointDegreeLabel(
+function renderPointInlineDegreeLabel(
   push: (line: string) => void,
   point: AstroWheelPoint,
-  scale: number
+  layout: PointLabelLayout
 ) {
-  const position = point.zodiacPosition;
-  if (!position) {
+  if (!layout.position) {
     return;
   }
 
+  push(
+    `<text class="astro-wheel-point-degree" x="${fmt(layout.degreeX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(layout.fontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(point.color)}" fill-opacity="0.9">${escapeText(layout.position.degreesText)}</text>`
+  );
+  renderInlineSignGlyph(push, layout.position.sign, layout.signX, 0, layout.signScale, point.color);
+  push(
+    `<text class="astro-wheel-point-minutes" x="${fmt(layout.minutesX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(layout.fontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(point.color)}" fill-opacity="0.9">${escapeText(layout.position.minutesText)}</text>`
+  );
+}
+
+function renderInlineSignGlyph(
+  push: (line: string) => void,
+  sign: string,
+  x: number,
+  y: number,
+  glyphScale: number,
+  color: string
+) {
+  const glyph = ZODIAC_GLYPHS[sign as AstroWheelZodiacSign];
+
+  if (glyph) {
+    const strokeWidth = clamp(0.11 / Math.max(glyphScale / 10, 0.6), 0.08, 0.16);
+    push(
+      `<g class="astro-wheel-point-sign-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-zodiac-glyph="${escapeAttr(sign)}" transform="translate(${fmt(x)} ${fmt(y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(color)}" fill="none" stroke="${escapeAttr(color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
+    );
+    renderGlyphPrimitives(push, glyph.primitives, { color });
+    push(`</g>`);
+    return;
+  }
+
+  push(
+    `<text class="astro-wheel-point-sign-glyph" x="${fmt(x)}" y="${fmt(y)}" font-family="${symbolFontFamily()}" font-size="${fmt(glyphScale)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(color)}">${escapeText(sign.charAt(0).toUpperCase())}</text>`
+  );
+}
+
+interface PointLabelLayout {
+  glyphScale: number;
+  glyphX: number;
+  fontSize: number;
+  degreeX: number;
+  signX: number;
+  signScale: number;
+  minutesX: number;
+  retrogradeX: number;
+  retrogradeY: number;
+  retrogradeFontSize: number;
+  position: PointInlinePosition | null;
+}
+
+interface PointInlinePosition {
+  sign: string;
+  degreesText: string;
+  minutesText: string;
+}
+
+function getPointLabelLayout(point: AstroWheelPoint, scale: number): PointLabelLayout {
+  const glyphScale = point.glyphFontSize * 0.66;
+  const fontSize = clamp(point.glyphFontSize * 0.31, 5.5 * scale, 9 * scale);
+  const signScale = fontSize * 0.82;
+  const gap = clamp(3.2 * scale, 2.4, 5);
+  const position = point.zodiacPosition ? formatInlinePosition(point.zodiacPosition) : null;
+  const degreeWidth = position ? estimateTextWidth(position.degreesText, fontSize) : 0;
+  const minutesWidth = position ? estimateTextWidth(position.minutesText, fontSize) : 0;
+  const labelTextWidth = position
+    ? gap + degreeWidth + gap + signScale + gap + minutesWidth
+    : 0;
+  const labelWidth = glyphScale + labelTextWidth;
+  const startX = -labelWidth / 2;
+  const glyphX = startX + glyphScale / 2;
+  const degreeX = startX + glyphScale + gap;
+  const signX = degreeX + degreeWidth + gap + signScale / 2;
+
+  return {
+    glyphScale,
+    glyphX,
+    fontSize,
+    degreeX,
+    signX,
+    signScale,
+    minutesX: signX + signScale / 2 + gap,
+    retrogradeX: glyphX + glyphScale * 0.38,
+    retrogradeY: -glyphScale * 0.42,
+    retrogradeFontSize: clamp(fontSize * 0.74, 4.4 * scale, 7.2 * scale),
+    position,
+  };
+}
+
+function formatInlinePosition(position: ZodiacPosition): PointInlinePosition {
   let degrees = Math.floor(position.decimalDegrees);
   let minutes = Math.round((position.decimalDegrees - degrees) * 60);
 
@@ -879,16 +1163,25 @@ function renderPointDegreeLabel(
     minutes = 0;
   }
 
-  const label = minutes > 0
-    ? `${degrees}°${String(minutes).padStart(2, "0")}′`
-    : `${degrees}°`;
+  return {
+    sign: position.sign,
+    degreesText: `${degrees}°`,
+    minutesText: `${String(minutes).padStart(2, "0")}'`,
+  };
+}
 
-  const fontSize = clamp(point.glyphFontSize * 0.31, 5.5 * scale, 9 * scale);
-  const y = point.glyphPosition.y + point.glyphFontSize * 0.68;
+function pointLabelTitle(point: AstroWheelPoint) {
+  const position = point.zodiacPosition ? formatInlinePosition(point.zodiacPosition) : null;
+  if (!position) {
+    return `${point.name} ${fmt(point.longitude)}°`;
+  }
 
-  push(
-    `<text class="astro-wheel-point-degree" x="${fmt(point.glyphPosition.x)}" y="${fmt(y)}" font-family="${textFontFamily()}" font-size="${fmt(fontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}" fill-opacity="0.85">${escapeText(label)}</text>`
-  );
+  const retrograde = point.retrograde ? " R" : "";
+  return `${point.name} ${position.degreesText} ${position.sign} ${position.minutesText}${retrograde}`;
+}
+
+function estimateTextWidth(value: string, fontSize: number) {
+  return value.length * fontSize * 0.56;
 }
 
 const POINT_GLYPH_ALIASES: Record<string, AstroWheelPlanetGlyphKey> = {
@@ -924,6 +1217,17 @@ function resolvePointGlyph(name: string): AstroGlyphDefinition | null {
   const key = name.trim().toLocaleLowerCase().replace(/[_-]+/g, " ").replace(/\s+/g, " ");
   const resolved = POINT_GLYPH_ALIASES[key] ?? key;
   return PLANET_GLYPHS[resolved as AstroWheelPlanetGlyphKey] ?? ANGLE_GLYPHS[resolved as keyof typeof ANGLE_GLYPHS] ?? null;
+}
+
+function getExternalPointPadding(options: AstroWheelSvgOptions, scale: number) {
+  const externalLayers = options.pointLayers?.filter((layer) => layer.radius === "external") ?? [];
+  if (externalLayers.length === 0) {
+    return 0;
+  }
+
+  return Math.max(
+    ...externalLayers.map((layer) => (layer.radiusOffset ?? 18) + 36 * scale)
+  );
 }
 
 function buildZodiacSegments(params: {
@@ -1008,7 +1312,8 @@ function buildAngleMarkers(params: {
 }): AstroWheelAngleMarker[] {
   const { chart, center, angleOf, rings, scale } = params;
   const ring = rings.houses;
-  const labelFontSize = clamp((ring.r2 - ring.r1) * 0.3, 8 * scale, 18 * scale);
+  const labelFontSize = clamp((ring.r2 - ring.r1) * 0.32, 8 * scale, 18 * scale);
+
   const markers = [
     { key: "ASC" as const, position: chart.houses.ascendant },
     { key: "MC" as const, position: chart.houses.mc },
@@ -1018,11 +1323,20 @@ function buildAngleMarkers(params: {
 
   return markers.map((marker) => {
     const angle = angleOf(marker.position.longitude);
+
     return {
       key: marker.key,
       longitude: normalizeAngle(marker.position.longitude),
+      zodiacPosition: marker.position,
       line: lineFromPolar(center, ring.r1 + 4 * scale, ring.r2 - 4 * scale, angle),
-      labelPosition: polarWithNudge(center.x, center.y, (ring.r1 + ring.r2) / 2, angle, 0, 10 * scale),
+      labelPosition: polarWithNudge(
+        center.x,
+        center.y,
+        ring.r2 + 9 * scale,
+        angle,
+        0,
+        0
+      ),
       labelFontSize,
     };
   });
@@ -1035,29 +1349,67 @@ function buildPointLayer(params: {
   rings: Record<AstroWheelRing["id"], AstroWheelRing>;
   scale: number;
   palette: ResolvedAstroWheelPalette;
+  excludedBodies: ReadonlySet<string>;
 }): AstroWheelPointLayer {
-  const { layer, center, angleOf, rings, scale, palette } = params;
+  const { layer, center, angleOf, rings, scale, palette, excludedBodies } = params;
   const ring = rings.planets;
-  const radius = resolvePointLayerRadius(layer, ring);
+  const radius = resolvePointLayerRadius(layer, rings);
+  const isExternalLayer = radius > rings.houses.r2 + scale;
+
   const thickness = ring.r2 - ring.r1;
   const glyphFontSize = clamp(thickness * 0.68, 14 * scale, 30 * scale) * (layer.glyphScale ?? 1);
   const tickLength = Math.min(14 * scale, thickness * 0.34);
-  const minSepDeg = Math.max(
-    2,
-    Math.min(8, ((glyphFontSize * 0.9) / Math.max(radius, 1)) * (180 / Math.PI))
+
+  const glyphMinSepDeg = ((glyphFontSize * 0.9) / Math.max(radius, 1)) * (180 / Math.PI);
+  const collisionThresholdDegrees = clamp(
+    layer.collisionThresholdDegrees ?? Math.max(2, Math.min(8, glyphMinSepDeg)),
+    0,
+    30
   );
-  const neighborShiftDeg = minSepDeg * 0.65;
-  const seeds = getPointSeeds(layer);
-  const clusters = clusterPointSeeds(seeds, minSepDeg);
+
+  const radialStep = glyphFontSize * (isExternalLayer ? 0.78 : 0.86);
+  const seeds = getPointSeeds(layer, excludedBodies);
+  const clusters = clusterPointSeeds(seeds, collisionThresholdDegrees);
   const color = layer.color ?? palette.planetGlyph;
   const tickColor = layer.tickColor ?? color;
 
   const points = clusters.flatMap((cluster) =>
     cluster.map((seed, index) => {
-      const offset = (index - (cluster.length - 1) / 2) * neighborShiftDeg;
-      const displayLongitude = normalizeAngle(seed.longitude + offset);
+      const radialOffset = cluster.length > 1
+        ? isExternalLayer
+          ? index * radialStep
+          : (index - (cluster.length - 1) / 2) * radialStep
+        : 0;
+
       const tickAngle = angleOf(seed.longitude);
-      const glyphAngle = angleOf(displayLongitude);
+
+      const rawGlyphRadius = radius + radialOffset;
+      const glyphRadius = isExternalLayer
+        ? rawGlyphRadius
+        : clamp(
+            rawGlyphRadius,
+            rings.aspects.r2 + glyphFontSize * 0.45,
+            rings.zodiac.r1 - glyphFontSize * 0.2
+          );
+
+      const glyphPosition = polarToXY(center.x, center.y, glyphRadius, tickAngle);
+
+      const tickLine = isExternalLayer
+        ? lineFromPolar(
+            center,
+            rings.houses.r2 + 2 * scale,
+            Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44),
+            tickAngle
+          )
+        : lineFromPolar(center, ring.r2 - tickLength, ring.r2, tickAngle);
+
+      const leaderStartRadius = isExternalLayer
+        ? Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44)
+        : radius;
+
+      const leaderStart = polarToXY(center.x, center.y, leaderStartRadius, tickAngle);
+      const labelDisplaced = cluster.length > 1 && Math.abs(glyphRadius - radius) > 0.01;
+
       return {
         layerId: layer.id,
         key: seed.key,
@@ -1066,11 +1418,20 @@ function buildPointLayer(params: {
         glyph: seed.glyph,
         glyphKey: seed.glyphKey,
         longitude: normalizeAngle(seed.longitude),
-        displayLongitude,
+        displayLongitude: normalizeAngle(seed.longitude),
         zodiacPosition: seed.zodiacPosition,
-        tickLine: lineFromPolar(center, ring.r2 - tickLength, ring.r2, tickAngle),
-        glyphPosition: polarToXY(center.x, center.y, radius, glyphAngle),
+        tickLine,
+        leaderLine: labelDisplaced
+          ? {
+              x1: leaderStart.x,
+              y1: leaderStart.y,
+              x2: glyphPosition.x,
+              y2: glyphPosition.y,
+            }
+          : undefined,
+        glyphPosition,
         glyphFontSize: seed.kind === "vertex" ? glyphFontSize * 0.62 : glyphFontSize,
+        retrograde: seed.retrograde,
         color,
         tickColor,
       };
@@ -1095,8 +1456,9 @@ function buildAspectLayer(params: {
   angleOf: (longitude: number) => number;
   rings: Record<AstroWheelRing["id"], AstroWheelRing>;
   palette: ResolvedAstroWheelPalette;
+  excludedBodies: ReadonlySet<string>;
 }): AstroWheelAspectLayer {
-  const { layer, chart, pointByKey, center, angleOf, rings, palette } = params;
+  const { layer, chart, pointByKey, center, angleOf, rings, palette, excludedBodies } = params;
   const sourceEdges = getSourceAspectEdges(chart, {
     enabled: true,
     edges: layer.edges,
@@ -1108,6 +1470,10 @@ function buildAspectLayer(params: {
   const layerPointPrefixB = layer.pointLayerIdB ? pointKeyPrefix(layer.pointLayerIdB) : layerPointPrefix;
 
   const aspectLines = sourceEdges.flatMap((edge) => {
+    if (isExcludedBody(edge.planetA, excludedBodies) || isExcludedBody(edge.planetB, excludedBodies)) {
+      return [];
+    }
+
     const planetAKey = layerPointPrefixA + normalizePointKey(edge.planetA);
     const planetBKey = layerPointPrefixB + normalizePointKey(edge.planetB);
     const planetA = pointByKey[planetAKey];
@@ -1153,7 +1519,8 @@ function buildAspectLayer(params: {
 }
 
 function getPointSeeds(
-  layer: AstroWheelPointLayerInput
+  layer: AstroWheelPointLayerInput,
+  excludedBodies: ReadonlySet<string>
 ): PointSeed[] {
   const seeds: PointSeed[] = [];
   const chart = layer.chart;
@@ -1190,7 +1557,9 @@ function getPointSeeds(
     });
   }
 
-  return seeds.sort((a, b) => normalizeAngle(a.longitude) - normalizeAngle(b.longitude));
+  return seeds
+    .filter((seed) => !isExcludedBody(seed.name, excludedBodies))
+    .sort((a, b) => normalizeAngle(a.longitude) - normalizeAngle(b.longitude));
 }
 
 interface PointSeed {
@@ -1200,6 +1569,7 @@ interface PointSeed {
   glyph: string;
   glyphKey?: string;
   longitude: number;
+  retrograde?: boolean;
   zodiacPosition?: ZodiacPosition;
 }
 
@@ -1211,6 +1581,7 @@ function planetSeed(key: string, planet: HydratedPlanet, layerId: string): Point
     glyph: pointGlyph(planet.name),
     glyphKey: pointGlyphKey(planet.name),
     longitude: planet.longitude,
+    retrograde: (planet.longitudeSpeed ?? 0) < 0,
     zodiacPosition: planet.zodiacPosition,
   };
 }
@@ -1235,6 +1606,7 @@ function pointSeed(point: AstroWheelPointSource, layerId: string): PointSeed {
     glyph: point.glyph ?? pointGlyph(point.name),
     glyphKey: point.glyph ? undefined : pointGlyphKey(point.name),
     longitude: point.longitude,
+    retrograde: point.retrograde,
     zodiacPosition: point.zodiacPosition,
   };
 }
@@ -1391,15 +1763,22 @@ function buildRingMap(
   return result;
 }
 
-function resolvePalette(palette: AstroWheelPalette = "default"): ResolvedAstroWheelPalette {
+function resolvePalette(
+  palette: AstroWheelPalette = "default",
+  background: string | "transparent" = "transparent"
+): ResolvedAstroWheelPalette {
   const base = palette === "monochrome" ? MONOCHROME_PALETTE : DEFAULT_PALETTE;
   if (palette === "default" || palette === "monochrome") {
-    return clonePalette(base);
+    return {
+      ...clonePalette(base),
+      glyphHalo: defaultGlyphHalo(background),
+    };
   }
 
   return {
     ...base,
     ...palette,
+    glyphHalo: palette.glyphHalo ?? defaultGlyphHalo(background),
     signColors: {
       ...base.signColors,
       ...(palette.signColors ?? {}),
@@ -1413,6 +1792,10 @@ function resolvePalette(palette: AstroWheelPalette = "default"): ResolvedAstroWh
       ...(palette.aspects ?? {}),
     },
   };
+}
+
+function defaultGlyphHalo(background: string | "transparent") {
+  return background === "transparent" ? "#0a1628" : background;
 }
 
 function clonePalette(palette: ResolvedAstroWheelPalette): ResolvedAstroWheelPalette {
@@ -1456,7 +1839,7 @@ function resolveHouseOptions(options: boolean | AstroWheelHouseOptions | undefin
   };
 }
 
-function resolvePointOptions(options: boolean | AstroWheelPointOptions | undefined): Required<AstroWheelPointOptions> {
+function resolvePointOptions(options: boolean | AstroWheelPointOptions | undefined): ResolvedPointOptions {
   if (options === false) {
     return { enabled: false, nodes: false, vertex: false };
   }
@@ -1469,6 +1852,7 @@ function resolvePointOptions(options: boolean | AstroWheelPointOptions | undefin
     enabled: options.enabled ?? true,
     nodes: options.nodes ?? true,
     vertex: options.vertex ?? true,
+    collisionThresholdDegrees: options.collisionThresholdDegrees,
   };
 }
 
@@ -1488,7 +1872,16 @@ function resolveAspectOptions(options: boolean | AstroWheelAspectOptions | undef
   };
 }
 
-function resolvePointLayerRadius(layer: AstroWheelPointLayerInput, ring: AstroWheelRing) {
+function resolvePointLayerRadius(
+  layer: AstroWheelPointLayerInput,
+  rings: Record<AstroWheelRing["id"], AstroWheelRing>
+) {
+  const ring = rings.planets;
+
+  if (layer.radius === "external") {
+    return rings.houses.r2 + (layer.radiusOffset ?? 18);
+  }
+
   const base = (ring.r1 + ring.r2) / 2;
   const radius = layer.radius === "inner"
     ? ring.r1
@@ -1517,6 +1910,14 @@ function pointGlyph(name: string) {
 function pointGlyphKey(name: string) {
   const key = normalizePointKey(name);
   return POINT_GLYPH_ALIASES[key] ?? key;
+}
+
+function resolveExcludedBodies(excludeBodies: readonly string[] | undefined) {
+  return new Set((excludeBodies ?? []).map((body) => normalizePointKey(body)));
+}
+
+function isExcludedBody(name: string, excludedBodies: ReadonlySet<string>) {
+  return excludedBodies.has(normalizePointKey(name));
 }
 
 function normalizePointKey(value: string) {
