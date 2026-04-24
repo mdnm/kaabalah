@@ -7,6 +7,8 @@ import type {
   HydratedPlanet,
   ZodiacPosition,
 } from "../astrology";
+
+export type { AspectSpec };
 import {
   ANGLE_GLYPHS,
   PLANET_GLYPHS,
@@ -361,35 +363,35 @@ export const ASTRO_WHEEL_POINT_GLYPHS: Record<string, string> = {
 };
 
 const DEFAULT_PALETTE: ResolvedAstroWheelPalette = {
-  ringStroke: "#2f2a24",
-  label: "#1f2933",
-  subtle: "#aaa29a",
-  zodiacStroke: "#2f2a24",
-  zodiacGlyph: "#1f2933",
-  houseLine: "#9a9189",
-  houseLabel: "#1f2933",
-  angleLine: "#111827",
-  angleLabel: "#111827",
+  ringStroke: "#1f2933",
+  label: "#111827",
+  subtle: "#9a9189",
+  zodiacStroke: "#1f2933",
+  zodiacGlyph: "#111827",
+  houseLine: "#8f877f",
+  houseLabel: "#111827",
+  angleLine: "#0f172a",
+  angleLabel: "#0f172a",
   planetGlyph: "#111827",
   planetTick: "#111827",
   aspectGuide: "#d7d0c6",
   elementColors: {
-    fire: "#d65a31",
-    earth: "#b8a64d",
-    air: "#5aa469",
-    water: "#3b77c4",
+    fire: "#e27657",
+    earth: "#c9bd72",
+    air: "#78b985",
+    water: "#6594d0",
   },
   signColors: {},
   aspects: {
-    conjunction: "#777777",
+    conjunction: "#6b7280",
     duodecile: "#9a8f7a",
-    octile: "#c47d31",
-    sextile: "#2f80c0",
-    square: "#d64b4b",
-    trine: "#2f9e55",
-    trioctile: "#c47d31",
-    quincunx: "#8b5cf6",
-    opposition: "#d64b4b",
+    octile: "#f97316",
+    sextile: "#2563eb",
+    square: "#dc2626",
+    trine: "#16a34a",
+    trioctile: "#f97316",
+    quincunx: "#7c3aed",
+    opposition: "#dc2626",
   },
 };
 
@@ -647,19 +649,34 @@ function renderAspects(
   }
 
   const guideRadius = model.rings.aspects.r2 * 0.96;
+  const innerGuideRadius = guideRadius * 0.52;
+
   push(`<g id="astro-wheel-aspects" aria-label="aspects">`);
+
+  push(
+    `<circle cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(guideRadius)}" fill="none" stroke="${escapeAttr(model.palette.aspectGuide)}" stroke-opacity="0.9" stroke-width="${fmt(1.25 * model.scale)}"/>`
+  );
+
+  push(
+    `<circle cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(innerGuideRadius)}" fill="none" stroke="${escapeAttr(model.palette.aspectGuide)}" stroke-opacity="0.28" stroke-width="${fmt(model.scale)}"/>`
+  );
+
   for (const layer of model.aspectLayers) {
     push(`<g class="astro-wheel-aspect-layer" data-aspect-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
+
     for (const aspect of layer.aspectLines) {
       push(
-        `<line data-aspect-layer="${escapeAttr(aspect.layerId)}" data-aspect="${escapeAttr(aspect.aspect)}" data-planet-a="${escapeAttr(aspect.planetA)}" data-planet-b="${escapeAttr(aspect.planetB)}" x1="${fmt(aspect.line.x1)}" y1="${fmt(aspect.line.y1)}" x2="${fmt(aspect.line.x2)}" y2="${fmt(aspect.line.y2)}" stroke="${escapeAttr(aspect.color)}" stroke-opacity="${fmt(aspect.opacity)}" stroke-width="${fmt(aspect.strokeWidth)}"/>`
+        `<line data-aspect-layer="${escapeAttr(aspect.layerId)}" data-aspect="${escapeAttr(aspect.aspect)}" data-planet-a="${escapeAttr(aspect.planetA)}" data-planet-b="${escapeAttr(aspect.planetB)}" x1="${fmt(aspect.line.x1)}" y1="${fmt(aspect.line.y1)}" x2="${fmt(aspect.line.x2)}" y2="${fmt(aspect.line.y2)}" stroke="${escapeAttr(aspect.color)}" stroke-opacity="${fmt(aspect.opacity)}" stroke-width="${fmt(aspect.strokeWidth * model.scale)}" stroke-linecap="round"/>`
       );
     }
+
     push(`</g>`);
   }
+
   push(
-    `<circle cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(guideRadius)}" fill="none" stroke="${escapeAttr(model.palette.aspectGuide)}" stroke-width="${fmt(model.scale)}"/>`
+    `<circle cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(4 * model.scale)}" fill="${escapeAttr(model.palette.aspectGuide)}" fill-opacity="0.75" stroke="none"/>`
   );
+
   push(`</g>`);
 }
 
@@ -696,17 +713,36 @@ function renderZodiac(
   if (options.ticks) {
     for (let index = 0; index < 360 / tickEvery; index++) {
       const longitude = index * tickEvery;
+      const signDegree = longitude % 30;
       const angle = angleOf(longitude);
-      const isMajor = index % 6 === 0;
-      const inner = polarToXY(
-        center.x,
-        center.y,
-        rings.zodiac.r2 - (isMajor ? thickness * 0.3 : thickness * 0.15),
-        angle
-      );
+
+      const isSignBoundary = signDegree === 0;
+      const isTen = signDegree % 10 === 0;
+      const isFive = signDegree % 5 === 0;
+
+      const length = isSignBoundary
+        ? thickness * 0.58
+        : isTen
+          ? thickness * 0.42
+          : isFive
+            ? thickness * 0.29
+            : thickness * 0.18;
+
+      const strokeWidth = isSignBoundary
+        ? 2.2 * scale
+        : isTen
+          ? 1.55 * scale
+          : isFive
+            ? 1.1 * scale
+            : 0.75 * scale;
+
+      const opacity = isSignBoundary ? 0.95 : isFive ? 0.82 : 0.62;
+
+      const inner = polarToXY(center.x, center.y, rings.zodiac.r2 - length, angle);
       const outer = polarToXY(center.x, center.y, rings.zodiac.r2, angle);
+
       push(
-        `<line data-zodiac-tick="${longitude}" x1="${fmt(inner.x)}" y1="${fmt(inner.y)}" x2="${fmt(outer.x)}" y2="${fmt(outer.y)}" stroke="${escapeAttr(palette.zodiacStroke)}" stroke-width="${fmt(isMajor ? 1.2 * scale : scale)}"/>`
+        `<line data-zodiac-tick="${longitude}" x1="${fmt(inner.x)}" y1="${fmt(inner.y)}" x2="${fmt(outer.x)}" y2="${fmt(outer.y)}" stroke="${escapeAttr(palette.zodiacStroke)}" stroke-opacity="${fmt(opacity)}" stroke-width="${fmt(strokeWidth)}"/>`
       );
     }
   }
@@ -720,11 +756,11 @@ function renderZodiacGlyph(
   palette: ResolvedAstroWheelPalette
 ) {
   const glyph = ZODIAC_GLYPHS[segment.sign];
-  const scale = segment.labelFontSize * 0.56;
-  const strokeWidth = clamp(0.12 / Math.max(scale / 10, 0.6), 0.1, 0.18);
+  const glyphScale = segment.labelFontSize * 0.72;
+  const strokeWidth = clamp(0.11 / Math.max(glyphScale / 10, 0.6), 0.08, 0.16);
 
   push(
-    `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-zodiac-glyph="${escapeAttr(segment.sign)}" data-zodiac-symbol="${escapeAttr(segment.glyph)}" transform="translate(${fmt(segment.labelPosition.x)} ${fmt(segment.labelPosition.y)}) scale(${fmt(scale)})" color="${escapeAttr(palette.zodiacGlyph)}" fill="none" stroke="${escapeAttr(palette.zodiacGlyph)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
+    `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-zodiac-glyph="${escapeAttr(segment.sign)}" data-zodiac-symbol="${escapeAttr(segment.glyph)}" transform="translate(${fmt(segment.labelPosition.x)} ${fmt(segment.labelPosition.y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(palette.zodiacGlyph)}" fill="none" stroke="${escapeAttr(palette.zodiacGlyph)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
   );
   push(`<title>${escapeText(`${segment.sign} ${segment.glyph}`)}</title>`);
   renderGlyphPrimitives(push, glyph.primitives, { color: palette.zodiacGlyph });
@@ -743,8 +779,10 @@ function renderHouses(
   push(`<g id="astro-wheel-houses" aria-label="houses">`);
   if (options.cuspLines) {
     for (const cusp of model.houseCusps) {
+      const isAngleHouse = cusp.house === 1 || cusp.house === 4 || cusp.house === 7 || cusp.house === 10;
+
       push(
-        `<line data-house-cusp="${cusp.house}" x1="${fmt(cusp.line.x1)}" y1="${fmt(cusp.line.y1)}" x2="${fmt(cusp.line.x2)}" y2="${fmt(cusp.line.y2)}" stroke="${escapeAttr(model.palette.houseLine)}" stroke-width="${fmt(1.25 * model.scale)}"/>`
+        `<line data-house-cusp="${cusp.house}" x1="${fmt(cusp.line.x1)}" y1="${fmt(cusp.line.y1)}" x2="${fmt(cusp.line.x2)}" y2="${fmt(cusp.line.y2)}" stroke="${escapeAttr(model.palette.houseLine)}" stroke-opacity="${fmt(isAngleHouse ? 0.72 : 0.42)}" stroke-width="${fmt(isAngleHouse ? 1.8 * model.scale : 0.95 * model.scale)}"/>`
       );
     }
   }
@@ -793,6 +831,7 @@ function renderPlanets(
         `<line x1="${fmt(point.tickLine.x1)}" y1="${fmt(point.tickLine.y1)}" x2="${fmt(point.tickLine.x2)}" y2="${fmt(point.tickLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.85" stroke-width="${fmt(model.scale)}"/>`
       );
       renderPointGlyph(push, point);
+      renderPointDegreeLabel(push, point, model.scale);
       push(`</g>`);
     }
     push(`</g>`);
@@ -808,7 +847,7 @@ function renderPointGlyph(
   const glyph = point.glyphKey ? getAstroGlyph(point.glyphKey) : resolvePointGlyph(point.name);
 
   if (glyph) {
-    const glyphScale = point.glyphFontSize * 0.56;
+    const glyphScale = point.glyphFontSize * 0.66;
     const strokeWidth = clamp(0.12 / Math.max(glyphScale / 10, 0.6), 0.1, 0.18);
     push(
       `<g class="astro-wheel-glyph" data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" data-point-glyph="${escapeAttr(point.name)}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)}) scale(${fmt(glyphScale)})" color="${escapeAttr(point.color)}" fill="none" stroke="${escapeAttr(point.color)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round" stroke-linejoin="round">`
@@ -820,6 +859,36 @@ function renderPointGlyph(
       `<text x="${fmt(point.glyphPosition.x)}" y="${fmt(point.glyphPosition.y)}" font-family="${symbolFontFamily()}" font-size="${fmt(point.glyphFontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}">${escapeText(point.glyph)}</text>`
     );
   }
+}
+
+function renderPointDegreeLabel(
+  push: (line: string) => void,
+  point: AstroWheelPoint,
+  scale: number
+) {
+  const position = point.zodiacPosition;
+  if (!position) {
+    return;
+  }
+
+  let degrees = Math.floor(position.decimalDegrees);
+  let minutes = Math.round((position.decimalDegrees - degrees) * 60);
+
+  if (minutes === 60) {
+    degrees += 1;
+    minutes = 0;
+  }
+
+  const label = minutes > 0
+    ? `${degrees}°${String(minutes).padStart(2, "0")}′`
+    : `${degrees}°`;
+
+  const fontSize = clamp(point.glyphFontSize * 0.31, 5.5 * scale, 9 * scale);
+  const y = point.glyphPosition.y + point.glyphFontSize * 0.68;
+
+  push(
+    `<text class="astro-wheel-point-degree" x="${fmt(point.glyphPosition.x)}" y="${fmt(y)}" font-family="${textFontFamily()}" font-size="${fmt(fontSize)}" text-anchor="middle" dominant-baseline="middle" fill="${escapeAttr(point.color)}" fill-opacity="0.85">${escapeText(label)}</text>`
+  );
 }
 
 const POINT_GLYPH_ALIASES: Record<string, AstroWheelPlanetGlyphKey> = {
@@ -872,7 +941,7 @@ function buildZodiacSegments(params: {
     "dec"
   );
   const thickness = rings.zodiac.r2 - rings.zodiac.r1;
-  const labelFontSize = clamp(thickness * 0.45, 9 * scale, 22 * scale);
+  const labelFontSize = clamp(thickness * 0.58, 12 * scale, 28 * scale);
 
   return ASTRO_WHEEL_ZODIAC_SIGNS.map((entry, index) => {
     const angleStart = boundaries[index];
@@ -908,23 +977,23 @@ function buildHouseCusps(params: {
 }): AstroWheelHouseCusp[] {
   const { houses, center, angleOf, rings, scale } = params;
   const ring = rings.houses;
-  const mid = (ring.r1 + ring.r2) / 2;
-  const labelFontSize = clamp((ring.r2 - ring.r1) * 0.35, 9 * scale, 20 * scale);
+  const spokeInnerRadius = Math.max(16 * scale, rings.aspects.r2 * 0.14);
+  const spokeOuterRadius = ring.r2 + 4 * scale;
+  const labelRadius = ring.r2 + 12 * scale;
+  const labelFontSize = clamp((ring.r2 - ring.r1) * 0.48, 10 * scale, 19 * scale);
 
   return houses.map((house, index) => {
     const angle = angleOf(house.longitude);
-    const line = {
-      ...lineFromPolar(center, ring.r1 + 2 * scale, ring.r2 - 2 * scale, angle),
-    };
     const next = houses[(index + 1) % houses.length];
     const span = clamp360(next.longitude - house.longitude);
     const labelLongitude = clamp360(house.longitude + span / 2);
+
     return {
       house: index + 1,
       longitude: normalizeAngle(house.longitude),
       sign: house.sign,
-      line,
-      labelPosition: polarToXY(center.x, center.y, mid, angleOf(labelLongitude)),
+      line: lineFromPolar(center, spokeInnerRadius, spokeOuterRadius, angle),
+      labelPosition: polarToXY(center.x, center.y, labelRadius, angleOf(labelLongitude)),
       labelFontSize,
     };
   });
@@ -971,8 +1040,8 @@ function buildPointLayer(params: {
   const ring = rings.planets;
   const radius = resolvePointLayerRadius(layer, ring);
   const thickness = ring.r2 - ring.r1;
-  const glyphFontSize = clamp(thickness * 0.6, 12 * scale, 26 * scale) * (layer.glyphScale ?? 1);
-  const tickLength = Math.min(10 * scale, thickness * 0.25);
+  const glyphFontSize = clamp(thickness * 0.68, 14 * scale, 30 * scale) * (layer.glyphScale ?? 1);
+  const tickLength = Math.min(14 * scale, thickness * 0.34);
   const minSepDeg = Math.max(
     2,
     Math.min(8, ((glyphFontSize * 0.9) / Math.max(radius, 1)) * (180 / Math.PI))
@@ -1285,10 +1354,10 @@ function findAspectSpec(
 
 function buildRings(outerRadius: number): Record<AstroWheelRing["id"], AstroWheelRing> {
   const ringMap = buildRingMap(outerRadius, [
-    { id: "houses", fr: 10 },
-    { id: "zodiac", fr: 12 },
-    { id: "planets", fr: 20 },
-    { id: "aspects", fr: 58 },
+    { id: "houses", fr: 8 },
+    { id: "zodiac", fr: 14 },
+    { id: "planets", fr: 22 },
+    { id: "aspects", fr: 56 },
   ]);
 
   return {
