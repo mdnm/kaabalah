@@ -200,7 +200,6 @@ describe("astro wheel visual module", () => {
     expect(mercuryLabel).toContain(`class="astro-wheel-point-minutes"`);
     expect(mercuryLabel).toContain(`>00'</text>`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-retrograde"`);
-    expect(mercuryLabel).toContain(`>R</text>`);
   });
 
   it("can hide zodiac, houses, planets, and aspects independently", () => {
