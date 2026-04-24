@@ -123,6 +123,7 @@ interface AstroWheelSvgOptions {
   points?: boolean | AstroWheelPointOptions;    // birth planets/nodes/vertex
   pointLayers?: readonly AstroWheelPointLayerInput[];
   aspectLayers?: readonly AstroWheelAspectLayerInput[];
+  excludeBodies?: readonly string[];            // render-only body filter
   padding?: number;
   title?: string;
 }
@@ -141,9 +142,22 @@ generateAstroWheelSvg(chart, { aspects: false });  // strip aspect lines
 generateAstroWheelSvg(chart, {
   zodiac: { glyphs: false },   // keep colored sign segments and ticks
   houses: { labels: false },   // keep cusp lines, hide house numbers
-  points: { nodes: false },    // keep planets, hide nodes
+  points: {
+    nodes: false,              // keep planets, hide nodes
+    collisionThresholdDegrees: 6,
+  },
 });
 ```
+
+Use `excludeBodies` when an app needs the full `BirthChart` for other panels but wants the wheel itself to omit specific bodies and their aspect lines:
+
+```typescript
+generateAstroWheelSvg(chart, {
+  excludeBodies: ["True Node", "Lilith True"],
+});
+```
+
+Planet labels are rendered in the final SVG glyph layer with halos and inline position text (`planet glyph`, degree, sign glyph, minutes). Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
 
 #### Aspect orbs
 
@@ -327,7 +341,7 @@ const svg = generateGlyphSvg(PLANET_GLYPH_PRIMITIVES.sun, {
 
 Vector primitives for all 12 zodiac signs. These are also used internally by the astrology wheel renderer for zodiac segment labels.
 
-<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+<div class="glyph-gallery" style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
   <figure style="text-align: center; margin: 0;">
     <img src="/glyph-zodiac-aries.svg" alt="Aries" width="36" />
     <figcaption style="font-size: 0.7em;">Aries</figcaption>
@@ -389,7 +403,7 @@ ZODIAC_GLYPH_PRIMITIVES.Pisces;
 
 Vector primitives for planets and special points.
 
-<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+<div class="glyph-gallery" style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
   <figure style="text-align: center; margin: 0;">
     <img src="/glyph-planet-sun.svg" alt="Sun" width="36" />
     <figcaption style="font-size: 0.7em;">Sun</figcaption>
@@ -465,7 +479,7 @@ PLANET_GLYPH_PRIMITIVES["pars fortunae"];
 
 Vector primitives for aspect symbols.
 
-<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+<div class="glyph-gallery" style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
   <figure style="text-align: center; margin: 0;">
     <img src="/glyph-aspect-conjunction.svg" alt="Conjunction" width="36" />
     <figcaption style="font-size: 0.7em;">Conjunction</figcaption>
@@ -502,22 +516,6 @@ Vector primitives for aspect symbols.
     <img src="/glyph-aspect-semisextile.svg" alt="Semisextile" width="36" />
     <figcaption style="font-size: 0.7em;">Semisextile</figcaption>
   </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/glyph-aspect-quintile.svg" alt="Quintile" width="36" />
-    <figcaption style="font-size: 0.7em;">Quintile</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/glyph-aspect-biquintile.svg" alt="Biquintile" width="36" />
-    <figcaption style="font-size: 0.7em;">Biquintile</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/glyph-aspect-parallel.svg" alt="Parallel" width="36" />
-    <figcaption style="font-size: 0.7em;">Parallel</figcaption>
-  </figure>
-  <figure style="text-align: center; margin: 0;">
-    <img src="/glyph-aspect-contraparallel.svg" alt="Contraparallel" width="36" />
-    <figcaption style="font-size: 0.7em;">Contraparallel</figcaption>
-  </figure>
 </div>
 
 ```typescript
@@ -525,14 +523,14 @@ import { ASPECT_GLYPH_PRIMITIVES } from 'kaabalah/visual';
 
 ASPECT_GLYPH_PRIMITIVES.conjunction;    // AstroGlyphPrimitive[]
 ASPECT_GLYPH_PRIMITIVES.trine;
-ASPECT_GLYPH_PRIMITIVES.biquintile;
+ASPECT_GLYPH_PRIMITIVES.inconjunct;
 ```
 
 ### `ANGLE_GLYPHS`
 
 Reusable chart angle glyphs for overlay controls, legends, and custom chart layers.
 
-<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+<div class="glyph-gallery" style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
   <figure style="text-align: center; margin: 0;">
     <img src="/glyph-angle-asc.svg" alt="ASC" width="36" />
     <figcaption style="font-size: 0.7em;">ASC</figcaption>

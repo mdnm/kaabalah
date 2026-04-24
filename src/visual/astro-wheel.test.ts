@@ -99,6 +99,110 @@ describe("astro wheel visual module", () => {
     expect(svg).toContain(`fill="#123456"`);
   });
 
+  it("filters excluded bodies from points and aspect lines without mutating chart data", () => {
+    const chart = sampleBirthChart();
+    chart.planets["true node"] = planet(Planet.TRUE_NODE, "True Node", 12, 1);
+    chart.aspects = [
+      ...chart.aspects,
+      {
+        planetA: "sun",
+        planetB: "true node",
+        longitudeA: chart.planets.sun.longitude,
+        longitudeB: chart.planets["true node"].longitude,
+        aspect: "conjunction",
+        aspectAngle: 0,
+        delta: 2,
+        orb: 2,
+      },
+    ];
+
+    const svg = generateAstroWheelSvg(chart, {
+      excludeBodies: ["True Node"],
+    });
+
+    expect(svg).not.toContain(`data-point-name="True Node"`);
+    expect(svg).not.toContain(`data-point-glyph="True Node"`);
+    expect(svg).not.toContain(`data-planet-b="True Node"`);
+    expect(chart.planets["true node"].name).toBe("True Node");
+  });
+
+  it("renders point and angle glyphs in a final overlay after ticks and house lines", () => {
+    const chart = sampleBirthChart();
+    const svg = generateAstroWheelSvg(chart);
+
+    const aspectIndex = svg.indexOf(`id="astro-wheel-aspects"`);
+    const zodiacIndex = svg.indexOf(`id="astro-wheel-zodiac"`);
+    const houseIndex = svg.indexOf(`id="astro-wheel-houses"`);
+    const planetLineIndex = svg.indexOf(`id="astro-wheel-planets"`);
+    const glyphLayerIndex = svg.indexOf(`id="astro-wheel-glyph-layer"`);
+
+    expect(glyphLayerIndex).toBeGreaterThan(aspectIndex);
+    expect(glyphLayerIndex).toBeGreaterThan(zodiacIndex);
+    expect(glyphLayerIndex).toBeGreaterThan(houseIndex);
+    expect(glyphLayerIndex).toBeGreaterThan(planetLineIndex);
+    expect(svg.indexOf(`data-zodiac-tick="`)).toBeLessThan(glyphLayerIndex);
+    expect(svg.indexOf(`data-house-cusp="`)).toBeLessThan(glyphLayerIndex);
+    expect(svg).toContain(`id="astro-wheel-angle-glyphs"`);
+  });
+
+  it("renders glyphs with a final SVG outline filter instead of circular halos", () => {
+    const chart = sampleBirthChart();
+    const svg = generateAstroWheelSvg(chart, { background: "#fff" });
+
+    expect(svg).toContain(`id="astro-wheel-glyph-outline"`);
+    expect(svg).toContain(`filter="url(#astro-wheel-glyph-outline)"`);
+    expect(svg).toContain(`flood-color="#fff"`);
+    expect(svg).not.toContain(`class="astro-wheel-glyph-halo"`);
+  });
+
+  it("spreads clustered planet labels radially and draws leader lines from true longitude", () => {
+    const chart = sampleBirthChart();
+    const svg = generateAstroWheelSvg(chart);
+    const model = getAstroWheelRenderModel(chart);
+    const mercury = model.pointByKey.mercury;
+    const venus = model.pointByKey.venus;
+
+    expect(svg).toContain(`class="astro-wheel-point-leader"`);
+    expect(mercury.leaderLine).toBeDefined();
+    expect(venus.leaderLine).toBeDefined();
+    expect(mercury.displayLongitude).toBe(mercury.longitude);
+    expect(venus.displayLongitude).toBe(venus.longitude);
+    expect(mercury.glyphPosition).not.toEqual(venus.glyphPosition);
+  });
+
+  it("renders angle labels with inline degree, sign glyph, and minutes", () => {
+    const chart = sampleBirthChart();
+    const svg = generateAstroWheelSvg(chart);
+
+    const angleLabelStart = svg.indexOf(`class="astro-wheel-angle-glyph-label"`);
+    const angleLabel = svg.slice(angleLabelStart, angleLabelStart + 4000);
+
+    expect(angleLabel).toContain(`class="astro-wheel-angle-label"`);
+    expect(angleLabel).toContain(`class="astro-wheel-angle-degree"`);
+    expect(angleLabel).toContain(`class="astro-wheel-angle-minutes"`);
+    expect(angleLabel).toContain(`class="astro-wheel-point-sign-glyph"`);
+  });
+
+  it("renders inline degree, sign glyph, minutes, and retrograde indicator in point labels", () => {
+    const chart = sampleBirthChart();
+    chart.planets.mercury = {
+      ...chart.planets.mercury,
+      longitudeSpeed: -0.12,
+    };
+
+    const svg = generateAstroWheelSvg(chart);
+    const mercuryLabelStart = svg.indexOf(`data-point-name="Mercury"`, svg.indexOf(`class="astro-wheel-point-label"`));
+    const mercuryLabel = svg.slice(mercuryLabelStart, mercuryLabelStart + 6000);
+
+    expect(mercuryLabel).toContain(`class="astro-wheel-point-degree"`);
+    expect(mercuryLabel).toContain(`>12°</text>`);
+    expect(mercuryLabel).toContain(`data-zodiac-glyph="Taurus"`);
+    expect(mercuryLabel).toContain(`class="astro-wheel-point-minutes"`);
+    expect(mercuryLabel).toContain(`>00'</text>`);
+    expect(mercuryLabel).toContain(`class="astro-wheel-point-retrograde"`);
+    expect(mercuryLabel).toContain(`>R</text>`);
+  });
+
   it("can hide zodiac, houses, planets, and aspects independently", () => {
     const chart = sampleBirthChart();
 

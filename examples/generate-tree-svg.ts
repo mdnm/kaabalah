@@ -2,6 +2,10 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { generateTreeSvg } from "../src/visual/index.js";
 
+const scriptDir = import.meta.dirname ?? path.dirname(new URL(import.meta.url).pathname);
+
+// --- README hero SVG ---
+
 const treeSvg = generateTreeSvg({
   background: "transparent",
   palette: "color",
@@ -13,7 +17,7 @@ const treeInner = treeSvg
   .replace(/<\/svg>\s*$/, "")
   .trim();
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 561" role="img" aria-labelledby="title desc">
+const readmeSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 561" role="img" aria-labelledby="title desc">
   <title id="title">Kaabalah Tree of Life</title>
   <desc id="desc">A luminous color Tree of Life rendered from the Kaabalah SVG module.</desc>
   <defs>
@@ -46,7 +50,53 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 561" role=
   ${treeInner}
 </svg>`;
 
-const scriptDir = import.meta.dirname ?? path.dirname(new URL(import.meta.url).pathname);
-const outPath = path.resolve(scriptDir, "tree-of-life-readme.svg");
-fs.writeFileSync(outPath, svg, "utf-8");
-console.log(`✔ Generated ${outPath}  (${(svg.length / 1024).toFixed(1)} KB)`);
+const readmePath = path.resolve(scriptDir, "tree-of-life-readme.svg");
+fs.writeFileSync(readmePath, readmeSvg, "utf-8");
+console.log(`✔ tree-of-life-readme.svg (${(readmeSvg.length / 1024).toFixed(1)} KB)`);
+
+// --- Docs public tree SVGs ---
+
+const docsPublic = path.resolve(scriptDir, "../docs/public");
+fs.mkdirSync(docsPublic, { recursive: true });
+
+const docsTrees: Record<string, string> = {
+  "tree-of-life.svg": generateTreeSvg({
+    background: "transparent",
+    palette: "color",
+    system: "kaabalah",
+  }),
+
+  "tree-color.svg": generateTreeSvg({
+    background: "transparent",
+  }),
+
+  "tree-monochrome.svg": generateTreeSvg({
+    background: "transparent",
+    palette: "monochrome",
+  }),
+
+  "tree-custom.svg": generateTreeSvg({
+    background: "transparent",
+    palette: {
+      defaultSphereFill: "#ffd700",
+      defaultPathColor: "#b8860b",
+      pathEdgeColor: "#1a1500",
+      sphereStrokeColor: "#1a1500",
+      sphereStrokeWidth: 2,
+      pathHighlightColor: "white",
+      pathHighlightOpacity: 0.15,
+      specialSphereMode: "plain",
+    },
+  }),
+
+  "tree-daath-back.svg": generateTreeSvg({
+    background: "transparent",
+    daathLayer: "back",
+  }),
+};
+
+for (const [file, svg] of Object.entries(docsTrees)) {
+  const target = path.join(docsPublic, file);
+  fs.writeFileSync(target, svg, "utf-8");
+  console.log(`✔ ${file} (${(svg.length / 1024).toFixed(1)} KB)`);
+}

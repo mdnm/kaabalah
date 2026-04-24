@@ -84,7 +84,10 @@
     "test:coverage": "vitest run --coverage --silent",
     "test:ui": "vitest --ui --silent",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
-    "prepublishOnly": "npm run build && mkdir -p dist/wasm/build/ && cp dist/swisseph* dist/wasm/build/"
+    "generate:trees": "npx tsx examples/generate-tree-svg.ts",
+    "generate:wheels": "npx tsx examples/generate-astro-wheel-svgs.ts",
+    "generate:svgs": "npm run generate:trees && npm run generate:wheels",
+    "prepublishOnly": "npm run build && mkdir -p dist/wasm/build/ && cp dist/swisseph* dist/wasm/build/ && npm run generate:svgs"
   },
   "keywords": [
     "numerology",
