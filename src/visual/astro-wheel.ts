@@ -1405,24 +1405,17 @@ function labelBoundsCircleOverflow(
   return farthestCorner - maxRadius;
 }
 
-function hasLabelBoundsCollision(
-  bounds: AstroWheelLabelBounds,
-  placed: readonly AstroWheelLabelBounds[]
-) {
-  return placed.some((other) => labelBoundsOverlap(bounds, other));
-}
-
-function labelBoundsOverlap(a: AstroWheelLabelBounds, b: AstroWheelLabelBounds) {
-  return !(
-    a.x + a.width <= b.x ||
-    b.x + b.width <= a.x ||
-    a.y + a.height <= b.y ||
-    b.y + b.height <= a.y
-  );
-}
-
 function formatLabelBounds(bounds: AstroWheelLabelBounds) {
   return `${fmt(bounds.x)} ${fmt(bounds.y)} ${fmt(bounds.width)} ${fmt(bounds.height)}`;
+}
+
+function projectedLabelWidthAlongTangent(
+  angleRad: number,
+  bounds: Pick<AstroWheelLabelBounds, "width" | "height">
+) {
+  const tangentX = -Math.sin(angleRad);
+  const tangentY = Math.cos(angleRad);
+  return Math.abs(tangentX) * bounds.width + Math.abs(tangentY) * bounds.height;
 }
 
 const POINT_GLYPH_ALIASES: Record<string, AstroWheelPlanetGlyphKey> = {
@@ -1618,145 +1611,131 @@ function buildPointLayer(params: {
   const isExternalLayer = radius > rings.houses.r2 + scale;
   const tickLength = Math.min(14 * scale, thickness * 0.34);
 
-  const glyphMinSepDeg = ((glyphFontSize * 0.9) / Math.max(radius, 1)) * (180 / Math.PI);
-  const collisionThresholdDegrees = clamp(
-    layer.collisionThresholdDegrees ?? Math.max(2, Math.min(8, glyphMinSepDeg)),
-    0,
-    30
-  );
-
-  const tangentStep = glyphFontSize * (isExternalLayer ? 0.68 : 0.74);
   const collisionPadding = Math.max(2 * scale, 1.5);
   const zodiacKeepOutGap = Math.max(5 * scale, 4);
   const labelMaxRadius = isExternalLayer
     ? Number.POSITIVE_INFINITY
     : rings.zodiac.r1 - zodiacKeepOutGap;
   const seeds = getPointSeeds(layer, excludedBodies);
-  const clusters = clusterPointSeeds(seeds, collisionThresholdDegrees);
   const color = layer.color ?? palette.planetGlyph;
   const tickColor = layer.tickColor ?? color;
-  const placedLabelBounds: AstroWheelLabelBounds[] = [];
+  const pointIntents = seeds.map((seed) => {
+    const tickAngle = angleOf(seed.longitude);
+    const pointGlyphFontSize = seed.kind === "vertex"
+      ? glyphFontSize * 0.82
+      : glyphFontSize;
 
-  const points = clusters.flatMap((cluster) => {
-    const clusterMidpoint = (cluster.length - 1) / 2;
+    const rawGlyphRadius = radius;
+    const glyphRadius = isExternalLayer
+      ? rawGlyphRadius
+      : clamp(
+          rawGlyphRadius,
+          rings.aspects.r2 + pointGlyphFontSize * 0.65,
+          labelMaxRadius - pointGlyphFontSize * 0.5
+        );
 
-    return cluster.map((seed, index) => {
-      const tickAngle = angleOf(seed.longitude);
-      const pointGlyphFontSize = seed.kind === "vertex"
-        ? glyphFontSize * 0.82
-        : glyphFontSize;
-
-      const rawGlyphRadius = radius;
-      const glyphRadius = isExternalLayer
-        ? rawGlyphRadius
-        : clamp(
-            rawGlyphRadius,
-            rings.aspects.r2 + pointGlyphFontSize * 0.65,
-            labelMaxRadius - pointGlyphFontSize * 0.5
-          );
-
-      const tickLine = isExternalLayer
-        ? lineFromPolar(
-            center,
-            rings.houses.r2 + 2 * scale,
-            Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44),
-            tickAngle
-          )
-        : lineFromPolar(center, ring.r2 - tickLength, ring.r2, tickAngle);
-
-      const leaderStartRadius = isExternalLayer
-        ? Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44)
-        : radius;
-
-      const leaderStart = polarToXY(center.x, center.y, leaderStartRadius, tickAngle);
-      let tangentOffset = cluster.length > 1
-        ? (index - clusterMidpoint) * tangentStep
-        : 0;
-
-      const nudgeDirection = index - clusterMidpoint >= 0 ? 1 : -1;
-
-      const makePoint = (): AstroWheelPoint => {
-        const labelAngle = tickAngle + tangentOffset / Math.max(glyphRadius, 1);
-        let glyphPosition = polarToXY(center.x, center.y, glyphRadius, labelAngle);
-
-        const labelDisplaced = Math.abs(tangentOffset) > 0.01;
-
-        let point: AstroWheelPoint = {
-          layerId: layer.id,
-          key: seed.key,
-          name: seed.name,
-          kind: seed.kind,
-          glyph: seed.glyph,
-          glyphKey: seed.glyphKey,
-          longitude: normalizeAngle(seed.longitude),
-          displayLongitude: normalizeAngle(seed.longitude),
-          zodiacPosition: seed.zodiacPosition,
-          tickLine,
-          labelAngle,
-          leaderLine: labelDisplaced
-            ? {
-                x1: leaderStart.x,
-                y1: leaderStart.y,
-                x2: glyphPosition.x,
-                y2: glyphPosition.y,
-              }
-            : undefined,
-          glyphPosition,
-          glyphFontSize: pointGlyphFontSize,
-          retrograde: seed.retrograde,
-          color,
-          tickColor,
-        };
-
-        const layout = getPointLabelLayout(point, scale);
-        const constrainedLabel = constrainLabelInsideCircle({
+    const tickLine = isExternalLayer
+      ? lineFromPolar(
           center,
-          position: glyphPosition,
-          layout,
-          padding: collisionPadding,
-          maxRadius: labelMaxRadius,
-        });
+          rings.houses.r2 + 2 * scale,
+          Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44),
+          tickAngle
+        )
+      : lineFromPolar(center, ring.r2 - tickLength, ring.r2, tickAngle);
 
-        if (constrainedLabel.moved) {
-          glyphPosition = constrainedLabel.position;
+    const leaderStartRadius = isExternalLayer
+      ? Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44)
+      : radius;
 
-          point = {
-            ...point,
-            glyphPosition,
-            leaderLine: {
-              x1: leaderStart.x,
-              y1: leaderStart.y,
-              x2: glyphPosition.x,
-              y2: glyphPosition.y,
-            },
-          };
-        }
-
-        return {
-          ...point,
-          labelBounds: constrainedLabel.bounds,
-        };
-      };
-
-      let point = makePoint();
-      let attempts = 0;
-
-      while (
-        point.labelBounds &&
-        hasLabelBoundsCollision(point.labelBounds, placedLabelBounds) &&
-        attempts < 16
-      ) {
-        tangentOffset += nudgeDirection * (tangentStep * 0.45 + collisionPadding);
-        point = makePoint();
-        attempts += 1;
-      }
-
-      if (point.labelBounds) {
-        placedLabelBounds.push(point.labelBounds);
-      }
-
-      return point;
+    const leaderStart = polarToXY(center.x, center.y, leaderStartRadius, tickAngle);
+    const idealPosition = polarToXY(center.x, center.y, glyphRadius, tickAngle);
+    const point = makeAstroWheelPoint({
+      layer,
+      seed,
+      tickLine,
+      leaderStart,
+      tickAngle,
+      labelAngle: tickAngle,
+      glyphPosition: idealPosition,
+      glyphFontSize: pointGlyphFontSize,
+      color,
+      tickColor,
     });
+    const layout = getPointLabelLayout(point, scale);
+    const labelBounds = labelBoundsFor(idealPosition, layout, collisionPadding);
+    const labelTangentDemandPx = projectedLabelWidthAlongTangent(tickAngle, labelBounds);
+    const configuredTangentDemandPx = layer.collisionThresholdDegrees
+      ? deg2rad(clamp(layer.collisionThresholdDegrees, 0, 30)) * glyphRadius
+      : 0;
+    const tangentDemandPx = Math.max(labelTangentDemandPx, configuredTangentDemandPx);
+
+    return {
+      seed,
+      tickAngle,
+      tickLine,
+      leaderStart,
+      glyphRadius,
+      pointGlyphFontSize,
+      tangentDemandPx,
+    };
+  });
+
+  const solvedLabels = solveCircularLabelAngles(
+    pointIntents.map((intent) => ({
+      item: intent,
+      idealAngle: intent.tickAngle,
+      radius: intent.glyphRadius,
+      tangentDemandPx: intent.tangentDemandPx,
+    })),
+    collisionPadding
+  );
+  const visualAngleByKey = Object.fromEntries(
+    solvedLabels.map(({ item, visualAngle }) => [item.seed.key, visualAngle])
+  );
+
+  const points = pointIntents.map((intent) => {
+    const visualAngle = visualAngleByKey[intent.seed.key] ?? intent.tickAngle;
+    let glyphPosition = polarToXY(center.x, center.y, intent.glyphRadius, visualAngle);
+    let point = makeAstroWheelPoint({
+      layer,
+      seed: intent.seed,
+      tickLine: intent.tickLine,
+      leaderStart: intent.leaderStart,
+      tickAngle: intent.tickAngle,
+      labelAngle: visualAngle,
+      glyphPosition,
+      glyphFontSize: intent.pointGlyphFontSize,
+      color,
+      tickColor,
+    });
+
+    const layout = getPointLabelLayout(point, scale);
+    const constrainedLabel = constrainLabelInsideCircle({
+      center,
+      position: glyphPosition,
+      layout,
+      padding: collisionPadding,
+      maxRadius: labelMaxRadius,
+    });
+
+    if (constrainedLabel.moved) {
+      glyphPosition = constrainedLabel.position;
+      point = {
+        ...point,
+        glyphPosition,
+        leaderLine: {
+          x1: intent.leaderStart.x,
+          y1: intent.leaderStart.y,
+          x2: glyphPosition.x,
+          y2: glyphPosition.y,
+        },
+      };
+    }
+
+    return {
+      ...point,
+      labelBounds: constrainedLabel.bounds,
+    };
   });
 
   return {
@@ -1766,6 +1745,60 @@ function buildPointLayer(params: {
     tickColor,
     radius,
     points,
+  };
+}
+
+function makeAstroWheelPoint(params: {
+  layer: AstroWheelPointLayerInput;
+  seed: PointSeed;
+  tickLine: AstroWheelLine;
+  leaderStart: AstroWheelCoordinate;
+  tickAngle: number;
+  labelAngle: number;
+  glyphPosition: AstroWheelCoordinate;
+  glyphFontSize: number;
+  color: string;
+  tickColor: string;
+}): AstroWheelPoint {
+  const {
+    layer,
+    seed,
+    tickLine,
+    leaderStart,
+    tickAngle,
+    labelAngle,
+    glyphPosition,
+    glyphFontSize,
+    color,
+    tickColor,
+  } = params;
+  const labelDisplaced = circularAngleDistance(labelAngle, tickAngle) > 0.0001;
+
+  return {
+    layerId: layer.id,
+    key: seed.key,
+    name: seed.name,
+    kind: seed.kind,
+    glyph: seed.glyph,
+    glyphKey: seed.glyphKey,
+    longitude: normalizeAngle(seed.longitude),
+    displayLongitude: normalizeAngle(seed.longitude),
+    zodiacPosition: seed.zodiacPosition,
+    tickLine,
+    labelAngle,
+    leaderLine: labelDisplaced
+      ? {
+          x1: leaderStart.x,
+          y1: leaderStart.y,
+          x2: glyphPosition.x,
+          y2: glyphPosition.y,
+        }
+      : undefined,
+    glyphPosition,
+    glyphFontSize,
+    retrograde: seed.retrograde,
+    color,
+    tickColor,
   };
 }
 
@@ -1894,6 +1927,17 @@ interface PointSeed {
   zodiacPosition?: ZodiacPosition;
 }
 
+interface CircularLabelItem<T> {
+  item: T;
+  idealAngle: number;
+  radius: number;
+  tangentDemandPx: number;
+}
+
+interface SolvedCircularLabelItem<T> extends CircularLabelItem<T> {
+  visualAngle: number;
+}
+
 function planetSeed(key: string, planet: HydratedPlanet, layerId: string): PointSeed {
   return {
     key: layerPointKey(layerId, key || planet.name),
@@ -1932,41 +1976,109 @@ function pointSeed(point: AstroWheelPointSource, layerId: string): PointSeed {
   };
 }
 
-function clusterPointSeeds(seeds: readonly PointSeed[], minSepDeg: number): PointSeed[][] {
-  if (seeds.length === 0) {
+function solveCircularLabelAngles<T>(
+  items: readonly CircularLabelItem<T>[],
+  paddingPx: number
+): SolvedCircularLabelItem<T>[] {
+  if (items.length === 0) {
     return [];
   }
 
-  const clusters: PointSeed[][] = [];
-  let current: PointSeed[] = [];
-  for (const seed of seeds) {
-    if (current.length === 0) {
-      current.push(seed);
-      continue;
-    }
+  const normalized = items
+    .map((item) => ({
+      ...item,
+      idealAngle: clampRad(item.idealAngle),
+    }))
+    .sort((a, b) => a.idealAngle - b.idealAngle);
 
-    const previous = current[current.length - 1];
-    const delta = clamp360(seed.longitude - previous.longitude);
-    if (delta <= minSepDeg) {
-      current.push(seed);
-    } else {
-      clusters.push(current);
-      current = [seed];
-    }
+  if (normalized.length === 1) {
+    return [{ ...normalized[0], visualAngle: normalized[0].idealAngle }];
   }
-  clusters.push(current);
 
-  if (clusters.length > 1) {
-    const first = clusters[0];
-    const last = clusters[clusters.length - 1];
-    const wrapDelta = clamp360(first[0].longitude - last[last.length - 1].longitude);
-    if (wrapDelta <= minSepDeg) {
-      clusters[0] = [...last, ...first];
-      clusters.pop();
+  let largestGap = -Infinity;
+  let seamIndex = 0;
+
+  for (let i = 0; i < normalized.length; i++) {
+    const current = normalized[i];
+    const next = normalized[(i + 1) % normalized.length];
+    const nextAngle = i === normalized.length - 1 ? next.idealAngle + TAU : next.idealAngle;
+    const gap = nextAngle - current.idealAngle;
+
+    if (gap > largestGap) {
+      largestGap = gap;
+      seamIndex = (i + 1) % normalized.length;
     }
   }
 
-  return clusters;
+  const linear = [
+    ...normalized.slice(seamIndex),
+    ...normalized.slice(0, seamIndex),
+  ].map((item, index) => {
+    const wrapped = seamIndex > 0 && index >= normalized.length - seamIndex;
+    return {
+      ...item,
+      idealAngle: item.idealAngle + (wrapped ? TAU : 0),
+    };
+  });
+
+  for (let i = 1; i < linear.length; i++) {
+    while (linear[i].idealAngle <= linear[i - 1].idealAngle) {
+      linear[i] = {
+        ...linear[i],
+        idealAngle: linear[i].idealAngle + TAU,
+      };
+    }
+  }
+
+  const solved = linear.map((item) => ({
+    ...item,
+    visualAngle: item.idealAngle,
+  }));
+
+  for (let i = 1; i < solved.length; i++) {
+    const previous = solved[i - 1];
+    const current = solved[i];
+    const minGap =
+      labelAngularHalfDemand(previous, paddingPx) +
+      labelAngularHalfDemand(current, paddingPx);
+
+    if (current.visualAngle < previous.visualAngle + minGap) {
+      current.visualAngle = previous.visualAngle + minGap;
+    }
+  }
+
+  for (let i = solved.length - 2; i >= 0; i--) {
+    const current = solved[i];
+    const next = solved[i + 1];
+    const minGap =
+      labelAngularHalfDemand(current, paddingPx) +
+      labelAngularHalfDemand(next, paddingPx);
+
+    if (current.visualAngle > next.visualAngle - minGap) {
+      current.visualAngle = next.visualAngle - minGap;
+    }
+  }
+
+  return solved.map((item) => ({
+    ...item,
+    visualAngle: clampRad(item.visualAngle),
+  }));
+}
+
+function labelAngularHalfDemand<T>(
+  item: Pick<CircularLabelItem<T>, "radius" | "tangentDemandPx">,
+  paddingPx: number
+) {
+  return (item.tangentDemandPx / 2 + paddingPx) / Math.max(item.radius, 1);
+}
+
+function clampRad(value: number) {
+  return ((value % TAU) + TAU) % TAU;
+}
+
+function circularAngleDistance(a: number, b: number) {
+  const delta = Math.abs(clampRad(a) - clampRad(b));
+  return Math.min(delta, TAU - delta);
 }
 
 function getSourceAspectEdges(
