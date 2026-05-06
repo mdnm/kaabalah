@@ -485,7 +485,6 @@ function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerR
     const letterLineHeight = letterFontSize * 0.88;
     const firstLineY = p.y - ((letterParts.length - 1) * letterLineHeight) / 2 - (isStacked ? 0 : shieldR * 0.12);
     push(`<g class="archeometer-utterance-point" data-degree="${fmt(normalizeDegrees(point.degree))}" data-letter="${escapeAttr(point.letter)}">`);
-    push(`<circle cx="${fmt(p.x)}" cy="${fmt(p.y)}" r="${fmt(shieldR)}" fill="${escapeAttr(point.color)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
     for (const [index, part] of letterParts.entries()) {
       push(textSvg(part, { x: p.x, y: firstLineY + index * letterLineHeight }, letterFontSize, palette.ink, 0, "middle", 700));
     }
@@ -507,18 +506,7 @@ function renderPlanetaryUtterance(push: (line: string) => void, model: Archeomet
   push(`<g clip-path="url(#archeometer-planetary-clip)">`);
   for (const triangle of model.triangles) {
     const vertices = triangle.vertices.map((degree) => polarToXY(center, vertexRadius, angleOf(model, degree)));
-    if (triangle.vertexFills) {
-      const centroid = polygonCentroid(vertices);
-      const midpoints = vertices.map((vertex, index) => midpoint(vertex, vertices[(index + 1) % vertices.length]));
-      for (const [index, vertex] of vertices.entries()) {
-        const previousMidpoint = midpoints[(index + vertices.length - 1) % vertices.length];
-        const nextMidpoint = midpoints[index];
-        push(`<path class="archeometer-trigone-vertex-fill" data-triangle="${escapeAttr(triangle.id)}" data-degree="${fmt(normalizeDegrees(triangle.vertices[index]))}" d="${polygonPath([vertex, nextMidpoint, centroid, previousMidpoint])}" fill="${escapeAttr(triangle.vertexFills[index])}" fill-opacity="0.58" stroke="none"/>`);
-      }
-      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${fmt(1.35 * scale)}"/>`);
-    } else {
-      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.60" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${fmt(1.35 * scale)}"/>`);
-    }
+    push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.52" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
   }
   push(`</g>`);
 
@@ -650,15 +638,28 @@ function renderChromicTriangleCore(push: (line: string) => void, model: Archeome
     return `C ${fmt(c1.x)} ${fmt(c1.y)} ${fmt(c2.x)} ${fmt(c2.y)} ${fmt(p.x)} ${fmt(p.y)}`;
   };
   const strokeWidth = fmt(1.4 * scale);
+  const facetStrokeWidth = fmt(0.85 * scale);
+  const primaryFacetStrokeWidth = fmt(0.95 * scale);
   const primaryStroke = wordJesus?.stroke ?? palette.ink;
 
   push(`<g id="archeometer-chromic-triangle-core" aria-label="inner chromic primary triangle core">`);
-  push(`<path class="archeometer-chromic-foundation" data-triangle="ether" d="${path(move(1.3999, 137.047), line(204.875, 19.5703), line(204.875, 254.523), "Z")}" fill="${escapeAttr(ether?.fill ?? "#78BD79")}" stroke="${escapeAttr(ether?.stroke ?? "#2D7737")}" stroke-width="${strokeWidth}"/>`);
-  push(`<path class="archeometer-chromic-foundation" data-triangle="divineFire" d="${path(move(272.7, 137.047), line(69.2251, 254.523), line(69.2251, 19.5703), "Z")}" fill="${escapeAttr(divineFire?.fill ?? "#CC58A1")}" stroke="${escapeAttr(divineFire?.stroke ?? "#7D2A65")}" stroke-width="${strokeWidth}"/>`);
-  push(`<path class="archeometer-chromic-foundation" data-triangle="mary" d="${path(move(137.05, 272.702), line(19.5737, 69.2266), line(254.527, 69.2266), "Z")}" fill="${escapeAttr(mary?.fill ?? "#E25B61")}" stroke="${escapeAttr(mary?.stroke ?? "#8C2028")}" stroke-width="${strokeWidth}"/>`);
-  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="120" d="${path(move(137.05, 204.874), line(254.527, 204.874), line(195.789, 103.136), cubic(195.789, 103.136, 215.377, 136.525, 195.789, 170.699), cubic(176.2, 204.874, 137.05, 204.874, 137.05, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[1] ?? "#5470A5")}"/>`);
-  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="240" d="${path(move(19.5737, 204.874), line(137.05, 204.874), cubic(137.05, 204.874, 94.7002, 203.927, 78.312, 170.699), cubic(61.9238, 137.472, 78.312, 103.136, 78.312, 103.136), line(19.5737, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[2] ?? "#DD3E38")}"/>`);
-  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="0" fill-rule="evenodd" clip-rule="evenodd" d="${path(move(195.789, 103.136), line(137.05, 1.39844), line(78.312, 103.136), cubic(78.312, 103.136, 100.9, 71.1992, 137.05, 71.1992), cubic(173.2, 71.1992, 195.789, 103.136, 195.789, 103.136), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[0] ?? "#F2CF45")}"/>`);
+  push(`<path class="archeometer-chromic-foundation" data-triangle="ether" d="${path(move(1.3999, 137.047), line(204.875, 19.5703), line(204.875, 254.523), "Z")}" fill="${escapeAttr(ether?.fill ?? "#78BD79")}" stroke="${escapeAttr(palette.ink)}" stroke-width="${strokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-foundation" data-triangle="divineFire" d="${path(move(272.7, 137.047), line(69.2251, 254.523), line(69.2251, 19.5703), "Z")}" fill="${escapeAttr(divineFire?.fill ?? "#CC58A1")}" stroke="${escapeAttr(palette.ink)}" stroke-width="${strokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-foundation" data-triangle="mary" d="${path(move(137.05, 272.702), line(19.5737, 69.2266), line(254.527, 69.2266), "Z")}" fill="${escapeAttr(mary?.fill ?? "#E25B61")}" stroke="${escapeAttr(palette.ink)}" stroke-width="${strokeWidth}"/>`);
+  for (const triangle of [ether, divineFire, mary]) {
+    if (!triangle?.vertexFills) continue;
+    const vertices = triangle.vertices.map((degree) => polarToXY(center, rings.chromicRays.r2, angleOf(model, degree)));
+    const centroid = polygonCentroid(vertices);
+    const midpoints = vertices.map((vertex, index) => midpoint(vertex, vertices[(index + 1) % vertices.length]));
+    for (const [index, vertex] of vertices.entries()) {
+      const previousMidpoint = midpoints[(index + vertices.length - 1) % vertices.length];
+      const nextMidpoint = midpoints[index];
+      push(`<path class="archeometer-chromic-trigone-facet" data-triangle="${escapeAttr(triangle.id)}" data-degree="${fmt(normalizeDegrees(triangle.vertices[index]))}" d="${polygonPath([vertex, nextMidpoint, centroid, previousMidpoint])}" fill="${escapeAttr(triangle.vertexFills[index])}" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.72" stroke-width="${facetStrokeWidth}"/>`);
+    }
+  }
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="120" d="${path(move(137.05, 204.874), line(254.527, 204.874), line(195.789, 103.136), cubic(195.789, 103.136, 215.377, 136.525, 195.789, 170.699), cubic(176.2, 204.874, 137.05, 204.874, 137.05, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[1] ?? "#5470A5")}" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${primaryFacetStrokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="240" d="${path(move(19.5737, 204.874), line(137.05, 204.874), cubic(137.05, 204.874, 94.7002, 203.927, 78.312, 170.699), cubic(61.9238, 137.472, 78.312, 103.136, 78.312, 103.136), line(19.5737, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[2] ?? "#DD3E38")}" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${primaryFacetStrokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="0" fill-rule="evenodd" clip-rule="evenodd" d="${path(move(195.789, 103.136), line(137.05, 1.39844), line(78.312, 103.136), cubic(78.312, 103.136, 100.9, 71.1992, 137.05, 71.1992), cubic(173.2, 71.1992, 195.789, 103.136, 195.789, 103.136), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[0] ?? "#F2CF45")}" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${primaryFacetStrokeWidth}"/>`);
   push(`<path class="archeometer-chromic-primary-outline" data-triangle="wordJesus" d="${path(
     move(137.05, 204.874),
     line(254.527, 204.874),
