@@ -424,6 +424,8 @@ describe("archeometer svg visual module", () => {
       r1: 0,
       r2: 52.08,
     });
+    expect(model.rings.zodiacUtterance.r2).toBe(model.rings.degreeInner.r1);
+    expect(model.rings.planetaryUtterance.r2).toBe(model.rings.zodiacUtterance.r1);
     expect(roundForTest(model.rings.cosmologicalMusic.r2 - model.rings.cosmologicalMusic.r1)).toBe(18.23);
     expect(roundForTest(model.rings.astralZodiac.r2 - model.rings.astralZodiac.r1)).toBe(23);
     expect(roundForTest(model.rings.astralPlanetary.r2 - model.rings.astralPlanetary.r1)).toBe(28.21);

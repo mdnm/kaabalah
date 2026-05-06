@@ -767,7 +767,7 @@ function buildRings(outerRadius: number): Record<ArcheometerRingId, ArcheometerR
   return {
     degreeOuter: ring("degreeOuter", 0.955, 1.0),
     degreeInner: ring("degreeInner", 0.905, 0.955),
-    zodiacUtterance: ring("zodiacUtterance", 0.800, 0.885),
+    zodiacUtterance: ring("zodiacUtterance", 0.800, 0.905),
     planetaryUtterance: ring("planetaryUtterance", 0.555, 0.800),
     cosmologicalMusic: ring("cosmologicalMusic", 0.513, 0.555),
     astralZodiac: ring("astralZodiac", 0.460, 0.513),
