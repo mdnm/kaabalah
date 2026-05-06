@@ -501,7 +501,7 @@ function renderPlanetaryUtterance(push: (line: string) => void, model: Archeomet
   const { center, rings, palette, scale } = model;
   const ring = rings.planetaryUtterance;
   const clipOuter = planetaryTriangleClipOuterRadius(rings);
-  const vertexRadius = clipOuter * Math.sqrt(3);
+  const vertexRadius = clipOuter;
 
   push(`<g id="archeometer-planetary-utterance" aria-label="four trigones of the planetary utterance">`);
   push(`<g clip-path="url(#archeometer-planetary-clip)">`);
