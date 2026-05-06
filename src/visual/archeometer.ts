@@ -228,7 +228,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 30,
-    utterance: { id: "za", degree: 30, letter: "W, O, U", number: 7, color: "#b7d56a", triangleId: "ether", gloss: "Ether" },
+    utterance: { id: "za", degree: 30, letter: "W, OU", number: 70, color: "#b7d56a", triangleId: "ether", gloss: "Ether" },
     triangleLabel: { degree: 30, label: "D", number: 4 },
     musicalNote: { degree: 30, note: "Do" },
     zodiacSign: { degree: 30, name: "Sagittarius", glyph: "♐" },
@@ -244,7 +244,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 90,
-    utterance: { id: "u", degree: 90, letter: "L", number: 70, color: "#69ad74", triangleId: "divineFire", gloss: "Fire" },
+    utterance: { id: "u", degree: 90, letter: "L", number: 30, color: "#69ad74", triangleId: "divineFire", gloss: "Fire" },
     triangleLabel: { degree: 90, label: "" },
     musicalNote: { degree: 90, note: "Mi" },
     zodiacSign: { degree: 90, name: "Libra", glyph: "♎" },
@@ -252,7 +252,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 120,
-    utterance: { id: "o", degree: 120, letter: "Y", number: 6, color: "#efb83e", triangleId: "wordJesus", gloss: "Voice / sound" },
+    utterance: { id: "o", degree: 120, letter: "I, Y, J", number: 10, color: "#efb83e", triangleId: "wordJesus", gloss: "Voice / sound" },
     triangleLabel: { degree: 120, label: "Ts", number: 90 },
     musicalNote: { degree: 120, note: "Fa" },
     zodiacSign: { degree: 120, name: "Virgo", glyph: "♍" },
@@ -260,7 +260,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 150,
-    utterance: { id: "la", degree: 150, letter: "T", number: 30, color: "#ec8d3f", triangleId: "ether", gloss: "Ether" },
+    utterance: { id: "la", degree: 150, letter: "T", number: 9, color: "#ec8d3f", triangleId: "ether", gloss: "Ether" },
     triangleLabel: { degree: 150, label: "N", number: 50 },
     musicalNote: { degree: 150, note: "Sol" },
     zodiacSign: { degree: 150, name: "Leo", glyph: "♌" },
@@ -268,7 +268,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 180,
-    utterance: { id: "ri", degree: 180, letter: "E, H", number: 200, color: "#df4d43", triangleId: "mary", gloss: "Descending R" },
+    utterance: { id: "ri", degree: 180, letter: "E, H", number: 8, color: "#df4d43", triangleId: "mary", gloss: "Descending R" },
     triangleLabel: { degree: 180, label: "B", number: 2 },
     musicalNote: { degree: 180, note: "La" },
     zodiacSign: { degree: 180, name: "Cancer", glyph: "♋" },
@@ -276,7 +276,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 210,
-    utterance: { id: "t", degree: 210, letter: "Z", number: 400, color: "#8b54ad", triangleId: "divineFire", gloss: "Divine fire" },
+    utterance: { id: "t", degree: 210, letter: "Z", number: 7, color: "#8b54ad", triangleId: "divineFire", gloss: "Divine fire" },
     triangleLabel: { degree: 210, label: "Ts", number: 90 },
     musicalNote: { degree: 210, note: "Si" },
     zodiacSign: { degree: 210, name: "Gemini", glyph: "♊" },
@@ -284,7 +284,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 240,
-    utterance: { id: "y", degree: 240, letter: "V, O, U", number: 10, color: "#d85c43", triangleId: "wordJesus", gloss: "Word / JeShU" },
+    utterance: { id: "y", degree: 240, letter: "V, OU", number: 6, color: "#d85c43", triangleId: "wordJesus", gloss: "Word / JeShU" },
     triangleLabel: { degree: 240, label: "G", number: 3 },
     musicalNote: { degree: 240, note: "Do" },
     zodiacSign: { degree: 240, name: "Taurus", glyph: "♉" },
@@ -292,7 +292,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 270,
-    utterance: { id: "ka", degree: 270, letter: "H, E", number: 20, color: "#3c82c2", triangleId: "ether", gloss: "Etheric power" },
+    utterance: { id: "ka", degree: 270, letter: "H, E", number: 5, color: "#3c82c2", triangleId: "ether", gloss: "Etheric power" },
     triangleLabel: { degree: 270, label: "C", number: 20 },
     musicalNote: { degree: 270, note: "Ré" },
     zodiacSign: { degree: 270, name: "Aries", glyph: "♈" },
@@ -300,7 +300,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 300,
-    utterance: { id: "h", degree: 300, letter: "R", number: 5, color: "#d4579c", triangleId: "mary", gloss: "Living waters" },
+    utterance: { id: "h", degree: 300, letter: "R", number: 200, color: "#d4579c", triangleId: "mary", gloss: "Living waters" },
     triangleLabel: { degree: 300, label: "D", number: 4 },
     musicalNote: { degree: 300, note: "Mi" },
     zodiacSign: { degree: 300, name: "Pisces", glyph: "♓" },
@@ -308,7 +308,7 @@ export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSec
   },
   {
     degree: 330,
-    utterance: { id: "hou", degree: 330, letter: "K", number: 6, color: "#7963b8", triangleId: "divineFire", gloss: "Divine fire" },
+    utterance: { id: "hou", degree: 330, letter: "K", number: 100, color: "#7963b8", triangleId: "divineFire", gloss: "Divine fire" },
     triangleLabel: { degree: 330, label: "S, Sh", number: 300 },
     musicalNote: { degree: 330, note: "Fa" },
     zodiacSign: { degree: 330, name: "Aquarius", glyph: "♒" },
@@ -483,17 +483,19 @@ function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerR
     const isStacked = letterParts.length > 1;
     const letterFontSize = (isStacked ? (letterParts.length > 2 ? 8.3 : 10.6) : 14) * scale;
     const letterLineHeight = letterFontSize * (isStacked ? 1.02 : 1);
+    const numberFontSize = (isStacked ? 6.6 : 7.1) * scale;
+    const numberGap = (isStacked ? 4.8 : 0) * scale;
+    const stackedNumberY = p.y + ((letterParts.length - 1) * letterLineHeight) / 2 + numberGap + numberFontSize * 0.42;
     const singleLetterY = p.y - shieldR * 0.48;
     const firstLineY = isStacked
-      ? p.y - ((letterParts.length - 1) * letterLineHeight) / 2
+      ? p.y - ((letterParts.length - 1) * letterLineHeight) / 2 - numberFontSize * 0.42
       : singleLetterY;
+    const numberY = isStacked ? stackedNumberY : p.y + shieldR * 0.72;
     push(`<g class="archeometer-utterance-point" data-degree="${fmt(normalizeDegrees(point.degree))}" data-letter="${escapeAttr(point.letter)}">`);
     for (const [index, part] of letterParts.entries()) {
       push(textSvg(part, { x: p.x, y: firstLineY + index * letterLineHeight }, letterFontSize, palette.ink, 0, "middle", 700));
     }
-    if (!isStacked) {
-      push(textSvg(String(point.number), { x: p.x, y: p.y + shieldR * 0.72 }, 7.1 * scale, palette.ink, 0, "middle"));
-    }
+    push(textSvg(String(point.number), { x: p.x, y: numberY }, numberFontSize, palette.ink, 0, "middle"));
     push(`</g>`);
   }
   push(`</g>`);

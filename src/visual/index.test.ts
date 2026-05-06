@@ -443,6 +443,34 @@ describe("archeometer svg visual module", () => {
       letter: "P, Ph",
       number: 80,
     });
+    expect(model.utterance.map(({ degree, letter, number }) => ({ degree, letter, number }))).toEqual([
+      { degree: 0, letter: "P, Ph", number: 80 },
+      { degree: 30, letter: "W, OU", number: 70 },
+      { degree: 60, letter: "M", number: 40 },
+      { degree: 90, letter: "L", number: 30 },
+      { degree: 120, letter: "I, Y, J", number: 10 },
+      { degree: 150, letter: "T", number: 9 },
+      { degree: 180, letter: "E, H", number: 8 },
+      { degree: 210, letter: "Z", number: 7 },
+      { degree: 240, letter: "V, OU", number: 6 },
+      { degree: 270, letter: "H, E", number: 5 },
+      { degree: 300, letter: "R", number: 200 },
+      { degree: 330, letter: "K", number: 100 },
+    ]);
+    expect(model.triangleLabels.map(({ degree, label, number }) => ({ degree, label, number }))).toEqual([
+      { degree: 0, label: "S, Sh", number: 300 },
+      { degree: 30, label: "D", number: 4 },
+      { degree: 60, label: "C", number: 20 },
+      { degree: 90, label: "" },
+      { degree: 120, label: "Ts", number: 90 },
+      { degree: 150, label: "N", number: 50 },
+      { degree: 180, label: "B", number: 2 },
+      { degree: 210, label: "Ts", number: 90 },
+      { degree: 240, label: "G", number: 3 },
+      { degree: 270, label: "C", number: 20 },
+      { degree: 300, label: "D", number: 4 },
+      { degree: 330, label: "S, Sh", number: 300 },
+    ]);
     expect(model.triangleLabels[0]).toMatchObject({
       degree: 0,
       label: "S, Sh",
@@ -516,6 +544,7 @@ describe("archeometer svg visual module", () => {
     expect(model.utterance[9]).toMatchObject({
       degree: 270,
       letter: "H, E",
+      number: 5,
     });
   });
 
@@ -554,8 +583,14 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`data-degree="0" data-letter="P, Ph"`);
     expect(svg).toContain(`>P<`);
     expect(svg).toContain(`>Ph<`);
-    expect(svg).toContain(`data-degree="30" data-letter="W, O, U"`);
-    expect(svg).not.toContain(`>W, O, U<`);
+    expect(svg).toContain(`>80</text>`);
+    expect(svg).toContain(`data-degree="30" data-letter="W, OU"`);
+    expect(svg).not.toContain(`>W, OU<`);
+    expect(svg).toContain(`>70</text>`);
+    expect(svg).toContain(`data-degree="120" data-letter="I, Y, J"`);
+    expect(svg).toContain(`>10</text>`);
+    expect(svg).toContain(`data-degree="240" data-letter="V, OU"`);
+    expect(svg).toContain(`>6</text>`);
     expect(svg.match(/<g class="archeometer-utterance-point"[^>]*>\n<circle/g)).toBeNull();
     expect(svg).not.toContain(`class="archeometer-zodiac-utterance-mark"`);
     expect(svg).not.toContain(`>PPh</text>`);
@@ -625,8 +660,8 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`data-letter="Ya"`);
     expect(svg).toContain(`fill="#123456"`);
     expect(DEFAULT_ARCHEOMETER_UTTERANCE.find((point) => point.id === "y")).toMatchObject({
-      letter: "V, O, U",
-      number: 10,
+      letter: "V, OU",
+      number: 6,
       color: "#d85c43",
     });
   });
