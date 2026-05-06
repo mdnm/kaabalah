@@ -537,7 +537,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`A 347.2 347.2`);
     expect(svg).toContain(`class="archeometer-trigone"`);
     expect(svg.match(/class="archeometer-trigone" data-triangle=/g)).toHaveLength(4);
-    expect(svg).not.toContain(`class="archeometer-trigone-vertex-fill"`);
+    expect(svg.match(/class="archeometer-trigone-vertex-fill"/g)).toHaveLength(12);
     expect(svg).toContain(`d="M 450 102.8`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="0"`);
     expect(svg).toContain(`fill="#f2cf45"`);
@@ -545,7 +545,12 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`fill="#5470a5"`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="240"`);
     expect(svg).toContain(`fill="#dd3e38"`);
-    expect(svg).toContain(`fill-opacity="0.52"`);
+    expect(svg).toContain(`data-triangle="mary" data-degree="300"`);
+    expect(svg).toContain(`fill="#f28a32" fill-opacity="0.54"`);
+    expect(svg).toContain(`data-triangle="mary" data-degree="60"`);
+    expect(svg).toContain(`fill="#78bd79" fill-opacity="0.54"`);
+    expect(svg).toContain(`data-triangle="ether" data-degree="30"`);
+    expect(svg).toContain(`fill="#b7bd58" fill-opacity="0.54"`);
     expect(svg).toContain(`data-degree="0" data-letter="P, Ph"`);
     expect(svg).toContain(`>P<`);
     expect(svg).toContain(`>Ph<`);

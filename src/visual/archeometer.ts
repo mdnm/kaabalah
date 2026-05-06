@@ -509,7 +509,18 @@ function renderPlanetaryUtterance(push: (line: string) => void, model: Archeomet
   push(`<g clip-path="url(#archeometer-planetary-clip)">`);
   for (const triangle of model.triangles) {
     const vertices = triangle.vertices.map((degree) => polarToXY(center, vertexRadius, angleOf(model, degree)));
-    push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.52" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
+    if (triangle.vertexFills) {
+      const centroid = polygonCentroid(vertices);
+      const midpoints = vertices.map((vertex, index) => midpoint(vertex, vertices[(index + 1) % vertices.length]));
+      for (const [index, vertex] of vertices.entries()) {
+        const previousMidpoint = midpoints[(index + vertices.length - 1) % vertices.length];
+        const nextMidpoint = midpoints[index];
+        push(`<path class="archeometer-trigone-vertex-fill" data-triangle="${escapeAttr(triangle.id)}" data-degree="${fmt(normalizeDegrees(triangle.vertices[index]))}" d="${polygonPath([vertex, nextMidpoint, centroid, previousMidpoint])}" fill="${escapeAttr(triangle.vertexFills[index])}" fill-opacity="0.54" stroke="none"/>`);
+      }
+      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
+    } else {
+      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.52" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
+    }
   }
   push(`</g>`);
 
