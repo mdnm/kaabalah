@@ -482,14 +482,17 @@ function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerR
     const letterParts = point.letter.split(",").map((part) => part.trim()).filter(Boolean);
     const isStacked = letterParts.length > 1;
     const letterFontSize = (isStacked ? (letterParts.length > 2 ? 8.3 : 10.6) : 14) * scale;
-    const letterLineHeight = letterFontSize * 0.88;
-    const firstLineY = p.y - ((letterParts.length - 1) * letterLineHeight) / 2 - (isStacked ? 0 : shieldR * 0.12);
+    const letterLineHeight = letterFontSize * (isStacked ? 1.02 : 1);
+    const singleLetterY = p.y - shieldR * 0.48;
+    const firstLineY = isStacked
+      ? p.y - ((letterParts.length - 1) * letterLineHeight) / 2
+      : singleLetterY;
     push(`<g class="archeometer-utterance-point" data-degree="${fmt(normalizeDegrees(point.degree))}" data-letter="${escapeAttr(point.letter)}">`);
     for (const [index, part] of letterParts.entries()) {
       push(textSvg(part, { x: p.x, y: firstLineY + index * letterLineHeight }, letterFontSize, palette.ink, 0, "middle", 700));
     }
     if (!isStacked) {
-      push(textSvg(String(point.number), { x: p.x, y: p.y + shieldR * 0.52 }, 7.3 * scale, palette.ink, 0, "middle"));
+      push(textSvg(String(point.number), { x: p.x, y: p.y + shieldR * 0.72 }, 7.1 * scale, palette.ink, 0, "middle"));
     }
     push(`</g>`);
   }
