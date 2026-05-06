@@ -537,7 +537,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`A 347.2 347.2`);
     expect(svg).toContain(`class="archeometer-trigone"`);
     expect(svg.match(/class="archeometer-trigone-vertex-fill"/g)).toHaveLength(12);
-    expect(svg).toContain(`d="M 450 -151.368`);
+    expect(svg).toContain(`d="M 450 102.8`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="0"`);
     expect(svg).toContain(`fill="#f2cf45"`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="120"`);
