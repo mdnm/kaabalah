@@ -121,7 +121,7 @@ export interface ArcheometerPaletteOverrides {
   ringFills?: Partial<Record<ArcheometerRingId, string>>;
 }
 
-export type ArcheometerPalette = "color" | "monochrome" | ArcheometerPaletteOverrides;
+export type ArcheometerPalette = "color" | ArcheometerPaletteOverrides;
 
 export interface ResolvedArcheometerPalette {
   paper: string;
@@ -206,19 +206,6 @@ const COLOR_RING_FILLS: Record<ArcheometerRingId, string> = {
   solarCenter: "#f7d65b",
 };
 
-const MONO_RING_FILLS: Record<ArcheometerRingId, string> = {
-  degreeOuter: "#ffffff",
-  degreeInner: "#f4f4f4",
-  zodiacUtterance: "#e9e9e9",
-  planetaryUtterance: "#fafafa",
-  cosmologicalMusic: "#ffffff",
-  astralZodiac: "#eeeeee",
-  astralPlanetary: "#f7f7f7",
-  chromicRays: "#ffffff",
-  whiteRays: "#eeeeee",
-  solarCenter: "#ffffff",
-};
-
 const COLOR_PALETTE: ResolvedArcheometerPalette = {
   paper: "#fffaf1",
   ink: "#151515",
@@ -228,17 +215,6 @@ const COLOR_PALETTE: ResolvedArcheometerPalette = {
   degreeLabel: "#171717",
   whiteRay: "#25395a",
   ringFills: COLOR_RING_FILLS,
-};
-
-const MONOCHROME_PALETTE: ResolvedArcheometerPalette = {
-  paper: "#ffffff",
-  ink: "#111111",
-  subtleInk: "#666666",
-  ringStroke: "#111111",
-  degreeTick: "#111111",
-  degreeLabel: "#111111",
-  whiteRay: "#111111",
-  ringFills: MONO_RING_FILLS,
 };
 
 export const DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES: readonly ArcheometerSectorCorrespondence[] = [
@@ -501,8 +477,8 @@ function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerR
 
   for (const point of sorted) {
     const a = angleOf(model, point.degree);
-    const p = polarToXY(center, ring.r1 + (ring.r2 - ring.r1) * 0.78, a);
-    const shieldR = (ring.r2 - ring.r1) * 0.28;
+    const p = polarToXY(center, ring.r1 + (ring.r2 - ring.r1) * 0.58, a);
+    const shieldR = (ring.r2 - ring.r1) * 0.22;
     const letterParts = point.letter.split(",").map((part) => part.trim()).filter(Boolean);
     const isStacked = letterParts.length > 1;
     const letterFontSize = (isStacked ? (letterParts.length > 2 ? 8.3 : 10.6) : 14) * scale;
@@ -652,31 +628,57 @@ function renderChromicRays(push: (line: string) => void, model: ArcheometerRende
 
 function renderChromicTriangleCore(push: (line: string) => void, model: ArcheometerRenderModel) {
   const { center, rings, palette, scale } = model;
-  const primary = model.triangles.find((triangle) => triangle.id === "wordJesus");
-  const trianglePaintOrder: ArcheometerTriangleId[] = ["ether", "divineFire", "mary", "wordJesus"];
   const trianglesById = new Map(model.triangles.map((triangle) => [triangle.id, triangle]));
-  const orderedTriangles = [
-    ...trianglePaintOrder.map((id) => trianglesById.get(id)).filter((triangle): triangle is ArcheometerTriangleSpec => Boolean(triangle)),
-    ...model.triangles.filter((triangle) => !trianglePaintOrder.includes(triangle.id as ArcheometerTriangleId)),
-  ];
+  const wordJesus = trianglesById.get("wordJesus");
+  const mary = trianglesById.get("mary");
+  const ether = trianglesById.get("ether");
+  const divineFire = trianglesById.get("divineFire");
+  const chromic = (x: number, y: number) => scaleArcheometerReferencePoint(center, rings.chromicRays.r2, x, y);
+  const path = (...commands: string[]) => commands.join(" ");
+  const move = (x: number, y: number) => {
+    const p = chromic(x, y);
+    return `M ${fmt(p.x)} ${fmt(p.y)}`;
+  };
+  const line = (x: number, y: number) => {
+    const p = chromic(x, y);
+    return `L ${fmt(p.x)} ${fmt(p.y)}`;
+  };
+  const cubic = (x1: number, y1: number, x2: number, y2: number, x: number, y: number) => {
+    const c1 = chromic(x1, y1);
+    const c2 = chromic(x2, y2);
+    const p = chromic(x, y);
+    return `C ${fmt(c1.x)} ${fmt(c1.y)} ${fmt(c2.x)} ${fmt(c2.y)} ${fmt(p.x)} ${fmt(p.y)}`;
+  };
+  const strokeWidth = fmt(1.4 * scale);
+  const primaryStroke = wordJesus?.stroke ?? palette.ink;
 
   push(`<g id="archeometer-chromic-triangle-core" aria-label="inner chromic primary triangle core">`);
-  for (const triangle of orderedTriangles) {
-    if (triangle.id === primary?.id && triangle.vertexFills) {
-      const vertices = triangle.vertices.map((degree) => polarToXY(center, rings.chromicRays.r2, angleOf(model, degree)));
-      const centroid = polygonCentroid(vertices);
-      const midpoints = vertices.map((vertex, index) => midpoint(vertex, vertices[(index + 1) % vertices.length]));
-      for (const [index, vertex] of vertices.entries()) {
-        const previousMidpoint = midpoints[(index + vertices.length - 1) % vertices.length];
-        const nextMidpoint = midpoints[index];
-        push(`<path class="archeometer-chromic-primary-facet" data-triangle="${escapeAttr(triangle.id)}" data-degree="${fmt(normalizeDegrees(triangle.vertices[index]))}" d="${polygonPath([vertex, nextMidpoint, centroid, previousMidpoint])}" fill="${escapeAttr(triangle.vertexFills[index])}" stroke="none"/>`);
-      }
-      push(`<path class="archeometer-chromic-trigone-outline" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.25 * scale)}"/>`);
-    } else {
-      const vertices = triangle.vertices.map((degree) => polarToXY(center, rings.chromicRays.r2, angleOf(model, degree)));
-      push(`<path class="archeometer-chromic-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.78" stroke-width="${fmt(1.1 * scale)}"/>`);
-    }
-  }
+  push(`<path class="archeometer-chromic-foundation" data-triangle="ether" d="${path(move(1.3999, 137.047), line(204.875, 19.5703), line(204.875, 254.523), "Z")}" fill="${escapeAttr(ether?.fill ?? "#78BD79")}" stroke="${escapeAttr(ether?.stroke ?? "#2D7737")}" stroke-width="${strokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-foundation" data-triangle="divineFire" d="${path(move(272.7, 137.047), line(69.2251, 254.523), line(69.2251, 19.5703), "Z")}" fill="${escapeAttr(divineFire?.fill ?? "#CC58A1")}" stroke="${escapeAttr(divineFire?.stroke ?? "#7D2A65")}" stroke-width="${strokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-foundation" data-triangle="mary" d="${path(move(137.05, 272.702), line(19.5737, 69.2266), line(254.527, 69.2266), "Z")}" fill="${escapeAttr(mary?.fill ?? "#E25B61")}" stroke="${escapeAttr(mary?.stroke ?? "#8C2028")}" stroke-width="${strokeWidth}"/>`);
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="120" d="${path(move(137.05, 204.874), line(254.527, 204.874), line(195.789, 103.136), cubic(195.789, 103.136, 215.377, 136.525, 195.789, 170.699), cubic(176.2, 204.874, 137.05, 204.874, 137.05, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[1] ?? "#5470A5")}"/>`);
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="240" d="${path(move(19.5737, 204.874), line(137.05, 204.874), cubic(137.05, 204.874, 94.7002, 203.927, 78.312, 170.699), cubic(61.9238, 137.472, 78.312, 103.136, 78.312, 103.136), line(19.5737, 204.874), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[2] ?? "#DD3E38")}"/>`);
+  push(`<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="0" fill-rule="evenodd" clip-rule="evenodd" d="${path(move(195.789, 103.136), line(137.05, 1.39844), line(78.312, 103.136), cubic(78.312, 103.136, 100.9, 71.1992, 137.05, 71.1992), cubic(173.2, 71.1992, 195.789, 103.136, 195.789, 103.136), "Z")}" fill="${escapeAttr(wordJesus?.vertexFills?.[0] ?? "#F2CF45")}"/>`);
+  push(`<path class="archeometer-chromic-primary-outline" data-triangle="wordJesus" d="${path(
+    move(137.05, 204.874),
+    line(254.527, 204.874),
+    line(195.789, 103.136),
+    move(137.05, 204.874),
+    line(19.5737, 204.874),
+    line(78.312, 103.136),
+    move(137.05, 204.874),
+    cubic(137.05, 204.874, 94.7002, 203.927, 78.312, 170.699),
+    cubic(61.9238, 137.472, 78.312, 103.136, 78.312, 103.136),
+    move(137.05, 204.874),
+    cubic(137.05, 204.874, 176.2, 204.874, 195.789, 170.699),
+    cubic(215.377, 136.525, 195.789, 103.136, 195.789, 103.136),
+    move(195.789, 103.136),
+    line(137.05, 1.39844),
+    line(78.312, 103.136),
+    move(195.789, 103.136),
+    cubic(195.789, 103.136, 173.2, 71.1992, 137.05, 71.1992),
+    cubic(100.9, 71.1992, 78.312, 103.136, 78.312, 103.136)
+  )}" fill="none" stroke="${escapeAttr(primaryStroke)}" stroke-width="${strokeWidth}"/>`);
   push(`</g>`);
 }
 
@@ -748,8 +750,8 @@ function buildRings(outerRadius: number): Record<ArcheometerRingId, ArcheometerR
   return {
     degreeOuter: ring("degreeOuter", 0.955, 1.0),
     degreeInner: ring("degreeInner", 0.905, 0.955),
-    zodiacUtterance: ring("zodiacUtterance", 0.775, 0.905),
-    planetaryUtterance: ring("planetaryUtterance", 0.555, 0.775),
+    zodiacUtterance: ring("zodiacUtterance", 0.800, 0.885),
+    planetaryUtterance: ring("planetaryUtterance", 0.555, 0.800),
     cosmologicalMusic: ring("cosmologicalMusic", 0.513, 0.555),
     astralZodiac: ring("astralZodiac", 0.460, 0.513),
     astralPlanetary: ring("astralPlanetary", 0.395, 0.460),
@@ -760,11 +762,11 @@ function buildRings(outerRadius: number): Record<ArcheometerRingId, ArcheometerR
 }
 
 function planetaryTriangleClipOuterRadius(rings: Record<ArcheometerRingId, ArcheometerRing>) {
-  return (rings.planetaryUtterance.r1 + rings.planetaryUtterance.r2) / 2;
+  return rings.planetaryUtterance.r2;
 }
 
 function resolvePalette(palette?: ArcheometerPalette): ResolvedArcheometerPalette {
-  const base = palette === "monochrome" ? MONOCHROME_PALETTE : COLOR_PALETTE;
+  const base = COLOR_PALETTE;
   const overrides = typeof palette === "object" ? palette : {};
   return {
     paper: overrides.paper ?? base.paper,
@@ -798,6 +800,16 @@ function polarToXY(center: ArcheometerPoint, radius: number, angleRad: number): 
   };
 }
 
+function scaleArcheometerReferencePoint(center: ArcheometerPoint, radius: number, x: number, y: number): ArcheometerPoint {
+  const referenceCenter = 137.05;
+  const referenceRadius = 135.652;
+  const scale = radius / referenceRadius;
+  return {
+    x: round(center.x + (x - referenceCenter) * scale),
+    y: round(center.y + (y - referenceCenter) * scale),
+  };
+}
+
 function lineFromPolar(center: ArcheometerPoint, r1: number, r2: number, angleRad: number): ArcheometerLine {
   const p1 = polarToXY(center, r1, angleRad);
   const p2 = polarToXY(center, r2, angleRad);
@@ -809,10 +821,21 @@ function lineSvg(line: ArcheometerLine, color: string, strokeWidth: number, opac
   return `<line${classAttr}${attributes} x1="${fmt(line.x1)}" y1="${fmt(line.y1)}" x2="${fmt(line.x2)}" y2="${fmt(line.y2)}" stroke="${escapeAttr(color)}" stroke-opacity="${fmt(opacity)}" stroke-width="${fmt(strokeWidth)}" stroke-linecap="round"/>`;
 }
 
-function textSvg(value: string, p: ArcheometerPoint, fontSize: number, color: string, rotation = 0, anchor: "start" | "middle" | "end" = "middle", weight?: number) {
+function textSvg(
+  value: string,
+  p: ArcheometerPoint,
+  fontSize: number,
+  color: string,
+  rotation = 0,
+  anchor: "start" | "middle" | "end" = "middle",
+  weight?: number,
+  className?: string,
+  attributes = ""
+) {
   const transform = rotation ? ` transform="rotate(${fmt(rotation)} ${fmt(p.x)} ${fmt(p.y)})"` : "";
   const weightAttr = weight ? ` font-weight="${weight}"` : "";
-  return `<text x="${fmt(p.x)}" y="${fmt(p.y)}"${transform} font-family="${textFontFamily()}" font-size="${fmt(fontSize)}" text-anchor="${anchor}" dominant-baseline="middle" fill="${escapeAttr(color)}"${weightAttr}>${escapeText(value)}</text>`;
+  const classAttr = className ? ` class="${escapeAttr(className)}"` : "";
+  return `<text${classAttr}${attributes} x="${fmt(p.x)}" y="${fmt(p.y)}"${transform} font-family="${textFontFamily()}" font-size="${fmt(fontSize)}" text-anchor="${anchor}" dominant-baseline="middle" fill="${escapeAttr(color)}"${weightAttr}>${escapeText(value)}</text>`;
 }
 
 function annulusPath(center: ArcheometerPoint, r1: number, r2: number) {
