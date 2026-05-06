@@ -1,6 +1,6 @@
 ---
 title: Visual
-description: Generate astrology wheel and Tree of Life SVG diagrams, standalone symbol glyphs, and canonical layout data for custom renderers
+description: Generate astrology wheel, Archeometer, and Tree of Life SVG diagrams, standalone symbol glyphs, and canonical layout data for custom renderers
 sidebar:
   order: 8
 ---
@@ -32,6 +32,12 @@ import {
   PLANET_GLYPH_PRIMITIVES,
   ASPECT_GLYPH_PRIMITIVES,
 
+  // Archeometer
+  generateArcheometerSvg,
+  getArcheometerRenderModel,
+  ARCHEOMETER_DEFAULT_VIEWBOX,
+  DEFAULT_ARCHEOMETER_UTTERANCE,
+
   // Tree of Life
   generateTreeSvg,
   getTreeLayout,
@@ -62,6 +68,14 @@ import {
 - `ZODIAC_GLYPH_PRIMITIVES`
 - `PLANET_GLYPH_PRIMITIVES`
 - `ASPECT_GLYPH_PRIMITIVES`
+- `generateArcheometerSvg`
+- `getArcheometerRenderModel`
+- `ARCHEOMETER_DEFAULT_VIEWBOX`
+- `DEFAULT_ARCHEOMETER_UTTERANCE`
+- `DEFAULT_ARCHEOMETER_TRIANGLES`
+- `DEFAULT_ARCHEOMETER_MUSICAL_NOTES`
+- `DEFAULT_ARCHEOMETER_ZODIAC`
+- `DEFAULT_ARCHEOMETER_PLANETS`
 - `generateTreeSvg`
 - `getTreeLayout`
 - `getTreeRenderModel`
@@ -69,7 +83,7 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerZodiacUtteranceMark`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -568,6 +582,70 @@ type AstroGlyphPrimitive =
 ```
 
 Coordinates are normalized to roughly `-1…1`. Scale and translate to your target viewport before rendering.
+
+---
+
+## Archeometer
+
+### `generateArcheometerSvg(options?)`
+
+Generates a complete Archeometer SVG string from deterministic render tables. The output contains the dual degree crown, utterance rings, trigone geometry, zodiac and planetary glyph rings, chromic rays, white rays, and solar center.
+
+```typescript
+function generateArcheometerSvg(options?: ArcheometerSvgOptions): string
+```
+
+#### Basic usage
+
+```typescript
+import { generateArcheometerSvg } from 'kaabalah/visual';
+
+const svg = generateArcheometerSvg({
+  width: 900,
+  height: 900,
+  background: "transparent",
+  title: "The Cosmological Archeometer",
+});
+```
+
+<img src="/archeometer.svg" alt="The Cosmological Archeometer" width="280" />
+
+#### `ArcheometerSvgOptions`
+
+```typescript
+interface ArcheometerSvgOptions {
+  width?: number | string;
+  height?: number | string;
+  viewBox?: ArcheometerSvgViewBox;         // default: 0 0 900 900
+  background?: string | "transparent";    // default: "transparent"
+  palette?: ArcheometerPalette;
+  padding?: number;
+  rotationDegrees?: number;               // 0 degrees is north; positive rotates clockwise
+  degreeLabelEvery?: number;
+  layers?: ArcheometerLayerOptions;
+  utterance?: readonly ArcheometerUtterancePoint[];
+  triangles?: readonly ArcheometerTriangleSpec[];
+  triangleLabels?: readonly ArcheometerTriangleLabel[];
+  zodiacUtteranceMarks?: readonly ArcheometerZodiacUtteranceMark[];
+  musicalNotes?: readonly ArcheometerMusicalNote[];
+  zodiacSigns?: readonly ArcheometerZodiacSign[];
+  planetaryPoints?: readonly ArcheometerPlanetaryPoint[];
+}
+```
+
+Use `getArcheometerRenderModel()` when you need the normalized ring geometry, resolved palette, and default correspondence tables without serializing SVG.
+
+```typescript
+import { DEFAULT_ARCHEOMETER_UTTERANCE, generateArcheometerSvg } from 'kaabalah/visual';
+
+const svg = generateArcheometerSvg({
+  utterance: DEFAULT_ARCHEOMETER_UTTERANCE.map((point) =>
+    point.id === "y"
+      ? { ...point, letter: "Ya", number: 11, color: "#123456" }
+      : point
+  ),
+});
+```
 
 ---
 

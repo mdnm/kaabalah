@@ -4,7 +4,14 @@ import { describe, expect, it } from "vitest";
 
 import { id, KaabalahTypes } from "../core";
 import {
+  ARCHEOMETER_DEFAULT_VIEWBOX,
+  DEFAULT_ARCHETYPE_UTTERANCE,
+  DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES,
+  DEFAULT_ARCHEOMETER_TRIANGLE_LABELS,
+  DEFAULT_ARCHEOMETER_UTTERANCE,
+  generateArcheometerSvg,
   generateTreeSvg,
+  getArcheometerRenderModel,
   getTreeLayout,
   getTreeRenderModel,
   TREE_PATH_IDS,
@@ -400,8 +407,219 @@ describe("tree svg visual module", () => {
   });
 });
 
+describe("archeometer svg visual module", () => {
+  it("exports a render model with normalized rings and archeometer defaults", () => {
+    const model = getArcheometerRenderModel();
+
+    expect(model.viewBox).toEqual(ARCHEOMETER_DEFAULT_VIEWBOX);
+    expect(model.center).toEqual({ x: 450, y: 450 });
+    expect(model.outerRadius).toBe(434);
+    expect(model.rings.degreeOuter).toEqual({
+      id: "degreeOuter",
+      r1: 414.47,
+      r2: 434,
+    });
+    expect(model.rings.solarCenter).toEqual({
+      id: "solarCenter",
+      r1: 0,
+      r2: 52.08,
+    });
+    expect(roundForTest(model.rings.cosmologicalMusic.r2 - model.rings.cosmologicalMusic.r1)).toBe(18.23);
+    expect(roundForTest(model.rings.astralZodiac.r2 - model.rings.astralZodiac.r1)).toBe(23);
+    expect(roundForTest(model.rings.astralPlanetary.r2 - model.rings.astralPlanetary.r1)).toBe(28.21);
+    expect(model.utterance).toBe(DEFAULT_ARCHEOMETER_UTTERANCE);
+    expect(DEFAULT_ARCHETYPE_UTTERANCE).toBe(DEFAULT_ARCHEOMETER_UTTERANCE);
+    expect(model.triangleLabels).toBe(DEFAULT_ARCHEOMETER_TRIANGLE_LABELS);
+    expect(model.triangles[0]).toMatchObject({
+      vertices: [0, 120, 240],
+      vertexFills: ["#f2cf45", "#5470a5", "#dd3e38"],
+    });
+    expect(model.triangles[1]).toMatchObject({
+      vertices: [180, 300, 60],
+      vertexFills: ["#cc58a1", "#f28a32", "#78bd79"],
+    });
+    expect(model.utterance[0]).toMatchObject({
+      degree: 0,
+      letter: "P, Ph",
+      number: 80,
+    });
+    expect(model.triangleLabels[0]).toMatchObject({
+      degree: 0,
+      label: "S, Sh",
+      number: 300,
+    });
+    expect(model.zodiacSigns[0]).toMatchObject({
+      degree: 0,
+      name: "Capricorn",
+      glyph: "♑",
+    });
+    expect(model.planetaryPoints[0]).toMatchObject({
+      degree: 0,
+      name: "Saturn",
+      glyph: "♄",
+    });
+    expect(model.musicalNotes[0]).toMatchObject({
+      degree: 0,
+      note: "Si",
+    });
+    expect(DEFAULT_ARCHEOMETER_SECTOR_CORRESPONDENCES[0]).toMatchObject({
+      degree: 0,
+      utterance: {
+        letter: "P, Ph",
+        number: 80,
+      },
+      triangleLabel: {
+        label: "S, Sh",
+        number: 300,
+      },
+      musicalNote: {
+        note: "Si",
+      },
+      zodiacSign: {
+        name: "Capricorn",
+        glyph: "♑",
+      },
+      planetaryPoint: {
+        name: "Saturn",
+        glyph: "♄",
+      },
+    });
+    expect(model.zodiacSigns[1]).toMatchObject({
+      degree: 30,
+      name: "Sagittarius",
+      glyph: "♐",
+    });
+    expect(model.planetaryPoints[1]).toMatchObject({
+      degree: 30,
+      name: "Jupiter",
+      glyph: "♃",
+    });
+    expect(model.zodiacSigns[2]).toMatchObject({
+      degree: 60,
+      name: "Scorpio",
+      glyph: "♏",
+    });
+    expect(model.planetaryPoints[2]).toMatchObject({
+      degree: 60,
+      name: "Mars",
+      glyph: "♂",
+    });
+    expect(model.zodiacSigns[11]).toMatchObject({
+      degree: 330,
+      name: "Aquarius",
+      glyph: "♒",
+    });
+    expect(model.triangleLabels[9]).toMatchObject({
+      degree: 270,
+      label: "C",
+    });
+    expect(model.utterance[9]).toMatchObject({
+      degree: 270,
+      letter: "H, E",
+    });
+  });
+
+  it("renders a transparent archeometer svg with named layers", () => {
+    const svg = generateArcheometerSvg({
+      background: "transparent",
+      title: "The Cosmological Archeometer",
+    });
+
+    expect(svg.startsWith(`<svg xmlns="http://www.w3.org/2000/svg"`)).toBe(true);
+    expect(svg).toContain(`viewBox="0 0 900 900"`);
+    expect(svg).toContain(`<title>The Cosmological Archeometer</title>`);
+    expect(svg).toContain(`<g id="archeometer-degree-crown"`);
+    expect(svg).toContain(`>345</text>`);
+    expect(svg).toContain(`>15</text>`);
+    expect(svg).toContain(`<g id="archeometer-zodiacal-utterance"`);
+    expect(svg).toContain(`<g id="archeometer-planetary-utterance"`);
+    expect(svg).toContain(`<clipPath id="archeometer-planetary-clip">`);
+    expect(svg).toContain(`A 288.61 288.61`);
+    expect(svg).toContain(`class="archeometer-trigone"`);
+    expect(svg.match(/class="archeometer-trigone-vertex-fill"/g)).toHaveLength(12);
+    expect(svg).toContain(`d="M 450 -49.887`);
+    expect(svg).toContain(`data-triangle="wordJesus" data-degree="0"`);
+    expect(svg).toContain(`fill="#f2cf45"`);
+    expect(svg).toContain(`data-triangle="wordJesus" data-degree="120"`);
+    expect(svg).toContain(`fill="#5470a5"`);
+    expect(svg).toContain(`data-triangle="wordJesus" data-degree="240"`);
+    expect(svg).toContain(`fill="#dd3e38"`);
+    expect(svg).toContain(`fill-opacity="0.58"`);
+    expect(svg).toContain(`data-degree="0" data-letter="P, Ph"`);
+    expect(svg).toContain(`>P<`);
+    expect(svg).toContain(`>Ph<`);
+    expect(svg).toContain(`data-degree="30" data-letter="W, O, U"`);
+    expect(svg).not.toContain(`>W, O, U<`);
+    expect(svg).not.toContain(`class="archeometer-zodiac-utterance-mark"`);
+    expect(svg).toContain(`>S, Sh<`);
+    expect(svg).toContain(`>300<`);
+    expect(svg).toContain(`>Si<`);
+    expect(svg).toContain(`id="archeometer-music-backing"`);
+    expect(svg.match(/class="archeometer-music-staff-line"/g)).toHaveLength(60);
+    expect(svg).toContain(`class="archeometer-music-staff-line" data-degree="0"`);
+    expect(svg).toContain(`data-degree="270" data-letter="H, E"`);
+    expect(svg).not.toContain(`data-degree="270" data-letter=""`);
+    expect(svg).not.toContain(`filter="url(#archeometer-text-halo)"`);
+    expect(svg).not.toContain(`id="archeometer-text-halo"`);
+    expect(svg).not.toContain(`fill="#ffffff" font-weight="700"`);
+    expect(svg).toContain(`id="archeometer-chromic-triangle-core"`);
+    expect(svg).not.toContain(`id="archeometer-chromic-vertex-colors"`);
+    expect(svg).not.toContain(`class="archeometer-chromic-vertex-fill"`);
+    expect(svg).not.toContain(`class="archeometer-chromic-foundation"`);
+    expect(svg.match(/class="archeometer-chromic-trigone"/g)).toHaveLength(3);
+    expect(svg.match(/class="archeometer-chromic-trigone-outline"/g)).toHaveLength(1);
+    expect(svg.match(/class="archeometer-chromic-primary-facet"/g)).toHaveLength(3);
+    expect(svg).toContain(`class="archeometer-chromic-trigone-outline" data-triangle="wordJesus"`);
+    expect(svg).toContain(`class="archeometer-chromic-trigone" data-triangle="mary"`);
+    expect(svg).toContain(`class="archeometer-chromic-trigone" data-triangle="ether"`);
+    expect(svg).toContain(`class="archeometer-chromic-trigone" data-triangle="divineFire"`);
+    expect(svg).toContain(`d="M 450 278.57 L 598.463 535.715 L 301.537 535.715 Z"`);
+    expect(svg).toContain(`fill="#f2cf45" stroke="none"`);
+    expect(svg).toContain(`fill="#5470a5" stroke="none"`);
+    expect(svg).toContain(`fill="#dd3e38" stroke="none"`);
+    expect(svg.match(/class="archeometer-zodiac-sign"/g)).toHaveLength(12);
+    expect(svg).toContain(`class="archeometer-zodiac-sign" data-sign="Capricorn" data-degree="0"`);
+    expect(svg.match(/class="archeometer-astral-planetary-sector"/g)).toHaveLength(12);
+    expect(svg).toContain(`class="archeometer-planet" data-planet="Moon" data-degree="180"`);
+    expect(svg).toContain(`font-size="16.4" text-anchor="middle" dominant-baseline="middle" fill="#151515">☾</text>`);
+    expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="0"`);
+    expect(svg).toContain(`fill="#f2cf45" fill-opacity="0.36"`);
+    expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="300"`);
+    expect(svg).toContain(`fill="#f28a32" fill-opacity="0.36"`);
+    expect(svg.match(/class="archeometer-astral-planetary-divider"/g)).toHaveLength(12);
+    expect(svg).toContain(`class="archeometer-astral-planetary-divider" data-degree="15"`);
+    expect(svg).not.toContain(`class="archeometer-astral-planetary-divider" data-degree="0"`);
+    expect(svg).toContain(`<g id="archeometer-solar-center"`);
+    expect(svg).not.toContain(`<rect x="0" y="0" width="900" height="900"`);
+    expect(svg).not.toContain(`Y-PhO`);
+    expect(svg.endsWith(`</svg>`)).toBe(true);
+  });
+
+  it("allows caller supplied utterance data without changing the default table", () => {
+    const svg = generateArcheometerSvg({
+      utterance: DEFAULT_ARCHEOMETER_UTTERANCE.map((point) =>
+        point.id === "y"
+          ? { ...point, letter: "Ya", number: 11, color: "#123456" }
+          : point
+      ),
+    });
+
+    expect(svg).toContain(`data-letter="Ya"`);
+    expect(svg).toContain(`fill="#123456"`);
+    expect(DEFAULT_ARCHEOMETER_UTTERANCE.find((point) => point.id === "y")).toMatchObject({
+      letter: "V, O, U",
+      number: 10,
+      color: "#d85c43",
+    });
+  });
+});
+
 function hash(value: string) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function roundForTest(value: number) {
+  return Math.round(value * 100) / 100;
 }
 
 function extractMainPathStrokes(svg: string) {
