@@ -19,34 +19,31 @@
 <g id="archeometer-chromic-rays" aria-label="dodecagonal crown of chromic circum-solar rays">
 <g clip-path="url(#archeometer-chromic-clip)">
 <g id="archeometer-chromic-triangle-core" aria-label="inner chromic primary triangle core">
-<path class="archeometer-chromic-foundation" data-triangle="ether" d="M 278.572 449.996 L 535.714 301.535 L 535.714 598.456 Z" fill="#78bd79" stroke="#2d7737" stroke-width="1.4"/>
-<path class="archeometer-chromic-foundation" data-triangle="divineFire" d="M 621.427 449.996 L 364.286 598.456 L 364.286 301.535 Z" fill="#cc58a1" stroke="#7d2a65" stroke-width="1.4"/>
-<path class="archeometer-chromic-foundation" data-triangle="mary" d="M 450 621.43 L 301.54 364.288 L 598.461 364.288 Z" fill="#e25b61" stroke="#8c2028" stroke-width="1.4"/>
-<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="120" d="M 450 535.712 L 598.461 535.712 L 524.231 407.141 C 524.231 407.141 548.986 449.337 524.231 492.524 C 499.476 535.712 450 535.712 450 535.712 Z" fill="#5470a5"/>
-<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="240" d="M 301.54 535.712 L 450 535.712 C 450 535.712 396.481 534.516 375.77 492.524 C 355.059 450.533 375.77 407.141 375.77 407.141 L 301.54 535.712 Z" fill="#dd3e38"/>
-<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="0" fill-rule="evenodd" clip-rule="evenodd" d="M 524.231 407.141 L 450 278.571 L 375.77 407.141 C 375.77 407.141 404.315 366.781 450 366.781 C 495.685 366.781 524.231 407.141 524.231 407.141 Z" fill="#f2cf45"/>
+<path class="archeometer-chromic-foundation" data-triangle="ether" d="M 278.572 449.996 L 535.714 301.535 L 535.714 598.456 Z" fill="#78bd79" stroke="#151515" stroke-width="1.4"/>
+<path class="archeometer-chromic-foundation" data-triangle="divineFire" d="M 621.427 449.996 L 364.286 598.456 L 364.286 301.535 Z" fill="#cc58a1" stroke="#151515" stroke-width="1.4"/>
+<path class="archeometer-chromic-foundation" data-triangle="mary" d="M 450 621.43 L 301.54 364.288 L 598.461 364.288 Z" fill="#e25b61" stroke="#151515" stroke-width="1.4"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="ether" data-degree="270" d="M 278.57 450 L 407.143 375.769 L 450 450 L 407.143 524.232 Z" fill="#e96836" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="ether" data-degree="30" d="M 535.715 301.537 L 535.715 450 L 450 450 L 407.143 375.769 Z" fill="#b7bd58" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="ether" data-degree="150" d="M 535.715 598.463 L 407.143 524.232 L 450 450 L 535.715 450 Z" fill="#8f69a3" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="divineFire" data-degree="90" d="M 621.43 450 L 492.857 524.232 L 450 450 L 492.857 375.769 Z" fill="#63a890" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="divineFire" data-degree="210" d="M 364.285 598.463 L 364.285 450 L 450 450 L 492.857 524.232 Z" fill="#d45375" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="divineFire" data-degree="330" d="M 364.285 301.537 L 492.857 375.769 L 450 450 L 364.285 450 Z" fill="#f0b33f" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="mary" data-degree="180" d="M 450 621.43 L 375.769 492.857 L 450 450 L 524.232 492.857 Z" fill="#cc58a1" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="mary" data-degree="300" d="M 301.537 364.285 L 450 364.285 L 450 450 L 375.769 492.857 Z" fill="#f28a32" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-trigone-facet" data-triangle="mary" data-degree="60" d="M 598.463 364.285 L 524.232 492.857 L 450 450 L 450 364.285 Z" fill="#78bd79" stroke="#151515" stroke-opacity="0.72" stroke-width="0.85"/>
+<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="120" d="M 450 535.712 L 598.461 535.712 L 524.231 407.141 C 524.231 407.141 548.986 449.337 524.231 492.524 C 499.476 535.712 450 535.712 450 535.712 Z" fill="#5470a5" stroke="#151515" stroke-opacity="0.78" stroke-width="0.95"/>
+<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="240" d="M 301.54 535.712 L 450 535.712 C 450 535.712 396.481 534.516 375.77 492.524 C 355.059 450.533 375.77 407.141 375.77 407.141 L 301.54 535.712 Z" fill="#dd3e38" stroke="#151515" stroke-opacity="0.78" stroke-width="0.95"/>
+<path class="archeometer-chromic-primary-facet" data-triangle="wordJesus" data-degree="0" fill-rule="evenodd" clip-rule="evenodd" d="M 524.231 407.141 L 450 278.571 L 375.77 407.141 C 375.77 407.141 404.315 366.781 450 366.781 C 495.685 366.781 524.231 407.141 524.231 407.141 Z" fill="#f2cf45" stroke="#151515" stroke-opacity="0.78" stroke-width="0.95"/>
 <path class="archeometer-chromic-primary-outline" data-triangle="wordJesus" d="M 450 535.712 L 598.461 535.712 L 524.231 407.141 M 450 535.712 L 301.54 535.712 L 375.77 407.141 M 450 535.712 C 450 535.712 396.481 534.516 375.77 492.524 C 355.059 450.533 375.77 407.141 375.77 407.141 M 450 535.712 C 450 535.712 499.476 535.712 524.231 492.524 C 548.986 449.337 524.231 407.141 524.231 407.141 M 524.231 407.141 L 450 278.571 L 375.77 407.141 M 524.231 407.141 C 524.231 407.141 495.685 366.781 450 366.781 C 404.315 366.781 375.77 407.141 375.77 407.141" fill="none" stroke="#8a6a00" stroke-width="1.4"/>
 </g>
 </g>
 </g>
 <g id="archeometer-planetary-utterance" aria-label="four trigones of the planetary utterance">
 <g clip-path="url(#archeometer-planetary-clip)">
-<path class="archeometer-trigone-vertex-fill" data-triangle="wordJesus" data-degree="0" d="M 450 102.8 L 600.342 363.2 L 450 450 L 299.658 363.2 Z" fill="#f2cf45" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="wordJesus" data-degree="120" d="M 750.684 623.6 L 450 623.6 L 450 450 L 600.342 363.2 Z" fill="#5470a5" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="wordJesus" data-degree="240" d="M 149.316 623.6 L 299.658 363.2 L 450 450 L 450 623.6 Z" fill="#dd3e38" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone" data-triangle="wordJesus" d="M 450 102.8 L 750.684 623.6 L 149.316 623.6 Z" fill="none" stroke="#151515" stroke-opacity="0.78" stroke-width="1.35"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="mary" data-degree="180" d="M 450 797.2 L 299.658 536.8 L 450 450 L 600.342 536.8 Z" fill="#cc58a1" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="mary" data-degree="300" d="M 149.316 276.4 L 450 276.4 L 450 450 L 299.658 536.8 Z" fill="#f28a32" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="mary" data-degree="60" d="M 750.684 276.4 L 600.342 536.8 L 450 450 L 450 276.4 Z" fill="#78bd79" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone" data-triangle="mary" d="M 450 797.2 L 149.316 276.4 L 750.684 276.4 Z" fill="none" stroke="#151515" stroke-opacity="0.78" stroke-width="1.35"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="ether" data-degree="270" d="M 102.8 450 L 363.2 299.658 L 450 450 L 363.2 600.342 Z" fill="#e96836" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="ether" data-degree="30" d="M 623.6 149.316 L 623.6 450 L 450 450 L 363.2 299.658 Z" fill="#b7bd58" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="ether" data-degree="150" d="M 623.6 750.684 L 363.2 600.342 L 450 450 L 623.6 450 Z" fill="#8f69a3" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone" data-triangle="ether" d="M 102.8 450 L 623.6 149.316 L 623.6 750.684 Z" fill="none" stroke="#151515" stroke-opacity="0.78" stroke-width="1.35"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="divineFire" data-degree="90" d="M 797.2 450 L 536.8 600.342 L 450 450 L 536.8 299.658 Z" fill="#63a890" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="divineFire" data-degree="210" d="M 276.4 750.684 L 276.4 450 L 450 450 L 536.8 600.342 Z" fill="#d45375" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone-vertex-fill" data-triangle="divineFire" data-degree="330" d="M 276.4 149.316 L 536.8 299.658 L 450 450 L 276.4 450 Z" fill="#f0b33f" fill-opacity="0.58" stroke="none"/>
-<path class="archeometer-trigone" data-triangle="divineFire" d="M 797.2 450 L 276.4 750.684 L 276.4 149.316 Z" fill="none" stroke="#151515" stroke-opacity="0.78" stroke-width="1.35"/>
+<path class="archeometer-trigone" data-triangle="wordJesus" d="M 450 102.8 L 750.684 623.6 L 149.316 623.6 Z" fill="#f2cf45" fill-opacity="0.52" stroke="#151515" stroke-opacity="0.82" stroke-width="1.35"/>
+<path class="archeometer-trigone" data-triangle="mary" d="M 450 797.2 L 149.316 276.4 L 750.684 276.4 Z" fill="#e25b61" fill-opacity="0.52" stroke="#151515" stroke-opacity="0.82" stroke-width="1.35"/>
+<path class="archeometer-trigone" data-triangle="ether" d="M 102.8 450 L 623.6 149.316 L 623.6 750.684 Z" fill="#78bd79" fill-opacity="0.52" stroke="#151515" stroke-opacity="0.82" stroke-width="1.35"/>
+<path class="archeometer-trigone" data-triangle="divineFire" d="M 797.2 450 L 276.4 750.684 L 276.4 149.316 Z" fill="#cc58a1" fill-opacity="0.52" stroke="#151515" stroke-opacity="0.82" stroke-width="1.35"/>
 </g>
 <text x="450" y="149.585" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">S, Sh</text>
 <text x="450" y="124.066" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.5" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="600">300</text>
@@ -85,64 +82,52 @@
 <path d="M 78.998 350.59 A 384.09 384.09 0 0 1 178.407 178.407 L 204.493 204.493 A 347.2 347.2 0 0 0 114.631 360.138 Z" fill="#d4579c" fill-opacity="0.40" stroke="#171717" stroke-opacity="0.40" stroke-width="0.7"/>
 <path d="M 178.407 178.407 A 384.09 384.09 0 0 1 350.59 78.998 L 360.138 114.631 A 347.2 347.2 0 0 0 204.493 204.493 Z" fill="#7963b8" fill-opacity="0.40" stroke="#171717" stroke-opacity="0.40" stroke-width="0.7"/>
 <g class="archeometer-utterance-point" data-degree="0" data-letter="P, Ph">
-<circle cx="450" cy="81.404" r="8.116" fill="#f2d54c" stroke="#151515" stroke-width="1.1"/>
 <text x="450" y="76.74" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">P</text>
 <text x="450" y="86.068" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">Ph</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="30" data-letter="W, O, U">
-<circle cx="634.298" cy="130.786" r="8.116" fill="#b7d56a" stroke="#151515" stroke-width="1.1"/>
 <text x="634.298" y="123.482" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">W</text>
 <text x="634.298" y="130.786" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">O</text>
 <text x="634.298" y="138.09" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">U</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="60" data-letter="M">
-<circle cx="769.214" cy="265.702" r="8.116" fill="#79bf6a" stroke="#151515" stroke-width="1.1"/>
 <text x="769.214" y="264.728" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">M</text>
 <text x="769.214" y="269.922" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">40</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="90" data-letter="L">
-<circle cx="818.596" cy="450" r="8.116" fill="#69ad74" stroke="#151515" stroke-width="1.1"/>
 <text x="818.596" y="449.026" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">L</text>
 <text x="818.596" y="454.22" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">70</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="120" data-letter="Y">
-<circle cx="769.214" cy="634.298" r="8.116" fill="#efb83e" stroke="#151515" stroke-width="1.1"/>
 <text x="769.214" y="633.324" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">Y</text>
 <text x="769.214" y="638.518" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">6</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="150" data-letter="T">
-<circle cx="634.298" cy="769.214" r="8.116" fill="#ec8d3f" stroke="#151515" stroke-width="1.1"/>
 <text x="634.298" y="768.24" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">T</text>
 <text x="634.298" y="773.434" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">30</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="180" data-letter="E, H">
-<circle cx="450" cy="818.596" r="8.116" fill="#df4d43" stroke="#151515" stroke-width="1.1"/>
 <text x="450" y="813.932" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">E</text>
 <text x="450" y="823.26" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">H</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="210" data-letter="Z">
-<circle cx="265.702" cy="769.214" r="8.116" fill="#8b54ad" stroke="#151515" stroke-width="1.1"/>
 <text x="265.702" y="768.24" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">Z</text>
 <text x="265.702" y="773.434" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">400</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="240" data-letter="V, O, U">
-<circle cx="130.786" cy="634.298" r="8.116" fill="#d85c43" stroke="#151515" stroke-width="1.1"/>
 <text x="130.786" y="626.994" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">V</text>
 <text x="130.786" y="634.298" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">O</text>
 <text x="130.786" y="641.602" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="8.3" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">U</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="270" data-letter="H, E">
-<circle cx="81.404" cy="450" r="8.116" fill="#3c82c2" stroke="#151515" stroke-width="1.1"/>
 <text x="81.404" y="445.336" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">H</text>
 <text x="81.404" y="454.664" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="10.6" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">E</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="300" data-letter="R">
-<circle cx="130.786" cy="265.702" r="8.116" fill="#d4579c" stroke="#151515" stroke-width="1.1"/>
 <text x="130.786" y="264.728" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">R</text>
 <text x="130.786" y="269.922" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">5</text>
 </g>
 <g class="archeometer-utterance-point" data-degree="330" data-letter="K">
-<circle cx="265.702" cy="130.786" r="8.116" fill="#7963b8" stroke="#151515" stroke-width="1.1"/>
 <text x="265.702" y="129.812" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#151515" font-weight="700">K</text>
 <text x="265.702" y="135.006" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Segoe UI Symbol', 'Apple Symbols', sans-serif" font-size="7.3" text-anchor="middle" dominant-baseline="middle" fill="#151515">6</text>
 </g>
