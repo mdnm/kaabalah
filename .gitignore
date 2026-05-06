@@ -20,3 +20,4 @@
 docs/dist
 docs/node_modules
 docs/.astro
+docs/internal
