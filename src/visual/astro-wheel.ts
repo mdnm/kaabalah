@@ -76,6 +76,14 @@ export interface AstroWheelHouseOptions {
   angles?: boolean;
 }
 
+export type AstroWheelPointConnectorMode = "auto" | "always" | "never";
+
+export interface AstroWheelLayoutOptions {
+  rings?: Partial<Record<AstroWheelRing["id"], number>>;
+  pointConnectors?: AstroWheelPointConnectorMode;
+  maxPointDisplacementDegrees?: number;
+}
+
 export interface AstroWheelPointOptions {
   enabled?: boolean;
   nodes?: boolean;
@@ -140,6 +148,7 @@ export interface AstroWheelSvgOptions {
   excludeBodies?: readonly string[];
   padding?: number;
   title?: string;
+  layout?: AstroWheelLayoutOptions;
 }
 
 export interface AstroWheelCoordinate {
@@ -159,6 +168,13 @@ export interface AstroWheelLine {
   y1: number;
   x2: number;
   y2: number;
+}
+
+export interface AstroWheelArcConnector {
+  startAngle: number;
+  endAngle: number;
+  radius: number;
+  path: string;
 }
 
 export interface AstroWheelRing {
@@ -213,6 +229,7 @@ export interface AstroWheelPoint {
   displayLongitude: number;
   zodiacPosition?: ZodiacPosition;
   tickLine: AstroWheelLine;
+  leaderArc?: AstroWheelArcConnector;
   leaderLine?: AstroWheelLine;
   glyphPosition: AstroWheelCoordinate;
   labelAngle: number;
@@ -318,6 +335,13 @@ interface ResolvedPointOptions {
 
 const TAU = Math.PI * 2;
 const GLYPH_OUTLINE_FILTER_ID = "astro-wheel-glyph-outline";
+const DEFAULT_ASTRO_WHEEL_RING_FRACTIONS: Record<AstroWheelRing["id"], number> = {
+  houses: 7,
+  zodiac: 13,
+  planets: 27,
+  aspects: 53,
+};
+const DEFAULT_POINT_DISPLACEMENT_DEGREES = 20;
 
 export const ASTRO_WHEEL_DEFAULT_VIEWBOX: Required<AstroWheelViewBox> = {
   minX: 0,
@@ -524,7 +548,10 @@ export function getAstroWheelRenderModel(
   const outerRadius = round(Math.max(0, Math.min(viewBox.width, viewBox.height) / 2 - padding));
   const angleOf = (longitude: number) =>
     deg2rad(clamp360(180 + chart.houses.ascendant.longitude - longitude));
-  const rings = buildRings(outerRadius);
+  const rings = buildRings(outerRadius, options.layout?.rings);
+  const pointConnectorMode = options.layout?.pointConnectors ?? "auto";
+  const maxPointDisplacementDegrees = options.layout?.maxPointDisplacementDegrees
+    ?? DEFAULT_POINT_DISPLACEMENT_DEGREES;
   const resolvedPoints = resolvePointOptions(options.points);
   const resolvedHouses = resolveHouseOptions(options.houses);
   const resolvedAspects = resolveAspectOptions(options.aspects);
@@ -565,6 +592,8 @@ export function getAstroWheelRenderModel(
     scale,
     palette,
     excludedBodies,
+    pointConnectorMode,
+    maxDisplacementDegrees: maxPointDisplacementDegrees,
   });
   const extraPointLayers = (options.pointLayers ?? []).map((layer) =>
     buildPointLayer({
@@ -575,6 +604,8 @@ export function getAstroWheelRenderModel(
       scale,
       palette,
       excludedBodies,
+      pointConnectorMode,
+      maxDisplacementDegrees: maxPointDisplacementDegrees,
     })
   );
   const pointLayers = [
@@ -900,7 +931,11 @@ function renderPlanets(
         `<line x1="${fmt(point.tickLine.x1)}" y1="${fmt(point.tickLine.y1)}" x2="${fmt(point.tickLine.x2)}" y2="${fmt(point.tickLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.82" stroke-width="${fmt(model.scale)}" stroke-linecap="round"/>`
       );
 
-      if (point.leaderLine) {
+      if (point.leaderArc) {
+        push(
+          `<path class="astro-wheel-point-leader" d="${escapeAttr(point.leaderArc.path)}" fill="none" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.52" stroke-width="${fmt(0.9 * model.scale)}" stroke-linecap="round" stroke-linejoin="round"/>`
+        );
+      } else if (point.leaderLine) {
         push(
           `<line class="astro-wheel-point-leader" x1="${fmt(point.leaderLine.x1)}" y1="${fmt(point.leaderLine.y1)}" x2="${fmt(point.leaderLine.x2)}" y2="${fmt(point.leaderLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.52" stroke-width="${fmt(0.9 * model.scale)}" stroke-linecap="round"/>`
         );
@@ -1547,6 +1582,10 @@ function buildAngleMarkers(params: {
   const { chart, center, angleOf, rings, scale } = params;
   const ring = rings.houses;
   const labelFontSize = clamp((ring.r2 - ring.r1) * 0.32, 8 * scale, 18 * scale);
+  const labelRadius = Math.min(
+    ring.r2 + 9 * scale,
+    ring.r2 - Math.max(10 * scale, labelFontSize * 0.6)
+  );
 
   const markers = [
     { key: "ASC" as const, position: chart.houses.ascendant },
@@ -1571,7 +1610,7 @@ function buildAngleMarkers(params: {
       labelPosition: polarWithNudge(
         center.x,
         center.y,
-        ring.r2 + 9 * scale,
+        labelRadius,
         angle,
         0,
         0
@@ -1590,8 +1629,20 @@ function buildPointLayer(params: {
   scale: number;
   palette: ResolvedAstroWheelPalette;
   excludedBodies: ReadonlySet<string>;
+  pointConnectorMode: AstroWheelPointConnectorMode;
+  maxDisplacementDegrees: number;
 }): AstroWheelPointLayer {
-  const { layer, center, angleOf, rings, scale, palette, excludedBodies } = params;
+  const {
+    layer,
+    center,
+    angleOf,
+    rings,
+    scale,
+    palette,
+    excludedBodies,
+    pointConnectorMode,
+    maxDisplacementDegrees,
+  } = params;
   const ring = rings.planets;
   const requestedRadius = resolvePointLayerRadius(layer, rings);
   const requestedExternalLayer = requestedRadius > rings.houses.r2 + scale;
@@ -1634,27 +1685,26 @@ function buildPointLayer(params: {
           labelMaxRadius - pointGlyphFontSize * 0.5
         );
 
+    const connectorRadius = glyphRadius;
     const tickLine = isExternalLayer
       ? lineFromPolar(
           center,
           rings.houses.r2 + 2 * scale,
-          Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44),
+          connectorRadius,
           tickAngle
         )
-      : lineFromPolar(center, ring.r2 - tickLength, ring.r2, tickAngle);
+      : lineFromPolar(
+          center,
+          Math.min(ring.r2, connectorRadius + tickLength),
+          connectorRadius,
+          tickAngle
+        );
 
-    const leaderStartRadius = isExternalLayer
-      ? Math.max(rings.houses.r2 + 6 * scale, radius - glyphFontSize * 0.44)
-      : radius;
-
-    const leaderStart = polarToXY(center.x, center.y, leaderStartRadius, tickAngle);
     const idealPosition = polarToXY(center.x, center.y, glyphRadius, tickAngle);
     const point = makeAstroWheelPoint({
       layer,
       seed,
       tickLine,
-      leaderStart,
-      tickAngle,
       labelAngle: tickAngle,
       glyphPosition: idealPosition,
       glyphFontSize: pointGlyphFontSize,
@@ -1673,7 +1723,7 @@ function buildPointLayer(params: {
       seed,
       tickAngle,
       tickLine,
-      leaderStart,
+      connectorRadius,
       glyphRadius,
       pointGlyphFontSize,
       tangentDemandPx,
@@ -1687,7 +1737,10 @@ function buildPointLayer(params: {
       radius: intent.glyphRadius,
       tangentDemandPx: intent.tangentDemandPx,
     })),
-    collisionPadding
+    {
+      paddingPx: collisionPadding,
+      maxDisplacementRad: deg2rad(clamp(maxDisplacementDegrees, 0, 180)),
+    }
   );
   const visualAngleByKey = Object.fromEntries(
     solvedLabels.map(({ item, visualAngle }) => [item.seed.key, visualAngle])
@@ -1700,8 +1753,6 @@ function buildPointLayer(params: {
       layer,
       seed: intent.seed,
       tickLine: intent.tickLine,
-      leaderStart: intent.leaderStart,
-      tickAngle: intent.tickAngle,
       labelAngle: visualAngle,
       glyphPosition,
       glyphFontSize: intent.pointGlyphFontSize,
@@ -1723,14 +1774,21 @@ function buildPointLayer(params: {
       point = {
         ...point,
         glyphPosition,
-        leaderLine: {
-          x1: intent.leaderStart.x,
-          y1: intent.leaderStart.y,
-          x2: glyphPosition.x,
-          y2: glyphPosition.y,
-        },
+        leaderLine: undefined,
       };
     }
+
+    point = {
+      ...point,
+      leaderArc: buildPointConnector({
+        center,
+        tickAngle: intent.tickAngle,
+        labelAngle: visualAngle,
+        connectorRadius: intent.connectorRadius,
+        glyphPosition,
+        mode: pointConnectorMode,
+      }),
+    };
 
     return {
       ...point,
@@ -1752,8 +1810,6 @@ function makeAstroWheelPoint(params: {
   layer: AstroWheelPointLayerInput;
   seed: PointSeed;
   tickLine: AstroWheelLine;
-  leaderStart: AstroWheelCoordinate;
-  tickAngle: number;
   labelAngle: number;
   glyphPosition: AstroWheelCoordinate;
   glyphFontSize: number;
@@ -1764,16 +1820,12 @@ function makeAstroWheelPoint(params: {
     layer,
     seed,
     tickLine,
-    leaderStart,
-    tickAngle,
     labelAngle,
     glyphPosition,
     glyphFontSize,
     color,
     tickColor,
   } = params;
-  const labelDisplaced = circularAngleDistance(labelAngle, tickAngle) > 0.0001;
-
   return {
     layerId: layer.id,
     key: seed.key,
@@ -1786,14 +1838,8 @@ function makeAstroWheelPoint(params: {
     zodiacPosition: seed.zodiacPosition,
     tickLine,
     labelAngle,
-    leaderLine: labelDisplaced
-      ? {
-          x1: leaderStart.x,
-          y1: leaderStart.y,
-          x2: glyphPosition.x,
-          y2: glyphPosition.y,
-        }
-      : undefined,
+    leaderArc: undefined,
+    leaderLine: undefined,
     glyphPosition,
     glyphFontSize,
     retrograde: seed.retrograde,
@@ -1978,8 +2024,9 @@ function pointSeed(point: AstroWheelPointSource, layerId: string): PointSeed {
 
 function solveCircularLabelAngles<T>(
   items: readonly CircularLabelItem<T>[],
-  paddingPx: number
+  options: { paddingPx: number; maxDisplacementRad: number }
 ): SolvedCircularLabelItem<T>[] {
+  const { paddingPx, maxDisplacementRad } = options;
   if (items.length === 0) {
     return [];
   }
@@ -2035,27 +2082,49 @@ function solveCircularLabelAngles<T>(
     visualAngle: item.idealAngle,
   }));
 
-  for (let i = 1; i < solved.length; i++) {
-    const previous = solved[i - 1];
-    const current = solved[i];
-    const minGap =
-      labelAngularHalfDemand(previous, paddingPx) +
-      labelAngularHalfDemand(current, paddingPx);
+  for (let iteration = 0; iteration < 50; iteration++) {
+    const forces = new Array(solved.length).fill(0) as number[];
+    let maxForce = 0;
 
-    if (current.visualAngle < previous.visualAngle + minGap) {
-      current.visualAngle = previous.visualAngle + minGap;
+    for (let i = 0; i < solved.length; i++) {
+      const j = (i + 1) % solved.length;
+      const current = solved[i];
+      const next = solved[j];
+      const nextAngle = j === 0 ? next.visualAngle + TAU : next.visualAngle;
+      const gap = nextAngle - current.visualAngle;
+      const minGap =
+        labelAngularHalfDemand(current, paddingPx) +
+        labelAngularHalfDemand(next, paddingPx);
+
+      if (gap >= minGap) {
+        continue;
+      }
+
+      const push = (minGap - gap) / 2;
+      forces[i] -= push;
+      forces[j] += push;
+      maxForce = Math.max(maxForce, push);
     }
-  }
 
-  for (let i = solved.length - 2; i >= 0; i--) {
-    const current = solved[i];
-    const next = solved[i + 1];
-    const minGap =
-      labelAngularHalfDemand(current, paddingPx) +
-      labelAngularHalfDemand(next, paddingPx);
+    if (maxForce < 0.0001) {
+      break;
+    }
 
-    if (current.visualAngle > next.visualAngle - minGap) {
-      current.visualAngle = next.visualAngle - minGap;
+    for (let i = 0; i < solved.length; i++) {
+      const movement = clamp(forces[i], -deg2rad(2), deg2rad(2));
+      const moved = solved[i].visualAngle + movement;
+      solved[i].visualAngle = clampAngleAroundIdeal(
+        moved,
+        solved[i].idealAngle,
+        maxDisplacementRad
+      );
+    }
+
+    solved.sort((a, b) => a.visualAngle - b.visualAngle);
+    for (let i = 1; i < solved.length; i++) {
+      while (solved[i].visualAngle <= solved[i - 1].visualAngle) {
+        solved[i].visualAngle += TAU;
+      }
     }
   }
 
@@ -2063,6 +2132,25 @@ function solveCircularLabelAngles<T>(
     ...item,
     visualAngle: clampRad(item.visualAngle),
   }));
+}
+
+function clampAngleAroundIdeal(value: number, ideal: number, maxDistance: number) {
+  if (!Number.isFinite(maxDistance) || maxDistance >= Math.PI) {
+    return value;
+  }
+
+  const delta = signedAngleDelta(ideal, value);
+  return ideal + clamp(delta, -maxDistance, maxDistance);
+}
+
+function signedAngleDelta(from: number, to: number) {
+  let delta = clampRad(to) - clampRad(from);
+  if (delta > Math.PI) {
+    delta -= TAU;
+  } else if (delta < -Math.PI) {
+    delta += TAU;
+  }
+  return delta;
 }
 
 function labelAngularHalfDemand<T>(
@@ -2079,6 +2167,37 @@ function clampRad(value: number) {
 function circularAngleDistance(a: number, b: number) {
   const delta = Math.abs(clampRad(a) - clampRad(b));
   return Math.min(delta, TAU - delta);
+}
+
+function buildPointConnector(params: {
+  center: AstroWheelCoordinate;
+  tickAngle: number;
+  labelAngle: number;
+  connectorRadius: number;
+  glyphPosition: AstroWheelCoordinate;
+  mode: AstroWheelPointConnectorMode;
+}): AstroWheelArcConnector | undefined {
+  const { center, tickAngle, labelAngle, connectorRadius, glyphPosition, mode } = params;
+  const displacement = circularAngleDistance(tickAngle, labelAngle);
+
+  if (mode === "never" || (mode === "auto" && displacement < deg2rad(0.35))) {
+    return undefined;
+  }
+
+  const path = arcConnectorPath({
+    center,
+    startAngle: tickAngle,
+    endAngle: labelAngle,
+    radius: connectorRadius,
+    end: glyphPosition,
+  });
+
+  return {
+    startAngle: tickAngle,
+    endAngle: labelAngle,
+    radius: connectorRadius,
+    path,
+  };
 }
 
 function getSourceAspectEdges(
@@ -2157,12 +2276,19 @@ function findAspectSpec(
   return specs.find((spec) => spec.name === aspect);
 }
 
-function buildRings(outerRadius: number): Record<AstroWheelRing["id"], AstroWheelRing> {
+function buildRings(
+  outerRadius: number,
+  ringFractions: AstroWheelLayoutOptions["rings"] = {}
+): Record<AstroWheelRing["id"], AstroWheelRing> {
+  const fractions = {
+    ...DEFAULT_ASTRO_WHEEL_RING_FRACTIONS,
+    ...ringFractions,
+  };
   const ringMap = buildRingMap(outerRadius, [
-    { id: "houses", fr: 8 },
-    { id: "zodiac", fr: 14 },
-    { id: "planets", fr: 22 },
-    { id: "aspects", fr: 56 },
+    { id: "houses", fr: fractions.houses },
+    { id: "zodiac", fr: fractions.zodiac },
+    { id: "planets", fr: fractions.planets },
+    { id: "aspects", fr: fractions.aspects },
   ]);
 
   return {
@@ -2177,11 +2303,15 @@ function buildRingMap(
   radius: number,
   defs: readonly { id: AstroWheelRing["id"]; fr: number }[]
 ): Record<AstroWheelRing["id"], AstroWheelRing> {
-  const frTotal = defs.reduce((sum, def) => sum + def.fr, 0);
+  const normalizedDefs = defs.map((def) => ({
+    ...def,
+    fr: Number.isFinite(def.fr) && def.fr > 0 ? def.fr : DEFAULT_ASTRO_WHEEL_RING_FRACTIONS[def.id],
+  }));
+  const frTotal = normalizedDefs.reduce((sum, def) => sum + def.fr, 0);
   let cursor = radius;
   const result = {} as Record<AstroWheelRing["id"], AstroWheelRing>;
 
-  for (const def of defs) {
+  for (const def of normalizedDefs) {
     const thickness = (radius * def.fr) / frTotal;
     const r2 = cursor;
     const r1 = cursor - thickness;
@@ -2478,6 +2608,31 @@ function arcPath(
     `A ${fmt(innerRadius)},${fmt(innerRadius)} 0 ${large} ${sweep ? 0 : 1} ${fmt(p3.x)},${fmt(p3.y)}`,
     "Z",
   ].join(" ");
+}
+
+function arcConnectorPath(params: {
+  center: AstroWheelCoordinate;
+  startAngle: number;
+  endAngle: number;
+  radius: number;
+  end: AstroWheelCoordinate;
+}) {
+  const { center, startAngle, endAngle, radius, end } = params;
+  const start = polarToXY(center.x, center.y, radius, startAngle);
+  const arcEnd = polarToXY(center.x, center.y, radius, endAngle);
+  const delta = signedAngleDelta(startAngle, endAngle);
+  const large = Math.abs(delta) > Math.PI ? 1 : 0;
+  const sweep = delta >= 0 ? 1 : 0;
+  const commands = [
+    `M ${fmt(start.x)},${fmt(start.y)}`,
+    `A ${fmt(radius)},${fmt(radius)} 0 ${large} ${sweep} ${fmt(arcEnd.x)},${fmt(arcEnd.y)}`,
+  ];
+
+  if (Math.hypot(arcEnd.x - end.x, arcEnd.y - end.y) > 0.5) {
+    commands.push(`L ${fmt(end.x)},${fmt(end.y)}`);
+  }
+
+  return commands.join(" ");
 }
 
 function unwrapAngles(angles: readonly number[], direction: "inc" | "dec" = "inc") {

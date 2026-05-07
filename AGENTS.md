@@ -95,9 +95,3 @@ Exit code is always `1` on error.
 - Date range: year 0001-9999
 - Latitude: -90 to 90
 - Longitude: -180 to 180
-
----
-
-## Session Learnings
-
-All session learnings (gotchas, architecture decisions, constraints) are archived by domain in [`docs/session-learnings.md`](docs/session-learnings.md).

@@ -83,7 +83,7 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -138,6 +138,7 @@ interface AstroWheelSvgOptions {
   pointLayers?: readonly AstroWheelPointLayerInput[];
   aspectLayers?: readonly AstroWheelAspectLayerInput[];
   excludeBodies?: readonly string[];            // render-only body filter
+  layout?: AstroWheelLayoutOptions;             // ring proportions/connectors
   padding?: number;
   title?: string;
 }
@@ -172,6 +173,25 @@ generateAstroWheelSvg(chart, {
 ```
 
 Planet labels are rendered in the final SVG glyph layer with halos and inline position text (`planet glyph`, degree, sign glyph, minutes). Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
+
+#### Wheel layout
+
+Use `layout` when the default wheel proportions or displaced-label connectors need tuning. The default ring fractions are `houses: 7`, `zodiac: 13`, `planets: 27`, and `aspects: 53`.
+
+```typescript
+const svg = generateAstroWheelSvg(chart, {
+  layout: {
+    rings: {
+      planets: 32,
+      aspects: 48,
+    },
+    pointConnectors: "auto",      // "auto" | "always" | "never"
+    maxPointDisplacementDegrees: 20,
+  },
+});
+```
+
+Planet ticks and aspect lines use true astronomical longitude. When clustered planet labels are spread for readability, only the visual label angle changes. If connectors are enabled, the radial tick ends on the planet glyph rail, then the renderer draws an arc along that same imaginary circle toward the displaced glyph instead of a straight chord through the wheel.
 
 #### Aspect orbs
 
