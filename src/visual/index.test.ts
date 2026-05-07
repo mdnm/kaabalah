@@ -412,17 +412,32 @@ describe("archeometer svg visual module", () => {
     const model = getArcheometerRenderModel();
 
     expect(model.viewBox).toEqual(ARCHEOMETER_DEFAULT_VIEWBOX);
-    expect(model.center).toEqual({ x: 450, y: 450 });
+    expect(model.center).toEqual({ x: 456, y: 456 });
     expect(model.outerRadius).toBe(434);
     expect(model.rings.degreeOuter).toEqual({
       id: "degreeOuter",
+      r1: 435.48,
+      r2: 456,
+    });
+    expect(model.rings.degreeInner).toEqual({
+      id: "degreeInner",
       r1: 414.47,
-      r2: 434,
+      r2: 435.48,
     });
     expect(model.rings.solarCenter).toEqual({
       id: "solarCenter",
       r1: 0,
+      r2: 42.966,
+    });
+    expect(model.rings.whiteRays).toEqual({
+      id: "whiteRays",
+      r1: 42.966,
       r2: 52.08,
+    });
+    expect(model.rings.chromicRays).toEqual({
+      id: "chromicRays",
+      r1: 52.08,
+      r2: 145.39,
     });
     expect(model.rings.zodiacUtterance.r2).toBe(model.rings.degreeInner.r1);
     expect(model.rings.planetaryUtterance.r2).toBe(model.rings.zodiacUtterance.r1);
@@ -557,7 +572,7 @@ describe("archeometer svg visual module", () => {
     });
 
     expect(svg.startsWith(`<svg xmlns="http://www.w3.org/2000/svg"`)).toBe(true);
-    expect(svg).toContain(`viewBox="0 0 900 900"`);
+    expect(svg).toContain(`viewBox="0 0 912 912"`);
     expect(svg).toContain(`<title>The Cosmological Archeometer</title>`);
     expect(svg).toContain(`<g id="archeometer-degree-crown"`);
     expect(svg).toContain(`>345</text>`);
@@ -569,7 +584,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-trigone"`);
     expect(svg.match(/class="archeometer-trigone" data-triangle=/g)).toHaveLength(4);
     expect(svg.match(/class="archeometer-trigone-vertex-fill"/g)).toHaveLength(12);
-    expect(svg).toContain(`d="M 450 102.8`);
+    expect(svg).toContain(`d="M 456 108.8`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="0"`);
     expect(svg).toContain(`fill="#f2cf45"`);
     expect(svg).toContain(`data-triangle="wordJesus" data-degree="120"`);
@@ -628,7 +643,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-chromic-foundation" data-triangle="ether"`);
     expect(svg).toContain(`class="archeometer-chromic-foundation" data-triangle="divineFire"`);
     expect(svg).toContain(`class="archeometer-chromic-primary-outline" data-triangle="wordJesus"`);
-    expect(svg).toContain(`C 524.231 407.141 548.986 449.337 524.231 492.524`);
+    expect(svg).toContain(`C 518.956 419.651 539.95 455.437 518.956 492.065`);
     expect(svg).toContain(`fill="#f2cf45"`);
     expect(svg).toContain(`fill="#5470a5"`);
     expect(svg).toContain(`fill="#dd3e38"`);
@@ -636,7 +651,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-zodiac-sign" data-sign="Capricorn" data-degree="0"`);
     expect(svg.match(/class="archeometer-astral-planetary-sector"/g)).toHaveLength(12);
     expect(svg).toContain(`class="archeometer-planet" data-planet="Moon" data-degree="180"`);
-    expect(svg).toContain(`font-size="16.4" text-anchor="middle" dominant-baseline="middle" fill="#151515">☾</text>`);
+    expect(svg).toContain(`font-size="21.2" text-anchor="middle" dominant-baseline="middle" fill="#151515">☾</text>`);
     expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="0"`);
     expect(svg).toContain(`fill="#f2cf45" fill-opacity="0.36"`);
     expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="300"`);
@@ -645,7 +660,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-astral-planetary-divider" data-degree="15"`);
     expect(svg).not.toContain(`class="archeometer-astral-planetary-divider" data-degree="0"`);
     expect(svg).toContain(`<g id="archeometer-solar-center"`);
-    expect(svg).not.toContain(`<rect x="0" y="0" width="900" height="900"`);
+    expect(svg).not.toContain(`<rect x="0" y="0" width="912" height="912"`);
     expect(svg).not.toContain(`Y-PhO`);
     expect(svg.endsWith(`</svg>`)).toBe(true);
   });
