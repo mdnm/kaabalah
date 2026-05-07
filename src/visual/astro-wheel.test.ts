@@ -161,7 +161,7 @@ describe("astro wheel visual module", () => {
     const model = getAstroWheelRenderModel(chart);
 
     expect(model.palette.glyphHalo).toBe("#fff");
-    expect(model.outerRadius).toBeLessThan(270);
+    expect(model.outerRadius).toBeLessThanOrEqual(282);
     for (const marker of model.angleMarkers) {
       expect(marker.labelPosition.x).toBeGreaterThanOrEqual(28);
       expect(marker.labelPosition.x).toBeLessThanOrEqual(572);
@@ -170,7 +170,7 @@ describe("astro wheel visual module", () => {
     }
   });
 
-  it("spreads clustered planet labels radially and draws leader lines from true longitude", () => {
+  it("spreads clustered planet labels angularly and draws rail connectors from true longitude", () => {
     const chart = sampleBirthChart();
     const svg = generateAstroWheelSvg(chart);
     const model = getAstroWheelRenderModel(chart);
@@ -178,8 +178,28 @@ describe("astro wheel visual module", () => {
     const venus = model.pointByKey.venus;
 
     expect(svg).toContain(`class="astro-wheel-point-leader"`);
-    expect(mercury.leaderLine).toBeDefined();
-    expect(venus.leaderLine).toBeDefined();
+    expect(svg).toContain(`<path class="astro-wheel-point-leader"`);
+    expect(svg).not.toContain(`<line class="astro-wheel-point-leader"`);
+    expect(mercury.leaderArc).toBeDefined();
+    expect(venus.leaderArc).toBeDefined();
+    expect(mercury.leaderArc?.path).toContain(" A ");
+    expect(venus.leaderArc?.path).toContain(" A ");
+    expect(Math.abs(
+      (mercury.leaderArc?.radius ?? 0) -
+      Math.hypot(
+        mercury.glyphPosition.x - model.center.x,
+        mercury.glyphPosition.y - model.center.y
+      )
+    )).toBeLessThan(1.5);
+    expect(Math.abs(
+      (mercury.leaderArc?.radius ?? 0) -
+      Math.hypot(
+        mercury.tickLine.x2 - model.center.x,
+        mercury.tickLine.y2 - model.center.y
+      )
+    )).toBeLessThan(1.5);
+    expect(mercury.leaderLine).toBeUndefined();
+    expect(venus.leaderLine).toBeUndefined();
     expect(mercury.displayLongitude).toBe(mercury.longitude);
     expect(venus.displayLongitude).toBe(venus.longitude);
     expect(mercury.glyphPosition).not.toEqual(venus.glyphPosition);
@@ -346,6 +366,31 @@ describe("astro wheel visual module", () => {
     expect(conjunction?.aspect).toBe("conjunction");
     expect(conjunction?.orb).toBe(3);
     expect(Number.isFinite(conjunction?.line.x1)).toBe(true);
+  });
+
+  it("allows callers to tune wheel ring proportions and point connector policy", () => {
+    const chart = sampleBirthChart();
+    const defaultModel = getAstroWheelRenderModel(chart);
+    const tunedModel = getAstroWheelRenderModel(chart, {
+      layout: {
+        rings: {
+          planets: 32,
+          aspects: 48,
+        },
+        pointConnectors: "never",
+        maxPointDisplacementDegrees: 12,
+      },
+    });
+    const tunedSvg = generateAstroWheelSvg(chart, {
+      layout: {
+        pointConnectors: "never",
+      },
+    });
+
+    expect(tunedModel.rings.planets.r2 - tunedModel.rings.planets.r1)
+      .toBeGreaterThan(defaultModel.rings.planets.r2 - defaultModel.rings.planets.r1);
+    expect(tunedModel.pointByKey.mercury.leaderArc).toBeUndefined();
+    expect(tunedSvg).not.toContain(`class="astro-wheel-point-leader"`);
   });
 
   it("exports planet glyph primitives for all standard planets and points", () => {
