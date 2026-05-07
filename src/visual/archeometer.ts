@@ -814,18 +814,16 @@ function renderChromicTriangleCore(push: (line: string) => void, model: Archeome
 function renderWhiteRays(push: (line: string) => void, model: ArcheometerRenderModel) {
   const { center, rings, palette, scale } = model;
   const solarRadius = rings.solarCenter.r2;
-  const innerRadius = solarRadius * 0.61;
-  const outerRadius = solarRadius - 0.8 * scale;
-  const staffCount = 5;
+  const sunCenterCircleRadiusWithPadding = 3 + 0.3;
 
   push(`<g id="archeometer-white-rays" aria-label="crown of white rays and musical staff">`);
-  for (let i = 0; i < staffCount; i++) {
-    const r = innerRadius + ((outerRadius - innerRadius) * i) / (staffCount - 1);
-    push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(r)}" fill="none" stroke="${escapeAttr(palette.whiteRay)}" stroke-opacity="0.68" stroke-width="${fmt(0.85 * scale)}"/>`);
-  }
+
   for (let degree = 0; degree < 180; degree += 30) {
-    push(lineSvg(lineFromPolar(center, innerRadius, solarRadius, angleOf(model, degree)), palette.whiteRay, 1.55 * scale, 0.92));
-    push(lineSvg(lineFromPolar(center, innerRadius, solarRadius, angleOf(model, degree + 180)), palette.whiteRay, 1.55 * scale, 0.92));
+    // skip horizontal lines
+    if (degree === 90 || degree === 270) continue;
+
+    push(lineSvg(lineFromPolar(center, solarRadius, sunCenterCircleRadiusWithPadding, angleOf(model, degree)), palette.whiteRay, 1.55 * scale, 0.92));
+    push(lineSvg(lineFromPolar(center, solarRadius, sunCenterCircleRadiusWithPadding, angleOf(model, degree + 180)), palette.whiteRay, 1.55 * scale, 0.92));
   }
   push(`</g>`);
 }
@@ -834,15 +832,23 @@ function renderSolarCenter(push: (line: string) => void, model: ArcheometerRende
   const { center, rings, palette, scale } = model;
   const r = rings.solarCenter.r2;
   const innerR = r * 0.68;
-  const arcStart = polarToXY(center, innerR * 0.72, deg2rad(200));
-  const arcEnd = polarToXY(center, innerR * 0.72, deg2rad(340));
+  const arcStart = polarToXY(center, innerR * 0.72, deg2rad(240));
+  const arcEnd = polarToXY(center, innerR * 0.72, deg2rad(300));
+  const paddingTop = 22;
+  const sunCenterCircleRadius = 3;
 
   push(`<g id="archeometer-solar-center" aria-label="solar center Mi">`);
   push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(r)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.2 * scale)}"/>`);
-  push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(innerR)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.9 * scale)}"/>`);
-  push(`<line x1="${fmt(center.x - innerR)}" y1="${fmt(center.y)}" x2="${fmt(center.x + innerR)}" y2="${fmt(center.y)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
+
+  push(lineSvg({ x1: center.x - innerR - 13, x2: center.x + innerR + 13, y1: center.y - 1.5, y2: center.y - 1.5 }, palette.whiteRay, 1.55 * scale, 0.92));
+  push(lineSvg({ x1: center.x - innerR - 13, x2: center.x + innerR + 13, y1: center.y, y2: center.y }, palette.whiteRay, 1.55 * scale, 0.92));
+  push(lineSvg({ x1: center.x - innerR - 13, x2: center.x + innerR + 13, y1: center.y + 1.5, y2: center.y + 1.5 }, palette.whiteRay, 1.55 * scale, 0.92));
+  
+  push(`<line x1="${fmt(center.x - innerR - 2.5)}" y1="${fmt(center.y + 8 + paddingTop)}" x2="${fmt(center.x + innerR + 2.5)}" y2="${fmt(center.y + 8 + paddingTop)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
+  push(`<line x1="${fmt(center.x - innerR - 7.5)}" y1="${fmt(center.y + paddingTop)}" x2="${fmt(center.x + innerR + 7.5)}" y2="${fmt(center.y + paddingTop)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
+  push(`<line x1="${fmt(center.x - innerR - 11)}" y1="${fmt(center.y - 8 + paddingTop)}" x2="${fmt(center.x + innerR + 11)}" y2="${fmt(center.y - 8 + paddingTop)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
   push(`<path d="M ${fmt(arcStart.x)} ${fmt(arcStart.y)} A ${fmt(innerR * 0.72)} ${fmt(innerR * 0.72)} 0 0 1 ${fmt(arcEnd.x)} ${fmt(arcEnd.y)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(1.1 * scale)}"/>`);
-  push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(3)}" fill="${escapeAttr(palette.paper)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.5 * scale)}"/>`);
+  push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(sunCenterCircleRadius)}" fill="${escapeAttr(palette.paper)}" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.5 * scale)}"/>`);
   push(`</g>`);
 }
 
