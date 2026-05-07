@@ -177,9 +177,11 @@ const TAU = Math.PI * 2;
 export const ARCHEOMETER_DEFAULT_VIEWBOX: Required<ArcheometerSvgViewBox> = {
   minX: 0,
   minY: 0,
-  width: 900,
-  height: 900,
+  width: 912,
+  height: 912,
 };
+
+const ARCHEOMETER_OUTER_CROWN_BLEED = 22;
 
 const DEFAULT_LAYERS: Required<ArcheometerLayerOptions> = {
   degreeCrown: true,
@@ -336,19 +338,20 @@ export const DEFAULT_ARCHEOMETER_PLANETS: readonly ArcheometerPlanetaryPoint[] =
 export function getArcheometerRenderModel(options: ArcheometerSvgOptions = {}): ArcheometerRenderModel {
   const viewBox = normalizeViewBox(options.viewBox);
   const scale = Math.min(viewBox.width / ARCHEOMETER_DEFAULT_VIEWBOX.width, viewBox.height / ARCHEOMETER_DEFAULT_VIEWBOX.height);
-  const padding = options.padding ?? 16 * scale;
+  const padding = options.padding ?? 0;
   const center = {
     x: round(viewBox.minX + viewBox.width / 2),
     y: round(viewBox.minY + viewBox.height / 2),
   };
-  const outerRadius = round(Math.max(0, Math.min(viewBox.width, viewBox.height) / 2 - padding));
+  const frameRadius = round(Math.max(0, Math.min(viewBox.width, viewBox.height) / 2 - padding));
+  const outerRadius = round(Math.max(0, frameRadius - ARCHEOMETER_OUTER_CROWN_BLEED * scale));
 
   return {
     viewBox,
     center,
     outerRadius,
     scale,
-    rings: buildRings(outerRadius),
+    rings: buildRings(outerRadius, frameRadius),
     palette: resolvePalette(options.palette),
     rotationDegrees: options.rotationDegrees ?? 0,
     layers: { ...DEFAULT_LAYERS, ...(options.layers ?? {}) },
@@ -403,10 +406,10 @@ export function generateArcheometerSvg(options: ArcheometerSvgOptions = {}): str
   if (model.layers.cosmologicalMusic) renderCosmologicalMusic(push, model);
   if (model.layers.astralZodiac) renderAstralZodiac(push, model);
   if (model.layers.astralPlanetary) renderAstralPlanetary(push, model);
+  if (model.layers.solarCenter) renderSolarCenter(push, model);
   if (model.layers.whiteRays) renderWhiteRays(push, model);
   if (model.layers.degreeCrown) renderDegreeCrown(push, model);
   renderFrame(push, model);
-  if (model.layers.solarCenter) renderSolarCenter(push, model);
 
   push(`</svg>`);
   return lines.join("\n");
@@ -415,8 +418,9 @@ export function generateArcheometerSvg(options: ArcheometerSvgOptions = {}): str
 function renderDefs(push: (line: string) => void, model: ArcheometerRenderModel) {
   const { rings, center } = model;
   const planetaryClipOuter = planetaryTriangleClipOuterRadius(rings);
+  const planetaryClipInner = planetaryTriangleClipInnerRadius(rings);
   push(`<defs>`);
-  push(`<clipPath id="archeometer-planetary-clip"><path d="${annulusPath(center, rings.cosmologicalMusic.r1, planetaryClipOuter)}" fill-rule="evenodd" clip-rule="evenodd"/></clipPath>`);
+  push(`<clipPath id="archeometer-planetary-clip"><path d="${annulusPath(center, planetaryClipInner, planetaryClipOuter)}" fill-rule="evenodd" clip-rule="evenodd"/></clipPath>`);
   push(`<clipPath id="archeometer-chromic-clip"><path d="${annulusPath(center, rings.chromicRays.r1, rings.chromicRays.r2)}" fill-rule="evenodd" clip-rule="evenodd"/></clipPath>`);
   push(`</defs>`);
 }
@@ -567,7 +571,7 @@ function renderCosmologicalMusic(push: (line: string) => void, model: Archeomete
   for (const note of notes) {
     if (!note.note) continue;
     const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, note.degree));
-    push(textSvg(note.note, p, 8.8 * scale, palette.ink, tangentRotation(angleOf(model, note.degree)), "middle", 700));
+    push(textSvg(note.note, p, 11.8 * scale, palette.ink, tangentRotation(angleOf(model, note.degree)), "middle", 700));
   }
   push(`</g>`);
 }
@@ -587,8 +591,8 @@ function renderAstralZodiac(push: (line: string) => void, model: ArcheometerRend
     const pointColor = triangleVertexFillForDegree(model, sign.degree) ?? sign.color ?? nearestUtterance(sign.degree, model.utterance)?.color ?? palette.ringFills.astralZodiac;
     const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, sign.degree));
     push(`<g class="archeometer-zodiac-sign" data-sign="${escapeAttr(sign.name)}" data-degree="${fmt(normalizeDegrees(sign.degree))}">`);
-    push(`<circle cx="${fmt(p.x)}" cy="${fmt(p.y)}" r="${fmt((ring.r2 - ring.r1) * 0.43)}" fill="${escapeAttr(pointColor)}" fill-opacity="0.48" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.75 * scale)}"/>`);
-    push(textSvg(sign.glyph, p, 18 * scale, palette.ink, 0, "middle"));
+    push(`<circle cx="${fmt(p.x)}" cy="${fmt(p.y)}" r="${fmt((ring.r2 - ring.r1) * 0.66)}" fill="${escapeAttr(pointColor)}" fill-opacity="0.48" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.75 * scale)}"/>`);
+    push(textSvg(sign.glyph, p, 23 * scale, palette.ink, 0, "middle"));
     push(`</g>`);
   }
   push(`</g>`);
@@ -613,9 +617,9 @@ function renderAstralPlanetary(push: (line: string) => void, model: ArcheometerR
   for (const planet of sortedByDegree(model.planetaryPoints)) {
     const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, planet.degree));
     const color = triangleVertexFillForDegree(model, planet.degree) ?? planet.color ?? nearestUtterance(planet.degree, model.utterance)?.color ?? palette.ink;
-    const glyphSize = (planet.name === "Moon" ? 16.4 : 19) * scale;
+    const glyphSize = (planet.name === "Moon" ? 21.2 : 24.5) * scale;
     push(`<g class="archeometer-planet" data-planet="${escapeAttr(planet.name)}" data-degree="${fmt(normalizeDegrees(planet.degree))}">`);
-    push(`<circle cx="${fmt(p.x)}" cy="${fmt(p.y)}" r="${fmt((ring.r2 - ring.r1) * 0.36)}" fill="${escapeAttr(color)}" fill-opacity="0.44" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.8 * scale)}"/>`);
+    push(`<circle cx="${fmt(p.x)}" cy="${fmt(p.y)}" r="${fmt((ring.r2 - ring.r1) * 0.56)}" fill="${escapeAttr(color)}" fill-opacity="0.44" stroke="${escapeAttr(palette.ink)}" stroke-width="${fmt(0.8 * scale)}"/>`);
     push(textSvg(planet.glyph, p, glyphSize, palette.ink, 0, "middle"));
     push(`</g>`);
   }
@@ -701,17 +705,19 @@ function renderChromicTriangleCore(push: (line: string) => void, model: Archeome
 
 function renderWhiteRays(push: (line: string) => void, model: ArcheometerRenderModel) {
   const { center, rings, palette, scale } = model;
-  const ring = rings.whiteRays;
+  const solarRadius = rings.solarCenter.r2;
+  const innerRadius = solarRadius * 0.61;
+  const outerRadius = solarRadius - 0.8 * scale;
   const staffCount = 5;
 
   push(`<g id="archeometer-white-rays" aria-label="crown of white rays and musical staff">`);
-  for (let i = 1; i <= staffCount; i++) {
-    const r = ring.r1 + ((ring.r2 - ring.r1) * i) / (staffCount + 1);
+  for (let i = 0; i < staffCount; i++) {
+    const r = innerRadius + ((outerRadius - innerRadius) * i) / (staffCount - 1);
     push(`<circle cx="${fmt(center.x)}" cy="${fmt(center.y)}" r="${fmt(r)}" fill="none" stroke="${escapeAttr(palette.whiteRay)}" stroke-opacity="0.68" stroke-width="${fmt(0.85 * scale)}"/>`);
   }
   for (let degree = 0; degree < 180; degree += 30) {
-    push(lineSvg(lineFromPolar(center, ring.r1, ring.r2, angleOf(model, degree)), palette.whiteRay, 1.55 * scale, 0.92));
-    push(lineSvg(lineFromPolar(center, ring.r1, ring.r2, angleOf(model, degree + 180)), palette.whiteRay, 1.55 * scale, 0.92));
+    push(lineSvg(lineFromPolar(center, innerRadius, solarRadius, angleOf(model, degree)), palette.whiteRay, 1.55 * scale, 0.92));
+    push(lineSvg(lineFromPolar(center, innerRadius, solarRadius, angleOf(model, degree + 180)), palette.whiteRay, 1.55 * scale, 0.92));
   }
   push(`</g>`);
 }
@@ -757,25 +763,33 @@ function renderFrame(push: (line: string) => void, model: ArcheometerRenderModel
   push(`</g>`);
 }
 
-function buildRings(outerRadius: number): Record<ArcheometerRingId, ArcheometerRing> {
-  const ring = (id: ArcheometerRingId, r1: number, r2: number): ArcheometerRing => ({
+function buildRings(contentRadius: number, frameRadius = contentRadius): Record<ArcheometerRingId, ArcheometerRing> {
+  const ring = (id: ArcheometerRingId, r1: number, r2: number, radius = contentRadius): ArcheometerRing => ({
     id,
-    r1: round(outerRadius * r1),
-    r2: round(outerRadius * r2),
+    r1: round(radius * r1),
+    r2: round(radius * r2),
   });
 
   return {
-    degreeOuter: ring("degreeOuter", 0.955, 1.0),
-    degreeInner: ring("degreeInner", 0.905, 0.955),
-    zodiacUtterance: ring("zodiacUtterance", 0.800, 0.905),
+    degreeOuter: ring("degreeOuter", 0.955, 1.0, frameRadius),
+    degreeInner: {
+      id: "degreeInner",
+      r1: round(contentRadius * 0.955),
+      r2: round(frameRadius * 0.955),
+    },
+    zodiacUtterance: ring("zodiacUtterance", 0.800, 0.955),
     planetaryUtterance: ring("planetaryUtterance", 0.555, 0.800),
     cosmologicalMusic: ring("cosmologicalMusic", 0.513, 0.555),
     astralZodiac: ring("astralZodiac", 0.460, 0.513),
     astralPlanetary: ring("astralPlanetary", 0.395, 0.460),
-    chromicRays: ring("chromicRays", 0.198, 0.395),
-    whiteRays: ring("whiteRays", 0.120, 0.198),
-    solarCenter: ring("solarCenter", 0.000, 0.120),
+    chromicRays: ring("chromicRays", 0.120, 0.335),
+    whiteRays: ring("whiteRays", 0.099, 0.120),
+    solarCenter: ring("solarCenter", 0.000, 0.099),
   };
+}
+
+function planetaryTriangleClipInnerRadius(rings: Record<ArcheometerRingId, ArcheometerRing>) {
+  return rings.cosmologicalMusic.r2 + (rings.planetaryUtterance.r1 - rings.cosmologicalMusic.r2) * 0.58;
 }
 
 function planetaryTriangleClipOuterRadius(rings: Record<ArcheometerRingId, ArcheometerRing>) {

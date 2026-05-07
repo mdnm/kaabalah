@@ -11,8 +11,8 @@ fs.mkdirSync(docsPublic, { recursive: true });
 
 const svgs: Record<string, string> = {
   "archeometer.svg": generateArcheometerSvg({
-    width: 900,
-    height: 900,
+    width: 912,
+    height: 912,
     background: "transparent",
     title: "The Cosmological Archeometer",
   }),
