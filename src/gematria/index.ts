@@ -1160,6 +1160,12 @@ function reverseGematriaFromSubsequence(
   };
 }
 
+function ensureTreeExists(tree?: TreeOfLife): TreeOfLife {
+  if (!tree) return createTree({ system: KAABALAH_SYSTEM, parts: [] });
+
+  return tree;
+}
+
 export const calculateGematria = (
   phrase: string,
   options: {
@@ -1171,10 +1177,8 @@ export const calculateGematria = (
   },
   tree?: TreeOfLife
 ) => {
-  if (!tree) {
-    // todo: study the possibility of pre-calculating the mappings
-    tree = createTree({ system: KAABALAH_SYSTEM, parts: [] });
-  }
+  const treeForMappings = ensureTreeExists(tree);
+
   const words = phrase.toUpperCase().trim().split(" ");
 
   const initialState: GematriaTypes.GematriaState = {
@@ -1185,7 +1189,7 @@ export const calculateGematria = (
   };
 
   const finalState = words.reduce<GematriaTypes.GematriaState>((state, word) => {
-    const wordResult = processWord(word, tree);
+    const wordResult = processWord(word, treeForMappings);
 
     return {
       includedLetters: [...state.includedLetters, ...wordResult.letters],
@@ -1206,7 +1210,7 @@ export const calculateGematria = (
 
   if (options?.percentages) {
     letterPercentages = words.reduce<GematriaTypes.LetterPercentages>((acc, word) => {
-      return calculateLetterPercentages(word, tree, acc);
+      return calculateLetterPercentages(word, treeForMappings, acc);
     }, letterPercentages);
   }
 
@@ -1219,7 +1223,7 @@ export const calculateGematria = (
   );
 
   const missingGematriaValues = options?.missing
-    ? getMissingGematriaValues(tree, finalState.includedGematriaValues)
+    ? getMissingGematriaValues(treeForMappings, finalState.includedGematriaValues)
     : undefined;
 
   return {
