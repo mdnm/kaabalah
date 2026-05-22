@@ -1,8 +1,35 @@
-import { ARKANNUS, shuffleTarotDeck, type TarotCard } from "../../tarot";
-import { getFlagBool, getFlagNumber, isJsonMode } from "../runtime/args";
+import {
+  ARKANNUS,
+  drawTarotSpread,
+  getTarotSpread,
+  listTarotSpreads,
+  shuffleTarotDeck,
+  type TarotCard,
+  type TarotInquirerGender,
+  type TarotSpreadId,
+  type TarotSpreadSelectionContext,
+} from "../../tarot";
+import { getFlagBool, getFlagNumber, getFlagString, isJsonMode } from "../runtime/args";
 import { exitWithError } from "../runtime/errors";
 import { outputJson } from "../runtime/output";
 import type { Flags } from "../runtime/types";
+
+const TAROT_INQUIRER_GENDERS = new Set<TarotInquirerGender>(["man", "woman"]);
+
+export interface TarotSpreadCliOptions {
+  spreadId?: string;
+  context?: unknown;
+}
+
+function summarizeTarotSpreads() {
+  return listTarotSpreads().map((spread) => ({
+    spreadId: spread.spreadId,
+    label: spread.label,
+    description: spread.description,
+    slots: spread.slots.length,
+    contextRequirements: spread.contextRequirements ?? [],
+  }));
+}
 
 function findCardsByQuery(query: string): { cards: TarotCard[]; exact: boolean } {
   const num = Number.parseInt(query, 10);
@@ -83,7 +110,102 @@ export function cmdTarotCard(query: string, flags: Flags): void {
   }
 }
 
-export function cmdTarotSpread(cardQueries: string[], flags: Flags): void {
+function parseTarotSpreadContext(flags: Flags, context: unknown): TarotSpreadSelectionContext | undefined {
+  const flagGender = getFlagString(flags, "inquirer-gender");
+  const inputGender =
+    context && typeof context === "object" && "inquirerGender" in context
+      ? (context as { inquirerGender?: unknown }).inquirerGender
+      : undefined;
+  const gender = flagGender ?? (typeof inputGender === "string" ? inputGender : undefined);
+
+  if (!gender) {
+    return undefined;
+  }
+
+  if (!TAROT_INQUIRER_GENDERS.has(gender as TarotInquirerGender)) {
+    exitWithError("INVALID_ARGUMENT", 'Tarot spread context.inquirerGender must be "man" or "woman".', flags);
+  }
+
+  return { inquirerGender: gender as TarotInquirerGender };
+}
+
+function printSpreadDraw(result: ReturnType<typeof drawTarotSpread>): void {
+  console.log(`\n${result.spread.label}`);
+  console.log(`Spread: ${result.spread.spreadId}`);
+  if (result.context?.inquirerGender) {
+    console.log(`Inquirer: ${result.context.inquirerGender}`);
+  }
+  console.log();
+
+  for (const card of result.cards) {
+    const inverted = card.isInverted ? " (INVERTED)" : "";
+    console.log(
+      `  ${card.slot.order}. ${card.slot.label}: #${String(card.card.number).padStart(2, "0")} ${card.card.tarotCard}${inverted}`
+    );
+    console.log(`     ${card.card.meaning}`);
+  }
+
+  console.log();
+}
+
+function cmdTarotNamedSpread(spreadId: string, flags: Flags, options: TarotSpreadCliOptions): void {
+  const spread = getTarotSpread(spreadId as TarotSpreadId);
+
+  if (!spread) {
+    exitWithError("INVALID_ARGUMENT", `Unknown tarot spread: ${spreadId}.`, flags);
+  }
+
+  const context = parseTarotSpreadContext(flags, options.context);
+
+  try {
+    const result = drawTarotSpread({
+      spreadId: spread.spreadId,
+      includeInverted: getFlagBool(flags, "inverted"),
+      context,
+    });
+
+    if (isJsonMode(flags)) {
+      outputJson(result, flags);
+      return;
+    }
+
+    printSpreadDraw(result);
+  } catch (err) {
+    exitWithError("INVALID_ARGUMENT", err instanceof Error ? err.message : String(err), flags);
+  }
+}
+
+export function cmdTarotSpread(cardQueries: string[], flags: Flags, options: TarotSpreadCliOptions = {}): void {
+  if (getFlagBool(flags, "list")) {
+    const spreads = summarizeTarotSpreads();
+
+    if (isJsonMode(flags)) {
+      outputJson(spreads, flags);
+      return;
+    }
+
+    console.log("\nTarot spreads\n");
+    for (const spread of spreads) {
+      const requirements =
+        spread.contextRequirements.length > 0
+          ? ` | requires: ${spread.contextRequirements.join(", ")}`
+          : "";
+      console.log(`  ${spread.spreadId.padEnd(22)} ${spread.label} (${spread.slots} slots)${requirements}`);
+      if (spread.description) {
+        console.log(`    ${spread.description}`);
+      }
+    }
+    console.log();
+    return;
+  }
+
+  const spreadId = getFlagString(flags, "spread-id") ?? options.spreadId;
+
+  if (spreadId) {
+    cmdTarotNamedSpread(spreadId, flags, options);
+    return;
+  }
+
   const results: (TarotCard | { query: string; error: true; code: string; message: string })[] = [];
 
   for (const query of cardQueries) {

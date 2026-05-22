@@ -176,11 +176,17 @@ export async function runCli(argv: string[]): Promise<void> {
         cmdTarotCard((inputPayload?.query != null ? String(inputPayload.query) : undefined) ?? args.slice(1).join(" "), flags);
         return;
       case "tarot:spread": {
+        const spreadId = inputPayload?.spreadId != null ? String(inputPayload.spreadId) : undefined;
+        const hasSpreadIdFlag = typeof flags["spread-id"] === "string" && flags["spread-id"].length > 0;
+        const shouldListSpreads = flags.list === true;
         const cardQueries = Array.isArray(inputPayload?.cards) ? inputPayload.cards.map(String) : args.slice(1);
-        if (cardQueries.length === 0) {
+        if (cardQueries.length === 0 && !hasSpreadIdFlag && !spreadId && !shouldListSpreads) {
           exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:spread <card1> [card2] ...", flags);
         }
-        cmdTarotSpread(cardQueries, flags);
+        cmdTarotSpread(cardQueries, flags, {
+          spreadId,
+          context: inputPayload?.context,
+        });
         return;
       }
       case "ifa":
