@@ -12,6 +12,7 @@ import {
   cmdTreeLayout,
   cmdTreeNode,
   cmdTreeSvg,
+  cmdTreeTopology,
   cmdTreeTypes,
 } from "./commands/tree";
 import { getFlagBool, isCliParseError, isJsonMode, parseArgs } from "./runtime/args";
@@ -209,6 +210,9 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "tree:layout":
         cmdTreeLayout(flags);
+        return;
+      case "tree:topology":
+        cmdTreeTopology(flags);
         return;
       case "tree:svg":
         cmdTreeSvg(flags);

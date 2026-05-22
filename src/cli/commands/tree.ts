@@ -3,12 +3,18 @@ import { dirname, resolve } from "node:path";
 
 import {
   getCanonicalTree,
+  getTreeTopology,
   type CorrespondenceEdge,
   type CorrespondenceMatch,
   type CorrespondenceSource,
   type Node,
   type NodeId,
   type NodeType,
+  type TreeTopologyPath,
+  type TreeTopologyRoute,
+  type TreeTopologyRouteKey,
+  type TreeTopologyRouteSegment,
+  type TreeTopologySphere,
 } from "../../core";
 import { SYSTEM as KAABALAH_SYSTEM } from "../../core/systems/kaabalah";
 import { SYSTEMS, type SystemKey } from "../../core/systems/registry";
@@ -242,6 +248,88 @@ function serializeRenderModel(model: TreeRenderModel) {
     sphereById: model.sphereById,
     pathById: model.pathById,
   };
+}
+
+function serializeTopologySphere(sphere: TreeTopologySphere) {
+  const result: Record<string, unknown> = {
+    id: sphere.id,
+    name: sphere.name,
+    number: sphere.number,
+    role: sphere.role,
+  };
+
+  if (sphere.data && Object.keys(sphere.data).length > 0) {
+    result.data = sphere.data;
+  }
+
+  return result;
+}
+
+function serializeTopologyPath(path: TreeTopologyPath) {
+  const result: Record<string, unknown> = {
+    id: path.id,
+    number: path.number,
+    fromId: path.from.id,
+    fromName: path.from.name,
+    toId: path.to.id,
+    toName: path.to.name,
+  };
+
+  if (path.data && Object.keys(path.data).length > 0) {
+    result.data = path.data;
+  }
+
+  return result;
+}
+
+function serializeTopologySegment(segment: TreeTopologyRouteSegment) {
+  return {
+    index: segment.index,
+    fromId: segment.from.id,
+    fromName: segment.from.name,
+    toId: segment.to.id,
+    toName: segment.to.name,
+    isConnected: segment.isConnected,
+    ...(segment.path
+      ? {
+          pathId: segment.path.id,
+          pathNumber: segment.path.number,
+        }
+      : {}),
+  };
+}
+
+function serializeTopologyRoute(route: TreeTopologyRoute) {
+  return {
+    key: route.key,
+    name: route.name,
+    direction: route.direction,
+    isFullyConnected: route.isFullyConnected,
+    sphereOrder: route.spheres.map((sphere) => sphere.id),
+    sphereNames: route.spheres.map((sphere) => sphere.name),
+    segments: route.segments.map(serializeTopologySegment),
+    missingSegments: route.missingSegments.map(serializeTopologySegment),
+    targets: route.targets,
+    targetIds: route.targetIds,
+  };
+}
+
+function resolveTopologyRouteKey(flags: Flags): TreeTopologyRouteKey | undefined {
+  const route = getFlagString(flags, "route");
+
+  if (!route || route === "all") {
+    return undefined;
+  }
+
+  if (route === "lightning" || route === "serpent") {
+    return route;
+  }
+
+  exitWithError(
+    "INVALID_ARGUMENT",
+    `Unknown topology route "${route}". Expected one of: lightning, serpent, all.`,
+    flags
+  );
 }
 
 function buildViewBox(flags: Flags) {
@@ -824,6 +912,55 @@ export function cmdTreeLayout(flags: Flags): void {
     const point = activeSpace[sphereId];
     console.log(`  ${sphereId}: (${point.x}, ${point.y})`);
   }
+  console.log();
+}
+
+export function cmdTreeTopology(flags: Flags): void {
+  const system = resolveSystem(flags);
+  const routeKey = resolveTopologyRouteKey(flags);
+  const topology = getTreeTopology({ system });
+  const spheres = topology.getSpheres();
+  const paths = topology.getPaths();
+  const routes = routeKey
+    ? [topology.getRoute(routeKey)].filter(
+        (route): route is TreeTopologyRoute => Boolean(route)
+      )
+    : topology.getRoutes();
+
+  if (isJsonMode(flags)) {
+    outputJson(
+      {
+        system,
+        sphereOrder: spheres.map((sphere) => sphere.id),
+        pathOrder: paths.map((path) => path.id),
+        spheres: spheres.map(serializeTopologySphere),
+        paths: paths.map(serializeTopologyPath),
+        routes: routes.map(serializeTopologyRoute),
+      },
+      flags
+    );
+    return;
+  }
+
+  console.log(`\nTree topology (${system})\n`);
+  console.log(`  Spheres: ${spheres.length}`);
+  console.log(`  Paths: ${paths.length}`);
+
+  for (const route of routes) {
+    const serialized = serializeTopologyRoute(route);
+    console.log(
+      `\n  ${route.name} (${route.direction}, ${route.isFullyConnected ? "fully connected" : "has missing path segments"}):`
+    );
+    console.log(`    ${serialized.sphereNames.join(" -> ")}`);
+
+    if (route.missingSegments.length > 0) {
+      console.log("    Missing direct paths:");
+      for (const segment of route.missingSegments) {
+        console.log(`      ${segment.from.name} -> ${segment.to.name}`);
+      }
+    }
+  }
+
   console.log();
 }
 

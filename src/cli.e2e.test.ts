@@ -118,6 +118,7 @@ describe("CLI contract", () => {
       "tree:find",
       "tree:types",
       "tree:layout",
+      "tree:topology",
       "tree:svg",
       "tree:ascii",
       "astrology",
@@ -388,6 +389,54 @@ describe("CLI contract", () => {
       fromId: "sphere:Kether",
       toId: "sphere:Chokhmah",
     });
+  });
+
+  it("returns structural tree topology and named route data", () => {
+    const result = runCli([
+      "tree:topology",
+      "--route=lightning",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tree:topology --route=lightning");
+
+    const payload = JSON.parse(result.stdout) as {
+      system: string;
+      sphereOrder: string[];
+      pathOrder: string[];
+      routes: Array<{
+        key: string;
+        sphereNames: string[];
+        isFullyConnected: boolean;
+        missingSegments: Array<{ fromName: string; toName: string }>;
+        targetIds: string[];
+      }>;
+    };
+
+    expect(payload.system).toBe("kaabalah");
+    expect(payload.sphereOrder).toHaveLength(11);
+    expect(payload.pathOrder).toHaveLength(22);
+    expect(payload.routes).toHaveLength(1);
+    expect(payload.routes[0]).toMatchObject({
+      key: "lightning",
+      sphereNames: [
+        "Kether",
+        "Chokhmah",
+        "Binah",
+        "Chesed",
+        "Geburah",
+        "Tiphareth",
+        "Netzach",
+        "Hod",
+        "Yesod",
+        "Malkuth",
+      ],
+      isFullyConnected: false,
+      missingSegments: [{ fromName: "Binah", toName: "Chesed" }],
+    });
+    expect(payload.routes[0].targetIds).toEqual(
+      expect.arrayContaining(["sphere:Kether", "path:1", "sphere:Malkuth"])
+    );
   });
 
   it("returns activation-aware tree render model data from an activations file", () => {

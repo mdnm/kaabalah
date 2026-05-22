@@ -13,6 +13,7 @@ import { LinkCard } from '@astrojs/starlight/components';
 import {
   createTree,
   getCanonicalTree,
+  getTreeTopology,
   createTreeWorkspace,
   id,
   parseId,
@@ -28,6 +29,7 @@ import {
   WESTERN_ELEMENTS,
   MELKITZEDEKI_PATHS,
   LURIANIC_PATHS,
+  TREE_TOPOLOGY_LIGHTNING_SPHERE_NAMES,
   FOUR_WORLDS,
   KaabalahTypes,
   WesternAstrologyTypes,
@@ -108,6 +110,51 @@ const workspace = getCanonicalTree({
 
 const node = workspace.getNode(id('sphere', 'Tiphareth'));
 ```
+
+## Tree topology: `getTreeTopology`
+
+```typescript
+function getTreeTopology(opts?: TreeTopologyOptions): TreeTopology
+```
+
+Returns the structural Tree of Life topology separately from correspondence traversal. Use this when you need the fixed sphere/path skeleton, adjacent spheres, a path between two spheres, or named routes such as `lightning` and `serpent`.
+
+```typescript
+import { getTreeTopology } from 'kaabalah/core';
+
+const topology = getTreeTopology({ system: 'kaabalah' });
+
+const path = topology.getPathBetween('Kether', 'Chokhmah');
+const lightning = topology.getRoute('lightning');
+
+console.log(lightning?.spheres.map((sphere) => sphere.name));
+```
+
+The canonical `lightning` route descends:
+
+```text
+Kether -> Chokhmah -> Binah -> Chesed -> Geburah -> Tiphareth -> Netzach -> Hod -> Yesod -> Malkuth
+```
+
+`serpent` is the reverse route. Route segments include `isConnected` and optional `path`; this lets callers distinguish canonical route order from whether the selected system has a direct structural path for every hop.
+
+### `TreeTopology` API
+
+```typescript
+topology.getSpheres(options?: { includeDaath?: boolean }): TreeTopologySphere[]
+topology.getPrimarySpheres(): TreeTopologySphere[]
+topology.getSphere(lookup: TreeTopologySphereLookup): TreeTopologySphere | undefined
+topology.getPaths(): TreeTopologyPath[]
+topology.getPath(lookup: TreeTopologyPathLookup): TreeTopologyPath | undefined
+topology.getPathBetween(first, second): TreeTopologyPath | undefined
+topology.getAdjacentSpheres(sphere): TreeTopologyAdjacentSphere[]
+topology.getRoutes(): TreeTopologyRoute[]
+topology.getRoute('lightning' | 'serpent'): TreeTopologyRoute | undefined
+topology.nextInRoute(route, sphere): TreeTopologySphere | undefined
+topology.previousInRoute(route, sphere): TreeTopologySphere | undefined
+```
+
+Path ids remain stable correspondence targets (`path:1`, `path:2`, etc.), but topology traversal is now a separate structural API instead of a generic graph walk.
 
 ## `TreeWorkspace` API
 

@@ -3,8 +3,12 @@ import {
   id,
   KaabalahTypes,
   MiscTypes,
+  TREE_TOPOLOGY_PATH_IDS,
+  TREE_TOPOLOGY_SPHERE_IDS,
+  TREE_TOPOLOGY_SPHERE_NAMES,
   type NodeId,
   type SystemKey,
+  type TreeTopologySphereName,
 } from "../core";
 
 export interface TreeSvgViewBox {
@@ -21,18 +25,7 @@ export interface TreeLayoutCoordinate {
 
 export type TreeTargetState = "active" | "hovered" | "selected" | "inactive";
 
-export type TreeSphereName =
-  | "Kether"
-  | "Chokhmah"
-  | "Binah"
-  | "Daath"
-  | "Chesed"
-  | "Geburah"
-  | "Tiphareth"
-  | "Netzach"
-  | "Hod"
-  | "Yesod"
-  | "Malkuth";
+export type TreeSphereName = TreeTopologySphereName;
 
 export type TreeSphereId = NodeId<KaabalahTypes.SPHERE>;
 export type TreePathId = NodeId<KaabalahTypes.PATH>;
@@ -224,20 +217,9 @@ export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
 };
 
 export const TREE_SPHERE_NAMES = [
-  "Kether",
-  "Chokhmah",
-  "Binah",
-  "Daath",
-  "Chesed",
-  "Geburah",
-  "Tiphareth",
-  "Netzach",
-  "Hod",
-  "Yesod",
-  "Malkuth",
+  ...TREE_TOPOLOGY_SPHERE_NAMES,
 ] as const satisfies readonly TreeSphereName[];
 
-const TREE_PATH_NUMBERS = Array.from({ length: 22 }, (_, index) => index + 1);
 const CANONICAL_X_PERCENTAGES = { left: 13.25, mid: 49.94, right: 86.66 } as const;
 const CANONICAL_ROW_Y_PERCENTAGES = [
   6.83,
@@ -260,15 +242,9 @@ const MUTED_TARGET_COLOR = "#AAA";
 
 const sphereId = (name: TreeSphereName) =>
   id(KaabalahTypes.SPHERE, name) as TreeSphereId;
-const pathId = (pathNumber: number) =>
-  id(KaabalahTypes.PATH, String(pathNumber)) as TreePathId;
 
-export const TREE_SPHERE_IDS = TREE_SPHERE_NAMES.map((name) =>
-  sphereId(name)
-) as TreeSphereId[];
-export const TREE_PATH_IDS = TREE_PATH_NUMBERS.map((pathNumber) =>
-  pathId(pathNumber)
-) as TreePathId[];
+export const TREE_SPHERE_IDS = [...TREE_TOPOLOGY_SPHERE_IDS] as TreeSphereId[];
+export const TREE_PATH_IDS = [...TREE_TOPOLOGY_PATH_IDS] as TreePathId[];
 
 const CANONICAL_SPHERE_PERCENTAGES = {
   [sphereId("Kether")]: { x: CANONICAL_X_PERCENTAGES.mid, y: CANONICAL_ROW_Y_PERCENTAGES[0] },
