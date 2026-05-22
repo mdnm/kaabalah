@@ -558,6 +558,37 @@ Returns definitions for all built-in spreads:
 | `celtic-cross` | Celtic Cross | 10 (any) |
 | `event-reading` | Event Reading | 12 outer minor/court + 7 inner major + 1 inquirer |
 
+### CLI spread IDs
+
+The CLI uses the same `spreadId` values through `tarot:spread --spread-id`.
+
+```bash
+kaabalah tarot:spread --list
+kaabalah tarot:spread --spread-id=quick-insight --json
+kaabalah tarot:spread --spread-id=celtic-cross --json
+kaabalah tarot:spread --spread-id=event-reading --inquirer-gender=woman --json
+```
+
+Use one of these IDs:
+
+| Spread ID | Notes |
+|---|---|
+| `quick-insight` | One-card draw |
+| `conscious-reading` | Three-card draw: conscious, unconscious, subconscious |
+| `time-reading` | Three major arcana cards: past, present, future |
+| `dialectic-reading` | Three major arcana cards: thesis, antithesis, synthesis |
+| `tree-of-life-reading` | Tree of Life layout with rank-constrained minor cards plus Daath court cards |
+| `celtic-cross` | Classic ten-card layout |
+| `event-reading` | Papus-style event layout; requires `--inquirer-gender=man` or `--inquirer-gender=woman` |
+
+For JSON input, pass the spread ID as `spreadId` and spread context under `context`:
+
+```bash
+kaabalah tarot:spread --input-json=- --json --compact <<'JSON'
+{"spreadId":"event-reading","context":{"inquirerGender":"woman"}}
+JSON
+```
+
 ### `getTarotSpread(spreadId)`
 
 ```typescript

@@ -194,6 +194,102 @@ describe("CLI contract", () => {
     });
   });
 
+  it("draws named tarot spreads from the CLI", () => {
+    const result = runCli(["tarot:spread", "--spread-id=time-reading", "--json", "--compact"]);
+    assertSuccess(result, "tarot:spread --spread-id");
+
+    const payload = JSON.parse(result.stdout) as {
+      spread: { spreadId: string; label: string };
+      cards: Array<{ slotKey: string; cardNumber: number; card: { tarotCard: string; type: string } }>;
+    };
+
+    expect(payload.spread).toMatchObject({
+      spreadId: "time-reading",
+      label: "Time Reading",
+    });
+    expect(payload.cards).toHaveLength(3);
+    expect(payload.cards.map((card) => card.slotKey)).toEqual(["past", "present", "future"]);
+    expect(payload.cards.every((card) => card.card.type === "major")).toBe(true);
+  });
+
+  it("lists tarot spread ids from the CLI", () => {
+    const result = runCli(["tarot:spread", "--list", "--json", "--compact"]);
+    assertSuccess(result, "tarot:spread --list");
+
+    const payload = JSON.parse(result.stdout) as Array<{
+      spreadId: string;
+      label: string;
+      slots: number;
+      contextRequirements: string[];
+    }>;
+
+    expect(payload.map((spread) => spread.spreadId)).toEqual([
+      "quick-insight",
+      "conscious-reading",
+      "time-reading",
+      "dialectic-reading",
+      "tree-of-life-reading",
+      "celtic-cross",
+      "event-reading",
+    ]);
+    expect(payload.find((spread) => spread.spreadId === "event-reading")).toMatchObject({
+      label: "Event Reading",
+      contextRequirements: ["inquirerGender"],
+    });
+  });
+
+  it("prints tarot spread ids for human-readable discovery", () => {
+    const result = runCli(["tarot:spread", "--list", "--no-json"]);
+    assertSuccess(result, "tarot:spread --list --no-json");
+
+    expect(result.stdout).toContain("Tarot spreads");
+    expect(result.stdout).toContain("quick-insight");
+    expect(result.stdout).toContain("celtic-cross");
+    expect(result.stdout).toContain("event-reading");
+    expect(result.stdout).toContain("requires: inquirerGender");
+  });
+
+  it("passes tarot spread context from CLI flags", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--spread-id=event-reading",
+      "--inquirer-gender=woman",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:spread event-reading");
+
+    const payload = JSON.parse(result.stdout) as {
+      spread: { spreadId: string };
+      context: { inquirerGender: string };
+      cards: Array<{ slotKey: string; cardNumber: number }>;
+    };
+
+    expect(payload.spread.spreadId).toBe("event-reading");
+    expect(payload.context).toEqual({ inquirerGender: "woman" });
+    expect(payload.cards).toHaveLength(20);
+    expect(payload.cards.find((card) => card.slotKey === "inquirer")?.cardNumber).toBe(2);
+  });
+
+  it("passes tarot spread selection through --input-json", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--input-json=-",
+      "--json",
+      "--compact",
+      "--fields=spread.spreadId,cards",
+    ], JSON.stringify({ spreadId: "quick-insight" }));
+    assertSuccess(result, "tarot:spread --input-json");
+
+    const payload = JSON.parse(result.stdout) as {
+      spread: { spreadId: string };
+      cards: unknown[];
+    };
+
+    expect(payload.spread.spreadId).toBe("quick-insight");
+    expect(payload.cards).toHaveLength(1);
+  });
+
   it("supports space-separated option values", () => {
     const result = runCli([
       "numerology",

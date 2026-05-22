@@ -118,11 +118,19 @@ export const COMMANDS: CommandSchema[] = [
   },
   {
     name: "tarot:spread",
-    description: "Look up multiple tarot cards by name or number",
-    args: [{ name: "cards", type: "string", required: true, description: "Card names or numbers, space-separated (quote multi-word names)" }],
-    flags: [],
+    description: "Look up multiple tarot cards by name or number, or draw a named spread with --spread-id",
+    args: [{ name: "cards", type: "string", required: false, description: "Card names or numbers, space-separated (quote multi-word names)" }],
+    flags: [
+      { name: "list", type: "boolean", default: false, description: "List built-in spread IDs and requirements" },
+      { name: "spread-id", type: "string", description: "Draw a built-in spread by ID (e.g. quick-insight, celtic-cross, event-reading)" },
+      { name: "inverted", type: "boolean", default: false, description: "Include inverted cards when drawing a named spread" },
+      { name: "inquirer-gender", type: "string", description: 'Required by event-reading; must be "man" or "woman"' },
+    ],
     examples: [
       'kaabalah tarot:spread "Two of Cups" "The Chariot" 7',
+      "kaabalah tarot:spread --list",
+      "kaabalah tarot:spread --spread-id=celtic-cross --json",
+      "kaabalah tarot:spread --spread-id=event-reading --inquirer-gender=woman --json",
       "kaabalah tarot:spread --input-json=- --json --compact < cards.json",
     ],
   },

@@ -44,7 +44,7 @@ npx kaabalah help
 | `astrology:dodecatemoria <longitude>` | Dodecatemoria (12th part) lookup |
 | `tarot [count]` | Draw tarot cards (default: 3) |
 | `tarot:card <query>` | Look up a specific card by number or name |
-| `tarot:spread <cards...>` | Look up multiple cards by name or number |
+| `tarot:spread <cards...>` | Look up multiple cards by name or number, or draw a named spread with `--spread-id` |
 | `ifa <date>` | Calculate Odu from a date |
 | `tree` | Show Tree of Life structure with all nodes, data, and edges |
 | `tree:node <id>` | Look up a node and all its correspondences |
@@ -531,14 +531,30 @@ Accepts a card number (1-78) or any part of a card name. Partial name matches re
 
 ### tarot:spread
 
-Look up multiple tarot cards by name or number in a single call.
+Look up multiple tarot cards by name or number in a single call, or draw one of the built-in spread layouts.
 
 ```bash
 kaabalah tarot:spread "Two of Cups" "The Chariot" 7
+kaabalah tarot:spread --list
+kaabalah tarot:spread --spread-id=celtic-cross --json
+kaabalah tarot:spread --spread-id=event-reading --inquirer-gender=woman --json
 kaabalah tarot:spread --input-json=- --json --compact < cards.json
 ```
 
 Cards that are not found are returned inline as error objects (the command does not exit with code 1 for individual card misses). Useful for resolving a whole spread at once.
+
+Use `--spread-id` to draw a structured spread with slot metadata and resolved cards. Supported IDs are the same `TarotSpreadId` values exposed by the TypeScript API: `quick-insight`, `conscious-reading`, `time-reading`, `dialectic-reading`, `tree-of-life-reading`, `celtic-cross`, and `event-reading`.
+
+Run `kaabalah tarot:spread --list` to discover the supported spread IDs from the CLI.
+
+`event-reading` requires an inquirer gender because its center card is deterministic. Pass `--inquirer-gender=man` or `--inquirer-gender=woman`, or provide it in JSON as `{"spreadId":"event-reading","context":{"inquirerGender":"woman"}}`.
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--spread-id` | string | - | Draw a built-in spread by ID |
+| `--list` | boolean | false | List built-in spread IDs and requirements |
+| `--inverted` | boolean | false | Include inverted cards when drawing a named spread |
+| `--inquirer-gender` | string | - | Required by `event-reading`; `man` or `woman` |
 
 ### ifa
 
