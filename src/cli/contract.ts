@@ -199,6 +199,20 @@ export const COMMANDS: CommandSchema[] = [
     ],
   },
   {
+    name: "tree:topology",
+    description: "Return the structural Tree of Life topology, paths, and named routes",
+    args: [],
+    flags: [
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "route", type: "string", default: "all", description: "Route filter: all, lightning, or serpent" },
+    ],
+    examples: [
+      "kaabalah tree:topology --json --compact",
+      "kaabalah tree:topology --route=lightning --json --compact",
+      "kaabalah tree:topology --system=lurianic-kabbalah --route=lightning --json --compact",
+    ],
+  },
+  {
     name: "tree:svg",
     description: "Generate a structural Tree of Life SVG from the canonical library renderer",
     args: [],

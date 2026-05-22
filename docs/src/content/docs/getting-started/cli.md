@@ -634,6 +634,29 @@ kaabalah tree:layout --render-model --activations=activations.json --json --comp
 | `--viewbox-min-x` | number | 0 | Override render-model viewBox min-x |
 | `--viewbox-min-y` | number | 0 | Override render-model viewBox min-y |
 
+### tree:topology
+
+Return the structural Tree of Life topology: spheres, path endpoints, and named routes.
+
+```bash
+kaabalah tree:topology --json --compact
+kaabalah tree:topology --route=lightning --json --compact
+kaabalah tree:topology --system=lurianic-kabbalah --route=lightning --json --compact
+```
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
+| `--route` | string | all | Route filter: `all`, `lightning`, or `serpent` |
+
+Routes expose both the canonical sphere order and the path targets available in the selected system. The `lightning` route descends:
+
+```text
+Kether -> Chokhmah -> Binah -> Chesed -> Geburah -> Tiphareth -> Netzach -> Hod -> Yesod -> Malkuth
+```
+
+`serpent` is the reverse route. If a system does not have a direct structural path between two consecutive route spheres, that hop appears in `missingSegments` and `isFullyConnected` is `false`.
+
 ### tree:svg
 
 Generate a structural Tree of Life SVG from the canonical library renderer.
