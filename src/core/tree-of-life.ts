@@ -5,6 +5,8 @@ import {
   CorrespondenceMetadata,
   CorrespondenceSource,
   makeCorrespondenceId,
+  mergeMetadata,
+  mergeSources,
 } from "./correspondence-model";
 import { ModuleManager } from "./systems/module-manager";
 import { SystemKey } from "./systems/registry";
@@ -20,53 +22,6 @@ import {
   TarotTypes,
   WesternAstrologyTypes,
 } from "./types";
-
-function mergeCorrespondenceMetadata(
-  current?: CorrespondenceMetadata,
-  next?: CorrespondenceMetadata
-) {
-  if (!current) {
-    return next ? { ...next } : undefined;
-  }
-
-  if (!next) {
-    return { ...current };
-  }
-
-  return {
-    ...current,
-    ...next,
-    tags: [...new Set([...(current.tags ?? []), ...(next.tags ?? [])])],
-    attributes: {
-      ...(current.attributes ?? {}),
-      ...(next.attributes ?? {}),
-    },
-  };
-}
-
-function mergeCorrespondenceSources(
-  current: readonly CorrespondenceSource[],
-  next: CorrespondenceSource
-) {
-  const seen = new Set<string>();
-  const merged: CorrespondenceSource[] = [];
-
-  for (const source of [...current, next]) {
-    const key = JSON.stringify(source);
-
-    if (seen.has(key)) {
-      continue;
-    }
-
-    seen.add(key);
-    merged.push({
-      ...source,
-      ...(source.kind === "bridge" ? { parts: [...source.parts] } : {}),
-    } as CorrespondenceSource);
-  }
-
-  return merged;
-}
 
 /**
  * TreeOfLife represents a graph structure for mapping Kaabalah, Tarot, Astrology and other
@@ -223,11 +178,8 @@ export class TreeOfLife {
     if (existingEdge) {
       this.edges.set(edgeId, {
         ...existingEdge,
-        metadata: mergeCorrespondenceMetadata(
-          existingEdge.metadata,
-          options.metadata
-        ),
-        sources: mergeCorrespondenceSources(existingEdge.sources, source),
+        metadata: mergeMetadata(existingEdge.metadata, options.metadata),
+        sources: mergeSources(existingEdge.sources, source),
       });
       put(firstNode, secondNode);
       put(secondNode, firstNode);
@@ -242,8 +194,8 @@ export class TreeOfLife {
       id: edgeId,
       left: firstNode,
       right: secondNode,
-      metadata: mergeCorrespondenceMetadata(undefined, options.metadata),
-      sources: mergeCorrespondenceSources([], source),
+      metadata: mergeMetadata(undefined, options.metadata),
+      sources: mergeSources([], source),
     });
   }
 

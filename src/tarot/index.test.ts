@@ -10,6 +10,7 @@ import {
   WesternAstrologyTypes
 } from "../core";
 import {
+  ARKANNUS,
   getTarotArchetype,
   getTarotCardByNumber,
   getTarotCardNumber,
@@ -19,8 +20,18 @@ import {
   getTarotRepresentations,
   listTarotDecks,
   listTarotTrees,
-  resolveTarotImageUrl
+  resolveTarotImageUrl,
+  shuffleTarotDeck
 } from "./index";
+
+function seededRng(seed = 42) {
+  let state = seed;
+
+  return () => {
+    state = (state * 1664525 + 1013904223) % 2 ** 32;
+    return state / 2 ** 32;
+  };
+}
 
 describe("tarot archetype resolver", () => {
   it("lists the supported canonical tarot decks", () => {
@@ -31,6 +42,25 @@ describe("tarot archetype resolver", () => {
       { id: "egyptian", label: "Egyptian" },
       { id: "rider-waite", label: "Rider Waite" }
     ]);
+  });
+
+  it("keeps shuffle output as a complete deck under a controlled test rng", async () => {
+    const shuffled = await shuffleTarotDeck(ARKANNUS, false, 1, 0, seededRng());
+    const originalNames = ARKANNUS.map((card) => card.tarotCard).sort();
+    const shuffledNames = shuffled.map((card) => card.tarotCard).sort();
+
+    expect(shuffled).toHaveLength(78);
+    expect(shuffledNames).toEqual(originalNames);
+    expect(new Set(shuffledNames).size).toBe(78);
+  });
+
+  it("supports repeatable shuffle tests without making default divination deterministic", async () => {
+    const first = await shuffleTarotDeck(ARKANNUS, false, 1, 0, seededRng());
+    const second = await shuffleTarotDeck(ARKANNUS, false, 1, 0, seededRng());
+
+    expect(first.map((card) => card.tarotCard)).toEqual(
+      second.map((card) => card.tarotCard)
+    );
   });
 
   it("lists tarot trees and keeps card-number correspondences direct in the kaabalah tree", () => {

@@ -975,10 +975,10 @@ const RAW_ARKANNUS: TarotCard[] = [
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-const shuffleArray = <T,>(array: T[]): T[] => {
+const shuffleArray = <T,>(array: T[], rng: () => number = Math.random): T[] => {
   const newArray = [...array]
   for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(rng() * (i + 1));
 
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
@@ -991,15 +991,17 @@ const shuffleArray = <T,>(array: T[]): T[] => {
  * @param includeInvertedCards - Whether to include inverted cards in the shuffle
  * @param shuffleCount - Number of times to shuffle the deck (default: 6)
  * @param shuffleDelay - Delay between shuffles in milliseconds (default: 300)
+ * @param rng - Optional randomness source for tests/replay (default: Math.random)
  * @returns Promise that resolves to the shuffled deck
  */
 export async function shuffleTarotDeck(
   cards: TarotCard[],
   includeInvertedCards: boolean = false,
   shuffleCount: number = 6,
-  shuffleDelay: number = 300
+  shuffleDelay: number = 300,
+  rng: () => number = Math.random
 ): Promise<TarotCard[]> {
-  let shuffledCards = shuffleArray([...cards]);
+  let shuffledCards = shuffleArray([...cards], rng);
 
   if (includeInvertedCards) {
     const halfIndex = Math.floor(shuffledCards.length / 2);
@@ -1012,7 +1014,7 @@ export async function shuffleTarotDeck(
   }
 
   for (let i = 0; i < shuffleCount; i++) {
-    shuffledCards = shuffleArray(shuffledCards);
+    shuffledCards = shuffleArray(shuffledCards, rng);
     await sleep(shuffleDelay);
   }
 

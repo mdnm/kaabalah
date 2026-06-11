@@ -229,10 +229,16 @@ type SymbolSeed = KaabalisticSymbolMetadata & {
   aliases?: readonly string[];
 }
 
-const canonicalTree = getCanonicalTree({
-  system: "kaabalah",
-  parts: ["westernAstrology"],
-})
+let canonicalTreeInstance: CanonicalTree | undefined
+
+function canonicalTree() {
+  canonicalTreeInstance ??= getCanonicalTree({
+    system: "kaabalah",
+    parts: ["westernAstrology"],
+  })
+
+  return canonicalTreeInstance
+}
 
 const orderedSphereIds = [
   SPHERES.KETHER,
@@ -252,17 +258,28 @@ const orderedPathIds = Array.from({ length: 22 }, (_, index) =>
   id(KaabalahTypes.PATH, index + 1)
 )
 
-const orderedSpheres = Object.freeze(
-  orderedSphereIds
-    .map((sphereId) => canonicalTree.getNode(sphereId))
-    .filter((node): node is Node<KaabalahTypes.SPHERE> => Boolean(node))
-)
+let orderedSpheresInstance: readonly Node<KaabalahTypes.SPHERE>[] | undefined
+let orderedPathsInstance: readonly Node<KaabalahTypes.PATH>[] | undefined
 
-const orderedPaths = Object.freeze(
-  orderedPathIds
-    .map((pathId) => canonicalTree.getNode(pathId))
-    .filter((node): node is Node<KaabalahTypes.PATH> => Boolean(node))
-)
+function orderedSpheres() {
+  orderedSpheresInstance ??= Object.freeze(
+    orderedSphereIds
+      .map((sphereId) => canonicalTree().getNode(sphereId))
+      .filter((node): node is Node<KaabalahTypes.SPHERE> => Boolean(node))
+  )
+
+  return orderedSpheresInstance
+}
+
+function orderedPaths() {
+  orderedPathsInstance ??= Object.freeze(
+    orderedPathIds
+      .map((pathId) => canonicalTree().getNode(pathId))
+      .filter((node): node is Node<KaabalahTypes.PATH> => Boolean(node))
+  )
+
+  return orderedPathsInstance
+}
 
 const SIGN_SYMBOLS = [
   { kind: "sign", key: "aries", label: "Aries", shortLabel: "Aries", glyph: "♈", id: id(WesternAstrologyTypes.WESTERN_ZODIAC_SIGN, WESTERN_ZODIAC_SIGNS.ARIES) },
@@ -332,9 +349,26 @@ const defaultExcludedAstrologyPoints = new Set([
   normalizeLookupKey("Lilith True"),
 ])
 
-const planetCarrierSphereIdsByKey = createPlanetCarrierSphereIdsByKey(canonicalTree)
-const classicalPlanetPathIdsByKey = createClassicalPlanetPathIdsByKey(canonicalTree)
 const angleCarrierSphereIdsByKey = createAngleCarrierSphereIdsByKey()
+
+let planetCarrierSphereIdsByKeyInstance:
+  | ReturnType<typeof createPlanetCarrierSphereIdsByKey>
+  | undefined
+let classicalPlanetPathIdsByKeyInstance:
+  | ReturnType<typeof createClassicalPlanetPathIdsByKey>
+  | undefined
+
+function planetCarrierSphereIdsByKey() {
+  planetCarrierSphereIdsByKeyInstance ??= createPlanetCarrierSphereIdsByKey(canonicalTree())
+
+  return planetCarrierSphereIdsByKeyInstance
+}
+
+function classicalPlanetPathIdsByKey() {
+  classicalPlanetPathIdsByKeyInstance ??= createClassicalPlanetPathIdsByKey(canonicalTree())
+
+  return classicalPlanetPathIdsByKeyInstance
+}
 
 function normalizeLookupKey(value: string) {
   return value.trim().toLowerCase()
@@ -618,7 +652,7 @@ function getAstrologySourceGlyph(sourceType: Extract<KaabalisticMarkerSourceType
 }
 
 function getHouseNodeByNumber(houseNumber: number) {
-  return canonicalTree.getCorrespondences(id(NumerologyTypes.NUMBER, houseNumber), {
+  return canonicalTree().getCorrespondences(id(NumerologyTypes.NUMBER, houseNumber), {
     type: WesternAstrologyTypes.HOUSE,
     depth: 1,
     limit: 1,
@@ -629,7 +663,7 @@ function buildSignTargets(sign: (typeof SIGNS)[number]) {
   const signId = id(WesternAstrologyTypes.WESTERN_ZODIAC_SIGN, sign)
   const result: KaabalisticCorrespondenceTarget[] = []
 
-  for (const match of canonicalTree.getCorrespondences(signId, {
+  for (const match of canonicalTree().getCorrespondences(signId, {
     type: [KaabalahTypes.SPHERE, KaabalahTypes.PATH, WesternAstrologyTypes.WESTERN_ELEMENT],
     depth: 1,
   })) {
@@ -659,7 +693,7 @@ function buildSignTargets(sign: (typeof SIGNS)[number]) {
 
     const element = parseId(match.node.id)
 
-    for (const elementPath of canonicalTree.getCorrespondences(match.node.id, {
+    for (const elementPath of canonicalTree().getCorrespondences(match.node.id, {
       type: KaabalahTypes.PATH,
       depth: 1,
     })) {
@@ -674,7 +708,7 @@ function buildSignTargets(sign: (typeof SIGNS)[number]) {
       })
     }
 
-    for (const elementSphere of canonicalTree.getCorrespondences(match.node.id, {
+    for (const elementSphere of canonicalTree().getCorrespondences(match.node.id, {
       type: KaabalahTypes.SPHERE,
       depth: 1,
     })) {
@@ -703,7 +737,7 @@ function buildCarrierSphereTargets(
     : normalizeAngleName(lookup.angle)
   const sourceKey = normalizeLookupKey(sourceLabel)
   const sphereIds = isPlanetLookup
-    ? planetCarrierSphereIdsByKey.get(sourceKey)
+    ? planetCarrierSphereIdsByKey().get(sourceKey)
     : angleCarrierSphereIdsByKey.get(sourceKey)
 
   if (!sphereIds?.length) {
@@ -815,7 +849,7 @@ function createCorrespondenceSource(
     }
   }
 
-  const letterNode = canonicalTree.getNode(lookup.hebrewLetterId)
+  const letterNode = canonicalTree().getNode(lookup.hebrewLetterId)
   const letterLabel = letterNode?.name ?? parseId(lookup.hebrewLetterId)
   const glyph = letterNode?.data?.character ?? letterLabel
 
@@ -836,14 +870,14 @@ export function getKaabalisticCorrespondenceTargets(
     const source = createCorrespondenceSource(lookup)
     const numberId = id(NumerologyTypes.NUMBER, lookup.number)
     const targets = [
-      ...canonicalTree.getCorrespondences(numberId, { type: KaabalahTypes.SPHERE, depth: 1 }).map((match) => ({
+      ...canonicalTree().getCorrespondences(numberId, { type: KaabalahTypes.SPHERE, depth: 1 }).map((match) => ({
         targetId: match.node.id as NodeId<KaabalahTypes.SPHERE>,
         targetType: "sphere" as const,
         targetName: getTargetName(match.node.id as NodeId<KaabalahTypes.SPHERE>),
         mapping: "number-sphere" as const,
         distance: match.distance,
       })),
-      ...canonicalTree.getCorrespondences(numberId, { type: KaabalahTypes.PATH, depth: 1 }).map((match) => ({
+      ...canonicalTree().getCorrespondences(numberId, { type: KaabalahTypes.PATH, depth: 1 }).map((match) => ({
         targetId: match.node.id as NodeId<KaabalahTypes.PATH>,
         targetType: "path" as const,
         targetName: getTargetName(match.node.id as NodeId<KaabalahTypes.PATH>),
@@ -860,7 +894,7 @@ export function getKaabalisticCorrespondenceTargets(
 
   if (lookup.kind === "hebrewLetter") {
     const source = createCorrespondenceSource(lookup)
-    const targets = canonicalTree.getCorrespondences(lookup.hebrewLetterId, {
+    const targets = canonicalTree().getCorrespondences(lookup.hebrewLetterId, {
       type: KaabalahTypes.PATH,
       depth: 1,
     }).map((match) => ({
@@ -895,7 +929,7 @@ export function getKaabalisticCorrespondenceTargets(
   if (lookup.kind === "planet") {
     const planet = normalizePlanetName(lookup.planet)
     const planetKey = normalizeLookupKey(planet)
-    const planetPathTargets = (classicalPlanetPathIdsByKey.get(planetKey) ?? []).map((pathId) => ({
+    const planetPathTargets = (classicalPlanetPathIdsByKey().get(planetKey) ?? []).map((pathId) => ({
       targetId: pathId,
       targetType: "path" as const,
       targetName: getTargetName(pathId),
@@ -1290,7 +1324,7 @@ function buildAstrologySummary(
       WesternAstrologyTypes.ASPECT,
       WESTERN_ASPECTS[aspect.aspect.toUpperCase() as keyof typeof WESTERN_ASPECTS] ?? aspect.aspect
     )
-    const sphere = canonicalTree.getCorrespondences(aspectId, {
+    const sphere = canonicalTree().getCorrespondences(aspectId, {
       type: KaabalahTypes.SPHERE,
       depth: 1,
       limit: 1,
@@ -1324,7 +1358,7 @@ function buildAstrologySummary(
       continue
     }
 
-    const sign = canonicalTree.getCorrespondences(house.id, {
+    const sign = canonicalTree().getCorrespondences(house.id, {
       type: WesternAstrologyTypes.WESTERN_ZODIAC_SIGN,
       depth: 1,
       limit: 1,
@@ -1333,7 +1367,7 @@ function buildAstrologySummary(
       continue
     }
 
-    const spheres = canonicalTree.getCorrespondences(sign.id, {
+    const spheres = canonicalTree().getCorrespondences(sign.id, {
       type: KaabalahTypes.SPHERE,
       depth: 1,
     })
@@ -1431,8 +1465,8 @@ export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
   >
 
   return {
-    spheres: orderedSpheres,
-    paths: orderedPaths,
+    spheres: orderedSpheres(),
+    paths: orderedPaths(),
     markers: allMarkers,
     sphereMarkers,
     pathMarkers,

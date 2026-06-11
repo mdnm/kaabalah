@@ -70,7 +70,13 @@ export async function cmdTarot(countStr: string | undefined, flags: Flags): Prom
   }
 
   const shuffleCount = getFlagNumber(flags, "shuffle-count") ?? 7;
-  const deck = await shuffleTarotDeck(ARKANNUS, getFlagBool(flags, "inverted"), shuffleCount);
+  const shuffleDelay = isJsonMode(flags) ? 0 : 300;
+  const deck = await shuffleTarotDeck(
+    ARKANNUS,
+    getFlagBool(flags, "inverted"),
+    shuffleCount,
+    shuffleDelay
+  );
   const drawn = deck.slice(0, count);
 
   if (isJsonMode(flags)) {
@@ -156,6 +162,15 @@ function cmdTarotNamedSpread(spreadId: string, flags: Flags, options: TarotSprea
   }
 
   const context = parseTarotSpreadContext(flags, options.context);
+  const requirements = spread.contextRequirements ?? [];
+
+  if (requirements.includes("inquirerGender") && !context?.inquirerGender) {
+    exitWithError(
+      "MISSING_ARGUMENT",
+      `Spread "${spread.spreadId}" requires --inquirer-gender (man|woman).`,
+      flags
+    );
+  }
 
   try {
     const result = drawTarotSpread({

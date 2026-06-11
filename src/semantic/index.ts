@@ -207,10 +207,18 @@ type TarotThemeProfileCache = {
   byPathSlug: Map<string, TarotThemeProfile>;
 }
 
-const canonicalTree = getCanonicalTree({
-  system: "kaabalah",
-  parts: ["westernAstrology", "tarot"],
-})
+type CanonicalTree = ReturnType<typeof getCanonicalTree>
+
+let canonicalTreeInstance: CanonicalTree | undefined
+
+function canonicalTree() {
+  canonicalTreeInstance ??= getCanonicalTree({
+    system: "kaabalah",
+    parts: ["westernAstrology", "tarot"],
+  })
+
+  return canonicalTreeInstance
+}
 
 const HOUSE_LABELS_BY_NUMBER = [
   WESTERN_HOUSES.ASCENDANT,
@@ -702,7 +710,7 @@ function getCorrespondenceRefs<T extends NodeType>(
   type: T,
   depth: number
 ): OccultThemeCorrespondence<T>[] {
-  return canonicalTree
+  return canonicalTree()
     .getCorrespondences(nodeId, { type, depth })
     .map((match) => ({
       id: match.node.id as NodeId<T>,
@@ -717,7 +725,7 @@ function collectCorrespondenceTexts<T extends NodeType>(
   const texts: string[] = []
 
   for (const correspondence of correspondences) {
-    const node = canonicalTree.getNode(correspondence.id)
+    const node = canonicalTree().getNode(correspondence.id)
 
     if (!node) {
       continue
@@ -830,7 +838,7 @@ function buildTarotAliases(
   descriptiveData?: NodeData<TarotTypes.TAROT_ARK_ANNU>["descriptiveData"]
 ) {
   const normalizedPrimaryLabel = normalizeThemeText(card.tarotCard)
-  const cardNode = canonicalTree.getNode(id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard))
+  const cardNode = canonicalTree().getNode(id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard))
   const aliases: Array<string | undefined> = [
     humanizeTarotFilename(card.tarotCardFilename),
     card.egyptianCardName,
@@ -873,7 +881,7 @@ function buildTarotKeywordTexts(
     card.meaning,
     card.papusMeaning,
     card.egyptianCardName,
-    ...(canonicalTree.getNode(id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard))?.data?.keywords ?? []),
+    ...(canonicalTree().getNode(id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard))?.data?.keywords ?? []),
     ...deckKeywordTexts,
     ...(card.suit ? TAROT_SUIT_THEME_KEYWORDS[card.suit] ?? [] : []),
     ...(card.type === "minor" && rank ? TAROT_MINOR_PIP_STAGE_KEYWORDS[rank] ?? [] : []),
@@ -884,7 +892,7 @@ function buildTarotKeywordTexts(
 
 function buildTarotThemeProfile(card: TarotCard): TarotThemeProfile {
   const cardId = id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard)
-  const cardNode = canonicalTree.getNode(cardId)
+  const cardNode = canonicalTree().getNode(cardId)
 
   if (!cardNode) {
     throw new Error(`Missing canonical tarot node for ${cardId}.`)
