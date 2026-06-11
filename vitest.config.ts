@@ -15,7 +15,7 @@ export default defineConfig({
     }
   },
   define: {
-    WASM_PATH: JSON.stringify(resolve(__dirname, 'wasm/build/swisseph.wasm')),
+    WASM_PATH: JSON.stringify(resolve(__dirname, 'wasm/build/swisseph.node.wasm')),
     EPHE_PATH: JSON.stringify(resolve(__dirname, 'ephe'))
   }
-}); 
+});
