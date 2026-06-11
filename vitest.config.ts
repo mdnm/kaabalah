@@ -11,7 +11,13 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       include: ['src/**/*.ts'],
-      exclude: ['src/**/*.test.ts', 'src/**/*.d.ts']
+      exclude: ['src/**/*.test.ts', 'src/**/*.d.ts'],
+      thresholds: {
+        statements: 81,
+        branches: 78,
+        functions: 88,
+        lines: 81
+      }
     }
   },
   define: {
