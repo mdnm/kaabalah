@@ -8,6 +8,7 @@ import {
   TREE_TOPOLOGY_SPHERE_NAMES,
   type NodeId,
   type SystemKey,
+  type TreeTopologyRoute,
   type TreeTopologySphereName,
 } from "../core";
 
@@ -209,6 +210,12 @@ export interface TreeSvgOptions {
   activations?: readonly TreeTargetActivationInput[];
 }
 
+export interface RouteActivationOptions {
+  state?: TreeTargetState;
+  color?: string;
+  strength?: number;
+}
+
 export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
   minX: 0,
   minY: 0,
@@ -297,6 +304,23 @@ export function getTreeLayout(system: SystemKey = "kaabalah"): TreeLayout {
     percentages,
     viewBoxUnits,
   };
+}
+
+export function getRouteActivations(
+  route: TreeTopologyRoute,
+  options: RouteActivationOptions = {}
+): TreeTargetActivationInput[] {
+  const { state = "active", color, strength } = options;
+
+  return route.targets.map((target) => ({
+    targetId: target.targetId,
+    targetType: target.targetType,
+    count: 1,
+    total: 1,
+    state,
+    ...(color !== undefined ? { color } : {}),
+    ...(strength !== undefined ? { strength } : {}),
+  }));
 }
 
 export function getTreeRenderModel(options: TreeSvgOptions = {}): TreeRenderModel {
