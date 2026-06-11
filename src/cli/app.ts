@@ -169,12 +169,14 @@ export async function runCli(argv: string[]): Promise<void> {
       case "tarot":
         await cmdTarot((inputPayload?.count as string) ?? args[1], flags);
         return;
-      case "tarot:card":
-        if (!args[1] && inputPayload?.query == null) {
+      case "tarot:card": {
+        const shouldListDecks = flags.decks === true;
+        if (!args[1] && inputPayload?.query == null && !shouldListDecks) {
           exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:card <query>", flags);
         }
         cmdTarotCard((inputPayload?.query != null ? String(inputPayload.query) : undefined) ?? args.slice(1).join(" "), flags);
         return;
+      }
       case "tarot:spread": {
         const spreadId = inputPayload?.spreadId != null ? String(inputPayload.spreadId) : undefined;
         const hasSpreadIdFlag = typeof flags["spread-id"] === "string" && flags["spread-id"].length > 0;
