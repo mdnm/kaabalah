@@ -514,24 +514,30 @@ const url = resolveTarotImageUrl({ tarotCardFilename: '01_the_magician' }, 'myth
 
 ## Deck shuffling
 
-### `shuffleTarotDeck(cards, includeInvertedCards?, shuffleCount?, shuffleDelay?)`
+### `shuffleTarotDeck(cards, includeInvertedCards?, shuffleCount?, shuffleDelay?, rng?)`
 
 ```typescript
 async function shuffleTarotDeck(
   cards: TarotCard[],
   includeInvertedCards?: boolean,   // default: false
   shuffleCount?: number,            // default: 6
-  shuffleDelay?: number             // delay between passes in ms, default: 300
+  shuffleDelay?: number,            // delay between passes in ms, default: 300
+  rng?: () => number                // default: Math.random — inject for tests/replay only
 ): Promise<TarotCard[]>
 ```
 
 Shuffles the deck using a Fisher-Yates algorithm applied `shuffleCount` times. When `includeInvertedCards` is `true`, the bottom half of the deck after the first shuffle is marked `isInverted: true`.
+
+The default `shuffleDelay` of 300 ms per pass (~1.8 s total) is a UX affordance for human-facing draws. Pass `0` for machine-driven flows — the CLI does this automatically in `--json` mode. The `rng` parameter exists so tests can prove permutation behavior deterministically; production draws should keep the `Math.random` default.
 
 ```typescript
 import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
 
 const shuffled = await shuffleTarotDeck(ARKANNUS, true);
 const threeCardSpread = shuffled.slice(0, 3);
+
+// No artificial delay (e.g. server-side or pipeline use):
+const instant = await shuffleTarotDeck(ARKANNUS, false, 6, 0);
 ```
 
 ---

@@ -38,12 +38,27 @@ The `calculateKaabalisticLifePath` function uses a synthesis-based approach that
 
 The `calculateStraightAcrossReductionLifePath` function uses the traditional method of reducing each component (day, month, year) before summing.
 
+## Date handling
+
+Numerology functions read `Date` arguments with **local** calendar getters (`getFullYear()`, `getMonth()`, `getDate()`). Construct birth dates at **local noon** so the calendar day is stable in every timezone:
+
+```typescript
+const birthDate = new Date(1990, 5, 15, 12);        // ✅ local noon, June 15
+// or: new Date('1990-06-15T12:00:00')              // ✅ no trailing Z
+
+const wrong = new Date('1990-06-15');               // ❌ parses as UTC midnight —
+// reads as June 14 in any timezone west of UTC, and shifts a day at UTC+12..+14
+const alsoWrong = new Date(Date.UTC(1990, 5, 15));  // ❌ same problem
+```
+
+The CLI already does this for you (`kaabalah numerology 1990-06-15` parses to local noon). The rule only matters when you call the library directly.
+
 ## Usage Example
 
 ```typescript
 import { calculateKaabalisticLifePath, calculateCycles } from 'kaabalah/numerology';
 
-const birthDate = new Date('1990-06-15');
+const birthDate = new Date(1990, 5, 15, 12); // local noon — see "Date handling" above
 const lifePath = calculateKaabalisticLifePath(birthDate);
 
 console.log(lifePath.lifePath.reducedValue);  // Life path number

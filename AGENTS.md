@@ -5,6 +5,7 @@
 ```bash
 npm run build          # Build with tsup (outputs CJS + ESM)
 npm run dev            # Build in watch mode
+npm run typecheck      # tsc --noEmit (must stay green)
 npm run test           # Run all tests
 npm run test:watch     # Run tests in watch mode
 npm run test:coverage  # Generate coverage report
@@ -38,11 +39,19 @@ The astrology module uses Swiss Ephemeris compiled to WebAssembly. Tests require
 
 ### Core: Factory Pattern
 
-Never instantiate `TreeOfLife` directly. Use `createTree({ system, parts })` or `getCanonicalTree({ system, parts })`.
+Never instantiate `TreeOfLife` directly. Use `createTree({ system, parts })` or `getCanonicalTree({ system, parts })` (cached; prefer it for read-only use).
+
+### Dates: Local Noon Convention
+
+Numerology functions read `Date` arguments with **local** calendar getters. Construct date-only values at **local noon** — `new Date(y, m, d, 12)`, never `Date.UTC` or bare `"YYYY-MM-DD"` strings (those shift a calendar day at timezone extremes).
 
 ### Tarot Numbering
 
 Tarot numbering is tree-scoped, not sequential. The canonical default tree is `kaabalah`. Court/minor suit blocks run `King → Queen → Knight → Page → Ten → ... → Ace`. Use `getTarotCardNumber()` / `getTarotCardByNumber()` rather than hardcoding numbers.
+
+### Tarot Module Import Order
+
+`src/tarot/` layers as `data → arkannus → {index, spreads}`. Never import from `./index` inside the other tarot files — it re-exports them (circular). Importing `arkannus`/`index` builds a canonical tree workspace as an import-time side effect (`ARKANNUS`).
 
 ### Semantic: Kaabalistic Overlay Module
 

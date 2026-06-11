@@ -109,6 +109,7 @@ Calculate Hebrew letter values for Latin text.
 ```bash
 kaabalah gematria "Hello World"
 kaabalah gematria "Hello World" --json --compact
+kaabalah gematria "Hello World" --resolve-paths --json --compact
 # Input-json alternative:
 kaabalah gematria --input-json='{"text":"Hello World"}' --json --compact
 ```
@@ -117,6 +118,9 @@ kaabalah gematria --input-json='{"text":"Hello World"}' --json --compact
 |------|------|---------|-------------|
 | `--missing` | boolean | false | Show missing gematria values |
 | `--percentages` | boolean | false | Show letter percentages |
+| `--resolve-paths` | boolean | false | Include Tree of Life sphere/path correspondences for each Hebrew letter |
+
+With `--resolve-paths`, each entry in `includedLetters` gains a `treeTargets` array of `{ targetId, targetType, targetName, mapping, distance }` objects — saving one `tree:node` round-trip per letter. Output grows several-fold; leave it off for compact pipelines.
 
 ### gematria:reverse
 
@@ -516,6 +520,8 @@ kaabalah tarot --json
 | `--inverted` | boolean | false | Include inverted cards |
 | `--shuffle-count` | number | 7 | Number of times to shuffle the deck |
 
+In `--json` mode the ritual shuffle delay is skipped, so the command returns immediately; human-facing output keeps the paced shuffle.
+
 ### tarot:card
 
 Look up a specific card by number or name (deterministic).
@@ -525,9 +531,18 @@ kaabalah tarot:card 7
 kaabalah tarot:card 22 --json
 kaabalah tarot:card "The Chariot" --json
 kaabalah tarot:card chariot --json
+kaabalah tarot:card "The Chariot" --deck=rider-waite --json --compact
+kaabalah tarot:card --decks --json
 ```
 
 Accepts a card number (1-78) or any part of a card name. Partial name matches return all matching cards.
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--deck` | string | — | Enrich output with deck-specific `deckId`, `imageUrl`, and description. Valid: `papus_pt`, `papus`, `mythic`, `egyptian`, `rider-waite` |
+| `--decks` | boolean | false | List available decks (no card query needed) |
+
+Cards missing from the chosen deck return `"imageUrl": null` rather than an error. An unknown deck id exits 1 with `INVALID_ARGUMENT`.
 
 ### tarot:spread
 
