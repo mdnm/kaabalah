@@ -490,6 +490,31 @@ describe("calculateGematria", () => {
       hebrewLetterId: id(LetterTypes.HEBREW_LETTER, HEBREW_LETTERS.VAV),
     });
   });
+
+  it("reuses the default tree without mutating calculation results", () => {
+    const first = calculateGematria("test");
+    const second = calculateGematria("test");
+
+    expect(second).toEqual(first);
+  });
+
+  it("keeps ArkAnnu synthesis reduction behavior stable", () => {
+    expect(calculateGematria("").synthesis).toEqual({
+      originalSum: 0,
+      reductionSteps: [0],
+      finalValue: 0,
+    });
+    expect(calculateGematria("KAABALAH").synthesis).toEqual({
+      originalSum: 144,
+      reductionSteps: [9],
+      finalValue: 9,
+    });
+    expect(calculateGematria("DAVID").synthesis).toEqual({
+      originalSum: 25,
+      reductionSteps: [25, 7],
+      finalValue: 7,
+    });
+  });
 });
 
 describe("reverseGematria", () => {

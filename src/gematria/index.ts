@@ -6,6 +6,8 @@ import { id, LetterTypes, Node, NodeId, parseId } from "../core/types";
 import type * as GematriaTypes from "./data";
 import * as GematriaData from "./data";
 
+let defaultTree: TreeOfLife | undefined;
+
 const reduceToSingleDigitWithSteps = (num: number) => {
   const steps = [num];
   let currentNum = num;
@@ -72,12 +74,16 @@ const reduceWithMasterNumbers = (
 };
 
 const getLastArkAnnuStep = (steps: number[]) => {
-  if (steps.length === 0) return 0;
+  let best = -Infinity;
+  let min = Infinity;
 
-  // reverse sort to get the last step
-  const step = steps.sort((a, b) => b - a).find((step) => step <= 22);
+  for (const step of steps) {
+    if (step <= 22 && step > best) best = step;
+    if (step < min) min = step;
+  }
 
-  return step ?? steps.at(-1) ?? 0;
+  if (best !== -Infinity) return best;
+  return min === Infinity ? 0 : min;
 }
 
 function normalizeLetter(letter: string): string {
@@ -414,16 +420,14 @@ export const reverseGematria = (
     return { results: [], hasMore: false, totalFound: 0 };
   }
 
-  if (!tree) {
-    tree = createTree({ system: KAABALAH_SYSTEM, parts: [] });
-  }
+  const resolvedTree = ensureTreeExists(tree);
 
   // If suggestionText is provided, use the appropriate mode
   if (suggestionText !== undefined) {
     if (suggestionMode === "subsequence") {
-      return reverseGematriaFromSubsequence(options, tree);
+      return reverseGematriaFromSubsequence(options, resolvedTree);
     } else {
-      return reverseGematriaAnagram(options, tree);
+      return reverseGematriaAnagram(options, resolvedTree);
     }
   }
 
@@ -431,7 +435,7 @@ export const reverseGematria = (
   let totalFound = 0;
   let hasMore = false;
 
-  const availableLetters = getAvailableLetters(tree, includeDigraphs);
+  const availableLetters = getAvailableLetters(resolvedTree, includeDigraphs);
 
   // Cache letter info for performance (but still using tree as source of truth)
   const letterInfoCache = new Map<string, LetterInfo | undefined>();
@@ -440,7 +444,7 @@ export const reverseGematria = (
     const cacheKey = `${letter}-${isStarting}`;
 
     if (!letterInfoCache.has(cacheKey)) {
-      letterInfoCache.set(cacheKey, buildLetterInfo(tree!, letter, isStarting));
+      letterInfoCache.set(cacheKey, buildLetterInfo(resolvedTree, letter, isStarting));
     }
 
     return letterInfoCache.get(cacheKey);
@@ -1161,9 +1165,9 @@ function reverseGematriaFromSubsequence(
 }
 
 function ensureTreeExists(tree?: TreeOfLife): TreeOfLife {
-  if (!tree) return createTree({ system: KAABALAH_SYSTEM, parts: [] });
-
-  return tree;
+  if (tree) return tree;
+  defaultTree ??= createTree({ system: KAABALAH_SYSTEM, parts: [] });
+  return defaultTree;
 }
 
 export const calculateGematria = (
