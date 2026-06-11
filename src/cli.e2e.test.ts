@@ -386,11 +386,42 @@ describe("CLI contract", () => {
     const result = runCli(["gematria", "DAVID", "--json", "--compact"]);
     assertSuccess(result, "gematria --json");
 
-    expect(JSON.parse(result.stdout)).toMatchObject({
+    const payload = JSON.parse(result.stdout) as {
+      includedLetters: Array<{ treeTargets?: unknown[] }>;
+    };
+    expect(payload).toMatchObject({
       vowels: { originalSum: 11 },
       consonants: { originalSum: 14 },
       synthesis: { originalSum: 25 },
       includedLetters: expect.any(Array),
+    });
+    expect(payload.includedLetters.some((letter) => "treeTargets" in letter)).toBe(false);
+  });
+
+  it("resolves gematria letters to Tree of Life targets when requested", () => {
+    const result = runCli(["gematria", "abc", "--resolve-paths", "--json", "--compact"]);
+    assertSuccess(result, "gematria --resolve-paths");
+
+    const payload = JSON.parse(result.stdout) as {
+      includedLetters: Array<{
+        treeTargets?: Array<{
+          targetId?: string;
+          targetType?: string;
+          targetName?: string;
+        }>;
+      }>;
+    };
+    const resolvedLetters = payload.includedLetters.filter(
+      (letter) => Array.isArray(letter.treeTargets) && letter.treeTargets.length > 0
+    );
+
+    expect(payload.includedLetters.length).toBeGreaterThan(0);
+    expect(payload.includedLetters.every((letter) => Array.isArray(letter.treeTargets))).toBe(true);
+    expect(resolvedLetters.length).toBeGreaterThan(0);
+    expect(resolvedLetters[0].treeTargets?.[0]).toMatchObject({
+      targetId: expect.any(String),
+      targetType: expect.stringMatching(/^(sphere|path)$/),
+      targetName: expect.any(String),
     });
   });
 

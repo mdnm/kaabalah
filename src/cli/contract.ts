@@ -42,8 +42,13 @@ export const COMMANDS: CommandSchema[] = [
     flags: [
       { name: "missing", type: "boolean", default: false, description: "Show missing gematria values" },
       { name: "percentages", type: "boolean", default: false, description: "Show letter percentages" },
+      { name: "resolve-paths", type: "boolean", default: false, description: "Include Tree of Life sphere/path correspondences for each Hebrew letter" },
     ],
-    examples: ['kaabalah gematria "Hello World"', "kaabalah gematria --json --compact < phrase.txt"],
+    examples: [
+      'kaabalah gematria "Hello World"',
+      'kaabalah gematria "abc" --resolve-paths --json --compact',
+      "kaabalah gematria --json --compact < phrase.txt",
+    ],
   },
   {
     name: "gematria:reverse",

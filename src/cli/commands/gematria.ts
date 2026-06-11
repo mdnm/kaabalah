@@ -5,16 +5,31 @@ import { MAX_RESULTS_CAP, MAX_TEXT_LENGTH, capNumber, sanitizeInput } from "../r
 import { outputJson } from "../runtime/output";
 import type { Flags, InputPayload } from "../runtime/types";
 
-export function cmdGematria(text: string, flags: Flags): void {
+export async function cmdGematria(text: string, flags: Flags): Promise<void> {
   if (text.length > MAX_TEXT_LENGTH) {
     exitWithError("INVALID_ARGUMENT", `Text exceeds maximum length of ${MAX_TEXT_LENGTH} characters.`, flags);
   }
 
   const sanitized = sanitizeInput(text);
-  const result = calculateGematria(sanitized, {
+  let result = calculateGematria(sanitized, {
     missing: getFlagBool(flags, "missing"),
     percentages: getFlagBool(flags, "percentages"),
   });
+
+  if (getFlagBool(flags, "resolve-paths")) {
+    const { getKaabalisticCorrespondenceTargets } = await import("../../semantic");
+    result = {
+      ...result,
+      includedLetters: result.includedLetters.map((letter) => ({
+        ...letter,
+        treeTargets:
+          getKaabalisticCorrespondenceTargets({
+            kind: "hebrewLetter",
+            hebrewLetterId: letter.hebrewLetterId,
+          })?.targets ?? [],
+      })),
+    };
+  }
 
   if (isJsonMode(flags)) {
     outputJson(result, flags);
@@ -31,6 +46,11 @@ export function cmdGematria(text: string, flags: Flags): void {
     for (const letter of result.includedLetters) {
       const vowelTag = letter.isVowel ? " (vowel)" : "";
       console.log(`    ${letter.hebrewCharacter}  value=${letter.value}${vowelTag}`);
+      if ("treeTargets" in letter && Array.isArray(letter.treeTargets)) {
+        for (const target of letter.treeTargets) {
+          console.log(`      -> ${target.targetId} (${target.targetName})`);
+        }
+      }
     }
   }
 
