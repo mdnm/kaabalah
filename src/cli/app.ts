@@ -127,7 +127,7 @@ export async function runCli(argv: string[]): Promise<void> {
         if (!text) {
           exitWithError("MISSING_ARGUMENT", "Usage: kaabalah gematria <text>", flags);
         }
-        cmdGematria(text, flags);
+        await cmdGematria(text, flags);
         return;
       }
       case "gematria:reverse":
