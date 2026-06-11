@@ -12,9 +12,9 @@ import {
   buildBirthDate,
   parseChartInput,
   parseCoordinates,
-  parseDate,
   parseHouseSystem,
   parseTimeValue,
+  validateDateString,
   type ParsedChartInput,
 } from "../runtime/validation";
 
@@ -534,7 +534,7 @@ async function parseSingleChartRequest(
   if (!dateStr) {
     exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>", flags);
   }
-  parseDate(dateStr, flags);
+  validateDateString(dateStr, flags);
 
   const { timeStr, hour, minute } = parseTimeValue((inputPayload?.time as string) ?? args[1] ?? "12:00", flags, {
     invalidFormat: (value) => `Invalid time format: "${value}". Use HH:MM format.`,
@@ -803,8 +803,8 @@ export async function cmdAstrologyTransits(
       if (!toStr) {
         exitWithError("MISSING_ARGUMENT", "--to is required when --from is specified.", flags);
       }
-      parseDate(fromStr, flags);
-      parseDate(toStr, flags);
+      validateDateString(fromStr, flags);
+      validateDateString(toStr, flags);
 
       const fromDate = new Date(fromStr + "T00:00:00");
       const toDate = new Date(toStr + "T23:59:59.999");
@@ -869,7 +869,7 @@ export async function cmdAstrologyTransits(
       // Single transit date mode
       let transitDate: Date;
       const effectiveTransitDateStr = transitDateStr ?? new Date().toISOString().split("T")[0];
-      parseDate(effectiveTransitDateStr, flags);
+      validateDateString(effectiveTransitDateStr, flags);
       const { hour: tHour, minute: tMin } = parseTimeValue(transitTimeStr, flags, {
         invalidFormat: (v) => `Invalid transit time format: "${v}". Use HH:MM.`,
         invalidValue: (v) => `Invalid transit time: "${v}". Hours 0-23, minutes 0-59.`,
@@ -1273,7 +1273,7 @@ export async function cmdAstrologyFirdaria(
     const targetDateStr = (inputPayload?.targetDate as string) ?? getFlagString(flags, "target-date");
     let targetDate: Date | undefined;
     if (targetDateStr) {
-      parseDate(targetDateStr, flags);
+      validateDateString(targetDateStr, flags);
       targetDate = new Date(targetDateStr + "T12:00:00");
     }
 
