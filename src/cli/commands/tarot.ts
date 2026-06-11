@@ -1,9 +1,14 @@
 import {
   ARKANNUS,
   drawTarotSpread,
+  getTarotCardProfile,
+  getTarotRepresentation,
   getTarotSpread,
+  listTarotDecks,
   listTarotSpreads,
   shuffleTarotDeck,
+  type TarotDeckDescription,
+  type TarotDeckId,
   type TarotCard,
   type TarotInquirerGender,
   type TarotSpreadId,
@@ -15,6 +20,14 @@ import { outputJson } from "../runtime/output";
 import type { Flags } from "../runtime/types";
 
 const TAROT_INQUIRER_GENDERS = new Set<TarotInquirerGender>(["man", "woman"]);
+
+type TarotCardDeckDetails = {
+  deckId: TarotDeckId;
+  imageUrl: string | null;
+  description?: TarotDeckDescription;
+};
+
+type TarotCardWithDeckDetails = TarotCard & TarotCardDeckDetails;
 
 export interface TarotSpreadCliOptions {
   spreadId?: string;
@@ -50,7 +63,22 @@ function findCardsByQuery(query: string): { cards: TarotCard[]; exact: boolean }
   };
 }
 
-function printCard(card: TarotCard): void {
+function printDeckDescription(description: TarotDeckDescription): void {
+  if (description.name) {
+    console.log(`  Deck name: ${description.name}`);
+  }
+  if (description.meaning) {
+    console.log(`  Deck meaning: ${description.meaning}`);
+  }
+  if (description.reversedMeaning) {
+    console.log(`  Deck reversed: ${description.reversedMeaning}`);
+  }
+  if (description.keywords?.length) {
+    console.log(`  Deck keywords: ${description.keywords.join(", ")}`);
+  }
+}
+
+function printCard(card: TarotCard, deckDetails?: TarotCardDeckDetails): void {
   console.log(`\n  #${String(card.number).padStart(2, "0")} ${card.tarotCard}`);
   console.log(`  Type: ${card.type} | Suit: ${card.suit ?? "major"} | Deck: ${card.deck}`);
   console.log(`  Meaning: ${card.meaning}`);
@@ -60,7 +88,61 @@ function printCard(card: TarotCard): void {
   if (card.papusMeaning) {
     console.log(`  Papus: ${card.papusMeaning}`);
   }
+  if (deckDetails) {
+    console.log(`  Image: ${deckDetails.imageUrl ?? "unavailable"}`);
+    if (deckDetails.description) {
+      printDeckDescription(deckDetails.description);
+    }
+  }
   console.log();
+}
+
+function getRequestedDeckId(flags: Flags): TarotDeckId | undefined {
+  const deckId = getFlagString(flags, "deck");
+
+  if (!deckId) {
+    return undefined;
+  }
+
+  const decks = listTarotDecks();
+  const validDeckIds = decks.map((deck) => deck.id);
+
+  if (!validDeckIds.includes(deckId as TarotDeckId)) {
+    exitWithError(
+      "INVALID_ARGUMENT",
+      `Unknown deck "${deckId}". Valid: ${validDeckIds.join(", ")}.`,
+      flags
+    );
+  }
+
+  return deckId as TarotDeckId;
+}
+
+function enrichCardWithDeck(
+  card: TarotCard,
+  deckId: TarotDeckId,
+  flags: Flags
+): TarotCardWithDeckDetails {
+  const profile = getTarotCardProfile({ tarotCardName: card.tarotCard });
+
+  if (!profile) {
+    exitWithError(
+      "INTERNAL_ERROR",
+      `No tarot profile found for "${card.tarotCard}".`,
+      flags
+    );
+  }
+
+  const representation = profile.availableDeckIds.includes(deckId)
+    ? getTarotRepresentation({ tarotCardName: card.tarotCard }, deckId)
+    : undefined;
+
+  return {
+    ...card,
+    deckId,
+    imageUrl: representation?.imageUrl ?? null,
+    description: profile.descriptionsByDeck[deckId],
+  };
 }
 
 export async function cmdTarot(countStr: string | undefined, flags: Flags): Promise<void> {
@@ -100,18 +182,35 @@ export async function cmdTarot(countStr: string | undefined, flags: Flags): Prom
 }
 
 export function cmdTarotCard(query: string, flags: Flags): void {
+  if (getFlagBool(flags, "decks")) {
+    outputJson(listTarotDecks(), flags);
+    return;
+  }
+
   const { cards } = findCardsByQuery(query);
 
   if (cards.length === 0) {
     exitWithError("CARD_NOT_FOUND", `No card found for "${query}". Use a number (1-78) or card name.`, flags);
   }
 
+  const deckId = getRequestedDeckId(flags);
+  const outputCards = deckId
+    ? cards.map((card) => enrichCardWithDeck(card, deckId, flags))
+    : cards;
+
   if (isJsonMode(flags)) {
-    outputJson(cards.length === 1 ? cards[0] : cards, flags);
+    outputJson(outputCards.length === 1 ? outputCards[0] : outputCards, flags);
     return;
   }
 
-  for (const card of cards) {
+  if (deckId) {
+    for (const card of outputCards as TarotCardWithDeckDetails[]) {
+      printCard(card, card);
+    }
+    return;
+  }
+
+  for (const card of outputCards) {
     printCard(card);
   }
 }

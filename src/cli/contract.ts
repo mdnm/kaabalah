@@ -113,8 +113,16 @@ export const COMMANDS: CommandSchema[] = [
     name: "tarot:card",
     description: "Look up a specific card by number or name",
     args: [{ name: "query", type: "string", required: true, description: "Card number (1-78) or name (e.g. 'The Chariot', 'Two of Cups')" }],
-    flags: [],
-    examples: ["kaabalah tarot:card 7", 'kaabalah tarot:card "The Chariot" --json', "kaabalah tarot:card chariot --json"],
+    flags: [
+      { name: "deck", type: "string", description: "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite" },
+      { name: "decks", type: "boolean", description: "List available decks" },
+    ],
+    examples: [
+      "kaabalah tarot:card 7",
+      'kaabalah tarot:card "The Chariot" --json',
+      "kaabalah tarot:card chariot --json",
+      'kaabalah tarot:card "The Fool" --deck=rider-waite --json',
+    ],
   },
   {
     name: "tarot:spread",

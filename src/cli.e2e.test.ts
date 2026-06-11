@@ -212,6 +212,56 @@ describe("CLI contract", () => {
     expect(payload.cards.every((card) => card.card.type === "major")).toBe(true);
   });
 
+  it("enriches tarot card lookups with deck image URLs", () => {
+    const result = runCli([
+      "tarot:card",
+      "the fool",
+      "--deck=rider-waite",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:card --deck");
+
+    const payload = JSON.parse(result.stdout) as {
+      tarotCard: string;
+      deckId: string;
+      imageUrl: string;
+    };
+
+    expect(payload.tarotCard).toBe("The Fool");
+    expect(payload.deckId).toBe("rider-waite");
+    expect(typeof payload.imageUrl).toBe("string");
+  });
+
+  it("lists tarot decks from the tarot card command", () => {
+    const result = runCli(["tarot:card", "--decks", "--json", "--compact"]);
+    assertSuccess(result, "tarot:card --decks");
+
+    const payload = JSON.parse(result.stdout) as Array<{ id: string; label: string }>;
+
+    expect(payload).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: "rider-waite" }),
+      ])
+    );
+  });
+
+  it("rejects unknown tarot decks", () => {
+    const result = runCli([
+      "tarot:card",
+      "the fool",
+      "--deck=bogus",
+      "--json",
+      "--compact",
+    ]);
+
+    expect(result.status).toBe(1);
+    expect(JSON.parse(result.stdout)).toMatchObject({
+      error: true,
+      code: "INVALID_ARGUMENT",
+    });
+  });
+
   it("lists tarot spread ids from the CLI", () => {
     const result = runCli(["tarot:spread", "--list", "--json", "--compact"]);
     assertSuccess(result, "tarot:spread --list");
@@ -268,7 +318,13 @@ describe("CLI contract", () => {
     expect(payload.spread.spreadId).toBe("event-reading");
     expect(payload.context).toEqual({ inquirerGender: "woman" });
     expect(payload.cards).toHaveLength(20);
-    expect(payload.cards.find((card) => card.slotKey === "inquirer")?.cardNumber).toBe(2);
+    expect(
+      payload.cards.filter(
+        (card) =>
+          (card.slotKey === "inquirer" || card.slotKey.startsWith("inner-")) &&
+          card.cardNumber === 2
+      )
+    ).toHaveLength(1);
   });
 
   it("reports missing tarot spread context with MISSING_ARGUMENT", () => {
