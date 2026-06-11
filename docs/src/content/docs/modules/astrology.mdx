@@ -343,7 +343,7 @@ Computes the 75-year planetary period cycle. Sect determines the sequence order:
 ```typescript
 const firdaria = getFirdaria(
   new Date('1990-06-15'),
-  true,               // isDiurnal — use chart.sect === 'diurnal'
+  true,               // isDiurnal — use chart.sect === 'diurnal' or getSect(sunHouse)
   new Date('2026-04-22'),
   { nodeSubPeriodStart: 'jupiter-saturn' } // optional
 );
@@ -681,9 +681,28 @@ import {
   getZodiacPosition,
   findHouseOf,
   normalizeAngle,
+  getSect,
   SIGNS,
 } from 'kaabalah/astrology';
 ```
+
+### `getSect(sunHouse): Sect`
+
+Determines chart sect from the Sun's house position — the same rule `getBirthChart` uses to populate `chart.sect`. Houses 7–12 place the Sun above the horizon → `"diurnal"`; otherwise `"nocturnal"`.
+
+```typescript
+import { getSect, type Sect } from 'kaabalah/astrology';
+
+getSect(10); // "diurnal"
+getSect(3);  // "nocturnal"
+
+// Equivalent to reading it off a chart:
+// chart.sect === getSect(chart.planets.sun.zodiacPosition.house)
+```
+
+Useful when you have planet positions but not a full `BirthChart`, and as the gating input for sect-aware techniques (firdaria sequences, sect-based dignity context).
+
+### Other helpers
 
 | Function | Signature | Description |
 |---|---|---|
