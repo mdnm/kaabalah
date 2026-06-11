@@ -58,7 +58,7 @@ function createFsMock() {
 
   const fs = {
     mkdir: vi.fn((path: string) => ensureDir(path)),
-    mount: vi.fn(() => undefined),
+    mount: vi.fn<[filesystem: unknown, opts: { root: string }, mountPoint: string], void>(() => undefined),
     readdir: vi.fn((path: string) => {
       const normalized = normalizePath(path);
       const entries = directories.get(normalized);
@@ -87,12 +87,12 @@ describe("resolveNodeEphemerisPath", () => {
 
   it("prefers the mounted NODEFS path when the required files are visible", () => {
     const { fs, addVisibleDir } = createFsMock();
-    fs.mount.mockImplementation((_filesystem, opts: { root: string }, mountPoint: string) => {
+    fs.mount.mockImplementation((_filesystem: unknown, opts: { root: string }, mountPoint: string) => {
       addVisibleDir(mountPoint, [...REQUIRED_EPHE_FILES]);
       addVisibleDir(opts.root, [...REQUIRED_EPHE_FILES]);
     });
 
-    const result = resolveNodeEphemerisPath({ FS: fs } as SwissEphModule, ephePath, {
+    const result = resolveNodeEphemerisPath({ FS: fs } as unknown as SwissEphModule, ephePath, {
       pathModule,
     });
 
@@ -103,7 +103,7 @@ describe("resolveNodeEphemerisPath", () => {
     const { fs, addVisibleDir } = createFsMock();
     addVisibleDir(ephePath, [...REQUIRED_EPHE_FILES]);
 
-    const result = resolveNodeEphemerisPath({ FS: fs } as SwissEphModule, ephePath, {
+    const result = resolveNodeEphemerisPath({ FS: fs } as unknown as SwissEphModule, ephePath, {
       pathModule,
     });
 
@@ -117,7 +117,7 @@ describe("resolveNodeEphemerisPath", () => {
       readFileSync: vi.fn(() => new Uint8Array([1, 2, 3])),
     };
 
-    const result = resolveNodeEphemerisPath({ FS: fs } as SwissEphModule, ephePath, {
+    const result = resolveNodeEphemerisPath({ FS: fs } as unknown as SwissEphModule, ephePath, {
       nodeFs,
       pathModule,
     });
@@ -135,14 +135,14 @@ describe("resolveNodeEphemerisPath", () => {
     };
 
     expect(() =>
-      resolveNodeEphemerisPath({ FS: fs } as SwissEphModule, ephePath, {
+      resolveNodeEphemerisPath({ FS: fs } as unknown as SwissEphModule, ephePath, {
         nodeFs,
         pathModule,
       })
     ).toThrow(/mount may have failed silently/i);
 
     expect(() =>
-      resolveNodeEphemerisPath({ FS: fs } as SwissEphModule, ephePath, {
+      resolveNodeEphemerisPath({ FS: fs } as unknown as SwissEphModule, ephePath, {
         nodeFs,
         pathModule,
       })
@@ -225,8 +225,9 @@ describe("resolveSwissEphRuntimeAssets", () => {
   });
 
   it("keeps browser resolution filesystem-free and returns bundled browser defaults", () => {
-    const originalWindow = (globalThis as typeof globalThis & { window?: object }).window;
-    (globalThis as typeof globalThis & { window?: object }).window = {};
+    const browserGlobal = globalThis as { window?: Window & typeof globalThis };
+    const originalWindow = browserGlobal.window;
+    browserGlobal.window = {} as Window & typeof globalThis;
 
     try {
       const resolved = resolveSwissEphRuntimeAssets({
@@ -239,9 +240,9 @@ describe("resolveSwissEphRuntimeAssets", () => {
       expect(resolved.wasmPath).toMatch(/swisseph\.web/i);
     } finally {
       if (originalWindow === undefined) {
-        delete (globalThis as typeof globalThis & { window?: object }).window;
+        delete browserGlobal.window;
       } else {
-        (globalThis as typeof globalThis & { window?: object }).window = originalWindow;
+        browserGlobal.window = originalWindow;
       }
     }
   });

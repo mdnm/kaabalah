@@ -111,10 +111,9 @@ export function createExecutionContext(): ExecutionContext {
 }
 
 export function isAbortError(err: unknown): boolean {
-  return err instanceof Error && (
-    err.name === "AbortError" ||
-    (typeof (err as { code?: unknown }).code === "string" && (err as { code: string }).code === "ABORT_ERR")
-  );
+  if (!(err instanceof Error)) return false;
+  const code = (err as { code?: unknown }).code;
+  return err.name === "AbortError" || code === "ABORT_ERR";
 }
 
 export function isCliSignalError(err: unknown): err is CliSignalError {
