@@ -40,6 +40,7 @@ import {
 
   // Tree of Life
   generateTreeSvg,
+  getRouteActivations,
   getTreeLayout,
   getTreeRenderModel,
   TREE_SVG_DEFAULT_VIEWBOX,
@@ -77,13 +78,14 @@ import {
 - `DEFAULT_ARCHEOMETER_ZODIAC`
 - `DEFAULT_ARCHEOMETER_PLANETS`
 - `generateTreeSvg`
+- `getRouteActivations`
 - `getTreeLayout`
 - `getTreeRenderModel`
 - `TREE_SVG_DEFAULT_VIEWBOX`
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `RouteActivationOptions`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -979,6 +981,19 @@ const svg = generateTreeSvg({
   activations,
 });
 const model = getTreeRenderModel({ activations });
+```
+
+#### Rendering routes
+
+Use `getRouteActivations` when a topology route should light up the same targets accepted by `generateTreeSvg` and `getTreeRenderModel`.
+
+```typescript
+import { getTreeTopology } from 'kaabalah/core';
+import { generateTreeSvg, getRouteActivations } from 'kaabalah/visual';
+
+const route = getTreeTopology().getRoute("lightning");
+const activations = route ? getRouteActivations(route, { state: "selected" }) : [];
+const svg = generateTreeSvg({ background: "transparent", activations });
 ```
 
 ---

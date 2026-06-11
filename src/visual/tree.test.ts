@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { id, KaabalahTypes } from "../core";
+import { getTreeTopology, id, KaabalahTypes } from "../core";
 import {
   generateTreeSvg,
+  getRouteActivations,
   getTreeLayout,
   getTreeRenderModel,
   TREE_PATH_IDS,
@@ -189,6 +190,89 @@ describe("tree renderer model", () => {
       canonicalColor: "#123456",
       displayColor: "#654321",
     });
+  });
+});
+
+describe("route activations", () => {
+  it("converts the Lightning Path route into full-strength activations", () => {
+    const topology = getTreeTopology();
+    const route = topology.getRoute("lightning");
+    if (!route) {
+      throw new Error("Expected Lightning Path route to exist.");
+    }
+
+    const activations = getRouteActivations(route);
+    const sphereActivations = activations.filter(
+      (activation) => activation.targetType === "sphere"
+    );
+    const pathActivations = activations.filter(
+      (activation) => activation.targetType === "path"
+    );
+
+    expect(sphereActivations).toHaveLength(10);
+    expect(pathActivations.length).toBeGreaterThanOrEqual(1);
+    expect(activations).toHaveLength(route.targets.length);
+    expect(activations.every((activation) => activation.state === "active")).toBe(true);
+    expect(activations.every((activation) => activation.count === 1)).toBe(true);
+    expect(activations.every((activation) => activation.total === 1)).toBe(true);
+  });
+
+  it("applies shared route activation options to every target", () => {
+    const topology = getTreeTopology();
+    const route = topology.getRoute("lightning");
+    if (!route) {
+      throw new Error("Expected Lightning Path route to exist.");
+    }
+
+    const activations = getRouteActivations(route, {
+      color: "#ffffff",
+      state: "selected",
+      strength: 0.5,
+    });
+
+    expect(activations).toHaveLength(route.targets.length);
+    expect(
+      activations.every(
+        (activation) =>
+          activation.color === "#ffffff"
+          && activation.state === "selected"
+          && activation.strength === 0.5
+      )
+    ).toBe(true);
+  });
+
+  it("feeds route activations into the render model without rebuilding target arrays", () => {
+    const topology = getTreeTopology();
+    const route = topology.getRoute("lightning");
+    if (!route) {
+      throw new Error("Expected Lightning Path route to exist.");
+    }
+
+    const activations = getRouteActivations(route);
+    const model = getTreeRenderModel({ activations });
+    const routeSphereIds = route.spheres.map((sphere) => sphere.id);
+
+    expect(
+      routeSphereIds.every(
+        (targetId) => model.sphereById[targetId].activation?.state === "active"
+      )
+    ).toBe(true);
+  });
+
+  it("supports the Serpent route in the reverse sphere order", () => {
+    const topology = getTreeTopology();
+    const lightning = topology.getRoute("lightning");
+    const serpent = topology.getRoute("serpent");
+    if (!lightning || !serpent) {
+      throw new Error("Expected Lightning Path and Serpent Path routes to exist.");
+    }
+
+    const lightningSphereIds = lightning.spheres.map((sphere) => sphere.id);
+    const serpentSphereIds = serpent.spheres.map((sphere) => sphere.id);
+
+    expect(getRouteActivations(serpent)).toHaveLength(serpent.targets.length);
+    expect(serpentSphereIds).toEqual([...lightningSphereIds].reverse());
+    expect(serpentSphereIds[0]).toBe(lightningSphereIds[lightningSphereIds.length - 1]);
   });
 });
 
