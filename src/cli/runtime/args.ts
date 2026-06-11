@@ -181,7 +181,7 @@ export function parseArgs(argv: string[]) {
     const flags = applyJsonDefaults({ ...(parsed.values as Flags) });
     const args = parsed.positionals;
     const usedOptions = parsed.tokens
-      .filter((token) => token.kind === "option")
+      .filter((token): token is typeof token & { kind: "option"; name: string } => token.kind === "option")
       .map((token) => token.name);
 
     configureDebugRuntime(flags);
