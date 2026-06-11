@@ -144,6 +144,8 @@ export interface GetTreeTopologySpheresOptions {
   includeDaath?: boolean;
 }
 
+const topologyCache = new Map<string, TreeTopology>();
+
 function isNodeType<T extends NodeType>(
   node: Node<NodeType>,
   type: T
@@ -227,6 +229,7 @@ export class TreeTopology {
   private readonly pathsById = new Map<TreeTopologyPathId, TreeTopologyPath>();
   private readonly pathsByNumber = new Map<number, TreeTopologyPath>();
   private readonly pathsBySpherePair = new Map<string, TreeTopologyPath>();
+  private readonly pathsBySphereId = new Map<TreeTopologySphereId, TreeTopologyPath[]>();
   private readonly routesByKey = new Map<
     TreeTopologyRouteKey,
     TreeTopologyRoute
@@ -277,6 +280,12 @@ export class TreeTopology {
       this.pathsById.set(path.id, path);
       this.pathsByNumber.set(path.number, path);
       this.pathsBySpherePair.set(pairKey(path.from.id, path.to.id), path);
+
+      for (const sphereId of [path.from.id, path.to.id]) {
+        const spherePaths = this.pathsBySphereId.get(sphereId) ?? [];
+        spherePaths.push(path);
+        this.pathsBySphereId.set(sphereId, spherePaths);
+      }
     }
 
     for (const key of ["lightning", "serpent"] as const) {
@@ -371,8 +380,7 @@ export class TreeTopology {
       return [];
     }
 
-    return this.paths
-      .filter((path) => path.from.id === sphere.id || path.to.id === sphere.id)
+    return (this.pathsBySphereId.get(sphere.id) ?? [])
       .map((path) => {
         const isForward = path.from.id === sphere.id;
 
@@ -478,6 +486,11 @@ export class TreeTopology {
 
 export function getTreeTopology(options: TreeTopologyOptions = {}) {
   const system = options.system ?? options.tree?.activeSystem ?? "kaabalah";
+  if (!options.tree) {
+    const cached = topologyCache.get(system);
+    if (cached) return cached;
+  }
+
   const tree = options.tree ?? createTree({ system });
   const spheres: TreeTopologySphere[] = [];
 
@@ -529,9 +542,15 @@ export function getTreeTopology(options: TreeTopologyOptions = {}) {
     })
     .sort((left, right) => left.number - right.number);
 
-  return new TreeTopology({
+  const topology = new TreeTopology({
     system,
     spheres,
     paths,
   });
+
+  if (!options.tree) {
+    topologyCache.set(system, topology);
+  }
+
+  return topology;
 }

@@ -1,10 +1,25 @@
 import { describe, expect, it } from "vitest";
 
 import { SPHERES } from "./constants";
+import { createTree } from "./factory";
 import { getTreeTopology } from "./topology";
 import { id, KaabalahTypes } from "./types";
 
 describe("TreeTopology", () => {
+  it("caches the default topology instance", () => {
+    expect(getTreeTopology()).toBe(getTreeTopology());
+  });
+
+  it("does not cache custom tree topology instances", () => {
+    const defaultTopology = getTreeTopology();
+    const customTopology = getTreeTopology({
+      tree: createTree({ system: "kaabalah" }),
+    });
+
+    expect(customTopology).not.toBe(defaultTopology);
+    expect(getTreeTopology()).toBe(defaultTopology);
+  });
+
   it("exposes the structural Tree of Life skeleton separately from correspondences", () => {
     const topology = getTreeTopology();
 
@@ -50,6 +65,59 @@ describe("TreeTopology", () => {
       { sphere: { name: "Chokhmah" }, path: { number: 1 } },
       { sphere: { name: "Binah" }, path: { number: 2 } },
       { sphere: { name: "Tiphareth" }, path: { number: 3 } },
+    ]);
+  });
+
+  it("preserves Tiphareth adjacency order and direction", () => {
+    const topology = getTreeTopology();
+
+    expect(
+      topology.getAdjacentSpheres("Tiphareth").map((adjacent) => ({
+        sphereId: adjacent.sphere.id,
+        pathId: adjacent.path.id,
+        direction: adjacent.direction,
+      }))
+    ).toEqual([
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.KETHER),
+        pathId: id(KaabalahTypes.PATH, 3),
+        direction: "reverse",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.CHOKHMAH),
+        pathId: id(KaabalahTypes.PATH, 5),
+        direction: "reverse",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.BINAH),
+        pathId: id(KaabalahTypes.PATH, 7),
+        direction: "reverse",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.CHESED),
+        pathId: id(KaabalahTypes.PATH, 10),
+        direction: "reverse",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.GEBURAH),
+        pathId: id(KaabalahTypes.PATH, 12),
+        direction: "reverse",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.NETZACH),
+        pathId: id(KaabalahTypes.PATH, 14),
+        direction: "forward",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.YESOD),
+        pathId: id(KaabalahTypes.PATH, 15),
+        direction: "forward",
+      },
+      {
+        sphereId: id(KaabalahTypes.SPHERE, SPHERES.HOD),
+        pathId: id(KaabalahTypes.PATH, 16),
+        direction: "forward",
+      },
     ]);
   });
 
