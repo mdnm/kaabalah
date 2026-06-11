@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { VirtualNodes } from '../../wasm/src/swisseph';
-import { BirthChartOptions, getBirthChart, getCompositeChart, getSolarReturnChart, getSynastryChart, getTransitChart, getTransitRange, HouseSystem, type LocalDateTimeParts } from './index';
+import { BirthChartOptions, getBirthChart, getCompositeChart, getSect, getSolarReturnChart, getSynastryChart, getTransitChart, getTransitRange, HouseSystem, type LocalDateTimeParts } from './index';
 import { closeSwissEph, getSwissEph } from './swisseph';
 
 describe('Astrology Module', () => {
@@ -19,6 +19,15 @@ describe('Astrology Module', () => {
     } catch (error) {
       console.error('Failed to close Swiss Ephemeris:', error);
     }
+  });
+
+  it('should determine sect from Sun house boundaries', () => {
+    expect(getSect(7)).toBe('diurnal');
+    expect(getSect(12)).toBe('diurnal');
+    expect(getSect(1)).toBe('nocturnal');
+    expect(getSect(6)).toBe('nocturnal');
+    expect(getSect(0)).toBe('nocturnal');
+    expect(getSect(13)).toBe('nocturnal');
   });
 
   it('should calculate a birth chart', async () => {
@@ -66,6 +75,7 @@ describe('Astrology Module', () => {
 
       expect(chart.nodes[VirtualNodes.PARS_FORTUNAE]).toBeDefined();
       expect(chart.sect).toMatch(/^(diurnal|nocturnal)$/);
+      expect(chart.sect).toBe(getSect(chart.planets.sun.zodiacPosition.house));
     } catch (error) {
       console.error('Failed to calculate birth chart:', error);
       throw error;
