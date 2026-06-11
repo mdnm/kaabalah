@@ -79,6 +79,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run --silent",
     "test:watch": "vitest watch --silent",
     "test:coverage": "vitest run --coverage --silent",
