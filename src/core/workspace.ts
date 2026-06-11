@@ -2,14 +2,17 @@ import {
   CorrespondenceEdge,
   CorrespondenceMap,
   CorrespondenceMatch,
-  CorrespondenceMetadata,
   CorrespondenceSource,
   CorrespondenceStep,
   TreeNote,
   TreeNoteTarget,
   TreeOverlay,
   TreeWorkspaceDescriptor,
+  cloneMetadata,
+  cloneSource,
   makeCorrespondenceId,
+  mergeMetadata,
+  mergeSources,
 } from "./correspondence-model";
 import { createTree, TreeOptions } from "./factory";
 import { TreeOfLife } from "./tree-of-life";
@@ -76,29 +79,6 @@ function cloneNode<T extends NodeType>(node: Node<T>): Node<T> {
   });
 }
 
-function cloneMetadata(metadata?: CorrespondenceMetadata) {
-  if (!metadata) {
-    return undefined;
-  }
-
-  return {
-    ...metadata,
-    tags: metadata.tags ? [...metadata.tags] : undefined,
-    attributes: metadata.attributes ? { ...metadata.attributes } : undefined,
-  };
-}
-
-function cloneSource(source: CorrespondenceSource): CorrespondenceSource {
-  if (source.kind === "bridge") {
-    return {
-      ...source,
-      parts: [...source.parts],
-    };
-  }
-
-  return { ...source };
-}
-
 function cloneEdge(edge: CorrespondenceEdge): CorrespondenceEdge {
   return Object.freeze({
     ...edge,
@@ -113,50 +93,6 @@ function cloneNote(note: TreeNote): TreeNote {
     target: { ...note.target },
     metadata: note.metadata ? { ...note.metadata } : undefined,
   });
-}
-
-function mergeMetadata(
-  current?: CorrespondenceMetadata,
-  next?: CorrespondenceMetadata
-) {
-  if (!current) {
-    return cloneMetadata(next);
-  }
-
-  if (!next) {
-    return cloneMetadata(current);
-  }
-
-  return {
-    ...current,
-    ...next,
-    tags: [...new Set([...(current.tags ?? []), ...(next.tags ?? [])])],
-    attributes: {
-      ...(current.attributes ?? {}),
-      ...(next.attributes ?? {}),
-    },
-  };
-}
-
-function mergeSources(
-  current: readonly CorrespondenceSource[],
-  next: CorrespondenceSource
-) {
-  const seen = new Set<string>();
-  const merged: CorrespondenceSource[] = [];
-
-  for (const source of [...current, next]) {
-    const key = JSON.stringify(source);
-
-    if (seen.has(key)) {
-      continue;
-    }
-
-    seen.add(key);
-    merged.push(cloneSource(source));
-  }
-
-  return merged;
 }
 
 function normalizeTypes<T extends NodeType>(

@@ -119,3 +119,70 @@ export function makeCorrespondenceId(
 ) {
   return [left, right].sort().join("<->");
 }
+
+export function cloneMetadata(metadata?: CorrespondenceMetadata) {
+  if (!metadata) {
+    return undefined;
+  }
+
+  return {
+    ...metadata,
+    tags: metadata.tags ? [...metadata.tags] : undefined,
+    attributes: metadata.attributes ? { ...metadata.attributes } : undefined,
+  };
+}
+
+export function cloneSource(source: CorrespondenceSource): CorrespondenceSource {
+  if (source.kind === "bridge") {
+    return {
+      ...source,
+      parts: [...source.parts],
+    };
+  }
+
+  return { ...source };
+}
+
+export function mergeMetadata(
+  current?: CorrespondenceMetadata,
+  next?: CorrespondenceMetadata
+) {
+  if (!current) {
+    return cloneMetadata(next);
+  }
+
+  if (!next) {
+    return cloneMetadata(current);
+  }
+
+  return {
+    ...current,
+    ...next,
+    tags: [...new Set([...(current.tags ?? []), ...(next.tags ?? [])])],
+    attributes: {
+      ...(current.attributes ?? {}),
+      ...(next.attributes ?? {}),
+    },
+  };
+}
+
+export function mergeSources(
+  current: readonly CorrespondenceSource[],
+  next: CorrespondenceSource
+) {
+  const seen = new Set<string>();
+  const merged: CorrespondenceSource[] = [];
+
+  for (const source of [...current, next]) {
+    const key = JSON.stringify(source);
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    seen.add(key);
+    merged.push(cloneSource(source));
+  }
+
+  return merged;
+}

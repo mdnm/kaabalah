@@ -191,6 +191,49 @@ describe("TreeWorkspace", () => {
     ).toHaveLength(1);
   });
 
+  it("deep-clones metadata when adding overlay correspondences", () => {
+    const left = id(MiscTypes.UNCATEGORIZED, "left");
+    const right = id(MiscTypes.UNCATEGORIZED, "right");
+    const tags = ["overlay"];
+    const attributes = { weight: 1 };
+
+    const workspace = createTreeWorkspace({
+      overlays: [
+        {
+          id: "metadata-overlay",
+          nodes: [
+            new BaseNode({
+              id: "left",
+              type: MiscTypes.UNCATEGORIZED,
+            }),
+            new BaseNode({
+              id: "right",
+              type: MiscTypes.UNCATEGORIZED,
+            }),
+          ],
+          correspondences: [
+            {
+              op: "add",
+              left,
+              right,
+              metadata: {
+                tags,
+                attributes,
+              },
+            },
+          ],
+        },
+      ],
+    });
+
+    const metadata = workspace.getEdge(left, right)?.metadata;
+
+    expect(metadata?.tags).toEqual(tags);
+    expect(metadata?.tags).not.toBe(tags);
+    expect(metadata?.attributes).toEqual(attributes);
+    expect(metadata?.attributes).not.toBe(attributes);
+  });
+
   it("supports pluggable visual resolution without hardcoding product visuals into core", () => {
     const base = getCanonicalTree({
       system: "kaabalah",

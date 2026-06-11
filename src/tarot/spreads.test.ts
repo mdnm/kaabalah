@@ -86,6 +86,12 @@ describe("canonical tarot spreads", () => {
     expect(validation.isComplete).toBe(true);
   });
 
+  it("requires inquirer gender when drawing Event Reading", () => {
+    expect(() => drawTarotSpread({ spreadId: "event-reading" })).toThrow(
+      /inquirerGender/
+    );
+  });
+
   it("validates Tree of Life as a constrained spread with numbered minors and four Daath court cards", () => {
     const validSelection = [
       selection("kether", "ace_wands"),

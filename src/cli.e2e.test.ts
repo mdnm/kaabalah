@@ -271,6 +271,22 @@ describe("CLI contract", () => {
     expect(payload.cards.find((card) => card.slotKey === "inquirer")?.cardNumber).toBe(2);
   });
 
+  it("reports missing tarot spread context with MISSING_ARGUMENT", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--spread-id=event-reading",
+      "--json",
+      "--compact",
+    ]);
+
+    expect(result.status).toBe(1);
+    expect(JSON.parse(result.stdout)).toMatchObject({
+      error: true,
+      code: "MISSING_ARGUMENT",
+    });
+    expect(JSON.parse(result.stdout).message).toContain("--inquirer-gender");
+  });
+
   it("passes tarot spread selection through --input-json", () => {
     const result = runCli([
       "tarot:spread",
