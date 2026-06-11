@@ -127,6 +127,10 @@ export class ModuleManager {
     if (!system) {
       throw new Error(`System ${this.activeSystem} not found`);
     }
+    const activeSystem = this.activeSystem;
+    if (!activeSystem) {
+      throw new Error("Cannot run bridges before a system is loaded.");
+    }
 
     const bridge = system.BRIDGES.find((b) => b.id === bridgeKey);
     if (!bridge) {
@@ -140,7 +144,7 @@ export class ModuleManager {
       this.t.runWithMutationSource(
         {
           kind: "bridge",
-          system: this.activeSystem,
+          system: activeSystem,
           bridgeId: bridge.id,
           parts: [...bridge.needs],
         },
