@@ -93,6 +93,7 @@ export type HydratedPlanet = PlanetPosition & {
   name: string;
   zodiacPosition: ZodiacPosition;
 };
+export type Sect = "diurnal" | "nocturnal";
 
 export interface BirthChart {
   dateUtc: Date;
@@ -114,7 +115,15 @@ export interface BirthChart {
     };
   };
   aspects: AspectEdge[];
-  sect: "diurnal" | "nocturnal";
+  sect: Sect;
+}
+
+/**
+ * Determines chart sect from the Sun's house position.
+ * Houses 7-12 place the Sun above the horizon, matching the rule used by getBirthChart.
+ */
+export function getSect(sunHouse: number): Sect {
+  return sunHouse >= 7 && sunHouse <= 12 ? "diurnal" : "nocturnal";
 }
 
 function isValidLocalDateTimeParts(date: LocalDateTimeParts): boolean {
@@ -298,9 +307,8 @@ export async function getBirthChart(
       },
     };
 
-    const isDiurnal =
-      planets.sun.zodiacPosition.house >= 7 &&
-      planets.sun.zodiacPosition.house <= 12;
+    const sect = getSect(planets.sun.zodiacPosition.house);
+    const isDiurnal = sect === "diurnal";
     const wheelOfFortuneLongitude = calcParsFortunae(
       houses.ascendant.longitude,
       planets.sun.longitude,
@@ -329,7 +337,7 @@ export async function getBirthChart(
       houses,
       nodes,
       aspects,
-      sect: isDiurnal ? "diurnal" as const : "nocturnal" as const,
+      sect,
     };
   } catch (error) {
     console.error("Error calculating birth chart:", error);
