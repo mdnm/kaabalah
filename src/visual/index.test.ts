@@ -431,19 +431,19 @@ describe("archeometer svg visual module", () => {
     });
     expect(model.rings.whiteRays).toEqual({
       id: "whiteRays",
-      r1: 42.966,
-      r2: 52.08,
+      r1: 52.08,
+      r2: 85.932,
     });
     expect(model.rings.chromicRays).toEqual({
       id: "chromicRays",
-      r1: 52.08,
-      r2: 145.39,
+      r1: 85.932,
+      r2: 171.43,
     });
     expect(model.rings.zodiacUtterance.r2).toBe(model.rings.degreeInner.r1);
     expect(model.rings.planetaryUtterance.r2).toBe(model.rings.zodiacUtterance.r1);
-    expect(roundForTest(model.rings.cosmologicalMusic.r2 - model.rings.cosmologicalMusic.r1)).toBe(18.23);
-    expect(roundForTest(model.rings.astralZodiac.r2 - model.rings.astralZodiac.r1)).toBe(23);
-    expect(roundForTest(model.rings.astralPlanetary.r2 - model.rings.astralPlanetary.r1)).toBe(28.21);
+    expect(roundForTest(model.rings.cosmologicalMusic.r2 - model.rings.cosmologicalMusic.r1)).toBe(28.64);
+    expect(roundForTest(model.rings.astralZodiac.r2 - model.rings.astralZodiac.r1)).toBe(42.53);
+    expect(roundForTest(model.rings.astralPlanetary.r2 - model.rings.astralPlanetary.r1)).toBe(42.97);
     expect(model.utterance).toBe(DEFAULT_ARCHEOMETER_UTTERANCE);
     expect(DEFAULT_ARCHETYPE_UTTERANCE).toBe(DEFAULT_ARCHEOMETER_UTTERANCE);
     expect(model.triangleLabels).toBe(DEFAULT_ARCHEOMETER_TRIANGLE_LABELS);
@@ -643,7 +643,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-chromic-foundation" data-triangle="ether"`);
     expect(svg).toContain(`class="archeometer-chromic-foundation" data-triangle="divineFire"`);
     expect(svg).toContain(`class="archeometer-chromic-primary-outline" data-triangle="wordJesus"`);
-    expect(svg).toContain(`C 518.956 419.651 539.95 455.437 518.956 492.065`);
+    expect(svg).toContain(`C 456 498.965 480.801 498.965 493.21 477.316`);
     expect(svg).toContain(`fill="#f2cf45"`);
     expect(svg).toContain(`fill="#5470a5"`);
     expect(svg).toContain(`fill="#dd3e38"`);
@@ -651,7 +651,7 @@ describe("archeometer svg visual module", () => {
     expect(svg).toContain(`class="archeometer-zodiac-sign" data-sign="Capricorn" data-degree="0"`);
     expect(svg.match(/class="archeometer-astral-planetary-sector"/g)).toHaveLength(12);
     expect(svg).toContain(`class="archeometer-planet" data-planet="Moon" data-degree="180"`);
-    expect(svg).toContain(`font-size="21.2" text-anchor="middle" dominant-baseline="middle" fill="#151515">☾</text>`);
+    expect(svg).toContain(`font-size="17" text-anchor="middle" dominant-baseline="middle" fill="#151515">☾</text>`);
     expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="0"`);
     expect(svg).toContain(`fill="#f2cf45" fill-opacity="0.36"`);
     expect(svg).toContain(`class="archeometer-astral-planetary-sector" data-degree="300"`);
