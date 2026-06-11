@@ -2,6 +2,8 @@ import { TimeZoneOptions } from "../../astrology/swisseph";
 import { exitWithError } from "./errors";
 import type { Flags } from "./types";
 
+const UTC_NOON_SUFFIX = "T12:00:00" + "Z";
+
 export const HOUSE_SYSTEM_MAP: Record<string, string> = {
   placidus: "P",
   koch: "K",
@@ -71,13 +73,22 @@ export function validateDateRange(dateStr: string, flags: Flags): void {
   }
 }
 
-export function parseDate(dateStr: string, flags: Flags): Date {
+export function validateDateString(dateStr: string, flags: Flags): void {
   validateDateRange(dateStr, flags);
-  const date = new Date(`${dateStr}T12:00:00Z`);
+  const date = new Date(`${dateStr}${UTC_NOON_SUFFIX}`);
   if (Number.isNaN(date.getTime())) {
     exitWithError("INVALID_DATE", `Invalid date: "${dateStr}". Use YYYY-MM-DD format.`, flags);
   }
-  return date;
+}
+
+export function parseDate(dateStr: string, flags: Flags): Date {
+  validateDateString(dateStr, flags);
+  return new Date(`${dateStr}T12:00:00`);
+}
+
+export function parseUtcNoonDate(dateStr: string, flags: Flags): Date {
+  validateDateString(dateStr, flags);
+  return new Date(`${dateStr}${UTC_NOON_SUFFIX}`);
 }
 
 export function parseTimeValue(timeStr: string, flags: Flags, messages: TimeMessages): ParsedTime {
@@ -152,7 +163,7 @@ export function parseChartInput(
   if (!dateStr) {
     exitWithError("MISSING_ARGUMENT", `${label}: "date" is required (YYYY-MM-DD).`, flags);
   }
-  parseDate(dateStr, flags);
+  validateDateString(dateStr, flags);
 
   const { timeStr, hour, minute } = parseTimeValue((input.time as string) ?? "12:00", flags, {
     invalidFormat: (value) => `${label}: Invalid time format "${value}". Use HH:MM.`,

@@ -15,21 +15,15 @@ function parseDate(date: Date): { day: string; month: string; year: string } {
     throw new Error("Date must be a Date object");
   }
 
-  const formattedDate = date.toISOString().split("T")[0];
-
-  if (formattedDate.length !== 10) {
-    throw new Error("Date must be in the format YYYY-MM-DD or DD-MM-YYYY");
+  if (Number.isNaN(date.getTime())) {
+    throw new Error("Date must be a valid Date object");
   }
 
-  const parts = formattedDate.split(/[-/]/).map((p) => p.trim());
-
-  const isYYYYMMDD = parts[0].length === 4;
-
-  if (isYYYYMMDD) {
-    return { day: parts[2], month: parts[1], year: parts[0] };
-  } else {
-    return { day: parts[0], month: parts[1], year: parts[2] };
-  }
+  return {
+    day: String(date.getDate()).padStart(2, "0"),
+    month: String(date.getMonth() + 1).padStart(2, "0"),
+    year: String(date.getFullYear()).padStart(4, "0"),
+  };
 }
 
 function mapDatePartsToBlocksOfTwo({
@@ -210,6 +204,10 @@ export function calculateStraightAcrossReductionLifePath(
   };
 }
 
+/**
+ * Dates are read with local calendar getters; construct them at local noon
+ * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ */
 export function getDateEnergies(birthDate: Date): NumerologyModuleTypes.DateEnergies {
   const { day, month, year1, year2 } = mapDatePartsToBlocksOfTwo(
     parseDate(birthDate)
@@ -232,6 +230,10 @@ export function getDateEnergies(birthDate: Date): NumerologyModuleTypes.DateEner
   };
 }
 
+/**
+ * Dates are read with local calendar getters; construct them at local noon
+ * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ */
 export function calculateChallenges(birthDate: Date): NumerologyModuleTypes.Challenges {
   const { day, month, year } = parseDate(birthDate);
 
@@ -279,7 +281,11 @@ function numberToHeptadCycle(number: number): NumerologyModuleTypes.HeptadCycles
   return number as NumerologyModuleTypes.HeptadCycles;
 }
 
-// Calculate cycles (annual and monthly)
+/**
+ * Calculate cycles (annual and monthly).
+ * Dates are read with local calendar getters; construct them at local noon
+ * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ */
 export function calculateCycles(startDate: Date, today: Date): NumerologyModuleTypes.CycleInfo {
   const mostRecentStart = getMostRecentStartDate(startDate, today);
   const cycleLength = 52; // Fixed cycle length for monthly cycles
@@ -398,6 +404,10 @@ function calculateAge(birthDate: Date, today: Date = new Date()): number {
   return today.getFullYear() - birthDate.getFullYear();
 }
 
+/**
+ * Dates are read with local calendar getters; construct them at local noon
+ * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ */
 export function calculateFibonacciCycle(
   birthDate: Date,
   today: Date
@@ -467,6 +477,10 @@ function getLastBirthdayYear(birthDate: Date, today: Date): number {
     : today.getFullYear() - 1;
 }
 
+/**
+ * Dates are read with local calendar getters; construct them at local noon
+ * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ */
 export function calculatePersonalYear(
   birthDate: Date,
   today: Date = new Date()
@@ -611,4 +625,3 @@ export function calculatePersonalCycles(
 
 export { NumerologyData };
 export type { NumerologyModuleTypes };
-

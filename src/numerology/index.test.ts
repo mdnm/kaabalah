@@ -10,18 +10,23 @@ import {
   isMasterNumber,
 } from "./index";
 
-// Helper: force UTC so toISOString() is stable
-const dUTC = (y: number, m: number, d: number) =>
-  new Date(Date.UTC(y, m - 1, d));
+// Helper: numerology reads Dates with local calendar getters.
+const dLocalNoon = (y: number, m: number, d: number) =>
+  new Date(y, m - 1, d, 12);
+
+const localNoonFromIso = (date: string) => {
+  const [year, month, day] = date.split("-").map(Number);
+  return dLocalNoon(year, month, day);
+};
 
 describe("Heptad cycles", () => {
   it("should calculate the cycles correctly", () => {
-    const res = calculateCycles(dUTC(2000, 1, 1), dUTC(2025, 4, 16));
+    const res = calculateCycles(dLocalNoon(2000, 1, 1), dLocalNoon(2025, 4, 16));
     expect(res.ageCycles).toHaveLength(7);
     expect(res.yearlyCycles).toHaveLength(7);
     expect(res.monthlyCycles).toHaveLength(7);
     expect(res.currentAgeCycle).toBe(4);
-    expect(res.currentYearlyCycle).toBe(6);
+    expect(res.currentYearlyCycle).toBe(5);
     expect(res.currentMonthlyCycle).toBe(3);
   });
 });
@@ -41,7 +46,7 @@ describe("Kaabalistic life path", () => {
   ])(
     "produces life path %d for %d-%02d-%02d",
     (lifePath, y, m, d, finalSyn) => {
-      const res = calculateKaabalisticLifePath(dUTC(y, m, d));
+      const res = calculateKaabalisticLifePath(dLocalNoon(y, m, d));
       expect(res.lifePath.reducedValue).toBe(lifePath);
       expect(res.syntheses.finalSynthesis).toBe(finalSyn);
     }
@@ -54,20 +59,20 @@ describe("Kaabalistic life path", () => {
     [33, 1902, 1, 2, 33],
     [44, 1903, 1, 3, 44],
   ])("produces master %d for %d-%02d-%02d", (finalMaster, y, m, d, root) => {
-    const res = calculateKaabalisticLifePath(dUTC(y, m, d));
+    const res = calculateKaabalisticLifePath(dLocalNoon(y, m, d));
     expect(res.lifePath.reducedValue).toBe(root); // 11→2, 22→4, 33→6, 44→8
     expect(res.syntheses.finalSynthesis).toBe(finalMaster);
   });
 
   it("handles years ending with 00 (including leap-day in 2000)", () => {
-    const a = calculateKaabalisticLifePath(dUTC(1900, 1, 1)); // Y2='00'
+    const a = calculateKaabalisticLifePath(dLocalNoon(1900, 1, 1)); // Y2='00'
     expect(a.syntheses.finalSynthesis).toBe(21);
 
-    const b = calculateKaabalisticLifePath(dUTC(2000, 2, 29)); // leap day in a 00 year
+    const b = calculateKaabalisticLifePath(dLocalNoon(2000, 2, 29)); // leap day in a 00 year
     expect(b.syntheses.finalSynthesis).toBe(42);
     expect(b.lifePath.reducedValue).toBe(6);
 
-    const c = calculateKaabalisticLifePath(dUTC(2000, 1, 1)); // common 00-year master
+    const c = calculateKaabalisticLifePath(dLocalNoon(2000, 1, 1)); // common 00-year master
     expect(c.syntheses.finalSynthesis).toBe(22);
     expect(c.lifePath.reducedValue).toBe(22);
   });
@@ -82,17 +87,17 @@ describe("Kaabalistic life path", () => {
   ])(
     "supports higher doubles %d-%02d-%02d → %d",
     (y, m, d, finalDouble, root) => {
-      const r = calculateKaabalisticLifePath(dUTC(y, m, d));
+      const r = calculateKaabalisticLifePath(dLocalNoon(y, m, d));
       expect(r.syntheses.finalSynthesis).toBe(finalDouble);
       expect(r.lifePath.reducedValue).toBe(root);
     }
   );
 
-  it("ignores time-of-day (uses only the ISO date)", () => {
+  it("ignores time-of-day on the same local calendar date", () => {
     const a = calculateKaabalisticLifePath(
-      new Date(Date.UTC(2012, 1, 12, 0, 0, 0))
+      new Date(2012, 1, 12, 0, 0, 0)
     );
-    const b = calculateKaabalisticLifePath(new Date("2012-02-12T23:59:59Z"));
+    const b = calculateKaabalisticLifePath(new Date(2012, 1, 12, 23, 59, 59));
     expect(a.syntheses.finalSynthesis).toBe(55);
     expect(b.syntheses.finalSynthesis).toBe(55);
   });
@@ -103,13 +108,13 @@ describe("Kaabalistic life path", () => {
   ])(
     "produces personal mythology numbers %d-%02d-%02d → %o",
     (y, m, d, personalMythologyNumbers) => {
-      const res = calculateKaabalisticLifePath(dUTC(y, m, d));
+      const res = calculateKaabalisticLifePath(dLocalNoon(y, m, d));
       expect(res.personalMythologyNumbers).toEqual(personalMythologyNumbers);
     }
   );
 
   it("should filter same numbers in personal mythology numbers", () => {
-    const res = calculateKaabalisticLifePath(dUTC(1902, 1, 2));
+    const res = calculateKaabalisticLifePath(dLocalNoon(1902, 1, 2));
     expect(res.personalMythologyNumbers).toEqual([2112, 33, 6]);
   });
 });
@@ -127,7 +132,7 @@ describe("Straight across reduction life path", () => {
     [8, 1900, 1, 6],
     [9, 1900, 1, 7],
   ])("produces life path %d for %d-%02d-%02d", (lifePath, y, m, d) => {
-    const res = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
+    const res = calculateStraightAcrossReductionLifePath(dLocalNoon(y, m, d));
     expect(res.lifePath.reducedValue).toBe(lifePath);
     expect(isMasterNumber(res.lifePath.reducedValue)).toBe(false);
   });
@@ -138,19 +143,19 @@ describe("Straight across reduction life path", () => {
     [22, 1950, 3, 22],
     [33, 1980, 6, 9],
   ])("produces master %d for %d-%02d-%02d", (finalMaster, y, m, d) => {
-    const res = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
+    const res = calculateStraightAcrossReductionLifePath(dLocalNoon(y, m, d));
     expect(res.lifePath.reducedValue).toBe(finalMaster);
     expect(isMasterNumber(res.lifePath.reducedValue)).toBe(true);
   });
 
   it("handles years ending with 00 (including leap-day in 2000)", () => {
-    const a = calculateStraightAcrossReductionLifePath(dUTC(1900, 1, 1)); // Y2='00'
+    const a = calculateStraightAcrossReductionLifePath(dLocalNoon(1900, 1, 1)); // Y2='00'
     expect(a.lifePath.reducedValue).toBe(3);
 
-    const b = calculateStraightAcrossReductionLifePath(dUTC(2000, 2, 29)); // leap day in a 00 year
+    const b = calculateStraightAcrossReductionLifePath(dLocalNoon(2000, 2, 29)); // leap day in a 00 year
     expect(b.lifePath.reducedValue).toBe(6);
 
-    const c = calculateStraightAcrossReductionLifePath(dUTC(2000, 1, 1)); // common 00-year master
+    const c = calculateStraightAcrossReductionLifePath(dLocalNoon(2000, 1, 1)); // common 00-year master
     expect(c.lifePath.reducedValue).toBe(4);
   });
 
@@ -162,16 +167,16 @@ describe("Straight across reduction life path", () => {
     [1979, 12, 23, 7],
     [1998, 9, 27, 9],
   ])("supports higher doubles %d-%02d-%02d → %d", (y, m, d, finalDouble) => {
-    const r = calculateStraightAcrossReductionLifePath(dUTC(y, m, d));
+    const r = calculateStraightAcrossReductionLifePath(dLocalNoon(y, m, d));
     expect(r.lifePath.reducedValue).toBe(finalDouble);
   });
 
-  it("ignores time-of-day (uses only the ISO date)", () => {
+  it("ignores time-of-day on the same local calendar date", () => {
     const a = calculateStraightAcrossReductionLifePath(
-      new Date(Date.UTC(2012, 1, 12, 0, 0, 0))
+      new Date(2012, 1, 12, 0, 0, 0)
     );
     const b = calculateStraightAcrossReductionLifePath(
-      new Date("2012-02-12T23:59:59Z")
+      new Date(2012, 1, 12, 23, 59, 59)
     );
     expect(a.lifePath.reducedValue).toBe(1);
     expect(b.lifePath.reducedValue).toBe(1);
@@ -185,7 +190,7 @@ describe("Date energies", () => {
   ])(
     "produces date energies %d-%02d-%02d → %o",
     (y, m, d, dayEnergy, monthEnergy, yearEnergy) => {
-      const res = getDateEnergies(dUTC(y, m, d));
+      const res = getDateEnergies(dLocalNoon(y, m, d));
       expect(res.dayEnergy.reducedValue).toBe(dayEnergy);
       expect(res.monthEnergy.reducedValue).toBe(monthEnergy);
       expect(res.yearEnergy.reducedValue).toBe(yearEnergy);
@@ -203,7 +208,7 @@ describe("Challenges", () => {
   ])(
     "produces challenges %d-%02d-%02d → %o",
     (y, m, d, day, month, year, mainChallenge, subChallenge1, subChallenge2) => {
-      const res = calculateChallenges(dUTC(y, m, d));
+      const res = calculateChallenges(dLocalNoon(y, m, d));
       expect(res.day).toBe(day);
       expect(res.month).toBe(month);
       expect(res.year).toBe(year);
@@ -221,7 +226,7 @@ describe("Fibonacci cycle", () => {
   ])(
     "produces fibonacci cycle %d-%d-%d → %o",
     (y, m, d, today, currentAge, cycle1, cycle2, cycle3, cycle4, cycle5, cycle6, cycle7) => {
-      const res = calculateFibonacciCycle(dUTC(y, m, d), new Date(today));
+      const res = calculateFibonacciCycle(dLocalNoon(y, m, d), localNoonFromIso(today));
       expect(res.currentAge).toBe(currentAge);
       expect(res.cycle1.reducedValue).toBe(cycle1);
       expect(res.cycle2.reducedValue).toBe(cycle2);
@@ -243,7 +248,7 @@ describe("Personal cycles", () => {
   ])(
     "produces personal cycles %d-%d-%d → %o",
     (y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth, soulNumber) => {
-      const res = calculatePersonalCycles(dUTC(y, m, d), new Date(today), name);
+      const res = calculatePersonalCycles(dLocalNoon(y, m, d), localNoonFromIso(today), name);
       expect(res.currentAge).toBe(currentAge);
       expect(res.personalYear.reducedValue).toBe(personalYear);
       expect(res.personalPeriods.map((p) => p.value.reducedValue)).toEqual(personalPeriods);

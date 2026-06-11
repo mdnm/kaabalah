@@ -1,11 +1,11 @@
 import { calculateOdu } from "../../ifa";
 import { isJsonMode } from "../runtime/args";
 import { outputJson } from "../runtime/output";
-import { parseDate } from "../runtime/validation";
+import { parseUtcNoonDate } from "../runtime/validation";
 import type { Flags } from "../runtime/types";
 
 export function cmdIfa(dateStr: string, flags: Flags): void {
-  const result = calculateOdu(parseDate(dateStr, flags));
+  const result = calculateOdu(parseUtcNoonDate(dateStr, flags));
 
   if (isJsonMode(flags)) {
     outputJson(result, flags);
