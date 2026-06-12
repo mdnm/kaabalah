@@ -1,5 +1,9 @@
-import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config';
+
+const posthogKey =
+  process.env.PUBLIC_POSTHOG_KEY ||
+  '';
 
 export default defineConfig({
   site: 'https://docs.kaabalah.com',
@@ -30,6 +34,11 @@ export default defineConfig({
         { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://docs.kaabalah.com/og-image.png' } },
         { tag: 'meta', attrs: { name: 'theme-color', content: '#000010' } },
         { tag: 'link', attrs: { rel: 'manifest', href: '/site.webmanifest' } },
+        {
+          tag: 'script',
+          content: `window.__KAABALAH_DOCS_ANALYTICS__ = ${JSON.stringify({ posthogKey })};`,
+        },
+        { tag: 'script', attrs: { src: '/posthog-analytics.js', defer: true } },
         {
           tag: 'script',
           attrs: { type: 'application/ld+json' },
