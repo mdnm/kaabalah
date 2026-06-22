@@ -21,6 +21,25 @@ export interface ArcheometerLine {
   y2: number;
 }
 
+export interface ArcheometerCircleHitTarget {
+  kind: "circle";
+  cx: number;
+  cy: number;
+  r: number;
+}
+
+export interface ArcheometerPolygonHitTarget {
+  kind: "polygon";
+  points: readonly ArcheometerPoint[];
+}
+
+export type ArcheometerHitTarget = ArcheometerCircleHitTarget | ArcheometerPolygonHitTarget;
+
+export interface ArcheometerAnchor {
+  x: number;
+  y: number;
+}
+
 export type ArcheometerRingId =
   | "degreeOuter"
   | "degreeInner"
@@ -170,6 +189,58 @@ export interface ArcheometerRenderModel {
   musicalNotes: readonly ArcheometerMusicalNote[];
   zodiacSigns: readonly ArcheometerZodiacSign[];
   planetaryPoints: readonly ArcheometerPlanetaryPoint[];
+  geometry: ArcheometerGeometry;
+}
+
+export interface ArcheometerGeometry {
+  utterancePoints: readonly ArcheometerElementGeometry<ArcheometerUtterancePoint>[];
+  triangles: readonly ArcheometerTriangleGeometry[];
+  triangleLabels: readonly ArcheometerElementGeometry<ArcheometerTriangleLabel>[];
+  musicalNotes: readonly ArcheometerElementGeometry<ArcheometerMusicalNote>[];
+  zodiacSigns: readonly ArcheometerElementGeometry<ArcheometerZodiacSign>[];
+  planetaryPoints: readonly ArcheometerElementGeometry<ArcheometerPlanetaryPoint>[];
+  degreeTicks: readonly ArcheometerDegreeTickGeometry[];
+  rays: readonly ArcheometerRayGeometry[];
+  center: ArcheometerCenterGeometry;
+}
+
+export interface ArcheometerElementGeometry<T> {
+  id: string;
+  layerId: ArcheometerRingId | "triangleLabels";
+  data: T;
+  degree: number;
+  anchor: ArcheometerAnchor;
+  hitTarget: ArcheometerHitTarget;
+}
+
+export interface ArcheometerTriangleGeometry {
+  id: string;
+  layerId: "planetaryUtterance" | "chromicRays";
+  data: ArcheometerTriangleSpec;
+  vertices: readonly ArcheometerPoint[];
+  centroid: ArcheometerPoint;
+  path: string;
+  hitTarget: ArcheometerPolygonHitTarget;
+}
+
+export interface ArcheometerDegreeTickGeometry {
+  id: string;
+  degree: number;
+  outerAnchor: ArcheometerAnchor;
+  innerAnchor: ArcheometerAnchor;
+}
+
+export interface ArcheometerRayGeometry {
+  id: string;
+  degree: number;
+  layerId: "whiteRays";
+  line: ArcheometerLine;
+}
+
+export interface ArcheometerCenterGeometry {
+  id: "solar-center";
+  anchor: ArcheometerAnchor;
+  hitTarget: ArcheometerCircleHitTarget;
 }
 
 const TAU = Math.PI * 2;
@@ -346,12 +417,13 @@ export function getArcheometerRenderModel(options: ArcheometerSvgOptions = {}): 
   const frameRadius = round(Math.max(0, Math.min(viewBox.width, viewBox.height) / 2 - padding));
   const outerRadius = round(Math.max(0, frameRadius - ARCHEOMETER_OUTER_CROWN_BLEED * scale));
 
-  return {
+  const rings = buildRings(outerRadius, frameRadius);
+  const modelBase = {
     viewBox,
     center,
     outerRadius,
     scale,
-    rings: buildRings(outerRadius, frameRadius),
+    rings,
     palette: resolvePalette(options.palette),
     rotationDegrees: options.rotationDegrees ?? 0,
     layers: { ...DEFAULT_LAYERS, ...(options.layers ?? {}) },
@@ -362,6 +434,10 @@ export function getArcheometerRenderModel(options: ArcheometerSvgOptions = {}): 
     musicalNotes: options.musicalNotes ?? DEFAULT_ARCHEOMETER_MUSICAL_NOTES,
     zodiacSigns: options.zodiacSigns ?? DEFAULT_ARCHEOMETER_ZODIAC,
     planetaryPoints: options.planetaryPoints ?? DEFAULT_ARCHEOMETER_PLANETS,
+  };
+  return {
+    ...modelBase,
+    geometry: buildArcheometerGeometry(modelBase),
   };
 }
 
@@ -484,7 +560,6 @@ function renderDegreeCrown(push: (line: string) => void, model: ArcheometerRende
 function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerRenderModel) {
   const { center, rings, palette, scale } = model;
   const ring = rings.zodiacUtterance;
-  const sorted = sortedByDegree(model.utterance);
 
   push(`<g id="archeometer-zodiacal-utterance" aria-label="zodiacal crown of the utterance">`);
 
@@ -506,9 +581,9 @@ function renderZodiacUtterance(push: (line: string) => void, model: ArcheometerR
     );
   }
 
-  for (const point of sorted) {
-    const a = angleOf(model, point.degree);
-    const p = polarToXY(center, ring.r1 + (ring.r2 - ring.r1) * 0.58, a);
+  for (const geometry of model.geometry.utterancePoints) {
+    const point = geometry.data;
+    const p = geometry.anchor;
     const shieldR = (ring.r2 - ring.r1) * 0.22;
     const letterParts = point.letter.split(",").map((part) => part.trim()).filter(Boolean);
     const isStacked = letterParts.length > 1;
@@ -544,12 +619,12 @@ function renderPlanetaryUtterance(push: (line: string) => void, model: Archeomet
   const { center, rings, palette, scale } = model;
   const ring = rings.planetaryUtterance;
   const clipOuter = planetaryTriangleClipOuterRadius(rings);
-  const vertexRadius = clipOuter;
 
   push(`<g id="archeometer-planetary-utterance" aria-label="four trigones of the planetary utterance">`);
   push(`<g clip-path="url(#archeometer-planetary-clip)">`);
-  for (const triangle of model.triangles) {
-    const vertices = triangle.vertices.map((degree) => polarToXY(center, vertexRadius, angleOf(model, degree)));
+  for (const triangleGeometry of model.geometry.triangles) {
+    const triangle = triangleGeometry.data;
+    const vertices = triangleGeometry.vertices;
     if (triangle.vertexFills) {
       const centroid = polygonCentroid(vertices);
       const midpoints = vertices.map((vertex, index) => midpoint(vertex, vertices[(index + 1) % vertices.length]));
@@ -558,17 +633,18 @@ function renderPlanetaryUtterance(push: (line: string) => void, model: Archeomet
         const nextMidpoint = midpoints[index];
         push(`<path class="archeometer-trigone-vertex-fill" data-triangle="${escapeAttr(triangle.id)}" data-degree="${fmt(normalizeDegrees(triangle.vertices[index]))}" d="${polygonPath([vertex, nextMidpoint, centroid, previousMidpoint])}" fill="${escapeAttr(triangle.vertexFills[index])}" fill-opacity="0.54" stroke="none"/>`);
       }
-      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
+      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${triangleGeometry.path}" fill="none" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
     } else {
-      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${polygonPath(vertices)}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.52" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
+      push(`<path class="archeometer-trigone" data-triangle="${escapeAttr(triangle.id)}" d="${triangleGeometry.path}" fill="${escapeAttr(triangle.fill)}" fill-opacity="0.52" stroke="${escapeAttr(palette.ink)}" stroke-opacity="0.82" stroke-width="${fmt(1.35 * scale)}"/>`);
     }
   }
   push(`</g>`);
 
-  for (const label of sortedByDegree(model.triangleLabels)) {
+  for (const labelGeometry of model.geometry.triangleLabels) {
+    const label = labelGeometry.data;
     if (!label.label) continue;
     const a = angleOf(model, label.degree);
-    const labelPoint = polarToXY(center, ring.r1 + (clipOuter - ring.r1) * 0.56, a);
+    const labelPoint = labelGeometry.anchor;
     push(textSvg(label.label, labelPoint, 12 * scale, palette.ink, 0, "middle", 700));
     if (label.number !== undefined) {
       const numberPoint = polarToXY(center, ring.r1 + (clipOuter - ring.r1) * 0.80, a);
@@ -603,9 +679,10 @@ function renderCosmologicalMusic(push: (line: string) => void, model: Archeomete
     }
   }
 
-  for (const note of notes) {
+  for (const noteGeometry of model.geometry.musicalNotes) {
+    const note = noteGeometry.data;
     if (!note.note) continue;
-    const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, note.degree));
+    const p = noteGeometry.anchor;
     push(textSvg(note.note, p, 11.8 * scale, palette.ink, tangentRotation(angleOf(model, note.degree)), "middle", 700));
   }
   push(`</g>`);
@@ -618,7 +695,8 @@ function renderAstralZodiac(push: (line: string) => void, model: ArcheometerRend
 
   push(`<g id="archeometer-astral-zodiac" aria-label="astral zodiacal crown">`);
 
-  for (const sign of sortedByDegree(model.zodiacSigns)) {
+  for (const signGeometry of model.geometry.zodiacSigns) {
+    const sign = signGeometry.data;
     const sector = annularSectorPath(
       center,
       ring.r1,
@@ -643,13 +721,14 @@ function renderAstralZodiac(push: (line: string) => void, model: ArcheometerRend
   const markerRadius = Math.min(ringWidth * 0.33, 13 * scale);
   const glyphSize = 17.5 * scale;
 
-  for (const sign of sortedByDegree(model.zodiacSigns)) {
+  for (const signGeometry of model.geometry.zodiacSigns) {
+    const sign = signGeometry.data;
     const pointColor =
       triangleVertexFillForDegree(model, sign.degree) ??
       sign.color ??
       nearestUtterance(sign.degree, model.utterance)?.color ??
       palette.ringFills.astralZodiac;
-    const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, sign.degree));
+    const p = signGeometry.anchor;
 
     push(
       `<g class="archeometer-zodiac-sign" data-sign="${escapeAttr(sign.name)}" data-degree="${fmt(
@@ -675,7 +754,8 @@ function renderAstralPlanetary(push: (line: string) => void, model: ArcheometerR
 
   push(`<g id="archeometer-astral-planetary" aria-label="astral planetary crown">`);
 
-  for (const planet of sortedByDegree(model.planetaryPoints)) {
+  for (const planetGeometry of model.geometry.planetaryPoints) {
+    const planet = planetGeometry.data;
     const pointColor =
       triangleVertexFillForDegree(model, planet.degree) ??
       planet.color ??
@@ -705,8 +785,9 @@ function renderAstralPlanetary(push: (line: string) => void, model: ArcheometerR
 
   const markerRadius = Math.min(ringWidth * 0.33, 13 * scale);
 
-  for (const planet of sortedByDegree(model.planetaryPoints)) {
-    const p = polarToXY(center, (ring.r1 + ring.r2) / 2, angleOf(model, planet.degree));
+  for (const planetGeometry of model.geometry.planetaryPoints) {
+    const planet = planetGeometry.data;
+    const p = planetGeometry.anchor;
     const color =
       triangleVertexFillForDegree(model, planet.degree) ??
       planet.color ??
@@ -892,6 +973,100 @@ function renderFrame(push: (line: string) => void, model: ArcheometerRenderModel
   push(`</g>`);
 }
 
+function buildArcheometerGeometry(
+  model: Omit<ArcheometerRenderModel, "geometry">
+): ArcheometerGeometry {
+  const { center, rings, scale } = model;
+  const utteranceRing = rings.zodiacUtterance;
+  const triangleLabelRing = rings.planetaryUtterance;
+  const musicRing = rings.cosmologicalMusic;
+  const zodiacRing = rings.astralZodiac;
+  const planetRing = rings.astralPlanetary;
+  const planetaryClipOuter = planetaryTriangleClipOuterRadius(rings);
+  const whiteRaySolarRadius = rings.solarCenter.r2;
+  const pointHitRadius = Math.max(11 * scale, 8);
+
+  const element = <T extends { degree: number }>(
+    layerId: ArcheometerElementGeometry<T>["layerId"],
+    idPrefix: string,
+    item: T,
+    radius: number,
+    hitRadius = pointHitRadius
+  ): ArcheometerElementGeometry<T> => {
+    const anchor = polarToXY(center, radius, angleOf(model, item.degree));
+    return {
+      id: `${idPrefix}-${slugForGeometry((item as { id?: string; name?: string; note?: string; label?: string }).id ?? (item as { name?: string }).name ?? (item as { note?: string }).note ?? (item as { label?: string }).label ?? item.degree)}`,
+      layerId,
+      data: item,
+      degree: normalizeDegrees(item.degree),
+      anchor,
+      hitTarget: { kind: "circle", cx: anchor.x, cy: anchor.y, r: hitRadius },
+    };
+  };
+
+  const triangles = model.triangles.map((triangle) => {
+    const vertices = triangle.vertices.map((degree) =>
+      polarToXY(center, planetaryClipOuter, angleOf(model, degree))
+    );
+    const centroid = polygonCentroid(vertices);
+    return {
+      id: `triangle-${slugForGeometry(triangle.id)}`,
+      layerId: "planetaryUtterance" as const,
+      data: triangle,
+      vertices,
+      centroid,
+      path: polygonPath(vertices),
+      hitTarget: { kind: "polygon" as const, points: vertices },
+    };
+  });
+
+  const degreeTicks = Array.from({ length: 12 }, (_, index) => {
+    const degree = index * 30;
+    const angle = angleOf(model, degree);
+    return {
+      id: `degree-${degree}`,
+      degree,
+      outerAnchor: polarToXY(center, (rings.degreeOuter.r1 + rings.degreeOuter.r2) / 2, angle),
+      innerAnchor: polarToXY(center, (rings.degreeInner.r1 + rings.degreeInner.r2) / 2, angle),
+    };
+  });
+
+  const rays = Array.from({ length: 12 }, (_, index) => index * 30)
+    .filter((degree) => degree !== 90 && degree !== 270)
+    .map((degree) => ({
+      id: `white-ray-${degree}`,
+      degree,
+      layerId: "whiteRays" as const,
+      line: lineFromPolar(center, whiteRaySolarRadius, 3.3, angleOf(model, degree)),
+    }));
+
+  return {
+    utterancePoints: sortedByDegree(model.utterance).map((point) =>
+      element("zodiacUtterance", "utterance", point, utteranceRing.r1 + (utteranceRing.r2 - utteranceRing.r1) * 0.58)
+    ),
+    triangles,
+    triangleLabels: sortedByDegree(model.triangleLabels).map((label) =>
+      element("triangleLabels", "triangle-label", label, triangleLabelRing.r1 + (planetaryClipOuter - triangleLabelRing.r1) * 0.56)
+    ),
+    musicalNotes: sortedByDegree(model.musicalNotes).map((note) =>
+      element("cosmologicalMusic", "music", note, (musicRing.r1 + musicRing.r2) / 2)
+    ),
+    zodiacSigns: sortedByDegree(model.zodiacSigns).map((sign) =>
+      element("astralZodiac", "zodiac", sign, (zodiacRing.r1 + zodiacRing.r2) / 2, Math.min((zodiacRing.r2 - zodiacRing.r1) * 0.33, 13 * scale))
+    ),
+    planetaryPoints: sortedByDegree(model.planetaryPoints).map((planet) =>
+      element("astralPlanetary", "planet", planet, (planetRing.r1 + planetRing.r2) / 2, Math.min((planetRing.r2 - planetRing.r1) * 0.33, 13 * scale))
+    ),
+    degreeTicks,
+    rays,
+    center: {
+      id: "solar-center",
+      anchor: center,
+      hitTarget: { kind: "circle", cx: center.x, cy: center.y, r: rings.solarCenter.r2 },
+    },
+  };
+}
+
 function buildRings(contentRadius: number, frameRadius = contentRadius): Record<ArcheometerRingId, ArcheometerRing> {
   const ring = (id: ArcheometerRingId, r1: number, r2: number, radius = contentRadius): ArcheometerRing => ({
     id,
@@ -1062,6 +1237,14 @@ function polygonCentroid(points: readonly ArcheometerPoint[]): ArcheometerPoint 
 
 function sortedByDegree<T extends { degree: number }>(items: readonly T[]): T[] {
   return [...items].sort((a, b) => normalizeDegrees(a.degree) - normalizeDegrees(b.degree));
+}
+
+function slugForGeometry(value: string | number) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "item";
 }
 
 function nearestUtterance(degree: number, utterance: readonly ArcheometerUtterancePoint[]) {

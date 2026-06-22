@@ -565,6 +565,34 @@ describe("archeometer svg visual module", () => {
     });
   });
 
+  it("exposes per-element archeometer geometry for custom renderers", () => {
+    const model = getArcheometerRenderModel();
+
+    expect(model.geometry.utterancePoints).toHaveLength(12);
+    expect(model.geometry.triangles).toHaveLength(4);
+    expect(model.geometry.triangleLabels).toHaveLength(12);
+    expect(model.geometry.musicalNotes).toHaveLength(12);
+    expect(model.geometry.zodiacSigns).toHaveLength(12);
+    expect(model.geometry.planetaryPoints).toHaveLength(12);
+    expect(model.geometry.degreeTicks).toHaveLength(12);
+    expect(model.geometry.rays.length).toBeGreaterThan(0);
+
+    const utterance = model.geometry.utterancePoints[0];
+    const wordJesus = model.geometry.triangles.find((triangle) => triangle.id === "triangle-wordjesus");
+    const saturn = model.geometry.planetaryPoints.find((point) => point.data.name === "Saturn");
+
+    expect(utterance.layerId).toBe("zodiacUtterance");
+    expect(utterance.data.letter).toBe("P, Ph");
+    expect(utterance.hitTarget.kind).toBe("circle");
+    expect(wordJesus?.vertices).toHaveLength(3);
+    expect(wordJesus?.hitTarget.kind).toBe("polygon");
+    expect(saturn?.anchor).toEqual(expect.objectContaining({
+      x: expect.any(Number),
+      y: expect.any(Number),
+    }));
+    expect(model.geometry.center.hitTarget.r).toBe(model.rings.solarCenter.r2);
+  });
+
   it("renders a transparent archeometer svg with named layers", () => {
     const svg = generateArcheometerSvg({
       background: "transparent",

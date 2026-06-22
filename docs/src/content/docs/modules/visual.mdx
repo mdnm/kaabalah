@@ -85,7 +85,7 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `RouteActivationOptions`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelRailVisibilityPreset`, `AstroWheelRailVisibility`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPositionRail`, `AstroWheelPointRailLabel`, `AstroWheelBoundaryNotch`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerGeometry`, `ArcheometerElementGeometry`, `ArcheometerTriangleGeometry`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `RouteActivationOptions`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -174,7 +174,7 @@ generateAstroWheelSvg(chart, {
 });
 ```
 
-Planet labels are rendered in the final SVG glyph layer with halos and inline position text (`planet glyph`, degree, sign glyph, minutes). Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
+Planet glyphs are rendered in a stable Planet Band. Exact ticks, true anchors, aspect endpoints, and house membership stay tied to true longitude. Degree, sign, minutes, and retrograde details are rendered from independent Position Rails, so apps can hide or reveal detail without changing the chart geometry. Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
 
 #### Wheel layout
 
@@ -189,11 +189,35 @@ const svg = generateAstroWheelSvg(chart, {
     },
     pointConnectors: "auto",      // "auto" | "always" | "never"
     maxPointDisplacementDegrees: 20,
+    rails: "compact",             // "full" | "compact" | "glyph-only" | partial visibility map
   },
 });
 ```
 
-Planet ticks and aspect lines use true astronomical longitude. When clustered planet labels are spread for readability, only the visual label angle changes. If connectors are enabled, the radial tick ends on the planet glyph rail, then the renderer draws an arc along that same imaginary circle toward the displaced glyph instead of a straight chord through the wheel.
+Planet glyphs may be angularly spaced for dense clusters, but zodiacal order is preserved and displacement is capped. The model exposes both `trueAnchor` and `glyphPosition`; generated SVG draws a short connector when those positions differ. Aspect lines connect true anchors on the structural aspect boundary, not displaced glyphs. That boundary remains visible when `aspects: false`, so house cusp spokes still end on the same inner wheel circle.
+
+Boundary Notches are local relief marks in the Planet Band. They are generated only when a glyph is cusp-adjacent or displaced across a cusp conflict; position text does not create notches and house cusp lines do not move.
+
+#### Position rails
+
+Static SVG defaults to the full rail set. Compact app surfaces can hide detail rails while preserving the same anchors, houses, and glyph positions:
+
+```typescript
+generateAstroWheelSvg(chart, {
+  layout: { rails: "glyph-only" },
+});
+
+generateAstroWheelSvg(chart, {
+  layout: {
+    rails: {
+      degree: true,
+      sign: true,
+      minutes: false,
+      retrograde: true,
+    },
+  },
+});
+```
 
 #### Aspect orbs
 
@@ -212,7 +236,7 @@ const svg = generateAstroWheelSvg(chart, {
 
 #### Composable overlays
 
-`pointLayers` and `aspectLayers` let you compose transits, synastry, or any custom calculated points over a base chart without rebuilding the SVG. Extra point layers share the base chart's Ascendant orientation and can be placed inside, on, or outside the normal planet ring.
+`pointLayers` and `aspectLayers` let you compose transits, synastry, or any custom calculated points over a base chart without rebuilding the SVG. Extra point layers share the base chart's Ascendant orientation and can be placed inside, on, or outside the normal planet ring. External point layers render only the degree rail by default so transit overlays stay close to their glyphs.
 
 ```typescript
 const svg = generateAstroWheelSvg(birthChart, {
@@ -303,14 +327,24 @@ import { getAstroWheelRenderModel } from 'kaabalah/visual';
 const model = getAstroWheelRenderModel(chart);
 
 model.viewBox;        // { minX: 0, minY: 0, width: 600, height: 600 }
-model.points;         // planet/node glyph positions and exact tick lines
+model.points;         // true anchors, displayed glyph positions, rails, hit targets
 model.pointLayers;    // grouped birth/transit/synastry/custom point layers
 model.houseCusps;     // cusp line geometry in SVG units
-model.aspectLines;    // aspect line geometry and colors
+model.positionRails;  // rail radii and visibility state
+model.boundaryNotches;// local planet-band notches
+model.aspectLines;    // true-anchor aspect line geometry and colors
 model.aspectLayers;   // grouped aspect overlays
 ```
 
 All coordinates live in the same SVG viewBox units as `generateAstroWheelSvg(...)`, so overlays can be drawn in a sibling `<svg>` using the same `viewBox` and `preserveAspectRatio="xMidYMid meet"`.
+
+Each `AstroWheelPoint` contains:
+
+- `longitude`, `trueAnchor`, and `trueAngle` for exact chart position.
+- `displayLongitude`, `glyphPosition`, and `displayAngle` for the displayed Planet Band glyph.
+- `house`, `nearestCuspHouse`, and `nearestCuspDistanceDegrees` from true longitude against exact house cusps.
+- `railLabels` for degree/sign/minutes/retrograde rendering.
+- `hitTarget` for pointer interaction and `connector` when the glyph is displaced.
 
 ---
 
@@ -638,7 +672,7 @@ const svg = generateArcheometerSvg({
 interface ArcheometerSvgOptions {
   width?: number | string;
   height?: number | string;
-  viewBox?: ArcheometerSvgViewBox;         // default: 0 0 900 900
+  viewBox?: ArcheometerSvgViewBox;         // default: 0 0 912 912
   background?: string | "transparent";    // default: "transparent"
   palette?: ArcheometerPalette;
   padding?: number;
@@ -654,7 +688,26 @@ interface ArcheometerSvgOptions {
 }
 ```
 
-Use `getArcheometerRenderModel()` when you need the normalized ring geometry, resolved palette, and default correspondence tables without serializing SVG.
+Use `getArcheometerRenderModel()` when you need the normalized ring geometry, resolved palette, default correspondence tables, and per-element geometry without serializing SVG.
+
+```typescript
+import { getArcheometerRenderModel } from 'kaabalah/visual';
+
+const model = getArcheometerRenderModel();
+
+model.rings;                         // normalized ring radii
+model.geometry.utterancePoints;       // anchors and hit targets for letters/numbers
+model.geometry.triangles;             // trigone vertices, centroids, paths, hit targets
+model.geometry.triangleLabels;        // label anchors
+model.geometry.musicalNotes;          // note anchors
+model.geometry.zodiacSigns;           // zodiac glyph anchors and hit targets
+model.geometry.planetaryPoints;       // planet glyph anchors and hit targets
+model.geometry.degreeTicks;           // degree crown anchors
+model.geometry.rays;                  // white ray line geometry
+model.geometry.center;                // solar center anchor and hit target
+```
+
+Generated SVG consumes the same model-level geometry contract: source data remains available on each element, while `anchor` and `hitTarget` let React, Canvas, or app-specific renderers place tooltips and interaction zones without parsing SVG markup.
 
 ```typescript
 import { DEFAULT_ARCHEOMETER_UTTERANCE, generateArcheometerSvg } from 'kaabalah/visual';

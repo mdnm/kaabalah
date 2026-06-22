@@ -170,39 +170,28 @@ describe("astro wheel visual module", () => {
     }
   });
 
-  it("spreads clustered planet labels angularly and draws rail connectors from true longitude", () => {
+  it("spreads clustered planet glyphs in the planet band while keeping true anchors", () => {
     const chart = sampleBirthChart();
     const svg = generateAstroWheelSvg(chart);
     const model = getAstroWheelRenderModel(chart);
     const mercury = model.pointByKey.mercury;
     const venus = model.pointByKey.venus;
 
-    expect(svg).toContain(`class="astro-wheel-point-leader"`);
-    expect(svg).toContain(`<path class="astro-wheel-point-leader"`);
-    expect(svg).not.toContain(`<line class="astro-wheel-point-leader"`);
-    expect(mercury.leaderArc).toBeDefined();
-    expect(venus.leaderArc).toBeDefined();
-    expect(mercury.leaderArc?.path).toContain(" A ");
-    expect(venus.leaderArc?.path).toContain(" A ");
-    expect(Math.abs(
-      (mercury.leaderArc?.radius ?? 0) -
-      Math.hypot(
-        mercury.glyphPosition.x - model.center.x,
-        mercury.glyphPosition.y - model.center.y
-      )
-    )).toBeLessThan(1.5);
-    expect(Math.abs(
-      (mercury.leaderArc?.radius ?? 0) -
-      Math.hypot(
-        mercury.tickLine.x2 - model.center.x,
-        mercury.tickLine.y2 - model.center.y
-      )
-    )).toBeLessThan(1.5);
+    expect(svg).toContain(`class="astro-wheel-point-connector"`);
+    expect(mercury.connector).toBeDefined();
+    expect(venus.connector).toBeDefined();
+    expect(Math.hypot(mercury.trueAnchor.x - model.center.x, mercury.trueAnchor.y - model.center.y))
+      .toBeCloseTo(model.rings.aspects.r2, 3);
+    expect(mercury.trueAnchor).not.toEqual({ x: mercury.tickLine.x2, y: mercury.tickLine.y2 });
+    expect(mercury.connector?.x1).toBe(mercury.trueAnchor.x);
+    expect(mercury.connector?.y1).toBe(mercury.trueAnchor.y);
     expect(mercury.leaderLine).toBeUndefined();
     expect(venus.leaderLine).toBeUndefined();
-    expect(mercury.displayLongitude).toBe(mercury.longitude);
-    expect(venus.displayLongitude).toBe(venus.longitude);
+    expect(mercury.displayLongitude).not.toBe(mercury.longitude);
+    expect(venus.displayLongitude).not.toBe(venus.longitude);
     expect(mercury.glyphPosition).not.toEqual(venus.glyphPosition);
+    expect(mercury.house).toBe(2);
+    expect(venus.house).toBe(2);
   });
 
   it("renders angle labels with inline degree, sign glyph, and minutes", () => {
@@ -218,7 +207,7 @@ describe("astro wheel visual module", () => {
     expect(angleLabel).toContain(`class="astro-wheel-point-sign-glyph"`);
   });
 
-  it("renders inline degree, sign glyph, minutes, and retrograde indicator in point labels", () => {
+  it("renders degree, sign, minutes, and retrograde as independent position rails", () => {
     const chart = sampleBirthChart();
     chart.planets.mercury = {
       ...chart.planets.mercury,
@@ -226,15 +215,91 @@ describe("astro wheel visual module", () => {
     };
 
     const svg = generateAstroWheelSvg(chart);
-    const mercuryLabelStart = svg.indexOf(`data-point-name="Mercury"`, svg.indexOf(`class="astro-wheel-point-label"`));
+    const model = getAstroWheelRenderModel(chart);
+    const mercury = model.pointByKey.mercury;
+    const mercuryLabelStart = svg.indexOf(`data-point-name="Mercury"`, svg.indexOf(`class="astro-wheel-position-rail-label"`));
     const mercuryLabel = svg.slice(mercuryLabelStart, mercuryLabelStart + 6000);
 
+    expect(model.positionRails.map((rail) => [rail.id, rail.visible])).toEqual([
+      ["degree", true],
+      ["sign", true],
+      ["minutes", true],
+      ["retrograde", true],
+    ]);
+    expect(mercury.railLabels.map((label) => label.railId)).toEqual(["degree", "sign", "minutes", "retrograde"]);
+    expect(svg).toContain(`class="astro-wheel-position-rail-label"`);
+    expect(svg).toContain(`data-position-rail="degree"`);
+    expect(svg).toContain(`data-position-rail="sign"`);
+    expect(svg).toContain(`data-position-rail="minutes"`);
+    expect(svg).toContain(`data-position-rail="retrograde"`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-degree"`);
     expect(mercuryLabel).toContain(`>12°</text>`);
     expect(mercuryLabel).toContain(`data-zodiac-glyph="Taurus"`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-minutes"`);
     expect(mercuryLabel).toContain(`>00'</text>`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-retrograde"`);
+  });
+
+  it("can hide position rails without changing true point geometry", () => {
+    const chart = sampleBirthChart();
+    const full = getAstroWheelRenderModel(chart);
+    const glyphOnly = getAstroWheelRenderModel(chart, {
+      layout: { rails: "glyph-only" },
+    });
+    const compactSvg = generateAstroWheelSvg(chart, {
+      layout: { rails: "compact" },
+    });
+    const glyphOnlySvg = generateAstroWheelSvg(chart, {
+      layout: { rails: "glyph-only" },
+    });
+
+    expect(glyphOnly.positionRails.every((rail) => !rail.visible)).toBe(true);
+    expect(glyphOnly.pointByKey.mercury.trueAnchor).toEqual(full.pointByKey.mercury.trueAnchor);
+    expect(glyphOnly.pointByKey.mercury.house).toBe(full.pointByKey.mercury.house);
+    expect(compactSvg).toContain(`data-position-rail="degree"`);
+    expect(compactSvg).toContain(`data-position-rail="sign"`);
+    expect(compactSvg).not.toContain(`data-position-rail="minutes"`);
+    expect(glyphOnlySvg).not.toContain(`class="astro-wheel-position-rail-label"`);
+  });
+
+  it("keeps aspect endpoints tied to true anchors when glyphs are displaced", () => {
+    const chart = sampleBirthChart();
+    chart.aspects = [
+      {
+        planetA: "mercury",
+        planetB: "venus",
+        longitudeA: chart.planets.mercury.longitude,
+        longitudeB: chart.planets.venus.longitude,
+        aspect: "conjunction",
+        aspectAngle: 0,
+        delta: 3,
+        orb: 3,
+      },
+    ];
+    const model = getAstroWheelRenderModel(chart);
+    const line = model.aspectLines[0];
+    const mercury = model.pointByKey.mercury;
+
+    expect(mercury.glyphPosition).not.toEqual(mercury.trueAnchor);
+    expect(Math.hypot(line.line.x1 - mercury.trueAnchor.x, line.line.y1 - mercury.trueAnchor.y))
+      .toBeLessThan(20);
+    expect(Math.hypot(line.line.x1 - mercury.glyphPosition.x, line.line.y1 - mercury.glyphPosition.y))
+      .toBeGreaterThan(1);
+  });
+
+  it("adds local planet-band boundary notches for cusp-adjacent point conflicts", () => {
+    const chart = sampleBirthChart();
+    chart.planets.mercury = planet(Planet.MERCURY, "Mercury", 39.5, 1);
+    chart.planets.venus = planet(Planet.VENUS, "Venus", 40.5, 2);
+
+    const svg = generateAstroWheelSvg(chart);
+    const model = getAstroWheelRenderModel(chart);
+
+    expect(model.pointByKey.mercury.house).toBe(1);
+    expect(model.pointByKey.venus.house).toBe(2);
+    expect(model.boundaryNotches.length).toBeGreaterThan(0);
+    expect(model.boundaryNotches.every((notch) => notch.layerId === "birth")).toBe(true);
+    expect(svg).toContain(`class="astro-wheel-boundary-notch"`);
   });
 
   it("can hide zodiac, houses, planets, and aspects independently", () => {
@@ -259,6 +324,7 @@ describe("astro wheel visual module", () => {
     expect(noPlanets).toContain(`id="astro-wheel-houses"`);
 
     expect(noAspects).not.toContain(`id="astro-wheel-aspects"`);
+    expect(noAspects).toContain(`id="astro-wheel-aspect-boundary"`);
     expect(noAspects).toContain(`id="astro-wheel-zodiac"`);
     expect(noAspects).toContain(`id="astro-wheel-planets"`);
   });
@@ -330,6 +396,38 @@ describe("astro wheel visual module", () => {
     expect(model.pointByKey.sun.name).toBe("Sun");
     expect(model.pointByKey["transit:sun"].name).toBe("Sun");
     expect(model.pointByKey["transit:sun"].glyphPosition).not.toEqual(model.pointByKey.sun.glyphPosition);
+  });
+
+  it("keeps external point layer rails near their external glyph ring", () => {
+    const chart = sampleBirthChart();
+    const transitChart = shiftedChart(chart, 42);
+    const model = getAstroWheelRenderModel(chart, {
+      pointLayers: [
+        {
+          id: "transit",
+          chart: transitChart,
+          color: "#ea580c",
+          radius: "external",
+          radiusOffset: 18,
+          glyphScale: 0.82,
+        },
+      ],
+    });
+
+    const transitLayer = model.pointLayers.find((layer) => layer.id === "transit");
+    const transitSun = model.pointByKey["transit:sun"];
+    const degreeLabel = transitSun.railLabels.find((label) => label.railId === "degree");
+    const visibleRailIds = transitSun.railLabels
+      .filter((label) => label.visible)
+      .map((label) => label.railId);
+
+    expect(transitLayer?.radius).toBeGreaterThan(model.rings.houses.r2);
+    expect(visibleRailIds).toEqual(["degree"]);
+    expect(degreeLabel).toBeDefined();
+    expect(Math.hypot((degreeLabel?.position.x ?? 0) - model.center.x, (degreeLabel?.position.y ?? 0) - model.center.y))
+      .toBeGreaterThan(model.rings.houses.r2);
+    expect(Math.hypot(transitSun.glyphPosition.x - model.center.x, transitSun.glyphPosition.y - model.center.y))
+      .toBeGreaterThan(model.rings.houses.r2);
   });
 
   it("exposes render geometry for custom overlays and configurable aspect orbs", () => {

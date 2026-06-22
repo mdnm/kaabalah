@@ -99,7 +99,6 @@ const svgs: Record<string, string> = {
         pointLayerId: "transit",
         aspectSpecs: DEMO_ASPECT_SPECS,
         colors: DEMO_ASPECT_COLORS,
-        radiusScale: 1.08,
         strokeWidth: 1.35,
         opacityScale: 0.85,
       },
