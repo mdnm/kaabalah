@@ -73,9 +73,7 @@ const svgs: Record<string, string> = {
 
   "wheel-transit.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
-    aspects: {
-      aspectSpecs: DEMO_ASPECT_SPECS,
-    },
+    aspects: false,
     palette: {
       aspects: DEMO_ASPECT_COLORS,
     },
@@ -94,9 +92,12 @@ const svgs: Record<string, string> = {
     aspectLayers: [
       {
         id: "transit",
-        label: "Transit aspects",
+        label: "Transit-to-natal aspects",
+        // Transiting planets (side A) aspecting the natal chart (side B).
         chart: transitChart,
-        pointLayerId: "transit",
+        chartB: chart,
+        pointLayerIdA: "transit",
+        pointLayerIdB: "birth",
         aspectSpecs: DEMO_ASPECT_SPECS,
         colors: DEMO_ASPECT_COLORS,
         strokeWidth: 1.35,
