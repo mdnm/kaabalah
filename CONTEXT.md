@@ -86,11 +86,35 @@ _Avoid_: overlay (distinct concept), projection
 A circular esoteric instrument that maps letters, numbers, colors, musical notes, zodiac signs, and planets onto concentric rings. Has its own correspondence mappings that are distinct from (and may overlap with) the Tree of Life correspondences. The canonical version should be preserved while allowing runtime modifications — a concrete instance of the broader need for domain-scoped correspondence slicing.
 _Avoid_: wheel, dial, chart
 
+**Visual Render Model**:
+A renderer-independent geometry contract for a visual surface. It exposes stable layers, element identities, geometry, anchors, hit targets, and visibility state so SVG, React, Canvas, and app-specific renderers can render and interact without parsing generated SVG. SVG generators should be projections of the Visual Render Model, not the source of layout truth.
+_Avoid_: SVG as API, DOM parsing
+
 ### Astrology
 
 **Sect**:
 Whether a chart is a day chart (diurnal) or night chart (nocturnal), determined by the Sun's position relative to the horizon. Cached on **BirthChart** as `sect` to avoid recalculating for downstream techniques (profections, firdaria, essential dignity) that depend on it.
 _Avoid_: day/night, light/dark
+
+**House Cusp**:
+The exact zodiacal boundary where one astrological house begins. A planet's house membership is determined from its true longitude relative to house cusps, not from where its glyph or label is drawn.
+_Avoid_: visual boundary, label position
+
+**House Boundary Envelope**:
+The visual territory a house occupies in an astrology wheel when labels need spacing. It can flex locally within the **Planet Band** for readability, but it does not move the exact **House Cusp** or redefine house membership.
+_Avoid_: cusp, house membership
+
+**Planet Band**:
+The stable ring in an astrology wheel where planet glyphs and their position labels are displayed. The band may space clustered planets for readability, but planets should not float into arbitrary radial callouts in the default natal wheel. Clustered planets retain their true zodiacal order even when their labels are spaced apart.
+_Avoid_: callout layer, floating labels
+
+**Boundary Notch**:
+A localized bend in a **House Boundary Envelope** around crowded planet glyphs. It lets a small portion of the **Planet Band** visually remain with the planet's true house without making the entire house cusp appear shifted. Position text does not force a Boundary Notch.
+_Avoid_: moved cusp, shifted house line
+
+**Position Rail**:
+A sub-ring inside the **Planet Band** dedicated to one part of a planet's displayed position, such as degree, sign, minutes, or retrograde state. Position Rails keep text aligned and readable without changing a planet's house membership.
+_Avoid_: floating text, inline callout
 
 ## Flagged ambiguities
 
