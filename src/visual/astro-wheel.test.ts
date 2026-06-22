@@ -177,14 +177,13 @@ describe("astro wheel visual module", () => {
     const mercury = model.pointByKey.mercury;
     const venus = model.pointByKey.venus;
 
-    expect(svg).toContain(`class="astro-wheel-point-connector"`);
-    expect(mercury.connector).toBeDefined();
-    expect(venus.connector).toBeDefined();
+    expect(svg).toContain(`class="astro-wheel-point-leader"`);
+    expect(svg).not.toContain(`class="astro-wheel-point-connector"`);
+    expect(mercury.leaderArc).toBeDefined();
+    expect(venus.leaderArc).toBeDefined();
     expect(Math.hypot(mercury.trueAnchor.x - model.center.x, mercury.trueAnchor.y - model.center.y))
       .toBeCloseTo(model.rings.aspects.r2, 3);
     expect(mercury.trueAnchor).not.toEqual({ x: mercury.tickLine.x2, y: mercury.tickLine.y2 });
-    expect(mercury.connector?.x1).toBe(mercury.trueAnchor.x);
-    expect(mercury.connector?.y1).toBe(mercury.trueAnchor.y);
     expect(mercury.leaderLine).toBeUndefined();
     expect(venus.leaderLine).toBeUndefined();
     expect(mercury.displayLongitude).not.toBe(mercury.longitude);
@@ -194,20 +193,23 @@ describe("astro wheel visual module", () => {
     expect(venus.house).toBe(2);
   });
 
-  it("renders angle labels with inline degree, sign glyph, and minutes", () => {
+  it("renders angle markers with only degree and minutes (no key text or sign glyph)", () => {
     const chart = sampleBirthChart();
     const svg = generateAstroWheelSvg(chart);
 
     const angleLabelStart = svg.indexOf(`class="astro-wheel-angle-glyph-label"`);
-    const angleLabel = svg.slice(angleLabelStart, angleLabelStart + 4000);
+    const angleLabel = svg.slice(angleLabelStart, angleLabelStart + 800);
 
-    expect(angleLabel).toContain(`class="astro-wheel-angle-label"`);
     expect(angleLabel).toContain(`class="astro-wheel-angle-degree"`);
     expect(angleLabel).toContain(`class="astro-wheel-angle-minutes"`);
-    expect(angleLabel).toContain(`class="astro-wheel-point-sign-glyph"`);
+    // No AC/DC/MC/IC key text and no sign glyph on the angle marker.
+    expect(angleLabel).not.toContain(`class="astro-wheel-angle-label"`);
+    expect(angleLabel).not.toContain(`class="astro-wheel-point-sign-glyph"`);
+    // The outer-rim angle tick line is gone; axes are shown by the house-cusp spokes.
+    expect(svg).not.toContain(`stroke="${"#0f172a"}" stroke-width="2"`);
   });
 
-  it("renders degree, sign, minutes, and retrograde as independent position rails", () => {
+  it("renders degree, sign, minutes, and retrograde as independent position rails by default", () => {
     const chart = sampleBirthChart();
     chart.planets.mercury = {
       ...chart.planets.mercury,
@@ -222,21 +224,21 @@ describe("astro wheel visual module", () => {
 
     expect(model.positionRails.map((rail) => [rail.id, rail.visible])).toEqual([
       ["degree", true],
-      ["sign", true],
       ["minutes", true],
+      ["sign", true],
       ["retrograde", true],
     ]);
-    expect(mercury.railLabels.map((label) => label.railId)).toEqual(["degree", "sign", "minutes", "retrograde"]);
+    expect(mercury.railLabels.map((label) => label.railId)).toEqual(["degree", "minutes", "sign", "retrograde"]);
     expect(svg).toContain(`class="astro-wheel-position-rail-label"`);
     expect(svg).toContain(`data-position-rail="degree"`);
-    expect(svg).toContain(`data-position-rail="sign"`);
     expect(svg).toContain(`data-position-rail="minutes"`);
+    expect(svg).toContain(`data-position-rail="sign"`);
     expect(svg).toContain(`data-position-rail="retrograde"`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-degree"`);
     expect(mercuryLabel).toContain(`>12°</text>`);
-    expect(mercuryLabel).toContain(`data-zodiac-glyph="Taurus"`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-minutes"`);
     expect(mercuryLabel).toContain(`>00'</text>`);
+    expect(mercuryLabel).toContain(`data-zodiac-glyph="Taurus"`);
     expect(mercuryLabel).toContain(`class="astro-wheel-point-retrograde"`);
   });
 
@@ -300,6 +302,62 @@ describe("astro wheel visual module", () => {
     expect(model.boundaryNotches.length).toBeGreaterThan(0);
     expect(model.boundaryNotches.every((notch) => notch.layerId === "birth")).toBe(true);
     expect(svg).toContain(`class="astro-wheel-boundary-notch"`);
+
+    // A notch is a rectangular envelope bend (two band arcs + closing radial lines), not a
+    // single tangential stroke: it spans a radial band and is a closed path.
+    const notch = model.boundaryNotches[0];
+    expect(notch.outerRadius).toBeGreaterThan(notch.innerRadius);
+    expect(notch.startAngle).not.toBe(notch.endAngle);
+    expect((notch.path.match(/A /g) ?? []).length).toBe(2);
+    expect(notch.path.trim().endsWith("Z")).toBe(true);
+  });
+
+  it("does not notch (or cross) an undisplaced planet that merely sits on a cusp", () => {
+    const chart = sampleBirthChart();
+    const model = getAstroWheelRenderModel(chart);
+    const sun = model.pointByKey.sun;
+
+    // Sun sits exactly on the ascendant cusp but is not displaced, so its true tick should
+    // stand alone with no tangential notch arc crossing it.
+    expect(sun.displayLongitude).toBe(sun.longitude);
+    expect(model.boundaryNotches.some((notch) => notch.pointKey === "sun")).toBe(false);
+  });
+
+  it("connects cross-chart aspect layers from transit anchors to natal anchors", () => {
+    const chart = sampleBirthChart();
+    const transitChart = shiftedChart(chart, 42);
+    const model = getAstroWheelRenderModel(chart, {
+      aspects: false,
+      pointLayers: [
+        { id: "transit", chart: transitChart, radius: "external", radiusOffset: 18 },
+      ],
+      aspectLayers: [
+        {
+          id: "transit",
+          label: "Transit-to-natal",
+          chart: transitChart,
+          chartB: chart,
+          pointLayerIdA: "transit",
+          pointLayerIdB: "birth",
+          aspectSpecs: [{ name: "conjunction", angle: 0, orb: 8 }],
+        },
+      ],
+    });
+
+    const lines = model.aspectLayers.find((layer) => layer.id === "transit")?.aspectLines ?? [];
+    expect(lines.length).toBeGreaterThan(0);
+
+    for (const line of lines) {
+      expect(line.planetAKey.startsWith("transit:")).toBe(true);
+      expect(line.planetBKey.startsWith("transit:")).toBe(false);
+      const transitPoint = model.pointByKey[line.planetAKey];
+      const natalPoint = model.pointByKey[line.planetBKey];
+      // Endpoints sit on each point's true anchor, not the displaced glyph.
+      expect(line.line.x1).toBeCloseTo(transitPoint.trueAnchor.x, 3);
+      expect(line.line.y1).toBeCloseTo(transitPoint.trueAnchor.y, 3);
+      expect(line.line.x2).toBeCloseTo(natalPoint.trueAnchor.x, 3);
+      expect(line.line.y2).toBeCloseTo(natalPoint.trueAnchor.y, 3);
+    }
   });
 
   it("can hide zodiac, houses, planets, and aspects independently", () => {
@@ -424,6 +482,10 @@ describe("astro wheel visual module", () => {
     expect(transitLayer?.radius).toBeGreaterThan(model.rings.houses.r2);
     expect(visibleRailIds).toEqual(["degree"]);
     expect(degreeLabel).toBeDefined();
+    expect(Math.hypot(transitSun.tickLine.x1 - model.center.x, transitSun.tickLine.y1 - model.center.y))
+      .toBeLessThan(model.rings.aspects.r2);
+    expect(Math.hypot(transitSun.tickLine.x2 - model.center.x, transitSun.tickLine.y2 - model.center.y))
+      .toBeGreaterThan(model.rings.aspects.r2);
     expect(Math.hypot((degreeLabel?.position.x ?? 0) - model.center.x, (degreeLabel?.position.y ?? 0) - model.center.y))
       .toBeGreaterThan(model.rings.houses.r2);
     expect(Math.hypot(transitSun.glyphPosition.x - model.center.x, transitSun.glyphPosition.y - model.center.y))

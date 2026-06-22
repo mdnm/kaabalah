@@ -112,6 +112,7 @@ export interface AstroWheelPointLayerInput {
   radius?: number | "inner" | "base" | "outer" | "external";
   radiusOffset?: number;
   glyphScale?: number;
+  rails?: AstroWheelRailVisibilityPreset | AstroWheelRailVisibility;
   collisionThresholdDegrees?: number;
   nodes?: boolean;
   vertex?: boolean;
@@ -121,6 +122,13 @@ export interface AstroWheelAspectLayerInput {
   id: string;
   label?: string;
   chart?: BirthChart;
+  /**
+   * Second chart for cross-chart aspects (e.g. transit-to-natal or synastry). When set,
+   * aspects are computed between `chart`'s planets (side A) and `chartB`'s planets (side B)
+   * instead of within a single chart. Pair with `pointLayerIdA`/`pointLayerIdB` so each
+   * endpoint anchors to the correct point layer.
+   */
+  chartB?: BirthChart;
   edges?: readonly AspectEdge[];
   aspectSpecs?: readonly AspectSpec[];
   pointLayerId?: string;
@@ -236,8 +244,13 @@ export interface AstroWheelBoundaryNotch {
   house: number;
   cuspHouse: number;
   cuspLongitude: number;
+  /** Outer radius of the relief pocket (alias of `outerRadius`, kept for compatibility). */
   radius: number;
+  innerRadius: number;
+  outerRadius: number;
+  /** Screen angle of the exact cusp (where the envelope detour starts). */
   startAngle: number;
+  /** Screen angle the envelope bends out to, just past the displaced glyph. */
   endAngle: number;
   path: string;
 }
@@ -946,15 +959,9 @@ function renderHouses(
     }
   }
 
-  if (options.angles) {
-    for (const marker of model.angleMarkers) {
-      push(`<g data-angle-marker="${marker.key}">`);
-      push(
-        `<line x1="${fmt(marker.line.x1)}" y1="${fmt(marker.line.y1)}" x2="${fmt(marker.line.x2)}" y2="${fmt(marker.line.y2)}" stroke="${escapeAttr(model.palette.angleLine)}" stroke-width="${fmt(2 * model.scale)}"/>`
-      );
-      push(`</g>`);
-    }
-  }
+  // Angle axes are drawn by the thicker house-cusp spokes (houses 1/4/7/10); the angle
+  // markers only contribute their degree/minutes label (rendered in the glyph overlay), with
+  // no extra outer-rim tick.
   push(`</g>`);
 }
 
@@ -974,7 +981,7 @@ function renderPlanets(
 
   for (const notch of model.boundaryNotches) {
     push(
-      `<path class="astro-wheel-boundary-notch" data-point-layer="${escapeAttr(notch.layerId)}" data-point-key="${escapeAttr(notch.pointKey)}" data-house="${notch.house}" data-cusp-house="${notch.cuspHouse}" d="${escapeAttr(notch.path)}" fill="none" stroke="${escapeAttr(model.palette.houseLine)}" stroke-opacity="0.58" stroke-width="${fmt(1.15 * model.scale)}" stroke-linecap="round"/>`
+      `<path class="astro-wheel-boundary-notch" data-point-layer="${escapeAttr(notch.layerId)}" data-point-key="${escapeAttr(notch.pointKey)}" data-house="${notch.house}" data-cusp-house="${notch.cuspHouse}" d="${escapeAttr(notch.path)}" fill="none" stroke="${escapeAttr(model.palette.houseLine)}" stroke-opacity="0.6" stroke-width="${fmt(1.1 * model.scale)}" stroke-linejoin="round" stroke-linecap="round"/>`
     );
   }
 
@@ -992,11 +999,7 @@ function renderPlanets(
         `<line x1="${fmt(point.tickLine.x1)}" y1="${fmt(point.tickLine.y1)}" x2="${fmt(point.tickLine.x2)}" y2="${fmt(point.tickLine.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.82" stroke-width="${fmt(model.scale)}" stroke-linecap="round"/>`
       );
 
-      if (point.connector) {
-        push(
-          `<line class="astro-wheel-point-connector" x1="${fmt(point.connector.x1)}" y1="${fmt(point.connector.y1)}" x2="${fmt(point.connector.x2)}" y2="${fmt(point.connector.y2)}" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.52" stroke-width="${fmt(0.9 * model.scale)}" stroke-linecap="round"/>`
-        );
-      } else if (point.leaderArc) {
+      if (point.leaderArc) {
         push(
           `<path class="astro-wheel-point-leader" d="${escapeAttr(point.leaderArc.path)}" fill="none" stroke="${escapeAttr(point.tickColor)}" stroke-opacity="0.52" stroke-width="${fmt(0.9 * model.scale)}" stroke-linecap="round" stroke-linejoin="round"/>`
         );
@@ -1071,21 +1074,18 @@ function renderAngleGlyph(
   const label = angleDisplayLabel(marker.key);
   const position = formatInlinePosition(marker.zodiacPosition);
 
-  const labelFontSize = marker.labelFontSize;
-  const positionFontSize = clamp(marker.labelFontSize * 0.52, 5.5 * model.scale, 9 * model.scale);
-  const signScale = positionFontSize * 0.88;
-  const gap = clamp(3.2 * model.scale, 2.5, 5);
+  // Angle axes (AC/DC/MC/IC) are already identified by their thicker house-cusp spokes, so
+  // the marker only needs its degree and minutes — no key text, no sign glyph.
+  const positionFontSize = clamp(marker.labelFontSize * 0.62, 6 * model.scale, 10 * model.scale);
+  const gap = clamp(3 * model.scale, 2, 5);
 
-  const labelWidth = estimateTextWidth(label, labelFontSize);
   const degreeWidth = estimateTextWidth(position.degreesText, positionFontSize);
   const minutesWidth = estimateTextWidth(position.minutesText, positionFontSize);
-  const totalWidth = labelWidth + gap + degreeWidth + gap + signScale + gap + minutesWidth;
+  const totalWidth = degreeWidth + gap + minutesWidth;
   const startX = -totalWidth / 2;
 
-  const labelX = startX;
-  const degreeX = labelX + labelWidth + gap;
-  const signX = degreeX + degreeWidth + gap + signScale / 2;
-  const minutesX = signX + signScale / 2 + gap;
+  const degreeX = startX;
+  const minutesX = degreeX + degreeWidth + gap;
 
   push(
     `<g class="astro-wheel-angle-glyph-label" data-angle-marker="${marker.key}" data-longitude="${fmt(marker.longitude)}" transform="translate(${fmt(marker.labelPosition.x)} ${fmt(marker.labelPosition.y)}) rotate(${fmt(marker.labelRotation)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
@@ -1094,20 +1094,7 @@ function renderAngleGlyph(
   push(`<title>${escapeText(`${label} ${position.degreesText} ${position.sign} ${position.minutesText}`)}</title>`);
 
   push(
-    `<text class="astro-wheel-angle-label" x="${fmt(labelX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(labelFontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}" font-weight="700">${escapeText(label)}</text>`
-  );
-
-  push(
     `<text class="astro-wheel-angle-degree" x="${fmt(degreeX)}" y="0" font-family="${textFontFamily()}" font-size="${fmt(positionFontSize)}" text-anchor="start" dominant-baseline="middle" fill="${escapeAttr(model.palette.angleLabel)}">${escapeText(position.degreesText)}</text>`
-  );
-
-  renderInlineSignGlyph(
-    push,
-    position.sign,
-    signX,
-    0,
-    signScale,
-    model.palette.angleLabel
   );
 
   push(
@@ -1365,7 +1352,10 @@ function buildHouseCusps(params: {
   const ring = rings.houses;
   const spokeInnerRadius = rings.aspects.r2;
   const spokeOuterRadius = ring.r2 + 4 * scale;
-  const labelRadius = ring.r2 + 12 * scale;
+  // Keep house numbers on the wheel's outer band (just outside the zodiac colours) rather
+  // than floating in the margin, where external transit/synastry rings and their labels
+  // collide with them.
+  const labelRadius = (ring.r1 + ring.r2) / 2;
   const labelFontSize = clamp((ring.r2 - ring.r1) * 0.48, 10 * scale, 19 * scale);
 
   return houses.map((house, index) => {
@@ -1395,10 +1385,9 @@ function buildAngleMarkers(params: {
   const { chart, center, angleOf, rings, scale } = params;
   const ring = rings.houses;
   const labelFontSize = clamp((ring.r2 - ring.r1) * 0.32, 8 * scale, 18 * scale);
-  const labelRadius = Math.min(
-    ring.r2 + 9 * scale,
-    ring.r2 - Math.max(10 * scale, labelFontSize * 0.6)
-  );
+  // Sit the degree/minutes inside the colored sign band (between the inner and outer zodiac
+  // circles), slightly below the sign-glyph row so the two don't clash.
+  const labelRadius = rings.zodiac.r1 + (rings.zodiac.r2 - rings.zodiac.r1) * 0.32;
 
   const markers = [
     { key: "ASC" as const, position: chart.houses.ascendant },
@@ -1476,10 +1465,15 @@ function buildPointLayer(params: {
 
   const isExternalLayer = radius > rings.houses.r2 + scale;
   const tickLength = Math.min(14 * scale, thickness * 0.34);
+  const layerRailVisibility = resolveLayerRailVisibility({
+    layer,
+    fallback: railVisibility,
+    external: isExternalLayer,
+  });
   const rails = buildPositionRails({
     ring,
     scale,
-    visibility: railVisibility,
+    visibility: layerRailVisibility,
     layerRadius: radius,
     external: isExternalLayer,
     glyphFontSize,
@@ -1510,17 +1504,18 @@ function buildPointLayer(params: {
         );
 
     const connectorRadius = glyphRadius;
+    const glyphClearance = pointGlyphFontSize * 0.34;
     const tickLine = isExternalLayer
       ? lineFromPolar(
           center,
-          rings.houses.r2 + 2 * scale,
-          connectorRadius,
+          Math.max(rings.aspects.r1, rings.aspects.r2 - tickLength * 0.5),
+          rings.aspects.r2 + tickLength * 0.5,
           tickAngle
         )
       : lineFromPolar(
           center,
           Math.min(ring.r2, connectorRadius + tickLength),
-          connectorRadius,
+          Math.min(ring.r2, connectorRadius + glyphClearance),
           tickAngle
         );
 
@@ -1541,7 +1536,9 @@ function buildPointLayer(params: {
       color,
       tickColor,
     });
-    const labelTangentDemandPx = pointGlyphFontSize * 1.12;
+    // Minimum tangential gap between adjacent glyph centres. A glyph is only ~0.45×fontSize
+    // wide, so this keeps clusters tight while still preventing glyphs from overlapping.
+    const labelTangentDemandPx = pointGlyphFontSize * 0.72;
     const configuredTangentDemandPx = layer.collisionThresholdDegrees
       ? deg2rad(clamp(layer.collisionThresholdDegrees, 0, 30)) * glyphRadius
       : 0;
@@ -1623,6 +1620,7 @@ function buildPointLayer(params: {
     houses: layer.chart?.houses.houses ?? [],
     center,
     radius,
+    ring,
     scale,
   });
 
@@ -1736,6 +1734,28 @@ function resolveRailVisibility(
   };
 }
 
+function resolveLayerRailVisibility(params: {
+  layer: AstroWheelPointLayerInput;
+  fallback: Required<AstroWheelRailVisibility>;
+  external: boolean;
+}): Required<AstroWheelRailVisibility> {
+  if (params.layer.rails) {
+    return resolveRailVisibility(params.layer.rails);
+  }
+  if (params.external) {
+    // External rings (transits/synastry) are already dense. Keep only the degree rail by
+    // default — sign and minutes crowd neighbouring points. Callers can opt back in via
+    // the per-layer `rails` option.
+    return {
+      degree: params.fallback.degree,
+      sign: false,
+      minutes: false,
+      retrograde: false,
+    };
+  }
+  return params.fallback;
+}
+
 function buildPositionRails(params: {
   ring: AstroWheelRing;
   scale: number;
@@ -1746,25 +1766,27 @@ function buildPositionRails(params: {
 }): AstroWheelPositionRail[] {
   const { ring, scale, visibility, layerRadius, external, glyphFontSize } = params;
 
+  // Rails read outward/inward from the glyph in the conventional position order:
+  // degree (nearest the glyph) → sign → minutes → retrograde.
   if (external) {
     const gap = Math.max(2.4 * scale, 2);
     const step = Math.max(glyphFontSize * 0.22, 4.2 * scale);
     const firstRailRadius = layerRadius + glyphFontSize * 0.42 + gap;
     return [
       { id: "degree", label: "Degree", radius: round(firstRailRadius), visible: visibility.degree },
-      { id: "sign", label: "Sign", radius: round(firstRailRadius + step), visible: false },
-      { id: "minutes", label: "Minutes", radius: round(firstRailRadius + step * 2), visible: false },
-      { id: "retrograde", label: "Retrograde", radius: round(firstRailRadius + step * 3), visible: false },
+      { id: "minutes", label: "Minutes", radius: round(firstRailRadius + step * 2), visible: visibility.minutes },
+      { id: "sign", label: "Sign", radius: round(firstRailRadius + step), visible: visibility.sign },
+      { id: "retrograde", label: "Retrograde", radius: round(firstRailRadius + step * 3), visible: visibility.retrograde },
     ];
   }
 
   const thickness = ring.r2 - ring.r1;
   const inset = Math.max(2 * scale, 1.5);
   return [
-    { id: "degree", label: "Degree", radius: round(ring.r1 + thickness * 0.10 + inset), visible: visibility.degree },
-    { id: "sign", label: "Sign", radius: round(ring.r1 + thickness * 0.24 + inset), visible: visibility.sign },
-    { id: "minutes", label: "Minutes", radius: round(ring.r1 + thickness * 0.38 + inset), visible: visibility.minutes },
-    { id: "retrograde", label: "Retrograde", radius: round(ring.r1 + thickness * 0.52 + inset), visible: visibility.retrograde },
+    { id: "degree", label: "Degree", radius: round(ring.r1 + thickness * 0.52 + inset), visible: visibility.degree },
+    { id: "minutes", label: "Minutes", radius: round(ring.r1 + thickness * 0.24 + inset), visible: visibility.minutes },
+    { id: "sign", label: "Sign", radius: round(ring.r1 + thickness * 0.38 + inset), visible: visibility.sign },
+    { id: "retrograde", label: "Retrograde", radius: round(ring.r1 + thickness * 0.10 + inset), visible: visibility.retrograde },
   ];
 }
 
@@ -1860,19 +1882,45 @@ function buildBoundaryNotches(params: {
   houses: readonly ZodiacPosition[];
   center: AstroWheelCoordinate;
   radius: number;
+  ring: AstroWheelRing;
   scale: number;
 }): AstroWheelBoundaryNotch[] {
   if (params.houses.length === 0) return [];
-  const notchRadius = params.radius + Math.max(8 * params.scale, 6);
+  const { center, ring, radius, scale } = params;
+
   return params.points.flatMap((point) => {
     if (!point.nearestCuspHouse || point.nearestCuspDistanceDegrees === undefined) return [];
+    // A Boundary Notch is a localized bend in the House Boundary Envelope around a glyph that
+    // has been *displaced across a cusp*. An undisplaced planet — even one sitting exactly on
+    // a cusp — needs no notch; its true tick already marks the cusp, and notching there would
+    // draw a mark straight across the radial tick (the "cross" artifact).
     const displaced = circularAngleDistance(point.trueAngle, point.displayAngle) > deg2rad(0.35);
-    const crowdsCusp = point.nearestCuspDistanceDegrees <= 3.5;
-    if (!displaced && !crowdsCusp) return [];
+    if (!displaced) return [];
+
     const cusp = params.houses[point.nearestCuspHouse - 1];
     const cuspAngle = point.trueAngle + deg2rad(shortestLongitudeDistance(point.longitude, cusp.longitude));
-    const startAngle = cuspAngle - deg2rad(2.8);
-    const endAngle = cuspAngle + deg2rad(2.8);
+
+    // Which side of the cusp the true position vs the displayed glyph fall on. A notch is
+    // warranted when the glyph has crossed the cusp into the neighbouring house's angular
+    // territory (true and display on opposite sides), or when it crowds right up to it.
+    const trueDelta = signedAngleDelta(cuspAngle, point.trueAngle);
+    const displayDelta = signedAngleDelta(cuspAngle, point.displayAngle);
+    const crossed = Math.sign(trueDelta) !== Math.sign(displayDelta) && displayDelta !== 0;
+    const crowds = point.nearestCuspDistanceDegrees <= 2;
+    if (!crossed && !crowds) return [];
+
+    // The envelope bends out from the exact cusp, past the displaced glyph, then closes. The
+    // pocket sits on the glyph's side so the glyph stays visually inside its true house.
+    const glyphHalfAngle = Math.max(point.glyphScale * 0.62, 4 * scale) / Math.max(radius, 1);
+    const directed = displayDelta === 0 ? trueDelta : displayDelta;
+    const direction = directed >= 0 ? 1 : -1;
+    const endAngle = cuspAngle + directed + direction * glyphHalfAngle;
+
+    // A small rectangle in the radii: spans the glyph band, hugging the planet glyph row.
+    const halfThickness = Math.max(point.glyphScale * 0.9, 7 * scale);
+    const innerRadius = clamp(radius - halfThickness, ring.r1, ring.r2);
+    const outerRadius = clamp(radius + halfThickness, ring.r1, ring.r2);
+
     return [{
       id: `${params.layerId}-${point.key}-notch`,
       layerId: params.layerId,
@@ -1880,12 +1928,40 @@ function buildBoundaryNotches(params: {
       house: point.house ?? 0,
       cuspHouse: point.nearestCuspHouse,
       cuspLongitude: normalizeAngle(cusp.longitude),
-      radius: notchRadius,
-      startAngle,
+      radius: outerRadius,
+      innerRadius,
+      outerRadius,
+      startAngle: cuspAngle,
       endAngle,
-      path: arcSegmentPath(params.center, notchRadius, startAngle, endAngle),
+      path: boundaryNotchPath(center, innerRadius, outerRadius, cuspAngle, endAngle),
     }];
   });
+}
+
+function boundaryNotchPath(
+  center: AstroWheelCoordinate,
+  innerRadius: number,
+  outerRadius: number,
+  cuspAngle: number,
+  endAngle: number
+): string {
+  const outerCusp = polarToXY(center.x, center.y, outerRadius, cuspAngle);
+  const outerEnd = polarToXY(center.x, center.y, outerRadius, endAngle);
+  const innerEnd = polarToXY(center.x, center.y, innerRadius, endAngle);
+  const innerCusp = polarToXY(center.x, center.y, innerRadius, cuspAngle);
+  const delta = signedAngleDelta(cuspAngle, endAngle);
+  const sweepOuter = delta >= 0 ? 1 : 0;
+  const sweepInner = delta >= 0 ? 0 : 1;
+
+  // Open along the outer band, drop a closing radial line on the far side, return along the
+  // inner band, then close back up the cusp line — a curved rectangle hugging the cusp.
+  return [
+    `M ${fmt(outerCusp.x)} ${fmt(outerCusp.y)}`,
+    `A ${fmt(outerRadius)} ${fmt(outerRadius)} 0 0 ${sweepOuter} ${fmt(outerEnd.x)} ${fmt(outerEnd.y)}`,
+    `L ${fmt(innerEnd.x)} ${fmt(innerEnd.y)}`,
+    `A ${fmt(innerRadius)} ${fmt(innerRadius)} 0 0 ${sweepInner} ${fmt(innerCusp.x)} ${fmt(innerCusp.y)}`,
+    "Z",
+  ].join(" ");
 }
 
 function buildAspectLayer(params: {
@@ -1899,11 +1975,19 @@ function buildAspectLayer(params: {
   excludedBodies: ReadonlySet<string>;
 }): AstroWheelAspectLayer {
   const { layer, chart, pointByKey, center, angleOf, rings, palette, excludedBodies } = params;
-  const sourceEdges = getSourceAspectEdges(chart, {
-    enabled: true,
-    edges: layer.edges,
-    aspectSpecs: layer.aspectSpecs,
-  });
+  const sourceEdges = layer.edges
+    ? layer.edges
+    : layer.chartB
+      ? computeCrossAspectEdges(
+          chart.planets,
+          layer.chartB.planets,
+          layer.aspectSpecs ?? ASTRO_WHEEL_DEFAULT_ASPECT_SPECS
+        )
+      : getSourceAspectEdges(chart, {
+          enabled: true,
+          edges: layer.edges,
+          aspectSpecs: layer.aspectSpecs,
+        });
   const aspectRadius = layer.radius ?? rings.aspects.r2 * (layer.radiusScale ?? 0.96);
   const layerPointPrefix = pointKeyPrefix(layer.pointLayerId);
   const layerPointPrefixA = layer.pointLayerIdA ? pointKeyPrefix(layer.pointLayerIdA) : layerPointPrefix;
@@ -2248,15 +2332,6 @@ function buildPointConnector(params: {
   };
 }
 
-function arcSegmentPath(center: AstroWheelCoordinate, radius: number, startAngle: number, endAngle: number) {
-  const start = polarToXY(center.x, center.y, radius, startAngle);
-  const end = polarToXY(center.x, center.y, radius, endAngle);
-  const delta = Math.abs(signedAngleDelta(startAngle, endAngle));
-  const largeArc = delta > Math.PI ? 1 : 0;
-  const sweep = signedAngleDelta(startAngle, endAngle) >= 0 ? 1 : 0;
-  return `M ${fmt(start.x)} ${fmt(start.y)} A ${fmt(radius)} ${fmt(radius)} 0 ${largeArc} ${sweep} ${fmt(end.x)} ${fmt(end.y)}`;
-}
-
 function getSourceAspectEdges(
   chart: BirthChart,
   options: ResolvedAspectOptions
@@ -2293,6 +2368,40 @@ function computeAspectEdges(
       edges.push({
         planetA: keys[i],
         planetB: keys[j],
+        longitudeA: normalizeAngle(planetA.longitude),
+        longitudeB: normalizeAngle(planetB.longitude),
+        aspect: match.spec.name,
+        aspectAngle: match.spec.angle,
+        delta: match.delta,
+        orb: match.orb,
+      });
+    }
+  }
+
+  return edges;
+}
+
+function computeCrossAspectEdges(
+  planetsA: Record<string, { longitude: number }>,
+  planetsB: Record<string, { longitude: number }>,
+  specs: readonly AspectSpec[]
+): AspectEdge[] {
+  const keysA = Object.keys(planetsA);
+  const keysB = Object.keys(planetsB);
+  const edges: AspectEdge[] = [];
+
+  for (const keyA of keysA) {
+    for (const keyB of keysB) {
+      const planetA = planetsA[keyA];
+      const planetB = planetsB[keyB];
+      const match = getAspectMatch(planetA.longitude, planetB.longitude, specs);
+      if (!match) {
+        continue;
+      }
+
+      edges.push({
+        planetA: keyA,
+        planetB: keyB,
         longitudeA: normalizeAngle(planetA.longitude),
         longitudeB: normalizeAngle(planetB.longitude),
         aspect: match.spec.name,
