@@ -1,5 +1,7 @@
 # Render-model-first visual surfaces
 
+Note: ADR-0004 supersedes the astrology wheel portions of this decision. This ADR remains the direction for Tree/Archeometer-style surfaces that need custom rendering or interaction geometry.
+
 Visual modules expose renderer-independent geometry before they generate SVG. The SVG output is a projection of the render model, not the source of layout truth. This applies to astrology wheels, Archeometer diagrams, and Tree of Life diagrams.
 
 The Tree of Life renderer already mostly follows this direction through `getTreeRenderModel()`: it exposes stable sphere/path identities, geometry, anchors, hit targets, layer ordering, and activation state. The Archeometer renderer only partially follows it: `getArcheometerRenderModel()` exposes rings, palette, layer flags, and source data, but many per-element coordinates and interaction targets are still computed inside the SVG renderer. The astrology wheel has a render model, but planet label layout, connector behavior, and visibility controls are still too coupled to the generated SVG.

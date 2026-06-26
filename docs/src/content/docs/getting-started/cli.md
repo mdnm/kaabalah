@@ -225,9 +225,6 @@ kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --c
 # Write directly to a file
 kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --background=transparent --output=chart.svg --json
 
-# Inspect geometry for custom renderers
-kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --render-model --json --compact
-
 # Input-json alternative, including visual options
 kaabalah astrology:wheel --input-json='{"date":"1990-01-15","time":"14:30","lat":40.7128,"lon":-74.006,"wheelOptions":{"background":"transparent","aspects":false}}' --json --compact --fields=svg
 ```
@@ -254,14 +251,13 @@ The command uses the same chart calculation inputs as `astrology`, then renders 
 | `--no-houses` | boolean | false | Hide house cusps, labels, and angle markers |
 | `--no-points` | boolean | false | Hide birth planets, nodes, and vertex |
 | `--no-aspects` | boolean | false | Hide aspect lines |
-| `--render-model` | boolean | false | Return wheel geometry JSON instead of SVG |
 | `--output` | string | - | Write SVG to a file instead of stdout |
 | `--viewbox-width` | number | - | Override SVG viewBox width |
 | `--viewbox-height` | number | - | Override SVG viewBox height |
 | `--viewbox-min-x` | number | 0 | Override SVG viewBox min-x |
 | `--viewbox-min-y` | number | 0 | Override SVG viewBox min-y |
 
-For advanced renderer options such as custom palettes, transit layers, custom point layers, or explicit `aspectSpecs`, pass a `wheelOptions` object through `--input-json`. CLI flags override matching top-level options.
+For advanced static SVG options such as custom palettes, compact labels, ring proportions, or explicit `aspectSpecs`, pass a `wheelOptions` object through `--input-json`. CLI flags override matching top-level options.
 
 ### astrology:synastry
 

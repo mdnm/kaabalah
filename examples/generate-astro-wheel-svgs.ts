@@ -45,7 +45,6 @@ const DEMO_ASPECT_COLORS = {
 };
 
 const chart = sampleBirthChart();
-const transitChart = shiftedChart(chart, 42);
 
 const svgs: Record<string, string> = {
   "wheel-default.svg": generateAstroWheelSvg(chart, {
@@ -69,41 +68,6 @@ const svgs: Record<string, string> = {
   "wheel-no-aspects.svg": generateAstroWheelSvg(chart, {
     background: "#fff",
     aspects: false,
-  }),
-
-  "wheel-transit.svg": generateAstroWheelSvg(chart, {
-    background: "#fff",
-    aspects: false,
-    palette: {
-      aspects: DEMO_ASPECT_COLORS,
-    },
-    pointLayers: [
-      {
-        id: "transit",
-        label: "Transits",
-        chart: transitChart,
-        color: "#ea580c",
-        tickColor: "#ea580c",
-        radius: "external",
-        radiusOffset: 18,
-        glyphScale: 0.82,
-      },
-    ],
-    aspectLayers: [
-      {
-        id: "transit",
-        label: "Transit-to-natal aspects",
-        // Transiting planets (side A) aspecting the natal chart (side B).
-        chart: transitChart,
-        chartB: chart,
-        pointLayerIdA: "transit",
-        pointLayerIdB: "birth",
-        aspectSpecs: DEMO_ASPECT_SPECS,
-        colors: DEMO_ASPECT_COLORS,
-        strokeWidth: 1.35,
-        opacityScale: 0.85,
-      },
-    ],
   }),
 };
 
@@ -194,49 +158,6 @@ function sampleBirthChart(): WheelChart {
 
     sect: "diurnal",
   } as WheelChart;
-}
-
-function shiftedChart(base: WheelChart, offset: number): WheelChart {
-  const planets = Object.fromEntries(
-    typedEntries(base.planets).map(([key, value]) => {
-      const longitude = normalizeLongitude(value.longitude + offset);
-
-      return [
-        key,
-        {
-          ...value,
-          longitude,
-          zodiacPosition: zodiacPosition(
-            signAt(longitude),
-            longitude,
-            value.zodiacPosition.house
-          ),
-        },
-      ];
-    })
-  ) as WheelChart["planets"];
-
-  const nodes = Object.fromEntries(
-    typedEntries(base.nodes).map(([key, value]) => {
-      const longitude = normalizeLongitude(value.longitude + offset);
-
-      return [
-        key,
-        {
-          ...value,
-          ...zodiacPosition(signAt(longitude), longitude, value.house),
-          longitude,
-        },
-      ];
-    })
-  ) as WheelChart["nodes"];
-
-  return {
-    ...base,
-    planets,
-    nodes,
-    aspects: [] as WheelChart["aspects"],
-  };
 }
 
 function planet(
@@ -336,12 +257,4 @@ function uniqueGlyphs<T extends { category: string; key: string }>(
   return result.sort((a, b) =>
     `${a.category}:${a.key}`.localeCompare(`${b.category}:${b.key}`)
   );
-}
-
-function typedEntries<T extends object>(
-  object: T
-): Array<[Extract<keyof T, string>, T[Extract<keyof T, string>]]> {
-  return Object.entries(object) as Array<
-    [Extract<keyof T, string>, T[Extract<keyof T, string>]]
-  >;
 }

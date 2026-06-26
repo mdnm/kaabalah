@@ -102,7 +102,7 @@ export interface AstroWheelPointSource {
   zodiacPosition?: ZodiacPosition;
 }
 
-export interface AstroWheelPointLayerInput {
+interface AstroWheelPointGroupInput {
   id: string;
   label?: string;
   chart?: BirthChart;
@@ -118,28 +118,18 @@ export interface AstroWheelPointLayerInput {
   vertex?: boolean;
 }
 
-export interface AstroWheelAspectLayerInput {
+interface AstroWheelAspectGroupInput {
   id: string;
   label?: string;
   chart?: BirthChart;
-  /**
-   * Second chart for cross-chart aspects (e.g. transit-to-natal or synastry). When set,
-   * aspects are computed between `chart`'s planets (side A) and `chartB`'s planets (side B)
-   * instead of within a single chart. Pair with `pointLayerIdA`/`pointLayerIdB` so each
-   * endpoint anchors to the correct point layer.
-   */
-  chartB?: BirthChart;
   edges?: readonly AspectEdge[];
   aspectSpecs?: readonly AspectSpec[];
-  pointLayerId?: string;
   color?: string;
   colors?: Partial<Record<AspectName | (string & {}), string>>;
   radius?: number;
   radiusScale?: number;
   strokeWidth?: number;
   opacityScale?: number;
-  pointLayerIdA?: string;
-  pointLayerIdB?: string;
 }
 
 export interface AstroWheelSvgOptions {
@@ -152,8 +142,6 @@ export interface AstroWheelSvgOptions {
   aspects?: boolean | AstroWheelAspectOptions;
   houses?: boolean | AstroWheelHouseOptions;
   points?: boolean | AstroWheelPointOptions;
-  pointLayers?: readonly AstroWheelPointLayerInput[];
-  aspectLayers?: readonly AstroWheelAspectLayerInput[];
   excludeBodies?: readonly string[];
   padding?: number;
   title?: string;
@@ -219,7 +207,7 @@ export type AstroWheelPositionRailId = "degree" | "sign" | "minutes" | "retrogra
 export type AstroWheelRailVisibilityPreset = "full" | "compact" | "glyph-only";
 export type AstroWheelRailVisibility = Partial<Record<AstroWheelPositionRailId, boolean>>;
 
-export interface AstroWheelPositionRail {
+interface AstroWheelPositionRail {
   id: AstroWheelPositionRailId;
   label: string;
   radius: number;
@@ -237,24 +225,6 @@ export interface AstroWheelPointRailLabel {
   visible: boolean;
 }
 
-export interface AstroWheelBoundaryNotch {
-  id: string;
-  layerId: string;
-  pointKey: string;
-  house: number;
-  cuspHouse: number;
-  cuspLongitude: number;
-  /** Outer radius of the relief pocket (alias of `outerRadius`, kept for compatibility). */
-  radius: number;
-  innerRadius: number;
-  outerRadius: number;
-  /** Screen angle of the exact cusp (where the envelope detour starts). */
-  startAngle: number;
-  /** Screen angle the envelope bends out to, just past the displaced glyph. */
-  endAngle: number;
-  path: string;
-}
-
 export interface AstroWheelAngleMarker {
   key: "ASC" | "MC" | "DSC" | "IC";
   longitude: number;
@@ -268,7 +238,7 @@ export interface AstroWheelAngleMarker {
 export type AstroWheelPointKind = "planet" | "node" | "vertex";
 
 export interface AstroWheelPoint {
-  layerId: string;
+  groupId: string;
   key: string;
   name: string;
   kind: AstroWheelPointKind;
@@ -299,7 +269,7 @@ export interface AstroWheelPoint {
 }
 
 export interface AstroWheelAspectLine {
-  layerId: string;
+  groupId: string;
   planetA: string;
   planetB: string;
   planetAKey: string;
@@ -314,24 +284,23 @@ export interface AstroWheelAspectLine {
   strokeWidth: number;
 }
 
-export interface AstroWheelPointLayer {
+interface AstroWheelPointGroup {
   id: string;
   label?: string;
   color: string;
   tickColor: string;
   radius: number;
   rails: readonly AstroWheelPositionRail[];
-  notches: readonly AstroWheelBoundaryNotch[];
   points: readonly AstroWheelPoint[];
 }
 
-export interface AstroWheelAspectLayer {
+interface AstroWheelAspectGroup {
   id: string;
   label?: string;
   aspectLines: readonly AstroWheelAspectLine[];
 }
 
-export interface AstroWheelRenderModel {
+interface AstroWheelSvgModel {
   viewBox: Required<AstroWheelViewBox>;
   center: AstroWheelCoordinate;
   outerRadius: number;
@@ -344,10 +313,9 @@ export interface AstroWheelRenderModel {
   points: readonly AstroWheelPoint[];
   pointByKey: Record<string, AstroWheelPoint>;
   aspectLines: readonly AstroWheelAspectLine[];
-  pointLayers: readonly AstroWheelPointLayer[];
-  aspectLayers: readonly AstroWheelAspectLayer[];
+  pointGroups: readonly AstroWheelPointGroup[];
+  aspectGroups: readonly AstroWheelAspectGroup[];
   positionRails: readonly AstroWheelPositionRail[];
-  boundaryNotches: readonly AstroWheelBoundaryNotch[];
   palette: ResolvedAstroWheelPalette;
 }
 
@@ -591,10 +559,10 @@ export function generateAstroGlyphSvg(
   return svg.replace("<svg ", `<svg data-astro-glyph="${escapeAttr(glyph.key)}" data-astro-glyph-category="${glyph.category}" `);
 }
 
-export function getAstroWheelRenderModel(
+function buildAstroWheelSvgModel(
   chart: BirthChart,
   options: AstroWheelSvgOptions = {}
-): AstroWheelRenderModel {
+): AstroWheelSvgModel {
   const viewBox = normalizeViewBox(options.viewBox);
   const palette = resolvePalette(options.palette, options.background ?? "transparent");
   const excludedBodies = resolveExcludedBodies(options.excludeBodies);
@@ -637,7 +605,7 @@ export function getAstroWheelRenderModel(
         scale,
       })
     : [];
-  const basePointLayer = buildPointLayer({
+  const basePointGroup = buildPointGroup({
     layer: {
       id: "birth",
       label: "Birth",
@@ -659,28 +627,13 @@ export function getAstroWheelRenderModel(
     maxDisplacementDegrees: maxPointDisplacementDegrees,
     railVisibility,
   });
-  const extraPointLayers = (options.pointLayers ?? []).map((layer) =>
-    buildPointLayer({
-      layer,
-      center,
-      angleOf,
-      rings,
-      scale,
-      palette,
-      excludedBodies,
-      pointConnectorMode,
-      maxDisplacementDegrees: maxPointDisplacementDegrees,
-      railVisibility,
-    })
-  );
-  const pointLayers = [
-    ...(resolvedPoints.enabled ? [basePointLayer] : []),
-    ...extraPointLayers,
+  const pointGroups = [
+    ...(resolvedPoints.enabled ? [basePointGroup] : []),
   ];
-  const points = pointLayers.flatMap((layer) => [...layer.points]);
+  const points = pointGroups.flatMap((layer) => [...layer.points]);
   const pointByKey = Object.fromEntries(points.map((point) => [point.key, point]));
-  const baseAspectLayer = resolvedAspects.enabled
-    ? buildAspectLayer({
+  const baseAspectGroup = resolvedAspects.enabled
+    ? buildAspectGroup({
         layer: {
           id: "birth",
           label: "Birth aspects",
@@ -697,25 +650,11 @@ export function getAstroWheelRenderModel(
         excludedBodies,
       })
     : null;
-  const extraAspectLayers = (options.aspectLayers ?? []).map((layer) =>
-    buildAspectLayer({
-      layer,
-      chart: layer.chart ?? chart,
-      pointByKey,
-      center,
-      angleOf,
-      rings,
-      palette,
-      excludedBodies,
-    })
-  );
-  const aspectLayers = [
-    ...(baseAspectLayer ? [baseAspectLayer] : []),
-    ...extraAspectLayers,
+  const aspectGroups = [
+    ...(baseAspectGroup ? [baseAspectGroup] : []),
   ];
-  const aspectLines = aspectLayers.flatMap((layer) => [...layer.aspectLines]);
-  const positionRails = basePointLayer.rails;
-  const boundaryNotches = pointLayers.flatMap((layer) => [...layer.notches]);
+  const aspectLines = aspectGroups.flatMap((layer) => [...layer.aspectLines]);
+  const positionRails = basePointGroup.rails;
 
   return {
     viewBox,
@@ -730,10 +669,9 @@ export function getAstroWheelRenderModel(
     points,
     pointByKey,
     aspectLines,
-    pointLayers,
-    aspectLayers,
+    pointGroups,
+    aspectGroups,
     positionRails,
-    boundaryNotches,
     palette,
   };
 }
@@ -742,7 +680,7 @@ export function generateAstroWheelSvg(
   chart: BirthChart,
   options: AstroWheelSvgOptions = {}
 ): string {
-  const model = getAstroWheelRenderModel(chart, options);
+  const model = buildAstroWheelSvgModel(chart, options);
   const viewBox = model.viewBox;
   const zodiacOptions = resolveZodiacOptions(options.zodiac);
   const houseOptions = resolveHouseOptions(options.houses);
@@ -783,7 +721,7 @@ export function generateAstroWheelSvg(
 
 function renderSvgDefs(
   push: (line: string) => void,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
   push(`<defs>`);
   push(
@@ -808,20 +746,20 @@ function renderSvgDefs(
 
 function renderAspects(
   push: (line: string) => void,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
-  if (model.aspectLayers.length === 0) {
+  if (model.aspectGroups.length === 0) {
     return;
   }
 
   push(`<g id="astro-wheel-aspects" aria-label="aspects">`);
 
-  for (const layer of model.aspectLayers) {
-    push(`<g class="astro-wheel-aspect-layer" data-aspect-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
+  for (const layer of model.aspectGroups) {
+    push(`<g class="astro-wheel-aspect-group" data-aspect-group="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
 
     for (const aspect of layer.aspectLines) {
       push(
-        `<line data-aspect-layer="${escapeAttr(aspect.layerId)}" data-aspect="${escapeAttr(aspect.aspect)}" data-planet-a="${escapeAttr(aspect.planetA)}" data-planet-b="${escapeAttr(aspect.planetB)}" x1="${fmt(aspect.line.x1)}" y1="${fmt(aspect.line.y1)}" x2="${fmt(aspect.line.x2)}" y2="${fmt(aspect.line.y2)}" stroke="${escapeAttr(aspect.color)}" stroke-opacity="${fmt(aspect.opacity)}" stroke-width="${fmt(aspect.strokeWidth * model.scale)}" stroke-linecap="round"/>`
+        `<line data-aspect-group="${escapeAttr(aspect.groupId)}" data-aspect="${escapeAttr(aspect.aspect)}" data-planet-a="${escapeAttr(aspect.planetA)}" data-planet-b="${escapeAttr(aspect.planetB)}" x1="${fmt(aspect.line.x1)}" y1="${fmt(aspect.line.y1)}" x2="${fmt(aspect.line.x2)}" y2="${fmt(aspect.line.y2)}" stroke="${escapeAttr(aspect.color)}" stroke-opacity="${fmt(aspect.opacity)}" stroke-width="${fmt(aspect.strokeWidth * model.scale)}" stroke-linecap="round"/>`
       );
     }
 
@@ -837,7 +775,7 @@ function renderAspects(
 
 function renderAspectBoundary(
   push: (line: string) => void,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
   push(
     `<circle id="astro-wheel-aspect-boundary" cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(model.rings.aspects.r2)}" fill="none" stroke="${escapeAttr(model.palette.aspectGuide)}" stroke-opacity="0.9" stroke-width="${fmt(1.25 * model.scale)}"/>`
@@ -846,7 +784,7 @@ function renderAspectBoundary(
 
 function renderZodiac(
   push: (line: string) => void,
-  model: AstroWheelRenderModel,
+  model: AstroWheelSvgModel,
   options: ResolvedZodiacOptions
 ) {
   if (!options.segments && !options.glyphs && !options.ticks) {
@@ -933,7 +871,7 @@ function renderZodiacGlyph(
 
 function renderHouses(
   push: (line: string) => void,
-  model: AstroWheelRenderModel,
+  model: AstroWheelSvgModel,
   options: ResolvedHouseOptions
 ) {
   if (!options.cuspLines && !options.labels && !options.angles) {
@@ -967,30 +905,24 @@ function renderHouses(
 
 function renderPlanets(
   push: (line: string) => void,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
-  if (model.pointLayers.length === 0) {
+  if (model.pointGroups.length === 0) {
     return;
   }
 
   push(`<g id="astro-wheel-planets" aria-label="planets">`);
 
-  for (const layer of model.pointLayers) {
-    renderPointLayerGuide(push, layer, model);
+  for (const layer of model.pointGroups) {
+    renderPointGroupGuide(push, layer, model);
   }
 
-  for (const notch of model.boundaryNotches) {
-    push(
-      `<path class="astro-wheel-boundary-notch" data-point-layer="${escapeAttr(notch.layerId)}" data-point-key="${escapeAttr(notch.pointKey)}" data-house="${notch.house}" data-cusp-house="${notch.cuspHouse}" d="${escapeAttr(notch.path)}" fill="none" stroke="${escapeAttr(model.palette.houseLine)}" stroke-opacity="0.6" stroke-width="${fmt(1.1 * model.scale)}" stroke-linejoin="round" stroke-linecap="round"/>`
-    );
-  }
-
-  for (const layer of model.pointLayers) {
-    push(`<g class="astro-wheel-point-layer" data-point-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
+  for (const layer of model.pointGroups) {
+    push(`<g class="astro-wheel-point-group" data-point-group="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)}"` : ""}>`);
 
     for (const point of layer.points) {
       push(
-        `<g class="astro-wheel-point" data-point-layer="${escapeAttr(point.layerId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}">`
+        `<g class="astro-wheel-point" data-point-group="${escapeAttr(point.groupId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}">`
       );
 
       push(`<title>${escapeText(point.name)} ${fmt(point.longitude)}°</title>`);
@@ -1018,10 +950,10 @@ function renderPlanets(
   push(`</g>`);
 }
 
-function renderPointLayerGuide(
+function renderPointGroupGuide(
   push: (line: string) => void,
-  layer: AstroWheelPointLayer,
-  model: AstroWheelRenderModel
+  layer: AstroWheelPointGroup,
+  model: AstroWheelSvgModel
 ) {
   const isExternal = layer.radius > model.rings.houses.r2 + model.scale;
   if (!isExternal) {
@@ -1029,15 +961,15 @@ function renderPointLayerGuide(
   }
 
   push(
-    `<circle class="astro-wheel-external-point-ring" data-point-layer="${escapeAttr(layer.id)}" cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(layer.radius)}" fill="none" stroke="${escapeAttr(layer.tickColor)}" stroke-opacity="0.32" stroke-width="${fmt(1.15 * model.scale)}"/>`
+    `<circle class="astro-wheel-external-point-ring" data-point-group="${escapeAttr(layer.id)}" cx="${fmt(model.center.x)}" cy="${fmt(model.center.y)}" r="${fmt(layer.radius)}" fill="none" stroke="${escapeAttr(layer.tickColor)}" stroke-opacity="0.32" stroke-width="${fmt(1.15 * model.scale)}"/>`
   );
 }
 
 function renderGlyphOverlay(
   push: (line: string) => void,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
-  if (model.angleMarkers.length === 0 && model.pointLayers.length === 0) {
+  if (model.angleMarkers.length === 0 && model.pointGroups.length === 0) {
     return;
   }
 
@@ -1051,10 +983,10 @@ function renderGlyphOverlay(
     push(`</g>`);
   }
 
-  if (model.pointLayers.length > 0) {
+  if (model.pointGroups.length > 0) {
     push(`<g id="astro-wheel-point-glyphs" aria-label="planet glyphs">`);
-    for (const layer of model.pointLayers) {
-      push(`<g class="astro-wheel-point-glyph-layer" data-point-layer="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)} glyphs"` : ""}>`);
+    for (const layer of model.pointGroups) {
+      push(`<g class="astro-wheel-point-glyph-layer" data-point-group="${escapeAttr(layer.id)}"${layer.label ? ` aria-label="${escapeAttr(layer.label)} glyphs"` : ""}>`);
       for (const point of layer.points) {
         renderPointLabelGroup(push, point, model);
       }
@@ -1069,7 +1001,7 @@ function renderGlyphOverlay(
 function renderAngleGlyph(
   push: (line: string) => void,
   marker: AstroWheelAngleMarker,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
   const label = angleDisplayLabel(marker.key);
   const position = formatInlinePosition(marker.zodiacPosition);
@@ -1113,10 +1045,10 @@ function angleDisplayLabel(key: AstroWheelAngleMarker["key"]) {
 function renderPointLabelGroup(
   push: (line: string) => void,
   point: AstroWheelPoint,
-  model: AstroWheelRenderModel
+  model: AstroWheelSvgModel
 ) {
   push(
-    `<g class="astro-wheel-point-label" data-point-layer="${escapeAttr(point.layerId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}" data-display-longitude="${fmt(point.displayLongitude)}" data-house="${point.house ?? ""}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
+    `<g class="astro-wheel-point-label" data-point-group="${escapeAttr(point.groupId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-point-kind="${point.kind}" data-longitude="${fmt(point.longitude)}" data-display-longitude="${fmt(point.displayLongitude)}" data-house="${point.house ?? ""}" transform="translate(${fmt(point.glyphPosition.x)} ${fmt(point.glyphPosition.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
   );
 
   push(`<title>${escapeText(pointLabelTitle(point))}</title>`);
@@ -1127,7 +1059,7 @@ function renderPointLabelGroup(
   for (const label of point.railLabels) {
     if (!label.visible) continue;
     push(
-      `<g class="astro-wheel-position-rail-label" data-point-layer="${escapeAttr(point.layerId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-position-rail="${label.railId}" transform="translate(${fmt(label.position.x)} ${fmt(label.position.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
+      `<g class="astro-wheel-position-rail-label" data-point-group="${escapeAttr(point.groupId)}" data-point-key="${escapeAttr(point.key)}" data-point-name="${escapeAttr(point.name)}" data-position-rail="${label.railId}" transform="translate(${fmt(label.position.x)} ${fmt(label.position.y)})" filter="url(#${GLYPH_OUTLINE_FILTER_ID})">`
     );
     if (label.railId === "sign" && label.sign) {
       renderInlineSignGlyph(push, label.sign, 0, 0, label.glyphScale ?? label.fontSize, point.color);
@@ -1289,14 +1221,9 @@ function resolvePointGlyph(name: string): AstroGlyphDefinition | null {
 }
 
 function getExternalPointPadding(options: AstroWheelSvgOptions, scale: number) {
-  const externalLayers = options.pointLayers?.filter((layer) => layer.radius === "external") ?? [];
-  if (externalLayers.length === 0) {
-    return 0;
-  }
-
-  return Math.max(
-    ...externalLayers.map((layer) => (layer.radiusOffset ?? 18) + 36 * scale)
-  );
+  void options;
+  void scale;
+  return 0;
 }
 
 function buildZodiacSegments(params: {
@@ -1423,8 +1350,8 @@ function buildAngleMarkers(params: {
   });
 }
 
-function buildPointLayer(params: {
-  layer: AstroWheelPointLayerInput;
+function buildPointGroup(params: {
+  layer: AstroWheelPointGroupInput;
   center: AstroWheelCoordinate;
   angleOf: (longitude: number) => number;
   rings: Record<AstroWheelRing["id"], AstroWheelRing>;
@@ -1434,7 +1361,7 @@ function buildPointLayer(params: {
   pointConnectorMode: AstroWheelPointConnectorMode;
   maxDisplacementDegrees: number;
   railVisibility: Required<AstroWheelRailVisibility>;
-}): AstroWheelPointLayer {
+}): AstroWheelPointGroup {
   const {
     layer,
     center,
@@ -1448,7 +1375,7 @@ function buildPointLayer(params: {
     railVisibility,
   } = params;
   const ring = rings.planets;
-  const requestedRadius = resolvePointLayerRadius(layer, rings);
+  const requestedRadius = resolvePointGroupRadius(layer, rings);
   const requestedExternalLayer = requestedRadius > rings.houses.r2 + scale;
 
   const thickness = ring.r2 - ring.r1;
@@ -1614,16 +1541,6 @@ function buildPointLayer(params: {
       connector,
     };
   });
-  const notches = buildBoundaryNotches({
-    layerId: layer.id,
-    points,
-    houses: layer.chart?.houses.houses ?? [],
-    center,
-    radius,
-    ring,
-    scale,
-  });
-
   return {
     id: layer.id,
     label: layer.label,
@@ -1631,13 +1548,12 @@ function buildPointLayer(params: {
     tickColor,
     radius,
     rails,
-    notches,
     points,
   };
 }
 
 function makeAstroWheelPoint(params: {
-  layer: AstroWheelPointLayerInput;
+  layer: AstroWheelPointGroupInput;
   seed: PointSeed;
   tickLine: AstroWheelLine;
   trueAngle: number;
@@ -1679,7 +1595,7 @@ function makeAstroWheelPoint(params: {
   });
   const glyphScale = glyphFontSize * 0.66;
   return {
-    layerId: layer.id,
+    groupId: layer.id,
     key: seed.key,
     name: seed.name,
     kind: seed.kind,
@@ -1717,13 +1633,13 @@ function makeAstroWheelPoint(params: {
 function resolveRailVisibility(
   input: AstroWheelRailVisibilityPreset | AstroWheelRailVisibility | undefined
 ): Required<AstroWheelRailVisibility> {
-  if (input === "glyph-only") {
+  if (!input || input === "glyph-only") {
     return { degree: false, sign: false, minutes: false, retrograde: false };
   }
   if (input === "compact") {
     return { degree: true, sign: true, minutes: false, retrograde: true };
   }
-  if (!input || input === "full") {
+  if (input === "full") {
     return { degree: true, sign: true, minutes: true, retrograde: true };
   }
   return {
@@ -1735,7 +1651,7 @@ function resolveRailVisibility(
 }
 
 function resolveLayerRailVisibility(params: {
-  layer: AstroWheelPointLayerInput;
+  layer: AstroWheelPointGroupInput;
   fallback: Required<AstroWheelRailVisibility>;
   external: boolean;
 }): Required<AstroWheelRailVisibility> {
@@ -1876,96 +1792,8 @@ function buildPointLineConnector(params: {
   };
 }
 
-function buildBoundaryNotches(params: {
-  layerId: string;
-  points: readonly AstroWheelPoint[];
-  houses: readonly ZodiacPosition[];
-  center: AstroWheelCoordinate;
-  radius: number;
-  ring: AstroWheelRing;
-  scale: number;
-}): AstroWheelBoundaryNotch[] {
-  if (params.houses.length === 0) return [];
-  const { center, ring, radius, scale } = params;
-
-  return params.points.flatMap((point) => {
-    if (!point.nearestCuspHouse || point.nearestCuspDistanceDegrees === undefined) return [];
-    // A Boundary Notch is a localized bend in the House Boundary Envelope around a glyph that
-    // has been *displaced across a cusp*. An undisplaced planet — even one sitting exactly on
-    // a cusp — needs no notch; its true tick already marks the cusp, and notching there would
-    // draw a mark straight across the radial tick (the "cross" artifact).
-    const displaced = circularAngleDistance(point.trueAngle, point.displayAngle) > deg2rad(0.35);
-    if (!displaced) return [];
-
-    const cusp = params.houses[point.nearestCuspHouse - 1];
-    const cuspAngle = point.trueAngle + deg2rad(shortestLongitudeDistance(point.longitude, cusp.longitude));
-
-    // Which side of the cusp the true position vs the displayed glyph fall on. A notch is
-    // warranted when the glyph has crossed the cusp into the neighbouring house's angular
-    // territory (true and display on opposite sides), or when it crowds right up to it.
-    const trueDelta = signedAngleDelta(cuspAngle, point.trueAngle);
-    const displayDelta = signedAngleDelta(cuspAngle, point.displayAngle);
-    const crossed = Math.sign(trueDelta) !== Math.sign(displayDelta) && displayDelta !== 0;
-    const crowds = point.nearestCuspDistanceDegrees <= 2;
-    if (!crossed && !crowds) return [];
-
-    // The envelope bends out from the exact cusp, past the displaced glyph, then closes. The
-    // pocket sits on the glyph's side so the glyph stays visually inside its true house.
-    const glyphHalfAngle = Math.max(point.glyphScale * 0.62, 4 * scale) / Math.max(radius, 1);
-    const directed = displayDelta === 0 ? trueDelta : displayDelta;
-    const direction = directed >= 0 ? 1 : -1;
-    const endAngle = cuspAngle + directed + direction * glyphHalfAngle;
-
-    // A small rectangle in the radii: spans the glyph band, hugging the planet glyph row.
-    const halfThickness = Math.max(point.glyphScale * 0.9, 7 * scale);
-    const innerRadius = clamp(radius - halfThickness, ring.r1, ring.r2);
-    const outerRadius = clamp(radius + halfThickness, ring.r1, ring.r2);
-
-    return [{
-      id: `${params.layerId}-${point.key}-notch`,
-      layerId: params.layerId,
-      pointKey: point.key,
-      house: point.house ?? 0,
-      cuspHouse: point.nearestCuspHouse,
-      cuspLongitude: normalizeAngle(cusp.longitude),
-      radius: outerRadius,
-      innerRadius,
-      outerRadius,
-      startAngle: cuspAngle,
-      endAngle,
-      path: boundaryNotchPath(center, innerRadius, outerRadius, cuspAngle, endAngle),
-    }];
-  });
-}
-
-function boundaryNotchPath(
-  center: AstroWheelCoordinate,
-  innerRadius: number,
-  outerRadius: number,
-  cuspAngle: number,
-  endAngle: number
-): string {
-  const outerCusp = polarToXY(center.x, center.y, outerRadius, cuspAngle);
-  const outerEnd = polarToXY(center.x, center.y, outerRadius, endAngle);
-  const innerEnd = polarToXY(center.x, center.y, innerRadius, endAngle);
-  const innerCusp = polarToXY(center.x, center.y, innerRadius, cuspAngle);
-  const delta = signedAngleDelta(cuspAngle, endAngle);
-  const sweepOuter = delta >= 0 ? 1 : 0;
-  const sweepInner = delta >= 0 ? 0 : 1;
-
-  // Open along the outer band, drop a closing radial line on the far side, return along the
-  // inner band, then close back up the cusp line — a curved rectangle hugging the cusp.
-  return [
-    `M ${fmt(outerCusp.x)} ${fmt(outerCusp.y)}`,
-    `A ${fmt(outerRadius)} ${fmt(outerRadius)} 0 0 ${sweepOuter} ${fmt(outerEnd.x)} ${fmt(outerEnd.y)}`,
-    `L ${fmt(innerEnd.x)} ${fmt(innerEnd.y)}`,
-    `A ${fmt(innerRadius)} ${fmt(innerRadius)} 0 0 ${sweepInner} ${fmt(innerCusp.x)} ${fmt(innerCusp.y)}`,
-    "Z",
-  ].join(" ");
-}
-
-function buildAspectLayer(params: {
-  layer: AstroWheelAspectLayerInput;
+function buildAspectGroup(params: {
+  layer: AstroWheelAspectGroupInput;
   chart: BirthChart;
   pointByKey: Record<string, AstroWheelPoint>;
   center: AstroWheelCoordinate;
@@ -1973,33 +1801,24 @@ function buildAspectLayer(params: {
   rings: Record<AstroWheelRing["id"], AstroWheelRing>;
   palette: ResolvedAstroWheelPalette;
   excludedBodies: ReadonlySet<string>;
-}): AstroWheelAspectLayer {
+}): AstroWheelAspectGroup {
   const { layer, chart, pointByKey, center, angleOf, rings, palette, excludedBodies } = params;
   const sourceEdges = layer.edges
     ? layer.edges
-    : layer.chartB
-      ? computeCrossAspectEdges(
-          chart.planets,
-          layer.chartB.planets,
-          layer.aspectSpecs ?? ASTRO_WHEEL_DEFAULT_ASPECT_SPECS
-        )
-      : getSourceAspectEdges(chart, {
-          enabled: true,
-          edges: layer.edges,
-          aspectSpecs: layer.aspectSpecs,
-        });
+    : getSourceAspectEdges(chart, {
+        enabled: true,
+        edges: layer.edges,
+        aspectSpecs: layer.aspectSpecs,
+      });
   const aspectRadius = layer.radius ?? rings.aspects.r2 * (layer.radiusScale ?? 0.96);
-  const layerPointPrefix = pointKeyPrefix(layer.pointLayerId);
-  const layerPointPrefixA = layer.pointLayerIdA ? pointKeyPrefix(layer.pointLayerIdA) : layerPointPrefix;
-  const layerPointPrefixB = layer.pointLayerIdB ? pointKeyPrefix(layer.pointLayerIdB) : layerPointPrefix;
 
   const aspectLines = sourceEdges.flatMap((edge) => {
     if (isExcludedBody(edge.planetA, excludedBodies) || isExcludedBody(edge.planetB, excludedBodies)) {
       return [];
     }
 
-    const planetAKey = layerPointPrefixA + normalizePointKey(edge.planetA);
-    const planetBKey = layerPointPrefixB + normalizePointKey(edge.planetB);
+    const planetAKey = normalizePointKey(edge.planetA);
+    const planetBKey = normalizePointKey(edge.planetB);
     const planetA = pointByKey[planetAKey];
     const planetB = pointByKey[planetBKey];
 
@@ -2018,7 +1837,7 @@ function buildAspectLayer(params: {
       : planetB.trueAnchor;
 
     return [{
-      layerId: layer.id,
+      groupId: layer.id,
       planetA: planetA.name,
       planetB: planetB.name,
       planetAKey,
@@ -2047,7 +1866,7 @@ function buildAspectLayer(params: {
 }
 
 function getPointSeeds(
-  layer: AstroWheelPointLayerInput,
+  layer: AstroWheelPointGroupInput,
   excludedBodies: ReadonlySet<string>
 ): PointSeed[] {
   const seeds: PointSeed[] = [];
@@ -2112,9 +1931,9 @@ interface SolvedCircularLabelItem<T> extends CircularLabelItem<T> {
   visualAngle: number;
 }
 
-function planetSeed(key: string, planet: HydratedPlanet, layerId: string): PointSeed {
+function planetSeed(key: string, planet: HydratedPlanet, groupId: string): PointSeed {
   return {
-    key: layerPointKey(layerId, key || planet.name),
+    key: layerPointKey(groupId, key || planet.name),
     name: planet.name,
     kind: "planet",
     glyph: pointGlyph(planet.name),
@@ -2125,9 +1944,9 @@ function planetSeed(key: string, planet: HydratedPlanet, layerId: string): Point
   };
 }
 
-function nodeSeed(key: string, node: HydratedNode, layerId: string): PointSeed {
+function nodeSeed(key: string, node: HydratedNode, groupId: string): PointSeed {
   return {
-    key: layerPointKey(layerId, node.name || key),
+    key: layerPointKey(groupId, node.name || key),
     name: node.name,
     kind: "node",
     glyph: pointGlyph(node.name),
@@ -2137,9 +1956,9 @@ function nodeSeed(key: string, node: HydratedNode, layerId: string): PointSeed {
   };
 }
 
-function pointSeed(point: AstroWheelPointSource, layerId: string): PointSeed {
+function pointSeed(point: AstroWheelPointSource, groupId: string): PointSeed {
   return {
-    key: layerPointKey(layerId, point.key ?? point.name),
+    key: layerPointKey(groupId, point.key ?? point.name),
     name: point.name,
     kind: point.kind ?? "planet",
     glyph: point.glyph ?? pointGlyph(point.name),
@@ -2159,7 +1978,7 @@ function solveCircularLabelAngles<T>(
     return [];
   }
 
-  const normalized = items
+  const normalized = seedExactAngleClusters(items, { paddingPx, maxDisplacementRad })
     .map((item) => ({
       ...item,
       idealAngle: clampRad(item.idealAngle),
@@ -2207,8 +2026,8 @@ function solveCircularLabelAngles<T>(
 
   const solved = linear.map((item) => ({
     ...item,
-    visualAngle: item.idealAngle,
-  }));
+    visualAngle: item.visualAngleSeed ?? item.idealAngle,
+  })).sort((a, b) => a.visualAngle - b.visualAngle);
 
   for (let iteration = 0; iteration < 50; iteration++) {
     const forces = new Array(solved.length).fill(0) as number[];
@@ -2260,6 +2079,49 @@ function solveCircularLabelAngles<T>(
     ...item,
     visualAngle: clampRad(item.visualAngle),
   }));
+}
+
+function seedExactAngleClusters<T>(
+  items: readonly CircularLabelItem<T>[],
+  options: { paddingPx: number; maxDisplacementRad: number }
+): Array<CircularLabelItem<T> & { visualAngleSeed?: number }> {
+  const seeded = items.map((item) => ({
+    ...item,
+    idealAngle: clampRad(item.idealAngle),
+  }));
+  const groups = new Map<string, Array<CircularLabelItem<T> & { visualAngleSeed?: number }>>();
+
+  for (const item of seeded) {
+    const key = item.idealAngle.toFixed(6);
+    const group = groups.get(key);
+    if (group) {
+      group.push(item);
+    } else {
+      groups.set(key, [item]);
+    }
+  }
+
+  for (const group of groups.values()) {
+    if (group.length < 2) {
+      continue;
+    }
+
+    const center = group[0].idealAngle;
+    const largestDemand = Math.max(
+      ...group.map((item) => labelAngularHalfDemand(item, options.paddingPx) * 2)
+    );
+    const maxStep = group.length > 1
+      ? (options.maxDisplacementRad * 2) / (group.length - 1)
+      : largestDemand;
+    const step = Math.min(largestDemand, maxStep);
+    const midpoint = (group.length - 1) / 2;
+
+    group.forEach((item, index) => {
+      item.visualAngleSeed = center + (index - midpoint) * step;
+    });
+  }
+
+  return seeded;
 }
 
 function clampAngleAroundIdeal(value: number, ideal: number, maxDistance: number) {
@@ -2368,40 +2230,6 @@ function computeAspectEdges(
       edges.push({
         planetA: keys[i],
         planetB: keys[j],
-        longitudeA: normalizeAngle(planetA.longitude),
-        longitudeB: normalizeAngle(planetB.longitude),
-        aspect: match.spec.name,
-        aspectAngle: match.spec.angle,
-        delta: match.delta,
-        orb: match.orb,
-      });
-    }
-  }
-
-  return edges;
-}
-
-function computeCrossAspectEdges(
-  planetsA: Record<string, { longitude: number }>,
-  planetsB: Record<string, { longitude: number }>,
-  specs: readonly AspectSpec[]
-): AspectEdge[] {
-  const keysA = Object.keys(planetsA);
-  const keysB = Object.keys(planetsB);
-  const edges: AspectEdge[] = [];
-
-  for (const keyA of keysA) {
-    for (const keyB of keysB) {
-      const planetA = planetsA[keyA];
-      const planetB = planetsB[keyB];
-      const match = getAspectMatch(planetA.longitude, planetB.longitude, specs);
-      if (!match) {
-        continue;
-      }
-
-      edges.push({
-        planetA: keyA,
-        planetB: keyB,
         longitudeA: normalizeAngle(planetA.longitude),
         longitudeB: normalizeAngle(planetB.longitude),
         aspect: match.spec.name,
@@ -2605,8 +2433,8 @@ function resolveAspectOptions(options: boolean | AstroWheelAspectOptions | undef
   };
 }
 
-function resolvePointLayerRadius(
-  layer: AstroWheelPointLayerInput,
+function resolvePointGroupRadius(
+  layer: AstroWheelPointGroupInput,
   rings: Record<AstroWheelRing["id"], AstroWheelRing>
 ) {
   const ring = rings.planets;
@@ -2661,13 +2489,9 @@ function normalizePointKey(value: string) {
     .replace(/\s+/g, " ");
 }
 
-function layerPointKey(layerId: string, value: string) {
+function layerPointKey(groupId: string, value: string) {
   const key = normalizePointKey(value);
-  return layerId === "birth" ? key : `${layerId}:${key}`;
-}
-
-function pointKeyPrefix(layerId: string | undefined) {
-  return !layerId || layerId === "birth" ? "" : `${layerId}:`;
+  return groupId === "birth" ? key : `${groupId}:${key}`;
 }
 
 function renderGlyphPrimitives(

@@ -419,7 +419,6 @@ function buildAstroWheelSvgOptions(
   }
   if (getInputBoolean(inputPayload, "noAspects") === true || getFlagBool(flags, "no-aspects")) {
     options.aspects = false;
-    options.aspectLayers = [];
   }
   if (
     options.aspects !== false &&
@@ -1391,15 +1390,6 @@ export async function cmdAstrologyWheel(
   const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
   const wheelOptions = buildAstroWheelSvgOptions(flags, inputPayload);
   const outputPathFlag = getFlagString(flags, "output") ?? getInputString(inputPayload, "output");
-  const renderModel = getFlagBool(flags, "render-model") || getInputBoolean(inputPayload, "renderModel") === true;
-
-  if (renderModel && outputPathFlag) {
-    exitWithError(
-      "INVALID_ARGUMENT",
-      "--output is only supported when generating an astrology wheel SVG. Omit --render-model to write an SVG file.",
-      flags
-    );
-  }
 
   try {
     await initWasm(runtimePaths, executionContext);
@@ -1417,7 +1407,6 @@ export async function cmdAstrologyWheel(
       latitude: input.latitude,
       longitude: input.longitude,
       houseSystem: input.houseSystem,
-      renderModel,
       output: outputPathFlag,
     });
 
@@ -1429,39 +1418,11 @@ export async function cmdAstrologyWheel(
       timeZoneSettings: input.timeZoneSettings as any,
     });
     const filteredChart = filterChartAspects(chart, { maxOrb, aspectFilter });
-    const { generateAstroWheelSvg, getAstroWheelRenderModel } = await import("../../visual");
+    const { generateAstroWheelSvg } = await import("../../visual");
     executionContext.throwIfInterrupted();
 
     const inputEcho = formatSingleChartInputEcho(input);
     const serializedOptions = serializeAstroWheelOptions(wheelOptions);
-
-    if (renderModel) {
-      const model = getAstroWheelRenderModel(filteredChart, wheelOptions);
-      executionContext.throwIfInterrupted();
-
-      if (isJsonMode(flags)) {
-        outputJson(
-          {
-            ...model,
-            input: inputEcho,
-            options: serializedOptions,
-          },
-          flags
-        );
-        return;
-      }
-
-      console.log(`\nAstrology Wheel Render Model: ${input.dateStr} ${input.timeStr}\n`);
-      console.log(
-        `  ViewBox: ${model.viewBox.minX} ${model.viewBox.minY} ${model.viewBox.width} ${model.viewBox.height}`
-      );
-      console.log(`  Points: ${model.points.length}`);
-      console.log(`  Houses: ${model.houseCusps.length}`);
-      console.log(`  Aspects: ${model.aspectLines.length}`);
-      console.log(`  Point layers: ${model.pointLayers.map((layer) => layer.id).join(", ") || "none"}`);
-      console.log();
-      return;
-    }
 
     const svg = generateAstroWheelSvg(filteredChart, wheelOptions);
     executionContext.throwIfInterrupted();

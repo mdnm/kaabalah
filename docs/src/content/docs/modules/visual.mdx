@@ -13,7 +13,6 @@ import { LinkCard } from '@astrojs/starlight/components';
 import {
   // Astro wheel
   generateAstroWheelSvg,
-  getAstroWheelRenderModel,
   ASTRO_WHEEL_DEFAULT_VIEWBOX,
   ASTRO_WHEEL_DEFAULT_ASPECT_SPECS,
   ASTRO_WHEEL_ZODIAC_SIGNS,
@@ -53,7 +52,6 @@ import {
 ## Exports
 
 - `generateAstroWheelSvg`
-- `getAstroWheelRenderModel`
 - `generateGlyphSvg`
 - `generateAstroGlyphSvg`
 - `getAstroGlyph`
@@ -85,7 +83,7 @@ import {
 - `TREE_SPHERE_NAMES`
 - `TREE_SPHERE_IDS`
 - `TREE_PATH_IDS`
-- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelRailVisibilityPreset`, `AstroWheelRailVisibility`, `AstroWheelPointLayerInput`, `AstroWheelAspectLayerInput`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelRenderModel`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelPositionRail`, `AstroWheelPointRailLabel`, `AstroWheelBoundaryNotch`, `AstroWheelArcConnector`, `AstroWheelPointLayer`, `AstroWheelAspectLine`, `AstroWheelAspectLayer`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerGeometry`, `ArcheometerElementGeometry`, `ArcheometerTriangleGeometry`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `RouteActivationOptions`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
+- Types: `AstroGlyphPrimitive`, `GlyphSvgOptions`, `AstroWheelPlanetGlyphKey`, `AstroWheelAspectGlyphKey`, `AstroWheelSvgOptions`, `AstroWheelPalette`, `AstroWheelPaletteOverrides`, `AstroWheelZodiacOptions`, `AstroWheelAspectOptions`, `AstroWheelHouseOptions`, `AstroWheelPointOptions`, `AstroWheelLayoutOptions`, `AstroWheelPointConnectorMode`, `AstroWheelRailVisibilityPreset`, `AstroWheelRailVisibility`, `AstroWheelPointSource`, `AstroWheelViewBox`, `AstroWheelZodiacSegment`, `AstroWheelHouseCusp`, `AstroWheelAngleMarker`, `AstroWheelPoint`, `AstroWheelArcConnector`, `AstroWheelAspectLine`, `ArcheometerSvgOptions`, `ArcheometerPalette`, `ArcheometerPaletteOverrides`, `ArcheometerRenderModel`, `ArcheometerGeometry`, `ArcheometerElementGeometry`, `ArcheometerTriangleGeometry`, `ArcheometerRing`, `ArcheometerRingId`, `ArcheometerUtterancePoint`, `ArcheometerTriangleSpec`, `ArcheometerTriangleLabel`, `ArcheometerMusicalNote`, `ArcheometerZodiacSign`, `ArcheometerPlanetaryPoint`, `TreeSvgOptions`, `TreeSvgPalette`, `TreeSvgCustomPalette`, `TreeSvgHighlights`, `TreeTargetActivationInput`, `RouteActivationOptions`, `TreeTargetState`, `TreeSvgDaathLayer`, `TreeSvgViewBox`, `TreeLayout`, `TreeLayoutMap`, `TreeLayoutPath`, `TreeLayoutCoordinate`, `TreeRenderModel`, `TreeRenderSphere`, `TreeRenderPath`, `TreeRenderSphereGeometry`, `TreeRenderPathGeometry`, `TreeRenderHitTarget`, `TreeRenderAnchor`, `TreeSphereName`, `TreeSphereId`, `TreePathId`
 
 ---
 
@@ -137,8 +135,6 @@ interface AstroWheelSvgOptions {
   aspects?: boolean | AstroWheelAspectOptions;  // default: true
   houses?: boolean | AstroWheelHouseOptions;    // labels/cusp lines/angle labels
   points?: boolean | AstroWheelPointOptions;    // birth planets/nodes/vertex
-  pointLayers?: readonly AstroWheelPointLayerInput[];
-  aspectLayers?: readonly AstroWheelAspectLayerInput[];
   excludeBodies?: readonly string[];            // render-only body filter
   layout?: AstroWheelLayoutOptions;             // ring proportions/connectors
   padding?: number;
@@ -174,7 +170,7 @@ generateAstroWheelSvg(chart, {
 });
 ```
 
-Planet glyphs are rendered in a stable Planet Band. Exact ticks, true anchors, aspect endpoints, and house membership stay tied to true longitude. Degree, sign, minutes, and retrograde details are rendered from independent Position Rails by default. Extra point layers can override those rails independently, so transit overlays can use a lighter label preset without changing the natal wheel. Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
+Planet glyphs are rendered in a conventional Planet Band. Exact ticks, true anchors, aspect endpoints, and house membership stay tied to true longitude. The default output is glyph-first; degree, sign, minutes, and retrograde details are optional compact SVG details. Override `palette.glyphHalo` when the automatic halo color should not match the wheel background.
 
 #### Wheel layout
 
@@ -189,18 +185,18 @@ const svg = generateAstroWheelSvg(chart, {
     },
     pointConnectors: "auto",      // "auto" | "always" | "never"
     maxPointDisplacementDegrees: 20,
-    rails: "compact",             // "full" | "compact" | "glyph-only" | partial visibility map
+    rails: "compact",             // "glyph-only" | "compact" | "full" | partial visibility map
   },
 });
 ```
 
-Planet glyphs may be angularly spaced for dense clusters, but zodiacal order is preserved and displacement is capped. The model exposes both `trueAnchor` and `glyphPosition`; generated SVG draws a short band leader when those positions differ. Aspect lines connect true anchors on the structural aspect boundary, not displaced glyphs. That boundary remains visible when `aspects: false`, so house cusp spokes still end on the same inner wheel circle.
+Planet glyphs may be angularly spaced for dense clusters, but zodiacal order is preserved and displacement is capped. Generated SVG draws a short band leader when true ticks and displayed glyphs differ. Aspect lines connect true positions on the structural aspect boundary, not displaced glyphs. That boundary remains visible when `aspects: false`, so house cusp spokes still end on the same inner wheel circle.
 
-Boundary Notches are local relief marks in the Planet Band. They are generated only when a glyph is cusp-adjacent or displaced across a cusp conflict; position text does not create notches and house cusp lines do not move.
+House cusps stay fixed. The renderer does not bend house boundaries with Boundary Notches; crowded glyphs are handled through bounded angular spreading and short leaders.
 
-#### Position rails
+#### Compact position labels
 
-Static SVG defaults to the full rail set. Compact app surfaces can hide detail rails while preserving the same anchors, houses, and glyph positions:
+Static SVG defaults to glyph-only planet labels. Compact position details can be enabled while preserving the same true ticks, houses, and aspect anchors:
 
 ```typescript
 generateAstroWheelSvg(chart, {
@@ -234,59 +230,7 @@ const svg = generateAstroWheelSvg(chart, {
 });
 ```
 
-#### Composable overlays
-
-`pointLayers` and `aspectLayers` let you compose transits, synastry, or any custom calculated points over a base chart without rebuilding the SVG. Extra point layers share the base chart's Ascendant orientation and can be placed inside, on, or outside the normal planet ring. External point layers render only the degree rail by default so transit overlays stay readable without crowding neighbouring points with minute or sign labels. Set `pointLayers[].rails` to override that layer-specific default.
-
-```typescript
-const svg = generateAstroWheelSvg(birthChart, {
-  pointLayers: [
-    {
-      id: "transit",
-      label: "Transits",
-      chart: transitChart,
-      color: "#f97316",
-      radius: "external",
-      radiusOffset: 18,
-      glyphScale: 0.85,
-    },
-  ],
-  aspectLayers: [
-    {
-      id: "transit",
-      label: "Transit-to-natal aspects",
-      // Transiting planets (side A) aspecting the natal chart (side B).
-      chart: transitChart,
-      chartB: birthChart,
-      pointLayerIdA: "transit",
-      pointLayerIdB: "birth",
-      color: "#f97316",
-      aspectSpecs: [
-        { name: "conjunction", angle: 0, orb: 6 },
-        { name: "opposition", angle: 180, orb: 7 },
-      ],
-    },
-  ],
-});
-```
-
-Set `chartB` to compute **cross-chart** aspects between two charts (transit-to-natal, synastry): aspects are formed between `chart`'s planets (side A) and `chartB`'s planets (side B), and each endpoint anchors to the layer named by `pointLayerIdA` / `pointLayerIdB`. Use `pointLayerIdA` / `pointLayerIdB` with explicit `edges` when you have pre-computed cross-chart lines. The shorthand `pointLayerId: "transit"` draws aspects within a single overlay layer (transit-to-transit).
-
-For fully custom overlays, pass `points` instead of `chart`:
-
-```typescript
-const svg = generateAstroWheelSvg(birthChart, {
-  pointLayers: [
-    {
-      id: "progressed",
-      color: "#7c3aed",
-      points: [
-        { key: "progressed-moon", name: "Progressed Moon", longitude: 214.5, glyph: "☽" },
-      ],
-    },
-  ],
-});
-```
+Transit, synastry, and progressed calculations belong in `kaabalah/astrology`. Render app-specific comparison layers outside the built-in astrology wheel SVG.
 
 #### Wheel comparison
 
@@ -304,41 +248,10 @@ const svg = generateAstroWheelSvg(birthChart, {
     <figcaption>aspects: false</figcaption>
   </figure>
   <figure style="text-align: center; margin: 0;">
-    <img src="/wheel-transit.svg" alt="Wheel with transit overlay" width="220" />
-    <figcaption>transit overlay</figcaption>
+    <img src="/wheel-default.svg" alt="Glyph-first wheel" width="220" />
+    <figcaption>glyph-first output</figcaption>
   </figure>
 </div>
-
----
-
-### `getAstroWheelRenderModel(chart, options?)`
-
-Returns the computed geometry for every element of the wheel without producing an SVG string. Use this when an app needs interactive overlays, hover targets, or custom tooltips without rebuilding wheel geometry.
-
-```typescript
-import { getAstroWheelRenderModel } from 'kaabalah/visual';
-
-const model = getAstroWheelRenderModel(chart);
-
-model.viewBox;        // { minX: 0, minY: 0, width: 600, height: 600 }
-model.points;         // true anchors, displayed glyph positions, rails, hit targets
-model.pointLayers;    // grouped birth/transit/synastry/custom point layers
-model.houseCusps;     // cusp line geometry in SVG units
-model.positionRails;  // rail radii and visibility state
-model.boundaryNotches;// local planet-band notches
-model.aspectLines;    // true-anchor aspect line geometry and colors
-model.aspectLayers;   // grouped aspect overlays
-```
-
-All coordinates live in the same SVG viewBox units as `generateAstroWheelSvg(...)`, so overlays can be drawn in a sibling `<svg>` using the same `viewBox` and `preserveAspectRatio="xMidYMid meet"`.
-
-Each `AstroWheelPoint` contains:
-
-- `longitude`, `trueAnchor`, and `trueAngle` for exact chart position.
-- `displayLongitude`, `glyphPosition`, and `displayAngle` for the displayed Planet Band glyph.
-- `house`, `nearestCuspHouse`, and `nearestCuspDistanceDegrees` from true longitude against exact house cusps.
-- `railLabels` for degree/sign/minutes/retrograde rendering.
-- `hitTarget` for pointer interaction and `leaderArc` when the glyph is displaced.
 
 ---
 
@@ -1176,12 +1089,9 @@ kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --c
 
 # Write the SVG to disk
 kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --background=transparent --output=chart.svg --json
-
-# Inspect the geometry used by the SVG renderer
-kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --render-model --json --compact
 ```
 
-Pass advanced visual options through `--input-json` as `wheelOptions`:
+Pass advanced static SVG options through `--input-json` as `wheelOptions`:
 
 ```bash
 kaabalah astrology:wheel --input-json='{"date":"1990-01-15","time":"14:30","lat":40.7128,"lon":-74.006,"wheelOptions":{"background":"transparent","aspects":false}}' --json --compact --fields=svg
