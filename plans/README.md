@@ -26,6 +26,7 @@ HANDOFF-swisseph-cdn, cli-power-user-findings, astro-ideas) and `CONTEXT.md`.
 | 012 | `getRouteActivations` visual helper for topology routes | P2 | S | 001 | DONE |
 | 013 | Export standalone `getSect` astrology utility | P2 | S | 001 | DONE |
 | 014 | `gematria --resolve-paths` Tree correspondence flag | P3 | M | 003, 006 | DONE |
+| 015 | Thin astrology wheel renderer | P2 | M | 001 | TODO |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale)
 
@@ -59,6 +60,14 @@ unpublished — `package.json` still says 6.8.1. Bump + publish (e.g. 6.9.0) bef
 handing over the upgrade-gated parts of either prompt. The date-bug fixes in both
 prompts need no upgrade.
 
+## Ideas under consideration (not yet planned)
+
+- **Prolog knowledge base for the core Tree of Life** (raised 2026-06-25, owner decides via a grilling session before this becomes an executor plan): expose the core lib's tree as a Prolog knowledge base + query interface, instead of (or alongside) the imperative graph traversal in `src/core/`.
+  - *Why it fits*: the core is already a typed, labeled multigraph parameterized by `(system, parts)` — nodes (branded `type:value`), 22 path edges between spheres, and one generic undirected correspondence table with provenance. `topology`, routes, and `CorrespondenceMatch` BFS are all *derivations* that collapse into ~15 Prolog rules over ~40 ground facts + the correspondence table. Store each undirected edge once and derive symmetry; first-argument indexing replaces the three lookup `Map`s; tabling replaces `topologyCache`.
+  - *Engine options (verified 2026-06-25)*: **Tau Prolog** (pure JS, zero WASM, tree-shakes into `kaabalah/*`, lowest friction given past `?url` bundling pain; slow but irrelevant at this KB size) · **Trealla** (`trealla-js`, small WASM, ISO, async generators, runs Node/browser/edge — mirrors the swisseph WASM setup) · **swipl-wasm** (full SWI, has tabling/indexing/constraint libs, multi-MB bundle — only if `:- table corr_distance/4.` is wanted).
+  - *Key constraint*: do NOT hand-write the `.pl`. The TS constants (`SPHERES`, `MELKITZEDEKI_PATHS`, the `link()` calls) stay the source of truth; generate facts at build time (pattern: `examples/generate-astro-wheel-svgs.ts` → a `generate-prolog-kb.ts`) so they can't drift.
+  - *Primary motivation — AI consumption*: give an AI a stable, documented predicate vocabulary (`sphere/3`, `path/3`, `related/2`, `corr_distance/4`) so it queries the model instead of re-reading `topology.ts`/`constants.ts`/`correspondence-model.ts` and hallucinating edges. Expose via a deterministic CLI command (`kaabalah prolog --query "..." --json`, fits the `--json --compact` agent contract) and/or an MCP tool. This is the neuro-symbolic / Prolog-MCP pattern.
+
 ## Findings considered and rejected / deferred (do not re-audit)
 
 - **Topology as first-class edges** (`docs/internal/tree-topology-followups.md` Follow-up 1a/1c): real, but L-effort and HIGH-risk (touches `TreeOfLife.addPath()` used by all system loaders). Deferred; plan 004's cache is the cheap interim fix. Note: Follow-up 1b (O(1) route/path lookup) and 2b (missingSegments) are ALREADY DONE in `src/core/topology.ts` — do not re-implement.
@@ -68,6 +77,6 @@ prompts need no upgrade.
 - **SwissEph CDN** (`docs/internal/HANDOFF-swisseph-cdn.md`): business/infra decision (cost, SLA, monetization) precedes any code; no `cdn` option exists in `getSwissEph` today.
 - **CLI profiles** (cli-power-user-findings item 1): highest-value ergonomics gap, but needs a design spike on schema/namespacing before an executor plan can be honest. Recommend `/improve plan` once the shape is decided.
 - **Batch synastry/composite, `--tree` transit annotations, field aliases** (cli-power-user-findings items 2/3/5): valid, unstarted, not selected this round.
-- **Astro-wheel next steps** (`docs/internal/handoff.md`): aspect-opacity tuning and cusp-style options need visual judgment from the owner (no target rendering exists); the doc itself defers the single-chart API.
+- **Astro-wheel next steps** (`docs/internal/handoff.md`): superseded by ADR-0004 and plan 015 for the astrology wheel. Keep the reference-library findings, but follow the thin-renderer direction rather than the older layout-engine direction.
 - **Hellenistic technique expansion** (`docs/internal/astro-ideas.md`): profections, monthly profections, firdaria, decans, dodecatemoria, dignity table are ALREADY SHIPPED (`src/astrology/*.ts`). Plan 013 closes the sect gap. Next tier when wanted: bounds/terms + full dignity scoring, lots (Spirit first), zodiacal releasing, lunar returns (reuses solar-return machinery).
 - **Subagent claims rejected during vetting**: "no tarot:card command exists" (it does — `src/cli/app.ts` routes it); "semantic double-builds the canonical tree" (second call is a cache hit; the real issue is import-time construction, fixed in 006).

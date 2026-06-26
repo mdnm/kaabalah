@@ -86,6 +86,7 @@
     "test:ui": "vitest --ui --silent",
     "prepare-browser-test": "cp wasm/build/swisseph.wasm examples/ && cp -r ephe examples/",
     "generate:trees": "npx tsx examples/generate-tree-svg.ts",
+    "generate:wheel": "npx tsx examples/generate-astro-wheel-svgs.ts",
     "generate:wheels": "npx tsx examples/generate-astro-wheel-svgs.ts",
     "generate:archeometer": "npx tsx examples/generate-archeometer-svg.ts",
     "generate:svgs": "npm run generate:trees && npm run generate:wheels && npm run generate:archeometer",

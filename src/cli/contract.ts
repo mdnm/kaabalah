@@ -322,7 +322,6 @@ export const COMMANDS: CommandSchema[] = [
       { name: "no-houses", type: "boolean", default: false, description: "Hide house cusps, labels, and angle markers" },
       { name: "no-points", type: "boolean", default: false, description: "Hide birth planets, nodes, and vertex" },
       { name: "no-aspects", type: "boolean", default: false, description: "Hide aspect lines" },
-      { name: "render-model", type: "boolean", default: false, description: "Return wheel geometry JSON instead of SVG" },
       { name: "output", type: "string", description: "Write the SVG to a file instead of stdout" },
       { name: "viewbox-width", type: "number", description: "Override SVG viewBox width" },
       { name: "viewbox-height", type: "number", description: "Override SVG viewBox height" },
@@ -335,7 +334,6 @@ export const COMMANDS: CommandSchema[] = [
       "kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --json --compact --fields=svg",
       "kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --background=transparent --output=chart.svg --json",
       "kaabalah astrology:wheel --input-json=- --json --compact --fields=svg < chart-wheel.json",
-      "kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --render-model --json --compact",
     ],
   },
   {

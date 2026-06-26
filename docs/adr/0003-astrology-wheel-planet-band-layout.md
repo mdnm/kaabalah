@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0004
+---
+
 # Astrology wheel planet-band layout
 
 The astrology wheel must preserve astronomical and house truth while making dense planet clusters readable. A planet's house membership is determined from true longitude against exact house cusps. A planet glyph may be displaced for readability, but that displacement must not make the planet appear to belong to a different house.

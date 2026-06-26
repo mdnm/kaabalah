@@ -87,8 +87,8 @@ A circular esoteric instrument that maps letters, numbers, colors, musical notes
 _Avoid_: wheel, dial, chart
 
 **Visual Render Model**:
-A renderer-independent geometry contract for a visual surface. It exposes stable layers, element identities, geometry, anchors, hit targets, and visibility state so SVG, React, Canvas, and app-specific renderers can render and interact without parsing generated SVG. SVG generators should be projections of the Visual Render Model, not the source of layout truth.
-_Avoid_: SVG as API, DOM parsing
+A renderer-independent geometry contract for complex visual surfaces that need custom rendering or interaction. It remains appropriate for Tree/Archeometer-style surfaces, but the astrology wheel is intentionally a thin static renderer rather than a public layout-engine contract.
+_Avoid_: mandatory layout engine, custom-renderer mandate
 
 ### Astrology
 
@@ -100,21 +100,25 @@ _Avoid_: day/night, light/dark
 The exact zodiacal boundary where one astrological house begins. A planet's house membership is determined from its true longitude relative to house cusps, not from where its glyph or label is drawn.
 _Avoid_: visual boundary, label position
 
+**Astrology Wheel Renderer**:
+A conventional static SVG projection of a **BirthChart**. It owns glyphs, fixed **House Cusps**, zodiac ticks, aspect lines, and modest visual spacing, but not app-specific interaction, arbitrary multi-chart composition, or a reusable chart layout engine.
+_Avoid_: layout engine, custom renderer contract
+
 **House Boundary Envelope**:
-The visual territory a house occupies in an astrology wheel when labels need spacing. It can flex locally within the **Planet Band** for readability, but it does not move the exact **House Cusp** or redefine house membership.
-_Avoid_: cusp, house membership
+A retired term from an earlier astrology wheel layout-engine direction. Do not use it for current chart semantics; house visuals use exact **House Cusps** rather than flexible boundaries.
+_Avoid_: cusp, house membership, current requirement
 
 **Planet Band**:
-The stable ring in an astrology wheel where planet glyphs and their position labels are displayed. The band may space clustered planets for readability, but planets should not float into arbitrary radial callouts in the default natal wheel. Clustered planets retain their true zodiacal order even when their labels are spaced apart.
-_Avoid_: callout layer, floating labels
+A conventional ring in the static astrology wheel where planet glyphs are displayed. It may space clustered glyphs for readability while true ticks and **House Cusps** remain exact; it is not a public layout surface for app-specific label systems.
+_Avoid_: callout layer, floating labels, layout engine
 
 **Boundary Notch**:
-A localized bend in a **House Boundary Envelope** around crowded planet glyphs. It lets a small portion of the **Planet Band** visually remain with the planet's true house without making the entire house cusp appear shifted. Position text does not force a Boundary Notch.
-_Avoid_: moved cusp, shifted house line
+A retired visual device from the earlier layout-engine direction. Current astrology wheel language should use fixed **House Cusps**, true ticks, glyph spreading, and optional short connectors instead of bending house boundaries.
+_Avoid_: moved cusp, shifted house line, current requirement
 
 **Position Rail**:
-A sub-ring inside the **Planet Band** dedicated to one part of a planet's displayed position, such as degree, sign, minutes, or retrograde state. Position Rails keep text aligned and readable without changing a planet's house membership.
-_Avoid_: floating text, inline callout
+A retired term from the previous rich wheel-layout model for placing degree, sign, minutes, or retrograde text in sub-rings. Current astrology wheel defaults are glyph-first with optional compact position labels, not public rails.
+_Avoid_: mandatory position text, layout API
 
 ## Flagged ambiguities
 

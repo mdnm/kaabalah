@@ -169,10 +169,11 @@ describe("CLI contract", () => {
         expect.objectContaining({ name: "background" }),
         expect.objectContaining({ name: "palette" }),
         expect.objectContaining({ name: "no-aspects" }),
-        expect.objectContaining({ name: "render-model" }),
         expect.objectContaining({ name: "output" }),
       ]),
     });
+    expect(payload.commands.find((command) => command.name === "astrology:wheel")?.flags)
+      .not.toContainEqual(expect.objectContaining({ name: "render-model" }));
   });
 
   it("keeps numerology field projection stable", () => {
@@ -887,37 +888,6 @@ describe("CLI contract", () => {
       palette: "default",
     });
     expect(readFileSync(outputPath, "utf8")).toContain(`id="astro-wheel-zodiac"`);
-  });
-
-  it("returns astrology wheel render-model geometry for custom consumers", () => {
-    const result = runCli([
-      "astrology:wheel",
-      "1990-01-15",
-      "14:30",
-      "--lat=40.7128",
-      "--lon=-74.006",
-      "--timezone=America/New_York",
-      "--wasm-path",
-      REAL_WASM_PATH,
-      "--ephe-path",
-      REAL_EPHE_PATH,
-      "--render-model",
-      "--json",
-      "--compact",
-    ]);
-    assertSuccess(result, "astrology:wheel --render-model");
-
-    const payload = JSON.parse(result.stdout) as {
-      viewBox: { width: number; height: number };
-      pointLayers: Array<{ id: string }>;
-      points: Array<{ name: string }>;
-      aspectLines: unknown[];
-    };
-
-    expect(payload.viewBox).toMatchObject({ width: 600, height: 600 });
-    expect(payload.pointLayers[0]).toMatchObject({ id: "birth" });
-    expect(payload.points[0]?.name).toBeTruthy();
-    expect(payload.aspectLines.length).toBeGreaterThan(0);
   });
 
   it("supports --input-json=- to read a JSON object from stdin", () => {
