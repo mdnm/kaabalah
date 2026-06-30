@@ -247,6 +247,10 @@ const DEFAULT_SPHERE_HIT_RADIUS = DEFAULT_SPHERE_RADIUS + 8;
 const DEFAULT_PATH_HIT_STROKE_WIDTH = DEFAULT_PATH_EDGE_WIDTH + 8;
 const MUTED_TARGET_COLOR = "#AAA";
 
+const NAZAR_NACRE = "__nacre__";
+const NAZAR_IRIS = "#33a6dd";
+const NAZAR_PUPIL = "#0b0b12";
+
 const sphereId = (name: TreeSphereName) =>
   id(KaabalahTypes.SPHERE, name) as TreeSphereId;
 
@@ -549,23 +553,6 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
     );
   }
 
-  push(`<radialGradient id="kether-glow" cx="50%" cy="50%" r="50%">
-  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
-  <stop offset="45%" stop-color="white" stop-opacity="0.6"/>
-  <stop offset="80%" stop-color="white" stop-opacity="0.15"/>
-  <stop offset="100%" stop-color="white" stop-opacity="0"/>
-</radialGradient>`);
-
-  push(`<linearGradient id="kether-facet" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
-  <stop offset="50%" stop-color="white" stop-opacity="0.5"/>
-  <stop offset="100%" stop-color="white" stop-opacity="0.1"/>
-</linearGradient>`);
-
-  push(`<radialGradient id="kether-rim" cx="50%" cy="50%" r="75%">
-  <stop offset="60%" stop-color="black" stop-opacity="0"/>
-  <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
-</radialGradient>`);
   push(`</defs>`);
 
   const background = options.background ?? "white";
@@ -1306,36 +1293,21 @@ function renderKether(
   push: (line: string) => void,
   point: TreeLayoutCoordinate,
   radius: number,
-  baseFill = "#e0e0e0"
+  baseFill = NAZAR_NACRE
 ) {
-  push(
-    `<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="${escapeAttr(baseFill)}"/>`
-  );
-  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="url(#kether-glow)"/>`);
-
-  const spokes = 16;
-  const innerRadius = round(radius * 0.18);
-  const outerRadius = round(radius * 0.92);
-  const innerWidth = round(radius * 0.04);
-  const angleStep = 360 / spokes;
-
-  push(`<g opacity="0.85">`);
-  for (let index = 0; index < spokes; index++) {
-    const angle = index * angleStep;
-    push(`<g transform="rotate(${angle} ${point.x} ${point.y})">`);
-    const x0 = round(point.x - innerWidth);
-    const y0 = round(point.y - innerRadius);
-    const x1 = point.x;
-    const y1 = round(point.y - outerRadius);
-    const x2 = round(point.x + innerWidth);
-    const y2 = round(point.y - innerRadius);
-    push(
-      `<polygon points="${x0},${y0} ${x1},${y1} ${x2},${y2} ${point.x},${point.y}" fill="url(#kether-facet)"/>`
-    );
-    push(`</g>`);
+  const { x, y } = point;
+  // Mother-of-pearl (madrepérola) nazar: nacreous disc, light-blue iris, black pupil.
+  renderIridescent(push, point, radius, NACRE_STOPS);
+  if (baseFill !== NAZAR_NACRE) {
+    // Activation / highlight recolour tints the pearly disc.
+    renderSphereTintOverlay(push, point, radius, baseFill, 0.5);
   }
-  push(`</g>`);
-  push(`<circle cx="${point.x}" cy="${point.y}" r="${radius}" fill="url(#kether-rim)"/>`);
+  push(
+    `<circle cx="${x}" cy="${y}" r="${round(radius * 0.42)}" fill="${escapeAttr(NAZAR_IRIS)}"/>`
+  );
+  push(
+    `<circle cx="${x}" cy="${y}" r="${round(radius * 0.2)}" fill="${escapeAttr(NAZAR_PUPIL)}"/>`
+  );
 }
 
 function renderSlicedSphere(
@@ -1356,23 +1328,36 @@ function renderSlicedSphere(
   }
 }
 
+const IRIDESCENT_STOPS: [number, string][] = [
+  [0.0, "#F0E8EE"],
+  [0.1, "#ffa3e6"],
+  [0.22, "#a7e0ff"],
+  [0.34, "#baff9a"],
+  [0.46, "#ffe28a"],
+  [0.58, "#c6a4ff"],
+  [0.7, "#9ad6ff"],
+  [0.82, "#ffa3e6"],
+  [1.0, "#F0E8EE"],
+];
+
+// Soft blue/white/lilac/mint sheen for the mother-of-pearl (madrepérola) look.
+const NACRE_STOPS: [number, string][] = [
+  [0.0, "#eaf6f6"],
+  [0.12, "#a8d6ec"],
+  [0.25, "#c3b6ec"],
+  [0.4, "#a6ecec"],
+  [0.55, "#dfe6fb"],
+  [0.7, "#a6cdf0"],
+  [0.82, "#cbb4ec"],
+  [1.0, "#eaf6f6"],
+];
+
 function renderIridescent(
   push: (line: string) => void,
   point: TreeLayoutCoordinate,
-  radius: number
+  radius: number,
+  stops: [number, string][] = IRIDESCENT_STOPS
 ) {
-  const stops: [number, string][] = [
-    [0.0, "#F0E8EE"],
-    [0.1, "#ffa3e6"],
-    [0.22, "#a7e0ff"],
-    [0.34, "#baff9a"],
-    [0.46, "#ffe28a"],
-    [0.58, "#c6a4ff"],
-    [0.7, "#9ad6ff"],
-    [0.82, "#ffa3e6"],
-    [1.0, "#F0E8EE"],
-  ];
-
   const slices = 72;
   const sphereRadius = round(radius * 0.96);
 
