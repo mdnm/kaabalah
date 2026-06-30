@@ -3,6 +3,7 @@ import {
   id,
   KaabalahTypes,
   MiscTypes,
+  parseId,
   TREE_TOPOLOGY_PATH_IDS,
   TREE_TOPOLOGY_SPHERE_IDS,
   TREE_TOPOLOGY_SPHERE_NAMES,
@@ -253,6 +254,20 @@ const NAZAR_PUPIL = "#0b0b12";
 
 const sphereId = (name: TreeSphereName) =>
   id(KaabalahTypes.SPHERE, name) as TreeSphereId;
+
+const pathId = (value: string) => id(KaabalahTypes.PATH, value) as TreePathId;
+
+// Paths drawn with a hard split gradient: each half takes the colour of its
+// adjacent sphere, so the path visibly bridges the two. Start with one path
+// while we tune the look, then extend.
+const SPLIT_GRADIENT_PATH_IDS = new Set<TreePathId>(
+  ["7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20"].map(
+    pathId
+  )
+);
+// Width (in % of the path length) of the soft blend band across the midpoint
+// where the two adjacent-sphere colours grade into each other.
+const SPLIT_GRADIENT_BLEND = 34;
 
 export const TREE_SPHERE_IDS = [...TREE_TOPOLOGY_SPHERE_IDS] as TreeSphereId[];
 export const TREE_PATH_IDS = [...TREE_TOPOLOGY_PATH_IDS] as TreePathId[];
@@ -553,6 +568,35 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
     );
   }
 
+  if (palette.mode === "color") {
+    for (const splitPathId of SPLIT_GRADIENT_PATH_IDS) {
+      const splitPath = layout.paths[splitPathId];
+      if (!splitPath) {
+        continue;
+      }
+      const fromColor = resolveSphereCanonicalColor({
+        palette,
+        sphereId: splitPath.fromId,
+        tree,
+      });
+      const toColor = resolveSphereCanonicalColor({
+        palette,
+        sphereId: splitPath.toId,
+        tree,
+      });
+      const blendStart = round(50 - SPLIT_GRADIENT_BLEND / 2);
+      const blendEnd = round(50 + SPLIT_GRADIENT_BLEND / 2);
+      push(
+        `<linearGradient id="path-grad-${parseId(splitPathId)}" gradientUnits="userSpaceOnUse" x1="${splitPath.from.x}" y1="${splitPath.from.y}" x2="${splitPath.to.x}" y2="${splitPath.to.y}">
+  <stop offset="0%" stop-color="${escapeAttr(fromColor)}"/>
+  <stop offset="${blendStart}%" stop-color="${escapeAttr(fromColor)}"/>
+  <stop offset="${blendEnd}%" stop-color="${escapeAttr(toColor)}"/>
+  <stop offset="100%" stop-color="${escapeAttr(toColor)}"/>
+</linearGradient>`
+      );
+    }
+  }
+
   push(`</defs>`);
 
   const background = options.background ?? "white";
@@ -601,23 +645,42 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
       activation: activationMap.get(currentPathId),
       canonicalColor,
     });
-    const color = activation
-      ? resolvePathDisplayColor({
-          canonicalColor,
-          activation,
-        })
+    const useSplitGradient =
+      palette.mode === "color" &&
+      !activation &&
+      SPLIT_GRADIENT_PATH_IDS.has(currentPathId);
+    // Solid colour used both when no gradient applies and as the fallback layer
+    // for renderers that don't support gradients.
+    const solidColor = activation
+      ? resolvePathDisplayColor({ canonicalColor, activation })
       : baseColor;
-    const edgeColor = resolvePathEdgeColor({
-      palette,
-      pathColor: color,
-    });
+    const solidEdgeColor = resolvePathEdgeColor({ palette, pathColor: solidColor });
+    const gradientRef = useSplitGradient
+      ? `url(#path-grad-${parseId(currentPathId)})`
+      : null;
+    const color = gradientRef ?? solidColor;
+    const edgeColor = gradientRef ?? solidEdgeColor;
+    const edgeFilter = palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : "";
+
+    if (gradientRef) {
+      // Solid fallback drawn underneath; the gradient lines fully cover it when
+      // gradients are supported.
+      push(
+        `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(solidEdgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${edgeFilter}/>`
+      );
+    }
 
     push(
-      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(edgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${palette.pathEdgeUseFilter ? ` filter="url(#pathDarken)"` : ""}/>`
+      `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(edgeColor)}" stroke-width="${pathEdgeWidth}" stroke-linecap="round"${edgeFilter}/>`
     );
     if (activation?.visible && activation.emphasis > 0) {
       push(
         `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-opacity="${round(0.18 + activation.emphasis * 0.28)}" stroke-width="${round(pathEdgeWidth + activation.emphasis * 10)}" stroke-linecap="round"/>`
+      );
+    }
+    if (gradientRef) {
+      push(
+        `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(solidColor)}" stroke-width="${pathMainWidth}" stroke-linecap="round"/>`
       );
     }
     push(

@@ -139,6 +139,84 @@
   <stop offset="100%" stop-color="black" stop-opacity="0"/>
 </radialGradient>
 <clipPath id="clip-malkuth"><circle cx="142.83" cy="522.85" r="30"/></clipPath>
+<linearGradient id="path-grad-7" gradientUnits="userSpaceOnUse" x1="37.9" y1="99.18" x2="142.83" y2="280.84">
+  <stop offset="0%" stop-color="#000000"/>
+  <stop offset="33%" stop-color="#000000"/>
+  <stop offset="67%" stop-color="#FFFF00"/>
+  <stop offset="100%" stop-color="#FFFF00"/>
+</linearGradient>
+<linearGradient id="path-grad-8" gradientUnits="userSpaceOnUse" x1="37.9" y1="99.18" x2="37.9" y2="220.25">
+  <stop offset="0%" stop-color="#000000"/>
+  <stop offset="33%" stop-color="#000000"/>
+  <stop offset="67%" stop-color="#FF0000"/>
+  <stop offset="100%" stop-color="#FF0000"/>
+</linearGradient>
+<linearGradient id="path-grad-9" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="37.9" y2="220.25">
+  <stop offset="0%" stop-color="#0000FF"/>
+  <stop offset="33%" stop-color="#0000FF"/>
+  <stop offset="67%" stop-color="#FF0000"/>
+  <stop offset="100%" stop-color="#FF0000"/>
+</linearGradient>
+<linearGradient id="path-grad-10" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="142.83" y2="280.84">
+  <stop offset="0%" stop-color="#0000FF"/>
+  <stop offset="33%" stop-color="#0000FF"/>
+  <stop offset="67%" stop-color="#FFFF00"/>
+  <stop offset="100%" stop-color="#FFFF00"/>
+</linearGradient>
+<linearGradient id="path-grad-11" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="247.85" y2="341.37">
+  <stop offset="0%" stop-color="#0000FF"/>
+  <stop offset="33%" stop-color="#0000FF"/>
+  <stop offset="67%" stop-color="#00FF00"/>
+  <stop offset="100%" stop-color="#00FF00"/>
+</linearGradient>
+<linearGradient id="path-grad-12" gradientUnits="userSpaceOnUse" x1="37.9" y1="220.25" x2="142.83" y2="280.84">
+  <stop offset="0%" stop-color="#FF0000"/>
+  <stop offset="33%" stop-color="#FF0000"/>
+  <stop offset="67%" stop-color="#FFFF00"/>
+  <stop offset="100%" stop-color="#FFFF00"/>
+</linearGradient>
+<linearGradient id="path-grad-13" gradientUnits="userSpaceOnUse" x1="37.9" y1="220.25" x2="37.9" y2="341.37">
+  <stop offset="0%" stop-color="#FF0000"/>
+  <stop offset="33%" stop-color="#FF0000"/>
+  <stop offset="67%" stop-color="#FF8000"/>
+  <stop offset="100%" stop-color="#FF8000"/>
+</linearGradient>
+<linearGradient id="path-grad-14" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="247.85" y2="341.37">
+  <stop offset="0%" stop-color="#FFFF00"/>
+  <stop offset="33%" stop-color="#FFFF00"/>
+  <stop offset="67%" stop-color="#00FF00"/>
+  <stop offset="100%" stop-color="#00FF00"/>
+</linearGradient>
+<linearGradient id="path-grad-15" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="142.83" y2="402.12">
+  <stop offset="0%" stop-color="#FFFF00"/>
+  <stop offset="33%" stop-color="#FFFF00"/>
+  <stop offset="67%" stop-color="#8F00FF"/>
+  <stop offset="100%" stop-color="#8F00FF"/>
+</linearGradient>
+<linearGradient id="path-grad-16" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="37.9" y2="341.37">
+  <stop offset="0%" stop-color="#FFFF00"/>
+  <stop offset="33%" stop-color="#FFFF00"/>
+  <stop offset="67%" stop-color="#FF8000"/>
+  <stop offset="100%" stop-color="#FF8000"/>
+</linearGradient>
+<linearGradient id="path-grad-17" gradientUnits="userSpaceOnUse" x1="247.85" y1="341.37" x2="37.9" y2="341.37">
+  <stop offset="0%" stop-color="#00FF00"/>
+  <stop offset="33%" stop-color="#00FF00"/>
+  <stop offset="67%" stop-color="#FF8000"/>
+  <stop offset="100%" stop-color="#FF8000"/>
+</linearGradient>
+<linearGradient id="path-grad-18" gradientUnits="userSpaceOnUse" x1="247.85" y1="341.37" x2="142.83" y2="402.12">
+  <stop offset="0%" stop-color="#00FF00"/>
+  <stop offset="33%" stop-color="#00FF00"/>
+  <stop offset="67%" stop-color="#8F00FF"/>
+  <stop offset="100%" stop-color="#8F00FF"/>
+</linearGradient>
+<linearGradient id="path-grad-20" gradientUnits="userSpaceOnUse" x1="37.9" y1="341.37" x2="142.83" y2="402.12">
+  <stop offset="0%" stop-color="#FF8000"/>
+  <stop offset="33%" stop-color="#FF8000"/>
+  <stop offset="67%" stop-color="#8F00FF"/>
+  <stop offset="100%" stop-color="#8F00FF"/>
+</linearGradient>
 </defs>
 <g id="spheres-behind-paths">
 <g id="sphere-daath" clip-path="url(#clip-daath)">
@@ -172,46 +250,72 @@
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="url(#path-grad-7)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="url(#path-grad-7)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#C82030" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="url(#path-grad-8)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="#C82030" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="url(#path-grad-8)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#A8B840" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="url(#path-grad-9)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="#A8B840" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="url(#path-grad-9)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="37.9" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#B6BD9A" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="url(#path-grad-10)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="#B6BD9A" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="url(#path-grad-10)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#5080C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="url(#path-grad-11)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="#5080C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="url(#path-grad-11)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="220.25" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#48A860" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="url(#path-grad-12)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="#48A860" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="url(#path-grad-12)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#8878B8" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="url(#path-grad-13)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="#8878B8" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="url(#path-grad-13)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="220.25" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#28A880" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="url(#path-grad-14)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="#28A880" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="url(#path-grad-14)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="247.85" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#8050A8" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="url(#path-grad-15)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="#8050A8" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="url(#path-grad-15)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#C850A0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="url(#path-grad-16)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="#C850A0" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="url(#path-grad-16)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="280.84" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#D06088" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="url(#path-grad-17)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="#D06088" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="url(#path-grad-17)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="37.9" y2="341.37" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#8848C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-18)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="#8848C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-18)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-20)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-20)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="22" stroke-linecap="round"/>
