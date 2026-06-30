@@ -168,21 +168,6 @@
   <stop offset="100%" stop-color="black" stop-opacity="0"/>
 </radialGradient>
 <clipPath id="clip-malkuth"><circle cx="142.83" cy="522.85" r="30"/></clipPath>
-<radialGradient id="kether-glow" cx="50%" cy="50%" r="50%">
-  <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
-  <stop offset="45%" stop-color="white" stop-opacity="0.6"/>
-  <stop offset="80%" stop-color="white" stop-opacity="0.15"/>
-  <stop offset="100%" stop-color="white" stop-opacity="0"/>
-</radialGradient>
-<linearGradient id="kether-facet" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
-  <stop offset="50%" stop-color="white" stop-opacity="0.5"/>
-  <stop offset="100%" stop-color="white" stop-opacity="0.1"/>
-</linearGradient>
-<radialGradient id="kether-rim" cx="50%" cy="50%" r="75%">
-  <stop offset="60%" stop-color="black" stop-opacity="0"/>
-  <stop offset="100%" stop-color="black" stop-opacity="0.18"/>
-</radialGradient>
 </defs>
 <g id="paths">
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
@@ -254,59 +239,80 @@
 </g>
 <g id="spheres">
 <g id="sphere-kether" clip-path="url(#clip-kether)">
-<circle cx="142.83" cy="38.32" r="30" fill="#e0e0e0"/>
-<circle cx="142.83" cy="38.32" r="30" fill="url(#kether-glow)"/>
-<g opacity="0.85">
-<g transform="rotate(0 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(22.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(45 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(67.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(90 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(112.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(135 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(157.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(180 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(202.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(225 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(247.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(270 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(292.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(315 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-<g transform="rotate(337.5 142.83 38.32)">
-<polygon points="141.63,32.92 142.83,10.72 144.03,32.92 142.83,38.32" fill="url(#kether-facet)"/>
-</g>
-</g>
-<circle cx="142.83" cy="38.32" r="30" fill="url(#kether-rim)"/>
+<path d="M 142.83 38.32 L 142.83 9.52 A 28.8 28.8 0 0 1 145.59 9.65 Z" fill="#eaf6f6" stroke="none"/>
+<path d="M 142.83 38.32 L 145.34 9.63 A 28.8 28.8 0 0 1 148.08 10 Z" fill="#e2f2f5" stroke="none"/>
+<path d="M 142.83 38.32 L 147.83 9.96 A 28.8 28.8 0 0 1 150.53 10.57 Z" fill="#dbeff4" stroke="none"/>
+<path d="M 142.83 38.32 L 150.28 10.5 A 28.8 28.8 0 0 1 152.92 11.34 Z" fill="#d3ebf3" stroke="none"/>
+<path d="M 142.83 38.32 L 152.68 11.26 A 28.8 28.8 0 0 1 155.23 12.33 Z" fill="#cbe7f1" stroke="none"/>
+<path d="M 142.83 38.32 L 155 12.22 A 28.8 28.8 0 0 1 157.45 13.51 Z" fill="#c4e3f0" stroke="none"/>
+<path d="M 142.83 38.32 L 157.23 13.38 A 28.8 28.8 0 0 1 159.55 14.87 Z" fill="#bce0ef" stroke="none"/>
+<path d="M 142.83 38.32 L 159.35 14.73 A 28.8 28.8 0 0 1 161.53 16.42 Z" fill="#b5dcee" stroke="none"/>
+<path d="M 142.83 38.32 L 161.34 16.26 A 28.8 28.8 0 0 1 163.37 18.13 Z" fill="#add8ed" stroke="none"/>
+<path d="M 142.83 38.32 L 163.19 17.96 A 28.8 28.8 0 0 1 165.05 20 Z" fill="#a9d5ec" stroke="none"/>
+<path d="M 142.83 38.32 L 164.89 19.81 A 28.8 28.8 0 0 1 166.56 22.01 Z" fill="#acd1ec" stroke="none"/>
+<path d="M 142.83 38.32 L 166.42 21.8 A 28.8 28.8 0 0 1 167.9 24.14 Z" fill="#afceec" stroke="none"/>
+<path d="M 142.83 38.32 L 167.77 23.92 A 28.8 28.8 0 0 1 169.04 26.38 Z" fill="#b2cbec" stroke="none"/>
+<path d="M 142.83 38.32 L 168.93 26.15 A 28.8 28.8 0 0 1 169.98 28.71 Z" fill="#b5c7ec" stroke="none"/>
+<path d="M 142.83 38.32 L 169.89 28.47 A 28.8 28.8 0 0 1 170.71 31.11 Z" fill="#b7c4ec" stroke="none"/>
+<path d="M 142.83 38.32 L 170.65 30.87 A 28.8 28.8 0 0 1 171.24 33.57 Z" fill="#bac0ec" stroke="none"/>
+<path d="M 142.83 38.32 L 171.19 33.32 A 28.8 28.8 0 0 1 171.54 36.06 Z" fill="#bdbdec" stroke="none"/>
+<path d="M 142.83 38.32 L 171.52 35.81 A 28.8 28.8 0 0 1 171.63 38.57 Z" fill="#c0b9ec" stroke="none"/>
+<path d="M 142.83 38.32 L 171.63 38.32 A 28.8 28.8 0 0 1 171.5 41.08 Z" fill="#c3b6ec" stroke="none"/>
+<path d="M 142.83 38.32 L 171.52 40.83 A 28.8 28.8 0 0 1 171.15 43.57 Z" fill="#c0bbec" stroke="none"/>
+<path d="M 142.83 38.32 L 171.19 43.32 A 28.8 28.8 0 0 1 170.58 46.02 Z" fill="#bec0ec" stroke="none"/>
+<path d="M 142.83 38.32 L 170.65 45.77 A 28.8 28.8 0 0 1 169.81 48.41 Z" fill="#bbc5ec" stroke="none"/>
+<path d="M 142.83 38.32 L 169.89 48.17 A 28.8 28.8 0 0 1 168.82 50.72 Z" fill="#b8caec" stroke="none"/>
+<path d="M 142.83 38.32 L 168.93 50.49 A 28.8 28.8 0 0 1 167.64 52.94 Z" fill="#b6cfec" stroke="none"/>
+<path d="M 142.83 38.32 L 167.77 52.72 A 28.8 28.8 0 0 1 166.28 55.04 Z" fill="#b3d4ec" stroke="none"/>
+<path d="M 142.83 38.32 L 166.42 54.84 A 28.8 28.8 0 0 1 164.73 57.02 Z" fill="#b0d9ec" stroke="none"/>
+<path d="M 142.83 38.32 L 164.89 56.83 A 28.8 28.8 0 0 1 163.02 58.86 Z" fill="#aedeec" stroke="none"/>
+<path d="M 142.83 38.32 L 163.19 58.68 A 28.8 28.8 0 0 1 161.15 60.54 Z" fill="#abe3ec" stroke="none"/>
+<path d="M 142.83 38.32 L 161.34 60.38 A 28.8 28.8 0 0 1 159.14 62.05 Z" fill="#a8e8ec" stroke="none"/>
+<path d="M 142.83 38.32 L 159.35 61.91 A 28.8 28.8 0 0 1 157.01 63.39 Z" fill="#a7ecec" stroke="none"/>
+<path d="M 142.83 38.32 L 157.23 63.26 A 28.8 28.8 0 0 1 154.77 64.53 Z" fill="#acebee" stroke="none"/>
+<path d="M 142.83 38.32 L 155 64.42 A 28.8 28.8 0 0 1 152.44 65.47 Z" fill="#b2ebef" stroke="none"/>
+<path d="M 142.83 38.32 L 152.68 65.38 A 28.8 28.8 0 0 1 150.04 66.2 Z" fill="#b7eaf0" stroke="none"/>
+<path d="M 142.83 38.32 L 150.28 66.14 A 28.8 28.8 0 0 1 147.58 66.73 Z" fill="#bceaf2" stroke="none"/>
+<path d="M 142.83 38.32 L 147.83 66.68 A 28.8 28.8 0 0 1 145.09 67.03 Z" fill="#c1e9f3" stroke="none"/>
+<path d="M 142.83 38.32 L 145.34 67.01 A 28.8 28.8 0 0 1 142.58 67.12 Z" fill="#c7e9f5" stroke="none"/>
+<path d="M 142.83 38.32 L 142.83 67.12 A 28.8 28.8 0 0 1 140.07 66.99 Z" fill="#cce8f6" stroke="none"/>
+<path d="M 142.83 38.32 L 140.32 67.01 A 28.8 28.8 0 0 1 137.58 66.64 Z" fill="#d1e7f7" stroke="none"/>
+<path d="M 142.83 38.32 L 137.83 66.68 A 28.8 28.8 0 0 1 135.13 66.07 Z" fill="#d7e7f9" stroke="none"/>
+<path d="M 142.83 38.32 L 135.38 66.14 A 28.8 28.8 0 0 1 132.74 65.3 Z" fill="#dce6fa" stroke="none"/>
+<path d="M 142.83 38.32 L 132.98 65.38 A 28.8 28.8 0 0 1 130.43 64.31 Z" fill="#dde5fb" stroke="none"/>
+<path d="M 142.83 38.32 L 130.66 64.42 A 28.8 28.8 0 0 1 128.21 63.13 Z" fill="#d8e3fa" stroke="none"/>
+<path d="M 142.83 38.32 L 128.43 63.26 A 28.8 28.8 0 0 1 126.11 61.77 Z" fill="#d2e0f9" stroke="none"/>
+<path d="M 142.83 38.32 L 126.31 61.91 A 28.8 28.8 0 0 1 124.13 60.22 Z" fill="#cddef8" stroke="none"/>
+<path d="M 142.83 38.32 L 124.32 60.38 A 28.8 28.8 0 0 1 122.29 58.51 Z" fill="#c8dcf7" stroke="none"/>
+<path d="M 142.83 38.32 L 122.47 58.68 A 28.8 28.8 0 0 1 120.61 56.64 Z" fill="#c3daf6" stroke="none"/>
+<path d="M 142.83 38.32 L 120.77 56.83 A 28.8 28.8 0 0 1 119.1 54.63 Z" fill="#bdd7f4" stroke="none"/>
+<path d="M 142.83 38.32 L 119.24 54.84 A 28.8 28.8 0 0 1 117.76 52.5 Z" fill="#b8d5f3" stroke="none"/>
+<path d="M 142.83 38.32 L 117.89 52.72 A 28.8 28.8 0 0 1 116.62 50.26 Z" fill="#b3d3f2" stroke="none"/>
+<path d="M 142.83 38.32 L 116.73 50.49 A 28.8 28.8 0 0 1 115.68 47.93 Z" fill="#add0f1" stroke="none"/>
+<path d="M 142.83 38.32 L 115.77 48.17 A 28.8 28.8 0 0 1 114.95 45.53 Z" fill="#a8cef0" stroke="none"/>
+<path d="M 142.83 38.32 L 115.01 45.77 A 28.8 28.8 0 0 1 114.42 43.07 Z" fill="#a9cbf0" stroke="none"/>
+<path d="M 142.83 38.32 L 114.47 43.32 A 28.8 28.8 0 0 1 114.12 40.58 Z" fill="#adc8ef" stroke="none"/>
+<path d="M 142.83 38.32 L 114.14 40.83 A 28.8 28.8 0 0 1 114.03 38.07 Z" fill="#b1c5ef" stroke="none"/>
+<path d="M 142.83 38.32 L 114.03 38.32 A 28.8 28.8 0 0 1 114.16 35.56 Z" fill="#b5c3ee" stroke="none"/>
+<path d="M 142.83 38.32 L 114.14 35.81 A 28.8 28.8 0 0 1 114.51 33.07 Z" fill="#bac0ee" stroke="none"/>
+<path d="M 142.83 38.32 L 114.47 33.32 A 28.8 28.8 0 0 1 115.08 30.62 Z" fill="#bebded" stroke="none"/>
+<path d="M 142.83 38.32 L 115.01 30.87 A 28.8 28.8 0 0 1 115.85 28.23 Z" fill="#c2baed" stroke="none"/>
+<path d="M 142.83 38.32 L 115.77 28.47 A 28.8 28.8 0 0 1 116.84 25.92 Z" fill="#c7b7ec" stroke="none"/>
+<path d="M 142.83 38.32 L 116.73 26.15 A 28.8 28.8 0 0 1 118.02 23.7 Z" fill="#cbb4ec" stroke="none"/>
+<path d="M 142.83 38.32 L 117.89 23.92 A 28.8 28.8 0 0 1 119.38 21.6 Z" fill="#cdb9ed" stroke="none"/>
+<path d="M 142.83 38.32 L 119.24 21.8 A 28.8 28.8 0 0 1 120.93 19.62 Z" fill="#d0beee" stroke="none"/>
+<path d="M 142.83 38.32 L 120.77 19.81 A 28.8 28.8 0 0 1 122.64 17.78 Z" fill="#d2c3ee" stroke="none"/>
+<path d="M 142.83 38.32 L 122.47 17.96 A 28.8 28.8 0 0 1 124.51 16.1 Z" fill="#d4c8ef" stroke="none"/>
+<path d="M 142.83 38.32 L 124.32 16.26 A 28.8 28.8 0 0 1 126.52 14.59 Z" fill="#d7cdf0" stroke="none"/>
+<path d="M 142.83 38.32 L 126.31 14.73 A 28.8 28.8 0 0 1 128.65 13.25 Z" fill="#d9d2f1" stroke="none"/>
+<path d="M 142.83 38.32 L 128.43 13.38 A 28.8 28.8 0 0 1 130.89 12.11 Z" fill="#dcd7f1" stroke="none"/>
+<path d="M 142.83 38.32 L 130.66 12.22 A 28.8 28.8 0 0 1 133.22 11.17 Z" fill="#deddf2" stroke="none"/>
+<path d="M 142.83 38.32 L 132.98 11.26 A 28.8 28.8 0 0 1 135.62 10.44 Z" fill="#e0e2f3" stroke="none"/>
+<path d="M 142.83 38.32 L 135.38 10.5 A 28.8 28.8 0 0 1 138.08 9.91 Z" fill="#e3e7f4" stroke="none"/>
+<path d="M 142.83 38.32 L 137.83 9.96 A 28.8 28.8 0 0 1 140.57 9.61 Z" fill="#e5ecf4" stroke="none"/>
+<path d="M 142.83 38.32 L 140.32 9.63 A 28.8 28.8 0 0 1 143.08 9.52 Z" fill="#e8f1f5" stroke="none"/>
+<circle cx="142.83" cy="38.32" r="12.6" fill="#33a6dd"/>
+<circle cx="142.83" cy="38.32" r="6" fill="#0b0b12"/>
 <circle cx="142.83" cy="38.32" r="30" fill="url(#spec-kether)"/>
 </g>
 <g id="sphere-chokhmah" clip-path="url(#clip-chokhmah)">
