@@ -285,7 +285,8 @@ describe("tree renderer svg", () => {
     expect(first.startsWith(`<svg xmlns="http://www.w3.org/2000/svg"`)).toBe(true);
     expect(first).toContain(`viewBox="0 0 286 561"`);
     expect(countMatches(first, /<g id="sphere-/g)).toBe(11);
-    expect(countMatches(first, /stroke-width="22" stroke-linecap="round"/g)).toBe(22);
+    // Each path emits a solid fallback line plus a split-gradient line.
+    expect(countMatches(first, /stroke-width="22" stroke-linecap="round"/g)).toBe(44);
     expect(first).not.toContain(`<rect x="0" y="0" width="286" height="561"`);
     expect(first.endsWith(`</svg>`)).toBe(true);
   });

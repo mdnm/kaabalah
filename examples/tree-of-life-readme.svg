@@ -168,103 +168,209 @@
   <stop offset="100%" stop-color="black" stop-opacity="0"/>
 </radialGradient>
 <clipPath id="clip-malkuth"><circle cx="142.83" cy="522.85" r="30"/></clipPath>
-<linearGradient id="path-grad-7" gradientUnits="userSpaceOnUse" x1="37.9" y1="99.18" x2="142.83" y2="280.84">
+<linearGradient id="path-grad-1" gradientUnits="userSpaceOnUse" x1="168.79" y1="53.36" x2="221.89" y2="84.14">
+  <stop offset="0%" stop-color="#cfe0f2"/>
+  <stop offset="33%" stop-color="#cfe0f2"/>
+  <stop offset="67%" stop-color="#ace9e3"/>
+  <stop offset="70%" stop-color="#aadefe"/>
+  <stop offset="73%" stop-color="#c6caf6"/>
+  <stop offset="76%" stop-color="#e2b7ee"/>
+  <stop offset="79%" stop-color="#fea3e6"/>
+  <stop offset="82%" stop-color="#f9bde9"/>
+  <stop offset="85%" stop-color="#f4d7ec"/>
+  <stop offset="88%" stop-color="#f1e3ed"/>
+  <stop offset="91%" stop-color="#f4d4ec"/>
+  <stop offset="94%" stop-color="#f8c5ea"/>
+  <stop offset="97%" stop-color="#fbb7e8"/>
+  <stop offset="100%" stop-color="#fea8e7"/>
+</linearGradient>
+<linearGradient id="path-grad-2" gradientUnits="userSpaceOnUse" x1="116.88" y1="53.37" x2="63.85" y2="84.13">
+  <stop offset="0%" stop-color="#cfe0f2"/>
+  <stop offset="33%" stop-color="#cfe0f2"/>
+  <stop offset="67%" stop-color="#000000"/>
+  <stop offset="100%" stop-color="#000000"/>
+</linearGradient>
+<linearGradient id="path-grad-3" gradientUnits="userSpaceOnUse" x1="142.83" y1="68.32" x2="142.83" y2="250.84">
+  <stop offset="0%" stop-color="#cfe0f2"/>
+  <stop offset="33%" stop-color="#cfe0f2"/>
+  <stop offset="67%" stop-color="#FFFF00"/>
+  <stop offset="100%" stop-color="#FFFF00"/>
+</linearGradient>
+<linearGradient id="path-grad-4" gradientUnits="userSpaceOnUse" x1="217.85" y1="99.18" x2="67.9" y2="99.18">
+  <stop offset="0%" stop-color="#c4c1f5"/>
+  <stop offset="3%" stop-color="#e4b1ed"/>
+  <stop offset="6%" stop-color="#fea5e6"/>
+  <stop offset="9%" stop-color="#fbb4e8"/>
+  <stop offset="12%" stop-color="#f8c3ea"/>
+  <stop offset="15%" stop-color="#f5d1eb"/>
+  <stop offset="18%" stop-color="#f2e0ed"/>
+  <stop offset="21%" stop-color="#f3dced"/>
+  <stop offset="24%" stop-color="#f8c2ea"/>
+  <stop offset="27%" stop-color="#fea7e7"/>
+  <stop offset="30%" stop-color="#e8b3ed"/>
+  <stop offset="33%" stop-color="#ccc7f5"/>
+  <stop offset="67%" stop-color="#000000"/>
+  <stop offset="100%" stop-color="#000000"/>
+</linearGradient>
+<linearGradient id="path-grad-5" gradientUnits="userSpaceOnUse" x1="232.84" y1="125.15" x2="157.84" y2="254.87">
+  <stop offset="0%" stop-color="#c5a5ff"/>
+  <stop offset="3%" stop-color="#b7b5ff"/>
+  <stop offset="6%" stop-color="#a9c5ff"/>
+  <stop offset="9%" stop-color="#9bd5ff"/>
+  <stop offset="12%" stop-color="#b8c7f7"/>
+  <stop offset="15%" stop-color="#d9b6f0"/>
+  <stop offset="18%" stop-color="#f9a6e8"/>
+  <stop offset="21%" stop-color="#fcafe7"/>
+  <stop offset="24%" stop-color="#f9bde9"/>
+  <stop offset="27%" stop-color="#f6cceb"/>
+  <stop offset="30%" stop-color="#f3dbec"/>
+  <stop offset="33%" stop-color="#f1e6ee"/>
+  <stop offset="67%" stop-color="#FFFF00"/>
+  <stop offset="100%" stop-color="#FFFF00"/>
+</linearGradient>
+<linearGradient id="path-grad-6" gradientUnits="userSpaceOnUse" x1="247.85" y1="129.18" x2="247.85" y2="190.25">
+  <stop offset="0%" stop-color="#eccdb1"/>
+  <stop offset="3%" stop-color="#dabad6"/>
+  <stop offset="6%" stop-color="#c8a6fb"/>
+  <stop offset="9%" stop-color="#b9b2ff"/>
+  <stop offset="12%" stop-color="#abc2ff"/>
+  <stop offset="15%" stop-color="#9dd2ff"/>
+  <stop offset="18%" stop-color="#b2caf9"/>
+  <stop offset="21%" stop-color="#d3b9f1"/>
+  <stop offset="24%" stop-color="#f3a9e9"/>
+  <stop offset="27%" stop-color="#fdace7"/>
+  <stop offset="30%" stop-color="#fabbe9"/>
+  <stop offset="33%" stop-color="#f7c9ea"/>
+  <stop offset="67%" stop-color="#0000FF"/>
+  <stop offset="100%" stop-color="#0000FF"/>
+</linearGradient>
+<linearGradient id="path-grad-7" gradientUnits="userSpaceOnUse" x1="52.91" y1="125.16" x2="127.82" y2="254.86">
   <stop offset="0%" stop-color="#000000"/>
   <stop offset="33%" stop-color="#000000"/>
   <stop offset="67%" stop-color="#FFFF00"/>
   <stop offset="100%" stop-color="#FFFF00"/>
 </linearGradient>
-<linearGradient id="path-grad-8" gradientUnits="userSpaceOnUse" x1="37.9" y1="99.18" x2="37.9" y2="220.25">
+<linearGradient id="path-grad-8" gradientUnits="userSpaceOnUse" x1="37.9" y1="129.18" x2="37.9" y2="190.25">
   <stop offset="0%" stop-color="#000000"/>
   <stop offset="33%" stop-color="#000000"/>
   <stop offset="67%" stop-color="#FF0000"/>
   <stop offset="100%" stop-color="#FF0000"/>
 </linearGradient>
-<linearGradient id="path-grad-9" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="37.9" y2="220.25">
+<linearGradient id="path-grad-9" gradientUnits="userSpaceOnUse" x1="217.85" y1="220.25" x2="67.9" y2="220.25">
   <stop offset="0%" stop-color="#0000FF"/>
   <stop offset="33%" stop-color="#0000FF"/>
   <stop offset="67%" stop-color="#FF0000"/>
   <stop offset="100%" stop-color="#FF0000"/>
 </linearGradient>
-<linearGradient id="path-grad-10" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="142.83" y2="280.84">
+<linearGradient id="path-grad-10" gradientUnits="userSpaceOnUse" x1="221.86" y1="235.24" x2="168.82" y2="265.85">
   <stop offset="0%" stop-color="#0000FF"/>
   <stop offset="33%" stop-color="#0000FF"/>
   <stop offset="67%" stop-color="#FFFF00"/>
   <stop offset="100%" stop-color="#FFFF00"/>
 </linearGradient>
-<linearGradient id="path-grad-11" gradientUnits="userSpaceOnUse" x1="247.85" y1="220.25" x2="247.85" y2="341.37">
+<linearGradient id="path-grad-11" gradientUnits="userSpaceOnUse" x1="247.85" y1="250.25" x2="247.85" y2="311.37">
   <stop offset="0%" stop-color="#0000FF"/>
   <stop offset="33%" stop-color="#0000FF"/>
   <stop offset="67%" stop-color="#00FF00"/>
   <stop offset="100%" stop-color="#00FF00"/>
 </linearGradient>
-<linearGradient id="path-grad-12" gradientUnits="userSpaceOnUse" x1="37.9" y1="220.25" x2="142.83" y2="280.84">
+<linearGradient id="path-grad-12" gradientUnits="userSpaceOnUse" x1="63.88" y1="235.25" x2="116.85" y2="265.84">
   <stop offset="0%" stop-color="#FF0000"/>
   <stop offset="33%" stop-color="#FF0000"/>
   <stop offset="67%" stop-color="#FFFF00"/>
   <stop offset="100%" stop-color="#FFFF00"/>
 </linearGradient>
-<linearGradient id="path-grad-13" gradientUnits="userSpaceOnUse" x1="37.9" y1="220.25" x2="37.9" y2="341.37">
+<linearGradient id="path-grad-13" gradientUnits="userSpaceOnUse" x1="37.9" y1="250.25" x2="37.9" y2="311.37">
   <stop offset="0%" stop-color="#FF0000"/>
   <stop offset="33%" stop-color="#FF0000"/>
   <stop offset="67%" stop-color="#FF8000"/>
   <stop offset="100%" stop-color="#FF8000"/>
 </linearGradient>
-<linearGradient id="path-grad-14" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="247.85" y2="341.37">
+<linearGradient id="path-grad-14" gradientUnits="userSpaceOnUse" x1="168.82" y1="295.82" x2="221.86" y2="326.39">
   <stop offset="0%" stop-color="#FFFF00"/>
   <stop offset="33%" stop-color="#FFFF00"/>
   <stop offset="67%" stop-color="#00FF00"/>
   <stop offset="100%" stop-color="#00FF00"/>
 </linearGradient>
-<linearGradient id="path-grad-15" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="142.83" y2="402.12">
+<linearGradient id="path-grad-15" gradientUnits="userSpaceOnUse" x1="142.83" y1="310.84" x2="142.83" y2="372.12">
   <stop offset="0%" stop-color="#FFFF00"/>
   <stop offset="33%" stop-color="#FFFF00"/>
   <stop offset="67%" stop-color="#8F00FF"/>
   <stop offset="100%" stop-color="#8F00FF"/>
 </linearGradient>
-<linearGradient id="path-grad-16" gradientUnits="userSpaceOnUse" x1="142.83" y1="280.84" x2="37.9" y2="341.37">
+<linearGradient id="path-grad-16" gradientUnits="userSpaceOnUse" x1="116.84" y1="295.83" x2="63.89" y2="326.38">
   <stop offset="0%" stop-color="#FFFF00"/>
   <stop offset="33%" stop-color="#FFFF00"/>
   <stop offset="67%" stop-color="#FF8000"/>
   <stop offset="100%" stop-color="#FF8000"/>
 </linearGradient>
-<linearGradient id="path-grad-17" gradientUnits="userSpaceOnUse" x1="247.85" y1="341.37" x2="37.9" y2="341.37">
+<linearGradient id="path-grad-17" gradientUnits="userSpaceOnUse" x1="217.85" y1="341.37" x2="67.9" y2="341.37">
   <stop offset="0%" stop-color="#00FF00"/>
   <stop offset="33%" stop-color="#00FF00"/>
   <stop offset="67%" stop-color="#FF8000"/>
   <stop offset="100%" stop-color="#FF8000"/>
 </linearGradient>
-<linearGradient id="path-grad-18" gradientUnits="userSpaceOnUse" x1="247.85" y1="341.37" x2="142.83" y2="402.12">
+<linearGradient id="path-grad-18" gradientUnits="userSpaceOnUse" x1="221.88" y1="356.39" x2="168.8" y2="387.1">
   <stop offset="0%" stop-color="#00FF00"/>
   <stop offset="33%" stop-color="#00FF00"/>
   <stop offset="67%" stop-color="#8F00FF"/>
   <stop offset="100%" stop-color="#8F00FF"/>
 </linearGradient>
-<linearGradient id="path-grad-20" gradientUnits="userSpaceOnUse" x1="37.9" y1="341.37" x2="142.83" y2="402.12">
+<linearGradient id="path-grad-19" gradientUnits="userSpaceOnUse" x1="232.82" y1="367.34" x2="157.86" y2="496.88">
+  <stop offset="0%" stop-color="#00FF00"/>
+  <stop offset="33%" stop-color="#00FF00"/>
+  <stop offset="67%" stop-color="#8a6a52"/>
+  <stop offset="100%" stop-color="#8a6a52"/>
+</linearGradient>
+<linearGradient id="path-grad-20" gradientUnits="userSpaceOnUse" x1="63.86" y1="356.4" x2="116.87" y2="387.09">
   <stop offset="0%" stop-color="#FF8000"/>
   <stop offset="33%" stop-color="#FF8000"/>
   <stop offset="67%" stop-color="#8F00FF"/>
   <stop offset="100%" stop-color="#8F00FF"/>
 </linearGradient>
+<linearGradient id="path-grad-21" gradientUnits="userSpaceOnUse" x1="52.92" y1="367.34" x2="127.81" y2="496.88">
+  <stop offset="0%" stop-color="#FF8000"/>
+  <stop offset="33%" stop-color="#FF8000"/>
+  <stop offset="67%" stop-color="#8a6a52"/>
+  <stop offset="100%" stop-color="#8a6a52"/>
+</linearGradient>
+<linearGradient id="path-grad-22" gradientUnits="userSpaceOnUse" x1="142.83" y1="432.12" x2="142.83" y2="492.85">
+  <stop offset="0%" stop-color="#8F00FF"/>
+  <stop offset="33%" stop-color="#8F00FF"/>
+  <stop offset="67%" stop-color="#8a6a52"/>
+  <stop offset="100%" stop-color="#8a6a52"/>
+</linearGradient>
 </defs>
 <g id="paths">
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="url(#path-grad-1)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="#D4AF37" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="url(#path-grad-1)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="247.85" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#E8C848" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="url(#path-grad-2)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="#E8C848" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="url(#path-grad-2)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#8098B0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="url(#path-grad-3)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="#8098B0" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="url(#path-grad-3)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="38.32" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#E06080" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="url(#path-grad-4)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="#E06080" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="url(#path-grad-4)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="37.9" y2="99.18" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#E87050" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="url(#path-grad-5)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="#E87050" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="url(#path-grad-5)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="142.83" y2="280.84" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="url(#path-grad-6)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="#7088C0" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="url(#path-grad-6)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="99.18" x2="247.85" y2="220.25" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="#E8A850" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="99.18" x2="142.83" y2="280.84" stroke="url(#path-grad-7)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
@@ -327,7 +433,9 @@
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-18)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="url(#path-grad-19)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="#D86858" stroke-width="22" stroke-linecap="round"/>
+<line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="url(#path-grad-19)" stroke-width="22" stroke-linecap="round"/>
 <line x1="247.85" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="#E89040" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-20)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
@@ -335,10 +443,14 @@
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="url(#path-grad-20)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="402.12" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="url(#path-grad-21)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="#D06080" stroke-width="22" stroke-linecap="round"/>
+<line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="url(#path-grad-21)" stroke-width="22" stroke-linecap="round"/>
 <line x1="37.9" y1="341.37" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 <line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#30B898" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="url(#path-grad-22)" stroke-width="26" stroke-linecap="round" filter="url(#pathDarken)"/>
 <line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="#30B898" stroke-width="22" stroke-linecap="round"/>
+<line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="url(#path-grad-22)" stroke-width="22" stroke-linecap="round"/>
 <line x1="142.83" y1="402.12" x2="142.83" y2="522.85" stroke="white" stroke-opacity="0.25" stroke-width="8" stroke-linecap="round"/>
 </g>
 <g id="spheres">
@@ -524,6 +636,7 @@
 <circle cx="142.83" cy="280.84" r="30" fill="url(#spec-tiphareth)"/>
 <circle cx="142.83" cy="280.84" r="30" fill="url(#shad-tiphareth)"/>
 </g>
+<circle cx="142.83" cy="280.84" r="29.25" fill="none" stroke="#cccc00" stroke-width="1.5"/>
 <g id="sphere-netzach" clip-path="url(#clip-netzach)">
 <circle cx="247.85" cy="341.37" r="30" fill="#00FF00"/>
 <circle cx="247.85" cy="341.37" r="30" fill="url(#spec-netzach)"/>

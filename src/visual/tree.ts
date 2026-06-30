@@ -248,6 +248,12 @@ const DEFAULT_SPHERE_HIT_RADIUS = DEFAULT_SPHERE_RADIUS + 8;
 const DEFAULT_PATH_HIT_STROKE_WIDTH = DEFAULT_PATH_EDGE_WIDTH + 8;
 const MUTED_TARGET_COLOR = "#AAA";
 
+// The solid-colour spheres now share their colour with the paths leaving them,
+// so they get a small inner rim in a darker shade of their own fill to stay
+// visually distinct. Special spheres (Kether/Chokhmah/Daath/Malkuth) and Binah
+// keep their own treatment.
+const INNER_BORDER_SPHERE_NAMES = new Set<TreeSphereName>(["Tiphareth"]);
+
 const NAZAR_NACRE = "__nacre__";
 const NAZAR_IRIS = "#33a6dd";
 const NAZAR_PUPIL = "#0b0b12";
@@ -261,13 +267,61 @@ const pathId = (value: string) => id(KaabalahTypes.PATH, value) as TreePathId;
 // adjacent sphere, so the path visibly bridges the two. Start with one path
 // while we tune the look, then extend.
 const SPLIT_GRADIENT_PATH_IDS = new Set<TreePathId>(
-  ["7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20"].map(
-    pathId
-  )
+  Array.from({ length: 22 }, (_, index) => pathId(String(index + 1)))
 );
 // Width (in % of the path length) of the soft blend band across the midpoint
 // where the two adjacent-sphere colours grade into each other.
 const SPLIT_GRADIENT_BLEND = 34;
+
+// The special spheres render with multi-tone materials (nacre, iridescence,
+// sliced disc) so their single "canonical" colour doesn't match what's drawn.
+// For split gradients we grade toward a representative colour chosen to blend
+// with each sphere's rendered border instead. (Daath has no paths.)
+const SPECIAL_SPHERE_PATH_COLORS: Partial<Record<TreeSphereName, string>> = {
+  Kether: "#cfe0f2",
+  Chokhmah: "#e6d6ef",
+  Malkuth: "#8a6a52",
+};
+
+// Chokhmah renders as an iridescent disc whose colour at angle θ maps to
+// t = (θ + 90) / 360 through IRIDESCENT_STOPS. Paths touching it sample that
+// same wheel: the contact point matches the disc exactly, then the ribbon
+// sweeps onward through the spectrum — so the path feels like the same
+// iridescent material flowing outward.
+const CHOKHMAH_SWEEP_SPAN = 0.42; // fraction of the colour wheel a ribbon spans
+const CHOKHMAH_SWEEP_SAMPLES = 12;
+
+function iridescentColorAt(t: number) {
+  const frac = ((t % 1) + 1) % 1;
+  return interpolateColorStops(IRIDESCENT_STOPS, frac);
+}
+
+// Wheel position of the disc colour seen looking from `center` toward `toward`.
+function iridescentContactT(
+  center: TreeLayoutCoordinate,
+  toward: TreeLayoutCoordinate
+) {
+  const degrees = (Math.atan2(toward.y - center.y, toward.x - center.x) * 180) / Math.PI;
+  return (((degrees + 90) / 360) % 1 + 1) % 1;
+}
+
+// Endpoints of a path shortened by `radius` at each end, i.e. the points where
+// the line emerges from under each sphere.
+function edgeAnchoredVector(
+  from: TreeLayoutCoordinate,
+  to: TreeLayoutCoordinate,
+  radius: number
+) {
+  const length = Math.hypot(to.x - from.x, to.y - from.y) || 1;
+  const ux = (to.x - from.x) / length;
+  const uy = (to.y - from.y) / length;
+  return {
+    x1: round(from.x + ux * radius),
+    y1: round(from.y + uy * radius),
+    x2: round(to.x - ux * radius),
+    y2: round(to.y - uy * radius),
+  };
+}
 
 export const TREE_SPHERE_IDS = [...TREE_TOPOLOGY_SPHERE_IDS] as TreeSphereId[];
 export const TREE_PATH_IDS = [...TREE_TOPOLOGY_PATH_IDS] as TreePathId[];
@@ -571,27 +625,54 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   if (palette.mode === "color") {
     for (const splitPathId of SPLIT_GRADIENT_PATH_IDS) {
       const splitPath = layout.paths[splitPathId];
-      if (!splitPath) {
+      // Skip paths the caller is explicitly recolouring (highlight/activation):
+      // those keep their solid override instead of the split gradient.
+      if (
+        !splitPath ||
+        highlights.pathColors[splitPathId] !== undefined ||
+        activationMap.get(splitPathId) !== undefined
+      ) {
         continue;
       }
-      const fromColor = resolveSphereCanonicalColor({
+      const fromColor = resolveSplitEndpointColor({
         palette,
         sphereId: splitPath.fromId,
         tree,
       });
-      const toColor = resolveSphereCanonicalColor({
+      const toColor = resolveSplitEndpointColor({
         palette,
         sphereId: splitPath.toId,
         tree,
       });
       const blendStart = round(50 - SPLIT_GRADIENT_BLEND / 2);
       const blendEnd = round(50 + SPLIT_GRADIENT_BLEND / 2);
+      const fromName = parseId(splitPath.fromId) as TreeSphereName;
+      const toName = parseId(splitPath.toId) as TreeSphereName;
+      // Wheel position where the ribbon meets the iridescent disc, looking from
+      // Chokhmah's centre toward the other sphere.
+      const contactT =
+        toName === "Chokhmah"
+          ? iridescentContactT(splitPath.to, splitPath.from)
+          : fromName === "Chokhmah"
+            ? iridescentContactT(splitPath.from, splitPath.to)
+            : null;
+      const stops = buildSplitGradientStops({
+        fromName,
+        toName,
+        fromColor,
+        toColor,
+        blendStart,
+        blendEnd,
+        contactT,
+      });
+      // The path line runs centre-to-centre but each end is hidden under its
+      // sphere. Anchor the gradient to the visible sphere-edge contact points so
+      // offset 0%/100% land where the ribbon actually emerges (matters most for
+      // the Chokhmah contact colour).
+      const edge = edgeAnchoredVector(splitPath.from, splitPath.to, radius);
       push(
-        `<linearGradient id="path-grad-${parseId(splitPathId)}" gradientUnits="userSpaceOnUse" x1="${splitPath.from.x}" y1="${splitPath.from.y}" x2="${splitPath.to.x}" y2="${splitPath.to.y}">
-  <stop offset="0%" stop-color="${escapeAttr(fromColor)}"/>
-  <stop offset="${blendStart}%" stop-color="${escapeAttr(fromColor)}"/>
-  <stop offset="${blendEnd}%" stop-color="${escapeAttr(toColor)}"/>
-  <stop offset="100%" stop-color="${escapeAttr(toColor)}"/>
+        `<linearGradient id="path-grad-${parseId(splitPathId)}" gradientUnits="userSpaceOnUse" x1="${edge.x1}" y1="${edge.y1}" x2="${edge.x2}" y2="${edge.y2}">
+${stops}
 </linearGradient>`
       );
     }
@@ -648,6 +729,7 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
     const useSplitGradient =
       palette.mode === "color" &&
       !activation &&
+      highlights.pathColors[currentPathId] === undefined &&
       SPLIT_GRADIENT_PATH_IDS.has(currentPathId);
     // Solid colour used both when no gradient applies and as the fallback layer
     // for renderers that don't support gradients.
@@ -826,6 +908,18 @@ function renderSphere(
     push(
       `<circle cx="${point.x}" cy="${point.y}" r="${params.radius}" fill="none" stroke="${escapeAttr(params.palette.sphereStrokeColor)}" stroke-width="${params.sphereStrokeWidth}"/>`
     );
+  } else if (INNER_BORDER_SPHERE_NAMES.has(params.sphereName)) {
+    // Inner rim: a darker shade of the sphere's own colour, inset so it sits
+    // just inside the edge and separates the sphere from its same-coloured paths.
+    const borderWidth = round(params.radius * 0.05);
+    const borderColor = interpolateColor(
+      toPrimaryFill(activeFill, params.palette.defaultSphereFill),
+      "#000000",
+      0.2
+    );
+    push(
+      `<circle cx="${point.x}" cy="${point.y}" r="${round(params.radius - borderWidth / 2)}" fill="none" stroke="${escapeAttr(borderColor)}" stroke-width="${borderWidth}"/>`
+    );
   }
 }
 
@@ -953,6 +1047,70 @@ function resolveTargetActivation(params: {
           ? clamp01(Math.max(strength, 0.56))
           : 0,
   };
+}
+
+function resolveSplitEndpointColor(params: {
+  palette: ResolvedPalette;
+  sphereId: TreeSphereId;
+  tree: ReturnType<typeof createTree>;
+}) {
+  const name = parseId(params.sphereId) as TreeSphereName;
+  return (
+    SPECIAL_SPHERE_PATH_COLORS[name] ??
+    resolveSphereCanonicalColor(params)
+  );
+}
+
+function buildSplitGradientStops(params: {
+  fromName: TreeSphereName;
+  toName: TreeSphereName;
+  fromColor: string;
+  toColor: string;
+  blendStart: number;
+  blendEnd: number;
+  contactT: number | null;
+}): string {
+  const { fromName, toName, fromColor, toColor, blendStart, blendEnd, contactT } =
+    params;
+  const stop = (offset: number, color: string) =>
+    `  <stop offset="${round(offset)}%" stop-color="${escapeAttr(color)}"/>`;
+  // Iridescent sweep emitted across [start, end] in increasing offset order.
+  // `t0` is the wheel position where the ribbon meets the disc; `along` is the
+  // distance from that contact end, so the sweep walks the wheel outward.
+  const sweep = (start: number, end: number, t0: number, sphereAtEnd: boolean) =>
+    Array.from({ length: CHOKHMAH_SWEEP_SAMPLES }, (_, index) => {
+      const f = index / (CHOKHMAH_SWEEP_SAMPLES - 1);
+      const offset = start + f * (end - start);
+      const along = sphereAtEnd ? 1 - f : f;
+      return stop(offset, iridescentColorAt(t0 + along * CHOKHMAH_SWEEP_SPAN));
+    });
+
+  // Chokhmah at the `to` end (offset 100): solid fromColor, blend into the
+  // iridescent sweep that meets the disc at its contact colour.
+  if (toName === "Chokhmah" && contactT !== null) {
+    return [
+      stop(0, fromColor),
+      stop(blendStart, fromColor),
+      ...sweep(blendEnd, 100, contactT, true),
+    ].join("\n");
+  }
+
+  // Chokhmah at the `from` end (offset 0): iridescent sweep, blend into toColor.
+  if (fromName === "Chokhmah" && contactT !== null) {
+    return [
+      ...sweep(0, blendStart, contactT, false),
+      stop(blendEnd, toColor),
+      stop(100, toColor),
+    ].join("\n");
+  }
+
+  // Standard two-colour split with a soft midpoint blend.
+  return [
+    stop(0, fromColor),
+    stop(blendStart, fromColor),
+    stop(blendEnd, toColor),
+    stop(100, toColor),
+  ].join("\n");
 }
 
 function resolveSphereCanonicalColor(params: {

@@ -128,7 +128,7 @@ describe("tree svg visual module", () => {
   it("keeps the default svg output unchanged when no highlights are passed", () => {
     const svg = generateTreeSvg();
 
-    expect(hash(svg)).toBe("49bc877129ab77142deb42122ec3a1588d9dc817577eeb7d35da0348a33038d1");
+    expect(hash(svg)).toBe("12aa115502b56a99d5447f37fcb942ae858031ece447a8ce3353b7b81bd7869f");
   });
 
   it("recolors only the highlighted path without changing unrelated paths", () => {
@@ -144,20 +144,15 @@ describe("tree svg visual module", () => {
       },
     });
 
-    const defaultMainPathStrokes = extractMainPathStrokes(defaultSvg);
-    const highlightedMainPathStrokes = extractMainPathStrokes(svg);
-    const defaultEdgePathStrokes = extractEdgePathStrokes(defaultSvg);
-    const highlightedEdgePathStrokes = extractEdgePathStrokes(svg);
-
-    expect(defaultMainPathStrokes).toHaveLength(22);
-    expect(highlightedMainPathStrokes).toHaveLength(22);
-    expect(defaultEdgePathStrokes).toHaveLength(22);
-    expect(highlightedEdgePathStrokes).toHaveLength(22);
-    expect(highlightedMainPathStrokes[0]).toBe("#ff0055");
-    expect(defaultMainPathStrokes[0]).not.toBe("#ff0055");
-    expect(highlightedEdgePathStrokes[0]).toBe("#ff0055");
-    expect(highlightedMainPathStrokes.slice(1)).toEqual(defaultMainPathStrokes.slice(1));
-    expect(highlightedEdgePathStrokes.slice(1)).toEqual(defaultEdgePathStrokes.slice(1));
+    // By default path 1 carries a split gradient; a highlight override replaces
+    // it with the requested solid colour and leaves it off the gradient layer.
+    expect(defaultSvg).toContain(`path-grad-1"`);
+    expect(svg).not.toContain(`path-grad-1"`);
+    expect(svg).toContain(`stroke="#ff0055" stroke-width="22"`);
+    expect(svg).toContain(`stroke="#ff0055" stroke-width="26"`);
+    // Unrelated paths keep their split gradients untouched.
+    expect(svg).toContain(`path-grad-2"`);
+    expect(extractMainPathStrokes(svg).filter((s) => s === "#ff0055")).toHaveLength(1);
   });
 
   it("keeps a highlighted special sphere on its special renderer", () => {
@@ -171,7 +166,8 @@ describe("tree svg visual module", () => {
     });
 
     expect(svg).toContain(`<g id="sphere-kether"`);
-    expect(svg).toContain(`<polygon points="`);
+    // Kether's nacre (mother-of-pearl) renderer emits iridescent arc paths.
+    expect(svg).toContain(`path d="M 142.83 38.32 L`);
     expect(svg).toContain(`fill="#ffcc00"`);
   });
 
@@ -242,9 +238,11 @@ describe("tree svg visual module", () => {
     const daathSection = extractSphereSection(svg, "daath");
 
     expect(svg).toContain(`<rect x="0" y="0" width="286" height="561" fill="#fff"/>`);
-    expect(mainPathStrokes[0]).not.toBe(mutedColor);
-    expect(mainPathStrokes.slice(1)).toEqual(Array.from({ length: 21 }, () => mutedColor));
-    expect(ketherSection).toContain(`<polygon points="`);
+    // The selected path keeps its split gradient; every other path is muted solid.
+    expect(svg).toContain(`path-grad-1"`);
+    expect(mainPathStrokes).toContain(`url(#path-grad-1)`);
+    expect(mainPathStrokes.filter((stroke) => stroke === mutedColor)).toHaveLength(21);
+    expect(ketherSection).toContain(`path d="M 142.83 38.32 L`);
     expect(chokhmahSection).toContain(`path d="M 247.85 99.18 L`);
     expect(daathSection).toContain(`fill="#aaa"`);
     expect(daathSection).not.toContain(`transform="rotate(180 142.83 159.44)"`);
@@ -374,7 +372,7 @@ describe("tree svg visual module", () => {
 
     expect(pathsIndex).toBeGreaterThan(-1);
     expect(spheresIndex).toBeGreaterThan(pathsIndex);
-    expect(ketherSection).toContain(`<polygon points="`);
+    expect(ketherSection).toContain(`path d="M 142.83 38.32 L`);
     expect(ketherSection).toContain(`fill="#ffcc00"`);
     expect(ketherSection).not.toContain(`fill="#AAA"`);
     expect(chokhmahSection).toContain(`path d="M 247.85 99.18 L`);

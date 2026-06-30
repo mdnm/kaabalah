@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "6.11.0",
+  "version": "6.12.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "engines": {
     "node": ">=18.18.0"

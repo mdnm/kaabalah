@@ -767,7 +767,8 @@ describe("CLI contract", () => {
 
     expect(payload.activationCount).toBe(2);
     expect(payload.svg).toContain(`fill="#ffcc00"`);
-    expect(payload.svg).toContain(`<polygon points="`);
+    // Kether's mother-of-pearl renderer emits iridescent arc paths.
+    expect(payload.svg).toContain(`path d="M 142.83 38.32 L`);
     expect(payload.svg).toContain(`stroke="#AAA"`);
   });
 
