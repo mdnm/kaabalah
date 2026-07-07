@@ -30,6 +30,8 @@ export const GLOBAL_FLAGS: CommandFlag[] = [
   { name: "compact", type: "boolean", default: false, description: "Minified JSON output (no indentation)" },
   { name: "fields", type: "string", description: "Comma-separated dot-paths to filter JSON output (e.g. --fields=a.b,c.d)" },
   { name: "input-json", type: "string", description: "JSON string, or - to read a JSON object from stdin" },
+  { name: "quiet", type: "boolean", default: false, description: "Suppress stderr diagnostics and notices" },
+  { name: "silent", type: "boolean", default: false, description: "Alias for --quiet" },
   { name: "debug", type: "boolean", default: false, description: "Emit debug logs to stderr (same effect as DEBUG=kaabalah:*)" },
   { name: "trace", type: "boolean", default: false, description: "Print stack traces for unexpected fatal errors in human-readable mode" },
 ];

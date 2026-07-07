@@ -22,6 +22,7 @@ import { exitWithError } from "./runtime/errors";
 import { createExecutionContext } from "./runtime/execution";
 import { parseInputJson, trimTrailingLineBreaks } from "./runtime/input";
 import { outputJson } from "./runtime/output";
+import { configureQuietRuntime } from "./runtime/quiet";
 import { hasStdinSource, readStdin } from "./runtime/stdin";
 import type { Flags, InputPayload } from "./runtime/types";
 
@@ -73,9 +74,11 @@ export async function runCli(argv: string[]): Promise<void> {
     if (isCliParseError(err)) {
       try {
         const resolved = resolveRuntimeConfig(err.flags);
+        configureQuietRuntime(resolved.flags);
         exitWithError("INVALID_ARGUMENT", err.message, resolved.flags);
       } catch (configErr) {
         if (isCliConfigError(configErr)) {
+          configureQuietRuntime(err.flags);
           exitWithError(configErr.code, configErr.message, err.flags);
         }
         throw configErr;
@@ -88,8 +91,10 @@ export async function runCli(argv: string[]): Promise<void> {
   let flags = parsedArgs.flags;
   try {
     flags = resolveRuntimeConfig(flags).flags;
+    configureQuietRuntime(flags);
   } catch (err) {
     if (isCliConfigError(err)) {
+      configureQuietRuntime(flags);
       exitWithError(err.code, err.message, flags);
     }
     throw err;

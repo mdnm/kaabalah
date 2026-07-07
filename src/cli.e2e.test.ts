@@ -79,6 +79,12 @@ function parseJsonOutput(stdout: string): unknown {
   return JSON.parse(stdout);
 }
 
+function assertStrictJsonStdout(result: ProcessResult, label: string): unknown {
+  expect(result.stdout, `${label}: stdout should end with one newline`).toMatch(/\n$/);
+  expect(result.stdout.trim(), `${label}: stdout should not contain extra blank padding`).toBe(result.stdout.slice(0, -1));
+  return JSON.parse(result.stdout);
+}
+
 beforeAll(() => {
   assertSuccess(runProcess(NPM_COMMAND, ["run", "build"]), "CLI build failed");
 }, 120000);
@@ -142,6 +148,8 @@ describe("CLI contract", () => {
       "compact",
       "fields",
       "input-json",
+      "quiet",
+      "silent",
       "debug",
       "trace",
     ]);
@@ -1289,6 +1297,289 @@ describe("CLI contract", () => {
     });
     expect(result.stderr).toContain("[kaabalah:parser]");
     expect(result.stderr).toContain("[kaabalah:config]");
+  });
+
+  it("emits exactly one parseable JSON document on stdout for every command", () => {
+    const synastryPayload = JSON.stringify({
+      chartA: {
+        date: "1990-01-15",
+        time: "14:30",
+        lat: 40.7128,
+        lon: -74.006,
+        timezone: "America/New_York",
+      },
+      chartB: {
+        date: "1992-06-20",
+        time: "09:00",
+        lat: 51.5074,
+        lon: -0.1278,
+        timezone: "Europe/London",
+      },
+    });
+    const astrologyRuntimeArgs = [
+      "--wasm-path",
+      REAL_WASM_PATH,
+      "--ephe-path",
+      REAL_EPHE_PATH,
+    ];
+    const cases: Array<{ label: string; args: string[]; input?: string; expectStderr?: boolean }> = [
+      { label: "help", args: ["help", "--json", "--compact"] },
+      { label: "gematria", args: ["gematria", "DAVID", "--json", "--compact"] },
+      { label: "gematria:reverse", args: ["gematria:reverse", "22", "--max-results=1", "--json", "--compact"] },
+      { label: "numerology", args: ["numerology", "1990-01-15", "--json", "--compact"] },
+      { label: "numerology:lifepath", args: ["numerology:lifepath", "1990-01-15", "--json", "--compact"] },
+      { label: "numerology:cycles", args: ["numerology:cycles", "1990-01-15", "John", "--json", "--compact"] },
+      { label: "numerology:challenges", args: ["numerology:challenges", "1990-01-15", "--json", "--compact"] },
+      { label: "numerology:fibonacci", args: ["numerology:fibonacci", "1990-01-15", "--json", "--compact"] },
+      { label: "tarot", args: ["tarot", "1", "--json", "--compact"] },
+      { label: "tarot:card", args: ["tarot:card", "chariot", "--json", "--compact"] },
+      { label: "tarot:spread", args: ["tarot:spread", "--list", "--json", "--compact"] },
+      { label: "ifa", args: ["ifa", "1990-01-15", "--json", "--compact"] },
+      { label: "tree", args: ["tree", "--json", "--compact"] },
+      { label: "tree:node", args: ["tree:node", "sphere:Kether", "--json", "--compact"] },
+      { label: "tree:find", args: ["tree:find", "magician", "--json", "--compact"] },
+      { label: "tree:types", args: ["tree:types", "--json", "--compact"] },
+      { label: "tree:layout", args: ["tree:layout", "--json", "--compact"] },
+      { label: "tree:topology", args: ["tree:topology", "--json", "--compact"] },
+      { label: "tree:svg", args: ["tree:svg", "--json", "--compact", "--fields=svg"] },
+      { label: "tree:ascii", args: ["tree:ascii", "--json", "--compact", "--fields=ascii"] },
+      {
+        label: "astrology",
+        args: [
+          "astrology",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=aspects",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:wheel",
+        args: [
+          "astrology:wheel",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=svg",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:synastry",
+        args: [
+          "astrology:synastry",
+          "--input-json=-",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=aspects",
+        ],
+        input: synastryPayload,
+        expectStderr: true,
+      },
+      {
+        label: "astrology:composite",
+        args: [
+          "astrology:composite",
+          "--input-json=-",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=aspects",
+        ],
+        input: synastryPayload,
+        expectStderr: true,
+      },
+      {
+        label: "astrology:transits",
+        args: [
+          "astrology:transits",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--transit-date=2026-03-17",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=aspects",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:solar-return",
+        args: [
+          "astrology:solar-return",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--year=2026",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=returnDate",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:profections",
+        args: [
+          "astrology:profections",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--year=2026",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=house,sign,ruler",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:profections:monthly",
+        args: [
+          "astrology:profections:monthly",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--year=2026",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=months",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:firdaria",
+        args: [
+          "astrology:firdaria",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=currentMajor,currentSub",
+        ],
+        expectStderr: true,
+      },
+      { label: "astrology:decans", args: ["astrology:decans", "15", "--json", "--compact"] },
+      { label: "astrology:dodecatemoria", args: ["astrology:dodecatemoria", "5", "--json", "--compact"] },
+      {
+        label: "astrology:astrocartography",
+        args: [
+          "astrology:astrocartography",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--latitude-step=30",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=meridianLines",
+        ],
+        expectStderr: true,
+      },
+      {
+        label: "astrology:astrocartography:query",
+        args: [
+          "astrology:astrocartography:query",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--query-lat=51.5",
+          "--query-lon=-0.12",
+          ...astrologyRuntimeArgs,
+          "--json",
+          "--compact",
+          "--fields=lines",
+        ],
+        expectStderr: true,
+      },
+    ];
+
+    for (const testCase of cases) {
+      const result = runCli(testCase.args, testCase.input);
+      assertSuccess(result, `${testCase.label} --json`);
+      assertStrictJsonStdout(result, testCase.label);
+      if (!testCase.expectStderr) {
+        expect(result.stderr, `${testCase.label}: stderr`).toBe("");
+      }
+    }
+  });
+
+  it("emits parseable JSON errors on stdout for representative command failures", () => {
+    const cases: Array<{ label: string; args: string[] }> = [
+      { label: "unknown command", args: ["not-a-command", "--json", "--compact"] },
+      { label: "gematria missing stdin", args: ["gematria", "--json", "--compact"] },
+      { label: "numerology invalid date", args: ["numerology", "bogus", "--json", "--compact"] },
+      { label: "tarot missing card", args: ["tarot:card", "--json", "--compact"] },
+      { label: "ifa invalid date", args: ["ifa", "bogus", "--json", "--compact"] },
+      { label: "tree unknown node", args: ["tree:node", "sphere:Nope", "--json", "--compact"] },
+      {
+        label: "astrology missing wasm",
+        args: [
+          "astrology",
+          "1990-01-15",
+          "14:30",
+          "--lat=40.7128",
+          "--lon=-74.006",
+          "--wasm-path=/missing/swisseph.wasm",
+          "--ephe-path",
+          REAL_EPHE_PATH,
+          "--json",
+          "--compact",
+        ],
+      },
+    ];
+
+    for (const testCase of cases) {
+      const result = runCli(testCase.args);
+      expect(result.status, `${testCase.label}: exit status`).toBe(1);
+      const payload = assertStrictJsonStdout(result, testCase.label) as { error?: boolean; code?: string };
+      expect(payload.error, `${testCase.label}: error flag`).toBe(true);
+      expect(typeof payload.code, `${testCase.label}: error code`).toBe("string");
+    }
+  });
+
+  it("suppresses stderr diagnostics with --quiet and --silent", () => {
+    for (const quietFlag of ["--quiet", "--silent"]) {
+      const result = runCli([
+        "astrology",
+        "1990-01-15",
+        "14:30",
+        "--lat=40.7128",
+        "--lon=-74.006",
+        "--wasm-path",
+        REAL_WASM_PATH,
+        "--ephe-path",
+        REAL_EPHE_PATH,
+        "--json",
+        "--compact",
+        "--fields=aspects",
+        quietFlag,
+      ]);
+      assertSuccess(result, `astrology ${quietFlag}`);
+      assertStrictJsonStdout(result, `astrology ${quietFlag}`);
+      expect(result.stderr).toBe("");
+    }
   });
 
   it("keeps astrology JSON stdout parseable while sending ephemeris notices to stderr", () => {

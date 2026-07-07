@@ -2,6 +2,7 @@ import { parseArgs as parseNodeArgs } from "node:util";
 
 import { COMMANDS, GLOBAL_FLAGS } from "../contract";
 import { configureDebugRuntime, debugLog } from "./debug";
+import { configureQuietRuntime } from "./quiet";
 import type { Flags } from "./types";
 
 class CliParseError extends Error {
@@ -129,6 +130,16 @@ export function getFallbackFlags(argv: string[]): Flags {
       continue;
     }
 
+    if (arg === "--quiet") {
+      flags.quiet = true;
+      continue;
+    }
+
+    if (arg === "--silent") {
+      flags.silent = true;
+      continue;
+    }
+
     if (arg === "--trace") {
       flags.trace = true;
       continue;
@@ -184,6 +195,7 @@ export function parseArgs(argv: string[]) {
       .filter((token): token is typeof token & { kind: "option"; name: string } => token.kind === "option")
       .map((token) => token.name);
 
+    configureQuietRuntime(flags);
     configureDebugRuntime(flags);
     debugLog("parser", "Parsed CLI arguments.", {
       argv: describeArgvForDebug(argv),
@@ -207,6 +219,7 @@ export function parseArgs(argv: string[]) {
     }
 
     const fallbackFlags = getFallbackFlags(argv);
+    configureQuietRuntime(fallbackFlags);
     configureDebugRuntime(fallbackFlags);
     debugLog("parser", "Argument parsing failed.", {
       argv: describeArgvForDebug(argv),
