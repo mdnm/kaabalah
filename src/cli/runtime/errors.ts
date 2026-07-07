@@ -10,6 +10,7 @@ export type ErrorCode =
   | "MISSING_ARGUMENT"
   | "UNKNOWN_COMMAND"
   | "CARD_NOT_FOUND"
+  | "INDEX_OUT_OF_POOL"
   | "INTERNAL_ERROR"
   | "GEOCODE_ERROR"
   | "WASM_INIT_ERROR"

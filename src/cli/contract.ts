@@ -111,6 +111,8 @@ export const COMMANDS: CommandSchema[] = [
     flags: [
       { name: "inverted", type: "boolean", default: false, description: "Include inverted cards" },
       { name: "shuffle-count", type: "number", default: 7, description: "Number of times to shuffle the deck" },
+      { name: "deck", type: "string", description: "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite" },
+      { name: "include-fields", type: "string", description: "Comma-separated legacy card fields to include with --deck (papus, egyptian)" },
     ],
     examples: ["kaabalah tarot 5 --inverted", "kaabalah tarot --json"],
   },
@@ -121,6 +123,7 @@ export const COMMANDS: CommandSchema[] = [
     flags: [
       { name: "deck", type: "string", description: "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite" },
       { name: "decks", type: "boolean", description: "List available decks" },
+      { name: "include-fields", type: "string", description: "Comma-separated legacy card fields to include with --deck (papus, egyptian)" },
     ],
     examples: [
       "kaabalah tarot:card 7",
@@ -135,7 +138,14 @@ export const COMMANDS: CommandSchema[] = [
     args: [{ name: "cards", type: "string", required: false, description: "Card names or numbers, space-separated (quote multi-word names)" }],
     flags: [
       { name: "list", type: "boolean", default: false, description: "List built-in spread IDs and requirements" },
+      { name: "verbose", type: "boolean", default: false, description: "Include full spread slot definitions with --list" },
+      { name: "describe", type: "boolean", default: false, description: "Describe a spread schema without drawing cards" },
       { name: "spread-id", type: "string", description: "Draw a built-in spread by ID (e.g. quick-insight, celtic-cross, event-reading)" },
+      { name: "method", type: "string", description: "Spread draw method: random or conscious" },
+      { name: "indices", type: "string", description: "Comma-separated 1-based pool indices for --method=conscious" },
+      { name: "deck", type: "string", description: "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite" },
+      { name: "shuffle-count", type: "number", default: 7, description: "Number of times to shuffle the deck for conscious spreads" },
+      { name: "include-fields", type: "string", description: "Comma-separated legacy card fields to include with --deck (papus, egyptian)" },
       { name: "inverted", type: "boolean", default: false, description: "Include inverted cards when drawing a named spread" },
       { name: "inquirer-gender", type: "string", description: 'Required by event-reading; must be "man" or "woman"' },
     ],

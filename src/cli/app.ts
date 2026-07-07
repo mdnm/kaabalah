@@ -185,7 +185,7 @@ export async function runCli(argv: string[]): Promise<void> {
         if (cardQueries.length === 0 && !hasSpreadIdFlag && !spreadId && !shouldListSpreads) {
           exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:spread <card1> [card2] ...", flags);
         }
-        cmdTarotSpread(cardQueries, flags, {
+        await cmdTarotSpread(cardQueries, flags, {
           spreadId,
           context: inputPayload?.context,
         });

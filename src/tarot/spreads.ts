@@ -135,6 +135,48 @@ export interface TarotSpreadDrawResult {
   cards: TarotSpreadResolvedSelectionCard[];
 }
 
+export interface TarotSpreadConsciousResolvedSelectionCard
+  extends TarotSpreadResolvedSelectionCard {
+  index: number;
+  poolSize: number;
+  pos: string;
+}
+
+export interface DrawConsciousTarotSpreadOptions {
+  spreadId: TarotSpreadId;
+  shuffledDeck: TarotCard[];
+  indices: number[];
+  deckId?: TarotDeckId;
+  includeInverted?: boolean;
+  rng?: () => number;
+  context?: TarotSpreadSelectionContext;
+}
+
+export interface TarotSpreadConsciousDrawResult {
+  spread: TarotSpreadDefinition;
+  deckId: TarotDeckId;
+  method: "conscious";
+  context?: TarotSpreadSelectionContext;
+  cards: TarotSpreadConsciousResolvedSelectionCard[];
+}
+
+export class TarotSpreadIndexOutOfPoolError extends Error {
+  readonly code = "INDEX_OUT_OF_POOL";
+  readonly slotKey: string;
+  readonly index: number;
+  readonly poolSize: number;
+
+  constructor(slot: TarotSpreadSlotDefinition, index: number, poolSize: number) {
+    super(
+      `${slot.label} index ${index} exceeds the matching tarot pool size (${poolSize}).`
+    );
+    this.name = "TarotSpreadIndexOutOfPoolError";
+    this.slotKey = slot.slotKey;
+    this.index = index;
+    this.poolSize = poolSize;
+  }
+}
+
 const TAROT_SPREAD_MINOR_RANKS: readonly TarotSpreadMinorRank[] = [
   "ace",
   "2",
@@ -1107,6 +1149,28 @@ function drawDefaultTarotSpread(
   return drawnCards;
 }
 
+function buildResolvedConsciousCard(
+  slot: TarotSpreadSlotDefinition,
+  card: TarotCard,
+  index: number,
+  poolSize: number,
+  includeInverted: boolean,
+  rng: () => number
+): TarotSpreadConsciousResolvedSelectionCard {
+  const drawnCard = withSpreadCardOrientation(card, includeInverted, rng);
+
+  return {
+    slotKey: slot.slotKey,
+    cardNumber: drawnCard.number,
+    isInverted: drawnCard.isInverted ?? false,
+    slot,
+    card: drawnCard,
+    index,
+    poolSize,
+    pos: `${index} of ${poolSize}`
+  };
+}
+
 function drawEventReadingSpread(
   spread: TarotSpreadDefinition,
   includeInverted: boolean,
@@ -1408,5 +1472,77 @@ export function drawTarotSpread(
     deckId: options.deckId ?? "rider-waite",
     context: options.context,
     cards: sortResolvedTarotSpreadCards(drawnCards)
+  };
+}
+
+export function drawConsciousTarotSpread(
+  options: DrawConsciousTarotSpreadOptions
+): TarotSpreadConsciousDrawResult {
+  const spread = TAROT_SPREAD_BY_ID.get(options.spreadId);
+
+  if (!spread) {
+    throw new Error(`Unknown tarot spread: ${options.spreadId}.`);
+  }
+
+  const slots = spread.slots.slice().sort((left, right) => left.order - right.order);
+
+  if (options.indices.length !== slots.length) {
+    throw new Error(
+      `${spread.label} requires ${slots.length} conscious indices; received ${options.indices.length}.`
+    );
+  }
+
+  const rng = options.rng ?? Math.random;
+  const includeInverted = options.includeInverted ?? false;
+  const drawnCards = slots.map((slot, slotIndex) => {
+    const index = options.indices[slotIndex];
+    const drawRule = getTarotSpreadRuleForDraw(slot);
+    const pool = options.shuffledDeck.filter((card) =>
+      matchesTarotSpreadConstraint(card, drawRule)
+    );
+
+    if (!Number.isInteger(index) || index < 1) {
+      throw new Error(
+        `${slot.label} conscious index must be a positive integer; received ${index}.`
+      );
+    }
+
+    if (index > pool.length) {
+      throw new TarotSpreadIndexOutOfPoolError(slot, index, pool.length);
+    }
+
+    return buildResolvedConsciousCard(
+      slot,
+      pool[index - 1],
+      index,
+      pool.length,
+      includeInverted,
+      rng
+    );
+  });
+  const validation = validateTarotSpreadSelection({
+    spreadId: spread.spreadId,
+    cards: drawnCards.map((card) => ({
+      slotKey: card.slotKey,
+      cardNumber: card.cardNumber,
+      isInverted: card.isInverted
+    })),
+    context: options.context
+  });
+
+  if (!validation.ok) {
+    throw new Error(
+      `Generated an invalid conscious tarot spread selection for ${spread.label}: ${validation.errors
+        .map((error) => error.message)
+        .join(" ")}`
+    );
+  }
+
+  return {
+    spread: cloneSpreadDefinition(spread),
+    deckId: options.deckId ?? "rider-waite",
+    method: "conscious",
+    context: options.context,
+    cards: sortResolvedTarotSpreadCards(drawnCards) as TarotSpreadConsciousResolvedSelectionCard[]
   };
 }
