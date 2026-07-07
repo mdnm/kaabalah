@@ -22,8 +22,10 @@ import {
   generateTreeSvg,
   getTreeLayout,
   getTreeRenderModel,
+  getUnsupportedTreeSvgSystemMessage,
   TREE_PATH_IDS,
   TREE_SPHERE_IDS,
+  TREE_SVG_SUPPORTED_SYSTEM,
   type TreePathId,
   type TreeLayout,
   type TreeRenderModel,
@@ -487,6 +489,11 @@ function readActivations(flags: Flags): TreeTargetActivationInput[] | undefined 
 }
 
 function buildSvgOptions(flags: Flags): TreeSvgOptions {
+  const system = resolveSystem(flags);
+  if (system !== TREE_SVG_SUPPORTED_SYSTEM) {
+    exitWithError("UNSUPPORTED_SYSTEM", getUnsupportedTreeSvgSystemMessage(system), flags);
+  }
+
   const palette = getFlagString(flags, "palette");
   if (palette && palette !== "color" && palette !== "monochrome") {
     exitWithError(
@@ -506,7 +513,7 @@ function buildSvgOptions(flags: Flags): TreeSvgOptions {
   }
 
   return {
-    system: resolveSystem(flags),
+    system,
     width: getFlagString(flags, "width"),
     height: getFlagString(flags, "height"),
     background: getFlagString(flags, "background") ?? undefined,

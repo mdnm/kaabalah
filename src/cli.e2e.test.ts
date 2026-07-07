@@ -893,6 +893,29 @@ describe("CLI contract", () => {
     expect(readFileSync(outputPath, "utf8")).toContain(`<svg xmlns="http://www.w3.org/2000/svg"`);
   });
 
+  it.each(["hermetic-qabalah", "lurianic-kabbalah"] as const)(
+    "returns a structured error for tree SVG system %s",
+    (system) => {
+      const result = runCli([
+        "tree:svg",
+        `--system=${system}`,
+        "--json",
+        "--compact",
+      ]);
+
+      expect(result.status).toBe(1);
+      expect(JSON.parse(result.stdout)).toEqual({
+        error: true,
+        code: "UNSUPPORTED_SYSTEM",
+        message:
+          `tree:svg is only supported for the Melkitzedeki system ('kaabalah'); received '${system}'. Run "kaabalah help tree:svg" for command usage.`,
+        version: VERSION,
+      });
+      expect(result.stderr).not.toContain("LOADERS");
+      expect(result.stderr).not.toContain("TypeError");
+    }
+  );
+
   it("generates activation-aware tree SVG from an activations file", () => {
     const cwd = makeTempDir();
     const activationsPath = join(cwd, "activations.json");
