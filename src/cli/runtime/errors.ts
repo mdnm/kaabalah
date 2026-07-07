@@ -2,6 +2,7 @@ import { COMMANDS, VERSION } from "../contract";
 import { getFallbackFlags, isJsonMode } from "./args";
 import { configureDebugRuntime, debugLog, isTraceEnabled } from "./debug";
 import { isCliSignalError } from "./execution";
+import { configureQuietRuntime } from "./quiet";
 import type { Flags } from "./types";
 
 export type ErrorCode =
@@ -69,6 +70,7 @@ export function exitWithError(code: ErrorCode, message: string, flags: Flags): n
 
 export function handleFatalError(err: unknown, argv: string[]): never {
   const flags = getFallbackFlags(argv);
+  configureQuietRuntime(flags);
   configureDebugRuntime(flags);
 
   if (isCliSignalError(err)) {

@@ -76,6 +76,7 @@ The CLI exposes all library modules as commands. All commands (except `tarot` sh
 5. **Use `kaabalah help <command> --json`** for per-command schema
 6. **Prefer `--lat`/`--lon`** over `--location` to avoid network dependency
 7. **Check error codes** via the `code` field in error JSON responses
+8. **Do not redirect stderr into stdout when parsing JSON**: runtime notices such as Swiss Ephemeris path setup go to stderr, while `--json` stdout is exactly one JSON document. Use `--quiet` or `--silent` to suppress stderr diagnostics entirely.
 
 ### CLI Internals
 
