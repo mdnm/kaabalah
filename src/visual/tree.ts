@@ -217,6 +217,18 @@ export interface RouteActivationOptions {
   strength?: number;
 }
 
+export const TREE_SVG_SUPPORTED_SYSTEM = "kaabalah" as const;
+
+export function getUnsupportedTreeSvgSystemMessage(system: SystemKey): string {
+  return `tree:svg is only supported for the Melkitzedeki system ('${TREE_SVG_SUPPORTED_SYSTEM}'); received '${system}'.`;
+}
+
+function assertTreeSvgSupportedSystem(system: SystemKey): void {
+  if (system !== TREE_SVG_SUPPORTED_SYSTEM) {
+    throw new Error(getUnsupportedTreeSvgSystemMessage(system));
+  }
+}
+
 export const TREE_SVG_DEFAULT_VIEWBOX: Required<TreeSvgViewBox> = {
   minX: 0,
   minY: 0,
@@ -555,6 +567,7 @@ export function getTreeRenderModel(options: TreeSvgOptions = {}): TreeRenderMode
 
 export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   const system = options.system ?? "kaabalah";
+  assertTreeSvgSupportedSystem(system);
   const daathLayer = options.daathLayer ?? "front";
   const tree = createTree({ system, parts: ["colors"] });
   const viewBox = normalizeViewBox(options.viewBox);
