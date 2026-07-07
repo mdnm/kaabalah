@@ -234,6 +234,51 @@ describe("CLI contract", () => {
     expect(typeof payload.imageUrl).toBe("string");
   });
 
+  it("keeps deck-specific tarot card JSON free of unrelated legacy fields by default", () => {
+    const result = runCli([
+      "tarot:card",
+      "24",
+      "--deck=mythic",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:card --deck=mythic");
+
+    const payload = JSON.parse(result.stdout) as {
+      deck: string;
+      deckId: string;
+      egyptianCardName?: string;
+      papusMeaning?: string;
+      imageUrl: string;
+    };
+
+    expect(payload.deck).toBe("mythic");
+    expect(payload.deckId).toBe("mythic");
+    expect(payload.egyptianCardName).toBeUndefined();
+    expect(payload.papusMeaning).toBeUndefined();
+    expect(payload.imageUrl).toContain("/mythic/");
+  });
+
+  it("allows opt-in legacy tarot fields with deck-specific card JSON", () => {
+    const result = runCli([
+      "tarot:card",
+      "24",
+      "--deck=mythic",
+      "--include-fields=papus,egyptian",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:card --include-fields");
+
+    const payload = JSON.parse(result.stdout) as {
+      egyptianCardName?: string;
+      papusMeaning?: string;
+    };
+
+    expect(payload.egyptianCardName).toBeTruthy();
+    expect(payload.papusMeaning).toBeTruthy();
+  });
+
   it("lists tarot decks from the tarot card command", () => {
     const result = runCli(["tarot:card", "--decks", "--json", "--compact"]);
     assertSuccess(result, "tarot:card --decks");
@@ -286,6 +331,114 @@ describe("CLI contract", () => {
     expect(payload.find((spread) => spread.spreadId === "event-reading")).toMatchObject({
       label: "Event Reading",
       contextRequirements: ["inquirerGender"],
+    });
+  });
+
+  it("describes tarot spread slots without drawing cards", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--describe",
+      "conscious-reading",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:spread --describe");
+
+    const payload = JSON.parse(result.stdout) as {
+      spreadId: string;
+      slots: Array<{
+        slotKey: string;
+        order: number;
+        minCards: number;
+        maxCards: number;
+        validationRules?: { allowedTypes?: string[] };
+      }>;
+      cards?: unknown[];
+    };
+
+    expect(payload.spreadId).toBe("conscious-reading");
+    expect(payload.cards).toBeUndefined();
+    expect(payload.slots.map((slot) => slot.slotKey)).toEqual([
+      "conscious",
+      "unconscious",
+      "subconscious",
+    ]);
+    expect(payload.slots.map((slot) => slot.validationRules?.allowedTypes)).toEqual([
+      ["major"],
+      ["daat+royalship"],
+      ["minor"],
+    ]);
+  });
+
+  it("lists verbose tarot spread slot schemas", () => {
+    const result = runCli(["tarot:spread", "--list", "--verbose", "--json", "--compact"]);
+    assertSuccess(result, "tarot:spread --list --verbose");
+
+    const payload = JSON.parse(result.stdout) as Array<{
+      spreadId: string;
+      slots: Array<{ slotKey: string; validationRules?: { allowedTypes?: string[] } }>;
+    }>;
+    const consciousReading = payload.find((spread) => spread.spreadId === "conscious-reading");
+
+    expect(consciousReading?.slots[0]).toMatchObject({
+      slotKey: "conscious",
+      validationRules: { allowedTypes: ["major"] },
+    });
+  });
+
+  it("draws conscious tarot spreads from indexed shuffled pools", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--spread-id=conscious-reading",
+      "--method=conscious",
+      "--indices=1,9,28",
+      "--deck=mythic",
+      "--json",
+      "--compact",
+    ]);
+    assertSuccess(result, "tarot:spread --method=conscious");
+
+    const payload = JSON.parse(result.stdout) as {
+      method: string;
+      deckId: string;
+      cards: Array<{
+        slotKey: string;
+        index: number;
+        poolSize: number;
+        pos: string;
+        card: { type: string; deck: string; deckId: string; egyptianCardName?: string; papusMeaning?: string };
+      }>;
+    };
+
+    expect(payload.method).toBe("conscious");
+    expect(payload.deckId).toBe("mythic");
+    expect(payload.cards.map((card) => card.slotKey)).toEqual([
+      "conscious",
+      "unconscious",
+      "subconscious",
+    ]);
+    expect(payload.cards.map((card) => card.index)).toEqual([1, 9, 28]);
+    expect(payload.cards.map((card) => card.poolSize)).toEqual([22, 16, 40]);
+    expect(payload.cards.map((card) => card.pos)).toEqual(["1 of 22", "9 of 16", "28 of 40"]);
+    expect(payload.cards.map((card) => card.card.type)).toEqual(["major", "daat+royalship", "minor"]);
+    expect(payload.cards.every((card) => card.card.deck === "mythic" && card.card.deckId === "mythic")).toBe(true);
+    expect(payload.cards.every((card) => card.card.egyptianCardName === undefined && card.card.papusMeaning === undefined)).toBe(true);
+  });
+
+  it("reports conscious tarot indices that exceed the matching pool", () => {
+    const result = runCli([
+      "tarot:spread",
+      "--spread-id=conscious-reading",
+      "--method=conscious",
+      "--indices=23,1,1",
+      "--json",
+      "--compact",
+    ]);
+
+    expect(result.status).toBe(1);
+    expect(JSON.parse(result.stdout)).toMatchObject({
+      error: true,
+      code: "INDEX_OUT_OF_POOL",
     });
   });
 

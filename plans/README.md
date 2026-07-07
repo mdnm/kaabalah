@@ -26,7 +26,7 @@ HANDOFF-swisseph-cdn, cli-power-user-findings, astro-ideas) and `CONTEXT.md`.
 | 012 | `getRouteActivations` visual helper for topology routes | P2 | S | 001 | DONE |
 | 013 | Export standalone `getSect` astrology utility | P2 | S | 001 | DONE |
 | 014 | `gematria --resolve-paths` Tree correspondence flag | P3 | M | 003, 006 | DONE |
-| 015 | Thin astrology wheel renderer | P2 | M | 001 | TODO |
+| 015 | Thin astrology wheel renderer | P2 | M | 001 | DONE (shipped `2ff2239`; table was stale — see docs/internal/issues/041) |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale)
 
