@@ -660,7 +660,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Rainha de Paus",
-        "meaning": "Sustente a posição enquanto o rei trabalha, preserve o que foi conquistado"
+        "meaning": "Segure a barra enquanto o rei sai para trabalhar. Preserve o conquistado."
       },
       "PAPUS_DIVINATORY": {
         "name": "Rainha de Paus",
@@ -715,11 +715,11 @@
     },
     "pt": {
       "PAPUS_KAABALISTIC": {
-        "name": "Valete de Paus",
-        "meaning": "Não se apresse, a precipitação abre as portas do fracasso"
+        "name": "Pajem de Paus",
+        "meaning": "Não se precipite. A precipitação abre as portas para o fracasso."
       },
       "PAPUS_DIVINATORY": {
-        "name": "Valete de Paus",
+        "name": "Pajem de Paus",
         "meaning": "Criança morena, amiga. Também representa uma mensagem de um parente próximo."
       },
       "KIER_EGYPTIAN": {
@@ -744,7 +744,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Ás de Paus",
-        "meaning": "Acenda a chama dos ideais, confie na sua divindade interior"
+        "meaning": "Acenda as chamas dos ideais. Confie em sua divindade interna."
       },
       "PAPUS_DIVINATORY": {
         "name": "Ás de Paus",
@@ -772,7 +772,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Dois de Paus",
-        "meaning": "Trace uma estratégia para usar seus talentos"
+        "meaning": "Trace uma estratégia para usufruir seus próprios talentos."
       },
       "PAPUS_DIVINATORY": {
         "name": "Dois de Paus",
@@ -1024,7 +1024,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Rei de Copas",
-        "meaning": "Pare de se ferir, em relação com Os Enamorados, cuide de si ao cuidar dos outros, seja bálsamo para sua própria ferida"
+        "meaning": "Pare de se ferir, em relação com Os Enamorados. Você cura a todos e esquece de si. Seja bálsamo para sua própria ferida."
       },
       "PAPUS_DIVINATORY": {
         "name": "Rei de Copas",
@@ -1080,7 +1080,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Cavaleiro de Copas",
-        "meaning": "Busque a cura alternativa"
+        "meaning": "Alternativas de cura."
       },
       "PAPUS_DIVINATORY": {
         "name": "Cavaleiro de Copas",
@@ -1107,11 +1107,11 @@
     },
     "pt": {
       "PAPUS_KAABALISTIC": {
-        "name": "Valete de Copas",
-        "meaning": "Fortaleça sua autoestima e sua coragem emocional"
+        "name": "Pajem de Copas",
+        "meaning": "Aumente sua autoestima e sua audácia afetiva."
       },
       "PAPUS_DIVINATORY": {
-        "name": "Valete de Copas",
+        "name": "Pajem de Copas",
         "meaning": "Criança clara. Mensageiro. Nascimento."
       },
       "KIER_EGYPTIAN": {
@@ -1220,7 +1220,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Quatro de Copas",
-        "meaning": "Abundância na vida emocional, não dê ouvidos a calúnias"
+        "meaning": "Abundância na vida afetiva. Não dê ouvidos à maledicência."
       },
       "PAPUS_DIVINATORY": {
         "name": "Quatro de Copas",
@@ -1499,11 +1499,11 @@
     },
     "pt": {
       "PAPUS_KAABALISTIC": {
-        "name": "Valete de Espadas",
+        "name": "Pajem de Espadas",
         "meaning": "Siga sua intuição"
       },
       "PAPUS_DIVINATORY": {
-        "name": "Valete de Espadas",
+        "name": "Pajem de Espadas",
         "meaning": "Criança, inimigo. Más notícias. Atraso."
       },
       "KIER_EGYPTIAN": {
@@ -1892,11 +1892,11 @@
     },
     "pt": {
       "PAPUS_KAABALISTIC": {
-        "name": "Valete de Ouros",
+        "name": "Pajem de Ouros",
         "meaning": "Tenha prudência na vida material"
       },
       "PAPUS_DIVINATORY": {
-        "name": "Valete de Ouros",
+        "name": "Pajem de Ouros",
         "meaning": "Criança clara. Mensageiro. Carta."
       },
       "KIER_EGYPTIAN": {
@@ -2089,7 +2089,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Sete de Ouros",
-        "meaning": "Não se vanglorie de sua proposta ou projeto"
+        "meaning": "Não fale aos quatro cantos sua proposta ou projeto."
       },
       "PAPUS_DIVINATORY": {
         "name": "Sete de Ouros",
@@ -2117,7 +2117,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Oito de Ouros",
-        "meaning": "Continue fazendo o que sempre fez"
+        "meaning": "Continue a fazer, de alguma forma, o que sempre fez."
       },
       "PAPUS_DIVINATORY": {
         "name": "Oito de Ouros",
@@ -2173,7 +2173,7 @@
     "pt": {
       "PAPUS_KAABALISTIC": {
         "name": "Dez de Ouros",
-        "meaning": "Prosperidade, herança próspera"
+        "meaning": "Prosperidade. Herança para a prosperidade."
       },
       "PAPUS_DIVINATORY": {
         "name": "Dez de Ouros",

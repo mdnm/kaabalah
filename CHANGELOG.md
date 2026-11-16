@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Align Portuguese minor tarot wording with all 56 class keyword sections and
+  use Pajem in localized card names, with source references for review.
+
 - Add typed Portuguese Ifa calculation labels through `getIfaText`;
   Odu calculations remain unchanged and no interpretation catalog is introduced.
 

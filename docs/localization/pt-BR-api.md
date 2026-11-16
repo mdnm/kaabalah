@@ -22,7 +22,7 @@ Numbers are always canonical tree numbers. Existing name, filename, path and bra
 
 The shared source is `src/core/tarot-content.json`. Both legacy card exports and core deck descriptions derive their English meanings from it. The pre-existing raw-card wording difference for Two of Swords is retained explicitly as `legacyMeaning`.
 
-Portuguese names and meanings are drafts pending Mat's review. `tarot-review.json` enumerates each field, its origin and review status. O Julgamento adapts the Portuguese class phrase from module 1, class 20, line 448 into the requested second person. Other draft fields are conservatively marked as agent translations, not claimed as exact quotations from Mat's classes. Source research remains open for replacing those drafts with verified original wording.
+Portuguese names and meanings are drafts pending Mat's review. `tarot-review.json` enumerates each field, its origin and review status. O Julgamento adapts the Portuguese class phrase from module 1, class 20, line 448 into the requested second person. All 56 minor meanings are linked to the keyword sections in module 2, classes 7-10. Names use Pajem as in the classes. In total, 111 tarot fields have Portuguese source references; the remaining 279 are explicitly agent translations. Adaptations and translations remain pending review.
 
 No npm release is authorized or performed. The remaining content areas and final full-suite validation are still in progress.
 
