@@ -2115,6 +2115,363 @@
           "Preserved excessive self-indulgence and identification with suffering without diagnosis, prescribed practice or invented helping behavior. Book 47561-47567 emphasizes spirituality/compassion and growth through helping/art; none is adopted. The second hint at 47634 leads to the sign heading and nonpsychological material, which is unused. Printed PEIXE is normalized to canonical Pisces."
         ]
       }
+    },
+    "saturn": {
+      "Aries": {
+        "pt": "você pode ter bom controle dos instintos, junto de crueldade e irracionalidade frequente. também pode oscilar entre agir e se inibir.",
+        "en": "you may have good control over your instincts, alongside cruelty and frequent irrationality. you may also waver between action and inhibition.",
+        "keywords": {
+          "pt": [
+            "controle dos instintos",
+            "crueldade",
+            "irracionalidade",
+            "indecisão",
+            "inibição"
+          ],
+          "en": [
+            "control of instincts",
+            "cruelty",
+            "irrationality",
+            "indecision",
+            "inhibition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 113,
+            "to": 114
+          }
+        ],
+        "reviewNotes": [
+          "The book body for Aries is absent, so no supplemental claims were invented. Preserved the course's unusual combination of good instinct control with cruelty/frequent irrationality and action-inhibition indecision."
+        ]
+      },
+      "Taurus": {
+        "pt": "você pode demonstrar pouca espontaneidade, com muita cautela e tolerância. a sensualidade própria do signo pode diminuir, enquanto as tendências conservadoras aumentam.",
+        "en": "you may show little spontaneity, with considerable caution and tolerance. the sign's characteristic sensuality may diminish, while conservative tendencies increase.",
+        "keywords": {
+          "pt": [
+            "pouca espontaneidade",
+            "cautela",
+            "tolerância",
+            "diminuição da sensualidade",
+            "tendências conservadoras"
+          ],
+          "en": [
+            "little spontaneity",
+            "caution",
+            "tolerance",
+            "reduced sensuality",
+            "conservative tendencies"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 115,
+            "to": 116
+          }
+        ],
+        "reviewNotes": [
+          "Preserved the course's tolerance, reduced sensuality, and increased conservative tendencies. The inspected book opening has OCR gaps and was not used to replace or embellish the primary claims."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode amadurecer cedo e demonstrar sabedoria precoce, com autocontrole na fala. também pode haver tendência à obstinação.",
+        "en": "you may mature early and show early wisdom, with self-control in speech. there may also be a tendency toward stubbornness.",
+        "keywords": {
+          "pt": [
+            "amadurecimento precoce",
+            "sabedoria",
+            "autocontrole da fala",
+            "obstinação"
+          ],
+          "en": [
+            "early maturity",
+            "wisdom",
+            "self-control in speech",
+            "stubbornness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 117,
+            "to": 118
+          }
+        ],
+        "reviewNotes": [
+          "The course also mentions a tendency toward depression, omitted from product text as a health-related claim. No diagnosis or substitute symptom was introduced. Book claims were not adopted."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode amadurecer devagar. também pode demonstrar tenacidade e ambição.",
+        "en": "you may mature slowly. you may also show tenacity and ambition.",
+        "keywords": {
+          "pt": [
+            "lentidão para amadurecer",
+            "tenacidade",
+            "ambição"
+          ],
+          "en": [
+            "slow to mature",
+            "tenacity",
+            "ambition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 119,
+            "to": 120
+          }
+        ],
+        "reviewNotes": [
+          "The course's parents/family problems and problematic second-half-of-life claims are omitted from product text because they predict relationship/life-stage outcomes. The inspected book opening's emotional/family restrictions were not adopted as replacements; its OCR is incomplete and conflicts in emphasis with the primary passage."
+        ]
+      },
+      "Leo": {
+        "pt": "você pode ser ambicioso e buscar prestígio, com senso de humor apurado. podem surgir dificuldades para expressar a criatividade, junto de tédio e arrogância.",
+        "en": "you may be ambitious and seek prestige, with a keen sense of humor. difficulties expressing creativity may arise, alongside boredom and arrogance.",
+        "keywords": {
+          "pt": [
+            "ambição",
+            "busca de prestígio",
+            "senso de humor",
+            "dificuldade de expressão criativa",
+            "tédio",
+            "arrogância"
+          ],
+          "en": [
+            "ambition",
+            "seeking prestige",
+            "sense of humor",
+            "difficulty with creative expression",
+            "boredom",
+            "arrogance"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 121,
+            "to": 122
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 49751,
+            "to": 49757
+          }
+        ],
+        "reviewNotes": [
+          "O curso associa prestígio e humor com tédio/arrogância; o livro acrescenta dificuldade de expressão criativa (49751-49757), incluída sem importar seus desfechos de reconhecimento ou lição de desenvolvimento. Dificuldades com os filhos, do curso, foram omitidas como afirmação relacional/familiar de resultado."
+        ]
+      },
+      "Virgo": {
+        "pt": "você pode agir com prudência, método e seriedade, mantendo uma vida muito disciplinada. há aptidão para a ciência ou a pesquisa.",
+        "en": "you may act with prudence, method and seriousness, maintaining a highly disciplined life. you may have an aptitude for science or research.",
+        "keywords": {
+          "pt": [
+            "prudência",
+            "método",
+            "seriedade",
+            "disciplina",
+            "aptidão para ciência ou pesquisa"
+          ],
+          "en": [
+            "prudence",
+            "method",
+            "seriousness",
+            "discipline",
+            "aptitude for science or research"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 123,
+            "to": 124
+          }
+        ],
+        "reviewNotes": [
+          "A aptidão científica/de pesquisa é uma possibilidade do curso, não uma promessa de carreira. O livro menciona trabalho e saúde (50049-50057), mas não foi usado para acrescentar crítica excessiva nem conteúdo clínico/instrutivo."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode demonstrar sabedoria, amabilidade e sociabilidade. também podem aparecer intolerância e falta de senso prático.",
+        "en": "you may show wisdom, kindness and sociability. intolerance and a lack of practical sense may also appear.",
+        "keywords": {
+          "pt": [
+            "sabedoria",
+            "amabilidade",
+            "sociabilidade",
+            "intolerância",
+            "falta de senso prático"
+          ],
+          "en": [
+            "wisdom",
+            "kindness",
+            "sociability",
+            "intolerance",
+            "lack of practical sense"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 125,
+            "to": 126
+          }
+        ],
+        "reviewNotes": [
+          "O livro desenvolve parcerias, justiça e estabilidade (50303-50316), em direção mais relacional que o breve curso. Não foi usado para substituir a falta de senso prático ou acrescentar promessas de relações estáveis."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode buscar liberdade mesmo quando isso exige sacrifícios. também podem aparecer espírito vingativo, inveja e maldade, junto de determinação.",
+        "en": "you may seek freedom even when it requires sacrifice. a vengeful spirit, envy and malice may also appear, alongside determination.",
+        "keywords": {
+          "pt": [
+            "liberdade com sacrifício",
+            "espírito vingativo",
+            "inveja",
+            "maldade",
+            "determinação"
+          ],
+          "en": [
+            "freedom at a cost",
+            "vengeful spirit",
+            "envy",
+            "malice",
+            "determination"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 127,
+            "to": 128
+          }
+        ],
+        "reviewNotes": [
+          "Problemas sexuais, citados pelo curso, foram omitidos por envolverem alegações de saúde/relacionamento. O livro aborda controle, poder e transformação (50568-50573), mas esses temas não substituem a formulação atípica de liberdade às custas de sacrifício do curso."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você tende a se dedicar aos estudos e à moralidade. sua capacidade intelectual pode ser bem desenvolvida.",
+        "en": "you tend to devote yourself to study and morality. your intellectual ability may be well developed.",
+        "keywords": {
+          "pt": [
+            "dedicação aos estudos",
+            "tendência à moralidade",
+            "capacidade intelectual bem desenvolvida"
+          ],
+          "en": [
+            "dedication to study",
+            "tendency toward morality",
+            "well-developed intellectual ability"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 129,
+            "to": 130
+          }
+        ],
+        "reviewNotes": [
+          "Course-only final copy. Inspected book 50772-50780 has broken OCR fragments about limits on exploration of horizons and beliefs and a realistic, structured vision retaining optimism; removed those additions from prose and keywords."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode ter sabedoria e maturidade. também pode haver desprendimento dos bens materiais e dos prazeres.",
+        "en": "you may have wisdom and maturity. there may also be detachment from material possessions and pleasures.",
+        "keywords": {
+          "pt": [
+            "sabedoria",
+            "maturidade",
+            "desprendimento dos bens materiais",
+            "desprendimento dos prazeres"
+          ],
+          "en": [
+            "wisdom",
+            "maturity",
+            "detachment from material possessions",
+            "detachment from pleasures"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 131,
+            "to": 132
+          }
+        ],
+        "reviewNotes": [
+          "Course-only final copy. Inspected book 51016-51022 adds responsibility, discipline/management, organizing life, expectations, goals, integrity and patience; removed those additions from prose and keywords."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você tende à tenacidade para alcançar objetivos, mas pode demonstrar inibição, indiferença ou frieza. suas amizades podem incluir pessoas sábias.",
+        "en": "you tend toward tenacity in reaching goals, but may show inhibition, indifference, or coldness. your friendships may include wise people.",
+        "keywords": {
+          "pt": [
+            "tenacidade para alcançar objetivos",
+            "inibição",
+            "indiferença",
+            "frieza",
+            "possibilidade de amigos sábios"
+          ],
+          "en": [
+            "tenacity in reaching goals",
+            "inhibition",
+            "indifference",
+            "coldness",
+            "possibility of wise friends"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 133,
+            "to": 134
+          }
+        ],
+        "reviewNotes": [
+          "Course-only final copy. Inspected book 51245-51250 adds individual-expression/community integration and balancing innovation with tradition; removed those additions from prose and keywords. Course 'amigos sábios' is phrased as a possibility, not a guaranteed relationship."
+        ]
+      },
+      "Pisces": {
+        "pt": "você tende ao desprendimento dos bens materiais e à abnegação, com imaginação e intuição desenvolvidas. você pode também demonstrar falta de coragem.",
+        "en": "you tend toward detachment from material possessions and self-denial, with developed imagination and intuition. you may also show a lack of courage.",
+        "keywords": {
+          "pt": [
+            "desprendimento dos bens materiais",
+            "abnegação",
+            "imaginação desenvolvida",
+            "intuição desenvolvida",
+            "falta de coragem"
+          ],
+          "en": [
+            "detachment from material possessions",
+            "self-denial",
+            "developed imagination",
+            "developed intuition",
+            "lack of courage"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 135,
+            "to": 136
+          }
+        ],
+        "reviewNotes": [
+          "Course-only final copy. Inspected book 51537-51543 adds sensitivity/uncertainty, spirituality, compassion, illusions and practical-faith framing; removed those additions from prose and keywords."
+        ]
+      }
     }
   }
 }

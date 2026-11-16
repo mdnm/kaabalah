@@ -136,7 +136,7 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
     for (const sign of signs) {
       const entry = getPlanetSignDescriptionEntry(planet, sign)!;
       for (const text of [entry.pt, entry.en]) {
-        expect(text).not.toMatch(/o curso|the course|foi omitido|was omitted|não entram na descrição|not included in the description/i);
+        expect(text).not.toMatch(/o curso|the course|o livro|the book|foi omitido|was omitted|não entram na descrição|not included in the description/i);
       }
     }
   });
@@ -424,6 +424,82 @@ describe("Mars source distinctions", () => {
   });
 });
 
+
+describe("Saturn source distinctions", () => {
+  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
+  const bounds = [[113, 114], [115, 116], [117, 118], [119, 120], [121, 122], [123, 124], [125, 126], [127, 128], [129, 130], [131, 132], [133, 134], [135, 136]] as const;
+
+  it("uses all twelve canonical Title Case signs and exact Saturn course bounds", () => {
+    const authored = ASTROLOGY_DESCRIPTIONS.planetSigns.saturn!;
+    expect(Object.keys(authored)).toEqual([...signs]);
+    signs.forEach((sign, index) => {
+      const expected: { file: string; from: number; to: number }[] = [
+        { file: course, from: bounds[index][0], to: bounds[index][1] },
+      ];
+      if (sign === "Leo") {
+        expected.push({ file: "books/astrologia-hermetica/astrologia-hermetica.md", from: 49751, to: 49757 });
+      }
+      expect(getPlanetSignDescriptionEntry("saturn", sign)!.src).toEqual(expected);
+    });
+  });
+
+  it("preserves the unusual primary claims and source-specific exclusions", () => {
+    const taurus = getPlanetSignDescriptionEntry("saturn", "Taurus")!;
+    expect(taurus.pt).toContain("tolerância");
+    expect(taurus.pt).toContain("sensualidade própria do signo pode diminuir");
+    const gemini = getPlanetSignDescriptionEntry("saturn", "Gemini")!;
+    expect(gemini.pt).toContain("amadurecer cedo");
+    expect(gemini.pt).toContain("autocontrole na fala");
+    expect(gemini.pt + gemini.en).not.toMatch(/depressão|depression/);
+    expect(gemini.reviewNotes.join(" ")).toMatch(/depressão|depression/);
+    const aries = getPlanetSignDescriptionEntry("saturn", "Aries")!;
+    expect(aries.pt).toContain("bom controle dos instintos");
+    expect(aries.pt).toContain("crueldade");
+    expect(aries.pt).toContain("irracionalidade frequente");
+    const libra = getPlanetSignDescriptionEntry("saturn", "Libra")!;
+    expect(libra.pt).toContain("falta de senso prático");
+    const capricorn = getPlanetSignDescriptionEntry("saturn", "Capricorn")!;
+    expect(capricorn.pt).toContain("desprendimento dos bens materiais e dos prazeres");
+    const pisces = getPlanetSignDescriptionEntry("saturn", "Pisces")!;
+    expect(pisces.pt).toContain("falta de coragem");
+    expect(pisces.en).toContain("lack of courage");
+  });
+
+  it("keeps Saturn copy concise, lowercase-started, and course-prioritized", () => {
+    for (const sign of signs) {
+      const entry = getPlanetSignDescriptionEntry("saturn", sign)!;
+      expect(entry.reviewNotes.length).toBeGreaterThan(0);
+      expect(entry.src).toHaveLength(sign === "Leo" ? 2 : 1);
+      for (const text of [entry.pt, entry.en]) {
+        expect(text).toMatch(/^(você |you )/);
+        const sentences = text.match(/[^.!?]+[.!?]/g)!;
+        expect(sentences).toHaveLength(2);
+        expect(sentences.join("")).toBe(text);
+        for (const sentence of sentences) expect(sentence.trim()).toMatch(/^[a-zà-ú]/u);
+        expect(text).not.toMatch(/o curso|the course|o livro|the book|source|fonte|OCR/i);
+      }
+    }
+    const sagittarius = getPlanetSignDescriptionEntry("saturn", "Sagittarius")!;
+    expect(sagittarius.pt).toMatch(/dedicar.*estudos.*moralidade.*capacidade intelectual/i);
+    const aquarius = getPlanetSignDescriptionEntry("saturn", "Aquarius")!;
+    expect(aquarius.pt).toContain("tenacidade");
+    expect(aquarius.pt).toContain("suas amizades podem incluir pessoas sábias");
+    expect(aquarius.en).toContain("your friendships may include wise people");
+    const leo = getPlanetSignDescriptionEntry("saturn", "Leo")!;
+    expect(leo.pt).toContain("dificuldades para expressar a criatividade");
+    expect(leo.src).toContainEqual({
+      file: "books/astrologia-hermetica/astrologia-hermetica.md",
+      from: 49751,
+      to: 49757,
+    });
+    for (const sign of ["Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) {
+      expect(getPlanetSignDescriptionEntry("saturn", sign)!.src).toEqual([
+        { file: course, from: bounds[signs.indexOf(sign)][0], to: bounds[signs.indexOf(sign)][1] },
+      ]);
+    }
+    expect(JSON.stringify(ASTROLOGY_DESCRIPTIONS.planetSigns.saturn)).not.toContain("\u2014");
+  });
+});
 
 describe("Jupiter source distinctions", () => {
   it("retains excessive generosity and optimism in Aries prose and paired keywords", () => {
