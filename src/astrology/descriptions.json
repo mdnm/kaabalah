@@ -2472,6 +2472,403 @@
           "Course-only final copy. Inspected book 51537-51543 adds sensitivity/uncertainty, spirituality, compassion, illusions and practical-faith framing; removed those additions from prose and keywords."
         ]
       }
+    },
+    "uranus": {
+      "Aries": {
+        "pt": "você pode ter espírito de iniciativa e dinamismo. também pode buscar inovação e independência na expressão e na ação.",
+        "en": "you may have initiative and dynamism. you may also seek innovation and independence in expression and action.",
+        "keywords": {
+          "pt": [
+            "iniciativa",
+            "dinamismo",
+            "inovação",
+            "independência"
+          ],
+          "en": [
+            "initiative",
+            "dynamism",
+            "innovation",
+            "independence"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 139,
+            "to": 140
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 52918,
+            "to": 52929
+          }
+        ],
+        "reviewNotes": [
+          "Curso 139-140: mantidos iniciativa e dinamismo; grandes reviravoltas e perigo envolvendo fogo, armas ou transporte não são previstos. Livro 52918-52929: adotadas inovação e independência de expressão/ação; omitidas promessas de pioneirismo ou conquista em qualquer campo."
+        ]
+      },
+      "Taurus": {
+        "pt": "você pode demonstrar teimosia e obstinação, além de ambição e originalidade artística. no plano coletivo, Urano em Touro simboliza mudanças econômicas repentinas.",
+        "en": "you may show stubbornness and obstinacy, as well as ambition and artistic originality. on a collective level, Uranus in Taurus symbolizes sudden economic change.",
+        "keywords": {
+          "pt": [
+            "teimosia",
+            "obstinação",
+            "ambição",
+            "originalidade artística",
+            "mudanças econômicas coletivas"
+          ],
+          "en": [
+            "stubbornness",
+            "obstinacy",
+            "ambition",
+            "artistic originality",
+            "collective economic change"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 141,
+            "to": 142
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 53133,
+            "to": 53139
+          }
+        ],
+        "reviewNotes": [
+          "Curso 141-142: mantidos teimosia, obstinação, ambição e originalidade artística. Mudanças econômicas repentinas são formuladas simbolicamente no plano coletivo, com apoio ao enquadramento econômico amplo do livro 53133-53139; não são previsão financeira pessoal."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode ter ideias novas e inovadoras, criatividade literária e espírito aventureiro. também pode demonstrar capacidade para relações entre pessoas e interesse em novas formas de comunicação.",
+        "en": "you may have new and innovative ideas, literary creativity and an adventurous spirit. you may also show capacity for interpersonal relations and interest in new forms of communication.",
+        "keywords": {
+          "pt": [
+            "ideias inovadoras",
+            "criatividade literária",
+            "espírito aventureiro",
+            "relações interpessoais",
+            "comunicação"
+          ],
+          "en": [
+            "innovative ideas",
+            "literary creativity",
+            "adventurous spirit",
+            "interpersonal relations",
+            "communication"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 143,
+            "to": 144
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 53431,
+            "to": 53440
+          }
+        ],
+        "reviewNotes": [
+          "Curso 143-144: preservadas ideias inovadoras, criatividade literária, espírito aventureiro e capacidade de relações interpessoais como possibilidades. Livro 53431-53440: comunicação/informação é complemento temático; não implica sucesso literário, carreira tecnológica ou resultado relacional."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode ter aptidão para arquitetura. você também pode adotar uma abordagem original para assuntos familiares e domésticos.",
+        "en": "you may have an aptitude for architecture. you may also take an original approach to family and domestic matters.",
+        "keywords": {
+          "pt": [
+            "aptidão para arquitetura",
+            "abordagem original",
+            "assuntos familiares e domésticos"
+          ],
+          "en": [
+            "aptitude for architecture",
+            "original approach",
+            "family and domestic matters"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 145,
+            "to": 146
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 53756,
+            "to": 53759
+          }
+        ],
+        "reviewNotes": [
+          "Curso 145-146 inclui aptidão para arquitetura, revoluções familiares, saída precoce do lar e extremismo político nacionalista. A aptidão permanece qualificada; eventos familiares e atribuição de identidade política foram excluídos. Livro 53756-53759 sustenta abordagem não convencional de assuntos familiares/domésticos, sem previsão de mudança no lar."
+        ]
+      },
+      "Leo": {
+        "pt": "você tende ao individualismo e à inclinação artística, especialmente no cinema. também pode demonstrar força de liderança.",
+        "en": "you tend toward individualism and an inclination for the arts, especially cinema. you may also show leadership strength.",
+        "keywords": {
+          "pt": [
+            "individualismo",
+            "inclinação artística",
+            "cinema",
+            "liderança"
+          ],
+          "en": [
+            "individualism",
+            "artistic inclination",
+            "cinema",
+            "leadership"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 147,
+            "to": 148
+          }
+        ],
+        "reviewNotes": [
+          "Curso 147-148: individualismo, inclinação artística especialmente no cinema e força de liderança, tratados como tendências/aptidões, não carreira garantida. Filhos excêntricos foi excluído como afirmação sobre terceiros/evento familiar; livro não acrescenta preenchimento genérico."
+        ]
+      },
+      "Virgo": {
+        "pt": "você pode ser ordeiro em excesso e apresentar extravagâncias no trabalho. também podem aparecer exagero crítico e charlatanismo.",
+        "en": "you may be excessively orderly and extravagant at work. exaggerated criticism and charlatanism may also appear.",
+        "keywords": {
+          "pt": [
+            "ordem excessiva",
+            "extravagâncias no trabalho",
+            "exagero crítico",
+            "charlatanismo"
+          ],
+          "en": [
+            "excessive orderliness",
+            "extravagance at work",
+            "exaggerated criticism",
+            "charlatanism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 149,
+            "to": 150
+          }
+        ],
+        "reviewNotes": [
+          "Curso 149-150: mantidos ordem excessiva, extravagâncias no trabalho, exagero crítico e charlatanismo; extravagância não foi neutralizada como simples não convencionalidade. Hipocondria foi excluída como rótulo clínico/alegação de saúde. O livro 54184-54200 não foi usado para substituir os temas atípicos por produtividade genérica."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode ter facilidade nas relações afetivas. também pode demonstrar originalidade artística.",
+        "en": "you may find it easy to connect emotionally. you may also show artistic originality.",
+        "keywords": {
+          "pt": [
+            "facilidade nas relações afetivas",
+            "originalidade artística"
+          ],
+          "en": [
+            "ease in emotional relationships",
+            "artistic originality"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 151,
+            "to": 152
+          }
+        ],
+        "reviewNotes": [
+          "O curso usa 'casamento liberal', expressão ambígua; ela não foi transformada em preferência, orientação ou estrutura relacional. Separação/divórcio foi omitido como evento previsto. Mantidas apenas facilidade nas relações afetivas e originalidade artística (151-152)."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode tentar dominar os outros com violência e ter espírito vingativo. você pode ter hábitos sexuais pouco convencionais e bloqueio emocional.",
+        "en": "you may try to dominate others through violence and have a vengeful spirit. you may have unconventional sexual habits and emotional blockage.",
+        "keywords": {
+          "pt": [
+            "tentativa de dominação violenta",
+            "espírito vingativo",
+            "hábitos sexuais pouco convencionais",
+            "bloqueio emocional"
+          ],
+          "en": [
+            "attempted violent domination",
+            "vengeful spirit",
+            "unconventional sexual habits",
+            "emotional blockage"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 153,
+            "to": 155
+          }
+        ],
+        "reviewNotes": [
+          "Curso 153-155: mantidos tentativa de dominação violenta, vingança, hábitos sexuais pouco convencionais em formulação não gráfica e bloqueio emocional. A tendência não implica inferência de orientação/identidade; a antiga afirmação sobre homossexualidade foi omitida. Não foi acrescentada determinação sem fonte."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode ter espírito aventureiro e rebelde e vivenciar grandes viagens, reais ou imaginárias. em temas coletivos, Urano em Sagitário simboliza renovação de filosofias, crenças, culturas e educação.",
+        "en": "you may have an adventurous and rebellious spirit and experience great journeys, real or imagined. in collective themes, Uranus in Sagittarius symbolizes renewal in philosophy, beliefs, cultures, and education.",
+        "keywords": {
+          "pt": [
+            "espírito aventureiro",
+            "espírito rebelde",
+            "possibilidade de grandes viagens reais ou imaginárias",
+            "renovação coletiva de filosofias",
+            "crenças",
+            "culturas",
+            "educação"
+          ],
+          "en": [
+            "adventurous spirit",
+            "rebellious spirit",
+            "possibility of great journeys, real or imagined",
+            "collective renewal in philosophy",
+            "beliefs",
+            "cultures",
+            "education"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 156,
+            "to": 157
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 54845,
+            "to": 54864
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 54875,
+            "to": 54896
+          }
+        ],
+        "reviewNotes": [
+          "Curso 156-157: preservada a alternativa explícita de grandes viagens reais ou imaginárias como possibilidade; não foi reduzida a imaginação voltada a viagens nem convertida em garantia. A grande mudança de vida causada por estrangeiro foi excluída como evento previsto. Livro 54845-54864 e 54875-54896 apoia separadamente temas coletivos de renovação filosófica, cultural e educacional; OCR fragmentado não foi reconstruído."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode demonstrar aptidão para liderar. em termos coletivos, Urano em Capricórnio simboliza mudanças nas estruturas de poder e questionamento das hierarquias e tradições.",
+        "en": "you may show leadership aptitude. in collective terms, Uranus in Capricorn symbolizes changes to power structures and the questioning of hierarchies and traditions.",
+        "keywords": {
+          "pt": [
+            "aptidão para liderar",
+            "mudanças coletivas nas estruturas de poder",
+            "questionamento de hierarquias",
+            "questionamento de tradições"
+          ],
+          "en": [
+            "leadership aptitude",
+            "collective changes to power structures",
+            "questioning hierarchies",
+            "questioning traditions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 158,
+            "to": 159
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 55150,
+            "to": 55171
+          }
+        ],
+        "reviewNotes": [
+          "Curso 158-159: liderança mantida como aptidão possível; mudanças bruscas socioprofissionais não são previstas. A sequência 'poder de liderança mãe original e excêntrica' é ambígua; não se transferiu 'original e excêntrica' ao indivíduo nem se fez afirmação sobre uma mãe. Livro 55150-55171 contribui temas coletivos de estruturas de poder/hierarquias/tradições, não eventos individuais."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode demonstrar originalidade em diferentes atividades e desejo constante de mudança. suas amizades podem incluir pessoas originais; em termos coletivos, Urano em Aquário simboliza inovação e ênfase na liberdade individual.",
+        "en": "you may show originality across different activities and a constant desire for change. your friendships may include original people; in collective terms, Uranus in Aquarius symbolizes innovation and an emphasis on individual freedom.",
+        "keywords": {
+          "pt": [
+            "originalidade em atividades",
+            "desejo constante de mudança",
+            "possibilidade de amizades com pessoas originais",
+            "inovação coletiva",
+            "liberdade individual"
+          ],
+          "en": [
+            "originality across activities",
+            "constant desire for change",
+            "possibility of friendships with original people",
+            "collective innovation",
+            "individual freedom"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 160,
+            "to": 161
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 55420,
+            "to": 55430
+          }
+        ],
+        "reviewNotes": [
+          "Curso 160-161: preservadas originalidade em atividades e desejo constante de mudança; amizades podem incluir pessoas originais, sem garantia sobre terceiros. Livro 55420-55430 oferece inovação e liberdade individual como temas coletivos; não implica participação pessoal em movimentos ou mudanças sociais garantidas."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode ter ideias grandiosas e utópicas. pode haver aptidão para áreas como astrologia, parapsicologia, psicologia ou psiquiatria, enquanto Urano em Peixes simboliza mudanças coletivas nas artes e na espiritualidade.",
+        "en": "you may have grand and utopian ideas. there may be aptitude for fields such as astrology, parapsychology, psychology, or psychiatry, while Uranus in Pisces symbolizes collective changes in the arts and spirituality.",
+        "keywords": {
+          "pt": [
+            "ideias grandiosas",
+            "ideias utópicas",
+            "possível aptidão para astrologia",
+            "parapsicologia",
+            "psicologia",
+            "psiquiatria",
+            "mudanças coletivas nas artes",
+            "espiritualidade"
+          ],
+          "en": [
+            "grand ideas",
+            "utopian ideas",
+            "possible aptitude for astrology",
+            "parapsychology",
+            "psychology",
+            "psychiatry",
+            "collective changes in the arts",
+            "spirituality"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 162,
+            "to": 163
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 55619,
+            "to": 55623
+          }
+        ],
+        "reviewNotes": [
+          "Curso 162-163: ideias grandiosas/utópicas e aptidões possíveis para astrologia, parapsicologia, psicologia e psiquiatria; não são diagnóstico ou garantia de carreira. Livro 55619-55623 sustenta mudanças coletivas nas artes e espiritualidade. Experiências psíquicas únicas/revelações de 55624-55634 foram examinadas e não apresentadas como eventos pessoais previstos."
+        ]
+      }
     }
   }
 }

@@ -161,6 +161,100 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
   });
 });
 
+describe("Uranus source distinctions", () => {
+  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
+  const book = "books/astrologia-hermetica/astrologia-hermetica.md";
+  const courseBounds = [[139, 140], [141, 142], [143, 144], [145, 146], [147, 148], [149, 150], [151, 152], [153, 155], [156, 157], [158, 159], [160, 161], [162, 163]] as const;
+  const bookBounds: Partial<Record<(typeof signs)[number], readonly (readonly [number, number])[]>> = {
+    Aries: [[52918, 52929]],
+    Taurus: [[53133, 53139]],
+    Gemini: [[53431, 53440]],
+    Cancer: [[53756, 53759]],
+    Sagittarius: [[54845, 54864], [54875, 54896]],
+    Capricorn: [[55150, 55171]],
+    Aquarius: [[55420, 55430]],
+    Pisces: [[55619, 55623]],
+  };
+
+  it("uses canonical signs and exact audited course and adopted-book ranges", () => {
+    const authored = ASTROLOGY_DESCRIPTIONS.planetSigns.uranus!;
+    expect(Object.keys(authored)).toEqual([...signs]);
+    signs.forEach((sign, index) => {
+      const expected: { file: string; from: number; to: number }[] = [
+        { file: course, from: courseBounds[index][0], to: courseBounds[index][1] },
+      ];
+      for (const [from, to] of bookBounds[sign] ?? []) expected.push({ file: book, from, to });
+      expect(getPlanetSignDescriptionEntry("uranus", sign)!.src).toEqual(expected);
+    });
+  });
+
+  it("keeps harsh source distinctions and excludes event, health, and identity assertions", () => {
+    const aries = getPlanetSignDescriptionEntry("uranus", "Aries")!;
+    expect(aries.pt).toContain("iniciativa");
+    expect(aries.en).toContain("independence in expression and action");
+    expect(aries.pt + aries.en).not.toMatch(/reviravolta|upheaval|perigo|danger|weapons|transporte/);
+    const cancer = getPlanetSignDescriptionEntry("uranus", "Cancer")!;
+    expect(cancer.pt).toContain("aptidão para arquitetura");
+    expect(cancer.pt).toContain("assuntos familiares e domésticos");
+    expect(cancer.pt + cancer.en).not.toMatch(/revoluções familiares|sair de casa|extremismo|nationalist|leave home/);
+    const leo = getPlanetSignDescriptionEntry("uranus", "Leo")!;
+    expect(leo.pt).toContain("especialmente no cinema");
+    expect(leo.pt + leo.en).not.toMatch(/filhos excêntricos|eccentric children/);
+    const virgo = getPlanetSignDescriptionEntry("uranus", "Virgo")!;
+    expect(virgo.pt).toContain("extravagâncias no trabalho");
+    expect(virgo.en).toContain("extravagant at work");
+    expect(virgo.pt + virgo.en).not.toMatch(/hipocondria|hypochondria/);
+    const libra = getPlanetSignDescriptionEntry("uranus", "Libra")!;
+    expect(libra.pt).toContain("facilidade nas relações afetivas");
+    expect(libra.pt).toContain("originalidade artística");
+    expect(libra.pt + libra.en).not.toMatch(/casamento liberal|liberal romantic|separação|divórcio|divorce/);
+    const scorpio = getPlanetSignDescriptionEntry("uranus", "Scorpio")!;
+    expect(scorpio.pt).toContain("hábitos sexuais pouco convencionais");
+    expect(scorpio.pt).toContain("espírito vingativo");
+    expect(scorpio.pt + scorpio.en).not.toMatch(/homossexual|homosexual|orientation|orientação|determinação|determination/);
+  });
+
+  it("preserves Uranus qualifiers and marks slow-planet themes separately", () => {
+    const taurus = getPlanetSignDescriptionEntry("uranus", "Taurus")!;
+    expect(taurus.pt).toContain("no plano coletivo");
+    expect(taurus.pt).toContain("simboliza mudanças econômicas repentinas");
+    expect(taurus.en).toContain("on a collective level");
+    const gemini = getPlanetSignDescriptionEntry("uranus", "Gemini")!;
+    expect(gemini.pt).toContain("interesse em novas formas de comunicação");
+    const sagittarius = getPlanetSignDescriptionEntry("uranus", "Sagittarius")!;
+    expect(sagittarius.pt).toContain("espírito aventureiro e rebelde");
+    expect(sagittarius.pt).toContain("vivenciar grandes viagens, reais ou imaginárias");
+    expect(sagittarius.en).toContain("experience great journeys, real or imagined");
+    expect(sagittarius.pt + sagittarius.en).not.toMatch(/estrangeiro|foreigner/);
+    const capricorn = getPlanetSignDescriptionEntry("uranus", "Capricorn")!;
+    expect(capricorn.pt).toContain("aptidão para liderar");
+    expect(capricorn.pt).toContain("em termos coletivos");
+    expect(capricorn.pt + capricorn.en).not.toMatch(/mudanças bruscas.*profissionais|socio-professional changes|mãe original|mother/);
+    const aquarius = getPlanetSignDescriptionEntry("uranus", "Aquarius")!;
+    expect(aquarius.pt).toContain("suas amizades podem incluir pessoas originais");
+    const pisces = getPlanetSignDescriptionEntry("uranus", "Pisces")!;
+    for (const phrase of ["ideias grandiosas", "utópicas", "astrologia", "parapsicologia", "psicologia", "psiquiatria"]) expect(pisces.pt).toContain(phrase);
+    expect(pisces.pt).toContain("simboliza mudanças coletivas nas artes e na espiritualidade");
+    expect(pisces.pt + pisces.en).not.toMatch(/revelações místicas|mystical revelations|experiências psíquicas únicas|unique psychic experiences/);
+  });
+
+  it("uses two lowercase-started sentences without editorial prose or em dashes", () => {
+    for (const sign of signs) {
+      const entry = getPlanetSignDescriptionEntry("uranus", sign)!;
+      expect(entry.reviewNotes.length).toBeGreaterThan(0);
+      for (const text of [entry.pt, entry.en]) {
+        expect(text).toMatch(/^(você |you )/);
+        const sentences = text.match(/[^.!?]+[.!?]/g)!;
+        expect(sentences).toHaveLength(2);
+        expect(sentences.join("")).toBe(text);
+        for (const sentence of sentences) expect(sentence.trim()).toMatch(/^[a-zà-ú]/u);
+        expect(text).not.toMatch(/o curso|the course|o livro|the book|foi omitido|was omitted|OCR|fonte|source/i);
+      }
+      expect(JSON.stringify(entry)).not.toContain("\u2014");
+    }
+  });
+});
+
 describe("Sun content regressions", () => {
   it("preserves Virgo's heightened self-assertion and increased egocentrism", () => {
     const entry = getPlanetSignDescriptionEntry("sun", "Virgo")!;
