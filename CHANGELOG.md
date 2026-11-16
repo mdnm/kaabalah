@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Neptune-sign descriptions,
+  with typed lookup coverage, retained source qualifications and provenance.
+
 - Add twelve source-audited bilingual natal Uranus-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 

@@ -2869,6 +2869,371 @@
           "Curso 162-163: ideias grandiosas/utópicas e aptidões possíveis para astrologia, parapsicologia, psicologia e psiquiatria; não são diagnóstico ou garantia de carreira. Livro 55619-55623 sustenta mudanças coletivas nas artes e espiritualidade. Experiências psíquicas únicas/revelações de 55624-55634 foram examinadas e não apresentadas como eventos pessoais previstos."
         ]
       }
+    },
+    "neptune": {
+      "Aries": {
+        "pt": "você pode ter tendência ao misticismo. essa inclinação pode vir acompanhada de forte idealismo e paixão por crenças e visões.",
+        "en": "you may have a tendency toward mysticism. this inclination may come with strong idealism and passion for beliefs and visions.",
+        "keywords": {
+          "pt": [
+            "tendência ao misticismo",
+            "idealismo",
+            "paixão por crenças"
+          ],
+          "en": [
+            "tendency toward mysticism",
+            "idealism",
+            "passion for beliefs"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 166,
+            "to": 166
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 57058,
+            "to": 57061
+          }
+        ],
+        "reviewNotes": [
+          "The course's skin-problem and air-disaster claims are omitted as health/event predictions. Book opening supports idealism and passion for beliefs; no identity, rejection, or life-direction claims were added."
+        ]
+      },
+      "Taurus": {
+        "pt": "você pode se interessar por misticismo ligado à natureza e aos prazeres sensoriais. também pode haver confusão ou desilusão em relação à posse e ao materialismo.",
+        "en": "you may be interested in mysticism connected with nature and sensory pleasures. there may also be confusion or disillusionment around possession and materialism.",
+        "keywords": {
+          "pt": [
+            "misticismo",
+            "natureza",
+            "prazeres sensoriais",
+            "confusão",
+            "desilusão",
+            "materialismo"
+          ],
+          "en": [
+            "mysticism",
+            "nature",
+            "sensory pleasures",
+            "confusion",
+            "disillusionment",
+            "materialism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 167,
+            "to": 167
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 57221,
+            "to": 57226
+          }
+        ],
+        "reviewNotes": [
+          "The course’s profits linked to the sea or fluids are omitted as financial outcomes. Retained both sides of the cited book passage: spiritual connection through nature/sensory pleasure and possible confusion/disillusionment around possession/materialism."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode ter forte intuição, mas também tendência à impertinência e à curiosidade perniciosa. também pode haver mexericos ao redor e falta de visão.",
+        "en": "you may have strong intuition, but also a tendency toward impertinence and harmful curiosity. there may also be gossip around you and a lack of vision.",
+        "keywords": {
+          "pt": [
+            "intuição forte",
+            "impertinência",
+            "mexericos",
+            "falta de visão",
+            "curiosidade perniciosa"
+          ],
+          "en": [
+            "strong intuition",
+            "impertinence",
+            "gossip",
+            "lack of vision",
+            "harmful curiosity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 168,
+            "to": 169
+          }
+        ],
+        "reviewNotes": [
+          "Preserved the course's negative tendencies rather than replacing them with generic creativity or empathy. The book opening on communication/misunderstanding was inspected but not needed for the primary synthesis."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode sentir forte alienação e ter dificuldade para viver com realismo. também pode demonstrar patriotismo.",
+        "en": "you may feel strongly alienated and have difficulty living realistically. you may also show patriotism.",
+        "keywords": {
+          "pt": [
+            "alienação",
+            "dificuldade com o realismo",
+            "patriotismo"
+          ],
+          "en": [
+            "alienation",
+            "difficulty with realism",
+            "patriotism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 170,
+            "to": 171
+          }
+        ],
+        "reviewNotes": [
+          "The course's profits linked to liquids or the sea are omitted as financial outcomes. Book's family/home idealization and emotional-identity confusion were inspected but not adopted as substitutes for the course's alienation and realism difficulty."
+        ]
+      },
+      "Leo": {
+        "pt": "você compartilha o simbolismo de um período marcado pela difusão dos espetáculos, como teatro e cinema. nesse mesmo período, a corrupção ou degeneração das relações amorosas aparece como tendência social simbólica.",
+        "en": "you share the symbolism of a period marked by the spread of spectacles such as theater and cinema. in that same period, corruption or degeneration in romantic relations appears as a symbolic social trend.",
+        "keywords": {
+          "pt": [
+            "difusão dos espetáculos",
+            "teatro",
+            "cinema",
+            "corrupção das relações amorosas",
+            "degeneração das relações amorosas"
+          ],
+          "en": [
+            "spread of spectacles",
+            "theater",
+            "cinema",
+            "corruption in romantic relations",
+            "degeneration in romantic relations"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 172,
+            "to": 173
+          }
+        ],
+        "reviewNotes": [
+          "O curso fala explicitamente de um período, não de destino individual. O livro idealiza expressão criativa e romance (58044-58052; também 58055-58064), mas seus temas pessoais não substituem a formulação coletiva do curso nem são usados como promessa de criatividade/romance.",
+          "Review resolution: both sentences refer to the same symbolic social period; the relational clause does not predict the reader’s relationship fate."
+        ]
+      },
+      "Virgo": {
+        "pt": "você compartilha o simbolismo geracional de idealismo ou inspiração freados pela crítica. nessa geração, também se desenvolvem teorias críticas.",
+        "en": "you share the generational symbolism of idealism or inspiration restrained by criticism. critical theories also develop in this generation.",
+        "keywords": {
+          "pt": [
+            "idealismo",
+            "inspiração",
+            "crítica",
+            "teorias críticas"
+          ],
+          "en": [
+            "idealism",
+            "inspiration",
+            "criticism",
+            "critical theories"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 174,
+            "to": 175
+          }
+        ],
+        "reviewNotes": [
+          "A passagem do livro em torno do hint foi inspecionada em 58395-58424, mas o OCR fragmentado mistura linhas e temas de saúde/serviço; nenhum claim foi adotado dela. Mantida a oposição e o desenvolvimento teórico exatamente no registro coletivo do curso."
+        ]
+      },
+      "Libra": {
+        "pt": "você compartilha o simbolismo geracional de espiritualidade despreocupada, rebeldia e drogas como tema social. nessa geração, também aparecem idealismo forte e liderança.",
+        "en": "you share the generational symbolism of carefree spirituality, rebellion and drugs as a social theme. strong idealism and leadership also appear in this generation.",
+        "keywords": {
+          "pt": [
+            "espiritualidade despreocupada",
+            "rebeldia",
+            "drogas como tema social",
+            "idealismo",
+            "liderança"
+          ],
+          "en": [
+            "carefree spirituality",
+            "rebellion",
+            "drugs as a social theme",
+            "idealism",
+            "leadership"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 176,
+            "to": 177
+          }
+        ],
+        "reviewNotes": [
+          "A abertura do livro em 58602-58605 idealiza parcerias/justiça e menciona decepções; não foi convertida em traço individual nem em resultado relacional garantido. O texto conserva temas coletivos do curso, inclusive drogas sem alegação clínica."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você compartilha o simbolismo coletivo de trapaças e crueldade junto de temas de justiça social. nesse plano, também se destaca o domínio das massas.",
+        "en": "you share the collective symbolism of deception and cruelty alongside themes of social justice. mass domination is also prominent at this level.",
+        "keywords": {
+          "pt": [
+            "trapaças",
+            "crueldade",
+            "justiça social",
+            "domínio das massas"
+          ],
+          "en": [
+            "deception",
+            "cruelty",
+            "social justice",
+            "mass domination"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 178,
+            "to": 179
+          }
+        ],
+        "reviewNotes": [
+          "O curso associa temas coletivos/políticos, preservados sem projetá-los como conduta individual. Neuroses sexuais e tendências necrófilas foram omitidas por serem clínicas/sexuais e não apropriadas como afirmações determinadas por mapa. O livro traz idealização de transformação/mistério e poder/oculto (58833-58840), mas não foi usado para criar traços individuais nem suavizar crueldade/trapaça.",
+          "Review resolution: domínio das massas remains mass domination, not influence; the primary supplies no softening qualifier."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você compartilha um horizonte simbólico de valorização da inteligência, da filosofia e da sabedoria. nesse plano coletivo, também se destacam o auge dos esportes e as visões utópicas do mundo.",
+        "en": "you share a symbolic horizon that values intelligence, philosophy and wisdom. on this collective level, the flourishing of sports and utopian visions of the world also stand out.",
+        "keywords": {
+          "pt": [
+            "inteligência",
+            "filosofia",
+            "sabedoria",
+            "auge dos esportes",
+            "visões utópicas"
+          ],
+          "en": [
+            "intelligence",
+            "philosophy",
+            "wisdom",
+            "flourishing of sports",
+            "utopian visions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 180,
+            "to": 181
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado: 180–181; adotado integralmente como temas simbólicos compartilhados, sem atribuir superioridade intelectual individual. Grafia SAGIITÁRIO normalizada para Sagitário.",
+          "Livro inspecionado: 59186–59235, incluindo os indícios 59196 e 59220; nenhuma adição adotada. OCR fragmenta a abertura entre 59196 e 59226–59228."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você compartilha um horizonte simbólico em que a intuição e a imaginação ganham forma prática. nesse movimento geracional, tomam forma ideias desenvolvidas pela geração anterior.",
+        "en": "you share a symbolic horizon in which intuition and imagination take practical form. within this generational movement, ideas developed by the previous generation take shape.",
+        "keywords": {
+          "pt": [
+            "intuição",
+            "imaginação prática",
+            "ideias da geração anterior"
+          ],
+          "en": [
+            "intuition",
+            "practical imagination",
+            "ideas from the previous generation"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 182,
+            "to": 183
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado e adotado: 182–183; preservada a referência à geração anterior, sem promessa individual de realização.",
+          "Livro inspecionado: 59476–59506; nenhuma adição adotada. A abertura enfatiza idealização da ordem e da estrutura, sonhos de perfeição profissional/social e limites da realidade, enquanto o curso enfatiza concretização geracional. Título com ruído de OCR em 59486–59489."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você compartilha um horizonte simbólico de descobertas científicas e movimentos coletivos de fraternidade universal. nesse plano social, visões utópicas de comunidade podem encontrar desilusão quando a realidade não corresponde ao ideal.",
+        "en": "you share a symbolic horizon of scientific discoveries and collective movements for universal fellowship. on this social level, utopian visions of community may meet with disillusionment when reality falls short of the ideal.",
+        "keywords": {
+          "pt": [
+            "descobertas científicas",
+            "fraternidade universal",
+            "comunidade idealizada",
+            "desilusão social"
+          ],
+          "en": [
+            "scientific discoveries",
+            "universal fellowship",
+            "idealized community",
+            "social disillusionment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 184,
+            "to": 185
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 59662,
+            "to": 59668
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado e adotado: 184–185. Livro inspecionado: 59649–59684; adotado apenas 59662–59668 para qualificar o ideal comunitário com a possibilidade de desilusão. Mantido o âmbito coletivo, sem converter descobertas em capacidade científica pessoal."
+        ]
+      },
+      "Pisces": {
+        "pt": "você compartilha um horizonte simbólico de grandes correntes místicas e criatividade artística. nesse plano histórico e coletivo, também aparecem os temas simbólicos de neuroses de massa e difusão das drogas.",
+        "en": "you share a symbolic horizon of major mystical currents and artistic creativity. on this historical and collective level, symbolic themes of mass neurosis and the spread of drugs also appear.",
+        "keywords": {
+          "pt": [
+            "correntes místicas",
+            "criatividade artística",
+            "neuroses de massa",
+            "difusão das drogas"
+          ],
+          "en": [
+            "mystical currents",
+            "artistic creativity",
+            "mass neurosis",
+            "spread of drugs"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 186,
+            "to": 187
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado e adotado: 186–187. Neuroses de massa mantido como tema simbólico coletivo, sem diagnóstico de você ou de uma geração.",
+          "Livro inspecionado: 59880–59913, incluindo o indício 59890–59903; nenhuma adição adotada. A abertura individualiza sensibilidade, intuição, empatia e dificuldades de limites; esses atributos não substituem os temas coletivos e difíceis do curso. Cabeçalho corrompido por OCR em 59890.",
+          "Review resolution: historical collective symbolism only, with no clinical diagnosis of reader or cohort and no prediction of substance use."
+        ]
+      }
     }
   }
 }

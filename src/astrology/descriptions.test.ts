@@ -161,6 +161,91 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
   });
 });
 
+describe("Neptune source distinctions", () => {
+  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
+  const book = "books/astrologia-hermetica/astrologia-hermetica.md";
+  const adopted: Record<Sign, readonly (readonly [string, number, number])[]> = {
+    Aries: [[course, 166, 166], [book, 57058, 57061]],
+    Taurus: [[course, 167, 167], [book, 57221, 57226]],
+    Gemini: [[course, 168, 169]],
+    Cancer: [[course, 170, 171]],
+    Leo: [[course, 172, 173]],
+    Virgo: [[course, 174, 175]],
+    Libra: [[course, 176, 177]],
+    Scorpio: [[course, 178, 179]],
+    Sagittarius: [[course, 180, 181]],
+    Capricorn: [[course, 182, 183]],
+    Aquarius: [[course, 184, 185], [book, 59662, 59668]],
+    Pisces: [[course, 186, 187]],
+  };
+  const entry = (sign: Sign) => getPlanetSignDescriptionEntry("neptune", sign)!;
+
+  it("matches every adopted source range, including all three book additions", () => {
+    for (const sign of signs) {
+      expect(entry(sign).src).toEqual(adopted[sign].map(([file, from, to]) => ({ file, from, to })));
+    }
+  });
+
+  it("keeps two lowercase-start sentences and direct bilingual address", () => {
+    for (const sign of signs) {
+      const record = entry(sign);
+      expect(record.pt).toMatch(/^você /);
+      expect(record.en).toMatch(/^you\b/);
+      for (const text of [record.pt, record.en]) {
+        const sentences = text.match(/[^.!?]+[.!?]/gu)!;
+        expect(sentences).toHaveLength(2);
+        expect(sentences.join("")).toBe(text);
+        for (const sentence of sentences) {
+          expect(sentence.trim()).toMatch(/^\p{Ll}/u);
+        }
+      }
+    }
+  });
+
+  it("retains Aries belief idealism and both sides of Taurus material spirituality", () => {
+    expect(entry("Aries").pt).toMatch(/forte idealismo e paixão por crenças e visões/);
+    expect(entry("Aries").en).toMatch(/strong idealism and passion for beliefs and visions/);
+    expect(entry("Taurus").pt).toMatch(/natureza e aos prazeres sensoriais/);
+    expect(entry("Taurus").pt).toMatch(/confusão ou desilusão.*posse e ao materialismo/);
+    expect(entry("Taurus").en).toMatch(/nature and sensory pleasures/);
+    expect(entry("Taurus").en).toMatch(/confusion or disillusionment.*possession and materialism/);
+    expect(entry("Gemini").pt).toMatch(/mas.*impertinência.*mexericos ao redor e falta de visão/);
+    expect(entry("Gemini").en).toMatch(/but.*impertinence.*gossip around you and a lack of vision/);
+  });
+
+  it("keeps cultural, critical and drug themes explicitly collective", () => {
+    expect(entry("Leo").pt).toMatch(/teatro e cinema.*nesse mesmo período.*corrupção ou degeneração.*tendência social simbólica/);
+    expect(entry("Leo").en).toMatch(/theater and cinema.*in that same period.*corruption or degeneration.*symbolic social trend/);
+    expect(entry("Virgo").pt).toMatch(/simbolismo geracional.*freados pela crítica.*teorias críticas/);
+    expect(entry("Virgo").en).toMatch(/generational symbolism.*restrained by criticism.*critical theories/);
+    expect(entry("Libra").pt).toMatch(/simbolismo geracional.*drogas como tema social/);
+    expect(entry("Libra").en).toMatch(/generational symbolism.*drugs as a social theme/);
+    expect(entry("Sagittarius").pt).toMatch(/horizonte simbólico.*plano coletivo.*auge dos esportes/);
+    expect(entry("Sagittarius").en).toMatch(/symbolic horizon.*collective level.*flourishing of sports/);
+  });
+
+  it("preserves domination, previous-generation ownership and community disillusionment", () => {
+    expect(entry("Scorpio").pt).toMatch(/simbolismo coletivo.*trapaças e crueldade.*justiça social.*domínio das massas/);
+    expect(entry("Scorpio").en).toMatch(/collective symbolism.*deception and cruelty.*social justice.*mass domination/);
+    expect(entry("Scorpio").en).not.toMatch(/influence/);
+    expect(entry("Capricorn").pt).toMatch(/movimento geracional.*ideias desenvolvidas pela geração anterior/);
+    expect(entry("Capricorn").en).toMatch(/generational movement.*ideas developed by the previous generation/);
+    expect(entry("Aquarius").pt).toMatch(/movimentos coletivos de fraternidade universal.*plano social.*podem encontrar desilusão/);
+    expect(entry("Aquarius").en).toMatch(/collective movements for universal fellowship.*social level.*may meet with disillusionment/);
+  });
+
+  it("retains Pisces difficult themes as historical symbolism with diagnostic boundaries in metadata", () => {
+    expect(entry("Pisces").pt).toMatch(/plano histórico e coletivo.*temas simbólicos de neuroses de massa e difusão das drogas/);
+    expect(entry("Pisces").en).toMatch(/historical and collective level.*symbolic themes of mass neurosis and the spread of drugs/);
+    expect(entry("Pisces").reviewNotes.join(" ")).toMatch(/no clinical diagnosis of reader or cohort and no prediction of substance use/);
+    expect(entry("Scorpio").reviewNotes.join(" ")).toMatch(/Neuroses sexuais e tendências necrófilas foram omitidas/);
+    for (const sign of signs) {
+      const record = entry(sign);
+      expect(`${record.pt} ${record.en}`).not.toMatch(/problemas com a pele|skin problems|desastres no ar|air disasters|lucros|profits|neuroses sexuais|sexual neuroses|necrófil|necrophil/i);
+    }
+  });
+});
+
 describe("Uranus source distinctions", () => {
   const course = "modulo 4/aula 12 modulo 4/aula-12.md";
   const book = "books/astrologia-hermetica/astrologia-hermetica.md";
