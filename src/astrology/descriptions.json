@@ -5391,6 +5391,484 @@
           "Root precision resolution: the second sentence directly associates asking much of others and one person’s adoration feeling insufficient (957–960), without inventing a causal link from the search for limitless beauty/love. Two sentences are retained."
         ]
       }
+    },
+    "mars": {
+      "1": {
+        "pt": "você pode sentir raivas e agir precipitadamente antes que consiga conter a reação; na pior das hipóteses, pode ficar impaciente e furioso diante de obstáculos mínimos e sentir necessidade constante de provar seu poder. você também pode ser autêntico, espontâneo e tomar a iniciativa em vez de esperar que as coisas aconteçam.",
+        "en": "you may feel anger and act precipitously before you can contain the reaction; at worst, you may grow impatient and furious over minimal obstacles and feel a constant need to prove your power. you may also be authentic and spontaneous, taking initiative instead of waiting for things to happen.",
+        "keywords": {
+          "pt": [
+            "raiva e ações precipitadas",
+            "impaciência diante de obstáculos mínimos no pior dos casos",
+            "necessidade de provar poder",
+            "autenticidade e espontaneidade",
+            "tomar iniciativa"
+          ],
+          "en": [
+            "anger and precipitous actions",
+            "impatience over minimal obstacles in the worst case",
+            "need to prove power",
+            "authenticity and spontaneity",
+            "taking initiative"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 997,
+            "to": 1000
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1005,
+            "to": 1009
+          }
+        ],
+        "reviewNotes": [
+          "Mantida a qualificação 'na pior das hipóteses' para impaciência/fúria diante do mínimo obstáculo e necessidade de provar poder.",
+          "Linhas 1001–1004 com recomendações de exercício, esporte e terapia corporal foram lidas e excluídas; não se converteu em prática/instrução.",
+          "O livro foi inspecionado no segmento 43258–43700. O bloco identificado como casas 1/2 está intercalado e não foi adotado."
+        ]
+      },
+      "2": {
+        "pt": "você pode sentir urgência em buscar dinheiro e posses e querer obter o que deseja imediatamente; uma abordagem rápida, impaciente e abrupta pode ser contraproducente. seus recursos podem incluir coragem e iniciativa para perseguir o que valoriza e defendê-lo, embora você possa impor esse valor aos demais.",
+        "en": "you may feel urgency in pursuing money and possessions and want what you desire immediately; a fast, impatient, and abrupt approach may be counterproductive. your resources may include courage and initiative to pursue what you value and defend it, though you may impose that value on others.",
+        "keywords": {
+          "pt": [
+            "urgência na busca de dinheiro e posses",
+            "querer resultados imediatos",
+            "abordagem impaciente e abrupta contraproducente",
+            "coragem e iniciativa",
+            "defender valores e impô-los aos demais"
+          ],
+          "en": [
+            "urgency in pursuing money and possessions",
+            "wanting immediate results",
+            "impatient and abrupt approach can be counterproductive",
+            "courage and initiative",
+            "defending values and imposing them on others"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1031,
+            "to": 1034
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1036,
+            "to": 1046
+          }
+        ],
+        "reviewNotes": [
+          "Preservados a urgência material, o contraponto de que modos rápidos/impacientes/abruptos podem ser contraproducentes e a tensão entre defender valores e forçá-los sobre outros.",
+          "Não se recomendam riscos e não se promete renda, ganho ou prosperidade. As linhas 1032–1033 sobre correr riscos/sorte foram lidas, mas não adotadas como orientação.",
+          "O livro foi inspecionado no segmento 43258–43700; o bloco de casa 2 está misturado a conteúdo da casa 1 e traz alegações financeiras não usadas."
+        ]
+      },
+      "3": {
+        "pt": "você pode afirmar poder, vitalidade e existência por meio de palavras, opiniões, conhecimentos ou pontos de vista; sua mente tende a ser afiada e ativa, com capacidade para decisões rápidas. seu vocabulário ou habilidade verbal pode ser cortante e servir como arma, embora suas palavras também possam impulsionar outras pessoas à ação.",
+        "en": "you may assert power, vitality, and existence through words, opinions, knowledge, or points of view; your mind may be sharp and active, capable of quick decisions. your vocabulary or verbal skill may be cutting and serve as a weapon, though your words may also spur other people to action.",
+        "keywords": {
+          "pt": [
+            "afirmar poder por palavras e opiniões",
+            "mente afiada e ativa",
+            "decisões rápidas",
+            "habilidade verbal cortante",
+            "palavras que podem impulsionar outros à ação"
+          ],
+          "en": [
+            "asserting power through words and opinions",
+            "sharp and active mind",
+            "quick decisions",
+            "cutting verbal skill",
+            "words that may spur others to action"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1055,
+            "to": 1058
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1065,
+            "to": 1069
+          }
+        ],
+        "reviewNotes": [
+          "A formulação descreve a função afirmativa e cortante da fala e também seu potencial de mobilizar os outros, mantendo a tensão do trecho.",
+          "As instruções sobre tato, dizer o que se pensa, escrever carta/rasgá-la e outras práticas das linhas 1058–1064 e 1072–1082 foram omitidas. Também foram omitidas alegações sobre parentes, infância e acidentes.",
+          "O livro foi inspecionado no segmento 43258–43700. O cabeçalho/fragmentos de casa 3 aparecem intercalados com material de outras casas; não adotado."
+        ]
+      },
+      "4": {
+        "pt": "você pode manter agressividade e raiva ocultas até que irrompam com intensidade. em casa e na vida pessoal, pode mostrar ansiedade, iniciativa, domínio e agressividade, e deslocar sua raiva latente para quem espera por você em casa.",
+        "en": "you may keep aggression and anger hidden until they erupt intensely. at home and in your personal life, you may show anxiety, initiative, dominance, and aggression, and displace your latent anger onto those waiting for you at home.",
+        "keywords": {
+          "pt": [
+            "agressividade e raiva ocultas",
+            "irrupção intensa",
+            "ansiedade e iniciativa na vida doméstica",
+            "domínio e agressividade em casa",
+            "deslocamento da raiva para pessoas em casa"
+          ],
+          "en": [
+            "hidden aggression and anger",
+            "intense eruption",
+            "anxiety and initiative in domestic life",
+            "dominance and aggression at home",
+            "displacing anger onto people at home"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1092,
+            "to": 1098
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1104,
+            "to": 1114
+          }
+        ],
+        "reviewNotes": [
+          "Mantida a raiva/agressividade oculta e a possibilidade de irrupção, além da afirmação de domínio/agressividade na vida doméstica e do deslocamento da raiva latente para quem está em casa.",
+          "A analogia com os peixes e as formas de desviar a agressão nas linhas 1108–1116 não foi reproduzida. As alegações sobre pai/antepassado nas linhas 1117–1123 não foram adotadas.",
+          "Áries no Fundo do Céu/casa 4 e as associações subsequentes das linhas 1124–1129 foram mantidas separadas de Marte na casa 4.",
+          "O livro foi inspecionado no segmento 43258–43700. Há um cabeçalho de casa 4, mas os fragmentos corporais são intercalados com conteúdo de casa 3 e colunas incompletas; nenhum claim suplementar foi adotado."
+        ]
+      },
+      "5": {
+        "pt": "você pode ter um espírito muito competitivo e querer se destacar até nas brincadeiras. na vida e na criatividade, pode sentir que não basta fazer algo, é preciso fazê-lo dramaticamente e de todo o coração.",
+        "en": "you may have a strong competitive spirit and want to stand out even in play. in life and creativity, you may feel that doing something is not enough; it must be done dramatically and wholeheartedly.",
+        "keywords": {
+          "pt": [
+            "espírito competitivo",
+            "brincadeiras",
+            "criatividade",
+            "dramaticamente",
+            "de todo o coração"
+          ],
+          "en": [
+            "competitive spirit",
+            "play",
+            "creativity",
+            "dramatically",
+            "wholeheartedly"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1132,
+            "to": 1138
+          }
+        ],
+        "reviewNotes": [
+          "A renovação de romances é condicionada na fonte a não assustar outras pessoas com a intensidade e depende de aspectos e posicionamento de Marte no signo (1143–1148); foi omitida. Não foram adotados esportes ou façanhas físicas como instruções, nem conteúdo sobre filhos."
+        ]
+      },
+      "6": {
+        "pt": "você tende a trabalhar com orgulho, atenção aos detalhes, desejo de independência nos assuntos diários e satisfação em concluir tarefas desafiadoras quando Marte está bem aspectado. com aspectos difíceis, sobretudo do Sol, Júpiter, Urano e especialmente Plutão, você pode mostrar pressa, raiva e impaciência com colegas, ao menos no começo.",
+        "en": "you may work with pride, attention to detail, a desire for independence in daily matters, and satisfaction in completing challenging tasks when Mars is well aspected. with difficult aspects, especially from the Sun, Jupiter, Uranus, and particularly Pluto, you may show haste, anger, and impatience with coworkers, at least initially.",
+        "keywords": {
+          "pt": [
+            "Marte bem aspectado",
+            "orgulho no trabalho",
+            "atenção aos detalhes",
+            "independência",
+            "tarefas desafiadoras",
+            "aspectos difíceis",
+            "Sol",
+            "Júpiter",
+            "Urano",
+            "Plutão",
+            "ao menos no começo",
+            "pressa",
+            "raiva",
+            "impaciência com colegas"
+          ],
+          "en": [
+            "well-aspected Mars",
+            "pride in work",
+            "attention to detail",
+            "independence",
+            "challenging tasks",
+            "difficult aspects",
+            "Sun",
+            "Jupiter",
+            "Uranus",
+            "Pluto",
+            "at least initially",
+            "haste",
+            "anger",
+            "impatience with coworkers"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1174,
+            "to": 1178
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1188,
+            "to": 1190
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1160,
+            "to": 1164
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1171,
+            "to": 1173
+          }
+        ],
+        "reviewNotes": [
+          "A oposição entre os modos romano e grego na fonte foi convertida em tendências comportamentais diretas, sem exigir que o leitor conheça a analogia mitológica. Mantida a condição: Marte bem aspectado tende ao padrão descrito em 1174–1178; aspectos difíceis, sobretudo os indicados em 1188–1190, podem acompanhar pressa e raiva (1160–1164) e impaciência com colegas (1171–1173), ao menos no começo. Omitidas alegações sobre dores, lesões, saúde/corpo e recomendações de trabalho."
+        ]
+      },
+      "7": {
+        "pt": "você pode parecer tão forte que assusta outras pessoas ou, em alguns casos, atrair alguém assertivo para tomar decisões por você. depois, pode sentir ressentimento e raiva diante da autoridade dessa pessoa e tentar retomar o poder que antes cedeu.",
+        "en": "you may seem so strong that you frighten other people or, in some cases, attract an assertive person to make decisions for you. later, you may feel resentment and anger toward that person’s authority and try to reclaim the power you had previously handed over.",
+        "keywords": {
+          "pt": [
+            "parecer forte",
+            "assustar outras pessoas",
+            "atrair alguém assertivo",
+            "decisões delegadas",
+            "ressentimento",
+            "raiva",
+            "retomar o poder"
+          ],
+          "en": [
+            "seeming strong",
+            "frightening others",
+            "attracting an assertive person",
+            "delegated decisions",
+            "resentment",
+            "anger",
+            "reclaiming power"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1202,
+            "to": 1206
+          }
+        ],
+        "reviewNotes": [
+          "A fonte apresenta padrões inversos/alternativos: algumas pessoas parecem fortes e assustam outras; inversamente, podem atrair alguém marciano/assertivo que assuma decisões. “Ou” evita afirmar que ambos precisam coexistir. O cabeçalho identifica casa 7, mas a abertura 1194–1201 contém “Na casa 5” e alegações sobre casamento; esse provável erro textual foi excluído, sem corrigir ou reconstruir a fonte. Adotadas as tendências qualificadas nas linhas 1202–1206. Não se generalizou conflito ou abuso a todas as relações."
+        ]
+      },
+      "8": {
+        "pt": "você pode se dedicar intensamente a empreendimentos compartilhados; aspectos difíceis de Marte podem trazer conflitos com parceiros sobre bens comuns. também pode se deparar com emoções obscuras como inveja e ciúme, cuja transmutação construtiva depende em grande parte dos aspectos de Marte, e persistir em descobrir o que está escondido.",
+        "en": "you may commit intensely to shared undertakings; difficult aspects to Mars may bring conflicts with partners over shared property. you may also encounter dark emotions such as envy and jealousy, whose constructive transformation depends largely on Mars’s aspects, and persist in uncovering what is hidden.",
+        "keywords": {
+          "pt": [
+            "empreendimentos compartilhados",
+            "aspectos difíceis",
+            "conflitos com parceiros",
+            "bens comuns",
+            "emoções obscuras",
+            "inveja",
+            "ciúme",
+            "transmutação construtiva condicionada aos aspectos",
+            "persistência",
+            "descobrir o escondido"
+          ],
+          "en": [
+            "shared undertakings",
+            "difficult aspects",
+            "conflicts with partners",
+            "shared property",
+            "dark emotions",
+            "envy",
+            "jealousy",
+            "constructive transformation conditioned by aspects",
+            "persistence",
+            "uncovering what is hidden"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1218,
+            "to": 1219
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1224,
+            "to": 1227
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1240,
+            "to": 1244
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1248,
+            "to": 1252
+          }
+        ],
+        "reviewNotes": [
+          "Conflitos por bens comuns são explicitamente condicionados a aspecto difícil de Marte. A possibilidade de transmutar emoções obscuras é condicionada aos aspectos, sem promessa. A investigação persistente do que é oculto foi mantida como tendência. Omitidos resultados financeiros, sexuais, legais, heranças e práticas mediúnicas/ocultas."
+        ]
+      },
+      "9": {
+        "pt": "você defende suas crenças filosóficas ou religiosas com zelo e pode tomar sua versão da verdade como a única. você pode buscar numa lei maior a justificativa para seus atos e partir para uma viagem por impulso.",
+        "en": "you defend your philosophical or religious beliefs with zeal and may take your version of the truth as the only one. you may seek justification for your actions in a higher law and set off on a journey on impulse.",
+        "keywords": {
+          "pt": [
+            "zelo",
+            "crenças fortes",
+            "justificação",
+            "viagens impulsivas"
+          ],
+          "en": [
+            "zeal",
+            "strong beliefs",
+            "justification",
+            "impulsive travel"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1271,
+            "from": 1261
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1276,
+            "from": 1275
+          }
+        ],
+        "reviewNotes": [
+          "O zelo não recebe condição de maus aspectos. Mantidas como possibilidades a exclusividade da verdade, a justificação e a viagem impulsiva; sem identidade criminosa, gênero, exemplos ou alegações de carreira. Suplemento inspecionado, não adotado.",
+          "O livro inspecionado em 44085–44091 enfatiza abertura a diferentes crenças, enquanto a aula em 1261–1271 admite zelo e exclusividade da própria verdade; prevalece a fonte primária, sem combinar mecanicamente as ênfases."
+        ]
+      },
+      "10": {
+        "pt": "você tem forte ambição e quer ser visto como alguém poderoso e digno de atenção. você pode entrar em conflito com superiores e autoridades.",
+        "en": "you have strong ambition and want to be seen as someone powerful and worthy of attention. you may clash with superiors and authorities.",
+        "keywords": {
+          "pt": [
+            "ambição",
+            "poder",
+            "reconhecimento",
+            "conflito com autoridades"
+          ],
+          "en": [
+            "ambition",
+            "power",
+            "recognition",
+            "conflict with authority"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1292,
+            "from": 1289
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1310,
+            "from": 1309
+          }
+        ],
+        "reviewNotes": [
+          "Omitida a expressão literal “os meios justificam os fins” (1297), sem invertê-la ou interpretá-la como autorização para qualquer meio. Omitidos exemplos, relação materna, recomendação profissional e equivalência com Áries no Meio do Céu. Suplemento inspecionado, não adotado."
+        ]
+      },
+      "11": {
+        "pt": "você pode mobilizar um grupo para agir, mas ter dificuldade em conciliar suas ideias fortes com as opiniões dos outros. você pode usar o grupo como justificativa para atitudes que não tomaria por conta própria e transferir a ele sua responsabilidade.",
+        "en": "you may mobilize a group to act yet struggle to reconcile your strong ideas with other people’s opinions. you may use the group to justify actions you would not take on your own and shift your responsibility onto it.",
+        "keywords": {
+          "pt": [
+            "mobilização de grupos",
+            "ideias fortes",
+            "dificuldade de conciliação",
+            "responsabilidade transferida"
+          ],
+          "en": [
+            "group mobilization",
+            "strong ideas",
+            "difficulty compromising",
+            "shifted responsibility"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1325,
+            "from": 1319
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1336,
+            "from": 1333
+          }
+        ],
+        "reviewNotes": [
+          "A condição dos aspectos em 1317–1318 trata da recepção dos envolvimentos, não condiciona a dificuldade de compromisso. Omitidas recepção e metas de 1344–1348, sem converter resultados condicionados em benefícios gerais; omitidos conselhos, exemplos e amizades para manter foco. Suplemento inspecionado, não adotado."
+        ]
+      },
+      "12": {
+        "pt": "sua agressividade pode aparecer como insatisfação vaga ou queixas sem ação, e você pode gastar energia em escapismos. você pode colocar sua força a serviço de outra pessoa ou de uma causa maior, mas isso também pode envolver abrir mão da responsabilidade pelos próprios atos.",
+        "en": "your aggression may appear as vague dissatisfaction or complaints without action, and you may spend energy on escapism. you may put your strength at the service of another person or a greater cause, but this may also involve relinquishing responsibility for your own actions.",
+        "keywords": {
+          "pt": [
+            "agressividade encoberta",
+            "insatisfação",
+            "escapismo",
+            "serviço",
+            "responsabilidade abdicada"
+          ],
+          "en": [
+            "hidden aggression",
+            "dissatisfaction",
+            "escapism",
+            "service",
+            "relinquished responsibility"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1359,
+            "from": 1356
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1367,
+            "from": 1366
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1373,
+            "from": 1369
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "to": 1379,
+            "from": 1376
+          }
+        ],
+        "reviewNotes": [
+          "Serviço preservado como possibilidade, com a qualificação de responsabilidade abdicada, sem promessa positiva. A faixa 1369–1373 contém a continuação da ressalva até “consequências desastrosas”; o exemplo pessoal que começa depois não foi adotado. Omitidos diagnósticos, saúde, exemplos nomeados, suicídio e investigação de sonhos; sem instruções. Suplemento inspecionado, não adotado."
+        ]
+      }
     }
   }
 }

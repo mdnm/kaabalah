@@ -2,10 +2,10 @@
 
 Approved scope: batches 1-3, natal placements before basic profiles before additional points. One kind at a time; no npm publication.
 
-- Completed: ten planet-sign sets (120 entries); planet-house sets sun, moon, mercury, venus (48 entries). Total 168 bilingual lookup rows.
+- Completed: ten planet-sign sets (120 entries); planet-house sets sun, moon, mercury, venus, mars (60 entries). Total 180 bilingual lookup rows.
 - Shared getters: getPlanetSignDescription/Entry and getPlanetHouseDescription/Entry. Imported deeply frozen readonly JSON; English default and pt* Portuguese. Unknown/unsupported combinations return undefined, with no generic fallback; houses require numbers 1-12.
 - Files: src/astrology/descriptions.json/.ts and descriptions*.test.ts, existing additive astrology barrel export, public astrology API docs. One docs/content/astrology-descriptions-<planet>-signs.md or -houses.md source audit per kind.
-- Validation: 193 description tests, npm run typecheck, build and public CJS/ESM Venus-house getters pass; source hashes/bounds and unchanged prior data verified. Planet-sign milestone also passed build/typecheck/full suite (728 tests) and public CJS/ESM exports across120rows. Repeat complete checks at final handoff.
+- Validation: 207 description tests, npm run typecheck, build and public CJS/ESM Mars-house getters pass; source hashes/bounds and unchanged prior data verified. Planet-sign milestone also passed build/typecheck/full suite (728 tests) and public CJS/ESM exports across120rows. Repeat complete checks at final handoff.
 - Gaps/decisions: unimplemented sets absent explicitly; disputes, OCR and source qualifications remain in reviewNotes/audits. Mat chose astronomical north/south nodes without hemisphere inversion. Opposition and node dignity class conflicts need narrow review/Mat decision when relevant.
-- Exact next factor: Mars in houses. Pointers: A9:994-1391; B:43258-44450. Read narrow actual bodies only; no new inventory, no private NOTAS reuse or client readings.
+- Exact next factor: Jupiter in houses. Pointers: A9:1392-1830; B:47796-49070; house6 source heading mislabeled Venus at1574. Read narrow actual bodies only; no new inventory, no private NOTAS reuse or client readings.
 - Work occurs directly on main with one factor per commit. Separate calculation-correctness work belongs in Claude Code's feat/calc-improvements worktree; preserve its scope and coordinate before landing. This content workflow does not change calculations, index semantics, CLI, numerology, package or tsup.
