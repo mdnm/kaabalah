@@ -102,3 +102,5 @@ Next pointer only: Sun in houses, A8:1101–1516; B:26584–27770. No next-facto
 Validation: all 141 targeted description tests pass, including generic coverage of all ten sets. JSON report: `/tmp/kaabalah-pluto-tests.json`. `npm run typecheck` and `git diff --check` pass. The previous nine sets remain value-identical to the pre-edit baseline and HEAD; Pluto adds 12 records for 120 total. No commit was created.
 
 Final coordinator validation: 141 description tests and npm run typecheck pass; exact cited source hashes match the research manifest, every range is inside eligible teaching, and earlier authored sets are value-identical to HEAD.
+
+Planet-sign milestone: all ten ordinary planet sets (120 entries) passed `npm run build`, `npm run typecheck` and the full test suite (728 passed, zero failed/pending). Public CJS and ESM package exports were exercised across all 120 EN/PT entries, frozen nested provenance and unknown-key gaps. Reports/logs: /tmp/kaabalah-signs-full-tests.json, /tmp/kaabalah-signs-build.log, /tmp/kaabalah-signs-typecheck.log. No calculations, package configuration or publication were changed by this work.
