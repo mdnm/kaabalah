@@ -29,6 +29,10 @@
 - Add Portuguese tree descriptions through `getTreeDescription` and
   `getTreeNodeDescriptions`, covering all three systems and shared core metadata.
 
+- Add the phase 1 astrology description source inventory, coverage gaps, source
+  disagreements and proposed bilingual scope for author review, including a
+  cross-module keyword search and a separate private-NOTAS location ledger.
+
 - Add Portuguese gematria individuality, personality and synthesis meanings through
   `getGematriaData`.
 
