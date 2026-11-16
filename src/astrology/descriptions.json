@@ -10741,5 +10741,182 @@
         "The obsession/hallucination labels at modulo 4/aula 4 modulo 4/aula-4.md:272 are unadopted as reader claims. Evolutionary branches at 273-286, including isolation/escape, emotional projection and liberated higher-self unity, are inspected but unadopted; no personal level or promised peace is assigned. Optional A0 parable, A5 duplicates and book were not inspected or adopted."
       ]
     }
+  },
+  "elements": {
+    "fire": {
+      "pt": "no seu mapa, o fogo se associa à iniciativa, à ambição e a reações vivas, demonstrativas e combativas. simbolicamente, o fogo é quente e seco e também representa impulso para começar.",
+      "en": "in your chart, fire is associated with initiative, ambition, and lively, demonstrative, combative reactions. its symbolic qualities are hot and dry, and it also represents the impulse to begin.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "ambição",
+          "ação",
+          "começo"
+        ],
+        "en": [
+          "initiative",
+          "ambition",
+          "action",
+          "beginning"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 134,
+          "to": 137
+        },
+        {
+          "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+          "from": 70,
+          "to": 72
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 811,
+          "to": 811
+        }
+      ],
+      "reviewNotes": [
+        "Adopted A2 initiative, ambition, and lively/demonstrative/combative reaction qualities, A3 symbolic hot/dry qualities, and A8's fire-as-start metaphor. A8's bodily temperature and blood claims on lines 811-813 were not adopted.",
+        "A2's spiritual/honor traits at line 138 are explicitly attributed to a temperament label and were omitted pending resolution of the class 2/3 versus class 8 temperament mapping. No physical vitality or health outcome is claimed.",
+        "A2:137 shares the adopted demonstrative/combative clause with an unadopted bilious mapping. The inclusive physical citation must reach 137; that does not adopt the humor label or its dependent traits while Mat decides."
+      ]
+    },
+    "earth": {
+      "pt": "no seu mapa, a terra se associa a reações lentas e duradouras, prudência, método e ordem. sua orientação prática se volta ao concreto e ao material, com busca de estabilidade; simbolicamente, a terra é fria e seca.",
+      "en": "in your chart, earth is associated with slow, lasting reactions, prudence, method, and order. its practical orientation turns toward concrete and material matters, with a search for stability; its symbolic qualities are cold and dry.",
+      "keywords": {
+        "pt": [
+          "prudência",
+          "método",
+          "concreto",
+          "estabilidade"
+        ],
+        "en": [
+          "prudence",
+          "method",
+          "concrete",
+          "stability"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 140,
+          "to": 143
+        },
+        {
+          "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+          "from": 70,
+          "to": 73
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 803,
+          "to": 804
+        }
+      ],
+      "reviewNotes": [
+        "Adopted A2's slow/durable reactions, prudence, method, order, concrete/practical and material orientation; A3's symbolic cold/dry qualities; and A8's concretization/stability metaphor.",
+        "A2's tenacity/laboriousness/country tastes at lines 144-145 are explicitly attributed to a temperament label and were omitted pending resolution of the class 2/3 versus class 8 temperament mapping. A8's humor/temperament clause at line 804 is likewise not adopted. No somatic or health claim is made."
+      ]
+    },
+    "air": {
+      "pt": "no seu mapa, o elemento ar se associa à inteligência e às faculdades mentais, à rapidez de reação, à flexibilidade e à adaptação. em termos simbólicos, o ar é quente e úmido.",
+      "en": "in your chart, the air element is associated with intelligence and mental faculties, quick reactions, flexibility, and adaptability. symbolically, air is hot and moist.",
+      "keywords": {
+        "pt": [
+          "inteligência",
+          "faculdades mentais",
+          "reações rápidas",
+          "flexibilidade",
+          "adaptação",
+          "quente",
+          "úmido",
+          "tendências intelectuais",
+          "comunicação"
+        ],
+        "en": [
+          "intelligence",
+          "mental faculties",
+          "quick reactions",
+          "flexibility",
+          "adaptability",
+          "hot",
+          "moist",
+          "intellectual tendencies",
+          "communication"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 148,
+          "to": 149
+        },
+        {
+          "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+          "from": 74,
+          "to": 74
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 808,
+          "to": 808
+        }
+      ],
+      "reviewNotes": [
+        "A amizade, a concórdia e a equidade em A2:151 são atribuídas ao temperamento e ficaram de fora enquanto a correspondência entre humor e temperamento aguarda revisão de Mat.",
+        "A3 apresenta as qualidades simbólicas quente e úmido. A8 associa ar a tendências intelectuais, razão e comunicação; o trecho de correspondência a humor/temperamento não foi adotado.",
+        "A8:811-813 associa fogo ao sangue e não foi usado para o perfil de ar."
+      ]
+    },
+    "water": {
+      "pt": "no seu mapa, o elemento água se associa à disposição impressionável, a reações lentas e a uma natureza imaginativa. em termos simbólicos, a água é fria e úmida, com energia fluídica e ênfase no controle das emoções.",
+      "en": "in your chart, the water element is associated with an impressionable disposition, slow reactions, and an imaginative nature. symbolically, water is cold and moist, with fluid energy and an emphasis on emotional control.",
+      "keywords": {
+        "pt": [
+          "disposição impressionável",
+          "reações lentas",
+          "natureza imaginativa",
+          "fria",
+          "úmida",
+          "energia fluídica",
+          "controle das emoções"
+        ],
+        "en": [
+          "impressionable disposition",
+          "slow reactions",
+          "imaginative nature",
+          "cold",
+          "moist",
+          "fluid energy",
+          "emotional control"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 154,
+          "to": 155
+        },
+        {
+          "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+          "from": 75,
+          "to": 75
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 805,
+          "to": 807
+        }
+      ],
+      "reviewNotes": [
+        "A inconstância, a dissimulação e o gosto pelos prazeres em A2:157 são atribuídos ao temperamento; ficaram de fora enquanto a correspondência entre humor e temperamento aguarda revisão de Mat.",
+        "A2:156-157 também relaciona água a qualidades frias/úmidas, mas a frase sobre o caráter fleumático e os traços atribuídos a ele não foram adotados.",
+        "A3 apresenta as qualidades simbólicas fria e úmida. A8 descreve água como energia fluídica e menciona controle emocional; essas ideias são mantidas como linguagem simbólica, não como promessa fisiológica ou resultado garantido."
+      ]
+    }
   }
 }

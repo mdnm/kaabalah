@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add four source-audited bilingual classical element profiles with typed
+  chart-classification keys and frozen provenance.
+
 - Add twelve source-audited bilingual basic sign profiles with typed lookups
   and qualified expressions independent of evolutionary-level assignment.
 

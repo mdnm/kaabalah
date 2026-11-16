@@ -213,3 +213,7 @@ Paragraph format selected, with source fidelity above fixed length. [Cross-modul
 
 - Opposition: describe tension (A13:405-406,1566). Mat clarified that the harmony mentioned in A11:287-290 refers to positive/negative poles. This resolves the earlier pending review for descriptions.
 - Node dignities: follow A15:45-53. Mat clarified that A12 and A15 address different things; preserve their contexts rather than treating the two passages as interchangeable rules. Keep astronomical north/south labels without hemisphere inversion, as already decided. This does not authorize calculation changes.
+
+## Element profile audit: pending Mat decision, 2026-11-16
+
+A2:134-157/A3:64-79 and A8:796-813 use different humor/temperament label mappings. The specific question and exact table are in the connected Maestri note Astrologia- elementos e temperamentos. No label or its dependent traits have been selected while Mat responds. Four generic profiles use independently supported qualities/functions and symbolic hot/cold/dry/moist attributes. This does not add the optional Ascendant-element profiles, somatic predictions or Han five phases.

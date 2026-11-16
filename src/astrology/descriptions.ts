@@ -1,5 +1,5 @@
 import raw from "./descriptions.json";
-import type { Sign } from "./dignity";
+import type { Sign, TriplicityElement } from "./dignity";
 
 /** Lowercase chart planet keys; authored coverage varies by factor kind. */
 export type DescriptionPlanet =
@@ -28,6 +28,8 @@ export type DescriptionAngle = "ascendant" | "mc" | "dc" | "ic";
 export type AngleSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PlanetDescriptionEntry = PlanetSignDescriptionEntry;
 export type SignDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionElement = TriplicityElement;
+export type ElementDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -42,6 +44,7 @@ export interface AstrologyDescriptions {
   >;
   readonly planets?: Readonly<Partial<Record<DescriptionPlanet, PlanetDescriptionEntry>>>;
   readonly signs?: Readonly<Partial<Record<Sign, SignDescriptionEntry>>>;
+  readonly elements?: Readonly<Partial<Record<DescriptionElement, ElementDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -160,5 +163,18 @@ export function getSignDescriptionEntry(sign: Sign): SignDescriptionEntry | unde
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getSignDescription(sign: Sign, language?: string): string | undefined {
   const entry = getSignDescriptionEntry(sign);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Four classical astrology elements, using the existing lowercase chart classification. */
+export function getElementDescriptionEntry(element: DescriptionElement): ElementDescriptionEntry | undefined {
+  const elements = ASTROLOGY_DESCRIPTIONS.elements;
+  if (!elements || !Object.prototype.hasOwnProperty.call(elements, element)) return undefined;
+  return elements[element];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getElementDescription(element: DescriptionElement, language?: string): string | undefined {
+  const entry = getElementDescriptionEntry(element);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
