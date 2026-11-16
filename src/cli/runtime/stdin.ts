@@ -7,7 +7,12 @@ export const MAX_STDIN_BYTES = 64 * 1024;
 interface ReadStdinOptions {
   emptyCode: ErrorCode;
   emptyMessage: string;
+  /** Override the default `MAX_STDIN_BYTES` limit (bulk manifests are larger than ordinary payloads). */
+  maxBytes?: number;
 }
+
+/** Larger limit for bulk manifests (up to 500 people and 1000 events). */
+export const MAX_MANIFEST_BYTES = 4 * 1024 * 1024;
 
 export function hasStdinSource(): boolean {
   return process.stdin.isTTY !== true;
@@ -32,11 +37,12 @@ export async function readStdin(flags: Flags, options: ReadStdinOptions): Promis
       totalBytes += Buffer.byteLength(chunk, "utf8");
 
       // Fail before dispatching if stdin is much larger than the CLI contract expects.
-      if (totalBytes > MAX_STDIN_BYTES) {
+      const limit = options.maxBytes ?? MAX_STDIN_BYTES;
+      if (totalBytes > limit) {
         cleanup();
         exitWithError(
           "INVALID_ARGUMENT",
-          cliText("stdin payload exceeds maximum size of {0} bytes.", [MAX_STDIN_BYTES]),
+          cliText("stdin payload exceeds maximum size of {0} bytes.", [limit]),
           flags
         );
       }

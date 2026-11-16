@@ -1895,6 +1895,10 @@
     "en": "Invalid date: \"{0}\". Use YYYY-MM-DD format.",
     "pt": "Data inválida: \"{0}\". Use o formato YYYY-MM-DD."
   },
+  "Invalid date: \"{0}\". The date does not exist in the calendar.": {
+    "en": "Invalid date: \"{0}\". The date does not exist in the calendar.",
+    "pt": "Data inválida: \"{0}\". A data não existe no calendário."
+  },
   "Year must be between 0001 and 9999, got {0}.": {
     "en": "Year must be between 0001 and 9999, got {0}.",
     "pt": "O ano deve estar entre 0001 e 9999, recebido {0}."
@@ -2238,5 +2242,821 @@
   "Setting ephemeris path to: {0} (copied from {1})": {
     "en": "Setting ephemeris path to: {0} (copied from {1})",
     "pt": "Definindo o caminho das efemérides: {0} (copiado de {1})"
+  },
+  "King Wen number (1–64); with --input-json pass it as \"hexagramNumber\"": {
+    "en": "King Wen number (1–64); with --input-json pass it as \"hexagramNumber\"",
+    "pt": "Número King Wen (1–64); com --input-json informe-o como \"hexagramNumber\""
+  },
+  "Six bottom-to-top values: 6 old yin, 7 young yang, 8 young yin, 9 old yang (--input-json: \"lines\" array of six numbers)": {
+    "en": "Six bottom-to-top values: 6 old yin, 7 young yang, 8 young yin, 9 old yang (--input-json: \"lines\" array of six numbers)",
+    "pt": "Seis valores de baixo para cima: 6 yin velho, 7 yang jovem, 8 yin jovem, 9 yang velho (--input-json: array \"lines\" com seis números)"
+  },
+  "King Wen number, instead of --lines (--input-json: \"hexagramNumber\")": {
+    "en": "King Wen number, instead of --lines (--input-json: \"hexagramNumber\")",
+    "pt": "Número King Wen, em vez de --lines (--input-json: \"hexagramNumber\")"
+  },
+  "Unique moving positions, comma-separated (1 bottom, 6 top) (--input-json: \"movingLines\" array)": {
+    "en": "Unique moving positions, comma-separated (1 bottom, 6 top) (--input-json: \"movingLines\" array)",
+    "pt": "Posições móveis únicas, separadas por vírgula (1 embaixo, 6 no topo) (--input-json: array \"movingLines\")"
+  },
+  "Evaluation date YYYY-MM-DD (default: today's host-local date; pass it for reproducible output)": {
+    "en": "Evaluation date YYYY-MM-DD (default: today's host-local date; pass it for reproducible output)",
+    "pt": "Data de avaliação AAAA-MM-DD (padrão: data local de hoje; informe-a para obter resultado reproduzível)"
+  },
+  "Legacy personal cycles: without firstName the heptad/age-cycle family, with firstName the personal year/month/period family (see numerology:heptads and numerology:personal-cycles for predictable output)": {
+    "en": "Legacy personal cycles: without firstName the heptad/age-cycle family, with firstName the personal year/month/period family (see numerology:heptads and numerology:personal-cycles for predictable output)",
+    "pt": "Ciclos pessoais legados: sem firstName, a família de heptadas e ciclos de idade; com firstName, a família de ano, mês e período pessoais (veja numerology:heptads e numerology:personal-cycles para uma saída previsível)"
+  },
+  "Dated numerology snapshot (personal year/month/period, heptad, age cycle, Fibonacci, calendar frame, life stages) with method metadata": {
+    "en": "Dated numerology snapshot (personal year/month/period, heptad, age cycle, Fibonacci, calendar frame, life stages) with method metadata",
+    "pt": "Instantâneo numerológico datado (ano, mês e período pessoais, heptada, ciclo de idade, Fibonacci, moldura do calendário, fases da vida) com metadados do método"
+  },
+  "Birth value (YYYY-MM-DD, or the shape chosen by --birth-kind); with --input-json pass \"birth\" as a string or {kind,...} object": {
+    "en": "Birth value (YYYY-MM-DD, or the shape chosen by --birth-kind); with --input-json pass \"birth\" as a string or {kind,...} object",
+    "pt": "Valor de nascimento (AAAA-MM-DD, ou a forma escolhida por --birth-kind); com --input-json informe \"birth\" como texto ou objeto {kind,...}"
+  },
+  "First name for the soul number (personal period 3)": {
+    "en": "First name for the soul number (personal period 3)",
+    "pt": "Primeiro nome para o número da alma (terceiro período pessoal)"
+  },
+  "Shape of <birth>: full (YYYY-MM-DD), month-day (MM-DD), year-month (YYYY-MM), year (YYYY), year-approx (YYYY, approximate) or unknown": {
+    "en": "Shape of <birth>: full (YYYY-MM-DD), month-day (MM-DD), year-month (YYYY-MM), year (YYYY), year-approx (YYYY, approximate) or unknown",
+    "pt": "Forma de <birth>: full (AAAA-MM-DD), month-day (MM-DD), year-month (AAAA-MM), year (AAAA), year-approx (AAAA, aproximado) ou unknown"
+  },
+  "How firstName is read for the soul number: first-token, given-name or full-name": {
+    "en": "How firstName is read for the soul number: first-token, given-name or full-name",
+    "pt": "Como o firstName é lido para o número da alma: first-token, given-name ou full-name"
+  },
+  "Life path method: kaabalistic (default for personal period 2) or straight-across (default for life stages)": {
+    "en": "Life path method: kaabalistic (default for personal period 2) or straight-across (default for life stages)",
+    "pt": "Método do caminho de vida: kaabalistic (padrão do segundo período pessoal) ou straight-across (padrão das fases da vida)"
+  },
+  "Master-number policy: preserve or reduce": {
+    "en": "Master-number policy: preserve or reduce",
+    "pt": "Política de números mestres: preserve ou reduce"
+  },
+  "Personal-month start when the birth day is missing from a month: next-month-first, clamp or overflow": {
+    "en": "Personal-month start when the birth day is missing from a month: next-month-first, clamp or overflow",
+    "pt": "Início do mês pessoal quando o dia de nascimento não existe no mês: next-month-first, clamp ou overflow"
+  },
+  "Death date YYYY-MM-DD (inclusive last day of coverage); a missing death date is not evidence of survival": {
+    "en": "Death date YYYY-MM-DD (inclusive last day of coverage); a missing death date is not evidence of survival",
+    "pt": "Data de falecimento AAAA-MM-DD (último dia de cobertura, inclusive); a ausência dessa data não é evidência de sobrevivência"
+  },
+  "Exclusive end date YYYY-MM-DD of the coverage": {
+    "en": "Exclusive end date YYYY-MM-DD of the coverage",
+    "pt": "Fim exclusivo da cobertura AAAA-MM-DD"
+  },
+  "Bounded numerology intervals between --from and --to (exclusive) for chosen layers": {
+    "en": "Bounded numerology intervals between --from and --to (exclusive) for chosen layers",
+    "pt": "Intervalos numerológicos limitados entre --from e --to (exclusivo) para as camadas escolhidas"
+  },
+  "Birth value (YYYY-MM-DD, or the shape chosen by --birth-kind)": {
+    "en": "Birth value (YYYY-MM-DD, or the shape chosen by --birth-kind)",
+    "pt": "Valor de nascimento (AAAA-MM-DD, ou a forma escolhida por --birth-kind)"
+  },
+  "Inclusive window start YYYY-MM-DD (required)": {
+    "en": "Inclusive window start YYYY-MM-DD (required)",
+    "pt": "Início inclusivo da janela AAAA-MM-DD (obrigatório)"
+  },
+  "Exclusive window end YYYY-MM-DD (required)": {
+    "en": "Exclusive window end YYYY-MM-DD (required)",
+    "pt": "Fim exclusivo da janela AAAA-MM-DD (obrigatório)"
+  },
+  "Comma-separated layers: personal-year, personal-month, personal-period, heptad, age-cycle, fibonacci, calendar-year, calendar-month, calendar-day, pinnacle, challenge, life-period": {
+    "en": "Comma-separated layers: personal-year, personal-month, personal-period, heptad, age-cycle, fibonacci, calendar-year, calendar-month, calendar-day, pinnacle, challenge, life-period",
+    "pt": "Camadas separadas por vírgula: personal-year, personal-month, personal-period, heptad, age-cycle, fibonacci, calendar-year, calendar-month, calendar-day, pinnacle, challenge, life-period"
+  },
+  "Interval budget (max 10000); exceeding it is an error, nothing is truncated": {
+    "en": "Interval budget (max 10000); exceeding it is an error, nothing is truncated",
+    "pt": "Limite de intervalos (máximo 10000); excedê-lo é um erro, nada é truncado"
+  },
+  "Output format: json (full result), table (JSON table of rows) or markdown (a Markdown table on stdout, not JSON)": {
+    "en": "Output format: json (full result), table (JSON table of rows) or markdown (a Markdown table on stdout, not JSON)",
+    "pt": "Formato de saída: json (resultado completo), table (tabela JSON de linhas) ou markdown (tabela Markdown na saída padrão, não JSON)"
+  },
+  "Fixed 52-day heptads and seven-year age cycles around the evaluation date": {
+    "en": "Fixed 52-day heptads and seven-year age cycles around the evaluation date",
+    "pt": "Heptadas fixas de 52 dias e ciclos de idade de sete anos em torno da data de avaliação"
+  },
+  "Inclusive window start (default: the as-of date)": {
+    "en": "Inclusive window start (default: the as-of date)",
+    "pt": "Início inclusivo da janela (padrão: a data de avaliação)"
+  },
+  "Exclusive window end (default: as-of + 365 days)": {
+    "en": "Exclusive window end (default: as-of + 365 days)",
+    "pt": "Fim exclusivo da janela (padrão: data de avaliação + 365 dias)"
+  },
+  "Birthday-based personal year, twelve personal months and three four-month periods (defaults to the birthday year containing the evaluation date)": {
+    "en": "Birthday-based personal year, twelve personal months and three four-month periods (defaults to the birthday year containing the evaluation date)",
+    "pt": "Ano pessoal por aniversário, doze meses pessoais e três períodos pessoais de quatro meses (padrão: o ano de aniversário que contém a data de avaliação)"
+  },
+  "Inclusive window start (default: start of the birthday year)": {
+    "en": "Inclusive window start (default: start of the birthday year)",
+    "pt": "Início inclusivo da janela (padrão: início do ano de aniversário)"
+  },
+  "Exclusive window end (default: next birthday)": {
+    "en": "Exclusive window end (default: next birthday)",
+    "pt": "Fim exclusivo da janela (padrão: próximo aniversário)"
+  },
+  "Pinnacles, challenges and three life periods under a named age-transition convention": {
+    "en": "Pinnacles, challenges and three life periods under a named age-transition convention",
+    "pt": "Pináculos, desafios e três períodos da vida sob uma convenção nomeada de transição de idade"
+  },
+  "Full birth date in YYYY-MM-DD format": {
+    "en": "Full birth date in YYYY-MM-DD format",
+    "pt": "Data de nascimento completa no formato AAAA-MM-DD"
+  },
+  "Life path used for the age transition: kaabalistic or straight-across": {
+    "en": "Life path used for the age transition: kaabalistic or straight-across",
+    "pt": "Caminho de vida usado na transição de idade: kaabalistic ou straight-across"
+  },
+  "Override the 36-minus-life-path first pinnacle end age (integer 1-60)": {
+    "en": "Override the 36-minus-life-path first pinnacle end age (integer 1-60)",
+    "pt": "Substitui a idade final do primeiro pináculo (36 menos o caminho de vida), inteiro de 1 a 60"
+  },
+  "Life period boundaries: pinnacle-aligned-27 or fixed-28-56": {
+    "en": "Life period boundaries: pinnacle-aligned-27 or fixed-28-56",
+    "pt": "Limites dos períodos da vida: pinnacle-aligned-27 ou fixed-28-56"
+  },
+  "What a partial birth date can and cannot compute; optional candidate-date summaries (invariants and ranges, never an invented date)": {
+    "en": "What a partial birth date can and cannot compute; optional candidate-date summaries (invariants and ranges, never an invented date)",
+    "pt": "O que uma data de nascimento parcial pode ou não calcular; resumos opcionais de datas candidatas (invariantes e intervalos, nunca uma data inventada)"
+  },
+  "Birth value in the shape chosen by --birth-kind": {
+    "en": "Birth value in the shape chosen by --birth-kind",
+    "pt": "Valor de nascimento na forma escolhida por --birth-kind"
+  },
+  "Summarise every valid day of a year or year-month birth (needs year or year-month knowledge)": {
+    "en": "Summarise every valid day of a year or year-month birth (needs year or year-month knowledge)",
+    "pt": "Resume cada dia válido de um nascimento com ano ou ano e mês (exige conhecer o ano ou o ano e o mês)"
+  },
+  "Tree system to render: only kaabalah has an SVG renderer (other systems exit UNSUPPORTED_SYSTEM)": {
+    "en": "Tree system to render: only kaabalah has an SVG renderer (other systems exit UNSUPPORTED_SYSTEM)",
+    "pt": "Sistema de árvore a renderizar: só kaabalah tem renderizador SVG (os outros sistemas saem com UNSUPPORTED_SYSTEM)"
+  },
+  "Post-filter: drop already-generated default aspects with an orb above this value (it cannot add contacts the default orbs omitted; use --orb-profile for that)": {
+    "en": "Post-filter: drop already-generated default aspects with an orb above this value (it cannot add contacts the default orbs omitted; use --orb-profile for that)",
+    "pt": "Pós-filtro: descarta aspectos padrão já gerados com orbe acima deste valor (não acrescenta contatos omitidos pelos orbes padrão; use --orb-profile para isso)"
+  },
+  "Comma-separated aspect names, or 'major' for conjunction,sextile,square,trine,opposition (unknown names are INVALID_ARGUMENT)": {
+    "en": "Comma-separated aspect names, or 'major' for conjunction,sextile,square,trine,opposition (unknown names are INVALID_ARGUMENT)",
+    "pt": "Nomes de aspectos separados por vírgula, ou 'major' para conjunction,sextile,square,trine,opposition (nomes desconhecidos geram INVALID_ARGUMENT)"
+  },
+  "Fail instead of silently using the Moshier ephemeris outside the shipped Swiss Ephemeris files": {
+    "en": "Fail instead of silently using the Moshier ephemeris outside the shipped Swiss Ephemeris files",
+    "pt": "Falha em vez de usar silenciosamente a efeméride Moshier fora dos arquivos Swiss Ephemeris distribuídos"
+  },
+  "Generation-time orb policy: ptolemaic-plus-quincunx (adds a policyAspects result; unlike --max-orb it can recover contacts the default orbs omit)": {
+    "en": "Generation-time orb policy: ptolemaic-plus-quincunx (adds a policyAspects result; unlike --max-orb it can recover contacts the default orbs omit)",
+    "pt": "Política de orbes na geração: ptolemaic-plus-quincunx (acrescenta o resultado policyAspects; ao contrário de --max-orb, pode recuperar contatos que os orbes padrão omitem)"
+  },
+  "Comma-separated typed point IDs (sun, moon, mean-node, asc, mc, lot-fortune, ...) for the points result and policy aspects": {
+    "en": "Comma-separated typed point IDs (sun, moon, mean-node, asc, mc, lot-fortune, ...) for the points result and policy aspects",
+    "pt": "IDs de pontos tipados separados por vírgula (sun, moon, mean-node, asc, mc, lot-fortune, ...) para o resultado de pontos e os aspectos da política"
+  },
+  "Add axis-equivalence groups (ASC/DSC, MC/IC, node/south node) to policyAspects": {
+    "en": "Add axis-equivalence groups (ASC/DSC, MC/IC, node/south node) to policyAspects",
+    "pt": "Acrescenta grupos de equivalência de eixo (ASC/DSC, MC/IC, nodo/nodo sul) a policyAspects"
+  },
+  "Comma-separated house systems computed from one ephemeris pass (adds a houseSystems result)": {
+    "en": "Comma-separated house systems computed from one ephemeris pass (adds a houseSystems result)",
+    "pt": "Sistemas de casas separados por vírgula, calculados numa só passagem da efeméride (acrescenta o resultado houseSystems)"
+  },
+  "Input quality: recorded, rectified (need a time), untimed (no time: placeholder noon positions, Moon sign range, no angles/houses/lots) or partial (YYYY, YYYY-MM or YYYY-MM-DD: no chart is invented)": {
+    "en": "Input quality: recorded, rectified (need a time), untimed (no time: placeholder noon positions, Moon sign range, no angles/houses/lots) or partial (YYYY, YYYY-MM or YYYY-MM-DD: no chart is invented)",
+    "pt": "Qualidade da entrada: recorded, rectified (exigem hora), untimed (sem hora: posições de meio-dia como marcador, intervalo de signo da Lua, sem ângulos, casas ou partes) ou partial (AAAA, AAAA-MM ou AAAA-MM-DD: nenhum mapa é inventado)"
+  },
+  "With --quality=rectified, drop angles from the analysis point set": {
+    "en": "With --quality=rectified, drop angles from the analysis point set",
+    "pt": "Com --quality=rectified, remove os ângulos do conjunto de pontos da análise"
+  },
+  "Read the wall-clock time as local mean time of the longitude (pre-standard-time records)": {
+    "en": "Read the wall-clock time as local mean time of the longitude (pre-standard-time records)",
+    "pt": "Lê a hora de relógio como hora média local da longitude (registros anteriores à hora padrão)"
+  },
+  "Role of the place in the provenance: birthplace, residence, event or unknown": {
+    "en": "Role of the place in the provenance: birthplace, residence, event or unknown",
+    "pt": "Papel do local na proveniência: birthplace, residence, event ou unknown"
+  },
+  "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)": {
+    "en": "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)",
+    "pt": "Local natal para geocodificação (requer GOOGLE_MAPS_API_KEY ou KAABALAH_GOOGLE_MAPS_API_KEY)"
+  },
+  "Range mode: also report stationary near-misses that never reach exactness (never labelled exact)": {
+    "en": "Range mode: also report stationary near-misses that never reach exactness (never labelled exact)",
+    "pt": "Modo de intervalo: informa também quase-encontros estacionários que nunca chegam à exatidão (nunca rotulados como exatos)"
+  },
+  "Solar return location for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)": {
+    "en": "Solar return location for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)",
+    "pt": "Local da revolução solar para geocodificação (requer GOOGLE_MAPS_API_KEY ou KAABALAH_GOOGLE_MAPS_API_KEY)"
+  },
+  "Davison chart: a real chart cast for the UTC time midpoint and geographic midpoint of two births": {
+    "en": "Davison chart: a real chart cast for the UTC time midpoint and geographic midpoint of two births",
+    "pt": "Mapa Davison: um mapa real calculado para o ponto médio do instante UTC e o ponto médio geográfico de dois nascimentos"
+  },
+  "House system for both charts and the Davison chart": {
+    "en": "House system for both charts and the Davison chart",
+    "pt": "Sistema de casas para os dois mapas e para o mapa Davison"
+  },
+  "Geographic midpoint: arithmetic-shorter-arc or great-circle": {
+    "en": "Geographic midpoint: arithmetic-shorter-arc or great-circle",
+    "pt": "Ponto médio geográfico: arithmetic-shorter-arc ou great-circle"
+  },
+  "House overlays in both directions: A's points in B's houses and B's points in A's houses": {
+    "en": "House overlays in both directions: A's points in B's houses and B's points in A's houses",
+    "pt": "Sobreposições de casas nos dois sentidos: pontos de A nas casas de B e pontos de B nas casas de A"
+  },
+  "Comma-separated sending points (sun, moon, ..., ascendant, mc, descendant, ic); unknown names are INVALID_ARGUMENT": {
+    "en": "Comma-separated sending points (sun, moon, ..., ascendant, mc, descendant, ic); unknown names are INVALID_ARGUMENT",
+    "pt": "Pontos de origem separados por vírgula (sun, moon, ..., ascendant, mc, descendant, ic); nomes desconhecidos geram INVALID_ARGUMENT"
+  },
+  "Do not place the sending chart's ascendant/mc/descendant/ic": {
+    "en": "Do not place the sending chart's ascendant/mc/descendant/ic",
+    "pt": "Não posiciona ascendant/mc/descendant/ic do mapa de origem"
+  },
+  "Secondary progressions (a day for a year) with a declared time key and progressed-angle conventions": {
+    "en": "Secondary progressions (a day for a year) with a declared time key and progressed-angle conventions",
+    "pt": "Progressões secundárias (um dia por ano) com chave de tempo declarada e convenções de ângulos progredidos"
+  },
+  "House system for the natal chart": {
+    "en": "House system for the natal chart",
+    "pt": "Sistema de casas do mapa natal"
+  },
+  "Target date YYYY-MM-DD at 12:00 UTC (default: today UTC; pass it for reproducible output)": {
+    "en": "Target date YYYY-MM-DD at 12:00 UTC (default: today UTC; pass it for reproducible output)",
+    "pt": "Data-alvo AAAA-MM-DD às 12:00 UTC (padrão: hoje em UTC; informe-a para obter resultado reproduzível)"
+  },
+  "Target UTC time HH:MM (default 12:00)": {
+    "en": "Target UTC time HH:MM (default 12:00)",
+    "pt": "Hora-alvo UTC HH:MM (padrão 12:00)"
+  },
+  "Time-key year: julian (365.25 d), tropical (365.2422 d), solar-return or a positive number of days": {
+    "en": "Time-key year: julian (365.25 d), tropical (365.2422 d), solar-return or a positive number of days",
+    "pt": "Ano da chave de tempo: julian (365,25 d), tropical (365,2422 d), solar-return ou um número positivo de dias"
+  },
+  "Comma-separated progressed-angle conventions: quotidian, solar-arc, naibod (default: all three)": {
+    "en": "Comma-separated progressed-angle conventions: quotidian, solar-arc, naibod (default: all three)",
+    "pt": "Convenções de ângulos progredidos separadas por vírgula: quotidian, solar-arc, naibod (padrão: as três)"
+  },
+  "Solar-arc directions: one arc added uniformly to an explicit set of natal points": {
+    "en": "Solar-arc directions: one arc added uniformly to an explicit set of natal points",
+    "pt": "Direções por arco solar: um arco somado uniformemente a um conjunto explícito de pontos natais"
+  },
+  "Time-key year: julian, tropical, solar-return or a positive number of days": {
+    "en": "Time-key year: julian, tropical, solar-return or a positive number of days",
+    "pt": "Ano da chave de tempo: julian, tropical, solar-return ou um número positivo de dias"
+  },
+  "Arc: true (progressed Sun minus natal Sun) or naibod (0.985647 degrees per year)": {
+    "en": "Arc: true (progressed Sun minus natal Sun) or naibod (0.985647 degrees per year)",
+    "pt": "Arco: true (Sol progredido menos Sol natal) ou naibod (0,985647 grau por ano)"
+  },
+  "Comma-separated natal points to direct (planet keys plus ascendant, mc, descendant, ic; default: all); unknown keys are INVALID_ARGUMENT": {
+    "en": "Comma-separated natal points to direct (planet keys plus ascendant, mc, descendant, ic; default: all); unknown keys are INVALID_ARGUMENT",
+    "pt": "Pontos natais a dirigir, separados por vírgula (chaves de planetas mais ascendant, mc, descendant, ic; padrão: todos); chaves desconhecidas geram INVALID_ARGUMENT"
+  },
+  "Return and opposition passes (Saturn, Jupiter, Uranus opposition, nodal, optional solar) between two dates, UTC window": {
+    "en": "Return and opposition passes (Saturn, Jupiter, Uranus opposition, nodal, optional solar) between two dates, UTC window",
+    "pt": "Passagens de retorno e oposição (Saturno, Júpiter, oposição de Urano, nodais, solar opcional) entre duas datas, janela em UTC"
+  },
+  "Inclusive window start YYYY-MM-DD (00:00 UTC, required)": {
+    "en": "Inclusive window start YYYY-MM-DD (00:00 UTC, required)",
+    "pt": "Início inclusivo da janela AAAA-MM-DD (00:00 UTC, obrigatório)"
+  },
+  "Exclusive window end YYYY-MM-DD (00:00 UTC, required)": {
+    "en": "Exclusive window end YYYY-MM-DD (00:00 UTC, required)",
+    "pt": "Fim exclusivo da janela AAAA-MM-DD (00:00 UTC, obrigatório)"
+  },
+  "Comma-separated kinds: saturn-return, jupiter-return, uranus-opposition, mean-nodal-return, true-nodal-return, solar-return (default: all but solar-return)": {
+    "en": "Comma-separated kinds: saturn-return, jupiter-return, uranus-opposition, mean-nodal-return, true-nodal-return, solar-return (default: all but solar-return)",
+    "pt": "Tipos separados por vírgula: saturn-return, jupiter-return, uranus-opposition, mean-nodal-return, true-nodal-return, solar-return (padrão: todos menos solar-return)"
+  },
+  "Scan step in days (default per kind, max 2)": {
+    "en": "Scan step in days (default per kind, max 2)",
+    "pt": "Passo da varredura em dias (padrão por tipo, máximo 2)"
+  },
+  "Annual profection years for an age range or date range (whole-sign from the natal ascendant sign)": {
+    "en": "Annual profection years for an age range or date range (whole-sign from the natal ascendant sign)",
+    "pt": "Anos de profecção anual para uma faixa de idades ou de datas (signo inteiro a partir do signo do ascendente natal)"
+  },
+  "First age (use with --to-age)": {
+    "en": "First age (use with --to-age)",
+    "pt": "Primeira idade (use com --to-age)"
+  },
+  "Last age, inclusive": {
+    "en": "Last age, inclusive",
+    "pt": "Última idade, inclusive"
+  },
+  "Range start YYYY-MM-DD (alternative to ages)": {
+    "en": "Range start YYYY-MM-DD (alternative to ages)",
+    "pt": "Início da faixa AAAA-MM-DD (alternativa às idades)"
+  },
+  "Range end YYYY-MM-DD, inclusive of the year containing it": {
+    "en": "Range end YYYY-MM-DD, inclusive of the year containing it",
+    "pt": "Fim da faixa AAAA-MM-DD, inclusive o ano que a contém"
+  },
+  "Firdaria major and sub periods intersecting a bounded window, with nominal and clipped ends": {
+    "en": "Firdaria major and sub periods intersecting a bounded window, with nominal and clipped ends",
+    "pt": "Períodos maiores e menores de firdaria que cruzam uma janela limitada, com fins nominais e recortados"
+  },
+  "Window start YYYY-MM-DD (default: birth)": {
+    "en": "Window start YYYY-MM-DD (default: birth)",
+    "pt": "Início da janela AAAA-MM-DD (padrão: nascimento)"
+  },
+  "Override sect: diurnal or nocturnal (default: from the chart)": {
+    "en": "Override sect: diurnal or nocturnal (default: from the chart)",
+    "pt": "Substitui a seita: diurnal ou nocturnal (padrão: a do mapa)"
+  },
+  "Node sub-period start: jupiter-saturn or sun-mars": {
+    "en": "Node sub-period start: jupiter-saturn or sun-mars",
+    "pt": "Início do subperíodo dos nodos: jupiter-saturn ou sun-mars"
+  },
+  "Omit sub-periods": {
+    "en": "Omit sub-periods",
+    "pt": "Omite os subperíodos"
+  },
+  "Jyotish chart: Dhruva and Lahiri nakshatras, chara karakas, Vimshottari and Yogini dashas": {
+    "en": "Jyotish chart: Dhruva and Lahiri nakshatras, chara karakas, Vimshottari and Yogini dashas",
+    "pt": "Mapa jyotish: nakshatras Dhruva e Lahiri, chara karakas, dashas Vimshottari e Yogini"
+  },
+  "Nakshatra frame for karakas and dashas: dhruva or lahiri": {
+    "en": "Nakshatra frame for karakas and dashas: dhruva or lahiri",
+    "pt": "Referencial de nakshatra para karakas e dashas: dhruva ou lahiri"
+  },
+  "Rahu/Ketu node convention: mean or true": {
+    "en": "Rahu/Ketu node convention: mean or true",
+    "pt": "Convenção do nodo Rahu/Ketu: mean ou true"
+  },
+  "Dasha year length in days (default 365.2422 for dhruva, 365.25 for lahiri)": {
+    "en": "Dasha year length in days (default 365.2422 for dhruva, 365.25 for lahiri)",
+    "pt": "Duração do ano de dasha em dias (padrão 365,2422 para dhruva, 365,25 para lahiri)"
+  },
+  "Chara karaka scheme: 7 or 8": {
+    "en": "Chara karaka scheme: 7 or 8",
+    "pt": "Esquema de chara karaka: 7 ou 8"
+  },
+  "Birth time unknown: no Moon, lagna, karakas or dashas": {
+    "en": "Birth time unknown: no Moon, lagna, karakas or dashas",
+    "pt": "Hora de nascimento desconhecida: sem Lua, lagna, karakas ou dashas"
+  },
+  "Add the active maha/antar at this date (YYYY-MM-DD, 12:00 UTC)": {
+    "en": "Add the active maha/antar at this date (YYYY-MM-DD, 12:00 UTC)",
+    "pt": "Acrescenta a maha/antar ativa nesta data (AAAA-MM-DD, 12:00 UTC)"
+  },
+  "Exclusive end of dasha generation YYYY-MM-DD (default: one full cycle)": {
+    "en": "Exclusive end of dasha generation YYYY-MM-DD (default: one full cycle)",
+    "pt": "Fim exclusivo da geração das dashas AAAA-MM-DD (padrão: um ciclo completo)"
+  },
+  "Bulk collection: people, events and pair selection from a manifest; one natal chart per person, per-item errors, deterministic order": {
+    "en": "Bulk collection: people, events and pair selection from a manifest; one natal chart per person, per-item errors, deterministic order",
+    "pt": "Coleção em lote: pessoas, eventos e seleção de pares a partir de um manifesto; um mapa natal por pessoa, erros por item, ordem determinística"
+  },
+  "Manifest JSON file, or - for stdin (alternatively pass the manifest object with --input-json)": {
+    "en": "Manifest JSON file, or - for stdin (alternatively pass the manifest object with --input-json)",
+    "pt": "Arquivo JSON do manifesto, ou - para a entrada padrão (alternativamente passe o objeto do manifesto com --input-json)"
+  },
+  "Pair selection overriding the manifest: all, pairs (needs manifest pairs) or timed-only": {
+    "en": "Pair selection overriding the manifest: all, pairs (needs manifest pairs) or timed-only",
+    "pt": "Seleção de pares que substitui a do manifesto: all, pairs (exige pares no manifesto) ou timed-only"
+  },
+  "Async tasks in flight (1-64); Swiss Ephemeris calls stay synchronous, so this bounds scheduling, not CPU parallelism": {
+    "en": "Async tasks in flight (1-64); Swiss Ephemeris calls stay synchronous, so this bounds scheduling, not CPU parallelism",
+    "pt": "Tarefas assíncronas em andamento (1-64); as chamadas da Swiss Ephemeris continuam síncronas, então isso limita o agendamento, não o paralelismo de CPU"
+  },
+  "Embed full charts in person and event records": {
+    "en": "Embed full charts in person and event records",
+    "pt": "Inclui mapas completos nos registros de pessoas e eventos"
+  },
+  "Streaming mode: one JSON record per line (people, events, pairs, then a summary); a different contract from the default single JSON document": {
+    "en": "Streaming mode: one JSON record per line (people, events, pairs, then a summary); a different contract from the default single JSON document",
+    "pt": "Modo contínuo: um registro JSON por linha (pessoas, eventos, pares e depois um resumo); contrato diferente do documento JSON único padrão"
+  },
+  "Machine-readable capabilities: modules, house systems, points, aspects, frames, limits, error codes, CLI commands": {
+    "en": "Machine-readable capabilities: modules, house systems, points, aspects, frames, limits, error codes, CLI commands",
+    "pt": "Capacidades legíveis por máquina: módulos, sistemas de casas, pontos, aspectos, referenciais, limites, códigos de erro, comandos da CLI"
+  },
+  "Initialise Swiss Ephemeris and report runtime ephemeris coverage (WASM_INIT_ERROR if the assets are missing)": {
+    "en": "Initialise Swiss Ephemeris and report runtime ephemeris coverage (WASM_INIT_ERROR if the assets are missing)",
+    "pt": "Inicializa a Swiss Ephemeris e informa a cobertura de efemérides em tempo de execução (WASM_INIT_ERROR se os arquivos estiverem ausentes)"
+  },
+  "\"orbPolicy\" must be an object in --input-json.": {
+    "en": "\"orbPolicy\" must be an object in --input-json.",
+    "pt": "\"orbPolicy\" deve ser um objeto em --input-json."
+  },
+  "Use either --orb-profile or an \"orbPolicy\" object, not both.": {
+    "en": "Use either --orb-profile or an \"orbPolicy\" object, not both.",
+    "pt": "Use --orb-profile ou um objeto \"orbPolicy\", não ambos."
+  },
+  "None of the requested aspects belong to orb policy \"{0}\" (it generates: {1}).": {
+    "en": "None of the requested aspects belong to orb policy \"{0}\" (it generates: {1}).",
+    "pt": "Nenhum dos aspectos pedidos pertence à política de orbes \"{0}\" (ela gera: {1})."
+  },
+  "Invalid partial date: \"{0}\". Use YYYY, YYYY-MM or YYYY-MM-DD with --quality=partial.": {
+    "en": "Invalid partial date: \"{0}\". Use YYYY, YYYY-MM or YYYY-MM-DD with --quality=partial.",
+    "pt": "Data parcial inválida: \"{0}\". Use AAAA, AAAA-MM ou AAAA-MM-DD com --quality=partial."
+  },
+  "Invalid partial date: \"{0}\". The date does not exist in the calendar.": {
+    "en": "Invalid partial date: \"{0}\". The date does not exist in the calendar.",
+    "pt": "Data parcial inválida: \"{0}\". A data não existe no calendário."
+  },
+  "Usage: kaabalah astrology <YYYY-MM-DD> --quality={0} [--lat=<N> --lon=<N>]": {
+    "en": "Usage: kaabalah astrology <YYYY-MM-DD> --quality={0} [--lat=<N> --lon=<N>]",
+    "pt": "Uso: kaabalah astrology <AAAA-MM-DD> --quality={0} [--lat=<N> --lon=<N>]"
+  },
+  "--quality={0} does not take a birth time; remove the time or use --quality=recorded.": {
+    "en": "--quality={0} does not take a birth time; remove the time or use --quality=recorded.",
+    "pt": "--quality={0} não aceita hora de nascimento; remova a hora ou use --quality=recorded."
+  },
+  "--house-systems needs a birth time (--quality=recorded or rectified).": {
+    "en": "--house-systems needs a birth time (--quality=recorded or rectified).",
+    "pt": "--house-systems exige hora de nascimento (--quality=recorded ou rectified)."
+  },
+  "Provide both --lat and --lon, or neither.": {
+    "en": "Provide both --lat and --lon, or neither.",
+    "pt": "Informe --lat e --lon juntos, ou nenhum dos dois."
+  },
+  "\nChart ({0}): {1}\n": {
+    "en": "\nChart ({0}): {1}\n",
+    "pt": "\nMapa ({0}): {1}\n"
+  },
+  "  Status: {0}": {
+    "en": "  Status: {0}",
+    "pt": "  Situação: {0}"
+  },
+  "  Moon signs during the local day: {0}": {
+    "en": "  Moon signs during the local day: {0}",
+    "pt": "  Signos da Lua durante o dia local: {0}"
+  },
+  "  Unavailable: {0} ({1})": {
+    "en": "  Unavailable: {0} ({1})",
+    "pt": "  Indisponível: {0} ({1})"
+  },
+  "  Points computed (placeholder noon positions for untimed): {0}": {
+    "en": "  Points computed (placeholder noon positions for untimed): {0}",
+    "pt": "  Pontos calculados (posições de meio-dia como marcador se sem hora): {0}"
+  },
+  "--quality={0} requires an explicit birth time (HH:MM).": {
+    "en": "--quality={0} requires an explicit birth time (HH:MM).",
+    "pt": "--quality={0} exige uma hora de nascimento explícita (HH:MM)."
+  },
+  "--year-length must be julian, tropical, solar-return or a positive number of days, got \"{0}\".": {
+    "en": "--year-length must be julian, tropical, solar-return or a positive number of days, got \"{0}\".",
+    "pt": "--year-length deve ser julian, tropical, solar-return ou um número positivo de dias, recebido \"{0}\"."
+  },
+  "\nDavison Chart\n": {
+    "en": "\nDavison Chart\n",
+    "pt": "\nMapa Davison\n"
+  },
+  "  Midpoint (UTC): {0}": {
+    "en": "  Midpoint (UTC): {0}",
+    "pt": "  Ponto médio (UTC): {0}"
+  },
+  "  Midpoint place: {0}, {1}": {
+    "en": "  Midpoint place: {0}, {1}",
+    "pt": "  Local do ponto médio: {0}, {1}"
+  },
+  "  Ascendant: {0} {1}": {
+    "en": "  Ascendant: {0} {1}",
+    "pt": "  Ascendente: {0} {1}"
+  },
+  "Unknown overlay point \"{0}\". Valid: {1}.": {
+    "en": "Unknown overlay point \"{0}\". Valid: {1}.",
+    "pt": "Ponto de sobreposição desconhecido \"{0}\". Válidos: {1}."
+  },
+  "\nHouse Overlays\n": {
+    "en": "\nHouse Overlays\n",
+    "pt": "\nSobreposições de casas\n"
+  },
+  "  {0} in {1}:": {
+    "en": "  {0} in {1}:",
+    "pt": "  {0} em {1}:"
+  },
+  "    unavailable: {0}": {
+    "en": "    unavailable: {0}",
+    "pt": "    indisponível: {0}"
+  },
+  "    {0} House {1}": {
+    "en": "    {0} House {1}",
+    "pt": "    {0} Casa {1}"
+  },
+  "\nSecondary Progressions at {0}\n": {
+    "en": "\nSecondary Progressions at {0}\n",
+    "pt": "\nProgressões secundárias em {0}\n"
+  },
+  "  Age: {0} years; progressed JD {1}": {
+    "en": "  Age: {0} years; progressed JD {1}",
+    "pt": "  Idade: {0} anos; JD progredido {1}"
+  },
+  "  Solar arc: {0} degrees": {
+    "en": "  Solar arc: {0} degrees",
+    "pt": "  Arco solar: {0} graus"
+  },
+  "Unknown solar-arc target \"{0}\". Valid: {1}.": {
+    "en": "Unknown solar-arc target \"{0}\". Valid: {1}.",
+    "pt": "Alvo de arco solar desconhecido \"{0}\". Válidos: {1}."
+  },
+  "\nSolar Arc Directions at {0} (arc {1} degrees)\n": {
+    "en": "\nSolar Arc Directions at {0} (arc {1} degrees)\n",
+    "pt": "\nDireções por arco solar em {0} (arco {1} graus)\n"
+  },
+  "    {0} {1} {2}": {
+    "en": "    {0} {1} {2}",
+    "pt": "    {0} {1} {2}"
+  },
+  "Usage: kaabalah astrology:returns <date> [time] --lat=<N> --lon=<N> --from=<YYYY-MM-DD> --to=<YYYY-MM-DD>": {
+    "en": "Usage: kaabalah astrology:returns <date> [time] --lat=<N> --lon=<N> --from=<YYYY-MM-DD> --to=<YYYY-MM-DD>",
+    "pt": "Uso: kaabalah astrology:returns <data> [hora] --lat=<N> --lon=<N> --from=<AAAA-MM-DD> --to=<AAAA-MM-DD>"
+  },
+  "\nReturn passes {0} to {1} (UTC, end exclusive)\n": {
+    "en": "\nReturn passes {0} to {1} (UTC, end exclusive)\n",
+    "pt": "\nPassagens de retorno de {0} a {1} (UTC, fim exclusivo)\n"
+  },
+  "    {0}  {1} {2} pass {3}/{4}": {
+    "en": "    {0}  {1} {2} pass {3}/{4}",
+    "pt": "    {0}  {1} {2} passagem {3}/{4}"
+  },
+  "Provide either --from-age and --to-age, or --from and --to dates.": {
+    "en": "Provide either --from-age and --to-age, or --from and --to dates.",
+    "pt": "Informe --from-age e --to-age, ou --from e --to com datas."
+  },
+  "Both --from-age and --to-age are required.": {
+    "en": "Both --from-age and --to-age are required.",
+    "pt": "--from-age e --to-age são ambos obrigatórios."
+  },
+  "Both --from and --to are required.": {
+    "en": "Both --from and --to are required.",
+    "pt": "--from e --to são ambos obrigatórios."
+  },
+  "\nAnnual profections\n": {
+    "en": "\nAnnual profections\n",
+    "pt": "\nProfecções anuais\n"
+  },
+  "    age {0}  house {1}  {2}  ruler {3}  {4} to {5}": {
+    "en": "    age {0}  house {1}  {2}  ruler {3}  {4} to {5}",
+    "pt": "    idade {0}  casa {1}  {2}  regente {3}  {4} a {5}"
+  },
+  "Usage: kaabalah astrology:firdaria:timeline <date> [time] --lat=<N> --lon=<N> --to=<YYYY-MM-DD> [--from=<YYYY-MM-DD>]": {
+    "en": "Usage: kaabalah astrology:firdaria:timeline <date> [time] --lat=<N> --lon=<N> --to=<YYYY-MM-DD> [--from=<YYYY-MM-DD>]",
+    "pt": "Uso: kaabalah astrology:firdaria:timeline <data> [hora] --lat=<N> --lon=<N> --to=<AAAA-MM-DD> [--from=<AAAA-MM-DD>]"
+  },
+  "\nFirdaria timeline ({0})\n": {
+    "en": "\nFirdaria timeline ({0})\n",
+    "pt": "\nLinha do tempo de firdaria ({0})\n"
+  },
+  "    {0} {1} to {2}": {
+    "en": "    {0} {1} to {2}",
+    "pt": "    {0} {1} a {2}"
+  },
+  "--year-length-days must be a positive number, got \"{0}\".": {
+    "en": "--year-length-days must be a positive number, got \"{0}\".",
+    "pt": "--year-length-days deve ser um número positivo, recebido \"{0}\"."
+  },
+  "\nJyotish chart (frame {0}, node {1})\n": {
+    "en": "\nJyotish chart (frame {0}, node {1})\n",
+    "pt": "\nMapa jyotish (referencial {0}, nodo {1})\n"
+  },
+  "  Moon nakshatra index: {0}": {
+    "en": "  Moon nakshatra index: {0}",
+    "pt": "  Índice do nakshatra da Lua: {0}"
+  },
+  "  Vimshottari periods: {0}": {
+    "en": "  Vimshottari periods: {0}",
+    "pt": "  Períodos Vimshottari: {0}"
+  },
+  "{0}: \"time\" is required for a recorded or rectified birth time (use quality \"untimed\" otherwise).": {
+    "en": "{0}: \"time\" is required for a recorded or rectified birth time (use quality \"untimed\" otherwise).",
+    "pt": "{0}: \"time\" é obrigatório para uma hora de nascimento registrada ou retificada (use a qualidade \"untimed\" caso contrário)."
+  },
+  "{0} must be a number between {1} and {2}.": {
+    "en": "{0} must be a number between {1} and {2}.",
+    "pt": "{0} deve ser um número entre {1} e {2}."
+  },
+  "The manifest must be an object with a \"people\" array.": {
+    "en": "The manifest must be an object with a \"people\" array.",
+    "pt": "O manifesto deve ser um objeto com um array \"people\"."
+  },
+  "{0}: \"id\" must be a non-empty string.": {
+    "en": "{0}: \"id\" must be a non-empty string.",
+    "pt": "{0}: \"id\" deve ser um texto não vazio."
+  },
+  "pair mode \"pairs\" needs \"pairs\": [[idA, idB], ...] in the manifest.": {
+    "en": "pair mode \"pairs\" needs \"pairs\": [[idA, idB], ...] in the manifest.",
+    "pt": "o modo de pares \"pairs\" exige \"pairs\": [[idA, idB], ...] no manifesto."
+  },
+  "Manifest file exceeds maximum size of {0} bytes.": {
+    "en": "Manifest file exceeds maximum size of {0} bytes.",
+    "pt": "O arquivo de manifesto excede o tamanho máximo de {0} bytes."
+  },
+  "Manifest file not found: {0}": {
+    "en": "Manifest file not found: {0}",
+    "pt": "Arquivo de manifesto não encontrado: {0}"
+  },
+  "Usage: kaabalah astrology:collection --manifest=<file|-> (or --input-json with the manifest object)": {
+    "en": "Usage: kaabalah astrology:collection --manifest=<file|-> (or --input-json with the manifest object)",
+    "pt": "Uso: kaabalah astrology:collection --manifest=<arquivo|-> (ou --input-json com o objeto do manifesto)"
+  },
+  "Use either --manifest or --input-json, not both.": {
+    "en": "Use either --manifest or --input-json, not both.",
+    "pt": "Use --manifest ou --input-json, não ambos."
+  },
+  "--manifest=- requires a JSON object on stdin.": {
+    "en": "--manifest=- requires a JSON object on stdin.",
+    "pt": "--manifest=- exige um objeto JSON na entrada padrão."
+  },
+  "The manifest is not a valid JSON object.": {
+    "en": "The manifest is not a valid JSON object.",
+    "pt": "O manifesto não é um objeto JSON válido."
+  },
+  "--fields cannot be combined with --ndjson (records are streamed unmodified).": {
+    "en": "--fields cannot be combined with --ndjson (records are streamed unmodified).",
+    "pt": "--fields não pode ser combinado com --ndjson (os registros são transmitidos sem alteração)."
+  },
+  "\nkaabalah v{0} capabilities (schema {1})\n": {
+    "en": "\nkaabalah v{0} capabilities (schema {1})\n",
+    "pt": "\nkaabalah v{0} capacidades (esquema {1})\n"
+  },
+  "  Modules: {0}": {
+    "en": "  Modules: {0}",
+    "pt": "  Módulos: {0}"
+  },
+  "  Commands: {0}": {
+    "en": "  Commands: {0}",
+    "pt": "  Comandos: {0}"
+  },
+  "  Ephemeris initialized: {0} (coverage {1})": {
+    "en": "  Ephemeris initialized: {0} (coverage {1})",
+    "pt": "  Efemérides inicializadas: {0} (cobertura {1})"
+  },
+  "  Use --json for the full machine-readable description.": {
+    "en": "  Use --json for the full machine-readable description.",
+    "pt": "  Use --json para a descrição completa legível por máquina."
+  },
+  "Unknown aspect \"{0}\". Valid: major, {1}.": {
+    "en": "Unknown aspect \"{0}\". Valid: major, {1}.",
+    "pt": "Aspecto desconhecido \"{0}\". Válidos: major, {1}."
+  },
+  "\n  Composite Angles:": {
+    "en": "\n  Composite Angles:",
+    "pt": "\n  Ângulos do composto:"
+  },
+  "--closest-approaches needs range mode (--from and --to).": {
+    "en": "--closest-approaches needs range mode (--from and --to).",
+    "pt": "--closest-approaches exige o modo de intervalo (--from e --to)."
+  },
+  "\"birth.kind\" must be one of: {0}.": {
+    "en": "\"birth.kind\" must be one of: {0}.",
+    "pt": "\"birth.kind\" deve ser um de: {0}."
+  },
+  "\"birth\" must be a date string or an object with \"kind\" in --input-json.": {
+    "en": "\"birth\" must be a date string or an object with \"kind\" in --input-json.",
+    "pt": "\"birth\" deve ser um texto de data ou um objeto com \"kind\" em --input-json."
+  },
+  "A birth value is required (YYYY-MM-DD, or the shape selected by --birth-kind).": {
+    "en": "A birth value is required (YYYY-MM-DD, or the shape selected by --birth-kind).",
+    "pt": "Um valor de nascimento é obrigatório (AAAA-MM-DD, ou a forma escolhida por --birth-kind)."
+  },
+  "Invalid month-day \"{0}\". Use MM-DD with --birth-kind=month-day.": {
+    "en": "Invalid month-day \"{0}\". Use MM-DD with --birth-kind=month-day.",
+    "pt": "Mês-dia inválido \"{0}\". Use MM-DD com --birth-kind=month-day."
+  },
+  "Invalid year-month \"{0}\". Use YYYY-MM with --birth-kind=year-month.": {
+    "en": "Invalid year-month \"{0}\". Use YYYY-MM with --birth-kind=year-month.",
+    "pt": "Ano-mês inválido \"{0}\". Use AAAA-MM com --birth-kind=year-month."
+  },
+  "Invalid year \"{0}\". Use YYYY with --birth-kind={1}.": {
+    "en": "Invalid year \"{0}\". Use YYYY with --birth-kind={1}.",
+    "pt": "Ano inválido \"{0}\". Use AAAA com --birth-kind={1}."
+  },
+  "\"firstName\" must be a string in --input-json.": {
+    "en": "\"firstName\" must be a string in --input-json.",
+    "pt": "\"firstName\" deve ser um texto em --input-json."
+  },
+  "\nNumerology snapshot as of {0} ({1})\n": {
+    "en": "\nNumerology snapshot as of {0} ({1})\n",
+    "pt": "\nInstantâneo numerológico em {0} ({1})\n"
+  },
+  "  Completed age: {0}": {
+    "en": "  Completed age: {0}",
+    "pt": "  Idade completa: {0}"
+  },
+  "  Personal year: {0} ({1} to {2})": {
+    "en": "  Personal year: {0} ({1} to {2})",
+    "pt": "  Ano pessoal: {0} ({1} a {2})"
+  },
+  "  Personal month: phase {0}, value {1}": {
+    "en": "  Personal month: phase {0}, value {1}",
+    "pt": "  Mês pessoal: fase {0}, valor {1}"
+  },
+  "  Personal period: phase {0}": {
+    "en": "  Personal period: phase {0}",
+    "pt": "  Período pessoal: fase {0}"
+  },
+  "  Heptad: phase {0}, day {1}": {
+    "en": "  Heptad: phase {0}, day {1}",
+    "pt": "  Heptada: fase {0}, dia {1}"
+  },
+  "  Calendar frame: year {0}, month {1}, day {2}": {
+    "en": "  Calendar frame: year {0}, month {1}, day {2}",
+    "pt": "  Moldura do calendário: ano {0}, mês {1}, dia {2}"
+  },
+  "\nNumerology timeline {0} to {1} (exclusive)\n": {
+    "en": "\nNumerology timeline {0} to {1} (exclusive)\n",
+    "pt": "\nLinha do tempo numerológica de {0} a {1} (exclusivo)\n"
+  },
+  "Usage: kaabalah numerology:timeline <birth> [firstName] --from=<YYYY-MM-DD> --to=<YYYY-MM-DD> [--layers=personal-year,...]": {
+    "en": "Usage: kaabalah numerology:timeline <birth> [firstName] --from=<YYYY-MM-DD> --to=<YYYY-MM-DD> [--layers=personal-year,...]",
+    "pt": "Uso: kaabalah numerology:timeline <nascimento> [firstName] --from=<AAAA-MM-DD> --to=<AAAA-MM-DD> [--layers=personal-year,...]"
+  },
+  "Life stages need a full birth date (YYYY-MM-DD).": {
+    "en": "Life stages need a full birth date (YYYY-MM-DD).",
+    "pt": "As fases da vida exigem a data de nascimento completa (AAAA-MM-DD)."
+  },
+  "\nLife stages for {0} (as of {1}, age {2})\n": {
+    "en": "\nLife stages for {0} (as of {1}, age {2})\n",
+    "pt": "\nFases da vida de {0} (em {1}, idade {2})\n"
+  },
+  "  Pinnacle {0}: ages {1}-{2} value {3}": {
+    "en": "  Pinnacle {0}: ages {1}-{2} value {3}",
+    "pt": "  Pináculo {0}: idades {1}-{2} valor {3}"
+  },
+  "  Challenge {0}: ages {1}-{2} value {3}": {
+    "en": "  Challenge {0}: ages {1}-{2} value {3}",
+    "pt": "  Desafio {0}: idades {1}-{2} valor {3}"
+  },
+  "\nBirth date knowledge: {0}\n": {
+    "en": "\nBirth date knowledge: {0}\n",
+    "pt": "\nConhecimento da data de nascimento: {0}\n"
+  },
+  "  Computable: {0}": {
+    "en": "  Computable: {0}",
+    "pt": "  Calculável: {0}"
+  },
+  "\n  Fibonacci Cycle (age {0}, as of {1}):": {
+    "en": "\n  Fibonacci Cycle (age {0}, as of {1}):",
+    "pt": "\n  Ciclo de Fibonacci (idade {0}, em {1}):"
+  },
+  "\nPersonal Cycles: {0} ({1}), as of {2}\n": {
+    "en": "\nPersonal Cycles: {0} ({1}), as of {2}\n",
+    "pt": "\nCiclos pessoais: {0} ({1}), em {2}\n"
+  },
+  "\nHeptad Cycles: {0}, as of {1}\n": {
+    "en": "\nHeptad Cycles: {0}, as of {1}\n",
+    "pt": "\nCiclos de heptadas: {0}, em {1}\n"
+  },
+  "\nFibonacci Cycle: {0} (age {1}, as of {2})\n": {
+    "en": "\nFibonacci Cycle: {0} (age {1}, as of {2})\n",
+    "pt": "\nCiclo de Fibonacci: {0} (idade {1}, em {2})\n"
+  },
+  "\"{0}\" must be a string in --input-json.": {
+    "en": "\"{0}\" must be a string in --input-json.",
+    "pt": "\"{0}\" deve ser um texto em --input-json."
+  },
+  "\"{0}\" must be a finite number in --input-json.": {
+    "en": "\"{0}\" must be a finite number in --input-json.",
+    "pt": "\"{0}\" deve ser um número finito em --input-json."
+  },
+  "--{0} must be a number, got \"{1}\".": {
+    "en": "--{0} must be a number, got \"{1}\".",
+    "pt": "--{0} deve ser um número, recebido \"{1}\"."
+  },
+  "\"{0}\" must be true or false in --input-json.": {
+    "en": "\"{0}\" must be true or false in --input-json.",
+    "pt": "\"{0}\" deve ser true ou false em --input-json."
+  },
+  "\"{0}\" must be an array or comma-separated string in --input-json.": {
+    "en": "\"{0}\" must be an array or comma-separated string in --input-json.",
+    "pt": "\"{0}\" deve ser um array ou um texto separado por vírgulas em --input-json."
+  },
+  "--{0} must list at least one value.": {
+    "en": "--{0} must list at least one value.",
+    "pt": "--{0} deve listar pelo menos um valor."
+  },
+  "Unknown value \"{0}\" for --{1}. Valid: {2}.": {
+    "en": "Unknown value \"{0}\" for --{1}. Valid: {2}.",
+    "pt": "Valor desconhecido \"{0}\" para --{1}. Válidos: {2}."
+  },
+  "--{0} must be HH:MM (hours 0-23, minutes 0-59), got \"{1}\".": {
+    "en": "--{0} must be HH:MM (hours 0-23, minutes 0-59), got \"{1}\".",
+    "pt": "--{0} deve ser HH:MM (horas 0-23, minutos 0-59), recebido \"{1}\"."
+  },
+  "  kaabalah numerology:snapshot 1990-01-15 Ana --as-of=2026-03-01 --json --compact": {
+    "en": "  kaabalah numerology:snapshot 1990-01-15 Ana --as-of=2026-03-01 --json --compact",
+    "pt": "  kaabalah numerology:snapshot 1990-01-15 Ana --as-of=2026-03-01 --json --compact"
+  },
+  "  kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --layers=personal-month --json --compact": {
+    "en": "  kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --layers=personal-month --json --compact",
+    "pt": "  kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --layers=personal-month --json --compact"
+  },
+  "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --orb-profile=ptolemaic-plus-quincunx --json --compact": {
+    "en": "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --orb-profile=ptolemaic-plus-quincunx --json --compact",
+    "pt": "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --orb-profile=ptolemaic-plus-quincunx --json --compact"
+  },
+  "  kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary": {
+    "en": "  kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary",
+    "pt": "  kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary"
+  },
+  "  kaabalah capabilities --json --compact": {
+    "en": "  kaabalah capabilities --json --compact",
+    "pt": "  kaabalah capabilities --json --compact"
   }
 }

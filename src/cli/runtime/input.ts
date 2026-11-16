@@ -25,7 +25,7 @@ function parseInputJsonObject(raw: string, flags: Flags, source: "flag" | "stdin
   }
 }
 
-export async function parseInputJson(flags: Flags): Promise<InputPayload> {
+export async function parseInputJson(flags: Flags, options: { maxStdinBytes?: number } = {}): Promise<InputPayload> {
   const raw = getFlagString(flags, "input-json");
   if (!raw) {
     return null;
@@ -35,6 +35,7 @@ export async function parseInputJson(flags: Flags): Promise<InputPayload> {
     const stdin = await readStdin(flags, {
       emptyCode: "INVALID_JSON",
       emptyMessage: cliText("--input-json=- requires a JSON object on stdin."),
+      maxBytes: options.maxStdinBytes,
     });
     return parseInputJsonObject(stdin, flags, "stdin");
   }

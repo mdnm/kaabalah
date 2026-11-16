@@ -6,8 +6,11 @@ import { dirname, resolve } from "node:path";
 import { getFlagBool, getFlagNumber, getFlagString, isJsonMode } from "../runtime/args";
 import { getGoogleMapsApiKey } from "../runtime/config";
 import { debugLog } from "../runtime/debug";
-import { exitWithError } from "../runtime/errors";
+import { exitWithError, exitWithLibraryError } from "../runtime/errors";
 import { isAbortError, type ExecutionContext } from "../runtime/execution";
+import { ASPECT_NAMES, MAJOR_ASPECT_NAMES, ORB_PROFILE_NAMES, POINT_ID_NAMES } from "../runtime/astro-names";
+import { booleanOption } from "../runtime/options";
+import { hasPolicy, parseAnalysisOptions, resolveOrbPolicy, shapePolicyResult } from "./astrology-analysis";
 import { outputJson } from "../runtime/output";
 import type { Flags, InputPayload } from "../runtime/types";
 import {
@@ -30,12 +33,13 @@ type AstroWheelSvgOptions = import("../../visual").AstroWheelSvgOptions;
 type AstroWheelViewBox = import("../../visual").AstroWheelViewBox;
 type AstroWheelAspectSpec = import("../../visual").AspectSpec;
 
-function rethrowInterruptedOrError(err: unknown, executionContext: ExecutionContext): never {
+export function rethrowInterruptedOrError(err: unknown, executionContext: ExecutionContext): never {
   executionContext.throwIfInterrupted();
+  // Typed library errors reach `handleFatalError`, which maps them to the existing CLI codes.
   throw err;
 }
 
-function describeTimeZoneSettings(timeZoneSettings: ParsedChartInput["timeZoneSettings"]): string {
+export function describeTimeZoneSettings(timeZoneSettings: ParsedChartInput["timeZoneSettings"]): string {
   return "timeZone" in timeZoneSettings && timeZoneSettings.timeZone != null ? timeZoneSettings.timeZone : "auto";
 }
 
@@ -117,17 +121,25 @@ async function geocodeLocation(
   return result;
 }
 
-function getAstrologyRuntimePaths(flags: Flags): { wasmPath: string; ephePath: string } {
+export interface AstrologyRuntimePaths {
+  wasmPath: string;
+  ephePath: string;
+  /** `--strict-ephemeris`: throw instead of silently using Moshier outside the shipped Swiss files. */
+  strictEphemeris?: boolean;
+}
+
+export function getAstrologyRuntimePaths(flags: Flags): AstrologyRuntimePaths {
   const path = require("path");
 
   return {
     wasmPath: getFlagString(flags, "wasm-path") ?? path.resolve(__dirname, "../wasm/build/swisseph.node.wasm"),
     ephePath: getFlagString(flags, "ephe-path") ?? path.resolve(__dirname, "../ephe"),
+    ...(getFlagBool(flags, "strict-ephemeris") ? { strictEphemeris: true } : {}),
   };
 }
 
-async function initWasm(
-  paths: { wasmPath: string; ephePath: string },
+export async function initWasm(
+  paths: AstrologyRuntimePaths,
   executionContext: ExecutionContext
 ): Promise<void> {
   executionContext.throwIfInterrupted();
@@ -138,7 +150,7 @@ async function initWasm(
   debugLog("wasm", cliText("Swiss Ephemeris initialized."), paths);
 }
 
-function buildBirthChartOptions(
+export function buildBirthChartOptions(
   input: ParsedChartInput,
   HouseSystem: typeof import("../../astrology").HouseSystem
 ) {
@@ -170,9 +182,7 @@ function formatInputEcho(chartAInput: ParsedChartInput, chartBInput: ParsedChart
   };
 }
 
-const MAJOR_ASPECTS = ["conjunction", "sextile", "square", "trine", "opposition"];
-
-function parseMaxOrb(flags: Flags, inputPayload: InputPayload): number | undefined {
+export function parseMaxOrb(flags: Flags, inputPayload: InputPayload): number | undefined {
   const maxOrb = inputPayload?.maxOrb != null ? Number(inputPayload.maxOrb) : getFlagNumber(flags, "max-orb");
 
   if (maxOrb == null) {
@@ -186,7 +196,7 @@ function parseMaxOrb(flags: Flags, inputPayload: InputPayload): number | undefin
   return maxOrb;
 }
 
-function parseAspectTypeFilter(flags: Flags, inputPayload: InputPayload): string[] | undefined {
+export function parseAspectTypeFilter(flags: Flags, inputPayload: InputPayload): string[] | undefined {
   const rawValue =
     (inputPayload?.aspectTypes as string | string[] | undefined) ??
     (inputPayload?.aspects as string | string[] | undefined) ??
@@ -199,14 +209,25 @@ function parseAspectTypeFilter(flags: Flags, inputPayload: InputPayload): string
 
   const items = Array.isArray(rawValue) ? rawValue : rawValue.split(",");
   const normalized = items
-    .map((item) => item.trim().toLowerCase())
+    .map((item) => String(item).trim().toLowerCase())
     .filter(Boolean)
-    .flatMap((item) => (item === "major" ? MAJOR_ASPECTS : [item]));
+    .flatMap((item) => (item === "major" ? [...MAJOR_ASPECT_NAMES] : [item]));
+
+  // Unknown names used to filter everything out silently; they are a user error.
+  for (const name of normalized) {
+    if (!(ASPECT_NAMES as readonly string[]).includes(name)) {
+      exitWithError(
+        "INVALID_ARGUMENT",
+        cliText("Unknown aspect \"{0}\". Valid: major, {1}.", [name, ASPECT_NAMES.join(", ")]),
+        flags
+      );
+    }
+  }
 
   return normalized.length > 0 ? normalized : undefined;
 }
 
-function filterAspects<T extends AspectLike>(
+export function filterAspects<T extends AspectLike>(
   aspects: T[],
   { maxOrb, aspectFilter }: { maxOrb?: number; aspectFilter?: string[] }
 ): T[] {
@@ -226,7 +247,7 @@ function filterAspects<T extends AspectLike>(
   });
 }
 
-function filterChartAspects<T extends { aspects: AspectLike[] }>(
+export function filterChartAspects<T extends { aspects: AspectLike[] }>(
   chart: T,
   options: { maxOrb?: number; aspectFilter?: string[] }
 ): T {
@@ -236,7 +257,7 @@ function filterChartAspects<T extends { aspects: AspectLike[] }>(
   };
 }
 
-function getInputValue(
+export function getInputValue(
   inputPayload: InputPayload,
   key: string
 ): unknown {
@@ -453,7 +474,7 @@ function serializeAstroWheelOptions(options: AstroWheelSvgOptions) {
   };
 }
 
-function formatSingleChartInputEcho(input: ParsedChartInput & { resolvedLocation?: string }) {
+export function formatSingleChartInputEcho(input: ParsedChartInput & { resolvedLocation?: string }) {
   return {
     date: input.dateStr,
     time: input.timeStr,
@@ -465,7 +486,7 @@ function formatSingleChartInputEcho(input: ParsedChartInput & { resolvedLocation
   };
 }
 
-async function parseTwoChartCommand(
+export async function parseTwoChartCommand(
   flags: Flags,
   inputPayload: InputPayload,
   commandName: string,
@@ -525,7 +546,7 @@ async function parseTwoChartCommand(
   };
 }
 
-async function parseSingleChartRequest(
+export async function parseSingleChartRequest(
   args: string[],
   flags: Flags,
   inputPayload: InputPayload,
@@ -603,6 +624,42 @@ async function parseSingleChartRequest(
   });
 
   return parsedInput;
+}
+
+export type AstrologyModule = typeof import("../../astrology");
+
+/**
+ * Lazy-load the astrology module, initialise Swiss Ephemeris with the explicit wasm/ephe
+ * paths (and `--strict-ephemeris`), run `run`, then always release and close the engine.
+ */
+export async function withSwissEph<T>(
+  flags: Flags,
+  executionContext: ExecutionContext,
+  run: (astro: AstrologyModule) => Promise<T> | T
+): Promise<T> {
+  const astroModule = await import("../../astrology");
+  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
+    astroModule.closeSwissEph();
+  });
+  const runtimePaths = getAstrologyRuntimePaths(flags);
+
+  try {
+    await initWasm(runtimePaths, executionContext);
+  } catch (err) {
+    releaseSwissEphCleanup();
+    astroModule.closeSwissEph();
+    executionContext.throwIfInterrupted();
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
+  }
+
+  try {
+    return await run(astroModule);
+  } catch (err) {
+    return rethrowInterruptedOrError(err, executionContext);
+  } finally {
+    releaseSwissEphCleanup();
+    astroModule.closeSwissEph();
+  }
 }
 
 export async function cmdAstrologySynastry(
@@ -716,6 +773,10 @@ export async function cmdAstrologyComposite(
       const zodiacPosition = planet.zodiacPosition;
       console.log(cliText("    {0} {1} {2} House {3}", [name.padEnd(14), cliValue(zodiacPosition.sign.padEnd(12)), cliValue(zodiacPosition.traditionalFormat.padEnd(8)), zodiacPosition.house]));
     }
+    console.log(cliText("\n  Composite Angles:"));
+    for (const [angleName, angle] of Object.entries(filteredResult.compositeAngles)) {
+      console.log(cliText("    {0} {1} {2}", [angleName.padEnd(12), cliValue(angle.sign.padEnd(12)), cliValue(angle.traditionalFormat)]));
+    }
     console.log(cliText("\n  Composite House Cusps:"));
     for (let i = 0; i < filteredResult.compositeHouses.length; i++) {
       const house = filteredResult.compositeHouses[i];
@@ -748,6 +809,11 @@ export async function cmdAstrologyTransits(
     : inputPayload;
 
   const natalInput = await parseSingleChartRequest(effectiveArgs, flags, effectiveInputPayload, executionContext);
+  const analysis = parseAnalysisOptions(flags, inputPayload);
+  const closestApproaches = booleanOption(flags, inputPayload, "closest-approaches", "closestApproaches");
+  if (closestApproaches && ((inputPayload?.from as string | undefined) ?? getFlagString(flags, "from")) == null) {
+    exitWithError("INVALID_ARGUMENT", cliText("--closest-approaches needs range mode (--from and --to)."), flags);
+  }
   const astroModule = await import("../../astrology");
   const { getTransitChart, getTransitRange, closeSwissEph, HouseSystem } = astroModule;
   const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
@@ -830,6 +896,7 @@ export async function cmdAstrologyTransits(
         transitPlanets,
         natalPlanets,
         aspectFilter: aspectFilter as any,
+        includeClosestApproaches: closestApproaches || undefined,
       });
       executionContext.throwIfInterrupted();
 
@@ -845,6 +912,7 @@ export async function cmdAstrologyTransits(
             from: fromStr,
             to: toStr,
             stepDays: stepDaysFlag ?? 1,
+            closestApproaches,
           },
         }, flags);
         return;
@@ -901,9 +969,31 @@ export async function cmdAstrologyTransits(
         aspects: result.aspects.length,
       });
 
+      let policyAspects: Record<string, unknown> | undefined;
+      if (hasPolicy(analysis)) {
+        const policy = resolveOrbPolicy(astroModule, analysis, aspectFilter, flags);
+        const transitPoints = Object.entries(result.transitPlanets).flatMap(([key, planet]) => {
+          const id = astroModule.pointIdFromLegacyKey(key);
+          return id
+            ? [{ id, kind: astroModule.getPointDefinition(id).kind, longitude: planet.longitude, speed: planet.longitudeSpeed ?? null }]
+            : [];
+        });
+        const policyResult = astroModule.computeTransitAspectsWithPolicy(
+          transitPoints,
+          astroModule.getChartPoints(result.natalChart),
+          policy,
+          { include: analysis.points as never, maxOrb: maxOrbFlag ?? undefined }
+        );
+        policyAspects = {
+          ...shapePolicyResult(policyResult, analysis, maxOrbFlag ?? undefined),
+          natalTargets: "fixed: natal speeds are ignored, so applying/separating comes from transit motion only",
+        };
+      }
+
       if (isJsonMode(flags)) {
         outputJson({
           ...result,
+          ...(policyAspects ? { policyAspects } : {}),
           input: {
             natal: { date: natalInput.dateStr, time: natalInput.timeStr, lat: natalInput.latitude, lon: natalInput.longitude },
             transitDate: transitDate.toISOString(),
@@ -1466,110 +1556,6 @@ export async function cmdAstrologyWheel(
     }
 
     process.stdout.write(svg.endsWith("\n") ? svg : `${svg}\n`);
-  } catch (err) {
-    rethrowInterruptedOrError(err, executionContext);
-  } finally {
-    releaseSwissEphCleanup();
-    closeSwissEph();
-  }
-}
-
-export async function cmdAstrology(
-  args: string[],
-  flags: Flags,
-  inputPayload: InputPayload,
-  executionContext: ExecutionContext
-): Promise<void> {
-  const input = await parseSingleChartRequest(args, flags, inputPayload, executionContext);
-  const astroModule = await import("../../astrology");
-  const { getSwissEph, closeSwissEph, getBirthChart, HouseSystem } = astroModule;
-  const maxOrb = parseMaxOrb(flags, inputPayload);
-  const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
-  const releaseSwissEphCleanup = executionContext.registerCleanup(() => {
-    astroModule.closeSwissEph();
-  });
-  const runtimePaths = getAstrologyRuntimePaths(flags);
-
-  try {
-    await initWasm(runtimePaths, executionContext);
-  } catch (err) {
-    releaseSwissEphCleanup();
-    closeSwissEph();
-    executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
-  }
-
-  try {
-    debugLog("astrology", cliText("Running astrology."), {
-      date: input.dateStr,
-      time: input.timeStr,
-      latitude: input.latitude,
-      longitude: input.longitude,
-      houseSystem: input.houseSystem,
-      timezone: describeTimeZoneSettings(input.timeZoneSettings),
-    });
-
-    const chart = await getBirthChart({
-      date: input.birthDate,
-      latitude: input.latitude,
-      longitude: input.longitude,
-      houseSystem: input.houseSystemCode as unknown as typeof HouseSystem[keyof typeof HouseSystem],
-      timeZoneSettings: input.timeZoneSettings as any,
-    });
-    const filteredChart = filterChartAspects(chart, { maxOrb, aspectFilter });
-    executionContext.throwIfInterrupted();
-    debugLog("astrology", cliText("Completed astrology."), {
-      planets: Object.keys(filteredChart.planets).length,
-      nodes: Object.keys(filteredChart.nodes ?? {}).length,
-      aspects: filteredChart.aspects.length,
-    });
-
-    if (isJsonMode(flags)) {
-      const result: Record<string, unknown> = { ...filteredChart };
-      if (input.resolvedLocation) {
-        result.resolvedLocation = input.resolvedLocation;
-      }
-      result.input = {
-        date: input.dateStr,
-        time: input.timeStr,
-        latitude: input.latitude,
-        longitude: input.longitude,
-        houseSystem: input.houseSystem,
-        timezone: "timeZone" in input.timeZoneSettings ? input.timeZoneSettings.timeZone : "auto",
-      };
-      outputJson(result, flags);
-      return;
-    }
-
-    console.log(cliText("\nBirth Chart: {0} {1}\n", [input.dateStr, input.timeStr]));
-    if (input.resolvedLocation) {
-      console.log(cliText("  Location: {0}", [input.resolvedLocation]));
-    }
-    console.log(cliText("  Coordinates: {0}, {1}", [input.latitude.toFixed(4), input.longitude.toFixed(4)]));
-    console.log(cliText("  House System: {0}", [input.houseSystem]));
-    console.log(cliText("  UTC Date: {0}", [filteredChart.dateUtc.toISOString()]));
-    console.log(cliText("\n  Planets:"));
-    for (const [name, planet] of Object.entries(filteredChart.planets)) {
-      const zodiacPosition = planet.zodiacPosition;
-      console.log(cliText("    {0} {1} {2} House {3}", [name.padEnd(14), cliValue(zodiacPosition.sign.padEnd(12)), cliValue(zodiacPosition.traditionalFormat.padEnd(8)), zodiacPosition.house]));
-    }
-    console.log(cliText("\n  Houses:"));
-    console.log(cliText("    Ascendant:  {0} {1}", [cliValue(filteredChart.houses.ascendant.sign), cliValue(filteredChart.houses.ascendant.traditionalFormat)]));
-    console.log(cliText("    Midheaven:  {0} {1}", [cliValue(filteredChart.houses.mc.sign), cliValue(filteredChart.houses.mc.traditionalFormat)]));
-    console.log(cliText("    Descendant: {0} {1}", [cliValue(filteredChart.houses.dc.sign), cliValue(filteredChart.houses.dc.traditionalFormat)]));
-    console.log(cliText("    IC:         {0} {1}", [cliValue(filteredChart.houses.ic.sign), cliValue(filteredChart.houses.ic.traditionalFormat)]));
-    console.log(cliText("\n  House Cusps:"));
-    for (let i = 0; i < filteredChart.houses.houses.length; i++) {
-      const house = filteredChart.houses.houses[i];
-      console.log(cliText("    House {0}:  {1} {2}", [String(i + 1).padStart(2), cliValue(house.sign.padEnd(12)), cliValue(house.traditionalFormat)]));
-    }
-    if (filteredChart.nodes && Object.keys(filteredChart.nodes).length > 0) {
-      console.log(cliText("\n  Nodes:"));
-      for (const [, node] of Object.entries(filteredChart.nodes)) {
-        console.log(cliText("    {0} {1} {2} House {3}", [cliValue(node.name.padEnd(18)), cliValue(node.sign.padEnd(12)), cliValue(node.traditionalFormat.padEnd(8)), node.house]));
-      }
-    }
-    console.log();
   } catch (err) {
     rethrowInterruptedOrError(err, executionContext);
   } finally {

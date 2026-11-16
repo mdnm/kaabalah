@@ -1,7 +1,29 @@
 import { withCliLanguage, cliLanguageFromArgv } from "./runtime/language";
 import { cliText } from "./runtime/language";
 import { VERSION } from "./contract";
-import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
+import { cmdAstrologyChart } from "./commands/astrology-chart";
+import {
+  cmdAstrologyCollection,
+  cmdAstrologyDavison,
+  cmdAstrologyFirdariaTimeline,
+  cmdAstrologyJyotish,
+  cmdAstrologyOverlays,
+  cmdAstrologyProfectionsTimeline,
+  cmdAstrologyProgressions,
+  cmdAstrologyReturns,
+  cmdAstrologySolarArc,
+  cmdCapabilities,
+} from "./commands/astrology-extra";
+import {
+  cmdNumerologyHeptads,
+  cmdNumerologyLifeStages,
+  cmdNumerologyPartial,
+  cmdNumerologyPersonalCycles,
+  cmdNumerologySnapshot,
+  cmdNumerologyTimeline,
+} from "./commands/numerology-schedule";
+import { MAX_MANIFEST_BYTES } from "./runtime/stdin";
+import { cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIChing } from "./commands/iching";
@@ -128,7 +150,9 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
   const execution = createExecutionContext();
 
   try {
-    const inputPayload = await parseInputJson(flags);
+    const inputPayload = await parseInputJson(flags, {
+      maxStdinBytes: command === "astrology:collection" ? MAX_MANIFEST_BYTES : undefined,
+    });
 
     switch (command) {
       case "help":
@@ -152,7 +176,7 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         if (!args[1] && !inputPayload?.date) {
           exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology <YYYY-MM-DD>"), flags);
         }
-        cmdNumerology((inputPayload?.date as string) ?? args[1], flags);
+        cmdNumerology((inputPayload?.date as string) ?? args[1], flags, inputPayload);
         return;
       case "numerology:lifepath":
         if (!args[1] && !inputPayload?.date) {
@@ -164,7 +188,7 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         if (!args[1] && !inputPayload?.date) {
           exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]"), flags);
         }
-        cmdCycles((inputPayload?.date as string) ?? args[1], (inputPayload?.firstName as string) ?? args[2], flags);
+        cmdCycles((inputPayload?.date as string) ?? args[1], (inputPayload?.firstName as string) ?? args[2], flags, inputPayload);
         return;
       case "numerology:challenges":
         if (!args[1] && !inputPayload?.date) {
@@ -176,7 +200,25 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         if (!args[1] && !inputPayload?.date) {
           exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:fibonacci <YYYY-MM-DD>"), flags);
         }
-        cmdFibonacci((inputPayload?.date as string) ?? args[1], flags);
+        cmdFibonacci((inputPayload?.date as string) ?? args[1], flags, inputPayload);
+        return;
+      case "numerology:snapshot":
+        cmdNumerologySnapshot(args.slice(1), flags, inputPayload);
+        return;
+      case "numerology:timeline":
+        cmdNumerologyTimeline(args.slice(1), flags, inputPayload);
+        return;
+      case "numerology:heptads":
+        cmdNumerologyHeptads(args.slice(1), flags, inputPayload);
+        return;
+      case "numerology:personal-cycles":
+        cmdNumerologyPersonalCycles(args.slice(1), flags, inputPayload);
+        return;
+      case "numerology:life-stages":
+        cmdNumerologyLifeStages(args.slice(1), flags, inputPayload);
+        return;
+      case "numerology:partial":
+        cmdNumerologyPartial(args.slice(1), flags, inputPayload);
         return;
       case "tarot":
         await cmdTarot((inputPayload?.count as string) ?? args[1], flags);
@@ -246,7 +288,7 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         cmdTreeAscii(flags);
         return;
       case "astrology":
-        await cmdAstrology(args.slice(1), flags, inputPayload, execution);
+        await cmdAstrologyChart(args.slice(1), flags, inputPayload, execution);
         return;
       case "astrology:wheel":
         await cmdAstrologyWheel(args.slice(1), flags, inputPayload, execution);
@@ -283,6 +325,36 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         return;
       case "astrology:dodecatemoria":
         cmdAstrologyDodecatemoria(args.slice(1), flags, inputPayload);
+        return;
+      case "astrology:davison":
+        await cmdAstrologyDavison(flags, inputPayload, execution);
+        return;
+      case "astrology:overlays":
+        await cmdAstrologyOverlays(flags, inputPayload, execution);
+        return;
+      case "astrology:progressions":
+        await cmdAstrologyProgressions(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:solar-arc":
+        await cmdAstrologySolarArc(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:returns":
+        await cmdAstrologyReturns(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:profections:timeline":
+        await cmdAstrologyProfectionsTimeline(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:firdaria:timeline":
+        await cmdAstrologyFirdariaTimeline(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:jyotish":
+        await cmdAstrologyJyotish(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:collection":
+        await cmdAstrologyCollection(flags, inputPayload, execution);
+        return;
+      case "capabilities":
+        await cmdCapabilities(flags, execution);
         return;
       default:
         exitWithError("UNKNOWN_COMMAND", cliText("Unknown command: \"{0}\". Run \"kaabalah help\" for usage.", [command]), flags);

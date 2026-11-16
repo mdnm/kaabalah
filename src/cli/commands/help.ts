@@ -50,12 +50,17 @@ function generateHelp(): string {
   lines.push(cliText("  kaabalah numerology 1990-01-15"));
   lines.push(cliText("  kaabalah numerology --input-json=- --json --compact < numerology.json"));
   lines.push(cliText("  kaabalah numerology:cycles 1990-01-15 John"));
+  lines.push(cliText("  kaabalah numerology:snapshot 1990-01-15 Ana --as-of=2026-03-01 --json --compact"));
+  lines.push(cliText("  kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --layers=personal-month --json --compact"));
   lines.push(cliText("  kaabalah tarot 5 --inverted"));
   lines.push(cliText("  kaabalah tarot:card 7"));
   lines.push(cliText("  kaabalah gematria:reverse 22"));
   lines.push(cliText("  kaabalah ifa 1990-01-15"));
   lines.push(cliText("  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006"));
+  lines.push(cliText("  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --orb-profile=ptolemaic-plus-quincunx --json --compact"));
   lines.push(cliText("  kaabalah astrology:synastry --input-json=- --json --compact < synastry.json"));
+  lines.push(cliText("  kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary"));
+  lines.push(cliText("  kaabalah capabilities --json --compact"));
   lines.push(cliText("  kaabalah help --json"));
   lines.push("");
 

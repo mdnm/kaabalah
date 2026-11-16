@@ -2,6 +2,7 @@ import { cliText } from "./language";
 import { TimeZoneOptions } from "../../astrology/swisseph";
 import { exitWithError } from "./errors";
 import type { Flags } from "./types";
+import { civilDateToLocalNoon, parseCivilDate, type CivilDate } from "../../civil-date";
 
 const UTC_NOON_SUFFIX = "T12:00:00" + "Z";
 
@@ -74,17 +75,27 @@ export function validateDateRange(dateStr: string, flags: Flags): void {
   }
 }
 
-export function validateDateString(dateStr: string, flags: Flags): void {
+/**
+ * Strictly validate a YYYY-MM-DD civil date (real Gregorian calendar day, year
+ * 0001-9999) before any `Date` is constructed, so JS date normalisation can
+ * never turn 2026-02-30 into 2026-03-02.
+ */
+export function parseCivilDateInput(dateStr: string, flags: Flags): CivilDate {
   validateDateRange(dateStr, flags);
-  const date = new Date(`${dateStr}${UTC_NOON_SUFFIX}`);
-  if (Number.isNaN(date.getTime())) {
-    exitWithError("INVALID_DATE", cliText("Invalid date: \"{0}\". Use YYYY-MM-DD format.", [dateStr]), flags);
+  const civil = parseCivilDate(dateStr);
+  if (!civil) {
+    exitWithError("INVALID_DATE", cliText("Invalid date: \"{0}\". The date does not exist in the calendar.", [dateStr]), flags);
   }
+  return civil;
 }
 
+export function validateDateString(dateStr: string, flags: Flags): void {
+  parseCivilDateInput(dateStr, flags);
+}
+
+/** Local-noon `Date` for a CLI date string (safe for years 0001-0099). */
 export function parseDate(dateStr: string, flags: Flags): Date {
-  validateDateString(dateStr, flags);
-  return new Date(`${dateStr}T12:00:00`);
+  return civilDateToLocalNoon(parseCivilDateInput(dateStr, flags));
 }
 
 export function parseUtcNoonDate(dateStr: string, flags: Flags): Date {
@@ -142,16 +153,13 @@ export function parseHouseSystem(
   return { houseSystem, houseSystemCode };
 }
 
+/** Local birth instant for an already validated YYYY-MM-DD string (full year, including 0001-0099). */
 export function buildBirthDate(dateStr: string, hour: number, minute: number): Date {
-  const dateParts = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/)!;
-  return new Date(
-    Number.parseInt(dateParts[1], 10),
-    Number.parseInt(dateParts[2], 10) - 1,
-    Number.parseInt(dateParts[3], 10),
-    hour,
-    minute,
-    0
-  );
+  const civil = parseCivilDate(dateStr);
+  if (!civil) throw new RangeError(`Invalid civil date: ${dateStr}`);
+  const date = civilDateToLocalNoon(civil);
+  date.setHours(hour, minute, 0, 0);
+  return date;
 }
 
 export function parseChartInput(
