@@ -5869,6 +5869,484 @@
           "Serviço preservado como possibilidade, com a qualificação de responsabilidade abdicada, sem promessa positiva. A faixa 1369–1373 contém a continuação da ressalva até “consequências desastrosas”; o exemplo pessoal que começa depois não foi adotado. Omitidos diagnósticos, saúde, exemplos nomeados, suicídio e investigação de sonhos; sem instruções. Suplemento inspecionado, não adotado."
         ]
       }
+    },
+    "jupiter": {
+      "1": {
+        "pt": "você pode abordar a vida com entusiasmo inicial e inspirar ou despertar interesse nos outros. em alguns casos, uma autoimagem inflada pode levar você além das próprias capacidades, com inspiração sem concentração ou disciplina suficientes para concluir o que começou.",
+        "en": "you may approach life with initial enthusiasm and inspire or awaken interest in others. in some cases, an inflated self-image may take you beyond your abilities, with inspiration lacking the concentration or discipline needed to finish what you began.",
+        "keywords": {
+          "pt": [
+            "entusiasmo inicial",
+            "inspirar e despertar interesse",
+            "autoimagem inflada em alguns casos",
+            "ir além das próprias capacidades",
+            "inspiração sem concentração ou disciplina suficientes"
+          ],
+          "en": [
+            "initial enthusiasm",
+            "inspiring and awakening interest",
+            "inflated self-image in some cases",
+            "going beyond one's abilities",
+            "inspiration without enough concentration or discipline"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1394,
+            "to": 1398
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1416,
+            "to": 1423
+          }
+        ],
+        "reviewNotes": [
+          "As dificuldades de autoimagem, excesso em relação às capacidades e falta de disciplina aparecem como risco em alguns casos; a qualificação foi mantida.",
+          "Linhas 1412–1415 foram lidas, mas não usadas: o texto mistura Júpiter na casa 12 e fala de aspectos sem uma atribuição clara à casa 1. Exemplos/categorias de profissões e atividades em 1398–1411 não foram adotados.",
+          "O livro foi inspecionado nas janelas 47796–47935 e 47935–48025. Cabeçalhos e corpos misturam casas; nenhum claim suplementar foi adotado."
+        ]
+      },
+      "2": {
+        "pt": "você pode buscar expandir recursos e posses para obter mais alegria e realização, e atribuir valor especial a objetos que inspiram ou simbolizam algo significativo. sua segurança pode estar ligada à abundância material ou ao conhecimento e a crenças; recursos internos também podem incluir entusiasmo e capacidade de inspirar outras pessoas.",
+        "en": "you may seek to expand resources and possessions for greater joy and fulfillment, and place special value on objects that inspire or symbolize something meaningful. your sense of security may be tied to material abundance or to knowledge and beliefs; inner resources may also include enthusiasm and an ability to inspire others.",
+        "keywords": {
+          "pt": [
+            "expansão de recursos e posses",
+            "alegria e realização",
+            "objetos com significado simbólico",
+            "segurança material ou por conhecimento e crenças",
+            "entusiasmo e capacidade de inspirar"
+          ],
+          "en": [
+            "expansion of resources and possessions",
+            "joy and fulfillment",
+            "symbolically meaningful objects",
+            "security through material abundance or knowledge and beliefs",
+            "enthusiasm and ability to inspire"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1432,
+            "to": 1437
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1447,
+            "to": 1452
+          }
+        ],
+        "reviewNotes": [
+          "A busca por expansão e a segurança material ou por conhecimento/crenças são descritas sem promessa de riqueza ou ganho.",
+          "Aspectos tensos e esbanjamento/investimentos ruins, linhas 1443–1444, foram inspecionados, mas não adotados no registro.",
+          "Linhas 1438–1446 incluem OCR/truncamento e uma afirmação de sucesso material com tensão sobre gastar rapidamente; não foram usadas como garantias.",
+          "O livro foi inspecionado nas janelas 47935–48025. Os trechos de casas 1 e 2 estão intercalados e incluem alegações de prosperidade não adotadas."
+        ]
+      },
+      "3": {
+        "pt": "no melhor dos casos, você pode comunicar aos outros pensamentos e palavras que inspiram e estimulam, e enquadrar acontecimentos específicos numa perspectiva ampla. no pior dos casos, pode falar mais pela quantidade do que pela qualidade; o conhecimento também pode despertar uma necessidade quase insaciável de aprender.",
+        "en": "at best, you may communicate thoughts and words that inspire and stimulate others, and place specific events in a broad perspective. at worst, you may speak more for quantity than quality; knowledge may also awaken an almost insatiable need to learn.",
+        "keywords": {
+          "pt": [
+            "inspiração e estímulo aos outros no melhor dos casos",
+            "perspectiva ampla",
+            "quantidade acima da qualidade no pior dos casos",
+            "necessidade quase insaciável de aprender"
+          ],
+          "en": [
+            "inspiring and stimulating others at best",
+            "broad perspective",
+            "quantity over quality at worst",
+            "almost insatiable need to learn"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1459,
+            "to": 1469
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1476,
+            "to": 1479
+          }
+        ],
+        "reviewNotes": [
+          "Os polos favorável e desfavorável da expressão verbal estão explicitamente qualificados como melhor e pior hipótese, respectivamente.",
+          "A perspectiva ampla vem das linhas 1465–1469; a busca de aprendizagem quase insaciável, das linhas 1476–1479. Exemplos de leitura incompleta, interpretação excessiva de falas e relacionamento com parentes não foram adotados.",
+          "O livro foi inspecionado nas janelas 48097–48100 e 48102–48134. O conteúdo sob o título de casa 3 estava próximo a material da casa 4; nenhum claim suplementar foi adotado."
+        ]
+      },
+      "4": {
+        "pt": "você pode precisar de espaço em casa para construir um lar que corresponda às suas aspirações, e pode se voltar ao trabalho da alma e ao crescimento interior em vez de buscar reconhecimento público ou profissional. se Júpiter estiver bem aspectado, otimismo e fé na vida podem se tornar mais aparentes à medida que você amadurece.",
+        "en": "you may need space at home to build a home that matches your aspirations, and may turn toward inner work and growth instead of seeking public or professional recognition. if Jupiter is well aspected, optimism and faith in life may become more apparent as you mature.",
+        "keywords": {
+          "pt": [
+            "necessidade de espaço em casa",
+            "lar alinhado às aspirações",
+            "trabalho interior e crescimento",
+            "otimismo e fé condicionados por bons aspectos",
+            "otimismo mais aparente com a maturidade"
+          ],
+          "en": [
+            "need for space at home",
+            "home aligned with aspirations",
+            "inner work and growth",
+            "optimism and faith conditioned by favorable aspects",
+            "optimism becoming more apparent with maturity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1505,
+            "to": 1510
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1526,
+            "to": 1527
+          }
+        ],
+        "reviewNotes": [
+          "A casa/espaço e crescimento interior vêm das linhas 1505–1510. A condição para otimismo/fé é explícita: Júpiter bem aspectado, linhas 1526–1527.",
+          "Não foi adotada a promessa de idade avançada com muitos interesses/ocupações da linha 1527 em diante, nem biografia familiar/aristocrática, figura paterna ou Sagitário no Fundo do Céu.",
+          "O livro foi inspecionado nas janelas 48100–48101 e 48135–48220. O título identifica casa 4, mas as colunas do corpo estão misturadas com casa 3; não foi adotado."
+        ]
+      },
+      "5": {
+        "pt": "você pode se expressar criativamente com audácia e amplitude, e cooperar com outras pessoas desde que continue sendo quem conduz a cena. hobbies e saídas artísticas podem ser satisfatórios se você permanecer nelas tempo suficiente para desenvolver conhecimento; com aspectos difíceis, excitação e entusiasmo excessivos podem prejudicar sua perspectiva sobre essas experiências.",
+        "en": "you may express yourself creatively with boldness and expansiveness, and cooperate with others as long as you remain the one leading the show. hobbies and artistic pursuits may be satisfying if you stay with them long enough to develop knowledge; with difficult aspects, excessive excitement and enthusiasm may distort your perspective on these experiences.",
+        "keywords": {
+          "pt": [
+            "expressão criativa",
+            "audácia",
+            "amplitude",
+            "cooperar",
+            "conduzir a cena",
+            "hobbies",
+            "saídas artísticas",
+            "permanecer tempo suficiente",
+            "desenvolver conhecimento",
+            "aspectos difíceis",
+            "excitação e entusiasmo excessivos",
+            "perspectiva prejudicada"
+          ],
+          "en": [
+            "creative expression",
+            "boldness",
+            "expansiveness",
+            "cooperate",
+            "lead the show",
+            "hobbies",
+            "artistic pursuits",
+            "stay long enough",
+            "develop knowledge",
+            "difficult aspects",
+            "excessive excitement and enthusiasm",
+            "distorted perspective"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1540,
+            "to": 1543
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1547,
+            "to": 1554
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1560,
+            "to": 1562
+          }
+        ],
+        "reviewNotes": [
+          "A cooperação é explicitamente condicionada a ser quem conduz o espetáculo (1547–1551). Hobbies e saídas artísticas são satisfatórios sob a condição de permanecer tempo suficiente para adquirir conhecimento (1552–1554). O excesso de excitação/entusiasmo e prejuízo de perspectiva são condicionados a Júpiter mal aspectado (1560–1562). Romance e filhos foram omitidos."
+        ]
+      },
+      "6": {
+        "pt": "você pode buscar significado no trabalho e no serviço a outras pessoas, encontrando satisfação no aprimoramento de suas habilidades. algumas pessoas correm de uma tarefa para outra, enquanto outras se aplicam a cada pequeno trabalho com diligência e concentração.",
+        "en": "you may seek meaning through work and service to others, finding satisfaction in refining your skills. some people rush from one task to another, while others apply themselves to each small task with diligence and concentration.",
+        "keywords": {
+          "pt": [
+            "significado no trabalho",
+            "serviço a outras pessoas",
+            "aprimoramento de habilidades",
+            "satisfação",
+            "correr de tarefa em tarefa",
+            "diligência",
+            "concentração"
+          ],
+          "en": [
+            "meaning through work",
+            "service to others",
+            "refining skills",
+            "satisfaction",
+            "rushing from task to task",
+            "diligence",
+            "concentration"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1576,
+            "to": 1580
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1581,
+            "to": 1588
+          }
+        ],
+        "reviewNotes": [
+          "O cabeçalho da seção (1574) diz incorretamente “VÊNUS NA CASA 6”, mas o corpo imediatamente seguinte nomeia Júpiter na casa 6 em 1576 e continua com referências explícitas a Júpiter até 1588; identidade conferida pelo corpo, não inferida do cabeçalho. Mantida a alternativa entre correr de tarefa a tarefa e diligência/concentração, sem fundi-las como traços simultâneos. Excluídas passagens médicas, saúde, câncer, dietas e práticas."
+        ]
+      },
+      "7": {
+        "pt": "você pode querer independência para explorar diferentes facetas da vida e também buscar segurança, valorizando alguém que compreenda seus interesses fora da relação. pode projetar Júpiter no parceiro e procurar alguém que prometa o mundo, sentindo-se muito desapontado quando recebe apenas algo limitado.",
+        "en": "you may want independence to explore different facets of life while also seeking security, valuing someone who understands your interests outside the relationship. you may project Jupiter onto a partner and look for someone who promises the world, feeling very disappointed when you receive only something limited.",
+        "keywords": {
+          "pt": [
+            "independência",
+            "explorar facetas da vida",
+            "segurança",
+            "interesses fora da relação",
+            "projetar Júpiter no parceiro",
+            "prometer o mundo",
+            "desapontamento"
+          ],
+          "en": [
+            "independence",
+            "exploring facets of life",
+            "security",
+            "interests outside the relationship",
+            "projecting Jupiter onto a partner",
+            "promising the world",
+            "disappointment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1632,
+            "to": 1637
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1638,
+            "to": 1640
+          }
+        ],
+        "reviewNotes": [
+          "A tensão entre independência e segurança foi mantida, assim como o ideal de interesses fora da relação. O segundo enunciado descreve a projeção e o desapontamento da fonte, sem promessa de parceiro benéfico, casamento ou ganhos materiais. Abertura mitológica sobre truques/disfarces (1619–1631) e afirmações positivas de resultado (1641–1651) não foram adotadas."
+        ]
+      },
+      "8": {
+        "pt": "você pode buscar expansão e maior significado ao compartilhar e trocar o que tem, acredita e valoriza com outras pessoas. também pode procurar sentido no que está oculto, em tabus e mistérios.",
+        "en": "you may seek expansion and greater meaning by sharing and exchanging what you have, believe, and value with other people. you may also seek meaning in what is hidden, in taboos, and in mysteries.",
+        "keywords": {
+          "pt": [
+            "expansão",
+            "maior significado",
+            "compartilhar",
+            "trocar",
+            "crenças",
+            "valores",
+            "oculto",
+            "tabus",
+            "mistérios"
+          ],
+          "en": [
+            "expansion",
+            "greater meaning",
+            "sharing",
+            "exchanging",
+            "beliefs",
+            "values",
+            "hidden",
+            "taboos",
+            "mysteries"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1668,
+            "to": 1673
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1683,
+            "to": 1686
+          }
+        ],
+        "reviewNotes": [
+          "Mantidos o compartilhamento/troca de valores e a busca de significado no oculto/tabu/misterioso. Omitidas especulação e intuição de mercado, heranças, prosperidade, resultados sexuais e práticas ocultas. Também omitidos os trechos sobre expectativas e desapontamentos sexuais (1677–1682), cuja condição envolve maus/aspectos difíceis e não é necessária para as afirmações adotadas."
+        ]
+      },
+      "9": {
+        "pt": "você pode buscar leis e verdades básicas que deem sentido à sua passagem pela vida. em casos extremos, você pode pensar que sabe tudo e justificar o que deseja fazer como se seus pensamentos tivessem aprovação divina.",
+        "en": "you may seek basic laws and truths that give meaning to your passage through life. in extreme cases, you may think you know everything and justify what you want to do as though your thoughts had divine approval.",
+        "keywords": {
+          "pt": [
+            "busca de leis e verdades",
+            "sentido da vida",
+            "pretensão de saber tudo em casos extremos",
+            "justificação divina"
+          ],
+          "en": [
+            "search for laws and truths",
+            "meaning of life",
+            "claims to know everything in extreme cases",
+            "divine justification"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1715,
+            "to": 1718
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1706,
+            "to": 1709
+          }
+        ],
+        "reviewNotes": [
+          "A pretensão de saber tudo e a justificação divina preservam explicitamente “em casos extremos” (1706–1709); não foi inventada condição de maus aspectos. A linha 1709 inicia um exemplo nomeado, não adotado.",
+          "A frase de 1705–1706 sobre conhecimento integrado ser perigoso é gramaticalmente suspeita; omitida sem acrescentar um “não” ausente. Omitidos mito e exemplos criminais, sem atribuir identidade criminosa.",
+          "A inspiração de outros em 1718–1721 depende de não se isolar em abstrações e de aplicar o aprendido; o tema foi omitido por inteiro, sem transformar a condição em instrução. Omitidas recomendações de viagem/estudo, profissões e benefícios familiares condicionados a bons aspectos.",
+          "Livro inspecionado em 48720–49070, não adotado. A tolerância e a abertura a perspectivas em 48764–48770 não foram combinadas mecanicamente com o risco extremo descrito na aula; a identidade da casa 9 é explícita no corpo em 48771–48778, mas há interleaving com casa 10 e OCR “Casa 2” em 48724."
+        ]
+      },
+      "10": {
+        "pt": "você quer ser visto por seu poder, brilhantismo e capacidade de liderança, buscando significado na carreira, no status e no reconhecimento. você pode trazer energia, entusiasmo e visão ao trabalho e organizar outras pessoas, preferindo ter autoridade e espaço para agir.",
+        "en": "you want to be seen for your power, brilliance and leadership ability, seeking meaning in career, status and recognition. you may bring energy, enthusiasm and vision to work and organize other people, preferring to have authority and room to act.",
+        "keywords": {
+          "pt": [
+            "desejo de reconhecimento",
+            "liderança",
+            "energia e entusiasmo",
+            "visão",
+            "autoridade e autonomia"
+          ],
+          "en": [
+            "desire for recognition",
+            "leadership",
+            "energy and enthusiasm",
+            "vision",
+            "authority and autonomy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1735,
+            "to": 1739
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1743,
+            "to": 1745
+          }
+        ],
+        "reviewNotes": [
+          "Reconhecimento e liderança são desejos e capacidades possíveis, não fama ou sucesso alcançado. A linha 1739 inicia alegação de boas posições profissionais, não adotada.",
+          "Omitidos profissões, exemplos nomeados, projeções maternas e a comparação de Sagitário no Meio do Céu/casa 10 em 1760–1761; não há alias de signo/ângulo para Júpiter natal na casa.",
+          "Livro inspecionado em 48720–49070; casa 10 explícita no corpo em 48726, 48758, 48842 e 48845–48846. Promessas de ascensão/sucesso e integridade profissional não foram adotadas; colunas intercalam casa 9."
+        ]
+      },
+      "11": {
+        "pt": "seus horizontes e sua compreensão do sentido da vida podem se ampliar pelo intercâmbio social; você pode ser visto como guia pelo grupo ou esperar que ele lhe ofereça proteção e salvação. seu envolvimento excessivo em atividades sociais ou na vida dos amigos pode dissipar sua energia e afastar você de outras áreas da vida.",
+        "en": "your horizons and understanding of life’s meaning may expand through social exchange; you may be seen as a guide by the group or expect it to offer you protection and salvation. your excessive involvement in social activities or friends’ lives may dissipate your energy and draw you away from other areas of life.",
+        "keywords": {
+          "pt": [
+            "intercâmbio social",
+            "ampliação de horizontes",
+            "projeção de guia e proteção",
+            "envolvimento excessivo",
+            "dispersão de energia"
+          ],
+          "en": [
+            "social exchange",
+            "broadening horizons",
+            "projection of guidance and protection",
+            "excessive involvement",
+            "dissipation of energy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1770,
+            "to": 1773
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1784,
+            "to": 1786
+          }
+        ],
+        "reviewNotes": [
+          "O papel de guia e a expectativa de proteção são projeções ou expectativas alternativas, não promessa de salvação ou proteção efetiva.",
+          "Grandes expectativas e desapontamento quando o grupo falha em resolver problemas (1776–1780) dependem de aspectos difíceis de Júpiter; o tema foi omitido inteiramente, sem universalizar a condição. O excesso de envolvimento e a dispersão em 1784–1786 não recebem essa condição.",
+          "Omitidos número crescente de amigos, causas, metas múltiplas (1787–1792), conselhos de seleção de metas e realização favorecida por amigos; sem inventar quantidades ou prometer êxito.",
+          "Livro inspecionado em 48720–49070, não adotado. Identidade da casa 11 explícita no corpo em 48908 e 48958–48974; amizade benéfica, apoio e realização de metas não foram importados. Há interleaving com casa 12."
+        ]
+      },
+      "12": {
+        "pt": "você pode ter uma fé profunda na benevolência e no significado da vida e buscar a verdade dentro de si. você também pode procurar realização em toda parte, menos em si, e agir de modo temerário ou imprudente.",
+        "en": "you may have deep faith in the benevolence and meaning of life and seek truth within yourself. you may also seek fulfillment everywhere except within yourself and act recklessly or imprudently.",
+        "keywords": {
+          "pt": [
+            "fé na benevolência da vida",
+            "sentido da vida",
+            "verdade interior",
+            "busca externa de realização",
+            "imprudência"
+          ],
+          "en": [
+            "faith in life’s benevolence",
+            "meaning of life",
+            "inner truth",
+            "external pursuit of fulfillment",
+            "recklessness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1803,
+            "to": 1804
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1810,
+            "to": 1811
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1819,
+            "to": 1822
+          }
+        ],
+        "reviewNotes": [
+          "A fé é descrita sem afirmar resgate, anjo da guarda, sorte ou resultado positivo garantido. A busca interior usa somente a localização da verdade em 1810–1811, sem adotar as práticas parentéticas ou instruções que seguem.",
+          "A cláusula negativa sobre eventos externos em 1805–1807 é ambígua; omitida sem reconstruir seu sentido. Não se promete transformar obstáculos em bênçãos.",
+          "A procura de realização fora de si e a imprudência em 1819–1822 permanecem possibilidades; omitidos rótulos diagnósticos, álcool/drogas e o desfecho de autoesfacelamento, sem nexo causal adicional inventado.",
+          "Omitidas práticas de 1811–1817, afirmações físicas/psíquicas, cura, hospitais, profissões e resultados de internação em 1823–1830. Livro inspecionado em 48720–49070, não adotado; casa 12 explícita no corpo em 48911, 48947 e 49015–49022, com colunas intercaladas de casa 11."
+        ]
+      }
     }
   }
 }
