@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add Portuguese tree descriptions through `getTreeDescription` and
+  `getTreeNodeDescriptions`, covering all three systems and shared core metadata.
+
 - Add Portuguese gematria individuality, personality and synthesis meanings through
   `getGematriaData`, sourced from class material with OCR adaptations marked for review.
 

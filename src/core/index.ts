@@ -6,3 +6,4 @@ export * from './topology';
 export * from './tree-of-life';
 export * from './types';
 export * from './workspace';
+export * from './descriptions';

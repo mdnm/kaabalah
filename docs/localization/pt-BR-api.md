@@ -52,3 +52,7 @@ The new getter also localizes transformed and nuclear hexagram texts. Each text 
 ## Gematria
 
 `getGematriaData('pt-BR')` from `kaabalah/gematria` returns `.INDIVIDUALITY_NUMBER_MEANINGS`, `.PERSONALITY_NUMBER_MEANINGS` and `.SYNTHESIS_NUMBER_MEANINGS`. All 39 texts are adapted from module 3, class 13, with source lines and pending review recorded in `gematria-review.json`. OCR repairs, particularly master numbers 11, 33 and 44, need Mat's review.
+
+## Tree descriptions
+
+`getTreeDescription(englishText, 'pt-BR')` and `getTreeNodeDescriptions(node, 'pt-BR')` from `kaabalah/core` cover meanings, colors, musical notes and shared sphere/world/letter descriptions across all three systems. The node getter returns optional `meaning`, `colorDescription`, `noteDescription`, `nameMeaning`, `letterMeaning`, `symbol` and `hieroglyph`. `nameMeaning` translates the meaning of a sphere/world name; the node's own name and branded ID remain unchanged. Unknown description lookups return undefined; custom node text is returned unchanged by the node getter. All 184 catalog rows have pending review provenance in `tree-review.json`.
