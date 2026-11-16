@@ -27,6 +27,7 @@ export type PlanetHouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type HouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionAngle = "ascendant" | "mc" | "dc" | "ic";
 export type AngleSignDescriptionEntry = PlanetSignDescriptionEntry;
+export type AngleDescriptionEntry = PlanetSignDescriptionEntry;
 export type PlanetDescriptionEntry = PlanetSignDescriptionEntry;
 export type SignDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionElement = TriplicityElement;
@@ -52,6 +53,7 @@ export interface AstrologyDescriptions {
   readonly elements?: Readonly<Partial<Record<DescriptionElement, ElementDescriptionEntry>>>;
   readonly modalities?: Readonly<Partial<Record<DescriptionModality, ModalityDescriptionEntry>>>;
   readonly polarities?: Readonly<Partial<Record<DescriptionPolarity, PolarityDescriptionEntry>>>;
+  readonly angles?: Readonly<Partial<Record<DescriptionAngle, AngleDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -209,5 +211,18 @@ export function getPolarityDescriptionEntry(polarity: DescriptionPolarity): Pola
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getPolarityDescription(polarity: DescriptionPolarity, language?: string): string | undefined {
   const entry = getPolarityDescriptionEntry(polarity);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** General angle concepts, independent of numbered cusps or angle-sign placements. */
+export function getAngleDescriptionEntry(angle: DescriptionAngle): AngleDescriptionEntry | undefined {
+  const angles = ASTROLOGY_DESCRIPTIONS.angles;
+  if (!angles || !Object.prototype.hasOwnProperty.call(angles, angle)) return undefined;
+  return angles[angle];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getAngleDescription(angle: DescriptionAngle, language?: string): string | undefined {
+  const entry = getAngleDescriptionEntry(angle);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

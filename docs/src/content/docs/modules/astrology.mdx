@@ -21,6 +21,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ```typescript
 import {
+  getAngleDescription,
+  getAngleDescriptionEntry,
   getPolarityDescription,
   getPolarityDescriptionEntry,
   getModalityDescription,
@@ -51,6 +53,8 @@ getModalityDescription('Cardinal', 'pt-BR');
 getModalityDescriptionEntry('Cardinal')?.src;
 getPolarityDescription('positive', 'pt-BR');
 getPolarityDescriptionEntry('negative')?.src;
+getAngleDescription('dc', 'pt-BR'); // general Descendant concept
+getAngleDescriptionEntry('mc')?.src;
 
 getPlanetSignDescription('sun', 'Aries');          // English (default)
 getPlanetSignDescription('sun', 'Aries', 'pt-BR'); // Portuguese
@@ -73,7 +77,7 @@ getAngleSignDescription('ic', 'Cancer', 'pt-BR'); // actual Imum Coeli sign
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
@@ -92,7 +96,8 @@ The course explicitly qualifies its sign profiles this way (class 3, lines 531-5
 They do not assign a person's evolutionary level or promise outcomes.
 Numbered house themes describe domains of life. House numbers and angles have
 distinct chart fields. Angle lookups use `ascendant`, `mc`, `ic` and `dc`,
-independently of house cusps. Currently `ascendant`, `mc` and `ic` are authored. Descendant (`dc`)
+independently of house cusps. All four general angle concepts are authored.
+For angle-sign placements, currently `ascendant`, `mc` and `ic` are authored. Descendant (`dc`)
 combinations return `undefined`; that supplemental coverage requires a separate
 scope decision.
 

@@ -11117,5 +11117,118 @@
         "A2's claim that this disposition applies even to men at lines 109-110 was inspected and excluded. Sign-membership classifications were excluded; A18 lines 666-670 calls Capricorn masculine in a specific Lilith/Priapo passage, while A2/A11 classify it negative/feminine. This conflict remains unresolved and no sign assignment is made."
       ]
     }
+  },
+  "angles": {
+    "ascendant": {
+      "pt": "no seu mapa, o Ascendente aponta a face que você apresenta ao mundo e as características que mostra. também se relaciona a como os outros veem você num primeiro contato e ao que você vê neles.",
+      "en": "in your chart, the Ascendant points to the face you present to the world and the qualities you show. it also relates to how others see you on first contact and what you see in them.",
+      "keywords": {
+        "pt": [
+          "face apresentada",
+          "expressão externa",
+          "primeira impressão"
+        ],
+        "en": [
+          "presented face",
+          "outward expression",
+          "first impression"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 76,
+          "to": 79
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the presented face, shown qualities, and first-impression meanings from lines 77-79. No sign, house-rulership, or biography claim was imported."
+      ]
+    },
+    "mc": {
+      "pt": "no seu mapa, o Meio-do-Céu aponta vocações, aspirações e ambições, além do rumo para onde você quer ir. também se relaciona à vida social, reputação, profissão, posição social e imagem pública.",
+      "en": "in your chart, the Midheaven points to vocations, aspirations, and ambitions, as well as the direction you want to take. it also relates to social life, reputation, profession, social standing, and public image.",
+      "keywords": {
+        "pt": [
+          "vocação",
+          "aspiração",
+          "reputação",
+          "imagem pública"
+        ],
+        "en": [
+          "vocation",
+          "aspiration",
+          "reputation",
+          "public image"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 124,
+          "to": 127
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the vocational, aspirational, social, reputational, professional, status, and public-image themes from lines 124-127.",
+        "Inspected lines 55-57 and 118-123 but did not adopt the source's description of MC as zenith or its house-cusp association. MC is treated here as a chart angle independent of numbered house cusps."
+      ]
+    },
+    "dc": {
+      "pt": "no seu mapa, o Descendente representa o outro em relação ao eu e aquilo que você busca nas outras pessoas. esse tema se estende a diferentes relações, como parcerias de trabalho, conjugalidade e amizade.",
+      "en": "in your chart, the Descendant represents the other in relation to the self and what you seek in other people. this theme extends across relationships such as business partnerships, marriage, and friendship.",
+      "keywords": {
+        "pt": [
+          "o outro",
+          "busca relacional",
+          "parceria",
+          "amizade"
+        ],
+        "en": [
+          "the other",
+          "relational search",
+          "partnership",
+          "friendship"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 111,
+          "to": 116
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the other/self contrast and what one seeks in others across relationships, including business partnership, spouse, and friendship. No house-system rule or partner outcome is asserted."
+      ]
+    },
+    "ic": {
+      "pt": "no seu mapa, o Fundo-do-Céu aponta suas origens, raízes e sua vida interior. também se relaciona ao lar e à infância.",
+      "en": "in your chart, the Imum Coeli points to your origins, roots, and inner self. it also relates to home and childhood.",
+      "keywords": {
+        "pt": [
+          "origens",
+          "raízes",
+          "vida interior",
+          "lar"
+        ],
+        "en": [
+          "origins",
+          "roots",
+          "inner life",
+          "home"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 134,
+          "to": 137
+        }
+      ],
+      "reviewNotes": [
+        "Adopted origins, family roots, home, childhood, and inner self from lines 134-137. Omitted the source's claim about a final resting place and its good/bad character framing; no house-cusp association is treated as universal."
+      ]
+    }
   }
 }

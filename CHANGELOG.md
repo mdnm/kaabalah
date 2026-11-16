@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add four bilingual angle concepts with typed chart-angle keys and source audits.
+
 - Add two bilingual polarity profiles with typed getters, precise source ranges and explicit classification gaps.
 
 - Add three source-audited bilingual modality profiles with canonical typed keys
