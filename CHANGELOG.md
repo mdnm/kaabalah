@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Sun-sign descriptions, immutable
+  provenance and typed getters, preserving calculation behavior and English defaults.
+
 - Align Portuguese minor tarot wording with all 56 class keyword sections and
   use Pajem in localized card names, with source references for review.
 

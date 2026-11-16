@@ -17,6 +17,34 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ---
 
+## Bilingual natal descriptions
+
+```typescript
+import {
+  getPlanetSignDescription,
+  getPlanetSignDescriptionEntry,
+} from 'kaabalah/astrology';
+
+getPlanetSignDescription('sun', 'Aries');          // English (default)
+getPlanetSignDescription('sun', 'Aries', 'pt-BR'); // Portuguese
+const entry = getPlanetSignDescriptionEntry('sun', 'Aries');
+entry?.keywords.pt; // source-supported Portuguese keywords
+entry?.src;         // course-relative files and inclusive line ranges
+entry?.reviewNotes; // retained source disagreements or OCR decisions
+```
+
+Currently covers the twelve Sun signs. Other planet sets and unsupported keys return
+`undefined`; there is no generic profile fallback. Keys use lowercase chart planet
+names and title-case signs. Entries, keywords and source metadata are deeply frozen.
+Portuguese is selected when `language?.startsWith('pt')`; other languages use English.
+
+These are general placement tendencies, read with the other factors in a natal chart.
+The course explicitly qualifies its sign profiles this way (class 3, lines 531-535).
+They do not assign a person's evolutionary level or promise outcomes.
+
+The repository audit in `docs/content/astrology-descriptions-sun-signs.md` records
+source decisions, supported coverage and the next factor to implement.
+
 ## 1. Birth Charts
 
 ```typescript

@@ -1,0 +1,340 @@
+{
+  "planetSigns": {
+    "sun": {
+      "Aries": {
+        "pt": "você põe calor, entusiasmo e vontade nas suas iniciativas, com energia pra criar e abrir caminho. a liderança pode vir junto de impulsividade e obstinação, inclusive na tentativa de impor seu ponto de vista.",
+        "en": "you bring warmth, enthusiasm and will to your initiatives, with energy to create and break new ground. leadership can come with impulsiveness and stubbornness, including attempts to impose your point of view.",
+        "keywords": {
+          "pt": [
+            "iniciativa",
+            "entusiasmo",
+            "liderança",
+            "impulsividade"
+          ],
+          "en": [
+            "initiative",
+            "enthusiasm",
+            "leadership",
+            "impulsiveness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 286,
+            "to": 298
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Taurus": {
+        "pt": "você constrói com firmeza, paciência e reflexão, sustentando o que quer fazer com vontade e persistência. essa constância pode virar teimosia, e você também pode tender à inércia e à indiferença.",
+        "en": "you build with steadiness, patience and reflection, sustaining what you want to do through will and persistence. that constancy can become stubbornness, and you can also tend toward inertia and indifference.",
+        "keywords": {
+          "pt": [
+            "firmeza",
+            "paciência",
+            "reflexão",
+            "teimosia"
+          ],
+          "en": [
+            "steadiness",
+            "patience",
+            "reflection",
+            "stubbornness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 310,
+            "to": 317
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Gemini": {
+        "pt": "você se move pela curiosidade, pela troca e pelo gosto de raciocinar, com facilidade pra discernir, inventar e comunicar. a rotina e o tédio pesam, e a busca de experiências pode levar à dispersão, à superficialidade e ao afastamento das responsabilidades.",
+        "en": "you are moved by curiosity, exchange and the pleasure of reasoning, with ease in discerning, inventing and communicating. routine and boredom weigh on you, and the search for experiences can lead to scattered attention, superficiality and avoidance of responsibilities.",
+        "keywords": {
+          "pt": [
+            "curiosidade",
+            "comunicação",
+            "discernimento",
+            "versatilidade"
+          ],
+          "en": [
+            "curiosity",
+            "communication",
+            "discernment",
+            "versatility"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 328,
+            "to": 342
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Cancer": {
+        "pt": "você vive as coisas com sensibilidade, imaginação e uma reserva que pode conviver com a disposição de escutar e compreender. o conforto e a vida doméstica têm peso, mas o apego à família e ao passado pode se tornar excessivo.",
+        "en": "you experience things with sensitivity, imagination and a reserve that can coexist with a willingness to listen and understand. comfort and home life carry weight, but attachment to family and the past can become excessive.",
+        "keywords": {
+          "pt": [
+            "sensibilidade",
+            "imaginação",
+            "reserva",
+            "vida doméstica"
+          ],
+          "en": [
+            "sensitivity",
+            "imagination",
+            "reserve",
+            "home life"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 356,
+            "to": 370
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Leo": {
+        "pt": "você exterioriza ideias e sentimentos com calor e generosidade, buscando liderar, brilhar e ocupar uma posição de autoridade. essa autoridade pode vir com obstinação, vaidade e pouca percepção dos próprios defeitos, além da facilidade de se deixar levar pela bajulação.",
+        "en": "you express ideas and feelings outwardly with warmth and generosity, seeking to lead, shine and hold a position of authority. that authority can come with stubbornness, vanity and little awareness of your own faults, as well as susceptibility to flattery.",
+        "keywords": {
+          "pt": [
+            "expressão",
+            "generosidade",
+            "liderança",
+            "reconhecimento"
+          ],
+          "en": [
+            "expression",
+            "generosity",
+            "leadership",
+            "recognition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 377,
+            "to": 379
+          },
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 385,
+            "to": 391
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Virgo": {
+        "pt": "você sente uma necessidade acentuada de se afirmar e conta com análise, observação e organização pra lidar com os detalhes. essa afirmação pode aumentar o egocentrismo, enquanto a atenção às minúcias pode dificultar a visão do todo e alimentar a crítica.",
+        "en": "you feel a heightened need to assert yourself and draw on analysis, observation and organization to handle details. that self-assertion can increase self-centeredness, while attention to particulars can make it harder to see the whole and feed criticism.",
+        "keywords": {
+          "pt": [
+            "afirmação",
+            "análise",
+            "organização",
+            "minúcias"
+          ],
+          "en": [
+            "self-assertion",
+            "analysis",
+            "organization",
+            "particulars"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 402,
+            "to": 403
+          },
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 407,
+            "to": 415
+          }
+        ],
+        "reviewNotes": [
+          "Course OCR interleaves Virgo and Libra: Virgo uses 402-403 and 407-415; Libra 405-406 is excluded from this entry.",
+          "Book 24375-24396 emphasizes service and modesty; course 402-403 explicitly emphasizes increased ego and self-assertion. Course emphasis is retained, not blended into the opposite claim."
+        ]
+      },
+      "Libra": {
+        "pt": "você busca harmonia e conciliação, considerando os dois lados de uma questão e dando uma direção mais consciente aos impulsos sem perder o entusiasmo pela vida. essa disposição diplomática pode vir acompanhada de indecisão, embora a definição do que quer favoreça sua ação.",
+        "en": "you seek harmony and reconciliation, considering both sides of an issue and giving impulses a more conscious direction while retaining enthusiasm for life. that diplomatic disposition can come with indecision, although defining what you want helps you act.",
+        "keywords": {
+          "pt": [
+            "harmonia",
+            "conciliação",
+            "diplomacia",
+            "indecisão"
+          ],
+          "en": [
+            "harmony",
+            "reconciliation",
+            "diplomacy",
+            "indecision"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 405,
+            "to": 406
+          },
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 420,
+            "to": 425
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Scorpio": {
+        "pt": "você encontra mais facilidade pra se expressar e organizar sua força e agressividade, com vontade, persistência e gosto pela investigação. essa força mantém a resistência à autoridade e pode conviver com desconfiança e ciúme, mesmo quando você age com coragem e cautela.",
+        "en": "you find greater ease in expressing yourself and organizing your strength and aggressiveness, with will, persistence and a taste for investigation. that strength retains resistance to authority and can coexist with suspicion and jealousy, even when you act with courage and caution.",
+        "keywords": {
+          "pt": [
+            "vontade",
+            "persistência",
+            "investigação",
+            "resistência à autoridade"
+          ],
+          "en": [
+            "will",
+            "persistence",
+            "investigation",
+            "resistance to authority"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 437,
+            "to": 446
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Sagittarius": {
+        "pt": "você se expressa com calor e tende a centralizar as situações, valorizando a liberdade, a franqueza e o senso de justiça. o otimismo e a independência podem conviver com rebeldia, desperdício e dificuldade de receber críticas.",
+        "en": "you express yourself with warmth and tend to centralize situations, valuing freedom, frankness and a sense of justice. optimism and independence can coexist with rebelliousness, wastefulness and difficulty receiving criticism.",
+        "keywords": {
+          "pt": [
+            "otimismo",
+            "liberdade",
+            "franqueza",
+            "justiça"
+          ],
+          "en": [
+            "optimism",
+            "freedom",
+            "frankness",
+            "justice"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 458,
+            "to": 465
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Capricorn": {
+        "pt": "você sustenta suas ambições com disciplina, prudência e perseverança, e o Sol acrescenta calor humano que facilita o contato com os outros. a seriedade e o respeito pelo dever podem conviver com pessimismo, reserva e apego à tradição.",
+        "en": "you sustain your ambitions with discipline, prudence and perseverance, and the Sun adds human warmth that eases contact with others. seriousness and respect for duty can coexist with pessimism, reserve and attachment to tradition.",
+        "keywords": {
+          "pt": [
+            "ambição",
+            "disciplina",
+            "perseverança",
+            "calor humano"
+          ],
+          "en": [
+            "ambition",
+            "discipline",
+            "perseverance",
+            "human warmth"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 476,
+            "to": 486
+          }
+        ],
+        "reviewNotes": []
+      },
+      "Aquarius": {
+        "pt": "você valoriza a liberdade, as reformas e o que é novo ou incomum, com criatividade e interesse humanitário. o Sol em exílio acentua a preocupação consigo, e a abertura à mudança pode conviver com imprevisibilidade e aversão à rotina.",
+        "en": "you value freedom, reform and what is new or unusual, with creativity and humanitarian concern. the Sun in detriment heightens self-concern, and openness to change can coexist with unpredictability and aversion to routine.",
+        "keywords": {
+          "pt": [
+            "liberdade",
+            "reformas",
+            "criatividade",
+            "preocupação consigo"
+          ],
+          "en": [
+            "freedom",
+            "reform",
+            "creativity",
+            "self-concern"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 496,
+            "to": 502
+          }
+        ],
+        "reviewNotes": [
+          "Book 25785-25890 emphasizes contribution and emotional distance; course 496-497 explicitly adds self-concern with the Sun in detriment. Course emphasis is retained."
+        ]
+      },
+      "Pisces": {
+        "pt": "você conta com a ação do Sol pra refletir antes de seguir o primeiro impulso, trazendo disciplina e equilíbrio à sensibilidade. a imaginação e a compaixão podem conviver com uma postura passiva e receptiva e com a tendência de buscar soluções místicas pras dificuldades.",
+        "en": "you draw on the action of the Sun to reflect before following the first impulse, bringing discipline and balance to sensitivity. imagination and compassion can coexist with a passive, receptive stance and a tendency to seek mystical solutions to difficulties.",
+        "keywords": {
+          "pt": [
+            "reflexão",
+            "sensibilidade",
+            "imaginação",
+            "compaixão"
+          ],
+          "en": [
+            "reflection",
+            "sensitivity",
+            "imagination",
+            "compassion"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+            "from": 514,
+            "to": 521
+          }
+        ],
+        "reviewNotes": [
+          "Book 26087-26104 emphasizes decisions by feeling and intuition; course 514-516 explicitly describes reflection before impulse, discipline and balance. Course emphasis is retained."
+        ]
+      }
+    }
+  }
+}
