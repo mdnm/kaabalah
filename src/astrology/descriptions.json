@@ -4491,6 +4491,460 @@
           "OCR no primário inclui Corno/Lua ruas/unia (260), Sem preceder (264), conciliar (281) e mão delas (286). Não se reconstruiu a intenção das expressões ambíguas; da linha 281 adota-se apenas a vividez explicitamente legível em 280–281, não um mecanismo de ocultação emocional."
         ]
       }
+    },
+    "mercury": {
+      "1": {
+        "pt": "você tende a se tornar consciente de si e da vida por meio da curiosidade e das perguntas, com inclinação analítica e capacidade de conectar ideias. a maneira de pensar e agir varia conforme o signo e os aspectos, e você pode atribuir significado ao mundo a partir do que pensa dele.",
+        "en": "you may become aware of yourself and life through curiosity and questions, with an analytical bent and an ability to connect ideas. your way of thinking and acting varies with sign and aspects, and you may assign meaning to the world through what you think of it.",
+        "keywords": {
+          "pt": [
+            "curiosidade e perguntas",
+            "inclinação analítica",
+            "conexão entre ideias",
+            "expressão condicionada por signo e aspectos",
+            "significado atribuído pelo pensamento"
+          ],
+          "en": [
+            "curiosity and questions",
+            "analytical bent",
+            "connecting ideas",
+            "expression conditioned by sign and aspects",
+            "meaning assigned through thought"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 304,
+            "to": 309
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 317,
+            "to": 318
+          }
+        ],
+        "reviewNotes": [
+          "A variação por signo e aspectos foi preservada como condição geral; os exemplos específicos das linhas 310–316 não foram incluídos no texto final.",
+          "A formulação sobre atribuir significado ao mundo foi mantida sem reproduzir o conselho da fonte para mudar atitudes.",
+          "O livro foi inspecionado nas janelas 35721–35726 e 35793–35811; não foi adotado por redundância e por OCR/colunas intercaladas no material próximo."
+        ]
+      },
+      "2": {
+        "pt": "se Mercúrio estiver bem aspectado, você pode mostrar habilidade com dinheiro e finanças. inventividade, destreza, flexibilidade e habilidade com as palavras podem ser recursos a desenvolver, enquanto conhecer o funcionamento do mundo físico pode trazer segurança.",
+        "en": "if Mercury is well aspected, you may show skill with money and finances. inventiveness, dexterity, flexibility and skill with words may be qualities to develop, while understanding how the physical world works may bring security.",
+        "keywords": {
+          "pt": [
+            "habilidade financeira condicionada a bons aspectos",
+            "inventividade e destreza",
+            "flexibilidade e uso das palavras",
+            "segurança pelo conhecimento e aprendizagem"
+          ],
+          "en": [
+            "financial skill conditioned by favorable aspects",
+            "inventiveness and dexterity",
+            "flexibility and use of words",
+            "security through knowledge and learning"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 329,
+            "to": 334
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 335,
+            "to": 338
+          }
+        ],
+        "reviewNotes": [
+          "A habilidade financeira permanece qualificada por 'se bem aspectado'; não se promete ganho.",
+          "A redação sobre arbitrariedades e apostas foi omitida por ambiguidade/OCR e por não ser necessária para os claims finais.",
+          "A frase das linhas 338–340 sobre Fogo/Terra e o tempo de compreensão pela experiência tem construção/OCR gramaticalmente danificada; foi omitida, sem reconstruir uma regra por signo.",
+          "A fonte suplementar foi inspecionada nas janelas 35819–35832 e 35834–35860. Os blocos estão intercalados com conteúdo das casas 1 e 2 e têm lacunas OCR; não foram adotados.",
+          "Foram omitidos exemplos de profissões, distribuição/produção de bens e afirmações sobre corpo ou posses como maior bem."
+        ]
+      },
+      "3": {
+        "pt": "quando Mercúrio não está mal aspectado, você tende a ter intelecto vivo, espirituoso e observador, com comunicação e respostas rápidas e atenção a detalhes. você também pode selecionar fatos que apoiem o argumento que quer defender.",
+        "en": "when Mercury is not badly aspected, you may have a lively, witty, and observant intellect, with quick communication and replies and attention to detail. you may also select facts that support the case you want to make.",
+        "keywords": {
+          "pt": [
+            "intelecto vivo e espirituoso condicionado por aspectos",
+            "observação e atenção a detalhes",
+            "comunicação e respostas rápidas",
+            "seleção de fatos favoráveis ao próprio argumento"
+          ],
+          "en": [
+            "lively, witty intellect conditioned by aspects",
+            "observation and attention to detail",
+            "quick communication and replies",
+            "selection of facts supporting one's own case"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 359,
+            "to": 362
+          }
+        ],
+        "reviewNotes": [
+          "Mantida explicitamente a condição: o intelecto vivo, espirituoso e observador é descrito quando Mercúrio não está mal aspectado.",
+          "Preservado o traço menos confortável de selecionar fatos para apoiar o próprio argumento.",
+          "Signo/aspectos e estilos de aprendizagem das linhas 347–358 não entraram no produto final; a discussão de dificuldades de aprendizagem permanece registrada nesta auditoria, não como claim do registro.",
+          "O livro foi inspecionado na janela 35931–35955. O fragmento está intercalado e truncado por OCR; não foi adotado.",
+          "Final review resolution: nonconventional minds in 354–356 are distinct from learning difficulties tied to Uranus/Neptune/Pluto aspects in 356–358. Neither omitted clause becomes a condition on all nonconventional thought; the adopted intellect condition is only the one in 359–360."
+        ]
+      },
+      "4": {
+        "pt": "seu ambiente familiar pode valorizar o intelecto e a racionalidade, às vezes às custas dos sentimentos, do calor humano e do contato físico. se Mercúrio recebe aspectos difíceis na casa 4, podem ocorrer mais mudanças, brigas e amarguras no lar; atividades mentais e educativas também podem acontecer em casa.",
+        "en": "your family environment may value intellect and rationality, sometimes at the expense of feelings, warmth and physical closeness. if Mercury receives difficult aspects in the fourth house, more changes, quarrels, and bitterness may occur at home; mental and educational activities may also take place there.",
+        "keywords": {
+          "pt": [
+            "ambiente familiar intelectual ou acadêmico",
+            "racionalidade às custas de sentimentos e calor humano",
+            "conflito doméstico condicionado por aspectos difíceis",
+            "atividades mentais e educativas em casa"
+          ],
+          "en": [
+            "intellectual or academic family environment",
+            "rationality at the expense of feelings and warmth",
+            "domestic conflict conditioned by difficult aspects",
+            "mental and educational activities at home"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 381,
+            "to": 382
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 390,
+            "to": 393
+          }
+        ],
+        "reviewNotes": [
+          "A redação final preserva intelecto/racionalidade e o possível custo para sentimentos, calor humano e contato físico em 381–382, sem reconstruir o contraste ambíguo da palavra sensível. Ambiente familiar permanece possibilidade, não história universal.",
+          "Condição preservada: mudanças, brigas e amarguras são associadas a aspectos difíceis de Mercúrio na casa 4.",
+          "Atividades mentais e educativas em casa são claim distinto, apoiado pelas linhas 392–393.",
+          "O título associa a seção a Gêmeos e Virgem no Fundo do Céu, mas esses paralelos de signo/ângulo não foram usados como significados automáticos de Mercúrio na casa 4.",
+          "A fonte suplementar foi inspecionada nas janelas 35957–36015; as colunas estão intercaladas e fragmentárias, portanto nenhum claim suplementar foi adotado."
+        ]
+      },
+      "5": {
+        "pt": "você pode usar hobbies, recreações e tentativas criativas para ampliar a consciência de si e do ambiente. a expressão artística pode ser um meio de pensar, sentir e comunicar, e a experiência pode ser melhor compreendida quando ganha forma em palavras, desenhos, canções ou danças.",
+        "en": "you may use hobbies, recreation, and creative efforts to become more aware of yourself and your surroundings. artistic expression may be a way to think, feel, and communicate, and experience may be better understood when shaped into words, drawings, songs, or dances.",
+        "keywords": {
+          "pt": [
+            "hobbies",
+            "recreações",
+            "consciência de si",
+            "expressão artística",
+            "pensar",
+            "sentir",
+            "comunicar",
+            "palavras",
+            "desenhos",
+            "canções",
+            "danças"
+          ],
+          "en": [
+            "hobbies",
+            "recreation",
+            "self-awareness",
+            "artistic expression",
+            "think",
+            "feel",
+            "communicate",
+            "words",
+            "drawings",
+            "songs",
+            "dances"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 407,
+            "to": 412
+          }
+        ],
+        "reviewNotes": [
+          "Não foram adotados exemplos de pessoas nomeadas nem os trechos sobre romance, filhos, profissões ou Gêmeos/Virgem na cúspide/contidos na casa; são passagens distintas, não atributos automáticos de Mercúrio na casa."
+        ]
+      },
+      "6": {
+        "pt": "você pode adquirir conhecimento ao lidar com o cotidiano e o corpo, mas também sentir uma necessidade excessiva de se manter ocupado, dispersando tempo em atividades que não levam a lugar algum. o trabalho tende a ser mais adequado quando é mentalmente cativante.",
+        "en": "you may acquire knowledge through daily life and the body, while also feeling an excessive need to keep busy and scattering time across activities that lead nowhere. work tends to suit you better when it is mentally engaging.",
+        "keywords": {
+          "pt": [
+            "conhecimento no cotidiano",
+            "corpo",
+            "excesso de necessidade de se manter ocupado",
+            "tempo desperdiçado",
+            "atividades sem resultado",
+            "trabalho mentalmente cativante"
+          ],
+          "en": [
+            "knowledge through daily life",
+            "body",
+            "excessive need to keep busy",
+            "wasted time",
+            "activities leading nowhere",
+            "mentally engaging work"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 436,
+            "to": 438
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 457,
+            "to": 460
+          }
+        ],
+        "reviewNotes": [
+          "A aprendizagem pelo cotidiano e pelo corpo é descrita sem afirmação diagnóstica, terapêutica ou prescritiva. Preservada a tensão entre necessidade excessiva de ocupação e atividades sem resultado, junto da preferência por trabalho mentalmente cativante. Mobilidade é mencionada com ressalva específica para Gêmeos na cúspide da casa 6 (linhas 460–461) e precisão/atenção a detalhes para Virgem (461–463); nenhuma foi generalizada como efeito de Mercúrio na casa. Omitidas alegações e recomendações de saúde.",
+          "Final review resolution: mentally engaging work is supported at physical line 460 independently of the following Gemini-cusp movement clause. Adopted body/daily learning at 436–438 remains descriptive, not medical advice."
+        ]
+      },
+      "7": {
+        "pt": "você tende a aprender pelo contato com outras pessoas e também a ensinar e compartilhar ideias, buscando entender o que elas pensam. algumas pessoas com essa posição tentam fazer outra pessoa pensar, falar e tomar decisões por elas.",
+        "en": "you tend to learn through contact with other people and also to teach and share ideas, seeking to understand what they think. some people with this placement try to get another person to think, speak, and make decisions for them.",
+        "keywords": {
+          "pt": [
+            "aprender pelo contato",
+            "ensinar",
+            "compartilhar ideias",
+            "entender o que os outros pensam",
+            "projeção",
+            "outra pessoa tomar decisões"
+          ],
+          "en": [
+            "learning through contact",
+            "teaching",
+            "sharing ideas",
+            "understanding others’ thoughts",
+            "projection",
+            "another person making decisions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 467,
+            "to": 472
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 475,
+            "to": 478
+          }
+        ],
+        "reviewNotes": [
+          "A fonte também descreve atrair alguém alienado, pouco confiável ou difícil de dominar e associa a essa segunda possibilidade um ganho secundário de não ser subjugado (linhas 475–478). Essa associação não foi incluída porque não se aplica claramente à tentativa de terceirizar pensamento, fala e decisões; o registro mantém somente a primeira tendência."
+        ]
+      },
+      "8": {
+        "pt": "você pode se sentir levado a investigar o que está oculto ou menos óbvio, observando os intercâmbios entre as pessoas e explorando segredos e mistérios. também pode preferir manter seus próprios pensamentos e motivações em segredo, e voltar a mente para investigações e trabalhos de pesquisa.",
+        "en": "you may feel drawn to investigate what is hidden or less obvious, observing exchanges between people and exploring secrets and mysteries. you may also prefer to keep your own thoughts and motives secret and turn your mind toward investigation and research.",
+        "keywords": {
+          "pt": [
+            "investigar",
+            "oculto",
+            "menos óbvio",
+            "intercâmbios",
+            "segredos",
+            "mistérios",
+            "manter pensamentos e motivações em segredo",
+            "trabalhos de pesquisa"
+          ],
+          "en": [
+            "investigate",
+            "hidden",
+            "less obvious",
+            "exchanges",
+            "secrets",
+            "mysteries",
+            "keeping thoughts and motives secret",
+            "research"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 493,
+            "to": 502
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 512,
+            "to": 513
+          }
+        ],
+        "reviewNotes": [
+          "Adotadas curiosidade investigativa, sigilo dos próprios pensamentos/motivações e pesquisa. O texto também diz que a pessoa pode ser fria e distante em assuntos que provocam paixão e medo (linhas 512–513); essa característica desconfortável foi omitida por limite de concisão e não substituída por traço positivo. Excluídos finanças, sexualidade, saúde, contratos, morte e recomendações. Referências a Mercúrio ou Virgem na casa (512) não foram convertidas em afirmações automáticas específicas sobre Virgem.",
+          "Final review resolution: Mercúrio ou Virgem at physical 512 explicitly includes Mercury alone. Research is retained without an invented additional Virgo condition; the source teaches that trait jointly for either placement."
+        ]
+      },
+      "9": {
+        "pt": "você pode buscar uma perspectiva mais ampla da existência pelo estudo, pela leitura e por viagens, com vontade de ensinar e compartilhar descobertas. se Mercúrio estiver mal aspectado, pode haver adesão fanática às próprias crenças ou versões da verdade.",
+        "en": "you may seek a broader perspective on existence through study, reading and travel, with a desire to teach and share discoveries. if Mercury is poorly aspected, there may be fanatical adherence to your own beliefs or versions of truth.",
+        "keywords": {
+          "pt": [
+            "perspectiva ampla",
+            "estudo e leitura",
+            "viagens",
+            "ensino e compartilhamento de descobertas",
+            "fanatismo sob maus aspectos de Mercúrio"
+          ],
+          "en": [
+            "broad perspective",
+            "study and reading",
+            "travel",
+            "teaching and sharing discoveries",
+            "fanaticism under difficult Mercury aspects"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 521,
+            "to": 527
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 529,
+            "to": 530
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente: 517–539. Adotado: 521–527 e 529–530, apenas ampliação da perspectiva, estudo/leitura/viagens, desejo de ensinar/compartilhar e fanatismo explicitamente condicionado a Mercúrio mal aspectado. Viagens e ensino são interesses possíveis, não eventos ou carreira garantidos.",
+          "Não foram adotados parentes distantes, influência de grande viagem, fofocas/desavenças familiares ou profissões listadas. Gêmeos/Virgem na casa 9 em 535–539 são fatores separados e não foram convertidos em características de Mercúrio na casa.",
+          "A sequência 530–531 afirma que fatos favoráveis à crença são aceitos e que outras crenças também são bem vistas, em tensão com o alerta de fanatismo. Não foi reconstruída uma negação ausente nem adotado um mecanismo de seleção de fatos.",
+          "Livro inspecionado: 36265–36330. Identidade da casa 9 explícita no corpo em 36292/36296, com continuação 36300–36301, mas intercalada à casa 10. Nenhuma afirmação do livro foi adotada; não se recompuseram colunas para acrescentar traços."
+        ]
+      },
+      "10": {
+        "pt": "você pode aprender sobre si e sobre o ambiente ao buscar uma carreira e perseguir ambições profissionais. também pode querer parecer brilhante, inteligente e capaz e ser lembrado por essas qualidades.",
+        "en": "you may learn about yourself and your surroundings while seeking a career and pursuing professional ambitions. you may also want to appear bright, intelligent and capable and be remembered for those qualities.",
+        "keywords": {
+          "pt": [
+            "aprendizado sobre si e o ambiente",
+            "busca de carreira",
+            "ambições profissionais",
+            "desejo de parecer brilhante, inteligente e capaz e ser lembrado por essas qualidades"
+          ],
+          "en": [
+            "learning about yourself and your surroundings",
+            "career search",
+            "professional ambitions",
+            "desire to appear bright, intelligent and capable and be remembered for those qualities"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 545,
+            "to": 548
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente: 540–561. Adotado: 545–548; aprendizado no percurso profissional em 545–547 e desejo de parecer brilhante, inteligente e capaz e ser lembrado por essas qualidades em 547–548. A formulação descreve um desejo de imagem e lembrança, não garantia de prestígio, emprego ou sucesso.",
+          "A lista de profissões em 542–545 não foi convertida em destino. A interpretação da casa 10 como mãe é explicitamente condicional em 549; relatos sobre mãe, instabilidade mental e conflitos de comunicação sob aspectos duros em 549–556 não foram universalizados nem adotados.",
+          "Gêmeos/Virgem no Meio do Céu, na cúspide ou na casa 10 em 540 e 557–561 são passagens distintas. Não se inferiu signo de ângulo, múltiplas carreiras, perfeccionismo no trabalho, história familiar ou equivalência MC=10 a partir de Mercúrio na casa.",
+          "Livro inspecionado: 36265–36330. Casa 10 identificada no corpo em 36294/36298, com fragmento de comunicação estratégica em carreira e continuação deslocada em 36303 e 36325–36326. Nenhuma afirmação suplementar adotada; negociação/persuasão não foram acrescentadas por proximidade do cabeçalho.",
+          "Final precision resolution: desire to appear bright, intelligent and capable and be remembered for those qualities is preserved at 547–548, rather than shifted to achieved recognition."
+        ]
+      },
+      "11": {
+        "pt": "você pode ampliar a compreensão de si e da vida pela troca de ideias com amigos e grupos de interesses comuns. se você projetar Mercúrio nos amigos, pode procurar alguém que pense e tome decisões por você.",
+        "en": "you may broaden your understanding of yourself and life by exchanging ideas with friends and groups with shared interests. if you project Mercury onto friends, you may seek someone to think and make decisions for you.",
+        "keywords": {
+          "pt": [
+            "compreensão de si e da vida",
+            "troca de ideias",
+            "amigos e interesses comuns",
+            "projeção de Mercúrio nos amigos",
+            "pensamento e decisões delegados sob projeção"
+          ],
+          "en": [
+            "understanding of yourself and life",
+            "exchange of ideas",
+            "friends and shared interests",
+            "projection of Mercury onto friends",
+            "delegated thinking and decisions under projection"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 564,
+            "to": 569
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 580,
+            "to": 581
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente: 562–591. Adotado: 564–569 e 580–581. Amizades/grupos ampliam perspectiva por troca intelectual; procurar amigo que pense/decida pela pessoa permanece condicionado à projeção de Mercúrio nos companheiros, não regra universal.",
+          "Não foram adotados o exemplo de estudo de astrologia como prática, problemas condicionados com comunicação grupal em 570–571, promessas de liderança/porta-voz, amigo não confiável, histórias com irmãos ou alcance garantido de metas.",
+          "Gêmeos na cúspide e Virgem na casa 11 em 585–591 têm descrições próprias e não foram incorporados a Mercúrio na casa. O asterisco em ventiladas na linha 569 e a pontuação irregular não foram usados para criar conteúdo.",
+          "Livro inspecionado: 36417–36490. Casa 11 explícita no corpo em 36431/36439–36440; linhas de casa 12 se intercalam desde 36433. Nenhuma afirmação do livro adotada; não se recompôs a continuação fragmentada sobre liderança social.",
+          "Final clarity resolution: se você projetar Mercúrio nos amigos keeps the projection condition explicit; delegated thinking/decisions are not asserted for every Mercury-house-11 reader."
+        ]
+      },
+      "12": {
+        "pt": "você pode buscar uma ponte entre o consciente e o inconsciente, mas ter dificuldade para distinguir seus pensamentos dos que vêm de outras pessoas. se Mercúrio não estiver muito mal aspectado, pode haver uma imaginação viva.",
+        "en": "you may seek a bridge between the conscious and unconscious mind, yet have difficulty distinguishing your thoughts from those coming from other people. if Mercury is not very poorly aspected, there may be a vivid imagination.",
+        "keywords": {
+          "pt": [
+            "ponte entre consciente e inconsciente",
+            "fronteiras do pensamento",
+            "distinção entre pensamentos próprios e alheios",
+            "imaginação viva condicionada aos aspectos de Mercúrio"
+          ],
+          "en": [
+            "bridge between conscious and unconscious",
+            "boundaries of thought",
+            "distinguishing your thoughts from others’",
+            "vivid imagination conditional on Mercury aspects"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 596,
+            "to": 598
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 619,
+            "to": 621
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 624,
+            "to": 625
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente: 592–651. Adotado: 596–598, 619–621 e 624–625, apenas ponte consciente/inconsciente, dificuldade de reconhecer autoria dos pensamentos e imaginação viva sob a condição exata de Mercúrio não muito mal aspectado. Não se trocou essa ressalva por Mercúrio bem aspectado nem se prometeu capacidade psíquica.",
+          "Não foram adotados procedimentos de exploração do inconsciente, psicoterapia/interpretação de sonhos como instruções, causas infantis/vidas passadas, colapso mental, paranoia/diagnósticos, pensamentos intrusivos, dissimulação, habilidade de cura, dificuldades clínicas/aprendizado, sacrifícios familiares, profissões, pessoas nomeadas ou promessa de transformar obstáculos em bênçãos.",
+          "Gêmeos/Virgem na cúspide da casa 12 em 644–651 são fatores separados, não características automaticamente derivadas de Mercúrio na casa. OCR em remos imaginários, salválos, frases truncadas de 607–611 e auto sustentação não foi reconstruído.",
+          "Livro inspecionado: 36417–36490. Casa 12 explícita no corpo em 36433–36437; a continuação de nuances emocionais está em 36445/36449, entre linhas da casa 11. Nenhuma afirmação do livro adotada; sensibilidade/empatia suplementares não substituem a tensão de fronteiras do pensamento no curso."
+        ]
+      }
     }
   }
 }
