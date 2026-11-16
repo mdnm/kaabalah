@@ -10,7 +10,7 @@ const en = {
 export type GematriaTextData = typeof en;
 const portuguese: GematriaTextData = pt;
 
-/** Class adaptations with OCR corrections; review provenance is in docs/localization/gematria-review.json. */
+/** English and Portuguese individuality, personality and synthesis meanings. */
 export const GEMATRIA_TEXT_DATA = freezeTextData({
   en: JSON.parse(JSON.stringify(en)) as GematriaTextData,
   pt: portuguese,

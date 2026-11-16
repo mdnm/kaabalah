@@ -26,7 +26,6 @@ export type TreeNodeDescriptions = Partial<Record<(typeof FIELDS)[keyof typeof F
 /**
  * Localized description fields beside the unchanged node. Sphere names and branded IDs stay stable.
  * pt and pt-BR select Portuguese. Custom text without a catalog entry is returned unchanged.
- * Draft translation review: docs/localization/tree-review.json.
  */
 export function getTreeNodeDescriptions<T extends NodeType>(node: Node<T>, language?: string): TreeNodeDescriptions {
   const result: TreeNodeDescriptions = {};

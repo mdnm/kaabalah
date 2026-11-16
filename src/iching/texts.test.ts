@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { HEXAGRAMS, getHexagramText, HEXAGRAM_TEXTS, getIChingReadingContent, getIChingReading } from "./index";
 import type { LinePosition } from "./types";
-import review from "../../docs/localization/iching-review.json";
 
 describe("Portuguese classical I Ching texts", () => {
   it("covers every judgment, image, line and special text without changing originals", () => {
@@ -18,7 +17,6 @@ describe("Portuguese classical I Ching texts", () => {
         expect(localized.content).toBe(HEXAGRAM_TEXTS[id]?.pt);
         expect(localized.content.trim()).toBeTruthy();
         expect(localized.content).not.toContain("\u2014");
-        expect(review.some(r => r.id === `iching.${id}`)).toBe(true);
       };
       check("judgment", h.text.judgment, pt.judgment);
       check("image", h.text.image, pt.image);

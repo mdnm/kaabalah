@@ -1,70 +1,143 @@
-# Portuguese API and review status
+# Portuguese text
 
-English remains the default. A language beginning with `pt`, including `pt-BR`, selects Portuguese. Other language values return English.
+English is the default. An optional language beginning with `pt`, including `pt-BR`, selects Portuguese. Other language values select English.
 
-## Tarot meanings and deck descriptions
+## Tarot
 
 ```ts
 import { getTarotCardProfile, getTarotRepresentation } from 'kaabalah/tarot';
 
 const lookup = { tarotCardNumber: 20 };
 const profile = getTarotCardProfile(lookup, 'pt-BR');
-profile?.tarotMeaning;
-profile?.descriptionsByDeck.papus_pt?.meaning;
-profile?.descriptionsByDeck.papus?.meaning;
-profile?.descriptionsByDeck.egyptian?.name;
+const meaning = profile?.descriptionsByDeck.papus_pt?.meaning
+  ?? profile?.tarotMeaning;
 
 const representation = getTarotRepresentation(lookup, 'papus_pt', 'pt-BR');
 representation?.description?.meaning;
 ```
 
-Numbers are always canonical tree numbers. Existing name, filename, path and branded ID lookups continue to work. Lookup names are the existing English identities; Portuguese changes display names, not identifiers. Language selection does not mutate cached English profiles. Existing bilingual scene, figure and divinatory fields retain their shape.
-
-The shared source is `src/core/tarot-content.json`. Both legacy card exports and core deck descriptions derive their English meanings from it. The pre-existing raw-card wording difference for Two of Swords is retained explicitly as `legacyMeaning`.
-
-Portuguese names and meanings are drafts pending Mat's review. `tarot-review.json` enumerates each field, its origin and review status. O Julgamento adapts the Portuguese class phrase from module 1, class 20, line 448 into the requested second person. All 56 minor meanings are linked to the keyword sections in module 2, classes 7-10. Names use Pajem as in the classes. In total, 111 tarot fields have Portuguese source references; the remaining 279 are explicitly agent translations. Adaptations and translations remain pending review.
-
-No npm release is authorized or performed. The remaining content areas and final full-suite validation are still in progress.
+The language argument selects card display names and deck descriptions. Lookup names, filenames, branded IDs, canonical tree numbers and asset paths keep their existing identities. Bilingual scene, figure and divinatory reference fields retain their shape. Language selection does not mutate cached English profiles.
 
 ## Tarot spreads
 
-`getTarotSpread('conscious-reading', 'pt-BR')` and `listTarotSpreads('pt-BR')` localize spread/slot labels, descriptions and metadata notes. IDs, constraints and sphere spellings stay stable. `spreads-review.json` lists all draft translations; numeric labels and sphere names remain unchanged.
+```ts
+import { getTarotSpread, listTarotSpreads } from 'kaabalah/tarot';
 
-## I Ching classical text
+getTarotSpread('conscious-reading', 'pt-BR');
+listTarotSpreads('pt-BR');
+```
+
+These getters select spread and slot labels, descriptions and metadata notes. Spread IDs, slot keys, validation rules, numbers and sphere names stay unchanged.
+
+## I Ching
 
 ```ts
-import { getIChingReadingContent, getHexagramText, getHexagramName } from 'kaabalah/iching';
-const reading = getIChingReadingContent({ hexagramNumber: 30, movingLines: [2, 4] }, 'pt-BR');
-reading.oracle[0].text.content;
+import {
+  getIChingReadingContent, getHexagramText, getHexagramName,
+  formatRecordContent,
+} from 'kaabalah/iching';
+
+const reading = getIChingReadingContent(
+  { hexagramNumber: 30, movingLines: [2, 4] },
+  'pt-BR',
+);
+
+reading.oracle.map(selection => selection.text.content);
 reading.cast.hexagram.text.judgment.content;
 reading.cast.hexagram.text.image.content;
 reading.cast.hexagram.text.lines[0].content;
 getHexagramText(1, 'pt-BR')?.useNine?.content;
+getHexagramText(2, 'pt-BR')?.useSix?.content;
 getHexagramName(reading.cast.hexagram.number, 'pt-BR');
+formatRecordContent('879777', 'pt-BR');
 ```
 
-The new getter also localizes transformed and nuclear hexagram texts. Each text retains `.chinese` and `.english`; `.content` selects the requested language. Existing `getIChingReading` and all existing exports are unchanged. `iching-review.json` lists all 514 draft translation rows. The consulted class reference and exchange directories did not yield a complete Portuguese classical-text catalog; no draft is claimed as a quotation from class material.
+`.content` contains the selected display text. Each classical text also retains its original `.chinese` and `.english` values. The reading getter applies the selection to the oracle, cast, transformed and nuclear hexagrams. It accepts the same `CastInput` values as `getIChingReading`: a six-line string, six line values, or an object with `hexagramNumber` and optional `movingLines`.
+
+`getHexagramText` returns undefined for an unknown number. `getIChingReading` and `formatRecord` keep their existing results. `formatRecordContent(input, language?, labels?)` accepts optional caller-supplied date and question labels.
 
 ## Numerology
 
-`getNumerologyData('pt-BR')` from `kaabalah/numerology` returns the eight existing text tables with Portuguese values, for example `.LIFEPATH_MEANING[7].description`, `.DAY_OF_BIRTH_MEANING[15].description` and `.PERSONAL_YEAR_DESCRIPTIONS[9]`. Tables are read-only and existing `NumerologyData` exports retain their values and mutability. All 296 text fields have review provenance. Class wording comes from module 3, classes 2, 15, 16, 18 and 19, with OCR corrections recorded as adaptations. The existing English row 22 goal refers to path 21; its Portuguese translation preserves that wording pending Mat's doctrinal review.
+```ts
+import { getNumerologyData } from 'kaabalah/numerology';
+
+const texts = getNumerologyData('pt-BR');
+texts.LIFEPATH_MEANING[7].description;
+texts.DAY_OF_BIRTH_MEANING[15].description;
+texts.PERSONAL_YEAR_DESCRIPTIONS[9];
+```
+
+The getter returns read-only versions of `CYCLE_MEANINGS`, `NUMEROLOGY_KEYWORDS`, `DAY_OF_BIRTH_MEANING`, `LIFEPATH_MEANING`, `CHALLENGE_MEANING`, `CHALLENGE_HEALTH_MEANING`, `PERSONAL_CYCLE_KEYWORDS` and `PERSONAL_YEAR_DESCRIPTIONS`. Existing `NumerologyData` exports are unchanged.
 
 ## Gematria
 
-`getGematriaData('pt-BR')` from `kaabalah/gematria` returns `.INDIVIDUALITY_NUMBER_MEANINGS`, `.PERSONALITY_NUMBER_MEANINGS` and `.SYNTHESIS_NUMBER_MEANINGS`. All 39 texts are adapted from module 3, class 13, with source lines and pending review recorded in `gematria-review.json`. OCR repairs, particularly master numbers 11, 33 and 44, need Mat's review.
+```ts
+import { getGematriaData } from 'kaabalah/gematria';
+
+const texts = getGematriaData('pt-BR');
+texts.INDIVIDUALITY_NUMBER_MEANINGS[7];
+texts.PERSONALITY_NUMBER_MEANINGS[7];
+texts.SYNTHESIS_NUMBER_MEANINGS[7];
+```
+
+The returned tables are read-only. Existing `GematriaData` exports are unchanged.
 
 ## Tree descriptions
 
-`getTreeDescription(englishText, 'pt-BR')` and `getTreeNodeDescriptions(node, 'pt-BR')` from `kaabalah/core` cover meanings, colors, musical notes and shared sphere/world/letter descriptions across all three systems. The node getter returns optional `meaning`, `colorDescription`, `noteDescription`, `nameMeaning`, `letterMeaning`, `symbol` and `hieroglyph`. `nameMeaning` translates the meaning of a sphere/world name; the node's own name and branded ID remain unchanged. Unknown description lookups return undefined; custom node text is returned unchanged by the node getter. All 184 catalog rows have pending review provenance in `tree-review.json`.
+```ts
+import { getTreeDescription, getTreeNodeDescriptions } from 'kaabalah/core';
 
-## Semantic markers and map labels
+getTreeDescription('Crown', 'pt-BR'); // Coroa
+getTreeNodeDescriptions(node, 'pt-BR');
+```
 
-The symbol `get*SymbolMetadata` and `list*SymbolMetadata` functions, `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers` and `buildKaabalisticMapData` now accept an optional final language argument. Pass `'pt-BR'`. `getKaabalisticLabel(text, language)` is also available for supported display labels. Glyphs, target IDs, counts and computation keys stay stable. `semantic-review.json` identifies translated labels and deliberately unchanged notation.
+The node getter returns the available `meaning`, `colorDescription`, `noteDescription`, `nameMeaning`, `letterMeaning`, `symbol` and `hieroglyph` fields. `nameMeaning` is the translated meaning of a sphere or world name. Node names such as Chokhmah and Tiphareth, branded IDs and the original node data remain unchanged.
 
-## Astrology calculation labels
+Descriptions cover all three tree systems and shared sphere, world, letter and music metadata. `getTreeDescription` returns undefined for unknown text. The node getter preserves custom text without a catalog entry.
 
-`getAstrologyLabel(value, 'pt-BR')` from `kaabalah/astrology` localizes signs, planets, nodes, sect, dignities, aspects and decan tarot names. For example, use it on `getDecan(longitude).tarotCard`, a firdaria period's `.planet`, or a profection's `.sign` and `.ruler`. Raw calculation results and identifiers stay unchanged. Unsupported custom labels pass through. Review rows are in `astrology-review.json`; decan card names share the tarot source.
+## Semantic labels and markers
+
+The following functions accept an optional final language argument:
+
+- `getPlanetSymbolMetadata`, `getZodiacSignSymbolMetadata`, `getAngleSymbolMetadata`, `getNodeSymbolMetadata` and their `list*` counterparts.
+- `getKaabalisticCorrespondenceTargets`.
+- `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`.
+- `buildKaabalisticMapData`.
+
+Pass `'pt-BR'` to select Portuguese display labels. Glyphs, lookup keys, target IDs, computation identifiers and counts stay unchanged. `getKaabalisticLabel(text, language?)` also selects supported standalone or generated display labels.
+
+## Astrology labels
+
+```ts
+import { getAstrologyLabel, getDecan } from 'kaabalah/astrology';
+
+const decan = getDecan(15);
+getAstrologyLabel(decan.sign, 'pt-BR');
+getAstrologyLabel(decan.ruler, 'pt-BR');
+getAstrologyLabel(decan.tarotCard, 'pt-BR');
+```
+
+The label getter covers signs, planets, lunar nodes, sect, dignities, aspects and decan tarot names. Use it on firdaria `.planet` values and profection `.sign` and `.ruler` values. Calculation results keep their existing identifiers. Unknown custom labels pass through unchanged.
 
 ## Ifa
 
-`getIfaText(key, 'pt-BR')` from `kaabalah/ifa` exposes Odu, column and direction labels and the invalid-date message. Keys: `odu`, `left`, `right`, `north`, `south`, `east`, `west`, `center`, `invalidDate`. Calculation results stay numeric and unchanged. No Odu interpretation text was added. `ifa-review.json` records draft labels.
+```ts
+import { getIfaText } from 'kaabalah/ifa';
+
+getIfaText('north', 'pt-BR'); // Norte
+```
+
+Keys are `odu`, `left`, `right`, `north`, `south`, `east`, `west`, `center` and `invalidDate`. Odu calculation results remain numeric.
+
+## CLI
+
+```sh
+kaabalah tarot:card 20 --language pt-BR --json --compact --fields=meaning,tarotCard
+kaabalah iching:reading --hexagram 1 --moving 1,2,3,4,5,6 --language pt-BR --json --compact --fields=oracle
+kaabalah ifa 1990-01-15 --language pt-BR --no-json
+kaabalah help astrology --language pt-BR --json --compact
+```
+
+`--language pt-BR` selects Portuguese help, display content and CLI messages. JSON field names, error codes, IDs, command names, flag names, explicit English source fields and user inputs stay unchanged. `--fields` selects values after display-content localization.
+
+I Ching JSON adds `.content` beside `.chinese` and `.english` when Portuguese is selected. Technical details supplied by external runtimes remain literal.

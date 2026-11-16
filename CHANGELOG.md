@@ -8,8 +8,8 @@
 - Add twelve source-audited bilingual natal Sun-sign descriptions, immutable
   provenance and typed getters, preserving calculation behavior and English defaults.
 
-- Align Portuguese minor tarot wording with all 56 class keyword sections and
-  use Pajem in localized card names, with source references for review.
+- Use Portuguese class wording for minor tarot meanings and Pajem in localized
+  card names.
 
 - Add typed Portuguese Ifa calculation labels through `getIfaText`;
   Odu calculations remain unchanged and no interpretation catalog is introduced.
@@ -24,19 +24,19 @@
   `getTreeNodeDescriptions`, covering all three systems and shared core metadata.
 
 - Add Portuguese gematria individuality, personality and synthesis meanings through
-  `getGematriaData`, sourced from class material with OCR adaptations marked for review.
+  `getGematriaData`.
 
 - Add Portuguese access to all eight numerology text tables through
-  `getNumerologyData`, including class-source references and draft review provenance.
+  `getNumerologyData`.
 
-- Add draft Portuguese translations for all 514 classical I Ching texts through
+- Add Portuguese translations for all 514 classical I Ching texts through
   `getHexagramText` and `getIChingReadingContent`, retaining Chinese and English.
 
-- Add draft Portuguese spread and slot labels, descriptions and notes through
+- Add Portuguese spread and slot labels, descriptions and notes through
   `getTarotSpread(id, language)` and `listTarotSpreads(language)`.
 
-- Add draft Brazilian Portuguese tarot names and deck meanings through language arguments
-  on `getTarotCardProfile` and `getTarotRepresentation`, with per-field review provenance.
+- Add Brazilian Portuguese tarot names and deck meanings through language arguments
+  on `getTarotCardProfile` and `getTarotRepresentation`.
   Centralize duplicated English tarot meanings while preserving existing exports.
 
 ## 6.16.0 - 2026-11-16

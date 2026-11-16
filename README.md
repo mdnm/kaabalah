@@ -69,11 +69,26 @@ const cast = castThreeCoins(); // inject an RNG for reproducible tests
 
 Store the six cast lines; derive the cast, moving lines, transformed and nuclear figures, palace, 納甲, 六親, 世/應 relations, line transforms, Zhu Xi texts, sovereign months, and separate Kaabalah gate/family/pillar layers. Static casts have a null transformed state. With six moving lines, 乾 uses 用九 and 坤 uses 用六. Transform `after` relatives use the destination palace; `afterInCastPalace` provides the original palace frame. See the [I Ching API and source notes](src/iching/README.md).
 
+## Language
+
+English is the default. Pass `'pt-BR'` to localized text getters:
+
+```ts
+import { getTarotCardProfile } from 'kaabalah/tarot';
+import { getIChingReadingContent } from 'kaabalah/iching';
+
+getTarotCardProfile({ tarotCardNumber: 20 }, 'pt-BR')?.tarotMeaning;
+getIChingReadingContent('879777', 'pt-BR').oracle[0].text.content;
+```
+
+See [Portuguese text APIs](docs/localization/pt-BR-api.md) for card/deck descriptions, spreads, numerology, gematria, tree descriptions, astrology labels and CLI language selection.
+
 ## CLI
 
 ```bash
 npx kaabalah help                    # list all commands
 npx kaabalah help --json             # full schema introspection
+npx kaabalah help --language pt-BR    # Portuguese help
 npx kaabalah iching:reading --lines 879777 --json --compact
 npx kaabalah iching:hexagram 25 --json --compact
 npx kaabalah iching:cast --json --compact

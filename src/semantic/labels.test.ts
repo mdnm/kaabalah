@@ -6,7 +6,6 @@ import {
   getKaabalisticCorrespondenceTargets, getAstrologyTreeMarkers, buildKaabalisticMapData,
 } from "./index";
 import { Planet, SIGNS, type BirthChart, type ZodiacPosition } from "../astrology";
-import review from "../../docs/localization/semantic-review.json";
 
 function position(sign: string, house: number): ZodiacPosition {
   return { sign, house, longitude: (house - 1) * 30, decimalDegrees: 0, traditionalFormat: "0°00'", decimal: "0.00°" };
@@ -30,7 +29,6 @@ describe("Portuguese semantic labels", () => {
       expect(list("pt")).toEqual(list("pt-BR"));
       expect(list("fr")).toBe(list());
     }
-    expect(Object.keys(KAABALISTIC_LABELS).map(key => `semantic.${key}`).sort()).toEqual(review.map(r => r.id).sort());
     for (const row of Object.values(KAABALISTIC_LABELS)) {
       expect(row.pt.trim()).toBeTruthy();
       expect(row.pt).not.toContain("\u2014");

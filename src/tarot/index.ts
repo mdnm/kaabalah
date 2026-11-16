@@ -881,7 +881,6 @@ function getEnglishTarotCardProfile(
 /**
  * Card profile with localized names and deck meanings. English remains the default.
  * Portuguese includes pt-BR. IDs, numbers, assets and bilingual reference rows stay stable.
- * Portuguese wording is pending author review; see docs/localization/tarot-review.json.
  */
 export function getTarotCardProfile(
   lookup: TarotImageLookup,

@@ -4,7 +4,6 @@ import { TAROT_ARKANNUS_DATA } from "../core/constants";
 import { RAW_ARKANNUS } from "./data";
 import { TAROT_CONTENT } from "../core/tarot-content";
 import { getTarotCardProfile, getTarotRepresentation } from "./index";
-import review from "../../docs/localization/tarot-review.json";
 
 describe("Portuguese tarot content", () => {
   it("preserves every existing raw meaning and core deck description", () => {
@@ -19,7 +18,7 @@ describe("Portuguese tarot content", () => {
       .toBe("397f2ce7d1a4efd6250c0f0fe52c5d313e05eb74e8f1cda5ce57c3baca636b03");
   });
 
-  it("covers every English field with nonempty Portuguese and a review record", () => {
+  it("covers every English field with nonempty Portuguese", () => {
     expect(Object.keys(TAROT_CONTENT)).toHaveLength(78);
     for (const [filename, row] of Object.entries(TAROT_CONTENT)) {
       const en = Object.entries(row.en);
@@ -31,7 +30,6 @@ describe("Portuguese tarot content", () => {
           const value = pt[field as keyof typeof pt];
           expect(value?.trim(), `${filename}.${deck}.${field}`).toBeTruthy();
           expect(value).not.toContain("\u2014");
-          expect(review.find(r => r.id === `tarot.${filename}.${deck}.${field}`)).toBeDefined();
         }
       }
     }

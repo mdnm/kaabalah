@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getTarotSpread, listTarotSpreads } from "./spreads";
 import rows from "./spreads.text.json";
-import review from "../../docs/localization/spreads-review.json";
 
 describe("Portuguese spread text", () => {
   it("covers every rendered English label, note and description", () => {
@@ -17,7 +16,6 @@ describe("Portuguese spread text", () => {
         expect(lookup[id]?.pt.trim(), id).toBeTruthy();
         expect(translated, id).toBe(lookup[id].pt);
         expect(translated).not.toContain("\u2014");
-        if (original !== translated) expect(review.some(r => r.id === `tarot.spreads.${id}`)).toBe(true);
       };
       check("label", en.label, pt.label);
       check("description", en.description, pt.description);

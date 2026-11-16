@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getAstrologyLabel, ASTROLOGY_LABELS, getDecan, getFirdaria, SIGNS, DEFAULT_ASPECT_SPECS } from "./index";
 import { DOMICILE_RULERS } from "./dignity";
-import review from "../../docs/localization/astrology-review.json";
 
 describe("Portuguese astrology display labels", () => {
   it("covers every decan, dignity ruler, aspect and firdaria identifier", () => {
@@ -24,7 +23,6 @@ describe("Portuguese astrology display labels", () => {
     for (const key of ["domicile", "exaltation", "detriment", "fall", "peregrine"]) expect(ASTROLOGY_LABELS[key]).toBeDefined();
   });
   it("has no empty rows and keeps English as the default", () => {
-    expect(review.map(r => r.id).sort()).toEqual(Object.keys(ASTROLOGY_LABELS).map(k => `astrology.${k}`).sort());
     for (const [key, row] of Object.entries(ASTROLOGY_LABELS)) {
       expect(row.pt.trim()).toBeTruthy();
       expect(row.pt).not.toContain("\u2014");

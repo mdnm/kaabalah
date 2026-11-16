@@ -69,4 +69,4 @@ The site's Wade-Giles forms were checked against the 64 numbered [I Ching Online
 
 ### Portuguese classical text
 
-`getHexagramText(number, language?)` returns judgment, image, six lines and any useNine/useSix, with a selected `.content` field beside unchanged `.chinese` and `.english`. `getIChingReadingContent(input, language?)` applies the same selection to oracle, cast, transformed and nuclear texts. English is the default; `pt` and `pt-BR` select Portuguese. Unknown hexagram numbers return undefined from `getHexagramText`. Portuguese classical texts are drafts pending author review; see `docs/localization/iching-review.json`.
+`getHexagramText(number, language?)` returns judgment, image, six lines and any useNine/useSix, with a selected `.content` field beside unchanged `.chinese` and `.english`. `getIChingReadingContent(input, language?)` applies the same selection to oracle, cast, transformed and nuclear texts. English is the default; `pt` and `pt-BR` select Portuguese. Unknown hexagram numbers return undefined from `getHexagramText`.

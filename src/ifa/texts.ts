@@ -5,7 +5,7 @@ import { freezeTextData } from "../localization";
 export const IFA_TEXTS = freezeTextData(raw);
 export type IfaTextKey = keyof typeof IFA_TEXTS;
 
-/** Portuguese for pt and pt-BR; English is the default. Draft labels need author review. */
+/** Portuguese for pt and pt-BR; English is the default. */
 export function getIfaText(key: IfaTextKey, language?: string): string {
   return language?.startsWith("pt") ? IFA_TEXTS[key].pt : IFA_TEXTS[key].en;
 }

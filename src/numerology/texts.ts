@@ -16,7 +16,7 @@ const en = {
 export type NumerologyTextData = typeof en;
 const portuguese: NumerologyTextData = pt;
 
-/** English originals and Portuguese content. Draft provenance: docs/localization/numerology-review.json. */
+/** English and Portuguese numerology meaning tables. */
 export const NUMEROLOGY_TEXT_DATA = freezeTextData({
   en: JSON.parse(JSON.stringify(en)) as NumerologyTextData,
   pt: portuguese,

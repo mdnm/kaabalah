@@ -14,7 +14,7 @@ export interface HexagramTextContent {
   readonly useSix?: ClassicalTextContent;
 }
 
-/** Draft Portuguese translations; per-row review status is in docs/localization/iching-review.json. */
+/** Bilingual classical texts keyed by hexagram number and text position. */
 export const HEXAGRAM_TEXTS: Readonly<Record<string, Readonly<{ en: string; pt: string }>>> = Object.freeze(
   Object.fromEntries(Object.entries(raw).map(([key, row]) => [key, Object.freeze(row)])),
 );

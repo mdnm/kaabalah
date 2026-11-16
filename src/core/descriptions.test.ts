@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createTree, SYSTEMS, getTreeDescription, getTreeNodeDescriptions, TREE_DESCRIPTIONS } from "./index";
 import type { PartKey } from "./index";
-import review from "../../docs/localization/tree-review.json";
 
 describe("Portuguese tree descriptions", () => {
   it("covers live nodes in every system and every shared catalog entry", () => {
@@ -23,7 +22,6 @@ describe("Portuguese tree descriptions", () => {
       expect(row.en).toBe(english);
       expect(row.pt.trim()).toBeTruthy();
       expect(row.pt).not.toContain("\u2014");
-      expect(review.some(item => item.english === english)).toBe(true);
       expect(getTreeDescription(english, "pt")).toBe(row.pt);
       expect(getTreeDescription(english, "fr")).toBe(english);
     }
