@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 6.16.0 - 2026-11-16
+
 - Add twelve source-audited bilingual natal Jupiter-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 
@@ -62,8 +64,6 @@
 - Add Brazilian Portuguese tarot names and deck meanings through language arguments
   on `getTarotCardProfile` and `getTarotRepresentation`.
   Centralize duplicated English tarot meanings while preserving existing exports.
-
-## 6.16.0 - 2026-11-16
 
 - Tree SVG: highlights are proportional. An activation's explicit `strength` is drawn
   as given (the 0.56 floor now applies only when strength is derived from count and
