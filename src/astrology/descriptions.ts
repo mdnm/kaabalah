@@ -33,6 +33,8 @@ export type DescriptionElement = TriplicityElement;
 export type ElementDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionModality = (typeof MODALITIES)[keyof typeof MODALITIES];
 export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionPolarity = "positive" | "negative";
+export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -49,6 +51,7 @@ export interface AstrologyDescriptions {
   readonly signs?: Readonly<Partial<Record<Sign, SignDescriptionEntry>>>;
   readonly elements?: Readonly<Partial<Record<DescriptionElement, ElementDescriptionEntry>>>;
   readonly modalities?: Readonly<Partial<Record<DescriptionModality, ModalityDescriptionEntry>>>;
+  readonly polarities?: Readonly<Partial<Record<DescriptionPolarity, PolarityDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -193,5 +196,18 @@ export function getModalityDescriptionEntry(modality: DescriptionModality): Moda
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getModalityDescription(modality: DescriptionModality, language?: string): string | undefined {
   const entry = getModalityDescriptionEntry(modality);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Generic symbolic polarity definitions; no sign classification or inherited-key fallback. */
+export function getPolarityDescriptionEntry(polarity: DescriptionPolarity): PolarityDescriptionEntry | undefined {
+  const polarities = ASTROLOGY_DESCRIPTIONS.polarities;
+  if (!polarities || !Object.prototype.hasOwnProperty.call(polarities, polarity)) return undefined;
+  return polarities[polarity];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getPolarityDescription(polarity: DescriptionPolarity, language?: string): string | undefined {
+  const entry = getPolarityDescriptionEntry(polarity);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

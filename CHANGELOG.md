@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add two bilingual polarity profiles with typed getters, precise source ranges and explicit classification gaps.
+
 - Add three source-audited bilingual modality profiles with canonical typed keys
   and preserved ordinary/esoteric source-context distinctions.
 

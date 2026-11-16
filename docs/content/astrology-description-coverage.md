@@ -217,3 +217,7 @@ Paragraph format selected, with source fidelity above fixed length. [Cross-modul
 ## Element profile audit: pending Mat decision, 2026-11-16
 
 A2:134-157/A3:64-79 and A8:796-813 use different humor/temperament label mappings. The specific question and exact table are in the connected Maestri note Astrologia- elementos e temperamentos. No label or its dependent traits have been selected while Mat responds. Four generic profiles use independently supported qualities/functions and symbolic hot/cold/dry/moist attributes. This does not add the optional Ascendant-element profiles, somatic predictions or Han five phases.
+
+## Polarity profile audit: pending Mat decision, 2026-11-16
+
+A2:104-105 and A11:191-194 classify Capricorn as feminine/negative; A18:666-670 calls Capricorn masculine in its Lilith/Priapus discussion. The specific question is in the connected note Astrologia- polaridade de Capricórnio. Two generic activity/receptivity profiles use A2:98,100-101,104,107-109 and A11:191-192,195-196 without assigning signs or elements to either category. Traditional day/night terminology here does not determine computed chart sect.
