@@ -1,6 +1,6 @@
 # Kaabalah
 
-A comprehensive TypeScript library for numerology, astrology, kaabalah, gematria, tarot, and Ifa divination.
+A comprehensive TypeScript library for numerology, astrology, kaabalah, gematria, tarot, I Ching, and Ifa divination.
 
 <p align="center">
   <img src="./examples/tree-of-life-readme.svg" alt="Color Tree of Life rendered from kaabalah/visual" width="420" />
@@ -29,6 +29,7 @@ All modules are tree-shakable and can be imported independently:
 | Astrology | `kaabalah/astrology` | Birth charts, synastry, composite, transits, solar returns, profections, firdaria, astrocartography, dignity, decans, dodecatemoria |
 | Gematria | `kaabalah/gematria` | Hebrew letter numerology |
 | Tarot | `kaabalah/tarot` | 78-card deck with profiles, archetypes, correspondences, multi-deck images, spread engine |
+| I Ching | `kaabalah/iching` | 64 hexagrams, classical Chinese and original English, Han technical derivations, tree-backed Kaabalah, coin casting |
 | Ifa | `kaabalah/ifa` | Odu divination |
 | Semantic | `kaabalah/semantic` | Theme profiles, kaabalistic overlay correspondences, symbol metadata |
 | Visual | `kaabalah/visual` | Tree of Life and astrology wheel SVG generation plus layout/render-model data |
@@ -56,18 +57,33 @@ const svg = generateTreeSvg({ background: 'transparent', palette: 'monochrome' }
 const wheelSvg = generateAstroWheelSvg(chart, { background: 'transparent' });
 ```
 
+## I Ching
+
+```ts
+import { getIChingReading, castThreeCoins } from 'kaabalah/iching';
+
+const reading = getIChingReading('879777'); // six classical lines, bottom to top
+const replay = getIChingReading(30, [2, 4]); // same as lines 767987
+const cast = castThreeCoins(); // inject an RNG for reproducible tests
+```
+
+Store the six cast lines; derive the cast, moving lines, transformed and nuclear figures, palace, 納甲, 六親, 世/應 relations, line transforms, Zhu Xi texts, sovereign months, and separate Kaabalah gate/family/pillar layers. Static casts have a null transformed state. With six moving lines, 乾 uses 用九 and 坤 uses 用六. Transform `after` relatives use the destination palace; `afterInCastPalace` provides the original palace frame. See the [I Ching API and source notes](src/iching/README.md).
+
 ## CLI
 
 ```bash
 npx kaabalah help                    # list all commands
 npx kaabalah help --json             # full schema introspection
+npx kaabalah iching:reading --lines 879777 --json --compact
+npx kaabalah iching:hexagram 25 --json --compact
+npx kaabalah iching:cast --json --compact
 npx kaabalah numerology 1990-01-15 --json --compact
 npx kaabalah astrology 1990-01-15 14:30 --lat=40.71 --lon=-74 --json
 npx kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.71 --lon=-74 --json --compact --fields=svg
 npx kaabalah tree:node "tarotArkAnnu:The Magician" --depth=2 --json
 ```
 
-28 commands covering all modules. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
+Run `kaabalah help --json` to discover commands and schemas. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
 
 ## Support
 

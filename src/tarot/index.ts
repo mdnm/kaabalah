@@ -28,6 +28,8 @@ import {
   type TarotTreeId,
 } from "./data";
 import { ARKANNUS, getDirectTarotCardNumber, getTarotTreeWorkspace } from "./arkannus";
+import { getTarotDeckReferenceContent } from "./reference";
+import { mythicFigure } from "./mythicFigures";
 
 export { ARKANNUS } from "./arkannus";
 export {
@@ -40,9 +42,12 @@ export {
   type TarotDeckDescription,
   type TarotDeckId,
   type TarotDeckMetadata,
+  type TarotLocalizedText,
   type TarotTreeId,
 } from "./data";
 export * from "./spreads";
+export * from "./reference";
+export * from "./mythicFigures";
 
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -620,23 +625,29 @@ function buildMinorCorrespondenceProfile(
 }
 
 function buildDescriptionsByDeck(
-  tarotArkAnnu: Node<TarotTypes.TAROT_ARK_ANNU>
+  tarotArkAnnu: Node<TarotTypes.TAROT_ARK_ANNU>,
+  card: TarotCard,
 ): Partial<Record<TarotDeckId, TarotDeckDescription>> {
   const descriptions: Partial<Record<TarotDeckId, TarotDeckDescription>> = {};
 
   for (const deck of TAROT_DECK_METADATA) {
-    if (!deck.descriptiveDataKey) {
-      continue;
+    const description = deck.descriptiveDataKey
+      ? tarotArkAnnu.data?.descriptiveData?.[deck.descriptiveDataKey]
+      : undefined;
+    const content = getTarotDeckReferenceContent(card.number, deck.id);
+    if (description || content) descriptions[deck.id] = { ...description, ...content };
+    if (deck.id === "mythic") {
+      const identity = {
+        kind: toTarotCardKind(card),
+        number: card.number,
+        suit: card.suit,
+        courtRank: toTarotCourtRank(card),
+        rank: card.tarotCard.startsWith("Ace of ") ? 1 : undefined,
+      };
+      const en = mythicFigure(identity, "en");
+      const pt = mythicFigure(identity, "pt");
+      if (en && pt) descriptions[deck.id] = { ...descriptions[deck.id], figure: { en, pt } };
     }
-
-    const description =
-      tarotArkAnnu.data?.descriptiveData?.[deck.descriptiveDataKey];
-
-    if (!description) {
-      continue;
-    }
-
-    descriptions[deck.id] = { ...description };
   }
 
   return descriptions;
@@ -682,7 +693,7 @@ function getTarotArchetypeCache(): TarotArchetypeCache {
       )
     );
 
-    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu);
+    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu, card);
 
     return {
       canonicalId: pathId,
@@ -742,7 +753,7 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
       throw new Error(`Missing canonical tarot metadata for ${tarotArkAnnuId}.`);
     }
 
-    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu);
+    const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu, card);
 
     return {
       tarotArkAnnuId,

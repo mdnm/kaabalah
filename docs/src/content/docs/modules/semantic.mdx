@@ -346,3 +346,68 @@ const ranked = profiles
 ```
 
 The same approach works for tarot profiles via `listTarotThemeProfiles()`.
+
+
+## Reading connections
+
+`resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`,
+`collapseHits` and `buildThreads` combine tarot, I Ching and astrology into
+structured Tree weights and connections.
+
+```typescript
+import { resolveCard, buildReadingWeights, buildThreads } from 'kaabalah/semantic';
+import { getIChingReading } from 'kaabalah/iching';
+
+const cards = [
+  resolveCard(20, 'conscious')!,
+  resolveCard(66, 'unconscious')!,
+  resolveCard(57, 'subconscious')!,
+];
+const input = {
+  cards,
+  iching: getIChingReading('687687'),
+  natal: { planets: { mercury: 'Cancer' }, ascendant: null },
+};
+const weights = buildReadingWeights(input);
+// Hod 7, Yesod 3, Malkuth 2; path 20 three times, path 21 twice.
+const threads = buildThreads({ ...input, sky: null, day: null, birthday: null }, weights);
+```
+
+Every major contributes its path and both endpoint spheres. Every pip contributes
+its sphere. Courts contribute no weight; Daath is excluded. Both trigrams in
+both cast and transformed hexagrams contribute their gate path and endpoints,
+without deduplication. The birth chart contributes only the subconscious pip's
+sphere planet, when present. Ties go to the sphere higher on the Tree.
+
+Connections carry `system`, `key` and structured fields. Consumers own sentence
+templates and simple/detailed presentation; aspect rows have `detail: true`.
+Connections never add weight. Birth charts retain signs, houses, rising and
+major aspects. Horary houses require a known place. Day charts retain signs
+and aspects only. Use `projectChart(chart, { houses: false })` to omit rising
+and houses when place or hour is unknown.
+
+
+### House and ruler context
+
+A conscious major's sign is also compared against every actual house cusp in the
+birth and horary charts. These are chart cusp signs, not the natural-zodiac house
+associated with the sign. The day chart has no house frame.
+
+Pass `selectedHouses: [2]` when a human or calling application has explicitly
+selected house 2 for the question. The library does not classify question prose.
+All matching houses remain available; selected matches come first and carry
+`relevance.weight: 2` instead of `1`. This is contextual priority, separate from
+`count` and the Tree's unchanged oracle weights.
+
+The library also exposes the sign's traditional domicile ruler, that planet's
+placements across all three charts, and drawn pips or planet-based majors that
+carry the same planet. The `rulership: 'traditional'` marker identifies the
+existing astrology module's domicile table; general Kaabalah graph
+correspondences are not silently treated as rulerships.
+
+These rows have `detail: true` and
+`relevance.requiresHumanReview: true`. They describe factual routes for a human
+to assess, including Gemini → Mercury → a Hod pip without a matching house.
+Their presence does not assert that the route answers the person's question.
+Consumers must preserve the review marker when passing these rows to models or
+other readers, and keep their own sentence templates outside the library.

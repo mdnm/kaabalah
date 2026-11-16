@@ -38,6 +38,23 @@ export const GLOBAL_FLAGS: CommandFlag[] = [
 
 export const COMMANDS: CommandSchema[] = [
   {
+    name: "iching:cast", description: "Cast six I Ching lines using three fair coins per line",
+    args: [], flags: [], examples: ["kaabalah iching:cast --json --compact"],
+  },
+  {
+    name: "iching:hexagram", description: "Describe a King Wen hexagram, Chinese texts and fixed correspondences",
+    args: [{name:"number",type:"number",required:true,description:"King Wen number (1–64)"}], flags: [],
+    examples: ["kaabalah iching:hexagram 25 --json --compact"],
+  },
+  {
+    name: "iching:reading", description: "Derive a complete I Ching reading from six bottom-first classical line values",
+    args: [], flags: [
+      {name:"lines",type:"string",description:"Six bottom-to-top values: 6 old yin, 7 young yang, 8 young yin, 9 old yang"},
+      {name:"hexagram",type:"number",description:"King Wen number, instead of --lines"},
+      {name:"moving",type:"string",description:"Unique moving positions, comma-separated (1 bottom, 6 top)"},
+    ], examples: ["kaabalah iching:reading --lines 879777 --json --compact", "kaabalah iching:reading --hexagram 30 --moving 2,4 --json --compact", `kaabalah iching:reading --input-json='{"hexagramNumber":25,"movingLines":[4]}' --json --compact`],
+  },
+  {
     name: "gematria",
     description: "Calculate gematria for a word/phrase",
     args: [{ name: "text", type: "string", required: true, description: "Text to calculate gematria for" }],

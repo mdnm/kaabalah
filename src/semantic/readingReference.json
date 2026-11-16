@@ -1,0 +1,56 @@
+{
+  "en": {
+    "gloss": {
+      "Kether": "the idea",
+      "Chokhmah": "the vision",
+      "Binah": "the word",
+      "Daath": "the door",
+      "Chesed": "the plan",
+      "Geburah": "the stumbles",
+      "Tiphareth": "the heart",
+      "Netzach": "the victory built in silence",
+      "Hod": "the agreement",
+      "Yesod": "the yes or no",
+      "Malkuth": "the pot of gold"
+    },
+    "rung": {
+      "1": "the idea still without form",
+      "2": "you already see the idea",
+      "3": "you already speak of it inside",
+      "4": "time to plan it on paper",
+      "5": "time to look at the stumbles",
+      "6": "bring it in line with what you believe",
+      "7": "close to becoming real",
+      "8": "time for the agreement, the contract",
+      "9": "the hour of yes or no",
+      "10": "it is already in matter"
+    }
+  },
+  "pt-BR": {
+    "gloss": {
+      "Kether": "a ideia",
+      "Chokhmah": "a visão",
+      "Binah": "a palavra",
+      "Daath": "a porta",
+      "Chesed": "o plano",
+      "Geburah": "os tropeços",
+      "Tiphareth": "o coração",
+      "Netzach": "a vitória que se constrói em silêncio",
+      "Hod": "o acordo",
+      "Yesod": "o sim ou não",
+      "Malkuth": "o pote de ouro"
+    },
+    "rung": {
+      "1": "a ideia ainda sem forma",
+      "2": "você já enxerga a ideia",
+      "3": "você já fala dela por dentro",
+      "4": "hora de planejar no papel",
+      "5": "hora de olhar os tropeços",
+      "6": "harmonizar com o que você acredita",
+      "7": "perto de virar realidade",
+      "8": "hora do acordo, do contrato",
+      "9": "a hora do sim ou não",
+      "10": "já está na matéria"
+    }
+  }
+}

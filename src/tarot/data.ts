@@ -971,6 +971,15 @@ export interface TarotDeckDescription {
   meaning?: string;
   reversedMeaning?: string;
   keywords?: string[];
+  /** Localized deck reference content, separate from the existing meaning. */
+  scene?: TarotLocalizedText;
+  divinatory?: TarotLocalizedText;
+  figure?: TarotLocalizedText;
+}
+
+export interface TarotLocalizedText {
+  readonly en: string;
+  readonly pt: string;
 }
 
 export type TarotDeckConfig = TarotDeckMetadata & {

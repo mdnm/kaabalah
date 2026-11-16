@@ -1,0 +1,514 @@
+[
+  {
+    "number": 1,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 2,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 3,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 4,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 5,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 6,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 7,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 8,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 9,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 10,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 11,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 12,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 13,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 14,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 15,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 16,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 17,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 18,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 19,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 20,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 21,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 22,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 23,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 24,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 25,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 26,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 27,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 28,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 29,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 30,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 31,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 32,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 33,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 34,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 35,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 36,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 37,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 38,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 39,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 40,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 41,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 42,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 43,
+    "palace": "坤",
+    "phase": "earth",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 44,
+    "palace": "乾",
+    "phase": "metal",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 45,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 46,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 47,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 48,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 49,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "四世",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 50,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "二世",
+    "shi": 2,
+    "ying": 5
+  },
+  {
+    "number": 51,
+    "palace": "震",
+    "phase": "wood",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 52,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 53,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 54,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "歸魂",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 55,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 56,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 57,
+    "palace": "巽",
+    "phase": "wood",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 58,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "本宮",
+    "shi": 6,
+    "ying": 3
+  },
+  {
+    "number": 59,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "五世",
+    "shi": 5,
+    "ying": 2
+  },
+  {
+    "number": 60,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "一世",
+    "shi": 1,
+    "ying": 4
+  },
+  {
+    "number": 61,
+    "palace": "艮",
+    "phase": "earth",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 62,
+    "palace": "兌",
+    "phase": "metal",
+    "generation": "游魂",
+    "shi": 4,
+    "ying": 1
+  },
+  {
+    "number": 63,
+    "palace": "坎",
+    "phase": "water",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  },
+  {
+    "number": 64,
+    "palace": "離",
+    "phase": "fire",
+    "generation": "三世",
+    "shi": 3,
+    "ying": 6
+  }
+]

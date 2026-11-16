@@ -1,0 +1,2838 @@
+[
+  {
+    "number": 1,
+    "hanzi": "乾",
+    "pinyin": "Qián",
+    "wadeGiles": "Ch'ien",
+    "english": "The Creative",
+    "binary": "111111",
+    "text": {
+      "judgment": {
+        "chinese": "元亨，利貞。",
+        "english": "Great success; constancy is beneficial."
+      },
+      "image": {
+        "chinese": "天行健，君子以自強不息。",
+        "english": "Heaven moves strongly. The noble person strengthens himself without ceasing."
+      },
+      "lines": [
+        {
+          "chinese": "潛龍勿用。",
+          "english": "Hidden dragon: do not act."
+        },
+        {
+          "chinese": "見龍在田，利見大人。",
+          "english": "A dragon appears in the field. It is beneficial to see the great person."
+        },
+        {
+          "chinese": "君子終日乾乾，夕惕若厲。无咎。",
+          "english": "The noble person works vigorously all day and remains watchful at night. Danger; no blame."
+        },
+        {
+          "chinese": "或躍在淵，无咎。",
+          "english": "Perhaps leaping in the deep. No blame."
+        },
+        {
+          "chinese": "飛龍在天，利見大人。",
+          "english": "A flying dragon in heaven. It is beneficial to see the great person."
+        },
+        {
+          "chinese": "亢龍，有悔。",
+          "english": "An overreaching dragon has regret."
+        }
+      ],
+      "useNine": {
+        "chinese": "見群龍无首，吉。",
+        "english": "See a group of dragons without a head. Good fortune."
+      }
+    }
+  },
+  {
+    "number": 2,
+    "hanzi": "坤",
+    "pinyin": "Kūn",
+    "wadeGiles": "K'un",
+    "english": "The Receptive",
+    "binary": "000000",
+    "text": {
+      "judgment": {
+        "chinese": "元亨。利牝馬之貞。君子有攸往，先迷後得主，利，西南得朋，東北喪朋。安貞吉。",
+        "english": "Great success. The constancy of a mare is beneficial. The noble person has somewhere to go: first lost, later finding a master; beneficial. Gain companions in the southwest; lose companions in the northeast. Peaceful constancy brings good fortune."
+      },
+      "image": {
+        "chinese": "地勢坤。君子以厚德載物。",
+        "english": "The disposition of earth is yielding. The noble person bears things with ample virtue."
+      },
+      "lines": [
+        {
+          "chinese": "履霜、堅冰至。",
+          "english": "Treading on frost: hard ice arrives."
+        },
+        {
+          "chinese": "直、方、大，不習无不利。",
+          "english": "Straight, square, great. Without practice, nothing is unbeneficial."
+        },
+        {
+          "chinese": "含章可貞，或從王事，无成有終。",
+          "english": "Holding beauty within, one may remain constant. Perhaps serving the king's affairs: no achievement of one's own, but a completion."
+        },
+        {
+          "chinese": "括囊，无咎无譽。",
+          "english": "Tie up the sack. No blame, no praise."
+        },
+        {
+          "chinese": "黃裳元吉。",
+          "english": "Yellow lower garments: great good fortune."
+        },
+        {
+          "chinese": "龍戰于野，其血玄黃。",
+          "english": "Dragons fight in the open country. Their blood is dark and yellow."
+        }
+      ],
+      "useSix": {
+        "chinese": "利永貞。",
+        "english": "Lasting constancy is beneficial."
+      }
+    }
+  },
+  {
+    "number": 3,
+    "hanzi": "屯",
+    "pinyin": "Zhūn",
+    "wadeGiles": "Chun",
+    "english": "Difficulty at the Beginning",
+    "binary": "100010",
+    "text": {
+      "judgment": {
+        "chinese": "元亨，利貞。勿用有攸往。利建侯。",
+        "english": "Great success; constancy is beneficial. Do not undertake a journey. Establishing lords is beneficial."
+      },
+      "image": {
+        "chinese": "雲雷、屯。君子以經綸。",
+        "english": "Clouds and thunder: Sprouting. The noble person orders and arranges."
+      },
+      "lines": [
+        {
+          "chinese": "磐桓。利居貞。利建侯。",
+          "english": "Lingering about. Remaining constant is beneficial. Establishing lords is beneficial."
+        },
+        {
+          "chinese": "屯如邅如，乘馬班如。匪寇，婚媾。女子貞不字，十年乃字。",
+          "english": "Difficulty and circling; horses and carriage turn about. Not robbers: marriage seekers. The woman remains constant and does not become betrothed; after ten years she does."
+        },
+        {
+          "chinese": "即鹿無虞，惟入于林中，君子幾不如舍，往吝。",
+          "english": "Pursuing deer without a forester, one merely enters the forest. The noble person sees the first signs: better to abandon it. Going brings shame."
+        },
+        {
+          "chinese": "乘馬班如，求婚媾。往吉，无不利。",
+          "english": "Horses and carriage turn about. Seek marriage. Going brings good fortune; nothing is unbeneficial."
+        },
+        {
+          "chinese": "屯其膏，小貞吉，大貞凶。",
+          "english": "Hoarding one's richness. Small constancy brings good fortune; great constancy brings misfortune."
+        },
+        {
+          "chinese": "乘馬班如，泣血漣如。",
+          "english": "Horses and carriage turn about. Tears of blood flow in streams."
+        }
+      ]
+    }
+  },
+  {
+    "number": 4,
+    "hanzi": "蒙",
+    "pinyin": "Méng",
+    "wadeGiles": "Mêng",
+    "english": "Youthful Folly",
+    "binary": "010001",
+    "text": {
+      "judgment": {
+        "chinese": "亨。匪我求童蒙，童蒙來求我。初筮告，再三瀆，瀆則不告。利貞。",
+        "english": "Success. I do not seek the ignorant youth; the ignorant youth seeks me. At the first divination I inform him. A second and third are disrespectful; when disrespected I do not inform. Constancy is beneficial."
+      },
+      "image": {
+        "chinese": "山下出泉，蒙。君子以果行育德。",
+        "english": "A spring emerges below the mountain: Youthful Ignorance. The noble person acts resolutely and nurtures virtue."
+      },
+      "lines": [
+        {
+          "chinese": "發蒙，利用刑人，用說桎梏，以往吝。",
+          "english": "Opening ignorance. Punishing people is beneficial; use it to remove fetters. Going further brings shame."
+        },
+        {
+          "chinese": "苞蒙，吉。納婦吉。子克家。",
+          "english": "Encompassing ignorance brings good fortune. Taking a wife brings good fortune. The son can manage the household."
+        },
+        {
+          "chinese": "勿用取女，見金夫，不有躬。无攸利。",
+          "english": "Do not take this woman: seeing a wealthy man, she does not keep possession of herself. Nothing is beneficial."
+        },
+        {
+          "chinese": "困蒙，吝。",
+          "english": "Confined ignorance. Shame."
+        },
+        {
+          "chinese": "童蒙，吉。",
+          "english": "Youthful ignorance. Good fortune."
+        },
+        {
+          "chinese": "擊蒙，不利為寇，利禦寇。",
+          "english": "Striking ignorance. Being a robber is unbeneficial; resisting robbers is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 5,
+    "hanzi": "需",
+    "pinyin": "Xū",
+    "wadeGiles": "Hsü",
+    "english": "Waiting",
+    "binary": "111010",
+    "text": {
+      "judgment": {
+        "chinese": "有孚，光亨。貞吉。利涉大川。",
+        "english": "There is trust: bright success. Constancy brings good fortune. Crossing the great river is beneficial."
+      },
+      "image": {
+        "chinese": "雲上於天，需。君子以飲食宴樂。",
+        "english": "Clouds rise above heaven: Waiting. The noble person eats, drinks, feasts and enjoys."
+      },
+      "lines": [
+        {
+          "chinese": "需于郊，利用恆，无咎。",
+          "english": "Waiting in the outskirts. Perseverance is beneficial. No blame."
+        },
+        {
+          "chinese": "需于沙，小有言，終吉。",
+          "english": "Waiting on sand. Some small words; in the end good fortune."
+        },
+        {
+          "chinese": "需于泥，致寇至。",
+          "english": "Waiting in mud brings robbers."
+        },
+        {
+          "chinese": "需于血，出自穴。",
+          "english": "Waiting in blood. Come out from the pit."
+        },
+        {
+          "chinese": "需于酒食，貞吉。",
+          "english": "Waiting with wine and food. Constancy brings good fortune."
+        },
+        {
+          "chinese": "入于穴，有不速之客三人來，敬之終吉。",
+          "english": "Entering the pit. Three uninvited guests arrive. Respect them; in the end good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 6,
+    "hanzi": "訟",
+    "pinyin": "Sòng",
+    "wadeGiles": "Sung",
+    "english": "Conflict",
+    "binary": "010111",
+    "text": {
+      "judgment": {
+        "chinese": "有孚窒，惕，中吉，終凶。利見大人。不利涉大川。",
+        "english": "There is trust, but obstruction. Be watchful: good fortune midway; misfortune at the end. Seeing the great person is beneficial. Crossing the great river is unbeneficial."
+      },
+      "image": {
+        "chinese": "天與水違行，訟。君子以作事謀始。",
+        "english": "Heaven and water move apart: Dispute. The noble person plans the beginning when undertaking affairs."
+      },
+      "lines": [
+        {
+          "chinese": "不永所事，小有言，終吉。",
+          "english": "Do not prolong the affair. Some small words; in the end good fortune."
+        },
+        {
+          "chinese": "不克訟，歸而逋其邑，人三百戶无眚。",
+          "english": "Unable to prevail in dispute, return and flee. In one's town of three hundred households there is no calamity."
+        },
+        {
+          "chinese": "食舊德，貞厲，終吉。或從王事无成。",
+          "english": "Live on former virtue. Constancy is dangerous; in the end good fortune. Perhaps serving the king's affairs, without achievement of one's own."
+        },
+        {
+          "chinese": "不克訟，復即命，渝。安貞吉。",
+          "english": "Unable to prevail in dispute, return and accept the mandate; change. Peaceful constancy brings good fortune."
+        },
+        {
+          "chinese": "訟元吉。",
+          "english": "Dispute: great good fortune."
+        },
+        {
+          "chinese": "或錫之鞶、帶，終朝三褫之。",
+          "english": "Perhaps granted a ceremonial belt, only to have it stripped away three times before the morning ends."
+        }
+      ]
+    }
+  },
+  {
+    "number": 7,
+    "hanzi": "師",
+    "pinyin": "Shī",
+    "wadeGiles": "Shih",
+    "english": "Army",
+    "binary": "010000",
+    "text": {
+      "judgment": {
+        "chinese": "貞丈人吉，无咎。",
+        "english": "Constancy. For a mature leader, good fortune; no blame."
+      },
+      "image": {
+        "chinese": "地中有水，師。君子以容民畜眾。",
+        "english": "Water within the earth: The Army. The noble person embraces the people and gathers the multitude."
+      },
+      "lines": [
+        {
+          "chinese": "師出以律，否臧凶。",
+          "english": "The army goes out with discipline. Otherwise, even what is good brings misfortune."
+        },
+        {
+          "chinese": "在師中，吉、无咎，王三錫命。",
+          "english": "In the army's midst: good fortune, no blame. The king bestows the command three times."
+        },
+        {
+          "chinese": "師或輿尸，凶。",
+          "english": "The army perhaps carries corpses. Misfortune."
+        },
+        {
+          "chinese": "師左次，无咎。",
+          "english": "The army camps on the left. No blame."
+        },
+        {
+          "chinese": "田有禽。利執言，无咎。長子帥師，弟子輿尸，貞凶。",
+          "english": "There is game in the field. Holding to the word is beneficial; no blame. The eldest son leads the army; younger men carry corpses. Constancy brings misfortune."
+        },
+        {
+          "chinese": "大君有命，開國承家，小人勿用。",
+          "english": "The great ruler issues a mandate: establish states and inherit houses. Do not employ petty people."
+        }
+      ]
+    }
+  },
+  {
+    "number": 8,
+    "hanzi": "比",
+    "pinyin": "Bǐ",
+    "wadeGiles": "Pi",
+    "english": "Holding",
+    "binary": "000010",
+    "text": {
+      "judgment": {
+        "chinese": "吉。原筮元，永貞无咎。不寧方來，後夫凶。",
+        "english": "Good fortune. Examine the divination: great, lasting constancy; no blame. The unsettled come. For the latecomer, misfortune."
+      },
+      "image": {
+        "chinese": "地上有水，比。先王以建萬國，親諸侯。",
+        "english": "Water upon the earth: Joining. The former kings established myriad states and drew the lords close."
+      },
+      "lines": [
+        {
+          "chinese": "有孚比之，无咎。有孚盈缶，終來，有它吉。",
+          "english": "Join with trust: no blame. Trust fills an earthen jar; in the end other good fortune comes."
+        },
+        {
+          "chinese": "比之自內，貞吉。",
+          "english": "Joining from within. Constancy brings good fortune."
+        },
+        {
+          "chinese": "比之匪人。",
+          "english": "Joining with the wrong people."
+        },
+        {
+          "chinese": "外比之，貞吉。",
+          "english": "Joining outwardly. Constancy brings good fortune."
+        },
+        {
+          "chinese": "顯比，王用三驅，失前禽，邑人不誡，吉。",
+          "english": "Manifest joining. The king uses a three-sided hunt, losing the game ahead. The townspeople are not warned. Good fortune."
+        },
+        {
+          "chinese": "比之无首，凶。",
+          "english": "Joining without a head. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 9,
+    "hanzi": "小畜",
+    "pinyin": "Xiǎo Xù",
+    "wadeGiles": "Hsiao Ch'u",
+    "english": "Taming Power of the Small",
+    "binary": "111011",
+    "text": {
+      "judgment": {
+        "chinese": "亨。密雲不雨，自我西郊。",
+        "english": "Success. Dense clouds, no rain, from our western outskirts."
+      },
+      "image": {
+        "chinese": "風行天上，小畜。君子以懿文德。",
+        "english": "Wind moves above heaven: Small Restraint. The noble person refines patterned virtue."
+      },
+      "lines": [
+        {
+          "chinese": "復自道，何其咎，吉。",
+          "english": "Return by one's own way. What blame could there be? Good fortune."
+        },
+        {
+          "chinese": "牽復，吉。",
+          "english": "Drawn back together. Good fortune."
+        },
+        {
+          "chinese": "輿說輻。夫妻反目。",
+          "english": "The carriage loses its spokes. Husband and wife turn their eyes against each other."
+        },
+        {
+          "chinese": "有孚血去惕出，无咎。",
+          "english": "There is trust: blood departs and fear comes out. No blame."
+        },
+        {
+          "chinese": "有孚攣如，富以其鄰。",
+          "english": "Trust binds together. Rich together with one's neighbors."
+        },
+        {
+          "chinese": "既雨既處，尚德載。婦貞厲。月幾望，君子征凶。",
+          "english": "Rain has fallen; rest has come. Honor virtue's accumulation. The wife's constancy is dangerous. The moon is nearly full. The noble person's advance brings misfortune."
+        }
+      ]
+    },
+    "pinyinVariants": [
+      "Xiǎo Chù"
+    ]
+  },
+  {
+    "number": 10,
+    "hanzi": "履",
+    "pinyin": "Lǚ",
+    "wadeGiles": "Lü",
+    "english": "Treading",
+    "binary": "110111",
+    "text": {
+      "judgment": {
+        "chinese": "履虎尾，不咥人。亨。",
+        "english": "Treading on the tiger's tail: it does not bite the person. Success."
+      },
+      "image": {
+        "chinese": "上天下澤，履。君子以辯上下，定民志。",
+        "english": "Heaven above, lake below: Treading. The noble person distinguishes high and low and settles the people's purpose."
+      },
+      "lines": [
+        {
+          "chinese": "素履往，无咎。",
+          "english": "Tread simply and go. No blame."
+        },
+        {
+          "chinese": "履道坦坦，幽人貞吉。",
+          "english": "Tread a level road. The secluded person's constancy brings good fortune."
+        },
+        {
+          "chinese": "眇能視，跛能履，履虎尾，咥人凶。武人為于大君。",
+          "english": "The one-eyed can see, the lame can walk. Tread on the tiger's tail: it bites the person; misfortune. A warrior acts as the great ruler."
+        },
+        {
+          "chinese": "履虎尾愬愬，終吉。",
+          "english": "Tread on the tiger's tail, fearful and cautious. In the end good fortune."
+        },
+        {
+          "chinese": "夬履貞厲。",
+          "english": "Decisive treading. Constancy is dangerous."
+        },
+        {
+          "chinese": "視履考祥，其旋，元吉。",
+          "english": "Examine the treading and consider its signs. On its completion, great good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 11,
+    "hanzi": "泰",
+    "pinyin": "Tài",
+    "wadeGiles": "T'ai",
+    "english": "Peace",
+    "binary": "111000",
+    "text": {
+      "judgment": {
+        "chinese": "小往大來，吉，亨。",
+        "english": "The small departs, the great arrives. Good fortune; success."
+      },
+      "image": {
+        "chinese": "天地交，泰。后以財成天地之道，輔相天地之宜，以左右民。",
+        "english": "Heaven and earth join: Peace. The ruler shapes the way of heaven and earth, assists their proper workings, and thereby supports the people."
+      },
+      "lines": [
+        {
+          "chinese": "拔茅茹以其彙。征吉。",
+          "english": "Pull up thatch, roots entwined with its kind. Advancing brings good fortune."
+        },
+        {
+          "chinese": "苞荒，用馮河，不遐遺。朋亡，得尚于中行。",
+          "english": "Encompass the wild, use the river crossing, do not leave the distant behind. Companions disappear. One gains honor through the middle course."
+        },
+        {
+          "chinese": "无平不陂，无往不復。艱貞，无咎。勿恤其孚，于食有福。",
+          "english": "No level without a slope, no going without return. Constancy in difficulty: no blame. Do not worry about trust; in food there is blessing."
+        },
+        {
+          "chinese": "翩翩，不富以其鄰，不戒以孚。",
+          "english": "Fluttering together, not rich, with one's neighbors; without warning, through trust."
+        },
+        {
+          "chinese": "帝乙歸妹，以祉，元吉。",
+          "english": "Di Yi marries off the maiden. Blessing and great good fortune."
+        },
+        {
+          "chinese": "城復于隍，勿用師，自邑告命、貞吝。",
+          "english": "The city wall falls back into the moat. Do not use the army. Announce the mandate from one's town. Constancy brings shame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 12,
+    "hanzi": "否",
+    "pinyin": "Pǐ",
+    "wadeGiles": "P'i",
+    "english": "Standstill",
+    "binary": "000111",
+    "text": {
+      "judgment": {
+        "chinese": "否之匪人。不利君子貞。大往小來。",
+        "english": "Obstruction through unsuitable people. The noble person's constancy is unbeneficial. The great departs; the small arrives."
+      },
+      "image": {
+        "chinese": "天地不交，否。君子以儉德辟難，不可榮以祿。",
+        "english": "Heaven and earth do not join: Obstruction. The noble person conserves virtue to avoid trouble and cannot be honored with a stipend."
+      },
+      "lines": [
+        {
+          "chinese": "拔茅茹，以其彙。貞吉亨。",
+          "english": "Pull up thatch, roots entwined with its kind. Constancy brings good fortune and success."
+        },
+        {
+          "chinese": "苞承，小人吉，大人否。亨。",
+          "english": "Encompassing and accepting: good fortune for petty people; obstruction for the great person. Success."
+        },
+        {
+          "chinese": "苞羞。",
+          "english": "Encompassing shame."
+        },
+        {
+          "chinese": "有命，无咎，疇離祉。",
+          "english": "There is a mandate: no blame. Those of like kind share the blessing."
+        },
+        {
+          "chinese": "休否，大人吉。其亡其亡，繫于苞桑。",
+          "english": "Rest from obstruction. Good fortune for the great person. 'It may perish, it may perish!' Tie it to a clump of mulberry trees."
+        },
+        {
+          "chinese": "傾否，先否後喜。",
+          "english": "Overturning obstruction. First obstruction, afterward joy."
+        }
+      ]
+    }
+  },
+  {
+    "number": 13,
+    "hanzi": "同人",
+    "pinyin": "Tóng Rén",
+    "wadeGiles": "T'ung Jên",
+    "english": "Fellowship with Men",
+    "binary": "101111",
+    "text": {
+      "judgment": {
+        "chinese": "同人于野，亨。利涉大川。利君子貞。",
+        "english": "Joining people in the open country: success. Crossing the great river is beneficial. The noble person's constancy is beneficial."
+      },
+      "image": {
+        "chinese": "天與火、同人。君子以類族辨物。",
+        "english": "Heaven together with fire: Joining People. The noble person groups clans and distinguishes things."
+      },
+      "lines": [
+        {
+          "chinese": "同人于門，无咎。",
+          "english": "Joining people at the gate. No blame."
+        },
+        {
+          "chinese": "同人于宗，吝。",
+          "english": "Joining people within the clan. Shame."
+        },
+        {
+          "chinese": "伏戎于莽，升其高陵，三歲不興。",
+          "english": "Hide troops in the thicket; ascend the high hill. For three years do not rise."
+        },
+        {
+          "chinese": "乘其墉，弗克攻，吉。",
+          "english": "Mount their wall, yet cannot attack. Good fortune."
+        },
+        {
+          "chinese": "同人先號咷而後笑，大師克，相遇。",
+          "english": "Joining people: first wailing, afterward laughing. The great armies prevail and meet each other."
+        },
+        {
+          "chinese": "同人于郊，无悔。",
+          "english": "Joining people in the outskirts. No regret."
+        }
+      ]
+    }
+  },
+  {
+    "number": 14,
+    "hanzi": "大有",
+    "pinyin": "Dà Yǒu",
+    "wadeGiles": "Ta Yu",
+    "english": "Possession in Great Measure",
+    "binary": "111101",
+    "text": {
+      "judgment": {
+        "chinese": "元亨。",
+        "english": "Great success."
+      },
+      "image": {
+        "chinese": "火在天上，大有。君子以遏惡揚善，順天休命。",
+        "english": "Fire above heaven: Great Possession. The noble person restrains evil and raises good, following heaven's favorable mandate."
+      },
+      "lines": [
+        {
+          "chinese": "无交害，匪咎、艱則无咎。",
+          "english": "No involvement in harm. No blame; difficulty brings no blame."
+        },
+        {
+          "chinese": "大車以載，有攸往，无咎。",
+          "english": "A great carriage for carrying. Have somewhere to go; no blame."
+        },
+        {
+          "chinese": "公用亨于天子，小人弗克。",
+          "english": "The duke offers a feast to the Son of Heaven. Petty people cannot do this."
+        },
+        {
+          "chinese": "匪其彭，无咎。",
+          "english": "Do not make it excessive. No blame."
+        },
+        {
+          "chinese": "厥孚交如，威如吉。",
+          "english": "Trust in mutual exchange, with dignity: good fortune."
+        },
+        {
+          "chinese": "自天祐之，吉无不利。",
+          "english": "Heaven itself helps him. Good fortune; nothing is unbeneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 15,
+    "hanzi": "謙",
+    "pinyin": "Qiān",
+    "wadeGiles": "Ch'ien",
+    "english": "Modesty",
+    "binary": "001000",
+    "text": {
+      "judgment": {
+        "chinese": "亨。君子有終。",
+        "english": "Success. The noble person brings things to completion."
+      },
+      "image": {
+        "chinese": "地中有山，謙。君子以裒多益寡，稱物平施。",
+        "english": "A mountain within the earth: Humility. The noble person reduces the abundant and increases the scarce, weighing things and distributing fairly."
+      },
+      "lines": [
+        {
+          "chinese": "謙謙君子，用涉大川，吉。",
+          "english": "A humble, humble noble person. Use this to cross the great river. Good fortune."
+        },
+        {
+          "chinese": "鳴謙，貞吉。",
+          "english": "Voicing humility. Constancy brings good fortune."
+        },
+        {
+          "chinese": "勞謙，君子有終、吉。",
+          "english": "Laboring with humility, the noble person brings things to completion. Good fortune."
+        },
+        {
+          "chinese": "无不利，撝謙。",
+          "english": "Nothing is unbeneficial. Spread humility."
+        },
+        {
+          "chinese": "不富以其鄰，利用侵伐，无不利。",
+          "english": "Not rich, together with one's neighbors. Invasion and attack are beneficial; nothing is unbeneficial."
+        },
+        {
+          "chinese": "鳴謙，利用行師征邑國。",
+          "english": "Voicing humility. Using the army to campaign against towns and states is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 16,
+    "hanzi": "豫",
+    "pinyin": "Yù",
+    "wadeGiles": "Yü",
+    "english": "Enthusiasm",
+    "binary": "000100",
+    "text": {
+      "judgment": {
+        "chinese": "利建侯行師。",
+        "english": "Establishing lords and deploying the army are beneficial."
+      },
+      "image": {
+        "chinese": "雷出地奮，豫。先王以作樂崇德，殷薦之上帝以配祖考。",
+        "english": "Thunder emerges and stirs the earth: Readiness. The former kings made music to honor virtue, offering it abundantly to the High Lord and joining the ancestors to him."
+      },
+      "lines": [
+        {
+          "chinese": "鳴豫，凶。",
+          "english": "Voicing delight. Misfortune."
+        },
+        {
+          "chinese": "介于石，不終日，貞吉。",
+          "english": "Firm as stone, without waiting a whole day. Constancy brings good fortune."
+        },
+        {
+          "chinese": "盱豫，悔，遲有悔。",
+          "english": "Looking upward in delight: regret. Delay brings regret."
+        },
+        {
+          "chinese": "由豫，大有得，勿疑。朋盍簪。",
+          "english": "The source of delight. Great gain. Do not doubt. Companions gather like hair around a clasp."
+        },
+        {
+          "chinese": "貞疾，恆不死。",
+          "english": "Constant illness, yet always not dying."
+        },
+        {
+          "chinese": "冥豫成，有渝、无咎。",
+          "english": "Darkened delight, completed. There is change; no blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 17,
+    "hanzi": "隨",
+    "pinyin": "Suí",
+    "wadeGiles": "Sui",
+    "english": "Following",
+    "binary": "100110",
+    "text": {
+      "judgment": {
+        "chinese": "元亨，利貞，无咎。",
+        "english": "Great success; constancy is beneficial. No blame."
+      },
+      "image": {
+        "chinese": "澤中有雷，隨。君子以嚮晦入宴息。",
+        "english": "Thunder within the lake: Following. The noble person turns toward evening and enters rest."
+      },
+      "lines": [
+        {
+          "chinese": "官有渝，貞吉，出門交有功。",
+          "english": "The office changes. Constancy brings good fortune. Going out the gate and making connections brings accomplishment."
+        },
+        {
+          "chinese": "係小子，失丈夫。",
+          "english": "Bind oneself to the little boy; lose the grown man."
+        },
+        {
+          "chinese": "係丈夫，失小子，隨有求、得。利居貞。",
+          "english": "Bind oneself to the grown man; lose the little boy. Following, one obtains what one seeks. Remaining constant is beneficial."
+        },
+        {
+          "chinese": "隨有獲，貞凶。有孚在道，以明，何咎？",
+          "english": "Following brings capture. Constancy brings misfortune. There is trust on the way, with clarity. What blame?"
+        },
+        {
+          "chinese": "孚于嘉、吉。",
+          "english": "Trust in the good. Good fortune."
+        },
+        {
+          "chinese": "拘係之乃從，維之，王用亨于西山。",
+          "english": "Seize and bind him; then follow and hold him. The king offers sacrifice at the western mountain."
+        }
+      ]
+    }
+  },
+  {
+    "number": 18,
+    "hanzi": "蠱",
+    "pinyin": "Gǔ",
+    "wadeGiles": "Ku",
+    "english": "Work on What is Spoiled",
+    "binary": "011001",
+    "text": {
+      "judgment": {
+        "chinese": "元亨。利涉大川，先甲三日，後甲三日。",
+        "english": "Great success. Crossing the great river is beneficial. Three days before jia, three days after jia."
+      },
+      "image": {
+        "chinese": "山下有風，蠱。君子以振民育德。",
+        "english": "Wind below the mountain: Decay. The noble person stirs the people and nurtures virtue."
+      },
+      "lines": [
+        {
+          "chinese": "幹父之蠱，有子，考无咎，厲終吉。",
+          "english": "Set right the father's decay. There is a son: the deceased father has no blame. Danger; in the end good fortune."
+        },
+        {
+          "chinese": "幹母之蠱，不可貞。",
+          "english": "Set right the mother's decay. One cannot remain rigidly constant."
+        },
+        {
+          "chinese": "幹父之蠱，小有悔，无大咎。",
+          "english": "Set right the father's decay. A little regret; no great blame."
+        },
+        {
+          "chinese": "裕父之蠱，往見吝。",
+          "english": "Indulge the father's decay. Going brings shame."
+        },
+        {
+          "chinese": "幹父之蠱，用譽。",
+          "english": "Set right the father's decay. Receive praise."
+        },
+        {
+          "chinese": "不事王侯，高尚其事。",
+          "english": "Do not serve kings and lords. Hold one's own work high."
+        }
+      ]
+    }
+  },
+  {
+    "number": 19,
+    "hanzi": "臨",
+    "pinyin": "Lín",
+    "wadeGiles": "Lin",
+    "english": "Approach",
+    "binary": "110000",
+    "text": {
+      "judgment": {
+        "chinese": "元亨，利貞。至于八月有凶。",
+        "english": "Great success; constancy is beneficial. On reaching the eighth month there is misfortune."
+      },
+      "image": {
+        "chinese": "澤上有地，臨。君子以教思无窮，容保民无疆。",
+        "english": "Earth above the lake: Approach. The noble person's thought in teaching is inexhaustible, and his protection of the people has no bounds."
+      },
+      "lines": [
+        {
+          "chinese": "咸臨，貞吉。",
+          "english": "Approaching together. Constancy brings good fortune."
+        },
+        {
+          "chinese": "咸臨吉，无不利。",
+          "english": "Approaching together: good fortune. Nothing is unbeneficial."
+        },
+        {
+          "chinese": "甘臨，无攸利；既憂之，无咎。",
+          "english": "Sweet approach. Nothing is beneficial. Having become concerned about it, no blame."
+        },
+        {
+          "chinese": "至臨，无咎。",
+          "english": "Arriving approach. No blame."
+        },
+        {
+          "chinese": "知臨，大君之宜，吉。",
+          "english": "Wise approach, fitting for a great ruler. Good fortune."
+        },
+        {
+          "chinese": "敦臨吉，无咎。",
+          "english": "Sincere approach. Good fortune, no blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 20,
+    "hanzi": "觀",
+    "pinyin": "Guān",
+    "wadeGiles": "Kuan",
+    "english": "Contemplation",
+    "binary": "000011",
+    "text": {
+      "judgment": {
+        "chinese": "盥而不薦。有孚顒若。",
+        "english": "Wash the hands, but do not yet present the offering. There is trust, solemnly attentive."
+      },
+      "image": {
+        "chinese": "風行地上，觀。先王以省方觀民設教。",
+        "english": "Wind moves over earth: Contemplation. The former kings visited the regions, observed the people and established teaching."
+      },
+      "lines": [
+        {
+          "chinese": "童觀，小人无咎，君子吝。",
+          "english": "A child's contemplation. For petty people, no blame; for the noble person, shame."
+        },
+        {
+          "chinese": "闚觀，利女貞。",
+          "english": "Peeping contemplation. A woman's constancy is beneficial."
+        },
+        {
+          "chinese": "觀我生進退。",
+          "english": "Contemplate my life: advance or retreat."
+        },
+        {
+          "chinese": "觀國之光，利用賓于王。",
+          "english": "Contemplate the state's splendor. Being the king's guest is beneficial."
+        },
+        {
+          "chinese": "觀我生，君子无咎。",
+          "english": "Contemplate my life. For the noble person, no blame."
+        },
+        {
+          "chinese": "觀其生，君子无咎。",
+          "english": "Contemplate his life. For the noble person, no blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 21,
+    "hanzi": "噬嗑",
+    "pinyin": "Shì Hé",
+    "wadeGiles": "Shih Ho",
+    "english": "Biting Through",
+    "binary": "100101",
+    "text": {
+      "judgment": {
+        "chinese": "亨。利用獄。",
+        "english": "Success. Using legal proceedings is beneficial."
+      },
+      "image": {
+        "chinese": "雷電噬嗑。先王以明罰勑法。",
+        "english": "Thunder and lightning: Biting Together. The former kings clarified punishments and enforced laws."
+      },
+      "lines": [
+        {
+          "chinese": "屨校滅趾，无咎。",
+          "english": "Feet in a shackle, hiding the toes. No blame."
+        },
+        {
+          "chinese": "噬膚滅鼻，无咎。",
+          "english": "Bite skin, hiding the nose. No blame."
+        },
+        {
+          "chinese": "噬腊肉遇毒，小吝，无咎。",
+          "english": "Bite dried meat and encounter poison. Small shame; no blame."
+        },
+        {
+          "chinese": "噬乾胏，得金矢。利艱貞、吉。",
+          "english": "Bite dried meat with bone and obtain a metal arrow. Constancy in difficulty is beneficial. Good fortune."
+        },
+        {
+          "chinese": "噬乾肉，得黃金。貞厲无咎。",
+          "english": "Bite dried meat and obtain yellow metal. Constancy is dangerous; no blame."
+        },
+        {
+          "chinese": "何校滅耳，凶。",
+          "english": "Bearing a cangue, hiding the ears. Misfortune."
+        }
+      ]
+    },
+    "pinyinVariants": [
+      "Shì Kè"
+    ]
+  },
+  {
+    "number": 22,
+    "hanzi": "賁",
+    "pinyin": "Bì",
+    "wadeGiles": "Pi",
+    "english": "Grace",
+    "binary": "101001",
+    "text": {
+      "judgment": {
+        "chinese": "亨。小利有攸往。",
+        "english": "Success. A little benefit in having somewhere to go."
+      },
+      "image": {
+        "chinese": "山下有火，賁。君子以明庶政，无敢折獄。",
+        "english": "Fire below the mountain: Adornment. The noble person clarifies public affairs, but does not dare decide lawsuits."
+      },
+      "lines": [
+        {
+          "chinese": "賁其趾，舍車而徒。",
+          "english": "Adorn the toes. Leave the carriage and walk."
+        },
+        {
+          "chinese": "賁其須。",
+          "english": "Adorn the beard."
+        },
+        {
+          "chinese": "賁如濡如，永貞吉。",
+          "english": "Adorned and glistening. Lasting constancy brings good fortune."
+        },
+        {
+          "chinese": "賁如皤如，白馬翰如，匪寇，婚媾。",
+          "english": "Adorned, white; the white horse flies. Not robbers: marriage seekers."
+        },
+        {
+          "chinese": "賁于丘園，束帛戔戔，吝終吉。",
+          "english": "Adornment in hills and gardens. Bundles of silk are scant. Shame; in the end good fortune."
+        },
+        {
+          "chinese": "白賁，无咎。",
+          "english": "White adornment. No blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 23,
+    "hanzi": "剝",
+    "pinyin": "Bō",
+    "wadeGiles": "Po",
+    "english": "Splitting Apart",
+    "binary": "000001",
+    "text": {
+      "judgment": {
+        "chinese": "不利有攸往。",
+        "english": "Having somewhere to go is unbeneficial."
+      },
+      "image": {
+        "chinese": "山附於地，剝。上以厚下安宅。",
+        "english": "The mountain rests on earth: Stripping. Those above make those below substantial and secure their dwelling."
+      },
+      "lines": [
+        {
+          "chinese": "剝床以足，蔑貞凶。",
+          "english": "Strip the bed at its legs. Disregarding constancy: misfortune."
+        },
+        {
+          "chinese": "剝床以辨，蔑貞凶。",
+          "english": "Strip the bed at its frame. Disregarding constancy: misfortune."
+        },
+        {
+          "chinese": "剝之无咎。",
+          "english": "Stripping it. No blame."
+        },
+        {
+          "chinese": "剝床以膚，凶。",
+          "english": "Strip the bed to the skin. Misfortune."
+        },
+        {
+          "chinese": "貫魚以宮人寵，无不利。",
+          "english": "A string of fish, favor through palace women. Nothing is unbeneficial."
+        },
+        {
+          "chinese": "碩果不食，君子得輿，小人剝廬。",
+          "english": "A large fruit uneaten. The noble person gains a carriage; the petty person strips his hut."
+        }
+      ]
+    }
+  },
+  {
+    "number": 24,
+    "hanzi": "復",
+    "pinyin": "Fù",
+    "wadeGiles": "Fu",
+    "english": "Return",
+    "binary": "100000",
+    "text": {
+      "judgment": {
+        "chinese": "亨。出入无疾。朋來无咎。反復其道，七日來復。利有攸往。",
+        "english": "Success. Going out and coming in without illness. Companions arrive without blame. Returning along the way: in seven days comes return. Having somewhere to go is beneficial."
+      },
+      "image": {
+        "chinese": "雷在地中，復。先王以至日閉關，商旅不行，后不省方。",
+        "english": "Thunder within earth: Return. The former kings closed the passes on the solstice. Merchants and travelers did not move; the ruler did not inspect the regions."
+      },
+      "lines": [
+        {
+          "chinese": "不遠復，无祗悔，元吉。",
+          "english": "Return before going far. No great regret. Great good fortune."
+        },
+        {
+          "chinese": "休復，吉。",
+          "english": "Restful return. Good fortune."
+        },
+        {
+          "chinese": "頻復，厲、无咎。",
+          "english": "Repeated return. Danger; no blame."
+        },
+        {
+          "chinese": "中行獨復。",
+          "english": "Walking in the middle, returning alone."
+        },
+        {
+          "chinese": "敦復，无悔。",
+          "english": "Sincere return. No regret."
+        },
+        {
+          "chinese": "迷復，凶，有災眚。用行師，終有大敗，以其國君凶，至于十年不克征。",
+          "english": "Lost return. Misfortune; disaster and calamity. Deploying the army ends in great defeat, with misfortune for the ruler. For ten years one cannot campaign."
+        }
+      ]
+    }
+  },
+  {
+    "number": 25,
+    "hanzi": "無妄",
+    "pinyin": "Wú Wàng",
+    "wadeGiles": "Wu Wang",
+    "english": "Unexpected Innocence",
+    "binary": "100111",
+    "text": {
+      "judgment": {
+        "chinese": "元亨，利貞。其匪正有眚，不利有攸往。",
+        "english": "Great success; constancy is beneficial. What is not correct brings calamity. Having somewhere to go is unbeneficial."
+      },
+      "image": {
+        "chinese": "天下雷行，物與无妄。先王以茂對時育萬物。",
+        "english": "Thunder moves below heaven; things are without falseness. The former kings nurtured all things abundantly in accord with the seasons."
+      },
+      "lines": [
+        {
+          "chinese": "无妄，往吉。",
+          "english": "Without falseness. Going brings good fortune."
+        },
+        {
+          "chinese": "不耕穫；不菑畬；則利有攸往。",
+          "english": "Without plowing, harvest; without clearing new land, mature fields. Then having somewhere to go is beneficial."
+        },
+        {
+          "chinese": "无妄之災，或繫之牛，行人之得，邑人之災。",
+          "english": "An unanticipated calamity. Someone ties an ox: the passerby gains it, the townspeople suffer disaster."
+        },
+        {
+          "chinese": "可貞，无咎。",
+          "english": "One may remain constant. No blame."
+        },
+        {
+          "chinese": "无妄之疾，勿藥有喜。",
+          "english": "An unanticipated illness. Without medicine there is joy."
+        },
+        {
+          "chinese": "无妄，行有眚，无攸利。",
+          "english": "Without falseness, yet action brings calamity. Nothing is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 26,
+    "hanzi": "大畜",
+    "pinyin": "Dà Xù",
+    "wadeGiles": "Ta Ch'u",
+    "english": "Taming Power of the Great",
+    "binary": "111001",
+    "text": {
+      "judgment": {
+        "chinese": "利貞。不家食吉。利涉大川。",
+        "english": "Constancy is beneficial. Not eating at home brings good fortune. Crossing the great river is beneficial."
+      },
+      "image": {
+        "chinese": "天在山中，大畜。君子以多識前言往行以畜其德。",
+        "english": "Heaven within the mountain: Great Restraint. The noble person learns many former words and past deeds to accumulate virtue."
+      },
+      "lines": [
+        {
+          "chinese": "有厲，利己。",
+          "english": "There is danger. Stopping is beneficial."
+        },
+        {
+          "chinese": "輿說輹。",
+          "english": "The carriage loses its axle fastening."
+        },
+        {
+          "chinese": "良馬逐，利艱貞，曰閑輿衛，利有攸往。",
+          "english": "Good horses pursue. Constancy in difficulty is beneficial. Practice carriage defense daily. Having somewhere to go is beneficial."
+        },
+        {
+          "chinese": "童牛之牿，元吉。",
+          "english": "A young ox's headboard. Great good fortune."
+        },
+        {
+          "chinese": "豶豕之牙，吉。",
+          "english": "A castrated boar's tusk. Good fortune."
+        },
+        {
+          "chinese": "何天之衢，亨。",
+          "english": "What a thoroughfare of heaven! Success."
+        }
+      ]
+    },
+    "pinyinVariants": [
+      "Dà Chù"
+    ]
+  },
+  {
+    "number": 27,
+    "hanzi": "頤",
+    "pinyin": "Yí",
+    "wadeGiles": "I",
+    "english": "Nourishment",
+    "binary": "100001",
+    "text": {
+      "judgment": {
+        "chinese": "貞吉。觀頤，自求口實。",
+        "english": "Constancy brings good fortune. Observe nourishment; seek what fills the mouth yourself."
+      },
+      "image": {
+        "chinese": "山下有雷，頤。君子以慎言語、節飲食。",
+        "english": "Thunder below the mountain: Nourishment. The noble person is careful with speech and moderate in food and drink."
+      },
+      "lines": [
+        {
+          "chinese": "舍爾靈龜，觀我朵頤，凶。",
+          "english": "Abandon your numinous tortoise and watch my hanging jaws. Misfortune."
+        },
+        {
+          "chinese": "顛頤，拂經于丘，頤、征凶。",
+          "english": "Inverted nourishment, opposing the norm, seeking nourishment on the hill. Advancing brings misfortune."
+        },
+        {
+          "chinese": "拂頤貞、凶，十年勿用，无攸利。",
+          "english": "Opposing nourishment. Constancy brings misfortune. For ten years do not act. Nothing is beneficial."
+        },
+        {
+          "chinese": "顛頤，吉。虎視眈眈，其欲逐逐，无咎。",
+          "english": "Inverted nourishment: good fortune. The tiger gazes intently; its desires pursue one another. No blame."
+        },
+        {
+          "chinese": "拂經，居貞、吉，不可涉大川。",
+          "english": "Opposing the norm. Remaining constant brings good fortune. One cannot cross the great river."
+        },
+        {
+          "chinese": "由頤，厲、吉。利涉大川。",
+          "english": "The source of nourishment. Danger; good fortune. Crossing the great river is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 28,
+    "hanzi": "大過",
+    "pinyin": "Dà Guò",
+    "wadeGiles": "Ta Kuo",
+    "english": "Preponderance of the Great",
+    "binary": "011110",
+    "text": {
+      "judgment": {
+        "chinese": "棟橈，利有攸往，亨。",
+        "english": "The ridgepole bends. Having somewhere to go is beneficial. Success."
+      },
+      "image": {
+        "chinese": "澤滅木，大過。君子以獨立不懼，遯世无悶。",
+        "english": "The lake submerges the trees: Great Excess. The noble person stands alone without fear and withdraws from the world without distress."
+      },
+      "lines": [
+        {
+          "chinese": "藉用白茅，无咎。",
+          "english": "Lay down white thatch. No blame."
+        },
+        {
+          "chinese": "枯楊生稊，老夫得其女妻，无不利。",
+          "english": "A withered poplar sends out shoots. An old man obtains a young wife. Nothing is unbeneficial."
+        },
+        {
+          "chinese": "棟橈，凶。",
+          "english": "The ridgepole bends. Misfortune."
+        },
+        {
+          "chinese": "棟隆、吉。有它、吝。",
+          "english": "The ridgepole rises. Good fortune. Other concerns bring shame."
+        },
+        {
+          "chinese": "枯楊生華，老婦得其士夫，无咎无譽。",
+          "english": "A withered poplar flowers. An old woman obtains a young husband. No blame, no praise."
+        },
+        {
+          "chinese": "過涉滅頂，凶。无咎。",
+          "english": "Crossing too far, water covers the head. Misfortune; no blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 29,
+    "hanzi": "坎",
+    "pinyin": "Kǎn",
+    "wadeGiles": "K'an",
+    "english": "Abysmal Water",
+    "binary": "010010",
+    "text": {
+      "judgment": {
+        "chinese": "有孚，維心、亨。行有尚。",
+        "english": "There is trust. In the heart alone, success. Action has esteem."
+      },
+      "image": {
+        "chinese": "水洊至，習坎。君子以常德行、習教事。",
+        "english": "Water arrives repeatedly: Repeated Pit. The noble person maintains virtue in action and practices the work of teaching."
+      },
+      "lines": [
+        {
+          "chinese": "習坎，入于坎窞，凶。",
+          "english": "Repeated pit. Enter the pit's hollow. Misfortune."
+        },
+        {
+          "chinese": "坎有險，求小得。",
+          "english": "The pit has danger. Seek a small gain."
+        },
+        {
+          "chinese": "來之坎坎，險且枕，入于坎窞，勿用。",
+          "english": "Coming and going, pit upon pit. Danger, and a place to rest. Enter the pit's hollow. Do not act."
+        },
+        {
+          "chinese": "樽酒、簋貳、用缶，納約自牖，終无咎。",
+          "english": "A jar of wine, two baskets, earthen vessels. Present a simple offering through the window. In the end no blame."
+        },
+        {
+          "chinese": "坎不盈，衹既平，无咎。",
+          "english": "The pit is not overflowing; it has only reached level. No blame."
+        },
+        {
+          "chinese": "係用徽纆，寘于叢棘，三歲不得，凶。",
+          "english": "Bound with cords and ropes, placed among thorn bushes. For three years no release. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 30,
+    "hanzi": "離",
+    "pinyin": "Lí",
+    "wadeGiles": "Li",
+    "english": "Clinging Fire",
+    "binary": "101101",
+    "text": {
+      "judgment": {
+        "chinese": "利貞。亨。畜牝牛吉。",
+        "english": "Constancy is beneficial. Success. Rearing a cow brings good fortune."
+      },
+      "image": {
+        "chinese": "明兩、作離。大人以繼明照于四方。",
+        "english": "Brightness doubled makes Clinging. The great person continues brightness and illuminates the four quarters."
+      },
+      "lines": [
+        {
+          "chinese": "履錯然敬之，无咎。",
+          "english": "Treading in confusion. Treat it with respect. No blame."
+        },
+        {
+          "chinese": "黃離，元吉。",
+          "english": "Yellow brightness. Great good fortune."
+        },
+        {
+          "chinese": "日昃之離，不鼓缶而歌，則大耋之嗟，凶。",
+          "english": "The brightness of the declining sun. If one does not beat the earthen jar and sing, then comes the lament of great old age. Misfortune."
+        },
+        {
+          "chinese": "突如、其來如，焚如，死如，棄如。",
+          "english": "Sudden is its coming; burning, dying, being cast away."
+        },
+        {
+          "chinese": "出涕沱若，戚嗟若，吉。",
+          "english": "Tears stream out, grief and lamentation. Good fortune."
+        },
+        {
+          "chinese": "王用出征，有嘉折首，獲匪其醜，无咎。",
+          "english": "The king goes out on campaign. There is merit in cutting off the chief, capturing those who are not merely his followers. No blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 31,
+    "hanzi": "咸",
+    "pinyin": "Xián",
+    "wadeGiles": "Hsien",
+    "english": "Influence, Wooing",
+    "binary": "001110",
+    "text": {
+      "judgment": {
+        "chinese": "亨。利貞。取女吉。",
+        "english": "Success. Constancy is beneficial. Taking a woman in marriage brings good fortune."
+      },
+      "image": {
+        "chinese": "山上有澤，咸。君子以虛受人。",
+        "english": "A lake above the mountain: Mutual Influence. The noble person empties himself to receive others."
+      },
+      "lines": [
+        {
+          "chinese": "咸其拇。",
+          "english": "Influence in the big toe."
+        },
+        {
+          "chinese": "咸其腓，凶。居吉。",
+          "english": "Influence in the calf. Misfortune. Staying brings good fortune."
+        },
+        {
+          "chinese": "咸其股，執其隨，往吝。",
+          "english": "Influence in the thigh. Hold to what one follows. Going brings shame."
+        },
+        {
+          "chinese": "貞吉。悔亡。憧憧往來，朋從爾思。",
+          "english": "Constancy brings good fortune; regret disappears. Restless coming and going: companions follow your thoughts."
+        },
+        {
+          "chinese": "咸其脢，无悔。",
+          "english": "Influence in the flesh of the back. No regret."
+        },
+        {
+          "chinese": "咸其輔頰舌。",
+          "english": "Influence in the jaw, cheeks and tongue."
+        }
+      ]
+    }
+  },
+  {
+    "number": 32,
+    "hanzi": "恆",
+    "pinyin": "Héng",
+    "wadeGiles": "Hêng",
+    "english": "Duration",
+    "binary": "011100",
+    "text": {
+      "judgment": {
+        "chinese": "亨。无咎。利貞。利有攸往。",
+        "english": "Success. No blame. Constancy is beneficial. Having somewhere to go is beneficial."
+      },
+      "image": {
+        "chinese": "雷風恆。君子以立不易方。",
+        "english": "Thunder and wind: Duration. The noble person stands firm without changing direction."
+      },
+      "lines": [
+        {
+          "chinese": "浚恆，貞凶，无攸利。",
+          "english": "Deeply digging for duration. Constancy brings misfortune. Nothing is beneficial."
+        },
+        {
+          "chinese": "悔亡。",
+          "english": "Regret disappears."
+        },
+        {
+          "chinese": "不恆其德，或承之羞，貞吝。",
+          "english": "Not lasting in one's virtue, one may receive shame. Constancy brings shame."
+        },
+        {
+          "chinese": "田无禽。",
+          "english": "No game in the field."
+        },
+        {
+          "chinese": "恆其德、貞，婦人吉，夫子凶。",
+          "english": "Lasting in one's virtue with constancy: good fortune for a woman, misfortune for a man."
+        },
+        {
+          "chinese": "振恆，凶。",
+          "english": "Agitated duration. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 33,
+    "hanzi": "遯",
+    "pinyin": "Dùn",
+    "wadeGiles": "Tun",
+    "english": "Retreat",
+    "binary": "001111",
+    "text": {
+      "judgment": {
+        "chinese": "亨。小利貞。",
+        "english": "Success. Small constancy is beneficial."
+      },
+      "image": {
+        "chinese": "天下有山，遯。君子以遠小人，不惡而嚴。",
+        "english": "A mountain below heaven: Withdrawal. The noble person keeps petty people at a distance, with firmness rather than hatred."
+      },
+      "lines": [
+        {
+          "chinese": "遯尾、厲，勿用有攸往。",
+          "english": "The tail of withdrawal. Danger. Do not undertake a journey."
+        },
+        {
+          "chinese": "執之用黃牛之革，莫之勝、說。",
+          "english": "Hold it with yellow oxhide; no one can undo it."
+        },
+        {
+          "chinese": "係遯，有疾厲，畜臣妾吉。",
+          "english": "Bound withdrawal. Illness and danger. Keeping servants and concubines brings good fortune."
+        },
+        {
+          "chinese": "好遯，君子吉，小人否。",
+          "english": "Willing withdrawal. Good fortune for the noble person; otherwise for the petty person."
+        },
+        {
+          "chinese": "嘉遯，貞吉。",
+          "english": "Admirable withdrawal. Constancy brings good fortune."
+        },
+        {
+          "chinese": "肥遯，无不利。",
+          "english": "Abundant withdrawal. Nothing is unbeneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 34,
+    "hanzi": "大壯",
+    "pinyin": "Dà Zhuàng",
+    "wadeGiles": "Ta Chuang",
+    "english": "Power of the Great",
+    "binary": "111100",
+    "text": {
+      "judgment": {
+        "chinese": "利貞。",
+        "english": "Constancy is beneficial."
+      },
+      "image": {
+        "chinese": "雷在天上，大壯。君子以非禮弗履。",
+        "english": "Thunder above heaven: Great Strength. The noble person does not tread outside ritual propriety."
+      },
+      "lines": [
+        {
+          "chinese": "壯于趾，征凶有孚。",
+          "english": "Strength in the toes. Advancing brings misfortune; there is trust."
+        },
+        {
+          "chinese": "貞吉。",
+          "english": "Constancy brings good fortune."
+        },
+        {
+          "chinese": "小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。",
+          "english": "The petty person uses strength; the noble person uses restraint. Constancy is dangerous. A ram butts a hedge, entangling its horns."
+        },
+        {
+          "chinese": "貞吉，悔亡。藩決不羸，壯于大輿之輹。",
+          "english": "Constancy brings good fortune; regret disappears. The hedge opens; no entanglement. Strength in the great carriage's axle fastening."
+        },
+        {
+          "chinese": "喪羊于易，无悔。",
+          "english": "Lose the sheep in ease. No regret."
+        },
+        {
+          "chinese": "羝羊觸藩，不能退，不能遂，无攸利，艱則吉。",
+          "english": "A ram butts the hedge. It can neither retreat nor advance. Nothing is beneficial. Difficulty brings good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 35,
+    "hanzi": "晉",
+    "pinyin": "Jìn",
+    "wadeGiles": "Chin",
+    "english": "Progress",
+    "binary": "000101",
+    "text": {
+      "judgment": {
+        "chinese": "康侯用錫馬蕃庶，晝日三接。",
+        "english": "The honored lord is granted horses in abundance and received three times in a single day."
+      },
+      "image": {
+        "chinese": "明出地上，晉。君子以自昭明德。",
+        "english": "Brightness emerges above earth: Advance. The noble person makes his bright virtue shine."
+      },
+      "lines": [
+        {
+          "chinese": "晉如摧如，貞吉。罔孚，裕无咎。",
+          "english": "Advancing, held back. Constancy brings good fortune. Without trust, remain generous: no blame."
+        },
+        {
+          "chinese": "晉如，愁如，貞吉。受茲介福于其王母。",
+          "english": "Advancing, sorrowing. Constancy brings good fortune. Receive this great blessing from the royal mother."
+        },
+        {
+          "chinese": "眾允，悔亡。",
+          "english": "The multitude consents. Regret disappears."
+        },
+        {
+          "chinese": "晉如鼫鼠，貞厲。",
+          "english": "Advancing like a large rat. Constancy is dangerous."
+        },
+        {
+          "chinese": "悔亡，失得勿恤。往吉，无不利。",
+          "english": "Regret disappears. Do not worry about loss or gain. Going brings good fortune; nothing is unbeneficial."
+        },
+        {
+          "chinese": "晉其角，維用伐邑，厲吉，无咎，貞吝。",
+          "english": "Advance with the horns. Use this only to attack one's town. Danger; good fortune, no blame. Constancy brings shame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 36,
+    "hanzi": "明夷",
+    "pinyin": "Míng Yí",
+    "wadeGiles": "Ming I",
+    "english": "Darkening of the Light",
+    "binary": "101000",
+    "text": {
+      "judgment": {
+        "chinese": "利艱貞。",
+        "english": "Constancy in difficulty is beneficial."
+      },
+      "image": {
+        "chinese": "明入地中，明夷。君子以莅眾用晦而明。",
+        "english": "Brightness enters within earth: Wounded Brightness. The noble person governs the multitude by using obscurity, yet remains clear."
+      },
+      "lines": [
+        {
+          "chinese": "明夷于飛，垂其翼。君子于行，三日不食。有攸往，主人有言。",
+          "english": "Wounded brightness in flight, wings hanging down. The noble person travels, eating nothing for three days. Have somewhere to go; the host has words."
+        },
+        {
+          "chinese": "明夷、夷于左股，用拯馬、壯吉。",
+          "english": "Wounded brightness, wounded in the left thigh. Use a strong horse to rescue. Good fortune."
+        },
+        {
+          "chinese": "明夷于南狩，得其大首，不可疾貞。",
+          "english": "Wounded brightness on the southern hunt. Capture the great chief. One cannot press constancy hastily."
+        },
+        {
+          "chinese": "入于左腹，獲明夷之心于出門庭。",
+          "english": "Enter the left belly. Obtain the heart of wounded brightness in going out of the courtyard gate."
+        },
+        {
+          "chinese": "箕子之明夷，利貞。",
+          "english": "Jizi's wounded brightness. Constancy is beneficial."
+        },
+        {
+          "chinese": "不明、晦。初登于天，後入于地。",
+          "english": "No brightness, but darkness. First ascend to heaven, afterward enter the earth."
+        }
+      ]
+    }
+  },
+  {
+    "number": 37,
+    "hanzi": "家人",
+    "pinyin": "Jiā Rén",
+    "wadeGiles": "Chia Jên",
+    "english": "Family",
+    "binary": "101011",
+    "text": {
+      "judgment": {
+        "chinese": "利女貞。",
+        "english": "A woman's constancy is beneficial."
+      },
+      "image": {
+        "chinese": "風自火出，家人。君子以言有物而行有恆。",
+        "english": "Wind emerges from fire: The Household. The noble person's words have substance and his actions have duration."
+      },
+      "lines": [
+        {
+          "chinese": "閑有家，悔亡。",
+          "english": "Guard the household. Regret disappears."
+        },
+        {
+          "chinese": "无攸遂，在中饋，貞吉。",
+          "english": "Pursue nothing outward; attend to food within. Constancy brings good fortune."
+        },
+        {
+          "chinese": "家人嗃嗃，悔厲，吉；婦子嘻嘻，終吝。",
+          "english": "The household is stern: regret and danger, yet good fortune. Wife and children laugh carelessly: in the end shame."
+        },
+        {
+          "chinese": "富家，大吉。",
+          "english": "Enrich the household. Great good fortune."
+        },
+        {
+          "chinese": "王假有家，勿恤，吉。",
+          "english": "The king arrives at the household. Do not worry. Good fortune."
+        },
+        {
+          "chinese": "有孚威如，終吉。",
+          "english": "There is trust and dignity. In the end good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 38,
+    "hanzi": "睽",
+    "pinyin": "Kuí",
+    "wadeGiles": "K'uei",
+    "english": "Opposition",
+    "binary": "110101",
+    "text": {
+      "judgment": {
+        "chinese": "小事吉。",
+        "english": "Good fortune in small affairs."
+      },
+      "image": {
+        "chinese": "上火下澤，睽。君子以同而異。",
+        "english": "Fire above, lake below: Divergence. The noble person remains different within togetherness."
+      },
+      "lines": [
+        {
+          "chinese": "悔亡。喪馬，勿逐自復。見惡人无咎。",
+          "english": "Regret disappears. Lose a horse: do not pursue it; it returns itself. See an evil person: no blame."
+        },
+        {
+          "chinese": "遇主于巷，无咎。",
+          "english": "Meet the master in a lane. No blame."
+        },
+        {
+          "chinese": "見輿曳，其牛掣，其人天且劓，无初有終。",
+          "english": "See the carriage dragged back, its ox checked, its driver branded on the forehead and nose cut off. No beginning, but a completion."
+        },
+        {
+          "chinese": "睽孤，遇元夫，交孚，厲无咎。",
+          "english": "Isolated in divergence, meet the principal man. Exchange trust. Danger; no blame."
+        },
+        {
+          "chinese": "悔亡。厥宗噬膚，往何咎？",
+          "english": "Regret disappears. One's clansman bites through skin. What blame in going?"
+        },
+        {
+          "chinese": "睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇，婚媾。往遇雨，則吉。",
+          "english": "Isolated in divergence, see a pig covered in mud and a carriage loaded with ghosts. First draw the bow, afterward unstring it. Not robbers: marriage seekers. Go and meet rain; then good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 39,
+    "hanzi": "蹇",
+    "pinyin": "Jiǎn",
+    "wadeGiles": "Chien",
+    "english": "Obstruction",
+    "binary": "001010",
+    "text": {
+      "judgment": {
+        "chinese": "利西南，不利東北。利見大人。貞吉。",
+        "english": "The southwest is beneficial; the northeast is unbeneficial. Seeing the great person is beneficial. Constancy brings good fortune."
+      },
+      "image": {
+        "chinese": "山上有水，蹇。君子以反身修德。",
+        "english": "Water above the mountain: Limping. The noble person turns toward himself and cultivates virtue."
+      },
+      "lines": [
+        {
+          "chinese": "往蹇來譽。",
+          "english": "Going: obstruction. Coming: praise."
+        },
+        {
+          "chinese": "王臣蹇蹇，匪躬之故。",
+          "english": "The king's servant struggles through obstruction, for reasons other than his own person."
+        },
+        {
+          "chinese": "往蹇來反。",
+          "english": "Going: obstruction. Coming: return."
+        },
+        {
+          "chinese": "往蹇來連。",
+          "english": "Going: obstruction. Coming: connection."
+        },
+        {
+          "chinese": "大蹇，朋來。",
+          "english": "Great obstruction. Companions come."
+        },
+        {
+          "chinese": "往蹇，來碩，吉，利見大人。",
+          "english": "Going: obstruction. Coming: greatness. Good fortune. Seeing the great person is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 40,
+    "hanzi": "解",
+    "pinyin": "Xiè",
+    "wadeGiles": "Hsieh",
+    "english": "Deliverance",
+    "binary": "010100",
+    "text": {
+      "judgment": {
+        "chinese": "利西南。无所往，其來復吉。有攸往，夙吉。",
+        "english": "The southwest is beneficial. With nowhere to go, returning brings good fortune. With somewhere to go, early action brings good fortune."
+      },
+      "image": {
+        "chinese": "雷雨作，解。君子以赦過宥罪。",
+        "english": "Thunder and rain arise: Release. The noble person pardons errors and forgives offenses."
+      },
+      "lines": [
+        {
+          "chinese": "无咎。",
+          "english": "No blame."
+        },
+        {
+          "chinese": "田獲三狐，得黃矢，貞吉。",
+          "english": "On the hunt, capture three foxes and obtain a yellow arrow. Constancy brings good fortune."
+        },
+        {
+          "chinese": "負且乘，致寇至，貞吝。",
+          "english": "Carrying a load while riding a carriage brings robbers. Constancy brings shame."
+        },
+        {
+          "chinese": "解而拇，朋至斯孚。",
+          "english": "Release your big toe. Companions arrive, and then trust."
+        },
+        {
+          "chinese": "君子維有解，吉，有孚于小人。",
+          "english": "The noble person alone has release. Good fortune. There is trust among petty people."
+        },
+        {
+          "chinese": "公用射隼于高墉之上，獲之，无不利。",
+          "english": "The duke shoots a falcon atop a high wall and captures it. Nothing is unbeneficial."
+        }
+      ]
+    },
+    "pinyinVariants": [
+      "Jiě"
+    ]
+  },
+  {
+    "number": 41,
+    "hanzi": "損",
+    "pinyin": "Sǔn",
+    "wadeGiles": "Sun",
+    "english": "Decrease",
+    "binary": "110001",
+    "text": {
+      "judgment": {
+        "chinese": "有孚，元吉，无咎可貞。利有攸往。曷之用，二簋可用享。",
+        "english": "There is trust: great good fortune, no blame; one may remain constant. Having somewhere to go is beneficial. What should be used? Two baskets may be used for the offering."
+      },
+      "image": {
+        "chinese": "山下有澤，損。君子以懲忿窒欲。",
+        "english": "A lake below the mountain: Decrease. The noble person restrains anger and checks desire."
+      },
+      "lines": [
+        {
+          "chinese": "已事遄往，无咎。酌損之。",
+          "english": "End the affair and go quickly. No blame. Consider how much to decrease."
+        },
+        {
+          "chinese": "利貞。征凶，弗損，益之。",
+          "english": "Constancy is beneficial. Advancing brings misfortune. Do not decrease it; increase it."
+        },
+        {
+          "chinese": "三人行則損一人，一人行則得其友。",
+          "english": "Three people travel: one person is decreased. One person travels: he obtains a companion."
+        },
+        {
+          "chinese": "損其疾，使遄有喜，无咎。",
+          "english": "Decrease the illness; make haste and there is joy. No blame."
+        },
+        {
+          "chinese": "或益之十朋之龜，弗克違，元吉。",
+          "english": "Someone increases it with a tortoise worth ten pairs of shells; one cannot refuse. Great good fortune."
+        },
+        {
+          "chinese": "弗損，益之，无咎，貞吉，利有攸往，得臣无家。",
+          "english": "Do not decrease it; increase it. No blame. Constancy brings good fortune. Having somewhere to go is beneficial. Obtain a servant without a household."
+        }
+      ]
+    }
+  },
+  {
+    "number": 42,
+    "hanzi": "益",
+    "pinyin": "Yì",
+    "wadeGiles": "I",
+    "english": "Increase",
+    "binary": "100011",
+    "text": {
+      "judgment": {
+        "chinese": "利有攸往。利涉大川。",
+        "english": "Having somewhere to go is beneficial. Crossing the great river is beneficial."
+      },
+      "image": {
+        "chinese": "風雷益。君子以見善則遷，有過則改。",
+        "english": "Wind and thunder: Increase. The noble person moves toward good on seeing it, and corrects faults when he has them."
+      },
+      "lines": [
+        {
+          "chinese": "利用為大作，元吉，无咎。",
+          "english": "Undertaking great works is beneficial. Great good fortune; no blame."
+        },
+        {
+          "chinese": "或益之，十朋之龜弗克違。永貞吉。王用享于帝，吉。",
+          "english": "Someone increases it with a tortoise worth ten pairs of shells; one cannot refuse. Lasting constancy brings good fortune. The king sacrifices to the High Lord. Good fortune."
+        },
+        {
+          "chinese": "益之，用凶事无咎。有孚，中行。告公用圭。",
+          "english": "Increase it through unfortunate affairs; no blame. There is trust, walking in the middle. Announce to the duke with a jade tablet."
+        },
+        {
+          "chinese": "中行告公，從，利用為依遷國。",
+          "english": "Walking in the middle, announce to the duke; he follows. Using a supporting ally to move the state is beneficial."
+        },
+        {
+          "chinese": "有孚惠心，勿問，元吉。有孚惠我德。",
+          "english": "There is trust and a benevolent heart. Do not ask: great good fortune. There is trust that favors my virtue."
+        },
+        {
+          "chinese": "莫益之，或擊之，立心勿恆，凶。",
+          "english": "No one increases it; someone strikes it. The heart's resolve does not last. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 43,
+    "hanzi": "夬",
+    "pinyin": "Guài",
+    "wadeGiles": "Kuai",
+    "english": "Breakthrough",
+    "binary": "111110",
+    "text": {
+      "judgment": {
+        "chinese": "揚于王庭，孚號有厲，告自邑。不利即戎，利有攸往。",
+        "english": "Proclaim in the king's court. A truthful cry: there is danger. Announce from one's town. Taking up arms is unbeneficial. Having somewhere to go is beneficial."
+      },
+      "image": {
+        "chinese": "澤上於天，夬。君子以施祿及下，居德則忌。",
+        "english": "The lake rises above heaven: Deciding. The noble person distributes stipends to those below; resting on virtue is to be feared."
+      },
+      "lines": [
+        {
+          "chinese": "壯于前趾，往不勝，為咎。",
+          "english": "Strength in the front toes. Going without prevailing brings blame."
+        },
+        {
+          "chinese": "惕號，莫夜有戎，勿恤。",
+          "english": "A watchful cry. In late night there are arms. Do not worry."
+        },
+        {
+          "chinese": "壯于頄，有凶。君子夬夬，獨行遇雨、若濡，有慍无咎。",
+          "english": "Strength in the cheekbones: misfortune. The noble person decides decisively. Walking alone, meeting rain, getting wet; there is anger, no blame."
+        },
+        {
+          "chinese": "臀无膚，其行次且。牽羊悔亡。聞言不信。",
+          "english": "Buttocks without skin, walking haltingly. Lead a sheep: regret disappears. Hearing words, one does not believe them."
+        },
+        {
+          "chinese": "莧陸夬夬，中行无咎。",
+          "english": "Amaranth on high ground: decide decisively. Walking in the middle: no blame."
+        },
+        {
+          "chinese": "无號，終有凶。",
+          "english": "No cry. In the end there is misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 44,
+    "hanzi": "姤",
+    "pinyin": "Gòu",
+    "wadeGiles": "Kou",
+    "english": "Coming to Meet",
+    "binary": "011111",
+    "text": {
+      "judgment": {
+        "chinese": "女壯，勿用取女。",
+        "english": "The woman is strong. Do not take this woman in marriage."
+      },
+      "image": {
+        "chinese": "天下有風，姤。后以施命誥四方。",
+        "english": "Wind below heaven: Encounter. The ruler spreads commands and proclaims to the four quarters."
+      },
+      "lines": [
+        {
+          "chinese": "繫于金柅，貞吉。有攸往，見凶，羸豕孚蹢躅。",
+          "english": "Tie it to a metal brake. Constancy brings good fortune. Having somewhere to go, one sees misfortune. The lean pig is sure to leap about."
+        },
+        {
+          "chinese": "包有魚，无咎，不利賓。",
+          "english": "The wrapping contains fish. No blame. Guests are unbeneficial."
+        },
+        {
+          "chinese": "臀无膚，其行次且，厲，无大咎。",
+          "english": "Buttocks without skin, walking haltingly. Danger; no great blame."
+        },
+        {
+          "chinese": "包无魚，起凶。",
+          "english": "The wrapping contains no fish. Misfortune arises."
+        },
+        {
+          "chinese": "以杞包瓜，含章，有隕自天。",
+          "english": "Wrap the melon in willow. Hold beauty within. Something falls from heaven."
+        },
+        {
+          "chinese": "姤其角，吝，无咎。",
+          "english": "Encounter with the horns. Shame; no blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 45,
+    "hanzi": "萃",
+    "pinyin": "Cuì",
+    "wadeGiles": "Ts'ui",
+    "english": "Gathering Together",
+    "binary": "000110",
+    "text": {
+      "judgment": {
+        "chinese": "亨，王假有廟。利見大人。亨，利貞，用大牲吉。利有攸往。",
+        "english": "Success. The king arrives at the temple. Seeing the great person is beneficial. Success; constancy is beneficial. Using a great sacrificial animal brings good fortune. Having somewhere to go is beneficial."
+      },
+      "image": {
+        "chinese": "澤上於地，萃。君子以除戎器，戒不虞。",
+        "english": "A lake above earth: Gathering. The noble person repairs weapons and prepares for the unforeseen."
+      },
+      "lines": [
+        {
+          "chinese": "有孚不終，乃亂乃萃，若號一握為笑，勿恤，往无咎。",
+          "english": "There is trust, but it does not last; then disorder, then gathering. If one cries out, a grasp of the hand turns it to laughter. Do not worry. Going brings no blame."
+        },
+        {
+          "chinese": "引吉，无咎，孚乃利用禴。",
+          "english": "Drawn together: good fortune, no blame. With trust, the simple spring sacrifice is beneficial."
+        },
+        {
+          "chinese": "萃如嗟如，无攸利，往无咎，小吝。",
+          "english": "Gathering and sighing. Nothing is beneficial. Going brings no blame; small shame."
+        },
+        {
+          "chinese": "大吉无咎。",
+          "english": "Great good fortune. No blame."
+        },
+        {
+          "chinese": "萃有位，无咎。匪孚，元、永貞悔亡。",
+          "english": "Gathering has a position. No blame. Without trust: great, lasting constancy makes regret disappear."
+        },
+        {
+          "chinese": "齎咨涕洟，无咎。",
+          "english": "Sighing and lamenting, tears and nasal discharge. No blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 46,
+    "hanzi": "升",
+    "pinyin": "Shēng",
+    "wadeGiles": "Shêng",
+    "english": "Pushing Upward",
+    "binary": "011000",
+    "text": {
+      "judgment": {
+        "chinese": "元亨。用見大人，勿恤。南征吉。",
+        "english": "Great success. Go to see the great person; do not worry. A southern campaign brings good fortune."
+      },
+      "image": {
+        "chinese": "地中生木，升。君子以順德，積小以高大。",
+        "english": "Wood grows within earth: Rising. The noble person follows virtue and accumulates small things to reach height and greatness."
+      },
+      "lines": [
+        {
+          "chinese": "允升，大吉。",
+          "english": "Trusted rising. Great good fortune."
+        },
+        {
+          "chinese": "孚乃利用禴，无咎。",
+          "english": "With trust, the simple spring sacrifice is beneficial. No blame."
+        },
+        {
+          "chinese": "升虛邑。",
+          "english": "Rise into an empty town."
+        },
+        {
+          "chinese": "王用亨于岐山，吉，无咎。",
+          "english": "The king offers sacrifice at Mount Qi. Good fortune; no blame."
+        },
+        {
+          "chinese": "貞吉，升階。",
+          "english": "Constancy brings good fortune. Ascend the steps."
+        },
+        {
+          "chinese": "冥升，利于不息之貞。",
+          "english": "Rising in darkness. Unceasing constancy is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 47,
+    "hanzi": "困",
+    "pinyin": "Kùn",
+    "wadeGiles": "K'un",
+    "english": "Oppression, Exhaustion",
+    "binary": "010110",
+    "text": {
+      "judgment": {
+        "chinese": "亨。貞大人吉，无咎。有言不信。",
+        "english": "Success. Constancy: good fortune for the great person, no blame. Spoken words are not believed."
+      },
+      "image": {
+        "chinese": "澤无水，困。君子以致命遂志。",
+        "english": "A lake without water: Confinement. The noble person gives his life to fulfill his purpose."
+      },
+      "lines": [
+        {
+          "chinese": "臀困于株木，入于幽谷，三歲不覿。",
+          "english": "Buttocks confined by a bare tree. Enter a dark valley. For three years see nothing."
+        },
+        {
+          "chinese": "困于酒食，朱紱方來。利用享祀。征凶无咎。",
+          "english": "Confined amid wine and food. The scarlet knee-coverings are coming. Sacrificial offerings are beneficial. Advancing brings misfortune; no blame."
+        },
+        {
+          "chinese": "困于石，據于蒺蔾，入于其宮，不見其妻，凶。",
+          "english": "Confined by stone, resting on thorns. Enter the palace and do not see one's wife. Misfortune."
+        },
+        {
+          "chinese": "來徐徐，困于金車，吝，有終。",
+          "english": "Coming slowly, confined by a metal carriage. Shame; there is a completion."
+        },
+        {
+          "chinese": "劓刖，困于赤紱，乃徐有說，利用祭祀。",
+          "english": "Nose and feet cut off; confined by the red knee-coverings. Gradually there is release. Sacrificial offerings are beneficial."
+        },
+        {
+          "chinese": "困于葛藟，于臲卼，曰動悔有悔，征吉。",
+          "english": "Confined by vines, in an unstable place. Say: movement brings regret. Having regret, advancing brings good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 48,
+    "hanzi": "井",
+    "pinyin": "Jǐng",
+    "wadeGiles": "Ching",
+    "english": "The Well",
+    "binary": "011010",
+    "text": {
+      "judgment": {
+        "chinese": "改邑不改井，无喪无得。往來井井。汔至，亦未繘井，羸其瓶，凶。",
+        "english": "Change the town, but do not change the well. Neither loss nor gain. Coming and going, they draw from the well. Nearly reaching the water, yet not having drawn it: break the jar. Misfortune."
+      },
+      "image": {
+        "chinese": "木上有水，井。君子以勞民勸相。",
+        "english": "Water above wood: The Well. The noble person encourages the people to labor and help one another."
+      },
+      "lines": [
+        {
+          "chinese": "井泥不食。舊井无禽。",
+          "english": "The muddy well is not drunk from. No animals at the old well."
+        },
+        {
+          "chinese": "井谷射鮒，甕敝漏。",
+          "english": "In the well's hollow, shoot at small fish. The jar is broken and leaks."
+        },
+        {
+          "chinese": "井渫不食，為我心惻。可用汲，王明，並受其福。",
+          "english": "The well is cleared, but not drunk from. My heart is grieved. It can be used for drawing. The king is bright; all receive its blessing."
+        },
+        {
+          "chinese": "井甃，无咎。",
+          "english": "The well is lined with masonry. No blame."
+        },
+        {
+          "chinese": "井洌寒泉，食。",
+          "english": "The well is clear: a cold spring. Drink."
+        },
+        {
+          "chinese": "井收勿幕，有孚元吉。",
+          "english": "The well is drawn from; do not cover it. There is trust: great good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 49,
+    "hanzi": "革",
+    "pinyin": "Gé",
+    "wadeGiles": "Ko",
+    "english": "Revolution",
+    "binary": "101110",
+    "text": {
+      "judgment": {
+        "chinese": "巳日乃孚。元亨，利貞，悔亡。",
+        "english": "On the si day, then there is trust. Great success; constancy is beneficial. Regret disappears."
+      },
+      "image": {
+        "chinese": "澤中有火，革。君子以治厤明時。",
+        "english": "Fire within the lake: Changing the Hide. The noble person orders the calendar and clarifies the seasons."
+      },
+      "lines": [
+        {
+          "chinese": "鞏用黃牛之革。",
+          "english": "Bind firmly with yellow oxhide."
+        },
+        {
+          "chinese": "巳日乃革之，征吉，无咎。",
+          "english": "On the si day, then change it. Advancing brings good fortune; no blame."
+        },
+        {
+          "chinese": "征凶。貞厲。革言三就有孚。",
+          "english": "Advancing brings misfortune. Constancy is dangerous. When talk of change has been completed three times, there is trust."
+        },
+        {
+          "chinese": "悔亡。有孚改命吉。",
+          "english": "Regret disappears. There is trust. Changing the mandate brings good fortune."
+        },
+        {
+          "chinese": "大人虎變，未占有孚。",
+          "english": "The great person changes like a tiger. Even before divination, there is trust."
+        },
+        {
+          "chinese": "君子豹變，小人革面，征凶，居貞吉。",
+          "english": "The noble person changes like a leopard; petty people change their faces. Advancing brings misfortune. Remaining constant brings good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 50,
+    "hanzi": "鼎",
+    "pinyin": "Dǐng",
+    "wadeGiles": "Ting",
+    "english": "Cauldron",
+    "binary": "011101",
+    "text": {
+      "judgment": {
+        "chinese": "元吉，亨。",
+        "english": "Great good fortune. Success."
+      },
+      "image": {
+        "chinese": "木上有火，鼎。君子以正位凝命。",
+        "english": "Fire above wood: The Cauldron. The noble person corrects his position and consolidates the mandate."
+      },
+      "lines": [
+        {
+          "chinese": "鼎顛趾，利出否。得妾以其子，无咎。",
+          "english": "The cauldron's legs overturn. Removing stale contents is beneficial. Obtain a concubine through her son. No blame."
+        },
+        {
+          "chinese": "鼎有實，我仇有疾，不我能即，吉。",
+          "english": "The cauldron has substance. My counterpart has illness and cannot approach me. Good fortune."
+        },
+        {
+          "chinese": "鼎耳革，其行塞，雉膏不食，方雨，虧悔，終吉。",
+          "english": "The cauldron's ears change. Its movement is blocked; pheasant fat is not eaten. Rain is coming. Regret lessens; in the end good fortune."
+        },
+        {
+          "chinese": "鼎折足，覆公餗，其形渥，凶。",
+          "english": "The cauldron's leg breaks. The duke's food is spilled; its form is soiled. Misfortune."
+        },
+        {
+          "chinese": "鼎黃耳金鉉，利貞。",
+          "english": "The cauldron has yellow ears and a metal carrying bar. Constancy is beneficial."
+        },
+        {
+          "chinese": "鼎玉鉉，大吉，无不利。",
+          "english": "The cauldron has a jade carrying bar. Great good fortune; nothing is unbeneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 51,
+    "hanzi": "震",
+    "pinyin": "Zhèn",
+    "wadeGiles": "Chên",
+    "english": "Arousing Shock",
+    "binary": "100100",
+    "text": {
+      "judgment": {
+        "chinese": "亨。震來虩虩，笑言啞啞，震驚百里，不喪匕鬯。",
+        "english": "Success. Thunder comes: fear and trembling. Laughing words resound. Thunder startles a hundred li, but the ladle and sacrificial wine are not lost."
+      },
+      "image": {
+        "chinese": "洊雷、震。君子以恐懼脩省。",
+        "english": "Repeated thunder: Shock. The noble person examines and corrects himself with fear and awe."
+      },
+      "lines": [
+        {
+          "chinese": "「震來虩虩」，後「笑言啞啞」，吉。",
+          "english": "Thunder comes: fear and trembling. Afterward laughing words resound. Good fortune."
+        },
+        {
+          "chinese": "震來厲，億喪貝，躋于九陵，勿逐，七日得。",
+          "english": "Thunder comes: danger. Expect to lose valuables; climb the nine hills. Do not pursue. In seven days obtain them."
+        },
+        {
+          "chinese": "震蘇蘇，震行无眚。",
+          "english": "Thunder: dismayed and unsettled. Moving through thunder brings no calamity."
+        },
+        {
+          "chinese": "震遂泥。",
+          "english": "Thunder sinks into mud."
+        },
+        {
+          "chinese": "震往來厲，意无喪有事。",
+          "english": "Thunder going and coming: danger. Consider that nothing is lost, though there are affairs."
+        },
+        {
+          "chinese": "震索索，視矍矍，征凶。震不于其躬、于其鄰、无咎。婚媾有言。",
+          "english": "Thunder: trembling; looking about in alarm. Advancing brings misfortune. Thunder reaches not oneself but one's neighbor. No blame. Marriage brings words."
+        }
+      ]
+    }
+  },
+  {
+    "number": 52,
+    "hanzi": "艮",
+    "pinyin": "Gèn",
+    "wadeGiles": "Kên",
+    "english": "Keeping Still",
+    "binary": "001001",
+    "text": {
+      "judgment": {
+        "chinese": "艮其背，不獲其身，行其庭，不見其人，无咎。",
+        "english": "Still the back; do not grasp the body. Walk in the courtyard; do not see its people. No blame."
+      },
+      "image": {
+        "chinese": "兼山，艮。君子以思不出其位。",
+        "english": "Mountains together: Stillness. The noble person's thoughts do not go beyond his position."
+      },
+      "lines": [
+        {
+          "chinese": "艮其趾，无咎。利永貞。",
+          "english": "Still the toes. No blame. Lasting constancy is beneficial."
+        },
+        {
+          "chinese": "艮其腓，不拯其隨，其心不快。",
+          "english": "Still the calf. One cannot rescue what follows; the heart is unhappy."
+        },
+        {
+          "chinese": "艮其限，列其夤，厲薰心。",
+          "english": "Still the waist; split the back muscles. Danger scorches the heart."
+        },
+        {
+          "chinese": "艮其身，无咎。",
+          "english": "Still the torso. No blame."
+        },
+        {
+          "chinese": "艮其輔，言有序，悔亡。",
+          "english": "Still the jaw. Speech has order. Regret disappears."
+        },
+        {
+          "chinese": "敦艮，吉。",
+          "english": "Substantial stillness. Good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 53,
+    "hanzi": "漸",
+    "pinyin": "Jiàn",
+    "wadeGiles": "Chien",
+    "english": "Development",
+    "binary": "001011",
+    "text": {
+      "judgment": {
+        "chinese": "女歸吉。利貞。",
+        "english": "A woman marries: good fortune. Constancy is beneficial."
+      },
+      "image": {
+        "chinese": "山上有木，漸。君子以居賢德善俗。",
+        "english": "Wood above the mountain: Gradual Advance. The noble person dwells in worthy virtue and improves customs."
+      },
+      "lines": [
+        {
+          "chinese": "鴻漸于干。小子厲有言，无咎。",
+          "english": "The wild goose gradually advances to the bank. The young son is in danger; there are words. No blame."
+        },
+        {
+          "chinese": "鴻漸于磐，飲食衎衎，吉。",
+          "english": "The wild goose gradually advances to a rock. Eating and drinking joyfully. Good fortune."
+        },
+        {
+          "chinese": "鴻漸于陸。夫征不復，婦孕不育，凶。利禦寇。",
+          "english": "The wild goose gradually advances to dry land. The husband campaigns and does not return; the wife conceives but does not raise the child. Misfortune. Resisting robbers is beneficial."
+        },
+        {
+          "chinese": "鴻漸于木，或得其桷，无咎。",
+          "english": "The wild goose gradually advances to a tree. Perhaps it finds a level branch. No blame."
+        },
+        {
+          "chinese": "鴻漸于陵，婦三歲不孕，終莫之勝，吉。",
+          "english": "The wild goose gradually advances to a hill. For three years the wife does not conceive. In the end nothing overcomes it. Good fortune."
+        },
+        {
+          "chinese": "鴻漸于陸，其羽可用為儀，吉。",
+          "english": "The wild goose gradually advances to dry land. Its feathers can be used for ceremonial display. Good fortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 54,
+    "hanzi": "歸妹",
+    "pinyin": "Guī Mèi",
+    "wadeGiles": "Kuei Mei",
+    "english": "Marrying Maiden",
+    "binary": "110100",
+    "text": {
+      "judgment": {
+        "chinese": "征凶，无攸利。",
+        "english": "Advancing brings misfortune. Nothing is beneficial."
+      },
+      "image": {
+        "chinese": "澤上有雷，歸妹。君子以永終知敝。",
+        "english": "Thunder above the lake: The Marrying Maiden. The noble person considers the lasting end and knows what decays."
+      },
+      "lines": [
+        {
+          "chinese": "歸妹以娣。跛能履，征吉。",
+          "english": "The maiden marries as a younger sister. The lame can walk. Advancing brings good fortune."
+        },
+        {
+          "chinese": "眇能視，利幽人之貞。",
+          "english": "The one-eyed can see. The secluded person's constancy is beneficial."
+        },
+        {
+          "chinese": "歸妹以須，反歸以娣。",
+          "english": "The maiden marries as an attendant, then returns to marry as a younger sister."
+        },
+        {
+          "chinese": "歸妹愆期，遲歸有時。",
+          "english": "The maiden delays the date. There is a time for late marriage."
+        },
+        {
+          "chinese": "帝乙歸妹，其君之袂不如其娣之袂良。月幾望、吉。",
+          "english": "Di Yi marries off the maiden. Her lady's sleeves are not as fine as her younger sister's sleeves. The moon is nearly full. Good fortune."
+        },
+        {
+          "chinese": "女承筐，无實，士刲羊，无血，无攸利。",
+          "english": "The woman holds a basket without contents; the man cuts a sheep without blood. Nothing is beneficial."
+        }
+      ]
+    }
+  },
+  {
+    "number": 55,
+    "hanzi": "豐",
+    "pinyin": "Fēng",
+    "wadeGiles": "Fêng",
+    "english": "Abundance",
+    "binary": "101100",
+    "text": {
+      "judgment": {
+        "chinese": "亨，王假之。勿憂，宜日中。",
+        "english": "Success. The king reaches it. Do not worry. Be like the sun at midday."
+      },
+      "image": {
+        "chinese": "雷電皆至，豐。君子以折獄致刑。",
+        "english": "Thunder and lightning both arrive: Abundance. The noble person decides lawsuits and carries out punishments."
+      },
+      "lines": [
+        {
+          "chinese": "遇其配主，雖旬无咎，往有尚。",
+          "english": "Meet the matching lord. Though a full ten days, no blame. Going has esteem."
+        },
+        {
+          "chinese": "豐其蔀，日中見斗。往得疑疾，有孚，發若吉。",
+          "english": "Abundant screens: at midday see the Dipper. Going brings suspicion and illness. There is trust; it opens forth. Good fortune."
+        },
+        {
+          "chinese": "豐其沛，日中見沬，折其右肱，无咎。",
+          "english": "Abundant covering: at midday see the small stars. Break the right arm. No blame."
+        },
+        {
+          "chinese": "豐其蔀，日中見斗，遇其夷主，吉。",
+          "english": "Abundant screens: at midday see the Dipper. Meet the equal lord. Good fortune."
+        },
+        {
+          "chinese": "來章，有慶譽，吉。",
+          "english": "Beauty comes. There is celebration and praise. Good fortune."
+        },
+        {
+          "chinese": "豐其屋，蔀其家，闚其戶，闃其无人，三歲不覿，凶。",
+          "english": "Make the roof abundant; screen the household. Peer through its door: silent, no people. For three years see nothing. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 56,
+    "hanzi": "旅",
+    "pinyin": "Lǚ",
+    "wadeGiles": "Lü",
+    "english": "Wanderer",
+    "binary": "001101",
+    "text": {
+      "judgment": {
+        "chinese": "小亨。旅貞吉。",
+        "english": "Small success. The traveler's constancy brings good fortune."
+      },
+      "image": {
+        "chinese": "山上有火，旅。君子以明慎用刑而不留獄。",
+        "english": "Fire above the mountain: Traveling. The noble person is clear and careful in using punishment and does not prolong imprisonment."
+      },
+      "lines": [
+        {
+          "chinese": "旅瑣瑣斯，其所取災。",
+          "english": "The traveler busies himself with trifles. This is how he brings disaster on himself."
+        },
+        {
+          "chinese": "旅即次，懷其資，得童僕貞。",
+          "english": "The traveler reaches lodging, carries his resources, and gains a young servant's constancy."
+        },
+        {
+          "chinese": "旅焚其次，喪其童僕貞，厲。",
+          "english": "The traveler's lodging burns; he loses his young servant's constancy. Danger."
+        },
+        {
+          "chinese": "旅于處，得其資斧，我心不快。",
+          "english": "The traveler stays in a resting place and obtains resources and an axe. My heart is unhappy."
+        },
+        {
+          "chinese": "射雉一矢亡，終以譽命。",
+          "english": "Shoot a pheasant: one arrow is lost. In the end receive praise and a mandate."
+        },
+        {
+          "chinese": "鳥焚其巢，旅人先笑後號咷。喪牛于易，凶。",
+          "english": "The bird's nest burns. The traveler first laughs, afterward wails. Lose the ox in ease. Misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 57,
+    "hanzi": "巽",
+    "pinyin": "Xùn",
+    "wadeGiles": "Sun",
+    "english": "Gentle",
+    "binary": "011011",
+    "text": {
+      "judgment": {
+        "chinese": "小亨。利有攸往。利見大人。",
+        "english": "Small success. Having somewhere to go is beneficial. Seeing the great person is beneficial."
+      },
+      "image": {
+        "chinese": "隨風，巽。君子以申命行事。",
+        "english": "Following winds: Penetration. The noble person repeats commands and carries out affairs."
+      },
+      "lines": [
+        {
+          "chinese": "進退。利武人之貞。",
+          "english": "Advance and retreat. The warrior's constancy is beneficial."
+        },
+        {
+          "chinese": "巽在床下，用史巫、紛若吉、无咎。",
+          "english": "Penetrating below the bed. Employ scribes and shamans in abundance. Good fortune; no blame."
+        },
+        {
+          "chinese": "頻巽，吝。",
+          "english": "Repeated penetration. Shame."
+        },
+        {
+          "chinese": "悔亡，田獲三品。",
+          "english": "Regret disappears. On the hunt obtain three kinds of game."
+        },
+        {
+          "chinese": "貞吉，悔亡，无不利，无初有終。先庚三日，後庚三日，吉。",
+          "english": "Constancy brings good fortune; regret disappears. Nothing is unbeneficial. No beginning, but a completion. Three days before geng, three days after geng. Good fortune."
+        },
+        {
+          "chinese": "巽在床下，喪其資斧，貞凶。",
+          "english": "Penetrating below the bed. Lose resources and axe. Constancy brings misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 58,
+    "hanzi": "兌",
+    "pinyin": "Duì",
+    "wadeGiles": "Tui",
+    "english": "Joyous, Lake",
+    "binary": "110110",
+    "text": {
+      "judgment": {
+        "chinese": "亨。利貞。",
+        "english": "Success. Constancy is beneficial."
+      },
+      "image": {
+        "chinese": "麗澤，兌。君子以朋友講習。",
+        "english": "Joined lakes: Joy. The noble person discusses and practices with friends."
+      },
+      "lines": [
+        {
+          "chinese": "和兌，吉。",
+          "english": "Harmonious joy. Good fortune."
+        },
+        {
+          "chinese": "孚兌，吉，悔亡。",
+          "english": "Trustful joy. Good fortune; regret disappears."
+        },
+        {
+          "chinese": "來兌，凶。",
+          "english": "Coming joy. Misfortune."
+        },
+        {
+          "chinese": "商兌未寧，介疾有喜。",
+          "english": "Deliberating joy, not yet at peace. Set apart illness: there is joy."
+        },
+        {
+          "chinese": "孚于剝，有厲。",
+          "english": "Trust in stripping away. There is danger."
+        },
+        {
+          "chinese": "引兌。",
+          "english": "Drawn into joy."
+        }
+      ]
+    }
+  },
+  {
+    "number": 59,
+    "hanzi": "渙",
+    "pinyin": "Huàn",
+    "wadeGiles": "Huan",
+    "english": "Dispersion, Dissolution",
+    "binary": "010011",
+    "text": {
+      "judgment": {
+        "chinese": "亨。王假有廟。利涉大川，利貞。",
+        "english": "Success. The king arrives at the temple. Crossing the great river is beneficial; constancy is beneficial."
+      },
+      "image": {
+        "chinese": "風行水上，渙。先王以享于帝，立廟。",
+        "english": "Wind moves over water: Dispersal. The former kings sacrificed to the High Lord and established temples."
+      },
+      "lines": [
+        {
+          "chinese": "用拯馬壯，吉。",
+          "english": "Use a strong horse to rescue. Good fortune."
+        },
+        {
+          "chinese": "渙奔其机，悔亡。",
+          "english": "In dispersal, hurry to one's support. Regret disappears."
+        },
+        {
+          "chinese": "渙其躬，无悔。",
+          "english": "Disperse one's own person. No regret."
+        },
+        {
+          "chinese": "渙其群，元吉。渙有丘，匪夷所思。",
+          "english": "Disperse the group. Great good fortune. Dispersal has a mound; not what ordinary thought imagines."
+        },
+        {
+          "chinese": "渙汗其大號，渙王居，无咎。",
+          "english": "Disperse sweat with the great cry. Disperse the king's residence. No blame."
+        },
+        {
+          "chinese": "渙其血，去逖出，无咎。",
+          "english": "Disperse the blood; depart far away and come out. No blame."
+        }
+      ]
+    }
+  },
+  {
+    "number": 60,
+    "hanzi": "節",
+    "pinyin": "Jié",
+    "wadeGiles": "Chieh",
+    "english": "Limitation",
+    "binary": "110010",
+    "text": {
+      "judgment": {
+        "chinese": "亨。苦節，不可貞。",
+        "english": "Success. Bitter restriction cannot be held constant."
+      },
+      "image": {
+        "chinese": "澤上有水，節。君子以制數度，議德行。",
+        "english": "Water above the lake: Restriction. The noble person establishes numbers and measures and discusses virtue and conduct."
+      },
+      "lines": [
+        {
+          "chinese": "不出戶庭，无咎。",
+          "english": "Do not leave the inner courtyard. No blame."
+        },
+        {
+          "chinese": "不出門庭，凶。",
+          "english": "Do not leave the gate courtyard. Misfortune."
+        },
+        {
+          "chinese": "不節若，則嗟若，无咎。",
+          "english": "Without restriction, then sighing. No blame."
+        },
+        {
+          "chinese": "安節。亨。",
+          "english": "Peaceful restriction. Success."
+        },
+        {
+          "chinese": "甘節，吉，往有尚。",
+          "english": "Sweet restriction. Good fortune. Going has esteem."
+        },
+        {
+          "chinese": "苦節，貞凶。悔亡。",
+          "english": "Bitter restriction. Constancy brings misfortune. Regret disappears."
+        }
+      ]
+    }
+  },
+  {
+    "number": 61,
+    "hanzi": "中孚",
+    "pinyin": "Zhōng Fú",
+    "wadeGiles": "Chung Fu",
+    "english": "Inner Truth",
+    "binary": "110011",
+    "text": {
+      "judgment": {
+        "chinese": "豚魚，吉。利涉大川，利貞。",
+        "english": "Pigs and fish: good fortune. Crossing the great river is beneficial; constancy is beneficial."
+      },
+      "image": {
+        "chinese": "澤上有風，中孚。君子以議獄緩死。",
+        "english": "Wind above the lake: Inner Trust. The noble person deliberates on imprisonment and delays execution."
+      },
+      "lines": [
+        {
+          "chinese": "虞吉，有它不燕。",
+          "english": "Preparedness brings good fortune. Other concerns disturb peace."
+        },
+        {
+          "chinese": "鳴鶴在陰，其子和之。我有好爵，吾與爾靡之。",
+          "english": "A calling crane in the shade; its young answer. I have a fine cup; I will share it with you."
+        },
+        {
+          "chinese": "得敵，或鼓或罷，或泣或歌。",
+          "english": "Find an opposing counterpart. Now drumming, now stopping; now weeping, now singing."
+        },
+        {
+          "chinese": "月幾望，馬匹亡，无咎。",
+          "english": "The moon is nearly full. The paired horse is lost. No blame."
+        },
+        {
+          "chinese": "有孚攣如，无咎。",
+          "english": "There is trust, binding together. No blame."
+        },
+        {
+          "chinese": "翰音登于天，貞凶。",
+          "english": "The cock's cry rises to heaven. Constancy brings misfortune."
+        }
+      ]
+    }
+  },
+  {
+    "number": 62,
+    "hanzi": "小過",
+    "pinyin": "Xiǎo Guò",
+    "wadeGiles": "Hsiao Kuo",
+    "english": "Preponderance of the Small",
+    "binary": "001100",
+    "text": {
+      "judgment": {
+        "chinese": "亨。利貞。可小事，不可大事。飛鳥遺之音，不宜上，宜下，大吉。",
+        "english": "Success. Constancy is beneficial. Small affairs are possible; great affairs are not. A flying bird leaves its cry. Upward is unsuitable; downward is suitable. Great good fortune."
+      },
+      "image": {
+        "chinese": "山上有雷，小過。君子以行過乎恭，喪過乎哀，用過乎儉。",
+        "english": "Thunder above the mountain: Small Excess. The noble person exceeds in respect in conduct, grief in mourning, and frugality in spending."
+      },
+      "lines": [
+        {
+          "chinese": "飛鳥以凶。",
+          "english": "The flying bird brings misfortune."
+        },
+        {
+          "chinese": "過其祖，遇其妣。不及其君，遇其臣。无咎。",
+          "english": "Pass the grandfather, meet the grandmother. Do not reach the ruler; meet his servant. No blame."
+        },
+        {
+          "chinese": "弗過、防之，從或戕之，凶。",
+          "english": "Failing to exceed, guard against it. Someone following may kill him. Misfortune."
+        },
+        {
+          "chinese": "无咎。弗過、遇之，往厲必戒。勿用永貞。",
+          "english": "No blame. Do not exceed; meet it. Going is dangerous: take care. Do not use lasting constancy."
+        },
+        {
+          "chinese": "密雲不雨，自我西郊。公弋取彼在穴。",
+          "english": "Dense clouds, no rain, from our western outskirts. The duke shoots with a corded arrow and takes the one in the cave."
+        },
+        {
+          "chinese": "弗遇、過之，飛鳥離之，凶，是謂災眚。",
+          "english": "Do not meet it; pass beyond it. The flying bird leaves it. Misfortune: this is called disaster and calamity."
+        }
+      ]
+    }
+  },
+  {
+    "number": 63,
+    "hanzi": "既濟",
+    "pinyin": "Jì Jì",
+    "wadeGiles": "Chi Chi",
+    "english": "After Completion",
+    "binary": "101010",
+    "text": {
+      "judgment": {
+        "chinese": "亨。小利貞。初吉終亂。",
+        "english": "Success. Small constancy is beneficial. At the beginning good fortune; at the end disorder."
+      },
+      "image": {
+        "chinese": "水在火上，既濟。君子以思患而豫防之。",
+        "english": "Water above fire: Already Across. The noble person thinks about trouble and prepares against it."
+      },
+      "lines": [
+        {
+          "chinese": "曳其輪，濡其尾，无咎。",
+          "english": "Drag the wheel; wet the tail. No blame."
+        },
+        {
+          "chinese": "婦喪其茀，勿逐，七日得。",
+          "english": "The woman loses her carriage screen. Do not pursue. In seven days obtain it."
+        },
+        {
+          "chinese": "高宗伐鬼方，三年克之，小人勿用。",
+          "english": "Gaozong attacks the Ghost Region. In three years he conquers it. Do not employ petty people."
+        },
+        {
+          "chinese": "繻有衣袽，終日戒。",
+          "english": "Fine cloth has ragged clothing beside it. Be watchful all day."
+        },
+        {
+          "chinese": "東鄰殺牛，不如西鄰之禴祭實受其福。",
+          "english": "The eastern neighbor slaughters an ox; this is less than the western neighbor's simple spring sacrifice, which truly receives blessing."
+        },
+        {
+          "chinese": "濡其首，厲。",
+          "english": "Wet the head. Danger."
+        }
+      ]
+    }
+  },
+  {
+    "number": 64,
+    "hanzi": "未濟",
+    "pinyin": "Wèi Jì",
+    "wadeGiles": "Wei Chi",
+    "english": "Before Completion",
+    "binary": "010101",
+    "text": {
+      "judgment": {
+        "chinese": "亨。小狐汔濟，濡其尾，无攸利。",
+        "english": "Success. The little fox nearly crosses, wetting its tail. Nothing is beneficial."
+      },
+      "image": {
+        "chinese": "火在水上，未濟。君子以慎辨物居方。",
+        "english": "Fire above water: Not Yet Across. The noble person carefully distinguishes things and settles their places."
+      },
+      "lines": [
+        {
+          "chinese": "濡其尾，吝。",
+          "english": "Wet the tail. Shame."
+        },
+        {
+          "chinese": "曳其輪，貞吉。",
+          "english": "Drag the wheel. Constancy brings good fortune."
+        },
+        {
+          "chinese": "未濟，征凶。利涉大川。",
+          "english": "Not yet across. Advancing brings misfortune. Crossing the great river is beneficial."
+        },
+        {
+          "chinese": "貞吉，悔亡，震用伐鬼方，三年，有賞于大國。",
+          "english": "Constancy brings good fortune; regret disappears. Stirring to attack the Ghost Region, in three years there are rewards from the great state."
+        },
+        {
+          "chinese": "貞吉，无悔。君子之光，有孚、吉。",
+          "english": "Constancy brings good fortune; no regret. The noble person's brightness: there is trust. Good fortune."
+        },
+        {
+          "chinese": "有孚于飲酒，无咎。濡其首，有孚失是。",
+          "english": "There is trust in drinking wine. No blame. Wet the head: there is trust, but what is right is lost."
+        }
+      ]
+    }
+  }
+]

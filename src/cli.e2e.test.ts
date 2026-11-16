@@ -108,6 +108,9 @@ describe("CLI contract", () => {
 
     expect(payload.version).toBe(VERSION);
     expect(payload.commands.map((command) => command.name)).toEqual([
+      "iching:cast",
+      "iching:hexagram",
+      "iching:reading",
       "gematria",
       "gematria:reverse",
       "numerology",
@@ -1710,5 +1713,59 @@ describe("CLI contract", () => {
 
   it("keeps the CLI shebang in the built entrypoint", () => {
     expect(readFileSync(CLI_PATH, "utf8").startsWith("#!/usr/bin/env node\n")).toBe(true);
+  });
+});
+
+
+describe("I Ching CLI", () => {
+  it("derives identical readings from lines, number/positions and input JSON with clean stdout", () => {
+    const variants = [
+      ["--lines", "767987"],
+      ["--hexagram", "30", "--moving", "2,4"],
+      ["--input-json", JSON.stringify({hexagramNumber:30,movingLines:[2,4]})],
+      ["--input-json", JSON.stringify({lines:[7,6,7,9,8,7]})],
+    ];
+    const results = variants.map(args => {
+      const result = runCli(["iching:reading",...args,"--json","--compact"]);
+      assertSuccess(result,"iching:reading");
+      expect(result.stderr).toBe("");
+      return assertStrictJsonStdout(result,"iching:reading");
+    });
+    for(const result of results) expect(result).toEqual(results[0]);
+    expect(results[0]).toMatchObject({lineCode:"767987",cast:{hexagram:{number:30}},transformed:{hexagram:{number:26}}});
+  });
+
+  it("casts valid six-line readings, describes hexagrams and supports field filtering", () => {
+    const cast = runCli(["iching:cast","--json","--compact","--fields=lineCode,lines"]);
+    assertSuccess(cast,"iching:cast");
+    expect(cast.stderr).toBe("");
+    expect(assertStrictJsonStdout(cast,"iching:cast")).toMatchObject({lineCode:expect.stringMatching(/^[6789]{6}$/),lines:expect.any(Array)});
+    const hex = runCli(["iching:hexagram","10","--json","--compact","--fields=hexagram.number,hexagram.hanzi"]);
+    assertSuccess(hex,"iching:hexagram");
+    expect(assertStrictJsonStdout(hex,"iching:hexagram")).toEqual({hexagram:{number:10,hanzi:"履"}});
+    const help = runCli(["help","iching:reading","--json","--compact"]);
+    assertSuccess(help,"help iching:reading");
+    expect(help.stdout).toContain('"moving"');
+  });
+
+  it("rejects invalid/ambiguous inputs with the standard JSON error contract", () => {
+    const cases = [
+      ["iching:reading","--lines","77777"],
+      ["iching:reading","--lines","777777","--hexagram","1"],
+      ["iching:reading","--hexagram","25","--moving","1,1"],
+      ["iching:reading","--hexagram","25","--moving","0"],
+      ["iching:reading","--hexagram","25","--moving","1.5"],
+      ["iching:reading","--input-json",'{"hexagramNumber":25,"movingLines":["4"]}'],
+      ["iching:hexagram","65"],
+      ["iching:hexagram","1.5"],
+    ];
+    for(const args of cases) {
+      const result = runCli([...args,"--json","--compact"]);
+      expect(result.status).toBe(1);
+      expect(assertStrictJsonStdout(result,"invalid I Ching input")).toMatchObject({error:true,code:"INVALID_ARGUMENT"});
+    }
+    const missing = runCli(["iching:reading","--json","--compact"]);
+    expect(missing.status).toBe(1);
+    expect(JSON.parse(missing.stdout)).toMatchObject({error:true,code:"MISSING_ARGUMENT"});
   });
 });

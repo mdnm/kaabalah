@@ -36,6 +36,23 @@ import {
 
 ## Card catalog
 
+### Deck reference content
+
+`getTarotCardProfile()` and `getTarotArchetype()` expose bilingual reference content alongside each deck's existing description:
+
+```typescript
+const card = getTarotCardProfile({ tarotCardNumber: 57 });
+card?.descriptionsByDeck.mythic?.scene;       // { en, pt }
+card?.descriptionsByDeck.mythic?.divinatory;  // { en, pt }
+card?.descriptionsByDeck.mythic?.figure;      // { en: 'Orestes', pt: 'Orestes' }
+```
+
+All 22 major Ark Annus have scenes for Papus (`papus` and `papus_pt`), Egyptian and Mythic decks. All 56 minor and court Ark Annus have Mythic scenes and divinatory texts. Existing `meaning`, `reversedMeaning` and `keywords` fields retain their previous values.
+
+Mythic figure references identify: one figure per major and court, each suit's story for pips 2 to 10, and the ace's god. The Magician deliberately has no figure. `mythicFigure(card, language)` accepts the reading card identity fields (`kind`, `number`, and, when needed, `suit`, `courtRank`, `rank`) and returns a name or `null`.
+
+`TAROT_MAJOR_SCENES` and `MYTHIC_MINOR_CONTENT` expose the source records as `{ source, cards }`, keyed by canonical Kaabalah card number. `getTarotDeckReferenceContent(number, deckId)` selects a deck's bilingual scene and divinatory text. `getTarotReadingReference(language)` returns the complete `major`, `rank` and `suit` display-name tables. Languages beginning with `pt` use Portuguese; other values use English. Display names preserve aliases such as The Tower, while canonical card identities remain unchanged.
+
 ### `ARKANNUS`
 
 The full 78-card deck as a `TarotCard[]`, sorted by canonical kaabalah tree number. Card numbers are resolved from the Tree of Life graph rather than being hard-coded.

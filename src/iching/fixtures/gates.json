@@ -1,0 +1,514 @@
+[
+  {
+    "number": 1,
+    "binary": "111111",
+    "letters": [
+      "Beth",
+      "Beth"
+    ]
+  },
+  {
+    "number": 2,
+    "binary": "000000",
+    "letters": [
+      "Gimel",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 3,
+    "binary": "100010",
+    "letters": [
+      "Mem",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 4,
+    "binary": "010001",
+    "letters": [
+      "Resh",
+      "Mem"
+    ]
+  },
+  {
+    "number": 5,
+    "binary": "111010",
+    "letters": [
+      "Mem",
+      "Beth"
+    ]
+  },
+  {
+    "number": 6,
+    "binary": "010111",
+    "letters": [
+      "Beth",
+      "Mem"
+    ]
+  },
+  {
+    "number": 7,
+    "binary": "010000",
+    "letters": [
+      "Gimel",
+      "Mem"
+    ]
+  },
+  {
+    "number": 8,
+    "binary": "000010",
+    "letters": [
+      "Mem",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 9,
+    "binary": "111011",
+    "letters": [
+      "Dalet",
+      "Beth"
+    ]
+  },
+  {
+    "number": 10,
+    "binary": "110111",
+    "letters": [
+      "Beth",
+      "Pe"
+    ]
+  },
+  {
+    "number": 11,
+    "binary": "111000",
+    "letters": [
+      "Gimel",
+      "Beth"
+    ]
+  },
+  {
+    "number": 12,
+    "binary": "000111",
+    "letters": [
+      "Beth",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 13,
+    "binary": "101111",
+    "letters": [
+      "Beth",
+      "Shin"
+    ]
+  },
+  {
+    "number": 14,
+    "binary": "111101",
+    "letters": [
+      "Shin",
+      "Beth"
+    ]
+  },
+  {
+    "number": 15,
+    "binary": "001000",
+    "letters": [
+      "Gimel",
+      "Resh"
+    ]
+  },
+  {
+    "number": 16,
+    "binary": "000100",
+    "letters": [
+      "Kaph",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 17,
+    "binary": "100110",
+    "letters": [
+      "Pe",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 18,
+    "binary": "011001",
+    "letters": [
+      "Resh",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 19,
+    "binary": "110000",
+    "letters": [
+      "Gimel",
+      "Pe"
+    ]
+  },
+  {
+    "number": 20,
+    "binary": "000011",
+    "letters": [
+      "Dalet",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 21,
+    "binary": "100101",
+    "letters": [
+      "Shin",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 22,
+    "binary": "101001",
+    "letters": [
+      "Resh",
+      "Shin"
+    ]
+  },
+  {
+    "number": 23,
+    "binary": "000001",
+    "letters": [
+      "Resh",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 24,
+    "binary": "100000",
+    "letters": [
+      "Gimel",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 25,
+    "binary": "100111",
+    "letters": [
+      "Beth",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 26,
+    "binary": "111001",
+    "letters": [
+      "Resh",
+      "Beth"
+    ]
+  },
+  {
+    "number": 27,
+    "binary": "100001",
+    "letters": [
+      "Resh",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 28,
+    "binary": "011110",
+    "letters": [
+      "Pe",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 29,
+    "binary": "010010",
+    "letters": [
+      "Mem",
+      "Mem"
+    ]
+  },
+  {
+    "number": 30,
+    "binary": "101101",
+    "letters": [
+      "Shin",
+      "Shin"
+    ]
+  },
+  {
+    "number": 31,
+    "binary": "001110",
+    "letters": [
+      "Pe",
+      "Resh"
+    ]
+  },
+  {
+    "number": 32,
+    "binary": "011100",
+    "letters": [
+      "Kaph",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 33,
+    "binary": "001111",
+    "letters": [
+      "Beth",
+      "Resh"
+    ]
+  },
+  {
+    "number": 34,
+    "binary": "111100",
+    "letters": [
+      "Kaph",
+      "Beth"
+    ]
+  },
+  {
+    "number": 35,
+    "binary": "000101",
+    "letters": [
+      "Shin",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 36,
+    "binary": "101000",
+    "letters": [
+      "Gimel",
+      "Shin"
+    ]
+  },
+  {
+    "number": 37,
+    "binary": "101011",
+    "letters": [
+      "Dalet",
+      "Shin"
+    ]
+  },
+  {
+    "number": 38,
+    "binary": "110101",
+    "letters": [
+      "Shin",
+      "Pe"
+    ]
+  },
+  {
+    "number": 39,
+    "binary": "001010",
+    "letters": [
+      "Mem",
+      "Resh"
+    ]
+  },
+  {
+    "number": 40,
+    "binary": "010100",
+    "letters": [
+      "Kaph",
+      "Mem"
+    ]
+  },
+  {
+    "number": 41,
+    "binary": "110001",
+    "letters": [
+      "Resh",
+      "Pe"
+    ]
+  },
+  {
+    "number": 42,
+    "binary": "100011",
+    "letters": [
+      "Dalet",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 43,
+    "binary": "111110",
+    "letters": [
+      "Pe",
+      "Beth"
+    ]
+  },
+  {
+    "number": 44,
+    "binary": "011111",
+    "letters": [
+      "Beth",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 45,
+    "binary": "000110",
+    "letters": [
+      "Pe",
+      "Gimel"
+    ]
+  },
+  {
+    "number": 46,
+    "binary": "011000",
+    "letters": [
+      "Gimel",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 47,
+    "binary": "010110",
+    "letters": [
+      "Pe",
+      "Mem"
+    ]
+  },
+  {
+    "number": 48,
+    "binary": "011010",
+    "letters": [
+      "Mem",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 49,
+    "binary": "101110",
+    "letters": [
+      "Pe",
+      "Shin"
+    ]
+  },
+  {
+    "number": 50,
+    "binary": "011101",
+    "letters": [
+      "Shin",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 51,
+    "binary": "100100",
+    "letters": [
+      "Kaph",
+      "Kaph"
+    ]
+  },
+  {
+    "number": 52,
+    "binary": "001001",
+    "letters": [
+      "Resh",
+      "Resh"
+    ]
+  },
+  {
+    "number": 53,
+    "binary": "001011",
+    "letters": [
+      "Dalet",
+      "Resh"
+    ]
+  },
+  {
+    "number": 54,
+    "binary": "110100",
+    "letters": [
+      "Kaph",
+      "Pe"
+    ]
+  },
+  {
+    "number": 55,
+    "binary": "101100",
+    "letters": [
+      "Kaph",
+      "Shin"
+    ]
+  },
+  {
+    "number": 56,
+    "binary": "001101",
+    "letters": [
+      "Shin",
+      "Resh"
+    ]
+  },
+  {
+    "number": 57,
+    "binary": "011011",
+    "letters": [
+      "Dalet",
+      "Dalet"
+    ]
+  },
+  {
+    "number": 58,
+    "binary": "110110",
+    "letters": [
+      "Pe",
+      "Pe"
+    ]
+  },
+  {
+    "number": 59,
+    "binary": "010011",
+    "letters": [
+      "Dalet",
+      "Mem"
+    ]
+  },
+  {
+    "number": 60,
+    "binary": "110010",
+    "letters": [
+      "Mem",
+      "Pe"
+    ]
+  },
+  {
+    "number": 61,
+    "binary": "110011",
+    "letters": [
+      "Dalet",
+      "Pe"
+    ]
+  },
+  {
+    "number": 62,
+    "binary": "001100",
+    "letters": [
+      "Kaph",
+      "Resh"
+    ]
+  },
+  {
+    "number": 63,
+    "binary": "101010",
+    "letters": [
+      "Mem",
+      "Shin"
+    ]
+  },
+  {
+    "number": 64,
+    "binary": "010101",
+    "letters": [
+      "Shin",
+      "Mem"
+    ]
+  }
+]

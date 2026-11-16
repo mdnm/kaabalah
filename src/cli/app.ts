@@ -2,6 +2,7 @@ import { VERSION } from "./contract";
 import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
+import { cmdIChing } from "./commands/iching";
 import { cmdIfa } from "./commands/ifa";
 import { cmdChallenges, cmdCycles, cmdFibonacci, cmdLifePath, cmdNumerology } from "./commands/numerology";
 import { cmdTarot, cmdTarotCard, cmdTarotSpread } from "./commands/tarot";
@@ -196,6 +197,11 @@ export async function runCli(argv: string[]): Promise<void> {
         });
         return;
       }
+      case "iching:cast":
+      case "iching:hexagram":
+      case "iching:reading":
+        cmdIChing(command, args.slice(1), flags, inputPayload);
+        return;
       case "ifa":
         if (!args[1] && !inputPayload?.date) {
           exitWithError("MISSING_ARGUMENT", "Usage: kaabalah ifa <YYYY-MM-DD>", flags);
