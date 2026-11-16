@@ -11,6 +11,80 @@
 - Add twelve source-audited bilingual natal Saturn-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 
+- Fix numerology cycles and Fibonacci to use the completed (birthday) age, give
+  the repeating seven-year labels the real current block after age 49
+  (`currentAgeBlockIndex`, `absoluteIndex`), make day ordinals DST-proof, anchor
+  the personal-month phase of 29 February births on the nominal month, type
+  `personalMonths` as exactly twelve entries, keep years 1-99 as written, make
+  `calculateCycles` throw for an invalid `Date`, and report an unavailable soul number
+  and third personal period (instead of `0`) for a blank name in
+  `calculatePersonalCycles`. See the migration guide.
+
+- Add the numerology schedule API on civil dates (`getNumerologySnapshot`,
+  `generateNumerologyTimeline`, `getNumerologyMethodMetadata`): birthday-based
+  personal years, twelve months and three periods, 52-day heptads (seventh to the
+  next birthday), seven-year cycles, Fibonacci cycles, a distinct calendar frame
+  with a personal day, pinnacles, challenges and life periods as named conventions,
+  explicit short-month policies, nominal versus clipped intervals, optional
+  death/horizon limits, and explicit unavailability for missing names.
+
+- Add partial birth dates (`describePartialBirthDate`,
+  `summarizeBirthDateCandidates`) that report invariants and possible sets without
+  ever selecting a date, and civil-date and JSON/Markdown tabulation helpers
+  exported from the package root.
+
+- Fix sect to depend on the Sun's geometric altitude instead of its house, so it is
+  identical in every house system (the Lot of Fortune follows), and add the sect-
+  reversed Lot of Spirit, Moon phase with an approximate illumination label, and
+  `getEssentialDignities` (Dorothean triplicity, Egyptian bounds, face lords,
+  positive-dignity peregrine). `getSect(sunHouse)` is deprecated.
+
+- Fix whole-sign composite houses to start at the composite ascendant sign, define
+  the antipodal midpoint rule and composite angles, report conventions and notices,
+  and add `getSynastryFromCharts` / `getCompositeFromCharts` / `getTransitChartFromChart`
+  for already-computed charts.
+
+- Fix exact transit events: `exactDate` is now a verified root and a true UTC
+  instant, `exactOrb` is the angular residual, every aspect crossing is reported
+  from signed-angle bracketing with station insertion and per-body scan steps, and
+  near misses are separate optional closest approaches. Coverage is a finite-grid
+  qualification, not a completeness proof.
+
+- Add return finders (Saturn, Jupiter, nodal, lunar, Uranus opposition, any body),
+  return-pass timelines, and solve the solar return to 0.001 s with residual and
+  bracket metadata (`returnPrecisionSeconds`).
+
+- Add typed point IDs, orb policies (including `PTOLEMAIC_PLUS_QUINCUNX`) resolved at
+  aspect generation with motion, tight-contact sorting and axis-aware counts,
+  input-quality charts (`getQualifiedChart`: recorded, rectified, untimed, partial)
+  with time provenance, several house systems from one calculation, house overlays,
+  Davison charts, secondary progressions and solar arcs with declared conventions,
+  and bounded profection and firdaria timelines.
+
+- Add Jyotish: the Dhruva (Ernst Wilhelm / Kala System 1) equatorial nakshatra
+  method ported to TypeScript, a Lahiri sidereal comparison, chara karakas, and
+  Vimshottari and Yogini dashas with explicit year lengths. Validation is recorded
+  in `JYOTISH_METHODS`; exact Kala date parity is not claimed and Yogini is not
+  matched to a Kala export.
+
+- Add bulk collections (`computeCollection`, `iterateCollection`) with one chart per
+  person, deterministic order, per-item errors, progress and cancellation, cache
+  keys (`buildChartCacheKey`), `getCapabilities`, and ephemeris provenance
+  (`getSwissEphInfo`, `calculatePlanetPositionDetailed`, `strictEphemeris`).
+
+- Make Swiss Ephemeris initialisation throw a typed `SwissEphError` (and fail when
+  the `.se1` files cannot be read instead of silently using Moshier), stop logging
+  initialisation errors with `console.error`, make native ESM initialise, throw a typed
+  `SWISSEPH_HOUSES_UNAVAILABLE` error for Placidus/Koch above the polar circle (opt-in
+  `houseSystemFallback`), and report Jyotish ephemeris usage with `strictEphemeris`.
+
+- Reject impossible calendar dates in the CLI (`2026-02-30` exits `INVALID_DATE`)
+  and read years 0001-0099 as written.
+
+- Add the guides "Dates, time and input quality", "Bulk and collection workflows"
+  and "Migrating to the calculation-fix release", the Jyotish module page, and ADRs
+  0005-0008.
+
 ## 6.16.0 - 2026-11-16
 
 - Resolve the public Swiss Ephemeris runtime and WASM asset exports to the

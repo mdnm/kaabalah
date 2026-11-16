@@ -27,8 +27,12 @@ import {
   listTarotSpreads,
   getTarotSpread,
   drawTarotSpread,
+  drawConsciousTarotSpread,
+  TarotSpreadIndexOutOfPoolError,
   validateTarotSpreadSelection,
   TAROT_IMAGE_BASE_URL,
+  TAROT_TREE_IDS,
+  DEFAULT_TAROT_TREE_ID,
 } from 'kaabalah/tarot';
 ```
 
@@ -167,11 +171,13 @@ listTarotTrees();
 
 ## Card lookup
 
-### `getTarotCardProfile(lookup)`
+### `getTarotCardProfile(lookup, language?)`
 
 ```typescript
-function getTarotCardProfile(lookup: TarotImageLookup): TarotCardProfile | undefined
+function getTarotCardProfile(lookup: TarotImageLookup, language?: string): TarotCardProfile | undefined
 ```
+
+Pass `'pt-BR'` (or any `pt*` value) as `language` for Brazilian Portuguese card names and deck meanings. Lookup names, filenames, branded IDs, canonical numbers and asset paths keep their identities, and the cached English profile is never mutated. The same optional `language` argument exists on `getTarotRepresentation`, `getTarotSpread` and `listTarotSpreads`.
 
 Fetches the rich profile for any card. Accepts multiple lookup strategies via a discriminated union:
 
@@ -475,12 +481,13 @@ const reps = getTarotRepresentations({ tarotCardNumber: 1 });
 // ]
 ```
 
-### `getTarotRepresentation(lookup, deckId)`
+### `getTarotRepresentation(lookup, deckId, language?)`
 
 ```typescript
 function getTarotRepresentation(
   lookup: TarotImageLookup,
-  deckId: TarotDeckId
+  deckId: TarotDeckId,
+  language?: string
 ): TarotRepresentation | undefined
 ```
 
@@ -563,10 +570,10 @@ const instant = await shuffleTarotDeck(ARKANNUS, false, 6, 0);
 
 The spread engine provides structured spread definitions, deterministic drawing, and validation.
 
-### `listTarotSpreads()`
+### `listTarotSpreads(language?)`
 
 ```typescript
-function listTarotSpreads(): TarotSpreadDefinition[]
+function listTarotSpreads(language?: string): TarotSpreadDefinition[]
 ```
 
 Returns definitions for all built-in spreads:
@@ -590,6 +597,8 @@ kaabalah tarot:spread --list
 kaabalah tarot:spread --spread-id=quick-insight --json
 kaabalah tarot:spread --spread-id=celtic-cross --json
 kaabalah tarot:spread --spread-id=event-reading --inquirer-gender=woman --json
+kaabalah tarot:spread --describe --spread-id=celtic-cross --json --compact
+kaabalah tarot:spread --spread-id=conscious-reading --method=conscious --indices=1,2,3 --json --compact
 ```
 
 Use one of these IDs:
@@ -612,13 +621,13 @@ kaabalah tarot:spread --input-json=- --json --compact <<'JSON'
 JSON
 ```
 
-### `getTarotSpread(spreadId)`
+### `getTarotSpread(spreadId, language?)`
 
 ```typescript
-function getTarotSpread(spreadId: TarotSpreadId): TarotSpreadDefinition | undefined
+function getTarotSpread(spreadId: TarotSpreadId, language?: string): TarotSpreadDefinition | undefined
 ```
 
-Returns a single spread definition by ID.
+Returns a single spread definition by ID. With a `pt*` `language`, spread and slot labels, descriptions and metadata notes are Portuguese; IDs, slot keys, validation rules and numbers do not change.
 
 ```typescript
 import { getTarotSpread } from 'kaabalah/tarot';
@@ -718,6 +727,42 @@ interface TarotSpreadResolvedSelectionCard {
   slot: TarotSpreadSlotDefinition;
 }
 ```
+
+### `drawConsciousTarotSpread(options)`
+
+```typescript
+function drawConsciousTarotSpread(options: DrawConsciousTarotSpreadOptions): TarotSpreadConsciousDrawResult
+```
+
+Draws a spread from a deck you shuffled, choosing the card at a position you pick. For each slot (in slot order) the eligible pool is the shuffled deck filtered by that slot's draw rules, and the 1-based index selects a card from that pool.
+
+```typescript
+interface DrawConsciousTarotSpreadOptions {
+  spreadId: TarotSpreadId;
+  shuffledDeck: TarotCard[];        // e.g. the result of shuffleTarotDeck
+  indices: number[];                // exactly one 1-based index per slot
+  deckId?: TarotDeckId;             // default: 'rider-waite'
+  includeInverted?: boolean;
+  rng?: () => number;               // used only for inversion
+  context?: TarotSpreadSelectionContext;
+}
+```
+
+```typescript
+import { ARKANNUS, shuffleTarotDeck, drawConsciousTarotSpread } from 'kaabalah/tarot';
+
+const shuffled = await shuffleTarotDeck(ARKANNUS, false, 7, 0);
+const result = drawConsciousTarotSpread({
+  spreadId: 'conscious-reading',
+  shuffledDeck: shuffled,
+  indices: [3, 12, 7],
+});
+
+result.method;         // 'conscious'
+result.cards[0].pos;   // e.g. '3 of 22': the picked index and the pool size
+```
+
+The result has the same shape as `drawTarotSpread`'s, plus `method: 'conscious'`, and each card carries the picked `index`, the `poolSize` and a `pos` string. A wrong number of indices, or a non-integer or non-positive index, throws an `Error`; an index larger than the pool throws `TarotSpreadIndexOutOfPoolError` (`code: 'INDEX_OUT_OF_POOL'`, with `slotKey`, `index` and `poolSize`). The CLI exposes this as `tarot:spread --method=conscious --indices=...`.
 
 ### `validateTarotSpreadSelection(input)`
 

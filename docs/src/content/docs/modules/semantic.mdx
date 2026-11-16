@@ -28,6 +28,9 @@ import {
 - `listTarotThemeProfiles`
 - `tokenizeOccultThemeText`
 - `OCCULT_THEME_STOPWORDS`
+- Reading: `resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`, `collapseHits`, `buildThreads` (see [Reading connections](#reading-connections))
+- Reading reference: `getReadingReference`, `getDescentStep`, `DESCENT_ORDER`, `DESCENT_STEPS` (see [Reading reference and the descent](#reading-reference-and-the-descent))
+- Kaabalistic overlays: `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`, `buildKaabalisticMapData`, the symbol metadata getters, and `getKaabalisticLabel` (see [Kaabalistic overlays](#kaabalistic-overlays))
 - Types: `HouseThemeProfile`, `TarotThemeProfile`, `HouseThemeLookup`, `TarotThemeLookup`, `HouseThemeAxis`, `HouseThemeScope`, `HouseNumber`, `OccultThemeCorrespondence`, `OccultThemeCorrespondences`, `TarotThemeCorrespondences`, `TarotMajorArchetypeReference`, `TokenizeOccultThemeTextOptions`
 
 ## Overview
@@ -411,3 +414,88 @@ to assess, including Gemini → Mercury → a Hod pip without a matching house.
 Their presence does not assert that the route answers the person's question.
 Consumers must preserve the review marker when passing these rows to models or
 other readers, and keep their own sentence templates outside the library.
+
+
+## Reading reference and the descent
+
+`getReadingReference(language?)` returns four frozen vocabularies keyed by sphere name (`Kether` ... `Malkuth`, plus `Daath`), in English by default or Portuguese for `pt` / `pt-BR`.
+
+| Field | Contents |
+| --- | --- |
+| `gloss` | A short phrase for each of the eleven spheres |
+| `rung` | A pip's step by its rank, `'1'` to `'10'`. Daath has no pip, so the ten ranks are unchanged |
+| `step` | Each sphere's step of the eleven-step descent, in one line |
+| `descent` | The same step told in full |
+
+The descent runs from the idea to matter with Daath included: Kether is step 1, Daath is step 4, and Malkuth is step 11.
+
+```typescript
+import {
+  getReadingReference,
+  getDescentStep,
+  DESCENT_ORDER,
+  DESCENT_STEPS,
+} from 'kaabalah/semantic';
+
+DESCENT_ORDER;                       // ['Kether', 'Chokhmah', 'Binah', 'Daath', 'Chesed', ...]
+DESCENT_STEPS;                       // 11
+getDescentStep('sphere:Daath');      // 4 (a sphere node ID or a bare name)
+getDescentStep('Malkuth');           // 11
+getDescentStep('Path 5');            // null: not a sphere
+
+const reference = getReadingReference('pt-BR');
+reference.step.Daath;                // one line, in Portuguese
+reference.descent.Daath;             // the full telling
+reference.rung['1'];                 // the rank-1 pip
+```
+
+The reference is vocabulary only. It does not interpret a reading, and the app owns its sentence templates.
+
+## Kaabalistic overlays
+
+These helpers turn astrology, numerology and gematria results into render-ready Tree of Life targets and markers. They compute no chart and draw nothing; pair them with `kaabalah/visual` (`activations`) or your own renderer.
+
+```typescript
+import {
+  getKaabalisticCorrespondenceTargets,
+  getNumerologyTreeMarkers,
+  getGematriaTreeMarkers,
+  getAstrologyTreeMarkers,
+  buildKaabalisticMapData,
+} from 'kaabalah/semantic';
+
+// Which spheres and paths does a sign, planet, angle, node, number or Hebrew letter point at?
+getKaabalisticCorrespondenceTargets({ kind: 'sign', sign: 'Aries' });
+// { source: { kind: 'sign', label: 'Aries', glyph: '♈', ... },
+//   targets: [{ targetId: 'path:5', targetType: 'path', mapping: 'sign-path', distance: 1 }, ...] }
+
+getKaabalisticCorrespondenceTargets({ kind: 'planet', planet: 'Mars', sign: 'Aries' }, 'pt-BR');
+getKaabalisticCorrespondenceTargets({ kind: 'number', number: 7 });
+getKaabalisticCorrespondenceTargets({ kind: 'hebrewLetter', hebrewLetterId: 'hebrewLetter:Aleph' });
+
+// Marker descriptors, one per placement
+getNumerologyTreeMarkers(new Date(1990, 5, 15, 12));   // local noon
+getGematriaTreeMarkers('DAVID');
+getAstrologyTreeMarkers(chart);                         // a BirthChart
+
+// Everything for a mixed map view
+const map = buildKaabalisticMapData({
+  astrology: chart,
+  numerology: new Date(1990, 5, 15, 12),
+  gematria: 'DAVID',
+});
+map.markers;        // every marker
+map.sphereMarkers;  // grouped by sphere node ID
+map.pathMarkers;    // grouped by path node ID
+map.countsById;     // per-target counts for highlighting
+map.itemConnections; // per-source connection summaries (astrology, numerology, gematria)
+```
+
+A marker has `kind` (`astrology`, `numerology` or `gematria`), `targetId`, `targetType` (`sphere` or `path`), `sourceType`, `sourceName`, `mapping` and a display `label`. `lookup.kind` selects what is being resolved: `sign`, `planet`, `angle`, `node`, `number` or `hebrewLetter`.
+
+Symbol metadata for the glyphs and short labels is available through `getPlanetSymbolMetadata(lookup)`, `getZodiacSignSymbolMetadata(lookup)`, `getAngleSymbolMetadata(lookup)` and `getNodeSymbolMetadata(lookup)`, and their `listPlanetSymbolMetadata()`, `listZodiacSignSymbolMetadata()`, `listAngleSymbolMetadata()` and `listNodeSymbolMetadata()` counterparts.
+
+### Portuguese labels
+
+Every function above takes an optional final `language` argument. `'pt'` and `'pt-BR'` translate display labels (`label`, `shortLabel`, `sourceName`, `targetName`, item labels); glyphs, lookup keys, target IDs, mappings, distances and counts are unchanged. `getKaabalisticLabel(text, language?)` translates one supported standalone or generated label such as `Path 5` or `Mars in Aries`, and returns anything it does not know unchanged.
+

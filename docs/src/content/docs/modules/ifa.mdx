@@ -10,12 +10,15 @@ import { LinkCard } from '@astrojs/starlight/components';
 ## Import
 
 ```typescript
-import { calculateOdu } from 'kaabalah/ifa';
+import { calculateOdu, getIfaText } from 'kaabalah/ifa';
 ```
 
 ## Exports
 
 - `calculateOdu`
+- `getIfaText`
+- `IFA_TEXTS`
+- Types: `OduNumbers`
 
 ## How Odu Calculation Works
 
@@ -39,6 +42,37 @@ const odu = calculateOdu(new Date('1990-06-15'));
 console.log(odu.north);  // North direction Odu
 console.log(odu.center); // Center/synthesis Odu
 ```
+
+## Date handling
+
+`calculateOdu` reads the date as an ISO calendar day. A `Date` is read in UTC (`toISOString()`), so `new Date('1990-06-15')` and `new Date(Date.UTC(1990, 5, 15, 12))` both mean June 15. The one exception is a `Date` at exactly local midnight that is not UTC midnight, which is read with local getters, so `new Date(1990, 5, 15)` also means June 15. Other local times (for example local noon in a timezone far east of UTC) can land on the previous UTC day, so pass a date-only value or UTC noon. This differs from numerology, which reads local calendar fields (see [Numerology date handling](/modules/numerology/#date-handling)). The CLI already passes UTC noon (`kaabalah ifa 1990-06-15`).
+
+```typescript
+import { calculateOdu } from 'kaabalah/ifa';
+
+calculateOdu(new Date(Date.UTC(1990, 5, 15, 12))); // June 15, in every timezone
+```
+
+An invalid `Date` throws.
+
+## Labels
+
+`getIfaText(key, language?)` returns display labels for the calculation (the library contains no Odu interpretation catalog). Keys are `odu`, `left`, `right`, `north`, `south`, `east`, `west`, `center` and `invalidDate`. `'pt'` and `'pt-BR'` select Portuguese; the numeric results of `calculateOdu` are unchanged.
+
+```typescript
+import { getIfaText } from 'kaabalah/ifa';
+
+getIfaText('north', 'pt-BR'); // 'Norte'
+getIfaText('north');          // 'North'
+```
+
+## CLI
+
+```bash
+kaabalah ifa 1990-06-15 --json --compact
+```
+
+Returns `leftNumbers`, `rightNumbers` and the `north`, `south`, `east`, `west` and `center` numbers.
 
 ## Live example
 

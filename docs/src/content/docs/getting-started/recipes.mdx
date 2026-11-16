@@ -46,6 +46,93 @@ What to show in UI:
 - Name gematria `total` as a secondary badge.
 - A "How it's computed" drawer using reduction steps.
 
+### Recipe: numerology "as of" a date (no timezone workaround)
+
+Use this when you need what was (or will be) active on a given day. It takes `YYYY-MM-DD` strings, so there is no local-noon trick and no `process.env.TZ`.
+
+```ts
+import { getNumerologySnapshot } from 'kaabalah/numerology';
+
+const snapshot = getNumerologySnapshot({
+  birth: '1985-03-14',
+  asOf: '2010-08-20',
+  firstName: 'Ana',
+});
+
+snapshot.completedAge;                    // 25
+snapshot.birthdayYear.personalYear.value; // 11
+snapshot.personalMonth.start;             // "2010-08-14" (phase 6, value 1)
+snapshot.heptad.dayInHeptad;              // 4
+```
+
+### Recipe: a period of numerology intervals
+
+Use this for a timeline UI. Intervals are half-open `[start, endExclusive)`.
+
+```ts
+import { generateNumerologyTimeline } from 'kaabalah/numerology';
+
+const timeline = generateNumerologyTimeline({
+  birth: '1990-03-31',
+  firstName: 'Ana',
+  from: '2024-03-01',
+  toExclusive: '2025-03-31',
+  layers: ['personal-period', 'personal-month'],
+});
+
+timeline.intervals.map((i) => `${i.layer} ${i.start}..${i.endExclusive} phase ${i.phase}`);
+// "personal-period 2023-12-01..2024-03-31 phase 3", "personal-month 2024-03-01..2024-03-31 phase 12", ...
+```
+
+See [Dated schedules](/modules/numerology/#dated-schedules-snapshots-and-timelines) for the short-month policies and clipping.
+
+### Recipe: a chart when the birth time is unknown
+
+Use this when you only have the date. Nothing time-dependent is invented.
+
+```ts
+import { getQualifiedChart } from 'kaabalah/astrology';
+
+const untimed = await getQualifiedChart({
+  quality: 'untimed',
+  date: { year: 1990, month: 6, day: 15 },
+  latitude: 51.5,
+  longitude: -0.12,
+  timeZoneSettings: { timeZone: 'Europe/London' },
+});
+
+untimed.chart;                    // null
+untimed.moonDayRange.signs;       // ["pisces"]: the Moon's sign for the whole local day
+untimed.analysisPoints.some((p) => p.id === 'moon' || p.id === 'asc'); // false
+```
+
+### Recipe: Dhruva and Lahiri nakshatras next to tropical signs
+
+```ts
+import { getJyotishChart } from 'kaabalah/astrology';
+
+const j = getJyotishChart({ date: new Date(Date.UTC(1990, 5, 15, 11)), latitude: 51.5, longitude: -0.12 });
+
+j.dhruva.points.moon.tropical.sign;         // "Pisces"
+j.dhruva.points.moon.nakshatra;             // "Purva Bhadrapada" (Dhruva, equatorial)
+j.dhruva.points.moon.pada;                  // 2
+j.lahiri.points.moon.sidereal.sign;         // "Aquarius"
+j.lahiri.points.moon.pada;                  // 1 (Lahiri comparison)
+```
+
+See [Jyotish](/modules/jyotish/) for the exact method and what was validated.
+
+### Recipe: every pair among N people
+
+```ts
+import { computeCollection } from 'kaabalah/astrology';
+
+const result = await computeCollection({ people, pairs: { mode: 'all' } });
+// one chart computation per person; result.pairs is ordered by manifest index
+```
+
+See [Bulk and collection workflows](/guides/bulk-workflows/) for a complete example with output.
+
 ### Recipe: "daily numerology" (personal cycles)
 
 Use this when you want a daily / monthly widget.
@@ -54,7 +141,7 @@ Use this when you want a daily / monthly widget.
 import { calculatePersonalCycles } from 'kaabalah/numerology';
 
 const cycles = calculatePersonalCycles(
-  new Date('1990-06-15'), // birth date
+  new Date(1990, 5, 15, 12), // birth date at local noon
   new Date(),             // today
   'John',                 // first name (used for soul number)
 );
@@ -86,7 +173,8 @@ const chart = await getBirthChart({
 
 console.log(chart.planets.sun.zodiacPosition.sign);
 console.log(chart.houses.ascendant.sign);
-console.log(chart.sect); // "diurnal" | "nocturnal"
+console.log(chart.sect); // "diurnal" | "nocturnal", from the Sun's altitude (same in every house system)
+console.log(chart.lots.fortunePosition.sign, chart.moonPhase.phase);
 ```
 
 <Aside type="caution">

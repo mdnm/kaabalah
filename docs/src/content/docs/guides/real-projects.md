@@ -42,19 +42,23 @@ Recompute outputs on library upgrades.
 
 ### CLI apps
 
-Best when you want repeatable, scriptable readings.
+Best when you want repeatable, scriptable readings. The package already ships a `kaabalah` binary that covers every module, so start there before writing your own.
 
-Implementation pattern:
+Using the built-in CLI:
+
+- `kaabalah gematria "DAVID" --json --compact`
+- `kaabalah numerology 1990-06-15 --json --compact`
+- `kaabalah astrology 1990-06-15 12:30 --lat=40.7128 --lon=-74.006 --timezone=America/New_York --json --compact`
+- `kaabalah iching:reading --lines 879777 --json --compact`
+- `kaabalah help --json` lists every command and flag as a schema.
+
+Output is one JSON document on stdout, errors use a stable `{ error, code, message }` shape with exit code 1, and `--language pt-BR` localizes display text. See the [CLI reference](/getting-started/cli/).
+
+If you build your own CLI around the library:
 
 - Parse args → compute → print JSON.
 - Support `--pretty` for human output.
-- Return non-zero exit code on invalid inputs.
-
-Example feature ideas:
-
-- `kaabalah gematria "DAVID"`
-- `kaabalah life-path --date 1990-06-15`
-- `kaabalah chart --date "1990-06-15 12:30" --tz America/New_York --lat ... --lon ...`
+- Return non-zero exit code on invalid inputs, and validate calendar dates before building a `Date` (JavaScript turns `2026-02-30` into March 2).
 
 ### Web apps
 

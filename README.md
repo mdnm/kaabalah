@@ -25,8 +25,8 @@ All modules are tree-shakable and can be imported independently:
 | Module | Import | Description |
 |--------|--------|-------------|
 | Core | `kaabalah/core` | Tree of Life graph with cross-system correspondences |
-| Numerology | `kaabalah/numerology` | Life path, cycles, challenges, personal year |
-| Astrology | `kaabalah/astrology` | Birth charts, synastry, composite, transits, solar returns, profections, firdaria, astrocartography, dignity, decans, dodecatemoria |
+| Numerology | `kaabalah/numerology` | Life path, cycles, challenges, personal year, dated schedules (as-of snapshots and timelines from civil dates), partial birth dates, pinnacles |
+| Astrology | `kaabalah/astrology` | Birth charts, sect and lots, synastry, composite and Davison, exact transit and return events, progressions, profections, firdaria, orb policies, input quality, bulk collections, Jyotish (Dhruva and Lahiri nakshatras, dashas), astrocartography, dignity, decans, dodecatemoria |
 | Gematria | `kaabalah/gematria` | Hebrew letter numerology |
 | Tarot | `kaabalah/tarot` | 78-card deck with profiles, archetypes, correspondences, multi-deck images, spread engine |
 | I Ching | `kaabalah/iching` | 64 hexagrams, classical Chinese and original English, Han technical derivations, tree-backed Kaabalah, coin casting |
@@ -34,12 +34,16 @@ All modules are tree-shakable and can be imported independently:
 | Semantic | `kaabalah/semantic` | Theme profiles, kaabalistic overlay correspondences, symbol metadata |
 | Visual | `kaabalah/visual` | Tree of Life and astrology wheel SVG generation plus layout/render-model data |
 
+Civil-date helpers (`parseCivilDate`, `completedYears`, ...) and JSON/Markdown tabulation helpers (`toTable`, `toMarkdownTable`) are exported from the package root `kaabalah`.
+
+The Swiss Ephemeris runtime assets are also exported for bundlers and servers: `kaabalah/swisseph-runtime` (JS) and `kaabalah/swisseph-wasm` (WebAssembly). See the [WebAssembly guide](https://docs.kaabalah.com/guides/webassembly/).
+
 ## Quick Example
 
 ```typescript
 import { createTree, id, KaabalahTypes } from 'kaabalah/core';
 import { getBirthChart } from 'kaabalah/astrology';
-import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
+import { calculateKaabalisticLifePath, getNumerologySnapshot } from 'kaabalah/numerology';
 import { getTarotCorrespondenceProfile } from 'kaabalah/tarot';
 import { generateAstroWheelSvg, generateTreeSvg } from 'kaabalah/visual';
 
@@ -51,7 +55,8 @@ const chart = await getBirthChart({
   latitude: 48.856, longitude: 2.352,
 });
 
-const lifePath = calculateKaabalisticLifePath(new Date('1990-06-15'));
+const lifePath = calculateKaabalisticLifePath(new Date(1990, 5, 15, 12)); // legacy Date API: local noon
+const asOf = getNumerologySnapshot({ birth: '1990-06-15', asOf: '2026-01-01' }); // civil dates: no timezone workaround
 const magician = getTarotCorrespondenceProfile({ tarotCardName: 'The Magician' });
 const svg = generateTreeSvg({ background: 'transparent', palette: 'monochrome' });
 const wheelSvg = generateAstroWheelSvg(chart, { background: 'transparent' });
@@ -81,7 +86,7 @@ getTarotCardProfile({ tarotCardNumber: 20 }, 'pt-BR')?.tarotMeaning;
 getIChingReadingContent('879777', 'pt-BR').oracle[0].text.content;
 ```
 
-See [Portuguese text APIs](docs/localization/pt-BR-api.md) for card/deck descriptions, spreads, numerology, gematria, tree descriptions, astrology labels and CLI language selection.
+See [Portuguese text APIs](https://docs.kaabalah.com/guides/localization/) for card/deck descriptions, spreads, numerology, gematria, tree descriptions, astrology labels and CLI language selection.
 
 ## CLI
 
@@ -92,13 +97,21 @@ npx kaabalah help --language pt-BR    # Portuguese help
 npx kaabalah iching:reading --lines 879777 --json --compact
 npx kaabalah iching:hexagram 25 --json --compact
 npx kaabalah iching:cast --json --compact
+npx kaabalah tarot:spread --spread-id=celtic-cross --json --compact
+npx kaabalah tree:topology --route=lightning --json --compact
 npx kaabalah numerology 1990-01-15 --json --compact
+npx kaabalah numerology:snapshot 1990-01-15 Ana --as-of=2026-03-01 --json --compact
+npx kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --layers=personal-month --json --compact
 npx kaabalah astrology 1990-01-15 14:30 --lat=40.71 --lon=-74 --json
+npx kaabalah astrology 1990-01-15 --quality=untimed --lat=40.71 --lon=-74 --json --compact --fields=status,moonDayRange
+npx kaabalah astrology:jyotish 1990-01-15 14:30 --lat=40.71 --lon=-74 --frame=lahiri --as-of=2026-03-01 --json --compact --fields=activeDasha
+npx kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary
+npx kaabalah capabilities --json --compact
 npx kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.71 --lon=-74 --json --compact --fields=svg
 npx kaabalah tree:node "tarotArkAnnu:The Magician" --depth=2 --json
 ```
 
-Run `kaabalah help --json` to discover commands and schemas. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
+Dates are real calendar days (`YYYY-MM-DD`, years 0001-9999): `2026-02-30` exits with `INVALID_DATE`. Calculations are deterministic except random draws (`tarot`, `tarot:spread --spread-id`, `iching:cast`), geocoding, and commands that default to today. `--as-of` pins the evaluation date of numerology commands; `astrology:collection --ndjson` is the only streaming (non-single-document) mode. Run `kaabalah help --json` to discover commands and schemas. See the [CLI Reference](https://docs.kaabalah.com/getting-started/cli/) for the full list.
 
 ## Support
 

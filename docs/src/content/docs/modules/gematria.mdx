@@ -10,13 +10,16 @@ import { LinkCard } from '@astrojs/starlight/components';
 ## Import
 
 ```typescript
-import { calculateGematria, reverseGematria } from 'kaabalah/gematria';
+import { calculateGematria, reverseGematria, getGematriaData } from 'kaabalah/gematria';
 ```
 
 ## Exports
 
 - `calculateGematria`
 - `reverseGematria`
+- `getGematriaData`
+- `GEMATRIA_TEXT_DATA`
+- `GematriaData`
 
 ## How Gematria Works
 
@@ -44,6 +47,21 @@ const matches = reverseGematria({
   maxLength: 5
 });
 ```
+
+## Meaning tables
+
+`getGematriaData(language?)` returns the three read-only meaning tables for a total: `INDIVIDUALITY_NUMBER_MEANINGS`, `PERSONALITY_NUMBER_MEANINGS` and `SYNTHESIS_NUMBER_MEANINGS`. English is the default; `'pt'` and `'pt-BR'` select Portuguese. `GEMATRIA_TEXT_DATA` holds both languages as `{ en, pt }`.
+
+```typescript
+import { getGematriaData } from 'kaabalah/gematria';
+
+const texts = getGematriaData('pt-BR');
+texts.INDIVIDUALITY_NUMBER_MEANINGS[7];
+texts.PERSONALITY_NUMBER_MEANINGS[7];
+texts.SYNTHESIS_NUMBER_MEANINGS[7];
+```
+
+The CLI `gematria` command returns numbers and letter correspondences only, not these texts.
 
 ## Live example
 

@@ -93,8 +93,28 @@ _Avoid_: mandatory layout engine, custom-renderer mandate
 ### Astrology
 
 **Sect**:
-Whether a chart is a day chart (diurnal) or night chart (nocturnal), determined by the Sun's position relative to the horizon. Cached on **BirthChart** as `sect` to avoid recalculating for downstream techniques (profections, firdaria, essential dignity) that depend on it.
+Whether a chart is a day chart (diurnal) or night chart (nocturnal), determined by the Sun's geometric altitude at the birth place (never by its house, so it is identical in every house system); exactly on the horizon counts as nocturnal. Cached on **BirthChart** as `sect` to avoid recalculating for downstream techniques (profections, firdaria, essential dignity) that depend on it.
 _Avoid_: day/night, light/dark
+
+**Closest Approach**:
+A local minimum of the separation between a moving body and an aspect target that never reaches the target. It is a separate, optional result kind and is never labelled an exact event.
+_Avoid_: near-exact perfection
+
+**Exact Event**:
+An instant at which a signed angular difference crosses an aspect angle, verified against an angular tolerance (`exactDate` is a UTC instant, `exactOrb` the residual, not the display orb). Found by the shared root solver over a finite scan grid with velocity-zero stations; coverage is qualified, not proven.
+_Avoid_: perfection, minimum orb
+
+**Davison Chart**:
+A real chart cast for the midpoint in time and place of two births. A different method from the midpoint **composite**, which averages longitudes point by point.
+_Avoid_: composite (distinct method)
+
+**Dhruva Frame**:
+The user-supplied Ernst Wilhelm / Kala "System 1" nakshatra method: 27 equal sectors measured on the celestial equator from an origin anchored to the Galactic Center. It is not ecliptic longitude minus an ayanamsa; tropical rasis stay independent of it.
+_Avoid_: sidereal, Lahiri
+
+**Civil Date**:
+A calendar day (`{ year, month, day }` or `YYYY-MM-DD`) with no time and no timezone. The numerology schedule API uses only civil dates; legacy `Date` APIs use the local-noon convention.
+_Avoid_: UTC midnight, date-only `Date`
 
 **House Cusp**:
 The exact zodiacal boundary where one astrological house begins. A planet's house membership is determined from its true longitude relative to house cusps, not from where its glyph or label is drawn.

@@ -1,6 +1,6 @@
 ---
 title: Astrology
-description: Birth charts, synastry, transits, solar returns, profections, firdaria, aspects, astrocartography, essential dignity, decans, and dodecatemoria via Swiss Ephemeris WASM
+description: Birth charts, sect and lots, synastry, composite and Davison charts, exact transit and return events, progressions, profections, firdaria, orb policies, input quality, bulk collections, aspects, astrocartography, essential dignity, decans, and dodecatemoria via Swiss Ephemeris WASM
 sidebar:
   order: 3
 ---
@@ -69,9 +69,9 @@ chart.planets.sun.zodiacPosition.sign         // "Gemini"
 chart.planets.sun.zodiacPosition.house        // 10
 chart.houses.ascendant.sign                   // "Virgo"
 chart.houses.mc.sign                          // "Gemini"
-chart.nodes.parsfortunae.zodiacPosition.sign  // Part of Fortune
+chart.nodes.parsFortunae.zodiacPosition.sign  // Part of Fortune
 chart.aspects                                 // AspectEdge[]
-chart.sect                                    // "diurnal" | "nocturnal"
+chart.sect                                    // "diurnal" | "nocturnal" (Sun above the horizon)
 chart.dateUtc                                 // Date (UTC)
 ```
 
@@ -82,7 +82,8 @@ chart.dateUtc                                 // Date (UTC)
 | `date` | `Date \| LocalDateTimeParts` | Local civil date-time. Use `LocalDateTimeParts` (`{ year, month, day, hour?, minute?, second? }`) to avoid timezone ambiguity. |
 | `latitude` | `number` | −90 to 90 |
 | `longitude` | `number` | −180 to 180 |
-| `houseSystem` | `HouseSystem` | Optional. Defaults to `PLACIDUS`. |
+| `houseSystem` | `HouseSystem` | Optional. Defaults to `PLACIDUS`. Placidus and Koch are undefined beyond the polar circle (`\|latitude\| >= ~66.56`): `getBirthChart` then throws a `SwissEphError` with code `SWISSEPH_HOUSES_UNAVAILABLE`. |
+| `houseSystemFallback` | `"whole-sign" \| "equal" \| "porphyry"` | Optional, **opt-in**, off by default. Substitutes that system only when the requested one is unavailable at the latitude. A substitution is never silent: `chart.houseSystem` is the system actually used and `chart.houseSystemSubstitution` records the request, reason and a notice. |
 | `timeZoneSettings` | `TimeZoneOptions` | Optional. Defaults to `{ autoTimeZone: true }`. |
 
 **`BirthChart` return type**
@@ -91,10 +92,14 @@ chart.dateUtc                                 // Date (UTC)
 |---|---|---|
 | `dateUtc` | `Date` | Chart moment in UTC. |
 | `planets` | `Record<string, HydratedPlanet>` | Keyed by lowercase planet name (e.g. `"sun"`, `"moon"`, `"true node"`). |
-| `nodes` | `Record<string, HydratedNode>` | Currently contains `parsfortunae` (Part of Fortune). |
+| `nodes` | `Record<string, HydratedNode>` | Currently contains `parsFortunae` (Part of Fortune). |
 | `houses` | `object` | Contains `ascendant`, `mc`, `dc`, `ic`, `houses[]`, and optional `ascmc` auxiliary points. |
 | `aspects` | `AspectEdge[]` | All intra-chart aspects including Ascendant and MC. |
-| `sect` | `"diurnal" \| "nocturnal"` | Sun above horizon = diurnal. |
+| `houseSystem` | `HouseSystem` | House system the cusps were computed with. |
+| `sect` | `"diurnal" \| "nocturnal"` | From the Sun's altitude at the birth place (physical horizon), identical for every house system. See [Sect](#sect-physical-horizon). |
+| `sectDetails` | `SectResult` | Geometric and apparent Sun altitude and the convention used. |
+| `lots` | `LotsResult & { fortunePosition, spiritPosition }` | Lots of Fortune and Spirit with the formulas used. |
+| `moonPhase` | `MoonPhaseResult` | Elongation, 8-phase name, waxing flag and illumination (labelled approximate). |
 
 **`ZodiacPosition`** (used throughout):
 
@@ -124,6 +129,68 @@ chart.dateUtc                                 // Date (UTC)
 | `HouseSystem.MERIDIAN` | Meridian |
 | `HouseSystem.KRUSINSKI` | Krusinski |
 | `HouseSystem.ALCABITIUS` | Alcabitius |
+
+### Minimal natal example
+
+```typescript
+import { getBirthChart, getSwissEph } from 'kaabalah/astrology';
+
+await getSwissEph(); // once per process; loads the bundled WASM and ephemeris files
+
+const chart = await getBirthChart({
+  date: { year: 1990, month: 6, day: 15, hour: 14, minute: 30 },
+  latitude: 48.856,
+  longitude: 2.352,
+  timeZoneSettings: { timeZone: 'Europe/Paris' },
+});
+
+chart.planets.sun.zodiacPosition.sign;            // "Gemini"
+chart.planets.sun.zodiacPosition.traditionalFormat; // "24°09'"
+chart.houses.ascendant.sign;                      // "Libra"
+chart.sect;                                       // "diurnal"
+chart.sectDetails.sunGeometricAltitude.toFixed(2); // "63.32"
+chart.lots.fortunePosition.sign;                  // "Gemini"
+chart.lots.spiritPosition.sign;                   // "Capricorn"
+chart.moonPhase.phase;                            // "last_quarter"
+chart.moonPhase.illumination.method;              // "approximate"
+```
+
+The values above are the real output of this script (synthetic input). `getSwissEph()` is optional (every calculation initialises the runtime on first use) but calling it explicitly lets you pass `wasmPath`/`ephePath` and `strictEphemeris`, see [Ephemeris provenance and strict mode](#ephemeris-provenance-and-strict-mode). It writes a "Setting ephemeris path to ..." notice to stderr unless you pass `onRuntimeNotice`.
+
+### Sect (physical horizon)
+
+Sect depends on the sky, not on the house system. `getBirthChart` computes the Sun's geometric (unrefracted, centre-of-disc) altitude at the birth place with Swiss `swe_azalt`:
+
+- the chart is **diurnal** when the altitude is strictly greater than `0` degrees;
+- an altitude exactly on the threshold is **nocturnal** (the documented exact-horizon convention, echoed in `chart.sectDetails.method.exactHorizon`);
+- the result is identical in Placidus, whole-sign, equal and every other house system.
+
+```typescript
+import { computeSect, getSectFromAltitude } from 'kaabalah/astrology';
+
+getSectFromAltitude(0.5);        // "diurnal"
+getSectFromAltitude(0);          // "nocturnal"
+getSectFromAltitude(-0.5, -1);   // "diurnal": a custom horizon threshold of -1 degree
+```
+
+`computeSect(dateUtc, latitude, longitude, sun, { basis, horizonAltitude })` is the underlying call (needs an initialised Swiss Ephemeris). `basis: "apparent"` compares the refraction-corrected altitude (standard pressure and temperature) instead. The older `getSect(sunHouse)` is deprecated: it is only correct when house cusps follow the horizon.
+
+### Lots of Fortune and Spirit
+
+`chart.lots` holds the two Hellenistic lots, sect-reversed counterparts of each other:
+
+| | Diurnal | Nocturnal |
+|---|---|---|
+| Fortune | ASC + Moon - Sun | ASC + Sun - Moon |
+| Spirit | ASC + Sun - Moon | ASC + Moon - Sun |
+
+So Fortune + Spirit = 2 x ASC (mod 360) in either sect. `chart.lots.method` records the sect and formulas used. The pure helpers are `computeLots(asc, sun, moon, sect)`, `calcLotOfFortune` and `calcLotOfSpirit`. `chart.nodes.parsFortunae` is the legacy entry for Fortune and equals `lots.fortune`.
+
+### Moon phase
+
+`chart.moonPhase` (pure helper `computeMoonPhase(sunLongitude, moonLongitude)`) reports the Moon-Sun elongation in `[0, 360)`, an 8-phase name (`new`, `waxing_crescent`, `first_quarter`, `waxing_gibbous`, `full`, `waning_gibbous`, `last_quarter`, `waning_crescent`) with 45-degree sectors centred on the principal phases (boundaries at 22.5, 67.5, ... degrees; lower bound inclusive), `waxing`, and `illuminatedFraction`.
+
+The illumination is **approximate**: `(1 - cos(elongation)) / 2` from the ecliptic longitude difference, ignoring the Moon's latitude and the Sun/Moon distance ratio. The label is carried in `illumination.method` (`"approximate"`); this build never reports an `"exact"` value.
 
 ---
 
@@ -156,6 +223,21 @@ synastry.aspects   // AspectEdge[] — cross-chart aspects
 | `chartA` | `BirthChartOptions` | First person's chart options. |
 | `chartB` | `BirthChartOptions` | Second person's chart options. |
 | `aspectSpecs` | `AspectSpec[]` | Optional. Overrides default aspect orbs. |
+| `omitCharts` | `boolean` | Optional. `true` returns `{ charts: { a, b }, aspects }` with metadata-only chart references (`dateUtc`, `houseSystem`) instead of two full charts. |
+
+### Already-computed charts
+
+`getSynastryFromCharts(chartA, chartB, options?)` computes synastry from two charts you already have, without touching the ephemeris. N people need N `getBirthChart` calls instead of N(N-1)/2:
+
+```typescript
+import { getSynastryFromCharts } from 'kaabalah/astrology';
+
+const summary = getSynastryFromCharts(chartA, chartB, { omitCharts: true, ids: { a: 'ana', b: 'bruno' } });
+summary.charts.a.id;   // "ana" (ids are echoed verbatim)
+summary.aspects;       // AspectEdge[]
+```
+
+For many people use [collections](#collections-and-bulk-workflows).
 
 ---
 
@@ -167,7 +249,7 @@ import { getCompositeChart } from 'kaabalah/astrology';
 
 ### `getCompositeChart(options): Promise<CompositeChart>`
 
-Calculates a midpoint composite chart from two birth charts. Planets and house cusps are computed as the shorter-arc midpoint of the corresponding points in each chart.
+Calculates a midpoint composite chart from two birth charts. Planets are the shorter-arc midpoint of the corresponding points in each chart; angles and houses follow the conventions below. `getCompositeFromCharts(chartA, chartB, options?)` does the same from charts you already computed.
 
 ```typescript
 const composite = await getCompositeChart({
@@ -180,7 +262,22 @@ composite.chartB             // BirthChart
 composite.compositePlanets   // Record<string, { name, longitude, zodiacPosition }>
 composite.compositeHouses    // ZodiacPosition[]
 composite.aspects            // AspectEdge[] — aspects within composite chart
+composite.compositeAngles    // { ascendant, mc, descendant, ic } ZodiacPositions
+composite.compositeMethod    // conventions used (midpoint, antipodal policy, house rule)
+composite.notices            // antipodal pairs, MC/cusp corrections, fallbacks
+composite.houseSystems       // { a, b } house system of each input and where it came from
 ```
+
+**Conventions** (all echoed in `compositeMethod` / `notices`):
+
+- **Midpoint**: shorter-arc midpoint of two ecliptic longitudes.
+- **Antipodal rule**: two points within `0.001` degree of exact opposition have two equally valid midpoints. The rule is symmetric in its arguments: the arithmetic mean of the two normalised longitudes in `[0, 360)` is used (the arc that does not cross 0 Aries), and the pair is flagged as a `notices` entry of type `"antipodal"`.
+- **Angles**: composite ASC is the midpoint of both ASCs. The composite MC is the midpoint of both MCs or its opposite, whichever lies 0-180 degrees behind the composite ASC (`mc_flipped` notice when the opposite is used). DSC = ASC + 180, IC = MC + 180.
+- **Whole-sign houses** (both charts whole-sign): house 1 starts at 0 degrees of the composite ASC's sign and each house is 30 degrees. Previously the cusps were midpoints of the two charts' whole-sign cusps.
+- **Other systems**: cusp *i* is the midpoint of cusp *i* of both charts, anchored to the composite ASC for cusp 1, then walked in order; a midpoint on the wrong side is replaced by its opposite (`cusp_corrected`). If the cusps still cannot be ordered strictly increasing, equal houses from the composite ASC are used and `compositeMethod.fallback` is `"equal"` with an `equal_house_fallback` notice. Mixing a whole-sign chart with another system adds a `mixed_house_systems` notice.
+- **Aspects** are computed from the final composite point set only.
+
+Composite and Davison charts are different methods, see [Davison charts](#davison-charts).
 
 ---
 
@@ -236,7 +333,7 @@ transit.aspects               // TransitAspectEdge[]
 
 ### `getTransitRange(options): Promise<TransitRangeResult>`
 
-Scans a date range and returns exact aspect **perfection dates** found via binary search (minute precision). The Moon and other fast planets auto-reduce the scan step to 0.25 days to avoid missed perfections.
+Scans a date range (`from` / `to` are a `Date` or `LocalDateTimeParts`; a legacy `Date` is read with host-local getters and reinterpreted in the transit location's zone, so pass `transitTimeZoneSettings: { treatAsUTC: true }` to use its own UTC instant) and returns **exact aspect events**: instants at which the signed angular difference between a transiting body and a fixed natal target crosses the aspect angle, found by signed-angle root bracketing with velocity-zero stations and verified against an angular tolerance. See [Exact events](#exact-transit-events-versus-closest-approaches) for the full contract. Fast bodies (Sun, Moon, Mercury, Venus, Mars) use a scan step of at most 0.25 days, every body at most 2 days.
 
 ```typescript
 const range = await getTransitRange({
@@ -261,10 +358,15 @@ range.perfections    // AspectPerfection[]
 | `transitPlanet` | `string` | Name of transiting planet. |
 | `natalPlanet` | `string` | Name of natal point. |
 | `aspect` | `AspectName` | Aspect type. |
-| `exactDate` | `Date` | Moment of closest approach. |
-| `exactOrb` | `number` | Orb at perfection (degrees). |
+| `exactDate` | `Date` | Verified root: a true UTC instant at which the aspect is exact. |
+| `exactOrb` | `number` | The angular **residual** of the root (about 0, degrees), not the display orb. |
 | `retrograde` | `boolean` | Whether transit planet was retrograde at perfection. |
 | `category` | `"slow" \| "fast"` | Planet speed category. |
+| `kind` | `"exact"` | Always `"exact"`. |
+| `exactJd` | `number` | Julian Day (UT) of the root. |
+| `solver` | `PerfectionSolverMetadata` | Residual, bracket width, tolerance, iterations, direction, tangent flag, scan step, target longitude, coverage and method. |
+
+Natal targets are fixed points (zero velocity), so applying/separating depends only on the transiting body. For transits over an already-computed natal chart (or any derived chart exposing `planets` and `houses`) use `getTransitChartFromChart(natalChart, { transitDate, transitLatitude, transitLongitude, ... })`; a `BirthChart` does not store its location, so the transit location is explicit.
 
 ---
 
@@ -276,7 +378,7 @@ import { getSolarReturnChart } from 'kaabalah/astrology';
 
 ### `getSolarReturnChart(options): Promise<SolarReturnChart>`
 
-Finds the exact UTC moment when the transiting Sun returns to its natal longitude in the specified year (binary search, minute precision), then casts a full chart at that moment.
+Finds the exact UTC moment when the transiting Sun returns to its natal longitude in the specified year (signed-angle root search solved to a 0.001-second bracket by default), then casts a full chart at that moment. The search window is anchored on the natal instant's local anniversary and widens if no crossing is found, so births at any UTC offset are covered. The solved instant is UTC and the chart is cast with `treatAsUTC`.
 
 ```typescript
 const sr = await getSolarReturnChart({
@@ -296,6 +398,8 @@ sr.solarReturnChart    // BirthChart — cast at exactReturnDate, SR location
 sr.exactReturnDate     // Date (UTC)
 sr.natalSunLongitude   // number — natal Sun longitude used for search
 sr.year                // number
+sr.residualDegrees     // angular residual of the Sun at the solved root (about 0)
+sr.solver              // { bracketWidthSeconds, timeToleranceSeconds, iterations, direction, coverage, method }
 ```
 
 **`SolarReturnOptions`**
@@ -307,6 +411,8 @@ sr.year                // number
 | `solarReturnLatitude` | `number` | natal latitude | Relocated SR location. |
 | `solarReturnLongitude` | `number` | natal longitude | Relocated SR location. |
 | `solarReturnHouseSystem` | `HouseSystem` | natal house system | SR chart house system. |
+| `returnPrecisionSeconds` | `number` | `0.001` | Final bracket width of the solved instant, in seconds. |
+| `residualToleranceDegrees` | `number` | `1e-6` | Maximum accepted angular residual. |
 
 ---
 
@@ -372,7 +478,7 @@ Computes the 75-year planetary period cycle. Sect determines the sequence order:
 ```typescript
 const firdaria = getFirdaria(
   new Date('1990-06-15'),
-  true,               // isDiurnal — use chart.sect === 'diurnal' or getSect(sunHouse)
+  true,               // isDiurnal — use chart.sect === 'diurnal'
   new Date('2026-04-22'),
   { nodeSubPeriodStart: 'jupiter-saturn' } // optional
 );
@@ -717,7 +823,9 @@ import {
 
 ### `getSect(sunHouse): Sect`
 
-Determines chart sect from the Sun's house position — the same rule `getBirthChart` uses to populate `chart.sect`. Houses 7–12 place the Sun above the horizon → `"diurnal"`; otherwise `"nocturnal"`.
+> **Deprecated.** House-based approximation of sect: it is only right when the cusps follow the horizon (Placidus-like systems) and can be wrong by up to a sign in whole-sign or equal houses. `getBirthChart` no longer uses it; it reads `chart.sect` from the physical horizon (see [Sect](#sect-physical-horizon)).
+
+Determines chart sect from the Sun's house position. Houses 7–12 place the Sun above the horizon → `"diurnal"`; otherwise `"nocturnal"`.
 
 ```typescript
 import { getSect, type Sect } from 'kaabalah/astrology';
@@ -725,11 +833,8 @@ import { getSect, type Sect } from 'kaabalah/astrology';
 getSect(10); // "diurnal"
 getSect(3);  // "nocturnal"
 
-// Equivalent to reading it off a chart:
-// chart.sect === getSect(chart.planets.sun.zodiacPosition.house)
+// Not guaranteed to equal chart.sect: prefer chart.sect or computeSect().
 ```
-
-Useful when you have planet positions but not a full `BirthChart`, and as the gating input for sect-aware techniques (firdaria sequences, sect-based dignity context).
 
 ### Other helpers
 
@@ -742,5 +847,389 @@ Useful when you have planet positions but not a full `BirthChart`, and as the ga
 | `SIGNS` | `readonly string[]` | `["Aries", ..., "Pisces"]` — 12 sign names in order. |
 
 ---
+
+## 14. Extended essential dignities
+
+> **Pure math** — no WASM dependency.
+
+`getEssentialDignities(planet, longitude, sect?)` extends the sign-level `getEssentialDignity` with the degree- and sect-aware dignities. It does not replace it: the legacy function's `peregrine` ignores triplicity, bounds and faces.
+
+```typescript
+import { getEssentialDignities } from 'kaabalah/astrology';
+
+const d = getEssentialDignities('Venus', 342.5, 'diurnal'); // 12°30' Pisces, day chart
+d.positiveDignities;      // ["exaltation", "triplicity"]
+d.rulers.bound;           // "Jupiter"  (Egyptian bound 12-16 degrees of Pisces)
+d.rulers.face;            // "Jupiter"
+d.rulers.triplicity;      // { element: "water", day: "Venus", night: "Mars", participating: "Moon", sectRuler: "Venus" }
+d.peregrine;              // false
+```
+
+Traditions and conventions (also in `d.tradition` and `DIGNITY_TRADITION`):
+
+- **Rulership, exaltation, detriment, fall**: the traditional Ptolemaic tables already used by this module.
+- **Triplicity**: Dorothean day, night and participating rulers per element (`DOROTHEAN_TRIPLICITY_RULERS`; fire Sun/Jupiter/Saturn, earth Venus/Moon/Mars, air Saturn/Mercury/Jupiter, water Venus/Mars/Moon). `triplicity` is true when the planet is the ruler matching the supplied `sect`; `participatingTriplicity` marks the third ruler; `triplicityRole` reports which of the three it is, if any. Without a `sect` the day/night match is `false`.
+- **Bounds**: Egyptian bounds (`EGYPTIAN_BOUNDS`, `getEgyptianBound`). **Face**: Chaldean decans (`getFaceRuler`).
+- **Interval endpoints**: every degree interval is half-open `[start, end)`; 12.0 degrees of Pisces belongs to the bound that starts at 12, not to the one that ends there.
+- **Peregrine** is true only when none of domicile, exaltation, any of the three triplicity roles (so it does not depend on sect knowledge), bound or face applies. Detriment and fall do not make a planet non-peregrine and are not substitutes for the positive dignities.
+
+The Egyptian-bound and Dorothean tables were verified against the reference script of the original calculation project only; no independent external source could be fetched, so cross-check them against your own tradition before relying on them.
+
+## 15. Exact events and returns
+
+### Exact transit events versus closest approaches
+
+Exact events are found by signed-angle root bracketing, never by minimising an orb. An event reported as exact is an instant at which `longitude(t) - target` crosses zero, verified against an angular tolerance (default `1e-6` degrees). Three quantities are kept separate:
+
+- the **display orb** of an aspect spec (a presentation setting, never used by the solver);
+- the **root residual**: the angular difference at the emitted instant (`exactOrb` / `residualDegrees`, about `1e-10`);
+- the **time tolerance**: the final bracket width in seconds (default `0.001`; the real bracket is also returned).
+
+Every crossing of every aspect angle is reported (a retrograde double or triple pass yields several events), `exactDate` is a true UTC instant, and velocity-zero stations inside a scan step are inserted into the search so that close double passes and tangent touches are recovered. A near miss is **not** exact. It is reported separately, and only when you ask:
+
+```typescript
+import { getTransitRange } from 'kaabalah/astrology';
+
+const natal = { date: new Date(Date.UTC(2000, 3, 5)), latitude: 20, longitude: 0, timeZoneSettings: { treatAsUTC: true } };
+
+const near = await getTransitRange({
+  natal,
+  from: new Date(Date.UTC(2026, 6, 20)),
+  to: new Date(Date.UTC(2026, 7, 2)),
+  stepDays: 1,
+  transitPlanets: ['saturn'],
+  natalPlanets: ['sun'],
+  aspectSpecs: [{ name: 'conjunction', angle: 0, orb: 1 }],
+  includeClosestApproaches: true,
+});
+
+near.perfections;                         // [] (Saturn never reaches the natal Sun in this window)
+near.closestApproaches[0].kind;           // "closest-approach"
+near.closestApproaches[0].date.toISOString();   // "2026-07-26T19:56:31.000Z" (Saturn's station)
+near.closestApproaches[0].separationDegrees;    // 0.7617678482379233
+```
+
+Real output. Before this change the same call reported an `exactDate` near 2026-07-27 with a 0.76 degree residual as if it were exact.
+
+An exact event with its solver metadata (Jupiter conjunct the natal Saturn of the same chart):
+
+```typescript
+const range = await getTransitRange({
+  natal, from: new Date(Date.UTC(2024, 0, 1)), to: new Date(Date.UTC(2024, 11, 31)),
+  stepDays: 1, transitPlanets: ['jupiter'], natalPlanets: ['sun', 'saturn'],
+  aspectFilter: ['conjunction', 'opposition', 'square', 'trine'],
+});
+const e = range.perfections[0];
+e.aspect;                          // "conjunction"
+e.exactDate.toISOString();         // "2024-03-25T09:49:25.941Z"
+e.exactOrb;                        // 4.39e-10 (residual in degrees)
+e.solver.bracketWidthSeconds;      // 0.00064
+e.solver.scanStepDays;             // 1
+e.solver.coverage.scope;           // "finite-grid"
+```
+
+`getTransitRange` options `timeToleranceSeconds`, `residualToleranceDegrees` and `includeClosestApproaches` control the solver; `maxOrb` filters on the residual and is therefore not useful for exact events.
+
+**Coverage qualification.** The search is a finite-grid, station-aware numerical search: stations are located from speed sign changes on the scan grid. A pair of velocity-zero crossings hidden inside a single grid step is not formally excluded, so this is not a symbolic proof that all passes were found; the wording is returned in every `solver.coverage.note`. Use a smaller `stepDays` for very slow, near-stationary configurations.
+
+### Returns and other crossings
+
+All of these share one root-search primitive (`findAngularRoots`), so a solar return, a Jupiter return, a Uranus opposition and a transit aspect use the same bracketing, residual check and metadata:
+
+```typescript
+import { findSaturnReturns, findJupiterReturns, findNodalReturns, findUranusOppositions, findLunarReturns, findPlanetaryReturns, findBodyLongitudeCrossings } from 'kaabalah/astrology';
+
+const saturn = findSaturnReturns({ natalChart: chart, from: new Date(Date.UTC(2027, 0, 1)), to: new Date(Date.UTC(2031, 0, 1)) });
+const c = saturn.crossings[0];
+c.instant.toISOString();           // "2029-05-16T01:15:44.087Z"
+c.passIndex + '/' + c.passCount;   // "1/1"
+c.direction;                       // "direct"
+c.residualDegrees;                 // ~1e-10
+```
+
+Jupiter and Saturn returns return **all** passes (up to three, because of retrograde motion); nodal returns take `node: "mean" | "true"`; `findLunarReturns` scans in half-day steps; `findPlanetaryReturns({ body, natalLongitude | natalChart, offsetDegrees })` covers any body and offset. The scan step is at most 2 days for every body (`MAX_BODY_SCAN_STEP_DAYS`).
+
+The solar return solves the Sun's crossing to a **0.001 second** bracket by default (it used to stop at a coarse 60-second bracket); `returnPrecisionSeconds` makes the precision explicit:
+
+```typescript
+const sr = await getSolarReturnChart({ natal, year: 2025 });
+sr.exactReturnDate.toISOString();   // "2025-04-05T01:16:39.533Z"
+sr.solver.bracketWidthSeconds;      // 0.00064
+const coarse = await getSolarReturnChart({ natal, year: 2025, returnPrecisionSeconds: 1 });
+coarse.exactReturnDate.toISOString(); // "2025-04-05T01:16:39.591Z"
+coarse.solver.bracketWidthSeconds;    // 0.33
+```
+
+### Return-pass timelines
+
+`getReturnPassTimeline({ natalChart, from, to, kinds })` merges the passes of several kinds (`saturn-return`, `jupiter-return`, `uranus-opposition`, `mean-nodal-return`, `true-nodal-return`, `solar-return`) into one chronologically sorted list, each entry with its pass index, direction, residual and solver metadata. The window is capped (`MAX_RETURN_TIMELINE_YEARS` = 150, `MAX_RETURN_TIMELINE_PASSES` = 2000; violations throw a typed `TimelineError`). The trivial zero-offset pass at the natal instant is dropped and counted in `excludedNatalInstantPasses`.
+
+```typescript
+const tl = getReturnPassTimeline({ natalChart: chart, from: new Date(Date.UTC(2000, 3, 6)), to: new Date(Date.UTC(2032, 0, 1)), kinds: ['saturn-return', 'jupiter-return'] });
+tl.entries.map((e) => `${e.kind} ${e.passIndex}/${e.passCount} ${e.instant.toISOString().slice(0, 10)}`);
+// jupiter-return 1/6 2011-08-17, ..., jupiter-return 6/6 2024-02-22, saturn-return 1/1 2029-05-16
+```
+
+## 16. Points, IDs and legacy dictionaries
+
+`getChartPoints(chart)` maps a `BirthChart` to typed points with stable, language-independent IDs (`PointId`): `sun`, `moon`, `mercury`, `venus`, `mars`, `jupiter`, `saturn`, `uranus`, `neptune`, `pluto`, `mean-node`, `true-node`, `south-node-mean`, `south-node-true`, `mean-lilith`, `true-lilith`, `chiron`, `asc`, `mc`, `dsc`, `ic`, `vertex`, `lot-fortune`, `lot-spirit`. Each `ChartPoint` carries `kind` (`luminary`, `planet`, `node`, `angle`, `lot`, `point`), `longitude`, `speed` (`null` means explicitly unavailable: angles, lots), the `legacyKey` and `flags` (`derived`, `timeDependent`, `placeholder`, `rectified`).
+
+The legacy spaced-key dictionaries (`chart.planets["mean node"]`, ...) are unchanged and only read. `pointIdFromLegacyKey`, `legacyKeyFromPointId` and `toLegacyPointRecord` convert in both directions, so typed points can still be fed to `computeAspects`.
+
+## 17. Orb policies
+
+The legacy `computeAspects` uses one orb per aspect, and a CLI or option `maxOrb` is a **post-filter**: it can only narrow edges that were already generated, so it cannot recover a contact the generation orb left out (for example a 5.5 degree sextile with the default 5 degree sextile orb). An `OrbPolicy` is consulted for every pair **before** an edge exists:
+
+```typescript
+import { computeAspectsWithPolicy, getChartPoints, PTOLEMAIC_PLUS_QUINCUNX, sortTightContacts } from 'kaabalah/astrology';
+
+const result = computeAspectsWithPolicy(getChartPoints(chart), PTOLEMAIC_PLUS_QUINCUNX);
+result.counts;        // { raw, grouped, byAspect }
+result.edges[0];      // { a, b, aspect, orb, orbLimit, orbRule, motion, orbRate, axisKey, ... }
+result.policy;        // describeOrbPolicy(): the full rule set that produced the edges
+sortTightContacts(result.edges, { maxOrb: 1, limit: 10 });
+```
+
+`PTOLEMAIC_PLUS_QUINCUNX` (id `ptolemaic-plus-quincunx`) has conjunction, sextile, square, trine, quincunx and opposition with per-class orbs: luminaries 8, planets 6, and 3 for any angle, node, point or lot. A pair resolves to the first applicable rule: a `pointPairOrbs` entry, a `classPairOrbs` entry, the `classOrbs` of the first class in `classPrecedence` held by either point (so a luminary paired with an angle gets 3, not 8), then the aspect's base orb (`combine: "min"` additionally caps by the base orb). It is a profile you opt in to, not a replacement for the default aspects. Define your own with `defineOrbPolicy`; invalid specs throw `AspectConfigError` with a stable `code`.
+
+- **Motion**: `motion` is `"applying"`, `"separating"`, `"exact"` or `null`, from the instantaneous derivative of the orb (`orbRate`, degrees per day). It is `null` with a `motionUnavailableReason` when a speed is unknown (angles, lots) or the relative speed is zero.
+- **Transit targets** stay fixed: `computeTransitAspectsWithPolicy` (or `fixedTargets: true` on the two-set variant) treats the natal set as stationary.
+- **Raw counts versus axis groups**: opposite ends of one axis (ASC/DSC, MC/IC, node/south node) are the same observation. `counts.raw` counts every edge and `counts.grouped` one per axis-equivalence group (`groupAspectsByAxis`), so opposite angles do not masquerade as independent observations. Same-set pairs on one axis are skipped unless `includeSameAxisPairs`.
+
+## 18. Input quality and untimed charts
+
+`getQualifiedChart({ quality, date, latitude, longitude, ... })` is the opt-in, quality-aware entry point (`getBirthChart` is unchanged). `quality` is one of:
+
+| Quality | Behaviour |
+|---|---|
+| `recorded` | Full chart from a documented birth time. |
+| `rectified` | Full chart; every time-dependent point (Moon degree, angles, vertex, lots) is flagged `rectified: true`, and `selectAnalysisPoints(points, { excludeRectifiedAngles: true })` can drop the angles. |
+| `untimed` | No chart. Positions are computed at **local noon** and every point is flagged `placeholder: true`. The Moon degree, angles, houses, lots, sect and time-dependent techniques are omitted from `analysisPoints` with a structured reason in `unavailable`. The whole-day Moon sign range is reported instead. |
+| `partial` | No full date: no chart is invented, only structured unavailability. |
+
+```typescript
+import { getQualifiedChart } from 'kaabalah/astrology';
+
+const untimed = await getQualifiedChart({
+  quality: 'untimed',
+  date: { year: 1990, month: 6, day: 15 },
+  latitude: 51.5,
+  longitude: -0.12,
+  timeZoneSettings: { timeZone: 'Europe/London' },
+});
+
+untimed.status;                      // "limited"
+untimed.chart;                       // null
+untimed.unavailable.map((u) => u.item);
+// ["moon-degree", "angles", "houses", "lots", "sect", "time-dependent-techniques"]
+untimed.moonDayRange.signs;          // ["pisces"]  (local 00:00 to the next local 00:00)
+untimed.moonDayRange.changesSign;    // false
+untimed.analysisPoints.some((p) => p.id === 'moon' || p.id === 'asc'); // false
+untimed.points.find((p) => p.id === 'sun').flags.placeholder;          // true
+```
+
+Real output. `untimed.signChanges` lists other bodies that change sign during that local day, so a sign is never asserted when it is not constant.
+
+`result.provenance` (`TimeProvenance`) makes the time and place assumptions explicit: `basis` (`iana-zone`, `utc-offset`, `auto-from-coordinates`, `utc-instant`, `local-mean-time`, `unknown-place`), the zone, the resolved offset and DST flag, `alreadyUtc`, `localMeanTime`, the reference instant, `placeRole` (`birthplace`, `residence`, `event`, `unknown`) and notes. `localMeanTime: true` reads the wall-clock time as local mean time of the longitude (4 minutes per degree) for pre-standard-time records. Wall-clock input reuses `LocalDateTimeParts` / `TimeZoneOptions`; there is no second representation. Errors are `InputQualityError` with a `code`.
+
+## 19. Several house systems from one calculation
+
+```typescript
+import { getHousesForSystems, HouseSystem } from 'kaabalah/astrology';
+
+const r = await getHousesForSystems(
+  { date: { year: 1985, month: 3, day: 14, hour: 9, minute: 30 }, latitude: 40, longitude: -3, timeZoneSettings: { treatAsUTC: true } },
+  [HouseSystem.PLACIDUS, HouseSystem.WHOLE_SIGN, HouseSystem.KOCH]
+);
+
+Object.keys(r.systems);                           // ["P", "W", "K"]
+r.sect.sect;                                      // "diurnal" (the same for every system)
+r.systems.P.placements.sun;                       // 11
+r.systems.W.placements.sun;                       // 10
+r.points;                                         // ChartPoint[] computed once
+```
+
+Planets, sect and the lots are computed once; only the cusps, the descendant/IC and each point's house placement are produced per system. A system Swiss cannot compute is listed in `r.failures` instead of aborting the others. (The numbers above are from a synthetic input and a real run.)
+
+## 20. House overlays, Davison charts and derived charts
+
+### House overlays
+
+```typescript
+import { getHouseOverlays } from 'kaabalah/astrology';
+
+const ov = getHouseOverlays(chartA, chartB);
+ov.aInB.placements;   // [{ point: "sun", longitude, house: 9 }, ...]  A's points in B's houses
+ov.bInA.available;    // true; false with a reason when the receiving chart has no full 12 cusps (untimed)
+```
+
+A point on a cusp belongs to the house that starts there. The house system of each receiving chart is reported (`BirthChart.houseSystem`, else the option, else `null`). `derivedChartAspectPoints(chart)` converts a natal, Davison, progressed, solar-return or composite chart to the point record accepted by `computeAspects`, `computeSynastryAspects` and `computeTransitAspects`.
+
+### Davison charts
+
+A Davison chart is a **real chart** cast for the midpoint in time and place of two births. The midpoint composite instead averages two charts' longitudes point by point and has no time or place of its own; the two methods differ, sometimes by many degrees (for the synthetic pair below the midpoint composite Sun is at 287.247 degrees and the Davison Sun at 287.338).
+
+```typescript
+import { getDavisonChart } from 'kaabalah/astrology';
+
+const dv = getDavisonChart({
+  a: { dateUtc: new Date(Date.UTC(1985, 2, 14, 9, 30)), latitude: 40, longitude: -3 },
+  b: { dateUtc: new Date(Date.UTC(1992, 10, 2, 22, 5)), latitude: 48, longitude: 2 },
+});
+
+dv.midpointDateUtc.toISOString();   // "1989-01-07T15:47:30.000Z"
+dv.location;                        // { latitude: 44, longitude: -0.5 }
+dv.chart;                           // full BirthChart at the midpoint
+dv.method;                          // conventions
+```
+
+Conventions (in `dv.method`): time is the arithmetic mean of the two UTC Julian Days (the exact instant midpoint); the default place is `"arithmetic-shorter-arc"` (mean latitude, longitude midpoint along the shorter arc, normalised to (-180, 180], so 179 E and 179 W give 180); `geographicMidpoint: "great-circle"` uses the surface midpoint instead. Antipodal longitudes or places have no unique midpoint and add a `notices` entry. `getDavisonChartFromOptions(a, b)` accepts `getBirthChart` options. Errors are `DerivedChartError` with a `code`.
+
+## 21. Secondary progressions and solar arcs
+
+Both are synchronous (initialised Swiss Ephemeris required), take an explicit natal chart, place and UTC `target`, and declare their conventions in `method`.
+
+```typescript
+import { getSecondaryProgressions, getSolarArcDirections } from 'kaabalah/astrology';
+
+const target = new Date(Date.UTC(2020, 2, 14));
+const sp = getSecondaryProgressions({ natalChart: chart, natalLatitude: 40, natalLongitude: -3, target });
+sp.ageYears;                            // 34.9996
+sp.method.timeKey.yearLength.spec;      // "julian (365.25 days)"
+Object.keys(sp.angles);                 // ["quotidian", "solar-arc", "naibod"]
+
+const sa = getSolarArcDirections({ natalChart: chart, natalLatitude: 40, natalLongitude: -3, target, targets: ['sun', 'moon', 'ascendant', 'mc'] });
+sa.arcDegrees;                          // 34.5433
+sa.method.targetSet;                    // ["sun", "moon", "ascendant", "mc"]
+```
+
+- **Time key**: progressed Julian Day = natal JD + age in years ("a day for a year"). The year length is explicit: `"julian"` 365.25 (default), `"tropical"` 365.2422, a number of days, or `"solar-return"` (real years: completed solar returns plus the fraction of the current interval). The age is capped at 200 years; a target before birth throws `DerivedChartError` (`TARGET_BEFORE_BIRTH`).
+- **Progressed angles are not a single convention**; all are returned: `quotidian` (houses and angles computed at the progressed JD for the natal place; the reference convention and the one behind `chart.houses`), `solar-arc` (natal angles plus the true solar arc) and `naibod` (natal ARMC plus 0.985647 degrees per year of age; angles only).
+- **Solar arc**: the true arc is progressed Sun minus natal Sun, added uniformly to an **explicit** target set (`targets`, default every body plus the four angles); `arcKind: "naibod"` uses the mean arc instead. Directed points have no speed.
+
+The progressed and directed points are accepted directly by the aspect functions (`sp.points`, `sa.points`).
+
+## 22. Profection, firdaria and return timelines
+
+Bounded timelines reuse the existing modules; unbounded requests are refused with a typed `TimelineError` (`INVALID_RANGE`, `RANGE_TOO_LARGE`, `UNBOUNDED_INPUT`, `INVALID_INPUT`, `UNAVAILABLE_INPUT`).
+
+```typescript
+import { getAnnualProfectionTimeline, getProfectionForAge, getFirdariaTimeline } from 'kaabalah/astrology';
+
+const profections = getAnnualProfectionTimeline(chart, { year: 2000, month: 4, day: 5 }, { fromAge: 24, toAge: 26 });
+profections.entries.map((e) => [e.age, e.house, e.sign, e.ruler, e.start, e.endExclusive]);
+// age 24: house 1 Capricorn (Saturn) 2024-04-05..2025-04-05; age 25: Aquarius (Saturn); age 26: Pisces (Jupiter)
+
+const firdaria = getFirdariaTimeline(birthDate, chart.sect === 'diurnal', { from: new Date(Date.UTC(2020, 0, 1)), to: new Date(Date.UTC(2030, 0, 1)), includeSubPeriods: false });
+firdaria.entries.map((e) => [e.planet, e.clippedStart, e.clippedEnd]);
+```
+
+- **Profections** count whole signs from the natal **ascendant sign** (`getProfectionForAge`), so the timeline is correct for any recorded house system. A range is given as ages or as civil-date bounds; a year is `[birthday, next birthday)` and a 29 February birthday falls on 1 March in common years (cap `MAX_PROFECTION_TIMELINE_YEARS` = 150). The legacy `getAnnualProfection` reads the sign on the house cusp and is only right for whole-sign charts.
+- **Firdaria** (`getFirdariaTimeline`, `getFirdariaPeriods`) return major and sub-periods intersecting a window, clipped to it, with the nominal bounds, `clippedStart` and `clippedEnd` kept. Year length is 365.25 days; intervals are half-open. At most 3 cycles of the 75-year sequence and a 225-year window are allowed.
+- **Returns**: see [Return-pass timelines](#return-pass-timelines).
+
+## 23. Collections and bulk workflows
+
+`computeCollection(manifest, options)` computes people, events and pairs from one manifest. Each person's natal chart is computed **once** however many pairs they appear in, user IDs are kept verbatim, and the output order is deterministic (people and events in manifest order, pairs by manifest index with `i < j`).
+
+```typescript
+import { computeCollection } from 'kaabalah/astrology';
+import { toMarkdownTable, toTable } from 'kaabalah';
+
+const utc = { treatAsUTC: true };
+const result = await computeCollection({
+  people: [
+    { id: 'a', chart: { date: { year: 1985, month: 3, day: 14, hour: 9, minute: 30 }, latitude: 40, longitude: -3, timeZoneSettings: utc } },
+    { id: 'b', chart: { date: { year: 1992, month: 11, day: 2, hour: 22, minute: 5 }, latitude: 48, longitude: 2, timeZoneSettings: utc } },
+    { id: 'c', chart: { date: { year: 1978, month: 7, day: 30, hour: 4, minute: 45 }, latitude: -23, longitude: -46, timeZoneSettings: utc } },
+    { id: 'd', chart: { date: { year: 2001, month: 1, day: 20, hour: 12 }, latitude: 0, longitude: 0, timeZoneSettings: utc }, quality: 'untimed' },
+  ],
+  pairs: { mode: 'all' }, // 4 people -> 6 pairs, 4 chart computations
+});
+
+const rows = result.pairs.map((p) => ({ a: p.idA, b: p.idB, ok: p.ok, aspects: p.ok ? p.aspectCount : null, partial: p.ok ? p.partial : null }));
+console.log(toMarkdownTable(toTable(rows, [{ key: 'a' }, { key: 'b' }, { key: 'ok', type: 'boolean' }, { key: 'aspects', type: 'integer' }, { key: 'partial', type: 'boolean' }])));
+```
+
+Real output:
+
+```text
+| a | b | ok | aspects | partial |
+| --- | --- | --- | ---: | --- |
+| a | b | true | 125 | false |
+| a | c | true | 117 | false |
+| a | d | true | 89 | true |
+| b | c | true | 122 | false |
+| b | d | true | 109 | true |
+| c | d | true | 107 | true |
+```
+
+`result.summary` is `{ people: { total: 4, ok: 4, failed: 0 }, pairs: { total: 6, ok: 6, unavailable: 0, partial: 3, aspects: 669 }, ... }`.
+
+- **Pair selection**: `{ mode: "all" }`, `{ mode: "pairs", pairs: [[idA, idB], ...] }` or `{ mode: "timed-only" }` (all pairs among people whose quality is `recorded` or `rectified`). Unknown IDs, self-pairs and duplicate IDs throw `CollectionError` before any chart is computed.
+- **Quality**: untimed and partial people lose the Moon and both angles in pair aspects; those pairs are flagged `partial: true` and list `excludedPoints`.
+- **Failures are data**: one person's failure becomes `{ ok: false, error }` and every pair involving them is `{ ok: false, error: { code: "PERSON_UNAVAILABLE" }, unavailablePeople }`, never dropped silently.
+- **Lightweight records**: charts are not embedded unless `includeCharts: true`. Already-computed charts go in `precomputed`.
+- **Concurrency, progress, cancellation**: `concurrency` (default 4, max 64) bounds the tasks in flight and the results running ahead of the consumer; Swiss Ephemeris itself runs as synchronous WebAssembly on the JS thread, so this does not make it parallel. `onProgress` and a standard `AbortSignal` (`signal`; cancellation throws `CollectionAbortError`) are supported. `iterateCollection` streams records (people, events, pairs, then one summary), which suits NDJSON.
+- **Limits**: 500 people, 1,000 events, 125,000 pairs and 64 concurrent tasks at most (`COLLECTION_HARD_LIMITS`; `options.limits` can only lower them).
+- There are no person-by-event transit contacts yet: events are computed and listed, but only people pairs get aspects.
+
+`toTable`, `toMarkdownTable`, `aspectEdgesTable`, `chartPointsTable` and `numerologyIntervalsTable` are dependency-free JSON/Markdown tabulation helpers exported from the package root `kaabalah`. Cells are numeric data only; unavailable values render as `n/a`.
+
+## 24. Cache keys
+
+`buildChartCacheKey(components)` builds a deterministic key from **every** input that can change a result: the normalised date, time semantics, timezone and the resolved offset actually applied, coordinates, input quality, house systems, point selection, orb policy, frame (`tropical`, `lahiri`, `dhruva`), node convention, year length, Dhruva GC constants, the ephemeris identity (`ephemerisIdentityFromInfo(getSwissEphInfo())`), the package version and any `extra` configuration. A person's ID is not an accepted component. A required component that is `undefined` throws `CacheKeyError` (`MISSING_COMPONENT`); use `null` where a component does not apply. `createBoundedMemo({ maxEntries })` is a small bounded LRU you can put in front of the calculation.
+
+```typescript
+import { buildChartCacheKey, ephemerisIdentityFromInfo, getSwissEphInfo, normalizeUtcInstant } from 'kaabalah/astrology';
+
+const key = buildChartCacheKey({
+  date: normalizeUtcInstant(new Date(Date.UTC(1985, 2, 14, 9, 30))),
+  timeSemantics: 'utc-instant', timeZone: null, resolvedUtcOffsetMinutes: null,
+  latitude: 40, longitude: -3, quality: 'recorded',
+  houseSystems: ['P'], points: ['sun', 'moon'], orbPolicy: null,
+  frame: 'tropical', nodeConvention: null, yearLengthDays: null, gcConstants: null,
+  ephemeris: ephemerisIdentityFromInfo(getSwissEphInfo()),
+});
+// "kaabalah:chart:v1:{...canonical JSON...}"
+```
+
+`normalizeChartDate(date)` reads a `Date` with **local** getters, the same convention `getBirthChart` uses for a local `Date`; use `normalizeUtcInstant` for a UTC instant. Do not mix them.
+
+## 25. Capability discovery
+
+`getCapabilities()` returns a versioned, JSON-serialisable description of what this build can compute and the limits it enforces (schema version, modules, house systems, points, aspects, zodiac/nakshatra frames, defaults, GC constants, input qualities, ephemeris coverage, numerology layers and policies, collection and numerology limits, error codes). It never throws and never initialises the engine; ephemeris coverage is `coverageSource: "runtime"` once initialised and `"static"` otherwise.
+
+`assertEphemerisReady({ year })` turns missing data into an actionable `SwissEphError`: `SWISSEPH_NOT_INITIALIZED`, `SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE` or `SWISSEPH_DATE_OUT_OF_RANGE` (the shipped files cover 1800 to 2399).
+
+## 26. Ephemeris provenance and strict mode
+
+`getSwissEphInfo()` reports what the engine actually resolved: runtime (`node`/`browser`), the WASM and ephemeris paths and where each came from (`explicit`, `env`, `candidate`, `bundled`), how the files are mounted (`nodefs-mount`, `host-path`, `memfs-copy`, `browser-memfs`), which required `.se1` files are visible, the shipped coverage, and an init-time probe (Sun at J2000 with Swiss files requested). `swissEphemerisVersion` is `null`: the shipped WASM build does not export `swe_version`.
+
+```typescript
+import { calculatePlanetPositionDetailed, getSwissEph, Planet, SwissEphError } from 'kaabalah/astrology';
+
+const d = calculatePlanetPositionDetailed(new Date(Date.UTC(2500, 0, 1)), Planet.SUN);
+d.ephemeris;        // "moshier": outside the installed 1800-2399 files
+d.substituted;      // true
+d.requestedFlags;   // 258
+d.returnedFlags;    // 260
+```
+
+Real output. A substituted ephemeris is never labelled as Swiss-file output. With `await getSwissEph({ strictEphemeris: true })` (or `setSwissEphStrictEphemeris(true)`), that call throws `SwissEphEphemerisMismatchError` (code `SWISSEPH_EPHEMERIS_MISMATCH`, `reason: "date_outside_installed_ephemeris_files"`).
+
+Initialisation now **throws** a typed `SwissEphError` instead of logging and continuing; the `code` is one of `SWISSEPH_NOT_INITIALIZED`, `SWISSEPH_ASSET_NOT_FOUND`, `SWISSEPH_NODE_BUILTINS_UNAVAILABLE`, `SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE`, `SWISSEPH_EPHEMERIS_FILE_UNAVAILABLE`, `SWISSEPH_DATE_OUT_OF_RANGE`, `SWISSEPH_EPHEMERIS_MISMATCH`, `SWISSEPH_CALCULATION_FAILED`, `SWISSEPH_STATE_MISUSE`. If the `.se1` files cannot be read, init fails (previously Swiss Ephemeris silently used Moshier). Swiss's sidereal mode and topocentric observer are process-wide state; the library only changes them inside the synchronous `withSwissEphState` (and Jyotish's `withSiderealMode`), restoring the defaults before returning, so concurrent calculations cannot contaminate each other.
+
+### ESM, CJS and browser initialisation
+
+- **CJS and native ESM (Node)**: `await getSwissEph()` resolves the bundled assets next to the running module (`import.meta.url` in ESM, `__dirname` in CJS). Native ESM used to fail with `__dirname is not defined`.
+- **Explicit paths** always win: `getSwissEph({ wasmPath, ephePath })`, or the `KAABALAH_WASM_PATH` / `KAABALAH_EPHE_PATH` environment variables.
+- **Browser**: the ephemeris files are fetched into the module's in-memory file system. Serve `swisseph.web.wasm` and the three `.se1` files and pass `wasmPath` and `ephePath` explicitly. The default (non-explicit) browser asset path has not been exercised by an automated browser test.
+
+See the [WebAssembly guide](/guides/webassembly/) for asset locations and troubleshooting.
+
+## 27. Jyotish
+
+Dhruva (equatorial) and Lahiri (sidereal) nakshatras, karakas and dashas live on their own page: [Jyotish](/modules/jyotish/).
 
 <LinkCard title="Try Astrology" description="Interactive birth chart calculator" href="https://astrology.kaabalah.com" />

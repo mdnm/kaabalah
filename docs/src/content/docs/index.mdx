@@ -85,7 +85,7 @@ const gematria = calculateGematria('DAVID');
 console.log(gematria.synthesis.originalSum); // 25
 
 // Calculate life path from birth date
-const lifePath = calculateKaabalisticLifePath(new Date('1990-06-15'));
+const lifePath = calculateKaabalisticLifePath(new Date(1990, 5, 15, 12)); // local noon
 console.log(lifePath.lifePath.reducedValue);
 ```
 

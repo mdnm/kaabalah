@@ -62,7 +62,8 @@
     window.runAstrologyTest = async function () {
       try {
 
-        await getSwissEph(ephePath);
+        // Serve swisseph.web.wasm (copy it from wasm/build) and the three .se1 files under ./ephe.
+        await getSwissEph({ ephePath, wasmPath: './swisseph.web.wasm' });
 
         const date = new Date('2000-01-01T12:00:00Z');
 
@@ -71,7 +72,7 @@
           date: date,
           latitude: 20,
           longitude: 77,
-          timezone: 0
+          timeZoneSettings: { treatAsUTC: true } // the Date above is already a UTC instant
         });
 
         console.info(chartData);

@@ -1,6 +1,6 @@
 ---
 title: Numerology
-description: Calculate life path numbers, cycles, challenges, and other numerological values
+description: Life path numbers, dated schedules (as-of snapshots and timelines), personal cycles, heptads, pinnacles, partial birth dates, and other numerological values
 sidebar:
   order: 1
 ---
@@ -23,6 +23,14 @@ import { calculateKaabalisticLifePath, calculateStraightAcrossReductionLifePath,
 - `calculatePersonalCycles`
 - `getDateEnergies`
 - `isMasterNumber`
+- `calculatePersonalYear`, `calculatePersonalPeriods`, `calculatePersonalMonths`
+- `reduceToSingle`, `reduceToSingleWithSteps`, `MASTER_NUMBERS`
+- `getNumerologyData`, `NUMEROLOGY_TEXT_DATA`, `NumerologyData`
+- Dated schedules (civil dates, no `Date` objects): `getNumerologySnapshot`, `generateNumerologyTimeline`, `getNumerologyMethodMetadata`, `TIMELINE_LAYERS`, `NumerologyScheduleError`
+- Partial birth dates: `describePartialBirthDate`, `summarizeBirthDateCandidates`
+- Pinnacles, challenges and life periods: `computeLifeStages`, `LIFE_STAGE_METHOD_ID`
+- `fibonacciFromAge` (Fibonacci cycles from an explicit age)
+- Civil-date helpers (`CivilDate`, `parseCivilDate`, `civilDayOrdinal`, `addCivilDays`, `completedYears`, ...) are exported from the package root `kaabalah`, not from `kaabalah/numerology`
 
 ## Life Path Calculation Methods
 
@@ -51,7 +59,9 @@ const wrong = new Date('1990-06-15');               // ❌ parses as UTC midnigh
 const alsoWrong = new Date(Date.UTC(1990, 5, 15));  // ❌ same problem
 ```
 
-The CLI already does this for you (`kaabalah numerology 1990-06-15` parses to local noon). The rule only matters when you call the library directly.
+The CLI already does this for you (`kaabalah numerology 1990-06-15` parses to local noon). The rule only matters when you call the **legacy `Date`-based functions** directly (`calculateKaabalisticLifePath`, `calculateCycles`, `calculatePersonalCycles`, ...).
+
+The dated-schedule API below does not need any of this. It takes a `"YYYY-MM-DD"` string or a `CivilDate` (`{ year, month, day }`), never reads the host timezone, and needs no `process.env.TZ` change. Impossible dates such as `2026-02-30` are rejected with a typed `NumerologyScheduleError` (`code: "INVALID_DATE"`).
 
 ## Usage Example
 
@@ -65,6 +75,217 @@ console.log(lifePath.lifePath.reducedValue);  // Life path number
 console.log(lifePath.syntheses.finalSynthesis);  // Final synthesis
 console.log(lifePath.personalMythologyNumbers);  // Personal mythology
 ```
+
+## Dated schedules: snapshots and timelines
+
+The schedule facade answers "what is active on this day?" and "what is active during this period?" for a birth date. Every date is a civil Gregorian day (`"YYYY-MM-DD"` or `{ year, month, day }`), every interval is half-open `[start, endExclusive)`, and nothing depends on the timezone, DST or time of day.
+
+### As-of snapshot (historical query)
+
+```typescript
+import { getNumerologySnapshot } from 'kaabalah/numerology';
+
+const snapshot = getNumerologySnapshot({
+  birth: '1985-03-14', // YYYY-MM-DD, no Date object, no timezone
+  asOf: '2010-08-20',
+  firstName: 'Ana',
+});
+
+snapshot.completedAge;                  // 25 (the 26th birthday is 2011-03-14)
+snapshot.birthdayYear.start;            // "2010-03-14"
+snapshot.birthdayYear.endExclusive;     // "2011-03-14"
+snapshot.birthdayYear.personalYear.value; // 11 (master number preserved)
+snapshot.personalMonth.start;           // "2010-08-14"
+snapshot.personalMonth.phase;           // 6  (phase number: sixth month of the birthday year)
+snapshot.personalMonth.value.value;     // 1  (reduced value; phase and value are separate fields)
+snapshot.personalPeriod.phase;          // 2
+snapshot.personalPeriod.value;          // { available: true, value: 7, addend: 4, addendSource: 'life-path', ... }
+snapshot.heptad.phase;                  // 4  (fixed 52-day segment)
+snapshot.heptad.dayInHeptad;            // 4
+snapshot.calendar.personalDay.value;    // 3  (calendar frame, see below)
+```
+
+This exact script was executed against the repository source; the values above are its real output (run under `TZ=Asia/Tokyo` to show that the host timezone is irrelevant). The snapshot also carries `ageCycle` (repeating 1-7 label, absolute block index, year position), `fibonacci`, `lifeStages` (pinnacle, challenge, life period), `fixedNumbers` (life path and name soul number), `meta` (method identities) and `unavailable` (structured reasons for anything that could not be computed).
+
+`status` is `"ok"`, `"partial"` (partial birth data), `"before-birth"`, `"after-death"` or `"after-horizon"`; values that do not apply on that day are `null` rather than invented.
+
+### Period range (timeline)
+
+```typescript
+import { generateNumerologyTimeline } from 'kaabalah/numerology';
+
+const timeline = generateNumerologyTimeline({
+  birth: '1990-03-31',
+  firstName: 'Ana',
+  from: '2024-03-01',
+  toExclusive: '2025-03-31',
+  layers: ['personal-period', 'personal-month'],
+});
+
+for (const i of timeline.intervals) {
+  console.log(i.layer, i.start, i.endExclusive, 'phase', i.phase);
+}
+```
+
+Real output (first rows):
+
+```text
+personal-period 2023-12-01 2024-03-31 phase 3
+personal-month 2024-03-01 2024-03-31 phase 12
+personal-month 2024-03-31 2024-05-01 phase 1
+personal-period 2024-03-31 2024-07-31 phase 1
+personal-month 2024-05-01 2024-05-31 phase 2
+```
+
+Layers (`TIMELINE_LAYERS`): `personal-year`, `personal-month`, `personal-period`, `heptad`, `age-cycle`, `fibonacci` (birthday frame); `calendar-year`, `calendar-month`, `calendar-day` (calendar frame); `pinnacle`, `challenge`, `life-period` (life stages). The default is `["personal-year"]`.
+
+- Intervals that overlap the window are returned with their **real** bounds, not cut at `from`/`toExclusive`, sorted by start and then layer order.
+- The range is limited to 36,525 days (`RANGE_TOO_LARGE`), and `maxIntervals` (default 2,000, at most 10,000) throws `TOO_MANY_INTERVALS` instead of silently truncating.
+- Errors are `NumerologyScheduleError` with a stable `code`: `INVALID_DATE`, `INVALID_ARGUMENT`, `INVALID_RANGE`, `RANGE_TOO_LARGE`, `TOO_MANY_INTERVALS`, `MISSING_BIRTH_DATE`.
+
+Each interval has `start`, `endExclusive`, `nominalStart`, `nominalEndExclusive`, `startClipped`, `endClipped`, `clipped`, `lengthDays` and `nominalLengthDays`. **Nominal** bounds are the unclipped definition; the plain bounds are clipped by birth, death and horizon limits:
+
+```typescript
+getNumerologySnapshot({
+  birth: '1950-01-01',
+  asOf: '2020-01-01',
+  limits: { death: '2010-05-05' }, // inclusive last day of coverage
+}).status; // "after-death"
+```
+
+A missing death date is **not** evidence of survival: nothing is inferred and no end is imposed. `limits.horizonEndExclusive` bounds coverage explicitly.
+
+### Birthday frame and calendar frame
+
+The two frames are different calculations and are never mixed:
+
+| Frame | Layers | Year used | Formula |
+|---|---|---|---|
+| Birthday | `personal-year`, `personal-month`, `personal-period`, `heptad`, `age-cycle`, `fibonacci` | year of the most recent birthday | personal year = reduce(birth day + birth month + birthday year); personal month = reduce(personal year + month label) |
+| Calendar | `calendar-year`, `calendar-month`, `calendar-day` | the calendar year/month/day being asked about | calendar year = reduce(birth day + birth month + calendar year); month = reduce(calendar year value + calendar month); day = reduce(calendar month value + calendar day) |
+
+The library had no personal-day calculator before; the calendar-day formula above is the **chosen convention**, named in `meta.methods["calendar-day"]`. Personal years, months, periods, the calendar frame, life path and pinnacles preserve master numbers (`11`, `22`, `33`, `44`) under the default `masters: "preserve"` (`"reduce"` turns that off). Fibonacci cycles never preserve masters.
+
+### Method identities
+
+`getNumerologyMethodMetadata(options)` and every snapshot/timeline `meta` expose the identity of each calculation, so a stored result can say exactly how it was produced (`methodVersion: "kaabalah-numerology-schedule/1"`):
+
+| Layer | Method id |
+|---|---|
+| `personal-year` | `birthday-personal-year/v1` |
+| `personal-month` | `birthday-personal-month/v1` |
+| `personal-period` | `birthday-personal-period/v1`: periods 1, 2, 3 = reduce(birthday year + completed age / life path / first-name vowel soul number) |
+| `heptad` | `fixed-52-day-heptad/v1`: six 52-day segments, the seventh runs to the next birthday (53 or 54 days) |
+| `age-cycle` | `seven-year-age-cycle/v1`: block = floor(age / 7), label = block mod 7 + 1, year position = age mod 7 + 1 |
+| `fibonacci` | `fibonacci-completed-age/v1` |
+| `calendar-year`, `calendar-month`, `calendar-day` | `calendar-personal-year-month-day/v1` |
+| `pinnacle`, `challenge`, `life-period` | `kaabalah-life-stages/1` |
+
+The method options are explicit and echoed back in `meta`:
+
+- `lifePathMethod`: `"kaabalistic"` (concatenation of reduced two-digit blocks; the default for personal period 2) or `"straight-across"` (digit sum of the whole date; the default for the pinnacle age rule). They give different numbers for many dates.
+- `masters`: `"preserve"` (default) or `"reduce"`.
+- `nameKind`: how `firstName` is read for the soul number. `"first-token"` (default) uses only its first whitespace-delimited token; `"given-name"` and `"full-name"` use every word of the string and differ only in the label recorded in `meta.nameInput`. The soul number is the vowel sum from the existing gematria mapping (diacritic mappings unchanged).
+- `shortMonthPolicy`: see below.
+
+### Short months
+
+Personal months start on the birth day of each following calendar month. When a month has no such day (birth day 29, 30 or 31), `shortMonthPolicy` decides the boundary, and the nominal month label and value are always kept:
+
+| Policy | Boundary when the day does not exist |
+|---|---|
+| `"next-month-first"` (default, the legacy convention) | the 1st of the following month |
+| `"clamp"` | the last day of that month |
+| `"overflow"` | rolls forward like native `Date` (31 February becomes 2 or 3 March) |
+
+For a 31 March birth, the phases from the real output of `generateNumerologyTimeline` in 2024 start on:
+
+```text
+next-month-first  2024-03-01 2024-03-31 2024-05-01 2024-05-31 ...   (phase 12 starts 1 March: 31 February does not exist)
+clamp             2024-02-29 2024-03-31 2024-04-30 2024-05-31 ...
+overflow          2024-01-31 2024-03-02 2024-03-31 2024-05-01 ...
+```
+
+When a boundary was moved, the interval has `startAdjusted: true` and `nominalStartText` keeps the intended date. A 29 February birthday has its anniversary on 1 March in common years. Only `next-month-first` matches the behaviour the legacy functions had; `clamp` and `overflow` are explicit alternatives that have not been validated against external reference data.
+
+### Missing names
+
+The name-dependent third personal period needs a first name with vowels. Without one, period 3 is an explicit unavailable value and periods 1 and 2 are still computed:
+
+```json
+{ "available": false, "reason": "first-name-missing", "detail": "No first name supplied; the soul number (personal period 3) is not computed." }
+```
+
+The other reason is `first-name-has-no-vowels`. The legacy `calculatePersonalCycles` behaves the same way: for a missing, blank or vowel-less name, `soulNumber` and `personalPeriods[2].value` are the same unavailable object (`{ available: false, reason, detail }`, with no `reducedValue`) instead of a manufactured `0`, and periods 1 and 2 are still computed.
+
+### Partial birth dates
+
+`birth` accepts a full date or an explicit partial description: `{ kind: "month-day", month, day }`, `{ kind: "year-month", year, month }`, `{ kind: "year", year, approximate? }` or `{ kind: "unknown" }`. Computable values are returned and the rest carry a structured reason (`birth-year-unknown`, `birth-day-or-month-unknown`, `birth-year-approximate`, ...). `describePartialBirthDate` lists what each kind can and cannot produce.
+
+`summarizeBirthDateCandidates` enumerates the valid days of a known year and month (or year) **internally** and reports only aggregates: which values are invariant, the possible value sets and interval boundary ranges. It never selects or returns a birth date (`selectedDate` is always `null`):
+
+```typescript
+import { summarizeBirthDateCandidates } from 'kaabalah/numerology';
+
+const summary = summarizeBirthDateCandidates({
+  birth: { kind: 'year-month', year: 2001, month: 1 },
+  asOf: '2020-06-01',
+});
+
+summary.candidateCount;                       // 31
+summary.fields.completedAge;                  // { invariant: true, value: 19, possibleValues: [19] }
+summary.fields.personalYear.possibleValues;   // [1, 3, 4, 5, 6, 7, 8, 9, 11]
+summary.selectedDate;                         // null
+```
+
+### Pinnacles, challenges and life periods
+
+`computeLifeStages(birth, masters, options)` (also the `pinnacle`, `challenge` and `life-period` layers) is a **named, documented convention** (`kaabalah-life-stages/1`), not a universal rule, and it is distinct from the three four-month personal periods:
+
+- Components are the month, the day and the digit sum of the year, each reduced to a single digit without preserving masters (the same components as `calculateChallenges`).
+- Pinnacles: 1 = month + day; 2 = day + year; 3 = pinnacle 1 + pinnacle 2; 4 = month + year (reduced with the master policy).
+- Challenges: 1 = |month - day|; 2 = |day - year|; 3 (main) = |challenge 1 - challenge 2|; 4 = |month - year|.
+- The first pinnacle and challenge end at completed age `36 - L`, where `L` is the life path reduced to a single digit (11 becomes 2, 22 becomes 4, 33 becomes 6, 44 becomes 8); each following span lasts 9 years and the fourth is open-ended. `lifeStages.firstPinnacleEndAge` overrides the age.
+- Three life periods, valued by month, day and year: `lifePeriodRule: "pinnacle-aligned-27"` (default; `[0, 36 - L)`, 27 years, the rest) or `"fixed-28-56"`.
+
+These age transitions and master rules have not been checked against an external reference; sources differ, so treat the options as part of the result's identity.
+
+## Legacy cycle functions: behaviour
+
+The `Date`-based functions keep their signatures and now use civil-day arithmetic internally:
+
+- `calculateCycles` and `calculateFibonacciCycle` use the **completed (birthday) age**; the age changes on the birthday, not on 1 January.
+- `ageCycles` lists the seven blocks of the 49-year window that contains the active block, each with its absolute index (`absoluteIndex`), and `currentAgeBlockIndex` is the absolute block of the active cycle. After age 49 the repeating 1-7 label points at the real current block.
+- Day counters are DST-proof: the same civil day always has the same heptad day.
+- The seventh heptad runs to the next birthday (53 or 54 days).
+- `calculatePersonalCycles(...).personalMonths` is typed as exactly twelve entries (`PersonalMonths`).
+- Years 0001-0099 are read as written, not as 1900-1999.
+- An invalid `Date` throws `Date must be a valid Date object` in `calculateCycles` and `calculatePersonalCycles` as well.
+
+See the [migration guide](/guides/migration-6-17/) for before/after details.
+
+## Meaning tables
+
+`getNumerologyData(language?)` returns the read-only meaning tables: `CYCLE_MEANINGS`, `NUMEROLOGY_KEYWORDS`, `DAY_OF_BIRTH_MEANING`, `LIFEPATH_MEANING`, `CHALLENGE_MEANING`, `CHALLENGE_HEALTH_MEANING`, `PERSONAL_CYCLE_KEYWORDS` and `PERSONAL_YEAR_DESCRIPTIONS`. English is the default; `'pt'` and `'pt-BR'` select Portuguese. The existing `NumerologyData` exports are unchanged.
+
+```typescript
+import { getNumerologyData } from 'kaabalah/numerology';
+
+const texts = getNumerologyData('pt-BR');
+texts.LIFEPATH_MEANING[7].description;
+texts.DAY_OF_BIRTH_MEANING[15].description;
+texts.PERSONAL_YEAR_DESCRIPTIONS[9];
+```
+
+## CLI
+
+```bash
+kaabalah numerology 1990-06-15 --json --compact
+kaabalah numerology:lifepath 1990-06-15 --json --compact
+kaabalah numerology:cycles 1990-06-15 John --json --compact
+```
+
+The CLI accepts only real calendar days from `0001-01-01` to `9999-12-31`: `2026-02-30` exits with `INVALID_DATE`, and `2000-02-29` is valid while `1900-02-29` is not. See the [CLI reference](/getting-started/cli/#dates).
 
 ## Live example
 

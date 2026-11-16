@@ -33,9 +33,11 @@ To compile the Swiss Ephemeris to WebAssembly, you will need:
     chmod +x compile.sh
     ./compile.sh
     ```
-4. **Verify the output files**:
-   - `wasm/build/swisseph.js`: JavaScript glue code
-   - `wasm/build/swisseph.wasm`: WebAssembly binary
+4. **Verify the output files** in `wasm/build/`:
+   - `swisseph.node.js` and `swisseph.node.wasm`: Node.js runtime
+   - `swisseph.web.js` and `swisseph.web.wasm`: browser runtime
+
+The published package already ships these files (`wasm/build`) and the three ephemeris files the library needs (`ephe/seas_18.se1`, `semo_18.se1`, `sepl_18.se1`), so you only compile them yourself when changing the C wrapper.
 
 ## Integration with the Library
 
@@ -50,41 +52,72 @@ The Swiss Ephemeris WebAssembly integration is used by the astrology module to p
 
 The WebAssembly module is loaded dynamically at runtime, making it compatible with both Node.js and browser environments. This approach ensures that:
 
-1. The heavy WebAssembly code is only loaded when needed
+1. The heavy WebAssembly code is only loaded when needed (the CLI also imports the astrology module lazily, so non-astrology commands never start it)
 2. The same code works in both Node.js and browsers
-3. The library can gracefully fall back if WebAssembly is not available
+3. Initialization happens once per process; `getSwissEph()` is a no-op after the first call
+
+## Initializing the runtime
+
+Every astrology calculation initializes the runtime on first use, so most programs never call `getSwissEph` themselves. Call it explicitly to pick the asset locations or to receive setup notices:
+
+```typescript
+import { getSwissEph, closeSwissEph } from 'kaabalah/astrology';
+
+await getSwissEph({
+  wasmPath: '/srv/assets/swisseph.node.wasm', // optional override
+  ephePath: '/srv/assets/ephe',               // optional override
+  onRuntimeNotice: (message) => logger.debug(message), // default: stderr
+});
+
+// ...calculate charts...
+
+closeSwissEph(); // release the instance when you are done
+```
+
+### How asset paths are resolved
+
+In Node.js, each path (`wasmPath`, `ephePath`) is resolved in this order, and the first source that exists wins:
+
+1. the explicit option you pass
+2. the environment: `KAABALAH_SWISSEPH_WASM_PATH` or `KAABALAH_WASM_PATH`, and `KAABALAH_SWISSEPH_EPHE_PATH` or `KAABALAH_EPHE_PATH`
+3. candidate paths you supply to `resolveSwissEphRuntimeAssets({ wasmPathCandidates, ephePathCandidates })`
+4. the assets bundled with the package
+
+An explicit or environment path that does not exist throws immediately instead of falling back. Use `resolveSwissEphRuntimeAssets(options?)` to see what would be used without starting the runtime; it returns `{ wasmPath, ephePath, wasmPathSource, ephePathSource }` where the sources are `"explicit"`, `"env"`, `"candidate"`, or `"bundled"`.
+
+In a browser, the bundled defaults are relative URLs and the ephemeris files are fetched into the module's in-memory file system, so serve `ephe/` and the `.wasm` file from your own origin and pass `wasmPath` and `ephePath` explicitly when they are not next to your script.
+
+### Package exports for bundlers
+
+The package exposes the runtime assets directly so bundlers and servers can copy them without reaching into `node_modules` internals:
+
+| Export | Node.js | Everything else |
+| --- | --- | --- |
+| `kaabalah/swisseph-runtime` | `wasm/build/swisseph.node.js` | `wasm/build/swisseph.web.js` |
+| `kaabalah/swisseph-wasm` | `wasm/build/swisseph.node.wasm` | `wasm/build/swisseph.web.wasm` |
+
+### Command line
+
+The CLI takes `--wasm-path` and `--ephe-path` (or `KAABALAH_WASM_PATH` / `KAABALAH_EPHE_PATH`) and passes them to `getSwissEph`. A failure to start the runtime exits with `WASM_INIT_ERROR`. Runtime notices such as "Setting ephemeris path to ..." go to stderr; add `--quiet` to suppress them.
 
 ## Usage in Browser
 
 To use the Swiss Ephemeris in a browser environment:
 
-1. **Copy the WebAssembly files** to a location accessible by your web application:
-   - `swisseph.js`
-   - `swisseph.wasm`
+1. **Make the runtime files reachable**: `kaabalah/swisseph-runtime` and `kaabalah/swisseph-wasm` resolve to the web build (`swisseph.web.js`, `swisseph.web.wasm`).
 2. **Handle cross-origin issues**: Ensure your web server is configured to serve WebAssembly files with the correct MIME type (`application/wasm`)
 3. **Provide the ephemeris files** that Swiss Ephemeris needs for calculations:
    - Create a directory accessible by your web application
-   - Place the ephemeris files (*.se1) in that directory
-   - Specify the path when initializing the Swiss Ephemeris module
+   - Place `seas_18.se1`, `semo_18.se1` and `sepl_18.se1` in that directory
+   - Pass its URL as `ephePath` to `getSwissEph`
 
 ## Usage in Node.js
 
-For Node.js environments:
+For Node.js environments the package works out of the box: the `.wasm` runtime and the ephemeris files ship inside it. To keep them elsewhere (for example in a read-only container image or a serverless layer), pass `wasmPath` and `ephePath`, or set the environment variables above.
 
-1. **Include the built WebAssembly files** in your published package:
-   - Add them to the `files` array in `package.json`
-   - Make sure they're copied to the `dist` directory during build
-2. **Place ephemeris files** in a known location:
-   - For example, in a subdirectory named `ephe` within your package
-   - Set the ephemeris path when initializing the module
+## Missing assets
 
-## Fallback Mechanism
-
-The astrology module includes a fallback mechanism to handle situations where the WebAssembly module might not be available:
-
-1. If compilation fails or the WebAssembly files are missing, the module gracefully degrades
-2. Placeholder values are returned instead of throwing errors
-3. A warning is logged to the console
+If the runtime cannot be found, initialization throws an error that lists the paths it checked. The library does not return placeholder values, so a failed `getSwissEph()` means no chart can be calculated.
 
 ## Example Implementation
 
@@ -93,25 +126,25 @@ import { getBirthChart } from 'kaabalah/astrology';
 
 // Calculate a birth chart
 const chart = await getBirthChart({
-  date: new Date('1990-06-15T12:30:00'),
+  date: { year: 1990, month: 6, day: 15, hour: 12, minute: 30 },
   latitude: 40.7128,
-  longitude: -74.0060,
-  timezone: -4
+  longitude: -74.006,
+  timeZoneSettings: { timeZone: 'America/New_York' },
 });
 
-console.log(`Ascendant: ${chart.ascendant}`);
-console.log(`Sun position: ${chart.planets.sun.longitude}`);
+console.log(chart.houses.ascendant.sign);
+console.log(chart.planets.sun.zodiacPosition.sign);
 ```
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **"WebAssembly module not found"**:
-   - Ensure the .wasm and .js files are properly included in your distribution
-   - Check the paths in your code
+1. **"Unable to resolve Swiss Ephemeris wasmPath"** or **"wasmPath override does not exist"**:
+   - Ensure the `.wasm` file is included in your distribution
+   - Check the explicit option and the `KAABALAH_*` environment variables
 2. **"Cannot find ephemeris files"**:
-   - Make sure the ephemeris files are available at the specified path
+   - Make sure `seas_18.se1`, `semo_18.se1` and `sepl_18.se1` are available at the specified path
    - Check file permissions
 3. **"Calculation error"**:
    - Verify the input parameters (date, location) are valid
@@ -120,4 +153,5 @@ console.log(`Sun position: ${chart.planets.sun.longitude}`);
 ### Debugging Tools
 
 - Use browser developer tools to check for WASM-related errors in the console
+- Run the CLI with `--debug` to log the resolved configuration and diagnostics to stderr
 - Enable the `ASSERTIONS=1` flag during compilation for more verbose error messages

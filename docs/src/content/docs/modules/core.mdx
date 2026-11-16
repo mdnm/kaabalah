@@ -14,6 +14,8 @@ import {
   createTree,
   getCanonicalTree,
   getTreeTopology,
+  getTreeDescription,
+  getTreeNodeDescriptions,
   createTreeWorkspace,
   id,
   parseId,
@@ -243,6 +245,24 @@ workspace.getNotes(target?: TreeNoteTarget): TreeNote[]
 ```
 
 Returns notes attached to a node (`{ kind: "node", nodeId }`) or a correspondence (`{ kind: "correspondence", left, right }`). Overlays can attach notes to the graph.
+
+## Portuguese descriptions
+
+Node data is English. `getTreeDescription` and `getTreeNodeDescriptions` return the Portuguese text for it without touching the node, covering all three systems and the shared sphere, world, letter and music metadata. Node names such as Chokhmah and Tiphareth, branded IDs and the original node data never change.
+
+```typescript
+import { getCanonicalTree, getTreeDescription, getTreeNodeDescriptions, id, KaabalahTypes } from 'kaabalah/core';
+
+getTreeDescription('Crown', 'pt-BR');   // 'Coroa'
+getTreeDescription('Unknown text', 'pt-BR'); // undefined
+
+const tree = getCanonicalTree({ system: 'kaabalah', parts: [] });
+const node = tree.getNode(id(KaabalahTypes.SPHERE, 'Kether'))!;
+getTreeNodeDescriptions(node, 'pt-BR');
+// { meaning, colorDescription, noteDescription, nameMeaning, ... } — only the fields the node has
+```
+
+`getTreeNodeDescriptions` returns the available `meaning`, `colorDescription`, `noteDescription`, `nameMeaning` (the translated meaning of a sphere or world name), `letterMeaning`, `symbol` and `hieroglyph` fields. Custom text without a catalog entry is returned unchanged. `pt` and `pt-BR` select Portuguese; any other language, or none, selects English. In the CLI, `kaabalah tree:node path:1 --language pt-BR` returns the Portuguese descriptions.
 
 ## `TreeOfLife` instance methods
 

@@ -32,7 +32,7 @@ console.log(kether?.name);
 ```typescript
 import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
 
-const lifePath = calculateKaabalisticLifePath(new Date('1990-06-15'));
+const lifePath = calculateKaabalisticLifePath(new Date(1990, 5, 15, 12)); // local noon
 
 console.log(lifePath.lifePath.reducedValue);
 console.log(lifePath.syntheses.finalSynthesis);
@@ -95,6 +95,8 @@ console.log(reading.oracle[0].text.english);
 console.log(getHexagramDescription(reading.cast.hexagram.number));
 ```
 
+For Portuguese text pass a language: `getIChingReadingContent('879777', 'pt-BR')` returns the same reading with a Portuguese `content` next to every classical text.
+
 Store the six line values. The cast, the moving lines, and the texts are derived from them.
 
 ### Ifa
@@ -106,6 +108,17 @@ const odu = calculateOdu(new Date('1990-01-15'));
 
 console.log(odu.north, odu.south, odu.east, odu.west, odu.center);
 ```
+
+### Command line
+
+```bash
+npx kaabalah numerology 1990-06-15 --json --compact
+npx kaabalah iching:reading --lines 879777 --json --compact
+npx kaabalah tarot:card 7 --language pt-BR --json --compact
+npx kaabalah help --json
+```
+
+See the [CLI reference](/getting-started/cli/).
 
 ### Semantic (occult theme search)
 

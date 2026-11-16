@@ -14,6 +14,9 @@ import {
   getHexagramDescription,
   castThreeCoins,
   formatRecord,
+  getIChingReadingContent,
+  getHexagramText,
+  formatRecordContent,
 } from 'kaabalah/iching';
 ```
 
@@ -113,6 +116,36 @@ These are also on the reading. Call them alone when you already have a number.
 
 `getTrigramGate`, `getFamilySphere`, `getTrigramPillars`, and `listHexagramGates` expose the Kaabalah layer one trigram at a time. Five phases stay independent of Tree spheres and of western elements.
 
+## Portuguese
+
+All 514 classical texts (64 judgments, 64 images, 384 lines, 用九 and 用六) have a Portuguese rendering. The Chinese and the literal English stay on every text; the localized variants add a `content` field that holds the selected language.
+
+```typescript
+import {
+  getHexagramText,
+  getIChingReadingContent,
+  getOracleTextContent,
+  formatRecordContent,
+  getHexagramName,
+} from 'kaabalah/iching';
+
+getHexagramText(25, 'pt-BR')?.judgment;
+// { chinese, english, content: 'Grande sucesso; a constância é favorável. ...' }
+
+const reading = getIChingReadingContent('879777', 'pt-BR');
+reading.oracle[0].text.content;        // Portuguese text of the selected oracle line
+reading.cast.hexagram.text.judgment;   // each hexagram's text also carries `content`
+
+formatRecordContent('879777', 'pt-BR', { date: '15-11-2026', question: 'Qual o caminho?' });
+getHexagramName(52, 'pt-BR');          // "a montanha"
+```
+
+`pt` and `pt-BR` select Portuguese. Any other value, or none, selects English, so `content` equals the English text. `getIChingReadingContent` selects the same oracle texts as `getIChingReading` (the Zhu Xi rules are unchanged) and only adds `content`; `getOracleTextContent(selection, language)` applies the language to one selected text. `formatRecordContent` is `formatRecord` with Portuguese labels and hexagram names, and `ICHING_RECORD_LABELS` and `HEXAGRAM_NAMES_PT` expose the underlying tables. Unknown hexagram numbers return `undefined` from `getHexagramText`.
+
+## Lower-level helpers
+
+`parseCastLines(input)` validates a cast (string, array, or `{ hexagramNumber, movingLines }`) and returns the six values. `getMovingLines`, `getCastHexagram`, and `getTransformedHexagram` derive the three basic facts from any accepted input, and `getSixRelative`, `getBranchRelation`, and `getPhaseRelation` are the 六親 and 沖/合 relation tables. `LINE_POSITIONS`, `PALACE_TABLE`, `PHASE_HANZI`, `SOVEREIGN_HEXAGRAMS`, and `HEXAGRAM_TEXTS` (the raw bilingual text rows) are exported as frozen data.
+
 ## Casting
 
 ```typescript
@@ -134,9 +167,16 @@ kaabalah iching:hexagram 25 --json --compact
 kaabalah iching:reading --lines 879777 --json --compact
 kaabalah iching:reading --hexagram 30 --moving 2,4 --json --compact
 kaabalah iching:reading --input-json='{"hexagramNumber":25,"movingLines":[4]}' --json --compact
+kaabalah iching:reading --lines 879777 --language pt-BR --no-json
 ```
 
-Pass `lines` as a six-digit string or as a six-number array. Do not pass lines and a hexagram together. JSON stdout is one document. These commands do not start the ephemeris.
+| Command | Library call | Notes |
+| --- | --- | --- |
+| `iching:reading` | `getIChingReading`, or `getIChingReadingContent` with `--language pt-BR` | `--lines`, or `--hexagram` with `--moving`; or `--input-json` with `lines` / `hexagramNumber` and `movingLines` |
+| `iching:hexagram <n>` | `getHexagram` plus the Han, nuclear, Kaabalah, and sovereign layers | Returns `{ hexagram, han, nuclear, kaabalah, sovereign }` |
+| `iching:cast` | `castThreeCoins`, then the same reading | The only non-deterministic command |
+
+Pass `lines` as a six-digit string or as a six-number array (through `--input-json`). Do not pass lines and a hexagram together. JSON stdout is one document. These commands do not start the ephemeris. `--language pt-BR` adds the Portuguese `content` to the classical texts and prints human output in Portuguese; JSON keys and error codes stay in English. Bad input exits with code 1 and `INVALID_ARGUMENT` (missing input is `MISSING_ARGUMENT`). See the [CLI reference](/getting-started/cli/#i-ching-commands) for flags and output fields.
 
 ## Sources
 
