@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual Imum Coeli-sign descriptions, with typed
+  angle lookups, source qualifications and immutable provenance.
+
 - Add twelve source-audited bilingual Midheaven-sign descriptions using actual
   chart-angle keys, with precise provenance and retained source qualifications.
 
