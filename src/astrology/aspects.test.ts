@@ -365,3 +365,44 @@ describe("computeTransitAspects", () => {
     expect(edges[0].applying).toBe(false);
   });
 });
+
+describe("legacy output is unchanged (hand-computed fixture)", () => {
+  const fixture = {
+    sun: { longitude: 10 },
+    moon: { longitude: 70 },
+    mars: { longitude: 101.5 },
+  };
+
+  it("computeAspects with DEFAULT_ASPECT_SPECS yields exactly these edges in this order", () => {
+    expect(computeAspects(fixture)).toEqual([
+      {
+        planetA: "sun", planetB: "moon", longitudeA: 10, longitudeB: 70,
+        aspect: "sextile", aspectAngle: 60, delta: 60, orb: 0,
+      },
+      {
+        planetA: "sun", planetB: "mars", longitudeA: 10, longitudeB: 101.5,
+        aspect: "square", aspectAngle: 90, delta: 91.5, orb: 1.5,
+      },
+      {
+        planetA: "moon", planetB: "mars", longitudeA: 70, longitudeB: 101.5,
+        aspect: "duodecile", aspectAngle: 30, delta: 31.5, orb: 1.5,
+      },
+    ]);
+  });
+
+  it("computeSynastryAspects keeps A x B ordering and the 5 degree sextile orb", () => {
+    const edges = computeSynastryAspects({ sun: { longitude: 0 } }, { venus: { longitude: 65.5 }, mars: { longitude: 64 } });
+    expect(edges.map((e) => [e.planetA, e.planetB, e.aspect, e.orb])).toEqual([["sun", "mars", "sextile", 4]]);
+  });
+
+  it("computeTransitAspects keeps applying/retrograde/category fields", () => {
+    const edges = computeTransitAspects(
+      { saturn: { longitude: 88, longitudeSpeed: -0.1 } },
+      { sun: { longitude: 0 } }
+    );
+    expect(edges).toHaveLength(1);
+    expect(edges[0]).toMatchObject({
+      planetA: "saturn", planetB: "sun", aspect: "square", orb: 2, applying: false, retrograde: true, category: "slow",
+    });
+  });
+});

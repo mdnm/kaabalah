@@ -20,6 +20,7 @@ import {
   type LocalDateTimeParts,
   type ResolveSwissEphRuntimeAssetsOptions,
   RiseTransitFlag,
+  SwissEphError,
   type SwissEphRuntimeAssetPaths,
   TimeZoneOptions,
   toUtcDate,
@@ -51,12 +52,61 @@ export * from "./decans";
 export * from "./dodecatemoria";
 export * from "./profections";
 export * from "./firdaria";
+export * from "./root-solver";
+export * from "./returns";
+export * from "./transit-events";
+export * from "./sect";
+export * from "./lots";
+export * from "./moon-phase";
+export * from "./composite";
+export * from "./jyotish";
+export * from "./points";
+export * from "./orb-policy";
+export * from "./quality";
+export * from "./house-systems";
+export * from "./overlays";
+export * from "./davison";
+export * from "./progressions";
+export * from "./timelines";
+export * from "./collection";
+export * from "./cache-key";
+export * from "./capabilities";
+export {
+  getSwissEphInfo,
+  setSwissEphStrictEphemeris,
+  calculatePlanetPositionDetailed,
+  withSwissEphState,
+  SwissEphError,
+  SwissEphEphemerisMismatchError,
+  ephemerisFromFlags,
+  resolveSwissEphRuntimeAssetsAsync,
+  type SwissEphInfo,
+  type PlanetPositionDetailed,
+  type SwissEphemerisKind,
+  type SwissEphErrorCode,
+  type GetSwissEphOptions,
+} from "./swisseph";
+import {
+  computeCompositeAngles,
+  computeCompositeCusps,
+  compositeMidpoint,
+  ANTIPODAL_POLICY_TEXT,
+  DEFAULT_ANTIPODAL_EPSILON,
+  type CompositeAngles,
+  type CompositeMethod,
+  type CompositeNotice,
+} from "./composite";
+import { computeLots, type LotsResult } from "./lots";
+import { computeMoonPhase, type MoonPhaseResult } from "./moon-phase";
+import { computeSect, type SectResult } from "./sect";
+import { findTransitPerfections, type PerfectionSolverMetadata, type TransitClosestApproach } from "./transit-events";
+import { getChartAtJulianDay } from "./progressions";
+import { findPlanetaryReturns, type RootSolverMethodMetadata } from "./returns";
+import { dateToJd, type RootDirection, type RootSearchCoverage } from "./root-solver";
 import {
   computeAspects,
   computeSynastryAspects,
   computeTransitAspects,
-  computeMidpoints,
-  shorterArcMidpoint,
   DEFAULT_ASPECT_SPECS,
   SLOW_PLANETS,
   type AspectEdge,
@@ -77,7 +127,61 @@ export interface BirthChartOptions {
   latitude: number;
   longitude: number;
   houseSystem?: HouseSystem;
+  /**
+   * OPT-IN substitute used only when the requested house system cannot be computed at this
+   * latitude (Placidus and Koch are undefined beyond the polar circle, |latitude| >= ~66.56).
+   * Default: off, and `getBirthChart` then throws a `SwissEphError` with code
+   * `SWISSEPH_HOUSES_UNAVAILABLE`. When a substitution happens it is never silent:
+   * `BirthChart.houseSystem` is the system actually used and
+   * `BirthChart.houseSystemSubstitution` records the request, the reason and a notice.
+   */
+  houseSystemFallback?: HouseSystemFallback;
   timeZoneSettings?: TimeZoneOptions;
+}
+
+/** Latitude-independent house systems accepted as an explicit fallback. */
+export type HouseSystemFallback = "whole-sign" | "equal" | "porphyry";
+
+const HOUSE_FALLBACK_SYSTEMS: Record<HouseSystemFallback, HouseSystem> = {
+  "whole-sign": HouseSystem.WHOLE_SIGN,
+  equal: HouseSystem.EQUAL,
+  porphyry: HouseSystem.PORPHYRIUS,
+};
+
+/** Recorded on a chart when `houseSystemFallback` replaced the requested house system. */
+export interface HouseSystemSubstitution {
+  requested: HouseSystem;
+  used: HouseSystem;
+  latitude: number;
+  reason: string;
+  notice: string;
+}
+
+/**
+ * Decide the fallback for a failed house computation. Returns undefined when no fallback is
+ * configured or the error is not a "house system unavailable" error (the caller rethrows).
+ */
+export function planHouseSystemFallback(
+  requested: HouseSystem,
+  fallback: HouseSystemFallback | undefined,
+  latitude: number,
+  error: unknown
+): HouseSystemSubstitution | undefined {
+  if (!fallback || !(error instanceof SwissEphError) || error.code !== "SWISSEPH_HOUSES_UNAVAILABLE") {
+    return undefined;
+  }
+  const used = HOUSE_FALLBACK_SYSTEMS[fallback];
+  if (!used || used === requested) return undefined;
+  const reason = error.message;
+  return {
+    requested,
+    used,
+    latitude,
+    reason,
+    notice:
+      `House system "${requested}" is unavailable at latitude ${latitude}; ` +
+      `substituted "${used}" because houseSystemFallback="${fallback}" was requested.`,
+  };
 }
 
 export type ZodiacPosition = {
@@ -98,6 +202,10 @@ export type Sect = "diurnal" | "nocturnal";
 
 export interface BirthChart {
   dateUtc: Date;
+  /** House system the cusps were computed with (set by `getBirthChart`; optional for hand-built fixtures). */
+  houseSystem?: HouseSystem;
+  /** Present only when `houseSystemFallback` replaced the requested system (never a silent substitution). */
+  houseSystemSubstitution?: HouseSystemSubstitution;
   planets: Record<string, HydratedPlanet>;
   nodes: Record<string, HydratedNode>;
   houses: {
@@ -116,12 +224,28 @@ export interface BirthChart {
     };
   };
   aspects: AspectEdge[];
+  /** Diurnal/nocturnal from the Sun's geometric altitude (independent of house system). */
   sect: Sect;
+  /** Sun altitudes and the exact-horizon convention behind `sect` (always set by `getBirthChart`; optional so hand-built fixtures still type-check). */
+  sectDetails?: SectResult;
+  /** Lots of Fortune and Spirit (sect-reversed counterparts) with formulas used. */
+  lots?: LotsResult & { fortunePosition: ZodiacPosition; spiritPosition: ZodiacPosition };
+  /** Sun-Moon elongation, phase name and illumination (labelled approximate). */
+  moonPhase?: MoonPhaseResult;
 }
+
+/** Chart as returned by `getBirthChart`: the additive fields are always present. */
+export type ComputedBirthChart = BirthChart &
+  Required<Pick<BirthChart, "sectDetails" | "lots" | "moonPhase">>;
 
 /**
  * Determines chart sect from the Sun's house position.
- * Houses 7-12 place the Sun above the horizon, matching the rule used by getBirthChart.
+ * Houses 7-12 place the Sun above the horizon.
+ *
+ * @deprecated House-based approximation: it is only right when the house
+ * cusps follow the horizon (Placidus-like systems) and is wrong for
+ * whole-sign and equal houses near sunrise/sunset. `getBirthChart` no longer
+ * uses it; use `computeSect` / `getSectFromAltitude` (physical horizon).
  */
 export function getSect(sunHouse: number): Sect {
   return sunHouse >= 7 && sunHouse <= 12 ? "diurnal" : "nocturnal";
@@ -163,20 +287,6 @@ function isValidLocalDateTimeParts(date: LocalDateTimeParts): boolean {
     utcDate.getUTCMinutes() === minute &&
     utcDate.getUTCSeconds() === second
   );
-}
-
-function getCivilMonthDay(date: Date | LocalDateTimeParts): { monthIndex: number; day: number } {
-  if (date instanceof Date) {
-    return {
-      monthIndex: date.getMonth(),
-      day: date.getDate(),
-    };
-  }
-
-  return {
-    monthIndex: date.month - 1,
-    day: date.day,
-  };
 }
 
 function validateInputs(options: BirthChartOptions): void {
@@ -228,7 +338,7 @@ function hydratePlanet(
  */
 export async function getBirthChart(
   options: BirthChartOptions
-): Promise<BirthChart> {
+): Promise<ComputedBirthChart> {
   try {
     // Validate inputs
     validateInputs(options);
@@ -243,14 +353,36 @@ export async function getBirthChart(
       throw new Error("Failed to calculate planetary positions");
     }
 
-    // Calculate houses
-    const housesPositions = await calculateHouses(
-      utcDate,
-      options.latitude,
-      options.longitude,
-      options.houseSystem || HouseSystem.PLACIDUS,
-      { treatAsUTC: true }
-    );
+    // Calculate houses (explicit, recorded fallback only when the caller opted in)
+    const requestedHouseSystem = options.houseSystem || HouseSystem.PLACIDUS;
+    let usedHouseSystem = requestedHouseSystem;
+    let houseSystemSubstitution: HouseSystemSubstitution | undefined;
+    let housesPositions;
+    try {
+      housesPositions = await calculateHouses(
+        utcDate,
+        options.latitude,
+        options.longitude,
+        requestedHouseSystem,
+        { treatAsUTC: true }
+      );
+    } catch (error) {
+      houseSystemSubstitution = planHouseSystemFallback(
+        requestedHouseSystem,
+        options.houseSystemFallback,
+        options.latitude,
+        error
+      );
+      if (!houseSystemSubstitution) throw error;
+      usedHouseSystem = houseSystemSubstitution.used;
+      housesPositions = await calculateHouses(
+        utcDate,
+        options.latitude,
+        options.longitude,
+        usedHouseSystem,
+        { treatAsUTC: true }
+      );
+    }
     if (!housesPositions) {
       throw new Error("Failed to calculate houses");
     }
@@ -308,7 +440,14 @@ export async function getBirthChart(
       },
     };
 
-    const sect = getSect(planets.sun.zodiacPosition.house);
+    // Sect from the physical horizon (Sun's geometric altitude), never from houses.
+    const sectDetails = computeSect(
+      utcDate,
+      options.latitude,
+      options.longitude,
+      planets.sun
+    );
+    const sect = sectDetails.sect;
     const isDiurnal = sect === "diurnal";
     const wheelOfFortuneLongitude = calcParsFortunae(
       houses.ascendant.longitude,
@@ -316,6 +455,18 @@ export async function getBirthChart(
       planets.moon.longitude,
       isDiurnal
     );
+    const lotsResult = computeLots(
+      houses.ascendant.longitude,
+      planets.sun.longitude,
+      planets.moon.longitude,
+      sect
+    );
+    const lots = {
+      ...lotsResult,
+      fortunePosition: getZodiacPosition(lotsResult.fortune, houseCusps),
+      spiritPosition: getZodiacPosition(lotsResult.spirit, houseCusps),
+    };
+    const moonPhase = computeMoonPhase(planets.sun.longitude, planets.moon.longitude);
 
     const wheelOfFortune = getZodiacPosition(
       wheelOfFortuneLongitude,
@@ -334,14 +485,18 @@ export async function getBirthChart(
 
     return {
       dateUtc: utcDate,
+      houseSystem: usedHouseSystem,
+      ...(houseSystemSubstitution ? { houseSystemSubstitution } : {}),
       planets,
       houses,
       nodes,
       aspects,
       sect,
+      sectDetails,
+      lots,
+      moonPhase,
     };
   } catch (error) {
-    console.error("Error calculating birth chart:", error);
     throw error;
   }
 }
@@ -443,13 +598,43 @@ export interface TwoChartOptions {
   chartA: BirthChartOptions;
   chartB: BirthChartOptions;
   aspectSpecs?: AspectSpec[];
+  /** Omit the embedded full charts from the result (see `SynastryChartSummary`). Default false. */
+  omitCharts?: boolean;
 }
 export type SynastryChartOptions = TwoChartOptions;
 export type CompositeChartOptions = TwoChartOptions;
 
+/** Options for the already-computed-chart variants (`getSynastryFromCharts`, `getCompositeFromCharts`). */
+export interface TwoChartFromChartsOptions {
+  aspectSpecs?: AspectSpec[];
+  /** Omit the embedded full charts from the result; the result then carries `charts` references only. */
+  omitCharts?: boolean;
+  /** Caller ids echoed into the lightweight `charts` references. */
+  ids?: { a?: string; b?: string };
+  /**
+   * House system of chart A / B. Only used when the chart does not record its own
+   * (`BirthChart.houseSystem`); the chart's recorded value always wins.
+   */
+  houseSystemA?: HouseSystem;
+  houseSystemB?: HouseSystem;
+}
+
+/** Metadata-only reference to a chart used in a two-chart result. */
+export interface ChartReference {
+  id?: string;
+  dateUtc: Date;
+  houseSystem?: HouseSystem;
+}
+
 export interface SynastryChart {
   chartA: BirthChart;
   chartB: BirthChart;
+  aspects: AspectEdge[];
+}
+
+/** Synastry result without the embedded charts (`omitCharts: true`). */
+export interface SynastryChartSummary {
+  charts: { a: ChartReference; b: ChartReference };
   aspects: AspectEdge[];
 }
 
@@ -461,49 +646,181 @@ export interface CompositeChart {
     { name: string; longitude: number; zodiacPosition: ZodiacPosition }
   >;
   compositeHouses: ZodiacPosition[];
+  /** Composite ASC / MC / DSC / IC midpoint angles (see `./composite` conventions). */
+  compositeAngles: Record<keyof CompositeAngles, ZodiacPosition>;
+  /** Conventions used for midpoints, houses and the antipodal policy. */
+  compositeMethod: CompositeMethod;
+  /** Antipodal pairs, MC/cusp corrections and fallbacks encountered. */
+  notices: CompositeNotice[];
+  /** Aspects among `compositePlanets` only (the final point set). */
   aspects: AspectEdge[];
+  /** House system of each input chart and where it came from. */
+  houseSystems: {
+    a: { system: HouseSystem; source: "chart" | "option" | "assumed-default" };
+    b: { system: HouseSystem; source: "chart" | "option" | "assumed-default" };
+  };
 }
 
-export async function getSynastryChart(
-  options: SynastryChartOptions
-): Promise<SynastryChart> {
-  const [chartA, chartB] = await Promise.all([
-    getBirthChart(options.chartA),
-    getBirthChart(options.chartB),
-  ]);
+/** Composite result without the embedded charts (`omitCharts: true`). */
+export type CompositeChartSummary = Omit<CompositeChart, "chartA" | "chartB"> & {
+  charts: { a: ChartReference; b: ChartReference };
+};
+
+function chartReference(chart: BirthChart, id?: string): ChartReference {
+  const ref: ChartReference = { dateUtc: chart.dateUtc, houseSystem: chart.houseSystem };
+  if (id !== undefined) ref.id = id;
+  return ref;
+}
+
+export function getSynastryFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options: TwoChartFromChartsOptions & { omitCharts: true }
+): SynastryChartSummary;
+export function getSynastryFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options?: TwoChartFromChartsOptions & { omitCharts?: false }
+): SynastryChart;
+export function getSynastryFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options?: TwoChartFromChartsOptions
+): SynastryChart | SynastryChartSummary;
+/**
+ * Synastry between two already-computed charts: no ephemeris recomputation, so N
+ * people need N `getBirthChart` calls rather than N(N-1)/2.
+ * `getSynastryChart` delegates here.
+ */
+export function getSynastryFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options: TwoChartFromChartsOptions = {}
+): SynastryChart | SynastryChartSummary {
   const aspects = computeSynastryAspects(
     getAspectPoints(chartA.planets, chartA.houses.ascendant.longitude, chartA.houses.mc.longitude),
     getAspectPoints(chartB.planets, chartB.houses.ascendant.longitude, chartB.houses.mc.longitude),
     options.aspectSpecs
   );
+  if (options.omitCharts) {
+    return {
+      charts: { a: chartReference(chartA, options.ids?.a), b: chartReference(chartB, options.ids?.b) },
+      aspects,
+    };
+  }
   return { chartA, chartB, aspects };
 }
 
-export async function getCompositeChart(
-  options: CompositeChartOptions
-): Promise<CompositeChart> {
+export async function getSynastryChart(
+  options: SynastryChartOptions & { omitCharts: true }
+): Promise<SynastryChartSummary>;
+export async function getSynastryChart(
+  options: SynastryChartOptions & { omitCharts?: false }
+): Promise<SynastryChart>;
+export async function getSynastryChart(
+  options: SynastryChartOptions
+): Promise<SynastryChart | SynastryChartSummary>;
+export async function getSynastryChart(
+  options: SynastryChartOptions
+): Promise<SynastryChart | SynastryChartSummary> {
   const [chartA, chartB] = await Promise.all([
     getBirthChart(options.chartA),
     getBirthChart(options.chartB),
   ]);
+  return getSynastryFromCharts(chartA, chartB, {
+    aspectSpecs: options.aspectSpecs,
+    omitCharts: options.omitCharts,
+  });
+}
 
-  // Midpoint planets
-  const midpointLongitudes = computeMidpoints(chartA.planets, chartB.planets);
+function resolveChartHouseSystem(
+  chart: BirthChart,
+  fallback: HouseSystem | undefined
+): { system: HouseSystem; source: "chart" | "option" | "assumed-default" } {
+  if (chart.houseSystem !== undefined) return { system: chart.houseSystem, source: "chart" };
+  if (fallback !== undefined) return { system: fallback, source: "option" };
+  return { system: HouseSystem.PLACIDUS, source: "assumed-default" };
+}
 
-  // Midpoint house cusps (shorter-arc midpoint of corresponding cusps)
-  const cuspsA = chartA.houses.houses.map((h) => h.longitude);
-  const cuspsB = chartB.houses.houses.map((h) => h.longitude);
-  const compositeCusps = cuspsA.map((a, i) =>
-    i < cuspsB.length ? shorterArcMidpoint(a, cuspsB[i]) : a
+export function getCompositeFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options: TwoChartFromChartsOptions & { omitCharts: true }
+): CompositeChartSummary;
+export function getCompositeFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options?: TwoChartFromChartsOptions & { omitCharts?: false }
+): CompositeChart;
+export function getCompositeFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options?: TwoChartFromChartsOptions
+): CompositeChart | CompositeChartSummary;
+/**
+ * Midpoint composite of two already-computed charts. Each chart's house system is
+ * taken from `BirthChart.houseSystem`; for hand-built charts without it, from
+ * `options.houseSystemA/B`, else non-whole-sign (Placidus-like) is assumed and
+ * reported in `houseSystems[..].source === "assumed-default"`.
+ * `getCompositeChart` delegates here.
+ */
+export function getCompositeFromCharts(
+  chartA: BirthChart,
+  chartB: BirthChart,
+  options: TwoChartFromChartsOptions = {}
+): CompositeChart | CompositeChartSummary {
+  const epsilon = DEFAULT_ANTIPODAL_EPSILON;
+  const notices: CompositeNotice[] = [];
+
+  // Angles: midpoints with ASC/MC consistency
+  const angleResult = computeCompositeAngles(
+    { ascendant: chartA.houses.ascendant.longitude, mc: chartA.houses.mc.longitude },
+    { ascendant: chartB.houses.ascendant.longitude, mc: chartB.houses.mc.longitude },
+    epsilon
   );
+  notices.push(...angleResult.notices);
 
-  // Hydrate composite planets with zodiac positions using midpoint cusps
+  // Houses: whole-sign composites start at the composite ASC sign; otherwise
+  // midpoints of corresponding cusps validated for zodiacal order.
+  const hsA = resolveChartHouseSystem(chartA, options.houseSystemA);
+  const hsB = resolveChartHouseSystem(chartB, options.houseSystemB);
+  const wholeA = hsA.system === HouseSystem.WHOLE_SIGN;
+  const wholeB = hsB.system === HouseSystem.WHOLE_SIGN;
+  if (wholeA !== wholeB) {
+    notices.push({
+      type: "mixed_house_systems",
+      reason: "only one chart uses whole-sign houses; corresponding cusps were midpointed",
+    });
+  }
+  const cuspResult = computeCompositeCusps({
+    cuspsA: chartA.houses.houses.map((h) => h.longitude),
+    cuspsB: chartB.houses.houses.map((h) => h.longitude),
+    ascA: chartA.houses.ascendant.longitude,
+    ascB: chartB.houses.ascendant.longitude,
+    wholeSign: wholeA && wholeB,
+    compositeAsc: angleResult.angles.ascendant,
+    epsilon,
+  });
+  notices.push(...cuspResult.notices);
+  const compositeCusps = cuspResult.cusps;
+
+  // Midpoint planets (only points present in both charts)
   const compositePlanets: CompositeChart["compositePlanets"] = {};
-  for (const [key, lon] of Object.entries(midpointLongitudes)) {
+  for (const key of Object.keys(chartA.planets)) {
+    if (!(key in chartB.planets)) continue;
+    const mid = compositeMidpoint(chartA.planets[key].longitude, chartB.planets[key].longitude, epsilon);
+    if (mid.antipodal) {
+      notices.push({
+        type: "antipodal",
+        point: key,
+        longitudeA: chartA.planets[key].longitude,
+        longitudeB: chartB.planets[key].longitude,
+      });
+    }
     compositePlanets[key] = {
       name: key,
-      longitude: lon,
-      zodiacPosition: getZodiacPosition(lon, compositeCusps),
+      longitude: mid.longitude,
+      zodiacPosition: getZodiacPosition(mid.longitude, compositeCusps),
     };
   }
 
@@ -511,15 +828,63 @@ export async function getCompositeChart(
     getZodiacPosition(lon, compositeCusps)
   );
 
+  const compositeAngles = {
+    ascendant: getZodiacPosition(angleResult.angles.ascendant, compositeCusps),
+    mc: getZodiacPosition(angleResult.angles.mc, compositeCusps),
+    descendant: getZodiacPosition(angleResult.angles.descendant, compositeCusps),
+    ic: getZodiacPosition(angleResult.angles.ic, compositeCusps),
+  };
+
+  // Aspects are computed from the final point set only.
   const aspects = computeAspects(compositePlanets, options.aspectSpecs);
 
-  return {
-    chartA,
-    chartB,
+  const compositeMethod: CompositeMethod = {
+    midpoint: "shorter arc",
+    antipodalPolicy: ANTIPODAL_POLICY_TEXT,
+    antipodalEpsilon: epsilon,
+    ...cuspResult.method,
+  };
+
+  const body = {
     compositePlanets,
     compositeHouses,
+    compositeAngles,
+    compositeMethod,
+    notices,
     aspects,
+    houseSystems: { a: hsA, b: hsB },
   };
+  if (options.omitCharts) {
+    return {
+      charts: { a: chartReference(chartA, options.ids?.a), b: chartReference(chartB, options.ids?.b) },
+      ...body,
+    };
+  }
+  return { chartA, chartB, ...body };
+}
+
+export async function getCompositeChart(
+  options: CompositeChartOptions & { omitCharts: true }
+): Promise<CompositeChartSummary>;
+export async function getCompositeChart(
+  options: CompositeChartOptions & { omitCharts?: false }
+): Promise<CompositeChart>;
+export async function getCompositeChart(
+  options: CompositeChartOptions
+): Promise<CompositeChart | CompositeChartSummary>;
+export async function getCompositeChart(
+  options: CompositeChartOptions
+): Promise<CompositeChart | CompositeChartSummary> {
+  const [chartA, chartB] = await Promise.all([
+    getBirthChart(options.chartA),
+    getBirthChart(options.chartB),
+  ]);
+  return getCompositeFromCharts(chartA, chartB, {
+    aspectSpecs: options.aspectSpecs,
+    omitCharts: options.omitCharts,
+    houseSystemA: options.chartA.houseSystem,
+    houseSystemB: options.chartB.houseSystem,
+  });
 }
 
 // ── Transits ────────────────────────────────────────────────────────────
@@ -550,11 +915,33 @@ export interface TransitChart {
 }
 
 export interface TransitRangeOptions extends Omit<TransitChartOptions, "transitDate"> {
-  from: Date;
-  to: Date;
+  /**
+   * Window start. Two forms, both resolved to an absolute UTC instant (`TransitRangeResult.fromUtc`)
+   * through `transitTimeZoneSettings` at the transit location (default: auto time zone from lat/lon):
+   *
+   * - `LocalDateTimeParts` (recommended): the wall-clock date/time at the transit location.
+   *   Independent of the host machine's time zone.
+   * - `Date` (legacy, behaviour unchanged): read with the HOST-local getters
+   *   (`getFullYear()`, `getHours()`, ...) and reinterpreted as wall-clock time in the transit
+   *   location's zone, so the result depends on the host time zone. Pass
+   *   `transitTimeZoneSettings: { treatAsUTC: true }` to use the Date's own UTC instant instead.
+   */
+  from: Date | LocalDateTimeParts;
+  /** Window end (inclusive); same two forms and semantics as `from`. */
+  to: Date | LocalDateTimeParts;
   stepDays?: number;
+  /** Final bracket width for each exact event, in seconds (default 0.001). */
+  timeToleranceSeconds?: number;
+  /** Max accepted angular residual of an exact event, in degrees (default 1e-6). */
+  residualToleranceDegrees?: number;
+  /** Also report stationary near-misses that never reach exactness (default false). */
+  includeClosestApproaches?: boolean;
 }
 
+/**
+ * A verified exact crossing of a transit aspect. `exactDate` is the UTC instant
+ * of the root; `exactOrb` equals the angular residual (~0), not the display orb.
+ */
 export interface AspectPerfection {
   transitPlanet: string;
   natalPlanet: string;
@@ -563,13 +950,23 @@ export interface AspectPerfection {
   exactOrb: number;
   retrograde: boolean;
   category: "slow" | "fast";
+  kind?: "exact";
+  exactJd?: number;
+  solver?: PerfectionSolverMetadata;
 }
 
 export interface TransitRangeResult {
   natalChart: BirthChart;
+  /** The `from` Date as passed; for `LocalDateTimeParts` input it is the resolved UTC instant (= `fromUtc`). */
   from: Date;
+  /** The `to` Date as passed; for `LocalDateTimeParts` input it is the resolved UTC instant (= `toUtc`). */
   to: Date;
+  /** `from`/`to` resolved to absolute UTC instants (via the transit location's time zone settings). */
+  fromUtc?: Date;
+  toUtc?: Date;
   perfections: AspectPerfection[];
+  /** Present only when `includeClosestApproaches` was requested. Never exact. */
+  closestApproaches?: TransitClosestApproach[];
 }
 
 function getTransitAspectPoints(
@@ -611,16 +1008,44 @@ function filterByNames(
   return result;
 }
 
+/**
+ * Options for transits to an already-computed natal chart. A `BirthChart` does not
+ * store its geographic location, so the transit location is explicit.
+ */
+export interface TransitFromChartOptions
+  extends Omit<TransitChartOptions, "natal" | "transitLatitude" | "transitLongitude"> {
+  transitLatitude: number;
+  transitLongitude: number;
+  /** House system for the transit chart; defaults to the natal chart's recorded system. */
+  houseSystem?: HouseSystem;
+}
+
 export async function getTransitChart(
   options: TransitChartOptions
 ): Promise<TransitChart> {
   const natalChart = await getBirthChart(options.natal);
+  return getTransitChartFromChart(natalChart, {
+    ...options,
+    transitLatitude: options.transitLatitude ?? options.natal.latitude,
+    transitLongitude: options.transitLongitude ?? options.natal.longitude,
+    houseSystem: options.natal.houseSystem,
+  });
+}
 
+/**
+ * Transits over an already-computed natal chart (no natal recomputation). The
+ * natal chart can be a natal `BirthChart` or any derived chart exposing the same
+ * `planets` / `houses` shape. `getTransitChart` delegates here.
+ */
+export async function getTransitChartFromChart(
+  natalChart: BirthChart,
+  options: TransitFromChartOptions
+): Promise<TransitChart> {
   const transitChart = await getBirthChart({
     date: options.transitDate,
-    latitude: options.transitLatitude ?? options.natal.latitude,
-    longitude: options.transitLongitude ?? options.natal.longitude,
-    houseSystem: options.natal.houseSystem,
+    latitude: options.transitLatitude,
+    longitude: options.transitLongitude,
+    houseSystem: options.houseSystem ?? natalChart.houseSystem,
     timeZoneSettings: options.transitTimeZoneSettings ?? { autoTimeZone: true },
   });
 
@@ -673,7 +1098,6 @@ export async function getTransitRange(
   options: TransitRangeOptions
 ): Promise<TransitRangeResult> {
   const natalChart = await getBirthChart(options.natal);
-  const natalCusps = natalChart.houses.houses.map((h) => h.longitude);
 
   const nPoints = filterByNames(
     getNatalAspectPoints(
@@ -683,358 +1107,178 @@ export async function getTransitRange(
     ),
     options.natalPlanets
   );
-  const natalKeys = Object.keys(nPoints);
 
   const rawStep = options.stepDays ?? 1;
   if (rawStep <= 0) throw new Error("stepDays must be greater than 0");
-  const fromMs = options.from.getTime();
-  const toMs = options.to.getTime();
-  const specs = options.aspectSpecs;
-
-  // Collect positions at each step
-  type StepData = {
-    time: number;
-    positions: Record<string, TransitAspectPoint>;
-  };
-  const steps: StepData[] = [];
 
   const transitLat = options.transitLatitude ?? options.natal.latitude;
   const transitLon = options.transitLongitude ?? options.natal.longitude;
   const transitTz = options.transitTimeZoneSettings ?? { autoTimeZone: true };
+  const fromUtc = await toUtcDate(options.from, transitLat, transitLon, transitTz);
+  const toUtc = await toUtcDate(options.to, transitLat, transitLon, transitTz);
 
-  // Auto-reduce step for fast planets (Moon moves ~13°/day, can enter and exit
-  // an aspect between daily samples). Cap at 0.25 days (~6h) when fast planets
-  // are in the transit set so we don't miss perfections.
-  const FAST_PLANET_MAX_STEP = 0.25; // days
-  let effectiveStepDays = rawStep;
-  // Check if any requested transit planet is fast (not in SLOW_PLANETS)
-  const requestedTransitPlanets = options.transitPlanets?.map((n) => n.toLowerCase());
-  const hasFastPlanets = requestedTransitPlanets
-    ? requestedTransitPlanets.some((n) => !SLOW_PLANETS.has(n))
-    : true; // if no filter, assume fast planets present
-  if (hasFastPlanets && effectiveStepDays > FAST_PLANET_MAX_STEP) {
-    effectiveStepDays = FAST_PLANET_MAX_STEP;
-  }
-  const stepMs = effectiveStepDays * 86400000;
-
-  // Scan one extra step beyond toMs so perfections near the boundary can be detected
-  // (binary search needs two consecutive steps to spot the orb increase after a minimum).
-  // Perfections are still filtered to [from, to] at the end.
-  const scanEndMs = toMs + stepMs;
-  for (let ms = fromMs; ms <= scanEndMs; ms += stepMs) {
-    const date = new Date(ms);
-    const utcDate = await toUtcDate(date, transitLat, transitLon, transitTz ?? { autoTimeZone: true });
-    const positions = await calculatePlanetaryPositions(utcDate);
-    if (!positions) continue;
-
-    const points: Record<string, TransitAspectPoint> = {};
-    for (const [planetId, pos] of Object.entries(positions)) {
-      const id = planetId as unknown as Planet;
-      const name = PLANET_AND_NODE_NAMES[id].toLowerCase();
-      points[name] = { longitude: pos.longitude, longitudeSpeed: pos.longitudeSpeed };
-    }
-    steps.push({ time: ms, positions: filterByNames(points, options.transitPlanets) });
-  }
-
-  // Track orbs across steps and find perfections via binary search
-  const perfections: AspectPerfection[] = [];
-  const transitKeys = steps.length > 0 ? Object.keys(steps[0].positions) : [];
-
-  for (const tKey of transitKeys) {
-    for (const nKey of natalKeys) {
-      let prevOrb: number | null = null;
-      let prevDecreasing = false;
-      let prevStep: StepData | null = null;
-
-      for (const step of steps) {
-        const tPos = step.positions[tKey];
-        const nPos = nPoints[nKey];
-        if (!tPos || !nPos) continue;
-
-        // Check all aspect specs for the closest match
-        const match = specs
-          ? findClosestAspectOrb(tPos.longitude, nPos.longitude, specs)
-          : findClosestAspectOrb(tPos.longitude, nPos.longitude);
-
-        if (!match) {
-          prevOrb = null;
-          prevStep = step;
-          continue;
-        }
-
-        const currentOrb = match.orb;
-        if (prevOrb != null && prevStep) {
-          const wasDecreasing = prevOrb > currentOrb;
-          // Perfection: orb was decreasing and is now increasing
-          if (prevDecreasing && !wasDecreasing && currentOrb <= (match.spec.orb)) {
-            const exactResult = await binarySearchPerfection(
-              tKey, nKey, match.spec,
-              prevStep.time, step.time,
-              nPos, transitLat, transitLon, transitTz
-            );
-            if (exactResult) perfections.push(exactResult);
-          }
-          prevDecreasing = wasDecreasing;
-        } else {
-          prevDecreasing = false;
-        }
-        prevOrb = currentOrb;
-        prevStep = step;
-      }
-    }
-  }
-
-  // Filter perfections to the requested [from, to] range (scan extends beyond for detection)
-  let filtered = perfections.filter((p) => {
-    const t = p.exactDate.getTime();
-    return t >= fromMs && t <= toMs;
+  const found = findTransitPerfections({
+    natalPoints: nPoints,
+    transitPlanets: options.transitPlanets,
+    fromUtc,
+    toUtc,
+    stepDays: rawStep,
+    aspectSpecs: options.aspectSpecs,
+    timeToleranceSeconds: options.timeToleranceSeconds,
+    residualToleranceDegrees: options.residualToleranceDegrees,
+    includeClosestApproaches: options.includeClosestApproaches,
   });
+
+  const allowedAspects =
+    options.aspectFilter && options.aspectFilter.length > 0 ? new Set(options.aspectFilter) : null;
+  let perfections: AspectPerfection[] = found.perfections;
   if (options.maxOrb != null) {
-    filtered = filtered.filter((p) => p.exactOrb <= options.maxOrb!);
+    perfections = perfections.filter((p) => p.exactOrb <= options.maxOrb!);
   }
-  if (options.aspectFilter && options.aspectFilter.length > 0) {
-    const allowed = new Set(options.aspectFilter);
-    filtered = filtered.filter((p) => allowed.has(p.aspect));
+  if (allowedAspects) {
+    perfections = perfections.filter((p) => allowedAspects.has(p.aspect));
   }
 
-  // Sort by date
-  filtered.sort((a, b) => a.exactDate.getTime() - b.exactDate.getTime());
-
-  return {
+  const result: TransitRangeResult = {
     natalChart,
-    from: options.from,
-    to: options.to,
-    perfections: filtered,
+    from: options.from instanceof Date ? options.from : fromUtc,
+    to: options.to instanceof Date ? options.to : toUtc,
+    fromUtc,
+    toUtc,
+    perfections,
   };
-}
-
-function findClosestAspectOrb(
-  lonA: number,
-  lonB: number,
-  specs: AspectSpec[] = DEFAULT_ASPECT_SPECS
-): { spec: AspectSpec; orb: number; delta: number } | null {
-  const a = normalizeAngle(lonA);
-  const b = normalizeAngle(lonB);
-  const delta = Math.min(normalizeAngle(b - a), normalizeAngle(a - b));
-
-  let best: { spec: AspectSpec; orb: number; delta: number } | null = null;
-  for (const spec of specs) {
-    const orb = Math.abs(delta - spec.angle);
-    // Use a generous search orb (spec.orb + 2) to catch approaching aspects
-    if (orb <= spec.orb + 2) {
-      if (!best || orb < best.orb) {
-        best = { spec, orb, delta };
-      }
-    }
+  if (options.includeClosestApproaches) {
+    result.closestApproaches = found.closestApproaches.filter(
+      (c) =>
+        (!allowedAspects || allowedAspects.has(c.aspect)) &&
+        (options.maxOrb == null || c.separationDegrees <= options.maxOrb)
+    );
   }
-  return best;
-}
-
-function computeOrbForAspect(
-  transitLon: number,
-  natalLon: number,
-  aspectAngle: number
-): number {
-  const delta = Math.min(
-    normalizeAngle(transitLon - natalLon),
-    normalizeAngle(natalLon - transitLon)
-  );
-  return Math.abs(delta - aspectAngle);
-}
-
-// Reverse map: lowercase name → Planet enum, built once
-const NAME_TO_PLANET: Record<string, Planet> = {};
-for (const [id, name] of Object.entries(PLANET_AND_NODE_NAMES)) {
-  const numId = Number(id);
-  if (!isNaN(numId)) NAME_TO_PLANET[name.toLowerCase()] = numId as Planet;
-}
-
-async function getTransitLongitudeAt(
-  ms: number,
-  transitKey: string,
-  transitLat: number,
-  transitLon: number,
-  transitTz: TimeZoneOptions
-): Promise<PlanetPosition | null> {
-  const date = new Date(ms);
-  const utc = await toUtcDate(date, transitLat, transitLon, transitTz);
-
-  // Use single-planet calculation when possible (much cheaper than full ephemeris)
-  const planetId = NAME_TO_PLANET[transitKey];
-  if (planetId != null) {
-    try {
-      return calculateSinglePlanetPosition(utc, planetId);
-    } catch {
-      return null;
-    }
-  }
-
-  // Fallback for non-standard names (shouldn't happen in practice)
-  const positions = await calculatePlanetaryPositions(utc);
-  if (!positions) return null;
-  return findPlanetByName(positions, transitKey) ?? null;
-}
-
-async function binarySearchPerfection(
-  transitKey: string,
-  natalKey: string,
-  spec: AspectSpec,
-  startMs: number,
-  endMs: number,
-  natalPoint: TransitAspectPoint,
-  transitLat: number,
-  transitLon: number,
-  transitTz?: TimeZoneOptions
-): Promise<AspectPerfection | null> {
-  const tz = transitTz ?? { autoTimeZone: true };
-  const maxIterations = 30;
-
-  // Ternary search: find the time that minimizes the orb (unimodal function)
-  let lo = startMs;
-  let hi = endMs;
-
-  for (let i = 0; i < maxIterations; i++) {
-    if (hi - lo < 60000) break; // < 1 minute precision
-
-    const m1 = lo + Math.floor((hi - lo) / 3);
-    const m2 = hi - Math.floor((hi - lo) / 3);
-
-    const pos1 = await getTransitLongitudeAt(m1, transitKey, transitLat, transitLon, tz);
-    const pos2 = await getTransitLongitudeAt(m2, transitKey, transitLat, transitLon, tz);
-    if (!pos1 || !pos2) break;
-
-    const orb1 = computeOrbForAspect(pos1.longitude, natalPoint.longitude, spec.angle);
-    const orb2 = computeOrbForAspect(pos2.longitude, natalPoint.longitude, spec.angle);
-
-    if (orb1 < orb2) {
-      hi = m2;
-    } else {
-      lo = m1;
-    }
-  }
-
-  // Final evaluation at converged point
-  const finalMs = Math.floor((lo + hi) / 2);
-  const finalPos = await getTransitLongitudeAt(finalMs, transitKey, transitLat, transitLon, tz);
-  if (!finalPos) return null;
-
-  const finalOrb = computeOrbForAspect(finalPos.longitude, natalPoint.longitude, spec.angle);
-
-  // Reject near-miss local minima that never got close to exact
-  if (finalOrb > spec.orb) return null;
-
-  return {
-    transitPlanet: transitKey,
-    natalPlanet: natalKey,
-    aspect: spec.name,
-    exactDate: new Date(finalMs),
-    exactOrb: finalOrb,
-    retrograde: (finalPos.longitudeSpeed ?? 0) < 0,
-    category: SLOW_PLANETS.has(transitKey) ? "slow" : "fast",
-  };
-}
-
-function findPlanetByName(
-  positions: Record<string, PlanetPosition>,
-  name: string
-): PlanetPosition | undefined {
-  for (const [planetId, pos] of Object.entries(positions)) {
-    const id = planetId as unknown as Planet;
-    if (PLANET_AND_NODE_NAMES[id].toLowerCase() === name) return pos;
-  }
-  return undefined;
+  return result;
 }
 
 // ── Solar Return ─────────────────────────────────────────────────────────
 
 export interface SolarReturnOptions {
   natal: BirthChartOptions;
+  /**
+   * Which return: the calendar year of the natal LOCAL civil birthday. The solved return is the one
+   * whose instant is nearest the UTC instant of that anniversary (the natal local civil date and
+   * clock time moved to `year`, expressed with the natal zone's UTC offset). Consequently the
+   * returned UTC instant can fall on Dec 31 of `year - 1` or Jan 1 of `year + 1` for births near
+   * a year boundary or in extreme UTC offsets, but it is never the return of a neighbouring year.
+   * For Feb 29 births in non-leap years the anniversary is Mar 1.
+   */
   year: number;
   solarReturnLatitude?: number;
   solarReturnLongitude?: number;
   solarReturnHouseSystem?: HouseSystem;
+  /** Opt-in recorded house-system substitute for the return chart (defaults to `natal.houseSystemFallback`). */
+  solarReturnHouseSystemFallback?: HouseSystemFallback;
+  /** Final bracket width of the solved return instant, in seconds (default 0.001). */
+  returnPrecisionSeconds?: number;
+  /** Max accepted angular residual of the return, in degrees (default 1e-6). */
+  residualToleranceDegrees?: number;
 }
 
 export interface SolarReturnChart {
   natalChart: BirthChart;
+  /** Cast at the solved root's exact Julian Day (no sub-second truncation), so its Sun equals the natal Sun to ~1e-9 degrees. */
   solarReturnChart: BirthChart;
+  /** Verified UTC instant at which the Sun reaches its natal longitude. */
   exactReturnDate: Date;
   natalSunLongitude: number;
   year: number;
+  /** Julian Day (UT) of the solved return. */
+  exactReturnJd?: number;
+  /** Angular residual (degrees) of the Sun against the natal longitude at `exactReturnDate`'s solved root. */
+  residualDegrees?: number;
+  /** Final bracket width and tolerance, iterations, direction and coverage of the root search. */
+  solver?: {
+    bracketWidthSeconds: number;
+    timeToleranceSeconds: number;
+    iterations: number;
+    direction: RootDirection;
+    coverage: RootSearchCoverage;
+    method: RootSolverMethodMetadata;
+  };
 }
 
-/**
- * Get the Sun's ecliptic longitude at a given UTC millisecond timestamp.
- */
-async function getSunLongitudeAtMs(ms: number): Promise<number> {
-  const positions = await calculatePlanetaryPositions(new Date(ms));
-  const sun = findPlanetByName(positions, "sun");
-  if (!sun) throw new Error("Failed to compute Sun position");
-  return sun.longitude;
-}
+/** Half-widths (days) tried in turn around the anniversary until a crossing is bracketed. */
+const SOLAR_RETURN_WINDOW_HALF_WIDTHS_DAYS = [2, 4, 8];
 
 /**
- * Signed angular delta in (-180, 180].
- * Positive means `current` is ahead of `target` (Sun has passed the return point).
- */
-function signedAngularDelta(current: number, target: number): number {
-  let d = normalizeAngle(current - target);
-  if (d > 180) d -= 360;
-  return d;
-}
-
-/**
- * Calculate a Solar Return chart — the moment the transiting Sun returns
- * to its natal longitude in the given year.
+ * Calculate a Solar Return chart: the moment the transiting Sun returns to its natal longitude
+ * in the given `year` (see {@link SolarReturnOptions.year} for the exact convention).
+ *
+ * The search is centred on the natal birth instant moved to `year` (anchored on the natal UTC
+ * instant, not on a UTC-noon calendar date), widened and retried if no crossing is bracketed.
  */
 export async function getSolarReturnChart(
   options: SolarReturnOptions
 ): Promise<SolarReturnChart> {
-  // 1. Compute natal chart to get natal Sun longitude
+  // 1. Compute natal chart to get natal Sun longitude and the natal UTC instant
   const natalChart = await getBirthChart(options.natal);
   const natalSunLongitude = natalChart.planets.sun.longitude;
 
-  // 2. Build search window: natal birthday in target year ± 2 days
-  const natalDate = getCivilMonthDay(options.natal.date);
-  const approxReturn = new Date(Date.UTC(
-    options.year,
-    natalDate.monthIndex,
-    natalDate.day,
-    12, 0, 0
-  ));
-  let lo = approxReturn.getTime() - 2 * 86400000;
-  let hi = approxReturn.getTime() + 2 * 86400000;
+  // 2. Anniversary of the natal local civil moment in the target year, as a UTC instant.
+  //    offset = natal UTC instant - natal local wall clock read as UTC (the natal zone's offset).
+  const localParts = options.natal.date instanceof Date
+    ? {
+        year: options.natal.date.getFullYear(),
+        month: options.natal.date.getMonth() + 1,
+        day: options.natal.date.getDate(),
+        hour: options.natal.date.getHours(),
+        minute: options.natal.date.getMinutes(),
+        second: options.natal.date.getSeconds(),
+      }
+    : options.natal.date;
+  const naiveNatalMs = Date.UTC(
+    localParts.year, localParts.month - 1, localParts.day,
+    localParts.hour ?? 0, localParts.minute ?? 0, localParts.second ?? 0
+  );
+  const natalOffsetMs = natalChart.dateUtc.getTime() - naiveNatalMs;
+  const anniversary = new Date(
+    Date.UTC(
+      options.year, localParts.month - 1, localParts.day,
+      localParts.hour ?? 0, localParts.minute ?? 0, localParts.second ?? 0
+    ) + natalOffsetMs
+  );
+  const approxJd = dateToJd(anniversary);
 
-  // 3. Binary search (max 30 iterations, converge to < 60s)
-  for (let i = 0; i < 30; i++) {
-    if (hi - lo < 60000) break;
-
-    const mid = Math.floor((lo + hi) / 2);
-    const sunLon = await getSunLongitudeAtMs(mid);
-    const delta = signedAngularDelta(sunLon, natalSunLongitude);
-
-    if (delta < 0) {
-      // Sun hasn't arrived yet → search forward
-      lo = mid;
-    } else {
-      // Sun has passed → search backward
-      hi = mid;
-    }
+  // 3. Signed-angle root search (verified residual, configurable precision), widening if needed
+  let search: ReturnType<typeof findPlanetaryReturns> | undefined;
+  for (const halfWidth of SOLAR_RETURN_WINDOW_HALF_WIDTHS_DAYS) {
+    search = findPlanetaryReturns({
+      body: Planet.SUN,
+      natalLongitude: natalSunLongitude,
+      from: new Date(anniversary.getTime() - halfWidth * 86400000),
+      to: new Date(anniversary.getTime() + halfWidth * 86400000),
+      stepDays: 0.5,
+      timeToleranceSeconds: options.returnPrecisionSeconds,
+      residualToleranceDegrees: options.residualToleranceDegrees,
+    });
+    if (search.crossings.length > 0) break;
   }
+  if (!search || search.crossings.length === 0) {
+    throw new Error("Failed to locate the solar return within the search window");
+  }
+  const root = search.crossings.reduce((best, c) =>
+    Math.abs(c.jd - approxJd) < Math.abs(best.jd - approxJd) ? c : best
+  );
+  const exactReturnDate = root.instant;
 
-  const exactMs = Math.floor((lo + hi) / 2);
-  const exactReturnDate = new Date(exactMs);
-
-  // 4. Cast full BirthChart at converged timestamp using SR location
-  const solarReturnChart = await getBirthChart({
-    date: exactReturnDate,
-    latitude: options.solarReturnLatitude ?? options.natal.latitude,
-    longitude: options.solarReturnLongitude ?? options.natal.longitude,
+  // 4. Cast the full chart at the solved root's exact Julian Day (UT, no time-zone handling and
+  //    no millisecond truncation), using the SR location.
+  const srLatitude = options.solarReturnLatitude ?? options.natal.latitude;
+  const srLongitude = options.solarReturnLongitude ?? options.natal.longitude;
+  validateInputs({ date: exactReturnDate, latitude: srLatitude, longitude: srLongitude });
+  const solarReturnChart = getChartAtJulianDay({
+    julianDayUt: root.jd,
+    latitude: srLatitude,
+    longitude: srLongitude,
     houseSystem: options.solarReturnHouseSystem ?? options.natal.houseSystem,
-    // Always treatAsUTC: the binary search converged on a UTC millisecond timestamp.
-    // Passing a caller timezone here would re-interpret the already-UTC instant as local,
-    // shifting planetary positions by hours.
-    timeZoneSettings: { treatAsUTC: true },
+    houseSystemFallback: options.solarReturnHouseSystemFallback ?? options.natal.houseSystemFallback,
   });
 
   return {
@@ -1043,6 +1287,16 @@ export async function getSolarReturnChart(
     exactReturnDate,
     natalSunLongitude,
     year: options.year,
+    exactReturnJd: root.jd,
+    residualDegrees: root.residualDegrees,
+    solver: {
+      bracketWidthSeconds: root.bracketWidthSeconds,
+      timeToleranceSeconds: root.timeToleranceSeconds,
+      iterations: root.iterations,
+      direction: root.direction,
+      coverage: search.coverage,
+      method: search.method,
+    },
   };
 }
 

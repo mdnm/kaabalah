@@ -1,7 +1,6 @@
 /**
  * Integration with the Swiss Ephemeris WebAssembly module
  */
-import wasmPathNode from "../../wasm/build/swisseph.node.wasm?url";
 import wasmPathWeb from "../../wasm/build/swisseph.web.wasm?url";
 import type { SwissEphModule, SwissEphModuleFactory } from "../../wasm/src/types";
 
@@ -12,6 +11,7 @@ import type { SwissEphModule, SwissEphModuleFactory } from "../../wasm/src/types
 // Import from the actual WASM wrapper
 import {
   type AzaltResult,
+  type CalculatePositionOptions,
   CalcFlag,
   Houses,
   HouseSystem,
@@ -20,13 +20,32 @@ import {
   Planet,
   PLANET_AND_NODE_NAMES,
   PlanetPosition,
+  type PlanetPositionDetailed,
   RiseTransitFlag,
   SwissEph,
+  SwissEphError,
+  SwissEphEphemerisMismatchError,
+  type SwissEphErrorCode,
+  type SwissEphemerisKind,
   VirtualNodes,
+  ephemerisFromFlags,
 } from "../../wasm/src/swisseph";
 
-// We'll use this singleton pattern to manage the Swiss Ephemeris instance
+// We'll use this singleton pattern to manage the Swiss Ephemeris instance.
+//
+// MUTABLE GLOBAL SWISS STATE (shared by every caller of this process-wide instance):
+//   - sidereal mode   (swe_set_sid_mode)  default Fagan/Bradley = 0
+//   - topocentric     (swe_set_topo)      only used when CalcFlag.TOPOCTR is passed
+//   - ephemeris path  (swe_set_ephe_path) set once during getSwissEph()
+// The tropical public helpers in this file never touch the first two. Any helper that
+// needs them must use withSwissEphState() (or Jyotish's withSiderealMode), which set,
+// run a SYNCHRONOUS callback and restore the defaults before returning, so concurrent
+// async callers can never observe each other's mode (JS is single threaded and the
+// callback cannot yield).
 let swissEph: SwissEph | null = null;
+let swissEphInitPromise: Promise<void> | null = null;
+let swissEphRuntimeInfo: SwissEphRuntimeRecord | null = null;
+let swissEphStateDepth = 0;
 
 const DEFAULT_FLAGS = CalcFlag.SWISS_EPH | CalcFlag.SPEED;
 export const REQUIRED_EPHE_FILES = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"] as const;
@@ -66,6 +85,113 @@ interface PathModuleLike {
   join(...paths: string[]): string;
 }
 
+interface NodeBuiltins {
+  fs: NodeFsLike & { existsSync(path: string): boolean };
+  path: PathModuleLike & { resolve(...paths: string[]): string };
+  url: { pathToFileURL(path: string): { href: string } };
+}
+
+// Dynamic import through a variable specifier: bundlers (webpack/vite/esbuild) cannot
+// follow it, so browser bundles never try to resolve node built-ins, while native Node
+// ESM and CJS both execute it natively.
+function importNodeBuiltin(specifier: string): Promise<any> {
+  return import(/* @vite-ignore */ /* webpackIgnore: true */ specifier);
+}
+
+let nodeBuiltins: NodeBuiltins | null = null;
+
+/**
+ * Load fs/path/url in a format-safe way. Native ESM has no `require`, so Node built-ins
+ * are obtained with dynamic import (works in both ESM and CJS output).
+ */
+export async function loadSwissEphNodeBuiltins(): Promise<void> {
+  if (nodeBuiltins) {
+    return;
+  }
+  const [fs, path, url] = await Promise.all([
+    importNodeBuiltin("node:fs"),
+    importNodeBuiltin("node:path"),
+    importNodeBuiltin("node:url"),
+  ]);
+  nodeBuiltins = { fs: fs.default ?? fs, path: path.default ?? path, url: url.default ?? url };
+}
+
+function getNodeBuiltinsSync(): NodeBuiltins {
+  if (nodeBuiltins) {
+    return nodeBuiltins;
+  }
+
+  const getBuiltin =
+    typeof process !== "undefined"
+      ? (process as unknown as { getBuiltinModule?: (id: string) => any }).getBuiltinModule
+      : undefined;
+  if (typeof getBuiltin === "function") {
+    const get = getBuiltin.bind(process);
+    nodeBuiltins = { fs: get("node:fs"), path: get("node:path"), url: get("node:url") };
+    return nodeBuiltins;
+  }
+
+  if (typeof require === "function") {
+    try {
+      // Real `require` in CJS/Vitest; in native ESM esbuild's shim throws and we fall through.
+      nodeBuiltins = {
+        fs: require("fs") as NodeBuiltins["fs"],
+        path: require("path") as NodeBuiltins["path"],
+        url: require("url") as NodeBuiltins["url"],
+      };
+      return nodeBuiltins;
+    } catch {
+      // fall through to the typed error below
+    }
+  }
+
+  throw new SwissEphError(
+    "SWISSEPH_NODE_BUILTINS_UNAVAILABLE",
+    "Node built-ins are not loaded yet. In native ESM on Node < 20.16, call `await getSwissEph()` (or `await loadSwissEphNodeBuiltins()`) before using the synchronous Swiss Ephemeris path helpers."
+  );
+}
+
+/**
+ * Directory of the module that is executing, for both module formats:
+ * `import.meta.url` in native ESM (and Vite/Vitest), `__dirname` in the CJS bundle
+ * (tsup leaves `import.meta` empty there). Returns undefined when neither is available
+ * (for example a browser bundle), in which case only explicit/bundled browser paths are used.
+ */
+export function getSwissEphModuleDirectory(
+  options: { moduleUrl?: string | null; cjsDirname?: string | null } = {}
+): string | undefined {
+  const moduleUrl = options.moduleUrl !== undefined ? options.moduleUrl : readImportMetaUrl();
+  if (moduleUrl && moduleUrl.startsWith("file:")) {
+    try {
+      let pathname = decodeURIComponent(new URL(".", moduleUrl).pathname);
+      if (/^\/[A-Za-z]:/.test(pathname)) {
+        pathname = pathname.slice(1);
+      }
+      return pathname.length > 1 ? pathname.replace(/[\\/]+$/, "") : pathname;
+    } catch {
+      // fall through to the CJS directory
+    }
+  }
+
+  const cjsDirname =
+    options.cjsDirname !== undefined
+      ? options.cjsDirname
+      : typeof __dirname !== "undefined"
+        ? __dirname
+        : null;
+  return cjsDirname ?? undefined;
+}
+
+function readImportMetaUrl(): string | null {
+  try {
+    return typeof import.meta !== "undefined" && typeof import.meta.url === "string"
+      ? import.meta.url
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 interface ResolveNodeEphemerisPathOptions {
   nodeFs?: NodeFsLike;
   pathModule?: PathModuleLike;
@@ -96,6 +222,8 @@ interface ResolveSwissEphRuntimeAssetsInternalOptions
   isBrowser?: boolean;
   existsSync?: (path: string) => boolean;
   nodePathResolve?: (...paths: string[]) => string;
+  /** Override for the executing module's directory (tests inject fakes here). */
+  moduleDirectory?: string;
   bundledNodeWasmPath?: string;
   bundledNodeEphePath?: string;
   bundledBrowserWasmPath?: string;
@@ -151,20 +279,32 @@ function getBundledNodeSwissEphAssets(
   }
 
   const resolvePath =
-    options.nodePathResolve ??
-    ((...paths: string[]) => (require("path") as typeof import("path")).resolve(...paths));
+    options.nodePathResolve ?? ((...paths: string[]) => getNodeBuiltinsSync().path.resolve(...paths));
+  const moduleDirectory = options.moduleDirectory ?? getSwissEphModuleDirectory();
 
+  if (!moduleDirectory) {
+    return {
+      wasmPaths: [options.bundledNodeWasmPath].filter((value): value is string => typeof value === "string"),
+      ephePaths: [options.bundledNodeEphePath].filter((value): value is string => typeof value === "string"),
+    };
+  }
+
+  // Layouts covered (module directory -> assets):
+  //   dist/<chunk>.{js,mjs}        -> dist/swisseph.node.wasm, ../wasm/build, ../ephe
+  //   dist/<entry>/index.{js,mjs}  -> ../swisseph.node.wasm, ../../wasm/build, ../../ephe
+  //   src/astrology/swisseph.ts    -> ../../wasm/build, ../../ephe
   return {
     wasmPaths: [
       options.bundledNodeWasmPath,
-      resolvePath(__dirname, wasmPathNode),
-      resolvePath(__dirname, "../../wasm/build/swisseph.node.wasm"),
-      resolvePath(__dirname, "../wasm/build/swisseph.node.wasm")
+      resolvePath(moduleDirectory, "swisseph.node.wasm"),
+      resolvePath(moduleDirectory, "../wasm/build/swisseph.node.wasm"),
+      resolvePath(moduleDirectory, "../swisseph.node.wasm"),
+      resolvePath(moduleDirectory, "../../wasm/build/swisseph.node.wasm")
     ].filter((value): value is string => typeof value === "string"),
     ephePaths: [
       options.bundledNodeEphePath,
-      resolvePath(__dirname, "../../ephe"),
-      resolvePath(__dirname, "../ephe")
+      resolvePath(moduleDirectory, "../ephe"),
+      resolvePath(moduleDirectory, "../../ephe")
     ].filter((value): value is string => typeof value === "string")
   };
 }
@@ -196,10 +336,12 @@ function resolveBundledRuntimeAssetPath(
     }
   }
 
-  throw new Error(
+  throw new SwissEphError(
+    "SWISSEPH_ASSET_NOT_FOUND",
     `Unable to resolve Swiss Ephemeris ${label}. Bundled paths checked: ${formatCandidatePaths(
       bundledPaths
-    )}.`
+    )}.`,
+    { label, checked: bundledPaths }
   );
 }
 
@@ -213,8 +355,10 @@ function resolveRuntimeAssetPath(
 ): { path: string; source: RuntimeAssetSource } {
   if (explicitPath) {
     if (!existsSync(explicitPath)) {
-      throw new Error(
-        `Swiss Ephemeris ${label} override does not exist: "${explicitPath}".`
+      throw new SwissEphError(
+        "SWISSEPH_ASSET_NOT_FOUND",
+        `Swiss Ephemeris ${label} override does not exist: "${explicitPath}".`,
+        { label, source: "explicit", path: explicitPath }
       );
     }
 
@@ -226,8 +370,10 @@ function resolveRuntimeAssetPath(
 
   if (envPath) {
     if (!existsSync(envPath)) {
-      throw new Error(
-        `Swiss Ephemeris ${label} from environment does not exist: "${envPath}".`
+      throw new SwissEphError(
+        "SWISSEPH_ASSET_NOT_FOUND",
+        `Swiss Ephemeris ${label} from environment does not exist: "${envPath}".`,
+        { label, source: "env", path: envPath }
       );
     }
 
@@ -249,10 +395,12 @@ function resolveRuntimeAssetPath(
   try {
     return resolveBundledRuntimeAssetPath(label, bundledPaths, existsSync);
   } catch (error) {
-    throw new Error(
+    throw new SwissEphError(
+      "SWISSEPH_ASSET_NOT_FOUND",
       `Unable to resolve Swiss Ephemeris ${label}. Checked candidate paths: ${formatCandidatePaths(
         candidatePaths
-      )}. ${toError(error).message}`
+      )}. ${toError(error).message}`,
+      { label, candidates: candidatePaths, bundled: bundledPaths }
     );
   }
 }
@@ -275,9 +423,7 @@ function resolveSwissEphRuntimeAssetsInternal(
 
   const env = getRuntimeEnv(options.env);
   const existsSync =
-    options.existsSync ??
-    ((path: string) =>
-      (require("fs") as typeof import("fs")).existsSync(path));
+    options.existsSync ?? ((path: string) => getNodeBuiltinsSync().fs.existsSync(path));
   const bundledAssets = getBundledNodeSwissEphAssets(options);
   const envWasmPath = firstDefinedEnvValue(env, SWISS_EPH_RUNTIME_WASM_ENV_KEYS);
   const envEphePath = firstDefinedEnvValue(env, SWISS_EPH_RUNTIME_EPHE_ENV_KEYS);
@@ -308,6 +454,31 @@ function resolveSwissEphRuntimeAssetsInternal(
 
 export function resolveSwissEphRuntimeAssets(
   options: ResolveSwissEphRuntimeAssetsOptions = {}
+): SwissEphRuntimeAssetPaths {
+  return resolveSwissEphRuntimeAssetsInternal(options);
+}
+
+/**
+ * Async variant that first loads Node built-ins, so it also works synchronously-unsafe
+ * environments (native ESM on Node < 20.16).
+ */
+export async function resolveSwissEphRuntimeAssetsAsync(
+  options: ResolveSwissEphRuntimeAssetsOptions = {}
+): Promise<SwissEphRuntimeAssetPaths> {
+  if (typeof window === "undefined") {
+    await loadSwissEphNodeBuiltins();
+  }
+  return resolveSwissEphRuntimeAssetsInternal(options);
+}
+
+/** @internal test seam: resolver with injected module directory / fs / path / browser flag. */
+export function resolveSwissEphRuntimeAssetsWithOverrides(
+  options: ResolveSwissEphRuntimeAssetsOptions & {
+    moduleDirectory?: string;
+    existsSync?: (path: string) => boolean;
+    nodePathResolve?: (...paths: string[]) => string;
+    isBrowser?: boolean;
+  }
 ): SwissEphRuntimeAssetPaths {
   return resolveSwissEphRuntimeAssetsInternal(options);
 }
@@ -485,8 +656,8 @@ export function resolveNodeEphemerisPath(
   const requiredFiles = options.requiredFiles ?? REQUIRED_EPHE_FILES;
   const mountPoint = options.mountPoint ?? NODE_EPHE_MOUNT_POINT;
   const memfsPath = options.memfsPath ?? NODE_EPHE_MEMFS_PATH;
-  const nodeFs = options.nodeFs ?? (require("fs") as NodeFsLike);
-  const pathModule = options.pathModule ?? (require("path") as PathModuleLike);
+  const nodeFs = options.nodeFs ?? getNodeBuiltinsSync().fs;
+  const pathModule = options.pathModule ?? getNodeBuiltinsSync().path;
 
   let mountAttempted = false;
   let mountCheck: VirtualEphemerisCheck | null = null;
@@ -536,7 +707,8 @@ export function resolveNodeEphemerisPath(
     return { path: finalEphePath, strategy: "host-path" };
   }
 
-  throw new Error(
+  throw new SwissEphError(
+    "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE",
     buildEphemerisResolutionError(finalEphePath, requiredFiles, {
       mountAttempted,
       mountPoint,
@@ -546,95 +718,329 @@ export function resolveNodeEphemerisPath(
       memfsPath,
       memfsCheck,
       hostReadError,
-    })
+    }),
+    { ephePath: finalEphePath, requiredFiles: [...requiredFiles] }
   );
 }
 
+export type SwissEphMountMode = "nodefs-mount" | "host-path" | "memfs-copy" | "browser-memfs";
+
+interface SwissEphRuntimeRecord {
+  runtime: "node" | "browser";
+  moduleDirectory: string | null;
+  wasmPath: string;
+  wasmPathSource: RuntimeAssetSource;
+  ephePath: string;
+  ephePathSource: RuntimeAssetSource;
+  mountMode: SwissEphMountMode;
+  /** Path handed to swe_set_ephe_path inside the module's virtual file system. */
+  swissEphePath: string;
+  nodeGlue: "bundled" | "external-file" | "browser";
+  fs: SwissEphModule["FS"];
+  probe: { ephemeris: SwissEphemerisKind | null; returnedFlags: number; warning: string | null };
+}
+
+export interface SwissEphInfo {
+  initialized: boolean;
+  strictEphemeris: boolean;
+  runtime: "node" | "browser" | null;
+  moduleDirectory: string | null;
+  wasmPath: string | null;
+  wasmPathSource: RuntimeAssetSource | null;
+  /** Host (or URL) location the ephemeris files were loaded from. */
+  ephePath: string | null;
+  ephePathSource: RuntimeAssetSource | null;
+  /** How the files were made visible to Swiss Ephemeris. */
+  mountMode: SwissEphMountMode | null;
+  /** Path Swiss Ephemeris searches (inside the wasm virtual file system). */
+  swissEphePath: string | null;
+  /** How the Emscripten glue was loaded (native ESM loads the shipped CJS file by URL). */
+  nodeGlue: "bundled" | "external-file" | "browser" | null;
+  /** Swiss Ephemeris version string; null because the shipped wasm build does not export swe_version. */
+  swissEphemerisVersion: string | null;
+  /** Required ephemeris files and whether each is visible to Swiss Ephemeris. */
+  ephemerisFiles: { required: string[]; found: string[]; missing: string[] };
+  /** Documented coverage of the shipped files (Swiss file naming: *_18.se1 = 1800-2399 CE). */
+  shippedCoverage: { fromYear: number; toYearExclusive: number; note: string };
+  /** Result of the init-time probe calculation (Sun at J2000, Swiss files requested). */
+  probe: SwissEphRuntimeRecord["probe"] | null;
+}
+
+function emptySwissEphInfo(): SwissEphInfo {
+  return {
+    initialized: false,
+    strictEphemeris: false,
+    runtime: null,
+    moduleDirectory: null,
+    wasmPath: null,
+    wasmPathSource: null,
+    ephePath: null,
+    ephePathSource: null,
+    mountMode: null,
+    swissEphePath: null,
+    nodeGlue: null,
+    swissEphemerisVersion: null,
+    ephemerisFiles: { required: [...REQUIRED_EPHE_FILES], found: [], missing: [...REQUIRED_EPHE_FILES] },
+    shippedCoverage: {
+      fromYear: 1800,
+      toYearExclusive: 2400,
+      note: "Outside this range Swiss Ephemeris falls back to Moshier unless strictEphemeris is enabled.",
+    },
+    probe: null,
+  };
+}
+
 /**
- * Initializes and returns the Swiss Ephemeris instance.
+ * Report what the engine actually resolved: asset paths and where they came from, how the
+ * ephemeris files are mounted, which files are visible, the Swiss version (if exposed),
+ * and the init-time probe. Safe to call before initialization (reports initialized: false).
+ */
+export function getSwissEphInfo(): SwissEphInfo {
+  const info = emptySwissEphInfo();
+  if (!swissEph || !swissEphRuntimeInfo) {
+    return info;
+  }
+
+  const record = swissEphRuntimeInfo;
+  const check = inspectVirtualEphemerisPath(
+    record.fs,
+    record.swissEphePath,
+    REQUIRED_EPHE_FILES
+  );
+  const missing = check.missingFiles;
+
+  return {
+    ...info,
+    initialized: true,
+    strictEphemeris: swissEph.strictEphemeris,
+    runtime: record.runtime,
+    moduleDirectory: record.moduleDirectory,
+    wasmPath: record.wasmPath,
+    wasmPathSource: record.wasmPathSource,
+    ephePath: record.ephePath,
+    ephePathSource: record.ephePathSource,
+    mountMode: record.mountMode,
+    swissEphePath: record.swissEphePath,
+    nodeGlue: record.nodeGlue,
+    swissEphemerisVersion: swissEph.getVersion(),
+    ephemerisFiles: {
+      required: [...REQUIRED_EPHE_FILES],
+      found: REQUIRED_EPHE_FILES.filter((file) => !missing.includes(file)),
+      missing,
+    },
+    probe: record.probe,
+  };
+}
+
+/** Enable/disable process-wide strict mode (throw instead of returning substituted Moshier output). */
+export function setSwissEphStrictEphemeris(enabled: boolean): void {
+  checkInitialization();
+  swissEph!.strictEphemeris = enabled;
+}
+
+export interface GetSwissEphOptions {
+  ephePath?: string;
+  wasmPath?: string;
+  onRuntimeNotice?: (message: string) => void;
+  /**
+   * When true, any calculation for which Swiss Ephemeris silently substitutes another
+   * ephemeris (e.g. Moshier outside the installed .se1 range) throws a
+   * SwissEphEphemerisMismatchError. Applies to the shared instance, also when it is
+   * already initialized.
+   */
+  strictEphemeris?: boolean;
+}
+
+/**
+ * Locate and load the Emscripten glue for Node. CJS (and Vitest) use the bundled import;
+ * the native-ESM build stubs the bundled copy out at build time (it is CommonJS code that
+ * needs `require`/`__dirname`) and instead imports the shipped CJS file by URL, which Node
+ * evaluates natively.
+ */
+async function loadNodeModuleFactory(
+  moduleDirectory: string | undefined
+): Promise<{ factory: SwissEphModuleFactory; glue: "bundled" | "external-file" }> {
+  const bundled = (await import("../../wasm/build/swisseph.node.js")).default as unknown as
+    | SwissEphModuleFactory
+    | undefined;
+  if (typeof bundled === "function") {
+    return { factory: bundled, glue: "bundled" };
+  }
+
+  await loadSwissEphNodeBuiltins();
+  const { fs, path, url } = nodeBuiltins!;
+  const candidates = moduleDirectory
+    ? [
+        path.resolve(moduleDirectory, "swisseph.node.js"),
+        path.resolve(moduleDirectory, "../swisseph.node.js"),
+        path.resolve(moduleDirectory, "../wasm/build/swisseph.node.js"),
+        path.resolve(moduleDirectory, "../../wasm/build/swisseph.node.js"),
+      ]
+    : [];
+  const found = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!found) {
+    throw new SwissEphError(
+      "SWISSEPH_ASSET_NOT_FOUND",
+      `Unable to locate the Swiss Ephemeris runtime (swisseph.node.js). Checked: ${formatCandidatePaths(candidates)}.`,
+      { label: "runtime", checked: candidates }
+    );
+  }
+  const mod = await importNodeBuiltin(url.pathToFileURL(found).href);
+  const factory = (mod.default ?? mod) as SwissEphModuleFactory;
+  return { factory, glue: "external-file" };
+}
+
+async function initializeSwissEph(options: GetSwissEphOptions): Promise<void> {
+  const notice = options.onRuntimeNotice ?? emitRuntimeNotice;
+  const isBrowser = typeof window !== "undefined";
+  if (!isBrowser) {
+    await loadSwissEphNodeBuiltins();
+  }
+
+  const runtimeAssets = resolveSwissEphRuntimeAssets({
+    wasmPath: options.wasmPath,
+    ephePath: options.ephePath
+  });
+  const finalWasmPath = runtimeAssets.wasmPath;
+  const moduleDirectory = isBrowser ? undefined : getSwissEphModuleDirectory();
+
+  let moduleFactory: SwissEphModuleFactory;
+  let nodeGlue: SwissEphRuntimeRecord["nodeGlue"] = "browser";
+  if (isBrowser) {
+    moduleFactory = (await import("../../wasm/build/swisseph.web.js")).default as unknown as SwissEphModuleFactory;
+  } else {
+    const loaded = await loadNodeModuleFactory(moduleDirectory);
+    moduleFactory = loaded.factory;
+    nodeGlue = loaded.glue;
+  }
+
+  const module = await moduleFactory({
+    locateFile: () => finalWasmPath,
+  });
+
+  const instance = new SwissEph(module);
+  const finalEphePath = runtimeAssets.ephePath;
+  let mountMode: SwissEphMountMode;
+  let swissEphePath: string;
+
+  if (isBrowser) {
+    // In the browser, fetch and write ephemeris files into MEMFS
+    const epheFsPath = "/ephe";
+    try {
+      module.FS?.mkdir?.(epheFsPath);
+    } catch {
+      // ignore if exists
+    }
+    await Promise.all(
+      REQUIRED_EPHE_FILES.map(async (name) => {
+        const url = `${finalEphePath}/${name}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new SwissEphError(
+            "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE",
+            `Failed to fetch ephemeris file: ${url} (HTTP ${res.status}). Serve ${REQUIRED_EPHE_FILES.join(", ")} at "${finalEphePath}" or pass an explicit ephePath.`,
+            { url, status: res.status, ephePath: finalEphePath }
+          );
+        }
+        const buf = await res.arrayBuffer();
+        module.FS?.writeFile?.(`${epheFsPath}/${name}`, new Uint8Array(buf));
+      })
+    );
+    const browserCheck = inspectVirtualEphemerisPath(module.FS, epheFsPath, REQUIRED_EPHE_FILES);
+    if (browserCheck.missingFiles.length > 0) {
+      throw new SwissEphError(
+        "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE",
+        `Failed to materialize browser ephemeris files at "${epheFsPath}". Missing: ${browserCheck.missingFiles.join(", ")}.`,
+        { ephePath: epheFsPath, missing: browserCheck.missingFiles }
+      );
+    }
+    notice(`Setting ephemeris path to: ${epheFsPath}`);
+    instance.setEphemerisPath(epheFsPath);
+    mountMode = "browser-memfs";
+    swissEphePath = epheFsPath;
+  } else {
+    const resolution = resolveNodeEphemerisPath(module, finalEphePath);
+    if (resolution.strategy === "nodefs-mount") {
+      notice(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
+    } else if (resolution.strategy === "memfs-copy") {
+      notice(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
+    } else {
+      notice(`Setting ephemeris path to: ${resolution.path}`);
+    }
+    instance.setEphemerisPath(resolution.path);
+    mountMode = resolution.strategy === "nodefs-mount" ? "nodefs-mount" : resolution.strategy === "memfs-copy" ? "memfs-copy" : "host-path";
+    swissEphePath = resolution.path;
+  }
+
+  // Probe: prove Swiss Ephemeris really reads the .se1 files (a bad ephePath otherwise
+  // degrades silently to Moshier). J2000 sits inside every shipped file.
+  const probeJulianDay = 2451545.0;
+  const probe = (() => {
+    try {
+      return instance.calculatePlanetPositionDetailed(probeJulianDay, Planet.SUN, CalcFlag.SWISS_EPH, {
+        strictEphemeris: false,
+      });
+    } catch (error) {
+      throw new SwissEphError(
+        "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE",
+        `Swiss Ephemeris could not read the ephemeris files at "${swissEphePath}" (from "${finalEphePath}"): ${toError(error).message}`,
+        { ephePath: finalEphePath, swissEphePath }
+      );
+    }
+  })();
+  if (probe.substituted) {
+    throw new SwissEphError(
+      "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE",
+      `Swiss Ephemeris could not use the Swiss ephemeris files at "${swissEphePath}" (from "${finalEphePath}") and fell back to "${probe.ephemeris}". Pass an explicit ephePath that contains ${REQUIRED_EPHE_FILES.join(", ")}.${probe.warning ? ` Swiss Ephemeris said: ${probe.warning.trim()}` : ""}`,
+      { ephePath: finalEphePath, swissEphePath, warning: probe.warning }
+    );
+  }
+
+  instance.strictEphemeris = options.strictEphemeris === true;
+  swissEphRuntimeInfo = {
+    runtime: isBrowser ? "browser" : "node",
+    moduleDirectory: moduleDirectory ?? null,
+    wasmPath: finalWasmPath,
+    wasmPathSource: runtimeAssets.wasmPathSource,
+    ephePath: finalEphePath,
+    ephePathSource: runtimeAssets.ephePathSource,
+    mountMode,
+    swissEphePath,
+    nodeGlue,
+    fs: module.FS,
+    probe: { ephemeris: probe.ephemeris, returnedFlags: probe.returnedFlags, warning: probe.warning },
+  };
+  swissEph = instance;
+}
+
+/**
+ * Initializes the shared Swiss Ephemeris instance (idempotent; concurrent first calls share
+ * one initialization).
  * In a browser environment, assets are loaded relative to the script.
- * In Node.js, assets are loaded from the package's 'dist' directory.
+ * In Node.js, assets are resolved next to the running module (`import.meta.url` in native
+ * ESM, `__dirname` in CJS), so default initialization works from a packed install.
  * @param options - Optional overrides for asset paths.
  * @param options.ephePath - Path to the directory containing ephemeris data files.
  * @param options.wasmPath - Path to the `swisseph.wasm` file.
  * @param options.onRuntimeNotice - Optional sink for path setup notices; defaults to stderr.
+ * @param options.strictEphemeris - Throw when Swiss Ephemeris substitutes Moshier output.
+ * @throws SwissEphError with a stable `code` (asset not found, ephemeris files unavailable, ...).
  */
-export async function getSwissEph(
-  options: { ephePath?: string; wasmPath?: string; onRuntimeNotice?: (message: string) => void } = {}
-): Promise<void> {
+export async function getSwissEph(options: GetSwissEphOptions = {}): Promise<void> {
   if (swissEph) {
+    if (options.strictEphemeris !== undefined) {
+      swissEph.strictEphemeris = options.strictEphemeris;
+    }
     return;
   }
 
-  const notice = options.onRuntimeNotice ?? emitRuntimeNotice;
-  try {
-    const isBrowser = typeof window !== "undefined";
-    const runtimeAssets = resolveSwissEphRuntimeAssets({
-      wasmPath: options.wasmPath,
-      ephePath: options.ephePath
+  if (!swissEphInitPromise) {
+    swissEphInitPromise = initializeSwissEph(options).finally(() => {
+      swissEphInitPromise = null;
     });
-    const finalWasmPath = runtimeAssets.wasmPath;
-
-    const moduleFactory: SwissEphModuleFactory = isBrowser
-      ? (await import("../../wasm/build/swisseph.web.js")).default as unknown as SwissEphModuleFactory
-      : (await import("../../wasm/build/swisseph.node.js")).default as unknown as SwissEphModuleFactory;
-
-    const module = await moduleFactory({
-      locateFile: () => finalWasmPath,
-    });
-
-    const instance = new SwissEph(module);
-
-    const finalEphePath = runtimeAssets.ephePath;
-
-    if (isBrowser) {
-      // In the browser, synchronously fetch and write ephemeris files into MEMFS
-      const epheFsPath = "/ephe";
-      try {
-        module.FS?.mkdir?.(epheFsPath);
-      } catch {
-        // ignore if exists
-      }
-      const files = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"];
-      await Promise.all(
-        files.map(async (name) => {
-          const url = `${finalEphePath}/${name}`;
-          const res = await fetch(url);
-          if (!res.ok) {
-            throw new Error(`Failed to fetch ephemeris file: ${url}`);
-          }
-          const buf = await res.arrayBuffer();
-          module.FS?.writeFile?.(
-            `${epheFsPath}/${name}`,
-            new Uint8Array(buf)
-          );
-        })
-      );
-      const browserCheck = inspectVirtualEphemerisPath(module.FS, epheFsPath, REQUIRED_EPHE_FILES);
-      if (browserCheck.missingFiles.length > 0) {
-        throw new Error(
-          `Failed to materialize browser ephemeris files at "${epheFsPath}". Missing: ${browserCheck.missingFiles.join(", ")}.`
-        );
-      }
-      notice(`Setting ephemeris path to: ${epheFsPath}`);
-      instance.setEphemerisPath(epheFsPath);
-    } else {
-      const resolution = resolveNodeEphemerisPath(module, finalEphePath);
-      if (resolution.strategy === "nodefs-mount") {
-        notice(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
-      } else if (resolution.strategy === "memfs-copy") {
-        notice(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
-      } else {
-        notice(`Setting ephemeris path to: ${resolution.path}`);
-      }
-      instance.setEphemerisPath(resolution.path);
-    }
-
-    swissEph = instance;
-  } catch (error) {
-    console.error("Error initializing Swiss Ephemeris:", error);
-    throw error;
   }
+  // Errors propagate to every concurrent caller as typed errors; nothing is logged here.
+  await swissEphInitPromise;
 }
 
 /**
@@ -651,6 +1057,77 @@ export function calculateSinglePlanetPosition(
   checkInitialization();
   const julday = swissEph!.getJulianDay(date);
   return swissEph!.calculatePlanetPosition(julday, planet, DEFAULT_FLAGS);
+}
+
+export interface CalculatePlanetPositionDetailedOptions extends CalculatePositionOptions {
+  /** Swiss flags; defaults to SWISS_EPH | SPEED (the same as every other helper here). */
+  flags?: number;
+}
+
+/**
+ * Like calculateSinglePlanetPosition, but also reports provenance: the requested and
+ * returned Swiss flags and a derived `ephemeris` label ("swiss" | "moshier" | "jpl").
+ * `substituted` is true when Swiss Ephemeris returned a different ephemeris than requested
+ * (for example Moshier outside the installed .se1 range); with `strictEphemeris` that
+ * throws SwissEphEphemerisMismatchError instead.
+ */
+export function calculatePlanetPositionDetailed(
+  date: Date,
+  planet: Planet,
+  options: CalculatePlanetPositionDetailedOptions = {}
+): PlanetPositionDetailed {
+  checkInitialization();
+  const julday = swissEph!.getJulianDay(date);
+  return swissEph!.calculatePlanetPositionDetailed(julday, planet, options.flags ?? DEFAULT_FLAGS, {
+    strictEphemeris: options.strictEphemeris,
+  });
+}
+
+/**
+ * Run `fn` with Swiss global state (sidereal mode and/or topocentric observer) set, then
+ * restore the Swiss defaults (sidereal Fagan/Bradley = 0, topocentric 0/0/0) before
+ * returning, even if `fn` throws. The callback must be SYNCHRONOUS: because the state is
+ * process-wide, awaiting inside would let a concurrent caller observe it. A promise result
+ * and re-entrant use are rejected with SWISSEPH_STATE_MISUSE. Callers still opt in per call by
+ * adding CalcFlag.SIDEREAL / CalcFlag.TOPOCTR to the flags they pass.
+ */
+export function withSwissEphState<T>(
+  state: {
+    sidereal?: { mode: number; t0?: number; ayanT0?: number };
+    topocentric?: { longitude: number; latitude: number; altitudeMeters?: number };
+  },
+  fn: () => T
+): T {
+  checkInitialization();
+  if (swissEphStateDepth > 0) {
+    throw new SwissEphError("SWISSEPH_STATE_MISUSE", "withSwissEphState cannot be nested.");
+  }
+  swissEphStateDepth++;
+  try {
+    if (state.sidereal) {
+      swissEph!.setSiderealMode(state.sidereal.mode, state.sidereal.t0 ?? 0, state.sidereal.ayanT0 ?? 0);
+    }
+    if (state.topocentric) {
+      swissEph!.setTopocentric(
+        state.topocentric.longitude,
+        state.topocentric.latitude,
+        state.topocentric.altitudeMeters ?? 0
+      );
+    }
+    const result = fn();
+    if (result !== null && typeof result === "object" && typeof (result as { then?: unknown }).then === "function") {
+      throw new SwissEphError("SWISSEPH_STATE_MISUSE", "withSwissEphState callback must be synchronous.");
+    }
+    return result;
+  } finally {
+    if (state.sidereal) {
+      swissEph!.setSiderealMode(0, 0, 0);
+    }
+    if (state.topocentric) {
+      swissEph!.setTopocentric(0, 0, 0);
+    }
+    swissEphStateDepth--;
+  }
 }
 
 /**
@@ -688,6 +1165,16 @@ export function calculateEquatorialPosition(
 export function getJulianDay(date: Date): number {
   checkInitialization();
   return swissEph!.getJulianDay(date);
+}
+
+/**
+ * Millisecond-exact UT Julian Day for a Date (pure arithmetic; needs no initialised ephemeris).
+ * Unlike {@link getJulianDay} (whole seconds, kept unchanged for compatibility) this keeps the
+ * sub-second part, so it is the right coordinate for `calculateBodyAtJulianDay` /
+ * `calculateHousesAtJulianDay`. Equal to `getJulianDay` for whole-second instants (to float rounding).
+ */
+export function getJulianDayExact(date: Date): number {
+  return date.getTime() / 86_400_000 + 2440587.5;
 }
 
 /**
@@ -756,6 +1243,10 @@ export async function calculatePlanetaryPositions(
       try {
         positions[id] = swissEph!.calculatePlanetPosition(julday, id, flags);
       } catch (error) {
+        if (error instanceof SwissEphError) {
+          // Keep the typed error (code/details) instead of flattening it into a string.
+          throw error;
+        }
         throw new Error(
           `Failed to calculate position for ${PLANET_AND_NODE_NAMES[id]}: ${error}`
         );
@@ -764,7 +1255,6 @@ export async function calculatePlanetaryPositions(
 
     return positions;
   } catch (error) {
-    console.error("Error calculating planetary positions:", error);
     throw error;
   }
 }
@@ -797,7 +1287,7 @@ export async function calculateHouses(
       houseSystem
     );
   } catch (error) {
-    console.error("Error calculating houses:", error);
+    // Errors are rethrown unchanged; library code does not log.
     throw error;
   }
 }
@@ -818,7 +1308,6 @@ export async function calculateAsteroidPosition(
       DEFAULT_FLAGS
     );
   } catch (error) {
-    console.error("Error calculating asteroid:", error);
     throw error;
   }
 }
@@ -844,8 +1333,8 @@ export function closeSwissEph(): void {
     try {
       swissEph.close();
       swissEph = null;
+      swissEphRuntimeInfo = null;
     } catch (error) {
-      console.error("Error closing Swiss Ephemeris:", error);
       throw error;
     }
   }
@@ -853,7 +1342,8 @@ export function closeSwissEph(): void {
 
 function checkInitialization(): void {
   if (!swissEph) {
-    throw new Error(
+    throw new SwissEphError(
+      "SWISSEPH_NOT_INITIALIZED",
       "Swiss Ephemeris not initialized. Call getSwissEph() first."
     );
   }
@@ -861,6 +1351,12 @@ function checkInitialization(): void {
 
 // Re-export types and enums for convenience
 export {
+  ephemerisFromFlags,
+  SwissEphError,
+  SwissEphEphemerisMismatchError,
+  type PlanetPositionDetailed,
+  type SwissEphErrorCode,
+  type SwissEphemerisKind,
   type AzaltResult,
   CalcFlag,
   HouseSystem,
@@ -1050,4 +1546,84 @@ export async function toUtcDate(
   options: TimeZoneOptions = {}
 ): Promise<Date> {
   return localToUtcDate(local, latitude, longitude, options);
+}
+
+/**
+ * Low-level Julian-day primitives used by the Jyotish module.
+ *
+ * These are thin, synchronous wrappers over the initialised Swiss Ephemeris
+ * instance. They never change the library defaults used by the tropical APIs.
+ */
+
+/** Swiss Ephemeris pseudo-body index SE_ECL_NUT (true obliquity is returned in the first slot). */
+export const SWISS_ECL_NUT = -1;
+
+/** Swiss Ephemeris sidereal mode id for Lahiri (SE_SIDM_LAHIRI). */
+export const SWISS_SIDM_LAHIRI = 1;
+
+/**
+ * Calculate one body at an explicit UT Julian day with explicit Swiss flags
+ * (a bitwise OR of {@link CalcFlag}). `body` may be a {@link Planet} or
+ * {@link SWISS_ECL_NUT}.
+ */
+export function calculateBodyAtJulianDay(
+  julianDayUt: number,
+  body: number,
+  flags: number
+): PlanetPosition {
+  checkInitialization();
+  return swissEph!.calculatePlanetPosition(julianDayUt, body, flags);
+}
+
+/**
+ * Like {@link calculateBodyAtJulianDay} but reports provenance (the ephemeris Swiss actually used,
+ * `substituted`, warning text) and honours a per-call `strictEphemeris`
+ * (throws SwissEphEphemerisMismatchError on a silent substitution such as Moshier).
+ */
+export function calculateBodyAtJulianDayDetailed(
+  julianDayUt: number,
+  body: number,
+  flags: number,
+  options: CalculatePositionOptions = {}
+): PlanetPositionDetailed {
+  checkInitialization();
+  return swissEph!.calculatePlanetPositionDetailed(julianDayUt, body, flags, {
+    strictEphemeris: options.strictEphemeris,
+  });
+}
+
+/**
+ * Calculate house cusps and angles at an explicit UT Julian day, with no
+ * time-zone handling. Tropical (the Swiss default); sidereal conversion is the
+ * caller's responsibility.
+ */
+export function calculateHousesAtJulianDay(
+  julianDayUt: number,
+  latitude: number,
+  longitude: number,
+  houseSystem: HouseSystem
+): Houses {
+  checkInitialization();
+  return swissEph!.calculateHouses(julianDayUt, latitude, longitude, houseSystem);
+}
+
+/**
+ * Run `fn` with the given Swiss sidereal mode selected, then restore the
+ * default sidereal mode (Fagan/Bradley = 0, the Swiss Ephemeris initial state;
+ * this library does not otherwise use sidereal mode). The callback must be
+ * synchronous: the mode is mutable global Swiss state, so awaiting inside it
+ * could let a concurrent call observe it. A promise result is rejected.
+ */
+export function withSiderealMode<T>(mode: number, fn: () => T): T {
+  checkInitialization();
+  swissEph!.setSiderealMode(mode, 0, 0);
+  try {
+    const result = fn();
+    if (result !== null && typeof result === "object" && typeof (result as { then?: unknown }).then === "function") {
+      throw new Error("withSiderealMode callback must be synchronous");
+    }
+    return result;
+  } finally {
+    swissEph!.setSiderealMode(0, 0, 0);
+  }
 }

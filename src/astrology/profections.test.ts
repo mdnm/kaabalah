@@ -36,7 +36,7 @@ function mockChart(ascSign: string = "Aries"): BirthChart {
 
 describe("Annual Profections", () => {
   const chart = mockChart("Aries");
-  const birthDate = new Date(2001, 9, 2); // Oct 2, 2001
+  const birthDate = new Date(2001, 9, 12); // Oct 12, 2001
 
   it("age 0 = house 1 (Aries)", () => {
     const result = getAnnualProfection(chart, birthDate, 2001);
@@ -85,7 +85,7 @@ describe("Annual Profections", () => {
 
 describe("Monthly Profections", () => {
   const chart = mockChart("Aries");
-  const birthDate = new Date(2001, 9, 2); // Oct 2, 2001
+  const birthDate = new Date(2001, 9, 12); // Oct 12, 2001
 
   it("returns 12 months", () => {
     const result = getMonthlyProfections(chart, birthDate, 2025);
@@ -144,5 +144,109 @@ describe("Monthly Profections", () => {
     expect(() => getMonthlyProfections(chart, birth, 1995)).toThrow(
       /before birth year/
     );
+  });
+});
+
+import {
+  getAnnualProfectionTimeline,
+  getProfectionForAge,
+  MAX_PROFECTION_TIMELINE_YEARS,
+} from "./profections";
+import { TimelineError } from "./firdaria";
+
+describe("Annual profection timeline", () => {
+  const chart = mockChart("Aries");
+  const birth = { year: 2001, month: 10, day: 12 };
+  const ymd = (d: { year: number; month: number; day: number }) => `${d.year}-${d.month}-${d.day}`;
+
+  it("one entry per profection year with contiguous half-open birthday boundaries", () => {
+    const { entries } = getAnnualProfectionTimeline(chart, birth, { fromAge: 0, toAge: 24 });
+    expect(entries).toHaveLength(25);
+    expect(ymd(entries[0].start)).toBe("2001-10-12");
+    expect(ymd(entries[1].start)).toBe("2002-10-12");
+    for (let i = 0; i < entries.length - 1; i++) {
+      expect(entries[i].endExclusive).toEqual(entries[i + 1].start);
+    }
+    expect(entries.map((e) => e.house).slice(0, 13)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1]);
+    expect(entries[12].sign).toBe("Aries"); // wraps after 12 years
+    expect(entries[13]).toMatchObject({ age: 13, house: 2, sign: "Taurus", ruler: "Venus" });
+    expect(entries[24].house).toBe(1);
+  });
+
+  it("agrees with getAnnualProfection for a whole-sign chart and counts from the ascendant sign", () => {
+    const c = mockChart("Libra");
+    for (const age of [0, 5, 11, 12, 30, 49]) {
+      const t = getProfectionForAge(c, age);
+      const legacy = getAnnualProfection(c, new Date(2001, 9, 12), 2001 + age);
+      expect({ house: t.house, sign: t.sign, ruler: t.ruler }).toEqual({
+        house: legacy.house,
+        sign: legacy.sign,
+        ruler: legacy.ruler,
+      });
+    }
+  });
+
+  it("date range selects the years overlapping it (just before / on / after a birthday)", () => {
+    const day = (y: number, m: number, d: number) => ({ year: y, month: m, day: d });
+    const before = getAnnualProfectionTimeline(chart, birth, { from: day(2020, 10, 11), to: day(2020, 10, 11) });
+    expect(before.entries.map((e) => e.age)).toEqual([18]);
+    const on = getAnnualProfectionTimeline(chart, birth, { from: day(2020, 10, 12), to: day(2020, 10, 12) });
+    expect(on.entries.map((e) => e.age)).toEqual([19]);
+    const span = getAnnualProfectionTimeline(chart, birth, { from: day(2020, 10, 11), to: day(2020, 10, 13) });
+    expect(span.entries.map((e) => e.age)).toEqual([18, 19]);
+    // Date inputs use local calendar getters (local noon convention)
+    const viaDate = getAnnualProfectionTimeline(chart, new Date(2001, 9, 12, 12), {
+      from: new Date(2020, 9, 12, 12),
+      to: new Date(2020, 9, 12, 12),
+    });
+    expect(viaDate.entries.map((e) => e.age)).toEqual([19]);
+    // a range before birth is clamped to age 0
+    const early = getAnnualProfectionTimeline(chart, birth, { from: day(1990, 1, 1), to: day(2001, 10, 12) });
+    expect(early.entries.map((e) => e.age)).toEqual([0]);
+  });
+
+  it("29 February births roll to 1 March in non-leap years", () => {
+    const leap = { year: 2000, month: 2, day: 29 };
+    const { entries } = getAnnualProfectionTimeline(chart, leap, { fromAge: 0, toAge: 4 });
+    expect(entries.map((e) => ymd(e.start))).toEqual([
+      "2000-2-29",
+      "2001-3-1",
+      "2002-3-1",
+      "2003-3-1",
+      "2004-2-29",
+    ]);
+    expect(ymd(entries[3].endExclusive)).toBe("2004-2-29");
+    const r = getAnnualProfectionTimeline(chart, leap, {
+      from: { year: 2001, month: 2, day: 28 },
+      to: { year: 2001, month: 3, day: 1 },
+    });
+    expect(r.entries.map((e) => e.age)).toEqual([0, 1]);
+  });
+
+  it("is bounded: caps and typed errors", () => {
+    const code = (fn: () => unknown) => {
+      try {
+        fn();
+      } catch (e) {
+        expect(e).toBeInstanceOf(TimelineError);
+        return (e as TimelineError).code;
+      }
+      return null;
+    };
+    expect(code(() => getAnnualProfectionTimeline(chart, birth, { fromAge: 0, toAge: MAX_PROFECTION_TIMELINE_YEARS }))).toBe(
+      "RANGE_TOO_LARGE"
+    );
+    expect(getAnnualProfectionTimeline(chart, birth, { fromAge: 0, toAge: MAX_PROFECTION_TIMELINE_YEARS - 1 }).entries).toHaveLength(
+      MAX_PROFECTION_TIMELINE_YEARS
+    );
+    expect(code(() => getAnnualProfectionTimeline(chart, birth, { fromAge: 0, toAge: Infinity }))).toBe("UNBOUNDED_INPUT");
+    expect(code(() => getAnnualProfectionTimeline(chart, birth, { fromAge: 5, toAge: 2 }))).toBe("INVALID_RANGE");
+    expect(
+      code(() => getAnnualProfectionTimeline(chart, birth, { from: { year: 2020, month: 1, day: 2 }, to: { year: 2020, month: 1, day: 1 } }))
+    ).toBe("INVALID_RANGE");
+    expect(code(() => getAnnualProfectionTimeline(chart, { year: 2001, month: 2, day: 30 }, { fromAge: 0, toAge: 1 }))).toBe("INVALID_INPUT");
+    expect(code(() => getProfectionForAge(chart, -1))).toBe("INVALID_INPUT");
+    const untimed = { ...chart, houses: { ...chart.houses, ascendant: { ...chart.houses.ascendant, sign: "" } } } as BirthChart;
+    expect(code(() => getProfectionForAge(untimed, 3))).toBe("UNAVAILABLE_INPUT");
   });
 });

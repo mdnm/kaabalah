@@ -120,6 +120,116 @@ export interface PlanetPosition {
   distanceSpeed?: number;
 }
 
+/**
+ * Which ephemeris backend Swiss Ephemeris reports having used for a calculation.
+ * Derived from the flag bits returned by `swe_calc_ut`:
+ * SEFLG_JPLEPH = 1, SEFLG_SWIEPH = 2, SEFLG_MOSEPH = 4.
+ */
+export type SwissEphemerisKind = "swiss" | "moshier" | "jpl";
+
+export const EPHEMERIS_FLAG_MASK =
+  CalcFlag.JPL_EPH | CalcFlag.SWISS_EPH | CalcFlag.MOSHIER;
+
+/** Derive the ephemeris label from a flags word; null when no ephemeris bit is set. */
+export function ephemerisFromFlags(flags: number): SwissEphemerisKind | null {
+  if (flags & CalcFlag.JPL_EPH) return "jpl";
+  if (flags & CalcFlag.SWISS_EPH) return "swiss";
+  if (flags & CalcFlag.MOSHIER) return "moshier";
+  return null;
+}
+
+/** The ephemeris Swiss Ephemeris itself would pick for requested flags (default: Swiss files). */
+export function requestedEphemerisFromFlags(flags: number): SwissEphemerisKind {
+  return ephemerisFromFlags(flags) ?? "swiss";
+}
+
+export type SwissEphErrorCode =
+  | "SWISSEPH_NOT_INITIALIZED"
+  | "SWISSEPH_ASSET_NOT_FOUND"
+  | "SWISSEPH_NODE_BUILTINS_UNAVAILABLE"
+  | "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE"
+  | "SWISSEPH_EPHEMERIS_FILE_UNAVAILABLE"
+  | "SWISSEPH_DATE_OUT_OF_RANGE"
+  | "SWISSEPH_EPHEMERIS_MISMATCH"
+  | "SWISSEPH_CALCULATION_FAILED"
+  | "SWISSEPH_HOUSES_UNAVAILABLE"
+  | "SWISSEPH_STATE_MISUSE";
+
+/** Typed error for every Swiss Ephemeris runtime failure; `code` is stable API. */
+export class SwissEphError extends Error {
+  readonly code: SwissEphErrorCode;
+  readonly details: Record<string, unknown>;
+
+  constructor(code: SwissEphErrorCode, message: string, details: Record<string, unknown> = {}) {
+    super(message);
+    this.name = "SwissEphError";
+    this.code = code;
+    this.details = details;
+  }
+}
+
+/** Thrown in strict mode when the returned ephemeris differs from the requested one. */
+export class SwissEphEphemerisMismatchError extends SwissEphError {
+  readonly requestedEphemeris: SwissEphemerisKind;
+  readonly returnedEphemeris: SwissEphemerisKind | null;
+  readonly requestedFlags: number;
+  readonly returnedFlags: number;
+  readonly reason: "date_outside_installed_ephemeris_files" | "ephemeris_files_unavailable" | "unknown";
+  readonly warning: string | null;
+
+  constructor(info: {
+    requestedEphemeris: SwissEphemerisKind;
+    returnedEphemeris: SwissEphemerisKind | null;
+    requestedFlags: number;
+    returnedFlags: number;
+    reason: "date_outside_installed_ephemeris_files" | "ephemeris_files_unavailable" | "unknown";
+    warning: string | null;
+    julianDay: number;
+    missingFile: string | null;
+  }) {
+    super(
+      "SWISSEPH_EPHEMERIS_MISMATCH",
+      `Swiss Ephemeris returned "${info.returnedEphemeris ?? "unknown"}" output but "${info.requestedEphemeris}" was requested (strictEphemeris)` +
+        `${info.missingFile ? `; missing file ${info.missingFile}` : ""}` +
+        `${info.reason === "date_outside_installed_ephemeris_files" ? "; the date is outside the installed ephemeris file range" : ""}.` +
+        `${info.warning ? ` Swiss Ephemeris said: ${info.warning.trim()}` : ""}`,
+      {
+        julianDay: info.julianDay,
+        missingFile: info.missingFile,
+        reason: info.reason,
+      }
+    );
+    this.name = "SwissEphEphemerisMismatchError";
+    this.requestedEphemeris = info.requestedEphemeris;
+    this.returnedEphemeris = info.returnedEphemeris;
+    this.requestedFlags = info.requestedFlags;
+    this.returnedFlags = info.returnedFlags;
+    this.reason = info.reason;
+    this.warning = info.warning;
+  }
+}
+
+/** A position plus the provenance Swiss Ephemeris reported for it. */
+export interface PlanetPositionDetailed {
+  position: PlanetPosition;
+  requestedFlags: number;
+  /** Raw flag word returned by swe_calc_ut (ret value). */
+  returnedFlags: number;
+  requestedEphemeris: SwissEphemerisKind;
+  ephemeris: SwissEphemerisKind | null;
+  /** True when the returned ephemeris differs from the requested one. */
+  substituted: boolean;
+  /** Non-fatal serr text from Swiss Ephemeris (for example a Moshier fallback notice), else null. */
+  warning: string | null;
+}
+
+export interface CalculatePositionOptions {
+  /** Throw SwissEphEphemerisMismatchError instead of returning substituted output. */
+  strictEphemeris?: boolean;
+}
+
+const SWISS_FILE_NOT_FOUND = /SwissEph file '([^']+)' not found/;
+
 // Houses calculation result
 export interface Houses {
   ascendant: number;
@@ -135,6 +245,9 @@ export interface Houses {
     polasc: number;
   };
 }
+
+/** The shipped ephemeris files (1800-2400 CE). Anything else Swiss asks for means the date is outside them. */
+const REQUIRED_EPHEMERIS_FILE_NAMES: readonly string[] = ["seas_18.se1", "semo_18.se1", "sepl_18.se1"];
 
 // Offset for asteroids (MPC)
 export const SE_AST_OFFSET = 10000;
@@ -273,13 +386,32 @@ export class SwissEph {
   }
 
   /**
-   * Calculate planet position at a given Julian day
+   * When true, every calculation throws SwissEphEphemerisMismatchError if Swiss
+   * Ephemeris silently substituted another ephemeris (for example Moshier).
+   */
+  strictEphemeris = false;
+
+  /**
+   * Calculate planet position at a given Julian day (bare position, backwards compatible).
    */
   calculatePlanetPosition(
     julday: number,
     planet: Planet | number,
     flags = CalcFlag.SWISS_EPH
   ): PlanetPosition {
+    return this.calculatePlanetPositionDetailed(julday, planet, flags).position;
+  }
+
+  /**
+   * Calculate a planet position and report which ephemeris Swiss Ephemeris actually used.
+   * The returned flag word of swe_calc_ut is decoded, never discarded.
+   */
+  calculatePlanetPositionDetailed(
+    julday: number,
+    planet: Planet | number,
+    flags = CalcFlag.SWISS_EPH,
+    options: CalculatePositionOptions = {}
+  ): PlanetPositionDetailed {
     this.checkInitialized();
     if (!this.swe_calc_ut || !this.module) {
       throw new Error("Planet calculation function not available");
@@ -301,18 +433,23 @@ export class SwissEph {
     this.module.HEAP8.fill(0, errPtr, errPtr + ERR_BYTES);
 
     try {
-      let ret = this.swe_calc_ut(julday, planet, flags, resultPtr, errPtr);
-
-      // // If Chiron via SE_CHIRON (15) fails, retry using MPC 2060 (asteroid id = offset + 2060)
-      // if (ret < 0 && planet === Planet.CHIRON) {
-      //   const mpcPlanetId = SE_AST_OFFSET + 2060; // 2060 = Chiron
-      //   this.module.HEAP8.fill(0, errPtr, errPtr + ERR_BYTES);
-      //   ret = this.swe_calc_ut(julday, mpcPlanetId, flags, resultPtr, errPtr);
-      // }
+      const ret = this.swe_calc_ut(julday, planet, flags, resultPtr, errPtr);
+      const serr = this.module.UTF8ToString(errPtr);
 
       if (ret < 0) {
-        const msg = this.module.UTF8ToString(errPtr);
-        throw new Error(msg && msg.length ? msg : `Swiss Ephemeris calculation failed with error code ${ret}`);
+        const missing = SWISS_FILE_NOT_FOUND.exec(serr);
+        if (missing) {
+          throw new SwissEphError(
+            "SWISSEPH_EPHEMERIS_FILE_UNAVAILABLE",
+            serr.trim(),
+            { julianDay: julday, missingFile: missing[1], planet, swissMessage: serr }
+          );
+        }
+        throw new SwissEphError(
+          "SWISSEPH_CALCULATION_FAILED",
+          serr && serr.length ? serr : `Swiss Ephemeris calculation failed with error code ${ret}`,
+          { julianDay: julday, planet, returnCode: ret, swissMessage: serr }
+        );
       }
 
       const position: PlanetPosition = {
@@ -327,7 +464,39 @@ export class SwissEph {
         position.distanceSpeed = this.module.getValue(resultPtr + 40, "double");
       }
 
-      return position;
+      const requestedEphemeris = requestedEphemerisFromFlags(flags);
+      const ephemeris = ephemerisFromFlags(ret);
+      const substituted = ephemeris !== requestedEphemeris;
+      const warning = serr && serr.length ? serr : null;
+
+      if (substituted && (options.strictEphemeris ?? this.strictEphemeris)) {
+        const missing = warning ? SWISS_FILE_NOT_FOUND.exec(warning) : null;
+        const missingFile = missing ? missing[1] : null;
+        throw new SwissEphEphemerisMismatchError({
+          requestedEphemeris,
+          returnedEphemeris: ephemeris,
+          requestedFlags: flags,
+          returnedFlags: ret,
+          warning,
+          julianDay: julday,
+          missingFile,
+          reason: !missingFile
+            ? "unknown"
+            : REQUIRED_EPHEMERIS_FILE_NAMES.includes(missingFile)
+              ? "ephemeris_files_unavailable"
+              : "date_outside_installed_ephemeris_files",
+        });
+      }
+
+      return {
+        position,
+        requestedFlags: flags,
+        returnedFlags: ret,
+        requestedEphemeris,
+        ephemeris,
+        substituted,
+        warning,
+      };
     } finally {
       this.module._free(errPtr);
       this.module._free(resultPtr);
@@ -384,7 +553,18 @@ export class SwissEph {
       );
 
       if (ret < 0) {
-        throw new Error(`Houses calculation failed with error code ${ret}`);
+        // Swiss returns ERR for Placidus/Koch (and other time-based systems) beyond the polar circle.
+        const polar = Math.abs(latitude) >= 90 - 23.4366;
+        throw new SwissEphError(
+          "SWISSEPH_HOUSES_UNAVAILABLE",
+          `Houses calculation failed with error code ${ret}: house system "${hsys}" is not available at latitude ${latitude}` +
+            (polar
+              ? " (beyond the polar circle, |latitude| >= ~66.56, Placidus and Koch are undefined)"
+              : "") +
+            `. Use a system that works at any latitude (whole-sign "W", equal "E" or Porphyry "O"), ` +
+            `or pass houseSystemFallback to substitute one explicitly.`,
+          { houseSystem: hsys, latitude, longitude, julianDay: julday, errorCode: ret }
+        );
       }
 
       // Extract all data before any memory operations
@@ -443,6 +623,27 @@ export class SwissEph {
   }
 
   /**
+   * Swiss Ephemeris version string, or null when the wasm build does not export swe_version.
+   */
+  getVersion(): string | null {
+    this.checkInitialized();
+    const fn = this.module._swe_version;
+    if (typeof fn !== "function") {
+      return null;
+    }
+    const ptr = this.module._malloc(256);
+    if (!ptr) {
+      return null;
+    }
+    try {
+      fn.call(this.module, ptr);
+      return this.module.UTF8ToString(ptr) || null;
+    } finally {
+      this.module._free(ptr);
+    }
+  }
+
+  /**
    * Clean up and close the Swiss Ephemeris
    */
   close(): void {
@@ -453,7 +654,9 @@ export class SwissEph {
   }
 
   /**
-   * Set topocentric observer
+   * Set topocentric observer.
+   * MUTABLE GLOBAL STATE inside the Swiss library (see withSwissEphState in
+   * src/astrology/swisseph.ts for the synchronous set-and-restore helper).
    */
   setTopocentric(
     longitude: number,
@@ -470,7 +673,9 @@ export class SwissEph {
   }
 
   /**
-   * Set sidereal mode
+   * Set sidereal mode.
+   * MUTABLE GLOBAL STATE inside the Swiss library (shared by every caller of this
+   * module instance); prefer withSwissEphState which restores the previous mode.
    * Ex.: mode=1 (Lahiri). See Swiss Ephemeris mode table.
    */
   setSiderealMode(mode: number, t0 = 0, ayan_t0 = 0): void {

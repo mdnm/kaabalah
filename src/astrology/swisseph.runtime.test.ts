@@ -5,9 +5,16 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import type { SwissEphModule } from "../../wasm/src/types";
 import {
+  closeSwissEph,
+  getSwissEph,
+  getSwissEphInfo,
+  getSwissEphModuleDirectory,
   REQUIRED_EPHE_FILES,
   resolveNodeEphemerisPath,
-  resolveSwissEphRuntimeAssets
+  resolveSwissEphRuntimeAssets,
+  resolveSwissEphRuntimeAssetsAsync,
+  resolveSwissEphRuntimeAssetsWithOverrides,
+  SwissEphError
 } from "./swisseph";
 
 function normalizePath(path: string): string {
@@ -244,6 +251,215 @@ describe("resolveSwissEphRuntimeAssets", () => {
       } else {
         browserGlobal.window = originalWindow;
       }
+    }
+  });
+});
+
+
+describe("module-format-aware asset resolution (injected fakes)", () => {
+  function resolveDots(base: string, rel: string): string {
+    const out: string[] = [];
+    for (const part of `${base}/${rel}`.split("/")) {
+      if (part === "..") out.pop();
+      else if (part && part !== ".") out.push(part);
+    }
+    return `/${out.join("/")}`;
+  }
+
+  it("derives the module directory from a native-ESM file URL", () => {
+    expect(
+      getSwissEphModuleDirectory({ moduleUrl: "file:///opt/app/node_modules/kaabalah/dist/chunk-ABC.mjs", cjsDirname: null })
+    ).toBe("/opt/app/node_modules/kaabalah/dist");
+  });
+
+  it("decodes percent-encoded ESM URLs (spaces in install paths)", () => {
+    expect(
+      getSwissEphModuleDirectory({ moduleUrl: "file:///Users/me/My%20Projects/node_modules/kaabalah/dist/c.mjs", cjsDirname: null })
+    ).toBe("/Users/me/My Projects/node_modules/kaabalah/dist");
+  });
+
+  it("handles Windows drive-letter file URLs", () => {
+    expect(getSwissEphModuleDirectory({ moduleUrl: "file:///C:/app/node_modules/kaabalah/dist/c.mjs", cjsDirname: null })).toBe(
+      "C:/app/node_modules/kaabalah/dist"
+    );
+  });
+
+  it("falls back to __dirname when import.meta.url is empty or not a file URL (CJS bundle)", () => {
+    expect(getSwissEphModuleDirectory({ moduleUrl: null, cjsDirname: "/pkg/dist" })).toBe("/pkg/dist");
+    expect(getSwissEphModuleDirectory({ moduleUrl: "https://cdn.example/x.mjs", cjsDirname: "/pkg/dist" })).toBe("/pkg/dist");
+  });
+
+  it("returns undefined when neither format hint exists (browser bundle)", () => {
+    expect(getSwissEphModuleDirectory({ moduleUrl: null, cjsDirname: null })).toBeUndefined();
+  });
+
+  it("prefers the dist-relative copy of the assets first", () => {
+    const seen: string[] = [];
+    const existing = new Set(["/pkg/dist/swisseph.node.wasm", "/pkg/ephe"]);
+    const resolved = resolveSwissEphRuntimeAssetsWithOverrides({
+      env: {},
+      isBrowser: false,
+      moduleDirectory: "/pkg/dist",
+      nodePathResolve: resolveDots,
+      existsSync: (path: string) => {
+        seen.push(path);
+        return existing.has(path);
+      }
+    });
+
+    expect(resolved).toEqual({
+      wasmPath: "/pkg/dist/swisseph.node.wasm",
+      ephePath: "/pkg/ephe",
+      wasmPathSource: "bundled",
+      ephePathSource: "bundled"
+    });
+    expect(seen[0]).toBe("/pkg/dist/swisseph.node.wasm");
+  });
+
+  it("uses the package-root wasm/build layout when the dist copy is absent", () => {
+    const existing = new Set(["/pkg/wasm/build/swisseph.node.wasm", "/pkg/ephe"]);
+    const resolved = resolveSwissEphRuntimeAssetsWithOverrides({
+      env: {},
+      isBrowser: false,
+      moduleDirectory: "/pkg/dist",
+      nodePathResolve: resolveDots,
+      existsSync: (path: string) => existing.has(path)
+    });
+    expect(resolved.wasmPath).toBe("/pkg/wasm/build/swisseph.node.wasm");
+    expect(resolved.ephePath).toBe("/pkg/ephe");
+  });
+
+  it("supports entry files one directory deeper (dist/astrology/index.*)", () => {
+    const existing = new Set(["/pkg/dist/swisseph.node.wasm", "/pkg/ephe"]);
+    const resolved = resolveSwissEphRuntimeAssetsWithOverrides({
+      env: {},
+      isBrowser: false,
+      moduleDirectory: "/pkg/dist/astrology",
+      nodePathResolve: resolveDots,
+      existsSync: (path: string) => existing.has(path)
+    });
+    expect(resolved.wasmPath).toBe("/pkg/dist/swisseph.node.wasm");
+    expect(resolved.ephePath).toBe("/pkg/ephe");
+  });
+
+  it("keeps explicit and env overrides ahead of module-relative assets", () => {
+    const resolved = resolveSwissEphRuntimeAssetsWithOverrides({
+      env: { KAABALAH_EPHE_PATH: "/env/ephe" },
+      wasmPath: "/explicit/swisseph.wasm",
+      isBrowser: false,
+      moduleDirectory: "/pkg/dist",
+      existsSync: () => true
+    });
+    expect(resolved).toMatchObject({
+      wasmPath: "/explicit/swisseph.wasm",
+      wasmPathSource: "explicit",
+      ephePath: "/env/ephe",
+      ephePathSource: "env"
+    });
+  });
+
+  it("reports an actionable typed error listing every bundled path it checked", () => {
+    let error: unknown;
+    try {
+      resolveSwissEphRuntimeAssetsWithOverrides({
+        env: {},
+        isBrowser: false,
+        moduleDirectory: "/nowhere/dist",
+        nodePathResolve: resolveDots,
+        existsSync: () => false
+      });
+    } catch (caught) {
+      error = caught;
+    }
+    expect(error).toBeInstanceOf(SwissEphError);
+    expect((error as SwissEphError).code).toBe("SWISSEPH_ASSET_NOT_FOUND");
+    expect((error as SwissEphError).message).toContain("/nowhere/dist/swisseph.node.wasm");
+  });
+
+  it("async resolver works without relying on a sync require", async () => {
+    const resolved = await resolveSwissEphRuntimeAssetsAsync({ env: {} });
+    expect(existsSync(resolved.wasmPath)).toBe(true);
+    expect(existsSync(resolved.ephePath)).toBe(true);
+  });
+});
+
+describe("getSwissEph failure modes are typed and actionable", () => {
+  const tempPaths: string[] = [];
+
+  afterEach(() => {
+    closeSwissEph();
+    for (const path of tempPaths.splice(0)) {
+      rmSync(path, { force: true, recursive: true });
+    }
+  });
+
+  const silent = { onRuntimeNotice: () => undefined };
+
+  it("rejects a non-existent explicit ephePath with SWISSEPH_ASSET_NOT_FOUND", async () => {
+    await expect(getSwissEph({ ...silent, wasmPath: WASM_PATH, ephePath: "/definitely/not/here/ephe" })).rejects.toMatchObject({
+      code: "SWISSEPH_ASSET_NOT_FOUND",
+      message: expect.stringContaining("/definitely/not/here/ephe")
+    });
+    expect(getSwissEphInfo().initialized).toBe(false);
+  });
+
+  it("rejects a non-existent explicit wasmPath with SWISSEPH_ASSET_NOT_FOUND", async () => {
+    await expect(getSwissEph({ ...silent, wasmPath: "/definitely/not/here.wasm", ephePath: EPHE_PATH })).rejects.toMatchObject({
+      code: "SWISSEPH_ASSET_NOT_FOUND"
+    });
+  });
+
+  it("rejects an existing but empty ephePath with SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE naming the required files", async () => {
+    const root = mkdtempSync(join(tmpdir(), "kaabalah-empty-ephe-"));
+    tempPaths.push(root);
+
+    let error: unknown;
+    try {
+      await getSwissEph({ ...silent, wasmPath: WASM_PATH, ephePath: root });
+    } catch (caught) {
+      error = caught;
+    }
+    expect(error).toBeInstanceOf(SwissEphError);
+    expect((error as SwissEphError).code).toBe("SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE");
+    expect((error as SwissEphError).message).toMatch(/seas_18\.se1, semo_18\.se1, sepl_18\.se1/);
+    expect((error as SwissEphError).message).toMatch(/explicit ephePath/);
+  });
+
+  it("rejects corrupt ephemeris files instead of silently falling back to Moshier", async () => {
+    const root = mkdtempSync(join(tmpdir(), "kaabalah-corrupt-ephe-"));
+    tempPaths.push(root);
+    for (const file of REQUIRED_EPHE_FILES) {
+      writeFileSync(join(root, file), new Uint8Array([1, 2, 3, 4]));
+    }
+
+    await expect(getSwissEph({ ...silent, wasmPath: WASM_PATH, ephePath: root })).rejects.toMatchObject({
+      code: "SWISSEPH_EPHEMERIS_FILES_UNAVAILABLE"
+    });
+    expect(getSwissEphInfo().initialized).toBe(false);
+  });
+
+  it("can initialise successfully after a failed attempt", async () => {
+    await expect(getSwissEph({ ...silent, wasmPath: WASM_PATH, ephePath: "/nope" })).rejects.toBeInstanceOf(SwissEphError);
+    await getSwissEph({ ...silent, wasmPath: WASM_PATH, ephePath: EPHE_PATH });
+    expect(getSwissEphInfo().initialized).toBe(true);
+  });
+
+  it("routes setup notices through the injected sink and never writes to the console", async () => {
+    const notices: string[] = [];
+    const spies = (["log", "info", "warn", "error"] as const).map((method) =>
+      vi.spyOn(console, method).mockImplementation(() => undefined)
+    );
+    const stderr = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
+    try {
+      await getSwissEph({ wasmPath: WASM_PATH, ephePath: EPHE_PATH, onRuntimeNotice: (message) => notices.push(message) });
+      expect(notices.some((message) => message.startsWith("Setting ephemeris path to:"))).toBe(true);
+      for (const spy of spies) {
+        expect(spy).not.toHaveBeenCalled();
+      }
+      expect(stderr).not.toHaveBeenCalled();
+    } finally {
+      stderr.mockRestore();
+      for (const spy of spies) spy.mockRestore();
     }
   });
 });

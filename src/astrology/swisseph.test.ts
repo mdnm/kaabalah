@@ -1,6 +1,19 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { HouseSystem, Planet } from '../../wasm/src/swisseph';
-import { calcParsFortunae, calculateHouses, calculatePlanetaryPositions, closeSwissEph, getSwissEph } from './swisseph';
+import {
+  calcParsFortunae,
+  calculateHouses,
+  calculatePlanetaryPositions,
+  calculatePlanetPositionDetailed,
+  CalcFlag,
+  closeSwissEph,
+  getSwissEph,
+  getSwissEphInfo,
+  setSwissEphStrictEphemeris,
+  SwissEphEphemerisMismatchError,
+  SwissEphError,
+  withSwissEphState,
+} from './swisseph';
 
 describe('Swiss Ephemeris Integration', () => {
   beforeAll(async () => {
@@ -244,3 +257,189 @@ describe('Swiss Ephemeris Integration', () => {
     expect(diff(byOffset.houses[6], both.houses[6])).toBeLessThan(1e-6);
   });
 }); 
+
+describe('Swiss Ephemeris provenance, strict mode and lifecycle', () => {
+  const inRange = new Date('2000-01-01T12:00:00Z');
+
+  beforeAll(async () => {
+    closeSwissEph();
+    await getSwissEph({ ephePath: EPHE_PATH, wasmPath: WASM_PATH, onRuntimeNotice: () => undefined });
+  });
+
+  afterAll(() => {
+    setSwissEphStrictEphemeris(false);
+    closeSwissEph();
+  });
+
+  it('reports requested/returned flags and a "swiss" label for in-range dates', () => {
+    const detailed = calculatePlanetPositionDetailed(inRange, Planet.SUN);
+    expect(detailed.ephemeris).toBe('swiss');
+    expect(detailed.requestedEphemeris).toBe('swiss');
+    expect(detailed.substituted).toBe(false);
+    expect(detailed.warning).toBeNull();
+    expect(detailed.requestedFlags & CalcFlag.SWISS_EPH).toBeTruthy();
+    expect(detailed.returnedFlags & CalcFlag.SWISS_EPH).toBeTruthy();
+    expect(detailed.returnedFlags & CalcFlag.MOSHIER).toBe(0);
+    // independent: apparent Sun at J2000 is ~280.369 deg
+    expect(detailed.position.longitude).toBeCloseTo(280.3689, 3);
+  });
+
+  it.each([
+    ['year 3000', new Date(Date.UTC(3000, 0, 1, 12))],
+    ['year 1700', new Date(Date.UTC(1700, 0, 1, 12))],
+  ])('labels %s as moshier (never swiss) in non-strict mode and keeps the Swiss warning', (_label, date) => {
+    const detailed = calculatePlanetPositionDetailed(date, Planet.SUN);
+    expect(detailed.ephemeris).toBe('moshier');
+    expect(detailed.substituted).toBe(true);
+    expect(detailed.returnedFlags & CalcFlag.MOSHIER).toBeTruthy();
+    expect(detailed.returnedFlags & CalcFlag.SWISS_EPH).toBe(0);
+    expect(detailed.warning).toMatch(/not found/i);
+    expect(detailed.warning).toMatch(/Moshier/i);
+  });
+
+  it('labels year -3000 as moshier', () => {
+    const date = new Date(Date.UTC(2000, 0, 1, 12));
+    date.setUTCFullYear(-3000);
+    const detailed = calculatePlanetPositionDetailed(date, Planet.SUN);
+    expect(detailed.ephemeris).toBe('moshier');
+    expect(detailed.substituted).toBe(true);
+  });
+
+  it('strictEphemeris option throws a typed mismatch error for out-of-range dates', () => {
+    const date = new Date(Date.UTC(3000, 0, 1, 12));
+    let caught: unknown;
+    try {
+      calculatePlanetPositionDetailed(date, Planet.SUN, { strictEphemeris: true });
+    } catch (error) {
+      caught = error;
+    }
+    expect(caught).toBeInstanceOf(SwissEphEphemerisMismatchError);
+    const mismatch = caught as SwissEphEphemerisMismatchError;
+    expect(mismatch).toBeInstanceOf(SwissEphError);
+    expect(mismatch.code).toBe('SWISSEPH_EPHEMERIS_MISMATCH');
+    expect(mismatch.requestedEphemeris).toBe('swiss');
+    expect(mismatch.returnedEphemeris).toBe('moshier');
+    expect(mismatch.reason).toBe('date_outside_installed_ephemeris_files');
+    expect(mismatch.details.missingFile).toBe('sepl_30.se1');
+  });
+
+  it('global strict mode makes high-level calculations throw instead of mislabelling Moshier output', async () => {
+    setSwissEphStrictEphemeris(true);
+    try {
+      expect(getSwissEphInfo().strictEphemeris).toBe(true);
+      await expect(calculatePlanetaryPositions(new Date(Date.UTC(3000, 0, 1, 12)))).rejects.toBeInstanceOf(
+        SwissEphEphemerisMismatchError
+      );
+      // in-range dates still work in strict mode
+      await expect(calculatePlanetaryPositions(inRange)).resolves.toBeDefined();
+    } finally {
+      setSwissEphStrictEphemeris(false);
+    }
+  });
+
+  it('does not treat an explicit Moshier request as a substitution', () => {
+    const detailed = calculatePlanetPositionDetailed(new Date(Date.UTC(3000, 0, 1, 12)), Planet.SUN, {
+      flags: CalcFlag.MOSHIER | CalcFlag.SPEED,
+      strictEphemeris: true,
+    });
+    expect(detailed.ephemeris).toBe('moshier');
+    expect(detailed.substituted).toBe(false);
+  });
+
+  it('getSwissEphInfo reports resolved assets, mount mode and the files found', () => {
+    const info = getSwissEphInfo();
+    expect(info.initialized).toBe(true);
+    expect(info.runtime).toBe('node');
+    expect(info.wasmPath).toBe(WASM_PATH);
+    expect(info.wasmPathSource).toBe('explicit');
+    expect(info.ephePath).toBe(EPHE_PATH);
+    expect(info.ephePathSource).toBe('explicit');
+    expect(['nodefs-mount', 'host-path', 'memfs-copy']).toContain(info.mountMode);
+    expect(info.ephemerisFiles.missing).toEqual([]);
+    expect(info.ephemerisFiles.found).toEqual(['seas_18.se1', 'semo_18.se1', 'sepl_18.se1']);
+    expect(info.probe?.ephemeris).toBe('swiss');
+    expect(info.shippedCoverage.fromYear).toBe(1800);
+    // the shipped wasm does not export swe_version
+    expect(info.swissEphemerisVersion).toBeNull();
+  });
+
+  it('getSwissEphInfo reports initialized:false when closed', () => {
+    closeSwissEph();
+    expect(getSwissEphInfo().initialized).toBe(false);
+    expect(() => calculatePlanetPositionDetailed(inRange, Planet.SUN)).toThrow(/not initialized/i);
+    try {
+      calculatePlanetPositionDetailed(inRange, Planet.SUN);
+    } catch (error) {
+      expect((error as SwissEphError).code).toBe('SWISSEPH_NOT_INITIALIZED');
+    }
+  });
+
+  it('concurrent first getSwissEph calls share one initialization', async () => {
+    closeSwissEph();
+    const notices: string[] = [];
+    const options = {
+      ephePath: EPHE_PATH,
+      wasmPath: WASM_PATH,
+      onRuntimeNotice: (message: string) => notices.push(message),
+    };
+    await Promise.all([getSwissEph(options), getSwissEph(options), getSwissEph(options)]);
+    expect(notices.filter((message) => message.startsWith('Setting ephemeris path'))).toHaveLength(1);
+    expect(getSwissEphInfo().initialized).toBe(true);
+  });
+
+  it('getSwissEph accepts strictEphemeris when already initialized', async () => {
+    await getSwissEph({ strictEphemeris: true });
+    expect(getSwissEphInfo().strictEphemeris).toBe(true);
+    await getSwissEph({ strictEphemeris: false });
+    expect(getSwissEphInfo().strictEphemeris).toBe(false);
+  });
+
+  describe('mutable Swiss state', () => {
+    const flags = CalcFlag.SWISS_EPH | CalcFlag.SPEED;
+    const sidereal = (): number =>
+      calculatePlanetPositionDetailed(inRange, Planet.SUN, { flags: flags | CalcFlag.SIDEREAL }).position.longitude;
+    const tropical = (): number => calculatePlanetPositionDetailed(inRange, Planet.SUN, { flags }).position.longitude;
+
+    it('sets sidereal mode only inside the callback and restores the default afterwards', () => {
+      const trop = tropical();
+      const before = trop - sidereal(); // default Fagan/Bradley ayanamsa ~24.74 at J2000
+      const inside = withSwissEphState({ sidereal: { mode: 1 } }, () => trop - sidereal()); // Lahiri ~23.86
+      const after = trop - sidereal();
+
+      expect(inside).toBeCloseTo(23.857, 1);
+      expect(before).toBeCloseTo(24.74, 1);
+      expect(after).toBeCloseTo(before, 9);
+      expect(tropical()).toBe(trop);
+    });
+
+    it('restores state when the callback throws', () => {
+      const before = sidereal();
+      expect(() =>
+        withSwissEphState({ sidereal: { mode: 1 } }, () => {
+          throw new Error('boom');
+        })
+      ).toThrow('boom');
+      expect(sidereal()).toBe(before);
+    });
+
+    it('rejects async callbacks and nesting with SWISSEPH_STATE_MISUSE', () => {
+      let code: string | undefined;
+      try {
+        withSwissEphState({ sidereal: { mode: 1 } }, () => Promise.resolve(1) as unknown as number);
+      } catch (error) {
+        code = (error as SwissEphError).code;
+      }
+      expect(code).toBe('SWISSEPH_STATE_MISUSE');
+
+      code = undefined;
+      try {
+        withSwissEphState({}, () => withSwissEphState({}, () => 1));
+      } catch (error) {
+        code = (error as SwissEphError).code;
+      }
+      expect(code).toBe('SWISSEPH_STATE_MISUSE');
+      // depth counter was released
+      expect(withSwissEphState({}, () => 7)).toBe(7);
+    });
+  });
+});

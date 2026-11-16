@@ -75,7 +75,8 @@ describe('Astrology Module', () => {
 
       expect(chart.nodes[VirtualNodes.PARS_FORTUNAE]).toBeDefined();
       expect(chart.sect).toMatch(/^(diurnal|nocturnal)$/);
-      expect(chart.sect).toBe(getSect(chart.planets.sun.zodiacPosition.house));
+      // sect now follows the physical horizon (Sun's geometric altitude), not the Sun's house
+      expect(chart.sect).toBe(chart.sectDetails.sunGeometricAltitude > 0 ? 'diurnal' : 'nocturnal');
     } catch (error) {
       console.error('Failed to calculate birth chart:', error);
       throw error;
@@ -400,8 +401,9 @@ describe('Astrology Module', () => {
 
     for (const p of result.perfections) {
       expect(p.exactDate).toBeInstanceOf(Date);
-      expect(p.exactDate.getTime()).toBeGreaterThanOrEqual(result.from.getTime());
-      expect(p.exactDate.getTime()).toBeLessThanOrEqual(result.to.getTime());
+      // exactDate is an absolute UTC instant; compare with the window resolved to UTC.
+      expect(p.exactDate.getTime()).toBeGreaterThanOrEqual(result.fromUtc!.getTime());
+      expect(p.exactDate.getTime()).toBeLessThanOrEqual(result.toUtc!.getTime());
       expect(typeof p.exactOrb).toBe('number');
       expect(typeof p.retrograde).toBe('boolean');
       expect(['slow', 'fast']).toContain(p.category);

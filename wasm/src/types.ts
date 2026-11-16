@@ -11,6 +11,8 @@ export interface SwissEphModule {
   cwrap<T>(name: string, returnType: string | null, paramTypes: (string | null)[]): T;
   UTF8ToString(ptr: number): string;
   HEAP8: Int8Array;
+  /** Present only when the wasm build exports swe_version (the shipped build does not). */
+  _swe_version?(buf: number): number;
   fill(value: number, start: number, end: number): void;
   FS?: {
     mkdir(path: string): void;
