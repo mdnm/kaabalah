@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add ten source-audited bilingual basic planet profiles with typed getters,
+  immutable metadata and separate planetary-symbolism context notes.
+
 - Add twelve source-audited bilingual Imum Coeli-sign descriptions, with typed
   angle lookups, source qualifications and immutable provenance.
 

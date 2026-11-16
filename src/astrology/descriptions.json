@@ -9941,5 +9941,389 @@
         ]
       }
     }
+  },
+  "planets": {
+    "sun": {
+      "pt": "no seu mapa, o Sol indica o núcleo da identidade, a vitalidade e a necessidade de encontrar um modo próprio de expressão e criação. também aponta a busca por propósito, reconhecimento e autoridade, sem garantir êxito ou honras.",
+      "en": "in your chart, the Sun indicates the core of identity, vitality, and the need to find a personal mode of expression and creation. it also points to the search for purpose, recognition, and authority, without guaranteeing success or honors.",
+      "keywords": {
+        "pt": [
+          "identidade",
+          "vitalidade",
+          "expressão",
+          "propósito",
+          "autoridade"
+        ],
+        "en": [
+          "identity",
+          "vitality",
+          "expression",
+          "purpose",
+          "authority"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 890,
+          "to": 901
+        },
+        {
+          "file": "modulo 4/aula 3 modulo 4/aula-3.md",
+          "from": 272,
+          "to": 285
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 16990,
+          "to": 17059
+        }
+      ],
+      "reviewNotes": [
+        "Class 8 presents the Sun as spirit and higher self; the book frames it as central identity, purpose, vitality, and expression. Wording keeps compatible functions without importing sign-specific Leo traits.",
+        "Class 3 says solar influence does not guarantee success or honors and may be constructive or harmful; the profile retains the qualification and avoids a promised outcome.",
+        "The book excerpt is OCR-damaged and contains intermixed Leo rulership material; only readable general claims were adopted. Class 1 lines 178-186 were inspected only and not used as ordinary planet-function prose."
+      ]
+    },
+    "moon": {
+      "pt": "no seu mapa, a Lua indica sua imaginação, assimilação, sensibilidade, autoimagem e receptividade. também aponta sua busca por proteção e segurança emocional.",
+      "en": "in your chart, the Moon indicates your imagination, assimilation, sensitivity, self-image, and receptivity. it also points to your search for protection and emotional security.",
+      "keywords": {
+        "pt": [
+          "imaginação",
+          "assimilação",
+          "sensibilidade",
+          "autoimagem",
+          "receptividade",
+          "segurança emocional"
+        ],
+        "en": [
+          "imagination",
+          "assimilation",
+          "sensitivity",
+          "self-image",
+          "receptivity",
+          "emotional security"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 789,
+          "to": 795
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 17294,
+          "to": 17298
+        }
+      ],
+      "reviewNotes": [
+        "Class 8 lines 789-795 supports imagination, assimilation, sensitivity, self-image, psyche, and receptivity; the book lines 17294-17298 adds protection and security.",
+        "Earlier polarity and personality context from Class 8 lines 767-788 was inspected but is not cited as support for this profile. The book window is OCR-damaged; Cancer rulership and sign-specific associations were excluded."
+      ]
+    },
+    "mercury": {
+      "pt": "no seu mapa, Mercúrio indica a mente como instrumento para trabalhar a polaridade entre Sol e Lua. também aponta como você raciocina, analisa informações e expressa ideias ao conversar, escrever e ouvir.",
+      "en": "in your chart, Mercury indicates the mind as an instrument for working with the polarity between the Sun and Moon. it also points to how you reason, analyze information, and express ideas through conversation, writing, and listening.",
+      "keywords": {
+        "pt": [
+          "mente",
+          "polaridade",
+          "raciocínio",
+          "análise",
+          "comunicação"
+        ],
+        "en": [
+          "mind",
+          "polarity",
+          "reasoning",
+          "analysis",
+          "communication"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 767,
+          "to": 780
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 17642,
+          "to": 17683
+        }
+      ],
+      "reviewNotes": [
+        "Class 8 identifies Mercury with the mind and says it is the instrument by which the essential Sun/Moon polarity is worked; the book supports reasoning, analysis, and verbal/written communication.",
+        "The book excerpt has OCR gaps, especially around education and information processing; those unclear claims were not included in the profile. Class 1 lines 178-186 were inspected only and not used as ordinary planet-function prose."
+      ]
+    },
+    "venus": {
+      "pt": "no seu mapa, Vênus indica seus afetos, sua busca por prazer e conforto e o que você valoriza. seu símbolo expressa o equilíbrio do espírito sobre a matéria e forças superiores que venceram a matéria.",
+      "en": "in your chart, Venus indicates your affections, your search for pleasure and comfort, and what you value. its symbol expresses spirit balanced over matter and higher forces that have overcome matter.",
+      "keywords": {
+        "pt": [
+          "afeto e atração",
+          "prazer e conforto",
+          "valores",
+          "beleza",
+          "relações sociais",
+          "equilíbrio do espírito sobre a matéria"
+        ],
+        "en": [
+          "affection and attraction",
+          "pleasure and comfort",
+          "values",
+          "beauty",
+          "social relations",
+          "spirit balanced over matter"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 17895,
+          "to": 17930
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 182,
+          "to": 183
+        }
+      ],
+      "reviewNotes": [
+        "A função geral segue os conceitos legíveis do livro; a frase sobre o símbolo preserva a correspondência ensinada na aula, sem apresentar essa imagem como causa da função natal.",
+        "A lista de beleza da aula 13 ocorre numa etapa específica da leitura da kundalini e não foi generalizada."
+      ]
+    },
+    "mars": {
+      "pt": "no seu mapa, Marte indica como você age e toma iniciativa, dirige sua determinação e enfrenta competição e conflito. seu símbolo expressa a matéria em desequilíbrio sobre o espírito, com instintos e impulsos materiais dominando o espírito.",
+      "en": "in your chart, Mars indicates how you act and take initiative, direct your determination, and face competition and conflict. its symbol expresses matter out of balance over spirit, with material instincts and impulses dominating spirit.",
+      "keywords": {
+        "pt": [
+          "ação",
+          "iniciativa",
+          "determinação",
+          "competição",
+          "conflito",
+          "matéria em desequilíbrio sobre o espírito",
+          "instintos e impulsos materiais"
+        ],
+        "en": [
+          "action",
+          "initiative",
+          "determination",
+          "competition",
+          "conflict",
+          "matter out of balance over spirit",
+          "material instincts and impulses"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18257,
+          "to": 18274
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18308,
+          "to": 18316
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18327,
+          "to": 18334
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 187,
+          "to": 188
+        }
+      ],
+      "reviewNotes": [
+        "A função geral usa conceitos do livro; a frase sobre o símbolo registra separadamente a correspondência da aula e não afirma relação causal entre símbolo e função.",
+        "A referência a guerras na aula 13 pertence à etapa específica da leitura da kundalini; não foi convertida em perfil natal geral.",
+        "A seção do livro apresenta falhas de extração; os exemplos de Marte em Áries e Escorpião foram excluídos."
+      ]
+    },
+    "jupiter": {
+      "pt": "no seu mapa, Júpiter indica expansão, crescimento, busca de significado e sabedoria, além de otimismo e vontade de aprender. seu símbolo expressa a alma em equilíbrio com a matéria, com suas qualidades elevadas sobre a matéria.",
+      "en": "in your chart, Jupiter indicates expansion, growth, the pursuit of meaning and wisdom, as well as optimism and a desire to learn. its symbol expresses the soul in balance with matter, with its qualities raised above matter.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "crescimento",
+          "significado",
+          "sabedoria",
+          "otimismo",
+          "aprendizado",
+          "alma em equilíbrio com a matéria"
+        ],
+        "en": [
+          "expansion",
+          "growth",
+          "meaning",
+          "wisdom",
+          "optimism",
+          "learning",
+          "soul in balance with matter"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18568,
+          "to": 18593
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18629,
+          "to": 18648
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 189,
+          "to": 190
+        }
+      ],
+      "reviewNotes": [
+        "A frase geral usa expansão, crescimento, significado, sabedoria, otimismo e aprendizado das passagens gerais do livro; não transfere filosofia, aventura ou conhecimento da descrição de Júpiter em Sagitário.",
+        "A frase sobre o símbolo mantém separada a correspondência alma-matéria ensinada na aula; não a trata como causa da função natal.",
+        "A expansão na aula 13 aparece numa etapa específica de leitura da kundalini. Referências do livro a sorte, prosperidade e proteção não são apresentadas como resultados garantidos."
+      ]
+    },
+    "saturn": {
+      "pt": "no seu mapa, Saturno simboliza disciplina, responsabilidade, estrutura e ordem. sua função também se relaciona ao amadurecimento emocional e espiritual e ao contato com a realidade e as limitações.",
+      "en": "in your chart, Saturn symbolizes discipline, responsibility, structure and order. its function also relates to your emotional and spiritual maturation and to contact with reality and limitations.",
+      "keywords": {
+        "pt": [
+          "disciplina",
+          "responsabilidade",
+          "estrutura e ordem",
+          "amadurecimento emocional e espiritual",
+          "realidade e limitações"
+        ],
+        "en": [
+          "discipline",
+          "responsibility",
+          "structure and order",
+          "emotional and spiritual maturation",
+          "reality and limitations"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 18963,
+          "to": 18980
+        }
+      ],
+      "reviewNotes": [
+        "Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:18962-19060. Adopted 18963-18980: body names Saturn at 18963 and 18972; discipline/responsibility, structure/order, emotional/spiritual maturation and reality/limitations. Prescriptive source verbs are represented as functions, not instructions.",
+        "Book 18982-19060 is unadopted: interleaved obstacles/perseverance, isolation, attainment language and domicile/Capricorn material beginning 19034. No uncertain OCR sequence reconstructed.",
+        "Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Saturn/Binah matter-over-soul glyph symbolism at 193-194; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with cobranças at 1576 in the explicit kundalini-reading context. Neither is ordinary psychological evidence; selected book functions are independently explicit."
+      ]
+    },
+    "uranus": {
+      "pt": "no seu mapa, Urano simboliza inovação, criatividade e originalidade. ele também pode indicar uma tendência sua ao desapego emocional e à impessoalidade nas relações e situações.",
+      "en": "in your chart, Uranus symbolizes innovation, creativity and originality. it may also indicate a tendency in you toward emotional detachment and impersonality in relationships and situations.",
+      "keywords": {
+        "pt": [
+          "inovação",
+          "criatividade",
+          "originalidade",
+          "possível desapego emocional",
+          "possível impessoalidade"
+        ],
+        "en": [
+          "innovation",
+          "creativity",
+          "originality",
+          "possible emotional detachment",
+          "possible impersonality"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 19370,
+          "to": 19385
+        }
+      ],
+      "reviewNotes": [
+        "Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:19359-19416. Adopted 19370-19385: body names Uranus at 19370 and 19375; intact possible detachment/impersonality at 19370-19373 and innovation/creativity/originality at 19375,19379-19385. May/pode remains attached to detachment.",
+        "The 19377-19383 limits/barriers column interleaves the innovation text and is unadopted. Other broken text, sudden changes, freedom, rebellion and individualism in the inspected window are unadopted; no OCR repair or event prediction.",
+        "Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Uranus/Hohimah spirit/soul/matter glyph symbolism at 195-197; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with technology in our being at 1577 in the explicit kundalini-reading context. Book innovation is independently stated, not inferred from that label."
+      ]
+    },
+    "neptune": {
+      "pt": "no seu mapa, Netuno simboliza sua busca por uma conexão espiritual mais profunda. ele também aponta áreas em que você pode vivenciar desilusões e confusões.",
+      "en": "in your chart, Neptune symbolizes your search for a deeper spiritual connection. it also points to areas where you may experience disillusionment and confusion.",
+      "keywords": {
+        "pt": [
+          "busca de conexão espiritual",
+          "profundidade espiritual",
+          "possíveis desilusões",
+          "possíveis confusões"
+        ],
+        "en": [
+          "search for spiritual connection",
+          "spiritual depth",
+          "possible disillusionment",
+          "possible confusion"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 19733,
+          "to": 19744
+        }
+      ],
+      "reviewNotes": [
+        "Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:19729-19804. Adopted 19733-19744: Neptune is named at 19733 and in the chart at 19735. Identifiable alternating clauses support deeper spiritual connection at 19733,19737,19741 and possible disillusionment/confusion at 19735,19739,19743-19744; may/pode is retained.",
+        "Unadopted book material includes fragmentary imagination/encouragement text, Pisces domicile claims at 19756 onward, and generational/traditional-astrology/dignity discussion at 19791-19803. These distinct contexts are not merged into the selected chart-function claims; no missing clause reconstructed.",
+        "Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Neptune/Kether reception/glyph symbolism at 198-199; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with enchantments at 1578 in the explicit kundalini-reading context. Neither is merged with book spiritual connection."
+      ]
+    },
+    "pluto": {
+      "pt": "no seu mapa, Plutão simboliza transformações profundas e o confronto com aspectos sombrios de você e da vida. sua função também envolve temas de poder, controle e dominação.",
+      "en": "in your chart, Pluto symbolizes deep transformations and confrontation with shadowy aspects of yourself and life. its function also involves themes of power, control and domination.",
+      "keywords": {
+        "pt": [
+          "transformações profundas",
+          "confronto com aspectos sombrios",
+          "poder",
+          "controle",
+          "dominação"
+        ],
+        "en": [
+          "deep transformations",
+          "confrontation with shadowy aspects",
+          "power",
+          "control",
+          "domination"
+        ]
+      },
+      "src": [
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20029,
+          "to": 20034
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20042,
+          "to": 20049
+        }
+      ],
+      "reviewNotes": [
+        "Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:20023-20128. Adopted 20029-20034 and 20042-20049: Pluto is named at 20029; deep transformation/confrontation with shadowy aspects and explicit power/control/domination fragments. The interleaved chart-summary column does not establish inevitable challenges or renewal.",
+        "Unadopted book material includes healing/complete-renewal claims, tumult/growth rhetoric, subconscious/occult fragments, death/rebirth/regeneration and Scorpio domicile material beginning 20089. No uncertain OCR sequence reconstructed.",
+        "Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Pluto/Daat spirit-over-soul/matter at 191-192; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with mysteries at 1575 in the explicit kundalini-reading context. Glyph cosmology is not expanded into personal power or moral permission."
+      ]
+    }
   }
 }
