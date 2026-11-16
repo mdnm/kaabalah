@@ -83,6 +83,20 @@ console.log(chart.houses.ascendant.sign);
 console.log(chart.sect); // "diurnal" | "nocturnal"
 ```
 
+### I Ching
+
+```typescript
+import { getIChingReading, getHexagramDescription } from 'kaabalah/iching';
+
+const reading = getIChingReading('879777'); // six lines, bottom to top
+
+console.log(reading.cast.hexagram.number);
+console.log(reading.oracle[0].text.english);
+console.log(getHexagramDescription(reading.cast.hexagram.number));
+```
+
+Store the six line values. The cast, the moving lines, and the texts are derived from them.
+
 ### Ifa
 
 ```typescript

@@ -60,7 +60,7 @@ Example feature ideas:
 
 #### What can run fully in the browser?
 
-- Numerology, gematria, tarot: yes.
+- Numerology, gematria, tarot, I Ching: yes.
 - Astrology: needs Swiss Ephemeris WebAssembly.
 
 #### SSR vs client
@@ -103,6 +103,7 @@ Good bot features:
 - `/life-path` from saved birth date
 - `/gematria word:` quick lookup
 - `/tarot draw:3` + meaning
+- `/iching` from six stored lines
 
 ### Product design tips (new to esoterism)
 

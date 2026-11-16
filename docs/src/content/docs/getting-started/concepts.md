@@ -79,6 +79,24 @@ Practical tip:
 - Treat tarot draws as random sampling.
 - Store the drawn card IDs in your database — don't reshuffle on re-render.
 
+### I Ching
+
+- **Hexagram**: one of 64 figures, identified by its King Wen number. Romanizations are display only.
+- **Line**: a value from 6 to 9. Line 1 is the bottom. 6 and 9 move. 7 and 8 stay.
+- **Cast**: the hexagram the six lines make.
+- **Transformed hexagram**: the figure after the moving lines change. `null` when nothing moves.
+- **Nuclear hexagram**: the figure made from the inner four lines.
+- **Judgment and image**: the classical texts. The Great Image is not the judgment.
+- **Oracle**: the texts Zhu Xi's rule selects for this cast. Not every line speaks.
+- **Plain description**: ordinary words for the judgment and the image (`getHexagramDescription`). Not a substitute for the classical text.
+- **Palace, 納甲, 六親**: the Han technical layer. Relatives after a move are reported in both palaces.
+- **Sovereign hexagram**: the 十二辟卦 lunar month a figure governs, when it governs one.
+
+Practical tip:
+
+- Store the six line values. Derive the rest.
+- Do not look a hexagram up by Wade-Giles. 履 and 旅 are both Lü.
+
 ### Ifa
 
 - **Odu**: symbolic numbers used in Ifa divination.

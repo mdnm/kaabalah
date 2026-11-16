@@ -1,6 +1,6 @@
 # I Ching (`kaabalah/iching`)
 
-A reading is derived from exactly six classical line values, bottom to top. Store those six values; everything else is reproducible. The module returns structural facts, classical text and fixed correspondences, without interpretation, date seeding, guaqi day assignments or network access.
+A reading is derived from exactly six classical line values, bottom to top. Store those six values; everything else is reproducible. The module returns structural facts, classical text and fixed correspondences, without date seeding, guaqi day assignments or network access. `getIChingReading` does not interpret. `getHexagramDescription` is a separate plain-language account of the judgment and the image.
 
 ```ts
 import {
@@ -19,7 +19,7 @@ formatRecord(lines, { date: '15-11-2026', question: '(daily reading)' });
 
 Line 1 is bottom; line 6 is top. Values: 6 old yin (moving), 7 young yang, 8 young yin, 9 old yang (moving). Binary is also bottom-first, with yang = 1. Coin casting uses three independent coin draws per line (tails 2, heads 3), exactly 18 RNG calls. The caller's RNG must return finite values in `[0, 1)`. Coin odds for 6/7/8/9 are 1/8, 3/8, 3/8, 1/8. No question/date seed is built in.
 
-`HEXAGRAMS` is in King Wen order; `HEXAGRAMS_BY_NUMBER` and `getHexagram(number)` use the number as identity. Names always include Chinese, pinyin, the site's Wade-Giles display form and English. `pinyinVariants` records alternate readings for 小畜, 噬嗑, 大畜 and 解. Romanizations are never lookup keys: 履 and 旅 both display Lü; the site's Ch'ien and Chien spellings are also easily conflated.
+`HEXAGRAMS` is in King Wen order; `HEXAGRAMS_BY_NUMBER` and `getHexagram(number)` use the number as identity. Names always include Chinese, pinyin, the site's Wade-Giles display form and English. `getHexagramDescription(number, language)` returns plain words for that hexagram's judgment and image. It is not part of `getIChingReading`, and it is not a substitute for `hexagram.text`. `pinyinVariants` records alternate readings for 小畜, 噬嗑, 大畜 and 解. Romanizations are never lookup keys: 履 and 旅 both display Lü; the site's Ch'ien and Chien spellings are also easily conflated.
 
 `TRIGRAMS` and `getTrigram(idOrBinary)` provide Chinese names, images, bottom-first bits, family, Later Heaven directions, and the five phases. `getHexagramByTrigrams(lower, upper)` deliberately takes the lower trigram first, matching the line convention. Gate output explicitly uses upper then lower, matching the source gate table.
 

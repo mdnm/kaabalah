@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Reading weights: Daath now lights through Scorpio, since Pluto rules Scorpio and
+  Pluto is Daath's planet. A major or a court that carries Scorpio (Temperance, the
+  Queen of Cups) is one hit on Daath, and a birth placement in Scorpio answering that
+  card is another. A court's address at Daath still counts for nothing.
+- Add bilingual plain-language hexagram descriptions to `kaabalah/iching`
+  (`getHexagramDescription`). The classical text is unchanged.
+- Document `kaabalah/iching` alongside the other modules.
+
 ## 6.14.0 - 2026-11-16
 
 - Add structured reading rules to `kaabalah/semantic`: card resolution,

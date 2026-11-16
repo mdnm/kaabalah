@@ -35,6 +35,7 @@ Each module can be imported independently, keeping your bundle lean:
 import { calculateKaabalisticLifePath } from 'kaabalah/numerology';
 import { calculateGematria } from 'kaabalah/gematria';
 import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
+import { getIChingReading } from 'kaabalah/iching';
 import { createTree } from 'kaabalah/core';
 import { calculateOdu } from 'kaabalah/ifa';
 import { getTarotThemeProfile } from 'kaabalah/semantic';
@@ -46,7 +47,7 @@ import { generateTreeSvg } from 'kaabalah/visual';
 <Aside type="caution">
 `kaabalah/astrology` uses Swiss Ephemeris compiled to WebAssembly. It is the only module that requires additional setup.
 
-All other modules (`numerology`, `gematria`, `tarot`, `core`, `ifa`, `semantic`, `visual`) are pure TypeScript with no native dependencies.
+All other modules (`numerology`, `gematria`, `tarot`, `iching`, `core`, `ifa`, `semantic`, `visual`) are pure TypeScript with no native dependencies.
 </Aside>
 
 For browser and bundler configuration, follow the integration guide:

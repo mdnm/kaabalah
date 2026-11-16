@@ -1,5 +1,6 @@
 export * from "./types";
 export * from "./data";
+export * from "./descriptions";
 export { TRIGRAMS, PALACE_TABLE, PHASE_HANZI } from "./tables";
 export * from "./calculations";
 export * from "./kaabalah";

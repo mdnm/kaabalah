@@ -1,0 +1,261 @@
+{
+  "source": "Plain words for each hexagram's judgment and image, and for the picture its two trigrams make. The classical text stays on the hexagram.",
+  "hexagrams": {
+    "1": {
+      "en": "Sky over sky: nothing up there ever stops moving. The text speaks of great strength at the start, and says it only holds for those who stay steady. What it asks of you is to keep building your own strength, day after day, without waiting for a push.",
+      "pt": "Céu sobre céu: lá em cima nada para de se mover. O texto fala de uma força grande no começo, que só se sustenta em quem mantém o rumo. O que ele te pede é continuar se fortalecendo por conta própria, um dia depois do outro, sem esperar empurrão."
+    },
+    "2": {
+      "en": "Earth over earth: ground that holds up everything placed on it. The text compares you to a mare, strong and willing to follow. Go first and you get lost. Follow and you find direction. It is good to find friends in the west and south, and to let go of friends in the east and north. Carry what comes with a wide, generous heart, and stay calm.",
+      "pt": "Terra sobre terra: o chão que sustenta tudo que colocam nele. O texto te compara a uma égua, forte e disposta a seguir. Quem sai na frente se perde. Quem segue encontra direção. É bom achar amigos no oeste e no sul, e abrir mão dos amigos no leste e no norte. Carregue o que vier com generosidade e mantenha a calma."
+    },
+    "3": {
+      "en": "Clouds and thunder: a storm still forming, like a sprout pushing through hard ground. The start is tangled, and the text says not to set out anywhere yet. Find people to help you and sort the threads one by one, the way you would untangle yarn.",
+      "pt": "Nuvens e trovão: a tempestade ainda está se formando, como um broto forçando a terra dura. O começo é embolado, e o texto diz pra não sair pra lugar nenhum ainda. Procure quem te ajude e vá separando os fios um por um, como quem desembaraça uma linha."
+    },
+    "4": {
+      "en": "A spring comes out at the foot of a mountain: clear water that doesn't know its way yet. Not knowing is fine. The text says whoever needs to learn is the one who goes and asks, and asks once: repeating the question to get a different answer gets you nothing. Then act firmly on what you heard.",
+      "pt": "Uma nascente brota no pé da montanha: água limpa que ainda não sabe o caminho. Não saber faz parte. O texto diz que quem precisa aprender é quem vai atrás e pergunta, e pergunta uma vez: repetir a pergunta atrás de outra resposta não leva a nada. Depois, aja com firmeza no que ouviu."
+    },
+    "5": {
+      "en": "Clouds climb above the sky, and the rain will fall when it falls. Waiting is the work here. The text says to trust, eat and drink well, and enjoy the company you have. With that trust in place, even a big crossing is worth facing.",
+      "pt": "As nuvens subiram acima do céu, e a chuva cai na hora dela. Aqui, esperar é o trabalho. O texto fala em confiar, comer e beber bem, aproveitar a companhia que você tem. Com essa confiança no lugar, vale encarar até uma travessia grande."
+    },
+    "6": {
+      "en": "The sky pulls upward and the water runs down: two things moving away from each other. That is a dispute. You may be acting in good faith and still be blocked. The text says stopping halfway is good and pushing to the end is bad. See someone wise. In whatever you take on, look carefully at how it began. And start nothing big now.",
+      "pt": "O céu puxa pra cima e a água corre pra baixo: dois movimentos que se afastam. Isso é uma briga. Você pode ter boa-fé e mesmo assim travar. O texto diz que parar no meio é bom e levar até o fim é ruim. Procure uma pessoa sábia. No que você for fazer, olhe com cuidado como começou. E não comece nada grande agora."
+    },
+    "7": {
+      "en": "Water stored inside the earth: a strength you can't see, like people who become a force once they are gathered. The text says this takes steadiness and a mature, experienced hand to lead. If the one leading is you, your job is to make room for everyone and look after them.",
+      "pt": "Água guardada dentro da terra: uma força que não aparece, como gente que vira potência quando se junta. O texto diz que isso pede firmeza e uma liderança madura, com experiência. Se quem conduz é você, sua tarefa é acolher todo mundo e cuidar do grupo."
+    },
+    "8": {
+      "en": "Water lying on the earth: the two hold together with no gap between them. This is about joining with others. The text says to ask the oracle a second time whether you have greatness, constancy, and perseverance. Then there is no blame. Those who were unsure come around. Whoever leaves it too late is left out.",
+      "pt": "Água deitada sobre a terra: as duas se juntam sem deixar fresta. O assunto aqui é se unir a outras pessoas. O texto diz pra consultar o oráculo uma segunda vez e perguntar se você tem grandeza, constância e perseverança. Aí não há culpa. Quem estava em dúvida acaba chegando. Quem deixa pra muito depois fica de fora."
+    },
+    "9": {
+      "en": "Wind blows high across the sky and thick clouds close in without letting go of a single drop. Something small is holding back something big. You can't force the result now. The text asks you to spend this time on the finish: refine your manner, your words, the way you do things.",
+      "pt": "O vento corre lá no alto e as nuvens se fecham sem soltar uma gota. Uma coisa pequena está segurando uma coisa grande. Não dá pra forçar o resultado agora. O texto pede pra usar esse tempo no acabamento: lapidar seu jeito, suas palavras, sua forma de fazer."
+    },
+    "10": {
+      "en": "The sky above, a lake below: each in its place, the high and the low. You are stepping on a tiger's tail, and it doesn't bite. The text is about how to walk near something stronger than you: knowing where you stand, with respect, and clear about what you want.",
+      "pt": "Céu em cima, lago embaixo: cada um no seu lugar, o alto e o baixo. Você está pisando no rabo de um tigre, e ele não morde. O texto fala de como andar perto de algo mais forte que você: sabendo onde pisa, com respeito e com clareza do que quer."
+    },
+    "11": {
+      "en": "Earth above, sky below: the sky rises, the earth settles, and the two meet in the middle. The small is leaving and the great is arriving. It is a time when things flow together. The text asks you to work with it: help what is already growing and share it with the people around you.",
+      "pt": "Terra em cima, céu embaixo: o céu sobe, a terra desce, e os dois se encontram no meio. O pequeno vai embora e o grande chega. É um tempo em que as coisas fluem juntas. O texto pede pra trabalhar a favor: ajudar o que já está crescendo e dividir com quem está à sua volta."
+    },
+    "12": {
+      "en": "Sky above, earth below: the sky drifts up, the earth sinks down, and the two never meet. The great is leaving and the small is arriving. Things are stuck, and the wrong people have the say. The text asks you to keep your values quietly, stay out of trouble, and not let rewards buy you.",
+      "pt": "Céu em cima, terra embaixo: o céu sobe, a terra afunda, e os dois não se encontram. O grande vai embora e o pequeno chega. As coisas estão travadas, e quem manda é quem não devia. O texto pede pra guardar seus valores em silêncio, ficar longe de confusão e não se deixar comprar por recompensa."
+    },
+    "13": {
+      "en": "Fire rises toward the sky: the two go the same way. This is people coming together out in the open, with nothing hidden. The text says it is a good time to take on something big together. Your part is to see clearly who is who and what each one brings.",
+      "pt": "O fogo sobe em direção ao céu: os dois vão pro mesmo lado. É gente se juntando em campo aberto, sem nada escondido. O texto diz que é um bom momento pra encarar algo grande em conjunto. A sua parte é enxergar com clareza quem é quem e o que cada pessoa traz."
+    },
+    "14": {
+      "en": "Fire high in the sky, like the sun at noon lighting everything. You have a lot in your hands. The text says this is very good and asks one thing: with so much light, you can tell what is harmful from what is good. Hold back the first and lift up the second.",
+      "pt": "Fogo no alto do céu, como o sol do meio-dia iluminando tudo. Você tem muito nas mãos. O texto diz que isso é muito bom e pede uma coisa: com tanta luz, dá pra distinguir o que faz mal do que faz bem. Segure o primeiro e levante o segundo."
+    },
+    "15": {
+      "en": "A mountain hidden inside the earth: something tall that doesn't show off. The text says whoever lives this way gets to finish what was started. It asks you to even things out: take from where there is too much, give where there is too little, and weigh each thing fairly.",
+      "pt": "Uma montanha escondida dentro da terra: uma coisa alta que não se exibe. O texto diz que quem vive assim consegue terminar o que começou. Ele pede pra você equilibrar as coisas: tirar de onde sobra, pôr onde falta e pesar cada coisa com justiça."
+    },
+    "16": {
+      "en": "Thunder bursts out of the ground and the earth shakes awake. It is the kind of energy that makes people want to move together. The text says it is a time to choose helpers and get a group going. The old kings answered this thunder with music, to honor what is good and those who came before.",
+      "pt": "O trovão sai do chão e a terra acorda tremendo. É aquela energia que dá vontade de se mexer junto com os outros. O texto diz que é hora de escolher quem te ajuda e pôr um grupo em movimento. Os reis antigos respondiam a esse trovão com música, pra honrar o que é bom e quem veio antes."
+    },
+    "17": {
+      "en": "Thunder resting at the bottom of a lake: the force that usually shakes things is quiet now. This is about following, going along with the time instead of fighting it. The text gives a simple picture: when evening comes, you go inside and rest. Stay true while you adapt, and there is no fault in it.",
+      "pt": "O trovão descansa no fundo do lago: a força que costuma sacudir tudo agora está quieta. O assunto é seguir, acompanhar o tempo em vez de brigar com ele. O texto dá uma imagem simples: quando a noite chega, você entra e descansa. Se adapte sem deixar de ser quem é, e não há erro nisso."
+    },
+    "18": {
+      "en": "Wind trapped at the foot of a mountain: the air stops moving and things go bad. Something was left to rot, and it can be repaired. The text says it deserves a big effort, with care before you start and care after. Shake people awake, yourself first, and feed what is good.",
+      "pt": "Vento preso no pé da montanha: o ar para de circular e as coisas estragam. Algo foi deixado apodrecer, e dá pra consertar. O texto diz que isso merece um esforço grande, com cuidado antes de começar e cuidado depois. Sacuda as pessoas, você em primeiro lugar, e alimente o que é bom."
+    },
+    "19": {
+      "en": "Earth at the edge of a lake: the land leans over the water and looks after it. Something good is coming closer and growing. The text also warns that this season turns: a few months on, things go the other way. Use it now to teach and to care for people without keeping count.",
+      "pt": "Terra na beira do lago: o chão se inclina sobre a água e cuida dela. Algo bom está se aproximando e crescendo. O texto também avisa que essa estação vira: daqui a alguns meses, as coisas vão pro outro lado. Aproveite agora pra ensinar e cuidar das pessoas sem fazer conta."
+    },
+    "20": {
+      "en": "Wind moving over the earth touches everything and sees everything. The text shows one moment in a ceremony: the hands are washed, the offering not yet made. Full of trust, they look up to you. Before you speak, do what the old kings did: go around, watch how people really live, and only then say what you have to say.",
+      "pt": "O vento que passa sobre a terra toca em tudo e vê tudo. O texto mostra um momento de uma cerimônia: as mãos já lavadas, a oferenda ainda não feita. Cheios de confiança, eles olham pra você. Antes de falar, faça o que os reis antigos faziam: ande por aí, veja como as pessoas vivem de verdade, e só depois diga o que tem pra dizer."
+    },
+    "21": {
+      "en": "Thunder and lightning together: a flash that shows everything and a crack that settles it. Something is stuck between the teeth and has to be bitten through. The text says it is time to deal with a wrong in the open: make the rules clear, and make the consequences known and fair.",
+      "pt": "Trovão e relâmpago juntos: um clarão que mostra tudo e um estrondo que resolve. Tem alguma coisa presa entre os dentes, e é preciso morder até atravessar. O texto diz que é hora de tratar um erro às claras: deixar as regras nítidas e as consequências conhecidas e justas."
+    },
+    "22": {
+      "en": "A fire at the foot of a mountain lights up the slope and makes it beautiful. This is about form, beauty, the way things look. The text says it helps in small matters. Use that light to make everyday things clear, but don't settle anything serious by appearance alone.",
+      "pt": "Um fogo no pé da montanha ilumina a encosta e deixa tudo bonito. O assunto aqui é forma, beleza, aparência. O texto diz que isso ajuda nas coisas pequenas. Use essa luz pra deixar o dia a dia mais claro, mas não resolva nada sério só pela aparência."
+    },
+    "23": {
+      "en": "A mountain sitting on the earth, wearing away bit by bit. Things are being stripped from you, and the text says plainly that this is no time to go anywhere. What it asks is to strengthen the base: be generous with those who hold you up, and make your house secure.",
+      "pt": "Uma montanha apoiada na terra, se desgastando aos poucos. As coisas estão sendo arrancadas de você, e o texto diz sem rodeio que não é hora de ir a lugar nenhum. O que ele pede é reforçar a base: ter generosidade com quem te sustenta e deixar sua casa segura."
+    },
+    "24": {
+      "en": "Thunder deep inside the earth: after everything was stripped away, a first small movement returns. The text says you can come and go without harm. Friends come, and there is no blame. The way goes out and comes back: on the seventh day, the return comes. Now it is good to have somewhere to go. But the new force is young. On the shortest day of the year, the old kings closed the gates and let everyone rest.",
+      "pt": "Um trovão bem no fundo da terra: depois que tudo foi arrancado, um primeiro movimento pequeno volta. O texto diz que dá pra ir e vir sem dano. Amigos chegam, e não há culpa. O caminho vai e volta: no sétimo dia, a volta chega. Agora é bom ter pra onde ir. Mas a força nova é jovem. No dia mais curto do ano, os reis antigos fechavam os portões pra todo mundo descansar."
+    },
+    "25": {
+      "en": "Thunder rolls under the sky and every living thing answers as it is, with no pretending. That is the spirit here: acting with no hidden plan. The text is strict: what isn't honest brings trouble, and setting out with a scheme won't help. Tend what is yours to tend, each thing in its season.",
+      "pt": "O trovão corre debaixo do céu e cada ser responde do jeito que é, sem fingir. Esse é o espírito aqui: agir sem segunda intenção. O texto é rigoroso: o que não é honesto traz problema, e sair por aí com um plano escondido não ajuda. Cuide do que cabe a você cuidar, cada coisa na sua estação."
+    },
+    "26": {
+      "en": "The sky held inside a mountain: an enormous force, contained and stored. The text says to stay steady, not to stay home eating at your own table, and that a big crossing is worth it. Fill yourself up first: study what was said and done before you, and build your character on it.",
+      "pt": "O céu guardado dentro da montanha: uma força enorme, contida e acumulada. O texto diz pra manter a firmeza, não ficar em casa comendo na própria mesa, e que uma travessia grande vale a pena. Antes, se abasteça: estude o que foi dito e feito antes de você e construa seu caráter em cima disso."
+    },
+    "27": {
+      "en": "Thunder under a mountain: still above, moving below, like a jaw chewing. This is about what feeds you. The text asks you to notice what people nourish, and what you yourself go looking for to fill your mouth. Mind what comes out of it too: measured words, measured food and drink.",
+      "pt": "Trovão debaixo da montanha: parado em cima, mexendo embaixo, como uma boca mastigando. O assunto é o que te alimenta. O texto pede pra reparar no que as pessoas nutrem e no que você mesmo vai buscar pra encher a boca. Cuide também do que sai dela: medida nas palavras, medida na comida e na bebida."
+    },
+    "28": {
+      "en": "The lake has risen over the trees: too much water, too much weight. The main beam of the house is sagging. The text says it helps to have somewhere to go: don't stay under it. If you have to stand alone, do it without fear. If you have to renounce the world, do it undaunted.",
+      "pt": "O lago subiu por cima das árvores: água demais, peso demais. A viga principal da casa está envergando. O texto diz que ajuda ter pra onde ir: não fique embaixo dela. Se for preciso ficar só, fique sem medo. Se for preciso renunciar ao mundo, faça isso sem se abalar."
+    },
+    "29": {
+      "en": "Water after water, one ravine after another. The danger doesn't come once: it keeps coming. The text says that if you are sincere, you have success in your heart, and whatever you do succeeds. Water shows how: it keeps flowing, always the same. Keep your conduct steady, and carry on the work of teaching.",
+      "pt": "Água depois de água, um barranco atrás do outro. O perigo não vem uma vez só: ele continua vindo. O texto diz que, se você for sincero, o sucesso está no seu coração, e o que você fizer dá certo. A água mostra como: segue correndo, sempre igual. Mantenha sua conduta constante e siga no trabalho de ensinar."
+    },
+    "30": {
+      "en": "Fire over fire: light doubled. A flame only exists while it holds on to something that burns. The text asks you to notice what your light depends on and to look after it patiently, like someone raising a cow. That is how brightness carries on and reaches all four directions.",
+      "pt": "Fogo sobre fogo: luz em dobro. Uma chama só existe enquanto se agarra em alguma coisa que queima. O texto pede pra você notar do que a sua luz depende e cuidar disso com paciência, como quem cria uma vaca. É assim que a claridade continua e chega aos quatro cantos."
+    },
+    "31": {
+      "en": "A lake on top of a mountain: the mountain makes room and the water settles in. This is attraction, two sides moving each other. The text speaks of marriage as a good thing here. It asks you to meet people with an empty space inside: no ready answer, no plan for them.",
+      "pt": "Um lago no alto da montanha: a montanha abre espaço e a água se acomoda. É atração, dois lados mexendo um com o outro. O texto fala do casamento como coisa boa aqui. Ele pede pra você receber as pessoas com um espaço vazio por dentro: sem resposta pronta, sem plano pra elas."
+    },
+    "32": {
+      "en": "Thunder and wind: both always moving, and always found together. What lasts is not what stands frozen. It is what keeps going the same way. The text says there is no fault here and that it is good to have a destination. Stand firm and don't change direction with every gust.",
+      "pt": "Trovão e vento: os dois sempre em movimento, e sempre juntos. O que dura não é o que fica congelado. É o que segue indo pro mesmo lado. O texto diz que não há erro aqui e que é bom ter um destino. Fique firme e não mude de direção a cada rajada."
+    },
+    "33": {
+      "en": "A mountain under the sky: however high it climbs, the sky stays out of reach. This is stepping back. The text says it works, and that staying steady in small things helps. Keep small-minded people at a distance. Not with hatred: with a firm, calm limit.",
+      "pt": "Uma montanha debaixo do céu: por mais que ela suba, o céu continua fora de alcance. Isso é recuar. O texto diz que funciona, e que ajuda manter a firmeza nas coisas pequenas. Mantenha distância de gente mesquinha. Não com ódio: com um limite firme e sereno."
+    },
+    "34": {
+      "en": "Thunder above the sky: great strength, and loud. You have real power now. The text is very short: stay true. And it adds one line: a strong person doesn't put a foot where it isn't right. The more force you have, the more it matters where you step.",
+      "pt": "Trovão acima do céu: força grande, e barulhenta. Você tem poder de verdade agora. O texto é bem curto: mantenha a retidão. E acrescenta uma linha: quem é forte não põe o pé onde não é correto. Quanto mais força você tem, mais importa onde você pisa."
+    },
+    "35": {
+      "en": "The sun comes up over the earth and the day grows brighter. This is advancing, in plain view. The text tells of a leader who is given many horses and received three times in one day: recognition for serving well. What it asks of you is to let your own good qualities shine.",
+      "pt": "O sol sobe por cima da terra e o dia vai clareando. É avançar, à vista de todo mundo. O texto conta de um líder que ganha muitos cavalos e é recebido três vezes no mesmo dia: reconhecimento por servir bem. O que ele te pede é deixar suas próprias qualidades brilharem."
+    },
+    "36": {
+      "en": "The sun has gone down into the earth: the light is hidden, and hurt. It is a hard time, and the text says only this: stay true through the difficulty. Among people, keep your light covered. You don't have to show everything you see. Inside, stay clear.",
+      "pt": "O sol entrou pra dentro da terra: a luz está escondida, e ferida. É um tempo difícil, e o texto só diz isto: mantenha a retidão no meio da dificuldade. No meio das pessoas, deixe sua luz coberta. Não precisa mostrar tudo que você enxerga. Por dentro, continue com clareza."
+    },
+    "37": {
+      "en": "Wind rising from a fire: the warmth at the center of a house spreads outward. This is about family, the people you live with. The text says it helps when the woman of the house perseveres. For you: let your words have something behind them, and let your actions be consistent.",
+      "pt": "O vento que sobe do fogo: o calor do centro da casa se espalha pra fora. O assunto é família, as pessoas com quem você vive. O texto diz que ajuda quando a mulher da casa persevera. Pra você: que suas palavras tenham conteúdo e que suas ações tenham constância."
+    },
+    "38": {
+      "en": "Fire burns upward, the lake seeps downward: two that live side by side and go separate ways. There is disagreement, and the text says only small things work out now. It asks you to stay with people and still be yourself. Being together doesn't mean being the same.",
+      "pt": "O fogo queima pra cima, o lago escorre pra baixo: dois que vivem lado a lado e vão pra lados diferentes. Existe desencontro, e o texto diz que agora só as coisas pequenas dão certo. Ele pede pra você ficar junto das pessoas sem deixar de ser quem é. Estar junto não é ser igual."
+    },
+    "39": {
+      "en": "Water on top of a mountain: a steep climb with danger ahead. You are limping. The text says the southwest helps and the northeast does not. Look for someone wise, and stay with it: perseverance brings good fortune. When the way is blocked, turn around and look at yourself: what in you needs work?",
+      "pt": "Água no alto da montanha: subida íngreme e perigo pela frente. Você está mancando. O texto diz que o sudoeste ajuda e o nordeste não. Procure uma pessoa sábia e mantenha a firmeza: a perseverança traz boa fortuna. Quando o caminho fecha, vire e olhe pra você: o que aí dentro precisa de trabalho?"
+    },
+    "40": {
+      "en": "Thunder and rain break out and the heavy air clears. The knot comes loose. The text says: if there is nothing left to do, go back to ordinary life. If something is left, do it early. And once the storm is over, let go of the mistakes and forgive what was done wrong.",
+      "pt": "Trovão e chuva desabam e o ar pesado se limpa. O nó se desfaz. O texto diz: se não sobrou nada pra resolver, volte pra vida normal. Se sobrou, resolva cedo. E depois que a tempestade passar, solte os erros e perdoe o que foi feito de errado."
+    },
+    "41": {
+      "en": "A lake at the foot of a mountain: the water sits low so the mountain can stand tall. This is decrease: less below, more above. The text says that decrease with sincerity brings the greatest good fortune, without blame. Stay with it. It is a good time to undertake something. Two small bowls are enough of an offering. What it asks you to cut down: your anger and your wanting.",
+      "pt": "Um lago no pé da montanha: a água fica embaixo pra montanha ficar alta. Isso é diminuir: menos embaixo, mais em cima. O texto diz que diminuir com sinceridade traz a maior boa fortuna, sem culpa. Mantenha isso. É um bom momento pra empreender alguma coisa. Duas tigelas pequenas bastam como oferenda. O que ele te pede pra reduzir: a raiva e a vontade de ter."
+    },
+    "42": {
+      "en": "Wind and thunder: each makes the other stronger. This is increase: more comes to you. The text says it is a time to set out and to make the big crossing. What it asks you to add: when you see something good, move toward it. When you find a fault in yourself, fix it.",
+      "pt": "Vento e trovão: um deixa o outro mais forte. Isso é aumentar: mais chega até você. O texto diz que é hora de sair e de fazer a grande travessia. O que ele te pede pra somar: quando vir algo bom, vá na direção disso. Quando achar um erro em você, corrija."
+    },
+    "43": {
+      "en": "The lake has risen above the sky: water so high it has to break through. Something must be said out loud, in front of everyone, truthfully, and it is risky. The text says to begin with your own people and not to reach for weapons. And share what you have: don't sit on your merits.",
+      "pt": "O lago subiu acima do céu: água tão alta que precisa romper. Algo tem que ser dito em voz alta, na frente de todo mundo, com verdade, e isso tem risco. O texto diz pra começar pela sua própria gente e não partir pra briga armada. E divida o que você tem: não se acomode nos seus méritos."
+    },
+    "44": {
+      "en": "Wind under the sky, reaching every corner. This is an unexpected meeting. The text warns in the language of its time: the woman is powerful, don't marry her. Something that arrives looking small has more force than it seems. Don't bind yourself to it. Do what the prince does: send your commands out and proclaim them to all four directions.",
+      "pt": "Vento debaixo do céu, chegando em todo canto. É um encontro inesperado. O texto avisa na linguagem da época dele: a mulher é poderosa, não se case com ela. Algo que chega parecendo pequeno tem mais força do que aparenta. Não se amarre a isso. Faça o que o príncipe faz: mande suas ordens pra fora e proclame elas nas quatro direções."
+    },
+    "45": {
+      "en": "A lake above the earth: water collecting in one place, like people gathering. The text shows a king going to the temple. See someone great, and stay with it: that brings success. Great offerings bring good fortune, and it is a good time to set out. Renew your weapons, so you are ready for what you did not foresee.",
+      "pt": "Um lago por cima da terra: água se juntando num lugar só, como gente se reunindo. O texto mostra um rei indo ao templo. Procure uma pessoa grande e mantenha a firmeza: isso traz sucesso. Grandes oferendas trazem boa fortuna, e é um bom momento pra se pôr a caminho. Renove suas armas, pra estar pronto pro que você não previu."
+    },
+    "46": {
+      "en": "A tree growing inside the earth: it rises slowly and without noise. This is going up. The text says to seek out someone who can help you, not to worry, and that it is good to get moving. Stack small things one on another until they become tall.",
+      "pt": "Uma árvore crescendo dentro da terra: sobe devagar e sem barulho. Isso é subir. O texto diz pra procurar alguém que possa te ajudar, não se preocupar, e que é bom se pôr a caminho. Vá empilhando coisas pequenas, uma em cima da outra, até ficarem altas."
+    },
+    "47": {
+      "en": "A lake with no water: it has all drained away underneath. You are worn out and hemmed in. The text says a person of real stature can still do well here, without blame. If you have something to say, it will not be believed. Stake everything on what you most deeply intend.",
+      "pt": "Um lago sem água: ela escoou toda por baixo. Você está sem forças e sem saída. O texto diz que uma pessoa de grandeza ainda consegue se sair bem aqui, sem culpa. Se você tem algo a dizer, não vão acreditar. Aposte tudo no seu propósito mais fundo."
+    },
+    "48": {
+      "en": "Wood goes down into the water and brings it up: a well. The town may change, but the well stays put, and everyone who comes draws from it. The text warns: if the rope falls short or the jug breaks just before the water, that brings misfortune. Go all the way down, and help people help each other.",
+      "pt": "A madeira desce na água e traz ela pra cima: um poço. A cidade pode mudar, mas o poço fica onde está, e todo mundo que chega bebe dele. O texto avisa: se a corda não alcança ou o jarro quebra logo antes da água, isso traz infortúnio. Desça até o fundo, e ajude as pessoas a se ajudarem."
+    },
+    "49": {
+      "en": "Fire inside a lake: one puts the other out, so something has to change. Like an animal shedding its skin. The text says people only believe in a change once its day has come, and then regret disappears. Your part is to read the time well: know which season is ending and which is beginning.",
+      "pt": "Fogo dentro do lago: um apaga o outro, então alguma coisa tem que mudar. Como um bicho trocando de pele. O texto diz que as pessoas só acreditam na mudança quando o dia dela chega, e aí o arrependimento some. A sua parte é ler bem o tempo: saber qual estação acaba e qual começa."
+    },
+    "50": {
+      "en": "Wood under fire: a cooking pot on the flame, turning raw things into food. The text is short and very favorable. What it asks of you is to stand like that pot: upright and firm in your place, so that what you were given to carry doesn't spill.",
+      "pt": "Madeira debaixo do fogo: um caldeirão na chama, transformando o que é cru em alimento. O texto é curto e muito favorável. O que ele te pede é ficar como esse caldeirão: de pé e firme no seu lugar, pra não derramar aquilo que te deram pra carregar."
+    },
+    "51": {
+      "en": "Thunder after thunder. The first bang brings fear and, right after, nervous laughter. It startles everyone for miles, yet the person holding the cup in the ceremony doesn't drop it. That is what the text asks: let the fright make you look at yourself and set right what needs it, without letting go of what is in your hands.",
+      "pt": "Trovão atrás de trovão. O primeiro estrondo dá medo e, logo depois, vem o riso nervoso. Ele assusta gente a quilômetros, mas quem segura o cálice na cerimônia não deixa cair. É isso que o texto pede: deixe o susto te fazer olhar pra dentro e corrigir o que precisa, sem soltar o que está nas suas mãos."
+    },
+    "52": {
+      "en": "A mountain behind a mountain: nothing moves. The text speaks of a stillness so complete that you stop noticing your own body, and can walk through a full courtyard without getting caught up in anyone. It asks you to keep your thoughts where you are, on what is in front of you now.",
+      "pt": "Uma montanha atrás de outra montanha: nada se mexe. O texto fala de uma quietude tão completa que você para de reparar no próprio corpo e atravessa um pátio cheio sem se prender em ninguém. Ele pede pra manter o pensamento onde você está, no que está na sua frente agora."
+    },
+    "53": {
+      "en": "A tree on a mountain: it grows slowly and can be seen from far away. This is progress one step at a time. The text compares it to a wedding done properly, each stage in its turn. Nothing here is rushed. Stay where you are with dignity, and your way of living improves the place around you.",
+      "pt": "Uma árvore no alto da montanha: cresce devagar e dá pra ver de longe. É progresso um passo de cada vez. O texto compara com um casamento feito direito, cada etapa na sua vez. Nada aqui é apressado. Fique onde você está com dignidade, e seu jeito de viver melhora o lugar à sua volta."
+    },
+    "54": {
+      "en": "Thunder above a lake: the water trembles and follows a movement that isn't its own. The text uses the picture of a young woman entering a marriage where she has little say. It is blunt: pushing forward goes badly, and nothing here brings gain. Think about how things end, and see early what won't last.",
+      "pt": "Trovão por cima do lago: a água treme e segue um movimento que não é dela. O texto usa a imagem de uma moça entrando num casamento em que ela tem pouca voz. Ele é direto: forçar o avanço dá errado, e nada aqui traz vantagem. Pense em como as coisas terminam, e veja cedo o que não vai durar."
+    },
+    "55": {
+      "en": "Thunder and lightning arrive together: force and clarity at full height. This is abundance, and the king attains it. The text says do not be sad. Be like the sun at midday, giving light while it is up there. Use that clarity to decide lawsuits and to carry out punishments.",
+      "pt": "Trovão e relâmpago chegam juntos: força e clareza no ponto mais alto. Isso é fartura, e o rei a alcança. O texto diz: não fique triste. Seja como o sol do meio-dia, que ilumina enquanto está lá em cima. Use essa clareza pra decidir as causas e aplicar os castigos."
+    },
+    "56": {
+      "en": "Fire on a mountain: it burns bright and moves on. It doesn't stay. You are a traveler, passing through. The text says success comes through what is small, and that staying steady brings the wanderer good fortune. Be clear and careful when you impose a penalty, and don't drag the case out.",
+      "pt": "Fogo no alto da montanha: queima forte e segue adiante. Não fica. Você é viajante, está de passagem. O texto diz que o sucesso vem pelo que é pequeno, e que a firmeza traz boa fortuna a quem está de passagem. Tenha clareza e cuidado ao aplicar uma pena, e não arraste o caso."
+    },
+    "57": {
+      "en": "Wind following wind: gentle, and it gets into everything because it doesn't stop. This is influence by persistence, not by force. The text says small things go well, and that it is good to have a goal and someone wise to look to. Say what you want more than once, then carry it out.",
+      "pt": "Vento atrás de vento: suave, e entra em tudo porque não para. É influência pela insistência, não pela força. O texto diz que as coisas pequenas vão bem, e que é bom ter um objetivo e uma pessoa sábia em quem se espelhar. Diga o que você quer mais de uma vez, e depois faça."
+    },
+    "58": {
+      "en": "Two lakes joined, each feeding the other so that neither dries up. This is joy, the kind that comes from exchange. The text says it goes well as long as it stays true. Its picture is simple: friends who sit together to talk about what matters and practice what they learn.",
+      "pt": "Dois lagos ligados, um alimentando o outro pra nenhum secar. Isso é alegria, daquela que vem da troca. O texto diz que vai bem enquanto for verdadeira. A imagem dele é simples: gente amiga que senta junto pra conversar sobre o que importa e praticar o que aprende."
+    },
+    "59": {
+      "en": "Wind blowing over water: it breaks up what was hard, and it scatters what was together. The text shows a king going to the temple: when everything disperses, people need a center to come back to. It says a big crossing is worth it. Look for what brings you and yours together again.",
+      "pt": "Vento soprando sobre a água: ele desmancha o que estava duro e espalha o que estava junto. O texto mostra um rei indo ao templo: quando tudo se dispersa, as pessoas precisam de um centro pra onde voltar. Ele diz que uma travessia grande vale a pena. Procure o que reúne você e os seus de novo."
+    },
+    "60": {
+      "en": "Water over a lake: a lake holds only so much, and the rest runs over. This is limits. The text says they work, with one warning: a limit that is too bitter can't be kept for long. Set your measures, how much and how far, and check them against how you want to live.",
+      "pt": "Água por cima do lago: um lago só comporta até certo ponto, e o resto transborda. O assunto é limite. O texto diz que limite funciona, com um aviso: limite amargo demais ninguém sustenta por muito tempo. Defina suas medidas, quanto e até onde, e compare com o jeito que você quer viver."
+    },
+    "61": {
+      "en": "Wind over a lake: you can't see it, and still the water moves. This is sincerity that comes from the center. The text says it reaches even pigs and fish, the hardest creatures to move, and that a big crossing is worth it. When you weigh someone's fault, go slowly. Look twice before any harsh sentence.",
+      "pt": "Vento sobre o lago: não dá pra ver, e a água se mexe. É a sinceridade que vem de dentro. O texto diz que ela alcança até porcos e peixes, os bichos mais difíceis de comover, e que a grande travessia vale a pena. Ao pesar o erro de alguém, vá devagar: olhe duas vezes antes de uma sentença dura."
+    },
+    "62": {
+      "en": "Thunder on a mountain: it sounds near, small, and passes quickly. A bird in flight leaves its call behind: it shouldn't climb higher, it should come down. The text says small things are possible now and big ones aren't. If you overdo anything, let it be respect, feeling your losses, and spending little.",
+      "pt": "Trovão no alto da montanha: soa perto, pequeno, e passa rápido. Um pássaro voando deixa seu canto pra trás: ele não deve subir mais, deve descer. O texto diz que agora dá pra fazer coisas pequenas, e grandes não. Se for exagerar em algo, que seja no respeito, em sentir suas perdas e em gastar pouco."
+    },
+    "63": {
+      "en": "Water over fire: the pot is on the flame, each thing in its place. It is all done, the river is crossed. And right there the text warns: it starts well and ends in a mess if you get careless. Stay careful with the small things, and think ahead about what could go wrong.",
+      "pt": "Água sobre fogo: a panela está na chama, cada coisa no seu lugar. Está tudo feito, o rio foi atravessado. E é bem aí que o texto avisa: começa bem e termina em bagunça se você relaxar. Continue com cuidado nas coisas pequenas, e pense antes no que pode dar errado."
+    },
+    "64": {
+      "en": "Fire over water: the flame goes up, the water goes down, and nothing is in its place yet. The river is not crossed. A young fox almost makes it and wets its tail at the very end: no gain in that. Before the last step, look carefully at each thing and put it where it belongs.",
+      "pt": "Fogo sobre água: a chama sobe, a água desce, e nada está no seu lugar ainda. O rio não foi atravessado. Uma raposa nova quase chega e molha o rabo bem no final: nenhum ganho nisso. Antes do último passo, olhe cada coisa com cuidado e ponha onde ela deve ficar."
+    }
+  }
+}

@@ -25,6 +25,8 @@ export const TREE_ORDER = [
 ] as const;
 
 const DAATH = id(KaabalahTypes.SPHERE, 'Daath');
+/** Pluto's sign: the one way a reading reaches Daath. */
+const DAATH_SIGN = 'Scorpio';
 /** A pip's rank is its sphere's place on the way down (no pip sits at Daath). */
 const RUNGS = TREE_ORDER.filter((id) => id !== DAATH);
 const SUIT_ELEMENT: Record<string, string> = { wands: 'Fire', cups: 'Water', swords: 'Air', pentacles: 'Earth' };
@@ -262,13 +264,16 @@ const planetKey = (label: string) => label.toLowerCase();
 export function buildReadingWeights({ cards, iching, natal }: ReadingInput): ReadingWeights {
   const spheres = new Map<string, { count: number; hits: Hit[] }>();
   const paths = new Map<string, number>();
-  const hit = (sphere: string, entry: Hit) => {
-    // Every court lives at Daath, so Daath says nothing about this reading.
-    if (sphere === DAATH) return;
+  const add = (sphere: string, entry: Hit) => {
     const current = spheres.get(sphere) ?? { count: 0, hits: [] };
     current.count += 1;
     current.hits.push(entry);
     spheres.set(sphere, current);
+  };
+  const hit = (sphere: string, entry: Hit) => {
+    // Every court lives at Daath, so an address there says nothing about this reading.
+    // Daath lights only through Scorpio, below.
+    if (sphere !== DAATH) add(sphere, entry);
   };
   const walk = (path: number) => paths.set(id(KaabalahTypes.PATH, path), (paths.get(id(KaabalahTypes.PATH, path)) ?? 0) + 1);
 
@@ -308,6 +313,22 @@ export function buildReadingWeights({ cards, iching, natal }: ReadingInput): Rea
               ? 'ascendant'
               : null;
       hit(subconscious.sphere, { system: 'chart', key: 'pipPlanet', planet: key, sign, same, house: natal.houses?.[key] });
+    }
+  }
+
+  // Pluto rules Scorpio and Pluto is Daath's planet, so any Scorpio link lights Daath:
+  // a major or a court that carries Scorpio, and a birth placement in Scorpio answering it.
+  for (const card of cards) {
+    const sign = card.kind === 'major' ? (card.tag?.type === 'sign' ? card.tag.value : null) : card.kind === 'court' ? card.sign : null;
+    if (sign !== DAATH_SIGN) continue;
+    const planets = natal ? PLANET_KEYS.filter((key) => natal.planets[key] === sign) : [];
+    if (card.kind === 'major') {
+      add(DAATH, { system: 'cards', key: 'majorSign', card, path: card.path?.number, letter: card.path?.letter, sign });
+      if (planets.length > 0) add(DAATH, { system: 'chart', key: 'natalInSign', sign, planets });
+    } else {
+      add(DAATH, { system: 'cards', key: 'courtSign', card, sign, element: card.element });
+      const ascendant = natal?.ascendant === sign;
+      if (planets.length > 0 || ascendant) add(DAATH, { system: 'chart', key: 'natalHas', sign, planets, ascendant });
     }
   }
 

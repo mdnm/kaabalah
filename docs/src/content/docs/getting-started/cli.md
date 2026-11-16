@@ -45,6 +45,9 @@ npx kaabalah help
 | `tarot [count]` | Draw tarot cards (default: 3) |
 | `tarot:card <query>` | Look up a specific card by number or name |
 | `tarot:spread <cards...>` | Look up multiple cards by name or number, or draw a named spread with `--spread-id` |
+| `iching:reading` | Derive a reading from six lines, or from a hexagram and its moving lines |
+| `iching:hexagram <n>` | Look up one hexagram with its Han, nuclear, Kaabalah, and sovereign layers |
+| `iching:cast` | Cast three coins and derive the reading |
 | `ifa <date>` | Calculate Odu from a date |
 | `tree` | Show Tree of Life structure with all nodes, data, and edges |
 | `tree:node <id>` | Look up a node and all its correspondences |
@@ -63,6 +66,8 @@ kaabalah numerology:cycles 1990-01-15 John
 kaabalah tarot 5 --inverted
 kaabalah tarot:card 7
 kaabalah tarot:spread "Two of Cups" "The Chariot" 7
+kaabalah iching:reading --lines 879777 --json --compact
+kaabalah iching:hexagram 25 --json --compact
 kaabalah gematria:reverse 22
 kaabalah ifa 1990-01-15
 kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
@@ -566,6 +571,43 @@ Run `kaabalah tarot:spread --list` to discover the supported spread IDs from the
 | `--list` | boolean | false | List built-in spread IDs and requirements |
 | `--inverted` | boolean | false | Include inverted cards when drawing a named spread |
 | `--inquirer-gender` | string | - | Required by `event-reading`; `man` or `woman` |
+
+### iching:reading
+
+Derive a reading from six stored lines, bottom to top, or from a hexagram number and its moving lines.
+
+```bash
+kaabalah iching:reading --lines 879777 --json --compact
+kaabalah iching:reading --hexagram 30 --moving 2,4 --json --compact
+kaabalah iching:reading --input-json='{"hexagramNumber":25,"movingLines":[4]}' --json --compact
+kaabalah iching:reading --lines 767987 --json --compact --fields=lineCode,lineTransforms,oracle
+```
+
+`lines` is a six-digit string or a six-number array. Values are 6, 7, 8, or 9. Do not pass `lines` together with `--hexagram`. JSON stdout is one document. This command does not start the ephemeris.
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--lines` | string | - | Six line values, bottom to top, such as `879777` |
+| `--hexagram` | number | - | King Wen number, used with `--moving` |
+| `--moving` | string | - | Moving line positions, such as `2,4` |
+
+### iching:hexagram
+
+Look up one hexagram, including its Han layer, nuclear figure, Kaabalah layer, and sovereign month.
+
+```bash
+kaabalah iching:hexagram 25
+kaabalah iching:hexagram 25 --json --compact --fields=hexagram.number,hexagram.hanzi
+```
+
+### iching:cast
+
+Cast three coins and print the reading. This is the one I Ching command that is not deterministic.
+
+```bash
+kaabalah iching:cast
+kaabalah iching:cast --json --compact
+```
 
 ### ifa
 

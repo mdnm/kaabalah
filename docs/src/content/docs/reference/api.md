@@ -13,6 +13,7 @@ sidebar:
 | [Gematria](/modules/gematria/) | Calculate Hebrew gematria values for names and words, with reverse gematria lookup |
 | [Astrology](/modules/astrology/) | Generate birth charts and planetary positions using Swiss Ephemeris |
 | [Tarot](/modules/tarot/) | 78 tarot cards with meanings, spreads, and interpretations |
+| [I Ching](/modules/iching/) | 64 hexagrams, classical text, plain-language descriptions, Han derivations, and coin casting |
 | [Ifa](/modules/ifa/) | Calculate Odu numbers based on dates for Ifa divination |
 | [Core](/modules/core/) | Tree of Life system for building correspondences across different esoteric systems |
 | [Visual](/modules/visual/) | Tree of Life SVG generation, interactive render model with hit targets and tooltip anchors |

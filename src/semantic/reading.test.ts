@@ -72,7 +72,8 @@ test('all 78 canonical cards resolve, with courts excluded and pip ranks skippin
   const pips = all.filter((card) => card.kind === 'minor');
   expect(pips).toHaveLength(40);
   expect(pips.every((card) => card.sphere !== 'sphere:Daath' && card.rank! >= 1 && card.rank! <= 10)).toBe(true);
-  const weights = buildReadingWeights({ cards: all.filter((card) => card.kind === 'court'), iching: null, natal });
+  // Every court but the one that carries Scorpio (the Queen of Cups) leaves the Tree unlit.
+  const weights = buildReadingWeights({ cards: all.filter((card) => card.kind === 'court' && card.sign !== 'Scorpio'), iching: null, natal });
   expect(weights.spheres.size).toBe(0);
   expect(weights.paths.size).toBe(0);
   expect(weights.top).toBeNull();
@@ -223,4 +224,33 @@ test('house matches use cusp signs and ignore invalid question-house selections'
     .find((thread) => thread.id === 'conscious')!.rows.filter((row) => row.hit.key === 'signHouse');
   expect(rows.map((row) => row.hit.house)).toEqual([2]);
   expect(rows[0].relevance).toEqual({ weight: 1, selectedForQuestion: false, requiresHumanReview: true });
+});
+
+test('Daath lights only through Scorpio: Temperance or the Queen of Cups, and a birth placement answering them', () => {
+  const temperance = resolveCard(14, 'conscious')!;
+  const queenOfCups = resolveCard(38, 'unconscious')!;
+  const kingOfWands = resolveCard(23, 'unconscious')!;
+  expect(temperance.tag).toEqual({ type: 'sign', value: 'Scorpio' });
+  expect(queenOfCups.sign).toBe('Scorpio');
+  expect(kingOfWands.kind).toBe('court');
+  const daath = (reading: Parameters<typeof buildReadingWeights>[0]) => buildReadingWeights(reading).spheres.get('sphere:Daath');
+
+  // Another court, even with Scorpio in the birth chart: nothing.
+  expect(daath({ cards: [kingOfWands], iching: null, natal })).toBeUndefined();
+
+  // The card alone is one link; a birth placement in Scorpio is a second.
+  expect(daath({ cards: [queenOfCups], iching: null, natal: null })?.hits.map((hit) => hit.key)).toEqual(['courtSign']);
+  expect(daath({ cards: [queenOfCups], iching: null, natal })?.hits.map((hit) => hit.key)).toEqual(['courtSign', 'natalHas']);
+  expect(daath({ cards: [temperance], iching: null, natal })?.hits).toMatchObject([
+    { key: 'majorSign', sign: 'Scorpio', path: temperance.path!.number },
+    { key: 'natalInSign', sign: 'Scorpio', planets: ['saturn'] },
+  ]);
+  expect(daath({ cards: [temperance], iching: null, natal: { planets: { sun: 'Leo' }, ascendant: 'Scorpio' } })?.count).toBe(1);
+  expect(daath({ cards: [queenOfCups], iching: null, natal: { planets: { sun: 'Leo' }, ascendant: 'Scorpio' } })?.count).toBe(2);
+
+  // Both cards with a Scorpio placement: four links, and Temperance still walks its own path.
+  const both = buildReadingWeights({ cards: [temperance, queenOfCups], iching: null, natal });
+  expect(both.spheres.get('sphere:Daath')?.count).toBe(4);
+  expect(both.spheres.get('sphere:Tiphareth')?.count).toBe(1);
+  expect(both.top).toBe('sphere:Daath');
 });

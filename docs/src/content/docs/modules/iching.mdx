@@ -1,0 +1,145 @@
+---
+title: I Ching
+description: 64 hexagrams, classical text, plain-language descriptions, Han derivations, and coin casting
+sidebar:
+  order: 4.5
+---
+
+## Import
+
+```typescript
+import {
+  getIChingReading,
+  getHexagram,
+  getHexagramDescription,
+  castThreeCoins,
+  formatRecord,
+} from 'kaabalah/iching';
+```
+
+`kaabalah/iching` is pure TypeScript. It does not load the ephemeris.
+
+## What you store
+
+A reading is six classical line values, bottom to top. Store those six values. Everything else is derived.
+
+| Value | Line | Moves |
+| --- | --- | --- |
+| 6 | old yin | yes |
+| 7 | young yang | no |
+| 8 | young yin | no |
+| 9 | old yang | yes |
+
+Line 1 is the bottom line. Line 6 is the top. Binary strings use the same order, with yang = 1.
+
+## A reading
+
+```typescript
+import { getIChingReading, linesFromHexagram } from 'kaabalah/iching';
+
+const reading = getIChingReading('879777');
+
+// The same cast, named by hexagram and moving lines:
+getIChingReading(30, [2, 4]);
+getIChingReading({ hexagramNumber: 30, movingLines: [2, 4] });
+
+linesFromHexagram(30, [2, 4]); // [7, 6, 7, 9, 8, 7]
+```
+
+`getIChingReading` returns:
+
+- `lines`, `lineCode`, and sorted `movingLines`
+- `cast` and `transformed`. `transformed` is `null` when no line moves
+- on each state: `hexagram`, `han`, `nuclear`, `kaabalah`, and `sovereign`
+- `lineTransforms`, with both the destination-palace relative and the cast-palace relative
+- `oracle`, the texts Zhu Xi's rule selects
+
+With six moving lines, 乾 uses 用九 and 坤 uses 用六. Other casts use the transformed judgment. The Great Image stays separate from the judgment.
+
+`getIChingReading` does not interpret. It does not include `getHexagramDescription`.
+
+Invalid input throws `RangeError`. Duplicate moving positions are rejected.
+
+## Hexagrams
+
+`HEXAGRAMS` is King Wen order. `getHexagram(number)` and `HEXAGRAMS_BY_NUMBER` use the number as identity. Romanizations are display only: 履 and 旅 are both Lü, and the Wade-Giles spellings Ch'ien and Chien are easy to mix up.
+
+```typescript
+import { getHexagram, getHexagramByTrigrams, getHexagramName } from 'kaabalah/iching';
+
+const creative = getHexagram(1);
+creative.hanzi;          // 乾
+creative.text.judgment;  // { chinese, english }
+creative.text.image;
+creative.text.lines;     // six lines, bottom first
+creative.lower;          // trigram
+creative.upper;
+
+getHexagramByTrigrams('qian', 'qian'); // lower trigram first
+getHexagramName(52, 'pt');             // "a montanha"
+getHexagramName(52, 'pt-BR');          // same
+getHexagramName(52);                   // English
+```
+
+`getHexagramByBinary` takes a bottom-first binary string. `TRIGRAMS` and `getTrigram(idOrBinary)` give the eight trigrams: Chinese name, image, family, Later Heaven direction, and phase.
+
+## Plain descriptions
+
+`getHexagramDescription` is plain words for the judgment, the image, and the picture the two trigrams make. It is not the classical text.
+
+```typescript
+import { getHexagramDescription } from 'kaabalah/iching';
+
+getHexagramDescription(1);        // English
+getHexagramDescription(1, 'pt');  // Portuguese, including pt-BR
+getHexagramDescription(65);       // undefined
+```
+
+`HEXAGRAM_DESCRIPTIONS` is the frozen record of all 64. An unknown number returns `undefined`.
+
+## The rest of a figure
+
+These are also on the reading. Call them alone when you already have a number.
+
+| Function | What it returns |
+| --- | --- |
+| `getNuclearHexagram(number)` | Lines 2/3/4 below, lines 3/4/5 above. Only 乾 and 坤 nucleate into themselves. |
+| `getPalace(number)` | Palace trigram, generation, 世 and 應 |
+| `getHanHexagram(number)` | 納甲 stem and branch, phase, 六親, and the 世/應 relation |
+| `getLineTransforms(input)` | Before and after for each moving line. `after.relative` uses the destination palace. `afterInCastPalace.relative` uses the cast palace. |
+| `selectZhuXiTexts(input)` | The judgment, line texts, or 用九 / 用六 the oracle speaks |
+| `getHexagramKaabalah(number)` | Gate, family sphere, ruling Ark Annu, and the three pillars |
+| `getSovereignHexagram(number)` | 十二辟卦 lunar month, or `null`. The solar window is an approximate range, not a calculated solar term. |
+
+`getTrigramGate`, `getFamilySphere`, `getTrigramPillars`, and `listHexagramGates` expose the Kaabalah layer one trigram at a time. Five phases stay independent of Tree spheres and of western elements.
+
+## Casting
+
+```typescript
+import { castThreeCoins, formatRecord } from 'kaabalah/iching';
+
+const lines = castThreeCoins();             // three coins, six lines
+const fixed = castThreeCoins(() => 0.25);   // your RNG, for tests
+
+formatRecord(lines, { date: '15-11-2026', question: '(daily reading)' });
+```
+
+Each line draws three coins. Tails counts 2, heads counts 3. That is 18 calls to the RNG. The RNG must return finite numbers in `[0, 1)`. The odds are 1/8, 3/8, 3/8, 1/8 for 6, 7, 8, 9. Nothing in the cast is seeded from a question or a date.
+
+## CLI
+
+```bash
+kaabalah iching:cast --json --compact
+kaabalah iching:hexagram 25 --json --compact
+kaabalah iching:reading --lines 879777 --json --compact
+kaabalah iching:reading --hexagram 30 --moving 2,4 --json --compact
+kaabalah iching:reading --input-json='{"hexagramNumber":25,"movingLines":[4]}' --json --compact
+```
+
+Pass `lines` as a six-digit string or as a six-number array. Do not pass lines and a hexagram together. JSON stdout is one document. These commands do not start the ephemeris.
+
+## Sources
+
+The Chinese is the Zhou Yi judgment, the Great Image, and the line texts, from Kanripo KR1a0001 at a pinned revision. 彖傳, 小象, and 文言 are not included. The English on `hexagram.text` was written from that Chinese. It is a literal rendering, not a forecast.
+
+The plain descriptions are a separate layer, for showing a reading in ordinary words.

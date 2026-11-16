@@ -70,6 +70,18 @@ Full 78-card deck with rich metadata.
 - Spread engine: `listTarotSpreads`, `getTarotSpread`, `validateTarotSpreadSelection`, `drawTarotSpread`
 - Deck and tree metadata: `listTarotDecks`, `listTarotTrees`
 
+### I Ching
+
+64 hexagrams from six stored lines.
+
+- Reading from lines, or from a hexagram number plus moving lines: `getIChingReading`
+- Classical Chinese and literal English for the judgment, the image, and the lines
+- Plain-language descriptions in English and Portuguese: `getHexagramDescription`
+- Nuclear figure, palace, 納甲, 六親, 世/應, and line transforms in both palaces
+- Kaabalah gate, family sphere, ruling Ark Annu, and pillars
+- Sovereign months (十二辟卦), without guaqi day assignments
+- Coin casting with an injectable RNG: `castThreeCoins`
+
 ### Ifa
 
 Ifa divination from a date.
@@ -101,5 +113,5 @@ A full command-line interface exposing all modules.
 
 - All commands support `--json`, `--compact`, `--fields`, `--input-json`
 - TTY auto-detection: JSON mode enabled automatically when piped
-- Pure deterministic output for all commands except tarot shuffle and geocoding
+- Pure deterministic output for all commands except tarot shuffle, `iching:cast`, and geocoding
 - See the [CLI reference](/reference/cli/) for the full command list

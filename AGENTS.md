@@ -19,7 +19,7 @@ npx vitest run src/path/to/file.test.ts
 
 ## Architecture Overview
 
-TypeScript library for esoteric calculations. Exports **9 tree-shakable modules**: `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/ifa`, `kaabalah/semantic`, `kaabalah/visual`.
+TypeScript library for esoteric calculations. Exports **10 tree-shakable modules**: `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/iching`, `kaabalah/ifa`, `kaabalah/semantic`, `kaabalah/visual`.
 
 Tests are colocated with source files (`*.test.ts`). Framework is Vitest with V8 coverage.
 
@@ -65,7 +65,7 @@ These are re-exported from `kaabalah/semantic`.
 
 ## CLI
 
-The CLI exposes all library modules as commands. All commands (except `tarot` shuffle and `astrology --location` geocoding) are **pure, deterministic calculations**.
+The CLI exposes all library modules as commands. All commands (except `tarot` shuffle, `iching:cast`, and `astrology --location` geocoding) are **pure, deterministic calculations**.
 
 ### Agent Consumption Patterns
 
