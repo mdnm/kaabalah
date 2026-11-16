@@ -6347,6 +6347,469 @@
           "Omitidas práticas de 1811–1817, afirmações físicas/psíquicas, cura, hospitais, profissões e resultados de internação em 1823–1830. Livro inspecionado em 48720–49070, não adotado; casa 12 explícita no corpo em 48911, 48947 e 49015–49022, com colunas intercaladas de casa 11."
         ]
       }
+    },
+    "saturn": {
+      "1": {
+        "pt": "você pode encarar a vida com relutância e cautela, esperar o pior e se preocupar em não alcançar a meta; a autocrítica pode pesar mais que o julgamento dos outros. outras pessoas podem interpretar sua insegurança ou reserva como frieza, enquanto você desenvolve responsabilidade, disposição para trabalhar e determinação ambiciosa.",
+        "en": "you may approach life reluctantly and cautiously, expect the worst, and worry about missing the goal; self-criticism may weigh more heavily than other people’s judgment. others may interpret your insecurity or reserve as coldness, while you develop responsibility, willingness to work, and determined ambition.",
+        "keywords": {
+          "pt": [
+            "relutância e cautela",
+            "esperar o pior",
+            "preocupação em não atingir metas",
+            "autocrítica",
+            "insegurança ou reserva interpretada por outros como frieza",
+            "responsabilidade e trabalho",
+            "determinação ambiciosa"
+          ],
+          "en": [
+            "reluctance and caution",
+            "expecting the worst",
+            "worry about missing goals",
+            "self-criticism",
+            "insecurity or reserve interpreted by others as coldness",
+            "responsibility and work",
+            "determined ambition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 4,
+            "to": 20
+          }
+        ],
+        "reviewNotes": [
+          "A atribuição de maior problema à autocrítica, em vez do julgamento alheio, vem das linhas 7–9. Reserva/insegurança percebida como frieza e desenvolvimento de responsabilidade/ambição estão nas linhas 10–20.",
+          "Não foram adotadas alegações sobre infância, restrições, espontaneidade futura, características físicas, parto ou resultados de vida nas linhas 21–30.",
+          "O livro foi inspecionado em 51811–52200; os blocos/cabeçalhos das casas 1–4 são intercalados e não foram adotados."
+        ]
+      },
+      "2": {
+        "pt": "você pode sentir insegurança e inadequação em relação a dinheiro, posses, valores e recursos, e procurar construir segurança e valor por conta própria, mesmo quando há dinheiro herdado ou disponível. cautela planejada, tato, perseverança e paciência podem ser recursos internos, embora a ansiedade sobre segurança possa persistir mesmo com muitas posses.",
+        "en": "you may feel insecure and inadequate about money, possessions, values, and material resources, and try to build security and worth on your own even when inherited or available money is present. planned caution, tact, perseverance, and patience may be inner resources, though anxiety about security may persist even with many possessions.",
+        "keywords": {
+          "pt": [
+            "insegurança material e sensação de inadequação",
+            "construir segurança e valor por conta própria",
+            "satisfação no que se ganha por si",
+            "cautela planejada",
+            "tato",
+            "perseverança e paciência",
+            "ansiedade persistente apesar de posses"
+          ],
+          "en": [
+            "material insecurity and inadequacy",
+            "building security and worth independently",
+            "satisfaction in what one earns oneself",
+            "planned caution",
+            "tact",
+            "perseverance and patience",
+            "persistent anxiety despite possessions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 33,
+            "to": 37
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 43,
+            "to": 57
+          }
+        ],
+        "reviewNotes": [
+          "A fonte distingue a insegurança/necessidade de prover por si (33–37) dos recursos internos de cautela, tato, perseverança e paciência (53–57). Também mantém a tensão de acúmulo de posses com ansiedade de segurança (43–45).",
+          "A menção a quebra financeira, exemplo de pessoa nomeada, sucesso monetário, acumulação extrema e sinais convencionais de sucesso foi inspecionada, mas não transformada em previsão pessoal.",
+          "O livro foi inspecionado em 51811–52200; as passagens de casa 2 estão intercaladas com as de casa 1 e não foram adotadas."
+        ]
+      },
+      "3": {
+        "pt": "você pode esconder pensamentos e sentimentos por receio de ser mal interpretado e ter dificuldade para se expressar de modo que os outros entendam. seu raciocínio pode ser sério, ordenado, lógico e preciso, mas você também pode ter dificuldade com conversas triviais ou falar sem parar para não revelar o que realmente pensa.",
+        "en": "you may hide thoughts and feelings for fear of being misunderstood and find it difficult to express yourself so others understand. your reasoning may be serious, orderly, logical, and precise, but you may also struggle with small talk or talk nonstop to keep from revealing what you really think.",
+        "keywords": {
+          "pt": [
+            "medo de ser mal interpretado",
+            "ocultar pensamentos e sentimentos",
+            "dificuldade de comunicação",
+            "raciocínio sério e ordenado",
+            "conversas triviais difíceis",
+            "tagarelar para ocultar pensamentos"
+          ],
+          "en": [
+            "fear of being misunderstood",
+            "hiding thoughts and feelings",
+            "communication difficulty",
+            "serious and orderly reasoning",
+            "difficulty with small talk",
+            "talking to conceal thoughts"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 63,
+            "to": 78
+          }
+        ],
+        "reviewNotes": [
+          "As frases refletem as possibilidades descritas na seção sem converter a hipótese de ambiente infantil pouco amigável/perigoso em biografia certa; as linhas 64–68 contextualizam a insegurança e o receio de interpretação hostil.",
+          "A precisão verbal/mental e raciocínio lógico/ordenado vêm de 71–76; dificuldade com conversa trivial e tagarelice para evitar revelar pensamentos vêm de 76–78.",
+          "O livro foi inspecionado em 51811–52200; apesar do título de casa 3, os textos próximos de casas 3 e 4 estão intercalados. Não adotado."
+        ]
+      },
+      "4": {
+        "pt": "você pode encontrar dificuldades e restrições ligadas ao lar, às raízes e ao ambiente familiar, com responsabilidades domésticas ou problemas para estabelecer um lar. pode também se sentir inadequado e desconfiar dos outros, enquanto anseia por algo permanente e estável na vida.",
+        "en": "you may face difficulties and restrictions related to home, roots, and family environment, with domestic responsibilities or problems establishing a home. you may also feel inadequate and distrust others while longing for something permanent and stable in life.",
+        "keywords": {
+          "pt": [
+            "dificuldades e restrições no lar e raízes",
+            "responsabilidades domésticas",
+            "problemas para estabelecer um lar",
+            "sensação de inadequação",
+            "desconfiança dos outros",
+            "anseio por estabilidade"
+          ],
+          "en": [
+            "difficulties and restrictions at home and in one's roots",
+            "domestic responsibilities",
+            "problems establishing a home",
+            "feeling inadequate",
+            "distrust of others",
+            "longing for stability"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 109,
+            "to": 111
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 152,
+            "to": 157
+          }
+        ],
+        "reviewNotes": [
+          "A seção descreve explicitamente dificuldades/restrições nas áreas do lar, ambiente familiar e raízes (109–111), e possíveis inadequação/desconfiança, anseio por estabilidade, deveres domésticos e dificuldade de estabelecer lar (152–157).",
+          "Os relatos extensos sobre infância, pai, rejeição, culpa e família nas linhas 112–151 não foram convertidos em biografia universal nem adotados no texto do registro.",
+          "Capricórnio no Fundo do Céu, linhas 163–166, permaneceu separado de Saturno na casa 4.",
+          "O livro foi inspecionado em 51811–52200; corpo de casas 3 e 4 intercalado, sem conteúdo suplementar adotado."
+        ]
+      },
+      "5": {
+        "pt": "você pode ter dificuldade para expressar livremente sua individualidade e criatividade, querendo ser amado por sua originalidade e ao mesmo tempo temendo que ser diferente afaste os outros. o medo de rejeição pode levar você a se resguardar demais e a não conseguir ficar à vontade no romance ou na alegria.",
+        "en": "you may struggle to express your individuality and creativity freely, wanting to be loved for your originality while fearing that being different will push others away. fear of rejection may lead you to guard yourself too much and feel unable to relax in romance or joy.",
+        "keywords": {
+          "pt": [
+            "dificuldade de expressão",
+            "individualidade",
+            "criatividade",
+            "originalidade",
+            "temor de afastar os outros",
+            "medo de rejeição",
+            "resguardar-se demais",
+            "dificuldade de relaxar no romance e na alegria"
+          ],
+          "en": [
+            "difficulty expressing",
+            "individuality",
+            "creativity",
+            "originality",
+            "fear of pushing others away",
+            "fear of rejection",
+            "guarding oneself too much",
+            "difficulty relaxing in romance and joy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 178,
+            "to": 181
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 198,
+            "to": 202
+          }
+        ],
+        "reviewNotes": [
+          "A passagem longa 182–198 descreve possíveis explicações desenvolvimentais e inclui admoestação para se dar permissão; não foi transformada em causalidade universal nem conselho. Foram omitidos filhos e carreira."
+        ]
+      },
+      "6": {
+        "pt": "você pode ter habilidade para organizar, administrar e prestar atenção aos detalhes, mas também uma necessidade compulsiva de pôr tudo de determinada maneira ligada a uma desconfiança mais profunda da vida. a rotina diária pode parecer opressiva, e mesmo precisando de estrutura você pode sentir-se frustrado e preso pelas estruturas que criou.",
+        "en": "you may be skilled at organizing, managing, and attending to details, while also having a compulsive need to arrange everything in a particular way linked to a deeper distrust of life. daily routine may feel oppressive, and even while needing structure you may feel frustrated and trapped by the structures you created.",
+        "keywords": {
+          "pt": [
+            "organização",
+            "administração",
+            "atenção aos detalhes",
+            "necessidade compulsiva de ordem",
+            "desconfiança da vida",
+            "rotina opressiva",
+            "frustração",
+            "sentir-se preso às próprias estruturas"
+          ],
+          "en": [
+            "organization",
+            "management",
+            "attention to detail",
+            "compulsive need for order",
+            "distrust of life",
+            "oppressive routine",
+            "frustration",
+            "feeling trapped by one’s own structures"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 215,
+            "to": 223
+          }
+        ],
+        "reviewNotes": [
+          "O cabeçalho 213 identifica corretamente Saturno na casa 6. Foram omitidas as alegações sobre saúde e corpo, doenças, dieta, exercícios e tratamentos. A tensão entre precisar de rotina e sentir-se preso pelas estruturas próprias foi preservada."
+        ]
+      },
+      "7": {
+        "pt": "você pode temer a dedicação e a dependência que uma relação exige e sentir-se aterrorizado diante da vulnerabilidade necessária à intimidade. por medo de ser ferido, pode evitar se abrir e escolher parceiros que considera inadequados ou ausentes em certos aspectos.",
+        "en": "you may fear the commitment and dependence a relationship requires and feel terrified of the vulnerability intimacy involves. for fear of being hurt, you may avoid opening up and choose partners you consider unsuitable or absent in certain respects.",
+        "keywords": {
+          "pt": [
+            "medo de dedicação",
+            "medo de dependência",
+            "vulnerabilidade",
+            "intimidade",
+            "medo de ser ferido",
+            "evitar se abrir",
+            "parceiros inadequados ou ausentes em certos aspectos"
+          ],
+          "en": [
+            "fear of commitment",
+            "fear of dependence",
+            "vulnerability",
+            "intimacy",
+            "fear of being hurt",
+            "avoiding openness",
+            "partners unsuitable or absent in certain respects"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 258,
+            "to": 263
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 279,
+            "to": 284
+          }
+        ],
+        "reviewNotes": [
+          "A seção atribui dificuldade e medo aos relacionamentos, mas não determina que toda parceria seja abusiva ou fracassada. Foram omitidas interpretações sobre infância, prescrições para examinar-se, idades/casamento tardio e aconselhamento jurídico."
+        ]
+      },
+      "8": {
+        "pt": "você pode sentir insegurança sobre o que deve dar e dificuldade para receber o que os outros oferecem, temendo que a união apague seu senso de si como indivíduo separado. pode desejar intensamente intimidade e, ao mesmo tempo, afastar-se por medo de ser tomado por raiva, ciúme, inveja ou outras paixões instintivas.",
+        "en": "you may feel unsure about what to give and have difficulty receiving what others offer, fearing that union will erase your sense of self as a separate individual. you may intensely desire intimacy while also withdrawing for fear of being overtaken by anger, jealousy, envy, or other instinctive passions.",
+        "keywords": {
+          "pt": [
+            "insegurança sobre o que dar",
+            "dificuldade de receber",
+            "medo de perder o eu separado",
+            "desejo de intimidade",
+            "afastar-se",
+            "medo de ser tomado",
+            "raiva",
+            "ciúme",
+            "inveja",
+            "paixões instintivas"
+          ],
+          "en": [
+            "insecurity about what to give",
+            "difficulty receiving",
+            "fear of losing separate self",
+            "desire for intimacy",
+            "withdrawing",
+            "fear of being overtaken",
+            "anger",
+            "jealousy",
+            "envy",
+            "instinctive passions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 296,
+            "to": 304
+          }
+        ],
+        "reviewNotes": [
+          "A tensão entre desejo intenso de união e afastamento por medo de ser tomado por emoções está expressa na própria passagem. Omitidos os temas sexuais, bens, heranças, contratos, morte e pessoas nomeadas."
+        ]
+      },
+      "9": {
+        "pt": "você pode buscar respostas definitivas sobre o significado e as regras da existência e se prender à observância religiosa, perdendo de vista seu sentido interior. ou você pode reagir ao medo de princípios mais elevados com ceticismo e cinismo, acreditando apenas no que consegue ver, testar ou provar.",
+        "en": "you may seek definitive answers about the meaning and rules of existence and become attached to religious observance, losing sight of its inner meaning. or you may react to fear of higher principles with skepticism and cynicism, believing only what you can see, test or prove.",
+        "keywords": {
+          "pt": [
+            "respostas definitivas",
+            "observância religiosa",
+            "perda do sentido interior",
+            "ceticismo e cinismo",
+            "exigência de provas"
+          ],
+          "en": [
+            "definitive answers",
+            "religious observance",
+            "loss of inner meaning",
+            "skepticism and cynicism",
+            "demand for proof"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 327,
+            "to": 330
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 336,
+            "to": 341
+          }
+        ],
+        "reviewNotes": [
+          "A busca por respostas definitivas vem de 327–330; apego à observância com perda de sentido interior é possibilidade atribuída a alguns em 336–338, preservada como “pode”. O ceticismo/cinismo em 339–341 é explicitamente inverso/alternativo; mantido como “ou”, sem exigir coexistência.",
+          "Não há condição de maus aspectos nas alegações adotadas. Omitidos história de educação religiosa, deuses punitivos, exemplos profissionais, relações familiares, medo do potencial, viagens, crescimento e a chegada final de 354–356; sem conselho ou promessa de superação.",
+          "Livro inspecionado em 52500–52914; corpo da casa 9 confirmado em 52600–52601, 52632–52635 e 52671–52673. Abordagem metódica e compromisso ético não foram combinados mecanicamente como compensação positiva para apego exterior/cinismo da aula. Nenhuma alegação suplementar adotada."
+        ]
+      },
+      "10": {
+        "pt": "você quer ser visto como forte, sólido e duradouro; quando sente que precisa limitar suas ambições aos padrões sociais, pode julgar com raiva e inveja quem não aceita esses limites. se Saturno estiver mal aspectado, você pode encontrar muitos atrasos e obstáculos na busca do reconhecimento e da posição que deseja.",
+        "en": "you want to be seen as strong, solid and enduring; when you feel you must limit your ambitions to social standards, you may judge with anger and envy those who do not accept those limits. if Saturn is poorly aspected, you may encounter many delays and obstacles in pursuing the recognition and standing you desire.",
+        "keywords": {
+          "pt": [
+            "desejo de solidez e reconhecimento",
+            "valores sociais estritos",
+            "julgamento",
+            "raiva e inveja",
+            "atrasos e obstáculos sob maus aspectos"
+          ],
+          "en": [
+            "desire for solidity and recognition",
+            "strict social values",
+            "judgment",
+            "anger and envy",
+            "delays and obstacles under difficult aspects"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 365,
+            "to": 373
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 374,
+            "to": 376
+          }
+        ],
+        "reviewNotes": [
+          "O desejo de imagem forte/sólida/duradoura e julgamento social com raiva/inveja vêm de 365–373; o segundo enunciado conserva a condição explícita de Saturno mal aspectado para atrasos/obstáculos (376). Não promete sucesso nem torna os obstáculos universais.",
+          "A possibilidade de realização profissional sob bons aspectos em 374–376 foi omitida junto com seu resultado, não convertida em compensação positiva. Omitidos usar outros, quedas profissionais, crimes e exemplos nomeados, rebelião, histórias maternas e profissões.",
+          "Capricórnio no Meio do Céu em 363 e 407–409 permanece analogia distinta, sem alias para Saturno na casa 10. Livro inspecionado em 52500–52914; casa 10 confirmada no corpo em 52604–52605, 52639–52643, 52685 e 52719–52723. Integridade, progresso sustentável e harmonia de vida/trabalho do livro não foram importados nem usados para neutralizar a aula.",
+          "Correção da raiz: raiva/inveja preservam a condição de a própria pessoa sentir que limita suas ambições aos padrões sociais (371–373), sem universalizar esse julgamento."
+        ]
+      },
+      "11": {
+        "pt": "você pode querer fazer parte de um grupo ou círculo de amigos e, ao mesmo tempo, sentir-se sem jeito ou retraído nessas situações. você pode agir com rigidez e formalidade por medo de um passo em falso ou de que tirem vantagem de você, sentir amizades como um fardo e temer rejeição ou crítica.",
+        "en": "you may want to belong to a group or circle of friends while feeling awkward or withdrawn in those situations. you may act rigidly and formally for fear of a misstep or of others taking advantage of you, experience friendships as a burden and fear rejection or criticism.",
+        "keywords": {
+          "pt": [
+            "desejo de pertencer",
+            "retraimento social",
+            "rigidez e formalidade",
+            "medo de exploração",
+            "amizade como fardo",
+            "medo de rejeição ou crítica"
+          ],
+          "en": [
+            "desire to belong",
+            "social withdrawal",
+            "rigidity and formality",
+            "fear of exploitation",
+            "friendship as a burden",
+            "fear of rejection or criticism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 416,
+            "to": 419
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 428,
+            "to": 433
+          }
+        ],
+        "reviewNotes": [
+          "Desejo de pertença e retraimento coexistem em 416–419; rigidez/formalidade, medo de exploração, fardo e receio de rejeição/crítica são possibilidades em 428–433. Sem transformar receios em comportamentos efetivos dos amigos.",
+          "Amizades leais/duradouras em 436–437 dependem de encarar/examinar dificuldades; resultado omitido por inteiro, sem perder a condição ou prometer amizade. A condição de aspectos difíceis em 443–444 pertence ao conselho de aprender a trabalhar com outros, também omitido; não é anexada indevidamente ao retraimento anterior.",
+          "Omitidos exemplo privado narrado pela fonte, sócios mais velhos, deveres em grupos, revisão de metas e promessa de chegar ao objetivo. Livro inspecionado em 52500–52914; casa 11 confirmada corporalmente pelos fragmentos 52885 e 52891, com amizades em 52873–52879 e lealdade em 52864. Não se inferiu que os blocos de grupo sob o título da casa 12 fossem casa 12; continuidade de colunas é insegura. Lealdade/respeito mútuo do livro não substituem os receios da aula; nada adotado."
+        ]
+      },
+      "12": {
+        "pt": "você pode temer o que está abaixo da consciência e recear ser tomado por emoções intensas se afrouxar o controle sobre si. em alguns casos, você pode sentir terror diante da intimidade por medo de perder sua individualidade e acreditar que só mantém a autonomia afastando-se das pessoas.",
+        "en": "you may fear what lies beneath consciousness and worry about being overwhelmed by intense emotions if you loosen your control over yourself. in some cases, you may feel terror at intimacy for fear of losing your individuality and believe you can preserve autonomy only by distancing yourself from people.",
+        "keywords": {
+          "pt": [
+            "medo do inconsciente",
+            "controle sobre si",
+            "medo de emoções intensas",
+            "terror da intimidade em alguns casos",
+            "medo de perder individualidade",
+            "distanciamento para preservar autonomia"
+          ],
+          "en": [
+            "fear of the unconscious",
+            "self-control",
+            "fear of intense emotions",
+            "terror of intimacy in some cases",
+            "fear of losing individuality",
+            "distancing to preserve autonomy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 456,
+            "to": 458
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 492,
+            "to": 495
+          }
+        ],
+        "reviewNotes": [
+          "456–458 sustenta medo do que está sob a consciência e de ser engolfado por emoções ao relaxar controles. 492–495 limita o terror da intimidade a alguns e o liga ao medo de engolfamento/perda da identidade; preservado como “em alguns casos”. O afastamento é descrito como crença de preservação de autonomia, não recomendado nem garantido.",
+          "Omitidos rótulos diagnósticos, culpa/desespero, hipótese pré-natal e história dos pais, prisões/hospitais, promessas de paz/sono, serviço como pagamento de dívida e crises de socorro. Não há resultado de saúde ou relacionamento.",
+          "Qualidades de apoio e sabedoria em 500–503 não foram usadas como balanço positivo inventado. Práticas, prescrições de autoexploração e promessa de recompensa/reconexão em 514–519 foram omitidas, sem uma frase genérica de maturidade/crescimento.",
+          "Livro inspecionado em 52500–52914; título de casa 12 em 52754, corpo explícito em 52813, 52818–52822, 52824–52830, 52842–52856. Limites psíquicos, karma passado, terapia, disciplina espiritual e trabalho nos bastidores não foram adotados. Blocos de amizade/grupo se intercalam; nada foi reconstruído."
+        ]
+      }
     }
   }
 }
