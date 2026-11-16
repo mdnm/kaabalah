@@ -1,0 +1,257 @@
+[
+  {
+    "id": "tarot.spreads.quick-insight.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.quick-insight.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.quick-insight.quick-insight.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.conscious-reading.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.conscious-reading.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.conscious-reading.conscious.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.conscious-reading.unconscious.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.conscious-reading.subconscious.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.time-reading.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.time-reading.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.time-reading.past.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.time-reading.present.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.time-reading.future.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.dialectic-reading.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.dialectic-reading.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.dialectic-reading.thesis.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.dialectic-reading.antithesis.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.dialectic-reading.synthesis.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.tree-of-life-reading.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.tree-of-life-reading.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.present.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.challenge.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.above.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.below.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.behind.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.before.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.self.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.environment.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.hopes-fears.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.celtic-cross.outcome.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.description",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-1.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-1.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-2.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-2.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-3.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-3.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-4.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-4.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-5.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-5.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-6.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-6.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-7.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inner-7.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inquirer.label",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inquirer.displayLabel",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  },
+  {
+    "id": "tarot.spreads.event-reading.inquirer.note",
+    "origin": "agent_translation",
+    "status": "needs_review"
+  }
+]

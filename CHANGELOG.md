@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add draft Portuguese spread and slot labels, descriptions and notes through
+  `getTarotSpread(id, language)` and `listTarotSpreads(language)`.
+
 - Add draft Brazilian Portuguese tarot names and deck meanings through language arguments
   on `getTarotCardProfile` and `getTarotRepresentation`, with per-field review provenance.
   Centralize duplicated English tarot meanings while preserving existing exports.

@@ -25,3 +25,7 @@ The shared source is `src/core/tarot-content.json`. Both legacy card exports and
 Portuguese names and meanings are drafts pending Mat's review. `tarot-review.json` enumerates each field, its origin and review status. O Julgamento adapts the Portuguese class phrase from module 1, class 20, line 448 into the requested second person. Other draft fields are conservatively marked as agent translations, not claimed as exact quotations from Mat's classes. Source research remains open for replacing those drafts with verified original wording.
 
 No npm release is authorized or performed. The remaining content areas and final full-suite validation are still in progress.
+
+## Tarot spreads
+
+`getTarotSpread('conscious-reading', 'pt-BR')` and `listTarotSpreads('pt-BR')` localize spread/slot labels, descriptions and metadata notes. IDs, constraints and sphere spellings stay stable. `spreads-review.json` lists all draft translations; numeric labels and sphere names remain unchanged.

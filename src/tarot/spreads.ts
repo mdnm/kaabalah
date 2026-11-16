@@ -1,3 +1,4 @@
+import spreadText from "./spreads.text.json";
 import { ARKANNUS } from "./arkannus";
 import type { TarotCard, TarotDeckId } from "./data";
 
@@ -1256,15 +1257,35 @@ function drawEventReadingSpread(
   return drawnCards;
 }
 
-export function listTarotSpreads(): TarotSpreadDefinition[] {
-  return TAROT_SPREADS.map(cloneSpreadDefinition);
+const SPREAD_TEXT: Readonly<Record<string, Readonly<{ en: string; pt: string }>>> = Object.freeze(
+  Object.fromEntries(Object.entries(spreadText).map(([key, row]) => [key, Object.freeze(row)])),
+);
+
+function localizeSpread(spread: TarotSpreadDefinition, language?: string): TarotSpreadDefinition {
+  const result = cloneSpreadDefinition(spread);
+  if (!language?.startsWith("pt")) return result;
+  const text = (key: string) => SPREAD_TEXT[`${spread.spreadId}.${key}`].pt;
+  result.label = text("label");
+  if (spread.description) result.description = text("description");
+  for (const slot of result.slots) {
+    slot.label = text(`${slot.slotKey}.label`);
+    if (slot.metadata?.displayLabel) slot.metadata.displayLabel = text(`${slot.slotKey}.displayLabel`);
+    if (slot.metadata?.note) slot.metadata.note = text(`${slot.slotKey}.note`);
+  }
+  return result;
+}
+
+/** Spread labels and descriptions, with Portuguese selected by pt or pt-BR. */
+export function listTarotSpreads(language?: string): TarotSpreadDefinition[] {
+  return TAROT_SPREADS.map(spread => localizeSpread(spread, language));
 }
 
 export function getTarotSpread(
-  spreadId: TarotSpreadId
+  spreadId: TarotSpreadId,
+  language?: string,
 ): TarotSpreadDefinition | undefined {
   const spread = TAROT_SPREAD_BY_ID.get(spreadId);
-  return spread ? cloneSpreadDefinition(spread) : undefined;
+  return spread ? localizeSpread(spread, language) : undefined;
 }
 
 export function validateTarotSpreadSelection(

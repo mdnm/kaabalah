@@ -1,0 +1,414 @@
+{
+  "quick-insight.label": {
+    "en": "Quick Insight",
+    "pt": "Orientação rápida"
+  },
+  "quick-insight.description": {
+    "en": "A single-card reading for immediate insight.",
+    "pt": "Uma carta para uma orientação imediata."
+  },
+  "quick-insight.quick-insight.label": {
+    "en": "Quick Insight",
+    "pt": "Orientação rápida"
+  },
+  "conscious-reading.label": {
+    "en": "Conscious Reading",
+    "pt": "Leitura consciente"
+  },
+  "conscious-reading.description": {
+    "en": "Three-card spread for conscious, unconscious, and subconscious layers.",
+    "pt": "Três cartas para o consciente, o inconsciente e o subconsciente."
+  },
+  "conscious-reading.conscious.label": {
+    "en": "Conscious",
+    "pt": "Consciente"
+  },
+  "conscious-reading.unconscious.label": {
+    "en": "Unconscious",
+    "pt": "Inconsciente"
+  },
+  "conscious-reading.subconscious.label": {
+    "en": "Subconscious",
+    "pt": "Subconsciente"
+  },
+  "time-reading.label": {
+    "en": "Time Reading",
+    "pt": "Leitura do tempo"
+  },
+  "time-reading.description": {
+    "en": "Three major arcana cards for past, present, and future.",
+    "pt": "Três Ark Annu para passado, presente e futuro."
+  },
+  "time-reading.past.label": {
+    "en": "Past",
+    "pt": "Passado"
+  },
+  "time-reading.present.label": {
+    "en": "Present",
+    "pt": "Presente"
+  },
+  "time-reading.future.label": {
+    "en": "Future",
+    "pt": "Futuro"
+  },
+  "dialectic-reading.label": {
+    "en": "Dialectic Reading",
+    "pt": "Leitura dialética"
+  },
+  "dialectic-reading.description": {
+    "en": "Three major arcana cards for thesis, antithesis, and synthesis.",
+    "pt": "Três Ark Annu para tese, antítese e síntese."
+  },
+  "dialectic-reading.thesis.label": {
+    "en": "Thesis",
+    "pt": "Tese"
+  },
+  "dialectic-reading.antithesis.label": {
+    "en": "Antithesis",
+    "pt": "Antítese"
+  },
+  "dialectic-reading.synthesis.label": {
+    "en": "Synthesis",
+    "pt": "Síntese"
+  },
+  "tree-of-life-reading.label": {
+    "en": "Tree of Life Reading",
+    "pt": "Leitura da árvore da vida"
+  },
+  "tree-of-life-reading.description": {
+    "en": "Ten numbered minor arcana slots mapped to the spheres plus four Daath court cards.",
+    "pt": "Dez posições de cartas menores numeradas nas esferas e quatro cartas da realeza de Daath."
+  },
+  "tree-of-life-reading.kether.label": {
+    "en": "Kether",
+    "pt": "Kether"
+  },
+  "tree-of-life-reading.chokhmah.label": {
+    "en": "Chokhmah",
+    "pt": "Chokhmah"
+  },
+  "tree-of-life-reading.binah.label": {
+    "en": "Binah",
+    "pt": "Binah"
+  },
+  "tree-of-life-reading.chesed.label": {
+    "en": "Chesed",
+    "pt": "Chesed"
+  },
+  "tree-of-life-reading.geburah.label": {
+    "en": "Geburah",
+    "pt": "Geburah"
+  },
+  "tree-of-life-reading.tiphareth.label": {
+    "en": "Tiphareth",
+    "pt": "Tiphareth"
+  },
+  "tree-of-life-reading.netzach.label": {
+    "en": "Netzach",
+    "pt": "Netzach"
+  },
+  "tree-of-life-reading.hod.label": {
+    "en": "Hod",
+    "pt": "Hod"
+  },
+  "tree-of-life-reading.yesod.label": {
+    "en": "Yesod",
+    "pt": "Yesod"
+  },
+  "tree-of-life-reading.malkuth.label": {
+    "en": "Malkuth",
+    "pt": "Malkuth"
+  },
+  "tree-of-life-reading.daath.label": {
+    "en": "Daath",
+    "pt": "Daath"
+  },
+  "celtic-cross.label": {
+    "en": "Celtic Cross",
+    "pt": "Cruz celta"
+  },
+  "celtic-cross.description": {
+    "en": "Classic ten-card Celtic Cross spread.",
+    "pt": "Tiragem clássica de dez cartas da cruz celta."
+  },
+  "celtic-cross.present.label": {
+    "en": "The Present",
+    "pt": "O presente"
+  },
+  "celtic-cross.present.displayLabel": {
+    "en": "1.",
+    "pt": "1."
+  },
+  "celtic-cross.challenge.label": {
+    "en": "The Challenge",
+    "pt": "O desafio"
+  },
+  "celtic-cross.challenge.displayLabel": {
+    "en": "2.",
+    "pt": "2."
+  },
+  "celtic-cross.above.label": {
+    "en": "Above",
+    "pt": "Acima"
+  },
+  "celtic-cross.above.displayLabel": {
+    "en": "3.",
+    "pt": "3."
+  },
+  "celtic-cross.below.label": {
+    "en": "Below",
+    "pt": "Abaixo"
+  },
+  "celtic-cross.below.displayLabel": {
+    "en": "4.",
+    "pt": "4."
+  },
+  "celtic-cross.behind.label": {
+    "en": "Behind",
+    "pt": "Atrás"
+  },
+  "celtic-cross.behind.displayLabel": {
+    "en": "5.",
+    "pt": "5."
+  },
+  "celtic-cross.before.label": {
+    "en": "Before",
+    "pt": "À frente"
+  },
+  "celtic-cross.before.displayLabel": {
+    "en": "6.",
+    "pt": "6."
+  },
+  "celtic-cross.self.label": {
+    "en": "Self",
+    "pt": "Você"
+  },
+  "celtic-cross.self.displayLabel": {
+    "en": "7.",
+    "pt": "7."
+  },
+  "celtic-cross.environment.label": {
+    "en": "Environment",
+    "pt": "Ambiente"
+  },
+  "celtic-cross.environment.displayLabel": {
+    "en": "8.",
+    "pt": "8."
+  },
+  "celtic-cross.hopes-fears.label": {
+    "en": "Hopes/Fears",
+    "pt": "Esperanças e medos"
+  },
+  "celtic-cross.hopes-fears.displayLabel": {
+    "en": "9.",
+    "pt": "9."
+  },
+  "celtic-cross.outcome.label": {
+    "en": "Outcome",
+    "pt": "Resultado"
+  },
+  "celtic-cross.outcome.displayLabel": {
+    "en": "10.",
+    "pt": "10."
+  },
+  "event-reading.label": {
+    "en": "Event Reading",
+    "pt": "Leitura de evento"
+  },
+  "event-reading.description": {
+    "en": "Papus-style event spread with outer minor/court cards, seven major cards, and an inquirer card.",
+    "pt": "Tiragem de evento de Papus com cartas menores e da realeza no círculo externo, sete Ark Annu e uma carta do consulente."
+  },
+  "event-reading.outer-1.label": {
+    "en": "1",
+    "pt": "1"
+  },
+  "event-reading.outer-1.displayLabel": {
+    "en": "1",
+    "pt": "1"
+  },
+  "event-reading.outer-2.label": {
+    "en": "2",
+    "pt": "2"
+  },
+  "event-reading.outer-2.displayLabel": {
+    "en": "2",
+    "pt": "2"
+  },
+  "event-reading.outer-3.label": {
+    "en": "3",
+    "pt": "3"
+  },
+  "event-reading.outer-3.displayLabel": {
+    "en": "3",
+    "pt": "3"
+  },
+  "event-reading.outer-4.label": {
+    "en": "4",
+    "pt": "4"
+  },
+  "event-reading.outer-4.displayLabel": {
+    "en": "4",
+    "pt": "4"
+  },
+  "event-reading.outer-5.label": {
+    "en": "5",
+    "pt": "5"
+  },
+  "event-reading.outer-5.displayLabel": {
+    "en": "5",
+    "pt": "5"
+  },
+  "event-reading.outer-6.label": {
+    "en": "6",
+    "pt": "6"
+  },
+  "event-reading.outer-6.displayLabel": {
+    "en": "6",
+    "pt": "6"
+  },
+  "event-reading.outer-7.label": {
+    "en": "7",
+    "pt": "7"
+  },
+  "event-reading.outer-7.displayLabel": {
+    "en": "7",
+    "pt": "7"
+  },
+  "event-reading.outer-8.label": {
+    "en": "8",
+    "pt": "8"
+  },
+  "event-reading.outer-8.displayLabel": {
+    "en": "8",
+    "pt": "8"
+  },
+  "event-reading.outer-9.label": {
+    "en": "9",
+    "pt": "9"
+  },
+  "event-reading.outer-9.displayLabel": {
+    "en": "9",
+    "pt": "9"
+  },
+  "event-reading.outer-10.label": {
+    "en": "10",
+    "pt": "10"
+  },
+  "event-reading.outer-10.displayLabel": {
+    "en": "10",
+    "pt": "10"
+  },
+  "event-reading.outer-11.label": {
+    "en": "11",
+    "pt": "11"
+  },
+  "event-reading.outer-11.displayLabel": {
+    "en": "11",
+    "pt": "11"
+  },
+  "event-reading.outer-12.label": {
+    "en": "12",
+    "pt": "12"
+  },
+  "event-reading.outer-12.displayLabel": {
+    "en": "12",
+    "pt": "12"
+  },
+  "event-reading.inner-1.label": {
+    "en": "Commencement",
+    "pt": "Início"
+  },
+  "event-reading.inner-1.displayLabel": {
+    "en": "1.",
+    "pt": "1."
+  },
+  "event-reading.inner-1.note": {
+    "en": "Character of the beginning phase.",
+    "pt": "Características da fase inicial."
+  },
+  "event-reading.inner-2.label": {
+    "en": "Apogee",
+    "pt": "Apogeu"
+  },
+  "event-reading.inner-2.displayLabel": {
+    "en": "2.",
+    "pt": "2."
+  },
+  "event-reading.inner-2.note": {
+    "en": "Peak or zenith of the event.",
+    "pt": "Ponto mais alto do evento."
+  },
+  "event-reading.inner-3.label": {
+    "en": "Decline/Obstacle",
+    "pt": "Declínio ou obstáculo"
+  },
+  "event-reading.inner-3.displayLabel": {
+    "en": "3.",
+    "pt": "3."
+  },
+  "event-reading.inner-3.note": {
+    "en": "Challenges, obstacles, or decline.",
+    "pt": "Desafios, obstáculos ou declínio."
+  },
+  "event-reading.inner-4.label": {
+    "en": "Fall",
+    "pt": "Queda"
+  },
+  "event-reading.inner-4.displayLabel": {
+    "en": "4.",
+    "pt": "4."
+  },
+  "event-reading.inner-4.note": {
+    "en": "Conclusion or end phase.",
+    "pt": "Conclusão ou fase final."
+  },
+  "event-reading.inner-5.label": {
+    "en": "The Past",
+    "pt": "O passado"
+  },
+  "event-reading.inner-5.displayLabel": {
+    "en": "5.",
+    "pt": "5."
+  },
+  "event-reading.inner-5.note": {
+    "en": "Special character or influence in the past.",
+    "pt": "Característica ou influência especial no passado."
+  },
+  "event-reading.inner-6.label": {
+    "en": "The Present",
+    "pt": "O presente"
+  },
+  "event-reading.inner-6.displayLabel": {
+    "en": "6.",
+    "pt": "6."
+  },
+  "event-reading.inner-6.note": {
+    "en": "Special character or influence in the present.",
+    "pt": "Característica ou influência especial no presente."
+  },
+  "event-reading.inner-7.label": {
+    "en": "The Future",
+    "pt": "O futuro"
+  },
+  "event-reading.inner-7.displayLabel": {
+    "en": "7.",
+    "pt": "7."
+  },
+  "event-reading.inner-7.note": {
+    "en": "Special character or influence to come.",
+    "pt": "Característica ou influência especial que está por vir."
+  },
+  "event-reading.inquirer.label": {
+    "en": "Inquirer",
+    "pt": "Consulente"
+  },
+  "event-reading.inquirer.displayLabel": {
+    "en": "Inquirer",
+    "pt": "Consulente"
+  },
+  "event-reading.inquirer.note": {
+    "en": "The querent's energy in this reading.",
+    "pt": "A energia do consulente nesta leitura."
+  }
+}
