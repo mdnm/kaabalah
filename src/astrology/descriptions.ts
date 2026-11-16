@@ -1,5 +1,6 @@
 import raw from "./descriptions.json";
 import type { Sign, TriplicityElement } from "./dignity";
+import type { MODALITIES } from "../core/constants";
 
 /** Lowercase chart planet keys; authored coverage varies by factor kind. */
 export type DescriptionPlanet =
@@ -30,6 +31,8 @@ export type PlanetDescriptionEntry = PlanetSignDescriptionEntry;
 export type SignDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionElement = TriplicityElement;
 export type ElementDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionModality = (typeof MODALITIES)[keyof typeof MODALITIES];
+export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -45,6 +48,7 @@ export interface AstrologyDescriptions {
   readonly planets?: Readonly<Partial<Record<DescriptionPlanet, PlanetDescriptionEntry>>>;
   readonly signs?: Readonly<Partial<Record<Sign, SignDescriptionEntry>>>;
   readonly elements?: Readonly<Partial<Record<DescriptionElement, ElementDescriptionEntry>>>;
+  readonly modalities?: Readonly<Partial<Record<DescriptionModality, ModalityDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -176,5 +180,18 @@ export function getElementDescriptionEntry(element: DescriptionElement): Element
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getElementDescription(element: DescriptionElement, language?: string): string | undefined {
   const entry = getElementDescriptionEntry(element);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Canonical modality names follow MODALITIES; unrecognized aliases remain gaps. */
+export function getModalityDescriptionEntry(modality: DescriptionModality): ModalityDescriptionEntry | undefined {
+  const modalities = ASTROLOGY_DESCRIPTIONS.modalities;
+  if (!modalities || !Object.prototype.hasOwnProperty.call(modalities, modality)) return undefined;
+  return modalities[modality];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getModalityDescription(modality: DescriptionModality, language?: string): string | undefined {
+  const entry = getModalityDescriptionEntry(modality);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

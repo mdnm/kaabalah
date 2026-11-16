@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add three source-audited bilingual modality profiles with canonical typed keys
+  and preserved ordinary/esoteric source-context distinctions.
+
 - Add four source-audited bilingual classical element profiles with typed
   chart-classification keys and frozen provenance.
 

@@ -10918,5 +10918,124 @@
         "A3 apresenta as qualidades simbólicas fria e úmida. A8 descreve água como energia fluídica e menciona controle emocional; essas ideias são mantidas como linguagem simbólica, não como promessa fisiológica ou resultado garantido."
       ]
     }
+  },
+  "modalities": {
+    "Cardinal": {
+      "pt": "no seu mapa, a modalidade cardinal marca o início de uma estação e se associa à atividade, à energia e à iniciativa. essa dinâmica também pode envolver ambição e aversão a limitações.",
+      "en": "in your chart, the cardinal modality marks the beginning of a season and is associated with activity, energy, and initiative. this dynamic may also involve ambition and aversion to limitations.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "atividade",
+          "energia",
+          "começo"
+        ],
+        "en": [
+          "initiative",
+          "activity",
+          "energy",
+          "beginning"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 160,
+          "to": 160
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 165,
+          "to": 165
+        },
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 116,
+          "to": 119
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the season-start framing and initiative from A1 and activity/energy/initiative/ambition plus aversion to limitations from A2. A2's sign-by-sign scale qualification at lines 119-120 was inspected; no sign-specific distinction is made here.",
+        "A8 lines 913-918 was inspected but not adopted: its esoteric first-contact/simple/Ser framing is distinct from the ordinary rhythm profile and is not assigned personally."
+      ]
+    },
+    "Fixed": {
+      "pt": "no seu mapa, a modalidade fixa marca o meio de uma estação e se associa à estabilidade. essa dinâmica reúne vontade firme, perseverança e fidelidade, e pode envolver resistência a mudanças.",
+      "en": "in your chart, the fixed modality marks the middle of a season and is associated with stability. this dynamic brings together strong will, perseverance, and fidelity, and may involve resistance to change.",
+      "keywords": {
+        "pt": [
+          "estabilidade",
+          "firmeza",
+          "perseverança",
+          "fidelidade"
+        ],
+        "en": [
+          "stability",
+          "steadfastness",
+          "perseverance",
+          "fidelity"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 161,
+          "to": 161
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 166,
+          "to": 166
+        },
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 122,
+          "to": 126
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the season-middle framing and stability from A1 and will/firmness/stability/perseverance/fidelity plus aversion to change from A2.",
+        "A8 lines 920-924 was inspected but not adopted: its esoteric deepening/Realizar and sacred-status language belongs to a distinct framework and is not assigned personally."
+      ]
+    },
+    "Mutable": {
+      "pt": "no seu mapa, a modalidade mutável se associa ao fim de uma estação e à passagem para a seguinte. essa dinâmica pode reunir instabilidade, dualidade e indecisão, junto de adaptabilidade e flexibilidade.",
+      "en": "in your chart, the mutable modality is associated with the end of a season and the transition to the next. this dynamic may include instability, duality and indecision, alongside adaptability and flexibility.",
+      "keywords": {
+        "pt": [
+          "mutabilidade",
+          "transição",
+          "adaptabilidade",
+          "flexibilidade"
+        ],
+        "en": [
+          "changeability",
+          "transition",
+          "adaptability",
+          "flexibility"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 162,
+          "to": 163
+        },
+        {
+          "file": "modulo 4/aula 1 modulo 4/aula-1.md",
+          "from": 167,
+          "to": 167
+        },
+        {
+          "file": "modulo 4/aula 2 modulo 4/aula-2.md",
+          "from": 127,
+          "to": 131
+        }
+      ],
+      "reviewNotes": [
+        "Adopted A1's season-end/common-sign framing and explicit mutability; A2 describes the transition toward the next season and lists duality, indecision, perplexity, adaptability, and flexibility.",
+        "A8 lines 926-930 was inspected but not adopted: its transformation/mastery-consummation/synthesis-transcendence branch is kept distinct and no personal level or mastery is inferred. A8 lines 902-906 mentions past/present/future but the assigned passage contains no allocation table; no time mapping is adopted."
+      ]
+    }
   }
 }
