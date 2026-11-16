@@ -222,7 +222,10 @@ describe("Challenges", () => {
 describe("Fibonacci cycle", () => {
   it.each([
     // y, m, d, today, currentAge, cycle1, cycle2, cycle3, cycle4, cycle5, cycle6, cycle7
-    [2001, 1, 3, "2025-01-02", 24, 6, 8, 5, 4, 9, 4, 4],
+    // On the birthday the completed age is 24.
+    [2001, 1, 3, "2025-01-03", 24, 6, 8, 5, 4, 9, 4, 4],
+    // The day before the birthday the completed age is still 23 (previously asserted 24, which was the calendar-year bug).
+    [2001, 1, 3, "2025-01-02", 23, 5, 7, 3, 1, 4, 5, 9],
   ])(
     "produces fibonacci cycle %d-%d-%d → %o",
     (y, m, d, today, currentAge, cycle1, cycle2, cycle3, cycle4, cycle5, cycle6, cycle7) => {

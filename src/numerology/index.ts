@@ -2,207 +2,39 @@
  * Numerology calculations
  */
 
+import {
+  addCivilDays,
+  anniversaryInYear,
+  civilDateFromLocalDate,
+  civilDateToLocalNoon,
+  compareCivilDates,
+  completedYears,
+  diffCivilDays,
+  type CivilDate,
+} from "../civil-date";
 import { calculateGematria } from "../gematria";
 import type * as NumerologyModuleTypes from "./data";
 import * as NumerologyData from "./data";
+import {
+  MASTER_NUMBERS,
+  calculateKaabalisticLifePath,
+  calculateStraightAcrossReductionLifePath,
+  isMasterNumber,
+  mapDatePartsToBlocksOfTwo,
+  parseDate,
+  reduceToSingle,
+  reduceToSingleWithSteps,
+} from "./core";
+import { unavailable } from "./schedule-types";
 
-function parseDate(date: Date): { day: string; month: string; year: string } {
-  if (!date) {
-    throw new Error("Date is required");
-  }
-
-  if (!(date instanceof Date)) {
-    throw new Error("Date must be a Date object");
-  }
-
-  if (Number.isNaN(date.getTime())) {
-    throw new Error("Date must be a valid Date object");
-  }
-
-  return {
-    day: String(date.getDate()).padStart(2, "0"),
-    month: String(date.getMonth() + 1).padStart(2, "0"),
-    year: String(date.getFullYear()).padStart(4, "0"),
-  };
-}
-
-function mapDatePartsToBlocksOfTwo({
-  day,
-  month,
-  year,
-}: {
-  day: string;
-  month: string;
-  year: string;
-}): { day: string; month: string; year1: string; year2: string } {
-  return {
-    day: day.padStart(2, "0"),
-    month: month.padStart(2, "0"),
-    year1: year.slice(0, 2),
-    year2: year.slice(2),
-  };
-}
-
-function digitSum(n: number): number {
-  let s = 0;
-
-  for (const ch of String(Math.abs(n))) {
-    s += ch.charCodeAt(0) - 48;
-  }
-
-  return s;
-}
-
-export const MASTER_NUMBERS = [11, 22, 33, 44];
-
-export function isMasterNumber(n: number): boolean {
-  return MASTER_NUMBERS.includes(n);
-}
-
-export function reduceToSingle(
-  n: number,
-  options: { preserveMasters?: boolean } = { preserveMasters: false }
-): number {
-  // standard digital root with 0 allowed; never preserve masters here
-  if (n === 0) {
-    return 0;
-  }
-
-  let reduced = n;
-  while (reduced > 9) {
-    if (options?.preserveMasters && isMasterNumber(reduced)) {
-      break;
-    }
-
-    reduced = digitSum(reduced);
-  }
-
-  // optional tweak for exact "00" cases will be applied by caller, not here
-  return reduced;
-}
-
-export function reduceToSingleWithSteps(
-  n: number,
-  options: { preserveMasters?: boolean } = { preserveMasters: false }
-): NumerologyModuleTypes.ReducedValueWithSteps {
-  const steps = [n];
-
-  if (n === 0) {
-    return {
-      reducedValue: 0,
-      reductionSteps: steps,
-    };
-  }
-
-  let reduced = n;
-
-  while (reduced > 9) {
-    if (options?.preserveMasters && isMasterNumber(reduced)) {
-      break;
-    }
-
-    reduced = digitSum(reduced);
-    steps.push(reduced);
-  }
-
-  return {
-    reducedValue: reduced,
-    reductionSteps: steps,
-  };
-}
-
-function reduceBlock(block: string): number {
-  const n = [...block].reduce(
-    (acc, curr) => acc + (curr.charCodeAt(0) - 48),
-    0
-  );
-
-  if (n === 0) {
-    return 0;
-  }
-
-  return reduceToSingle(n);
-}
-
-/**
- * Calculate the Kaabalistic life path number based on a birth date.
- * Note: This method produces more master numbers and never produces life path 2s (or any life path that ends with 0 like 10, 20, 30, etc.)
- */
-export function calculateKaabalisticLifePath(
-  birthDate: Date
-): NumerologyModuleTypes.KaabalisticLifePathResult {
-  const { day, month, year1, year2 } = mapDatePartsToBlocksOfTwo(
-    parseDate(birthDate)
-  );
-
-  const reducedDay = reduceBlock(day);
-  const reducedMonth = reduceBlock(month);
-  const reducedYear1 = reduceBlock(year1);
-  const reducedYear2 = reduceBlock(year2);
-
-  const dayMonthSynthesis = parseInt(`${reducedDay}${reducedMonth}`, 10);
-  const yearSynthesis = parseInt(`${reducedYear1}${reducedYear2}`, 10);
-
-  const reducedDayMonthSynthesis = reduceToSingle(dayMonthSynthesis);
-  const reducedYearSynthesis = reduceToSingle(yearSynthesis);
-
-  const finalSynthesis = parseInt(
-    `${reducedDayMonthSynthesis}${reducedYearSynthesis}`,
-    10
-  );
-
-  const lifePath = reduceToSingleWithSteps(finalSynthesis, { preserveMasters: true });
-  const isMasterLifePath = isMasterNumber(lifePath.reducedValue);
-
-  const personalMythologyNumbers = [
-    parseInt(`${dayMonthSynthesis}${yearSynthesis}`, 10),
-    finalSynthesis,
-  ];
-
-  if (finalSynthesis !== lifePath.reducedValue) {
-    personalMythologyNumbers.push(lifePath.reducedValue);
-  }
-
-  const reducedLifePath = reduceToSingle(lifePath.reducedValue);
-  if (isMasterLifePath) {
-    personalMythologyNumbers.push(reducedLifePath);
-  }
-
-  return {
-    parts: { day, month, year1, year2 },
-    reducedParts: { reducedDay, reducedMonth, reducedYear1, reducedYear2 },
-    syntheses: {
-      dayMonthSynthesis,
-      yearSynthesis,
-      reducedDayMonthSynthesis,
-      reducedYearSynthesis,
-      finalSynthesis,
-    },
-    lifePath,
-    personalMythologyNumbers,
-  };
-}
-
-/**
- * Calculate the traditional straight across reduction life path number based on a birth date.
- */
-export function calculateStraightAcrossReductionLifePath(
-  birthDate: Date
-): NumerologyModuleTypes.StraightAcrossReductionLifePathResult {
-  const { day, month, year } = parseDate(birthDate);
-
-  const result = reduceToSingleWithSteps(
-    parseInt(`${day}${month}${year}`, 10),
-    { preserveMasters: true }
-  );
-
-  return {
-    dayEnergy: reduceToSingleWithSteps(parseInt(day, 10), { preserveMasters: true }),
-    monthEnergy: reduceToSingleWithSteps(parseInt(month, 10), { preserveMasters: true }),
-    yearEnergy: reduceToSingleWithSteps(parseInt(year, 10), { preserveMasters: true }),
-    lifePath: result,
-  };
-}
+export {
+  MASTER_NUMBERS,
+  calculateKaabalisticLifePath,
+  calculateStraightAcrossReductionLifePath,
+  isMasterNumber,
+  reduceToSingle,
+  reduceToSingleWithSteps,
+};
 
 /**
  * Dates are read with local calendar getters; construct them at local noon
@@ -255,22 +87,25 @@ export function calculateChallenges(birthDate: Date): NumerologyModuleTypes.Chal
   };
 }
 
-// Add days to a date
-function addDays(date: Date, days: number): Date {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
+/** Civil (timezone-free) day of a legacy Date, read with local calendar getters. */
+function toCivil(date: Date): CivilDate {
+  parseDate(date); // validates
+  return civilDateFromLocalDate(date);
+}
+
+/** Legacy `cycleStart` values are local-midnight Dates; safe for years 1-99. */
+function civilToLocalMidnight(date: CivilDate): Date {
+  const result = civilDateToLocalNoon(date);
+  result.setHours(0, 0, 0, 0);
   return result;
 }
 
-// Find the most recent anniversary of the start date
-function getMostRecentStartDate(startDate: Date, today: Date): Date {
-  const startMonth = startDate.getMonth();
-  const startDay = startDate.getDate();
-  let recentStart = new Date(today.getFullYear(), startMonth, startDay);
-  if (recentStart > today) {
-    recentStart = new Date(today.getFullYear() - 1, startMonth, startDay);
-  }
-  return recentStart;
+/** Most recent anniversary of `birth` on or before `today`. */
+function lastBirthdayCivil(birth: CivilDate, today: CivilDate): CivilDate {
+  const thisYear = anniversaryInYear(birth, today.year);
+  return compareCivilDates(thisYear, today) <= 0
+    ? thisYear
+    : anniversaryInYear(birth, today.year - 1);
 }
 
 function numberToHeptadCycle(number: number): NumerologyModuleTypes.HeptadCycles {
@@ -283,110 +118,91 @@ function numberToHeptadCycle(number: number): NumerologyModuleTypes.HeptadCycles
 
 /**
  * Calculate cycles (annual and monthly).
+ *
+ * - Ages are completed (birthday) ages.
+ * - `ageCycles` lists the seven blocks of the 49-year window that contains the
+ *   active block, labelled 1-7 with their real absolute indices; the active
+ *   entry carries the real start of the current block.
+ * - Day counters are civil-day based (independent of DST and time of day).
+ * - The seventh 52-day segment runs to the actual next birthday (53/54 days).
+ *
  * Dates are read with local calendar getters; construct them at local noon
  * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
  */
 export function calculateCycles(startDate: Date, today: Date): NumerologyModuleTypes.CycleInfo {
-  const mostRecentStart = getMostRecentStartDate(startDate, today);
+  const birth = toCivil(startDate);
+  const now = toCivil(today);
+  const mostRecentStart = lastBirthdayCivil(birth, now);
   const cycleLength = 52; // Fixed cycle length for monthly cycles
 
   // Skip annual cycle calculation if start date is in the future
-  const isFutureDate = startDate > today;
-  let currentYearlyCycle = null;
-  let currentAgeCycle = null;
+  const isFutureDate = compareCivilDates(birth, now) > 0;
+  let currentYearlyCycle: number | null = null;
+  let currentAgeCycle: number | null = null;
+  let currentAgeBlockIndex: number | null = null;
   const ageCycles: NumerologyModuleTypes.CycleInfo["ageCycles"] = [];
   const yearlyCycles: NumerologyModuleTypes.CycleInfo["yearlyCycles"] = [];
   if (!isFutureDate) {
-    const birthYear = startDate.getFullYear();
-    const currentYear = today.getFullYear();
-    const ageInYears = currentYear - birthYear;
-    currentAgeCycle = (Math.floor(ageInYears / 7) % 7) + 1;
+    const completedAge = completedYears(birth, now);
+    const block = Math.floor(completedAge / 7);
+    currentAgeBlockIndex = block;
+    currentAgeCycle = (block % 7) + 1;
+    currentYearlyCycle = (completedAge % 7) + 1;
+    const windowFirstBlock = Math.floor(block / 7) * 7;
+
     for (let i = 0; i < 7; i++) {
-      // cycle start for year is which year it started
-      const cycleStart = new Date(
-        birthYear + i * 7,
-        startDate.getMonth(),
-        startDate.getDate()
-      );
-
+      const absoluteIndex = windowFirstBlock + i;
       const cycle = i + 1;
-      const isCurrentCycle = cycle === currentAgeCycle;
-
-      if (isCurrentCycle) {
-        // Calculate yearly cycles within the current age cycle
-        // The yearly cycle is based on the person's exact age in years
-        // For example, if someone is 6 years old, they're in the 1st age cycle (0-7 years) and the 6th yearly cycle
-        const yearsSinceBirth = ageInYears;
-        const yearWithinAgeCycle = yearsSinceBirth % 7; // 0-6 representing which year within the current age cycle
-        currentYearlyCycle = yearWithinAgeCycle + 1; // Convert to 1-7 range
-
-        for (let j = 0; j < 7; j++) {
-          // Calculate the start date for each yearly cycle within the current age cycle
-          const ageCycleStartYear = birthYear + Math.floor(ageInYears / 7) * 7; // Start year of current age cycle
-          const yearlyCycleStart = new Date(
-            ageCycleStartYear + j,
-            startDate.getMonth(),
-            startDate.getDate()
-          );
-          const yearlyCycle = j + 1;
-
-          const isCurrentYearlyCycle = yearlyCycle === currentYearlyCycle;
-
-          yearlyCycles.push({
-            number: yearlyCycle,
-            description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(yearlyCycle)],
-            isActive: isCurrentYearlyCycle,
-            cycleStart: yearlyCycleStart,
-          });
-        }
-      }
-
       ageCycles.push({
         number: cycle,
         description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(cycle)],
-        isActive: isCurrentCycle,
-        cycleStart,
+        isActive: cycle === currentAgeCycle,
+        cycleStart: civilToLocalMidnight(
+          anniversaryInYear(birth, birth.year + absoluteIndex * 7)
+        ),
+        absoluteIndex,
+      });
+    }
+
+    for (let j = 0; j < 7; j++) {
+      const yearlyCycle = j + 1;
+      yearlyCycles.push({
+        number: yearlyCycle,
+        description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(yearlyCycle)],
+        isActive: yearlyCycle === currentYearlyCycle,
+        cycleStart: civilToLocalMidnight(
+          anniversaryInYear(birth, birth.year + block * 7 + j)
+        ),
       });
     }
   }
 
-  // Monthly cycles (relative to start date)
+  // Monthly (52-day) cycles relative to the most recent anniversary
   const monthlyCycles: NumerologyModuleTypes.CycleInfo["monthlyCycles"] = [];
   for (let i = 0; i < 7; i++) {
-    const cycleStart = addDays(mostRecentStart, i * cycleLength);
-
     monthlyCycles.push({
       number: i + 1,
       description: NumerologyData.CYCLE_MEANINGS[numberToHeptadCycle(i + 1)],
       isActive: false,
-      cycleStart: cycleStart,
+      cycleStart: civilToLocalMidnight(addCivilDays(mostRecentStart, i * cycleLength)),
     });
   }
 
-  // Find current monthly cycle
+  const nextAnniversary = anniversaryInYear(birth, mostRecentStart.year + 1);
+  const daysSinceStart = diffCivilDays(mostRecentStart, now);
   let currentMonthlyCycle: NumerologyModuleTypes.CycleInfo["currentMonthlyCycle"] = null;
   let daysInMonthlyCycle = 0;
   for (let i = 0; i < 7; i++) {
-    const cycleStart = addDays(mostRecentStart, i * cycleLength);
-    const nextCycleStart =
-      i < 6
-        ? addDays(mostRecentStart, (i + 1) * cycleLength)
-        : addDays(mostRecentStart, 366);
-    if (today >= cycleStart && today < nextCycleStart) {
+    const startOffset = i * cycleLength;
+    const endOffset =
+      i < 6 ? (i + 1) * cycleLength : diffCivilDays(mostRecentStart, nextAnniversary);
+    if (daysSinceStart >= startOffset && daysSinceStart < endOffset) {
       currentMonthlyCycle = i + 1;
-      daysInMonthlyCycle =
-        Math.floor(
-          (today.getTime() - cycleStart.getTime()) / (1000 * 60 * 60 * 24)
-        ) + 1;
+      daysInMonthlyCycle = daysSinceStart - startOffset + 1;
       monthlyCycles[i].isActive = true;
       break;
     }
   }
-
-  const totalDays =
-    Math.floor(
-      (today.getTime() - mostRecentStart.getTime()) / (1000 * 60 * 60 * 24)
-    ) + 1;
 
   return {
     yearlyCycles,
@@ -396,15 +212,18 @@ export function calculateCycles(startDate: Date, today: Date): NumerologyModuleT
     currentAgeCycle,
     currentMonthlyCycle,
     daysInMonthlyCycle,
-    totalDays,
+    totalDays: daysSinceStart + 1,
+    currentAgeBlockIndex,
   };
 }
 
+/** Completed (birthday) age; a 29 February birthday completes on 1 March in common years. */
 function calculateAge(birthDate: Date, today: Date = new Date()): number {
-  return today.getFullYear() - birthDate.getFullYear();
+  return completedYears(toCivil(birthDate), toCivil(today));
 }
 
 /**
+ * Fibonacci cycles from the completed (birthday) age.
  * Dates are read with local calendar getters; construct them at local noon
  * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
  */
@@ -412,8 +231,11 @@ export function calculateFibonacciCycle(
   birthDate: Date,
   today: Date
 ): NumerologyModuleTypes.FibonacciCycle {
-  const currentAge = calculateAge(birthDate, today);
+  return fibonacciFromAge(calculateAge(birthDate, today));
+}
 
+/** Fibonacci recurrence on an explicit age (single-digit reductions; masters are not preserved). */
+export function fibonacciFromAge(currentAge: number): NumerologyModuleTypes.FibonacciCycle {
   const cycle1 = reduceToSingleWithSteps(currentAge);
   const cycle2 = reduceToSingleWithSteps(cycle1.reducedValue + 2);
   const cycle3 = reduceToSingleWithSteps(
@@ -444,8 +266,20 @@ export function calculateFibonacciCycle(
   };
 }
 
-function calculateSoulNumber(firstName: string): NumerologyModuleTypes.ReducedValueWithSteps {
+/**
+ * Soul number from the vowels of the supplied name. A missing, blank or
+ * vowel-less name is explicitly unavailable (never a manufactured 0).
+ */
+function calculateSoulNumber(
+  firstName: string | null | undefined
+): NumerologyModuleTypes.ReducedValueWithSteps | NumerologyModuleTypes.UnavailableValue {
+  if (typeof firstName !== "string" || firstName.trim() === "") {
+    return unavailable("first-name-missing", "No first name supplied; the soul number (personal period 3) is not computed.");
+  }
   const vowels = calculateGematria(firstName).vowels;
+  if (vowels.originalSum === 0 || vowels.finalValue === 0) {
+    return unavailable("first-name-has-no-vowels", "The supplied name has no vowels recognised by the gematria mapping; soul number not computed.");
+  }
 
   return {
     reducedValue: vowels.finalValue,
@@ -463,30 +297,15 @@ function wrapMonth(month: number): number {
 }
 
 /**
- * Returns the year of the most recent birthday relative to today.
- */
-function getLastBirthdayYear(birthDate: Date, today: Date): number {
-  const thisYearsBirthday = new Date(
-    today.getFullYear(),
-    birthDate.getMonth(),
-    birthDate.getDate()
-  );
-
-  return today >= thisYearsBirthday
-    ? today.getFullYear()
-    : today.getFullYear() - 1;
-}
-
-/**
  * Dates are read with local calendar getters; construct them at local noon
- * (e.g. `new Date(1990, 0, 15, 12)`) to avoid day-shift at timezone extremes.
+ * (e.g. `new Date(1990, 0, 15, 12)` ) to avoid day-shift at timezone extremes.
  */
 export function calculatePersonalYear(
   birthDate: Date,
   today: Date = new Date()
 ): NumerologyModuleTypes.ReducedValueWithSteps {
   const { day, month } = parseDate(birthDate);
-  const yearToUse = getLastBirthdayYear(birthDate, today);
+  const yearToUse = lastBirthdayCivil(toCivil(birthDate), toCivil(today)).year;
 
   return reduceToSingleWithSteps(
     parseInt(day, 10) + parseInt(month, 10) + yearToUse,
@@ -498,7 +317,7 @@ export function calculatePersonalPeriods(
   birthDate: Date,
   yearToUse: number,
   lifePath: number,
-  soulNumber: number,
+  soulNumber: number | NumerologyModuleTypes.UnavailableValue,
   currentAge: number
 ): [NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod, NumerologyModuleTypes.PersonalPeriod] {
   const { month } = parseDate(birthDate);
@@ -522,25 +341,35 @@ export function calculatePersonalPeriods(
     {
       startMonth: wrapMonth(birthMonth + 8),
       endMonth: wrapMonth(birthMonth + 11),
-      value: reduceToSingleWithSteps(yearToUse + soulNumber, {
-        preserveMasters: true,
-      }),
+      value:
+        typeof soulNumber === "number"
+          ? reduceToSingleWithSteps(yearToUse + soulNumber, { preserveMasters: true })
+          : soulNumber,
     },
   ];
 
   return periods;
 }
 
+/**
+ * Index (0-11) of the active personal month.
+ *
+ * Convention ("next-month-first"): phase k starts on the birth day of the
+ * k-th calendar month after the birth month. When that month has no such day
+ * (birth day 29/30/31 in a short month) the phase starts on the 1st of the
+ * following month while keeping its nominal month label/value. The nominal
+ * month (not the rolled-forward 1 March of a 29 February birthday) is the
+ * anchor, so 29 February births stay in step with their birthday year.
+ */
 function diffInPersonalMonths(birthDate: Date, today: Date): number {
-  const lastYear = getLastBirthdayYear(birthDate, today);
-  const base = new Date(lastYear, birthDate.getMonth(), birthDate.getDate());
+  const birth = toCivil(birthDate);
+  const now = toCivil(today);
+  const lastYear = lastBirthdayCivil(birth, now).year;
 
-  let k =
-    (today.getFullYear() - base.getFullYear()) * 12 +
-    (today.getMonth() - base.getMonth());
+  let k = (now.year - lastYear) * 12 + (now.month - birth.month);
 
   // Only advance to the next personal month on the birth *day* each month
-  if (today.getDate() < birthDate.getDate()) {
+  if (now.day < birth.day) {
     k -= 1;
   }
 
@@ -573,7 +402,7 @@ export function calculatePersonalMonths(
   const currentPersonalMonthIndex = diffInPersonalMonths(birthDate, today);
 
   return {
-    personalMonths: personalMonths as NumerologyModuleTypes.PersonalCycles["personalMonths"],
+    personalMonths: personalMonths as unknown as NumerologyModuleTypes.PersonalCycles["personalMonths"],
     currentPersonalMonthIndex,
   };
 }
@@ -581,16 +410,16 @@ export function calculatePersonalMonths(
 export function calculatePersonalCycles(
   birthDate: Date,
   today: Date = new Date(),
-  firstName: string
+  firstName?: string | null
 ): NumerologyModuleTypes.PersonalCycles {
-  const yearToUse = getLastBirthdayYear(birthDate, today);
+  const birth = toCivil(birthDate);
+  const yearToUse = lastBirthdayCivil(birth, toCivil(today)).year;
 
   const personalYear = calculatePersonalYear(birthDate, today);
 
-  const currentAge = calculateAge(
-    birthDate,
-    new Date(yearToUse, today.getMonth(), today.getDate())
-  );
+  // Completed age at the last birthday (already birthday-correct; do not
+  // subtract again).
+  const currentAge = yearToUse - birth.year;
   const { lifePath } = calculateKaabalisticLifePath(birthDate);
   const soulNumber = calculateSoulNumber(firstName);
 
@@ -598,7 +427,7 @@ export function calculatePersonalCycles(
     birthDate,
     yearToUse,
     lifePath.reducedValue,
-    soulNumber.reducedValue,
+    soulNumber.reducedValue === undefined ? soulNumber : soulNumber.reducedValue,
     currentAge
   );
 
@@ -627,3 +456,7 @@ export { NumerologyData };
 export type { NumerologyModuleTypes };
 
 export * from "./texts";
+
+export * from "./schedule";
+export * from "./partial-date";
+export * from "./life-stages";

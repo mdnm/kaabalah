@@ -1,3 +1,5 @@
+import type { Unavailable } from "./schedule-types";
+
 export enum HeptadCycles {
   First = 1,
   Second = 2,
@@ -20,6 +22,8 @@ export type Cycle = {
   description: CycleMeaning;
   isActive?: boolean;
   cycleStart?: Date;
+  /** Age cycles only: absolute 7-year block index (0-based) from birth; `number` is its repeating 1-7 label. */
+  absoluteIndex?: number;
 }
 
 export type CycleInfo = {
@@ -31,6 +35,8 @@ export type CycleInfo = {
   currentMonthlyCycle: number | null;
   daysInMonthlyCycle: number;
   totalDays: number;
+  /** Absolute 0-based seven-year block index from birth (`floor(completedAge / 7)`); `currentAgeCycle` is its repeating 1-7 label. */
+  currentAgeBlockIndex: number | null;
 }
 
 export type KaabalisticLifePathResult = {
@@ -98,10 +104,21 @@ export type FibonacciCycle = {
   cycle7: ReducedValueWithSteps;
 };
 
+/**
+ * Explicit "cannot be computed" marker (same shape as the schedule facade's
+ * `Unavailable`). The optional `undefined` fields let callers that read
+ * `.reducedValue` / `.reductionSteps` keep compiling; they are absent at runtime.
+ */
+export type UnavailableValue = Unavailable & {
+  reducedValue?: undefined;
+  reductionSteps?: undefined;
+};
+
 export type PersonalPeriod = {
   startMonth: number;
   endMonth: number;
-  value: ReducedValueWithSteps;
+  /** `UnavailableValue` only for the name-dependent third period when no usable first name was supplied. */
+  value: ReducedValueWithSteps | UnavailableValue;
 };
 
 export type PersonalMonth = {
@@ -109,29 +126,32 @@ export type PersonalMonth = {
   value: ReducedValueWithSteps;
 };
 
+/** Exactly twelve personal months, starting at the birth month. */
+export type PersonalMonths = readonly [
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth,
+  PersonalMonth
+];
+
 export type PersonalCycles = {
   personalYear: ReducedValueWithSteps;
   personalPeriods: [PersonalPeriod, PersonalPeriod, PersonalPeriod];
-  personalMonths: [
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth,
-    PersonalMonth
-  ];
+  personalMonths: PersonalMonths;
   currentPersonalPeriod: number;
   currentPersonalMonth: number;
   currentAge: number;
   lifePath: ReducedValueWithSteps;
-  soulNumber?: ReducedValueWithSteps;
+  /** `UnavailableValue` (never a manufactured 0) when the first name is missing, blank or has no vowels. */
+  soulNumber?: ReducedValueWithSteps | UnavailableValue;
   yearUsedOnCalculations: number;
 };
 
