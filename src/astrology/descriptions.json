@@ -1739,6 +1739,382 @@
           "Omitted hidden enemies and continuous provocations as external/adversarial event claims; they are not converted into a diagnosis or imagined persecution. Abnegação is rendered as self-denial without inventing helping behavior. Book 43052-43059 emphasizes indirect expression, intuition, compassion and sacrifice; no extra compassionate counterweight is adopted."
         ]
       }
+    },
+    "jupiter": {
+      "Aries": {
+        "pt": "você pode demonstrar generosidade e otimismo exagerados, além de autossuficiência e amor à independência. também pode haver extravagância, junto de potencial intelectual.",
+        "en": "you may show excessive generosity and optimism, as well as self-sufficiency and a love of independence. extravagance may also be present, alongside intellectual potential.",
+        "keywords": {
+          "pt": [
+            "generosidade exagerada",
+            "otimismo exagerado",
+            "autossuficiência",
+            "independência",
+            "extravagância",
+            "potencial intelectual"
+          ],
+          "en": [
+            "excessive generosity",
+            "excessive optimism",
+            "self-sufficiency",
+            "independence",
+            "extravagance",
+            "intellectual potential"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 86,
+            "to": 87
+          }
+        ],
+        "reviewNotes": [
+          "Course gives excessive generosity and optimism; kept the excess qualifier. Book opening was inspected but its OCR is too disrupted to support supplementary claims, so none were adopted."
+        ]
+      },
+      "Taurus": {
+        "pt": "você pode tender à indulgência e à autoindulgência, buscando prazer físico, conforto e facilidades materiais. também pode haver uma tendência ao conservadorismo.",
+        "en": "you may tend toward indulgence and self-indulgence, seeking physical pleasure, comfort and material conveniences. there may also be a tendency toward conservatism.",
+        "keywords": {
+          "pt": [
+            "indulgência",
+            "autoindulgência",
+            "prazer físico",
+            "conservadorismo",
+            "conforto material"
+          ],
+          "en": [
+            "indulgence",
+            "self-indulgence",
+            "physical pleasure",
+            "conservatism",
+            "material comfort"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 88,
+            "to": 89
+          }
+        ],
+        "reviewNotes": [
+          "The course's ‘tendência’ qualifier on conservatism is preserved. Book OCR window was inspected but no supplemental claims were adopted."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode demonstrar simpatia e versatilidade, embora também haja superficialidade e credulidade. existe ainda a possibilidade de muitas viagens.",
+        "en": "you may show friendliness and versatility, though superficiality and credulity may also be present. there is also the possibility of many trips.",
+        "keywords": {
+          "pt": [
+            "simpatia",
+            "versatilidade",
+            "superficialidade",
+            "credulidade",
+            "viagens"
+          ],
+          "en": [
+            "friendliness",
+            "versatility",
+            "superficiality",
+            "credulity",
+            "travel"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 90,
+            "to": 91
+          }
+        ],
+        "reviewNotes": [
+          "The course's success in intellectual or commercial activity is omitted because it could read as a promised outcome; it was not converted into an invented aptitude. The possibility qualifier on numerous trips is retained. Book opening was inspected but its positive curiosity/communication themes were not used as a counterweight."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode ter um temperamento bonachão e gentil. também pode tender ao conservadorismo e à indulgência.",
+        "en": "you may have an easygoing, kind temperament. you may also tend toward conservatism and indulgence.",
+        "keywords": {
+          "pt": [
+            "temperamento bonachão",
+            "gentileza",
+            "conservadorismo",
+            "indulgência"
+          ],
+          "en": [
+            "easygoing temperament",
+            "kindness",
+            "conservatism",
+            "indulgence"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 92,
+            "to": 94
+          }
+        ],
+        "reviewNotes": [
+          "Course health claim (digestive problems) and guaranteed life-stage success claim are omitted from product text; they are noted here as excluded. Book opening's caregiving/family optimism was inspected but not added as a counterweight."
+        ]
+      },
+      "Leo": {
+        "pt": "você demonstra afetuosidade e generosidade, junto de inteligência e ambição. o amor pelo luxo e por objetos de valor pode vir com liderança, exagero e arrogância.",
+        "en": "you show affection and generosity, alongside intelligence and ambition. a love of luxury and valuables can come with leadership, exaggeration and arrogance.",
+        "keywords": {
+          "pt": [
+            "afetuosidade",
+            "generosidade",
+            "inteligência",
+            "ambição",
+            "luxo",
+            "exagero",
+            "arrogância"
+          ],
+          "en": [
+            "affection",
+            "generosity",
+            "intelligence",
+            "ambition",
+            "luxury",
+            "exaggeration",
+            "arrogance"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 95,
+            "to": 96
+          }
+        ],
+        "reviewNotes": [
+          "O livro acrescenta expansão criativa, carisma, reconhecimento e otimismo, mas a formulação não foi usada para neutralizar exagero/arrogância do curso. Seu trecho sobre generosidade aparece em 45570-45576 e 45589-45594; curso é a citação adotada."
+        ]
+      },
+      "Virgo": {
+        "pt": "você tem visão crítica da realidade, mas pode faltar senso prático. também podem aparecer preocupação com higiene, mentalidade tacanha e detalhismo.",
+        "en": "you have a critical view of reality, though practical sense may be lacking. concern with hygiene, narrow-mindedness and attention to detail may also appear.",
+        "keywords": {
+          "pt": [
+            "visão crítica",
+            "falta de senso prático",
+            "higiene",
+            "mentalidade tacanha",
+            "detalhismo"
+          ],
+          "en": [
+            "critical outlook",
+            "lack of practical sense",
+            "hygiene",
+            "narrow-mindedness",
+            "attention to detail"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 97,
+            "to": 98
+          }
+        ],
+        "reviewNotes": [
+          "O curso escreve cetismo na linha 98; por estar corrompido/ambíguo, foi omitido sem reconstrução. O livro oferece organização, eficiência e praticidade (45938-45955, 45969-45971), em contraste com a falta de senso prático do curso; esses atributos não foram acrescentados como contrapeso. A preocupação com higiene foi mantida como tema do curso, sem alegação clínica."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode demonstrar sabedoria, equilíbrio e moderação, com temperamento amável e talento artístico. também podem aparecer preguiça, vaidade e docilidade.",
+        "en": "you may show wisdom, balance and moderation, with a kind temperament and artistic talent. laziness, vanity and docility may also appear.",
+        "keywords": {
+          "pt": [
+            "sabedoria",
+            "equilíbrio",
+            "moderação",
+            "temperamento amável",
+            "talento artístico",
+            "preguiça",
+            "vaidade",
+            "docilidade"
+          ],
+          "en": [
+            "wisdom",
+            "balance",
+            "moderation",
+            "kind temperament",
+            "artistic talent",
+            "laziness",
+            "vanity",
+            "docility"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 99,
+            "to": 100
+          }
+        ],
+        "reviewNotes": [
+          "A abertura do livro próximo ao hint foi inspecionada apenas em 46170-46230; o OCR intercalado impede recuperar com segurança um perfil psicológico contínuo, por isso não foi adotado. Não acrescentei a narrativa de harmonia/diplomacia do livro a este trecho do curso."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode ter ambição e desejo de poder, com capacidade de análise. também podem aparecer comodismo, desconfiança, vaidade, orgulho e paixões intensas.",
+        "en": "you may have ambition and a desire for power, along with analytical ability. complacency, distrust, vanity, pride and intense passions may also appear.",
+        "keywords": {
+          "pt": [
+            "ambição",
+            "desejo de poder",
+            "análise",
+            "comodismo",
+            "desconfiança",
+            "vaidade",
+            "orgulho",
+            "paixões intensas"
+          ],
+          "en": [
+            "ambition",
+            "desire for power",
+            "analysis",
+            "complacency",
+            "distrust",
+            "vanity",
+            "pride",
+            "intense passions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 101,
+            "to": 102
+          }
+        ],
+        "reviewNotes": [
+          "O livro associa expansão a transformação e tabus e descreve intensidade, intuição e regeneração (46543-46560), mas esses atributos não foram adotados para compensar comodismo/desconfiança do curso nem para prometer transformação."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode perder a visão crítica e tender ao exagero em qualquer área da vida. também pode ter boa capacidade intelectual.",
+        "en": "you may lose your critical outlook and tend toward exaggeration in any area of life. you may also have good intellectual ability.",
+        "keywords": {
+          "pt": [
+            "perda de visão crítica",
+            "exagero",
+            "boa capacidade intelectual"
+          ],
+          "en": [
+            "loss of critical outlook",
+            "exaggeration",
+            "good intellectual ability"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 103,
+            "to": 104
+          }
+        ],
+        "reviewNotes": [
+          "Omitted good luck as an outcome claim, without replacing it with an invented aptitude. The standalone source word jogador remains unresolved (player/gambler or another sense) and is omitted from prose and keywords rather than interpreted as games. The fragmented book material around 46817 emphasizes optimism/enthusiasm and philosophical breadth; no such counterweight is adopted and no missing opening is reconstructed."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode ter senso de responsabilidade, autocontrole e muita ambição. severidade, austeridade e intolerância também podem estar presentes.",
+        "en": "you may have a sense of responsibility, self-control and strong ambition. severity, austerity and intolerance may also be present.",
+        "keywords": {
+          "pt": [
+            "responsabilidade",
+            "autocontrole",
+            "muita ambição",
+            "severidade",
+            "austeridade",
+            "intolerância"
+          ],
+          "en": [
+            "responsibility",
+            "self-control",
+            "strong ambition",
+            "severity",
+            "austerity",
+            "intolerance"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 105,
+            "to": 106
+          }
+        ],
+        "reviewNotes": [
+          "Omitted slow ascent as an outcome statement; it is not converted into persistence or an aptitude for advancement. Book 47108-47116 emphasizes success through discipline, administration/leadership and authority; those outcome claims and extra aptitudes are not adopted. The printed CAPRICORIO label is normalized to canonical Capricorn."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode ter intuição e espírito humanitário, com um comportamento pouco convencional. também pode haver grosseria.",
+        "en": "you may have intuition and a humanitarian spirit, with unconventional behavior. rudeness may also be present.",
+        "keywords": {
+          "pt": [
+            "intuição",
+            "espírito humanitário",
+            "comportamento pouco convencional",
+            "grosseria"
+          ],
+          "en": [
+            "intuition",
+            "humanitarian spirit",
+            "unconventional behavior",
+            "rudeness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 107,
+            "to": 108
+          }
+        ],
+        "reviewNotes": [
+          "Omitted protection by influential people and friends as an external support/outcome claim; it is not converted into networking or social ability. Book 47304-47309 emphasizes innovation, group prosperity and community leadership; none is adopted to soften the primary rudeness tension."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode tender à autoindulgência excessiva e ao relaxamento. bom humor, bondade e abnegação podem conviver com identificação com o sofrimento.",
+        "en": "you may tend toward excessive self-indulgence and relaxation. good humor, kindness and self-denial can coexist with identification with suffering.",
+        "keywords": {
+          "pt": [
+            "autoindulgência excessiva",
+            "relaxamento",
+            "bom humor",
+            "bondade",
+            "abnegação",
+            "identificação com o sofrimento"
+          ],
+          "en": [
+            "excessive self-indulgence",
+            "relaxation",
+            "good humor",
+            "kindness",
+            "self-denial",
+            "identification with suffering"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 109,
+            "to": 110
+          }
+        ],
+        "reviewNotes": [
+          "Preserved excessive self-indulgence and identification with suffering without diagnosis, prescribed practice or invented helping behavior. Book 47561-47567 emphasizes spirituality/compassion and growth through helping/art; none is adopted. The second hint at 47634 leads to the sign heading and nonpsychological material, which is unused. Printed PEIXE is normalized to canonical Pisces."
+        ]
+      }
     }
   }
 }

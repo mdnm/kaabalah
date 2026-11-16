@@ -132,6 +132,15 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
     expect(JSON.stringify(ASTROLOGY_DESCRIPTIONS.planetSigns[planet])).not.toContain("\u2014");
   });
 
+  it("keeps source and editorial notices out of product prose", () => {
+    for (const sign of signs) {
+      const entry = getPlanetSignDescriptionEntry(planet, sign)!;
+      for (const text of [entry.pt, entry.en]) {
+        expect(text).not.toMatch(/o curso|the course|foi omitido|was omitted|não entram na descrição|not included in the description/i);
+      }
+    }
+  });
+
   it("cites integer inclusive bounds in audited course-relative sources before NOTAS", () => {
     for (const sign of signs) {
       const entry = getPlanetSignDescriptionEntry(planet, sign)!;
@@ -410,6 +419,88 @@ describe("Mars source distinctions", () => {
         expect(text.match(/[.!?]/g)).toHaveLength(2);
         for (const sentence of text.split(". ")) expect(sentence).toMatch(/^[a-zà-ú]/u);
         expect(text).not.toMatch(/o curso|the course|OCR|source|fonte/);
+      }
+    });
+  });
+});
+
+
+describe("Jupiter source distinctions", () => {
+  it("retains excessive generosity and optimism in Aries prose and paired keywords", () => {
+    const entry = getPlanetSignDescriptionEntry("jupiter", "Aries")!;
+    expect(entry.pt).toMatch(/generosidade e otimismo exagerados/);
+    expect(entry.en).toMatch(/excessive generosity and optimism/);
+    expect(entry.keywords.pt).toEqual(expect.arrayContaining(["generosidade exagerada", "otimismo exagerado"]));
+    expect(entry.keywords.en).toEqual(expect.arrayContaining(["excessive generosity", "excessive optimism"]));
+  });
+
+  it("keeps Virgo's critical outlook distinct from its lack of practical sense", () => {
+    const entry = getPlanetSignDescriptionEntry("jupiter", "Virgo")!;
+    expect(entry.pt).toMatch(/visão crítica.*faltar senso prático/);
+    expect(entry.en).toMatch(/critical view.*practical sense may be lacking/);
+    expect(entry.keywords.pt).toContain("falta de senso prático");
+    expect(entry.keywords.en).toContain("lack of practical sense");
+    expect(entry.reviewNotes.join(" ")).toMatch(/cetismo/);
+    expect(entry.reviewNotes.join(" ")).toMatch(/sem reconstrução/);
+    expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/cetismo|ceticismo|skepticism|scepticism/);
+  });
+
+  it("keeps Cancer health and life-stage claims exclusively in exclusion metadata", () => {
+    const entry = getPlanetSignDescriptionEntry("jupiter", "Cancer")!;
+    expect(entry.pt).toMatch(/conservadorismo e à indulgência/);
+    expect(entry.en).toMatch(/conservatism and indulgence/);
+    expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/digest|aparelho|sucesso|success|segunda metade|second half|life.stage/i);
+    expect(entry.reviewNotes.join(" ")).toMatch(/digestive/);
+    expect(entry.reviewNotes.join(" ")).toMatch(/life-stage success/);
+  });
+
+  it("preserves Gemini's travel possibility and consistent success omission", () => {
+    const entry = getPlanetSignDescriptionEntry("jupiter", "Gemini")!;
+    expect(entry.pt).toContain("possibilidade de muitas viagens");
+    expect(entry.en).toContain("possibility of many trips");
+    expect(entry.pt + entry.en).not.toMatch(/sucesso|success|commercial|comercial/);
+    expect(entry.reviewNotes.join(" ")).toContain("success in intellectual or commercial activity is omitted");
+    expect(entry.reviewNotes.join(" ")).toContain("not converted into an invented aptitude");
+  });
+
+  it("retains Sagittarius's loss of critical view and omits unresolved jogador", () => {
+    const entry = getPlanetSignDescriptionEntry("jupiter", "Sagittarius")!;
+    expect(entry.pt).toMatch(/perder a visão crítica.*exagero em qualquer área/);
+    expect(entry.en).toMatch(/lose your critical outlook.*exaggeration in any area/);
+    expect(entry.pt).toContain("boa capacidade intelectual");
+    expect(entry.en).toContain("good intellectual ability");
+    expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/jogador|jogo|games|gambl|player|sorte|luck/i);
+    expect(entry.reviewNotes.join(" ")).toMatch(/jogador.*unresolved/);
+  });
+
+  it("retains remaining tensions without invented advancement or support aptitudes", () => {
+    const capricorn = getPlanetSignDescriptionEntry("jupiter", "Capricorn")!;
+    expect(capricorn.pt).toContain("severidade, austeridade e intolerância");
+    expect(capricorn.en).toContain("severity, austerity and intolerance");
+    expect(capricorn.pt + capricorn.en).not.toMatch(/ascensão|advancement|liderança|leadership|manager/);
+    const aquarius = getPlanetSignDescriptionEntry("jupiter", "Aquarius")!;
+    expect(aquarius.pt).toContain("grosseria");
+    expect(aquarius.en).toContain("rudeness");
+    expect(aquarius.pt + aquarius.en).not.toMatch(/proteção|protection|network/);
+    const pisces = getPlanetSignDescriptionEntry("jupiter", "Pisces")!;
+    expect(pisces.pt).toMatch(/tender à autoindulgência excessiva/);
+    expect(pisces.en).toMatch(/tend toward excessive self-indulgence/);
+    expect(pisces.pt).toContain("identificação com o sofrimento");
+    expect(pisces.en).toContain("identification with suffering");
+  });
+
+  it("cites only narrow per-sign primary passages and retains bilingual structure", () => {
+    const bounds = [[86, 87], [88, 89], [90, 91], [92, 94], [95, 96], [97, 98],
+      [99, 100], [101, 102], [103, 104], [105, 106], [107, 108], [109, 110]];
+    signs.forEach((sign, index) => {
+      const entry = getPlanetSignDescriptionEntry("jupiter", sign)!;
+      expect(entry.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: bounds[index][0], to: bounds[index][1] }]);
+      expect(entry.reviewNotes.length).toBeGreaterThan(0);
+      expect(entry.pt).toMatch(/^você /);
+      expect(entry.en).toMatch(/^you /);
+      for (const text of [entry.pt, entry.en]) {
+        expect(text.match(/[.!?]/g)).toHaveLength(2);
+        for (const sentence of text.split(". ")) expect(sentence).toMatch(/^[a-zà-ú]/u);
       }
     });
   });
