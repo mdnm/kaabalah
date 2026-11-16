@@ -1,0 +1,11 @@
+{
+  "odu": {"en":"Odu","pt":"Odu"},
+  "left": {"en":"Left","pt":"Esquerda"},
+  "right": {"en":"Right","pt":"Direita"},
+  "north": {"en":"North","pt":"Norte"},
+  "south": {"en":"South","pt":"Sul"},
+  "east": {"en":"East","pt":"Leste"},
+  "west": {"en":"West","pt":"Oeste"},
+  "center": {"en":"Center","pt":"Centro"},
+  "invalidDate": {"en":"Date must be a valid Date object","pt":"Informe um objeto Date válido"}
+}

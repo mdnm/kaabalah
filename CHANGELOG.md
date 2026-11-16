@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add typed Portuguese Ifa calculation labels through `getIfaText`;
+  Odu calculations remain unchanged and no interpretation catalog is introduced.
+
 - Add `getAstrologyLabel` for Portuguese decan, dignity, firdaria, profection
   and aspect display names without changing calculation identifiers.
 

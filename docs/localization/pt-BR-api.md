@@ -64,3 +64,7 @@ The symbol `get*SymbolMetadata` and `list*SymbolMetadata` functions, `getKaabali
 ## Astrology calculation labels
 
 `getAstrologyLabel(value, 'pt-BR')` from `kaabalah/astrology` localizes signs, planets, nodes, sect, dignities, aspects and decan tarot names. For example, use it on `getDecan(longitude).tarotCard`, a firdaria period's `.planet`, or a profection's `.sign` and `.ruler`. Raw calculation results and identifiers stay unchanged. Unsupported custom labels pass through. Review rows are in `astrology-review.json`; decan card names share the tarot source.
+
+## Ifa
+
+`getIfaText(key, 'pt-BR')` from `kaabalah/ifa` exposes Odu, column and direction labels and the invalid-date message. Keys: `odu`, `left`, `right`, `north`, `south`, `east`, `west`, `center`, `invalidDate`. Calculation results stay numeric and unchanged. No Odu interpretation text was added. `ifa-review.json` records draft labels.
