@@ -1,3 +1,4 @@
+import { getKaabalisticLabel } from "./labels";
 import {
   DEFAULT_ASPECT_SPECS,
   PLANET_AND_NODE_NAMES,
@@ -582,41 +583,41 @@ function normalizeAngleName(angle: string) {
   return metadata?.kind === "angle" ? metadata.label : rawAngle
 }
 
-export function listPlanetSymbolMetadata() {
-  return symbolRegistry.planets
+export function listPlanetSymbolMetadata(language?: string) {
+  return language?.startsWith("pt") ? symbolRegistry.planets.map(row => localizeSymbol(row, language)!) : symbolRegistry.planets
 }
 
-export function listZodiacSignSymbolMetadata() {
-  return symbolRegistry.signs
+export function listZodiacSignSymbolMetadata(language?: string) {
+  return language?.startsWith("pt") ? symbolRegistry.signs.map(row => localizeSymbol(row, language)!) : symbolRegistry.signs
 }
 
-export function listAngleSymbolMetadata() {
-  return symbolRegistry.angles
+export function listAngleSymbolMetadata(language?: string) {
+  return language?.startsWith("pt") ? symbolRegistry.angles.map(row => localizeSymbol(row, language)!) : symbolRegistry.angles
 }
 
-export function listNodeSymbolMetadata() {
-  return symbolRegistry.nodes
+export function listNodeSymbolMetadata(language?: string) {
+  return language?.startsWith("pt") ? symbolRegistry.nodes.map(row => localizeSymbol(row, language)!) : symbolRegistry.nodes
 }
 
-export function getPlanetSymbolMetadata(lookup: string) {
-  return lookupPlanetSymbolMetadata(lookup)
+export function getPlanetSymbolMetadata(lookup: string, language?: string) {
+  return localizeSymbol(lookupPlanetSymbolMetadata(lookup), language)
 }
 
-export function getZodiacSignSymbolMetadata(lookup: KaabalisticSignLookup) {
-  return lookupSignSymbolMetadata(lookup)
+export function getZodiacSignSymbolMetadata(lookup: KaabalisticSignLookup, language?: string) {
+  return localizeSymbol(lookupSignSymbolMetadata(lookup), language)
 }
 
-export function getAngleSymbolMetadata(lookup: string) {
+export function getAngleSymbolMetadata(lookup: string, language?: string) {
   const rawLookup = lookup.startsWith(`${WesternAstrologyTypes.HOUSE}:`)
     ? parseId(lookup as NodeId<WesternAstrologyTypes.HOUSE>)
     : lookup
   const metadata = symbolRegistry.byKey.get(normalizeLookupKey(rawLookup))
-  return metadata?.kind === "angle" ? metadata : undefined
+  return localizeSymbol(metadata?.kind === "angle" ? metadata : undefined, language)
 }
 
-export function getNodeSymbolMetadata(lookup: string) {
+export function getNodeSymbolMetadata(lookup: string, language?: string) {
   const metadata = symbolRegistry.byKey.get(normalizeLookupKey(lookup))
-  return metadata?.kind === "node" ? metadata : undefined
+  return localizeSymbol(metadata?.kind === "node" ? metadata : undefined, language)
 }
 
 function normalizeChartInput(input: BirthChart | AstrologyTreeChartInput) {
@@ -863,7 +864,7 @@ function createCorrespondenceSource(
   }
 }
 
-export function getKaabalisticCorrespondenceTargets(
+function englishGetKaabalisticCorrespondenceTargets(
   lookup: KaabalisticCorrespondenceLookup
 ): KaabalisticCorrespondenceResult | undefined {
   if (lookup.kind === "number") {
@@ -1012,7 +1013,7 @@ function dedupeMarkers(markers: readonly KaabalisticMarkerDescriptor[]) {
   })
 }
 
-export function getAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartInput) {
+function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartInput) {
   const chart = normalizeChartInput(input)
   const markers: KaabalisticMarkerDescriptor[] = []
 
@@ -1141,7 +1142,7 @@ function buildNumberMarkers(sourceName: string, numbers: readonly number[], kind
   return markers
 }
 
-export function getNumerologyTreeMarkers(input: Date | NumerologyTreeInput) {
+function englishGetNumerologyTreeMarkers(input: Date | NumerologyTreeInput) {
   const { kaabalisticLifePath, straightAcrossReductionLifePath } = resolveNumerologyInput(input)
   const markers: KaabalisticMarkerDescriptor[] = []
 
@@ -1191,7 +1192,7 @@ function resolveGematriaInput(input: string | GematriaTreeInput) {
   return undefined
 }
 
-export function getGematriaTreeMarkers(input: string | GematriaTreeInput) {
+function englishGetGematriaTreeMarkers(input: string | GematriaTreeInput) {
   const result = resolveGematriaInput(input)
   if (!result) {
     return []
@@ -1435,7 +1436,7 @@ function capitalizeWords(value: string) {
     .join(" ")
 }
 
-export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput): KaabalisticMapData {
+function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): KaabalisticMapData {
   const countsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>> = {}
   const allMarkers: KaabalisticMarkerDescriptor[] = []
 
@@ -1473,4 +1474,57 @@ export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
     countsById,
     itemConnections,
   }
+}
+
+function localizeSymbol(row: KaabalisticSymbolMetadata | undefined, language?: string) {
+  if (!row || !language?.startsWith("pt")) return row;
+  return Object.freeze({ ...row, label: getKaabalisticLabel(row.label, language), shortLabel: getKaabalisticLabel(row.shortLabel, language) });
+}
+
+/** Correspondence labels in the requested language; lookup identities stay unchanged. */
+export function getKaabalisticCorrespondenceTargets(lookup: KaabalisticCorrespondenceLookup, language?: string): KaabalisticCorrespondenceResult | undefined {
+  const result = englishGetKaabalisticCorrespondenceTargets(lookup);
+  if (!result || !language?.startsWith("pt")) return result;
+  return {
+    ...result,
+    source: { ...result.source, label: getKaabalisticLabel(result.source.label, language), shortLabel: getKaabalisticLabel(result.source.shortLabel, language) },
+    targets: result.targets.map(target => ({ ...target, targetName: getKaabalisticLabel(target.targetName, language) })),
+  };
+}
+
+function localizeMarkers(markers: KaabalisticMarkerDescriptor[], language?: string) {
+  if (!language?.startsWith("pt")) return markers;
+  return markers.map(marker => ({ ...marker, sourceName: getKaabalisticLabel(marker.sourceName, language), label: getKaabalisticLabel(marker.label, language) }));
+}
+
+/** Marker display labels in Portuguese for pt and pt-BR. Glyphs and target IDs stay unchanged. */
+export function getAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartInput, language?: string) {
+  return localizeMarkers(englishGetAstrologyTreeMarkers(input), language);
+}
+export function getNumerologyTreeMarkers(input: Date | NumerologyTreeInput, language?: string) {
+  return localizeMarkers(englishGetNumerologyTreeMarkers(input), language);
+}
+export function getGematriaTreeMarkers(input: string | GematriaTreeInput, language?: string) {
+  return localizeMarkers(englishGetGematriaTreeMarkers(input), language);
+}
+
+/** Complete map with localized display labels; English remains the default. */
+export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput, language?: string): KaabalisticMapData {
+  const result = englishBuildKaabalisticMapData(input);
+  if (!language?.startsWith("pt")) return result;
+  const markers = localizeMarkers([...result.markers], language);
+  const connections = (rows: readonly KaabalisticItemConnection[]) => rows.map(row => ({
+    ...row, itemLabel: getKaabalisticLabel(row.itemLabel, language),
+    targets: row.targets.map(target => ({ ...target, name: getKaabalisticLabel(target.name, language) })),
+  }));
+  return {
+    ...result, markers,
+    sphereMarkers: groupMarkersByTarget(markers, "sphere"),
+    pathMarkers: groupMarkersByTarget(markers, "path"),
+    itemConnections: {
+      astrology: connections(result.itemConnections.astrology),
+      numerology: connections(result.itemConnections.numerology),
+      gematria: connections(result.itemConnections.gematria),
+    },
+  };
 }

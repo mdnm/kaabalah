@@ -1,0 +1,250 @@
+{
+  "Aries": {
+    "en": "Aries",
+    "pt": "Áries"
+  },
+  "Taurus": {
+    "en": "Taurus",
+    "pt": "Touro"
+  },
+  "Gemini": {
+    "en": "Gemini",
+    "pt": "Gêmeos"
+  },
+  "Cancer": {
+    "en": "Cancer",
+    "pt": "Câncer"
+  },
+  "Leo": {
+    "en": "Leo",
+    "pt": "Leão"
+  },
+  "Virgo": {
+    "en": "Virgo",
+    "pt": "Virgem"
+  },
+  "Libra": {
+    "en": "Libra",
+    "pt": "Libra"
+  },
+  "Scorpio": {
+    "en": "Scorpio",
+    "pt": "Escorpião"
+  },
+  "Sagittarius": {
+    "en": "Sagittarius",
+    "pt": "Sagitário"
+  },
+  "Capricorn": {
+    "en": "Capricorn",
+    "pt": "Capricórnio"
+  },
+  "Aquarius": {
+    "en": "Aquarius",
+    "pt": "Aquário"
+  },
+  "Pisces": {
+    "en": "Pisces",
+    "pt": "Peixes"
+  },
+  "Sun": {
+    "en": "Sun",
+    "pt": "Sol"
+  },
+  "Moon": {
+    "en": "Moon",
+    "pt": "Lua"
+  },
+  "Mercury": {
+    "en": "Mercury",
+    "pt": "Mercúrio"
+  },
+  "Venus": {
+    "en": "Venus",
+    "pt": "Vênus"
+  },
+  "Mars": {
+    "en": "Mars",
+    "pt": "Marte"
+  },
+  "Jupiter": {
+    "en": "Jupiter",
+    "pt": "Júpiter"
+  },
+  "Saturn": {
+    "en": "Saturn",
+    "pt": "Saturno"
+  },
+  "Uranus": {
+    "en": "Uranus",
+    "pt": "Urano"
+  },
+  "Neptune": {
+    "en": "Neptune",
+    "pt": "Netuno"
+  },
+  "Pluto": {
+    "en": "Pluto",
+    "pt": "Plutão"
+  },
+  "Earth": {
+    "en": "Earth",
+    "pt": "Terra"
+  },
+  "Chiron": {
+    "en": "Chiron",
+    "pt": "Quíron"
+  },
+  "ASC": {
+    "en": "ASC",
+    "pt": "ASC"
+  },
+  "MC": {
+    "en": "MC",
+    "pt": "MC"
+  },
+  "DC": {
+    "en": "DC",
+    "pt": "DC"
+  },
+  "IC": {
+    "en": "IC",
+    "pt": "IC"
+  },
+  "Vertex": {
+    "en": "Vertex",
+    "pt": "Vértice"
+  },
+  "Wheel of Fortune": {
+    "en": "Wheel of Fortune",
+    "pt": "Roda da Fortuna"
+  },
+  "Mean Node": {
+    "en": "Mean Node",
+    "pt": "Nodo médio"
+  },
+  "True Node": {
+    "en": "True Node",
+    "pt": "Nodo verdadeiro"
+  },
+  "Lilith Mean": {
+    "en": "Lilith Mean",
+    "pt": "Lilith média"
+  },
+  "Lilith True": {
+    "en": "Lilith True",
+    "pt": "Lilith verdadeira"
+  },
+  "Day Energy": {
+    "en": "Day Energy",
+    "pt": "Energia do dia"
+  },
+  "Month Energy": {
+    "en": "Month Energy",
+    "pt": "Energia do mês"
+  },
+  "Year Energy": {
+    "en": "Year Energy",
+    "pt": "Energia do ano"
+  },
+  "Life Path (Kaabalistic)": {
+    "en": "Life Path (Kaabalistic)",
+    "pt": "Caminho de vida pela Kaabalah"
+  },
+  "Life Path (Straight)": {
+    "en": "Life Path (Straight)",
+    "pt": "Caminho de vida pela soma direta"
+  },
+  "Vowels": {
+    "en": "Vowels",
+    "pt": "Vogais"
+  },
+  "Consonants": {
+    "en": "Consonants",
+    "pt": "Consoantes"
+  },
+  "Synthesis": {
+    "en": "Synthesis",
+    "pt": "Síntese"
+  },
+  "Included Letters": {
+    "en": "Included Letters",
+    "pt": "Letras incluídas"
+  },
+  "Path": {
+    "en": "Path",
+    "pt": "Caminho"
+  },
+  "House": {
+    "en": "House",
+    "pt": "Casa"
+  },
+  "Aspects": {
+    "en": "Aspects",
+    "pt": "Aspectos"
+  },
+  "Conjunction": {
+    "en": "Conjunction",
+    "pt": "Conjunção"
+  },
+  "Opposition": {
+    "en": "Opposition",
+    "pt": "Oposição"
+  },
+  "Trine": {
+    "en": "Trine",
+    "pt": "Trígono"
+  },
+  "Square": {
+    "en": "Square",
+    "pt": "Quadratura"
+  },
+  "Sextile": {
+    "en": "Sextile",
+    "pt": "Sextil"
+  },
+  "Quincunx": {
+    "en": "Quincunx",
+    "pt": "Quincúncio"
+  },
+  "Semisextile": {
+    "en": "Semisextile",
+    "pt": "Semissextil"
+  },
+  "Semisquare": {
+    "en": "Semisquare",
+    "pt": "Semiquadratura"
+  },
+  "Sesquiquadrate": {
+    "en": "Sesquiquadrate",
+    "pt": "Sesquiquadratura"
+  },
+  "Quintile": {
+    "en": "Quintile",
+    "pt": "Quintil"
+  },
+  "Biquintile": {
+    "en": "Biquintile",
+    "pt": "Biquintil"
+  },
+  "{source} in {sign}": {
+    "en": "{source} in {sign}",
+    "pt": "{source} em {sign}"
+  },
+  "{source} • House {house}": {
+    "en": "{source} • House {house}",
+    "pt": "{source} • Casa {house}"
+  },
+  "Duodecile": {
+    "en": "Duodecile",
+    "pt": "Semissextil"
+  },
+  "Octile": {
+    "en": "Octile",
+    "pt": "Semiquadratura"
+  },
+  "Trioctile": {
+    "en": "Trioctile",
+    "pt": "Sesquiquadratura"
+  }
+}

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add Portuguese semantic symbol, marker and map labels through optional language
+  arguments, preserving glyphs, IDs, correspondence targets and counts.
+
 - Add Portuguese tree descriptions through `getTreeDescription` and
   `getTreeNodeDescriptions`, covering all three systems and shared core metadata.
 
