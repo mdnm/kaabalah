@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve bilingual natal Moon-sign descriptions with narrow source audits,
+  aspect-condition qualifiers and paired keywords; retain unsupported sets as gaps.
+
 - Add `--language pt-BR` to localize CLI help, display content, errors and
   I Ching records while preserving JSON keys and error codes.
 

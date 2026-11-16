@@ -335,6 +335,375 @@
           "Book 26087-26104 emphasizes decisions by feeling and intuition; course 514-516 explicitly describes reflection before impulse, discipline and balance. Course emphasis is retained."
         ]
       }
+    },
+    "moon": {
+      "Aries": {
+        "pt": "você reage com entusiasmo sincero e inteligência aguda, que pode ser instável, enquanto seu temperamento pode ser inconstante. o impulso de se colocar em primeiro lugar pode vir com obstinação, aversão às convenções e dificuldade de aceitar conselhos ou disciplina.",
+        "en": "you react with sincere enthusiasm and a sharp mind that can be unsteady, while your temperament may be changeable. the impulse to put yourself first can come with stubbornness, aversion to convention and difficulty accepting advice or discipline.",
+        "keywords": {
+          "pt": [
+            "entusiasmo",
+            "inteligência aguda",
+            "inconstância",
+            "obstinação"
+          ],
+          "en": [
+            "enthusiasm",
+            "sharp mind",
+            "changeability",
+            "stubbornness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 5,
+            "to": 9
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 12,
+            "to": 14
+          }
+        ],
+        "reviewNotes": [
+          "Sharp intelligence retains the instability qualifier; omitted accident/health predictions and prescriptions to develop patience."
+        ]
+      },
+      "Taurus": {
+        "pt": "você encontra estabilidade na persistência e na determinação, com responsabilidade prática, sociabilidade e gosto pelas artes. essa constância contrabalança a impulsividade e pode conviver com possessividade.",
+        "en": "you find stability in persistence and determination, with practical responsibility, sociability and an appreciation of the arts. that steadiness counterbalances impulsiveness and can coexist with possessiveness.",
+        "keywords": {
+          "pt": [
+            "persistência",
+            "determinação",
+            "sociabilidade",
+            "possessividade"
+          ],
+          "en": [
+            "persistence",
+            "determination",
+            "sociability",
+            "possessiveness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 15,
+            "to": 19
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 21,
+            "to": 22
+          }
+        ],
+        "reviewNotes": [
+          "Preserved the difficult-aspect intensification of possessiveness; ambiguous maternal-inheritance wording, financial predictions and health claims omitted.",
+          "Course 19-20 has an ambiguous antecedent in its maternal-inheritance and adverse-aspect clauses. The description retains possessiveness from 19 but does not infer what becomes severe under adverse aspects."
+        ]
+      },
+      "Gemini": {
+        "pt": "você encontra estímulo em fazer várias coisas e trocar ideias, com vivacidade intelectual e necessidade de variedade. se faltar estabilidade nas outras áreas do mapa, você pode ter indecisão e agitação.",
+        "en": "you find stimulation in doing several things and exchanging ideas, with intellectual liveliness and a need for variety. if other areas of the chart lack stability, you can experience indecision and restlessness.",
+        "keywords": {
+          "pt": [
+            "variedade",
+            "vivacidade intelectual",
+            "troca de ideias",
+            "indecisão"
+          ],
+          "en": [
+            "variety",
+            "intellectual liveliness",
+            "exchange of ideas",
+            "indecision"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 23,
+            "to": 28
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 28528,
+            "to": 28537
+          }
+        ],
+        "reviewNotes": [
+          "Instability is conditional on other chart areas, not an unconditional Moon trait; book supports exchange of ideas. Walking prescriptions and claims about children omitted."
+        ]
+      },
+      "Cancer": {
+        "pt": "você sente uma forte necessidade de cuidar e proteger, com instinto familiar acentuado, sensibilidade ao ambiente, imaginação viva e emoções intensas. sua tenacidade pode atuar de forma negativa, e você pode superestimar a autoridade.",
+        "en": "you feel a strong need to care and protect, with a strong family instinct, sensitivity to your surroundings, a vivid imagination and intense emotions. your tenacity can act negatively, and you may overestimate authority.",
+        "keywords": {
+          "pt": [
+            "cuidado",
+            "proteção",
+            "sensibilidade",
+            "tenacidade"
+          ],
+          "en": [
+            "care",
+            "protection",
+            "sensitivity",
+            "tenacity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 35,
+            "to": 41
+          }
+        ],
+        "reviewNotes": [
+          "Kept the authority tension without promising parenting ability; book nostalgia was inspected but not added."
+        ]
+      },
+      "Leo": {
+        "pt": "você organiza com autoconfiança e alegria, expressando afeição generosa e lealdade. essa capacidade pode virar autoritarismo e, quando a Lua recebe aspectos difíceis, dar lugar a presunção, vaidade, ostentação e arrogância.",
+        "en": "you organize with self-confidence and joy, expressing generous affection and loyalty. that ability can turn into authoritarianism and, when the Moon receives difficult aspects, give way to presumptuousness, vanity, ostentation and arrogance.",
+        "keywords": {
+          "pt": [
+            "organização",
+            "generosidade",
+            "lealdade",
+            "autoritarismo"
+          ],
+          "en": [
+            "organization",
+            "generosity",
+            "loyalty",
+            "authoritarianism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 42,
+            "to": 47
+          }
+        ],
+        "reviewNotes": [
+          "Authoritarianism is a general organizational tension; vanity/ostentation/arrogance retain the explicit difficult-aspect condition. No recognition requirement added from book."
+        ]
+      },
+      "Virgo": {
+        "pt": "você conta com inteligência prática e analítica, boa memória e atenção meticulosa pra estudar e trabalhar com afinco. essa atenção pode se tornar excessiva, junto de preocupação acentuada, timidez e falta de autoconfiança.",
+        "en": "you draw on practical, analytical intelligence, a good memory and meticulous attention to study and work diligently. that attention can become excessive, alongside pronounced worry, shyness and a lack of confidence.",
+        "keywords": {
+          "pt": [
+            "análise",
+            "memória",
+            "atenção aos detalhes",
+            "preocupação"
+          ],
+          "en": [
+            "analysis",
+            "memory",
+            "attention to detail",
+            "worry"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 51,
+            "to": 51
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 53,
+            "to": 58
+          }
+        ],
+        "reviewNotes": [
+          "Kept worry and low confidence alongside analytical strengths; omitted health claims and gendered occupational assignment."
+        ]
+      },
+      "Libra": {
+        "pt": "você se aproxima com cortesia, encanto e vontade genuína de agradar, preferindo dividir a responsabilidade pelas decisões. a determinação pode faltar e, quando a Lua recebe aspectos difíceis, podem aparecer volubilidade e crítica excessiva.",
+        "en": "you approach others with courtesy, charm and a genuine wish to please, preferring to share responsibility for decisions. determination may be lacking and, when the Moon receives difficult aspects, fickleness and excessive criticism can appear.",
+        "keywords": {
+          "pt": [
+            "cortesia",
+            "encanto",
+            "decisões compartilhadas",
+            "volubilidade"
+          ],
+          "en": [
+            "courtesy",
+            "charm",
+            "shared decisions",
+            "fickleness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 60,
+            "to": 67
+          }
+        ],
+        "reviewNotes": [
+          "Retained weak determination and the difficult-aspect condition for fickleness/criticism; omitted occupational assignment and relationship guarantees."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você vive emoções intensas, com magnetismo e determinação, e sua introversão às vezes encobre impetuosidade e excitação interiores. pode haver orgulho e obstinação e, quando a Lua recebe aspectos difíceis, podem surgir melancolia, ressentimento, possessividade e irritação.",
+        "en": "you have intense emotions, magnetism and determination, and your introversion sometimes conceals inner impetuosity and excitement. pride and stubbornness may be present and, when the Moon receives difficult aspects, melancholy, resentment, possessiveness and irritation can arise.",
+        "keywords": {
+          "pt": [
+            "intensidade",
+            "magnetismo",
+            "determinação",
+            "possessividade"
+          ],
+          "en": [
+            "intensity",
+            "magnetism",
+            "determination",
+            "possessiveness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 68,
+            "to": 73
+          }
+        ],
+        "reviewNotes": [
+          "Introversion remains occasional and may mask inner excitement; difficult-aspect tensions stay conditional. No transformation/regeneration assignment from book."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você tende ao otimismo e à conversa, com intuição desenvolvida e forte gosto pela independência e pela liberdade. essa disposição pode vir com inquietude, senso de urgência, imediatismo e, às vezes, imprudência.",
+        "en": "you tend toward optimism and conversation, with developed intuition and a strong desire for independence and freedom. that disposition can come with restlessness, a sense of urgency, a tendency to want things right away and, at times, recklessness.",
+        "keywords": {
+          "pt": [
+            "otimismo",
+            "independência",
+            "intuição",
+            "inquietude"
+          ],
+          "en": [
+            "optimism",
+            "independence",
+            "intuition",
+            "restlessness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 74,
+            "to": 76
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 78,
+            "to": 81
+          }
+        ],
+        "reviewNotes": [
+          "Kept restlessness and occasional recklessness; omitted exercise prescriptions, residential predictions and prophetic labeling."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você assume responsabilidades com prudência, senso prático e dedicação persistente. sua reserva e cautela podem chegar ao excesso, trazendo austeridade, embora às vezes também apareça ostentação.",
+        "en": "you take on responsibilities with prudence, practical sense and persistent dedication. your reserve and caution can become excessive, bringing austerity, although ostentation can sometimes appear as well.",
+        "keywords": {
+          "pt": [
+            "prudência",
+            "responsabilidade",
+            "persistência",
+            "austeridade"
+          ],
+          "en": [
+            "prudence",
+            "responsibility",
+            "persistence",
+            "austerity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 82,
+            "to": 85
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 87,
+            "to": 90
+          }
+        ],
+        "reviewNotes": [
+          "Kept both excess caution/austerity and occasional opposite ostentation; omitted depression language and predicted career rank."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você valoriza a independência e a informalidade, com afabilidade, bondade e espírito inventivo. esse amor à autonomia pode vir com obstinação, imprevisibilidade e distanciamento emocional, às vezes tratado com indiferença.",
+        "en": "you value independence and informality, with friendliness, kindness and an inventive spirit. that love of autonomy can come with stubbornness, unpredictability and emotional distance, sometimes met with indifference.",
+        "keywords": {
+          "pt": [
+            "independência",
+            "afabilidade",
+            "inventividade",
+            "imprevisibilidade"
+          ],
+          "en": [
+            "independence",
+            "friendliness",
+            "inventiveness",
+            "unpredictability"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 91,
+            "to": 99
+          }
+        ],
+        "reviewNotes": [
+          "Recast possible loneliness/relational failure as emotional distance without predicting outcomes; omitted nervous tension, control prescriptions and a collective mission."
+        ]
+      },
+      "Pisces": {
+        "pt": "você tem uma natureza receptiva e gentil, com imaginação desenvolvida e possível talento artístico, embora possa faltar expressão coerente. quando a Lua recebe aspectos difíceis, podem surgir credulidade, pouca praticidade e mudanças de ideia que tornam as decisões conflituosas.",
+        "en": "you have a receptive, gentle nature, with a developed imagination and possible artistic talent, although coherent expression may be lacking. when the Moon receives difficult aspects, credulity, impracticality and changes of mind can make decisions conflict-ridden.",
+        "keywords": {
+          "pt": [
+            "receptividade",
+            "imaginação",
+            "talento artístico",
+            "credulidade"
+          ],
+          "en": [
+            "receptivity",
+            "imagination",
+            "artistic talent",
+            "credulity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 100,
+            "to": 104
+          }
+        ],
+        "reviewNotes": [
+          "Artistic talent remains possible and may lack coherent expression; credulity/impracticality/changes of mind retain the difficult-aspect condition. Remedial instructions omitted."
+        ]
+      }
     }
   }
 }
