@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add Portuguese gematria individuality, personality and synthesis meanings through
+  `getGematriaData`, sourced from class material with OCR adaptations marked for review.
+
 - Add Portuguese access to all eight numerology text tables through
   `getNumerologyData`, including class-source references and draft review provenance.
 

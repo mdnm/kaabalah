@@ -1253,3 +1253,5 @@ export const calculateGematria = (
 };
 
 export { GematriaData };
+
+export * from "./texts";

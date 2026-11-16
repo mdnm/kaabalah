@@ -48,3 +48,7 @@ The new getter also localizes transformed and nuclear hexagram texts. Each text 
 ## Numerology
 
 `getNumerologyData('pt-BR')` from `kaabalah/numerology` returns the eight existing text tables with Portuguese values, for example `.LIFEPATH_MEANING[7].description`, `.DAY_OF_BIRTH_MEANING[15].description` and `.PERSONAL_YEAR_DESCRIPTIONS[9]`. Tables are read-only and existing `NumerologyData` exports retain their values and mutability. All 296 text fields have review provenance. Class wording comes from module 3, classes 2, 15, 16, 18 and 19, with OCR corrections recorded as adaptations. The existing English row 22 goal refers to path 21; its Portuguese translation preserves that wording pending Mat's doctrinal review.
+
+## Gematria
+
+`getGematriaData('pt-BR')` from `kaabalah/gematria` returns `.INDIVIDUALITY_NUMBER_MEANINGS`, `.PERSONALITY_NUMBER_MEANINGS` and `.SYNTHESIS_NUMBER_MEANINGS`. All 39 texts are adapted from module 3, class 13, with source lines and pending review recorded in `gematria-review.json`. OCR repairs, particularly master numbers 11, 33 and 44, need Mat's review.
