@@ -33,7 +33,7 @@ describe("plain reading reference vocabulary", () => {
     }
     expect(getReadingReference("pt-BR").step.Daath).toBe("você a expressa, com lápis e papel, por exemplo");
     expect(getReadingReference("pt-BR").gloss.Malkuth).toBe("o pote de ouro");
-    expect(getReadingReference("pt").rung[8]).toBe("hora do acordo, do contrato");
+    expect(getReadingReference("pt").rung[8]).toBe("defina os últimos pontos que faltam, escreva um contrato");
   });
 
   it("counts Daath as the fourth of eleven steps, in the Tree's own order", () => {

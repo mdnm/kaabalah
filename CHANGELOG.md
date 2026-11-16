@@ -4,6 +4,11 @@
 
 ## 6.17.0 - 2026-11-16
 
+- Revise the descent wording in the reading reference: new one-line `step`
+  texts, the same wording on the matching `rung` ranks, Binah spoken
+  preferably aloud, and Geburah weighing pros against cons (stumbles,
+  discipline, cost) with the return to Kether when the cons prevail.
+
 - Add twelve source-audited bilingual house-theme profiles with typed lookups,
   frozen provenance and source-qualified editorial review notes.
 
