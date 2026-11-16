@@ -11536,5 +11536,64 @@
         "Class 13 at 405-406 and 1566 defines opposition through tension between poles. Class 11 at 287-290 instead describes a close relation and energetic harmony; following Mat's clarification, the harmony between positive/negative poles is recorded here in the audit only and is not inserted into the profile copy or used to classify signs."
       ]
     }
+  },
+  "points": {
+    "parsFortunae": {
+      "pt": "no seu mapa, a Parte da Fortuna é um ponto virtual formado pela relação matemática entre Sol, Lua e Ascendente. ela aponta o que pode vir mais pela sorte que pelo esforço, incluindo bens, prestígio e reputação, em uma leitura que considera a posição e as relações planetárias do ponto e de seu regente.",
+      "en": "in your chart, the Part of Fortune is a virtual point formed by the mathematical relationship between the Sun, Moon, and Ascendant. it points to what may come more through good fortune than effort, including possessions, prestige, and reputation, read in light of the placement and planetary relations of the point and its ruler.",
+      "keywords": {
+        "pt": [
+          "ponto virtual",
+          "sol",
+          "lua",
+          "ascendente",
+          "sorte",
+          "esforço",
+          "bens",
+          "prestígio",
+          "reputação",
+          "regente"
+        ],
+        "en": [
+          "virtual point",
+          "sun",
+          "moon",
+          "ascendant",
+          "good fortune",
+          "effort",
+          "possessions",
+          "prestige",
+          "reputation",
+          "ruler"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2462,
+          "to": 2463
+        },
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2553,
+          "to": 2558
+        },
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2567,
+          "to": 2569
+        },
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2574,
+          "to": 2578
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the virtual-point definition and its Sun/Moon/Ascendant relation, the source's potential-baggage framing for possessions, prestige, and reputation, and the qualification to consider location, relationships, and ruler.",
+        "The passage attributes luck-related importance and attainment beyond effort to Valens; the profile preserves potential framing and makes no fortune guarantee. The natal point is not conflated with the whole Ark Annu 10 Wheel of Fortune.",
+        "Planetary relations are stated explicitly to avoid confusing the interpretive qualification with interpersonal relationships. A10:2567-2569 names the point's relation by sign with planets;2574-2578 includes the ruler's placement and relations. Bodily vitality is not inferred from the source's broader physical-body/life themes."
+      ]
+    }
   }
 }

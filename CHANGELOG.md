@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a bilingual Part of Fortune concept with a typed chart-point lookup and audited provenance.
+
 - Add nine bilingual aspect-type profiles using existing typed aspect keys,
   with source qualifications and Mat’s opposition decision.
 

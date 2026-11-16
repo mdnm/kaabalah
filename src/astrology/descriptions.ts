@@ -40,7 +40,11 @@ export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPolarity = "positive" | "negative";
 export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
+export type DescriptionPoint = "parsFortunae";
+export type PointDescriptionEntry = PlanetSignDescriptionEntry;
+
 export interface AstrologyDescriptions {
+  readonly points?: Readonly<Partial<Record<DescriptionPoint, PointDescriptionEntry>>>;
   readonly planetSigns: Readonly<
     Partial<Record<DescriptionPlanet, Readonly<Partial<Record<Sign, PlanetSignDescriptionEntry>>>>>
   >;
@@ -241,5 +245,18 @@ export function getAspectDescriptionEntry(aspect: DescriptionAspect): AspectDesc
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getAspectDescription(aspect: DescriptionAspect, language?: string): string | undefined {
   const entry = getAspectDescriptionEntry(aspect);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** General virtual-point concepts, using canonical chart node keys only. */
+export function getPointDescriptionEntry(point: DescriptionPoint): PointDescriptionEntry | undefined {
+  const points = ASTROLOGY_DESCRIPTIONS.points;
+  if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
+  return points[point];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getPointDescription(point: DescriptionPoint, language?: string): string | undefined {
+  const entry = getPointDescriptionEntry(point);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
