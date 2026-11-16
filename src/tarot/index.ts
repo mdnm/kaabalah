@@ -1,3 +1,4 @@
+import { TAROT_CONTENT } from "../core/tarot-content";
 /**
  * Tarot interpretation functions
  */
@@ -846,7 +847,7 @@ function resolveTarotArkAnnuId(
   return undefined;
 }
 
-export function getTarotCardProfile(
+function getEnglishTarotCardProfile(
   lookup: TarotImageLookup
 ): TarotCardProfile | undefined {
   const cache = getTarotCardProfileCache();
@@ -875,6 +876,36 @@ export function getTarotCardProfile(
   }
 
   return getTarotCardByNumber(lookup.tarotCardNumber);
+}
+
+/**
+ * Card profile with localized names and deck meanings. English remains the default.
+ * Portuguese includes pt-BR. IDs, numbers, assets and bilingual reference rows stay stable.
+ * Portuguese wording is pending author review; see docs/localization/tarot-review.json.
+ */
+export function getTarotCardProfile(
+  lookup: TarotImageLookup,
+  language?: string,
+): TarotCardProfile | undefined {
+  const profile = getEnglishTarotCardProfile(lookup);
+  if (!profile || !language?.startsWith("pt")) return profile;
+  const row = TAROT_CONTENT[profile.tarotCardFilename];
+  if (!row) return profile;
+  const descriptionsByDeck = { ...profile.descriptionsByDeck };
+  for (const deck of TAROT_DECK_METADATA) {
+    if (deck.descriptiveDataKey) {
+      descriptionsByDeck[deck.id] = {
+        ...descriptionsByDeck[deck.id],
+        ...row.pt[deck.descriptiveDataKey],
+      };
+    }
+  }
+  return {
+    ...profile,
+    tarotCardName: row.pt.PAPUS_KAABALISTIC.name,
+    tarotMeaning: row.pt.PAPUS_KAABALISTIC.meaning,
+    descriptionsByDeck,
+  };
 }
 
 export function listTarotDecks(): TarotDeckMetadata[] {
@@ -997,9 +1028,10 @@ export function getTarotRepresentations(
 
 export function getTarotRepresentation(
   lookup: TarotImageLookup,
-  deckId: TarotDeckId
+  deckId: TarotDeckId,
+  language?: string,
 ): TarotRepresentation | undefined {
-  const card = getTarotCardProfile(lookup);
+  const card = getTarotCardProfile(lookup, language);
   const deck = TAROT_DECK_METADATA.find((candidate) => candidate.id === deckId);
 
   if (!card || !deck) {

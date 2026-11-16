@@ -1,3 +1,4 @@
+import { getEnglishTarotDeckDescriptions } from "./tarot-content";
 import { KaabalahTypes, LetterTypes, NodeData, NodeId, TarotTypes } from "./types";
 
 
@@ -871,1383 +872,413 @@ export const TAROT_ARKANNUS_DATA: Record<
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_MAGICIAN,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_MAGICIAN,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Magician",
-        meaning: "Abracadabra, the power to create reality through voice",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Magician",
-        meaning: "Male inquirer.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Magician",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("01_the_magician"),
   },
   THE_HIGH_PRIESTESS: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HIGH_PRIESTESS,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HIGH_PRIESTESS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The High Priestess",
-        meaning:
-          "Intuition, the power to rewrite your book of life improving your life every instant",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The High Priestess",
-        meaning: "Female inquirer.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Priestess",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("02_the_high_priestess"),
   },
   THE_EMPRESS: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_EMPRESS,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_EMPRESS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Empress",
-        meaning: "Adaptation, the power to geometrize through emotions",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Empress",
-        meaning: "Action. Initiative.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Empress",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("03_the_empress"),
   },
   THE_EMPEROR: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_EMPEROR,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_EMPEROR,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Emperor",
-        meaning:
-          "Authority, the power to mark your territory with the sacred fire",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Emperor",
-        meaning: "Will.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Emperor",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("04_the_emperor"),
   },
   THE_HIEROPHANT: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HIEROPHANT,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HIEROPHANT,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Hierophant",
-        meaning:
-          "Magnetism, the power to ritualize life and circulate the quintessence",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Hierophant",
-        meaning: "Inspiration.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Hierarch",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("05_the_hierophant"),
   },
   THE_LOVER: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_LOVER,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_LOVER,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Lover",
-        meaning:
-          "Dichotomy, stay on the middle path by being neither a victim nor a villain",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Lover",
-        meaning: "Love.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Indecision",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("06_the_lover"),
   },
   THE_CHARIOT: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_CHARIOT,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_CHARIOT,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Chariot",
-        meaning:
-          "Merkaabah, take control and build your merkaabah (mind vehicle)",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Chariot",
-        meaning: "Triumph. Providential protection.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Triumph",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("07_the_chariot"),
   },
   JUSTICE: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.JUSTICE,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.JUSTICE,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Justice",
-        meaning: "Justice, be just with yourself to be just with others",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Justice",
-        meaning: "Justice.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Justice",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("08_justice"),
   },
   THE_HERMIT: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HERMIT,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HERMIT,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Hermit",
-        meaning: "Introspection, seek within, retreat",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Hermit",
-        meaning: "Prudence.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Hermit",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("09_the_hermit"),
   },
   THE_WHEEL_OF_FORTUNE: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_WHEEL_OF_FORTUNE,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_WHEEL_OF_FORTUNE,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Wheel of Fortune",
-        meaning:
-          "Loops, extroversion, break the great wheel and ascend, seek externally",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Wheel of Fortune",
-        meaning: "Fortune. Destiny.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Retribution",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("10_the_wheel_of_fortune"),
   },
   STRENGTH: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.STRENGTH,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.STRENGTH,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Strength",
-        meaning: "The strength of your subconscious, unity brings strength",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Strength",
-        meaning: "Strength. Fortitude.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Persuasion",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("11_strength"),
   },
   THE_HANGED_MAN: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_HANGED_MAN,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_HANGED_MAN,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Hanged Man",
-        meaning: "Make valid sacrifices, adopt a new perspective",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Hanged Man",
-        meaning: "Trials. Sacrifice.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Apostolate",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("12_the_hanged_man"),
   },
   DEATH: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.DEATH,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.DEATH,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Death",
-        meaning: "Death, renovation, kill that which kills your soul",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Death",
-        meaning: "Death.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Immortality",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("13_death"),
   },
   TEMPERANCE: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.TEMPERANCE,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.TEMPERANCE,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Temperance",
-        meaning: "Balance, harmonize differences",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Temperance",
-        meaning: "Temperance. Economy.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Temperance",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("14_temperance"),
   },
   THE_DEVIL: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_DEVIL,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_DEVIL,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Devil",
-        meaning:
-          "Indecision between vice and virtue, transmute weakness and passions into strengths",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Devil",
-        meaning: "Immense force. Illness.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Passion",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("15_the_devil"),
   },
   THE_TOWER: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_TOWER,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_TOWER,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The House of God",
-        meaning:
-          "Separation, destruction, separate from what's harmful and connect with what's helpful, make room for the new",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The House of God",
-        meaning: "Ruin. Deception.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Fragility",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("16_the_house_of_god"),
   },
   THE_STAR: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_STAR,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_STAR,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Star",
-        meaning:
-          "Fecundation, ecology, ecstasy, hope, renew yourself to maintain health, act according to your spiritual purpose",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Star",
-        meaning: "Hope.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Hope",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("17_the_star"),
   },
   THE_MOON: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_MOON,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_MOON,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Moon",
-        meaning:
-          "Hidden enemies, be vigilant, recognize where you're self sabotaging",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Moon",
-        meaning: "Hidden enemies. Danger.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Twilight",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("18_the_moon"),
   },
   THE_SUN: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_SUN,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_SUN,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Sun",
-        meaning:
-          "Be conscious of your alchemical band, transmute money into knowledge and vice versa",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Sun",
-        meaning: "Material happiness. Lucky marriage.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Inspiration",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("19_the_sun"),
   },
   JUDGMENT: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.JUDGMENT,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.JUDGMENT,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Judgement",
-        meaning: "Make retrospectives and learn from mistakes and successes",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Judgement",
-        meaning: "Change of position.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Resurrection",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("20_judgement"),
   },
   THE_FOOL: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_FOOL,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_FOOL,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The Fool",
-        meaning: "Stop walking in circles, create connections of knowledge",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The Fool",
-        meaning: "Inconsiderate actions. Madness.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Return",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("21_the_fool"),
   },
   THE_WORLD: {
     type: "major",
     aliases: TAROT_MAJOR_ARKANNUS_ALIASES.THE_WORLD,
     keywords: TAROT_MAJOR_ARKANNUS_KEYWORDS.THE_WORLD,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "The World",
-        meaning: "Win the world, start acting on the world of causes",
-      },
-      PAPUS_DIVINATORY: {
-        name: "The World",
-        meaning: "Assured success.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Transmutation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("22_the_world"),
   },
   KING_OF_WANDS: {
     type: "court",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "King of Wands",
-        meaning: "Get's the best out of every one, Idealism, Magnanimity",
-      },
-      PAPUS_DIVINATORY: {
-        name: "King of Wands",
-        meaning:
-          "A dark man, a friend. He generally represents a married man, the father of a family.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Laborer",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("king_wands"),
   },
   QUEEN_OF_WANDS: {
     type: "court",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Queen of Wands",
-        meaning:
-          "Hold the line while the king goes to work, Preserve what was conquered",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Queen of Wands",
-        meaning:
-          "A dark woman, a friend. Represents a serious woman, a very good counsellor, often the mother of a family.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Weaver",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("queen_wands"),
   },
   KNIGHT_OF_WANDS: {
     type: "court",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Knight of Wands",
-        meaning: "Dreams that become reality",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Knight of Wands",
-        meaning: "A dark young man, a friend.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Argonaut",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("knight_wands"),
   },
   PAGE_OF_WANDS: {
     type: "court",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Page of Wands",
-        meaning: "Don't rush, the precipitations are the doors to failure",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Page of Wands",
-        meaning:
-          "A dark child, a friend. Also represents a message from a near relation.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Prodigy",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("page_wands"),
   },
   ACE_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ace of Wands",
-        meaning: "Ignite the flames of ideals, Trust in your inner divinity",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ace of Wands",
-        meaning: "Commencement of an enterprise.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Initiation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("ace_wands"),
   },
   TWO_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Two of Wands",
-        meaning: "Formulate a strategy to use your own talents",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Two of Wands",
-        meaning:
-          "Opposition to the commencement of the enterprise. The enterprise is commenced when an unexpected obstacle suddenly prevents its execution.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Desolation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("2_wands"),
   },
   THREE_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Three of Wands",
-        meaning: "Keep going despite losing something apparently important",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Three of Wands",
-        meaning:
-          "Realization of the commencement of the enterprise. The basis of the work is now definitely established, and the undertaking can be fearlessly continued.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Innovation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("3_wands"),
   },
   FOUR_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Four of Wands",
-        meaning: "Work in teams",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Four of Wands",
-        meaning:
-          "Obstacles to the enterprise.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Alliance",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("4_wands"),
   },
   FIVE_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Five of Wands",
-        meaning: "Strengthen the root chakra, overcome internal fears",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Five of Wands",
-        meaning: "Opposition to the obstacles. Victory after surmounting them.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Magnificence",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("5_wands"),
   },
   SIX_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Six of Wands",
-        meaning: "External victory, internal lack of internal self realization",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Six of Wands",
-        meaning:
-          "Realization of the opposition. At last the obstacles succeed. Failure of the enterprise in the midst of its execution.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Impediment",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("6_wands"),
   },
   SEVEN_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Seven of Wands",
-        meaning: "Face competitors in an ethical and loyal way",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Seven of Wands",
-        meaning: "Certain success to the enterprise.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Exchange",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("7_wands"),
   },
   EIGHT_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Eight of Wands",
-        meaning: "Travel to the center of peace and intelligence",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Eight of Wands",
-        meaning:
-          "Opposition to its success. The enterprise will only partially succeed.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Domesticity",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("8_wands"),
   },
   NINE_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Nine of Wands",
-        meaning: "Obstacle that precedes total victory, gather hidden forces",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Nine of Wands",
-        meaning: "Realization of success. Success is continued.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Uncertainty",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("9_wands"),
   },
   TEN_OF_WANDS: {
     type: "minor",
     suit: TAROT_SUITS.WANDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ten of Wands",
-        meaning: "Get out of apathy, create a new tree of life using the Lightning Path",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ten of Wands",
-        meaning: "Uncertainty in the management of the enterprise.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Unexpected",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("10_wands"),
   },
   KING_OF_CUPS: {
     type: "court",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "King of Cups",
-        meaning: "Stop hurting yourself (related to The Lover), heals everyone and forgets about yourself, balm for your own wound",
-      },
-      PAPUS_DIVINATORY: {
-        name: "King of Cups",
-        meaning:
-          "A fair man, a friend. This card also represents a barrister, judge, or ecclesiastic. It symbolizes a bachelor.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Art and Science",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("king_cups"),
   },
   QUEEN_OF_CUPS: {
     type: "court",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Queen of Cups",
-        meaning: "Work with subtlety, positive challenges",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Queen of Cups",
-        meaning: "A fair woman, a friend. The woman loved. The mistress.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Duplicity",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("queen_cups"),
   },
   KNIGHT_OF_CUPS: {
     type: "court",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Knight of Cups",
-        meaning: "Alternative healing",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Knight of Cups",
-        meaning:
-          "A young fair man, a friend. The young man loved. The lover.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Testimony",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("knight_cups"),
   },
   PAGE_OF_CUPS: {
     type: "court",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Page of Cups",
-        meaning: "Increase of self-esteem, emotional courage",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Page of Cups",
-        meaning: "A fair child. A messenger. Birth.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Premonition",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("page_cups"),
   },
   ACE_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ace of Cups",
-        meaning: "Renewal or new affection, alternative treatment for health",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ace of Cups",
-        meaning: "Commencement of a love affair.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Attraction",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("ace_cups"),
   },
   TWO_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Two of Cups",
-        meaning: "Do not poison yourself or the other person",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Two of Cups",
-        meaning:
-          "Opposition to this commencement. Unimportant obstacles raised by one of the lovers.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Versatility",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("2_cups"),
   },
   THREE_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Three of Cups",
-        meaning: "Harmony between instinct and emotion, Be discreet",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Three of Cups",
-        meaning: "Realization of this commencement. The love is mutual.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Consummation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("3_cups"),
   },
   FOUR_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Four of Cups",
-        meaning: "Abundance in emotional life, do not listen to slander",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Four of Cups",
-        meaning:
-          "Serious obstacles to the love. They arise from other persons, not from the lovers.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Conjecture",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("4_cups"),
   },
   FIVE_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Five of Cups",
-        meaning: "Do not break your spiritual commitment (your purpose)",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Five of Cups",
-        meaning:
-          "Opposition to the obstacles. Victory over the obstacles after a struggle.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Patrimony",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("5_cups"),
   },
   SIX_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Six of Cups",
-        meaning: "Do not have self-pity",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Six of Cups",
-        meaning:
-          "The obstacles triumph. Love destroyed in the midst of happiness. Widowhood.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Regeneration",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("6_cups"),
   },
   SEVEN_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Seven of Cups",
-        meaning: "Gestations, related to The Star",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Seven of Cups",
-        meaning: "Success assured to the lovers.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Expressiveness",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("7_cups"),
   },
   EIGHT_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Eight of Cups",
-        meaning: "Reflect on your emotional life after 18 hours",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Eight of Cups",
-        meaning: "Partial failure of love. Love only partially succeeds.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Delusion",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("8_cups"),
   },
   NINE_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Nine of Cups",
-        meaning: "Reconciliations and forgiveness",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Nine of Cups",
-        meaning: "Motherhood.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Preeminence",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("9_cups"),
   },
   TEN_OF_CUPS: {
     type: "minor",
     suit: TAROT_SUITS.CUPS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ten of Cups",
-        meaning: "Marriage of the spirit with the soul, Alchemical Weddings",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ten of Cups",
-        meaning: "Uncertainty in the management of the love affair.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Dissension",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("10_cups"),
   },
   KING_OF_SWORDS: {
     type: "court",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "King of Swords",
-        meaning: "Actions of victorious strategies",
-      },
-      PAPUS_DIVINATORY: {
-        name: "King of Swords",
-        meaning:
-          "A dark, bad man. He is a soldier, a powerful enemy, who must be distrusted.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Advice",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("king_swords"),
   },
   QUEEN_OF_SWORDS: {
     type: "court",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Queen of Swords",
-        meaning: "Supremacy of the feminine, related to Justice",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Queen of Swords",
-        meaning:
-          "A dark wicked woman. The card also indicates her actions, gossip and calumnies.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Premeditation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("queen_swords"),
   },
   KNIGHT_OF_SWORDS: {
     type: "court",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Knight of Swords",
-        meaning: "Joint victorious actions",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Knight of Swords",
-        meaning: "A young, dark man, an enemy. He is also a spy.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Hostility",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("knight_swords"),
   },
   PAGE_OF_SWORDS: {
     type: "court",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Page of Swords",
-        meaning: "Follow your intuition",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Page of Swords",
-        meaning: "A child, an enemy. Bad news. Delay.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Examination",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("page_swords"),
   },
   ACE_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ace of Swords",
-        meaning: "Conflicts before victory",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ace of Swords",
-        meaning: "Commencement of enmity.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Vehemence",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("ace_swords"),
   },
   TWO_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Two of Swords",
-        meaning: "Traumas and conflicts to overcome",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Two of Swords",
-        meaning: "Opposition to this commencement. The enmity does not last.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Communion",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("2_swords"),
   },
   THREE_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Three of Swords",
-        meaning: "Death of yang, Fire, tendencies to depression",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Three of Swords",
-        meaning: "Realization of the enmity. Hatred.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Proscription",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("3_swords"),
   },
   FOUR_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Four of Swords",
-        meaning: "Reflection, related to The Hermit",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Four of Swords",
-        meaning: "Opposition to the hatred. Success against the enemy.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Solitude",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("4_swords"),
   },
   FIVE_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Five of Swords",
-        meaning: "Healthy self-challenge, Self-demands",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Five of Swords",
-        meaning:
-          "Opposition to this opposition. The enemy triumphs at the moment one fancies the victory is secured.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Evolution",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("5_swords"),
   },
   SIX_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Six of Swords",
-        meaning: "External daily strategies, Future perspectives",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Six of Swords",
-        meaning:
-          "Equilibrium of the opposition. The enemy is rendered powerless at last.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Revelation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("6_swords"),
   },
   SEVEN_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Seven of Swords",
-        meaning: "Internal nocturnal strategies, related to The Hermit",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Seven of Swords",
-        meaning: "Success assured to the enemy.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Meditation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("7_swords"),
   },
   EIGHT_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Eight of Swords",
-        meaning: "Appeal to superior forces, Internal and external conflicts",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Eight of Swords",
-        meaning:
-          "Partial opposition to this success. The enemy only partially triumphs.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Rivalry",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("8_swords"),
   },
   NINE_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Nine of Swords",
-        meaning: "The problems being imagined will never happen",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Nine of Swords",
-        meaning: "Certain duration of the hatred.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Pilgrimage",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("9_swords"),
   },
   TEN_OF_SWORDS: {
     type: "minor",
     suit: TAROT_SUITS.SWORDS,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ten of Swords",
-        meaning: "Death and rebirth, related to Death and The Tower",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ten of Swords",
-        meaning: "Uncertainty in the enmity.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Contrition",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("10_swords"),
   },
   KING_OF_PENTACLES: {
     type: "court",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "King of Pentacles",
-        meaning: "Turns everything into gold",
-      },
-      PAPUS_DIVINATORY: {
-        name: "King of Pentacles",
-        meaning: "A fair man, inimical or indifferent.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Apprenticeship",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("king_pentacles"),
   },
   QUEEN_OF_PENTACLES: {
     type: "court",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Queen of Pentacles",
-        meaning: "Act with diplomacy",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Queen of Pentacles",
-        meaning: "A fair woman, indifferent, or inimical.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Perplexity",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("queen_pentacles"),
   },
   KNIGHT_OF_PENTACLES: {
     type: "court",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Knight of Pentacles",
-        meaning: "Invest into new things",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Knight of Pentacles",
-        meaning: "A young, fair man. A stranger. An arrival.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Veneration",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("knight_pentacles"),
   },
   PAGE_OF_PENTACLES: {
     type: "court",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Page of Pentacles",
-        meaning: "Prudence in the material life",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Page of Pentacles",
-        meaning: "A fair child. A messenger. A letter.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Speculation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("page_pentacles"),
   },
   ACE_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ace of Pentacles",
-        meaning: "Rebirth through a single material goal, Form clear material goals",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ace of Pentacles",
-        meaning: "Commencement of fortune. Inheritance. Gifts. Economy.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Rebirth",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("ace_pentacles"),
   },
   TWO_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Two of Pentacles",
-        meaning: "Light forming shadows, Duality asking for synthesis in the trinity, Don't put all the eggs in the same basket",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Two of Pentacles",
-        meaning:
-          "Opposition to this commencement. Difficulty in well establishing the first landmarks of good fortune.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Confusion",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("2_pentacles"),
   },
   THREE_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Three of Pentacles",
-        meaning: "Light forming sound, Establish balance through the trinity becoming a great dispenser, Verbalize what should be done, Do not settle for the first results",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Three of Pentacles",
-        meaning: "Realization of this commencement of fortune. A small sum.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Provider",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("3_pentacles"),
   },
   FOUR_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Four of Pentacles",
-        meaning: "Avoid avarice / greed",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Four of Pentacles",
-        meaning: "Opposition of fortune. Loss of money.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Generosity",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("4_pentacles"),
   },
   FIVE_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Five of Pentacles",
-        meaning: "Only order will bring progress, Do not kick the barn without having something concrete in front of you",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Five of Pentacles",
-        meaning:
-          "Opposition to this opposition. A success coming which will balance the low.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Offering",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("5_pentacles"),
   },
   SIX_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Six of Pentacles",
-        meaning: "Act with prudence",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Six of Pentacles",
-        meaning: "Realization of the opposition. Ruin.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Love and Desire",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("6_pentacles"),
   },
   SEVEN_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Seven of Pentacles",
-        meaning: "Don't boast about your proposal or project",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Seven of Pentacles",
-        meaning: "Success assured. A large fortune.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Purification",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("7_pentacles"),
   },
   EIGHT_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Eight of Pentacles",
-        meaning: "Keep doing what you always did",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Eight of Pentacles",
-        meaning:
-          "Partial success. Great loss of money at the moment apparently of definitely securing the fortune.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Avarice",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("8_pentacles"),
   },
   NINE_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Nine of Pentacles",
-        meaning: "Work with what you like and earn something with it",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Nine of Pentacles",
-        meaning: "Equilibrium of equilibrium. A durable fortune.",
-      },
-      KIER_EGYPTIAN: {
-        name: "Cooperation",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("9_pentacles"),
   },
   TEN_OF_PENTACLES: {
     type: "minor",
     suit: TAROT_SUITS.PENTACLES,
-    descriptiveData: {
-      PAPUS_KAABALISTIC: {
-        name: "Ten of Pentacles",
-        meaning: "Prosperity, Prosperous inheritance",
-      },
-      PAPUS_DIVINATORY: {
-        name: "Ten of Pentacles",
-        meaning: "Uncertainty in the fortune. Great success and great reverses.",
-      },
-      KIER_EGYPTIAN: {
-        name: "The Unforeseen",
-      },
-    },
+    descriptiveData: getEnglishTarotDeckDescriptions("10_pentacles"),
   },
 };
 

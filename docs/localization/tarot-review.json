@@ -1,0 +1,1954 @@
+[
+  {
+    "id": "tarot.01_the_magician.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.01_the_magician.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.01_the_magician.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.01_the_magician.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.01_the_magician.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.02_the_high_priestess.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.02_the_high_priestess.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.02_the_high_priestess.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.02_the_high_priestess.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.02_the_high_priestess.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.03_the_empress.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.03_the_empress.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.03_the_empress.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.03_the_empress.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.03_the_empress.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.04_the_emperor.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.04_the_emperor.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.04_the_emperor.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.04_the_emperor.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.04_the_emperor.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.05_the_hierophant.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.05_the_hierophant.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.05_the_hierophant.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.05_the_hierophant.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.05_the_hierophant.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.06_the_lover.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.06_the_lover.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.06_the_lover.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.06_the_lover.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.06_the_lover.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.07_the_chariot.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.07_the_chariot.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.07_the_chariot.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.07_the_chariot.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.07_the_chariot.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.08_justice.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.08_justice.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.08_justice.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.08_justice.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.08_justice.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.09_the_hermit.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.09_the_hermit.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.09_the_hermit.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.09_the_hermit.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.09_the_hermit.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_the_wheel_of_fortune.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_the_wheel_of_fortune.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_the_wheel_of_fortune.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_the_wheel_of_fortune.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_the_wheel_of_fortune.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.11_strength.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.11_strength.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.11_strength.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.11_strength.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.11_strength.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.12_the_hanged_man.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.12_the_hanged_man.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.12_the_hanged_man.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.12_the_hanged_man.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.12_the_hanged_man.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.13_death.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.13_death.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.13_death.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.13_death.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.13_death.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.14_temperance.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.14_temperance.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.14_temperance.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.14_temperance.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.14_temperance.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.15_the_devil.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.15_the_devil.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.15_the_devil.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.15_the_devil.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.15_the_devil.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.16_the_house_of_god.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.16_the_house_of_god.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.16_the_house_of_god.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.16_the_house_of_god.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.16_the_house_of_god.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.17_the_star.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.17_the_star.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.17_the_star.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.17_the_star.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.17_the_star.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.18_the_moon.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.18_the_moon.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.18_the_moon.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.18_the_moon.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.18_the_moon.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.19_the_sun.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.19_the_sun.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.19_the_sun.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.19_the_sun.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.19_the_sun.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.20_judgement.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.20_judgement.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "class_adaptation",
+    "source": "/Volumes/AKASH/aula kaabalah/modulo 1/aula 20 modulo 1/aula-20.md:448",
+    "original": "Faço retrospectivas, aprendo com meus erros e acertos"
+  },
+  {
+    "id": "tarot.20_judgement.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.20_judgement.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.20_judgement.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.21_the_fool.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.21_the_fool.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.21_the_fool.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.21_the_fool.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.21_the_fool.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.22_the_world.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.22_the_world.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.22_the_world.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.22_the_world.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.22_the_world.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_wands.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_wands.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_wands.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_wands.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_wands.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_cups.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_cups.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_cups.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_cups.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_cups.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_swords.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_swords.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_swords.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_swords.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_swords.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.king_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.queen_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.knight_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.page_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.ace_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.2_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.3_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.4_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.5_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.6_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.7_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.8_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.9_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_pentacles.PAPUS_KAABALISTIC.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_pentacles.PAPUS_KAABALISTIC.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_pentacles.PAPUS_DIVINATORY.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_pentacles.PAPUS_DIVINATORY.meaning",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  },
+  {
+    "id": "tarot.10_pentacles.KIER_EGYPTIAN.name",
+    "status": "needs_review",
+    "origin": "agent_translation"
+  }
+]

@@ -1,3 +1,4 @@
+import { TAROT_CONTENT } from "../core/tarot-content";
 import type { SystemKey } from "../core";
 
 export type Deck = "papus_pt" | "papus" | "mythic" | "egyptian" | "rider-waite"
@@ -82,8 +83,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 1,
     tarotCard: "The Magician",
     tarotCardFilename: "01_the_magician",
-    meaning: "Abracadabra, the power to create reality through voice",
-    papusMeaning: "Male inquirer.",
+    meaning: (TAROT_CONTENT["01_the_magician"].legacyMeaning ?? TAROT_CONTENT["01_the_magician"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["01_the_magician"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -92,8 +93,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The High Priestess",
     tarotCardFilename: "02_the_high_priestess",
     meaning:
-      "Intuition, the power to rewrite your book of life improving your life every instant",
-    papusMeaning: "Female inquirer.",
+      (TAROT_CONTENT["02_the_high_priestess"].legacyMeaning ?? TAROT_CONTENT["02_the_high_priestess"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["02_the_high_priestess"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -101,8 +102,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 3,
     tarotCard: "The Empress",
     tarotCardFilename: "03_the_empress",
-    meaning: "Adaptation, the power to geometrize through emotions",
-    papusMeaning: "Action. Initiative.",
+    meaning: (TAROT_CONTENT["03_the_empress"].legacyMeaning ?? TAROT_CONTENT["03_the_empress"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["03_the_empress"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -110,8 +111,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 4,
     tarotCard: "The Emperor",
     tarotCardFilename: "04_the_emperor",
-    meaning: "Authority, the power to mark your territory with the sacred fire",
-    papusMeaning: "Will.",
+    meaning: (TAROT_CONTENT["04_the_emperor"].legacyMeaning ?? TAROT_CONTENT["04_the_emperor"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["04_the_emperor"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -120,8 +121,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Hierophant",
     tarotCardFilename: "05_the_hierophant",
     meaning:
-      "Magnetism, the power to ritualize life and circulate the quintessence",
-    papusMeaning: "Inspiration.",
+      (TAROT_CONTENT["05_the_hierophant"].legacyMeaning ?? TAROT_CONTENT["05_the_hierophant"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["05_the_hierophant"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -130,8 +131,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Lover",
     tarotCardFilename: "06_the_lover",
     meaning:
-      "Dichotomy, stay on the middle path by being neither a victim nor a villain",
-    papusMeaning: "Love.",
+      (TAROT_CONTENT["06_the_lover"].legacyMeaning ?? TAROT_CONTENT["06_the_lover"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["06_the_lover"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -139,8 +140,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 7,
     tarotCard: "The Chariot",
     tarotCardFilename: "07_the_chariot",
-    meaning: "Merkaabah, take control and build your merkaabah (mind vehicle)",
-    papusMeaning: "Triumph. Providential protection.",
+    meaning: (TAROT_CONTENT["07_the_chariot"].legacyMeaning ?? TAROT_CONTENT["07_the_chariot"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["07_the_chariot"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -148,8 +149,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 8,
     tarotCard: "Justice",
     tarotCardFilename: "08_justice",
-    meaning: "Justice, be just with yourself to be just with others",
-    papusMeaning: "Justice.",
+    meaning: (TAROT_CONTENT["08_justice"].legacyMeaning ?? TAROT_CONTENT["08_justice"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["08_justice"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -157,8 +158,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 9,
     tarotCard: "The Hermit",
     tarotCardFilename: "09_the_hermit",
-    meaning: "Introspection, seek within, retreat",
-    papusMeaning: "Prudence.",
+    meaning: (TAROT_CONTENT["09_the_hermit"].legacyMeaning ?? TAROT_CONTENT["09_the_hermit"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["09_the_hermit"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -167,8 +168,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Wheel of Fortune",
     tarotCardFilename: "10_the_wheel_of_fortune",
     meaning:
-      "Loops, extroversion, break the great wheel and ascend, seek externally",
-    papusMeaning: "Fortune. Destiny.",
+      (TAROT_CONTENT["10_the_wheel_of_fortune"].legacyMeaning ?? TAROT_CONTENT["10_the_wheel_of_fortune"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["10_the_wheel_of_fortune"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -176,8 +177,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 11,
     tarotCard: "Strength",
     tarotCardFilename: "11_strength",
-    meaning: "The strength of your subconscious, unity brings strength",
-    papusMeaning: "Strength. Fortitude.",
+    meaning: (TAROT_CONTENT["11_strength"].legacyMeaning ?? TAROT_CONTENT["11_strength"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["11_strength"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -185,8 +186,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 12,
     tarotCard: "The Hanged Man",
     tarotCardFilename: "12_the_hanged_man",
-    meaning: "Make valid sacrifices, adopt a new perspective",
-    papusMeaning: "Trials. Sacrifice.",
+    meaning: (TAROT_CONTENT["12_the_hanged_man"].legacyMeaning ?? TAROT_CONTENT["12_the_hanged_man"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["12_the_hanged_man"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -194,8 +195,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 13,
     tarotCard: "Death",
     tarotCardFilename: "13_death",
-    meaning: "Death, renovation, kill that which kills your soul",
-    papusMeaning: "Death.",
+    meaning: (TAROT_CONTENT["13_death"].legacyMeaning ?? TAROT_CONTENT["13_death"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["13_death"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -203,8 +204,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 14,
     tarotCard: "Temperance",
     tarotCardFilename: "14_temperance",
-    meaning: "Balance, harmonize differences",
-    papusMeaning: "Temperance. Economy.",
+    meaning: (TAROT_CONTENT["14_temperance"].legacyMeaning ?? TAROT_CONTENT["14_temperance"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["14_temperance"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -213,8 +214,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Devil",
     tarotCardFilename: "15_the_devil",
     meaning:
-      "Indecision between vice and virtue, transmute weakness and passions into strengths",
-    papusMeaning: "Immense force. Illness.",
+      (TAROT_CONTENT["15_the_devil"].legacyMeaning ?? TAROT_CONTENT["15_the_devil"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["15_the_devil"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -223,8 +224,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Tower",
     tarotCardFilename: "16_the_house_of_god",
     meaning:
-      "Separation, destruction, separate from what's harmful and connect with what's helpful, make room for the new",
-    papusMeaning: "Ruin. Deception.",
+      (TAROT_CONTENT["16_the_house_of_god"].legacyMeaning ?? TAROT_CONTENT["16_the_house_of_god"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["16_the_house_of_god"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -233,8 +234,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Star",
     tarotCardFilename: "17_the_star",
     meaning:
-      "Fecundation, ecology, ecstasy, hope, renew yourself to maintain health, act according to your spiritual purpose",
-    papusMeaning: "Hope.",
+      (TAROT_CONTENT["17_the_star"].legacyMeaning ?? TAROT_CONTENT["17_the_star"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["17_the_star"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -243,8 +244,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Moon",
     tarotCardFilename: "18_the_moon",
     meaning:
-      "Hidden enemies, be vigilant, recognize where you're self sabotaging",
-    papusMeaning: "Hidden enemies. Danger.",
+      (TAROT_CONTENT["18_the_moon"].legacyMeaning ?? TAROT_CONTENT["18_the_moon"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["18_the_moon"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -253,8 +254,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "The Sun",
     tarotCardFilename: "19_the_sun",
     meaning:
-      "Be conscious of your alchemical band, transmute money into knowledge and vice versa",
-    papusMeaning: "Material happiness. Lucky marriage.",
+      (TAROT_CONTENT["19_the_sun"].legacyMeaning ?? TAROT_CONTENT["19_the_sun"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["19_the_sun"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -262,8 +263,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 20,
     tarotCard: "Judgment",
     tarotCardFilename: "20_judgement",
-    meaning: "Make retrospectives and learn from mistakes and successes",
-    papusMeaning: "Change of position.",
+    meaning: (TAROT_CONTENT["20_judgement"].legacyMeaning ?? TAROT_CONTENT["20_judgement"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["20_judgement"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -271,8 +272,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 21,
     tarotCard: "The Fool",
     tarotCardFilename: "21_the_fool",
-    meaning: "Stop walking in circles, create connections of knowledge",
-    papusMeaning: "Inconsiderate actions. Madness.",
+    meaning: (TAROT_CONTENT["21_the_fool"].legacyMeaning ?? TAROT_CONTENT["21_the_fool"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["21_the_fool"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -280,8 +281,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     number: 22,
     tarotCard: "The World",
     tarotCardFilename: "22_the_world",
-    meaning: "Win the world, start acting on the world of causes",
-    papusMeaning: "Assured success.",
+    meaning: (TAROT_CONTENT["22_the_world"].legacyMeaning ?? TAROT_CONTENT["22_the_world"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["22_the_world"].en.PAPUS_DIVINATORY.meaning,
     type: "major",
     deck: "mythic"
   },
@@ -292,9 +293,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "King of Wands",
     tarotCardFilename: "king_wands",
     egyptianCardName: "The Laborer",
-    meaning: "Get's the best out of every one, Idealism, Magnanimity",
+    meaning: (TAROT_CONTENT["king_wands"].legacyMeaning ?? TAROT_CONTENT["king_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A dark man, a friend. He generally represents a married man, the father of a family.",
+      TAROT_CONTENT["king_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -305,9 +306,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "queen_wands",
     egyptianCardName: "The Weaver",
     meaning:
-      "Hold the line while the king goes to work, Preserve what was conquered",
+      (TAROT_CONTENT["queen_wands"].legacyMeaning ?? TAROT_CONTENT["queen_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A dark woman, a friend. Represents a serious woman, a very good counsellor, often the mother of a family.",
+      TAROT_CONTENT["queen_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -317,8 +318,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Knight of Wands",
     tarotCardFilename: "knight_wands",
     egyptianCardName: "The Argonaut",
-    meaning: "Dreams that become reality",
-    papusMeaning: "A dark young man, a friend.",
+    meaning: (TAROT_CONTENT["knight_wands"].legacyMeaning ?? TAROT_CONTENT["knight_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["knight_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -328,9 +329,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Page of Wands",
     tarotCardFilename: "page_wands",
     egyptianCardName: "The Prodigy",
-    meaning: "Don't rush, the precipitations are the doors to failure",
+    meaning: (TAROT_CONTENT["page_wands"].legacyMeaning ?? TAROT_CONTENT["page_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A dark child, a friend. Also represents a message from a near relation.",
+      TAROT_CONTENT["page_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "wands"
@@ -342,8 +343,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ace of Wands",
     tarotCardFilename: "ace_wands",
     egyptianCardName: "Initiation",
-    meaning: "Ignite the flames of ideals, Trust in your inner divinity",
-    papusMeaning: "Commencement of an enterprise.",
+    meaning: (TAROT_CONTENT["ace_wands"].legacyMeaning ?? TAROT_CONTENT["ace_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["ace_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -353,9 +354,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Two of Wands",
     tarotCardFilename: "2_wands",
     egyptianCardName: "Desolation",
-    meaning: "Formulate a strategy to use your own talents",
+    meaning: (TAROT_CONTENT["2_wands"].legacyMeaning ?? TAROT_CONTENT["2_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to the commencement of the enterprise. The enterprise is commenced when an unexpected obstacle suddenly prevents its execution.",
+      TAROT_CONTENT["2_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -365,9 +366,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Three of Wands",
     tarotCardFilename: "3_wands",
     egyptianCardName: "Innovation",
-    meaning: "Keep going despite losing something apparently important",
+    meaning: (TAROT_CONTENT["3_wands"].legacyMeaning ?? TAROT_CONTENT["3_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Realization of the commencement of the enterprise. The basis of the work is now definitely established, and the undertaking can be fearlessly continued.",
+      TAROT_CONTENT["3_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -377,9 +378,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Four of Wands",
     tarotCardFilename: "4_wands",
     egyptianCardName: "Alliance",
-    meaning: "Work in teams",
+    meaning: (TAROT_CONTENT["4_wands"].legacyMeaning ?? TAROT_CONTENT["4_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Obstacles to the enterprise.",
+      TAROT_CONTENT["4_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -389,8 +390,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Five of Wands",
     tarotCardFilename: "5_wands",
     egyptianCardName: "Magnificence",
-    meaning: "Strengthen the root chakra, overcome internal fears",
-    papusMeaning: "Opposition to the obstacles. Victory after surmounting them.",
+    meaning: (TAROT_CONTENT["5_wands"].legacyMeaning ?? TAROT_CONTENT["5_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["5_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -400,9 +401,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Six of Wands",
     tarotCardFilename: "6_wands",
     egyptianCardName: "Impediment",
-    meaning: "External victory, internal lack of internal self realization",
+    meaning: (TAROT_CONTENT["6_wands"].legacyMeaning ?? TAROT_CONTENT["6_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Realization of the opposition. At last the obstacles succeed. Failure of the enterprise in the midst of its execution.",
+      TAROT_CONTENT["6_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -412,8 +413,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Seven of Wands",
     tarotCardFilename: "7_wands",
     egyptianCardName: "Exchange",
-    meaning: "Face competitors in an ethical and loyal way",
-    papusMeaning: "Certain success to the enterprise.",
+    meaning: (TAROT_CONTENT["7_wands"].legacyMeaning ?? TAROT_CONTENT["7_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["7_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -423,9 +424,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Eight of Wands",
     tarotCardFilename: "8_wands",
     egyptianCardName: "Domesticity",
-    meaning: "Travel to the center of peace and intelligence",
+    meaning: (TAROT_CONTENT["8_wands"].legacyMeaning ?? TAROT_CONTENT["8_wands"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to its success. The enterprise will only partially succeed.",
+      TAROT_CONTENT["8_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -435,8 +436,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Nine of Wands",
     tarotCardFilename: "9_wands",
     egyptianCardName: "Uncertainty",
-    meaning: "Obstacle that precedes total victory, gather hidden forces",
-    papusMeaning: "Realization of success. Success is continued.",
+    meaning: (TAROT_CONTENT["9_wands"].legacyMeaning ?? TAROT_CONTENT["9_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["9_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -447,8 +448,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "10_wands",
     egyptianCardName: "The Unexpected",
     meaning:
-      "Get out of apathy, create a new tree of life using the Lightning Path",
-    papusMeaning: "Uncertainty in the management of the enterprise.",
+      (TAROT_CONTENT["10_wands"].legacyMeaning ?? TAROT_CONTENT["10_wands"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["10_wands"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "wands"
@@ -461,9 +462,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "king_cups",
     egyptianCardName: "Art and Science",
     meaning:
-      "Stop hurting yourself (related to The Lover), heals everyone and forgets about yourself, balm for your own wound",
+      (TAROT_CONTENT["king_cups"].legacyMeaning ?? TAROT_CONTENT["king_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A fair man, a friend. This card also represents a barrister, judge, or ecclesiastic. It symbolizes a bachelor.",
+      TAROT_CONTENT["king_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -473,9 +474,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Queen of Cups",
     tarotCardFilename: "queen_cups",
     egyptianCardName: "Duplicity",
-    meaning: "Work with subtlety, positive challenges",
+    meaning: (TAROT_CONTENT["queen_cups"].legacyMeaning ?? TAROT_CONTENT["queen_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A fair woman, a friend. The woman loved. The mistress.",
+      TAROT_CONTENT["queen_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -485,9 +486,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Knight of Cups",
     tarotCardFilename: "knight_cups",
     egyptianCardName: "Testimony",
-    meaning: "Alternative healing",
+    meaning: (TAROT_CONTENT["knight_cups"].legacyMeaning ?? TAROT_CONTENT["knight_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A young fair man, a friend. The young man loved. The lover.",
+      TAROT_CONTENT["knight_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -497,8 +498,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Page of Cups",
     tarotCardFilename: "page_cups",
     egyptianCardName: "Premonition",
-    meaning: "Increase of self-esteem, emotional courage",
-    papusMeaning: "A fair child. A messenger. Birth.",
+    meaning: (TAROT_CONTENT["page_cups"].legacyMeaning ?? TAROT_CONTENT["page_cups"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["page_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "cups"
@@ -510,8 +511,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ace of Cups",
     tarotCardFilename: "ace_cups",
     egyptianCardName: "Attraction",
-    meaning: "Renewal or new affection, alternative treatment for health",
-    papusMeaning: "Commencement of a love affair.",
+    meaning: (TAROT_CONTENT["ace_cups"].legacyMeaning ?? TAROT_CONTENT["ace_cups"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["ace_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -521,9 +522,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Two of Cups",
     tarotCardFilename: "2_cups",
     egyptianCardName: "Versatility",
-    meaning: "Do not poison yourself or the other person",
+    meaning: (TAROT_CONTENT["2_cups"].legacyMeaning ?? TAROT_CONTENT["2_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to this commencement. Unimportant obstacles raised by one of the lovers.",
+      TAROT_CONTENT["2_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -533,9 +534,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Three of Cups",
     tarotCardFilename: "3_cups",
     egyptianCardName: "Consummation",
-    meaning: "Harmony between instinct and emotion, Be discreet",
+    meaning: (TAROT_CONTENT["3_cups"].legacyMeaning ?? TAROT_CONTENT["3_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Realization of this commencement. The love is mutual.",
+      TAROT_CONTENT["3_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -545,9 +546,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Four of Cups",
     tarotCardFilename: "4_cups",
     egyptianCardName: "Conjecture",
-    meaning: "Abundance in emotional life, do not listen to slander",
+    meaning: (TAROT_CONTENT["4_cups"].legacyMeaning ?? TAROT_CONTENT["4_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Serious obstacles to the love. They arise from other persons, not from the lovers.",
+      TAROT_CONTENT["4_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -557,9 +558,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Five of Cups",
     tarotCardFilename: "5_cups",
     egyptianCardName: "Patrimony",
-    meaning: "Do not break your spiritual commitment (your purpose)",
+    meaning: (TAROT_CONTENT["5_cups"].legacyMeaning ?? TAROT_CONTENT["5_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to the obstacles. Victory over the obstacles after a struggle.",
+      TAROT_CONTENT["5_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -569,9 +570,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Six of Cups",
     tarotCardFilename: "6_cups",
     egyptianCardName: "Regeneration",
-    meaning: "Do not have self-pity",
+    meaning: (TAROT_CONTENT["6_cups"].legacyMeaning ?? TAROT_CONTENT["6_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "The obstacles triumph. Love destroyed in the midst of happiness. Widowhood.",
+      TAROT_CONTENT["6_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -581,8 +582,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Seven of Cups",
     tarotCardFilename: "7_cups",
     egyptianCardName: "Expressiveness",
-    meaning: "Gestations, related to The Star",
-    papusMeaning: "Success assured to the lovers.",
+    meaning: (TAROT_CONTENT["7_cups"].legacyMeaning ?? TAROT_CONTENT["7_cups"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["7_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -592,9 +593,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Eight of Cups",
     tarotCardFilename: "8_cups",
     egyptianCardName: "Delusion",
-    meaning: "Reflect on your emotional life after 18 hours",
+    meaning: (TAROT_CONTENT["8_cups"].legacyMeaning ?? TAROT_CONTENT["8_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Partial failure of love. Love only partially succeeds.",
+      TAROT_CONTENT["8_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -604,8 +605,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Nine of Cups",
     tarotCardFilename: "9_cups",
     egyptianCardName: "Preeminence",
-    meaning: "Reconciliations and forgiveness",
-    papusMeaning: "Motherhood.",
+    meaning: (TAROT_CONTENT["9_cups"].legacyMeaning ?? TAROT_CONTENT["9_cups"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["9_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -615,9 +616,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ten of Cups",
     tarotCardFilename: "10_cups",
     egyptianCardName: "Dissension",
-    meaning: "Marriage of the spirit with the soul, Alchemical Weddings",
+    meaning: (TAROT_CONTENT["10_cups"].legacyMeaning ?? TAROT_CONTENT["10_cups"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Uncertainty in the management of the love affair.",
+      TAROT_CONTENT["10_cups"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "cups"
@@ -629,9 +630,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "King of Swords",
     tarotCardFilename: "king_swords",
     egyptianCardName: "Advice",
-    meaning: "Actions of victorious strategies",
+    meaning: (TAROT_CONTENT["king_swords"].legacyMeaning ?? TAROT_CONTENT["king_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A dark, bad man. He is a soldier, a powerful enemy, who must be distrusted.",
+      TAROT_CONTENT["king_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -641,9 +642,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Queen of Swords",
     tarotCardFilename: "queen_swords",
     egyptianCardName: "Premeditation",
-    meaning: "Supremacy of the feminine, related to Justice",
+    meaning: (TAROT_CONTENT["queen_swords"].legacyMeaning ?? TAROT_CONTENT["queen_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A dark wicked woman. The card also indicates her actions, gossip and calumnies.",
+      TAROT_CONTENT["queen_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -653,9 +654,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Knight of Swords",
     tarotCardFilename: "knight_swords",
     egyptianCardName: "Hostility",
-    meaning: "Joint victorious actions",
+    meaning: (TAROT_CONTENT["knight_swords"].legacyMeaning ?? TAROT_CONTENT["knight_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "A young, dark man, an enemy. He is also a spy.",
+      TAROT_CONTENT["knight_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -665,8 +666,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Page of Swords",
     tarotCardFilename: "page_swords",
     egyptianCardName: "Examination",
-    meaning: "Follow your intuition",
-    papusMeaning: "A child, an enemy. Bad news. Delay.",
+    meaning: (TAROT_CONTENT["page_swords"].legacyMeaning ?? TAROT_CONTENT["page_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["page_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "swords"
@@ -678,8 +679,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ace of Swords",
     tarotCardFilename: "ace_swords",
     egyptianCardName: "Vehemence",
-    meaning: "Conflicts before victory",
-    papusMeaning: "Commencement of enmity.",
+    meaning: (TAROT_CONTENT["ace_swords"].legacyMeaning ?? TAROT_CONTENT["ace_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["ace_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -689,9 +690,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Two of Swords",
     tarotCardFilename: "2_swords",
     egyptianCardName: "Communion",
-    meaning: "Traumas and conflicts to be overcome",
+    meaning: (TAROT_CONTENT["2_swords"].legacyMeaning ?? TAROT_CONTENT["2_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to this commencement. The enmity does not last.",
+      TAROT_CONTENT["2_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -701,8 +702,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Three of Swords",
     tarotCardFilename: "3_swords",
     egyptianCardName: "Proscription",
-    meaning: "Death of yang, Fire, tendencies to depression",
-    papusMeaning: "Realization of the enmity. Hatred.",
+    meaning: (TAROT_CONTENT["3_swords"].legacyMeaning ?? TAROT_CONTENT["3_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["3_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -712,8 +713,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Four of Swords",
     tarotCardFilename: "4_swords",
     egyptianCardName: "Solitude",
-    meaning: "Reflection, related to The Hermit",
-    papusMeaning: "Opposition to the hatred. Success against the enemy.",
+    meaning: (TAROT_CONTENT["4_swords"].legacyMeaning ?? TAROT_CONTENT["4_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["4_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -723,9 +724,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Five of Swords",
     tarotCardFilename: "5_swords",
     egyptianCardName: "Evolution",
-    meaning: "Healthy self-challenge, Self-demands",
+    meaning: (TAROT_CONTENT["5_swords"].legacyMeaning ?? TAROT_CONTENT["5_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to this opposition. The enemy triumphs at the moment one fancies the victory is secured.",
+      TAROT_CONTENT["5_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -735,9 +736,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Six of Swords",
     tarotCardFilename: "6_swords",
     egyptianCardName: "Revelation",
-    meaning: "External daily strategies, Future perspectives",
+    meaning: (TAROT_CONTENT["6_swords"].legacyMeaning ?? TAROT_CONTENT["6_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Equilibrium of the opposition. The enemy is rendered powerless at last.",
+      TAROT_CONTENT["6_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -747,8 +748,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Seven of Swords",
     tarotCardFilename: "7_swords",
     egyptianCardName: "Meditation",
-    meaning: "Internal nocturnal strategies, related to The Hermit",
-    papusMeaning: "Success assured to the enemy.",
+    meaning: (TAROT_CONTENT["7_swords"].legacyMeaning ?? TAROT_CONTENT["7_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["7_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -758,9 +759,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Eight of Swords",
     tarotCardFilename: "8_swords",
     egyptianCardName: "Rivalry",
-    meaning: "Appeal to superior forces, Internal and external conflicts",
+    meaning: (TAROT_CONTENT["8_swords"].legacyMeaning ?? TAROT_CONTENT["8_swords"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Partial opposition to this success. The enemy only partially triumphs.",
+      TAROT_CONTENT["8_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -770,8 +771,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Nine of Swords",
     tarotCardFilename: "9_swords",
     egyptianCardName: "Pilgrimage",
-    meaning: "The problems being imagined will never happen",
-    papusMeaning: "Certain duration of the hatred.",
+    meaning: (TAROT_CONTENT["9_swords"].legacyMeaning ?? TAROT_CONTENT["9_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["9_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -781,8 +782,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ten of Swords",
     tarotCardFilename: "10_swords",
     egyptianCardName: "Contrition",
-    meaning: "Death and rebirth, related to Death and The Tower",
-    papusMeaning: "Uncertainty in the enmity.",
+    meaning: (TAROT_CONTENT["10_swords"].legacyMeaning ?? TAROT_CONTENT["10_swords"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["10_swords"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "swords"
@@ -794,8 +795,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "King of Pentacles",
     tarotCardFilename: "king_pentacles",
     egyptianCardName: "Apprenticeship",
-    meaning: "Turns everything into gold",
-    papusMeaning: "A fair man, inimical or indifferent.",
+    meaning: (TAROT_CONTENT["king_pentacles"].legacyMeaning ?? TAROT_CONTENT["king_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["king_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -805,8 +806,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Queen of Pentacles",
     tarotCardFilename: "queen_pentacles",
     egyptianCardName: "Perplexity",
-    meaning: "Act with diplomacy",
-    papusMeaning: "A fair woman, indifferent, or inimical.",
+    meaning: (TAROT_CONTENT["queen_pentacles"].legacyMeaning ?? TAROT_CONTENT["queen_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["queen_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -816,8 +817,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Knight of Pentacles",
     tarotCardFilename: "knight_pentacles",
     egyptianCardName: "Veneration",
-    meaning: "Invest into new things",
-    papusMeaning: "A young, fair man. A stranger. An arrival.",
+    meaning: (TAROT_CONTENT["knight_pentacles"].legacyMeaning ?? TAROT_CONTENT["knight_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["knight_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -827,8 +828,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Page of Pentacles",
     tarotCardFilename: "page_pentacles",
     egyptianCardName: "Speculation",
-    meaning: "Prudence in the material life",
-    papusMeaning: "A fair child. A messenger. A letter.",
+    meaning: (TAROT_CONTENT["page_pentacles"].legacyMeaning ?? TAROT_CONTENT["page_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["page_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "daat+royalship",
     deck: "egyptian",
     suit: "pentacles"
@@ -841,8 +842,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "ace_pentacles",
     egyptianCardName: "Rebirth",
     meaning:
-      "Rebirth through a single material goal, Form clear material goals",
-    papusMeaning: "Commencement of fortune. Inheritance. Gifts. Economy.",
+      (TAROT_CONTENT["ace_pentacles"].legacyMeaning ?? TAROT_CONTENT["ace_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["ace_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -853,9 +854,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "2_pentacles",
     egyptianCardName: "Confusion",
     meaning:
-      "Light forming shadows, Duality asking for synthesis in the trinity, Don't put all the eggs in the same basket",
+      (TAROT_CONTENT["2_pentacles"].legacyMeaning ?? TAROT_CONTENT["2_pentacles"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to this commencement. Difficulty in well establishing the first landmarks of good fortune.",
+      TAROT_CONTENT["2_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -866,9 +867,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "3_pentacles",
     egyptianCardName: "The Provider",
     meaning:
-      "Light forming sound, Establish balance through the trinity becoming a great dispenser, Verbalize what should be done, Do not settle for the first results",
+      (TAROT_CONTENT["3_pentacles"].legacyMeaning ?? TAROT_CONTENT["3_pentacles"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Realization of this commencement of fortune. A small sum.",
+      TAROT_CONTENT["3_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -878,8 +879,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Four of Pentacles",
     tarotCardFilename: "4_pentacles",
     egyptianCardName: "Generosity",
-    meaning: "Avoid avarice / greed",
-    papusMeaning: "Opposition of fortune. Loss of money.",
+    meaning: (TAROT_CONTENT["4_pentacles"].legacyMeaning ?? TAROT_CONTENT["4_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["4_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -890,9 +891,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCardFilename: "5_pentacles",
     egyptianCardName: "Offering",
     meaning:
-      "Only order will bring progress, Do not kick the barn without having something concrete in front of you",
+      (TAROT_CONTENT["5_pentacles"].legacyMeaning ?? TAROT_CONTENT["5_pentacles"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Opposition to this opposition. A success coming which will balance the low.",
+      TAROT_CONTENT["5_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -902,8 +903,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Six of Pentacles",
     tarotCardFilename: "6_pentacles",
     egyptianCardName: "Love and Desire",
-    meaning: "Act with prudence",
-    papusMeaning: "Realization of the opposition. Ruin.",
+    meaning: (TAROT_CONTENT["6_pentacles"].legacyMeaning ?? TAROT_CONTENT["6_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["6_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -913,8 +914,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Seven of Pentacles",
     tarotCardFilename: "7_pentacles",
     egyptianCardName: "Purification",
-    meaning: "Don't boast about your proposal or project",
-    papusMeaning: "Success assured. A large fortune.",
+    meaning: (TAROT_CONTENT["7_pentacles"].legacyMeaning ?? TAROT_CONTENT["7_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["7_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -924,9 +925,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Eight of Pentacles",
     tarotCardFilename: "8_pentacles",
     egyptianCardName: "Avarice",
-    meaning: "Keep doing what you always did",
+    meaning: (TAROT_CONTENT["8_pentacles"].legacyMeaning ?? TAROT_CONTENT["8_pentacles"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Partial success. Great loss of money at the moment apparently of definitely securing the fortune.",
+      TAROT_CONTENT["8_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -936,8 +937,8 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Nine of Pentacles",
     tarotCardFilename: "9_pentacles",
     egyptianCardName: "Cooperation",
-    meaning: "Work with what you like and earn something with it",
-    papusMeaning: "Equilibrium of equilibrium. A durable fortune.",
+    meaning: (TAROT_CONTENT["9_pentacles"].legacyMeaning ?? TAROT_CONTENT["9_pentacles"].en.PAPUS_KAABALISTIC.meaning),
+    papusMeaning: TAROT_CONTENT["9_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"
@@ -947,9 +948,9 @@ export const RAW_ARKANNUS: TarotCard[] = [
     tarotCard: "Ten of Pentacles",
     tarotCardFilename: "10_pentacles",
     egyptianCardName: "The Unforeseen",
-    meaning: "Prosperity, Prosperous inheritance",
+    meaning: (TAROT_CONTENT["10_pentacles"].legacyMeaning ?? TAROT_CONTENT["10_pentacles"].en.PAPUS_KAABALISTIC.meaning),
     papusMeaning:
-      "Uncertainty in the fortune. Great success and great reverses.",
+      TAROT_CONTENT["10_pentacles"].en.PAPUS_DIVINATORY.meaning,
     type: "minor",
     deck: "egyptian",
     suit: "pentacles"

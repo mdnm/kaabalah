@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Add draft Brazilian Portuguese tarot names and deck meanings through language arguments
+  on `getTarotCardProfile` and `getTarotRepresentation`, with per-field review provenance.
+  Centralize duplicated English tarot meanings while preserving existing exports.
+
 ## 6.15.0 - 2026-11-16
 
 - Reading weights: Daath now lights through Scorpio, since Pluto rules Scorpio and
