@@ -31,7 +31,7 @@ function expectDeepFrozen(value: unknown): void {
   }
 }
 
-describe.each(["sun", "moon", "mercury"] as const)("%s in signs descriptions", (planet) => {
+describe.each(["sun", "moon", "mercury", "venus"] as const)("%s in signs descriptions", (planet) => {
   it("contains all twelve canonical signs", () => {
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns[planet]!).sort()).toEqual([...signs].sort());
     for (const sign of signs) {
@@ -268,6 +268,55 @@ describe("Mercury source distinctions", () => {
         expect(source.file).toBe("modulo 4/aula 12 modulo 4/aula-12.md");
         expect(source.from).toBeGreaterThanOrEqual(7);
         expect(source.to).toBeLessThanOrEqual(29);
+      }
+    }
+  });
+});
+
+
+describe("Venus source distinctions", () => {
+  it("keeps distinct unconventional-sexuality and fulfillment clauses without behavior instructions", () => {
+    const e = getPlanetSignDescriptionEntry("venus", "Aries")!;
+    expect(e.pt).toContain("sexualidade pode ser pouco convencional");
+    expect(e.pt).toContain("necessidade constante de satisfação");
+    expect(e.en).toContain("sexuality may be unconventional");
+    expect(e.en).toContain("constant need for fulfillment");
+  });
+
+  it("retains criticism, difficult love and emotional blockage instead of a romantic book fallback", () => {
+    for (const [sign, pt, en] of [
+      ["Virgo", "senso crítico pode abafar", "critical sense can stifle"],
+      ["Scorpio", "grande dificuldade para amar", "very difficult to love"],
+      ["Capricorn", "abafada pela racionalidade", "stifled by rationality"],
+    ] as const) {
+      const e = getPlanetSignDescriptionEntry("venus", sign)!;
+      expect(e.pt).toContain(pt);
+      expect(e.en).toContain(en);
+      expect(e.reviewNotes.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("retains possible maternal tone and ambiguous betrayals for Pisces", () => {
+    const e = getPlanetSignDescriptionEntry("venus", "Pisces")!;
+    expect(e.pt).toContain("atitude em relação à pessoa amada pode ter um tom maternal");
+    expect(e.en).toContain("attitude toward the person you love can have a maternal tone");
+    expect(e.pt).toContain("pode haver traições");
+    expect(e.en).toContain("betrayals are also possible");
+  });
+
+  it("keeps editorial decisions in metadata and only narrow primary claims in prose", () => {
+    for (const sign of signs) {
+      const e = getPlanetSignDescriptionEntry("venus", sign)!;
+      expect(e.pt).toMatch(/^você /);
+      expect(e.en).toMatch(/^you /);
+      expect(e.pt + e.en).not.toMatch(/o curso|the course|foi omitid|was omitted|impotência|impotence|frigidez|frigidity/);
+      expect(JSON.stringify(e)).not.toContain("\u2014");
+      expect(e.pt.match(/[.!?]/g)).toHaveLength(2);
+      expect(e.en.match(/[.!?]/g)).toHaveLength(2);
+      for (const source of e.src) {
+        expect(source.file).toBe("modulo 4/aula 12 modulo 4/aula-12.md");
+        expect(source.from).toBeGreaterThanOrEqual(32);
+        expect(source.to).toBeLessThanOrEqual(56);
       }
     }
   });

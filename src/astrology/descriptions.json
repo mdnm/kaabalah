@@ -1041,6 +1041,340 @@
           "Source review keeps confusion as the baseline rather than making it only one pole of an oscillation. The clinical madness label is not carried into the prose; the possible brilliant ideas and lying tendency remain."
         ]
       }
+    },
+    "venus": {
+      "Aries": {
+        "pt": "você vive os sentimentos amorosos com bastante intensidade e paixão. sua sexualidade pode ser pouco convencional, com uma necessidade constante de satisfação.",
+        "en": "you experience romantic feelings with considerable intensity and passion. your sexuality may be unconventional, with a constant need for fulfillment.",
+        "keywords": {
+          "pt": [
+            "intensidade",
+            "paixão",
+            "sexualidade pouco convencional",
+            "necessidade de satisfação"
+          ],
+          "en": [
+            "intensity",
+            "passion",
+            "unconventional sexuality",
+            "need for fulfillment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 32,
+            "to": 33
+          }
+        ],
+        "reviewNotes": [
+          "The course's constant need for sexual satisfaction and unconventional sexuality are retained as needs/preferences, without predicting behavior or outcomes. The inspected book opening's romantic enthusiasm and fleeting passions were not used because they would shift the course emphasis."
+        ]
+      },
+      "Taurus": {
+        "pt": "você demonstra grande sensualidade e alegria de viver, encarando o amor de um modo natural. você tende à fidelidade nos vínculos a dois.",
+        "en": "you show great sensuality and joy in life, approaching love in a natural way. you tend toward fidelity in one-to-one relationships.",
+        "keywords": {
+          "pt": [
+            "sensualidade",
+            "alegria de viver",
+            "amor natural",
+            "fidelidade"
+          ],
+          "en": [
+            "sensuality",
+            "joy in life",
+            "natural approach to love",
+            "fidelity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 34,
+            "to": 35
+          }
+        ],
+        "reviewNotes": [
+          "The course lists fidelity directly; phrased it as a possible relationship theme to avoid deterministic identity language. Book claims about stability, security, and reliability were inspected but not adopted because they are not in the course passage."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode ter pouco senso de realidade e tendência ao flerte e à aventura. viagens ou pessoas estrangeiras podem fazer parte de suas histórias amorosas.",
+        "en": "you may have little sense of reality and a tendency toward flirting and adventure. travel or people from other countries may feature in your romances.",
+        "keywords": {
+          "pt": [
+            "pouco senso de realidade",
+            "flerte",
+            "aventura",
+            "viagens ou pessoas estrangeiras"
+          ],
+          "en": [
+            "limited sense of reality",
+            "flirting",
+            "adventure",
+            "travel or foreign people"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 36,
+            "to": 38
+          }
+        ],
+        "reviewNotes": [
+          "Course claims about affairs during travel or with foreigners are cautiously recast as possible themes in romantic stories, not predicted outcomes. The course's outdated sexual-orientation claim is omitted. The inspected book's relational optimism and variety claims were not added."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode viver o amor com romantismo e tendência a histórias pouco reais. também pode precisar de afeto permanente e ter gosto pela arte.",
+        "en": "you may approach love romantically and tend toward stories that are not very realistic. you may also need constant affection and have an appreciation for art.",
+        "keywords": {
+          "pt": [
+            "romantismo",
+            "histórias pouco reais",
+            "afeto permanente",
+            "arte"
+          ],
+          "en": [
+            "romanticism",
+            "unrealistic stories",
+            "constant affection",
+            "art"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 39,
+            "to": 40
+          }
+        ],
+        "reviewNotes": [
+          "Kept the course's unrealistic-story tension instead of replacing it with the book's romantic optimism. The inspected book's emotional security, family bonds, and caregiving claims were not adopted because they are absent from the course lines."
+        ]
+      },
+      "Leo": {
+        "pt": "você tende a viver o amor com liberdade e sem culpa, valorizando o que considera essencial. também gosta de arte.",
+        "en": "you tend to experience love freely and without guilt, valuing what you consider essential. you also enjoy art.",
+        "keywords": {
+          "pt": [
+            "liberdade no amor",
+            "sem culpa",
+            "essencial",
+            "arte"
+          ],
+          "en": [
+            "freedom in love",
+            "without guilt",
+            "essentials",
+            "art"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 41,
+            "to": 42
+          }
+        ],
+        "reviewNotes": [
+          "O livro apresenta amor dramático e entusiasta, desejo de adoração e expressão grandiosa (37392-37407), em tensão com a liberdade sem culpa e o foco no essencial do curso. Mantida a formulação do curso; não foram acrescentados drama, necessidade de admiração ou promessa de generosidade no amor."
+        ]
+      },
+      "Virgo": {
+        "pt": "você pode ter pouca sensualidade. seu senso crítico pode abafar a espontaneidade amorosa.",
+        "en": "you may have little sensuality. your critical sense can stifle spontaneity in love.",
+        "keywords": {
+          "pt": [
+            "pouca sensualidade",
+            "senso crítico",
+            "espontaneidade amorosa abafada"
+          ],
+          "en": [
+            "little sensuality",
+            "critical sense",
+            "stifled spontaneity in love"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 43,
+            "to": 44
+          }
+        ],
+        "reviewNotes": [
+          "O curso também usa o termo assexualidade; ele não foi convertido em rótulo determinístico de identidade ou clínico, nem sua acepção histórica foi equiparada a categorias atuais. O livro descreve carinho prático e atencioso e atos de serviço (37637-37642, 37661-37671), mas não usei esse otimismo relacional para neutralizar a tensão negativa do curso."
+        ]
+      },
+      "Libra": {
+        "pt": "você tende a sonhar acordado e pode sustentar por bastante tempo uma história sentimental. há também tendência à fidelidade.",
+        "en": "you tend to daydream and may sustain a romantic attachment for a long time. there is also a tendency toward faithfulness.",
+        "keywords": {
+          "pt": [
+            "devaneio",
+            "história sentimental duradoura",
+            "fidelidade"
+          ],
+          "en": [
+            "daydreaming",
+            "long-lasting romantic relationship",
+            "faithfulness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 45,
+            "to": 46
+          }
+        ],
+        "reviewNotes": [
+          "O livro valoriza harmonia, equilíbrio e diplomacia, ausentes no trecho do curso; esses temas foram registrados como contraste e não acrescentados como contrapeso. A duração é apresentada como capacidade/tendência, sem garantir resultado para uma relação definida."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode ter grande dificuldade para amar e encarar o amor como um problema. pode haver forte erotismo ou fixação pelo sexo.",
+        "en": "you may find it very difficult to love and experience love as a problem. there may be strong eroticism or fixation on sex.",
+        "keywords": {
+          "pt": [
+            "dificuldade para amar",
+            "amor como problema",
+            "forte erotismo",
+            "fixação pelo sexo"
+          ],
+          "en": [
+            "difficulty loving",
+            "love as a problem",
+            "strong eroticism",
+            "fixation on sex"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 47,
+            "to": 48
+          }
+        ],
+        "reviewNotes": [
+          "A afirmação sobre frigidez ou impotência foi omitida por ser diagnóstico/alegação de saúde. O livro descreve amor intenso e apaixonado, busca de conexões profundas e lealdade (38052-38060), em tensão com a dificuldade para amar e o amor como problema do curso. Curso mantido como autoridade, sem romantizar ou garantir transformação relacional."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode viver a sexualidade com liberdade e ter aventuras afetivas durante viagens ou com pessoas de outros países. também pode haver uma tendência à infidelidade amorosa e sexual.",
+        "en": "you may experience sexuality freely and have romantic adventures during travel or with people from other countries. there may also be a tendency toward romantic and sexual infidelity.",
+        "keywords": {
+          "pt": [
+            "sexualidade livre",
+            "aventuras afetivas",
+            "viagens",
+            "infidelidade amorosa e sexual"
+          ],
+          "en": [
+            "sexual freedom",
+            "romantic adventures",
+            "travel",
+            "romantic and sexual infidelity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 49,
+            "to": 50
+          }
+        ],
+        "reviewNotes": [
+          "Course love during travel or with people from other countries is retained as a possibility rather than reduced to interest or presented as a guaranteed event; sexual freedom and infidelity are possibilities, not deterministic identity labels. The interleaved book opening at 38226-38236 and nearby psychological text at 38240-38248 and 38260-38267 emphasize freedom/adventure; its optimism, growth and enthusiasm are not added as a counterweight to course infidelity."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode ter sua espontaneidade afetiva abafada pela racionalidade. a expressão dos sentimentos pode ficar bloqueada, com frieza.",
+        "en": "you may have your emotional spontaneity stifled by rationality. the expression of feelings can become blocked, with coldness.",
+        "keywords": {
+          "pt": [
+            "racionalidade",
+            "espontaneidade afetiva abafada",
+            "expressão sentimental bloqueada",
+            "frieza"
+          ],
+          "en": [
+            "rationality",
+            "stifled emotional spontaneity",
+            "blocked expression of feelings",
+            "coldness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 51,
+            "to": 52
+          }
+        ],
+        "reviewNotes": [
+          "Course total suppression of spontaneity and categorical inability to express feelings are recast as possible blockage, retaining coldness without assigning a permanent incapacity. Book 38452-38461 instead emphasizes respectful reserve, stable commitment and responsibility; no flattering dedication/commitment trait is imported."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode viver a sexualidade de modo livre e sentimental, alternando entre amor e amizade. pode haver dificuldade de manter vínculos fixos e estáveis.",
+        "en": "you may approach sexuality with freedom and feeling, alternating between love and friendship. there may be difficulty maintaining fixed and stable bonds.",
+        "keywords": {
+          "pt": [
+            "sexualidade livre",
+            "sentimentalidade",
+            "alternância entre amor e amizade",
+            "dificuldade de manter vínculos estáveis"
+          ],
+          "en": [
+            "sexual freedom",
+            "sentimentality",
+            "alternation between love and friendship",
+            "difficulty maintaining stable bonds"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 53,
+            "to": 54
+          }
+        ],
+        "reviewNotes": [
+          "Course categorical inability to maintain fixed/stable relationships is recast as possible difficulty rather than predicted failure. Free/sentimental sexuality does not imply orientation. Book 38725-38737 emphasizes independence, intellectual connection and companionship; these are not used to erase or replace the course stability tension."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode viver o afeto com grande sensualidade e romantismo. sua atitude em relação à pessoa amada pode ter um tom maternal, mas também pode haver traições.",
+        "en": "you may experience affection with strong sensuality and romanticism. your attitude toward the person you love can have a maternal tone, but betrayals are also possible.",
+        "keywords": {
+          "pt": [
+            "sensualidade",
+            "romantismo",
+            "atitude maternal",
+            "possíveis traições"
+          ],
+          "en": [
+            "sensuality",
+            "romanticism",
+            "maternal attitude",
+            "possible betrayals"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 55,
+            "to": 56
+          }
+        ],
+        "reviewNotes": [
+          "Omitted the course gendered femininity assignment rather than infer identity or orientation. The maternal tendency describes an attitude toward the loved person, not an independent care behavior, fixed gender role or practice. Possible betrayals retains the source ambiguity about who betrays whom. Book 39088-39094 emphasizes empathy, sacrifice, spirituality and emotional fusion; none is added to cancel the course betrayal tension."
+        ]
+      }
     }
   }
 }

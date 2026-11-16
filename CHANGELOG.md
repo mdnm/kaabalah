@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Venus-sign descriptions, retaining
+  course qualifications and review notes without guaranteed relationship outcomes.
+
 - Add twelve source-audited bilingual natal Mercury-sign descriptions with
   course-first disagreement notes and no fallback for unsupported planet sets.
 
