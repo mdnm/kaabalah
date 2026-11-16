@@ -1,3 +1,5 @@
+import { cliText } from "../runtime/language";
+import { cliValue } from "../runtime/content";
 import {
   ARKANNUS,
   drawConsciousTarotSpread,
@@ -93,31 +95,31 @@ function findCardsByQuery(query: string): { cards: TarotCard[]; exact: boolean }
 
 function printDeckDescription(description: TarotDeckDescription): void {
   if (description.name) {
-    console.log(`  Deck name: ${description.name}`);
+    console.log(cliText("  Deck name: {0}", [cliValue(description.name)]));
   }
   if (description.meaning) {
-    console.log(`  Deck meaning: ${description.meaning}`);
+    console.log(cliText("  Deck meaning: {0}", [cliValue(description.meaning)]));
   }
   if (description.reversedMeaning) {
-    console.log(`  Deck reversed: ${description.reversedMeaning}`);
+    console.log(cliText("  Deck reversed: {0}", [description.reversedMeaning]));
   }
   if (description.keywords?.length) {
-    console.log(`  Deck keywords: ${description.keywords.join(", ")}`);
+    console.log(cliText("  Deck keywords: {0}", [description.keywords.join(", ")]));
   }
 }
 
 function printCard(card: TarotCard, deckDetails?: TarotCardDeckDetails): void {
-  console.log(`\n  #${String(card.number).padStart(2, "0")} ${card.tarotCard}`);
-  console.log(`  Type: ${card.type} | Suit: ${card.suit ?? "major"} | Deck: ${card.deck}`);
-  console.log(`  Meaning: ${card.meaning}`);
+  console.log(`\n  #${String(card.number).padStart(2, "0")} ${cliValue(card.tarotCard)}`);
+  console.log(cliText("  Type: {0} | Suit: {1} | Deck: {2}", [card.type, card.suit ?? "major", card.deck]));
+  console.log(cliText("  Meaning: {0}", [cliValue(card.meaning)]));
   if (card.egyptianCardName) {
-    console.log(`  Egyptian: ${card.egyptianCardName}`);
+    console.log(cliText("  Egyptian: {0}", [cliValue(card.egyptianCardName)]));
   }
   if (card.papusMeaning) {
-    console.log(`  Papus: ${card.papusMeaning}`);
+    console.log(cliText("  Papus: {0}", [cliValue(card.papusMeaning)]));
   }
   if (deckDetails) {
-    console.log(`  Image: ${deckDetails.imageUrl ?? "unavailable"}`);
+    console.log(cliText("  Image: {0}", [deckDetails.imageUrl ?? cliText("unavailable")]));
     if (deckDetails.description) {
       printDeckDescription(deckDetails.description);
     }
@@ -138,7 +140,7 @@ function getRequestedDeckId(flags: Flags): TarotDeckId | undefined {
   if (!validDeckIds.includes(deckId as TarotDeckId)) {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Unknown deck "${deckId}". Valid: ${validDeckIds.join(", ")}.`,
+      cliText("Unknown deck \"{0}\". Valid: {1}.", [deckId, validDeckIds.join(", ")]),
       flags
     );
   }
@@ -158,7 +160,7 @@ function getRequestedLegacyFields(flags: Flags): Set<LegacyTarotField> {
     if (field !== "papus" && field !== "egyptian") {
       exitWithError(
         "INVALID_ARGUMENT",
-        `Unknown tarot include field "${field}". Valid: papus, egyptian.`,
+        cliText("Unknown tarot include field \"{0}\". Valid: papus, egyptian.", [field]),
         flags
       );
     }
@@ -182,7 +184,7 @@ function serializeTarotCard(
   if (!profile) {
     exitWithError(
       "INTERNAL_ERROR",
-      `No tarot profile found for "${card.tarotCard}".`,
+      cliText("No tarot profile found for \"{0}\".", [cliValue(card.tarotCard)]),
       flags
     );
   }
@@ -233,7 +235,7 @@ function parseConsciousIndices(flags: Flags): number[] {
   if (!raw) {
     exitWithError(
       "MISSING_ARGUMENT",
-      "--method=conscious requires --indices=<n1,n2,...>.",
+      cliText("--method=conscious requires --indices=<n1,n2,...>."),
       flags
     );
   }
@@ -243,7 +245,7 @@ function parseConsciousIndices(flags: Flags): number[] {
   if (indices.some((index) => !Number.isInteger(index) || index < 1)) {
     exitWithError(
       "INVALID_ARGUMENT",
-      "--indices must contain positive 1-based integers.",
+      cliText("--indices must contain positive 1-based integers."),
       flags
     );
   }
@@ -254,7 +256,7 @@ function parseConsciousIndices(flags: Flags): number[] {
 export async function cmdTarot(countStr: string | undefined, flags: Flags): Promise<void> {
   const count = countStr ? Number.parseInt(countStr, 10) : 3;
   if (Number.isNaN(count) || count < 1 || count > 78) {
-    exitWithError("INVALID_ARGUMENT", "Card count must be between 1 and 78.", flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Card count must be between 1 and 78."), flags);
   }
 
   const shuffleCount = getFlagNumber(flags, "shuffle-count") ?? 7;
@@ -276,16 +278,16 @@ export async function cmdTarot(countStr: string | undefined, flags: Flags): Prom
     return;
   }
 
-  console.log(`\nTarot Draw: ${count} card${count > 1 ? "s" : ""}\n`);
+  console.log(cliText("\nTarot Draw: {0} card{1}\n", [count, count > 1 ? "s" : ""]));
   for (const card of drawn) {
-    const inverted = card.isInverted ? " (INVERTED)" : "";
-    console.log(`  #${String(card.number).padStart(2, "0")} ${card.tarotCard}${inverted}`);
-    console.log(`       ${card.meaning}`);
+    const inverted = card.isInverted ? cliText(" (INVERTED)") : "";
+    console.log(`  #${String(card.number).padStart(2, "0")} ${cliValue(card.tarotCard)}${inverted}`);
+    console.log(`       ${cliValue(card.meaning)}`);
     if (card.egyptianCardName) {
-      console.log(`       Egyptian: ${card.egyptianCardName}`);
+      console.log(cliText("       Egyptian: {0}", [cliValue(card.egyptianCardName)]));
     }
     if (card.papusMeaning) {
-      console.log(`       Papus: ${card.papusMeaning}`);
+      console.log(cliText("       Papus: {0}", [cliValue(card.papusMeaning)]));
     }
     console.log();
   }
@@ -300,7 +302,7 @@ export function cmdTarotCard(query: string, flags: Flags): void {
   const { cards } = findCardsByQuery(query);
 
   if (cards.length === 0) {
-    exitWithError("CARD_NOT_FOUND", `No card found for "${query}". Use a number (1-78) or card name.`, flags);
+    exitWithError("CARD_NOT_FOUND", cliText("No card found for \"{0}\". Use a number (1-78) or card name.", [query]), flags);
   }
 
   const deckId = getRequestedDeckId(flags);
@@ -338,26 +340,26 @@ function parseTarotSpreadContext(flags: Flags, context: unknown): TarotSpreadSel
   }
 
   if (!TAROT_INQUIRER_GENDERS.has(gender as TarotInquirerGender)) {
-    exitWithError("INVALID_ARGUMENT", 'Tarot spread context.inquirerGender must be "man" or "woman".', flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Tarot spread context.inquirerGender must be \"man\" or \"woman\"."), flags);
   }
 
   return { inquirerGender: gender as TarotInquirerGender };
 }
 
 function printSpreadDraw(result: ReturnType<typeof drawTarotSpread>): void {
-  console.log(`\n${result.spread.label}`);
-  console.log(`Spread: ${result.spread.spreadId}`);
+  console.log(`\n${cliValue(result.spread.label)}`);
+  console.log(cliText("Spread: {0}", [result.spread.spreadId]));
   if (result.context?.inquirerGender) {
-    console.log(`Inquirer: ${result.context.inquirerGender}`);
+    console.log(cliText("Inquirer: {0}", [result.context.inquirerGender]));
   }
   console.log();
 
   for (const card of result.cards) {
-    const inverted = card.isInverted ? " (INVERTED)" : "";
+    const inverted = card.isInverted ? cliText(" (INVERTED)") : "";
     console.log(
-      `  ${card.slot.order}. ${card.slot.label}: #${String(card.card.number).padStart(2, "0")} ${card.card.tarotCard}${inverted}`
+      `  ${card.slot.order}. ${cliValue(card.slot.label)}: #${String(card.card.number).padStart(2, "0")} ${cliValue(card.card.tarotCard)}${inverted}`
     );
-    console.log(`     ${card.card.meaning}`);
+    console.log(`     ${cliValue(card.card.meaning)}`);
   }
 
   console.log();
@@ -367,7 +369,7 @@ async function cmdTarotNamedSpread(spreadId: string, flags: Flags, options: Taro
   const spread = getTarotSpread(spreadId as TarotSpreadId);
 
   if (!spread) {
-    exitWithError("INVALID_ARGUMENT", `Unknown tarot spread: ${spreadId}.`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Unknown tarot spread: {0}.", [spreadId]), flags);
   }
 
   const context = parseTarotSpreadContext(flags, options.context);
@@ -376,7 +378,7 @@ async function cmdTarotNamedSpread(spreadId: string, flags: Flags, options: Taro
   if (requirements.includes("inquirerGender") && !context?.inquirerGender) {
     exitWithError(
       "MISSING_ARGUMENT",
-      `Spread "${spread.spreadId}" requires --inquirer-gender (man|woman).`,
+      cliText("Spread \"{0}\" requires --inquirer-gender (man|woman).", [spread.spreadId]),
       flags
     );
   }
@@ -385,7 +387,7 @@ async function cmdTarotNamedSpread(spreadId: string, flags: Flags, options: Taro
   const method = getFlagString(flags, "method") ?? "random";
 
   if (method !== "random" && method !== "conscious") {
-    exitWithError("INVALID_ARGUMENT", 'Tarot spread method must be "random" or "conscious".', flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Tarot spread method must be \"random\" or \"conscious\"."), flags);
   }
 
   try {
@@ -446,18 +448,18 @@ export async function cmdTarotSpread(cardQueries: string[], flags: Flags, option
       return;
     }
 
-    console.log("\nTarot spreads\n");
+    console.log(cliText("\nTarot spreads\n"));
     for (const spread of spreads) {
       const slotCount = Array.isArray(spread.slots)
         ? spread.slots.length
         : spread.slots;
       const requirements =
         spread.contextRequirements.length > 0
-          ? ` | requires: ${spread.contextRequirements.join(", ")}`
+          ? cliText(" | requires: {0}", [spread.contextRequirements.join(", ")])
           : "";
-      console.log(`  ${spread.spreadId.padEnd(22)} ${spread.label} (${slotCount} slots)${requirements}`);
+      console.log(cliText("  {0} {1} ({2} slots){3}", [spread.spreadId.padEnd(22), cliValue(spread.label), slotCount, requirements]));
       if (spread.description) {
-        console.log(`    ${spread.description}`);
+        console.log(`    ${cliValue(spread.description)}`);
       }
     }
     console.log();
@@ -472,7 +474,7 @@ export async function cmdTarotSpread(cardQueries: string[], flags: Flags, option
     const spread = getTarotSpread(describedSpreadId as TarotSpreadId);
 
     if (!spread) {
-      exitWithError("INVALID_ARGUMENT", `Unknown tarot spread: ${describedSpreadId}.`, flags);
+      exitWithError("INVALID_ARGUMENT", cliText("Unknown tarot spread: {0}.", [describedSpreadId]), flags);
     }
 
     const describedSpread = describeTarotSpread(spread);
@@ -482,11 +484,11 @@ export async function cmdTarotSpread(cardQueries: string[], flags: Flags, option
       return;
     }
 
-    console.log(`\n${describedSpread.label}`);
-    console.log(`Spread: ${describedSpread.spreadId}`);
+    console.log(`\n${cliValue(describedSpread.label)}`);
+    console.log(cliText("Spread: {0}", [describedSpread.spreadId]));
     for (const slot of describedSpread.slots) {
       const allowedTypes = slot.validationRules?.allowedTypes?.join(", ") ?? "any";
-      console.log(`  ${slot.order}. ${slot.label} (${slot.minCards}-${slot.maxCards}) | allowed: ${allowedTypes}`);
+      console.log(cliText("  {0}. {1} ({2}-{3}) | allowed: {4}", [slot.order, cliValue(slot.label), slot.minCards, slot.maxCards, allowedTypes]));
     }
     console.log();
     return;
@@ -504,7 +506,7 @@ export async function cmdTarotSpread(cardQueries: string[], flags: Flags, option
   for (const query of cardQueries) {
     const { cards } = findCardsByQuery(query);
     if (cards.length === 0) {
-      results.push({ query, error: true, code: "CARD_NOT_FOUND", message: `No card found for "${query}".` });
+      results.push({ query, error: true, code: "CARD_NOT_FOUND", message: cliText("No card found for \"{0}\".", [query]) });
     } else if (cards.length === 1) {
       results.push(cards[0]);
     } else {

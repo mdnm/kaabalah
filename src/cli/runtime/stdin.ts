@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { exitWithError, type ErrorCode } from "./errors";
 import type { Flags } from "./types";
 
@@ -35,7 +36,7 @@ export async function readStdin(flags: Flags, options: ReadStdinOptions): Promis
         cleanup();
         exitWithError(
           "INVALID_ARGUMENT",
-          `stdin payload exceeds maximum size of ${MAX_STDIN_BYTES} bytes.`,
+          cliText("stdin payload exceeds maximum size of {0} bytes.", [MAX_STDIN_BYTES]),
           flags
         );
       }

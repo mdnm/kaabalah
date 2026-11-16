@@ -1,3 +1,5 @@
+import { withCliLanguage, cliLanguageFromArgv } from "./runtime/language";
+import { cliText } from "./runtime/language";
 import { VERSION } from "./contract";
 import { cmdAstrology, cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
@@ -45,7 +47,7 @@ async function resolveGematriaText(
   }
 
   if (inputPayload?.text != null && typeof inputPayload.text !== "string") {
-    exitWithError("INVALID_ARGUMENT", '"text" must be a string in --input-json.', flags);
+    exitWithError("INVALID_ARGUMENT", cliText("\"text\" must be a string in --input-json."), flags);
   }
 
   const argText = args.length > 0 ? args.join(" ") : "";
@@ -60,14 +62,18 @@ async function resolveGematriaText(
   const stdinText = trimTrailingLineBreaks(
     await readStdin(flags, {
       emptyCode: "MISSING_ARGUMENT",
-      emptyMessage: "Usage: kaabalah gematria <text>",
+      emptyMessage: cliText("Usage: kaabalah gematria <text>"),
     })
   );
 
   return stdinText.length > 0 ? stdinText : null;
 }
 
-export async function runCli(argv: string[]): Promise<void> {
+export function runCli(argv: string[]): Promise<void> {
+  return withCliLanguage(cliLanguageFromArgv(argv), () => runCliInLanguage(argv));
+}
+
+async function runCliInLanguage(argv: string[]): Promise<void> {
   let parsedArgs: ReturnType<typeof parseArgs>;
   try {
     parsedArgs = parseArgs(argv);
@@ -131,44 +137,44 @@ export async function runCli(argv: string[]): Promise<void> {
       case "gematria": {
         const text = await resolveGematriaText(args.slice(1), flags, inputPayload);
         if (!text) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah gematria <text>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah gematria <text>"), flags);
         }
         await cmdGematria(text, flags);
         return;
       }
       case "gematria:reverse":
         if (!args[1] && inputPayload?.targetSynthesis == null) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah gematria:reverse <target-number>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah gematria:reverse <target-number>"), flags);
         }
         cmdReverseGematria(args[1] ?? String(inputPayload?.targetSynthesis ?? ""), flags, inputPayload);
         return;
       case "numerology":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah numerology <YYYY-MM-DD>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology <YYYY-MM-DD>"), flags);
         }
         cmdNumerology((inputPayload?.date as string) ?? args[1], flags);
         return;
       case "numerology:lifepath":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah numerology:lifepath <YYYY-MM-DD>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:lifepath <YYYY-MM-DD>"), flags);
         }
         cmdLifePath((inputPayload?.date as string) ?? args[1], flags);
         return;
       case "numerology:cycles":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]"), flags);
         }
         cmdCycles((inputPayload?.date as string) ?? args[1], (inputPayload?.firstName as string) ?? args[2], flags);
         return;
       case "numerology:challenges":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah numerology:challenges <YYYY-MM-DD>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:challenges <YYYY-MM-DD>"), flags);
         }
         cmdChallenges((inputPayload?.date as string) ?? args[1], flags);
         return;
       case "numerology:fibonacci":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah numerology:fibonacci <YYYY-MM-DD>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah numerology:fibonacci <YYYY-MM-DD>"), flags);
         }
         cmdFibonacci((inputPayload?.date as string) ?? args[1], flags);
         return;
@@ -178,7 +184,7 @@ export async function runCli(argv: string[]): Promise<void> {
       case "tarot:card": {
         const shouldListDecks = flags.decks === true;
         if (!args[1] && inputPayload?.query == null && !shouldListDecks) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:card <query>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah tarot:card <query>"), flags);
         }
         cmdTarotCard((inputPayload?.query != null ? String(inputPayload.query) : undefined) ?? args.slice(1).join(" "), flags);
         return;
@@ -189,7 +195,7 @@ export async function runCli(argv: string[]): Promise<void> {
         const shouldListSpreads = flags.list === true;
         const cardQueries = Array.isArray(inputPayload?.cards) ? inputPayload.cards.map(String) : args.slice(1);
         if (cardQueries.length === 0 && !hasSpreadIdFlag && !spreadId && !shouldListSpreads) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah tarot:spread <card1> [card2] ...", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah tarot:spread <card1> [card2] ..."), flags);
         }
         await cmdTarotSpread(cardQueries, flags, {
           spreadId,
@@ -204,7 +210,7 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "ifa":
         if (!args[1] && !inputPayload?.date) {
-          exitWithError("MISSING_ARGUMENT", "Usage: kaabalah ifa <YYYY-MM-DD>", flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah ifa <YYYY-MM-DD>"), flags);
         }
         cmdIfa((inputPayload?.date as string) ?? args[1], flags);
         return;
@@ -213,7 +219,7 @@ export async function runCli(argv: string[]): Promise<void> {
         return;
       case "tree:node":
         if (!args[1] && !inputPayload?.id) {
-          exitWithError("MISSING_ARGUMENT", 'Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node "tarotArkAnnu:The Magician")', flags);
+          exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node \"tarotArkAnnu:The Magician\")"), flags);
         }
         cmdTreeNode((inputPayload?.id as string) ?? args.slice(1).join(" "), flags);
         return;
@@ -279,7 +285,7 @@ export async function runCli(argv: string[]): Promise<void> {
         cmdAstrologyDodecatemoria(args.slice(1), flags, inputPayload);
         return;
       default:
-        exitWithError("UNKNOWN_COMMAND", `Unknown command: "${command}". Run "kaabalah help" for usage.`, flags);
+        exitWithError("UNKNOWN_COMMAND", cliText("Unknown command: \"{0}\". Run \"kaabalah help\" for usage.", [command]), flags);
     }
   } finally {
     execution.dispose();

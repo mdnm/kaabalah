@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { TimeZoneOptions } from "../../astrology/swisseph";
 import { exitWithError } from "./errors";
 import type { Flags } from "./types";
@@ -64,12 +65,12 @@ interface ChartInputDefaults {
 export function validateDateRange(dateStr: string, flags: Flags): void {
   const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!match) {
-    exitWithError("INVALID_DATE", `Invalid date: "${dateStr}". Use YYYY-MM-DD format.`, flags);
+    exitWithError("INVALID_DATE", cliText("Invalid date: \"{0}\". Use YYYY-MM-DD format.", [dateStr]), flags);
   }
 
   const year = Number.parseInt(match[1], 10);
   if (year < 1 || year > 9999) {
-    exitWithError("INVALID_DATE", `Year must be between 0001 and 9999, got ${year}.`, flags);
+    exitWithError("INVALID_DATE", cliText("Year must be between 0001 and 9999, got {0}.", [year]), flags);
   }
 }
 
@@ -77,7 +78,7 @@ export function validateDateString(dateStr: string, flags: Flags): void {
   validateDateRange(dateStr, flags);
   const date = new Date(`${dateStr}${UTC_NOON_SUFFIX}`);
   if (Number.isNaN(date.getTime())) {
-    exitWithError("INVALID_DATE", `Invalid date: "${dateStr}". Use YYYY-MM-DD format.`, flags);
+    exitWithError("INVALID_DATE", cliText("Invalid date: \"{0}\". Use YYYY-MM-DD format.", [dateStr]), flags);
   }
 }
 
@@ -161,13 +162,13 @@ export function parseChartInput(
 ): ParsedChartInput {
   const dateStr = input.date as string | undefined;
   if (!dateStr) {
-    exitWithError("MISSING_ARGUMENT", `${label}: "date" is required (YYYY-MM-DD).`, flags);
+    exitWithError("MISSING_ARGUMENT", cliText("{0}: \"date\" is required (YYYY-MM-DD).", [label]), flags);
   }
   validateDateString(dateStr, flags);
 
   const { timeStr, hour, minute } = parseTimeValue((input.time as string) ?? "12:00", flags, {
-    invalidFormat: (value) => `${label}: Invalid time format "${value}". Use HH:MM.`,
-    invalidValue: (value) => `${label}: Invalid time "${value}". Hours 0-23, minutes 0-59.`,
+    invalidFormat: (value) => cliText("{0}: Invalid time format \"{1}\". Use HH:MM.", [label, value]),
+    invalidValue: (value) => cliText("{0}: Invalid time \"{1}\". Hours 0-23, minutes 0-59.", [label, value]),
   });
 
   const { latitude, longitude } = parseCoordinates(
@@ -175,16 +176,16 @@ export function parseChartInput(
     input.lon != null ? Number(input.lon) : undefined,
     flags,
     {
-      missing: `${label}: "lat" and "lon" are required.`,
-      invalidLatitude: (value) => `${label}: Latitude must be between -90 and 90, got ${value}.`,
-      invalidLongitude: (value) => `${label}: Longitude must be between -180 and 180, got ${value}.`,
+      missing: cliText("{0}: \"lat\" and \"lon\" are required.", [label]),
+      invalidLatitude: (value) => cliText("{0}: Latitude must be between -90 and 90, got {1}.", [label, value]),
+      invalidLongitude: (value) => cliText("{0}: Longitude must be between -180 and 180, got {1}.", [label, value]),
     }
   );
 
   const { houseSystem, houseSystemCode } = parseHouseSystem(
     (input.houseSystem as string) ?? defaults.houseSystem ?? "placidus",
     flags,
-    (value, valid) => `${label}: Unknown house system "${value}". Valid: ${valid.join(", ")}`
+    (value, valid) => cliText("{0}: Unknown house system \"{1}\". Valid: {2}", [label, value, valid.join(", ")])
   );
 
   const timezoneStr = (input.timezone as string | undefined) ?? defaults.timezone;

@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { getFlagString } from "./args";
 import { exitWithError } from "./errors";
 import { readStdin } from "./stdin";
@@ -12,15 +13,15 @@ function parseInputJsonObject(raw: string, flags: Flags, source: "flag" | "stdin
   try {
     const parsed = JSON.parse(raw);
     if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-      exitWithError("INVALID_JSON", `${inputLabel} must be a JSON object`, flags);
+      exitWithError("INVALID_JSON", cliText("{0} must be a JSON object", [inputLabel]), flags);
     }
     return parsed as Record<string, unknown>;
   } catch {
     if (source === "stdin") {
-      exitWithError("INVALID_JSON", "Invalid JSON on stdin for --input-json=-.", flags);
+      exitWithError("INVALID_JSON", cliText("Invalid JSON on stdin for --input-json=-."), flags);
     }
 
-    exitWithError("INVALID_JSON", `Invalid JSON in --input-json: ${raw}`, flags);
+    exitWithError("INVALID_JSON", cliText("Invalid JSON in --input-json: {0}", [raw]), flags);
   }
 }
 
@@ -33,7 +34,7 @@ export async function parseInputJson(flags: Flags): Promise<InputPayload> {
   if (raw === "-") {
     const stdin = await readStdin(flags, {
       emptyCode: "INVALID_JSON",
-      emptyMessage: "--input-json=- requires a JSON object on stdin.",
+      emptyMessage: cliText("--input-json=- requires a JSON object on stdin."),
     });
     return parseInputJsonObject(stdin, flags, "stdin");
   }

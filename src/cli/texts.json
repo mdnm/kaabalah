@@ -1,0 +1,2242 @@
+{
+  "\"text\" must be a string in --input-json.": {
+    "en": "\"text\" must be a string in --input-json.",
+    "pt": "\"text\" deve ser uma string em --input-json."
+  },
+  "Usage: kaabalah gematria <text>": {
+    "en": "Usage: kaabalah gematria <text>",
+    "pt": "Uso: kaabalah gematria <text>"
+  },
+  "Usage: kaabalah gematria:reverse <target-number>": {
+    "en": "Usage: kaabalah gematria:reverse <target-number>",
+    "pt": "Uso: kaabalah gematria:reverse <target-number>"
+  },
+  "Usage: kaabalah numerology <YYYY-MM-DD>": {
+    "en": "Usage: kaabalah numerology <YYYY-MM-DD>",
+    "pt": "Uso: kaabalah numerology <YYYY-MM-DD>"
+  },
+  "Usage: kaabalah numerology:lifepath <YYYY-MM-DD>": {
+    "en": "Usage: kaabalah numerology:lifepath <YYYY-MM-DD>",
+    "pt": "Uso: kaabalah numerology:lifepath <YYYY-MM-DD>"
+  },
+  "Usage: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]": {
+    "en": "Usage: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]",
+    "pt": "Uso: kaabalah numerology:cycles <YYYY-MM-DD> [firstName]"
+  },
+  "Usage: kaabalah numerology:challenges <YYYY-MM-DD>": {
+    "en": "Usage: kaabalah numerology:challenges <YYYY-MM-DD>",
+    "pt": "Uso: kaabalah numerology:challenges <YYYY-MM-DD>"
+  },
+  "Usage: kaabalah numerology:fibonacci <YYYY-MM-DD>": {
+    "en": "Usage: kaabalah numerology:fibonacci <YYYY-MM-DD>",
+    "pt": "Uso: kaabalah numerology:fibonacci <YYYY-MM-DD>"
+  },
+  "Usage: kaabalah tarot:card <query>": {
+    "en": "Usage: kaabalah tarot:card <query>",
+    "pt": "Uso: kaabalah tarot:card <query>"
+  },
+  "Usage: kaabalah tarot:spread <card1> [card2] ...": {
+    "en": "Usage: kaabalah tarot:spread <card1> [card2] ...",
+    "pt": "Uso: kaabalah tarot:spread <card1> [card2] ..."
+  },
+  "Usage: kaabalah ifa <YYYY-MM-DD>": {
+    "en": "Usage: kaabalah ifa <YYYY-MM-DD>",
+    "pt": "Uso: kaabalah ifa <YYYY-MM-DD>"
+  },
+  "Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node \"tarotArkAnnu:The Magician\")": {
+    "en": "Usage: kaabalah tree:node <id> (e.g. tree:node path:1, tree:node \"tarotArkAnnu:The Magician\")",
+    "pt": "Uso: kaabalah tree:node <id> (ex.: tree:node path:1, tree:node \"tarotArkAnnu:The Magician\")"
+  },
+  "Unknown command: \"{0}\". Run \"kaabalah help\" for usage.": {
+    "en": "Unknown command: \"{0}\". Run \"kaabalah help\" for usage.",
+    "pt": "Comando desconhecido: \"{0}\". Execute \"kaabalah help\" para ver o uso."
+  },
+  "Output as JSON (auto-enabled when stdout is not a TTY)": {
+    "en": "Output as JSON (auto-enabled when stdout is not a TTY)",
+    "pt": "Produza JSON, ativado automaticamente quando stdout não é um TTY"
+  },
+  "Force human-readable output even when piped": {
+    "en": "Force human-readable output even when piped",
+    "pt": "Force a saída legível, mesmo ao usar um pipe"
+  },
+  "Minified JSON output (no indentation)": {
+    "en": "Minified JSON output (no indentation)",
+    "pt": "Produza JSON compacto, sem indentação"
+  },
+  "Comma-separated dot-paths to filter JSON output (e.g. --fields=a.b,c.d)": {
+    "en": "Comma-separated dot-paths to filter JSON output (e.g. --fields=a.b,c.d)",
+    "pt": "Filtre a saída JSON por caminhos separados por vírgulas (ex.: --fields=a.b,c.d)"
+  },
+  "JSON string, or - to read a JSON object from stdin": {
+    "en": "JSON string, or - to read a JSON object from stdin",
+    "pt": "Forneça uma string JSON ou - para ler um objeto JSON de stdin"
+  },
+  "Suppress stderr diagnostics and notices": {
+    "en": "Suppress stderr diagnostics and notices",
+    "pt": "Suprima os avisos e diagnósticos de stderr"
+  },
+  "Alias for --quiet": {
+    "en": "Alias for --quiet",
+    "pt": "Alias de --quiet"
+  },
+  "Emit debug logs to stderr (same effect as DEBUG=kaabalah:*)": {
+    "en": "Emit debug logs to stderr (same effect as DEBUG=kaabalah:*)",
+    "pt": "Emita logs de depuração em stderr, como DEBUG=kaabalah:*"
+  },
+  "Print stack traces for unexpected fatal errors in human-readable mode": {
+    "en": "Print stack traces for unexpected fatal errors in human-readable mode",
+    "pt": "Exiba rastros de pilha para erros fatais inesperados na saída legível"
+  },
+  "Cast six I Ching lines using three fair coins per line": {
+    "en": "Cast six I Ching lines using three fair coins per line",
+    "pt": "Lance seis linhas do I Ching usando três moedas justas por linha"
+  },
+  "Describe a King Wen hexagram, Chinese texts and fixed correspondences": {
+    "en": "Describe a King Wen hexagram, Chinese texts and fixed correspondences",
+    "pt": "Descreva um hexagrama de King Wen, os textos chineses e as correspondências fixas"
+  },
+  "King Wen number (1–64)": {
+    "en": "King Wen number (1–64)",
+    "pt": "Número de King Wen, de 1 a 64"
+  },
+  "Derive a complete I Ching reading from six bottom-first classical line values": {
+    "en": "Derive a complete I Ching reading from six bottom-first classical line values",
+    "pt": "Derive uma leitura completa do I Ching de seis valores clássicos, de baixo para cima"
+  },
+  "Six bottom-to-top values: 6 old yin, 7 young yang, 8 young yin, 9 old yang": {
+    "en": "Six bottom-to-top values: 6 old yin, 7 young yang, 8 young yin, 9 old yang",
+    "pt": "Seis valores de baixo para cima: 6 yin velho, 7 yang jovem, 8 yin jovem, 9 yang velho"
+  },
+  "King Wen number, instead of --lines": {
+    "en": "King Wen number, instead of --lines",
+    "pt": "Use o número de King Wen no lugar de --lines"
+  },
+  "Unique moving positions, comma-separated (1 bottom, 6 top)": {
+    "en": "Unique moving positions, comma-separated (1 bottom, 6 top)",
+    "pt": "Posições móveis únicas, separadas por vírgulas, de 1 na base a 6 no topo"
+  },
+  "Calculate gematria for a word/phrase": {
+    "en": "Calculate gematria for a word/phrase",
+    "pt": "Calcule a gematria de uma palavra ou frase"
+  },
+  "Text to calculate gematria for": {
+    "en": "Text to calculate gematria for",
+    "pt": "Texto para calcular a gematria"
+  },
+  "Show missing gematria values": {
+    "en": "Show missing gematria values",
+    "pt": "Mostre os valores ausentes na gematria"
+  },
+  "Show letter percentages": {
+    "en": "Show letter percentages",
+    "pt": "Mostre as porcentagens de letras"
+  },
+  "Include Tree of Life sphere/path correspondences for each Hebrew letter": {
+    "en": "Include Tree of Life sphere/path correspondences for each Hebrew letter",
+    "pt": "Inclua as correspondências de esferas e caminhos da árvore da vida para cada letra hebraica"
+  },
+  "Find letter combos matching a gematria value": {
+    "en": "Find letter combos matching a gematria value",
+    "pt": "Encontre combinações de letras para um valor de gematria"
+  },
+  "Target synthesis number": {
+    "en": "Target synthesis number",
+    "pt": "Número desejado para a síntese"
+  },
+  "Maximum results to return (max 10000)": {
+    "en": "Maximum results to return (max 10000)",
+    "pt": "Limite de resultados, até 10000"
+  },
+  "Minimum letters per combination": {
+    "en": "Minimum letters per combination",
+    "pt": "Mínimo de letras por combinação"
+  },
+  "Maximum letters per combination": {
+    "en": "Maximum letters per combination",
+    "pt": "Máximo de letras por combinação"
+  },
+  "Include digraphs like PH, SH": {
+    "en": "Include digraphs like PH, SH",
+    "pt": "Inclua dígrafos como PH e SH"
+  },
+  "Full numerological profile for a birth date": {
+    "en": "Full numerological profile for a birth date",
+    "pt": "Perfil numerológico completo para uma data de nascimento"
+  },
+  "Birth date in YYYY-MM-DD format": {
+    "en": "Birth date in YYYY-MM-DD format",
+    "pt": "Data de nascimento no formato YYYY-MM-DD"
+  },
+  "Life path number (kaabalistic method)": {
+    "en": "Life path number (kaabalistic method)",
+    "pt": "Número do caminho de vida pelo método da Kaabalah"
+  },
+  "Personal cycles (year, month, periods)": {
+    "en": "Personal cycles (year, month, periods)",
+    "pt": "Ciclos pessoais: ano, mês e períodos"
+  },
+  "First name for personal cycles": {
+    "en": "First name for personal cycles",
+    "pt": "Primeiro nome para os ciclos pessoais"
+  },
+  "Challenges from birth date": {
+    "en": "Challenges from birth date",
+    "pt": "Desafios da data de nascimento"
+  },
+  "Fibonacci cycle for current age": {
+    "en": "Fibonacci cycle for current age",
+    "pt": "Ciclo de Fibonacci para a idade atual"
+  },
+  "Draw tarot cards (default: 3)": {
+    "en": "Draw tarot cards (default: 3)",
+    "pt": "Tire cartas de tarot, três por padrão"
+  },
+  "Number of cards to draw (1-78, default: 3)": {
+    "en": "Number of cards to draw (1-78, default: 3)",
+    "pt": "Quantidade de cartas, de 1 a 78, três por padrão"
+  },
+  "Include inverted cards": {
+    "en": "Include inverted cards",
+    "pt": "Inclua cartas invertidas"
+  },
+  "Number of times to shuffle the deck": {
+    "en": "Number of times to shuffle the deck",
+    "pt": "Quantidade de embaralhamentos"
+  },
+  "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite": {
+    "en": "Deck for image/description: papus_pt, papus, mythic, egyptian, rider-waite",
+    "pt": "Baralho para imagem e descrição: papus_pt, papus, mythic, egyptian, rider-waite"
+  },
+  "Comma-separated legacy card fields to include with --deck (papus, egyptian)": {
+    "en": "Comma-separated legacy card fields to include with --deck (papus, egyptian)",
+    "pt": "Campos de cartas antigos a incluir com --deck, separados por vírgulas: papus, egyptian"
+  },
+  "Look up a specific card by number or name": {
+    "en": "Look up a specific card by number or name",
+    "pt": "Busque uma carta pelo número ou nome"
+  },
+  "Card number (1-78) or name (e.g. 'The Chariot', 'Two of Cups')": {
+    "en": "Card number (1-78) or name (e.g. 'The Chariot', 'Two of Cups')",
+    "pt": "Número da carta, de 1 a 78, ou nome (ex.: 'The Chariot', 'Two of Cups')"
+  },
+  "List available decks": {
+    "en": "List available decks",
+    "pt": "Liste os baralhos disponíveis"
+  },
+  "Look up multiple tarot cards by name or number, or draw a named spread with --spread-id": {
+    "en": "Look up multiple tarot cards by name or number, or draw a named spread with --spread-id",
+    "pt": "Busque várias cartas por nome ou número, ou tire uma tiragem nomeada com --spread-id"
+  },
+  "Card names or numbers, space-separated (quote multi-word names)": {
+    "en": "Card names or numbers, space-separated (quote multi-word names)",
+    "pt": "Nomes ou números de cartas separados por espaços; use aspas nos nomes compostos"
+  },
+  "List built-in spread IDs and requirements": {
+    "en": "List built-in spread IDs and requirements",
+    "pt": "Liste os IDs e requisitos das tiragens disponíveis"
+  },
+  "Include full spread slot definitions with --list": {
+    "en": "Include full spread slot definitions with --list",
+    "pt": "Inclua a definição completa das posições com --list"
+  },
+  "Describe a spread schema without drawing cards": {
+    "en": "Describe a spread schema without drawing cards",
+    "pt": "Descreva a estrutura de uma tiragem sem tirar cartas"
+  },
+  "Draw a built-in spread by ID (e.g. quick-insight, celtic-cross, event-reading)": {
+    "en": "Draw a built-in spread by ID (e.g. quick-insight, celtic-cross, event-reading)",
+    "pt": "Tire uma tiragem pelo ID (ex.: quick-insight, celtic-cross, event-reading)"
+  },
+  "Spread draw method: random or conscious": {
+    "en": "Spread draw method: random or conscious",
+    "pt": "Método da tiragem: random ou conscious"
+  },
+  "Comma-separated 1-based pool indices for --method=conscious": {
+    "en": "Comma-separated 1-based pool indices for --method=conscious",
+    "pt": "Índices de posição a partir de 1, separados por vírgulas, para --method=conscious"
+  },
+  "Number of times to shuffle the deck for conscious spreads": {
+    "en": "Number of times to shuffle the deck for conscious spreads",
+    "pt": "Quantidade de embaralhamentos para tiragens conscientes"
+  },
+  "Include inverted cards when drawing a named spread": {
+    "en": "Include inverted cards when drawing a named spread",
+    "pt": "Inclua cartas invertidas ao tirar uma tiragem nomeada"
+  },
+  "Required by event-reading; must be \"man\" or \"woman\"": {
+    "en": "Required by event-reading; must be \"man\" or \"woman\"",
+    "pt": "Obrigatório em event-reading; use \"man\" ou \"woman\""
+  },
+  "Calculate Odu from a date": {
+    "en": "Calculate Odu from a date",
+    "pt": "Calcule o Odu de uma data"
+  },
+  "Date in YYYY-MM-DD format": {
+    "en": "Date in YYYY-MM-DD format",
+    "pt": "Data no formato YYYY-MM-DD"
+  },
+  "Show Tree of Life structure with nodes and first-class correspondence edges": {
+    "en": "Show Tree of Life structure with nodes and first-class correspondence edges",
+    "pt": "Mostre a árvore da vida com nós e arestas de correspondência explícitas"
+  },
+  "Look up a node and all its correspondences": {
+    "en": "Look up a node and all its correspondences",
+    "pt": "Busque um nó e todas as suas correspondências"
+  },
+  "Node ID (e.g. path:1, sphere:Kether, tarotArkAnnu:The Magician)": {
+    "en": "Node ID (e.g. path:1, sphere:Kether, tarotArkAnnu:The Magician)",
+    "pt": "ID do nó (ex.: path:1, sphere:Kether, tarotArkAnnu:The Magician)"
+  },
+  "Filter related nodes by type (e.g. hebrewLetter, planet, tarotArkAnnu)": {
+    "en": "Filter related nodes by type (e.g. hebrewLetter, planet, tarotArkAnnu)",
+    "pt": "Filtre os nós relacionados por tipo (ex.: hebrewLetter, planet, tarotArkAnnu)"
+  },
+  "Traversal depth (default: 1)": {
+    "en": "Traversal depth (default: 1)",
+    "pt": "Profundidade da busca, 1 por padrão"
+  },
+  "Find tree nodes by ID, name, or type": {
+    "en": "Find tree nodes by ID, name, or type",
+    "pt": "Busque nós por ID, nome ou tipo"
+  },
+  "Search string matched against node IDs and names": {
+    "en": "Search string matched against node IDs and names",
+    "pt": "Texto a buscar nos IDs e nomes dos nós"
+  },
+  "Filter matches by node type (e.g. sphere, tarotArkAnnu, planet)": {
+    "en": "Filter matches by node type (e.g. sphere, tarotArkAnnu, planet)",
+    "pt": "Filtre os resultados por tipo de nó (ex.: sphere, tarotArkAnnu, planet)"
+  },
+  "Maximum matches to return (default: 20)": {
+    "en": "Maximum matches to return (default: 20)",
+    "pt": "Limite de resultados, 20 por padrão"
+  },
+  "List all node types and their counts": {
+    "en": "List all node types and their counts",
+    "pt": "Liste todos os tipos de nós e suas contagens"
+  },
+  "Return the canonical Tree of Life layout coordinates for overlays and rendering": {
+    "en": "Return the canonical Tree of Life layout coordinates for overlays and rendering",
+    "pt": "Retorne as coordenadas canônicas da árvore da vida para sobreposições e renderização"
+  },
+  "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah": {
+    "en": "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah",
+    "pt": "Sistema da árvore: kaabalah, hermetic-qabalah, lurianic-kabbalah"
+  },
+  "Coordinate space: percentages, viewBoxUnits, or both": {
+    "en": "Coordinate space: percentages, viewBoxUnits, or both",
+    "pt": "Espaço de coordenadas: percentages, viewBoxUnits ou both"
+  },
+  "Return activation-aware render model geometry instead of the basic layout": {
+    "en": "Return activation-aware render model geometry instead of the basic layout",
+    "pt": "Retorne a geometria com ativações no lugar da disposição básica"
+  },
+  "Path to activation JSON array or object with an activations array": {
+    "en": "Path to activation JSON array or object with an activations array",
+    "pt": "Caminho para um arquivo JSON de ativações ou objeto com uma lista activations"
+  },
+  "Render-model palette metadata: \"color\" or \"monochrome\"": {
+    "en": "Render-model palette metadata: \"color\" or \"monochrome\"",
+    "pt": "Paleta do modelo: \"color\" ou \"monochrome\""
+  },
+  "Render-model Daath layer: \"front\" or \"back\"": {
+    "en": "Render-model Daath layer: \"front\" or \"back\"",
+    "pt": "Camada de Daath no modelo: \"front\" ou \"back\""
+  },
+  "Override render-model viewBox width": {
+    "en": "Override render-model viewBox width",
+    "pt": "Defina a largura do viewBox do modelo"
+  },
+  "Override render-model viewBox height": {
+    "en": "Override render-model viewBox height",
+    "pt": "Defina a altura do viewBox do modelo"
+  },
+  "Override render-model viewBox min-x": {
+    "en": "Override render-model viewBox min-x",
+    "pt": "Defina o min-x do viewBox do modelo"
+  },
+  "Override render-model viewBox min-y": {
+    "en": "Override render-model viewBox min-y",
+    "pt": "Defina o min-y do viewBox do modelo"
+  },
+  "Return the structural Tree of Life topology, paths, and named routes": {
+    "en": "Return the structural Tree of Life topology, paths, and named routes",
+    "pt": "Retorne a topologia estrutural da árvore da vida, os caminhos e as rotas nomeadas"
+  },
+  "Route filter: all, lightning, or serpent": {
+    "en": "Route filter: all, lightning, or serpent",
+    "pt": "Filtre a rota: all, lightning ou serpent"
+  },
+  "Generate a structural Tree of Life SVG from the canonical library renderer": {
+    "en": "Generate a structural Tree of Life SVG from the canonical library renderer",
+    "pt": "Gere um SVG estrutural da árvore da vida pelo renderizador canônico"
+  },
+  "SVG width attribute (e.g. 1110mm, 800, 100%)": {
+    "en": "SVG width attribute (e.g. 1110mm, 800, 100%)",
+    "pt": "Atributo de largura do SVG (ex.: 1110mm, 800, 100%)"
+  },
+  "SVG height attribute (e.g. 2220mm, 600, 100%)": {
+    "en": "SVG height attribute (e.g. 2220mm, 600, 100%)",
+    "pt": "Atributo de altura do SVG (ex.: 2220mm, 600, 100%)"
+  },
+  "Background fill color, or \"transparent\"": {
+    "en": "Background fill color, or \"transparent\"",
+    "pt": "Cor do fundo ou \"transparent\""
+  },
+  "Palette: \"color\" or \"monochrome\"": {
+    "en": "Palette: \"color\" or \"monochrome\"",
+    "pt": "Paleta: \"color\" ou \"monochrome\""
+  },
+  "Render Daath in front of or behind the paths: \"front\" or \"back\"": {
+    "en": "Render Daath in front of or behind the paths: \"front\" or \"back\"",
+    "pt": "Posicione Daath à frente ou atrás dos caminhos: \"front\" ou \"back\""
+  },
+  "Write the SVG to a file instead of stdout": {
+    "en": "Write the SVG to a file instead of stdout",
+    "pt": "Grave o SVG em um arquivo no lugar de stdout"
+  },
+  "Override SVG viewBox width": {
+    "en": "Override SVG viewBox width",
+    "pt": "Defina a largura do viewBox do SVG"
+  },
+  "Override SVG viewBox height": {
+    "en": "Override SVG viewBox height",
+    "pt": "Defina a altura do viewBox do SVG"
+  },
+  "Override SVG viewBox min-x": {
+    "en": "Override SVG viewBox min-x",
+    "pt": "Defina o min-x do viewBox do SVG"
+  },
+  "Override SVG viewBox min-y": {
+    "en": "Override SVG viewBox min-y",
+    "pt": "Defina o min-y do viewBox do SVG"
+  },
+  "Render a lightweight ASCII Tree of Life preview from the canonical layout": {
+    "en": "Render a lightweight ASCII Tree of Life preview from the canonical layout",
+    "pt": "Renderize uma prévia ASCII simples da árvore da vida pela disposição canônica"
+  },
+  "ASCII canvas width in characters (minimum 21)": {
+    "en": "ASCII canvas width in characters (minimum 21)",
+    "pt": "Largura em caracteres da área ASCII, mínimo 21"
+  },
+  "ASCII canvas height in lines (minimum 11)": {
+    "en": "ASCII canvas height in lines (minimum 11)",
+    "pt": "Altura em linhas da área ASCII, mínimo 11"
+  },
+  "Calculate birth chart using Swiss Ephemeris": {
+    "en": "Calculate birth chart using Swiss Ephemeris",
+    "pt": "Calcule o mapa natal com Swiss Ephemeris"
+  },
+  "Birth time in HH:MM format (default: 12:00)": {
+    "en": "Birth time in HH:MM format (default: 12:00)",
+    "pt": "Hora de nascimento em HH:MM, 12:00 por padrão"
+  },
+  "Latitude (-90 to 90)": {
+    "en": "Latitude (-90 to 90)",
+    "pt": "Latitude, de -90 a 90"
+  },
+  "Longitude (-180 to 180)": {
+    "en": "Longitude (-180 to 180)",
+    "pt": "Longitude, de -180 a 180"
+  },
+  "Location string for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)": {
+    "en": "Location string for geocoding (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)",
+    "pt": "Local para geocodificação; exige GOOGLE_MAPS_API_KEY ou KAABALAH_GOOGLE_MAPS_API_KEY"
+  },
+  "House system: placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius": {
+    "en": "House system: placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius",
+    "pt": "Sistema de casas: placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius"
+  },
+  "IANA timezone string (e.g. America/New_York). Auto-resolved from coordinates if omitted": {
+    "en": "IANA timezone string (e.g. America/New_York). Auto-resolved from coordinates if omitted",
+    "pt": "Fuso horário IANA (ex.: America/New_York); inferido das coordenadas se omitido"
+  },
+  "Maximum orb in degrees to include in the returned aspects array": {
+    "en": "Maximum orb in degrees to include in the returned aspects array",
+    "pt": "Orbe máximo em graus nos aspectos retornados"
+  },
+  "Comma-separated aspect names, or 'major' for conjunction,sextile,square,trine,opposition": {
+    "en": "Comma-separated aspect names, or 'major' for conjunction,sextile,square,trine,opposition",
+    "pt": "Nomes de aspectos separados por vírgulas, ou 'major' para conjunction,sextile,square,trine,opposition"
+  },
+  "Override the Swiss Ephemeris WASM runtime path": {
+    "en": "Override the Swiss Ephemeris WASM runtime path",
+    "pt": "Defina o caminho do runtime WASM de Swiss Ephemeris"
+  },
+  "Override the ephemeris data directory path": {
+    "en": "Override the ephemeris data directory path",
+    "pt": "Defina o caminho do diretório de efemérides"
+  },
+  "Render a birth chart as an astrology wheel SVG": {
+    "en": "Render a birth chart as an astrology wheel SVG",
+    "pt": "Renderize um mapa natal como roda astrológica em SVG"
+  },
+  "Maximum orb in degrees to include in rendered aspect lines": {
+    "en": "Maximum orb in degrees to include in rendered aspect lines",
+    "pt": "Orbe máximo em graus nas linhas de aspectos renderizadas"
+  },
+  "SVG width attribute (e.g. 600, 100%, 180mm)": {
+    "en": "SVG width attribute (e.g. 600, 100%, 180mm)",
+    "pt": "Atributo de largura do SVG (ex.: 600, 100%, 180mm)"
+  },
+  "SVG height attribute (e.g. 600, 100%, 180mm)": {
+    "en": "SVG height attribute (e.g. 600, 100%, 180mm)",
+    "pt": "Atributo de altura do SVG (ex.: 600, 100%, 180mm)"
+  },
+  "Palette: \"default\" or \"monochrome\"": {
+    "en": "Palette: \"default\" or \"monochrome\"",
+    "pt": "Paleta: \"default\" ou \"monochrome\""
+  },
+  "Accessible SVG title and aria-label": {
+    "en": "Accessible SVG title and aria-label",
+    "pt": "Título acessível e aria-label do SVG"
+  },
+  "Override wheel padding in viewBox units": {
+    "en": "Override wheel padding in viewBox units",
+    "pt": "Defina o espaçamento interno da roda em unidades de viewBox"
+  },
+  "Comma-separated planet/point names to omit from points and aspect lines": {
+    "en": "Comma-separated planet/point names to omit from points and aspect lines",
+    "pt": "Planetas e pontos a omitir dos pontos e aspectos, separados por vírgulas"
+  },
+  "Hide zodiac segments, glyphs, and ticks": {
+    "en": "Hide zodiac segments, glyphs, and ticks",
+    "pt": "Oculte segmentos, símbolos e marcas do zodíaco"
+  },
+  "Hide house cusps, labels, and angle markers": {
+    "en": "Hide house cusps, labels, and angle markers",
+    "pt": "Oculte cúspides, rótulos e marcadores dos ângulos"
+  },
+  "Hide birth planets, nodes, and vertex": {
+    "en": "Hide birth planets, nodes, and vertex",
+    "pt": "Oculte planetas natais, nodos e vértice"
+  },
+  "Hide aspect lines": {
+    "en": "Hide aspect lines",
+    "pt": "Oculte as linhas de aspectos"
+  },
+  "Calculate synastry (cross-chart aspects) between two birth charts": {
+    "en": "Calculate synastry (cross-chart aspects) between two birth charts",
+    "pt": "Calcule a sinastria, os aspectos entre dois mapas natais"
+  },
+  "House system for both charts": {
+    "en": "House system for both charts",
+    "pt": "Sistema de casas para os dois mapas"
+  },
+  "Default timezone for both charts when omitted in chartA/chartB": {
+    "en": "Default timezone for both charts when omitted in chartA/chartB",
+    "pt": "Fuso horário padrão quando omitido em chartA ou chartB"
+  },
+  "Maximum orb in degrees to include in the returned aspect arrays": {
+    "en": "Maximum orb in degrees to include in the returned aspect arrays",
+    "pt": "Orbe máximo em graus nas listas de aspectos retornadas"
+  },
+  "Calculate midpoint composite chart from two birth charts": {
+    "en": "Calculate midpoint composite chart from two birth charts",
+    "pt": "Calcule o mapa composto pelo ponto médio de dois mapas natais"
+  },
+  "Calculate transit aspects to a natal chart": {
+    "en": "Calculate transit aspects to a natal chart",
+    "pt": "Calcule os aspectos de trânsito para um mapa natal"
+  },
+  "Natal birth date in YYYY-MM-DD format": {
+    "en": "Natal birth date in YYYY-MM-DD format",
+    "pt": "Data natal no formato YYYY-MM-DD"
+  },
+  "Natal birth time in HH:MM format (default: 12:00)": {
+    "en": "Natal birth time in HH:MM format (default: 12:00)",
+    "pt": "Hora natal em HH:MM, 12:00 por padrão"
+  },
+  "Natal latitude (-90 to 90)": {
+    "en": "Natal latitude (-90 to 90)",
+    "pt": "Latitude natal, de -90 a 90"
+  },
+  "Natal longitude (-180 to 180)": {
+    "en": "Natal longitude (-180 to 180)",
+    "pt": "Longitude natal, de -180 a 180"
+  },
+  "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY)": {
+    "en": "Natal location for geocoding (requires GOOGLE_MAPS_API_KEY)",
+    "pt": "Local natal para geocodificação; exige GOOGLE_MAPS_API_KEY"
+  },
+  "House system": {
+    "en": "House system",
+    "pt": "Sistema de casas"
+  },
+  "Natal IANA timezone (auto-resolved if omitted)": {
+    "en": "Natal IANA timezone (auto-resolved if omitted)",
+    "pt": "Fuso horário IANA natal, inferido se omitido"
+  },
+  "Transit date YYYY-MM-DD (default: today)": {
+    "en": "Transit date YYYY-MM-DD (default: today)",
+    "pt": "Data do trânsito em YYYY-MM-DD, hoje por padrão"
+  },
+  "Transit time HH:MM (default: 12:00)": {
+    "en": "Transit time HH:MM (default: 12:00)",
+    "pt": "Hora do trânsito em HH:MM, 12:00 por padrão"
+  },
+  "Transit location latitude (default: natal lat)": {
+    "en": "Transit location latitude (default: natal lat)",
+    "pt": "Latitude do trânsito, latitude natal por padrão"
+  },
+  "Transit location longitude (default: natal lon)": {
+    "en": "Transit location longitude (default: natal lon)",
+    "pt": "Longitude do trânsito, longitude natal por padrão"
+  },
+  "Transit IANA timezone (default: natal timezone)": {
+    "en": "Transit IANA timezone (default: natal timezone)",
+    "pt": "Fuso horário IANA do trânsito, fuso natal por padrão"
+  },
+  "Maximum orb in degrees to include": {
+    "en": "Maximum orb in degrees to include",
+    "pt": "Orbe máximo em graus"
+  },
+  "Alias for --aspects": {
+    "en": "Alias for --aspects",
+    "pt": "Alias de --aspects"
+  },
+  "Comma-separated transit planet names to include": {
+    "en": "Comma-separated transit planet names to include",
+    "pt": "Planetas de trânsito a incluir, separados por vírgulas"
+  },
+  "Comma-separated natal planet/point names to include": {
+    "en": "Comma-separated natal planet/point names to include",
+    "pt": "Planetas e pontos natais a incluir, separados por vírgulas"
+  },
+  "Range start date YYYY-MM-DD (enables date range mode)": {
+    "en": "Range start date YYYY-MM-DD (enables date range mode)",
+    "pt": "Data inicial em YYYY-MM-DD; ativa o modo de intervalo"
+  },
+  "Range end date YYYY-MM-DD (requires --from)": {
+    "en": "Range end date YYYY-MM-DD (requires --from)",
+    "pt": "Data final em YYYY-MM-DD; exige --from"
+  },
+  "Step size in days for range scan (default: 1)": {
+    "en": "Step size in days for range scan (default: 1)",
+    "pt": "Passo em dias na busca do intervalo, 1 por padrão"
+  },
+  "Calculate Solar Return chart for a given year": {
+    "en": "Calculate Solar Return chart for a given year",
+    "pt": "Calcule a revolução solar para um ano"
+  },
+  "House system for natal chart": {
+    "en": "House system for natal chart",
+    "pt": "Sistema de casas do mapa natal"
+  },
+  "Solar return year (default: current year)": {
+    "en": "Solar return year (default: current year)",
+    "pt": "Ano da revolução solar, ano atual por padrão"
+  },
+  "Solar return location latitude (default: natal lat)": {
+    "en": "Solar return location latitude (default: natal lat)",
+    "pt": "Latitude da revolução solar, latitude natal por padrão"
+  },
+  "Solar return location longitude (default: natal lon)": {
+    "en": "Solar return location longitude (default: natal lon)",
+    "pt": "Longitude da revolução solar, longitude natal por padrão"
+  },
+  "Solar return location for geocoding": {
+    "en": "Solar return location for geocoding",
+    "pt": "Local da revolução solar para geocodificação"
+  },
+  "House system for solar return chart (default: natal house system)": {
+    "en": "House system for solar return chart (default: natal house system)",
+    "pt": "Sistema de casas da revolução solar, sistema natal por padrão"
+  },
+  "Maximum orb in degrees to include in natal and solar return aspect arrays": {
+    "en": "Maximum orb in degrees to include in natal and solar return aspect arrays",
+    "pt": "Orbe máximo em graus nos aspectos natais e da revolução solar"
+  },
+  "Calculate annual profection for a given year": {
+    "en": "Calculate annual profection for a given year",
+    "pt": "Calcule a profecção anual para um ano"
+  },
+  "Target year (default: current year)": {
+    "en": "Target year (default: current year)",
+    "pt": "Ano desejado, ano atual por padrão"
+  },
+  "Calculate monthly profections for a given year": {
+    "en": "Calculate monthly profections for a given year",
+    "pt": "Calcule as profecções mensais para um ano"
+  },
+  "Calculate firdaria planetary periods": {
+    "en": "Calculate firdaria planetary periods",
+    "pt": "Calcule os períodos planetários da firdaria"
+  },
+  "Override sect: 'diurnal' or 'nocturnal' (default: auto-detect from chart)": {
+    "en": "Override sect: 'diurnal' or 'nocturnal' (default: auto-detect from chart)",
+    "pt": "Defina a seita: 'diurnal' ou 'nocturnal'; inferida do mapa por padrão"
+  },
+  "Target date YYYY-MM-DD (default: today)": {
+    "en": "Target date YYYY-MM-DD (default: today)",
+    "pt": "Data desejada em YYYY-MM-DD, hoje por padrão"
+  },
+  "Look up the decan (face) for a zodiacal longitude": {
+    "en": "Look up the decan (face) for a zodiacal longitude",
+    "pt": "Busque o decanato de uma longitude zodiacal"
+  },
+  "Ecliptic longitude in degrees (0-360)": {
+    "en": "Ecliptic longitude in degrees (0-360)",
+    "pt": "Longitude eclíptica em graus, de 0 a 360"
+  },
+  "Look up the dodecatemoria (12th part) for a zodiacal longitude": {
+    "en": "Look up the dodecatemoria (12th part) for a zodiacal longitude",
+    "pt": "Busque a dodecatemoria, a décima segunda parte de uma longitude zodiacal"
+  },
+  "Generate Astro*Carto*Graphy map (MC/IC/AC/DC lines for all planets)": {
+    "en": "Generate Astro*Carto*Graphy map (MC/IC/AC/DC lines for all planets)",
+    "pt": "Gere um mapa de astrocartografia com linhas MC, IC, AC e DC para todos os planetas"
+  },
+  "Degrees between latitude samples for AC/DC lines (default: 1)": {
+    "en": "Degrees between latitude samples for AC/DC lines (default: 1)",
+    "pt": "Intervalo em graus entre amostras de latitude das linhas AC e DC, 1 por padrão"
+  },
+  "Maximum latitude to sweep (default: 66.5)": {
+    "en": "Maximum latitude to sweep (default: 66.5)",
+    "pt": "Latitude máxima da busca, 66.5 por padrão"
+  },
+  "House system (default: placidus)": {
+    "en": "House system (default: placidus)",
+    "pt": "Sistema de casas, placidus por padrão"
+  },
+  "Query a location for nearby astrocartography planetary lines and parans": {
+    "en": "Query a location for nearby astrocartography planetary lines and parans",
+    "pt": "Busque linhas planetárias de astrocartografia e parans próximos de um local"
+  },
+  "Query latitude (-90 to 90)": {
+    "en": "Query latitude (-90 to 90)",
+    "pt": "Latitude da consulta, de -90 a 90"
+  },
+  "Query longitude (-180 to 180)": {
+    "en": "Query longitude (-180 to 180)",
+    "pt": "Longitude da consulta, de -180 a 180"
+  },
+  "Maximum distance in degrees to consider a line active (default: 2)": {
+    "en": "Maximum distance in degrees to consider a line active (default: 2)",
+    "pt": "Distância máxima em graus para considerar uma linha ativa, 2 por padrão"
+  },
+  "Paran crossing orb in degrees (default: 1)": {
+    "en": "Paran crossing orb in degrees (default: 1)",
+    "pt": "Orbe dos cruzamentos de parans em graus, 1 por padrão"
+  },
+  "Show help message": {
+    "en": "Show help message",
+    "pt": "Mostre a mensagem de ajuda"
+  },
+  "Command to show help for": {
+    "en": "Command to show help for",
+    "pt": "Comando para o qual mostrar ajuda"
+  },
+  "GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY is required for --location. Set it or use --lat/--lon directly.": {
+    "en": "GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY is required for --location. Set it or use --lat/--lon directly.",
+    "pt": "GOOGLE_MAPS_API_KEY ou KAABALAH_GOOGLE_MAPS_API_KEY é obrigatório para --location. Defina a chave ou use --lat/--lon diretamente."
+  },
+  "Geocoding request failed: {0}": {
+    "en": "Geocoding request failed: {0}",
+    "pt": "Falha na solicitação de geocodificação: {0}"
+  },
+  "Failed to parse geocoding response: {0}": {
+    "en": "Failed to parse geocoding response: {0}",
+    "pt": "Falha ao ler a resposta de geocodificação: {0}"
+  },
+  "Geocoding failed for \"{0}\": {1}": {
+    "en": "Geocoding failed for \"{0}\": {1}",
+    "pt": "Falha na geocodificação de \"{0}\": {1}"
+  },
+  "No results found for \"{0}\".": {
+    "en": "No results found for \"{0}\".",
+    "pt": "Nenhum resultado para \"{0}\"."
+  },
+  "--max-orb must be a non-negative number, got \"{0}\".": {
+    "en": "--max-orb must be a non-negative number, got \"{0}\".",
+    "pt": "--max-orb deve ser um número não negativo, recebido \"{0}\"."
+  },
+  "\"wheelOptions\" must be a JSON object when provided.": {
+    "en": "\"wheelOptions\" must be a JSON object when provided.",
+    "pt": "\"wheelOptions\" deve ser um objeto JSON quando fornecido."
+  },
+  "Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the astrology wheel SVG viewBox.": {
+    "en": "Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the astrology wheel SVG viewBox.",
+    "pt": "Forneça \"--viewbox-width\" e \"--viewbox-height\" para definir o viewBox da roda astrológica em SVG."
+  },
+  "Astrology wheel viewBox width and height must be positive numbers.": {
+    "en": "Astrology wheel viewBox width and height must be positive numbers.",
+    "pt": "A largura e a altura do viewBox da roda astrológica devem ser positivas."
+  },
+  "Unknown astrology wheel palette \"{0}\". Expected \"default\" or \"monochrome\".": {
+    "en": "Unknown astrology wheel palette \"{0}\". Expected \"default\" or \"monochrome\".",
+    "pt": "Paleta da roda astrológica desconhecida: \"{0}\". Use \"default\" ou \"monochrome\"."
+  },
+  "--padding must be a non-negative number.": {
+    "en": "--padding must be a non-negative number.",
+    "pt": "--padding deve ser um número não negativo."
+  },
+  "Usage: kaabalah {0} --input-json=- < payload.json": {
+    "en": "Usage: kaabalah {0} --input-json=- < payload.json",
+    "pt": "Uso: kaabalah {0} --input-json=- < payload.json"
+  },
+  "Failed to initialize Swiss Ephemeris: {0}": {
+    "en": "Failed to initialize Swiss Ephemeris: {0}",
+    "pt": "Falha ao iniciar Swiss Ephemeris: {0}"
+  },
+  "Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>": {
+    "en": "Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>",
+    "pt": "Uso: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"
+  },
+  "Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY).": {
+    "en": "Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY).",
+    "pt": "Informe o local. Use --lat=<N> --lon=<N> ou --location=\"Cidade, País\"; essa opção exige GOOGLE_MAPS_API_KEY ou KAABALAH_GOOGLE_MAPS_API_KEY."
+  },
+  "\nSynastry Chart\n": {
+    "en": "\nSynastry Chart\n",
+    "pt": "\nMapa de sinastria\n"
+  },
+  "  Chart A: {0} {1} ({2}, {3})": {
+    "en": "  Chart A: {0} {1} ({2}, {3})",
+    "pt": "  Mapa A: {0} {1} ({2}, {3})"
+  },
+  "  Chart B: {0} {1} ({2}, {3})": {
+    "en": "  Chart B: {0} {1} ({2}, {3})",
+    "pt": "  Mapa B: {0} {1} ({2}, {3})"
+  },
+  "\n  Cross-chart Aspects ({0}):\n": {
+    "en": "\n  Cross-chart Aspects ({0}):\n",
+    "pt": "\n  Aspectos entre mapas ({0}):\n"
+  },
+  "    {0} {1} {2} orb {3}°": {
+    "en": "    {0} {1} {2} orb {3}°",
+    "pt": "    {0} {1} {2} orbe {3}°"
+  },
+  "\nComposite Chart (Midpoint Method)\n": {
+    "en": "\nComposite Chart (Midpoint Method)\n",
+    "pt": "\nMapa composto pelo ponto médio\n"
+  },
+  "\n  Composite Planets:": {
+    "en": "\n  Composite Planets:",
+    "pt": "\n  Planetas compostos:"
+  },
+  "    {0} {1} {2} House {3}": {
+    "en": "    {0} {1} {2} House {3}",
+    "pt": "    {0} {1} {2} Casa {3}"
+  },
+  "\n  Composite House Cusps:": {
+    "en": "\n  Composite House Cusps:",
+    "pt": "\n  Cúspides das casas compostas:"
+  },
+  "    House {0}:  {1} {2}": {
+    "en": "    House {0}:  {1} {2}",
+    "pt": "    Casa {0}:  {1} {2}"
+  },
+  "\n  Composite Aspects ({0}):\n": {
+    "en": "\n  Composite Aspects ({0}):\n",
+    "pt": "\n  Aspectos compostos ({0}):\n"
+  },
+  "--step-days must be a positive number, got \"{0}\".": {
+    "en": "--step-days must be a positive number, got \"{0}\".",
+    "pt": "--step-days deve ser positivo, recebido \"{0}\"."
+  },
+  "--to is required when --from is specified.": {
+    "en": "--to is required when --from is specified.",
+    "pt": "Forneça --to ao usar --from."
+  },
+  "\nTransit Range: {0} to {1}": {
+    "en": "\nTransit Range: {0} to {1}",
+    "pt": "\nIntervalo de trânsitos: {0} a {1}"
+  },
+  "  Natal: {0} {1} ({2}, {3})\n": {
+    "en": "  Natal: {0} {1} ({2}, {3})\n",
+    "pt": "  Natal: {0} {1} ({2}, {3})\n"
+  },
+  "  No aspect perfections found in range.\n": {
+    "en": "  No aspect perfections found in range.\n",
+    "pt": "  Nenhum aspecto exato encontrado no intervalo.\n"
+  },
+  "  Aspect Perfections ({0}):\n": {
+    "en": "  Aspect Perfections ({0}):\n",
+    "pt": "  Aspectos exatos ({0}):\n"
+  },
+  "    {0}  {1}{2} {3} {4} orb {5}°  [{6}]": {
+    "en": "    {0}  {1}{2} {3} {4} orb {5}°  [{6}]",
+    "pt": "    {0}  {1}{2} {3} {4} orbe {5}°  [{6}]"
+  },
+  "\nTransit Chart for {0} {1}": {
+    "en": "\nTransit Chart for {0} {1}",
+    "pt": "\nMapa de trânsitos para {0} {1}"
+  },
+  "  Transit Planets (in natal houses):": {
+    "en": "  Transit Planets (in natal houses):",
+    "pt": "  Planetas em trânsito nas casas natais:"
+  },
+  "    {0}{1} {2} {3} Natal House {4}": {
+    "en": "    {0}{1} {2} {3} Natal House {4}",
+    "pt": "    {0}{1} {2} {3} Casa natal {4}"
+  },
+  "\n  Transit-to-Natal Aspects ({0}):\n": {
+    "en": "\n  Transit-to-Natal Aspects ({0}):\n",
+    "pt": "\n  Aspectos de trânsito para o mapa natal ({0}):\n"
+  },
+  "    {0}{1} {2} {3} orb {4}°  {5}  [{6}]": {
+    "en": "    {0}{1} {2} {3} orb {4}°  {5}  [{6}]",
+    "pt": "    {0}{1} {2} {3} orbe {4}°  {5}  [{6}]"
+  },
+  "\nSolar Return {0}\n": {
+    "en": "\nSolar Return {0}\n",
+    "pt": "\nRevolução solar {0}\n"
+  },
+  "  Natal: {0} {1} ({2}, {3})": {
+    "en": "  Natal: {0} {1} ({2}, {3})",
+    "pt": "  Natal: {0} {1} ({2}, {3})"
+  },
+  "  Natal Sun: {0} {1} ({2}°)": {
+    "en": "  Natal Sun: {0} {1} ({2}°)",
+    "pt": "  Sol natal: {0} {1} ({2}°)"
+  },
+  "  Exact Return: {0}": {
+    "en": "  Exact Return: {0}",
+    "pt": "  Retorno exato: {0}"
+  },
+  "  SR Sun: {0} {1} ({2}°)": {
+    "en": "  SR Sun: {0} {1} ({2}°)",
+    "pt": "  Sol da revolução solar: {0} {1} ({2}°)"
+  },
+  "\n  Solar Return Planets:": {
+    "en": "\n  Solar Return Planets:",
+    "pt": "\n  Planetas da revolução solar:"
+  },
+  "\n  Solar Return Houses:": {
+    "en": "\n  Solar Return Houses:",
+    "pt": "\n  Casas da revolução solar:"
+  },
+  "    Ascendant:  {0} {1}": {
+    "en": "    Ascendant:  {0} {1}",
+    "pt": "    Ascendente:  {0} {1}"
+  },
+  "    Midheaven:  {0} {1}": {
+    "en": "    Midheaven:  {0} {1}",
+    "pt": "    Meio do céu: {0} {1}"
+  },
+  "    Descendant: {0} {1}": {
+    "en": "    Descendant: {0} {1}",
+    "pt": "    Descendente: {0} {1}"
+  },
+  "    IC:         {0} {1}": {
+    "en": "    IC:         {0} {1}",
+    "pt": "    IC:         {0} {1}"
+  },
+  "\n  House Cusps:": {
+    "en": "\n  House Cusps:",
+    "pt": "\n  Cúspides das casas:"
+  },
+  "\n  Solar Return Aspects ({0}):\n": {
+    "en": "\n  Solar Return Aspects ({0}):\n",
+    "pt": "\n  Aspectos da revolução solar ({0}):\n"
+  },
+  "\nAnnual Profection ({0})\n": {
+    "en": "\nAnnual Profection ({0})\n",
+    "pt": "\nProfecção anual ({0})\n"
+  },
+  "  Age: {0}": {
+    "en": "  Age: {0}",
+    "pt": "  Idade: {0}"
+  },
+  "  Profected House: {0}": {
+    "en": "  Profected House: {0}",
+    "pt": "  Casa profectada: {0}"
+  },
+  "  Sign: {0}": {
+    "en": "  Sign: {0}",
+    "pt": "  Signo: {0}"
+  },
+  "  Time Lord: {0}": {
+    "en": "  Time Lord: {0}",
+    "pt": "  Senhor do tempo: {0}"
+  },
+  "\nMonthly Profections ({0})\n": {
+    "en": "\nMonthly Profections ({0})\n",
+    "pt": "\nProfecções mensais ({0})\n"
+  },
+  "  Annual: House {0}, {1} ({2}), Age {3}\n": {
+    "en": "  Annual: House {0}, {1} ({2}), Age {3}\n",
+    "pt": "  Anual: Casa {0}, {1} ({2}), idade {3}\n"
+  },
+  "    Month {0}:  {1}  {2} {3}": {
+    "en": "    Month {0}:  {1}  {2} {3}",
+    "pt": "    Mês {0}:  {1}  {2} {3}"
+  },
+  "Invalid sect value: \"{0}\". Use \"diurnal\" or \"nocturnal\".": {
+    "en": "Invalid sect value: \"{0}\". Use \"diurnal\" or \"nocturnal\".",
+    "pt": "Seita inválida: \"{0}\". Use \"diurnal\" ou \"nocturnal\"."
+  },
+  "\nFirdaria ({0})\n": {
+    "en": "\nFirdaria ({0})\n",
+    "pt": "\nFirdaria ({0})\n"
+  },
+  "  Current Major: {0} ({1}y)": {
+    "en": "  Current Major: {0} ({1}y)",
+    "pt": "  Período maior atual: {0} ({1} anos)"
+  },
+  "  Current Sub: {0}": {
+    "en": "  Current Sub: {0}",
+    "pt": "  Subperíodo atual: {0}"
+  },
+  "\n  All Periods:\n": {
+    "en": "\n  All Periods:\n",
+    "pt": "\n  Todos os períodos:\n"
+  },
+  "    {0} {1} to {2} ({3}y){4}": {
+    "en": "    {0} {1} to {2} ({3}y){4}",
+    "pt": "    {0} {1} a {2} ({3} anos){4}"
+  },
+  "Usage: kaabalah astrology:decans <longitude>": {
+    "en": "Usage: kaabalah astrology:decans <longitude>",
+    "pt": "Uso: kaabalah astrology:decans <longitude>"
+  },
+  "Invalid longitude: \"{0}\". Must be a number.": {
+    "en": "Invalid longitude: \"{0}\". Must be a number.",
+    "pt": "Longitude inválida: \"{0}\". Informe um número."
+  },
+  "\nDecan for {0}°\n": {
+    "en": "\nDecan for {0}°\n",
+    "pt": "\nDecanato para {0}°\n"
+  },
+  "  Decan: {0}": {
+    "en": "  Decan: {0}",
+    "pt": "  Decanato: {0}"
+  },
+  "  Ruler: {0}": {
+    "en": "  Ruler: {0}",
+    "pt": "  Regente: {0}"
+  },
+  "  Tarot: {0}": {
+    "en": "  Tarot: {0}",
+    "pt": "  Tarot: {0}"
+  },
+  "  Range: {0}° – {1}°": {
+    "en": "  Range: {0}° – {1}°",
+    "pt": "  Intervalo: {0}° a {1}°"
+  },
+  "Usage: kaabalah astrology:dodecatemoria <longitude>": {
+    "en": "Usage: kaabalah astrology:dodecatemoria <longitude>",
+    "pt": "Uso: kaabalah astrology:dodecatemoria <longitude>"
+  },
+  "\nDodecatemoria for {0}°\n": {
+    "en": "\nDodecatemoria for {0}°\n",
+    "pt": "\nDodecatemoria para {0}°\n"
+  },
+  "  Original Sign: {0} ({1}°)": {
+    "en": "  Original Sign: {0} ({1}°)",
+    "pt": "  Signo original: {0} ({1}°)"
+  },
+  "  12th Part: {0} (index {1})": {
+    "en": "  12th Part: {0} (index {1})",
+    "pt": "  Décima segunda parte: {0} (índice {1})"
+  },
+  "Wrote {0} ({1} bytes)": {
+    "en": "Wrote {0} ({1} bytes)",
+    "pt": "Arquivo gravado: {0} ({1} bytes)"
+  },
+  "\nBirth Chart: {0} {1}\n": {
+    "en": "\nBirth Chart: {0} {1}\n",
+    "pt": "\nMapa natal: {0} {1}\n"
+  },
+  "  Location: {0}": {
+    "en": "  Location: {0}",
+    "pt": "  Local: {0}"
+  },
+  "  Coordinates: {0}, {1}": {
+    "en": "  Coordinates: {0}, {1}",
+    "pt": "  Coordenadas: {0}, {1}"
+  },
+  "  House System: {0}": {
+    "en": "  House System: {0}",
+    "pt": "  Sistema de casas: {0}"
+  },
+  "  UTC Date: {0}": {
+    "en": "  UTC Date: {0}",
+    "pt": "  Data UTC: {0}"
+  },
+  "\n  Planets:": {
+    "en": "\n  Planets:",
+    "pt": "\n  Planetas:"
+  },
+  "\n  Houses:": {
+    "en": "\n  Houses:",
+    "pt": "\n  Casas:"
+  },
+  "\n  Nodes:": {
+    "en": "\n  Nodes:",
+    "pt": "\n  Nodos:"
+  },
+  "\nAstro*Carto*Graphy Map\n": {
+    "en": "\nAstro*Carto*Graphy Map\n",
+    "pt": "\nMapa de astrocartografia\n"
+  },
+  "\n  Meridian Lines (MC/IC):\n": {
+    "en": "\n  Meridian Lines (MC/IC):\n",
+    "pt": "\n  Linhas meridianas MC e IC:\n"
+  },
+  "\n  Horizon Lines (AC/DC): {0} lines with {1} total points": {
+    "en": "\n  Horizon Lines (AC/DC): {0} lines with {1} total points",
+    "pt": "\n  Linhas de horizonte AC e DC: {0} linhas com {1} pontos no total"
+  },
+  "Query location is required. Use --query-lat=<N> --query-lon=<N>.": {
+    "en": "Query location is required. Use --query-lat=<N> --query-lon=<N>.",
+    "pt": "Informe o local da consulta. Use --query-lat=<N> --query-lon=<N>."
+  },
+  "query-lat must be between -90 and 90, got {0}.": {
+    "en": "query-lat must be between -90 and 90, got {0}.",
+    "pt": "query-lat deve estar entre -90 e 90, recebido {0}."
+  },
+  "query-lon must be between -180 and 180, got {0}.": {
+    "en": "query-lon must be between -180 and 180, got {0}.",
+    "pt": "query-lon deve estar entre -180 e 180, recebido {0}."
+  },
+  "\nAstrocartography Location Query\n": {
+    "en": "\nAstrocartography Location Query\n",
+    "pt": "\nConsulta de local na astrocartografia\n"
+  },
+  "  Query: ({0}, {1})  Orb: {2}°": {
+    "en": "  Query: ({0}, {1})  Orb: {2}°",
+    "pt": "  Consulta: ({0}, {1})  Orbe: {2}°"
+  },
+  "\n  Active Lines (within {0}° orb):\n": {
+    "en": "\n  Active Lines (within {0}° orb):\n",
+    "pt": "\n  Linhas ativas, dentro do orbe de {0}°:\n"
+  },
+  "    {0} {1} {2}° away  (line at {3}{4}°)": {
+    "en": "    {0} {1} {2}° away  (line at {3}{4}°)",
+    "pt": "    {0} {1} a {2}°  (linha em {3}{4}°)"
+  },
+  "\n  No active lines within {0}° orb.": {
+    "en": "\n  No active lines within {0}° orb.",
+    "pt": "\n  Nenhuma linha ativa dentro do orbe de {0}°."
+  },
+  "\n  All Lines (sorted by proximity):\n": {
+    "en": "\n  All Lines (sorted by proximity):\n",
+    "pt": "\n  Todas as linhas, por proximidade:\n"
+  },
+  "    ... and {0} more": {
+    "en": "    ... and {0} more",
+    "pt": "    ... e mais {0}"
+  },
+  "\n  Parans at latitude {0}°:\n": {
+    "en": "\n  Parans at latitude {0}°:\n",
+    "pt": "\n  Parans na latitude {0}°:\n"
+  },
+  "Text exceeds maximum length of {0} characters.": {
+    "en": "Text exceeds maximum length of {0} characters.",
+    "pt": "O texto excede o limite de {0} caracteres."
+  },
+  "\nGematria: \"{0}\"\n": {
+    "en": "\nGematria: \"{0}\"\n",
+    "pt": "\nGematria: \"{0}\"\n"
+  },
+  "  Vowels:     {0} -> [{1}] = {2}": {
+    "en": "  Vowels:     {0} -> [{1}] = {2}",
+    "pt": "  Vogais:     {0} -> [{1}] = {2}"
+  },
+  "  Consonants: {0} -> [{1}] = {2}": {
+    "en": "  Consonants: {0} -> [{1}] = {2}",
+    "pt": "  Consoantes: {0} -> [{1}] = {2}"
+  },
+  "  Synthesis:  {0} -> [{1}] = {2}": {
+    "en": "  Synthesis:  {0} -> [{1}] = {2}",
+    "pt": "  Síntese:    {0} -> [{1}] = {2}"
+  },
+  "\n  Letters:": {
+    "en": "\n  Letters:",
+    "pt": "\n  Letras:"
+  },
+  "    {0}  value={1}{2}": {
+    "en": "    {0}  value={1}{2}",
+    "pt": "    {0}  valor={1}{2}"
+  },
+  "\n  Missing values: {0}": {
+    "en": "\n  Missing values: {0}",
+    "pt": "\n  Valores ausentes: {0}"
+  },
+  "\n  Vowel %:     {0}%": {
+    "en": "\n  Vowel %:     {0}%",
+    "pt": "\n  Vogais %:     {0}%"
+  },
+  "  Consonant %: {0}%": {
+    "en": "  Consonant %: {0}%",
+    "pt": "  Consoantes %: {0}%"
+  },
+  "Invalid target number: \"{0}\"": {
+    "en": "Invalid target number: \"{0}\"",
+    "pt": "Número desejado inválido: \"{0}\""
+  },
+  "\nReverse Gematria: target synthesis = {0}\n": {
+    "en": "\nReverse Gematria: target synthesis = {0}\n",
+    "pt": "\nGematria reversa: síntese desejada = {0}\n"
+  },
+  "  Found: {0} combinations{1}\n": {
+    "en": "  Found: {0} combinations{1}\n",
+    "pt": "  Encontradas: {0} combinações{1}\n"
+  },
+  "  {0} vowels={1} consonants={2} synthesis={3}": {
+    "en": "  {0} vowels={1} consonants={2} synthesis={3}",
+    "pt": "  {0} vogais={1} consoantes={2} síntese={3}"
+  },
+  "USAGE": {
+    "en": "USAGE",
+    "pt": "USO"
+  },
+  "  kaabalah <command> [options]": {
+    "en": "  kaabalah <command> [options]",
+    "pt": "  kaabalah <command> [options]"
+  },
+  "COMMANDS": {
+    "en": "COMMANDS",
+    "pt": "COMANDOS"
+  },
+  "GLOBAL OPTIONS": {
+    "en": "GLOBAL OPTIONS",
+    "pt": "OPÇÕES GLOBAIS"
+  },
+  "  -h, --help": {
+    "en": "  -h, --help",
+    "pt": "  -h, --help"
+  },
+  "  -V, --version": {
+    "en": "  -V, --version",
+    "pt": "  -V, --version"
+  },
+  "Print version": {
+    "en": "Print version",
+    "pt": "Mostre a versão"
+  },
+  "  Note: use --input-json=- with a pipe or < file.json to avoid shell-specific JSON quoting.": {
+    "en": "  Note: use --input-json=- with a pipe or < file.json to avoid shell-specific JSON quoting.",
+    "pt": "  Nota: use --input-json=- com um pipe ou < file.json para evitar problemas com aspas JSON no shell."
+  },
+  "  Config: ./kaabalah.config.json or $XDG_CONFIG_HOME/kaabalah/config.json": {
+    "en": "  Config: ./kaabalah.config.json or $XDG_CONFIG_HOME/kaabalah/config.json",
+    "pt": "  Configuração: ./kaabalah.config.json ou $XDG_CONFIG_HOME/kaabalah/config.json"
+  },
+  "  Debug: use --debug or DEBUG=kaabalah:*; use --trace for stack traces on unexpected fatal errors.": {
+    "en": "  Debug: use --debug or DEBUG=kaabalah:*; use --trace for stack traces on unexpected fatal errors.",
+    "pt": "  Depuração: use --debug ou DEBUG=kaabalah:*; use --trace para rastros de pilha em erros fatais inesperados."
+  },
+  "EXAMPLES": {
+    "en": "EXAMPLES",
+    "pt": "EXEMPLOS"
+  },
+  "  kaabalah gematria --json --compact < phrase.txt": {
+    "en": "  kaabalah gematria --json --compact < phrase.txt",
+    "pt": "  kaabalah gematria --json --compact < phrase.txt"
+  },
+  "  kaabalah numerology 1990-01-15": {
+    "en": "  kaabalah numerology 1990-01-15",
+    "pt": "  kaabalah numerology 1990-01-15"
+  },
+  "  kaabalah numerology --input-json=- --json --compact < numerology.json": {
+    "en": "  kaabalah numerology --input-json=- --json --compact < numerology.json",
+    "pt": "  kaabalah numerology --input-json=- --json --compact < numerology.json"
+  },
+  "  kaabalah numerology:cycles 1990-01-15 John": {
+    "en": "  kaabalah numerology:cycles 1990-01-15 John",
+    "pt": "  kaabalah numerology:cycles 1990-01-15 John"
+  },
+  "  kaabalah tarot 5 --inverted": {
+    "en": "  kaabalah tarot 5 --inverted",
+    "pt": "  kaabalah tarot 5 --inverted"
+  },
+  "  kaabalah tarot:card 7": {
+    "en": "  kaabalah tarot:card 7",
+    "pt": "  kaabalah tarot:card 7"
+  },
+  "  kaabalah gematria:reverse 22": {
+    "en": "  kaabalah gematria:reverse 22",
+    "pt": "  kaabalah gematria:reverse 22"
+  },
+  "  kaabalah ifa 1990-01-15": {
+    "en": "  kaabalah ifa 1990-01-15",
+    "pt": "  kaabalah ifa 1990-01-15"
+  },
+  "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006": {
+    "en": "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006",
+    "pt": "  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006"
+  },
+  "  kaabalah astrology:synastry --input-json=- --json --compact < synastry.json": {
+    "en": "  kaabalah astrology:synastry --input-json=- --json --compact < synastry.json",
+    "pt": "  kaabalah astrology:synastry --input-json=- --json --compact < synastry.json"
+  },
+  "  kaabalah help --json": {
+    "en": "  kaabalah help --json",
+    "pt": "  kaabalah help --json"
+  },
+  "Unknown command: \"{0}\".": {
+    "en": "Unknown command: \"{0}\".",
+    "pt": "Comando desconhecido: \"{0}\"."
+  },
+  "\nkaabalah v{0}\n": {
+    "en": "\nkaabalah v{0}\n",
+    "pt": "\nkaabalah v{0}\n"
+  },
+  "  kaabalah {0} {1}\n": {
+    "en": "  kaabalah {0} {1}\n",
+    "pt": "  kaabalah {0} {1}\n"
+  },
+  "ARGUMENTS": {
+    "en": "ARGUMENTS",
+    "pt": "ARGUMENTOS"
+  },
+  "FLAGS": {
+    "en": "FLAGS",
+    "pt": "OPÇÕES"
+  },
+  "Expected an integer": {
+    "en": "Expected an integer",
+    "pt": "Informe um número inteiro"
+  },
+  "iching:cast takes no positional arguments": {
+    "en": "iching:cast takes no positional arguments",
+    "pt": "iching:cast não aceita argumentos posicionais"
+  },
+  "Expected one hexagram number": {
+    "en": "Expected one hexagram number",
+    "pt": "Informe apenas um número de hexagrama"
+  },
+  "Usage: kaabalah iching:hexagram <n>": {
+    "en": "Usage: kaabalah iching:hexagram <n>",
+    "pt": "Uso: kaabalah iching:hexagram <n>"
+  },
+  "Use --lines or --hexagram with --moving": {
+    "en": "Use --lines or --hexagram with --moving",
+    "pt": "Use --lines ou --hexagram com --moving"
+  },
+  "Use either lines or hexagramNumber with movingLines, not both": {
+    "en": "Use either lines or hexagramNumber with movingLines, not both",
+    "pt": "Use lines ou hexagramNumber com movingLines, não os dois"
+  },
+  "Usage: kaabalah iching:reading --lines 879777 (or --hexagram 25 --moving 4)": {
+    "en": "Usage: kaabalah iching:reading --lines 879777 (or --hexagram 25 --moving 4)",
+    "pt": "Uso: kaabalah iching:reading --lines 879777 (ou --hexagram 25 --moving 4)"
+  },
+  "lines must be a string or a six-number array": {
+    "en": "lines must be a string or a six-number array",
+    "pt": "lines deve ser uma string ou uma lista de seis números"
+  },
+  "Moving lines must be an array of positions or a comma-separated list, e.g. --moving 2,4": {
+    "en": "Moving lines must be an array of positions or a comma-separated list, e.g. --moving 2,4",
+    "pt": "As linhas móveis devem ser uma lista de posições ou números separados por vírgulas, como --moving 2,4"
+  },
+  "\nOdu: {0}\n": {
+    "en": "\nOdu: {0}\n",
+    "pt": "\nOdu: {0}\n"
+  },
+  "  Left:   [{0}]": {
+    "en": "  Left:   [{0}]",
+    "pt": "  Esquerda: [{0}]"
+  },
+  "  Right:  [{0}]": {
+    "en": "  Right:  [{0}]",
+    "pt": "  Direita:  [{0}]"
+  },
+  "  North:  {0}": {
+    "en": "  North:  {0}",
+    "pt": "  Norte:   {0}"
+  },
+  "  South:  {0}": {
+    "en": "  South:  {0}",
+    "pt": "  Sul:     {0}"
+  },
+  "  East:   {0}": {
+    "en": "  East:   {0}",
+    "pt": "  Leste:   {0}"
+  },
+  "  West:   {0}": {
+    "en": "  West:   {0}",
+    "pt": "  Oeste:   {0}"
+  },
+  "  Center: {0}": {
+    "en": "  Center: {0}",
+    "pt": "  Centro:  {0}"
+  },
+  "\nNumerology Profile: {0}\n": {
+    "en": "\nNumerology Profile: {0}\n",
+    "pt": "\nPerfil numerológico: {0}\n"
+  },
+  "  Kaabalistic Life Path: {0}": {
+    "en": "  Kaabalistic Life Path: {0}",
+    "pt": "  Caminho de vida pela Kaabalah: {0}"
+  },
+  "    Steps: [{0}]": {
+    "en": "    Steps: [{0}]",
+    "pt": "    Etapas: [{0}]"
+  },
+  "    Personal Mythology: [{0}]": {
+    "en": "    Personal Mythology: [{0}]",
+    "pt": "    Mitologia pessoal: [{0}]"
+  },
+  "\n  Straight Across Life Path: {0}": {
+    "en": "\n  Straight Across Life Path: {0}",
+    "pt": "\n  Caminho de vida pela soma direta: {0}"
+  },
+  "    Day energy:   {0}": {
+    "en": "    Day energy:   {0}",
+    "pt": "    Energia do dia: {0}"
+  },
+  "    Month energy: {0}": {
+    "en": "    Month energy: {0}",
+    "pt": "    Energia do mês: {0}"
+  },
+  "    Year energy:  {0}": {
+    "en": "    Year energy:  {0}",
+    "pt": "    Energia do ano: {0}"
+  },
+  "\n  Challenges:": {
+    "en": "\n  Challenges:",
+    "pt": "\n  Desafios:"
+  },
+  "    Main:  {0}": {
+    "en": "    Main:  {0}",
+    "pt": "    Principal: {0}"
+  },
+  "    Sub 1: {0}": {
+    "en": "    Sub 1: {0}",
+    "pt": "    Subdesafio 1: {0}"
+  },
+  "    Sub 2: {0}": {
+    "en": "    Sub 2: {0}",
+    "pt": "    Subdesafio 2: {0}"
+  },
+  "\n  Date Energies:": {
+    "en": "\n  Date Energies:",
+    "pt": "\n  Energias da data:"
+  },
+  "    Day:   {0}": {
+    "en": "    Day:   {0}",
+    "pt": "    Dia: {0}"
+  },
+  "    Month: {0}": {
+    "en": "    Month: {0}",
+    "pt": "    Mês: {0}"
+  },
+  "    Year:  {0}": {
+    "en": "    Year:  {0}",
+    "pt": "    Ano: {0}"
+  },
+  "\n  Personal Year: {0}": {
+    "en": "\n  Personal Year: {0}",
+    "pt": "\n  Ano pessoal: {0}"
+  },
+  "\n  Fibonacci Cycle (age {0}):": {
+    "en": "\n  Fibonacci Cycle (age {0}):",
+    "pt": "\n  Ciclo de Fibonacci, idade {0}:"
+  },
+  "    Cycle {0}: {1}": {
+    "en": "    Cycle {0}: {1}",
+    "pt": "    Ciclo {0}: {1}"
+  },
+  "\nKaabalistic Life Path: {0}\n": {
+    "en": "\nKaabalistic Life Path: {0}\n",
+    "pt": "\nCaminho de vida pela Kaabalah: {0}\n"
+  },
+  "  Life Path: {0}": {
+    "en": "  Life Path: {0}",
+    "pt": "  Caminho de vida: {0}"
+  },
+  "  Steps: [{0}]": {
+    "en": "  Steps: [{0}]",
+    "pt": "  Etapas: [{0}]"
+  },
+  "  Personal Mythology: [{0}]": {
+    "en": "  Personal Mythology: [{0}]",
+    "pt": "  Mitologia pessoal: [{0}]"
+  },
+  "  Parts: day={0} month={1} year1={2} year2={3}": {
+    "en": "  Parts: day={0} month={1} year1={2} year2={3}",
+    "pt": "  Partes: dia={0} mês={1} ano1={2} ano2={3}"
+  },
+  "\nPersonal Cycles: {0} ({1})\n": {
+    "en": "\nPersonal Cycles: {0} ({1})\n",
+    "pt": "\nCiclos pessoais: {0} ({1})\n"
+  },
+  "  Soul Number: {0}": {
+    "en": "  Soul Number: {0}",
+    "pt": "  Número da alma: {0}"
+  },
+  "  Personal Year: {0}": {
+    "en": "  Personal Year: {0}",
+    "pt": "  Ano pessoal: {0}"
+  },
+  "  Current Period: {0}/3": {
+    "en": "  Current Period: {0}/3",
+    "pt": "  Período atual: {0}/3"
+  },
+  "  Current Month: {0}/12": {
+    "en": "  Current Month: {0}/12",
+    "pt": "  Mês atual: {0}/12"
+  },
+  "\n  Periods:": {
+    "en": "\n  Periods:",
+    "pt": "\n  Períodos:"
+  },
+  "    Period {0} (months {1}-{2}): {3}{4}": {
+    "en": "    Period {0} (months {1}-{2}): {3}{4}",
+    "pt": "    Período {0} (meses {1}-{2}): {3}{4}"
+  },
+  "\n  Monthly energies:": {
+    "en": "\n  Monthly energies:",
+    "pt": "\n  Energias mensais:"
+  },
+  "    Month {0}: {1}{2}": {
+    "en": "    Month {0}: {1}{2}",
+    "pt": "    Mês {0}: {1}{2}"
+  },
+  "\nHeptad Cycles: {0}\n": {
+    "en": "\nHeptad Cycles: {0}\n",
+    "pt": "\nCiclos da heptada: {0}\n"
+  },
+  "  Total days since last birthday: {0}": {
+    "en": "  Total days since last birthday: {0}",
+    "pt": "  Dias desde o último aniversário: {0}"
+  },
+  "\n  Age Cycles (current: {0}):": {
+    "en": "\n  Age Cycles (current: {0}):",
+    "pt": "\n  Ciclos de idade, atual {0}:"
+  },
+  "    Cycle {0}: {1}{2}": {
+    "en": "    Cycle {0}: {1}{2}",
+    "pt": "    Ciclo {0}: {1}{2}"
+  },
+  "\n  Yearly Cycles (current: {0}):": {
+    "en": "\n  Yearly Cycles (current: {0}):",
+    "pt": "\n  Ciclos anuais, atual {0}:"
+  },
+  "\n  Monthly Cycles (current: {0}, day {1}):": {
+    "en": "\n  Monthly Cycles (current: {0}, day {1}):",
+    "pt": "\n  Ciclos mensais, atual {0}, dia {1}:"
+  },
+  "\nChallenges: {0}\n": {
+    "en": "\nChallenges: {0}\n",
+    "pt": "\nDesafios: {0}\n"
+  },
+  "  Day:    {0}": {
+    "en": "  Day:    {0}",
+    "pt": "  Dia: {0}"
+  },
+  "  Month:  {0}": {
+    "en": "  Month:  {0}",
+    "pt": "  Mês: {0}"
+  },
+  "  Year:   {0}": {
+    "en": "  Year:   {0}",
+    "pt": "  Ano: {0}"
+  },
+  "  Main:   {0}": {
+    "en": "  Main:   {0}",
+    "pt": "  Principal: {0}"
+  },
+  "  Sub 1:  {0}": {
+    "en": "  Sub 1:  {0}",
+    "pt": "  Subdesafio 1: {0}"
+  },
+  "  Sub 2:  {0}": {
+    "en": "  Sub 2:  {0}",
+    "pt": "  Subdesafio 2: {0}"
+  },
+  "\nFibonacci Cycle: {0} (age {1})\n": {
+    "en": "\nFibonacci Cycle: {0} (age {1})\n",
+    "pt": "\nCiclo de Fibonacci: {0}, idade {1}\n"
+  },
+  "  Cycle {0}: {1}  [{2}]": {
+    "en": "  Cycle {0}: {1}  [{2}]",
+    "pt": "  Ciclo {0}: {1}  [{2}]"
+  },
+  "  Deck name: {0}": {
+    "en": "  Deck name: {0}",
+    "pt": "  Nome no baralho: {0}"
+  },
+  "  Deck meaning: {0}": {
+    "en": "  Deck meaning: {0}",
+    "pt": "  Significado no baralho: {0}"
+  },
+  "  Deck reversed: {0}": {
+    "en": "  Deck reversed: {0}",
+    "pt": "  Significado invertido: {0}"
+  },
+  "  Deck keywords: {0}": {
+    "en": "  Deck keywords: {0}",
+    "pt": "  Palavras-chave no baralho: {0}"
+  },
+  "  Type: {0} | Suit: {1} | Deck: {2}": {
+    "en": "  Type: {0} | Suit: {1} | Deck: {2}",
+    "pt": "  Tipo: {0} | Naipe: {1} | Baralho: {2}"
+  },
+  "  Meaning: {0}": {
+    "en": "  Meaning: {0}",
+    "pt": "  Significado: {0}"
+  },
+  "  Egyptian: {0}": {
+    "en": "  Egyptian: {0}",
+    "pt": "  Egípcio: {0}"
+  },
+  "  Papus: {0}": {
+    "en": "  Papus: {0}",
+    "pt": "  Papus: {0}"
+  },
+  "  Image: {0}": {
+    "en": "  Image: {0}",
+    "pt": "  Imagem: {0}"
+  },
+  "Unknown deck \"{0}\". Valid: {1}.": {
+    "en": "Unknown deck \"{0}\". Valid: {1}.",
+    "pt": "Baralho desconhecido: \"{0}\". Válidos: {1}."
+  },
+  "Unknown tarot include field \"{0}\". Valid: papus, egyptian.": {
+    "en": "Unknown tarot include field \"{0}\". Valid: papus, egyptian.",
+    "pt": "Campo de tarot desconhecido para inclusão: \"{0}\". Válidos: papus, egyptian."
+  },
+  "No tarot profile found for \"{0}\".": {
+    "en": "No tarot profile found for \"{0}\".",
+    "pt": "Nenhum perfil de tarot para \"{0}\"."
+  },
+  "--method=conscious requires --indices=<n1,n2,...>.": {
+    "en": "--method=conscious requires --indices=<n1,n2,...>.",
+    "pt": "--method=conscious exige --indices=<n1,n2,...>."
+  },
+  "--indices must contain positive 1-based integers.": {
+    "en": "--indices must contain positive 1-based integers.",
+    "pt": "--indices deve conter números inteiros positivos a partir de 1."
+  },
+  "Card count must be between 1 and 78.": {
+    "en": "Card count must be between 1 and 78.",
+    "pt": "A quantidade de cartas deve estar entre 1 e 78."
+  },
+  "\nTarot Draw: {0} card{1}\n": {
+    "en": "\nTarot Draw: {0} card{1}\n",
+    "pt": "\nTiragem de tarot: {0} carta{1}\n"
+  },
+  "       Egyptian: {0}": {
+    "en": "       Egyptian: {0}",
+    "pt": "       Egípcio: {0}"
+  },
+  "       Papus: {0}": {
+    "en": "       Papus: {0}",
+    "pt": "       Papus: {0}"
+  },
+  "No card found for \"{0}\". Use a number (1-78) or card name.": {
+    "en": "No card found for \"{0}\". Use a number (1-78) or card name.",
+    "pt": "Nenhuma carta para \"{0}\". Use um número de 1 a 78 ou o nome da carta."
+  },
+  "Tarot spread context.inquirerGender must be \"man\" or \"woman\".": {
+    "en": "Tarot spread context.inquirerGender must be \"man\" or \"woman\".",
+    "pt": "context.inquirerGender da tiragem deve ser \"man\" ou \"woman\"."
+  },
+  "Spread: {0}": {
+    "en": "Spread: {0}",
+    "pt": "Tiragem: {0}"
+  },
+  "Inquirer: {0}": {
+    "en": "Inquirer: {0}",
+    "pt": "Consulente: {0}"
+  },
+  "Unknown tarot spread: {0}.": {
+    "en": "Unknown tarot spread: {0}.",
+    "pt": "Tiragem de tarot desconhecida: {0}."
+  },
+  "Spread \"{0}\" requires --inquirer-gender (man|woman).": {
+    "en": "Spread \"{0}\" requires --inquirer-gender (man|woman).",
+    "pt": "A tiragem \"{0}\" exige --inquirer-gender, com man ou woman."
+  },
+  "Tarot spread method must be \"random\" or \"conscious\".": {
+    "en": "Tarot spread method must be \"random\" or \"conscious\".",
+    "pt": "O método da tiragem deve ser \"random\" ou \"conscious\"."
+  },
+  "\nTarot spreads\n": {
+    "en": "\nTarot spreads\n",
+    "pt": "\nTiragens de tarot\n"
+  },
+  "  {0} {1} ({2} slots){3}": {
+    "en": "  {0} {1} ({2} slots){3}",
+    "pt": "  {0} {1} ({2} posições){3}"
+  },
+  "  {0}. {1} ({2}-{3}) | allowed: {4}": {
+    "en": "  {0}. {1} ({2}-{3}) | allowed: {4}",
+    "pt": "  {0}. {1} ({2}-{3}) | permitido: {4}"
+  },
+  "No card found for \"{0}\".": {
+    "en": "No card found for \"{0}\".",
+    "pt": "Nenhuma carta para \"{0}\"."
+  },
+  "Unknown tree system \"{0}\". Expected one of: {1}.": {
+    "en": "Unknown tree system \"{0}\". Expected one of: {1}.",
+    "pt": "Sistema de árvore desconhecido: \"{0}\". Use um destes: {1}."
+  },
+  "Unknown layout units \"{0}\". Expected one of: percentages, viewBoxUnits, both.": {
+    "en": "Unknown layout units \"{0}\". Expected one of: percentages, viewBoxUnits, both.",
+    "pt": "Unidade de disposição desconhecida: \"{0}\". Use percentages, viewBoxUnits ou both."
+  },
+  "Unknown topology route \"{0}\". Expected one of: lightning, serpent, all.": {
+    "en": "Unknown topology route \"{0}\". Expected one of: lightning, serpent, all.",
+    "pt": "Rota de topologia desconhecida: \"{0}\". Use lightning, serpent ou all."
+  },
+  "Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the SVG viewBox.": {
+    "en": "Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the SVG viewBox.",
+    "pt": "Forneça \"--viewbox-width\" e \"--viewbox-height\" para definir o viewBox do SVG."
+  },
+  "Could not read activations file \"{0}\": {1}.": {
+    "en": "Could not read activations file \"{0}\": {1}.",
+    "pt": "Não foi possível ler o arquivo de ativações \"{0}\": {1}."
+  },
+  "Invalid JSON in activations file \"{0}\".": {
+    "en": "Invalid JSON in activations file \"{0}\".",
+    "pt": "JSON inválido no arquivo de ativações \"{0}\"."
+  },
+  "{0} must be a JSON object.": {
+    "en": "{0} must be a JSON object.",
+    "pt": "{0} deve ser um objeto JSON."
+  },
+  "{0}.targetId must be a non-empty string.": {
+    "en": "{0}.targetId must be a non-empty string.",
+    "pt": "{0}.targetId deve ser uma string não vazia."
+  },
+  "{0}.targetType must be \"sphere\" or \"path\".": {
+    "en": "{0}.targetType must be \"sphere\" or \"path\".",
+    "pt": "{0}.targetType deve ser \"sphere\" ou \"path\"."
+  },
+  "{0}.targetId \"{1}\" is not a known sphere target.": {
+    "en": "{0}.targetId \"{1}\" is not a known sphere target.",
+    "pt": "{0}.targetId \"{1}\" não é uma esfera conhecida."
+  },
+  "{0}.targetId \"{1}\" is not a known path target.": {
+    "en": "{0}.targetId \"{1}\" is not a known path target.",
+    "pt": "{0}.targetId \"{1}\" não é um caminho conhecido."
+  },
+  "{0}.count must be a non-negative number.": {
+    "en": "{0}.count must be a non-negative number.",
+    "pt": "{0}.count deve ser um número não negativo."
+  },
+  "{0}.total must be a non-negative number.": {
+    "en": "{0}.total must be a non-negative number.",
+    "pt": "{0}.total deve ser um número não negativo."
+  },
+  "{0}.strength must be a number between 0 and 1.": {
+    "en": "{0}.strength must be a number between 0 and 1.",
+    "pt": "{0}.strength deve ser um número entre 0 e 1."
+  },
+  "{0}.state must be active, hovered, selected, or inactive.": {
+    "en": "{0}.state must be active, hovered, selected, or inactive.",
+    "pt": "{0}.state deve ser active, hovered, selected ou inactive."
+  },
+  "{0}.color must be a string when provided.": {
+    "en": "{0}.color must be a string when provided.",
+    "pt": "{0}.color deve ser uma string quando fornecida."
+  },
+  "Activations file must be a JSON array or an object with an \"activations\" array.": {
+    "en": "Activations file must be a JSON array or an object with an \"activations\" array.",
+    "pt": "O arquivo de ativações deve ser uma lista JSON ou um objeto com uma lista \"activations\"."
+  },
+  "Unknown SVG palette \"{0}\". Expected \"color\" or \"monochrome\".": {
+    "en": "Unknown SVG palette \"{0}\". Expected \"color\" or \"monochrome\".",
+    "pt": "Paleta SVG desconhecida: \"{0}\". Use \"color\" ou \"monochrome\"."
+  },
+  "Unknown Daath layer \"{0}\". Expected \"front\" or \"back\".": {
+    "en": "Unknown Daath layer \"{0}\". Expected \"front\" or \"back\".",
+    "pt": "Camada de Daath desconhecida: \"{0}\". Use \"front\" ou \"back\"."
+  },
+  "\nTree of Life ({0})\n": {
+    "en": "\nTree of Life ({0})\n",
+    "pt": "\nÁrvore da vida ({0})\n"
+  },
+  "  Total nodes: {0}": {
+    "en": "  Total nodes: {0}",
+    "pt": "  Total de nós: {0}"
+  },
+  "  Total correspondences: {0}": {
+    "en": "  Total correspondences: {0}",
+    "pt": "  Total de correspondências: {0}"
+  },
+  "Node \"{0}\" not found. Use \"kaabalah tree:types --json\" to see valid node types, or \"kaabalah tree --json --fields=nodes\" to list all node IDs.": {
+    "en": "Node \"{0}\" not found. Use \"kaabalah tree:types --json\" to see valid node types, or \"kaabalah tree --json --fields=nodes\" to list all node IDs.",
+    "pt": "Nó \"{0}\" não encontrado. Use \"kaabalah tree:types --json\" para ver os tipos válidos ou \"kaabalah tree --json --fields=nodes\" para listar os IDs."
+  },
+  "\n  Related types: {0}": {
+    "en": "\n  Related types: {0}",
+    "pt": "\n  Tipos relacionados: {0}"
+  },
+  "\nNode types ({0}):\n": {
+    "en": "\nNode types ({0}):\n",
+    "pt": "\nTipos de nós ({0}):\n"
+  },
+  "Usage: kaabalah tree:find <query> [--type=<nodeType>] or kaabalah tree:find --type=<nodeType>": {
+    "en": "Usage: kaabalah tree:find <query> [--type=<nodeType>] or kaabalah tree:find --type=<nodeType>",
+    "pt": "Uso: kaabalah tree:find <query> [--type=<nodeType>] ou kaabalah tree:find --type=<nodeType>"
+  },
+  "\nTree search\n": {
+    "en": "\nTree search\n",
+    "pt": "\nBusca na árvore\n"
+  },
+  "  Query: {0}": {
+    "en": "  Query: {0}",
+    "pt": "  Consulta: {0}"
+  },
+  "  Type: {0}": {
+    "en": "  Type: {0}",
+    "pt": "  Tipo: {0}"
+  },
+  "  Matches: {0}\n": {
+    "en": "  Matches: {0}\n",
+    "pt": "  Resultados: {0}\n"
+  },
+  "\n  ... and {0} more": {
+    "en": "\n  ... and {0} more",
+    "pt": "\n  ... e mais {0}"
+  },
+  "\nTree render model ({0})\n": {
+    "en": "\nTree render model ({0})\n",
+    "pt": "\nModelo de renderização da árvore ({0})\n"
+  },
+  "  ViewBox: {0} {1} {2} {3}": {
+    "en": "  ViewBox: {0} {1} {2} {3}",
+    "pt": "  ViewBox: {0} {1} {2} {3}"
+  },
+  "  Layers: {0}": {
+    "en": "  Layers: {0}",
+    "pt": "  Camadas: {0}"
+  },
+  "  Spheres: {0}": {
+    "en": "  Spheres: {0}",
+    "pt": "  Esferas: {0}"
+  },
+  "  Paths: {0}": {
+    "en": "  Paths: {0}",
+    "pt": "  Caminhos: {0}"
+  },
+  "  Activations: {0}\n": {
+    "en": "  Activations: {0}\n",
+    "pt": "  Ativações: {0}\n"
+  },
+  "\nTree layout ({0})\n": {
+    "en": "\nTree layout ({0})\n",
+    "pt": "\nDisposição da árvore ({0})\n"
+  },
+  "  Units: {0}": {
+    "en": "  Units: {0}",
+    "pt": "  Unidades: {0}"
+  },
+  "  ViewBox: {0} {1} {2} {3}\n": {
+    "en": "  ViewBox: {0} {1} {2} {3}\n",
+    "pt": "  ViewBox: {0} {1} {2} {3}\n"
+  },
+  "\nTree topology ({0})\n": {
+    "en": "\nTree topology ({0})\n",
+    "pt": "\nTopologia da árvore ({0})\n"
+  },
+  "    Missing direct paths:": {
+    "en": "    Missing direct paths:",
+    "pt": "    Caminhos diretos ausentes:"
+  },
+  "ASCII grid too small. Use at least \"--columns=21 --rows=11\".": {
+    "en": "ASCII grid too small. Use at least \"--columns=21 --rows=11\".",
+    "pt": "Área ASCII pequena demais. Use no mínimo \"--columns=21 --rows=11\"."
+  },
+  "Unknown option \"--{0}\" for command \"{1}\". Run \"kaabalah help {2}\" for command usage.": {
+    "en": "Unknown option \"--{0}\" for command \"{1}\". Run \"kaabalah help {2}\" for command usage.",
+    "pt": "Opção \"--{0}\" desconhecida para o comando \"{1}\". Execute \"kaabalah help {2}\" para ver o uso."
+  },
+  "INVALID_ARGUMENT": {
+    "en": "INVALID_ARGUMENT",
+    "pt": "INVALID_ARGUMENT"
+  },
+  "{0}: \"{1}\" must be a boolean.": {
+    "en": "{0}: \"{1}\" must be a boolean.",
+    "pt": "{0}: \"{1}\" deve ser um booleano."
+  },
+  "{0}: \"{1}\" must be a non-empty string.": {
+    "en": "{0}: \"{1}\" must be a non-empty string.",
+    "pt": "{0}: \"{1}\" deve ser uma string não vazia."
+  },
+  "{0}: unknown config key \"{1}\". Supported keys: {2}.": {
+    "en": "{0}: unknown config key \"{1}\". Supported keys: {2}.",
+    "pt": "{0}: chave de configuração desconhecida \"{1}\". Chaves permitidas: {2}."
+  },
+  "INVALID_JSON": {
+    "en": "INVALID_JSON",
+    "pt": "INVALID_JSON"
+  },
+  "{0} config at \"{1}\" contains invalid JSON: {2}": {
+    "en": "{0} config at \"{1}\" contains invalid JSON: {2}",
+    "pt": "A configuração {0} em \"{1}\" contém JSON inválido: {2}"
+  },
+  "{0} config at \"{1}\" must be a JSON object.": {
+    "en": "{0} config at \"{1}\" must be a JSON object.",
+    "pt": "A configuração {0} em \"{1}\" deve ser um objeto JSON."
+  },
+  "Environment variable {0} must be a boolean (true/false, 1/0, yes/no, on/off).": {
+    "en": "Environment variable {0} must be a boolean (true/false, 1/0, yes/no, on/off).",
+    "pt": "A variável de ambiente {0} deve ser booleana: true/false, 1/0, yes/no, on/off."
+  },
+  "{0} must be a JSON object": {
+    "en": "{0} must be a JSON object",
+    "pt": "{0} deve ser um objeto JSON"
+  },
+  "Invalid JSON on stdin for --input-json=-.": {
+    "en": "Invalid JSON on stdin for --input-json=-.",
+    "pt": "JSON inválido em stdin para --input-json=-."
+  },
+  "Invalid JSON in --input-json: {0}": {
+    "en": "Invalid JSON in --input-json: {0}",
+    "pt": "JSON inválido em --input-json: {0}"
+  },
+  "--input-json=- requires a JSON object on stdin.": {
+    "en": "--input-json=- requires a JSON object on stdin.",
+    "pt": "--input-json=- exige um objeto JSON em stdin."
+  },
+  "stdin payload exceeds maximum size of {0} bytes.": {
+    "en": "stdin payload exceeds maximum size of {0} bytes.",
+    "pt": "O conteúdo de stdin excede o limite de {0} bytes."
+  },
+  "Invalid date: \"{0}\". Use YYYY-MM-DD format.": {
+    "en": "Invalid date: \"{0}\". Use YYYY-MM-DD format.",
+    "pt": "Data inválida: \"{0}\". Use o formato YYYY-MM-DD."
+  },
+  "Year must be between 0001 and 9999, got {0}.": {
+    "en": "Year must be between 0001 and 9999, got {0}.",
+    "pt": "O ano deve estar entre 0001 e 9999, recebido {0}."
+  },
+  "{0}: \"date\" is required (YYYY-MM-DD).": {
+    "en": "{0}: \"date\" is required (YYYY-MM-DD).",
+    "pt": "{0}: \"date\" é obrigatório, no formato YYYY-MM-DD."
+  },
+  "Language for display text (en or pt-BR)": {
+    "en": "Language for display text (en or pt-BR)",
+    "pt": "Idioma dos textos de exibição: en ou pt-BR"
+  },
+  "Run \"kaabalah help\" for usage.": {
+    "en": "Run \"kaabalah help\" for usage.",
+    "pt": "Execute \"kaabalah help\" para ver o uso."
+  },
+  "Run \"kaabalah help <command>\" for command usage.": {
+    "en": "Run \"kaabalah help <command>\" for command usage.",
+    "pt": "Execute \"kaabalah help <command>\" para ver o uso do comando."
+  },
+  "CLI for esoteric calculations": {
+    "en": "CLI for esoteric calculations",
+    "pt": "CLI para cálculos esotéricos"
+  },
+  " (default: {0})": {
+    "en": " (default: {0})",
+    "pt": " (padrão: {0})"
+  },
+  " (required)": {
+    "en": " (required)",
+    "pt": " (obrigatório)"
+  },
+  " (optional)": {
+    "en": " (optional)",
+    "pt": " (opcional)"
+  },
+  " (inverted)": {
+    "en": " (inverted)",
+    "pt": " (invertida)"
+  },
+  " (current)": {
+    "en": " (current)",
+    "pt": " (atual)"
+  },
+  " (vowel)": {
+    "en": " (vowel)",
+    "pt": " (vogal)"
+  },
+  "unavailable": {
+    "en": "unavailable",
+    "pt": "indisponível"
+  },
+  "(required)": {
+    "en": "(required)",
+    "pt": "(obrigatório)"
+  },
+  "(optional)": {
+    "en": "(optional)",
+    "pt": "(opcional)"
+  },
+  " (INVERTED)": {
+    "en": " (INVERTED)",
+    "pt": " (INVERTIDA)"
+  },
+  "Run \"kaabalah help {0}\" for command usage.": {
+    "en": "Run \"kaabalah help {0}\" for command usage.",
+    "pt": "Execute \"kaabalah help {0}\" para ver o uso do comando."
+  },
+  "Papus Kaabalistic": {
+    "en": "Papus Kaabalistic",
+    "pt": "Papus da Kaabalah"
+  },
+  "Papus Divinatory": {
+    "en": "Papus Divinatory",
+    "pt": "Papus divinatório"
+  },
+  "Mythic": {
+    "en": "Mythic",
+    "pt": "Mitológico"
+  },
+  "Egyptian": {
+    "en": "Egyptian",
+    "pt": "Egípcio"
+  },
+  "Rider Waite": {
+    "en": "Rider Waite",
+    "pt": "Rider Waite"
+  },
+  "Starting geocoding request.": {
+    "en": "Starting geocoding request.",
+    "pt": "Iniciando a solicitação de geocodificação."
+  },
+  "Geocoding response received.": {
+    "en": "Geocoding response received.",
+    "pt": "Resposta de geocodificação recebida."
+  },
+  "Geocoding resolved coordinates.": {
+    "en": "Geocoding resolved coordinates.",
+    "pt": "Coordenadas resolvidas pela geocodificação."
+  },
+  "Initializing Swiss Ephemeris.": {
+    "en": "Initializing Swiss Ephemeris.",
+    "pt": "Iniciando Swiss Ephemeris."
+  },
+  "Swiss Ephemeris initialized.": {
+    "en": "Swiss Ephemeris initialized.",
+    "pt": "Swiss Ephemeris iniciado."
+  },
+  "Parsed {0} inputs.": {
+    "en": "Parsed {0} inputs.",
+    "pt": "Entradas de {0} analisadas."
+  },
+  "Invalid time format: \"{0}\". Use HH:MM format.": {
+    "en": "Invalid time format: \"{0}\". Use HH:MM format.",
+    "pt": "Formato de hora inválido: \"{0}\". Use HH:MM."
+  },
+  "Invalid time: \"{0}\". Hours 0-23, minutes 0-59.": {
+    "en": "Invalid time: \"{0}\". Hours 0-23, minutes 0-59.",
+    "pt": "Hora inválida: \"{0}\". Horas de 0 a 23, minutos de 0 a 59."
+  },
+  "Latitude must be between -90 and 90, got {0}.": {
+    "en": "Latitude must be between -90 and 90, got {0}.",
+    "pt": "A latitude deve estar entre -90 e 90, recebido {0}."
+  },
+  "Longitude must be between -180 and 180, got {0}.": {
+    "en": "Longitude must be between -180 and 180, got {0}.",
+    "pt": "A longitude deve estar entre -180 e 180, recebido {0}."
+  },
+  "Unknown house system: \"{0}\". Valid: {1}": {
+    "en": "Unknown house system: \"{0}\". Valid: {1}",
+    "pt": "Sistema de casas desconhecido: \"{0}\". Válidos: {1}"
+  },
+  "Parsed astrology input.": {
+    "en": "Parsed astrology input.",
+    "pt": "Entrada de astrologia analisada."
+  },
+  "Running astrology:synastry.": {
+    "en": "Running astrology:synastry.",
+    "pt": "Executando astrology:synastry."
+  },
+  "Completed astrology:synastry.": {
+    "en": "Completed astrology:synastry.",
+    "pt": "astrology:synastry concluído."
+  },
+  "Running astrology:composite.": {
+    "en": "Running astrology:composite.",
+    "pt": "Executando astrology:composite."
+  },
+  "Completed astrology:composite.": {
+    "en": "Completed astrology:composite.",
+    "pt": "astrology:composite concluído."
+  },
+  "Running astrology:transits (range mode).": {
+    "en": "Running astrology:transits (range mode).",
+    "pt": "Executando astrology:transits no modo de intervalo."
+  },
+  "Completed astrology:transits (range).": {
+    "en": "Completed astrology:transits (range).",
+    "pt": "astrology:transits no modo de intervalo concluído."
+  },
+  " UTC": {
+    "en": " UTC",
+    "pt": " UTC"
+  },
+  "Invalid transit time format: \"{0}\". Use HH:MM.": {
+    "en": "Invalid transit time format: \"{0}\". Use HH:MM.",
+    "pt": "Formato de hora do trânsito inválido: \"{0}\". Use HH:MM."
+  },
+  "Invalid transit time: \"{0}\". Hours 0-23, minutes 0-59.": {
+    "en": "Invalid transit time: \"{0}\". Hours 0-23, minutes 0-59.",
+    "pt": "Hora do trânsito inválida: \"{0}\". Horas de 0 a 23, minutos de 0 a 59."
+  },
+  "Running astrology:transits.": {
+    "en": "Running astrology:transits.",
+    "pt": "Executando astrology:transits."
+  },
+  "Completed astrology:transits.": {
+    "en": "Completed astrology:transits.",
+    "pt": "astrology:transits concluído."
+  },
+  "applying  ": {
+    "en": "applying  ",
+    "pt": "aplicativo"
+  },
+  "Unknown SR house system: \"{0}\". Valid: {1}": {
+    "en": "Unknown SR house system: \"{0}\". Valid: {1}",
+    "pt": "Sistema de casas da revolução solar desconhecido: \"{0}\". Válidos: {1}"
+  },
+  "Running astrology:solar-return.": {
+    "en": "Running astrology:solar-return.",
+    "pt": "Executando astrology:solar-return."
+  },
+  "Completed astrology:solar-return.": {
+    "en": "Completed astrology:solar-return.",
+    "pt": "astrology:solar-return concluído."
+  },
+  "Running astrology:wheel.": {
+    "en": "Running astrology:wheel.",
+    "pt": "Executando astrology:wheel."
+  },
+  "Running astrology.": {
+    "en": "Running astrology.",
+    "pt": "Executando astrology."
+  },
+  "Completed astrology.": {
+    "en": "Completed astrology.",
+    "pt": "astrology concluído."
+  },
+  " | requires: {0}": {
+    "en": " | requires: {0}",
+    "pt": " | exige: {0}"
+  },
+  "(depth {0})": {
+    "en": "(depth {0})",
+    "pt": "(profundidade {0})"
+  },
+  "Parsed CLI arguments.": {
+    "en": "Parsed CLI arguments.",
+    "pt": "Argumentos do CLI analisados."
+  },
+  "Argument parsing failed.": {
+    "en": "Argument parsing failed.",
+    "pt": "Falha na análise dos argumentos."
+  },
+  "{0} config at \"{1}\"": {
+    "en": "{0} config at \"{1}\"",
+    "pt": "Configuração {0} em \"{1}\""
+  },
+  "Resolved runtime config precedence.": {
+    "en": "Resolved runtime config precedence.",
+    "pt": "Precedência das configurações resolvida."
+  },
+  "Exiting after {0}.": {
+    "en": "Exiting after {0}.",
+    "pt": "Saindo após {0}."
+  },
+  "Unhandled CLI error.": {
+    "en": "Unhandled CLI error.",
+    "pt": "Erro do CLI não tratado."
+  },
+  "Interrupted by {0}.": {
+    "en": "Interrupted by {0}.",
+    "pt": "Interrompido por {0}."
+  },
+  "Cleanup failed.": {
+    "en": "Cleanup failed.",
+    "pt": "Falha na limpeza."
+  },
+  "Received {0}; aborting active work.": {
+    "en": "Received {0}; aborting active work.",
+    "pt": "Recebido {0}; interrompendo o trabalho ativo."
+  },
+  "{0}: Invalid time format \"{1}\". Use HH:MM.": {
+    "en": "{0}: Invalid time format \"{1}\". Use HH:MM.",
+    "pt": "{0}: formato de hora inválido \"{1}\". Use HH:MM."
+  },
+  "{0}: Invalid time \"{1}\". Hours 0-23, minutes 0-59.": {
+    "en": "{0}: Invalid time \"{1}\". Hours 0-23, minutes 0-59.",
+    "pt": "{0}: hora inválida \"{1}\". Horas de 0 a 23, minutos de 0 a 59."
+  },
+  "{0}: \"lat\" and \"lon\" are required.": {
+    "en": "{0}: \"lat\" and \"lon\" are required.",
+    "pt": "{0}: \"lat\" e \"lon\" são obrigatórios."
+  },
+  "{0}: Latitude must be between -90 and 90, got {1}.": {
+    "en": "{0}: Latitude must be between -90 and 90, got {1}.",
+    "pt": "{0}: a latitude deve estar entre -90 e 90, recebido {1}."
+  },
+  "{0}: Longitude must be between -180 and 180, got {1}.": {
+    "en": "{0}: Longitude must be between -180 and 180, got {1}.",
+    "pt": "{0}: a longitude deve estar entre -180 e 180, recebido {1}."
+  },
+  "{0}: Unknown house system \"{1}\". Valid: {2}": {
+    "en": "{0}: Unknown house system \"{1}\". Valid: {2}",
+    "pt": "{0}: sistema de casas desconhecido \"{1}\". Válidos: {2}"
+  },
+  "separating": {
+    "en": "separating",
+    "pt": "separativo"
+  },
+  "applying": {
+    "en": "applying",
+    "pt": "aplicativo"
+  },
+  "Hexagram number must be an integer from 1 to 64": {
+    "en": "Hexagram number must be an integer from 1 to 64",
+    "pt": "O número do hexagrama deve ser um inteiro de 1 a 64"
+  },
+  "Trigram must be a canonical id or three bottom-first binary digits": {
+    "en": "Trigram must be a canonical id or three bottom-first binary digits",
+    "pt": "Informe um ID canônico de trigrama ou três dígitos binários de baixo para cima"
+  },
+  "Binary must contain six bottom-first digits (0 or 1)": {
+    "en": "Binary must contain six bottom-first digits (0 or 1)",
+    "pt": "O binário deve conter seis dígitos, 0 ou 1, de baixo para cima"
+  },
+  "Moving lines must be unique integer positions from 1 to 6": {
+    "en": "Moving lines must be unique integer positions from 1 to 6",
+    "pt": "As linhas móveis devem ser posições inteiras únicas de 1 a 6"
+  },
+  "Cast must contain six values (6, 7, 8, 9), bottom to top": {
+    "en": "Cast must contain six values (6, 7, 8, 9), bottom to top",
+    "pt": "O lançamento deve conter seis valores, 6, 7, 8 ou 9, de baixo para cima"
+  },
+  "movingLines requires a hexagram number": {
+    "en": "movingLines requires a hexagram number",
+    "pt": "movingLines exige um número de hexagrama"
+  },
+  "Unknown five phase": {
+    "en": "Unknown five phase",
+    "pt": "Fase desconhecida"
+  },
+  "Unknown earthly branch": {
+    "en": "Unknown earthly branch",
+    "pt": "Ramo terrestre desconhecido"
+  },
+  "Cannot draw from an empty pool.": {
+    "en": "Cannot draw from an empty pool.",
+    "pt": "Não é possível tirar uma carta de um conjunto vazio."
+  },
+  "Tarot spread RNG must return a finite number.": {
+    "en": "Tarot spread RNG must return a finite number.",
+    "pt": "O gerador aleatório da tiragem deve retornar um número finito."
+  },
+  "Unable to draw a tarot card that satisfies the spread rule.": {
+    "en": "Unable to draw a tarot card that satisfies the spread rule.",
+    "pt": "Não foi possível tirar uma carta que cumpra a regra da tiragem."
+  },
+  "Target year ({0}) is before birth year ({1}).": {
+    "en": "Target year ({0}) is before birth year ({1}).",
+    "pt": "O ano desejado, {0}, é anterior ao ano de nascimento, {1}."
+  },
+  "Setting ephemeris path to: {0}": {
+    "en": "Setting ephemeris path to: {0}",
+    "pt": "Definindo o caminho das efemérides: {0}"
+  },
+  "Setting ephemeris path to: {0} (mounted from {1})": {
+    "en": "Setting ephemeris path to: {0} (mounted from {1})",
+    "pt": "Definindo o caminho das efemérides: {0} (montado de {1})"
+  },
+  "Setting ephemeris path to: {0} (copied from {1})": {
+    "en": "Setting ephemeris path to: {0} (copied from {1})",
+    "pt": "Definindo o caminho das efemérides: {0} (copiado de {1})"
+  }
+}

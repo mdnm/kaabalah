@@ -25,6 +25,7 @@ export interface CommandSchema {
 }
 
 export const GLOBAL_FLAGS: CommandFlag[] = [
+  { name: "language", type: "string", description: "Language for display text (en or pt-BR)" },
   { name: "json", type: "boolean", default: false, description: "Output as JSON (auto-enabled when stdout is not a TTY)" },
   { name: "no-json", type: "boolean", default: false, description: "Force human-readable output even when piped" },
   { name: "compact", type: "boolean", default: false, description: "Minified JSON output (no indentation)" },

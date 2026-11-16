@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { parseArgs as parseNodeArgs } from "node:util";
 
 import { COMMANDS, GLOBAL_FLAGS } from "../contract";
@@ -197,7 +198,7 @@ export function parseArgs(argv: string[]) {
 
     configureQuietRuntime(flags);
     configureDebugRuntime(flags);
-    debugLog("parser", "Parsed CLI arguments.", {
+    debugLog("parser", cliText("Parsed CLI arguments."), {
       argv: describeArgvForDebug(argv),
       positionals: args,
       flags: describeFlagsForDebug(flags),
@@ -207,7 +208,7 @@ export function parseArgs(argv: string[]) {
 
     if (invalidCommandOption) {
       throw new CliParseError(
-        `Unknown option "--${invalidCommandOption}" for command "${args[0]}". Run "kaabalah help ${args[0]}" for command usage.`,
+        cliText("Unknown option \"--{0}\" for command \"{1}\". Run \"kaabalah help {2}\" for command usage.", [invalidCommandOption, args[0], args[0]]),
         flags
       );
     }
@@ -221,7 +222,7 @@ export function parseArgs(argv: string[]) {
     const fallbackFlags = getFallbackFlags(argv);
     configureQuietRuntime(fallbackFlags);
     configureDebugRuntime(fallbackFlags);
-    debugLog("parser", "Argument parsing failed.", {
+    debugLog("parser", cliText("Argument parsing failed."), {
       argv: describeArgvForDebug(argv),
       error: err instanceof Error ? err.message : String(err),
     });

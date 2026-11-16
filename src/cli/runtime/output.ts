@@ -1,3 +1,4 @@
+import { localizeCliJson } from "./content";
 import { getFlagBool, getFlagString } from "./args";
 import type { Flags } from "./types";
 
@@ -36,7 +37,7 @@ function pickFields(obj: unknown, paths: string[]): unknown {
 }
 
 export function outputJson(data: unknown, flags: Flags): void {
-  let output = data;
+  let output = localizeCliJson(data, typeof flags.language === "string" ? flags.language : undefined);
 
   const fieldsStr = getFlagString(flags, "fields");
   if (fieldsStr) {

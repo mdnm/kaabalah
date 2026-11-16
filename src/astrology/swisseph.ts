@@ -557,14 +557,16 @@ export function resolveNodeEphemerisPath(
  * @param options - Optional overrides for asset paths.
  * @param options.ephePath - Path to the directory containing ephemeris data files.
  * @param options.wasmPath - Path to the `swisseph.wasm` file.
+ * @param options.onRuntimeNotice - Optional sink for path setup notices; defaults to stderr.
  */
 export async function getSwissEph(
-  options: { ephePath?: string; wasmPath?: string } = {}
+  options: { ephePath?: string; wasmPath?: string; onRuntimeNotice?: (message: string) => void } = {}
 ): Promise<void> {
   if (swissEph) {
     return;
   }
 
+  const notice = options.onRuntimeNotice ?? emitRuntimeNotice;
   try {
     const isBrowser = typeof window !== "undefined";
     const runtimeAssets = resolveSwissEphRuntimeAssets({
@@ -614,16 +616,16 @@ export async function getSwissEph(
           `Failed to materialize browser ephemeris files at "${epheFsPath}". Missing: ${browserCheck.missingFiles.join(", ")}.`
         );
       }
-      emitRuntimeNotice(`Setting ephemeris path to: ${epheFsPath}`);
+      notice(`Setting ephemeris path to: ${epheFsPath}`);
       instance.setEphemerisPath(epheFsPath);
     } else {
       const resolution = resolveNodeEphemerisPath(module, finalEphePath);
       if (resolution.strategy === "nodefs-mount") {
-        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
+        notice(`Setting ephemeris path to: ${resolution.path} (mounted from ${finalEphePath})`);
       } else if (resolution.strategy === "memfs-copy") {
-        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
+        notice(`Setting ephemeris path to: ${resolution.path} (copied from ${finalEphePath})`);
       } else {
-        emitRuntimeNotice(`Setting ephemeris path to: ${resolution.path}`);
+        notice(`Setting ephemeris path to: ${resolution.path}`);
       }
       instance.setEphemerisPath(resolution.path);
     }

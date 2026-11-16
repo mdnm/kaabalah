@@ -1,0 +1,158 @@
+{
+  "record": {
+    "en": "ICHING READING",
+    "pt": "LEITURA DO I CHING"
+  },
+  "question": {
+    "en": "Question",
+    "pt": "Pergunta"
+  },
+  "notSupplied": {
+    "en": "(not supplied)",
+    "pt": "(não informada)"
+  },
+  "lines": {
+    "en": "Lines (bottom to top)",
+    "pt": "Linhas, de baixo para cima"
+  },
+  "cast": {
+    "en": "Cast hexagram",
+    "pt": "Hexagrama lançado"
+  },
+  "moving": {
+    "en": "Changing lines",
+    "pt": "Linhas móveis"
+  },
+  "transformed": {
+    "en": "Transformed hexagram",
+    "pt": "Hexagrama transformado"
+  },
+  "none": {
+    "en": "none",
+    "pt": "nenhum"
+  },
+  "nuclear": {
+    "en": "Nuclear",
+    "pt": "Nuclear"
+  },
+  "palace": {
+    "en": "Palace",
+    "pt": "Palácio"
+  },
+  "castState": {
+    "en": "cast",
+    "pt": "lançado"
+  },
+  "transformedState": {
+    "en": "transformed",
+    "pt": "transformado"
+  },
+  "selfNucleating": {
+    "en": "self-nucleating",
+    "pt": "autonuclear"
+  },
+  "line": {
+    "en": "line",
+    "pt": "linha"
+  },
+  "gate": {
+    "en": "Gate",
+    "pt": "Portal"
+  },
+  "upperLower": {
+    "en": "upper + lower",
+    "pt": "superior + inferior"
+  },
+  "path": {
+    "en": "path",
+    "pt": "caminho"
+  },
+  "ruling": {
+    "en": "Ruling arcanum",
+    "pt": "Ark Annu regente"
+  },
+  "family": {
+    "en": "Family spheres",
+    "pt": "Esferas da família"
+  },
+  "pillars": {
+    "en": "Pillars",
+    "pt": "Pilares"
+  },
+  "leftMiddleRight": {
+    "en": "L/M/R",
+    "pt": "esquerda/meio/direita"
+  },
+  "upper": {
+    "en": "upper",
+    "pt": "superior"
+  },
+  "lower": {
+    "en": "lower",
+    "pt": "inferior"
+  },
+  "on": {
+    "en": "on",
+    "pt": "aceso"
+  },
+  "off": {
+    "en": "off",
+    "pt": "apagado"
+  },
+  "transform": {
+    "en": "transform",
+    "pt": "transformação"
+  },
+  "castPalace": {
+    "en": "cast palace",
+    "pt": "palácio lançado"
+  },
+  "binary": {
+    "en": "Binary (bottom first)",
+    "pt": "Binário, começando pela base"
+  },
+  "oracle": {
+    "en": "Oracle",
+    "pt": "Oráculo"
+  },
+  "primary": {
+    "en": "primary",
+    "pt": "principal"
+  },
+  "judgment": {
+    "en": "judgment",
+    "pt": "julgamento"
+  },
+  "useNine": {
+    "en": "useNine",
+    "pt": "uso do nove"
+  },
+  "useSix": {
+    "en": "useSix",
+    "pt": "uso do seis"
+  },
+  "wood": {
+    "en": "wood",
+    "pt": "madeira"
+  },
+  "fire": {
+    "en": "fire",
+    "pt": "fogo"
+  },
+  "earth": {
+    "en": "earth",
+    "pt": "terra"
+  },
+  "metal": {
+    "en": "metal",
+    "pt": "metal"
+  },
+  "water": {
+    "en": "water",
+    "pt": "água"
+  },
+  "noBranch": {
+    "en": "no 沖/合",
+    "pt": "sem 沖/合"
+  }
+}

@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { debugLog } from "./debug";
 
 export type InterruptSignal = "SIGINT" | "SIGTERM";
@@ -9,7 +10,7 @@ export class CliSignalError extends Error {
   readonly exitCode: number;
 
   constructor(signalName: InterruptSignal) {
-    super(`Interrupted by ${signalName}.`);
+    super(cliText("Interrupted by {0}.", [signalName]));
     this.name = "CliSignalError";
     this.signalName = signalName;
     this.exitCode = signalName === "SIGINT" ? 130 : 143;
@@ -29,7 +30,7 @@ function runCleanup(cleanup: Cleanup): void {
   try {
     cleanup();
   } catch (err) {
-    debugLog("signals", "Cleanup failed.", err);
+    debugLog("signals", cliText("Cleanup failed."), err);
   }
 }
 
@@ -53,7 +54,7 @@ export function createExecutionContext(): ExecutionContext {
     }
 
     interruptedSignal = new CliSignalError(signalName);
-    debugLog("signals", `Received ${signalName}; aborting active work.`);
+    debugLog("signals", cliText("Received {0}; aborting active work.", [signalName]));
     controller.abort(interruptedSignal);
     drainCleanups();
 

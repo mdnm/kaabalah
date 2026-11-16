@@ -1,3 +1,5 @@
+import { cliValue } from "../runtime/content";
+import { cliText } from "../runtime/language";
 import {
   calculateChallenges,
   calculateCycles,
@@ -28,27 +30,27 @@ export function cmdNumerology(dateStr: string, flags: Flags): void {
     return;
   }
 
-  console.log(`\nNumerology Profile: ${dateStr}\n`);
-  console.log(`  Kaabalistic Life Path: ${kaabalistic.lifePath.reducedValue}`);
-  console.log(`    Steps: [${kaabalistic.lifePath.reductionSteps.join(", ")}]`);
-  console.log(`    Personal Mythology: [${kaabalistic.personalMythologyNumbers.join(", ")}]`);
-  console.log(`\n  Straight Across Life Path: ${straight.lifePath.reducedValue}`);
-  console.log(`    Day energy:   ${straight.dayEnergy.reducedValue}`);
-  console.log(`    Month energy: ${straight.monthEnergy.reducedValue}`);
-  console.log(`    Year energy:  ${straight.yearEnergy.reducedValue}`);
-  console.log(`\n  Challenges:`);
-  console.log(`    Main:  ${challenges.mainChallenge}`);
-  console.log(`    Sub 1: ${challenges.subChallenge1}`);
-  console.log(`    Sub 2: ${challenges.subChallenge2}`);
-  console.log(`\n  Date Energies:`);
-  console.log(`    Day:   ${energies.dayEnergy.reducedValue}`);
-  console.log(`    Month: ${energies.monthEnergy.reducedValue}`);
-  console.log(`    Year:  ${energies.yearEnergy.reducedValue}`);
-  console.log(`\n  Personal Year: ${personalYear.reducedValue}`);
-  console.log(`\n  Fibonacci Cycle (age ${fibonacci.currentAge}):`);
+  console.log(cliText("\nNumerology Profile: {0}\n", [dateStr]));
+  console.log(cliText("  Kaabalistic Life Path: {0}", [kaabalistic.lifePath.reducedValue]));
+  console.log(cliText("    Steps: [{0}]", [kaabalistic.lifePath.reductionSteps.join(", ")]));
+  console.log(cliText("    Personal Mythology: [{0}]", [kaabalistic.personalMythologyNumbers.join(", ")]));
+  console.log(cliText("\n  Straight Across Life Path: {0}", [straight.lifePath.reducedValue]));
+  console.log(cliText("    Day energy:   {0}", [straight.dayEnergy.reducedValue]));
+  console.log(cliText("    Month energy: {0}", [straight.monthEnergy.reducedValue]));
+  console.log(cliText("    Year energy:  {0}", [straight.yearEnergy.reducedValue]));
+  console.log(cliText("\n  Challenges:"));
+  console.log(cliText("    Main:  {0}", [challenges.mainChallenge]));
+  console.log(cliText("    Sub 1: {0}", [challenges.subChallenge1]));
+  console.log(cliText("    Sub 2: {0}", [challenges.subChallenge2]));
+  console.log(cliText("\n  Date Energies:"));
+  console.log(cliText("    Day:   {0}", [energies.dayEnergy.reducedValue]));
+  console.log(cliText("    Month: {0}", [energies.monthEnergy.reducedValue]));
+  console.log(cliText("    Year:  {0}", [energies.yearEnergy.reducedValue]));
+  console.log(cliText("\n  Personal Year: {0}", [personalYear.reducedValue]));
+  console.log(cliText("\n  Fibonacci Cycle (age {0}):", [fibonacci.currentAge]));
   for (let i = 1; i <= 7; i++) {
     const cycle = fibonacci[`cycle${i}` as keyof typeof fibonacci] as { reducedValue: number };
-    console.log(`    Cycle ${i}: ${cycle.reducedValue}`);
+    console.log(cliText("    Cycle {0}: {1}", [i, cycle.reducedValue]));
   }
   console.log();
 }
@@ -61,11 +63,11 @@ export function cmdLifePath(dateStr: string, flags: Flags): void {
     return;
   }
 
-  console.log(`\nKaabalistic Life Path: ${dateStr}\n`);
-  console.log(`  Life Path: ${result.lifePath.reducedValue}`);
-  console.log(`  Steps: [${result.lifePath.reductionSteps.join(", ")}]`);
-  console.log(`  Personal Mythology: [${result.personalMythologyNumbers.join(", ")}]`);
-  console.log(`  Parts: day=${result.reducedParts.reducedDay} month=${result.reducedParts.reducedMonth} year1=${result.reducedParts.reducedYear1} year2=${result.reducedParts.reducedYear2}`);
+  console.log(cliText("\nKaabalistic Life Path: {0}\n", [dateStr]));
+  console.log(cliText("  Life Path: {0}", [result.lifePath.reducedValue]));
+  console.log(cliText("  Steps: [{0}]", [result.lifePath.reductionSteps.join(", ")]));
+  console.log(cliText("  Personal Mythology: [{0}]", [result.personalMythologyNumbers.join(", ")]));
+  console.log(cliText("  Parts: day={0} month={1} year1={2} year2={3}", [result.reducedParts.reducedDay, result.reducedParts.reducedMonth, result.reducedParts.reducedYear1, result.reducedParts.reducedYear2]));
   console.log();
 }
 
@@ -81,24 +83,24 @@ export function cmdCycles(dateStr: string, firstName: string | undefined, flags:
       return;
     }
 
-    console.log(`\nPersonal Cycles: ${dateStr} (${firstName})\n`);
-    console.log(`  Age: ${result.currentAge}`);
-    console.log(`  Life Path: ${result.lifePath.reducedValue}`);
-    console.log(`  Soul Number: ${result.soulNumber?.reducedValue}`);
-    console.log(`  Personal Year: ${result.personalYear.reducedValue}`);
-    console.log(`  Current Period: ${result.currentPersonalPeriod + 1}/3`);
-    console.log(`  Current Month: ${result.currentPersonalMonth + 1}/12`);
-    console.log(`\n  Periods:`);
+    console.log(cliText("\nPersonal Cycles: {0} ({1})\n", [dateStr, firstName]));
+    console.log(cliText("  Age: {0}", [result.currentAge]));
+    console.log(cliText("  Life Path: {0}", [result.lifePath.reducedValue]));
+    console.log(cliText("  Soul Number: {0}", [result.soulNumber?.reducedValue]));
+    console.log(cliText("  Personal Year: {0}", [result.personalYear.reducedValue]));
+    console.log(cliText("  Current Period: {0}/3", [result.currentPersonalPeriod + 1]));
+    console.log(cliText("  Current Month: {0}/12", [result.currentPersonalMonth + 1]));
+    console.log(cliText("\n  Periods:"));
     for (let i = 0; i < result.personalPeriods.length; i++) {
       const period = result.personalPeriods[i];
       const active = i === result.currentPersonalPeriod ? " <--" : "";
-      console.log(`    Period ${i + 1} (months ${period.startMonth}-${period.endMonth}): ${period.value.reducedValue}${active}`);
+      console.log(cliText("    Period {0} (months {1}-{2}): {3}{4}", [i + 1, period.startMonth, period.endMonth, period.value.reducedValue, active]));
     }
-    console.log(`\n  Monthly energies:`);
+    console.log(cliText("\n  Monthly energies:"));
     for (let i = 0; i < result.personalMonths.length; i++) {
       const month = result.personalMonths[i];
       const active = i === result.currentPersonalMonth ? " <--" : "";
-      console.log(`    Month ${month.month}: ${month.value.reducedValue}${active}`);
+      console.log(cliText("    Month {0}: {1}{2}", [month.month, month.value.reducedValue, active]));
     }
     console.log();
     return;
@@ -111,29 +113,29 @@ export function cmdCycles(dateStr: string, firstName: string | undefined, flags:
     return;
   }
 
-  console.log(`\nHeptad Cycles: ${dateStr}\n`);
-  console.log(`  Total days since last birthday: ${result.totalDays}`);
+  console.log(cliText("\nHeptad Cycles: {0}\n", [dateStr]));
+  console.log(cliText("  Total days since last birthday: {0}", [result.totalDays]));
 
   if (result.currentAgeCycle) {
-    console.log(`\n  Age Cycles (current: ${result.currentAgeCycle}):`);
+    console.log(cliText("\n  Age Cycles (current: {0}):", [result.currentAgeCycle]));
     for (const cycle of result.ageCycles) {
       const active = cycle.isActive ? " <--" : "";
-      console.log(`    Cycle ${cycle.number}: ${cycle.description}${active}`);
+      console.log(cliText("    Cycle {0}: {1}{2}", [cycle.number, cliValue(cycle.description), active]));
     }
   }
 
   if (result.currentYearlyCycle) {
-    console.log(`\n  Yearly Cycles (current: ${result.currentYearlyCycle}):`);
+    console.log(cliText("\n  Yearly Cycles (current: {0}):", [result.currentYearlyCycle]));
     for (const cycle of result.yearlyCycles) {
       const active = cycle.isActive ? " <--" : "";
-      console.log(`    Cycle ${cycle.number}: ${cycle.description}${active}`);
+      console.log(cliText("    Cycle {0}: {1}{2}", [cycle.number, cliValue(cycle.description), active]));
     }
   }
 
-  console.log(`\n  Monthly Cycles (current: ${result.currentMonthlyCycle}, day ${result.daysInMonthlyCycle}):`);
+  console.log(cliText("\n  Monthly Cycles (current: {0}, day {1}):", [result.currentMonthlyCycle, result.daysInMonthlyCycle]));
   for (const cycle of result.monthlyCycles) {
     const active = cycle.isActive ? " <--" : "";
-    console.log(`    Cycle ${cycle.number}: ${cycle.description}${active}`);
+    console.log(cliText("    Cycle {0}: {1}{2}", [cycle.number, cliValue(cycle.description), active]));
   }
   console.log();
 }
@@ -146,13 +148,13 @@ export function cmdChallenges(dateStr: string, flags: Flags): void {
     return;
   }
 
-  console.log(`\nChallenges: ${dateStr}\n`);
-  console.log(`  Day:    ${result.day}`);
-  console.log(`  Month:  ${result.month}`);
-  console.log(`  Year:   ${result.year}`);
-  console.log(`  Main:   ${result.mainChallenge}`);
-  console.log(`  Sub 1:  ${result.subChallenge1}`);
-  console.log(`  Sub 2:  ${result.subChallenge2}`);
+  console.log(cliText("\nChallenges: {0}\n", [dateStr]));
+  console.log(cliText("  Day:    {0}", [result.day]));
+  console.log(cliText("  Month:  {0}", [result.month]));
+  console.log(cliText("  Year:   {0}", [result.year]));
+  console.log(cliText("  Main:   {0}", [result.mainChallenge]));
+  console.log(cliText("  Sub 1:  {0}", [result.subChallenge1]));
+  console.log(cliText("  Sub 2:  {0}", [result.subChallenge2]));
   console.log();
 }
 
@@ -164,10 +166,10 @@ export function cmdFibonacci(dateStr: string, flags: Flags): void {
     return;
   }
 
-  console.log(`\nFibonacci Cycle: ${dateStr} (age ${result.currentAge})\n`);
+  console.log(cliText("\nFibonacci Cycle: {0} (age {1})\n", [dateStr, result.currentAge]));
   for (let i = 1; i <= 7; i++) {
     const cycle = result[`cycle${i}` as keyof typeof result] as { reducedValue: number; reductionSteps: number[] };
-    console.log(`  Cycle ${i}: ${cycle.reducedValue}  [${cycle.reductionSteps.join(", ")}]`);
+    console.log(cliText("  Cycle {0}: {1}  [{2}]", [i, cycle.reducedValue, cycle.reductionSteps.join(", ")]));
   }
   console.log();
 }

@@ -1,3 +1,5 @@
+import { cliText, cliErrorText } from "../runtime/language";
+import { cliValue } from "../runtime/content";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
@@ -46,13 +48,13 @@ async function geocodeLocation(
   if (!apiKey) {
     exitWithError(
       "GEOCODE_ERROR",
-      "GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY is required for --location. Set it or use --lat/--lon directly.",
+      cliText("GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY is required for --location. Set it or use --lat/--lon directly."),
       flags
     );
   }
 
   const url = "https://places.googleapis.com/v1/places:searchText";
-  debugLog("geocode", "Starting geocoding request.", { location });
+  debugLog("geocode", cliText("Starting geocoding request."), { location });
 
   let response: Response;
   try {
@@ -70,7 +72,7 @@ async function geocodeLocation(
     if (isAbortError(err)) {
       executionContext.throwIfInterrupted();
     }
-    exitWithError("GEOCODE_ERROR", `Geocoding request failed: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("GEOCODE_ERROR", cliText("Geocoding request failed: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   const data = await response.json().catch((err: unknown) => {
@@ -78,7 +80,7 @@ async function geocodeLocation(
       executionContext.throwIfInterrupted();
     }
 
-    exitWithError("GEOCODE_ERROR", `Failed to parse geocoding response: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("GEOCODE_ERROR", cliText("Failed to parse geocoding response: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }) as {
     places?: Array<{
       displayName?: { text: string };
@@ -88,7 +90,7 @@ async function geocodeLocation(
     error?: { message: string; status: string };
   };
 
-  debugLog("geocode", "Geocoding response received.", {
+  debugLog("geocode", cliText("Geocoding response received."), {
     location,
     status: response.status,
     ok: response.ok,
@@ -97,11 +99,11 @@ async function geocodeLocation(
   });
 
   if (data.error) {
-    exitWithError("GEOCODE_ERROR", `Geocoding failed for "${location}": ${data.error.message}`, flags);
+    exitWithError("GEOCODE_ERROR", cliText("Geocoding failed for \"{0}\": {1}", [location, data.error.message]), flags);
   }
 
   if (!data.places || data.places.length === 0 || !data.places[0].location) {
-    exitWithError("GEOCODE_ERROR", `No results found for "${location}".`, flags);
+    exitWithError("GEOCODE_ERROR", cliText("No results found for \"{0}\".", [location]), flags);
   }
 
   const place = data.places[0];
@@ -111,7 +113,7 @@ async function geocodeLocation(
     formattedAddress: place.formattedAddress ?? place.displayName?.text ?? location,
   };
 
-  debugLog("geocode", "Geocoding resolved coordinates.", result);
+  debugLog("geocode", cliText("Geocoding resolved coordinates."), result);
   return result;
 }
 
@@ -129,11 +131,11 @@ async function initWasm(
   executionContext: ExecutionContext
 ): Promise<void> {
   executionContext.throwIfInterrupted();
-  debugLog("wasm", "Initializing Swiss Ephemeris.", paths);
+  debugLog("wasm", cliText("Initializing Swiss Ephemeris."), paths);
   const { getSwissEph } = await import("../../astrology");
-  await getSwissEph(paths);
+  await getSwissEph({ ...paths, onRuntimeNotice: message => { process.stderr.write(`${cliErrorText(message)}\n`); } });
   executionContext.throwIfInterrupted();
-  debugLog("wasm", "Swiss Ephemeris initialized.", paths);
+  debugLog("wasm", cliText("Swiss Ephemeris initialized."), paths);
 }
 
 function buildBirthChartOptions(
@@ -178,7 +180,7 @@ function parseMaxOrb(flags: Flags, inputPayload: InputPayload): number | undefin
   }
 
   if (Number.isNaN(maxOrb) || maxOrb < 0) {
-    exitWithError("INVALID_ARGUMENT", `--max-orb must be a non-negative number, got "${maxOrb}".`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("--max-orb must be a non-negative number, got \"{0}\".", [maxOrb]), flags);
   }
 
   return maxOrb;
@@ -287,7 +289,7 @@ function readAstroWheelOptionsPayload(
   }
 
   if (typeof raw !== "object" || Array.isArray(raw)) {
-    exitWithError("INVALID_JSON", '"wheelOptions" must be a JSON object when provided.', flags);
+    exitWithError("INVALID_JSON", cliText("\"wheelOptions\" must be a JSON object when provided."), flags);
   }
 
   return raw as AstroWheelSvgOptions;
@@ -313,7 +315,7 @@ function buildAstroWheelViewBox(
   if (resolvedWidth == null || resolvedHeight == null) {
     exitWithError(
       "INVALID_ARGUMENT",
-      'Both "--viewbox-width" and "--viewbox-height" are required when overriding the astrology wheel SVG viewBox.',
+      cliText("Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the astrology wheel SVG viewBox."),
       flags
     );
   }
@@ -321,7 +323,7 @@ function buildAstroWheelViewBox(
   if (resolvedWidth <= 0 || resolvedHeight <= 0) {
     exitWithError(
       "INVALID_ARGUMENT",
-      "Astrology wheel viewBox width and height must be positive numbers.",
+      cliText("Astrology wheel viewBox width and height must be positive numbers."),
       flags
     );
   }
@@ -368,7 +370,7 @@ function buildAstroWheelSvgOptions(
     if (palette !== "default" && palette !== "monochrome") {
       exitWithError(
         "INVALID_ARGUMENT",
-        `Unknown astrology wheel palette "${palette}". Expected "default" or "monochrome".`,
+        cliText("Unknown astrology wheel palette \"{0}\". Expected \"default\" or \"monochrome\".", [palette]),
         flags
       );
     }
@@ -397,7 +399,7 @@ function buildAstroWheelSvgOptions(
   }
   if (padding !== undefined) {
     if (padding < 0) {
-      exitWithError("INVALID_ARGUMENT", "--padding must be a non-negative number.", flags);
+      exitWithError("INVALID_ARGUMENT", cliText("--padding must be a non-negative number."), flags);
     }
     options.padding = padding;
   }
@@ -470,7 +472,7 @@ async function parseTwoChartCommand(
   executionContext: ExecutionContext
 ) {
   if (!inputPayload?.chartA || !inputPayload?.chartB) {
-    exitWithError("MISSING_ARGUMENT", `Usage: kaabalah ${commandName} --input-json=- < payload.json`, flags);
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah {0} --input-json=- < payload.json", [commandName]), flags);
   }
 
   const defaults = {
@@ -485,7 +487,7 @@ async function parseTwoChartCommand(
   });
   const runtimePaths = getAstrologyRuntimePaths(flags);
 
-  debugLog("astrology", `Parsed ${commandName} inputs.`, {
+  debugLog("astrology", cliText("Parsed {0} inputs.", [commandName]), {
     chartA: {
       date: chartAInput.dateStr,
       time: chartAInput.timeStr,
@@ -511,7 +513,7 @@ async function parseTwoChartCommand(
     releaseSwissEphCleanup();
     astroModule.closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   return {
@@ -531,13 +533,13 @@ async function parseSingleChartRequest(
 ): Promise<ParsedChartInput & { resolvedLocation?: string }> {
   const dateStr = (inputPayload?.date as string) ?? args[0];
   if (!dateStr) {
-    exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>", flags);
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"), flags);
   }
   validateDateString(dateStr, flags);
 
   const { timeStr, hour, minute } = parseTimeValue((inputPayload?.time as string) ?? args[1] ?? "12:00", flags, {
-    invalidFormat: (value) => `Invalid time format: "${value}". Use HH:MM format.`,
-    invalidValue: (value) => `Invalid time: "${value}". Hours 0-23, minutes 0-59.`,
+    invalidFormat: (value) => cliText("Invalid time format: \"{0}\". Use HH:MM format.", [value]),
+    invalidValue: (value) => cliText("Invalid time: \"{0}\". Hours 0-23, minutes 0-59.", [value]),
   });
 
   const locationStr = (inputPayload?.location as string) ?? getFlagString(flags, "location");
@@ -552,7 +554,7 @@ async function parseSingleChartRequest(
     if (!locationStr) {
       exitWithError(
         "MISSING_ARGUMENT",
-        "Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY).",
+        cliText("Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)."),
         flags
       );
     }
@@ -564,15 +566,15 @@ async function parseSingleChartRequest(
   }
 
   const coordinates = parseCoordinates(latitude, longitude, flags, {
-    missing: "Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY).",
-    invalidLatitude: (value) => `Latitude must be between -90 and 90, got ${value}.`,
-    invalidLongitude: (value) => `Longitude must be between -180 and 180, got ${value}.`,
+    missing: cliText("Location is required. Use --lat=<N> --lon=<N> or --location=\"City, Country\" (requires GOOGLE_MAPS_API_KEY or KAABALAH_GOOGLE_MAPS_API_KEY)."),
+    invalidLatitude: (value) => cliText("Latitude must be between -90 and 90, got {0}.", [value]),
+    invalidLongitude: (value) => cliText("Longitude must be between -180 and 180, got {0}.", [value]),
   });
 
   const { houseSystem, houseSystemCode } = parseHouseSystem(
     (inputPayload?.houseSystem as string) ?? getFlagString(flags, "house-system") ?? "placidus",
     flags,
-    (value, valid) => `Unknown house system: "${value}". Valid: ${valid.join(", ")}`
+    (value, valid) => cliText("Unknown house system: \"{0}\". Valid: {1}", [value, valid.join(", ")])
   );
 
   const timezoneStr = (inputPayload?.timezone as string) ?? getFlagString(flags, "timezone");
@@ -590,7 +592,7 @@ async function parseSingleChartRequest(
     resolvedLocation,
   };
 
-  debugLog("astrology", "Parsed astrology input.", {
+  debugLog("astrology", cliText("Parsed astrology input."), {
     date: parsedInput.dateStr,
     time: parsedInput.timeStr,
     latitude: parsedInput.latitude,
@@ -620,7 +622,7 @@ export async function cmdAstrologySynastry(
   const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
 
   try {
-    debugLog("astrology", "Running astrology:synastry.", {
+    debugLog("astrology", cliText("Running astrology:synastry."), {
       chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr },
       chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr },
     });
@@ -637,7 +639,7 @@ export async function cmdAstrologySynastry(
       aspects: filterAspects(result.aspects, { maxOrb, aspectFilter }),
     };
     executionContext.throwIfInterrupted();
-    debugLog("astrology", "Completed astrology:synastry.", {
+    debugLog("astrology", cliText("Completed astrology:synastry."), {
       aspects: filteredResult.aspects.length,
     });
 
@@ -646,12 +648,12 @@ export async function cmdAstrologySynastry(
       return;
     }
 
-    console.log(`\nSynastry Chart\n`);
-    console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
-    console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
-    console.log(`\n  Cross-chart Aspects (${filteredResult.aspects.length}):\n`);
+    console.log(cliText("\nSynastry Chart\n"));
+    console.log(cliText("  Chart A: {0} {1} ({2}, {3})", [chartAInput.dateStr, chartAInput.timeStr, chartAInput.latitude, chartAInput.longitude]));
+    console.log(cliText("  Chart B: {0} {1} ({2}, {3})", [chartBInput.dateStr, chartBInput.timeStr, chartBInput.latitude, chartBInput.longitude]));
+    console.log(cliText("\n  Cross-chart Aspects ({0}):\n", [filteredResult.aspects.length]));
     for (const aspect of filteredResult.aspects) {
-      console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
+      console.log(cliText("    {0} {1} {2} orb {3}°", [aspect.planetA.padEnd(14), aspect.aspect.padEnd(12), aspect.planetB.padEnd(14), aspect.orb.toFixed(2)]));
     }
     console.log();
   } catch (err) {
@@ -679,7 +681,7 @@ export async function cmdAstrologyComposite(
   const aspectFilter = parseAspectTypeFilter(flags, inputPayload);
 
   try {
-    debugLog("astrology", "Running astrology:composite.", {
+    debugLog("astrology", cliText("Running astrology:composite."), {
       chartA: { date: chartAInput.dateStr, time: chartAInput.timeStr },
       chartB: { date: chartBInput.dateStr, time: chartBInput.timeStr },
     });
@@ -696,7 +698,7 @@ export async function cmdAstrologyComposite(
       aspects: filterAspects(result.aspects, { maxOrb, aspectFilter }),
     };
     executionContext.throwIfInterrupted();
-    debugLog("astrology", "Completed astrology:composite.", {
+    debugLog("astrology", cliText("Completed astrology:composite."), {
       aspects: filteredResult.aspects.length,
       compositePlanets: Object.keys(filteredResult.compositePlanets).length,
     });
@@ -706,22 +708,22 @@ export async function cmdAstrologyComposite(
       return;
     }
 
-    console.log(`\nComposite Chart (Midpoint Method)\n`);
-    console.log(`  Chart A: ${chartAInput.dateStr} ${chartAInput.timeStr} (${chartAInput.latitude}, ${chartAInput.longitude})`);
-    console.log(`  Chart B: ${chartBInput.dateStr} ${chartBInput.timeStr} (${chartBInput.latitude}, ${chartBInput.longitude})`);
-    console.log(`\n  Composite Planets:`);
+    console.log(cliText("\nComposite Chart (Midpoint Method)\n"));
+    console.log(cliText("  Chart A: {0} {1} ({2}, {3})", [chartAInput.dateStr, chartAInput.timeStr, chartAInput.latitude, chartAInput.longitude]));
+    console.log(cliText("  Chart B: {0} {1} ({2}, {3})", [chartBInput.dateStr, chartBInput.timeStr, chartBInput.latitude, chartBInput.longitude]));
+    console.log(cliText("\n  Composite Planets:"));
     for (const [name, planet] of Object.entries(filteredResult.compositePlanets)) {
       const zodiacPosition = planet.zodiacPosition;
-      console.log(`    ${name.padEnd(14)} ${zodiacPosition.sign.padEnd(12)} ${zodiacPosition.traditionalFormat.padEnd(8)} House ${zodiacPosition.house}`);
+      console.log(cliText("    {0} {1} {2} House {3}", [name.padEnd(14), cliValue(zodiacPosition.sign.padEnd(12)), cliValue(zodiacPosition.traditionalFormat.padEnd(8)), zodiacPosition.house]));
     }
-    console.log(`\n  Composite House Cusps:`);
+    console.log(cliText("\n  Composite House Cusps:"));
     for (let i = 0; i < filteredResult.compositeHouses.length; i++) {
       const house = filteredResult.compositeHouses[i];
-      console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
+      console.log(cliText("    House {0}:  {1} {2}", [String(i + 1).padStart(2), cliValue(house.sign.padEnd(12)), cliValue(house.traditionalFormat)]));
     }
-    console.log(`\n  Composite Aspects (${filteredResult.aspects.length}):\n`);
+    console.log(cliText("\n  Composite Aspects ({0}):\n", [filteredResult.aspects.length]));
     for (const aspect of filteredResult.aspects) {
-      console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
+      console.log(cliText("    {0} {1} {2} orb {3}°", [aspect.planetA.padEnd(14), aspect.aspect.padEnd(12), aspect.planetB.padEnd(14), aspect.orb.toFixed(2)]));
     }
     console.log();
   } catch (err) {
@@ -759,7 +761,7 @@ export async function cmdAstrologyTransits(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -779,7 +781,7 @@ export async function cmdAstrologyTransits(
     const toStr = (inputPayload?.to as string) ?? getFlagString(flags, "to");
     const stepDaysFlag = inputPayload?.stepDays != null ? Number(inputPayload.stepDays) : getFlagNumber(flags, "step-days");
     if (stepDaysFlag != null && (isNaN(stepDaysFlag) || stepDaysFlag <= 0)) {
-      exitWithError("INVALID_ARGUMENT", `--step-days must be a positive number, got "${stepDaysFlag}".`, flags);
+      exitWithError("INVALID_ARGUMENT", cliText("--step-days must be a positive number, got \"{0}\".", [stepDaysFlag]), flags);
     }
 
     // Parse planet filters
@@ -800,7 +802,7 @@ export async function cmdAstrologyTransits(
 
     if (isRangeMode) {
       if (!toStr) {
-        exitWithError("MISSING_ARGUMENT", "--to is required when --from is specified.", flags);
+        exitWithError("MISSING_ARGUMENT", cliText("--to is required when --from is specified."), flags);
       }
       validateDateString(fromStr, flags);
       validateDateString(toStr, flags);
@@ -808,7 +810,7 @@ export async function cmdAstrologyTransits(
       const fromDate = new Date(fromStr + "T00:00:00");
       const toDate = new Date(toStr + "T23:59:59.999");
 
-      debugLog("astrology", "Running astrology:transits (range mode).", {
+      debugLog("astrology", cliText("Running astrology:transits (range mode)."), {
         natal: { date: natalInput.dateStr, time: natalInput.timeStr },
         from: fromStr,
         to: toStr,
@@ -831,7 +833,7 @@ export async function cmdAstrologyTransits(
       });
       executionContext.throwIfInterrupted();
 
-      debugLog("astrology", "Completed astrology:transits (range).", {
+      debugLog("astrology", cliText("Completed astrology:transits (range)."), {
         perfections: result.perfections.length,
       });
 
@@ -849,17 +851,17 @@ export async function cmdAstrologyTransits(
       }
 
       // Human-readable range output
-      console.log(`\nTransit Range: ${fromStr} to ${toStr}`);
-      console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})\n`);
+      console.log(cliText("\nTransit Range: {0} to {1}", [fromStr, toStr]));
+      console.log(cliText("  Natal: {0} {1} ({2}, {3})\n", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
       if (result.perfections.length === 0) {
-        console.log("  No aspect perfections found in range.\n");
+        console.log(cliText("  No aspect perfections found in range.\n"));
       } else {
-        console.log(`  Aspect Perfections (${result.perfections.length}):\n`);
+        console.log(cliText("  Aspect Perfections ({0}):\n", [result.perfections.length]));
         for (const p of result.perfections) {
-          const date = p.exactDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+          const date = p.exactDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, cliText(" UTC"));
           const rx = p.retrograde ? " R" : "";
           console.log(
-            `    ${date}  ${p.transitPlanet.padEnd(14)}${rx.padEnd(3)} ${p.aspect.padEnd(12)} ${p.natalPlanet.padEnd(14)} orb ${p.exactOrb.toFixed(3)}°  [${p.category}]`
+            cliText("    {0}  {1}{2} {3} {4} orb {5}°  [{6}]", [date, p.transitPlanet.padEnd(14), rx.padEnd(3), p.aspect.padEnd(12), p.natalPlanet.padEnd(14), p.exactOrb.toFixed(3), p.category])
           );
         }
         console.log();
@@ -870,12 +872,12 @@ export async function cmdAstrologyTransits(
       const effectiveTransitDateStr = transitDateStr ?? new Date().toISOString().split("T")[0];
       validateDateString(effectiveTransitDateStr, flags);
       const { hour: tHour, minute: tMin } = parseTimeValue(transitTimeStr, flags, {
-        invalidFormat: (v) => `Invalid transit time format: "${v}". Use HH:MM.`,
-        invalidValue: (v) => `Invalid transit time: "${v}". Hours 0-23, minutes 0-59.`,
+        invalidFormat: (v) => cliText("Invalid transit time format: \"{0}\". Use HH:MM.", [v]),
+        invalidValue: (v) => cliText("Invalid transit time: \"{0}\". Hours 0-23, minutes 0-59.", [v]),
       });
       transitDate = buildBirthDate(effectiveTransitDateStr, tHour, tMin);
 
-      debugLog("astrology", "Running astrology:transits.", {
+      debugLog("astrology", cliText("Running astrology:transits."), {
         natal: { date: natalInput.dateStr, time: natalInput.timeStr },
         transitDate: transitDate.toISOString(),
       });
@@ -894,7 +896,7 @@ export async function cmdAstrologyTransits(
       });
       executionContext.throwIfInterrupted();
 
-      debugLog("astrology", "Completed astrology:transits.", {
+      debugLog("astrology", cliText("Completed astrology:transits."), {
         transitPlanets: Object.keys(result.transitPlanets).length,
         aspects: result.aspects.length,
       });
@@ -912,24 +914,24 @@ export async function cmdAstrologyTransits(
 
       // Human-readable single transit output
       const tdStr = transitDateStr ?? transitDate.toISOString().split("T")[0];
-      console.log(`\nTransit Chart for ${tdStr} ${transitTimeStr}`);
-      console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})\n`);
+      console.log(cliText("\nTransit Chart for {0} {1}", [tdStr, transitTimeStr]));
+      console.log(cliText("  Natal: {0} {1} ({2}, {3})\n", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
 
-      console.log("  Transit Planets (in natal houses):");
+      console.log(cliText("  Transit Planets (in natal houses):"));
       for (const [name, planet] of Object.entries(result.transitPlanets)) {
         const zp = planet.zodiacPosition;
         const rx = planet.retrograde ? "  R" : "   ";
         console.log(
-          `    ${name.padEnd(14)}${rx} ${zp.sign.padEnd(12)} ${zp.traditionalFormat.padEnd(8)} Natal House ${planet.natalHouse}`
+          cliText("    {0}{1} {2} {3} Natal House {4}", [name.padEnd(14), rx, cliValue(zp.sign.padEnd(12)), cliValue(zp.traditionalFormat.padEnd(8)), planet.natalHouse])
         );
       }
 
-      console.log(`\n  Transit-to-Natal Aspects (${result.aspects.length}):\n`);
+      console.log(cliText("\n  Transit-to-Natal Aspects ({0}):\n", [result.aspects.length]));
       for (const a of result.aspects) {
-        const dir = a.applying ? "applying  " : "separating";
+        const dir = a.applying ? cliText("applying  ") : cliText("separating");
         const rx = a.retrograde ? " R" : "  ";
         console.log(
-          `    ${a.planetA.padEnd(14)}${rx} ${a.aspect.padEnd(12)} ${a.planetB.padEnd(14)} orb ${a.orb.toFixed(2)}°  ${dir}  [${a.category}]`
+          cliText("    {0}{1} {2} {3} orb {4}°  {5}  [{6}]", [a.planetA.padEnd(14), rx, a.aspect.padEnd(12), a.planetB.padEnd(14), a.orb.toFixed(2), dir, a.category])
         );
       }
       console.log();
@@ -971,7 +973,7 @@ export async function cmdAstrologySolarReturn(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -996,10 +998,10 @@ export async function cmdAstrologySolarReturn(
     }
 
     const srHouseSystem = srHouseSystemStr
-      ? parseHouseSystem(srHouseSystemStr, flags, (value, valid) => `Unknown SR house system: "${value}". Valid: ${valid.join(", ")}`).houseSystemCode
+      ? parseHouseSystem(srHouseSystemStr, flags, (value, valid) => cliText("Unknown SR house system: \"{0}\". Valid: {1}", [value, valid.join(", ")])).houseSystemCode
       : undefined;
 
-    debugLog("astrology", "Running astrology:solar-return.", {
+    debugLog("astrology", cliText("Running astrology:solar-return."), {
       natal: { date: natalInput.dateStr, time: natalInput.timeStr },
       year,
       srLat,
@@ -1020,7 +1022,7 @@ export async function cmdAstrologySolarReturn(
     };
     executionContext.throwIfInterrupted();
 
-    debugLog("astrology", "Completed astrology:solar-return.", {
+    debugLog("astrology", cliText("Completed astrology:solar-return."), {
       exactReturnDate: filteredResult.exactReturnDate.toISOString(),
       natalSunLongitude: filteredResult.natalSunLongitude,
     });
@@ -1041,34 +1043,34 @@ export async function cmdAstrologySolarReturn(
     // Human-readable output
     const srChart = filteredResult.solarReturnChart;
     const natalSun = filteredResult.natalChart.planets.sun.zodiacPosition;
-    const returnDateStr = filteredResult.exactReturnDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+    const returnDateStr = filteredResult.exactReturnDate.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, cliText(" UTC"));
 
-    console.log(`\nSolar Return ${year}\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Natal Sun: ${natalSun.sign} ${natalSun.traditionalFormat} (${filteredResult.natalSunLongitude.toFixed(4)}°)`);
-    console.log(`  Exact Return: ${returnDateStr}`);
-    console.log(`  SR Sun: ${srChart.planets.sun.zodiacPosition.sign} ${srChart.planets.sun.zodiacPosition.traditionalFormat} (${srChart.planets.sun.longitude.toFixed(4)}°)`);
+    console.log(cliText("\nSolar Return {0}\n", [year]));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
+    console.log(cliText("  Natal Sun: {0} {1} ({2}°)", [cliValue(natalSun.sign), cliValue(natalSun.traditionalFormat), filteredResult.natalSunLongitude.toFixed(4)]));
+    console.log(cliText("  Exact Return: {0}", [returnDateStr]));
+    console.log(cliText("  SR Sun: {0} {1} ({2}°)", [cliValue(srChart.planets.sun.zodiacPosition.sign), cliValue(srChart.planets.sun.zodiacPosition.traditionalFormat), srChart.planets.sun.longitude.toFixed(4)]));
 
-    console.log(`\n  Solar Return Planets:`);
+    console.log(cliText("\n  Solar Return Planets:"));
     for (const [name, planet] of Object.entries(srChart.planets)) {
       const zp = planet.zodiacPosition;
-      console.log(`    ${name.padEnd(14)} ${zp.sign.padEnd(12)} ${zp.traditionalFormat.padEnd(8)} House ${zp.house}`);
+      console.log(cliText("    {0} {1} {2} House {3}", [name.padEnd(14), cliValue(zp.sign.padEnd(12)), cliValue(zp.traditionalFormat.padEnd(8)), zp.house]));
     }
 
-    console.log(`\n  Solar Return Houses:`);
-    console.log(`    Ascendant:  ${srChart.houses.ascendant.sign} ${srChart.houses.ascendant.traditionalFormat}`);
-    console.log(`    Midheaven:  ${srChart.houses.mc.sign} ${srChart.houses.mc.traditionalFormat}`);
-    console.log(`    Descendant: ${srChart.houses.dc.sign} ${srChart.houses.dc.traditionalFormat}`);
-    console.log(`    IC:         ${srChart.houses.ic.sign} ${srChart.houses.ic.traditionalFormat}`);
-    console.log(`\n  House Cusps:`);
+    console.log(cliText("\n  Solar Return Houses:"));
+    console.log(cliText("    Ascendant:  {0} {1}", [cliValue(srChart.houses.ascendant.sign), cliValue(srChart.houses.ascendant.traditionalFormat)]));
+    console.log(cliText("    Midheaven:  {0} {1}", [cliValue(srChart.houses.mc.sign), cliValue(srChart.houses.mc.traditionalFormat)]));
+    console.log(cliText("    Descendant: {0} {1}", [cliValue(srChart.houses.dc.sign), cliValue(srChart.houses.dc.traditionalFormat)]));
+    console.log(cliText("    IC:         {0} {1}", [cliValue(srChart.houses.ic.sign), cliValue(srChart.houses.ic.traditionalFormat)]));
+    console.log(cliText("\n  House Cusps:"));
     for (let i = 0; i < srChart.houses.houses.length; i++) {
       const house = srChart.houses.houses[i];
-      console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
+      console.log(cliText("    House {0}:  {1} {2}", [String(i + 1).padStart(2), cliValue(house.sign.padEnd(12)), cliValue(house.traditionalFormat)]));
     }
 
-    console.log(`\n  Solar Return Aspects (${srChart.aspects.length}):\n`);
+    console.log(cliText("\n  Solar Return Aspects ({0}):\n", [srChart.aspects.length]));
     for (const aspect of srChart.aspects) {
-      console.log(`    ${aspect.planetA.padEnd(14)} ${aspect.aspect.padEnd(12)} ${aspect.planetB.padEnd(14)} orb ${aspect.orb.toFixed(2)}°`);
+      console.log(cliText("    {0} {1} {2} orb {3}°", [aspect.planetA.padEnd(14), aspect.aspect.padEnd(12), aspect.planetB.padEnd(14), aspect.orb.toFixed(2)]));
     }
     console.log();
   } catch (err) {
@@ -1103,7 +1105,7 @@ export async function cmdAstrologyProfections(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -1136,12 +1138,12 @@ export async function cmdAstrologyProfections(
       return;
     }
 
-    console.log(`\nAnnual Profection (${year})\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Age: ${result.age}`);
-    console.log(`  Profected House: ${result.house}`);
-    console.log(`  Sign: ${result.sign}`);
-    console.log(`  Time Lord: ${result.ruler}`);
+    console.log(cliText("\nAnnual Profection ({0})\n", [year]));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
+    console.log(cliText("  Age: {0}", [result.age]));
+    console.log(cliText("  Profected House: {0}", [result.house]));
+    console.log(cliText("  Sign: {0}", [cliValue(result.sign)]));
+    console.log(cliText("  Time Lord: {0}", [cliValue(result.ruler)]));
     console.log();
   } catch (err) {
     rethrowInterruptedOrError(err, executionContext);
@@ -1175,7 +1177,7 @@ export async function cmdAstrologyProfectionsMonthly(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -1208,12 +1210,12 @@ export async function cmdAstrologyProfectionsMonthly(
     }
 
     const ap = result.annualProfection;
-    console.log(`\nMonthly Profections (${year})\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Annual: House ${ap.house}, ${ap.sign} (${ap.ruler}), Age ${ap.age}\n`);
+    console.log(cliText("\nMonthly Profections ({0})\n", [year]));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
+    console.log(cliText("  Annual: House {0}, {1} ({2}), Age {3}\n", [ap.house, cliValue(ap.sign), cliValue(ap.ruler), ap.age]));
     for (const m of result.months) {
       const dateStr = m.startDate.toISOString().split("T")[0];
-      console.log(`    Month ${String(m.month).padStart(2)}:  ${dateStr}  ${m.sign.padEnd(12)} ${m.ruler}`);
+      console.log(cliText("    Month {0}:  {1}  {2} {3}", [String(m.month).padStart(2), dateStr, cliValue(m.sign.padEnd(12)), cliValue(m.ruler)]));
     }
     console.log();
   } catch (err) {
@@ -1248,7 +1250,7 @@ export async function cmdAstrologyFirdaria(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -1263,7 +1265,7 @@ export async function cmdAstrologyFirdaria(
     } else if (sectOverride === "nocturnal") {
       isDiurnal = false;
     } else if (sectOverride) {
-      exitWithError("INVALID_ARGUMENT", `Invalid sect value: "${sectOverride}". Use "diurnal" or "nocturnal".`, flags);
+      exitWithError("INVALID_ARGUMENT", cliText("Invalid sect value: \"{0}\". Use \"diurnal\" or \"nocturnal\".", [sectOverride]), flags);
     } else {
       isDiurnal = chart.sect === "diurnal";
     }
@@ -1293,16 +1295,16 @@ export async function cmdAstrologyFirdaria(
       return;
     }
 
-    console.log(`\nFirdaria (${isDiurnal ? "Diurnal" : "Nocturnal"})\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Current Major: ${result.currentMajor.planet} (${result.currentMajor.years}y)`);
-    console.log(`  Current Sub: ${result.currentSub.planet}`);
-    console.log(`\n  All Periods:\n`);
+    console.log(cliText("\nFirdaria ({0})\n", [isDiurnal ? "Diurnal" : "Nocturnal"]));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
+    console.log(cliText("  Current Major: {0} ({1}y)", [cliValue(result.currentMajor.planet), result.currentMajor.years]));
+    console.log(cliText("  Current Sub: {0}", [cliValue(result.currentSub.planet)]));
+    console.log(cliText("\n  All Periods:\n"));
     for (const p of result.allPeriods) {
       const start = p.startDate.toISOString().split("T")[0];
       const end = p.endDate.toISOString().split("T")[0];
       const marker = p === result.currentMajor ? " <--" : "";
-      console.log(`    ${p.planet.padEnd(12)} ${start} to ${end} (${p.years}y)${marker}`);
+      console.log(cliText("    {0} {1} to {2} ({3}y){4}", [cliValue(p.planet.padEnd(12)), start, end, p.years, marker]));
     }
     console.log();
   } catch (err) {
@@ -1320,11 +1322,11 @@ export function cmdAstrologyDecans(
 ): void {
   const lonStr = (inputPayload?.longitude as string) ?? args[0];
   if (lonStr == null) {
-    exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology:decans <longitude>", flags);
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology:decans <longitude>"), flags);
   }
   const longitude = Number(lonStr);
   if (isNaN(longitude)) {
-    exitWithError("INVALID_ARGUMENT", `Invalid longitude: "${lonStr}". Must be a number.`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Invalid longitude: \"{0}\". Must be a number.", [lonStr]), flags);
   }
 
   // Lazy-import to keep the module tree-shakable at the CLI level
@@ -1336,12 +1338,12 @@ export function cmdAstrologyDecans(
     return;
   }
 
-  console.log(`\nDecan for ${longitude}°\n`);
-  console.log(`  Sign: ${result.sign}`);
-  console.log(`  Decan: ${result.decanNumber}`);
-  console.log(`  Ruler: ${result.ruler}`);
-  console.log(`  Tarot: ${result.tarotCard}`);
-  console.log(`  Range: ${result.startDegree}° – ${result.endDegree}°`);
+  console.log(cliText("\nDecan for {0}°\n", [longitude]));
+  console.log(cliText("  Sign: {0}", [cliValue(result.sign)]));
+  console.log(cliText("  Decan: {0}", [result.decanNumber]));
+  console.log(cliText("  Ruler: {0}", [cliValue(result.ruler)]));
+  console.log(cliText("  Tarot: {0}", [cliValue(result.tarotCard)]));
+  console.log(cliText("  Range: {0}° – {1}°", [result.startDegree, result.endDegree]));
   console.log();
 }
 
@@ -1352,11 +1354,11 @@ export function cmdAstrologyDodecatemoria(
 ): void {
   const lonStr = (inputPayload?.longitude as string) ?? args[0];
   if (lonStr == null) {
-    exitWithError("MISSING_ARGUMENT", "Usage: kaabalah astrology:dodecatemoria <longitude>", flags);
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology:dodecatemoria <longitude>"), flags);
   }
   const longitude = Number(lonStr);
   if (isNaN(longitude)) {
-    exitWithError("INVALID_ARGUMENT", `Invalid longitude: "${lonStr}". Must be a number.`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("Invalid longitude: \"{0}\". Must be a number.", [lonStr]), flags);
   }
 
   const { getDodecatemoria } = require("../../astrology");
@@ -1367,9 +1369,9 @@ export function cmdAstrologyDodecatemoria(
     return;
   }
 
-  console.log(`\nDodecatemoria for ${longitude}°\n`);
-  console.log(`  Original Sign: ${result.originalSign} (${result.originalDegree.toFixed(2)}°)`);
-  console.log(`  12th Part: ${result.dodecatemoriaSign} (index ${result.dodecatemoriaIndex})`);
+  console.log(cliText("\nDodecatemoria for {0}°\n", [longitude]));
+  console.log(cliText("  Original Sign: {0} ({1}°)", [cliValue(result.originalSign), result.originalDegree.toFixed(2)]));
+  console.log(cliText("  12th Part: {0} (index {1})", [cliValue(result.dodecatemoriaSign), result.dodecatemoriaIndex]));
   console.log();
 }
 
@@ -1397,11 +1399,11 @@ export async function cmdAstrologyWheel(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
-    debugLog("astrology", "Running astrology:wheel.", {
+    debugLog("astrology", cliText("Running astrology:wheel."), {
       date: input.dateStr,
       time: input.timeStr,
       latitude: input.latitude,
@@ -1446,7 +1448,7 @@ export async function cmdAstrologyWheel(
         return;
       }
 
-      console.log(`Wrote ${outputPath} (${bytes} bytes)`);
+      console.log(cliText("Wrote {0} ({1} bytes)", [outputPath, bytes]));
       return;
     }
 
@@ -1494,11 +1496,11 @@ export async function cmdAstrology(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
-    debugLog("astrology", "Running astrology.", {
+    debugLog("astrology", cliText("Running astrology."), {
       date: input.dateStr,
       time: input.timeStr,
       latitude: input.latitude,
@@ -1516,7 +1518,7 @@ export async function cmdAstrology(
     });
     const filteredChart = filterChartAspects(chart, { maxOrb, aspectFilter });
     executionContext.throwIfInterrupted();
-    debugLog("astrology", "Completed astrology.", {
+    debugLog("astrology", cliText("Completed astrology."), {
       planets: Object.keys(filteredChart.planets).length,
       nodes: Object.keys(filteredChart.nodes ?? {}).length,
       aspects: filteredChart.aspects.length,
@@ -1539,32 +1541,32 @@ export async function cmdAstrology(
       return;
     }
 
-    console.log(`\nBirth Chart: ${input.dateStr} ${input.timeStr}\n`);
+    console.log(cliText("\nBirth Chart: {0} {1}\n", [input.dateStr, input.timeStr]));
     if (input.resolvedLocation) {
-      console.log(`  Location: ${input.resolvedLocation}`);
+      console.log(cliText("  Location: {0}", [input.resolvedLocation]));
     }
-    console.log(`  Coordinates: ${input.latitude.toFixed(4)}, ${input.longitude.toFixed(4)}`);
-    console.log(`  House System: ${input.houseSystem}`);
-    console.log(`  UTC Date: ${filteredChart.dateUtc.toISOString()}`);
-    console.log(`\n  Planets:`);
+    console.log(cliText("  Coordinates: {0}, {1}", [input.latitude.toFixed(4), input.longitude.toFixed(4)]));
+    console.log(cliText("  House System: {0}", [input.houseSystem]));
+    console.log(cliText("  UTC Date: {0}", [filteredChart.dateUtc.toISOString()]));
+    console.log(cliText("\n  Planets:"));
     for (const [name, planet] of Object.entries(filteredChart.planets)) {
       const zodiacPosition = planet.zodiacPosition;
-      console.log(`    ${name.padEnd(14)} ${zodiacPosition.sign.padEnd(12)} ${zodiacPosition.traditionalFormat.padEnd(8)} House ${zodiacPosition.house}`);
+      console.log(cliText("    {0} {1} {2} House {3}", [name.padEnd(14), cliValue(zodiacPosition.sign.padEnd(12)), cliValue(zodiacPosition.traditionalFormat.padEnd(8)), zodiacPosition.house]));
     }
-    console.log(`\n  Houses:`);
-    console.log(`    Ascendant:  ${filteredChart.houses.ascendant.sign} ${filteredChart.houses.ascendant.traditionalFormat}`);
-    console.log(`    Midheaven:  ${filteredChart.houses.mc.sign} ${filteredChart.houses.mc.traditionalFormat}`);
-    console.log(`    Descendant: ${filteredChart.houses.dc.sign} ${filteredChart.houses.dc.traditionalFormat}`);
-    console.log(`    IC:         ${filteredChart.houses.ic.sign} ${filteredChart.houses.ic.traditionalFormat}`);
-    console.log(`\n  House Cusps:`);
+    console.log(cliText("\n  Houses:"));
+    console.log(cliText("    Ascendant:  {0} {1}", [cliValue(filteredChart.houses.ascendant.sign), cliValue(filteredChart.houses.ascendant.traditionalFormat)]));
+    console.log(cliText("    Midheaven:  {0} {1}", [cliValue(filteredChart.houses.mc.sign), cliValue(filteredChart.houses.mc.traditionalFormat)]));
+    console.log(cliText("    Descendant: {0} {1}", [cliValue(filteredChart.houses.dc.sign), cliValue(filteredChart.houses.dc.traditionalFormat)]));
+    console.log(cliText("    IC:         {0} {1}", [cliValue(filteredChart.houses.ic.sign), cliValue(filteredChart.houses.ic.traditionalFormat)]));
+    console.log(cliText("\n  House Cusps:"));
     for (let i = 0; i < filteredChart.houses.houses.length; i++) {
       const house = filteredChart.houses.houses[i];
-      console.log(`    House ${String(i + 1).padStart(2)}:  ${house.sign.padEnd(12)} ${house.traditionalFormat}`);
+      console.log(cliText("    House {0}:  {1} {2}", [String(i + 1).padStart(2), cliValue(house.sign.padEnd(12)), cliValue(house.traditionalFormat)]));
     }
     if (filteredChart.nodes && Object.keys(filteredChart.nodes).length > 0) {
-      console.log(`\n  Nodes:`);
+      console.log(cliText("\n  Nodes:"));
       for (const [, node] of Object.entries(filteredChart.nodes)) {
-        console.log(`    ${node.name.padEnd(18)} ${node.sign.padEnd(12)} ${node.traditionalFormat.padEnd(8)} House ${node.house}`);
+        console.log(cliText("    {0} {1} {2} House {3}", [cliValue(node.name.padEnd(18)), cliValue(node.sign.padEnd(12)), cliValue(node.traditionalFormat.padEnd(8)), node.house]));
       }
     }
     console.log();
@@ -1600,7 +1602,7 @@ export async function cmdAstrologyAstrocartography(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -1631,15 +1633,15 @@ export async function cmdAstrologyAstrocartography(
       return;
     }
 
-    console.log(`\nAstro*Carto*Graphy Map\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
+    console.log(cliText("\nAstro*Carto*Graphy Map\n"));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
 
-    console.log(`\n  Meridian Lines (MC/IC):\n`);
+    console.log(cliText("\n  Meridian Lines (MC/IC):\n"));
     for (const line of map.meridianLines) {
-      console.log(`    ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.longitude > 0 ? "+" : ""}${line.longitude.toFixed(2)}°`);
+      console.log(`    ${cliValue(line.planet.padEnd(14))} ${line.angle.padEnd(4)} ${line.longitude > 0 ? "+" : ""}${line.longitude.toFixed(2)}°`);
     }
 
-    console.log(`\n  Horizon Lines (AC/DC): ${map.horizonLines.length} lines with ${map.horizonLines.reduce((s, l) => s + l.points.length, 0)} total points`);
+    console.log(cliText("\n  Horizon Lines (AC/DC): {0} lines with {1} total points", [map.horizonLines.length, map.horizonLines.reduce((s, l) => s + l.points.length, 0)]));
     console.log();
   } catch (err) {
     rethrowInterruptedOrError(err, executionContext);
@@ -1673,7 +1675,7 @@ export async function cmdAstrologyAstrocartographyQuery(
     releaseSwissEphCleanup();
     closeSwissEph();
     executionContext.throwIfInterrupted();
-    exitWithError("WASM_INIT_ERROR", `Failed to initialize Swiss Ephemeris: ${err instanceof Error ? err.message : String(err)}`, flags);
+    exitWithError("WASM_INIT_ERROR", cliText("Failed to initialize Swiss Ephemeris: {0}", [err instanceof Error ? err.message : String(err)]), flags);
   }
 
   try {
@@ -1686,13 +1688,13 @@ export async function cmdAstrologyAstrocartographyQuery(
     const paranOrb = inputPayload?.paranOrb != null ? Number(inputPayload.paranOrb) : getFlagNumber(flags, "paran-orb");
 
     if (queryLat == null || queryLon == null) {
-      exitWithError("MISSING_ARGUMENT", "Query location is required. Use --query-lat=<N> --query-lon=<N>.", flags);
+      exitWithError("MISSING_ARGUMENT", cliText("Query location is required. Use --query-lat=<N> --query-lon=<N>."), flags);
     }
     if (queryLat < -90 || queryLat > 90) {
-      exitWithError("INVALID_ARGUMENT", `query-lat must be between -90 and 90, got ${queryLat}.`, flags);
+      exitWithError("INVALID_ARGUMENT", cliText("query-lat must be between -90 and 90, got {0}.", [queryLat]), flags);
     }
     if (queryLon < -180 || queryLon > 180) {
-      exitWithError("INVALID_ARGUMENT", `query-lon must be between -180 and 180, got ${queryLon}.`, flags);
+      exitWithError("INVALID_ARGUMENT", cliText("query-lon must be between -180 and 180, got {0}.", [queryLon]), flags);
     }
 
     const utcDate = await toUtcDate(natalInput.birthDate, natalInput.latitude, natalInput.longitude, natalInput.timeZoneSettings as any);
@@ -1723,30 +1725,30 @@ export async function cmdAstrologyAstrocartographyQuery(
       return;
     }
 
-    console.log(`\nAstrocartography Location Query\n`);
-    console.log(`  Natal: ${natalInput.dateStr} ${natalInput.timeStr} (${natalInput.latitude}, ${natalInput.longitude})`);
-    console.log(`  Query: (${queryLat}, ${queryLon})  Orb: ${orb ?? 2}°`);
+    console.log(cliText("\nAstrocartography Location Query\n"));
+    console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
+    console.log(cliText("  Query: ({0}, {1})  Orb: {2}°", [queryLat, queryLon, orb ?? 2]));
 
     if (result.activeLines.length > 0) {
-      console.log(`\n  Active Lines (within ${orb ?? 2}° orb):\n`);
+      console.log(cliText("\n  Active Lines (within {0}° orb):\n", [orb ?? 2]));
       for (const line of result.activeLines) {
-        console.log(`    ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.distance.toFixed(2)}° away  (line at ${line.longitude > 0 ? "+" : ""}${line.longitude.toFixed(2)}°)`);
+        console.log(cliText("    {0} {1} {2}° away  (line at {3}{4}°)", [cliValue(line.planet.padEnd(14)), line.angle.padEnd(4), line.distance.toFixed(2), line.longitude > 0 ? "+" : "", line.longitude.toFixed(2)]));
       }
     } else {
-      console.log(`\n  No active lines within ${orb ?? 2}° orb.`);
+      console.log(cliText("\n  No active lines within {0}° orb.", [orb ?? 2]));
     }
 
-    console.log(`\n  All Lines (sorted by proximity):\n`);
+    console.log(cliText("\n  All Lines (sorted by proximity):\n"));
     for (const line of result.lines.slice(0, 20)) {
       const marker = line.active ? "*" : " ";
-      console.log(`    ${marker} ${line.planet.padEnd(14)} ${line.angle.padEnd(4)} ${line.distance.toFixed(2)}°`);
+      console.log(`    ${marker} ${cliValue(line.planet.padEnd(14))} ${line.angle.padEnd(4)} ${line.distance.toFixed(2)}°`);
     }
     if (result.lines.length > 20) {
-      console.log(`    ... and ${result.lines.length - 20} more`);
+      console.log(cliText("    ... and {0} more", [result.lines.length - 20]));
     }
 
     if (result.parans.length > 0) {
-      console.log(`\n  Parans at latitude ${queryLat}°:\n`);
+      console.log(cliText("\n  Parans at latitude {0}°:\n", [queryLat]));
       for (const p of result.parans) {
         console.log(`    ${p.planetA} ${p.angleA} x ${p.planetB} ${p.angleB}`);
       }

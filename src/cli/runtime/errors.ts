@@ -1,3 +1,5 @@
+import { cliText, cliErrorText, cliLanguageFromArgv, withCliLanguage } from "./language";
+import { cliValue } from "./content";
 import { COMMANDS, VERSION } from "../contract";
 import { getFallbackFlags, isJsonMode } from "./args";
 import { configureDebugRuntime, debugLog, isTraceEnabled } from "./debug";
@@ -24,19 +26,20 @@ function inferCommandName(argv: string[]): string | null {
 
 function getHelpHint(code: ErrorCode): string {
   if (code === "UNKNOWN_COMMAND") {
-    return 'Run "kaabalah help" for usage.';
+    return cliText('Run "kaabalah help" for usage.');
   }
 
   const command = inferCommandName(process.argv);
   if (command && command !== "help") {
-    return `Run "kaabalah help ${command}" for command usage.`;
+    return cliText('Run "kaabalah help {0}" for command usage.', [command]);
   }
 
-  return 'Run "kaabalah help" for usage.';
+  return cliText('Run "kaabalah help" for usage.');
 }
 
 export function makeActionableMessage(code: ErrorCode, message: string): string {
-  if (message.startsWith("Usage:") || message.includes('Run "kaabalah help')) {
+  message = cliErrorText(String(cliValue(message)));
+  if (message.startsWith("Usage:") || message.startsWith("Uso:") || message.includes('Run "kaabalah help')) {
     return message;
   }
 
@@ -70,12 +73,15 @@ export function exitWithError(code: ErrorCode, message: string, flags: Flags): n
 }
 
 export function handleFatalError(err: unknown, argv: string[]): never {
+  return withCliLanguage(cliLanguageFromArgv(argv), () => handleFatalErrorInLanguage(err, argv));
+}
+function handleFatalErrorInLanguage(err: unknown, argv: string[]): never {
   const flags = getFallbackFlags(argv);
   configureQuietRuntime(flags);
   configureDebugRuntime(flags);
 
   if (isCliSignalError(err)) {
-    debugLog("signals", `Exiting after ${err.signalName}.`);
+    debugLog("signals", cliText("Exiting after {0}.", [err.signalName]));
     process.exit(err.exitCode);
   }
 
@@ -84,7 +90,7 @@ export function handleFatalError(err: unknown, argv: string[]): never {
     err instanceof Error ? err.message : String(err)
   );
 
-  debugLog("fatal", "Unhandled CLI error.", err);
+  debugLog("fatal", cliText("Unhandled CLI error."), err);
 
   if (isJsonMode(flags)) {
     writeJsonError("INTERNAL_ERROR", message);

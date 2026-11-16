@@ -1,3 +1,5 @@
+import { cliText } from "../runtime/language";
+import { cliValue } from "../runtime/content";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
@@ -191,7 +193,7 @@ function resolveSystem(flags: Flags): SystemKey {
 
   exitWithError(
     "INVALID_ARGUMENT",
-    `Unknown tree system "${value}". Expected one of: ${SYSTEMS.map((candidate) => candidate.SYSTEM).join(", ")}.`,
+    cliText("Unknown tree system \"{0}\". Expected one of: {1}.", [value, SYSTEMS.map((candidate) => candidate.SYSTEM).join(", ")]),
     flags
   );
 }
@@ -210,7 +212,7 @@ function resolveLayoutUnits(
 
   exitWithError(
     "INVALID_ARGUMENT",
-    `Unknown layout units "${units}". Expected one of: percentages, viewBoxUnits, both.`,
+    cliText("Unknown layout units \"{0}\". Expected one of: percentages, viewBoxUnits, both.", [units]),
     flags
   );
 }
@@ -329,7 +331,7 @@ function resolveTopologyRouteKey(flags: Flags): TreeTopologyRouteKey | undefined
 
   exitWithError(
     "INVALID_ARGUMENT",
-    `Unknown topology route "${route}". Expected one of: lightning, serpent, all.`,
+    cliText("Unknown topology route \"{0}\". Expected one of: lightning, serpent, all.", [route]),
     flags
   );
 }
@@ -347,7 +349,7 @@ function buildViewBox(flags: Flags) {
   if (width == null || height == null) {
     exitWithError(
       "INVALID_ARGUMENT",
-      'Both "--viewbox-width" and "--viewbox-height" are required when overriding the SVG viewBox.',
+      cliText("Both \"--viewbox-width\" and \"--viewbox-height\" are required when overriding the SVG viewBox."),
       flags
     );
   }
@@ -373,7 +375,7 @@ function readJsonFile(pathFlag: string, flags: Flags) {
   } catch (err) {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Could not read activations file "${filePath}": ${err instanceof Error ? err.message : String(err)}.`,
+      cliText("Could not read activations file \"{0}\": {1}.", [filePath, err instanceof Error ? err.message : String(err)]),
       flags
     );
   }
@@ -383,7 +385,7 @@ function readJsonFile(pathFlag: string, flags: Flags) {
   } catch {
     exitWithError(
       "INVALID_JSON",
-      `Invalid JSON in activations file "${filePath}".`,
+      cliText("Invalid JSON in activations file \"{0}\".", [filePath]),
       flags
     );
   }
@@ -396,7 +398,7 @@ function validateActivationEntry(
 ): TreeTargetActivationInput {
   const label = `activations[${index}]`;
   if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-    exitWithError("INVALID_JSON", `${label} must be a JSON object.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0} must be a JSON object.", [label]), flags);
   }
 
   const raw = entry as Record<string, unknown>;
@@ -409,27 +411,27 @@ function validateActivationEntry(
   const color = raw.color;
 
   if (typeof targetId !== "string" || !targetId) {
-    exitWithError("INVALID_JSON", `${label}.targetId must be a non-empty string.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.targetId must be a non-empty string.", [label]), flags);
   }
 
   if (targetType !== "sphere" && targetType !== "path") {
-    exitWithError("INVALID_JSON", `${label}.targetType must be "sphere" or "path".`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.targetType must be \"sphere\" or \"path\".", [label]), flags);
   }
 
   if (targetType === "sphere" && !TREE_SPHERE_ID_SET.has(targetId)) {
-    exitWithError("INVALID_ARGUMENT", `${label}.targetId "${targetId}" is not a known sphere target.`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("{0}.targetId \"{1}\" is not a known sphere target.", [label, targetId]), flags);
   }
 
   if (targetType === "path" && !TREE_PATH_ID_SET.has(targetId)) {
-    exitWithError("INVALID_ARGUMENT", `${label}.targetId "${targetId}" is not a known path target.`, flags);
+    exitWithError("INVALID_ARGUMENT", cliText("{0}.targetId \"{1}\" is not a known path target.", [label, targetId]), flags);
   }
 
   if (!Number.isFinite(count) || typeof count !== "number" || count < 0) {
-    exitWithError("INVALID_JSON", `${label}.count must be a non-negative number.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.count must be a non-negative number.", [label]), flags);
   }
 
   if (!Number.isFinite(total) || typeof total !== "number" || total < 0) {
-    exitWithError("INVALID_JSON", `${label}.total must be a non-negative number.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.total must be a non-negative number.", [label]), flags);
   }
 
   if (
@@ -441,15 +443,15 @@ function validateActivationEntry(
       || strength > 1
     )
   ) {
-    exitWithError("INVALID_JSON", `${label}.strength must be a number between 0 and 1.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.strength must be a number between 0 and 1.", [label]), flags);
   }
 
   if (state !== undefined && (typeof state !== "string" || !TREE_TARGET_STATES.has(state))) {
-    exitWithError("INVALID_JSON", `${label}.state must be active, hovered, selected, or inactive.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.state must be active, hovered, selected, or inactive.", [label]), flags);
   }
 
   if (color !== undefined && typeof color !== "string") {
-    exitWithError("INVALID_JSON", `${label}.color must be a string when provided.`, flags);
+    exitWithError("INVALID_JSON", cliText("{0}.color must be a string when provided.", [label]), flags);
   }
 
   return {
@@ -480,7 +482,7 @@ function readActivations(flags: Flags): TreeTargetActivationInput[] | undefined 
   if (!payload) {
     exitWithError(
       "INVALID_JSON",
-      'Activations file must be a JSON array or an object with an "activations" array.',
+      cliText("Activations file must be a JSON array or an object with an \"activations\" array."),
       flags
     );
   }
@@ -498,7 +500,7 @@ function buildSvgOptions(flags: Flags): TreeSvgOptions {
   if (palette && palette !== "color" && palette !== "monochrome") {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Unknown SVG palette "${palette}". Expected "color" or "monochrome".`,
+      cliText("Unknown SVG palette \"{0}\". Expected \"color\" or \"monochrome\".", [palette]),
       flags
     );
   }
@@ -507,7 +509,7 @@ function buildSvgOptions(flags: Flags): TreeSvgOptions {
   if (daathLayer && daathLayer !== "front" && daathLayer !== "back") {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Unknown Daath layer "${daathLayer}". Expected "front" or "back".`,
+      cliText("Unknown Daath layer \"{0}\". Expected \"front\" or \"back\".", [daathLayer]),
       flags
     );
   }
@@ -529,7 +531,7 @@ function buildRenderModelOptions(flags: Flags): TreeSvgOptions {
   if (palette && palette !== "color" && palette !== "monochrome") {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Unknown SVG palette "${palette}". Expected "color" or "monochrome".`,
+      cliText("Unknown SVG palette \"{0}\". Expected \"color\" or \"monochrome\".", [palette]),
       flags
     );
   }
@@ -538,7 +540,7 @@ function buildRenderModelOptions(flags: Flags): TreeSvgOptions {
   if (daathLayer && daathLayer !== "front" && daathLayer !== "back") {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Unknown Daath layer "${daathLayer}". Expected "front" or "back".`,
+      cliText("Unknown Daath layer \"{0}\". Expected \"front\" or \"back\".", [daathLayer]),
       flags
     );
   }
@@ -675,9 +677,9 @@ export function cmdTree(flags: Flags): void {
     return;
   }
 
-  console.log(`\nTree of Life (${KAABALAH_SYSTEM})\n`);
-  console.log(`  Total nodes: ${allNodes.length}`);
-  console.log(`  Total correspondences: ${tree.getEdges().length}`);
+  console.log(cliText("\nTree of Life ({0})\n", [KAABALAH_SYSTEM]));
+  console.log(cliText("  Total nodes: {0}", [allNodes.length]));
+  console.log(cliText("  Total correspondences: {0}", [tree.getEdges().length]));
 
   const byType = new Map<string, typeof allNodes>();
   for (const node of allNodes) {
@@ -694,7 +696,7 @@ export function cmdTree(flags: Flags): void {
       console.log(`    ${node.id}${label ? ` — ${label}` : ""}`);
     }
     if (nodes.length > 15) {
-      console.log(`    ... and ${nodes.length - 15} more`);
+      console.log(cliText("    ... and {0} more", [nodes.length - 15]));
     }
   }
   console.log();
@@ -707,7 +709,7 @@ export function cmdTreeNode(idStr: string, flags: Flags): void {
   if (!node) {
     exitWithError(
       "INVALID_ARGUMENT",
-      `Node "${idStr}" not found. Use "kaabalah tree:types --json" to see valid node types, or "kaabalah tree --json --fields=nodes" to list all node IDs.`,
+      cliText("Node \"{0}\" not found. Use \"kaabalah tree:types --json\" to see valid node types, or \"kaabalah tree --json --fields=nodes\" to list all node IDs.", [idStr]),
       flags
     );
   }
@@ -750,7 +752,7 @@ export function cmdTreeNode(idStr: string, flags: Flags): void {
     }
   }
 
-  console.log(`\n  Related types: ${relatedTypes.join(", ")}`);
+  console.log(cliText("\n  Related types: {0}", [relatedTypes.join(", ")]));
 
   const byType = new Map<string, typeof correspondences>();
   for (const relation of correspondences) {
@@ -770,7 +772,7 @@ export function cmdTreeNode(idStr: string, flags: Flags): void {
           : "";
       const details = [
         label ? `— ${label}` : "",
-        match.distance > 1 ? `(depth ${match.distance})` : "",
+        match.distance > 1 ? cliText("(depth {0})", [match.distance]) : "",
         sources ? `[${sources}]` : "",
       ]
         .filter(Boolean)
@@ -806,7 +808,7 @@ export function cmdTreeTypes(flags: Flags): void {
     return;
   }
 
-  console.log(`\nNode types (${Object.keys(counts).length}):\n`);
+  console.log(cliText("\nNode types ({0}):\n", [Object.keys(counts).length]));
   for (const [type, info] of Object.entries(counts)) {
     console.log(`  ${type}: ${info.count}`);
   }
@@ -822,7 +824,7 @@ export function cmdTreeFind(query: string | undefined, flags: Flags): void {
   if (!search && !typeFilter) {
     exitWithError(
       "MISSING_ARGUMENT",
-      'Usage: kaabalah tree:find <query> [--type=<nodeType>] or kaabalah tree:find --type=<nodeType>',
+      cliText("Usage: kaabalah tree:find <query> [--type=<nodeType>] or kaabalah tree:find --type=<nodeType>"),
       flags
     );
   }
@@ -848,14 +850,14 @@ export function cmdTreeFind(query: string | undefined, flags: Flags): void {
     return;
   }
 
-  console.log(`\nTree search\n`);
+  console.log(cliText("\nTree search\n"));
   if (search) {
-    console.log(`  Query: ${search}`);
+    console.log(cliText("  Query: {0}", [search]));
   }
   if (typeFilter) {
-    console.log(`  Type: ${typeFilter}`);
+    console.log(cliText("  Type: {0}", [typeFilter]));
   }
-  console.log(`  Matches: ${matches.length}\n`);
+  console.log(cliText("  Matches: {0}\n", [matches.length]));
 
   for (const match of limitedMatches) {
     const label = humanLabel(match);
@@ -863,7 +865,7 @@ export function cmdTreeFind(query: string | undefined, flags: Flags): void {
   }
 
   if (matches.length > limitedMatches.length) {
-    console.log(`\n  ... and ${matches.length - limitedMatches.length} more`);
+    console.log(cliText("\n  ... and {0} more", [matches.length - limitedMatches.length]));
   }
   console.log();
 }
@@ -879,18 +881,16 @@ export function cmdTreeLayout(flags: Flags): void {
       return;
     }
 
-    console.log(`\nTree render model (${model.system})\n`);
+    console.log(cliText("\nTree render model ({0})\n", [model.system]));
     console.log(
-      `  ViewBox: ${model.viewBox.minX} ${model.viewBox.minY} ${model.viewBox.width} ${model.viewBox.height}`
+      cliText("  ViewBox: {0} {1} {2} {3}", [model.viewBox.minX, model.viewBox.minY, model.viewBox.width, model.viewBox.height])
     );
-    console.log(`  Layers: ${model.layerOrder.join(" -> ")}`);
-    console.log(`  Spheres: ${model.spheres.length}`);
-    console.log(`  Paths: ${model.paths.length}`);
+    console.log(cliText("  Layers: {0}", [model.layerOrder.join(" -> ")]));
+    console.log(cliText("  Spheres: {0}", [model.spheres.length]));
+    console.log(cliText("  Paths: {0}", [model.paths.length]));
     console.log(
-      `  Activations: ${
-        model.spheres.filter((sphere) => sphere.activation).length
-        + model.paths.filter((path) => path.activation).length
-      }\n`
+      cliText("  Activations: {0}\n", [model.spheres.filter((sphere) => sphere.activation).length
+        + model.paths.filter((path) => path.activation).length])
     );
     return;
   }
@@ -905,12 +905,12 @@ export function cmdTreeLayout(flags: Flags): void {
     return;
   }
 
-  console.log(`\nTree layout (${system})\n`);
-  console.log(`  Spheres: ${layout.sphereOrder.length}`);
-  console.log(`  Paths: ${layout.pathOrder.length}`);
-  console.log(`  Units: ${units}`);
+  console.log(cliText("\nTree layout ({0})\n", [system]));
+  console.log(cliText("  Spheres: {0}", [layout.sphereOrder.length]));
+  console.log(cliText("  Paths: {0}", [layout.pathOrder.length]));
+  console.log(cliText("  Units: {0}", [units]));
   console.log(
-    `  ViewBox: ${layout.viewBox.minX} ${layout.viewBox.minY} ${layout.viewBox.width} ${layout.viewBox.height}\n`
+    cliText("  ViewBox: {0} {1} {2} {3}\n", [layout.viewBox.minX, layout.viewBox.minY, layout.viewBox.width, layout.viewBox.height])
   );
 
   const activeSpace =
@@ -949,21 +949,21 @@ export function cmdTreeTopology(flags: Flags): void {
     return;
   }
 
-  console.log(`\nTree topology (${system})\n`);
-  console.log(`  Spheres: ${spheres.length}`);
-  console.log(`  Paths: ${paths.length}`);
+  console.log(cliText("\nTree topology ({0})\n", [system]));
+  console.log(cliText("  Spheres: {0}", [spheres.length]));
+  console.log(cliText("  Paths: {0}", [paths.length]));
 
   for (const route of routes) {
     const serialized = serializeTopologyRoute(route);
     console.log(
-      `\n  ${route.name} (${route.direction}, ${route.isFullyConnected ? "fully connected" : "has missing path segments"}):`
+      `\n  ${cliValue(route.name)} (${route.direction}, ${route.isFullyConnected ? "fully connected" : "has missing path segments"}):`
     );
     console.log(`    ${serialized.sphereNames.join(" -> ")}`);
 
     if (route.missingSegments.length > 0) {
-      console.log("    Missing direct paths:");
+      console.log(cliText("    Missing direct paths:"));
       for (const segment of route.missingSegments) {
-        console.log(`      ${segment.from.name} -> ${segment.to.name}`);
+        console.log(`      ${cliValue(segment.from.name)} -> ${cliValue(segment.to.name)}`);
       }
     }
   }
@@ -1003,7 +1003,7 @@ export function cmdTreeSvg(flags: Flags): void {
       return;
     }
 
-    console.log(`Wrote ${outputPath} (${Buffer.byteLength(svg, "utf8")} bytes)`);
+    console.log(cliText("Wrote {0} ({1} bytes)", [outputPath, Buffer.byteLength(svg, "utf8")]));
     return;
   }
 
@@ -1030,7 +1030,7 @@ export function cmdTreeAscii(flags: Flags): void {
   if (columns < 21 || rows < 11) {
     exitWithError(
       "INVALID_ARGUMENT",
-      'ASCII grid too small. Use at least "--columns=21 --rows=11".',
+      cliText("ASCII grid too small. Use at least \"--columns=21 --rows=11\"."),
       flags
     );
   }

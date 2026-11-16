@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add `--language pt-BR` to localize CLI help, display content, errors and
+  I Ching records while preserving JSON keys and error codes.
+
 - Add twelve source-audited bilingual natal Sun-sign descriptions, immutable
   provenance and typed getters, preserving calculation behavior and English defaults.
 

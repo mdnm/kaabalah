@@ -1,3 +1,4 @@
+import { cliText } from "./language";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -48,7 +49,7 @@ let activeConfig: ResolvedRuntimeConfig = { flags: {} };
 
 function ensureBoolean(value: unknown, label: string, source: string): boolean {
   if (typeof value !== "boolean") {
-    throw new CliConfigError("INVALID_ARGUMENT", `${source}: "${label}" must be a boolean.`);
+    throw new CliConfigError("INVALID_ARGUMENT", cliText("{0}: \"{1}\" must be a boolean.", [source, label]));
   }
 
   return value;
@@ -56,7 +57,7 @@ function ensureBoolean(value: unknown, label: string, source: string): boolean {
 
 function ensureString(value: unknown, label: string, source: string): string {
   if (typeof value !== "string" || value.length === 0) {
-    throw new CliConfigError("INVALID_ARGUMENT", `${source}: "${label}" must be a non-empty string.`);
+    throw new CliConfigError("INVALID_ARGUMENT", cliText("{0}: \"{1}\" must be a non-empty string.", [source, label]));
   }
 
   return value;
@@ -77,7 +78,7 @@ function normalizeConfigObject(config: Record<string, unknown>, source: string):
     if (!SUPPORTED_CONFIG_KEYS.includes(key as SupportedConfigKey)) {
       throw new CliConfigError(
         "INVALID_ARGUMENT",
-        `${source}: unknown config key "${rawKey}". Supported keys: ${SUPPORTED_CONFIG_KEYS.join(", ")}.`
+        cliText("{0}: unknown config key \"{1}\". Supported keys: {2}.", [source, rawKey, SUPPORTED_CONFIG_KEYS.join(", ")])
       );
     }
 
@@ -120,15 +121,15 @@ function readConfigFile(path: string, label: string): ConfigValues {
   } catch (err) {
     throw new CliConfigError(
       "INVALID_JSON",
-      `${label} config at "${path}" contains invalid JSON: ${err instanceof Error ? err.message : String(err)}`
+      cliText("{0} config at \"{1}\" contains invalid JSON: {2}", [label, path, err instanceof Error ? err.message : String(err)])
     );
   }
 
   if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    throw new CliConfigError("INVALID_JSON", `${label} config at "${path}" must be a JSON object.`);
+    throw new CliConfigError("INVALID_JSON", cliText("{0} config at \"{1}\" must be a JSON object.", [label, path]));
   }
 
-  return normalizeConfigObject(parsed as Record<string, unknown>, `${label} config at "${path}"`);
+  return normalizeConfigObject(parsed as Record<string, unknown>, cliText("{0} config at \"{1}\"", [label, path]));
 }
 
 function parseBooleanEnv(name: string, value: string | undefined): boolean | undefined {
@@ -146,7 +147,7 @@ function parseBooleanEnv(name: string, value: string | undefined): boolean | und
 
   throw new CliConfigError(
     "INVALID_ARGUMENT",
-    `Environment variable ${name} must be a boolean (true/false, 1/0, yes/no, on/off).`
+    cliText("Environment variable {0} must be a boolean (true/false, 1/0, yes/no, on/off).", [name])
   );
 }
 
@@ -281,7 +282,7 @@ export function resolveRuntimeConfig(
     delete flags.json;
   }
 
-  debugLog("config", "Resolved runtime config precedence.", {
+  debugLog("config", cliText("Resolved runtime config precedence."), {
     userConfigPath,
     projectConfigPath,
     sources: {

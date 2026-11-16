@@ -146,6 +146,7 @@ describe("CLI contract", () => {
       "help",
     ]);
     expect(payload.globalFlags.map((flag) => flag.name)).toEqual([
+      "language",
       "json",
       "no-json",
       "compact",
@@ -1767,5 +1768,37 @@ describe("I Ching CLI", () => {
     const missing = runCli(["iching:reading","--json","--compact"]);
     expect(missing.status).toBe(1);
     expect(JSON.parse(missing.stdout)).toMatchObject({error:true,code:"MISSING_ARGUMENT"});
+  });
+});
+
+
+describe("Portuguese CLI", () => {
+  it("localizes help and human Ifa output while keeping machine keys", () => {
+    const help = runCli(["help", "ifa", "--language", "pt-BR", "--json", "--compact", "--quiet"]);
+    assertSuccess(help, "Portuguese help");
+    const payload = JSON.parse(help.stdout);
+    expect(payload.command.name).toBe("ifa");
+    expect(payload.command.description).toBe("Calcule o Odu de uma data");
+    const human = runCli(["ifa", "1990-01-15", "--language", "pt-BR", "--no-json", "--quiet"]);
+    assertSuccess(human, "Portuguese Ifa");
+    expect(human.stdout).toContain("Esquerda:");
+    expect(human.stdout).toContain("Norte:");
+  });
+  it("localizes tarot content before filtering and preserves English defaults", () => {
+    const args = ["tarot:card", "20", "--json", "--compact", "--fields=meaning,tarotCard", "--quiet"];
+    const en = runCli(args), pt = runCli([...args, "--language=pt-BR"]);
+    assertSuccess(en, "English tarot"); assertSuccess(pt, "Portuguese tarot");
+    expect(JSON.parse(en.stdout).meaning).toBe("Make retrospectives and learn from mistakes and successes");
+    expect(JSON.parse(pt.stdout)).toEqual({ meaning: "Faça retrospectivas, aprenda com seus erros e acertos", tarotCard: "O Julgamento" });
+  });
+  it("localizes classical I Ching output and errors without changing codes", () => {
+    const reading = runCli(["iching:reading", "--hexagram=1", "--moving=1,2,3,4,5,6", "--language=pt-BR", "--json", "--compact", "--fields=oracle", "--quiet"]);
+    assertSuccess(reading, "Portuguese I Ching");
+    expect(JSON.parse(reading.stdout).oracle[0].text.content).toBe("Veja um grupo de dragões sem cabeça. Boa fortuna.");
+    const invalid = runCli(["iching:hexagram", "65", "--language=pt-BR", "--json", "--compact", "--quiet"]);
+    expect(invalid.status).toBe(1);
+    const error = JSON.parse(invalid.stdout);
+    expect(error.code).toBe("INVALID_ARGUMENT");
+    expect(error.message).toContain("O número do hexagrama deve ser um inteiro de 1 a 64");
   });
 });
