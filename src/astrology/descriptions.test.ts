@@ -161,6 +161,102 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
   });
 });
 
+describe("Pluto source distinctions", () => {
+  const entry = (sign: Sign) => getPlanetSignDescriptionEntry("pluto", sign)!;
+  const product = (sign: Sign) => {
+    const r = entry(sign);
+    return JSON.stringify({ pt: r.pt, en: r.en, keywords: r.keywords });
+  };
+  const bounds: Record<Sign, readonly [number, number]> = {
+    Aries: [190, 191], Taurus: [192, 193], Gemini: [194, 195], Cancer: [196, 198],
+    Leo: [199, 201], Virgo: [202, 204], Libra: [205, 207], Scorpio: [208, 209],
+    Sagittarius: [210, 212], Capricorn: [213, 215], Aquarius: [216, 218], Pisces: [220, 222],
+  };
+
+  it("completes all ten authored sets and 120 canonical entries", () => {
+    expect(authoredPlanets).toEqual(ordinaryPlanets);
+    expect(authoredPlanets.flatMap(planet => Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns[planet]!))).toHaveLength(120);
+  });
+
+  it("adopts exactly the primary inclusive ranges with no book claims", () => {
+    for (const sign of signs) {
+      const [from, to] = bounds[sign];
+      expect(entry(sign).src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from, to }]);
+    }
+  });
+
+  it("keeps paired direct address and exactly two lowercase-start sentences", () => {
+    for (const sign of signs) {
+      const r = entry(sign);
+      expect(r.pt).toMatch(/^você /);
+      expect(r.en).toMatch(/^you /);
+      for (const text of [r.pt, r.en]) {
+        const sentences = text.match(/[^.!?]+[.!?]/gu)!;
+        expect(sentences).toHaveLength(2);
+        expect(sentences.join("")).toBe(text);
+        for (const sentence of sentences) expect(sentence.trim()).toMatch(/^\p{Ll}/u);
+      }
+    }
+  });
+
+  it("lists Aries human forces independently and Taurus sexuality/economy symbolically", () => {
+    expect(entry("Aries").pt).toMatch(/instintos poderosos e criatividade\. em outro tema simbólico coletivo.*forças destrutivas do ser humano/);
+    expect(entry("Aries").en).toMatch(/powerful instincts and creativity\. in a separate collective symbolic theme.*destructive human forces/);
+    expect(entry("Aries").keywords.pt).toContain("liberação das forças destrutivas do ser humano");
+    expect(entry("Aries").reviewNotes.join(" ")).toContain("no causal link");
+    expect(entry("Taurus").pt).toMatch(/simbolismo coletivo de destruição do já criado e sexualidade atormentada.*mesmo plano simbólico.*período de estabilidade comercial e prosperidade econômica/);
+    expect(entry("Taurus").en).toMatch(/collective symbolism of destruction.*troubled sexuality.*same symbolic level.*period of commercial stability and economic prosperity/);
+    expect(entry("Taurus").reviewNotes.join(" ")).toContain("not inferred actual sexual experience");
+  });
+
+  it("preserves collective culture, family changes, demographic shifts and a critical generation", () => {
+    expect(entry("Gemini").pt).toMatch(/chave simbólica coletiva.*difusão cultural.*poderosos meios de transporte.*propagação dos vícios/);
+    expect(entry("Gemini").en).toMatch(/collective symbolic level.*cultural diffusion.*powerful new means of transport.*spread of vices/);
+    expect(entry("Cancer").pt).toMatch(/chave simbólica coletiva.*mudanças radicais na estrutura familiar/);
+    expect(entry("Cancer").en).toMatch(/collective symbolic level.*radical changes in family structures/);
+    expect(entry("Leo").pt).toMatch(/simbolismo geracional.*sofrimento intenso.*hábitos sexuais.*curvas demográficas/);
+    expect(entry("Leo").en).toMatch(/generational symbolism.*intense suffering.*sexual habits.*demographic curves/);
+    expect(entry("Leo").reviewNotes.join(" ")).toMatch(/Audáciosidade.*audácia.*clear linguistic paraphrase/);
+    expect(entry("Virgo").pt).toMatch(/autocrítica implacável.*dificuldades criativas.*cansaço mental.*nova geração.*espírito crítico agudo/);
+    expect(entry("Virgo").en).toMatch(/relentless self-criticism.*creative difficulties.*mental fatigue.*new generation.*sharp critical spirit/);
+  });
+
+  it("retains diplomatic resolution and health/population themes only as collective symbols", () => {
+    expect(entry("Libra").pt).toMatch(/simbolismo coletivo.*crises internacionais resolvidas por meios diplomáticos/);
+    expect(entry("Libra").en).toMatch(/collective symbolism.*international crises resolved through diplomacy/);
+    expect(entry("Scorpio").pt).toMatch(/simbolismo coletivo de fecundidade.*vitalidade.*progressos científicos.*grandes epidemias difíceis de combater/);
+    expect(entry("Scorpio").en).toMatch(/collective symbolism of fertility.*vitality.*scientific advances.*major epidemics that are difficult to combat/);
+    expect(entry("Scorpio").reviewNotes.join(" ")).toContain("No fertility assurance, diagnosis or forecast");
+  });
+
+  it("preserves clear C themes without reconstructing uncertain OCR", () => {
+    expect(entry("Sagittarius").pt).toMatch(/simbolismo coletivo.*sublimação sexual e impasse.*histórico simbólico.*estabilidade política e grandes viagens/);
+    expect(entry("Sagittarius").en).toMatch(/collective symbolism.*sexual sublimation and impasse.*symbolic historical level.*political stability and major journeys/);
+    expect(entry("Capricorn").pt).toMatch(/simbolismo coletivo.*criatividade lenta.*rancor.*centralização do poder.*estabilidade internacional/);
+    expect(entry("Capricorn").en).toMatch(/collective symbolism.*slow creativity.*resentment.*centralization of power.*international political and economic stability/);
+    expect(product("Sagittarius")).not.toMatch(/estorço|gelo|esforço coletivo|collective effort|progresso da humanidade|progress of humanity/);
+    expect(product("Capricorn")).not.toMatch(/vingara|vingança|revenge/);
+    expect(entry("Sagittarius").reviewNotes.join(" ")).toMatch(/OCR incerto.*estorço coletivo gelo/);
+    expect(entry("Capricorn").reviewNotes.join(" ")).toMatch(/OCR incerto.*vingara/);
+    expect(entry("Aquarius").pt).toMatch(/simbolismo coletivo.*brutalidade e crueldade.*descobertas científicas importantes.*fraternidade/);
+    expect(entry("Aquarius").en).toMatch(/collective symbolism.*brutality and cruelty.*important scientific discoveries.*fellowship/);
+  });
+
+  it("keeps Pisces first-sentence themes collective and catastrophes outside product fields", () => {
+    expect(entry("Pisces").pt).toMatch(/^você compartilha o simbolismo coletivo de um instinto criativo obscuro, tendência a fundir-se no desconhecido, caos e turbulência sexual\./);
+    expect(entry("Pisces").en).toMatch(/^you share the collective symbolism of an obscure creative instinct, a tendency to merge into the unknown, chaos and sexual turbulence\./);
+    expect(entry("Pisces").pt).toMatch(/plano histórico simbólico.*novas religiões ou movimentos místicos/);
+    expect(entry("Pisces").en).toMatch(/symbolic historical level.*new religions or mystical movements/);
+    expect(product("Pisces")).not.toMatch(/faculdades psíquicas|psychic faculties|catástrofe|catastrophe|regenera/i);
+    expect(product("Cancer")).not.toMatch(/catástrofe|catastrophe/i);
+    expect(entry("Pisces").reviewNotes.join(" ")).toContain("no actual reader behavior or clinical/sexual identity");
+    expect(entry("Cancer").reviewNotes.join(" ")).toMatch(/catastrophes.*omitted/);
+    expect(entry("Pisces").reviewNotes.join(" ")).toMatch(/catástrofes.*omitido/);
+    expect(entry("Pisces").keywords.pt).toContain("turbulência sexual");
+    expect(entry("Pisces").keywords.en).toContain("sexual turbulence");
+  });
+});
+
 describe("Neptune source distinctions", () => {
   const course = "modulo 4/aula 12 modulo 4/aula-12.md";
   const book = "books/astrologia-hermetica/astrologia-hermetica.md";

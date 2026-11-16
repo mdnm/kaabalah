@@ -2,6 +2,39 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Pluto-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Neptune-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Uranus-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Saturn-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Jupiter-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Mars-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Venus-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Mercury-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Moon-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Sun-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
+- Add twelve source-audited bilingual natal Pluto-sign descriptions,
+  with typed lookup coverage, retained source qualifications and provenance.
+
 - Add twelve source-audited bilingual natal Neptune-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 

@@ -23,6 +23,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 import {
   getPlanetSignDescription,
   getPlanetSignDescriptionEntry,
+  getPlanetHouseDescription,
+  getPlanetHouseDescriptionEntry,
 } from 'kaabalah/astrology';
 
 getPlanetSignDescription('sun', 'Aries');          // English (default)
@@ -31,19 +33,26 @@ const entry = getPlanetSignDescriptionEntry('sun', 'Aries');
 entry?.keywords.pt; // source-supported Portuguese keywords
 entry?.src;         // course-relative files and inclusive line ranges
 entry?.reviewNotes; // retained source disagreements or OCR decisions
+
+getPlanetHouseDescription('sun', 2, 'pt-BR'); // one-based chart house number
+getPlanetHouseDescriptionEntry('sun', 2)?.src;
 ```
 
-Currently covers twelve signs each for Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus and Neptune (108 entries). Other planet sets and unsupported keys return
-`undefined`; there is no generic profile fallback. Keys use lowercase chart planet
-names and title-case signs. Entries, keywords and source metadata are deeply frozen.
-Portuguese is selected when `language?.startsWith('pt')`; other languages use English.
+These getters are pure JSON lookups and require no WebAssembly initialization.
+
+Authored coverage: 120 planet-sign entries and 120 planet-house entries (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto houses).
+Missing combinations and unsupported keys return `undefined`, with no generic profile
+fallback. Planet keys use lowercase chart names, signs use title case, and house
+arguments are integer numbers from 1 to 12 (strings are not coerced). Entries,
+keywords and source metadata are deeply frozen. Portuguese is selected when
+`language?.startsWith('pt')`; other languages use English.
 
 These are general placement tendencies, read with the other factors in a natal chart.
 The course explicitly qualifies its sign profiles this way (class 3, lines 531-535).
 They do not assign a person's evolutionary level or promise outcomes.
 
 The repository keeps a separate source audit for every completed kind under
-`docs/content/astrology-descriptions-*-signs.md`. These audits record narrow
+`docs/content/astrology-descriptions-*.md`. These audits record narrow
 passages, review decisions, validation and the exact next factor.
 
 ## 1. Birth Charts
