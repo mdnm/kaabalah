@@ -9107,6 +9107,445 @@
           "books/astrologia-hermetica/astrologia-hermetica.md:66566-66689 inspected only, not adopted or cited in src. The body explicitly names Pisces at 66572-66580 alongside alternating Aquarius material at 66570-66578. Sensitivity/empathy and later imagination, spirituality and mystical claims are interleaved; their positive emphasis differs from the primary’s emphasis on idealization and discernment. No heading-based reassignment, OCR reconstruction or supplemental-only claim adopted."
         ]
       }
+    },
+    "mc": {
+      "Aries": {
+        "pt": "com Áries no Meio do Céu, você pode buscar uma imagem pública de força e ambição, querendo ser lembrado como alguém digno de atenção. a casa de Marte detalha outras qualidades que você mostra ao público.",
+        "en": "with Aries at the Midheaven, you may seek a public image of strength and ambition, wanting to be remembered as someone worthy of attention. the house occupied by Mars details other qualities you show publicly.",
+        "keywords": {
+          "pt": [
+            "imagem pública de força e ambição",
+            "desejo de ser lembrado",
+            "qualidades mostradas ao público detalhadas pela casa de Marte"
+          ],
+          "en": [
+            "public image of strength and ambition",
+            "desire to be remembered",
+            "publicly shown qualities detailed by Mars’s house"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1289,
+            "to": 1292
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1311,
+            "to": 1312
+          }
+        ],
+        "reviewNotes": [
+          "A9:1289–1292 descreve Marte na casa 10 como ambicioso, querendo ser visto como poderoso/forte e lembrado; A9:1311–1312 afirma explicitamente que Áries no Meio do Céu ou na casa 10 é semelhante a Marte nessa posição e que a casa do Marte revela qualidades exibidas ao público. A segunda frase conserva esse qualificador sem transplantar recomendação ou inferir iniciativa/liderança/autonomia como traços.",
+          "A seção A9:1287–1313 foi lida integralmente. A recomendação profissional em 1313 foi inspecionada, mas não adotada. Livro inspecionado em 66781–66804; o cabeçalho Aries MC em 66782 fica junto de uma coluna Libra e o corpo está intercalado, sem afirmação suplementar adotada."
+        ]
+      },
+      "Taurus": {
+        "pt": "com Touro no Meio do Céu, você pode querer exibir status e poder publicamente e ser possessivo quanto à sua posição e autoridade. depois de começar uma carreira, você pode mostrar grande determinação no trabalho.",
+        "en": "with Taurus at the Midheaven, you may want to display status and power publicly and be possessive about your position and authority. after beginning a career, you may show strong determination in your work.",
+        "keywords": {
+          "pt": [
+            "exibir status e poder",
+            "possessividade quanto à posição e autoridade",
+            "determinação no desempenho profissional"
+          ],
+          "en": [
+            "displaying status and power",
+            "possessiveness about position and authority",
+            "determination in professional work"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 904,
+            "to": 906
+          }
+        ],
+        "reviewNotes": [
+          "A9:904–906 nomeia Touro no Meio do Céu ou na casa 10, apoiando a exibição pública de status/poder, possessividade quanto a posição/autoridade e determinação profissional uma vez iniciada a carreira. Não foi convertida em previsão de profissão ou sucesso.",
+          "A seção A9:884–915 foi lida integralmente. Livro inspecionado em 66805–66824. Apesar dos títulos de Touro e Escorpião, as linhas de conteúdo alternam entre as colunas e não foram reconstruídas nem adotadas; em particular, estabilidade e segurança financeira não foram fundidas com a ênfase de status/poder da aula."
+        ]
+      },
+      "Gemini": {
+        "pt": "com Gêmeos no Meio do Céu, você pode prosperar em um ambiente dinâmico que permita variedade. a carreira pode envolver comunicação, troca de ideias e versatilidade.",
+        "en": "with Gemini at the Midheaven, you may thrive in a dynamic environment that allows variety. your career may involve communication, exchange of ideas, and versatility.",
+        "keywords": {
+          "pt": [
+            "ambiente profissional dinâmico",
+            "variedade",
+            "comunicação",
+            "troca de ideias",
+            "versatilidade"
+          ],
+          "en": [
+            "dynamic professional environment",
+            "variety",
+            "communication",
+            "exchange of ideas",
+            "versatility"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 66825,
+            "to": 66845
+          }
+        ],
+        "reviewNotes": [
+          "A9:540–561 foi lida integralmente. O cabeçalho 540 faz a ponte Mercúrio na casa 10 com Gêmeos e Virgem no Meio do Céu; porém o corpo 557–559 especifica Gêmeos na cúspide da casa 10 e mais de uma carreira, não identifica esse enunciado como uma leitura autônoma do MC. Esse claim de múltiplas carreiras não foi adotado nem convertido em equivalência automática entre MC e cúspide.",
+          "Livro inspecionado em 66825–66845. O corpo nomeia explicitamente Meio do Céu em Gêmeos em 66837 e sustenta ambiente dinâmico/variedade em 66837, 66841 e 66845; a coluna de Gêmeos também associa carreira multifacetada, comunicação, troca de ideias e versatilidade em 66829–66834. A coluna de Sagitário alterna entre esses fragmentos, mas o corpo indica claramente a sequência Gemini versus Sagittarius; as afirmações adotadas são mapeadas nos fragmentos de Gêmeos. O texto foi considerado além de 66838."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode ser sensível à reputação e ao que os outros pensam de você, e sua carreira pode envolver prover, abrigar ou cuidar de outras pessoas. o trabalho pode trazer seus sentimentos à tona; você pode perceber os humores do público e ter potencial para influenciar sentimentos coletivos.",
+        "en": "you may be sensitive to your reputation and to what others think of you, and your career may involve providing for, sheltering or caring for other people. work may bring your feelings to the surface; you may sense public moods and have potential to influence collective feelings.",
+        "keywords": {
+          "pt": [
+            "sensibilidade à reputação",
+            "opinião pública",
+            "carreira de cuidado e provisão",
+            "sentimentos trazidos à tona pelo trabalho",
+            "humores do público",
+            "influência sobre sentimentos coletivos"
+          ],
+          "en": [
+            "sensitivity to reputation",
+            "public opinion",
+            "career in care and provision",
+            "feelings surfaced through work",
+            "public moods",
+            "influence on collective feelings"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 210,
+            "to": 213
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 226,
+            "to": 231
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 232,
+            "to": 232
+          }
+        ],
+        "reviewNotes": [
+          "A9 explicitly bridges Cancer on the MC to the Moon-in-house-10 discussion at line 232. Adopted public-reputation sensitivity, possible caring/provision work, work bringing feelings to light, and sensitivity to public moods/potential influence on mass feelings.",
+          "Omitted the Moon-house-10 passage's childhood, maternal identity, parental conflict, and named biographical/criminal example. No parental-gender convention is used.",
+          "Inspected approved book window family 66781-66898 for Cancer. The heading at 66849 is followed by a body fragment about care, nurturing and protection, but signs are interleaved and the prose does not independently establish its MC sign identity; not adopted."
+        ]
+      },
+      "Leo": {
+        "pt": "você pode querer que sua identidade e suas conquistas profissionais sejam vistas, com ambição de ser admirado por poder, força e autoridade. o esforço para subir na carreira pode limitar sua liberdade e espontaneidade, e seu valor pessoal pode ficar ligado demais a títulos e posição.",
+        "en": "you may want your identity and professional achievements to be seen, with an ambition to be admired for power, strength and authority. the effort to climb in your career may limit your freedom and spontaneity, and your self-worth may become too tied to titles and position.",
+        "keywords": {
+          "pt": [
+            "identidade ligada à carreira",
+            "conquistas profissionais",
+            "ambição",
+            "reconhecimento de poder e autoridade",
+            "liberdade limitada pelo esforço",
+            "valor pessoal ligado a títulos"
+          ],
+          "en": [
+            "identity tied to career",
+            "professional achievements",
+            "ambition",
+            "recognition for power and authority",
+            "freedom limited by effort",
+            "self-worth tied to titles"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1386,
+            "to": 1394
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1405,
+            "to": 1409
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1421,
+            "to": 1422
+          }
+        ],
+        "reviewNotes": [
+          "A8's explicit bridge says Leo on the MC or contained within house 10 has meanings similar to the Sun in that position (1421-1422). The description adopts only career/visibility, ambition, freedom and identity/value themes supported by that bridge.",
+          "Omitted the source's gendered/parental narrative, childhood biography, and aspect-specific statements about opposition or home-life conflict. The house-10 bridge is not treated as a cusp alias or a general Sun-sign profile.",
+          "Inspected approved book window family 66781-66898 for Leo. The heading around 66866 is OCR-damaged and the adjoining prose is not a clean independent sign-body attribution; not adopted."
+        ]
+      },
+      "Virgo": {
+        "pt": "com Virgem no Meio do Céu, você pode sentir orgulho da precisão e exatidão do seu trabalho. sua abordagem profissional pode ser metódica e atenta aos detalhes, com foco em serviço e eficiência.",
+        "en": "with Virgo at the Midheaven, you may take pride in the precision and exactness of your work. your professional approach may be methodical and detail-oriented, with a focus on service and efficiency.",
+        "keywords": {
+          "pt": [
+            "orgulho da precisão e exatidão do trabalho",
+            "abordagem metódica",
+            "atenção aos detalhes",
+            "serviço e eficiência"
+          ],
+          "en": [
+            "pride in work precision and exactness",
+            "methodical approach",
+            "attention to detail",
+            "service and efficiency"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 540,
+            "to": 540
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 559,
+            "to": 561
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 66874,
+            "to": 66878
+          }
+        ],
+        "reviewNotes": [
+          "A9:540 faz a ponte Mercúrio na casa 10 com Gêmeos e Virgem no Meio do Céu; 559–561 descreve Virgem na casa 10 com orgulho da precisão/exatidão do trabalho. O trecho subsequente sobre mãe e aspectos de Mercúrio não foi adotado.",
+          "Livro inspecionado em 66874–66878. Título e corpo de Virgem MC são contíguos e claros; a passagem sustenta abordagem metódica/de serviço/eficiência e atenção à precisão. As descrições do curso e do livro são compatíveis nesses temas. A9:540–561 foi lida integralmente. Não se inferiu resultado profissional garantido."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode trabalhar melhor em parceria ou somando esforços, embora possa exigir dos outros precisão e dedicação equivalentes às suas. você pode ser sensível a como outras pessoas poderão ajudar em suas ambições sociais e profissionais.",
+        "en": "you may work better in partnership or by joining efforts, though you may demand that others match your precision and dedication. you may be sensitive to how other people could help with your social and professional ambitions.",
+        "keywords": {
+          "pt": [
+            "trabalho em parceria",
+            "somar esforços",
+            "exigência de precisão e dedicação",
+            "sensibilidade a possíveis colaboradores futuros",
+            "ambições sociais e profissionais"
+          ],
+          "en": [
+            "partnership at work",
+            "joining efforts",
+            "demanding precision and dedication",
+            "sensitivity to possible future collaborators",
+            "social and professional ambitions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 909,
+            "to": 915
+          }
+        ],
+        "reviewNotes": [
+          "A9 has a standalone statement explicitly about Libra in house 10 or on the MC (909-915), not merely a Venus-house-10 heading. It supports partnership/joint effort, demanding precision and dedication, sensitivity to how others may help future social/career ambitions.",
+          "Kept the future-help claim as sensitivity, not guaranteed support or career success. No unrelated Venus-in-house-10 or generic Libra traits were transplanted.",
+          "Inspected approved book window family 66781-66898 for Libra. Although a Libra MC heading appears, nearby body columns interleave Libra with other signs and broken fragments; sign/body attribution is not reliable enough to adopt.",
+          "Service contribution was inspected at modulo 4/aula 9 modulo 4/aula-9.md:910 but is not adopted in prose or keywords; cooperation and possible future help remain distinct."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode buscar uma carreira profundamente envolvente e significativa, com intensidade e complexidade. em alguns casos, pode haver perda ou abandono de uma carreira já estabelecida e entrada em outra completamente diferente; algumas pessoas podem se responsabilizar por reformar instituições sociais antigas e ultrapassadas.",
+        "en": "you may seek a deeply engaging and meaningful career, marked by intensity and complexity. in some cases, an established career may be lost or abandoned in favor of a completely different one; some people may take responsibility for reforming old and outdated social institutions.",
+        "keywords": {
+          "pt": [
+            "carreira envolvente e significativa",
+            "intensidade e complexidade no trabalho",
+            "possível abandono de carreira estabelecida",
+            "nova carreira de natureza diferente",
+            "reforma de instituições sociais ultrapassadas"
+          ],
+          "en": [
+            "engaging and meaningful career",
+            "intensity and complexity at work",
+            "possible departure from an established career",
+            "new career of a different nature",
+            "reform of outdated social institutions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2283,
+            "to": 2289
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2302,
+            "to": 2302
+          }
+        ],
+        "reviewNotes": [
+          "A10's MC bridge at 2302 connects Scorpio on the MC with Pluto-in-house-10 material. Adopted the career passage at 2283-2289: deeply engaging/meaningful work with intensity and complexity; a possible established-career loss/abandonment and different career in some cases; and some people's role in reforming outdated social institutions. These are possibilities, not promised outcomes.",
+          "Inspected but did not adopt the negative-projection branch at 2256-2267: its antecedent is a negatively projected maternal image, and 2268 explicitly calls the description a one-sided negative projection. It is not detached from that context. No parental-gender convention or maternal biography is assigned.",
+          "Omitted named biographies, career fields, source imperatives, and career-change claims based only on individual examples. No generic Scorpio profile was imported.",
+          "Inspected approved book window family 66781-66898 for Scorpio. The heading at 66807 is followed by body text about transformation/crisis/research, but the OCR does not independently tie that prose to Scorpio; not adopted."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode buscar significado e realização pela carreira, pelo status e pelo reconhecimento. no trabalho, pode mostrar entusiasmo, visão e capacidade de organizar pessoas, podendo trabalhar melhor com autoridade e espaço para agir.",
+        "en": "you may seek meaning and fulfillment through career, status and recognition. at work, you may show enthusiasm, vision and an ability to organize people, and may work better with authority and room to act.",
+        "keywords": {
+          "pt": [
+            "significado pela carreira",
+            "status e reconhecimento",
+            "entusiasmo",
+            "visão",
+            "organização de pessoas",
+            "trabalhar melhor com autoridade e espaço para agir"
+          ],
+          "en": [
+            "meaning through career",
+            "status and recognition",
+            "enthusiasm",
+            "vision",
+            "organizing people",
+            "working better with authority and room to act"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1738,
+            "to": 1739
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1742,
+            "to": 1745
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 1760,
+            "to": 1761
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 9 modulo 4/aula-9.md:1731-1761 inspected in full. Body 1760-1761 explicitly compares Sagittarius on the MC or contained in house 10 with Jupiter in that position. This teaching bridge, not a mechanical planet-house transplant or cusp alias, permits the adopted career themes at 1738-1739 and 1742-1745.",
+          "The bridge begins in physical line 1760 after a preceding maternal/childhood statement; only its Sagittarius/MC clause is adopted. Parental material at 1753-1760 is unadopted. Fame worship at 1739, named occupations and travel at 1740-1742, historical examples at 1746-1752 and career-success framing are unadopted; no guaranteed recognition or outcome.",
+          "No supplemental book passage inspected or adopted. No class/book comparison is asserted. Standalone chart.houses.mc remains distinct from numbered cusps and from Jupiter placements.",
+          "modulo 4/aula 9 modulo 4/aula-9.md:1744-1745 qualifies working better with authority and room to act, not a preference for authority; both languages preserve this distinction."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode querer ser visto como forte e sólido, buscando posição e reconhecimento por um trabalho socialmente aceito. você pode ter capacidade de organização e administração, mas também julgar quem vive fora de valores sociais estritos.",
+        "en": "you may want to be seen as strong and solid, seeking position and recognition through socially accepted work. you may have organizational and administrative ability, yet also judge those who live outside strict social values.",
+        "keywords": {
+          "pt": [
+            "imagem de força e solidez",
+            "posição e reconhecimento",
+            "trabalho socialmente aceito",
+            "organização",
+            "administração",
+            "julgamento de valores sociais"
+          ],
+          "en": [
+            "image of strength and solidity",
+            "position and recognition",
+            "socially accepted work",
+            "organization",
+            "administration",
+            "judgment of social values"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 366,
+            "to": 371
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 407,
+            "to": 409
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 10 modulo 4/aula-10.md:363-409 inspected in full. Body 407 explicitly compares Saturn in house 10 with Capricorn on the MC, and 407-409 directly includes either planet or sign in organization/administration. Adopted 366-371 for public image, recognition and judgment of strict social values. Normally and exceptions at 369 are respected through may/pode rather than a universal rule.",
+          "Aspect-qualified career realization at 374-375 and delays/obstacles when Saturn is badly aspected at 376 are not adopted; no aspect condition is silently converted into a property of Capricorn MC. Exploitation, rise/fall and historical crime examples at 377-397 are unadopted. All maternal/childhood material at 398-406 is unadopted. No success guarantee, parental-gender convention or invented favorable compensation.",
+          "No supplemental book passage inspected or adopted. No class/book comparison is asserted. The explicit teaching similarity does not equate chart.houses.mc with numbered cusp 10."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode buscar um trabalho que beneficie o maior número possível de pessoas. você também pode procurar espaço profissional para expressar inventividade e idealismo.",
+        "en": "you may seek work that benefits as many people as possible. you may also look for professional scope to express inventiveness and idealism.",
+        "keywords": {
+          "pt": [
+            "trabalho em benefício de muitas pessoas",
+            "inventividade",
+            "idealismo",
+            "expressão profissional"
+          ],
+          "en": [
+            "work benefiting many people",
+            "inventiveness",
+            "idealism",
+            "professional expression"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 896,
+            "to": 898
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 10 modulo 4/aula-10.md:857-898 inspected in full. Body 896 first compares Uranus in house 10 with Aquarius in that position, then explicitly says Aquarius on the MC at 896-898. Only this standalone sign paragraph is adopted. The professional need is expressed as a tendency to seek suitable work, not an instruction or promised social benefit.",
+          "Planet-house discussion at 859-881, including original/progressive contribution, politics, changes of job, disruptions and named/client examples, is inspected but unadopted. Maternal/childhood claims at 882-895 are entirely unadopted. No negative behavior is invented to balance the narrower standalone sign paragraph.",
+          "No supplemental book passage inspected or adopted. No class/book comparison is asserted. No automatic house/cusp alias or generic Aquarius personality profile."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode sentir incerteza sobre qual carreira seguir. você também pode ficar insatisfeito com um trabalho que não seja inteiramente envolvente e inspirador.",
+        "en": "you may feel uncertain about which career to pursue. you may also feel dissatisfied with work that is not fully absorbing and inspiring.",
+        "keywords": {
+          "pt": [
+            "incerteza na escolha da carreira",
+            "insatisfação profissional",
+            "trabalho envolvente",
+            "inspiração no trabalho"
+          ],
+          "en": [
+            "uncertainty about career choice",
+            "professional dissatisfaction",
+            "absorbing work",
+            "inspiration at work"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 1527,
+            "to": 1527
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 1545,
+            "to": 1546
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 10 modulo 4/aula-10.md:1527-1570 inspected in full. The heading at 1527 explicitly pairs Neptune in house 10 with Pisces on the MC. This is a header-only source bridge: unlike Sagittarius, Capricorn and Aquarius, no separate Pisces-specific body paragraph is present in the assigned window. Adopted only the limited career uncertainty and some-person dissatisfaction claims at 1545-1546, with may/pode retaining possibility and avoiding universal attribution.",
+          "The OCR word contusão at modulo 4/aula 10 modulo 4/aula-10.md:1545 is not reconstructed as a clinical or psychological claim; the separate readable incerteza supports uncertainty. Public idealization, sacrifice/redemption and historical examples at 1529-1543, occupation/healing list at 1543-1544, underpayment/corruption/client account and forced career loss at 1547-1554 are unadopted. All parental/childhood material at 1555-1570 is unadopted.",
+          "No supplemental book passage inspected or adopted. No class/book comparison is asserted. Header-only bridge strength is disclosed for root review; this does not identify MC with cusp 10 or license a generic Neptune/Pisces blend."
+        ]
+      }
     }
   }
 }

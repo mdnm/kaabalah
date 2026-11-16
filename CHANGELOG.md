@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual Midheaven-sign descriptions using actual
+  chart-angle keys, with precise provenance and retained source qualifications.
+
 - Add twelve source-audited bilingual Ascendant-sign descriptions, typed chart-angle
   lookups and frozen provenance, with unsupported angle combinations left explicit.
 

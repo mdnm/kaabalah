@@ -46,12 +46,13 @@ getHouseDescriptionEntry(4)?.src;
 
 getAngleSignDescription('ascendant', 'Aries', 'pt-BR');
 getAngleSignDescriptionEntry('ascendant', 'Aries')?.src;
+getAngleSignDescription('mc', 'Taurus'); // actual Midheaven sign
 ```
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
 Authored coverage: 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
-and 12 Ascendant-sign entries.
+and 24 angle-sign entries: 12 Ascendant and 12 Midheaven (MC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
 arguments are integer numbers from 1 to 12 (strings are not coerced). Entries,
@@ -63,7 +64,7 @@ The course explicitly qualifies its sign profiles this way (class 3, lines 531-5
 They do not assign a person's evolutionary level or promise outcomes.
 Numbered house themes describe domains of life. House numbers and angles have
 distinct chart fields. Angle lookups use `ascendant`, `mc`, `ic` and `dc`,
-independently of house cusps. Only `ascendant` is currently authored; the other
+independently of house cusps. Currently `ascendant` and `mc` are authored; the other
 angle-sign combinations return `undefined`. Descendant coverage requires a separate
 scope decision.
 
