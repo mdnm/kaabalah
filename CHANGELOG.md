@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 6.15.0 - 2026-11-16
 
 - Reading weights: Daath now lights through Scorpio, since Pluto rules Scorpio and
   Pluto is Daath's planet. A major or a court that carries Scorpio (Temperance, the
