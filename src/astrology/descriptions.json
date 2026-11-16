@@ -3609,5 +3609,456 @@
         ]
       }
     }
+  },
+  "planetHouses": {
+    "sun": {
+      "1": {
+        "pt": "você pode buscar influenciar e chamar a atenção, expressando sua individualidade pelo que faz. em expressão negativa, essa necessidade pode vir com arrogância, egocentrismo e orgulho excessivo.",
+        "en": "you may seek to influence and attract attention, expressing your individuality through what you do. in its negative expression, this need may come with arrogance, egocentrism and excessive pride.",
+        "keywords": {
+          "pt": [
+            "influência",
+            "atenção",
+            "individualidade",
+            "reconhecimento",
+            "arrogância",
+            "egocentrismo"
+          ],
+          "en": [
+            "influence",
+            "attention",
+            "individuality",
+            "recognition",
+            "arrogance",
+            "egocentrism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1108,
+            "to": 1117
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1129,
+            "to": 1138
+          }
+        ],
+        "reviewNotes": [
+          "The course conditions support in the early environment on a well-aspected Sun; that condition was not universalized. Physical strength, family attention, named examples, and life/career consequences were omitted. Book text explicitly labels Sun in House 1 in the inspected body, but no supplemental claims were needed."
+        ]
+      },
+      "2": {
+        "pt": "você pode buscar desenvolver competência, valores e recursos próprios para construir segurança e senso de valor. na expressão negativa, sensacionalismo, busca de status e extravagância podem servir para provar seu valor e compensar insegurança.",
+        "en": "you may seek to develop your own competence, values and resources to build security and self-worth. in a negative expression, sensationalism, status-seeking and extravagance may serve to prove your worth and compensate for insecurity.",
+        "keywords": {
+          "pt": [
+            "competência",
+            "valores",
+            "recursos",
+            "segurança",
+            "sensacionalismo",
+            "status",
+            "extravagância"
+          ],
+          "en": [
+            "competence",
+            "values",
+            "resources",
+            "security",
+            "sensationalism",
+            "status",
+            "extravagance"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1141,
+            "to": 1150
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1156,
+            "to": 1160
+          }
+        ],
+        "reviewNotes": [
+          "The course discusses money and possessions as possible sources of self-worth, not guaranteed prosperity; no financial outcome is claimed. Book material at lines 26756–26759 explicitly names Sun in House 2, but its material-achievement framing was not adopted."
+        ]
+      },
+      "3": {
+        "pt": "você pode sentir mais vitalidade quando aprende e troca ideias, desenvolvendo pensamentos e pontos de vista próprios. também pode haver necessidade de atenção e reconhecimento, enquanto aspectos difíceis ao Sol podem indicar desafios no início da vida escolar.",
+        "en": "you may feel more alive when learning and exchanging ideas, while developing your own thoughts and viewpoints. there may also be a need for attention and recognition, while difficult aspects to the Sun may indicate challenges early in schooling.",
+        "keywords": {
+          "pt": [
+            "aprendizado",
+            "troca de ideias",
+            "pensamento próprio",
+            "atenção",
+            "reconhecimento",
+            "aspectos difíceis ao Sol"
+          ],
+          "en": [
+            "learning",
+            "exchange of ideas",
+            "independent thought",
+            "attention",
+            "recognition",
+            "difficult aspects to the Sun"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1163,
+            "to": 1175
+          }
+        ],
+        "reviewNotes": [
+          "The early-school difficulty is explicitly conditional on difficult Sun aspects. Book heading/body around lines 26775–26835 confirms House 3 and discusses communication/learning, but no additional book claims were needed. Omitted sibling rivalry, family outcomes, named writers and career/achievement claims.",
+          "Final resolution: neutral PT vitalidade and attention keyword; EN more alive matches the comparative in A8 1167, not most alive. School challenges remain conditional on difficult aspects specifically to the Sun."
+        ]
+      },
+      "4": {
+        "pt": "você pode buscar uma identidade própria sem negar seus vínculos e raízes familiares. na segunda metade da vida, seu potencial criativo e sua autoexpressão podem tornar-se mais eficazes.",
+        "en": "you may seek an identity of your own without denying your family ties and roots. in the second half of life, your creative potential and self-expression may become more effective.",
+        "keywords": {
+          "pt": [
+            "identidade própria",
+            "raízes familiares",
+            "vínculos",
+            "expressão criativa",
+            "maturidade"
+          ],
+          "en": [
+            "individual identity",
+            "family roots",
+            "family ties",
+            "creative expression",
+            "maturity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1184,
+            "to": 1197
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1209,
+            "to": 1217
+          }
+        ],
+        "reviewNotes": [
+          "The course qualifies later-life creative power, vitality, and self-expression as potentially more effective in maturity; the body retains creative potential/self-expression and omits vitality, with no guarantee. Did not adopt father dynamics, gendered examples, or the interleaved book material whose House 4 body could not be clearly verified. House placement alone does not establish an angle/cusp sign.",
+          "Final resolution against A8 1211–1215: preserve second-half-of-life/mature qualification and potential effectiveness of creativity/self-expression, not increasing importance of identity. Vitality was left out of body/keywords to avoid a health assurance; no later-life outcome is guaranteed."
+        ]
+      },
+      "5": {
+        "pt": "você pode encontrar identidade e propósito ao se envolver por inteiro em atividades que fazem você se sentir vivo, dependendo da qualidade desse envolvimento e da satisfação que ele traz. a expressão artística, os hobbies e a recreação podem enriquecer a vida, embora você ainda possa achar que poderia fazer melhor.",
+        "en": "you may find identity and purpose through full engagement in activities that make you feel alive, depending on the quality of that involvement and the satisfaction it brings. artistic expression, hobbies and recreation can enrich life, though you may still feel you could do better.",
+        "keywords": {
+          "pt": [
+            "identidade",
+            "propósito",
+            "envolvimento",
+            "expressão artística",
+            "hobbies",
+            "recreação",
+            "satisfação"
+          ],
+          "en": [
+            "identity",
+            "purpose",
+            "engagement",
+            "artistic expression",
+            "hobbies",
+            "recreation",
+            "satisfaction"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1220,
+            "to": 1236
+          }
+        ],
+        "reviewNotes": [
+          "A fonte distingue explicitamente qualidade de envolvimento/satisfação da quantidade (1225-1227); identidade/propósito foi formulado como possibilidade. Alegações de doença/saúde (1223-1226), projeção parental nos filhos (1242-1249) e busca manipulativa por atenção sob aspecto difícil (1250-1254) foram omitidas."
+        ]
+      },
+      "6": {
+        "pt": "você pode desenvolver identidade por meio do trabalho, da rotina diária e do autoaperfeiçoamento, embora esse processo possa se tornar excessivo ou obsessivo. o serviço aos outros e a eficiência nas tarefas práticas podem fortalecer seu senso de valor e de identidade.",
+        "en": "you may develop identity through work, daily routine and self-improvement, though this process can become excessive or obsessive. service to others and efficiency in practical tasks may strengthen your sense of worth and identity.",
+        "keywords": {
+          "pt": [
+            "trabalho",
+            "rotina diária",
+            "autoaperfeiçoamento",
+            "serviço",
+            "rotinas",
+            "eficiência",
+            "valor pessoal"
+          ],
+          "en": [
+            "work",
+            "daily routine",
+            "self-improvement",
+            "service",
+            "routines",
+            "efficiency",
+            "personal worth"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1257,
+            "to": 1262
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1270,
+            "to": 1281
+          }
+        ],
+        "reviewNotes": [
+          "A fonte associa desenvolvimento de identidade a trabalho/saúde/rotina/autoaperfeiçoamento e alerta contra tornar-se indevidamente obsessivo (1257-1262); não converti isso em instrução ou sucesso garantido. Saúde/doença, orientação de saúde e resultado no mercado de empregos foram omitidos (1257-1274)."
+        ]
+      },
+      "7": {
+        "pt": "você pode encontrar poder, propósito e individualidade por meio de associações e relacionamentos, e atividades conjuntas podem ajudar a definir sua identidade. em alguns casos você pode tentar se esconder atrás da identidade de alguém forte ou influente.",
+        "en": "you may find power, purpose and individuality through associations and relationships, and shared activities may help define your identity. in some cases, you may try to hide behind the identity of someone strong or influential.",
+        "keywords": {
+          "pt": [
+            "associações",
+            "relacionamentos",
+            "atividades conjuntas",
+            "alianças honestas",
+            "autossuficiência",
+            "identidade"
+          ],
+          "en": [
+            "associations",
+            "relationships",
+            "shared activities",
+            "honest alliances",
+            "self-sufficiency",
+            "identity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1287,
+            "to": 1306
+          }
+        ],
+        "reviewNotes": [
+          "A fonte apresenta projeção/ocultação atrás de outra identidade apenas em alguns casos (1298-1306); mantida a condição, sem universalizar história de parceiro/figura paterna. Exemplos nomeados, celebridade/casamento e vocações profissionais (1309-1314) foram omitidos."
+        ]
+      },
+      "8": {
+        "pt": "você pode buscar expandir-se e transcender limites pessoais por meio de união e intercâmbio com outras pessoas. em alguns casos você pode tentar evitar a verdadeira intimidade, embora a troca emocional possa contribuir para esse processo.",
+        "en": "you may seek to expand and transcend personal limits through union and exchange with others. in some cases you may try to avoid true intimacy, although emotional exchange may contribute to this process.",
+        "keywords": {
+          "pt": [
+            "expansão",
+            "transcendência",
+            "união",
+            "intercâmbio",
+            "sentimentos",
+            "emoções",
+            "oculto",
+            "mistério",
+            "tabu",
+            "evitação da intimidade"
+          ],
+          "en": [
+            "expansion",
+            "transcendence",
+            "union",
+            "exchange",
+            "feelings",
+            "emotions",
+            "hidden",
+            "mystery",
+            "taboo",
+            "avoidance of intimacy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1317,
+            "to": 1322
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1332,
+            "to": 1347
+          }
+        ],
+        "reviewNotes": [
+          "A fonte apresenta evitação de intimidade apenas para alguns (1341-1344); mantida essa possibilidade sem generalizar. Palavras-chave mistério/tabu se apoiam no interesse pelo oculto/misterioso/tabu (1345-1347), embora concisão deixe isso fora das duas frases. Dinheiro/posses, complexos de infância, depressão, morte e previsões/diagnósticos foram omitidos.",
+          "Final resolution: conditional avoidance directly addresses você/you, not only unspecified other people. Mystery/taboo remain supported keyword-only themes; tabu occurs at A8 1347, so the adopted source range extends through that line. Duplicate keyword pairs were removed. No named example beginning on that same line is adopted."
+        ]
+      },
+      "9": {
+        "pt": "você pode buscar uma compreensão mais ampla da vida e formar uma visão pessoal da verdade pelo contato com diferentes filosofias e crenças. essa busca pode se prender tanto às abstrações e ao futuro que perde contato com o cotidiano.",
+        "en": "you may seek a broader understanding of life and form a personal view of truth through contact with different philosophies and beliefs. this search can become so absorbed in abstractions and the future that it loses touch with everyday life.",
+        "keywords": {
+          "pt": [
+            "compreensão mais ampla da vida",
+            "visão pessoal da verdade",
+            "filosofias e crenças",
+            "abstrações e futuro",
+            "distanciamento do cotidiano"
+          ],
+          "en": [
+            "broader understanding of life",
+            "personal view of truth",
+            "philosophies and beliefs",
+            "abstractions and the future",
+            "distance from everyday life"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1356,
+            "to": 1370
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 9: 1354–1383; adotado: 1356–1370. Mantida a busca de compreensão e verdade pessoal com o risco de afastamento do cotidiano, sem transformar aptidões vocacionais em carreira garantida. A viagem/peregrinação explicitamente associada a ênfase sagitariana em 1361–1363 não foi universalizada. Conselhos e exemplos de pessoas nomeadas não foram adotados.",
+          "Livro inspecionado: 27420–27490. Identidade da casa 9 verificada no corpo em 27438–27444, além do título em 27437. Nenhum claim do livro adotado; o curso já fornece a busca e sua dificuldade. A partir de 27461 há colunas intercaladas de casas 9/10; não se atribuiu conteúdo pela mera proximidade ao título.",
+          "OCR no primário inclui comes (1358), aqui-eagora (1369), 95 Casa (1379) e referência incompleta O Sol na Casa (1382). Não foram reconstruídas afirmações a partir dessas falhas."
+        ]
+      },
+      "10": {
+        "pt": "você pode orientar sua identidade para a carreira, as realizações profissionais e o desejo de reconhecimento. essa ambição pode ligar demais seu valor pessoal aos títulos e à posição que ocupa.",
+        "en": "you may orient your identity toward your career, professional achievements and the desire for recognition. this ambition can tie your sense of self-worth too closely to titles and the position you hold.",
+        "keywords": {
+          "pt": [
+            "identidade e carreira",
+            "realizações profissionais",
+            "desejo de reconhecimento",
+            "ambição",
+            "valor pessoal ligado a títulos"
+          ],
+          "en": [
+            "identity and career",
+            "professional achievements",
+            "desire for recognition",
+            "ambition",
+            "self-worth tied to titles"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1386,
+            "to": 1389
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1392,
+            "to": 1394
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1407,
+            "to": 1409
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 10: 1384–1422; adotado: 1386–1389, 1392–1394 e 1407–1409. Desejo de reconhecimento e ambição permanecem possibilidades, não sucesso profissional garantido. A afirmação extrema de aniquilamento após perda de posição não foi adotada como desfecho.",
+          "Não foram adotados Leão no Meio-do-Céu ou contido na casa 10 (1384, 1421–1422), exemplos condicionados ao signo solar (1390–1392), conflitos dependentes de oposições da casa 4 (1402–1404), interpretação condicional da casa 10 como mãe, narrativas familiares, generalizações de gênero/parceria ou pessoas nomeadas. Nenhum signo de ângulo/cúspide foi inferido do Sol na casa.",
+          "Livro inspecionado: 27420–27490 e 27555–27655. Identidade da casa 10 verificada no corpo em 27455–27459, além do título em 27454. Nenhum claim adotado do livro. Colunas intercaladas após 27461 e trecho iniciado no meio de palavra em 27555 não foram recompostos nem usados como fonte de traços.",
+          "OCR de números de casa em 1386–1392 varia entre RO, 105 e Me; a identidade da seção é inequívoca pelo título 1384 e pelo desenvolvimento contínuo."
+        ]
+      },
+      "11": {
+        "pt": "você pode desenvolver seu sentido de identidade por atividades sociais, humanitárias ou políticas e por amizades. essa ligação com grupos e causas pode também diluir a diferença entre suas próprias convicções e aquilo que o grupo espera que você acredite.",
+        "en": "you may develop your sense of identity through social, humanitarian or political activities and through friendships. this connection with groups and causes can also blur the distinction between your own convictions and what the group expects you to believe.",
+        "keywords": {
+          "pt": [
+            "identidade e atividades sociais",
+            "atividades humanitárias ou políticas",
+            "amizades",
+            "grupos e causas",
+            "convicções próprias e expectativas do grupo"
+          ],
+          "en": [
+            "identity and social activities",
+            "humanitarian or political activities",
+            "friendships",
+            "groups and causes",
+            "personal convictions and group expectations"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1426,
+            "to": 1430
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1439,
+            "to": 1447
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 11: 1424–1454; adotado: 1426–1430 e 1439–1447. Preservados identidade social, amizades e risco de absorção das crenças do grupo, sem instrução de prática ou promessa de amizade, liderança ou realização de metas.",
+          "Facilidade de funcionamento e adaptação em grupos depende dos aspectos ao Sol em 1432–1434; não foi universalizada. Exemplo com conjunção Sol/Marte e signo específico, projeção de providência nos amigos, recomendações de metas e linguagem de cura em 1453–1454 não foram adotados.",
+          "Livro inspecionado: 27555–27655. O título da casa 11 está fragmentado em 27607–27610, mas a identidade é explícita no corpo em 27611–27616 (A 11o Casa, comunidade e causas sociais). Nenhum claim do livro adotado. Colunas de casas 11/12 se intercalam depois de 27618; frases deslocadas não foram usadas como complemento.",
+          "OCR coo-segue (1426), urna e não aconteci (1439–1444) não foi usado para reconstruir novos claims."
+        ]
+      },
+      "12": {
+        "pt": "você pode viver uma tensão entre afirmar uma identidade própria e abrir espaço para o inconsciente pessoal e coletivo. essa abertura pode encontrar expressão em imagens míticas ou arquetípicas através da arte, da poesia, da dança ou da música.",
+        "en": "you may experience a tension between asserting an identity of your own and making room for the personal and collective unconscious. this openness may find expression in mythical or archetypal images through art, poetry, dance or music.",
+        "keywords": {
+          "pt": [
+            "identidade própria",
+            "inconsciente pessoal e coletivo",
+            "tensão entre identidade e abertura",
+            "imagens míticas ou arquetípicas",
+            "expressão artística"
+          ],
+          "en": [
+            "individual identity",
+            "personal and collective unconscious",
+            "tension between identity and openness",
+            "mythical or archetypal images",
+            "artistic expression"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1457,
+            "to": 1467
+          },
+          {
+            "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+            "from": 1481,
+            "to": 1488
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 12: 1455–1510. Adotado: 1457–1467 e 1481–1488, apenas tensão identidade/abertura e expressão de imagens míticas/arquetípicas nas artes. Não se afirma mediunidade verificada, diagnóstico, habilidade de cura, despertar garantido ou destino profissional.",
+          "Não foram adotados doença/conflitos como consequência causal, rejeição por outras pessoas, recomendações de retiro, crises/confinamento, afirmações de vidas anteriores, obrigação cármica, trabalho em instituições ou previsões envolvendo pai/outros homens. As possibilidades artísticas não são garantias de talento ou carreira.",
+          "Livro inspecionado: 27555–27655. Título de casa 12 em 27618; abertura 27619–27629 com palavras deslocadas e frase incompleta, intercalada com casa 11 em 27631 e 27640–27654. Não há identidade de casa intacta no corpo dessa abertura; nenhuma adição adotada nem colunas recompostas.",
+          "O intervalo primário solicitado também mostrou 1511–1516, que já trata de Lua/Câncer e exemplo de outra configuração; excluído integralmente da síntese. OCR de números de casa e palavras nos parágrafos não foi usado para inferir fatores adicionais."
+        ]
+      }
+    }
   }
 }

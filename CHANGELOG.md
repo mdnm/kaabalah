@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Sun-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
 - Add twelve source-audited bilingual natal Pluto-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 

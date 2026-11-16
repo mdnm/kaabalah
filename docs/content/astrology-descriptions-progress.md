@@ -1,12 +1,11 @@
 # Astrology descriptions: current implementation progress
 
-Approved scope: batches 1-3 in natal placements, basic profiles, additional points order. One factor kind at a time. No npm publication.
+Approved scope: batches 1-3, natal placements before basic profiles before additional points. One kind at a time; no npm publication.
 
-- Completed planet-sign sets: sun, moon, mercury, venus, mars, jupiter, saturn, uranus, neptune, pluto, twelve signs each (120 bilingual entries).
-- Shared API: getPlanetSignDescription/getPlanetSignDescriptionEntry, imported deeply frozen JSON, English default, pt* Portuguese; unsupported combinations return undefined.
-- Files: src/astrology/descriptions.json/.ts/.test.ts, additive astrology index export and public astrology API docs. One source audit per kind at docs/content/astrology-descriptions-<planet>-signs.md.
-- Current validation: 141 description tests pass; the complete planet-sign milestone also passed npm run build, npm run typecheck and all 728 tests (zero failures/pending). Public CJS/ESM package exports verified all 120 EN/PT entries, nested freezing and unknown-key gaps. Source hashes/ranges verified and previous sets unchanged. Repeat complete checks at final handoff after the remaining approved kinds.
-- Source decisions, OCR limits and omissions remain in each audit and entry reviewNotes. Mat chose astronomical north/south nodes without hemisphere inversion. Nodal dignity and opposition class conflicts require their own narrow audit and decision when reached.
-- Exact next factor: Sun in houses. Source pointers: A8:1101-1516; B:26584-27770. Read only actual narrow passages; inventory is navigation, NOTAS private context only, no private client readings.
-
-Commits are separate per completed kind; see git log. This file and the connected Maestri note carry current handoff state. Earlier individual audits retain their historical next-factor pointers.
+- Completed: ten planet-sign sets (120 entries); planet-house sets sun (12 entries). Total 132 bilingual lookup rows.
+- Shared getters: getPlanetSignDescription/Entry and getPlanetHouseDescription/Entry. Imported deeply frozen readonly JSON; English default and pt* Portuguese. Unknown/unsupported combinations return undefined, with no generic fallback; houses require numbers 1-12.
+- Files: src/astrology/descriptions.json/.ts and descriptions*.test.ts, existing additive astrology barrel export, public astrology API docs. One docs/content/astrology-descriptions-<planet>-signs.md or -houses.md source audit per kind.
+- Validation: 154 description tests, npm run typecheck, build and public CJS/ESM house getters pass; source hashes/bounds and unchanged prior data verified. Planet-sign milestone also passed build/typecheck/full suite (728 tests) and public CJS/ESM exports across120rows. Repeat complete checks at final handoff.
+- Gaps/decisions: unimplemented sets absent explicitly; disputes, OCR and source qualifications remain in reviewNotes/audits. Mat chose astronomical north/south nodes without hemisphere inversion. Opposition and node dignity class conflicts need narrow review/Mat decision when relevant.
+- Exact next factor: Moon in houses. Pointers: A9:2-301; B:31600-32795. Read narrow actual bodies only; no new inventory, no private NOTAS reuse or client readings.
+- Work occurs directly on main with one factor per commit. Separate calculation-correctness work belongs in Claude Code's feat/calc-improvements worktree; preserve its scope and coordinate before landing. This content workflow does not change calculations, index semantics, CLI, numerology, package or tsup.
