@@ -33,6 +33,13 @@
   on `getTarotCardProfile` and `getTarotRepresentation`, with per-field review provenance.
   Centralize duplicated English tarot meanings while preserving existing exports.
 
+## 6.16.0 - 2026-11-16
+
+- Tree SVG: highlights are proportional. An activation's explicit `strength` is drawn
+  as given (the 0.56 floor now applies only when strength is derived from count and
+  total), sphere halos and path glows share one scale, and a lit path keeps its
+  sphere-to-sphere colours unless the activation carries its own colour.
+
 ## 6.15.0 - 2026-11-16
 
 - Reading weights: Daath now lights through Scorpio, since Pluto rules Scorpio and

@@ -638,12 +638,18 @@ export function generateTreeSvg(options: TreeSvgOptions = {}): string {
   if (palette.mode === "color") {
     for (const splitPathId of SPLIT_GRADIENT_PATH_IDS) {
       const splitPath = layout.paths[splitPathId];
-      // Skip paths the caller is explicitly recolouring (highlight/activation):
-      // those keep their solid override instead of the split gradient.
+      // Skip paths the caller is explicitly recolouring (a highlight, an activation with
+      // its own colour, or a muted one): those keep their solid override instead of the
+      // split gradient. A path that is only lit keeps its sphere-to-sphere colours.
+      const splitActivation = activationMap.get(splitPathId);
+      const recoloured =
+        splitActivation !== undefined &&
+        (splitActivation.color !== undefined ||
+          (splitActivation.state ?? (splitActivation.count > 0 ? "active" : "inactive")) === "inactive");
       if (
         !splitPath ||
         highlights.pathColors[splitPathId] !== undefined ||
-        activationMap.get(splitPathId) !== undefined
+        recoloured
       ) {
         continue;
       }
@@ -741,7 +747,8 @@ ${stops}
     });
     const useSplitGradient =
       palette.mode === "color" &&
-      !activation &&
+      // A lit path keeps its sphere-to-sphere colours unless the caller recolours it.
+      (!activation || (activation.visible && !activation.colorOverride)) &&
       highlights.pathColors[currentPathId] === undefined &&
       SPLIT_GRADIENT_PATH_IDS.has(currentPathId);
     // Solid colour used both when no gradient applies and as the fallback layer
@@ -770,7 +777,7 @@ ${stops}
     );
     if (activation?.visible && activation.emphasis > 0) {
       push(
-        `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-opacity="${round(0.18 + activation.emphasis * 0.28)}" stroke-width="${round(pathEdgeWidth + activation.emphasis * 10)}" stroke-linecap="round"/>`
+        `<line x1="${path.from.x}" y1="${path.from.y}" x2="${path.to.x}" y2="${path.to.y}" stroke="${escapeAttr(color)}" stroke-opacity="${round(0.2 + activation.emphasis * 0.4)}" stroke-width="${round(pathEdgeWidth + 2 * (1.5 + activation.emphasis * 9.5))}" stroke-linecap="round"/>`
       );
     }
     if (gradientRef) {
@@ -864,11 +871,11 @@ function renderSphere(
     });
 
   if (params.activation?.visible && params.activation.emphasis > 0) {
-    const haloStrokeWidth = round(3.2 + params.activation.emphasis * 4.8);
+    const haloStrokeWidth = round(1.5 + params.activation.emphasis * 9.5);
     const haloRadius = round(params.radius + haloStrokeWidth / 2 + 0.7);
     const haloColor = params.activation.displayColor;
     push(
-      `<circle cx="${point.x}" cy="${point.y}" r="${haloRadius}" fill="none" stroke="${escapeAttr(haloColor)}" stroke-opacity="${round(0.24 + params.activation.emphasis * 0.28)}" stroke-width="${haloStrokeWidth}"/>`
+      `<circle cx="${point.x}" cy="${point.y}" r="${haloRadius}" fill="none" stroke="${escapeAttr(haloColor)}" stroke-opacity="${round(0.2 + params.activation.emphasis * 0.4)}" stroke-width="${haloStrokeWidth}"/>`
     );
   }
   push(`<g id="sphere-${slug}" clip-path="url(#clip-${slug})">`);
@@ -1057,7 +1064,11 @@ function resolveTargetActivation(params: {
       : state === "hovered"
         ? clamp01(Math.max(strength, 0.72))
         : state === "active"
-          ? clamp01(Math.max(strength, 0.56))
+          // A strength the caller chose is drawn as given, so more hits read as more
+          // highlight; only a strength derived from count/total keeps the visible floor.
+          ? params.activation.strength !== undefined
+            ? strength
+            : clamp01(Math.max(strength, 0.56))
           : 0,
   };
 }

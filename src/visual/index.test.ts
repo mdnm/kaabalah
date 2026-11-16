@@ -380,8 +380,10 @@ describe("tree svg visual module", () => {
     expect(daathSection).toContain(`transform="rotate(180 142.83 159.44)"`);
     expect(malkuthSection).toContain(`path d="M 142.83 522.85 L`);
     expect(binahSection).toContain(`fill="#AAA"`);
+    // The lit path keeps its sphere-to-sphere colours: a solid fallback, then the gradient.
     expect(mainPathStrokes[0]).not.toBe(`#AAA`);
-    expect(mainPathStrokes.slice(1)).toEqual(Array.from({ length: 21 }, () => `#AAA`));
+    expect(mainPathStrokes[1]).toBe(`url(#path-grad-1)`);
+    expect(mainPathStrokes.slice(2)).toEqual(Array.from({ length: 21 }, () => `#AAA`));
   });
 
   it("preserves special sphere material when active without a custom fill override", () => {
@@ -401,7 +403,7 @@ describe("tree svg visual module", () => {
 
     expect(extractSphereSection(svg, "malkuth"))
       .toBe(extractSphereSection(defaultSvg, "malkuth"));
-    expect(svg).toContain(`stroke-opacity="0.4"`);
+    expect(svg).toContain(`stroke-opacity="0.42"`);
   });
 });
 
