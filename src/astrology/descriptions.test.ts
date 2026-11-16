@@ -12,6 +12,19 @@ const signs = [
   "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
 ] as const satisfies readonly Sign[];
 
+const ordinaryPlanets: readonly DescriptionPlanet[] = [
+  "sun", "moon", "mercury", "venus", "mars",
+  "jupiter", "saturn", "uranus", "neptune", "pluto",
+];
+const authoredPlanets = ordinaryPlanets.filter(key =>
+  Object.prototype.hasOwnProperty.call(ASTROLOGY_DESCRIPTIONS.planetSigns, key),
+);
+
+it("allows only canonical planet keys in the authored data", () => {
+  expect(Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns).sort()).toEqual([...authoredPlanets].sort());
+  expect(authoredPlanets.length).toBeGreaterThan(0);
+});
+
 // Audited 2026-11-16 source snapshot from astrology-inventory-sources.json.
 // One-based inclusive teaching ends; the next line starts private NOTAS.
 // Keep the fixture here so regular tests require neither AKASH nor research files.
@@ -31,7 +44,7 @@ function expectDeepFrozen(value: unknown): void {
   }
 }
 
-describe.each(["sun", "moon", "mercury", "venus"] as const)("%s in signs descriptions", (planet) => {
+describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
   it("contains all twelve canonical signs", () => {
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns[planet]!).sort()).toEqual([...signs].sort());
     for (const sign of signs) {
@@ -56,10 +69,6 @@ describe.each(["sun", "moon", "mercury", "venus"] as const)("%s in signs descrip
   });
 
   it("returns undefined for unsupported, misspelled, and inherited keys without fallback", () => {
-    const ordinaryPlanets: readonly DescriptionPlanet[] = [
-      "sun", "moon", "mercury", "venus", "mars",
-      "jupiter", "saturn", "uranus", "neptune", "pluto",
-    ];
     const absentPlanet = ordinaryPlanets.find(key =>
       !Object.prototype.hasOwnProperty.call(ASTROLOGY_DESCRIPTIONS.planetSigns, key),
     );
@@ -117,6 +126,10 @@ describe.each(["sun", "moon", "mercury", "venus"] as const)("%s in signs descrip
         expect(note.trim().length).toBeGreaterThan(0);
       }
     }
+  });
+
+  it("contains no em dash in authored descriptions or metadata", () => {
+    expect(JSON.stringify(ASTROLOGY_DESCRIPTIONS.planetSigns[planet])).not.toContain("\u2014");
   });
 
   it("cites integer inclusive bounds in audited course-relative sources before NOTAS", () => {
@@ -319,5 +332,85 @@ describe("Venus source distinctions", () => {
         expect(source.to).toBeLessThanOrEqual(56);
       }
     }
+  });
+});
+
+
+describe("Mars source distinctions", () => {
+  it("retains Sagittarius's explicit male-emphasis qualifier in both languages and keywords", () => {
+    const entry = getPlanetSignDescriptionEntry("mars", "Sagittarius")!;
+    expect(entry.pt).toMatch(/energia sexual.*principalmente em pessoas do sexo masculino/);
+    expect(entry.en).toMatch(/sexual energy.*especially in people of the male sex/);
+    expect(entry.keywords.pt.some(keyword => /energia sexual.*principalmente.*sexo masculino/.test(keyword))).toBe(true);
+    expect(entry.keywords.en.some(keyword => /sexual energy.*especially.*male sex/.test(keyword))).toBe(true);
+    expect(entry.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: 75, to: 77 }]);
+  });
+
+  it("keeps rational control distinct from Capricorn's authority, power and anger", () => {
+    const entry = getPlanetSignDescriptionEntry("mars", "Capricorn")!;
+    expect(entry.pt).toMatch(/força física pela razão/);
+    expect(entry.en).toMatch(/physical strength through reason/);
+    expect(entry.pt.split(". ")[1]).toMatch(/^também.*autoridade, poder e cólera/);
+    expect(entry.en.split(". ")[1]).toMatch(/^authority, power and anger/);
+    expect(entry.pt + entry.en).not.toMatch(/sucesso|success|that strength|essa força/);
+  });
+
+  it("retains Leo's rational restraint and Libra's sexual extremes and direct intuition", () => {
+    const leo = getPlanetSignDescriptionEntry("mars", "Leo")!;
+    expect(leo.pt).toMatch(/coragem sob controle da razão/);
+    expect(leo.en).toMatch(/courage guided by reason/);
+    const libra = getPlanetSignDescriptionEntry("mars", "Libra")!;
+    expect(libra.pt).toMatch(/entre ausência e exagero/);
+    expect(libra.en).toMatch(/from absence to excess/);
+    expect(libra.en).toContain("intuition is also present");
+    expect(libra.en).not.toContain("is also noted");
+  });
+
+  it("retains course tensions without book counterweights or external outcome claims", () => {
+    const aquarius = getPlanetSignDescriptionEntry("mars", "Aquarius")!;
+    expect(aquarius.pt).toContain("aversão a vínculos");
+    expect(aquarius.en).toContain("aversion to bonds");
+    const pisces = getPlanetSignDescriptionEntry("mars", "Pisces")!;
+    expect(pisces.pt).toContain("força de vontade bloqueada");
+    expect(pisces.en).toContain("willpower blocked");
+    expect(pisces.pt).toContain("abnegação");
+    expect(pisces.en).toContain("self-denial");
+    expect(pisces.pt + pisces.en).not.toMatch(/inimigos ocultos|hidden enemies|provocações continuas|continuous provocations|compaixão|compassion/);
+    expect(pisces.reviewNotes.join(" ")).toContain("hidden enemies");
+  });
+
+  it("keeps unresolved OCR omissions and sequence-based Virgo recovery in metadata", () => {
+    const aries = getPlanetSignDescriptionEntry("mars", "Aries")!;
+    expect(aries.reviewNotes.join(" ")).toMatch(/afiar/);
+    expect(aries.reviewNotes.join(" ")).toMatch(/perante/);
+    const virgo = getPlanetSignDescriptionEntry("mars", "Virgo")!;
+    expect(virgo.reviewNotes.join(" ")).toMatch(/VIAGEM/);
+    expect(virgo.reviewNotes.join(" ")).toMatch(/sequência/);
+    expect(virgo.reviewNotes.join(" ")).toMatch(/incerta/);
+    const scorpio = getPlanetSignDescriptionEntry("mars", "Scorpio")!;
+    expect(scorpio.reviewNotes.join(" ")).toMatch(/pede até ser destrutiva/);
+    for (const entry of [aries, virgo, scorpio]) {
+      expect(entry.pt + entry.en).not.toMatch(/afiar|perante|VIAGEM|pede|destrutiv|destructiv|OCR/);
+    }
+  });
+
+  it("cites precise per-sign course bounds and only the adopted narrow Aries book passage", () => {
+    const bounds = [
+      [59, 60], [61, 62], [63, 64], [65, 66], [67, 68], [69, 70],
+      [71, 72], [73, 74], [75, 77], [78, 79], [80, 81], [82, 83],
+    ];
+    signs.forEach((sign, index) => {
+      const entry = getPlanetSignDescriptionEntry("mars", sign)!;
+      const expected = [{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: bounds[index][0], to: bounds[index][1] }];
+      if (sign === "Aries") expected.push({ file: "books/astrologia-hermetica/astrologia-hermetica.md", from: 40349, to: 40364 });
+      expect(entry.src).toEqual(expected);
+      expect(entry.reviewNotes.length).toBeGreaterThan(0);
+      for (const text of [entry.pt, entry.en]) {
+        expect(text).toMatch(/^(você |sua |you |your )/);
+        expect(text.match(/[.!?]/g)).toHaveLength(2);
+        for (const sentence of text.split(". ")) expect(sentence).toMatch(/^[a-zà-ú]/u);
+        expect(text).not.toMatch(/o curso|the course|OCR|source|fonte/);
+      }
+    });
   });
 });

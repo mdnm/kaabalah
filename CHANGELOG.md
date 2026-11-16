@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Mars-sign descriptions,
+  with typed lookup coverage, retained source qualifications and provenance.
+
 - Add twelve source-audited bilingual natal Venus-sign descriptions, retaining
   course qualifications and review notes without guaranteed relationship outcomes.
 

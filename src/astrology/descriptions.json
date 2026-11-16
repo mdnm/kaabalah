@@ -1375,6 +1375,370 @@
           "Omitted the course gendered femininity assignment rather than infer identity or orientation. The maternal tendency describes an attitude toward the loved person, not an independent care behavior, fixed gender role or practice. Possible betrayals retains the source ambiguity about who betrays whom. Book 39088-39094 emphasizes empathy, sacrifice, spirituality and emotional fusion; none is added to cancel the course betrayal tension."
         ]
       }
+    },
+    "mars": {
+      "Aries": {
+        "pt": "você tem força física e mental e espírito de liderança. sua agressividade e franqueza podem acompanhar um jeito direto e assertivo de agir.",
+        "en": "you have physical and mental strength and a leadership spirit. aggression and frankness may accompany a direct, assertive way of acting.",
+        "keywords": {
+          "pt": [
+            "força física",
+            "força mental",
+            "liderança",
+            "agressividade",
+            "franqueza"
+          ],
+          "en": [
+            "physical strength",
+            "mental strength",
+            "leadership",
+            "aggression",
+            "frankness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 59,
+            "to": 60
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 40349,
+            "to": 40364
+          }
+        ],
+        "reviewNotes": [
+          "The course OCR phrases ‘afiar à independência’ and ‘sexualidade perante’ are unclear and were not reconstructed or used. Book opening supports direct/assertive action; leadership is independently stated in the course.",
+          "Direct/assertive action was confirmed by the user in book 40349-40364 across OCR columns; only that narrow adopted passage is cited."
+        ]
+      },
+      "Taurus": {
+        "pt": "você tem força de vontade e tende a não se curvar diante das dificuldades. essa firmeza pode virar obstinação, junto de sensualidade e afetividade.",
+        "en": "you have willpower and tend not to bend in the face of difficulties. that firmness can become stubbornness, alongside sensuality and affection.",
+        "keywords": {
+          "pt": [
+            "força de vontade",
+            "persistência",
+            "obstinação",
+            "sensualidade",
+            "afetividade"
+          ],
+          "en": [
+            "willpower",
+            "persistence",
+            "stubbornness",
+            "sensuality",
+            "affection"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 61,
+            "to": 62
+          }
+        ],
+        "reviewNotes": [
+          "Persistence paraphrases the primary course's not bending before difficulties (61-62). The book was inspected at 40683-40732 but supplies no adopted extra claim and is not cited. No practical-goal, material-security or physical-endurance addition."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode ter vigor intelectual, sobretudo em atividades ligadas à palavra, e tendência à tagarelice. também pode desperdiçar energia e buscar viagens e mudanças.",
+        "en": "you may have intellectual vigor, especially in activities involving words, and a tendency to talk a lot. you may also waste energy and seek travel and change.",
+        "keywords": {
+          "pt": [
+            "vigor intelectual",
+            "palavra",
+            "tagarelice",
+            "desperdício de energia",
+            "mudanças"
+          ],
+          "en": [
+            "intellectual vigor",
+            "words",
+            "talkativeness",
+            "wasted energy",
+            "change"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 63,
+            "to": 64
+          }
+        ],
+        "reviewNotes": [
+          "The course's ‘viagens e mudanças’ is rendered as a tendency to seek them, not as a prediction. Book opening was inspected but adds quickness/versatility not necessary to the primary course synthesis."
+        ]
+      },
+      "Cancer": {
+        "pt": "você pode ser inconstante e agressivo, com tensão no ambiente familiar. também há originalidade e sensualidade, além de forte intuição.",
+        "en": "you may be changeable and aggressive, with tension in the family environment. there is also originality and sensuality, along with strong intuition.",
+        "keywords": {
+          "pt": [
+            "inconstância",
+            "agressividade",
+            "tensão familiar",
+            "originalidade",
+            "sensualidade",
+            "intuição"
+          ],
+          "en": [
+            "changeability",
+            "aggression",
+            "family tension",
+            "originality",
+            "sensuality",
+            "intuition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 65,
+            "to": 66
+          }
+        ],
+        "reviewNotes": [
+          "Preserved the course's tension and aggression without turning them into predictions about family outcomes. The inspected book's protective, emotionally defensive framing was not used because the course does not state it."
+        ]
+      },
+      "Leo": {
+        "pt": "você pode exercer liderança, força física e coragem sob controle da razão. a ambição pode vir com autoritarismo e tendência ao exagero.",
+        "en": "you may show leadership, physical strength and courage guided by reason. ambition can come with authoritarianism and a tendency to exaggerate.",
+        "keywords": {
+          "pt": [
+            "liderança",
+            "força física",
+            "coragem",
+            "ambição",
+            "autoritarismo",
+            "exagero"
+          ],
+          "en": [
+            "leadership",
+            "physical strength",
+            "courage",
+            "ambition",
+            "authoritarianism",
+            "exaggeration"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 67,
+            "to": 68
+          }
+        ],
+        "reviewNotes": [
+          "O livro descreve força dramática/confiante, busca por liderança e orgulho (41340-41363); esses elementos não foram usados para deslocar a contenção racional e as tensões explicitadas pelo curso."
+        ]
+      },
+      "Virgo": {
+        "pt": "sua visão crítica pode ser acentuada, com ironia e sarcasmo. suas ações podem ser movidas por provocações.",
+        "en": "your critical outlook may be pronounced, with irony and sarcasm. your actions may be driven by provocation.",
+        "keywords": {
+          "pt": [
+            "visão crítica",
+            "ironia",
+            "sarcasmo",
+            "provocações"
+          ],
+          "en": [
+            "critical outlook",
+            "irony",
+            "sarcasm",
+            "provocation"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 69,
+            "to": 70
+          }
+        ],
+        "reviewNotes": [
+          "O rótulo da linha 69 aparece como VIAGEM, entre Leão e Libra; atribuição a Virgem é inferida apenas pela sequência canônica e permanece uma recuperação editorial incerta. Não se reconstruiu a leitura corrompida como Virgem no texto-fonte. O livro descreve energia meticulosa, prática e eficiente (41590-41602), mas não foi usado como contrapeso nem para completar a passagem do curso."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode ter pouca força de vontade e tender à hesitação, embora haja empenho artístico e afetivo. a expressão da sexualidade pode tender a extremos, entre ausência e exagero, e há também intuição.",
+        "en": "you may have little willpower and tend toward hesitation, while showing artistic and affectionate commitment. sexuality may tend toward extremes, from absence to excess, and intuition is also present.",
+        "keywords": {
+          "pt": [
+            "pouca força de vontade",
+            "hesitação",
+            "empenho artístico",
+            "empenho afetivo",
+            "extremos na expressão sexual",
+            "intuição"
+          ],
+          "en": [
+            "little willpower",
+            "hesitation",
+            "artistic commitment",
+            "affectionate commitment",
+            "extremes in sexual expression",
+            "intuition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 71,
+            "to": 72
+          }
+        ],
+        "reviewNotes": [
+          "O curso descreve a sexualidade como sem meios-termos, ausente ou exagerada; a redação mantém essa tensão sem converter em orientação ou identidade determinística. O livro favorece equilíbrio/diplomacia, mas também diz que pode haver combatividade diante de injustiça (41873-41888); curso prioritário mantido, sem esse contrapeso."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode ter força de vontade muito intensa e forte erotismo. também pode haver espírito vingativo e liderança.",
+        "en": "you may have very intense willpower and strong eroticism. a vengeful spirit and leadership may also be present.",
+        "keywords": {
+          "pt": [
+            "força de vontade intensa",
+            "erotismo",
+            "espírito vingativo",
+            "liderança"
+          ],
+          "en": [
+            "intense willpower",
+            "eroticism",
+            "vengeful spirit",
+            "leadership"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 73,
+            "to": 74
+          }
+        ],
+        "reviewNotes": [
+          "A construção 'que pede até ser destrutiva' na linha 73 é gramaticalmente/OCR incerta; não inferi nem reconstruí o referente ou a relação causal. O livro descreve intensidade, confronto e força de vontade (42146-42153), sem necessidade de importar a afirmação de buscar a verdade oculta."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode agir com espírito aventureiro, competitivo e entusiasmado, com inclinação para a arte e as atividades culturais. a energia sexual é enfatizada principalmente em pessoas do sexo masculino.",
+        "en": "you may act with an adventurous, competitive and enthusiastic spirit, with an inclination toward art and cultural activities. sexual energy is emphasized especially in people of the male sex.",
+        "keywords": {
+          "pt": [
+            "espírito aventureiro",
+            "competitividade",
+            "energia sexual, principalmente em pessoas do sexo masculino",
+            "inclinações artísticas e culturais"
+          ],
+          "en": [
+            "adventurous spirit",
+            "competitiveness",
+            "sexual energy, especially in people of the male sex",
+            "artistic and cultural inclinations"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 75,
+            "to": 77
+          }
+        ],
+        "reviewNotes": [
+          "The course male-emphasis qualifier is retained explicitly in both prose and keyword languages without inferring the reader's sex/gender. Book 42409-42413 emphasizes exploration, optimism and freedom; those additions are not adopted."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode controlar sua força física pela razão e agir com perseverança. também podem estar presentes autoridade, poder e cólera.",
+        "en": "you may control your physical strength through reason and act with perseverance. authority, power and anger may also be present.",
+        "keywords": {
+          "pt": [
+            "força física controlada pela razão",
+            "perseverança",
+            "autoridade e poder",
+            "cólera"
+          ],
+          "en": [
+            "physical strength controlled by reason",
+            "perseverance",
+            "authority and power",
+            "anger"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 78,
+            "to": 79
+          }
+        ],
+        "reviewNotes": [
+          "Omitted the course promise of success in public/private life. Authority, power and anger remain independent listed themes, not a mechanism expressing physical strength or a guaranteed position/career outcome. The interleaved book opening at 42627-42644 corroborates control but adds ambition, strategy and long-term goals; those additions are not adopted."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode sentir aversão a vínculos, com espírito libertário e forte energia para os estudos. sua iniciativa pode ser pioneira e impulsiva.",
+        "en": "you may feel an aversion to bonds, with a libertarian spirit and strong energy for study. your initiative can be pioneering and impulsive.",
+        "keywords": {
+          "pt": [
+            "aversão a vínculos",
+            "espírito libertário",
+            "energia para os estudos",
+            "impulsividade",
+            "espírito pioneiro"
+          ],
+          "en": [
+            "aversion to bonds",
+            "libertarian spirit",
+            "energy for study",
+            "impulsiveness",
+            "pioneering spirit"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 80,
+            "to": 81
+          }
+        ],
+        "reviewNotes": [
+          "Preserved aversion to bonds rather than replacing it with a mild preference for independence. Book 42891-42896 emphasizes innovation, collective ideals and technology; none is added to soften the course aversion/impulsivity tension."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode sentir sua força de vontade bloqueada e colocar energia a serviço de uma ideia ou de uma fé. também pode haver abnegação.",
+        "en": "you may feel your willpower blocked and put energy at the service of an idea or a faith. there may also be self-denial.",
+        "keywords": {
+          "pt": [
+            "força de vontade bloqueada",
+            "energia a serviço de uma ideia",
+            "energia a serviço de uma fé",
+            "abnegação"
+          ],
+          "en": [
+            "blocked willpower",
+            "energy serving an idea",
+            "energy serving a faith",
+            "self-denial"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 82,
+            "to": 83
+          }
+        ],
+        "reviewNotes": [
+          "Omitted hidden enemies and continuous provocations as external/adversarial event claims; they are not converted into a diagnosis or imagined persecution. Abnegação is rendered as self-denial without inventing helping behavior. Book 43052-43059 emphasizes indirect expression, intuition, compassion and sacrifice; no extra compassionate counterweight is adopted."
+        ]
+      }
     }
   }
 }
