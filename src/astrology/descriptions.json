@@ -4059,6 +4059,438 @@
           "O intervalo primário solicitado também mostrou 1511–1516, que já trata de Lua/Câncer e exemplo de outra configuração; excluído integralmente da síntese. OCR de números de casa e palavras nos parágrafos não foi usado para inferir fatores adicionais."
         ]
       }
+    },
+    "moon": {
+      "1": {
+        "pt": "você tende a ter respostas emocionais, instintivas e sentimentais; sem modificações fortes de outros aspectos no mapa, pode irradiar sensibilidade e receptividade. você pode captar sinais de quem está perto e agir por intuição, embora necessidades e sentimentos próprios às vezes tornem essa leitura subjetiva.",
+        "en": "you may have emotional, instinctive, and sentimental responses; unless strongly modified by other aspects in the chart, you may radiate sensitivity and receptivity. you may pick up signals from nearby people and act intuitively, though your own needs and feelings can sometimes make that reading subjective.",
+        "keywords": {
+          "pt": [
+            "respostas emocionais e instintivas",
+            "sensibilidade condicionada por outros aspectos",
+            "receptividade",
+            "leitura intuitiva do ambiente",
+            "subjetividade emocional"
+          ],
+          "en": [
+            "emotional and instinctive responses",
+            "sensitivity conditioned by other aspects",
+            "receptivity",
+            "intuitive reading of surroundings",
+            "emotional subjectivity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 4,
+            "to": 8
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 15,
+            "to": 22
+          }
+        ],
+        "reviewNotes": [
+          "Mantida a condição de que as qualidades lunares descritas podem ser fortemente modificadas por outros aspectos do mapa.",
+          "A passagem sobre adaptação à mãe e sobrevivência foi omitida como generalização familiar/biográfica; a analogia com Câncer interceptado ou na cúspide e o exemplo pessoal também foram omitidos.",
+          "Final review resolution: emotional, instinctive and sentimental responses replace the unsupported visible-emotions phrase. Strong modification by other chart aspects qualifies sensitivity/receptivity; intuitive reading remains potentially subjective."
+        ]
+      },
+      "2": {
+        "pt": "você pode buscar segurança emocional em recursos, dinheiro e posses, com apego sentimental a objetos ligados a lembranças ou ao passado. as circunstâncias financeiras podem oscilar; a posição também é associada a adaptabilidade e sensibilidade para perceber o que outras pessoas querem ou necessitam.",
+        "en": "you may seek emotional security through resources, money, and possessions, with sentimental attachment to objects linked to memories or the past. financial circumstances may fluctuate; this placement is also associated with adaptability and sensitivity to what other people want or need.",
+        "keywords": {
+          "pt": [
+            "segurança emocional material",
+            "apego sentimental a objetos",
+            "memórias e passado",
+            "oscilações financeiras",
+            "adaptabilidade",
+            "percepção das necessidades alheias"
+          ],
+          "en": [
+            "emotional material security",
+            "sentimental attachment to possessions",
+            "memories and the past",
+            "financial fluctuations",
+            "adaptability",
+            "sensitivity to others' needs"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 29,
+            "to": 35
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 36,
+            "to": 40
+          }
+        ],
+        "reviewNotes": [
+          "As fontes sustentam segurança emocional por dinheiro/posses, apego sentimental a objetos e lembranças, oscilação das circunstâncias financeiras e adaptabilidade/sensibilidade para perceber necessidades alheias.",
+          "A afirmação sobre absorver valores da família de origem foi omitida; a lista de profissões e ganhos foi omitida por ser previsão profissional/financeira."
+        ]
+      },
+      "3": {
+        "pt": "você pode perceber o ambiente de forma muito ligada ao humor e à sensibilidade, e às vezes ter dificuldade para separar seus próprios pensamentos das ideias que circulam ao redor. a imaginação e a memória podem ser fortes, enquanto a curiosidade busca segurança ao entender como as coisas funcionam; o foco mental também pode mudar de um interesse para outro.",
+        "en": "you may perceive your surroundings through mood and sensitivity, and sometimes find it difficult to separate your own thoughts from ideas circulating around you. imagination and memory may be strong, while curiosity seeks security through understanding how things work; your mental focus may also shift from one interest to another.",
+        "keywords": {
+          "pt": [
+            "percepção filtrada pelo humor",
+            "sensibilidade ao ambiente",
+            "separação entre pensamentos próprios e alheios",
+            "imaginação",
+            "memória retentiva",
+            "curiosidade por como as coisas funcionam",
+            "interesses variáveis"
+          ],
+          "en": [
+            "mood-shaped perception",
+            "sensitivity to surroundings",
+            "distinguishing one's thoughts from others'",
+            "imagination",
+            "retentive memory",
+            "curiosity about how things work",
+            "shifting interests"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 43,
+            "to": 51
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 52,
+            "to": 57
+          }
+        ],
+        "reviewNotes": [
+          "Preservado o contraste entre percepção filtrada por humor/sensibilidade e possível dificuldade em distinguir pensamentos próprios dos que circulam no entorno.",
+          "Mantidos imaginação, memória retentiva, busca de segurança por compreender como algo funciona e variação de interesses. Afirmações sobre parentes, cuidado familiar, escrita, audiência e docência foram omitidas."
+        ]
+      },
+      "4": {
+        "pt": "você pode encontrar segurança e pertencimento no lar e buscá-lo como refúgio quando a vida pressiona; as mudanças no ambiente doméstico podem afetar seu estado emocional. sob pressão, você pode voltar a padrões de comportamento da primeira infância.",
+        "en": "you may find security and belonging at home and seek it as a refuge when life feels demanding; changes in the domestic environment may affect your emotional state. under pressure, you may return to behavioral patterns from early childhood.",
+        "keywords": {
+          "pt": [
+            "segurança e pertencimento no lar",
+            "lar como refúgio",
+            "sensibilidade às mudanças domésticas",
+            "retorno a padrões da primeira infância sob pressão"
+          ],
+          "en": [
+            "security and belonging at home",
+            "home as refuge",
+            "sensitivity to domestic changes",
+            "return to early childhood patterns under pressure"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 69,
+            "to": 76
+          }
+        ],
+        "reviewNotes": [
+          "Mantidos segurança/pertencimento no lar, refúgio, mudanças domésticas e retorno a padrões de comportamento da primeira infância sob pressão.",
+          "As linhas 85–87 condicionam a aspectos da Lua uma afirmação específica sobre cuidado e sustento aprendidos mais com o pai do que com a mãe. Essa afirmação não foi adotada nem generalizada como regra sobre criação não convencional.",
+          "O exemplo de retornar à família de origem e o exemplo de chocolate/mãe foram omitidos. O título associa a seção a Câncer no Fundo do Céu, mas nenhuma equivalência entre casa, ângulo ou signo foi inferida."
+        ]
+      },
+      "5": {
+        "pt": "você pode buscar conforto, segurança e tranquilidade em hobbies, romances e expressão criativa, sentindo-se mais à vontade ao criar. a expressão artística pode surgir como algo natural, embora os aspectos da Lua indiquem com que facilidade isso se manifesta.",
+        "en": "you may seek comfort, security, and ease through hobbies, romance, and creative expression, feeling more at home when creating. artistic expression may come naturally, though the Moon's aspects indicate how easily it finds expression.",
+        "keywords": {
+          "pt": [
+            "conforto",
+            "expressão criativa",
+            "aspectos da Lua"
+          ],
+          "en": [
+            "comfort",
+            "creative expression",
+            "Moon aspects"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 97,
+            "to": 102
+          }
+        ],
+        "reviewNotes": [
+          "Creative ease remains dependent on Moon aspects at A9 100–102. No universal child/romance outcome, health claim or named example is adopted."
+        ]
+      },
+      "6": {
+        "pt": "você pode encontrar segurança e conforto ao cuidar da rotina diária e das necessidades do corpo. também pode precisar de vínculo emocional com o trabalho e gostar de atender às necessidades práticas e emocionais de outras pessoas.",
+        "en": "you may find security and comfort in caring for daily routines and the body's needs. you may also need an emotional connection to your work and enjoy meeting other people's practical and emotional needs.",
+        "keywords": {
+          "pt": [
+            "rotina diária",
+            "necessidades do corpo",
+            "vínculo emocional com o trabalho",
+            "necessidades dos outros"
+          ],
+          "en": [
+            "daily routines",
+            "the body's needs",
+            "emotional connection to work",
+            "others' needs"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 117,
+            "to": 119
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 134,
+            "to": 138
+          }
+        ],
+        "reviewNotes": [
+          "Adopted ranges tightened to A9 117–119 and 134–138: routine/body needs and emotional work connection/service only. No health prescription, employment result, mother/pet projection or colleague history is adopted."
+        ]
+      },
+      "7": {
+        "pt": "você pode se adaptar em excesso às necessidades de quem está ao seu lado e derivar demais dessa pessoa a ideia de quem você é. a Lua pode trazer mudanças de humor e de sentimentos em relação à parceria.",
+        "en": "you may adapt excessively to a partner's needs and derive too much of your sense of identity from that person. the Moon may bring shifts in mood and feelings about the relationship.",
+        "keywords": {
+          "pt": [
+            "adaptação em excesso",
+            "identidade",
+            "mudanças de humor",
+            "sentimentos na relação"
+          ],
+          "en": [
+            "excessive adaptation",
+            "identity",
+            "mood changes",
+            "feelings about the relationship"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 144,
+            "to": 145
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 156,
+            "to": 158
+          }
+        ],
+        "reviewNotes": [
+          "A condição sobre aspectos tensos e a realização de desejos relacionais foi omitida para manter foco nas tendências adotadas."
+        ]
+      },
+      "8": {
+        "pt": "você pode captar intuitivamente tendências sociais ligadas à economia ou ao comércio, mas também pode se sentir tomado por complexos inconscientes opressivos. se a Lua recebe aspectos difíceis, encerramentos ou separações podem trazer ansiedade maior, embora nessas crises possa haver recursos e forças a descobrir.",
+        "en": "you may intuitively sense social trends tied to the economy or commerce, while also feeling overtaken by oppressive unconscious complexes. if the Moon receives difficult aspects, endings or separations may bring greater anxiety, though such crises may also reveal resources and strength.",
+        "keywords": {
+          "pt": [
+            "tendências sociais",
+            "economia",
+            "comércio",
+            "complexos inconscientes",
+            "aspectos difíceis",
+            "encerramentos",
+            "separações",
+            "ansiedade",
+            "recursos"
+          ],
+          "en": [
+            "social trends",
+            "economy",
+            "commerce",
+            "unconscious complexes",
+            "difficult aspects",
+            "endings",
+            "separations",
+            "anxiety",
+            "resources"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 166,
+            "to": 170
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 181,
+            "to": 183
+          }
+        ],
+        "reviewNotes": [
+          "A condição de aspectos difíceis aplica-se especificamente a encerramentos ou separações; recursos e forças são possibilidade, não promessa.",
+          "Adopted ranges tightened to A9 166–170 and 181–183. Anxiety applies to endings/separations under difficult Moon aspects, not crises in general; discovered resources/strength remain possible. Inheritance begins on 183 but is not adopted; no childhood narrative from 170 onward is adopted."
+        ]
+      },
+      "9": {
+        "pt": "você pode ter receptividade à filosofia e à religião, compreensão intuitiva de símbolos e flexibilidade para adaptar sua filosofia a influências e condições cambiantes. viagens, aventuras ou pesquisas filosóficas também podem servir de escape dos aborrecimentos cotidianos.",
+        "en": "you may be receptive to philosophy and religion, understand symbols intuitively and adapt your philosophy to changing influences and conditions. travel, adventures or philosophical inquiry may also serve as an escape from everyday frustrations.",
+        "keywords": {
+          "pt": [
+            "filosofia e religião",
+            "compreensão intuitiva de símbolos",
+            "adaptação da filosofia a condições cambiantes",
+            "viagens e aventuras",
+            "escape do cotidiano"
+          ],
+          "en": [
+            "philosophy and religion",
+            "intuitive understanding of symbols",
+            "adaptation of philosophy to changing conditions",
+            "travel and adventures",
+            "escape from everyday life"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 188,
+            "to": 192
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 193,
+            "to": 197
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 9: 185–207; adotado: 188–192 e 193–197. A adaptação da filosofia a influências e condições cambiantes e o possível escape do cotidiano permanecem distintos; viagens não são eventos garantidos nem instrução.",
+          "Não foram adotadas previsão do rumo dos acontecimentos, residência no exterior, imagens maternas/divinas, relações condicionadas a gênero, dificuldades com familiares sob aspectos difíceis à Lua, correlação profissional ou pessoas nomeadas. Signo e aspectos em 202–203 condicionam a imagem de Deus; essa imagem não foi universalizada.",
+          "Livro inspecionado: 32386–32435. Há título danificado JUA NA CASA 09 em 32396, mas o corpo está fragmentado e não identifica inequivocamente a casa; o subtítulo em 32400 parece deslocado. Nenhum claim do livro adotado ou coluna reconstruída.",
+          "Final review resolution: mesmo que in A9 190–192 means even if faith is inherited, not an if prerequisite for adapting philosophy. No inherited-faith condition was added; the adapted object is philosophy, not beliefs in general."
+        ]
+      },
+      "10": {
+        "pt": "você pode ligar suas necessidades de segurança à profissão e ao status, com sensibilidade à reputação e ao que os outros pensam de você. também pode haver busca de aprovação e sensibilidade aos humores do público.",
+        "en": "you may link your need for security to your profession and status, with sensitivity to your reputation and what others think of you. there may also be a search for approval and sensitivity to public moods.",
+        "keywords": {
+          "pt": [
+            "segurança ligada à profissão e ao status",
+            "sensibilidade à reputação",
+            "opinião dos outros",
+            "busca de aprovação",
+            "humores do público"
+          ],
+          "en": [
+            "security linked to profession and status",
+            "sensitivity to reputation",
+            "others’ opinions",
+            "search for approval",
+            "public moods"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 211,
+            "to": 215
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 230,
+            "to": 231
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 10: 208–232; adotado: 211–215 e 230–231, apenas segurança/status, reputação, busca de aprovação e sensibilidade ao público. Não foram adotadas a narrativa universal de mãe/infância nem a afirmação de domínio dos sentimentos das massas. Nenhum sucesso profissional ou aprovação é garantido.",
+          "Quadraturas e oposições à Lua em 214–215 condicionam conflitos internos sobre aprovação; esse efeito não foi incluído nem generalizado. Foram excluídos exemplos nomeados, crime/trânsitos, projeção em autoridades, histórias familiares e destinos de cuidado profissional. Câncer no Meio-do-Céu/casa 10 (208, 232) é analogia separada, não signo inferido de ângulo/cúspide nem equivalência MC=10.",
+          "Livro inspecionado: 32522–32572. O corpo identifica explicitamente Lua na 10o Casa em 32532; o parágrafo 32532–32547 está fragmentado por quebras de coluna/palavras. Nenhum claim do livro adotado; desempenho profissional e oscilação emocional não foram adicionados ao curso por recomposição de fragmentos.",
+          "Final review resolution: approval desire at physical A9 211–214 is distinct from aspect-conditioned conflict at 214–215. Public-mood sensitivity is at physical 230–231; Cancer-on-MC analogy starts at 232. The product ranges are retained; neither review objection requires a new condition or angle inference."
+        ]
+      },
+      "11": {
+        "pt": "você pode buscar segurança, conforto e pertencimento em amigos, grupos e organizações, com forte suscetibilidade às influências desse meio. suas metas e ambições podem oscilar com o humor e com as opiniões de outras pessoas.",
+        "en": "you may seek security, comfort and belonging through friends, groups and organizations, with strong susceptibility to their influence. your goals and ambitions may fluctuate with your mood and with other people’s opinions.",
+        "keywords": {
+          "pt": [
+            "segurança e conforto",
+            "pertencimento",
+            "amigos, grupos e organizações",
+            "suscetibilidade a influências",
+            "metas e ambições oscilantes"
+          ],
+          "en": [
+            "security and comfort",
+            "belonging",
+            "friends, groups and organizations",
+            "susceptibility to influence",
+            "fluctuating goals and ambitions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 235,
+            "to": 238
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 253,
+            "to": 254
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 11: 233–257; adotado: 235–238 e 253–254, apenas busca de segurança/pertencimento, impressionabilidade e oscilação de metas sob humor/opiniões alheias. Não foi convertido o conselho de seleção de amigos em prática prescrita.",
+          "Não foram generalizadas a capacidade de circular por grupos sob a ressalva de Lua não fixa (238), mudanças de conhecidos com Lua em signo mutável (240–241), dificuldades sob maus aspectos (242–245), amizades benéficas com mulheres sob bons aspectos (246), nem a família de amigos condicionada em 255–257. Projeções maternas, gênero, história infantil e resultados relacionais ficaram fora do corpo.",
+          "Livro inspecionado: 32648–32720. Identidade da casa 11 explícita no corpo em 32663, com continuação sobre grupos/amizades em 32667–32672; a coluna de casa 12 se intercala desde 32665. Nenhum claim do livro adotado; frases posteriores não foram recompostas pela proximidade dos títulos."
+        ]
+      },
+      "12": {
+        "pt": "você pode sentir uma fronteira tênue entre suas emoções e as das pessoas ao redor, confundindo sentimentos alheios com os próprios. seus sentimentos e sonhos podem ser vívidos, e você pode ter inclinação a cuidar de pessoas em aflição.",
+        "en": "you may sense a thin boundary between your emotions and those of people around you, mistaking others’ feelings for your own. your feelings and dreams may be vivid, and you may be inclined to care for people in distress.",
+        "keywords": {
+          "pt": [
+            "fronteiras emocionais tênues",
+            "confusão entre sentimentos próprios e alheios",
+            "sentimentos e sonhos vívidos",
+            "cuidado com pessoas em aflição"
+          ],
+          "en": [
+            "thin emotional boundaries",
+            "confusion between one’s own and others’ feelings",
+            "vivid feelings and dreams",
+            "care for people in distress"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 260,
+            "to": 264
+          },
+          {
+            "file": "modulo 4/aula 9 modulo 4/aula-9.md",
+            "from": 280,
+            "to": 283
+          }
+        ],
+        "reviewNotes": [
+          "Primário inspecionado integralmente para a casa 12: 258–301; adotado: 260–264 e 280–283, apenas fronteiras emocionais tênues, confusão de sentimentos, vividez de sentimentos/sonhos e cuidado. Receptividade não é tratada como mediunidade verificada; cuidado não promete cura nem profissão.",
+          "Não foram adotadas práticas de proteção/reclusão, causas pré-natais/infantis, vidas passadas, problemas com mãe/filhos/mulheres, comunicação com mortos, amores secretos, fobias/complexos, institucionalização, feridas de encarnação ou correlações de carreira. Signo de Câncer na cúspide/interceptado não foi inferido. Imagens arquetípicas e sabedoria interna não foram usadas para cancelar o risco de confundir emoções.",
+          "Livro inspecionado: 32648–32720. Identidade da casa 12 explícita em 32665; a continuação de inconsciente aparece separada em 32686–32688, entre linhas da casa 11. Nenhum claim do livro adotado; trechos intercalados não foram reconstruídos em uma abertura contínua.",
+          "OCR no primário inclui Corno/Lua ruas/unia (260), Sem preceder (264), conciliar (281) e mão delas (286). Não se reconstruiu a intenção das expressões ambíguas; da linha 281 adota-se apenas a vividez explicitamente legível em 280–281, não um mecanismo de ocultação emocional."
+        ]
+      }
     }
   }
 }

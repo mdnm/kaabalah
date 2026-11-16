@@ -40,7 +40,7 @@ getPlanetHouseDescriptionEntry('sun', 2)?.src;
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 120 planet-sign entries and 12 planet-house entries (Sun houses).
+Authored coverage: 120 planet-sign entries and 24 planet-house entries (Sun, Moon houses).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
 arguments are integer numbers from 1 to 12 (strings are not coerced). Entries,
