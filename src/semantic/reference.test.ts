@@ -31,7 +31,7 @@ describe("plain reading reference vocabulary", () => {
       expect(Object.values(reference.step).every(Boolean)).toBe(true);
       expect(Object.values(reference.descent).every(Boolean)).toBe(true);
     }
-    expect(getReadingReference("pt-BR").step.Daath).toBe("hora de pegar um lápis e um papel");
+    expect(getReadingReference("pt-BR").step.Daath).toBe("você a expressa, com lápis e papel, por exemplo");
     expect(getReadingReference("pt-BR").gloss.Malkuth).toBe("o pote de ouro");
     expect(getReadingReference("pt").rung[8]).toBe("hora do acordo, do contrato");
   });
