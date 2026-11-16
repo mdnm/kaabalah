@@ -1,0 +1,290 @@
+{
+  "Aries": {
+    "en": "Aries",
+    "pt": "Áries"
+  },
+  "Taurus": {
+    "en": "Taurus",
+    "pt": "Touro"
+  },
+  "Gemini": {
+    "en": "Gemini",
+    "pt": "Gêmeos"
+  },
+  "Cancer": {
+    "en": "Cancer",
+    "pt": "Câncer"
+  },
+  "Leo": {
+    "en": "Leo",
+    "pt": "Leão"
+  },
+  "Virgo": {
+    "en": "Virgo",
+    "pt": "Virgem"
+  },
+  "Libra": {
+    "en": "Libra",
+    "pt": "Libra"
+  },
+  "Scorpio": {
+    "en": "Scorpio",
+    "pt": "Escorpião"
+  },
+  "Sagittarius": {
+    "en": "Sagittarius",
+    "pt": "Sagitário"
+  },
+  "Capricorn": {
+    "en": "Capricorn",
+    "pt": "Capricórnio"
+  },
+  "Aquarius": {
+    "en": "Aquarius",
+    "pt": "Aquário"
+  },
+  "Pisces": {
+    "en": "Pisces",
+    "pt": "Peixes"
+  },
+  "Sun": {
+    "en": "Sun",
+    "pt": "Sol"
+  },
+  "Moon": {
+    "en": "Moon",
+    "pt": "Lua"
+  },
+  "Mercury": {
+    "en": "Mercury",
+    "pt": "Mercúrio"
+  },
+  "Venus": {
+    "en": "Venus",
+    "pt": "Vênus"
+  },
+  "Mars": {
+    "en": "Mars",
+    "pt": "Marte"
+  },
+  "Jupiter": {
+    "en": "Jupiter",
+    "pt": "Júpiter"
+  },
+  "Saturn": {
+    "en": "Saturn",
+    "pt": "Saturno"
+  },
+  "Uranus": {
+    "en": "Uranus",
+    "pt": "Urano"
+  },
+  "Neptune": {
+    "en": "Neptune",
+    "pt": "Netuno"
+  },
+  "Pluto": {
+    "en": "Pluto",
+    "pt": "Plutão"
+  },
+  "Earth": {
+    "en": "Earth",
+    "pt": "Terra"
+  },
+  "Chiron": {
+    "en": "Chiron",
+    "pt": "Quíron"
+  },
+  "ASC": {
+    "en": "ASC",
+    "pt": "ASC"
+  },
+  "MC": {
+    "en": "MC",
+    "pt": "MC"
+  },
+  "DC": {
+    "en": "DC",
+    "pt": "DC"
+  },
+  "IC": {
+    "en": "IC",
+    "pt": "IC"
+  },
+  "Vertex": {
+    "en": "Vertex",
+    "pt": "Vértice"
+  },
+  "Wheel of Fortune": {
+    "en": "Wheel of Fortune",
+    "pt": "Roda da Fortuna"
+  },
+  "Mean Node": {
+    "en": "Mean Node",
+    "pt": "Nodo médio"
+  },
+  "True Node": {
+    "en": "True Node",
+    "pt": "Nodo verdadeiro"
+  },
+  "Lilith Mean": {
+    "en": "Lilith Mean",
+    "pt": "Lilith média"
+  },
+  "Lilith True": {
+    "en": "Lilith True",
+    "pt": "Lilith verdadeira"
+  },
+  "Conjunction": {
+    "en": "Conjunction",
+    "pt": "Conjunção"
+  },
+  "Duodecile": {
+    "en": "Duodecile",
+    "pt": "Semissextil"
+  },
+  "Octile": {
+    "en": "Octile",
+    "pt": "Semiquadratura"
+  },
+  "Sextile": {
+    "en": "Sextile",
+    "pt": "Sextil"
+  },
+  "Square": {
+    "en": "Square",
+    "pt": "Quadratura"
+  },
+  "Trine": {
+    "en": "Trine",
+    "pt": "Trígono"
+  },
+  "Trioctile": {
+    "en": "Trioctile",
+    "pt": "Sesquiquadratura"
+  },
+  "Quincunx": {
+    "en": "Quincunx",
+    "pt": "Quincúncio"
+  },
+  "Opposition": {
+    "en": "Opposition",
+    "pt": "Oposição"
+  },
+  "NorthNode": {
+    "en": "NorthNode",
+    "pt": "Nodo norte"
+  },
+  "SouthNode": {
+    "en": "SouthNode",
+    "pt": "Nodo sul"
+  },
+  "diurnal": {
+    "en": "diurnal",
+    "pt": "Diurna"
+  },
+  "nocturnal": {
+    "en": "nocturnal",
+    "pt": "Noturna"
+  },
+  "domicile": {
+    "en": "domicile",
+    "pt": "Domicílio"
+  },
+  "exaltation": {
+    "en": "exaltation",
+    "pt": "Exaltação"
+  },
+  "detriment": {
+    "en": "detriment",
+    "pt": "Detrimento"
+  },
+  "fall": {
+    "en": "fall",
+    "pt": "Queda"
+  },
+  "peregrine": {
+    "en": "peregrine",
+    "pt": "Peregrino"
+  },
+  "Fire": {
+    "en": "Fire",
+    "pt": "Fogo"
+  },
+  "Air": {
+    "en": "Air",
+    "pt": "Ar"
+  },
+  "Water": {
+    "en": "Water",
+    "pt": "Água"
+  },
+  "Ether": {
+    "en": "Ether",
+    "pt": "Éter"
+  },
+  "Cardinal": {
+    "en": "Cardinal",
+    "pt": "Cardinal"
+  },
+  "Fixed": {
+    "en": "Fixed",
+    "pt": "Fixo"
+  },
+  "Mutable": {
+    "en": "Mutable",
+    "pt": "Mutável"
+  },
+  "Ascendant": {
+    "en": "Ascendant",
+    "pt": "Ascendente"
+  },
+  "Midheaven": {
+    "en": "Midheaven",
+    "pt": "Meio do céu"
+  },
+  "Descendant": {
+    "en": "Descendant",
+    "pt": "Descendente"
+  },
+  "Imum Coeli": {
+    "en": "Imum Coeli",
+    "pt": "Fundo do céu"
+  },
+  "conjunction": {
+    "en": "conjunction",
+    "pt": "conjunção"
+  },
+  "duodecile": {
+    "en": "duodecile",
+    "pt": "semissextil"
+  },
+  "octile": {
+    "en": "octile",
+    "pt": "semiquadratura"
+  },
+  "sextile": {
+    "en": "sextile",
+    "pt": "sextil"
+  },
+  "square": {
+    "en": "square",
+    "pt": "quadratura"
+  },
+  "trine": {
+    "en": "trine",
+    "pt": "trígono"
+  },
+  "trioctile": {
+    "en": "trioctile",
+    "pt": "sesquiquadratura"
+  },
+  "quincunx": {
+    "en": "quincunx",
+    "pt": "quincúncio"
+  },
+  "opposition": {
+    "en": "opposition",
+    "pt": "oposição"
+  }
+}

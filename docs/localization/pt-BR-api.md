@@ -60,3 +60,7 @@ The new getter also localizes transformed and nuclear hexagram texts. Each text 
 ## Semantic markers and map labels
 
 The symbol `get*SymbolMetadata` and `list*SymbolMetadata` functions, `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers` and `buildKaabalisticMapData` now accept an optional final language argument. Pass `'pt-BR'`. `getKaabalisticLabel(text, language)` is also available for supported display labels. Glyphs, target IDs, counts and computation keys stay stable. `semantic-review.json` identifies translated labels and deliberately unchanged notation.
+
+## Astrology calculation labels
+
+`getAstrologyLabel(value, 'pt-BR')` from `kaabalah/astrology` localizes signs, planets, nodes, sect, dignities, aspects and decan tarot names. For example, use it on `getDecan(longitude).tarotCard`, a firdaria period's `.planet`, or a profection's `.sign` and `.ruler`. Raw calculation results and identifiers stay unchanged. Unsupported custom labels pass through. Review rows are in `astrology-review.json`; decan card names share the tarot source.

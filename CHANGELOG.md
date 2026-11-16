@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add `getAstrologyLabel` for Portuguese decan, dignity, firdaria, profection
+  and aspect display names without changing calculation identifiers.
+
 - Add Portuguese semantic symbol, marker and map labels through optional language
   arguments, preserving glyphs, IDs, correspondence targets and counts.
 
