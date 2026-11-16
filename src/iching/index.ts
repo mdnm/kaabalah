@@ -1,6 +1,8 @@
+import { getHexagramText, getOracleTextContent } from "./texts";
 export * from "./types";
 export * from "./data";
 export * from "./descriptions";
+export * from "./texts";
 export { TRIGRAMS, PALACE_TABLE, PHASE_HANZI } from "./tables";
 export * from "./calculations";
 export * from "./kaabalah";
@@ -65,6 +67,31 @@ function deriveReading(input: CastInput) {
   };
 }
 export type IChingReading = ReturnType<typeof deriveReading>;
+
+/**
+ * Reading with selected text in `.content`, including oracle, cast, transformed and nuclear texts.
+ * English is the default; pt and pt-BR select Portuguese. Original Chinese and English remain.
+ * Portuguese translations are drafts pending author review.
+ */
+export function getIChingReadingContent(input: CastInput, language?: string) {
+  const reading = getIChingReading(input);
+  const hexagram = (h: Hexagram) => ({ ...h, text: getHexagramText(h.number, language)! });
+  const state = (value: IChingReading["cast"]) => ({
+    ...value,
+    hexagram: hexagram(value.hexagram),
+    nuclear: { ...value.nuclear, hexagram: hexagram(value.nuclear.hexagram) },
+  });
+  return {
+    ...reading,
+    cast: state(reading.cast),
+    transformed: reading.transformed ? state(reading.transformed) : null,
+    oracle: reading.oracle.map(selection => ({
+      ...selection,
+      text: getOracleTextContent(selection, language),
+    })),
+  };
+}
+export type IChingReadingContent = ReturnType<typeof getIChingReadingContent>;
 
 /** Dates and question are caller-supplied labels; this helper never supplies a clock or interpretation. */
 export function formatRecord(

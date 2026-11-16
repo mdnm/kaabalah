@@ -29,3 +29,18 @@ No npm release is authorized or performed. The remaining content areas and final
 ## Tarot spreads
 
 `getTarotSpread('conscious-reading', 'pt-BR')` and `listTarotSpreads('pt-BR')` localize spread/slot labels, descriptions and metadata notes. IDs, constraints and sphere spellings stay stable. `spreads-review.json` lists all draft translations; numeric labels and sphere names remain unchanged.
+
+## I Ching classical text
+
+```ts
+import { getIChingReadingContent, getHexagramText, getHexagramName } from 'kaabalah/iching';
+const reading = getIChingReadingContent({ hexagramNumber: 30, movingLines: [2, 4] }, 'pt-BR');
+reading.oracle[0].text.content;
+reading.cast.hexagram.text.judgment.content;
+reading.cast.hexagram.text.image.content;
+reading.cast.hexagram.text.lines[0].content;
+getHexagramText(1, 'pt-BR')?.useNine?.content;
+getHexagramName(reading.cast.hexagram.number, 'pt-BR');
+```
+
+The new getter also localizes transformed and nuclear hexagram texts. Each text retains `.chinese` and `.english`; `.content` selects the requested language. Existing `getIChingReading` and all existing exports are unchanged. `iching-review.json` lists all 514 draft translation rows. The consulted class reference and exchange directories did not yield a complete Portuguese classical-text catalog; no draft is claimed as a quotation from class material.

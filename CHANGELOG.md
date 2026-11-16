@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add draft Portuguese translations for all 514 classical I Ching texts through
+  `getHexagramText` and `getIChingReadingContent`, retaining Chinese and English.
+
 - Add draft Portuguese spread and slot labels, descriptions and notes through
   `getTarotSpread(id, language)` and `listTarotSpreads(language)`.
 

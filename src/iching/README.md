@@ -66,3 +66,7 @@ python3 scripts/verify-iching-chinese.py --cache /path/to/chapters
 ```
 
 The site's Wade-Giles forms were checked against the 64 numbered [I Ching Online](https://www.ichingonline.net/) reading headings on 15-11-2026; descriptive parenthetical labels were excluded. Common pinyin display forms and the 解 reading were cross-checked with [UAYA's own hexagram index](https://uaya.org/zh/iching/hexagrams/); 小畜's xù reading is given by the [Ministry of Education dictionary](https://dict.revised.moe.edu.tw/dictView.jsp?ID=106936&la=0&powerMode=0), and 噬嗑's hé reading by [Wiktionary](https://zh.wiktionary.org/zh-hant/噬嗑). Alternate readings are preserved explicitly rather than used as identities.
+
+### Portuguese classical text
+
+`getHexagramText(number, language?)` returns judgment, image, six lines and any useNine/useSix, with a selected `.content` field beside unchanged `.chinese` and `.english`. `getIChingReadingContent(input, language?)` applies the same selection to oracle, cast, transformed and nuclear texts. English is the default; `pt` and `pt-BR` select Portuguese. Unknown hexagram numbers return undefined from `getHexagramText`. Portuguese classical texts are drafts pending author review; see `docs/localization/iching-review.json`.
