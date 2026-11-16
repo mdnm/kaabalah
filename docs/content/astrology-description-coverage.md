@@ -208,3 +208,8 @@ Validation is documentary: all23 class manifests have valid teaching/NOTAS bound
 ## Follow-up research requested by Mat
 
 Paragraph format selected, with source fidelity above fixed length. [Cross-module NOTAS addendum](astrology-inventory-notes.md) records the follow-up search of115 class Markdown files across modules1-5, including plain `NOTAS:` boundaries,526 matching private-note line locations and eligible handout passages outside module4. The [metadata-only search ledger](astrology-inventory-notes-search.json) retains hashes and locations without copying private notes. Existing source gaps remain pending rather than being filled from personal examples. Phase2 scope/order still requires Mat's decision.
+
+## Mat decisions, 2026-11-16
+
+- Opposition: describe tension (A13:405-406,1566). Mat clarified that the harmony mentioned in A11:287-290 refers to positive/negative poles. This resolves the earlier pending review for descriptions.
+- Node dignities: follow A15:45-53. Mat clarified that A12 and A15 address different things; preserve their contexts rather than treating the two passages as interchangeable rules. Keep astronomical north/south labels without hemisphere inversion, as already decided. This does not authorize calculation changes.

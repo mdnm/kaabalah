@@ -8663,5 +8663,450 @@
         "books/astrologia-hermetica/astrologia-hermetica.md:22981-23106 inspected only, not adopted or cited in src. Body 22981-22990 explicitly identifies house 12; broken or interleaved material at 23006-23055 and 23073-23106 is not reconstructed. Healing and therapy claims at 22995-22998,23065-23071 are unadopted; no advice, clinical model or promised health outcome."
       ]
     }
+  },
+  "angleSigns": {
+    "ascendant": {
+      "Aries": {
+        "pt": "com Áries no Ascendente, você pode agir com ousadia, iniciativa e desejo de conquista, avançando em territórios novos. pode querer resultados imediatos e ser impaciente com limites e restrições, além de mostrar ambição e sede de poder.",
+        "en": "with Aries rising, you may act with boldness, initiative, and a desire to achieve, moving into new territory. you may want immediate results and be impatient with limits and restrictions, as well as show ambition and a thirst for power.",
+        "keywords": {
+          "pt": [
+            "ousadia e coragem",
+            "iniciativa",
+            "desejo de conquista",
+            "desejo de resultados imediatos",
+            "impaciência com limites e restrições",
+            "ambição e sede de poder"
+          ],
+          "en": [
+            "boldness and courage",
+            "initiative",
+            "desire to achieve",
+            "desire for immediate results",
+            "impatience with limits and restrictions",
+            "ambition and thirst for power"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 53,
+            "to": 60
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 64,
+            "to": 66
+          }
+        ],
+        "reviewNotes": [
+          "A seção primária completa 53–66 foi lida. As linhas 53–60 sustentam ousadia/coragem, iniciativa, conquista, rapidez desejada e impaciência com limites/restrições; 64–66 sustentam a advertência sobre ambição/sede de poder. A redação descreve tendências qualificadas, não destino ou identidade fixa.",
+          "Lidas, mas não adotadas: 55–56 prescrevem exercício físico e prometem efeito sobre energia/humor; 60–64 atribuem talento para negócios e prescrevem aprendizado e qualidades; 65–66 incluem uma afirmação sobre crianças. Livro inspecionado somente nos trechos 65522–65535, 65636–65645 e 65673–65680 dentro da família aprovada. Os fragmentos são intercalados, e nenhuma alegação foi adotada."
+        ]
+      },
+      "Taurus": {
+        "pt": "com Touro no Ascendente, você pode valorizar segurança e estabilidade, mostrando firmeza, lealdade, tato, diplomacia e sociabilidade. pode apegar-se a coisas que representam segurança material e, quando irritado, tornar-se violento.",
+        "en": "with Taurus rising, you may value security and stability, showing steadiness, loyalty, tact, diplomacy, and sociability. you may become attached to things that represent material security and, when irritated, become violent.",
+        "keywords": {
+          "pt": [
+            "segurança e estabilidade",
+            "firmeza e lealdade",
+            "tato e diplomacia",
+            "sociabilidade",
+            "apego a objetos como segurança material",
+            "violência quando irritado"
+          ],
+          "en": [
+            "security and stability",
+            "steadiness and loyalty",
+            "tact and diplomacy",
+            "sociability",
+            "attachment to objects as material security",
+            "violence when irritated"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 68,
+            "to": 79
+          }
+        ],
+        "reviewNotes": [
+          "A seção primária completa 68–80 foi lida. 68–73 sustenta segurança material, afeição, firmeza, lealdade, tato, diplomacia, sociabilidade e a condição de irritação para violência; 74–79 sustenta objetos associados à segurança e apego à abundância material. A afirmação de sucesso material em 77–79 não foi convertida em promessa.",
+          "Lidas, mas não adotadas: 70 trata de necessidades sexuais; 74 afirma tendência a casamento cedo e necessidade de rotina; 75–76 incluem corpo/exercício e resistência física; 80 contém afirmação sobre crianças. Livro inspecionado somente em 65453–65461, 65542–65558 e 65655–65684 dentro da família aprovada; os corpos se intercalam com outros signos e nenhuma afirmação foi adotada."
+        ]
+      },
+      "Gemini": {
+        "pt": "com Gêmeos no Ascendente, você pode precisar de estímulo mental constante e se envolver em mais de uma atividade ao mesmo tempo. pode sentir carência e desejo de proximidade, mas também sentir-se ameaçado pela intimidade; pode ter dificuldade com rotinas obrigatórias, passar por mudanças bruscas e, quando magoado, tornar-se frio e indiferente.",
+        "en": "with Gemini rising, you may need constant mental stimulation and engage in more than one activity at a time. you may feel a need for closeness, yet also feel threatened by intimacy; you may have difficulty with required routines, undergo abrupt changes, and, when hurt, become cold and indifferent.",
+        "keywords": {
+          "pt": [
+            "estímulo mental constante",
+            "múltiplas atividades",
+            "carência e intimidade ambivalente",
+            "dificuldade com rotinas obrigatórias",
+            "mudanças bruscas",
+            "frieza quando magoado"
+          ],
+          "en": [
+            "constant mental stimulation",
+            "multiple activities",
+            "neediness and ambivalence about intimacy",
+            "difficulty with required routines",
+            "abrupt changes",
+            "coldness when hurt"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 82,
+            "to": 93
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 97,
+            "to": 98
+          }
+        ],
+        "reviewNotes": [
+          "A seção primária completa 82–100 foi lida. 82–93 sustenta estímulo mental, atividades simultâneas, necessidade de proximidade junto ao receio de intimidade, inquietação/rotina obrigatória e mudanças bruscas; 97–98 sustenta cordialidade e frieza condicional quando magoado. A redação preserva essas tensões sem o rótulo de dupla personalidade.",
+          "Lidas, mas não adotadas: 88–90 com avaliação de irresponsabilidade e pressão; 93–97 com conciliação, virtude, manipulação da atenção, espiritualidade e promessa de integração; 98–100 com escola, amadurecimento e sensibilidade como fato geral. Livro inspecionado somente em 65370–65374, 65860–65880 dentro da família aprovada; os corpos estão intercalados e nenhum claim foi adotado."
+        ]
+      },
+      "Cancer": {
+        "pt": "com Câncer no Ascendente, você pode ser guiado pelas emoções, mudar de humor rapidamente e sentir forte ligação com família, tradições e lembranças do passado. pode ser muito influenciável por outras pessoas, além de suscetível a mágoas e ressentimento.",
+        "en": "with Cancer rising, you may be guided by emotions, change moods quickly, and feel strongly connected to family, traditions, and memories of the past. you may be highly influenced by other people, and be susceptible to hurt feelings and resentment.",
+        "keywords": {
+          "pt": [
+            "emoções e mudanças rápidas de humor",
+            "ligação com família e tradições",
+            "lembranças do passado",
+            "influência de outras pessoas",
+            "suscetibilidade a mágoas",
+            "ressentimento"
+          ],
+          "en": [
+            "emotions and rapid mood changes",
+            "connection to family and traditions",
+            "memories of the past",
+            "influence of other people",
+            "susceptibility to hurt feelings",
+            "resentment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 102,
+            "to": 108
+          }
+        ],
+        "reviewNotes": [
+          "A seção primária completa 102–119 foi lida. 102–108 sustenta oscilação emocional, ligação com família/tradições/passado, influência de terceiros e suscetibilidade a mágoa/ressentimento; o texto foi mantido como tendências, não características inevitáveis.",
+          "Lidas, mas não adotadas: 108–112 contêm prescrições, autocontrole e previsões negativas; 111–119 incluem tendências depressivas, prescrição de vivenciar dores, trauma de infância/orfandade, dissimulação, reação a críticas e fantasias mórbidas. Livro inspecionado somente em 65376–65382 e 65867–65876 dentro da família aprovada; os blocos são intercalados/OCR corrompido e nada foi adotado."
+        ]
+      },
+      "Leo": {
+        "pt": "você tende a liderar e administrar, com extroversão e necessidade de reconhecimento; quando se sente menosprezado ou relegado, pode tornar-se mordaz e sarcástico para chamar atenção. você pode ser alguém confiável, mas guardar ofensas e reagir com vingança; para muitos, o drama ocupa lugar central.",
+        "en": "you tend to lead and manage, with an outgoing manner and a need for recognition; when you feel slighted or pushed aside, you may become cutting and sarcastic to draw attention. you can be someone others rely on, yet hold on to offenses and react with revenge; for many, drama takes center stage.",
+        "keywords": {
+          "pt": [
+            "liderança",
+            "administração",
+            "necessidade de reconhecimento",
+            "mordacidade quando menosprezado",
+            "guardar ofensas",
+            "vingança",
+            "drama"
+          ],
+          "en": [
+            "leadership",
+            "administration",
+            "need for recognition",
+            "cutting when slighted",
+            "holding on to offenses",
+            "revenge",
+            "drama"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 121,
+            "to": 136
+          }
+        ],
+        "reviewNotes": [
+          "The primary emphasizes leadership/administrative ability and recognition, then describes becoming mordant or sarcastic when slighted, holding onto offense, and revenge. The source qualifies drama as central for many, not all.",
+          "Omitted the source's childhood-leadership claim and its assertion of an innate lifelong pattern. No generic Sun-in-Leo traits were imported.",
+          "Inspected supplemental family 65417-65440 and 65894-65961. Explicit Leo body fragments appear between/under displaced or conflicting headers, alongside Virgo body text and mixed material. No supplemental claim adopted; primary is clear and sufficient."
+        ]
+      },
+      "Virgo": {
+        "pt": "você tende a pesquisar, reunir informações e dominar detalhes, mas o excesso de análise pode fazer perder de vista o quadro geral. pode se esconder atrás das perguntas em vez de dar sua opinião, e, quando inseguro, recorrer à crítica; essa crítica pode funcionar como defesa, embora você raramente seja mesquinho ou ofensivo.",
+        "en": "you tend to research, gather information and master details, but overanalysis can make you lose sight of the larger picture. you may hide behind questions instead of giving your opinion, and, when insecure, turn to criticism; this criticism can function as a defense, though you are rarely petty or offensive.",
+        "keywords": {
+          "pt": [
+            "pesquisa",
+            "coleta de informações",
+            "atenção aos detalhes",
+            "excesso de análise",
+            "crítica defensiva",
+            "reserva de opinião"
+          ],
+          "en": [
+            "research",
+            "gathering information",
+            "attention to detail",
+            "overanalysis",
+            "defensive criticism",
+            "withholding an opinion"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 138,
+            "to": 156
+          }
+        ],
+        "reviewNotes": [
+          "The primary connects criticism with insecurity and describes it as a defensive habit; it says the person is rarely petty or offensive. This qualification is retained rather than casting the criticism as malice.",
+          "The source includes childhood explanations and imperatives about learning, being encouraged, and speaking less; these are omitted rather than turned into biography or advice.",
+          "Inspected supplemental family 65894-65924. The heading says Virgo; explicit Virgo-body fragments address detail and organization, interleaved with Leo text. No supplemental claim adopted; primary is sufficient."
+        ]
+      },
+      "Libra": {
+        "pt": "você busca harmonia, é cortês e sociável, mas pode evitar conflitos a ponto de vivê-los intensamente e ter dificuldade de reconhecer a própria identidade. você pode adaptar-se e esconder seus desejos; pode usar a aparência para conseguir o que quer e, em situações tensas, recorrer à simpatia em vez da diplomacia.",
+        "en": "you seek harmony and are courteous and sociable, but may avoid conflict so intensely that you experience it deeply and have difficulty recognizing your own identity. you may adapt yourself and hide your desires; you may use your appearance to get what you want and, in tense situations, turn to charm instead of diplomacy.",
+        "keywords": {
+          "pt": [
+            "busca por harmonia",
+            "cortesia e sociabilidade",
+            "evitação de conflitos",
+            "dificuldade de reconhecer a identidade",
+            "adaptação",
+            "desejos ocultos",
+            "aparência usada para conseguir o que quer",
+            "simpatia em situações tensas no lugar da diplomacia"
+          ],
+          "en": [
+            "search for harmony",
+            "courtesy and sociability",
+            "conflict avoidance",
+            "difficulty recognizing identity",
+            "adaptation",
+            "hidden desires",
+            "using appearance to get what one wants",
+            "charm in tense situations instead of diplomacy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 158,
+            "to": 172
+          }
+        ],
+        "reviewNotes": [
+          "Primary modulo 4/aula 6 modulo 4/aula-6.md:158-172 supports harmony, sociability, intense conflict avoidance, identity difficulty and adaptation hiding desires. Appearance serves desired outcomes at 167; charm replaces diplomacy in tense situations at 169-171. These motives are kept separate, with no inferred motive of keeping someone nearby.",
+          "Omitted the childhood family story, narcissism label, and imperatives about taking the easy path or being careful. No relationship outcome is promised.",
+          "Inspected supplemental family 66001-66090. Although the heading says Libra, OCR fragments intermingle emotional intensity, sociability, reserve and other text, with broken word order. House/sign body assignment is unreliable; no supplement adopted."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você tende a viver as coisas em extremos, guardar injustiças e gestos de bondade, e pode tentar conduzir os outros por manobras ou engano. essa intensidade pode dificultar seus relacionamentos e levar você a querer transformar os outros em vez de enfrentar a própria mudança; também tende a guardar confidências.",
+        "en": "you tend to experience things in extremes, remember injustices and acts of kindness, and may try to steer others through maneuvering or deception. this intensity may make relationships difficult and lead you to want to change others instead of facing your own change; you also tend to keep confidences.",
+        "keywords": {
+          "pt": [
+            "extremos",
+            "guardar injustiças e bondades",
+            "manobras",
+            "engano",
+            "intensidade nos relacionamentos",
+            "transformar os outros",
+            "guardar confidências"
+          ],
+          "en": [
+            "extremes",
+            "remembering injustices and kindness",
+            "maneuvering",
+            "deception",
+            "intensity in relationships",
+            "changing others",
+            "keeping confidences"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 174,
+            "to": 188
+          }
+        ],
+        "reviewNotes": [
+          "The primary's uncomfortable account of extremes, maneuvering/deception, difficulty in relationships and trying to transform others is retained as a tendency, not an inevitable act. Keeping confidences is also explicit in the source.",
+          "Omitted prescriptive material about integrating the lower/higher self, extinguishing feelings, learning, and offering help only when requested. Childhood claims about learning deception are not generalized into biography.",
+          "Inspected supplemental family 66265-66298. It contains a Scorpio heading but the nearby body is mostly OCR debris and the next explicit body is Sagittarius; no standalone Scorpio claims are recoverable here. No supplemental claim adopted; primary is sufficient."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você busca novas metas e experiências, pode esconder problemas atrás do humor e não se sentir à vontade mostrando fragilidade. sua franqueza pode ultrapassar limites, com comentários rudes que ofendem sem que você perceba.",
+        "en": "you seek new goals and experiences, may hide problems behind humor and feel uneasy showing vulnerability. your frankness can cross boundaries, with rude comments that offend without you realizing it.",
+        "keywords": {
+          "pt": [
+            "novas metas",
+            "experiências",
+            "humor como máscara",
+            "dificuldade em mostrar fragilidade",
+            "franqueza rude"
+          ],
+          "en": [
+            "new goals",
+            "experiences",
+            "humor as a mask",
+            "difficulty showing vulnerability",
+            "blunt frankness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 190,
+            "to": 195
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 203,
+            "to": 205
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 6 modulo 4/aula-6.md:190-205 inspected in full. Adopted 190-195 for goals, experience, humor masking problems and discomfort with vulnerability; 203-205 for frankness exceeding limits and unintended offense. No generic Sun-sign profile or angle/house alias.",
+          "modulo 4/aula 6 modulo 4/aula-6.md:196-202 includes disappointment, unrealistic hopes, overextension, honesty as innate and unhappiness with the wrong person. These are unadopted for concision and to avoid biographical assumptions or relationship outcomes; no optimism-only substitute was invented.",
+          "books/astrologia-hermetica/astrologia-hermetica.md:66300-66390 inspected only, not adopted or cited in src. Standalone Ascendant/Sagittarius identity appears in the fragmented body at 66306-66315, not merely the heading at 66300-66302. OCR fragments the adventure, optimism, independence and frankness text; incomplete philosophical material at 66385-66390 was not reconstructed. Supplemental positive emphases do not replace the primary limits."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode parecer reservado e distante, com uma elegância que oculta timidez e uma fachada protetora que esconde suas dores. você tende a assumir responsabilidades a ponto de se sobrecarregar e a buscar segurança com metas de longo alcance, avançando um passo de cada vez.",
+        "en": "you may appear reserved and distant, with an elegance that conceals shyness and a protective facade that hides your pain. you tend to take on responsibilities to the point of overburdening yourself and seek security through long-term goals, advancing one step at a time.",
+        "keywords": {
+          "pt": [
+            "reserva aparente",
+            "elegância que oculta timidez",
+            "fachada que esconde dores",
+            "sobrecarga de responsabilidades",
+            "metas de longo alcance"
+          ],
+          "en": [
+            "outward reserve",
+            "elegance concealing shyness",
+            "facade hiding pain",
+            "overburdening responsibilities",
+            "long-term goals"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 207,
+            "to": 214
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 216,
+            "to": 217
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 6 modulo 4/aula-6.md:207-220 inspected in full. Adopted 207-214: apparent reserve/distance and elegance concealing shyness at 207-208 are distinct from the protective facade concealing pain at 211-212; responsibility overload extends through 214. The facade is not attributed to concealment of shyness or insecurity. Adopted 216-217 for long-range goals and gradual pursuit of security. The OCR word trio at 207 was not silently repaired into an additional claim.",
+          "modulo 4/aula 6 modulo 4/aula-6.md:209-215 includes childhood/maturity and childhood-rooted insecurity, distrust and judgment. No childhood biography is asserted. Late-life realization and advice at 217-220 are unadopted; no age, success guarantee or practice is supplied.",
+          "books/astrologia-hermetica/astrologia-hermetica.md:66429-66520 inspected only, not adopted or cited in src. The standalone Ascendant/Capricorn body identifies the placement at 66434-66441 despite the fragmented heading. Responsibility, discipline, reserve and patience appear in broken or interleaved clauses; no reconstruction, success promise or extra favorable trait adopted."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode se distinguir pela singularidade, inventividade e qualidades humanitárias. se tenta se amoldar para ser como os outros, pode se rebelar em momentos cruciais e se mostrar excitável ou imprevisível.",
+        "en": "you may stand out through uniqueness, inventiveness and humanitarian qualities. if you try to conform to be like others, you may rebel at crucial moments and become excitable or unpredictable.",
+        "keywords": {
+          "pt": [
+            "singularidade",
+            "inventividade",
+            "qualidades humanitárias",
+            "tentativa de se amoldar",
+            "rebeldia condicional",
+            "imprevisibilidade condicional"
+          ],
+          "en": [
+            "uniqueness",
+            "inventiveness",
+            "humanitarian qualities",
+            "attempting to conform",
+            "conditional rebellion",
+            "conditional unpredictability"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 222,
+            "to": 225
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 237,
+            "to": 238
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 6 modulo 4/aula-6.md:222-239 inspected in full. Adopted 222-225 and 237-238. Rebellion, excitability and unpredictability explicitly retain the antecedent of trying to conform instead of accepting difference; they are not unconditional traits. The source’s additional unreliability label is omitted.",
+          "modulo 4/aula 6 modulo 4/aula-6.md:226-236 includes freedom, family, solitude, flexibility and medical/nervous-system claims. None are adopted here; no clinical inference, medical need, childhood history, vibrational practice or promised life pattern. Advice at 238-239 is unadopted.",
+          "books/astrologia-hermetica/astrologia-hermetica.md:66566-66689 inspected as one narrow interleaved Aquarius/Pisces body window, not adopted or cited in src. Aquarius is explicit in the body at 66570-66578, while Pisces is explicit at 66572-66580; nearest headings cannot assign the alternating clauses. No supplemental progressiveness, networking, rationality or diversity profile was added and no uncertain column sequence reconstructed."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode idealizar o que está ao seu redor e ter dificuldade com confrontos e decisões bem definidas. você também pode endeusar quem confirma seu ponto de vista e ter dificuldade em distinguir situações criadas na mente da realidade dos fatos.",
+        "en": "you may idealize what is around you and struggle with confrontations and clearly defined decisions. you may also idolize those who confirm your point of view and have difficulty distinguishing situations created in your mind from the reality of the facts.",
+        "keywords": {
+          "pt": [
+            "idealização",
+            "dificuldade com confrontos",
+            "indecisão",
+            "endeusamento de quem concorda",
+            "mundo mental e realidade"
+          ],
+          "en": [
+            "idealization",
+            "difficulty with confrontation",
+            "indecision",
+            "idolizing those who agree",
+            "mental world and reality"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 241,
+            "to": 243
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 249,
+            "to": 249
+          },
+          {
+            "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+            "from": 254,
+            "to": 255
+          }
+        ],
+        "reviewNotes": [
+          "modulo 4/aula 6 modulo 4/aula-6.md:241-255 inspected in full. Adopted 241-243 for idealization and difficulty with confrontation/defined decisions; 249 for idolizing people who confirm one’s viewpoint; 254-255 for difficulty distinguishing mentally created situations from facts. These remain tendencies, not a diagnosis or a biographical assertion.",
+          "modulo 4/aula 6 modulo 4/aula-6.md:245-246 contains a clinical label, which is unadopted. Don Quixote at 241-242, moralized manipulation/victim labels at 246-253 and coercive self-knowledge framing at 248-249 are also omitted. No unsupported positive compensation, healing claim or instruction is invented.",
+          "books/astrologia-hermetica/astrologia-hermetica.md:66566-66689 inspected only, not adopted or cited in src. The body explicitly names Pisces at 66572-66580 alongside alternating Aquarius material at 66570-66578. Sensitivity/empathy and later imagination, spirituality and mystical claims are interleaved; their positive emphasis differs from the primary’s emphasis on idealization and discernment. No heading-based reassignment, OCR reconstruction or supplemental-only claim adopted."
+        ]
+      }
+    }
   }
 }

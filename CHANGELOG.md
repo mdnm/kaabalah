@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual Ascendant-sign descriptions, typed chart-angle
+  lookups and frozen provenance, with unsupported angle combinations left explicit.
+
 ## 6.17.0 - 2026-11-16
 
 - Revise the descent wording in the reading reference: new one-line `step`

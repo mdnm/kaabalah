@@ -27,6 +27,8 @@ import {
   getPlanetHouseDescriptionEntry,
   getHouseDescription,
   getHouseDescriptionEntry,
+  getAngleSignDescription,
+  getAngleSignDescriptionEntry,
 } from 'kaabalah/astrology';
 
 getPlanetSignDescription('sun', 'Aries');          // English (default)
@@ -41,11 +43,15 @@ getPlanetHouseDescriptionEntry('sun', 2)?.src;
 
 getHouseDescription(4, 'pt-BR'); // numbered house theme
 getHouseDescriptionEntry(4)?.src;
+
+getAngleSignDescription('ascendant', 'Aries', 'pt-BR');
+getAngleSignDescriptionEntry('ascendant', 'Aries')?.src;
 ```
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 120 planet-sign entries, 120 planet-house entries and 12 numbered house themes.
+Authored coverage: 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+and 12 Ascendant-sign entries.
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
 arguments are integer numbers from 1 to 12 (strings are not coerced). Entries,
@@ -56,7 +62,10 @@ Planet placements describe general tendencies, read with the other factors in a 
 The course explicitly qualifies its sign profiles this way (class 3, lines 531-535).
 They do not assign a person's evolutionary level or promise outcomes.
 Numbered house themes describe domains of life. House numbers and angles have
-distinct chart fields.
+distinct chart fields. Angle lookups use `ascendant`, `mc`, `ic` and `dc`,
+independently of house cusps. Only `ascendant` is currently authored; the other
+angle-sign combinations return `undefined`. Descendant coverage requires a separate
+scope decision.
 
 The repository keeps a separate source audit for every completed kind under
 `docs/content/astrology-descriptions-*.md`. These audits record narrow

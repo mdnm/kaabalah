@@ -24,6 +24,8 @@ export interface PlanetSignDescriptionEntry {
 export type DescriptionHouseNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export type PlanetHouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type HouseDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionAngle = "ascendant" | "mc" | "dc" | "ic";
+export type AngleSignDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -33,6 +35,9 @@ export interface AstrologyDescriptions {
     Partial<Record<DescriptionPlanet, Readonly<Partial<Record<DescriptionHouseNumber, PlanetHouseDescriptionEntry>>>>>
   >;
   readonly houses?: Readonly<Partial<Record<DescriptionHouseNumber, HouseDescriptionEntry>>>;
+  readonly angleSigns?: Readonly<
+    Partial<Record<DescriptionAngle, Readonly<Partial<Record<Sign, AngleSignDescriptionEntry>>>>>
+  >;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -103,5 +108,27 @@ export function getHouseDescriptionEntry(house: number): HouseDescriptionEntry |
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getHouseDescription(house: number, language?: string): string | undefined {
   const entry = getHouseDescriptionEntry(house);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Chart angle keys are independent of numbered house cusps; missing rows stay absent. */
+export function getAngleSignDescriptionEntry(
+  angle: DescriptionAngle,
+  sign: Sign,
+): AngleSignDescriptionEntry | undefined {
+  const angles = ASTROLOGY_DESCRIPTIONS.angleSigns;
+  if (!angles || !Object.prototype.hasOwnProperty.call(angles, angle)) return undefined;
+  const signs = angles[angle];
+  if (!signs || !Object.prototype.hasOwnProperty.call(signs, sign)) return undefined;
+  return signs[sign];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getAngleSignDescription(
+  angle: DescriptionAngle,
+  sign: Sign,
+  language?: string,
+): string | undefined {
+  const entry = getAngleSignDescriptionEntry(angle, sign);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
