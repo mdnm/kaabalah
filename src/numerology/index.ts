@@ -625,3 +625,5 @@ export function calculatePersonalCycles(
 
 export { NumerologyData };
 export type { NumerologyModuleTypes };
+
+export * from "./texts";

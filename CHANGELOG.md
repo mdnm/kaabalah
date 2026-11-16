@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add Portuguese access to all eight numerology text tables through
+  `getNumerologyData`, including class-source references and draft review provenance.
+
 - Add draft Portuguese translations for all 514 classical I Ching texts through
   `getHexagramText` and `getIChingReadingContent`, retaining Chinese and English.
 

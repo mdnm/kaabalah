@@ -44,3 +44,7 @@ getHexagramName(reading.cast.hexagram.number, 'pt-BR');
 ```
 
 The new getter also localizes transformed and nuclear hexagram texts. Each text retains `.chinese` and `.english`; `.content` selects the requested language. Existing `getIChingReading` and all existing exports are unchanged. `iching-review.json` lists all 514 draft translation rows. The consulted class reference and exchange directories did not yield a complete Portuguese classical-text catalog; no draft is claimed as a quotation from class material.
+
+## Numerology
+
+`getNumerologyData('pt-BR')` from `kaabalah/numerology` returns the eight existing text tables with Portuguese values, for example `.LIFEPATH_MEANING[7].description`, `.DAY_OF_BIRTH_MEANING[15].description` and `.PERSONAL_YEAR_DESCRIPTIONS[9]`. Tables are read-only and existing `NumerologyData` exports retain their values and mutability. All 296 text fields have review provenance. Class wording comes from module 3, classes 2, 15, 16, 18 and 19, with OCR corrections recorded as adaptations. The existing English row 22 goal refers to path 21; its Portuguese translation preserves that wording pending Mat's doctrinal review.

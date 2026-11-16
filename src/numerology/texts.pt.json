@@ -1,0 +1,520 @@
+{
+  "CYCLE_MEANINGS": {
+    "1": {
+      "title": "Aprendizado",
+      "shortDescription": "Aja com firmeza e aprenda pela experiência direta.",
+      "personalDescription": "Aja com firmeza e aprenda pela experiência direta. Use sua influência pessoal para pedir favores, empréstimos ou reconhecimento a pessoas influentes, como autoridades e líderes da comunidade. Fortaleça sua reputação e seu prestígio, lembrando que todas as ações têm consequências.",
+      "businessDescription": "Promova sua empresa para criar boa vontade, reconhecimento público e apoio de pessoas de destaque. Priorize a imagem e a reputação da empresa acima dos lucros imediatos."
+    },
+    "2": {
+      "title": "Trabalho árduo",
+      "shortDescription": "Dedique-se ao trabalho e adapte-se a mudanças temporárias.",
+      "personalDescription": "Empenhe-se e adapte-se. O período favorece mudanças temporárias, como mudar de casa, fazer viagens curtas ou mudar de trabalho. Evite compromissos duradouros e investimentos importantes sem formalizá-los com cuidado.",
+      "businessDescription": "Experimente no curto prazo, ajuste a equipe temporariamente e forme contatos profissionais úteis. Evite acordos verbais e compromissos duradouros sem documentação formal. Use a flexibilidade para progredir."
+    },
+    "3": {
+      "title": "Amizade",
+      "shortDescription": "Inicie projetos ambiciosos e fortaleça seus relacionamentos.",
+      "personalDescription": "Use a energia desta fase para iniciar projetos ambiciosos que exigem persistência e força física. Fortaleça os relacionamentos pela boa comunicação. Evite a impulsividade para prevenir conflitos.",
+      "businessDescription": "Expanda suas atividades, empreenda com energia e promova seus negócios com firmeza. Aproveite para cobrar dívidas, mas evite disputas judiciais. Mantenha atenção a acidentes e conflitos e use bem a comunicação."
+    },
+    "4": {
+      "title": "Oportunidades",
+      "shortDescription": "Use a criatividade e a fertilidade mental para decidir com rapidez.",
+      "personalDescription": "Aproveite a fertilidade mental para criar, inovar e decidir com rapidez. Tenha cuidado com enganos, sobretudo em documentos e acordos. Desenvolva sua mente e crie contatos valiosos, mantendo a cautela.",
+      "businessDescription": "Lance campanhas de divulgação de impacto e estabeleça novos acordos. Aproveite a criatividade intelectual e as atividades promocionais, mas examine os documentos com cuidado para evitar fraudes."
+    },
+    "5": {
+      "title": "Lágrimas e decisão",
+      "shortDescription": "Resolva suas finanças e avance espiritualmente nesta fase próspera.",
+      "personalDescription": "Aproveite a fase mais próspera do ano para resolver questões financeiras, iniciar viagens longas e avançar espiritualmente. Relacione-se com pessoas influentes, administre dívidas e amplie suas atividades sociais. Equilibre o ego e o egoísmo para obter os melhores resultados.",
+      "businessDescription": "Invista, amplie suas finanças, divulgue seus negócios pelo mundo e cobre dívidas. O período favorece resultados judiciais. Aja com justiça e generosidade para ampliar o sucesso dos negócios."
+    },
+    "6": {
+      "title": "Tríplice bênção",
+      "shortDescription": "Aproveite os prazeres, o convívio social e a criação.",
+      "personalDescription": "Desfrute de prazeres, atividades sociais, arte e viagens curtas. Aproveite o momento para o romance, o descanso e a criação. Organize sua vida pessoal para equilibrar prazer e refinamento.",
+      "businessDescription": "Promova produtos de luxo, arte e entretenimento e avalie investimentos especulativos. Forme alianças profissionais amistosas e parcerias estratégicas."
+    },
+    "7": {
+      "title": "Descanso",
+      "shortDescription": "Descanse, olhe para dentro e prepare sua renovação.",
+      "personalDescription": "Descanse, faça uma introspecção e prepare sua renovação com cautela. Evite iniciar novos empreendimentos. Conclua pendências, cuide dos assuntos jurídicos e proteja seus recursos. Mantenha o equilíbrio e a paciência.",
+      "businessDescription": "Conserve recursos, evite grandes expansões e cuide da reorganização interna. Adie novos empreendimentos importantes até o próximo ciclo. Aja com diplomacia e cautela para manter a estabilidade."
+    }
+  },
+  "NUMEROLOGY_KEYWORDS": {
+    "1": [
+      "Iniciativa",
+      "Coragem",
+      "Liderança"
+    ],
+    "2": [
+      "Sensibilidade",
+      "Cooperação",
+      "Diplomacia"
+    ],
+    "3": [
+      "Criatividade",
+      "Expressão",
+      "Alegria"
+    ],
+    "4": [
+      "Estabilidade",
+      "Estrutura",
+      "Confiabilidade"
+    ],
+    "5": [
+      "Liberdade",
+      "Adaptabilidade",
+      "Aventura"
+    ],
+    "6": [
+      "Serviço",
+      "Responsabilidade",
+      "Harmonia"
+    ],
+    "7": [
+      "Intuição",
+      "Introspecção",
+      "Sabedoria"
+    ],
+    "8": [
+      "Poder",
+      "Ambição",
+      "Sucesso material"
+    ],
+    "9": [
+      "Compaixão",
+      "Visão universal",
+      "Humanitarismo"
+    ],
+    "11": [
+      "Intuição",
+      "Iluminação",
+      "Mensageiro espiritual"
+    ],
+    "22": [
+      "Visão",
+      "Mestre construtor",
+      "Manifestação"
+    ],
+    "33": [
+      "Amor incondicional",
+      "Mestre professor",
+      "Serviço de cura"
+    ],
+    "44": [
+      "Domínio material",
+      "Liderança estratégica",
+      "Construção de legado"
+    ]
+  },
+  "DAY_OF_BIRTH_MEANING": {
+    "1": {
+      "description": "Independência, criatividade e iniciativa. Propensão a encarregar outras pessoas de terminar o que começa. Obstinação e inventividade. Liderança. Capacidade para fazer as coisas por si próprio. Uma vez decidido, é capaz de chegar a qualquer extremo para vencer. Gosta de um bom desafio."
+    },
+    "2": {
+      "description": "Sensibilidade, emotividade e adaptabilidade. Não necessita ser agressivo, já que é capaz de conquistar tudo aquilo de que precisa anseia por atenção e afeto, gostando de colecionar amizades e objetos. Deve manter-se em atividade e pensar de forma positiva para evitar a depressão. Prazer através da música."
+    },
+    "3": {
+      "description": "Talento, sociabilidade e imaginação. Dá grande valor as amizades, por isso precisa ser gentil. Sendo inquieto e otimista, faz da vida um jogo no qual é o principal jogador. Possui muita personalidade."
+    },
+    "4": {
+      "description": "Se seguir as regras, sai lucrando. É prático, organizado e leal. Autodisciplinado, se apega teimosamente aos seus hábitos. Não deve exigir tanto de si mesmo. Deve reservar mais tempo para curtir a natureza e a família."
+    },
+    "5": {
+      "description": "Gosta de experiências novas e aprende com elas. Versátil, perspicaz e ousado, detesta momentos de tédio. Para a sua felicidade é essencial que tenha liberdade para viajar, boa companhia e coisas ou acontecimentos fora do comum."
+    },
+    "6": {
+      "description": "Grande idealista, com tendências professorais, inclina-se a impor seus louváveis pontos de vista às outras pessoas. Sendo alvo de críticas fica muito irritado. É afetuoso, adaptável à vida doméstica e responsável, sente necessidade de segurança e de criar raízes. Para sua felicidade necessita de harmonia intelectual."
+    },
+    "7": {
+      "description": "Guie-se por sua intuição. Sendo do tipo intelectual, analítico e sensível, não deve aceitar qualquer conselho que vá contra os seus princípios e julgamento. Deve garantir a si próprio uma boa educação, especializando-se, e aprendendo a usufruir de sua própria companhia. As coisas irão ao seu encontro se conseguir ser paciente e não se arriscar."
+    },
+    "8": {
+      "description": "Interesses em administrar finanças, em progredir e acumular bens materiais. É um organizador que põe as coisas em movimento. Visão e imaginação para negócios. Deve ser tolerante e justo com os menos eficientes e determinados. Vocação para cargos executivos."
+    },
+    "9": {
+      "description": "Tolerante, apto para as artes e resoluto, gosta de coisas gerais. Não se interessa por detalhes, mas sim pelos problemas mundiais. Se bem educado, poderá vir a ser uma figura pública. É capaz de dar a camisa para alguém em dificuldades, mas aparenta não ter consciência das necessidades daqueles que estão ao seu redor."
+    },
+    "10": {
+      "description": "Sendo capaz de administrar diversas coisas ao mesmo tempo, gosta da diversidade. Seu tipo é intelectual, possessivo e não muito caseiro. Possui aptidão para a arte e vocação para negócios. Entusiasmo e criatividade ao desenvolver projetos."
+    },
+    "11": {
+      "description": "Apesar de inseguro e um tanto inibido, é brilhante e inspirado para o pensamento e para a ação. Quem possui este número Mestre, tem o dom da intuição visionária. Só terá prazer através dos ganhos financeiros se estiver atendendo as necessidades dos outros."
+    },
+    "12": {
+      "description": "Capacidade para conseguir promoções e tanto pode liderar como trabalhar em equipe. Pendor para as artes, diplomacia e boa habilidade verbal. Necessita se manter em atividade além de terminar tudo aquilo que começa."
+    },
+    "13": {
+      "description": "Certo sentimento de que sua criatividade seja limitada pelo apego à ordem. Isso tende a trazer um certo conflito emocional. Tido como temperamental, tende a ser mal interpretado com muita frequência. Sente-se feliz construindo, comprando e vendendo coisas."
+    },
+    "14": {
+      "description": "Necessita de variedade nas atividades físicas e intelectuais. Ativo, perspicaz, emotivo e gosta de correr riscos. A perseverança é tão importante quanto a variedade de experiências de vida pelas quais anseia. Precisa não exagerar."
+    },
+    "15": {
+      "description": "Generoso, expansivo, caseiro e protetor. Gosta de música e sente que necessita ajudar os outros. Apesar de sua teimosia, consegue atrair pessoas e oportunidades."
+    },
+    "16": {
+      "description": "Tendência a ficar desapontado constantemente por ansiar por afeição e não fazer nada para obtê-la. Arredio, introspectivo, inventivo e analítico. Seu nervosismo faz com que sua vida se torne mais difícil do que realmente é. Você é uma pessoa complicada e os laços familiares são muito importantes."
+    },
+    "17": {
+      "description": "Hesitação entre o desejo de organizar e de analisar. Pode fazer as duas coisas. Deve ser seu próprio patrão e escolher cuidadosamente seus sócios (se necessitar tê-los). Busca o conhecimento, tem jeito para os negócios e talento para qualquer atividade técnica ou cientifica."
+    },
+    "18": {
+      "description": "Vive pelo amor, não tendo sido feito para ficar com uma so pessoa. Fortes vibrações para escrever, falar em público e para as artes teatrais. Pode ser organizado e eficiente, se quiser. Sentir-se-ia feliz se suas atitudes fossem aceitas sem restrições."
+    },
+    "19": {
+      "description": "Pode ter um excesso de responsabilidade, já que se compõe de todos números, de 1 a 9. Avesso as convenções, preocupa-se com sua imagem pública. Deve ser líder, preparando-se para se adaptar as necessidades dos outros e voar alto."
+    },
+    "20": {
+      "description": "Num grupo dá estabilidade ao esforço conjunto. Amigável, cooperativo e simpático, é um diplomata nato. Necessita de proteção, assim, precisa de um parceiro ou parceira forte. Alguém com quem possa contar em todas as horas."
+    },
+    "21": {
+      "description": "Talentoso, sociável e dono de uma personalidade singular, dá muita importância ao seu amor. Imaginação fértil. Deve usá-la de forma positiva, evitando o sentimento de ciúmes e controlando sua tendência para desconfiar dos outros."
+    },
+    "22": {
+      "description": "Suas primeiras impressões são altamente confiáveis, confie nelas. Sua ambição pessoal deve basear-se numa motivação em favor do bem comum. Usando sua integridade, deve organizar suas atividades. Tem criatividade e capacidade de iniciativa. Este é um número Mestre de potencial ilimitado. É a vibração do visionário com senso prático."
+    },
+    "23": {
+      "description": "Autossuficiência, gosto pelos contatos sociais e adaptabilidade. Sensibilidade e capacidade de compreensão que fazem com que ajude os outros. Disposição para assumir muitos encargos devido a suas faculdades superiores e de seu caráter prático mental."
+    },
+    "24": {
+      "description": "Sem atividade, desperdiça suas energias fazendo tempestade em copo d'água. Apesar de bastante individualista, gosta da vida caseira. Capacidade de aprender através da observação. Mesmo aposentado, necessita continuar em atividade."
+    },
+    "25": {
+      "description": "Aparência de um eterno sonhador, com a cabeça nas nuvens. Tendência a ser incompreendido. Talento artístico, naturalmente intuitivo e idealista. Empecilhos em sua vida: a preguiça, a melancolia e a dispersão de suas energias. Necessita dar atenção aos assuntos do dia a dia, evitando ser criticado por ser tão intelectual."
+    },
+    "26": {
+      "description": "Gosta do conforto físico e doméstico. Generosidade com terceiros. Sabe conciliar carreira profissional, casamento, e habilidades artísticas com facilidade. Introspectivo, tem tendência a viver no passado, deixando de gozar o presente."
+    },
+    "27": {
+      "description": "Líder nato, apesar de um tanto errático, é sutilmente convincente. Seu forte são o pensamento abstrato e a filosofia. Fica ressentido se se sentir vigiado, ou com necessidade de prestar contas a respeito de cada movimento. Bastante cauteloso com suas relações familiares."
+    },
+    "28": {
+      "description": "Anti convencional, ama a liberdade e gosta de fazer as coisas à sua maneira. Não deve dobrar-se para se acomodar ao sistema. Tendência a criar novas tendências. Cuidado para não ser excessivamente sensível. Deve combater a preguiça que se encontra por trás do hábito de sonhar acordado. Se não fizer isso, suas ambições serão muito prejudicadas."
+    },
+    "29": {
+      "description": "Intelectual, sempre disposto à ação, capaz de grandes realizações. Tem capacidade de identificar e de equacionar os problemas das massas. Deve ter como vibração guia o número Mestre 11 já que 2 + 9 = 11. Radical em tudo que faz, experimenta emoções intensas."
+    },
+    "30": {
+      "description": "Dotado de um encanto hipnótico, gosta de usufruir o lado alegre da vida, é um grande otimista. Cheio de imaginação, detesta a rotina e tem um jeito para moda e decoração. Tem muita sorte! Sabendo usar bem sua aptidão em oratória e com um pouco de experiência, vai longe."
+    },
+    "31": {
+      "description": "Se conseguir se organizar e definir um rumo para sua vida, será bem-sucedido em seus altos sonhos. Talentoso para os negócios, se sentirá bem à vontade nos campos artístico e literário. A rotina da vida doméstica não é muito suportável mas necessita de responsabilidade e companheirismo."
+    }
+  },
+  "LIFEPATH_MEANING": {
+    "1": {
+      "description": "Deve aprender a ser original, ter mais força de vontade, ser mais criativo e inovador. Precisa ter coragem e usar o impulso a fim de penetrar novos campos de expressão sendo pioneiro. Trabalha melhor quando sozinho apesar de ser bom executivo. Não gosta de limitações e pode ser obstinado e dominante. Organizado e eficiente, por natureza não é caseiro. Em geral gosta de esportes e de atletismo. Prazer nas vitórias. Sofisticado, não emocionalmente romântico, sempre aparece com destaque em grupos sociais ou comerciais. Se aprender as lições, irá se familiarizar intimamente com a Energia Divina, a fagulha independente que sonda, procura e move toda a criação. É criativo no plano físico porque o seu espirito pioneiro precede o de todos, expressando a sua individualidade única.",
+      "goal": "Sua missão no caminho 1 é empreender. Com espírito visionário e à frente de seu tempo, você pode realizar grandes revoluções e construir grandes feitos, mesmo sozinho.",
+      "positiveTraits": [
+        "independência",
+        "liderança",
+        "facilidade para abrir seu próprio caminho"
+      ],
+      "negativeTraits": [
+        "arrogância",
+        "pretensão",
+        "imposição",
+        "autoritarismo"
+      ]
+    },
+    "2": {
+      "description": "Se apoiar os que ocupam a liderança, ajudando-os a encontrarem suas metas da vida, ficando nos bastidores, isso irá ajudá-lo nos negócios. Os que se beneficiarão com os seus talentos irão ajudá-lo a fazer uso de suas habilidades. Deve ter consideração pelos outros, reunindo as pessoas em torno de uma causa em comum. Encontrará as lições a serem aprendidas nesta vida em parcerias e em grupos. Persuasivo. Várias opções na carreira, estando praticamente assegurado o sucesso.",
+      "goal": "Sua missão no caminho 2 é a intuição. Cultive sua criatividade e sua capacidade de refletir e perceber o mundo material e espiritual. Desenvolva seu interior e seu senso crítico. Receba as informações do universo espiritual para antecipar situações e tomar decisões melhores.",
+      "positiveTraits": [
+        "compreensão",
+        "colaboração",
+        "sensibilidade",
+        "flexibilidade"
+      ],
+      "negativeTraits": [
+        "inação",
+        "preguiça",
+        "covardia",
+        "dependência excessiva"
+      ]
+    },
+    "3": {
+      "description": "Superioridade em ocupações intelectuais, artísticas ou criativas. Necessidade de expressão, manifestação e de ver o resultado do seu trabalho. Precisa ter ambição e orgulho, alcançando posição de autoridade. Precisa ter cuidado para não ser dispersivo, devendo se especializar. Avesso à restrição, não consegue se limitar a rotina. Para alcançar bons resultados precisa trabalhar sozinho. Sociedades não são recomendadas. Deve sempre seguir sua inspiração e intuição usando seus talentos criativos",
+      "goal": "Sua grande missão no caminho 3 é a comunicação. Use sua comunicação e extroversão para liderar, ensinar e compartilhar informações e conhecimento. Você pode atuar no ensino, no pensamento, na liderança religiosa, na escrita ou em outra profissão ligada à comunicação.",
+      "positiveTraits": [
+        "comunicabilidade",
+        "criatividade",
+        "facilidade para fazer amizades"
+      ],
+      "negativeTraits": [
+        "uso descontrolado e frívolo da comunicação",
+        "infantilidade",
+        "falta de compromisso"
+      ]
+    },
+    "4": {
+      "description": "Precisa de uma base sólida para fundamentar sua vida, baseando-se num sistema bem organizado de conduta e moral, devendo tornar-se um trabalhador diligente e conseguir o sucesso com honestidade. Não deve arriscar nas áreas financeiras. Querendo sempre as coisas para ontem, precisará se empenhar com paciência e perseverança. Deve aprender a ver a realidade esforçando-se por raciocinar de modo sadio e prático.",
+      "goal": "Sua missão no caminho 4 é a liderança. Você tende a liderar no trabalho, na família e nas relações sociais. Cuide para não assumir cuidado excessivo com os outros e sofrer com os aspectos negativos da liderança.",
+      "positiveTraits": [
+        "força de vontade",
+        "disciplina",
+        "disposição para o trabalho",
+        "organização"
+      ],
+      "negativeTraits": [
+        "bloqueio",
+        "repressão",
+        "preconceito",
+        "limitação"
+      ]
+    },
+    "5": {
+      "description": "Precisa de liberdade para produzir. Facilidade para aprender com viagens e com experiências. Precisa evitar a monotonia em sua vida. Está nesta vida para aprender e experimentar o valor da liberdade, mas não deve se prender em demasia. Talentos inatos para a oratória e no trato com o público.",
+      "goal": "Sua missão no caminho 5 é a religião. Você não precisa necessariamente ter uma religião, mas precisa de uma construção espiritual para encontrar conforto e sentido para sua existência.",
+      "positiveTraits": [
+        "liberdade",
+        "adaptabilidade",
+        "jovialidade",
+        "bom humor"
+      ],
+      "negativeTraits": [
+        "inconsequência",
+        "irresponsabilidade",
+        "frivolidade",
+        "hedonismo"
+      ]
+    },
+    "6": {
+      "description": "Aprendizado sobre o senso de responsabilidade para com a família e a comunidade. Tem pela frente amplo leque de opções profissionais. Precisa adquirir um refinado sentido de equilíbrio para poder igualar injustiças. Habilidades artísticas e talentos judiciais. A fim de aliviar a carga dos que naturalmente são atraídos por você, deve desenvolver a compaixão e a compreensão.",
+      "goal": "Sua principal missão no caminho 6 é a família. Crie e cultive vínculos amorosos fortes. Formar uma família e construir um lar harmonioso traz grande retorno espiritual. O amor familiar incondicional pode neutralizar problemas externos. Você tende a encontrar sentido no casamento, na paternidade ou na maternidade.",
+      "positiveTraits": [
+        "vínculos familiares",
+        "equilíbrio comunitário",
+        "compaixão",
+        "solicitude"
+      ],
+      "negativeTraits": [
+        "invasão de privacidade",
+        "hipocrisia",
+        "ciúme",
+        "indecisão"
+      ]
+    },
+    "7": {
+      "description": "Precisa usar e desenvolver sua mente. Quando falar, suas palavras deverão ser sábias. Precisará muitas vezes confiar na força de seu espírito a fim de resolver problemas difíceis. Tendência a pesquisas misteriosas e do oculto. Deve aprender o valor da solidão a fim de entrar em contato com seu EU SUPERIOR e seus pensamentos mais profundos, já que o seu destino é usar a mente. ",
+      "goal": "Sua missão no caminho 7 é a conquista. Segure as rédeas do destino. Trabalhe sua capacidade de conquistar e construir, pois nada vem facilmente. Com esforço, dedicação e paciência, você pode mover montanhas e materializar milagres.",
+      "positiveTraits": [
+        "inteligência",
+        "introspecção",
+        "estudo",
+        "bom senso",
+        "profundidade"
+      ],
+      "negativeTraits": [
+        "isolamento",
+        "frieza",
+        "mordacidade",
+        "melancolia"
+      ]
+    },
+    "8": {
+      "description": "Número do poder e da ambição, do executivo, do chefe, que vive do cérebro e da força física. Motiva as pessoas a serem bem-sucedidas. Precisa liderar mostrando através de exemplos como lucrar nos negócios. Precisa aprender a lidar com o poder, a autoridade e o dinheiro. Para construir um império comercial (o que é bastante provável), precisa trabalhar nesse sentido. Oportunidades no campo do atletismo e artístico.",
+      "goal": "Sua missão no caminho 8 é a justiça, um valor permanente. Situações de justiça ou injustiça pedem sua experiência de vida. Busque o equilíbrio. Você pode se destacar na advocacia ou na magistratura.",
+      "positiveTraits": [
+        "senso de justiça",
+        "habilidade material",
+        "altivez",
+        "ambição"
+      ],
+      "negativeTraits": [
+        "ganância",
+        "cobiça",
+        "tendência a se achar dono da verdade",
+        "materialismo"
+      ]
+    },
+    "9": {
+      "description": "Paciência, gentileza e compreensão são atributos que precisa cultivar. Você sabe que a felicidade pessoal está intimamente ligada com a capacidade de dar felicidade aos outros. Bens materiais advirão com certa facilidade e apesar de adversidades, a tendência é que seja bem-sucedido sempre. As áreas ligadas a diplomacia lhe serão favoráveis.",
+      "goal": "Sua missão no caminho 9 é a paciência. Busque melhorar o mundo, exercendo fé e paciência diante das situações mais difíceis. Cultive seu equilíbrio e sua resiliência. Quando a inquietação e as experiências afetarem sua serenidade, use a paciência para evoluir espiritualmente e resolver conflitos.",
+      "positiveTraits": [
+        "senso democrático",
+        "rapidez de pensamento",
+        "abertura à evolução"
+      ],
+      "negativeTraits": [
+        "ansiedade",
+        "descontrole",
+        "pressa",
+        "impulsividade"
+      ]
+    },
+    "11": {
+      "description": "A chave aqui é altruísmo e comunidade. Deve praticar o amar ao próximo como a si mesmo. Deve usar suas fortes intuições para conseguir sabedoria e inspiração. Os padrões do 11 são muito elevados e constantes, por isso, é uma das vibrações mais difíceis. Deve aprender a ter paciência e também a tomar decisões rápidas. Deve procurar o equilíbrio entre vida material e física, entre a vida da inspiração e a espiritual. Poderá ser bem-sucedido no campo das ciências, das novas invenções, da eletrônica. Possui originalidade e criatividade podendo muito bem fazer uso de oratória inspirada. O número 11 é um número mestre esotérico, de importância espiritual. Dá coragem, poder e talento, com fortes sentimentos para a liderança. Precisará tomar cuidado para que o poder não lhe suba à cabeça. Fama e reconhecimento são prováveis em sua vida, mas deverá reconhecer que a verdadeira mestria é o serviço.",
+      "goal": "Sua missão no caminho 11 é a inteligência. Desenvolva seu lado intelectual para resolver situações que exigem clareza. Questione a vida e os caminhos que deseja seguir. Você se convence quando consegue compreender o assunto por seu próprio raciocínio.",
+      "positiveTraits": [
+        "visão de longo alcance",
+        "espiritualidade inata",
+        "ausência de preconceito",
+        "pioneirismo"
+      ],
+      "negativeTraits": [
+        "obsessão",
+        "sensação de deslocamento, de não se encaixar em nenhum grupo"
+      ]
+    },
+    "22": {
+      "description": "Necessidade de expressar um anseio básico de desenvolvimento, completar as coisas de um modo pleno e trabalhar com grandes grupos ou organizações comerciais. Gostando das viagens longas, poderá se dar muito bem no comércio de importação e exportação. Este número promete sucesso. Precisa ser desafiado em seu poder de realização. Precisa aprender a cuidar de grandes empresas e corporações além de lidar eficientemente e de modo útil com o dinheiro, para o benefício de grandes grupos de pessoas.",
+      "goal": "O caminho 21 traz a realização como missão. Sob essa influência, você pode obter bons resultados, construir, criar e materializar coisas e situações com facilidade. Use sua energia interior para alcançar seus objetivos, com valorização e determinação.",
+      "positiveTraits": [
+        "criatividade",
+        "desenvolvimento de ideias",
+        "aproveitamento de experiências"
+      ],
+      "negativeTraits": [
+        "ansiedade",
+        "pressa",
+        "agilidade excessiva"
+      ]
+    },
+    "33": {
+      "description": "Precisa ser firme e confiável, desenvolvendo um forte desejo de proteger os outros. Gosto pela vida natural, o que o leva a não trabalhar em áreas que sejam prejudiciais a humanidade. Tendência a necessidade de sacrificar seus próprios desejos em benefício das necessidades dos outros, a fim de cumprir a vibração da sua Lição de Vida. A consciência deste número quase ultrapassa a da humanidade, sendo semelhante à do Cristo em expressão.",
+      "goal": "Sua missão no caminho 33 é viver o amor incondicional e atuar como mestre na cura e no ensino. Eleve a consciência das pessoas pelo exemplo, cuidado, inspiração e ensinamentos práticos. Alivie o sofrimento, acolha, perdoe e organize a vida em torno do serviço coletivo, manifestando compaixão e cura no cotidiano.",
+      "positiveTraits": [
+        "amor incondicional",
+        "cura e acolhimento",
+        "mestre e guia espiritual"
+      ],
+      "negativeTraits": [
+        "autossacrifício",
+        "exaustão emocional",
+        "complexo de salvador"
+      ]
+    },
+    "44": {
+      "description": "Representa a força e o domínio completo da mente sobre a sua vida enquanto estiver na Terra. Pede disciplina em cada setor da vida, de modo a colaborar para a promoção do avanço material do mundo. Precisa treinar sua mente a fim de deixar que forças superiores ajam nela, mantendo o seu corpo e meio ambiente em ordem, para estar pronto para qualquer oportunidade de conseguir os mesmos resultados para outros. Deve usar sua enorme energia evolutiva para auxiliar os outros a colocar suas vidas em ordem. Precisa tentar promover uma ética e uma justiça melhores no mundo dos negócios. Terá de reconhecer a realidade, e em seguida usar o que aprendeu para aliviar os fardos físicos de outras pessoas. Você pode ser o instrumento e canal através do qual essa alteração pode acontecer. Poderá servir de exemplo aos outros, demonstrando bravura, desembaraço, coragem e disciplina. ",
+      "goal": "Sua missão no caminho 44 é ser mestre construtor no plano material. Erga estruturas, empresas, sistemas e projetos sólidos que unam eficiência, prosperidade e serviço coletivo. Combine organização, disciplina e visão de longo prazo para realizar em grande escala, com ética e responsabilidade, integrando sabedoria espiritual e resultados concretos.",
+      "positiveTraits": [
+        "disciplina e foco",
+        "mestre construtor material",
+        "liderança responsável"
+      ],
+      "negativeTraits": [
+        "excesso de trabalho e rigidez",
+        "obsessão por resultados",
+        "frieza e pressão interna"
+      ]
+    }
+  },
+  "CHALLENGE_MEANING": {
+    "1": "Balança entre a máxima independência e a falta de iniciativa. Pode agir tanto com arrogância como com fraqueza. Dificuldade para tomar decisões. Deve aprender a não vacilar. Pode haver uma ligação muito forte com o pai. Reações exageradas.",
+    "2": "Tendência a se perder em minúcias ou então ignorar os detalhes. Deve lutar contra a tendência à submissão excessiva e a ser rabugento, reclamando de tudo e de todos, sem justificativa. Oscilação entre a extrema sensibilidade e uma total recusa em se deixar influenciar pelas emoções. Pode não ter recebido amor suficiente por parte da mãe ou ainda ter uma ligação excessivamente forte com ela. Tendência a ter problemas com mulheres. Não deve encarar as coisas sempre de forma pessoal.",
+    "3": "Atenção desmedida ao aspecto exterior e a indiferença em relação às regras de convívio social. Capacidade para falar na hora errada. Desperdício de energia. Deve desenvolver a capacidade de percepção. Evite falar demais ou se calar na hora de falar. Deve medir mais suas palavras.",
+    "4": "Tanto pode apresentar-se como um severo auto disciplinador como com uma falta de organização extrema. Ou faz tudo ou então não faz nada. Oscila sempre entre os extremos. Deve desenvolver sua capacidade perceptiva.",
+    "5": "Períodos de exaustão e de tédio. Tanto pode pular de experiência em experiência como apegar-se à segurança de uma rotina pré-estabelecida. Sexo e prazeres materiais não deveriam ser tão importantes em sua vida. Precisa ser mais responsável, deixando a impulsividade de lado pois a mesma só lhe trará sofrimento. Deve aprender a conter-se.",
+    "6": "Desejo de impor suas opiniões aos outros e ser escravo das pessoas que ama. Tanto pode assumir responsabilidades que não lhe dizem respeito como não ter responsabilidade nenhuma. Precisa aprender a não se meter no que não é de sua conta, além de saber se adaptar a novas situações. Deve aprender a aceitar e ouvir a opinião dos outros. Idealismo que pode transformar-se em hipocrisia.",
+    "7": "Oscilação entre um comportamento ingénuo e a total falta de confiança nos outros. Arrogância ou falta de amor próprio. Faltando-lhe a fé, tem medo de ser rejeitado, da solidão, da pobreza e das realidades da vida. Não deve ter receio de dividir seus pensamentos e emoções.",
+    "8": "Sovinice ou dissipação. Pode preocupar-se em demasia com a vida material ou total displicência. Tem sede de poder, mas carência de ambição. Precisa usar o bom senso e jogar limpo. Não deve avaliar tudo em termos de valor material.",
+    "0": "Pode-se dizer que funciona como nenhum desafio e todos os demais desafios juntos. É um desafio difícil, pois sofre as reações emocionais de todos os números, mas a pessoa sabe quais são os seus problemas e deve aprender a enfrentá-los, um de cada vez."
+  },
+  "CHALLENGE_HEALTH_MEANING": {
+    "0": "não existe nenhuma enfermidade associada ao número zero.",
+    "1": "propenso a doenças na cabeça, dores, sinusite, alergias, ferimentos nos olhos, nas orelhas e na cabeça.",
+    "2": "tendência para reter líquidos no organismo. Sistema nervoso e rins delicados",
+    "3": "pode vir a sofrer doenças que afetam a garganta, o fígado e as glândulas",
+    "4": "propenso a sofrer de doenças crônicas e a ter problemas com os dentes, os ossos, os intestinos, a digestão e a circulação",
+    "5": "nervoso ou propenso a acidentes. Pode ter problemas com os órgãos reprodutores",
+    "6": "pode vir a sofrer de doenças crônicas ou ter problemas circulatórios e da coluna",
+    "7": "propensão à congestão, às infecções e a problemas nervosos",
+    "8": "pode ter excesso de peso, pressão alta, sofrer intervenções cirúrgicas. Propensão a problemas com a digestão, o pâncreas, o estômago e os nervos.",
+    "9": "energia do apego muito enraizado principalmente com doenças, pode gerar hipocondria",
+    "11": "pode trazer muita dispersão ou falta de cuidado com a saúde, tem dificuldades de fazer exames preventivos",
+    "22": "tem tendências de aumentar as doenças e seus impactos",
+    "33": "encontra dificuldades de buscar ajuda quando necessário devido a energia do mestre",
+    "44": "tem uma tendência para ser bem eficiente inclusive em tratamentos de saúde"
+  },
+  "PERSONAL_CYCLE_KEYWORDS": {
+    "1": [
+      "novos inicios",
+      "ação",
+      "originalidade",
+      "tomada de decisão"
+    ],
+    "2": [
+      "harmonia",
+      "cooperação",
+      "mediação",
+      "passividade"
+    ],
+    "3": [
+      "dispersão",
+      "liberdade",
+      "entretenimento",
+      "autoexpressão"
+    ],
+    "4": [
+      "natureza prática",
+      "trabalho",
+      "ordem",
+      "estabelecimento de alicerces"
+    ],
+    "5": [
+      "mudança",
+      "liberdade",
+      "novos interesses intelectuais",
+      "viagens"
+    ],
+    "6": [
+      "família",
+      "saúde",
+      "assistência",
+      "atenção a problemas dos outros"
+    ],
+    "7": [
+      "autoanálise",
+      "realização",
+      "problemas de saúde"
+    ],
+    "8": [
+      "negócios",
+      "poder",
+      "responsabilidade",
+      "dinheiro"
+    ],
+    "9": [
+      "abnegação",
+      "términos",
+      "préstimos"
+    ],
+    "11": [
+      "notoriedade",
+      "inspiração",
+      "religião"
+    ],
+    "22": [
+      "materialismo",
+      "grandes empenhos"
+    ],
+    "33": [
+      "sacrifício",
+      "compaixão pelos outros"
+    ],
+    "44": [
+      "auxílio na solução dos problemas cotidianos dos outros",
+      "aconselhamento"
+    ]
+  },
+  "PERSONAL_YEAR_DESCRIPTIONS": {
+    "1": "Ponha-se em ação. Use a sua iniciativa e ponha as coisas em andamento. As sementes plantadas agora terão maior probabilidade de resistir durante todo o ciclo. Boa ocasião para começar um novo relacionamento, mudar-se para um novo endereço, fazer uma mudança de curso em sua carreira e dedicar-se a um novo hobby. Desenvolva suas ideias, seja positivo e não hesite em permanecer fiel às suas decisões. O uso da sua energia criativa lhe permitirá conseguir tudo o que você deseja.",
+    "2": "Este e um ano de muitas emoções. Você poderá apaixonar-se e desapaixonar-se. As sementes que você plantar agora germinarão ainda este ano. Regue-as bem. Preste atenção aos detalhes, mas tome cuidado para não exagerar. Acumule conhecimentos, conheça novas pessoas e compre coisas. Assimile, seja receptivo. Coopere, seja gentil mesmo quando sentir vontade de dar uma resposta atravessada. Paciência, tato e diplomacia lhe trarão tudo o que desejar.",
+    "3": "Este é um ano para você se divertir. Aproveite-o! As sementes que você plantou no ano 1 irão frutificar agora. Amplie o seu círculo de amizades, cuide-se bem e faça-se notar. Não se envolva em nada que poderá tolher a sua liberdade. Desenvolva as habilidades necessárias para a expressão de suas ideias e sentimentos. Valerá a pena falar em público ou escrever. Os contatos sociais o ajudarão a conseguir tudo o que você deseja.",
+    "4": "Este e o ano para construir os alicerces do seu futuro, e trabalhe com afinco. A vibração do 4 e da rotina, da organização. Sistematize, seja prático e mantenha os pés no chão. Cultive relacionamentos sólidos. É uma boa ocasião para arrumar a casa. E, como o corpo é o abrigo da alma, exercícios e dieta também são importantes. Concentrando-se na organização, você obterá tudo o que quiser, neste ano e no que vem.",
+    "5": "Este é o seu ano para renovar-se, viajar, ter menos responsabilidades e conhecer pessoas. Você amadurecerá de um novo modo. Conte com o inesperado. Deixe-se levar pela sua força interior e pela vibração de liberdade. Seja receptivo ao novo. Livre-se do que for enfadonho ou limitante. Desfrute dos prazeres da comida, da bebida e do sexo, sem excessos. Colha as recompensas por tudo o que realizou no ano anterior. A vibração de liberdade lhe dará tudo o que deseja.",
+    "6": "Neste ano você estará mais assentado do que no ano anterior, e suas responsabilidades também serão maiores. Seus compromissos serão mais firmes; boa hora para pensar em casamento pois a vibração do 6 favorece relacionamentos duradouros. Ame e será amado, proteja e será protegido. Você terá de se adaptar aos outros, terá de agir com mais consciência em relação a qualquer coisa ou pessoa que seja importante sua vida. A conciliação o ajudará a conseguir o que quer.",
+    "7": "Não force decisões. Faça apenas as modificações inadiáveis. Se começar um romance agora, poderá ser obrigado a dividir seu novo amor com uma terceira pessoa. Caso o relacionamento não se altere até o fim do ano, o mais provável é que continue estável. É um bom ano para escrever, estudar e se dedicar a algumas reflexões mais profundas. Descanse, fique algumas horas sozinho todos os dias, saia em férias para algum lugar próximo a água e confie na sua intuição. Você poderá conseguir tudo o que quiser deixando que as coisas venham até você: este ano é para o desenvolvimento interior: o ano seguinte para ganhos materiais.",
+    "8": "Este é o melhor ano para melhorar seus negócios e o estado de suas finanças. O dinheiro vem, o dinheiro vai. Concentre sua atenção nas finanças e nos valores materiais. Consiga aquele aumento, aquela promoção e o maior poder que dela decorre. Organize seu tempo. Neste ano você fará furor. O que permaneceu oculto no ano 7 irá se manifestar agora. Cuide da saúde fazendo um check-up anual. Usando o bom senso, tudo se realizará a contento.",
+    "9": "Este é o seu ano para concluir as coisas. Limpe os armários, termine seus projetos. Elimine aquela sua lista negra. Aguas passadas não movem moinhos. Embora mudanças que estão por vir nos próximos anos já estejam no ar. não é provável que qualquer coisa que você comece este ano vá resistir por muito tempo. Das duas uma: ou terminará antes do final do ano, ou voltará a mudar. A vibração do 9 lhe trará nostalgia. Você poderá apresentar uma reação exagerada e se tornar temperamental. Neste ano sua família é o mundo. Conservar a mente aberta e a largueza de vistas o ajudará a conseguir o que quer.",
+    "11": "Os assuntos materiais ocupam uma posição secundária neste ano. Você poderá ser absorvido pelo seu próprio idealismo e acabar descobrindo que nem sempre tem os pés no chão. Aprimore os seus gostos, expanda a sua consciência e compartilhe os seus talentos. Este é um ano especialmente criativo para escritores e artistas. Para pessoas que trabalham em atividades comerciais, este é o ano da diplomacia e dos agradecimentos. Para pessoas voltadas para o espiritual, este é um ano de iluminação. Seguir com esta vibração visionária ajudará você a obter o que anseia.",
+    "22": "Este é o seu ano para ter uma ideia e concretizá-la. Agora você é um visionário que transforma uma ideia em realidade. A vibração mestra mais elevada está em você neste ano. Planeje suas atividades, estruture seus sonhos, preste serviço aos outros e você verá que este vai ser um ano de muito sucesso. Mantenha o equilíbrio e acautele-se contra o radicalismo e a tensão nervosa. Trabalhando com esta poderosa vibração prática, você irá conseguir o que deseja.",
+    "33": "Este ano intensifica o amor, a família e a responsabilidade emocional. Pratique compaixão, cura e serviço. As pessoas podem buscar seu apoio, orientação ou conforto, e sua sensibilidade tende a aumentar. Use seus talentos criativos e espirituais para ajudar e elevar os outros, sem assumir o papel de salvador ou mártir. Cuide de seus limites e de si. Expresse o amor incondicional em gestos concretos. Ao servir com equilíbrio, você pode viver experiências profundas e transformar vínculos importantes.",
+    "44": "Este ano amplia suas realizações materiais e sua capacidade de construir algo grande e duradouro. Aproveite a energia para concretizar projetos, expandir sua atuação profissional e criar estruturas de longo prazo, com liderança e responsabilidade. Use organização, disciplina e visão estratégica. Mantenha os pés no chão, administre bem seu tempo e suas finanças e preserve a saúde e a vida emocional. Com ética e equilíbrio, você pode consolidar bases prósperas e influenciar positivamente seu entorno."
+  }
+}
