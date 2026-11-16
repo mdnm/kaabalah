@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual basic sign profiles with typed lookups
+  and qualified expressions independent of evolutionary-level assignment.
+
 - Add ten source-audited bilingual basic planet profiles with typed getters,
   immutable metadata and separate planetary-symbolism context notes.
 

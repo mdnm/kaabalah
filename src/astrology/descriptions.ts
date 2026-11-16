@@ -27,6 +27,7 @@ export type HouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionAngle = "ascendant" | "mc" | "dc" | "ic";
 export type AngleSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PlanetDescriptionEntry = PlanetSignDescriptionEntry;
+export type SignDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -40,6 +41,7 @@ export interface AstrologyDescriptions {
     Partial<Record<DescriptionAngle, Readonly<Partial<Record<Sign, AngleSignDescriptionEntry>>>>>
   >;
   readonly planets?: Readonly<Partial<Record<DescriptionPlanet, PlanetDescriptionEntry>>>;
+  readonly signs?: Readonly<Partial<Record<Sign, SignDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -145,5 +147,18 @@ export function getPlanetDescriptionEntry(planet: DescriptionPlanet): PlanetDesc
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getPlanetDescription(planet: DescriptionPlanet, language?: string): string | undefined {
   const entry = getPlanetDescriptionEntry(planet);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Zodiacal qualities, independently of a Sun, planet or angle placement. */
+export function getSignDescriptionEntry(sign: Sign): SignDescriptionEntry | undefined {
+  const signs = ASTROLOGY_DESCRIPTIONS.signs;
+  if (!signs || !Object.prototype.hasOwnProperty.call(signs, sign)) return undefined;
+  return signs[sign];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getSignDescription(sign: Sign, language?: string): string | undefined {
+  const entry = getSignDescriptionEntry(sign);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

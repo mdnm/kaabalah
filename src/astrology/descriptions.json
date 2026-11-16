@@ -10325,5 +10325,421 @@
         "Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Pluto/Daat spirit-over-soul/matter at 191-192; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with mysteries at 1575 in the explicit kundalini-reading context. Glyph cosmology is not expanded into personal power or moral permission."
       ]
     }
+  },
+  "signs": {
+    "Aries": {
+      "pt": "no seu mapa, a energia de Áries reúne iniciativa e necessidade de agir, com funções de vigiar, conduzir e proteger. ela também pode aparecer como precipitação, agressividade ou impetuosidade.",
+      "en": "in your chart, Aries energy combines initiative and a need to act, with functions of watching, leading and protecting. it may also appear as haste, aggression or impetuosity.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "ação",
+          "proteção"
+        ],
+        "en": [
+          "initiative",
+          "action",
+          "protection"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 8,
+          "to": 14
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the general initiative, attention, and action qualities and the watch/lead/protect functions before the evolutionary-level block. The vice terms are stated as possible expressions without an added condition or assigned level.",
+        "A5 lines 610-627 inspected as a duplicate, not independent corroboration; A0 lines 8-16 inspected as a mythic parable and not adopted as personal assignment."
+      ]
+    },
+    "Taurus": {
+      "pt": "no seu mapa, a energia de Touro reúne produtividade, paciência e persistência, com funções de trabalhar, adquirir, acumular e conservar de modo duradouro. ela também pode aparecer como obstinação, teimosia ou gula.",
+      "en": "in your chart, Taurus energy combines productivity, patience and persistence, with functions of working, acquiring, accumulating and preserving over time. it may also appear as obstinacy, stubbornness or gluttony.",
+      "keywords": {
+        "pt": [
+          "percepção",
+          "aquisição",
+          "paciência",
+          "persistência"
+        ],
+        "en": [
+          "perception",
+          "acquisition",
+          "patience",
+          "persistence"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 30,
+          "to": 34
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the general qualities and function/vice list before the evolutionary-level block; vice terms are possible expressions, without an added condition or fixed personality assignment.",
+        "A5 lines 637-651 inspected as a duplicate, not independent corroboration; A0 lines 18-23 inspected as a mythic parable and not adopted as personal assignment. No planetary association was imported."
+      ]
+    },
+    "Gemini": {
+      "pt": "no seu mapa, a energia de Gêmeos reúne raciocínio e comunicação, com funções de observar, discernir, compreender e explicar. ela também pode aparecer como indecisão, frivolidade ou duplicidade.",
+      "en": "in your chart, Gemini energy combines reasoning and communication, with functions of observing, discerning, understanding and explaining. it may also appear as indecision, frivolity or duplicity.",
+      "keywords": {
+        "pt": [
+          "raciocínio",
+          "mobilidade",
+          "discernimento",
+          "comunicação"
+        ],
+        "en": [
+          "reasoning",
+          "mobility",
+          "discernment",
+          "communication"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 50,
+          "to": 55
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the general qualities and function/vice list before the evolutionary-level block; vice terms are possible expressions, without an added condition or fixed personality assignment.",
+        "A5 lines 661-678 inspected as a duplicate, not independent corroboration; A0 lines 25-28 inspected as a mythic parable and not adopted as personal assignment. No planetary association was imported."
+      ]
+    },
+    "Cancer": {
+      "pt": "no seu mapa, a energia de Câncer reúne impressionabilidade, família, lar e recordações, com funções de sentir, comover e imaginar. ela também pode aparecer como capricho, afetação, superstição ou apego à rotina.",
+      "en": "in your chart, Cancer energy combines impressionability, family, home and memories, with functions of feeling, moving others and imagining. it may also appear as caprice, affectation, superstition or attachment to routine.",
+      "keywords": {
+        "pt": [
+          "impressionabilidade",
+          "família",
+          "lar",
+          "recordações"
+        ],
+        "en": [
+          "impressionability",
+          "family",
+          "home",
+          "memories"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 72,
+          "to": 76
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the source term impressionabilidade, plus its listed family/home, imagination, memories, fluctuations, and tenacity qualities and function/vice list before the evolutionary-level block. Vice terms remain possible expressions, with no invented cause or fixed assignment.",
+        "A5 lines 692-707 inspected as a duplicate, not independent corroboration; A0 lines 30-33 inspected as a mythic parable and not adopted as personal assignment. No Moon or house meanings were imported.",
+        "A4:76 lunatismo is unadopted; it is not silently retranslated as moodiness or used as a diagnosis. Impressionability, family/home, memory and the selected nonclinical vice expressions have their own direct source support."
+      ]
+    },
+    "Leo": {
+      "pt": "a energia de Leão no seu mapa expressa entusiasmo, vitalidade e generosidade, com impulso para dirigir e aperfeiçoar. ela pode tender ao orgulho, ao despotismo e ao exclusivismo.",
+      "en": "in your chart, Leo energy expresses enthusiasm, vitality, and generosity, with an impulse to direct and perfect. it may tend toward pride, despotism, and exclusiveness.",
+      "keywords": {
+        "pt": [
+          "soberania",
+          "entusiasmo",
+          "franqueza",
+          "generosidade",
+          "vitalidade",
+          "dignidade",
+          "orgulho",
+          "despotismo",
+          "exclusivismo"
+        ],
+        "en": [
+          "sovereignty",
+          "enthusiasm",
+          "frankness",
+          "generosity",
+          "vitality",
+          "dignity",
+          "pride",
+          "despotism",
+          "exclusiveness"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 90,
+          "to": 94
+        }
+      ],
+      "reviewNotes": [
+        "Foram usados o bloco geral de qualidades, funções e vícios; nenhum dos três níveis evolutivos foi atribuído ao leitor.",
+        "A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional."
+      ]
+    },
+    "Virgo": {
+      "pt": "a energia de Virgem no seu mapa organiza a análise crítica por meio de método, ordem e aplicação prática. ela pode tender ao detalhismo, ao pedantismo ou à mesquinhez.",
+      "en": "in your chart, Virgo energy organizes critical analysis through method, order, and practical application. it may tend toward excessive detail, pedantry, or pettiness.",
+      "keywords": {
+        "pt": [
+          "assimilação crítica",
+          "espírito prático",
+          "análise",
+          "método",
+          "ordem",
+          "exigência",
+          "detalhismo",
+          "pedantismo",
+          "mesquinhez"
+        ],
+        "en": [
+          "critical assimilation",
+          "practicality",
+          "analysis",
+          "method",
+          "order",
+          "exacting standards",
+          "excessive detail",
+          "pedantry",
+          "pettiness"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 109,
+          "to": 114
+        }
+      ],
+      "reviewNotes": [
+        "Foram usados o bloco geral de qualidades, funções e vícios; detalhismo, pedantismo e mesquinhez aparecem como tendências possíveis, não como atributos pessoais presumidos.",
+        "O vício racismo consta na lista original, mas não foi selecionado para a descrição curta. Nenhum dos três níveis evolutivos foi atribuído ao leitor.",
+        "A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional."
+      ]
+    },
+    "Libra": {
+      "pt": "a energia de Libra no seu mapa busca cooperação e conciliação, harmonizando e unindo. ela pode tender ao conformismo, à vaidade ou à apatia.",
+      "en": "in your chart, Libra energy seeks cooperation and conciliation, harmonizing and uniting. it may tend toward conformity, vanity, or apathy.",
+      "keywords": {
+        "pt": [
+          "equilíbrio",
+          "sensibilidade",
+          "colaboração",
+          "harmonia",
+          "conciliação",
+          "amabilidade",
+          "diplomacia",
+          "conformismo",
+          "vaidade",
+          "apatia"
+        ],
+        "en": [
+          "balance",
+          "sensitivity",
+          "collaboration",
+          "harmony",
+          "conciliation",
+          "kindness",
+          "diplomacy",
+          "conformity",
+          "vanity",
+          "apathy"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 135,
+          "to": 139
+        }
+      ],
+      "reviewNotes": [
+        "Foram usados o bloco geral de qualidades, funções e vícios; as tendências não são atribuídas automaticamente a uma pessoa.",
+        "Os temas relacionais dos níveis evolutivos não foram importados para o perfil geral. A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional."
+      ]
+    },
+    "Scorpio": {
+      "pt": "a energia de Escorpião no seu mapa expressa reforma, investigação e estratégia, orientando a força destrutiva para um objetivo construtivo. ela pode tender à crueldade, à vingança ou à agressividade.",
+      "en": "in your chart, Scorpio energy expresses reform, investigation, and strategy, directing destructive force toward a constructive aim. it may tend toward cruelty, revenge, or aggression.",
+      "keywords": {
+        "pt": [
+          "reforma",
+          "investigação",
+          "perscrutação",
+          "estratégia",
+          "análise",
+          "regeneração",
+          "degeneração",
+          "crueldade",
+          "vingança",
+          "agressividade"
+        ],
+        "en": [
+          "reform",
+          "investigation",
+          "scrutiny",
+          "strategy",
+          "analysis",
+          "regeneration",
+          "degeneration",
+          "cruelty",
+          "revenge",
+          "aggression"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 161,
+          "to": 165
+        }
+      ],
+      "reviewNotes": [
+        "A descrição mantém a orientação construtiva da força destrutiva explicitada no texto. Crueldade, vingança e agressividade são apresentadas como tendências possíveis, não como diagnóstico ou biografia.",
+        "Os níveis evolutivos e a parábola mitológica de aula 0 não foram convertidos em afirmações pessoais; a repetição em aula 5 não foi usada como evidência adicional."
+      ]
+    },
+    "Sagittarius": {
+      "pt": "no seu mapa, a energia de Sagitário reúne filosofia, cultura, religião, justiça e independência, com funções de compreender, educar e orientar. ela também pode se manifestar como fanfarronice, licenciosidade ou cupidez.",
+      "en": "in your chart, the energy of Sagittarius brings together philosophy, culture, religion, justice and independence, with functions of understanding, educating and guiding. it may also manifest as boastfulness, licentiousness or greed.",
+      "keywords": {
+        "pt": [
+          "filosofia e cultura",
+          "religião",
+          "justiça",
+          "independência",
+          "compreender e orientar",
+          "possível fanfarronice",
+          "possível licenciosidade e cupidez"
+        ],
+        "en": [
+          "philosophy and culture",
+          "religion",
+          "justice",
+          "independence",
+          "understanding and guiding",
+          "possible boastfulness",
+          "possible licentiousness and greed"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 182,
+          "to": 186
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 4 modulo 4/aula-4.md:182-205 inspected in full. Adopted only general qualities/functions/vices at 182-186: philosophy, culture, religion, justice, independence, understanding/education/guidance and possible boastfulness/licentiousness/greed. Vices remain possible expressions of sign energy in the chart, not assigned character or an evolutionary level.",
+        "Evolutionary-level branches at modulo 4/aula 4 modulo 4/aula-4.md:187-204 are inspected but unadopted, including long-distance travel through dissatisfaction, inner teaching/faith and initiatic/master themes. They are not merged into one person. Optional A0 parable, A5 duplicates and book were not inspected or adopted."
+      ]
+    },
+    "Capricorn": {
+      "pt": "no seu mapa, a energia de Capricórnio reúne concentração, paciência e constância, com funções de pensar, deduzir e concretizar. ela também pode se manifestar como avareza, exploração das falhas alheias, ironia ou pessimismo.",
+      "en": "in your chart, the energy of Capricorn brings together concentration, patience and constancy, with functions of thinking, deducing and making things concrete. it may also manifest as avarice, exploitation of others’ failings, irony or pessimism.",
+      "keywords": {
+        "pt": [
+          "concentração",
+          "paciência e constância",
+          "pensamento e dedução",
+          "concretização",
+          "possível avareza",
+          "possível exploração das falhas alheias",
+          "possível ironia e pessimismo"
+        ],
+        "en": [
+          "concentration",
+          "patience and constancy",
+          "thinking and deduction",
+          "making things concrete",
+          "possible avarice",
+          "possible exploitation of others’ failings",
+          "possible irony and pessimism"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 206,
+          "to": 210
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 4 modulo 4/aula-4.md:206-239 inspected in full. Adopted only general qualities/functions/vices at 206-210, preserving concentration/patience/constancy, thinking/deduction/concretization and possible avarice/exploitation/irony/pessimism. The wording concerns chart energy, not an automatic Sun/Ascendant identity or bad-person label.",
+        "Evolutionary levels at modulo 4/aula 4 modulo 4/aula-4.md:211-236 are inspected but unadopted, including status/power compensation, social inhibition, profession and mature responsibility/destiny claims. Stray Uranus label at 238 is not Capricorn evidence. Optional A0 parable, A5 duplicates and book were not inspected or adopted."
+      ]
+    },
+    "Aquarius": {
+      "pt": "no seu mapa, a energia de Aquário reúne intuição, inventividade, originalidade, altruísmo e cooperação, com funções de instruir, inventar e renovar. ela também pode se manifestar como rebelião, anarquia, inadaptação ou extravagância.",
+      "en": "in your chart, the energy of Aquarius brings together intuition, inventiveness, originality, altruism and cooperation, with functions of teaching, inventing and renewing. it may also manifest as rebellion, anarchy, difficulty adapting or extravagance.",
+      "keywords": {
+        "pt": [
+          "intuição",
+          "inventividade e originalidade",
+          "altruísmo e cooperação",
+          "instruir e renovar",
+          "possível rebelião e anarquia",
+          "possível inadaptação e extravagância"
+        ],
+        "en": [
+          "intuition",
+          "inventiveness and originality",
+          "altruism and cooperation",
+          "teaching and renewing",
+          "possible rebellion and anarchy",
+          "possible difficulty adapting and extravagance"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 240,
+          "to": 245
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 4 modulo 4/aula-4.md:240-267 inspected in full. Adopted only general qualities/functions/vices at 240-245. Inadaptação is rendered as difficulty adapting, not a diagnosis. Rebellion/anarchy/extravagance are possible sign-energy expressions, not an assigned level or fixed biography.",
+        "Evolutionary levels at modulo 4/aula 4 modulo 4/aula-4.md:246-265 are inspected but unadopted: friendship, teamwork/social transformation and cosmic-consciousness branches remain separate source stages. Neptune label at 267 supplies no Aquarius trait. Optional A0 parable, A5 duplicates and book were not inspected or adopted."
+      ]
+    },
+    "Pisces": {
+      "pt": "no seu mapa, a energia de Peixes reúne inspiração, caridade e humildade, com funções de confiar e servir com sacrifício e abnegação. ela também pode se manifestar como impressionabilidade, hesitação, fantasia ou intriga.",
+      "en": "in your chart, the energy of Pisces brings together inspiration, charity and humility, with functions of trusting and serving with sacrifice and selflessness. it may also manifest as impressionability, hesitation, fantasy or intrigue.",
+      "keywords": {
+        "pt": [
+          "inspiração",
+          "caridade e humildade",
+          "confiança",
+          "serviço com sacrifício e abnegação",
+          "impressionabilidade e hesitação",
+          "fantasia",
+          "possível intriga"
+        ],
+        "en": [
+          "inspiration",
+          "charity and humility",
+          "trust",
+          "service with sacrifice and selflessness",
+          "impressionability and hesitation",
+          "fantasy",
+          "possible intrigue"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 4 modulo 4/aula-4.md",
+          "from": 268,
+          "to": 272
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 4 modulo 4/aula-4.md:268-286 inspected in full. Adopted only general qualities/functions at 268-271 and intrigue from the vices at 272. Impressionability, hesitation and fantasy come from the general list, not from an invented negative level. Service with sacrifice/selflessness is a descriptive function, not recommended conduct.",
+        "The obsession/hallucination labels at modulo 4/aula 4 modulo 4/aula-4.md:272 are unadopted as reader claims. Evolutionary branches at 273-286, including isolation/escape, emotional projection and liberated higher-self unity, are inspected but unadopted; no personal level or promised peace is assigned. Optional A0 parable, A5 duplicates and book were not inspected or adopted."
+      ]
+    }
   }
 }

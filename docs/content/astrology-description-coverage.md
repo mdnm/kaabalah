@@ -194,7 +194,7 @@ Counts overlap across aliases and contextual variants. They are a workload guide
 
 Format selected by Mat: paragraphs, with maximum fidelity to the teaching. Portuguese original, direct `você`, lowercase sentence starts with proper names preserved, short Brazilian phrasing, followed by equivalent English. Length follows the supported material; never add filler or remove a qualification to satisfy a word target. Keywords remain optional and must be source-supported. No practices, invented outcomes, automatic evolutionary-level assignment, profanity or emojis in reusable factor text. No descriptions have been drafted.
 
-Pending decisions: approve/reorder the batches; decide whether supplemental keyword-only cusp/Descendant coverage is enough; settle node hemisphere/class conflicts for any approved node batch; choose whether medical symbolism and larger optional corpora enter at all. These are the phase1 user-requested decisions, not tool permission requirements. Phase2 remains stopped until Mat answers.
+Pending decisions: approve/reorder the batches; decide whether supplemental keyword-only cusp/Descendant coverage is enough; settle node hemisphere/class conflicts for any approved node batch; choose whether medical symbolism and larger optional corpora enter at all. These are the phase1 user-requested decisions, not tool permission requirements. This was the phase1 hold. Mat subsequently approved batches1-3; current implementation progress in astrology-descriptions-progress.md governs continuation. Opposition and node dignity/hemisphere choices are resolved as recorded below. Supplemental cusp/Descendant and larger specialist scopes remain unapproved.
 
 ## Audit artifacts and validation
 
