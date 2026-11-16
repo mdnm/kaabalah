@@ -11230,5 +11230,311 @@
         "Adopted origins, family roots, home, childhood, and inner self from lines 134-137. Omitted the source's claim about a final resting place and its good/bad character framing; no house-cusp association is treated as universal."
       ]
     }
+  },
+  "aspects": {
+    "conjunction": {
+      "pt": "no seu mapa, a conjunção reúne energias quando os planetas ocupam o mesmo ou quase o mesmo grau. a forma como elas atuam juntas depende da compatibilidade entre essas energias, e numa aproximação estreita uma pode se sobrepor à outra.",
+      "en": "in your chart, the conjunction brings energies together when planets occupy the same or nearly the same degree. how they work together depends on their compatibility, and at a close orb one may overshadow the other.",
+      "keywords": {
+        "pt": [
+          "união",
+          "compatibilidade",
+          "sobreposição"
+        ],
+        "en": [
+          "joining",
+          "compatibility",
+          "overshadowing"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 154,
+          "to": 159
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the shared/nearly shared position, joining of energies, compatibility qualification, and the possibility that one energy may overshadow the other at a narrow orb.",
+        "Class 13 lines 405-429 inspected but its metaphysical and temporal claims were not adopted."
+      ]
+    },
+    "duodecile": {
+      "pt": "no seu mapa, o duodecile se associa a ajustes e harmonização entre as energias envolvidas. ele também envolve o desejo de recomeçar e de concentrar novas possibilidades.",
+      "en": "in your chart, the duodecile is associated with adjustment and harmonization between the energies involved. it also involves the desire to start again and to bring new possibilities together.",
+      "keywords": {
+        "pt": [
+          "ajuste",
+          "harmonização",
+          "recomeço",
+          "novas possibilidades"
+        ],
+        "en": [
+          "adjustment",
+          "harmonization",
+          "fresh start",
+          "new possibilities"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 598,
+          "to": 598
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 625,
+          "to": 631
+        }
+      ],
+      "reviewNotes": [
+        "The API key is duodecile. A13's SEMI-SEXTIL section at 561-563 and body at 598-609 describe adjustment and harmonization at the angle used by this API key; the copy uses the API name and does not introduce a source alias.",
+        "A13's later list conflicts in terminology: 1549 labels the 30-degree entry Decil or semi quintil and 1550 labels Semi sextil at 36 degrees. This naming discrepancy is recorded, not used to rename the API key or change calculations. Rebeginning and growth language is qualified as possibility, not promised outcome.",
+        "Root reread A13:625-631: the desire to restart and convergence of new possibilities are adopted directly; they are not transformed into an external opportunity or guaranteed growth outcome."
+      ]
+    },
+    "octile": {
+      "pt": "no seu mapa, o octile se associa à ação diante de resistência. ele expressa uma dinâmica ativa dentro de limites.",
+      "en": "in your chart, the octile is associated with action in the face of resistance. it expresses active dynamics within limits.",
+      "keywords": {
+        "pt": [
+          "ação",
+          "resistência",
+          "dinâmica",
+          "limites"
+        ],
+        "en": [
+          "action",
+          "resistance",
+          "dynamics",
+          "limits"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 769,
+          "to": 776
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 788,
+          "to": 797
+        }
+      ],
+      "reviewNotes": [
+        "The API key is octile. The SEMIQUADRATURA section describes action and resistance and says its dynamic qualities operate within defined limits; the profile keeps that general theme without the section's planetary examples.",
+        "A13:784-791 discusses a future crisis, its possible avoidance, and favorable results. Those predictions and outcomes are excluded; the profile does not add a stress or aspect-pair condition."
+      ]
+    },
+    "sextile": {
+      "pt": "no seu mapa, o sextil indica facilidade, com potencial benéfico e construtivo. ele também pode trazer tensão se a energia envolvida não for liberada.",
+      "en": "in your chart, the sextile indicates ease, with beneficial and constructive potential. it can also bring tension if the energy involved is not released.",
+      "keywords": {
+        "pt": [
+          "facilitação",
+          "potencial",
+          "construtividade",
+          "tensão"
+        ],
+        "en": [
+          "facilitation",
+          "potential",
+          "constructiveness",
+          "tension"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 161,
+          "to": 164
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 928,
+          "to": 930
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 938,
+          "to": 939
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 942,
+          "to": 943
+        }
+      ],
+      "reviewNotes": [
+        "Adopted Class 11's facilitator/beneficial potential and qualification that tension can arise if energy is not released. Class 13's constructive and facilitating description was used compatibly. At 942-943 only the facilitation clause is adopted; certainty and event/outcome clauses sharing those lines and continuing through 953 are excluded.",
+        "Class 11's sign-pair examples and polarity classification at 165-190 were not adopted."
+      ]
+    },
+    "square": {
+      "pt": "no seu mapa, a quadratura descreve tensão e conflito entre energias, podendo apresentar um desafio ou exigir uma solução. pode ter efeito energizante ou manifestar-se como conflito ou bloqueio, dependendo dos planetas envolvidos, e também motivar a superação de dificuldades.",
+      "en": "in your chart, the square describes tension and conflict between energies, potentially presenting a challenge or requiring a solution. it can have an energizing effect or appear as conflict or blockage, depending on the planets involved, and can also motivate overcoming difficulties.",
+      "keywords": {
+        "pt": [
+          "tensão",
+          "conflito",
+          "desafio",
+          "motivação"
+        ],
+        "en": [
+          "tension",
+          "conflict",
+          "challenge",
+          "motivation"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 200,
+          "to": 206
+        },
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 209,
+          "to": 210
+        }
+      ],
+      "reviewNotes": [
+        "Adopted tension/conflict, challenge or solution, possible energizing/conflict/blockage effects, and motivation to overcome difficulties. Effects are qualified as possibilities.",
+        "Class 11 sign/modality lists at 211-213 and Class 13 lines 1066-1152 were inspected but not used; the latter's fatalistic, health, and relationship claims are excluded."
+      ]
+    },
+    "trine": {
+      "pt": "no seu mapa, o trígono sugere harmonia e facilidade entre as energias envolvidas, com potencial benéfico. como tende a não exigir tanto esforço, pode haver menos empenho e, conforme o tema, menor valorização.",
+      "en": "in your chart, the trine suggests harmony and ease between the energies involved, with beneficial potential. because it may require less effort, there can be less exertion and, depending on the subject, less appreciation.",
+      "keywords": {
+        "pt": [
+          "harmonia",
+          "facilidade",
+          "potencial benéfico",
+          "empenho"
+        ],
+        "en": [
+          "harmony",
+          "ease",
+          "beneficial potential",
+          "effort"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 259,
+          "to": 265
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the harmony/benefit description and preserved the source's qualification that ease may mean less effort and, depending on the theme, less appreciation. No luck, wealth, or guaranteed outcome is claimed.",
+        "Class 11's triplicity relationship is not included. Class 13 lines 1292-1317 were inspected; its advice and fortune example were not adopted."
+      ]
+    },
+    "trioctile": {
+      "pt": "no seu mapa, o trioctile se associa ao esforço de elaborar dificuldades mentalmente. ele também põe em foco a busca de autoconhecimento.",
+      "en": "in your chart, the trioctile is associated with the effort to work through difficulties mentally. it also brings the search for self-knowledge into focus.",
+      "keywords": {
+        "pt": [
+          "elaboração mental",
+          "dificuldades",
+          "autoconhecimento"
+        ],
+        "en": [
+          "mental elaboration",
+          "difficulties",
+          "self-knowledge"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1394,
+          "to": 1396
+        }
+      ],
+      "reviewNotes": [
+        "The API key is trioctile; the source section is titled SESQUIQUADRATURA. A13:1377-1388 contains fractional-arithmetic errors and is not used for numeric prose. A13:1394-1396 gives the qualified natal clause about effort, difficulty, mental elaboration, and self-knowledge.",
+        "A13:1392-1396 says this discussion is more prominent in progressions than natal. Health, disease, pain, therapy, future-event prediction, and specialist progression claims are excluded. The later phrase at 1405-1408 about \"these three angles\" has an ambiguous antecedent and is not adopted."
+      ]
+    },
+    "quincunx": {
+      "pt": "no seu mapa, o quincunx se associa a ajustes. simbolicamente, ele pode representar uma força mediadora entre opostos.",
+      "en": "in your chart, the quincunx is associated with adjustments. symbolically, it may represent a mediating force between opposites.",
+      "keywords": {
+        "pt": [
+          "ajustes",
+          "mediação",
+          "opostos"
+        ],
+        "en": [
+          "adjustments",
+          "mediation",
+          "opposites"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1434,
+          "to": 1435
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1452,
+          "to": 1454
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1563,
+          "to": 1563
+        }
+      ],
+      "reviewNotes": [
+        "The API key is quincunx. A13:1563 gives the short adjustment gloss; A13:1434-1447 presents the mediation-between-opposites idea in a philosophical Jung/Plato discussion, so the copy marks this as symbolic rather than a guaranteed personal result.",
+        "A13:1410-1414 and 1455-1466 attach health, disease, cure, therapy and illness outcomes to this aspect. All such claims, neighboring aspect types and any guaranteed result are excluded.",
+        "A13:1452-1454 explicitly bridges the preceding philosophical image of opposites to the 150-degree aspect, tentatively. Its conditional symbolic status is preserved; the health clause beginning at1455 is excluded."
+      ]
+    },
+    "opposition": {
+      "pt": "no seu mapa, a oposição corresponde a planetas separados por 180 graus e formando uma linha reta. ela marca tensão entre dois polos.",
+      "en": "in your chart, the opposition corresponds to planets separated by 180 degrees and forming a straight line. it marks tension between two poles.",
+      "keywords": {
+        "pt": [
+          "tensão",
+          "polos",
+          "relação"
+        ],
+        "en": [
+          "tension",
+          "poles",
+          "relation"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 405,
+          "to": 406
+        },
+        {
+          "file": "modulo 4/aula 11 modulo 4/aula-11.md",
+          "from": 287,
+          "to": 290
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1566,
+          "to": 1566
+        }
+      ],
+      "reviewNotes": [
+        "Class 13 at 405-406 and 1566 defines opposition through tension between poles. Class 11 at 287-290 instead describes a close relation and energetic harmony; following Mat's clarification, the harmony between positive/negative poles is recorded here in the audit only and is not inserted into the profile copy or used to classify signs."
+      ]
+    }
   }
 }

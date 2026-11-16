@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add nine bilingual aspect-type profiles using existing typed aspect keys,
+  with source qualifications and Mat’s opposition decision.
+
 - Add four bilingual angle concepts with typed chart-angle keys and source audits.
 
 - Add two bilingual polarity profiles with typed getters, precise source ranges and explicit classification gaps.

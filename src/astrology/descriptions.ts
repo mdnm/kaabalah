@@ -1,4 +1,5 @@
 import raw from "./descriptions.json";
+import type { AspectName } from "./aspects";
 import type { Sign, TriplicityElement } from "./dignity";
 import type { MODALITIES } from "../core/constants";
 
@@ -28,6 +29,8 @@ export type HouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionAngle = "ascendant" | "mc" | "dc" | "ic";
 export type AngleSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type AngleDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionAspect = AspectName;
+export type AspectDescriptionEntry = PlanetSignDescriptionEntry;
 export type PlanetDescriptionEntry = PlanetSignDescriptionEntry;
 export type SignDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionElement = TriplicityElement;
@@ -54,6 +57,7 @@ export interface AstrologyDescriptions {
   readonly modalities?: Readonly<Partial<Record<DescriptionModality, ModalityDescriptionEntry>>>;
   readonly polarities?: Readonly<Partial<Record<DescriptionPolarity, PolarityDescriptionEntry>>>;
   readonly angles?: Readonly<Partial<Record<DescriptionAngle, AngleDescriptionEntry>>>;
+  readonly aspects?: Readonly<Partial<Record<DescriptionAspect, AspectDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -224,5 +228,18 @@ export function getAngleDescriptionEntry(angle: DescriptionAngle): AngleDescript
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getAngleDescription(angle: DescriptionAngle, language?: string): string | undefined {
   const entry = getAngleDescriptionEntry(angle);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** General natal aspect types; no aspect-pair interpretation or inherited-key fallback. */
+export function getAspectDescriptionEntry(aspect: DescriptionAspect): AspectDescriptionEntry | undefined {
+  const aspects = ASTROLOGY_DESCRIPTIONS.aspects;
+  if (!aspects || !Object.prototype.hasOwnProperty.call(aspects, aspect)) return undefined;
+  return aspects[aspect];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getAspectDescription(aspect: DescriptionAspect, language?: string): string | undefined {
+  const entry = getAspectDescriptionEntry(aspect);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
