@@ -8188,5 +8188,480 @@
         ]
       }
     }
+  },
+  "houses": {
+    "1": {
+      "pt": "na casa 1, você encontra os temas da autoimagem e da imagem que os outros têm de você. essa área também abrange identidade, independência, iniciativa e corpo físico.",
+      "en": "in house 1, you find the themes of self-image and the image others have of you. this area also covers identity, independence, initiative and the physical body.",
+      "keywords": {
+        "pt": [
+          "autoimagem",
+          "imagem que os outros têm de você",
+          "identidade",
+          "independência",
+          "iniciativa",
+          "corpo físico"
+        ],
+        "en": [
+          "self-image",
+          "image others have of you",
+          "identity",
+          "independence",
+          "initiative",
+          "physical body"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 6,
+          "to": 8
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 6 modulo 4/aula-6.md:6-8 supports self-image, the image others have of you, identity, independence, initiative and body as domains. The conditional negative self-assertion branch at modulo 4/aula 8 modulo 4/aula-8.md:832-833,837-840 was inspected but is not adopted; no excessive behavior is inferred.",
+        "Livro inspecionado apenas em 21562–21639. O OCR atribui alguns blocos à casa 1 no corpo, mas intercala frases e rótulos, inclusive a associação com Ascendente em 21562–21565. Nenhum detalhe do livro foi adotado nem Ascendente foi tratado como sinônimo automático da casa 1."
+      ]
+    },
+    "2": {
+      "pt": "na casa 2, você encontra temas de segurança financeira, dinheiro, bens pessoais, recompensa pelo esforço, valor pessoal e bens emocionais ou sentimentais. sob aflição e má aspectação dos planetas regentes, essa área pode expressar obstinação e cobiça.",
+      "en": "in the second house, you find themes of financial security, money, personal possessions, reward for effort, personal value, and emotional or sentimental belongings. under affliction and poor aspects to the ruling planets, this area may express stubbornness and greed.",
+      "keywords": {
+        "pt": [
+          "segurança financeira e dinheiro",
+          "bens pessoais",
+          "recompensa pelo esforço",
+          "sentido de valor",
+          "bens emocionais e sentimentais",
+          "obstinação e cobiça sob aflição dos regentes"
+        ],
+        "en": [
+          "financial security and money",
+          "personal possessions",
+          "reward for effort",
+          "sense of value",
+          "emotional and sentimental belongings",
+          "stubbornness and greed under affliction to rulers"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 9,
+          "to": 11
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 832,
+          "to": 833
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 848,
+          "to": 851
+        }
+      ],
+      "reviewNotes": [
+        "A6:9–11 foi lido; adotados segurança financeira, dinheiro, bens pessoais, recompensa pelo esforço, sentido de valor e bens emocionais/sentimentais. A6 chama a palavra-chave de 'Herança Genética e Finanças'; herança genética não foi transformada em alegação causal ou corporal. A8:832–833 qualifica expressões negativas pela aflição e má aspectação dos regentes; A8:848–851 sustenta trabalho/produção, relações materiais/financeiras, bens de sustentação e, sob condição negativa, obstinação/cobiça.",
+        "Livro inspecionado apenas em 21719–21792. Os trechos financeiros e de recursos são amplamente intercalados e corrompidos pelo OCR; nenhum claim foi adotado."
+      ]
+    },
+    "3": {
+      "pt": "na casa 3, você encontra temas de comunicação com o ambiente próximo, interesses mentais, instrução, viagens curtas, irmãos, irmãs e vizinhos. sob aflição e má aspectação dos planetas regentes, essa área pode expressar inconstância e superficialidade.",
+      "en": "in the third house, you find themes of communication with the immediate environment, mental interests, instruction, short journeys, siblings, and neighbors. under affliction and poor aspects to the ruling planets, this area may express inconsistency and superficiality.",
+      "keywords": {
+        "pt": [
+          "comunicação com o ambiente próximo",
+          "interesses mentais e instrução",
+          "viagens curtas",
+          "irmãos, irmãs e vizinhos",
+          "inconstância e superficialidade sob aflição dos regentes"
+        ],
+        "en": [
+          "communication with the immediate environment",
+          "mental interests and instruction",
+          "short journeys",
+          "siblings and neighbors",
+          "inconsistency and superficiality under affliction to rulers"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 12,
+          "to": 15
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 832,
+          "to": 833
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 862,
+          "to": 866
+        }
+      ],
+      "reviewNotes": [
+        "A6:12–15 foi lido; adotados comunicação com o ambiente próximo, interesses mentais, instrução, viagens curtas, irmãos/irmãs e vizinhos. A8:832–833 qualifica expressões negativas pela aflição e má aspectação dos regentes; A8:862–866 sustenta entendimento, interação cotidiana, mente concreta, estudos básicos, comunicação, parentes e viagens curtas, com inconstância/superficialidade condicionais.",
+        "A8 repete o parágrafo da casa 3 em 873–876; foi inspecionado como duplicata, sem ampliar a faixa adotada. Livro inspecionado apenas em 21868–21940; o corpo identifica casa 3, mas as colunas e frases aparecem intercaladas. Nenhum claim suplementar foi adotado."
+      ]
+    },
+    "4": {
+      "pt": "na casa 4, você encontra os temas do lar, da família, dos clãs e da segurança. essa área também abrange raízes ancestrais e raciais e condicionamentos psicológicos.",
+      "en": "in house 4, you find the themes of home, family, clans and security. this area also covers ancestral and racial roots and psychological conditioning.",
+      "keywords": {
+        "pt": [
+          "lar",
+          "família e clãs",
+          "segurança",
+          "raízes ancestrais e raciais",
+          "condicionamentos psicológicos"
+        ],
+        "en": [
+          "home",
+          "family and clans",
+          "security",
+          "ancestral and racial roots",
+          "psychological conditioning"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 17,
+          "to": 19
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 6 modulo 4/aula-6.md:17-19 supports home, family, clans and security, with roots and conditioning as secondary domains. Family is broad and is not restricted to blood relations. The opposite-sex parent at line 18 and mother at modulo 4/aula 8 modulo 4/aula-8.md:882 remain unadopted pending Mat’s parental convention. The conditional negative branch at 832-833,883 is inspected but omitted.",
+        "Livro inspecionado apenas em 22001–22040. Os blocos nomeiam casa 4 no próprio corpo, mas estão intercalados/corrompidos; títulos a associam a IC/Fundo do Céu. Nenhum claim suplementar foi adotado e não se fez alias automático entre casa 4 e IC."
+      ]
+    },
+    "5": {
+      "pt": "no seu mapa, a casa 5 reúne os temas dos hobbies, dos prazeres e do lazer. também abrange autoexpressão criativa, artes, romance, filhos, jogos, riscos e especulações.",
+      "en": "in your chart, house 5 brings together the themes of hobbies, pleasures and leisure. it also covers creative self-expression, arts, romance, children, games, risks and speculation.",
+      "keywords": {
+        "pt": [
+          "lazer e hobbies",
+          "autoexpressão criativa",
+          "artes",
+          "romance",
+          "filhos",
+          "jogos e especulações"
+        ],
+        "en": [
+          "leisure and hobbies",
+          "creative self-expression",
+          "arts",
+          "romance",
+          "children",
+          "games and speculation"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 20,
+          "to": 22
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 841,
+          "to": 842
+        }
+      ],
+      "reviewNotes": [
+        "This is the house's thematic domain, not a claim that a person with planets here necessarily has children, a romance, or a particular creative outcome.",
+        "Inspected supplemental family 22134-22210. OCR fragments under the house 5 body identify creativity, self-expression, romance, children/fertility, hobbies/leisure, and games/speculation. These overlap the primary but add no necessary claims; no supplemental source adopted."
+      ]
+    },
+    "6": {
+      "pt": "no seu mapa, a casa 6 reúne os temas da saúde e da dieta, da rotina e do trabalho. também abrange tarefas, deveres, emprego, serviço, empregados, dependentes e animais de estimação.",
+      "en": "in your chart, house 6 brings together the themes of health and diet, routine and work. it also covers tasks, duties, employment, service, employees, dependents and pets.",
+      "keywords": {
+        "pt": [
+          "saúde e dieta",
+          "trabalho e emprego",
+          "tarefas e deveres",
+          "serviço",
+          "animais de estimação",
+          "empregados e dependentes",
+          "rotina"
+        ],
+        "en": [
+          "health and diet",
+          "work and employment",
+          "tasks and duties",
+          "service",
+          "pets",
+          "employees and dependents",
+          "routine"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 23,
+          "to": 25
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 852,
+          "to": 855
+        }
+      ],
+      "reviewNotes": [
+        "Health and diet are named as house topics, not health predictions, diagnoses, or instructions. The source's negative expression at 854-855 is conditional on negative cases, governed by A8's general qualification at 832-833 (affliction and poor aspect of ruling planets); no negative personal trait was adopted.",
+        "Inspected supplemental family 22356-22425. The visible CASA 06 block/body covers work, health, daily habits, service, routine, pets, adaptation and analysis/criticism; fragments are interrupted and interleaved. No supplemental material is needed or adopted, and its advice about exercise/prevention is not carried over."
+      ]
+    },
+    "7": {
+      "pt": "no seu mapa, a casa 7 reúne seus vínculos íntimos e parcerias, incluindo casamento, cooperação e sociedades comerciais. também abrange conflitos abertos e inimigos declarados, ao lado de harmonias e acordos.",
+      "en": "in your chart, the seventh house brings together your intimate bonds and partnerships, including marriage, cooperation and business partnerships. it also covers open conflicts and declared enemies, alongside harmony and agreements.",
+      "keywords": {
+        "pt": [
+          "relações íntimas",
+          "casamento",
+          "cooperação",
+          "sociedades comerciais",
+          "inimigos declarados",
+          "harmonias e conflitos"
+        ],
+        "en": [
+          "intimate relationships",
+          "marriage",
+          "cooperation",
+          "business partnerships",
+          "declared enemies",
+          "harmony and conflict"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 26,
+          "to": 28
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 867,
+          "to": 869
+        }
+      ],
+      "reviewNotes": [
+        "These are general house topics, not predictions of a marriage, partnership, enemy, legal issue, or relationship outcome. A8's negative-case legal issues and levity are conditional under 832-833; they were omitted.",
+        "Inspected supplemental family 22433-22505. The body is recognizably house 7 and covers intimate relations, marriage, business partnerships, contracts, cooperation, declared enemies and projection. Only the primary-supported thematic core was adopted; advice and unsupported additions were excluded."
+      ]
+    },
+    "8": {
+      "pt": "no seu mapa, a casa 8 reúne os temas da sexualidade, das iniciações e do envolvimento profundo com outras pessoas, suas emoções e seus recursos. também abrange legados, investimentos, seguros, nascimento, morte e renascimento, mudanças de consciência, sonhos e psicologia profunda.",
+      "en": "in your chart, house 8 brings together the themes of sexuality, initiations and deep involvement with other people, their emotions and their resources. it also covers legacies, investments, insurance, birth, death and rebirth, changes in consciousness, dreams and depth psychology.",
+      "keywords": {
+        "pt": [
+          "vínculos profundos",
+          "iniciações",
+          "sexualidade",
+          "emoções e recursos compartilhados",
+          "legados e investimentos",
+          "seguros",
+          "nascimento, morte e renascimento",
+          "consciência e sonhos",
+          "psicologia profunda"
+        ],
+        "en": [
+          "deep bonds",
+          "initiations",
+          "sexuality",
+          "shared emotions and resources",
+          "legacies and investments",
+          "insurance",
+          "birth, death and rebirth",
+          "consciousness and dreams",
+          "depth psychology"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 29,
+          "to": 33
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 884,
+          "to": 885
+        }
+      ],
+      "reviewNotes": [
+        "Birth, death and rebirth are neutral thematic domains in the primary list, not mortality or reproductive predictions. A8 also names transformation, changed states of consciousness and dreams at 884-885; its negative expression of sadism/death is conditional under 832-833 and is not included.",
+        "Inspected supplemental family 22518-22585. Body text under the visible house 8 heading includes death/rebirth, sexuality, shared resources, crises, transformation, psychology and occult topics, but OCR columns interleave and fragment clauses. No supplemental claims adopted; primary is sufficient."
+      ]
+    },
+    "9": {
+      "pt": "na casa 9, você encontra os temas das viagens longas, dos contatos com outros países e dos estudos aprofundados. essa área também abrange filosofia, religião, ideais e o sentido das leis.",
+      "en": "in house 9, you find the themes of long journeys, contact with other countries and advanced studies. this area also covers philosophy, religion, ideals and the meaning of laws.",
+      "keywords": {
+        "pt": [
+          "viagens longas",
+          "estudos aprofundados",
+          "filosofia",
+          "religião",
+          "ideais",
+          "leis"
+        ],
+        "en": [
+          "long journeys",
+          "advanced studies",
+          "philosophy",
+          "religion",
+          "ideals",
+          "laws"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 34,
+          "to": 36
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 843,
+          "to": 844
+        }
+      ],
+      "reviewNotes": [
+        "Aula 6:34-37 and aula 8:843-845 inspected; adopted only the thematic domains at modulo 4/aula 6 modulo 4/aula-6.md:34-36 and modulo 4/aula 8 modulo 4/aula-8.md:843-844, not a personal disposition or prediction.",
+        "modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 844-845 are not adopted.",
+        "books/astrologia-hermetica/astrologia-hermetica.md:22600-22690 inspected only, not adopted or cited in src. Body lines 22600-22614 explicitly identify house 9; later text is interleaved, including 22629-22640 and 22642-22658. No OCR reconstruction or supplemental expansion."
+      ]
+    },
+    "10": {
+      "pt": "na casa 10, você encontra os temas da profissão, da carreira e da realização profissional. essa área também abrange projeção social, status, contribuição à sociedade, vocações e aptidões.",
+      "en": "in house 10, you find the themes of profession, career and professional fulfillment. this area also covers social visibility, status, contribution to society, vocations and aptitudes.",
+      "keywords": {
+        "pt": [
+          "profissão",
+          "carreira",
+          "realização profissional",
+          "projeção social",
+          "contribuição social",
+          "vocações e aptidões"
+        ],
+        "en": [
+          "profession",
+          "career",
+          "professional fulfillment",
+          "social visibility",
+          "social contribution",
+          "vocations and aptitudes"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 38,
+          "to": 40
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 857,
+          "to": 858
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 6 modulo 4/aula-6.md:38-40 and modulo 4/aula 8 modulo 4/aula-8.md:857-859 inspected; only career, social and vocation domains adopted. Mission, future and destiny are not converted into promised outcomes.",
+        "Parent convention pending Mat reply: same-sex parent at modulo 4/aula 6 modulo 4/aula-6.md:39 is omitted. No parental gender assignment selected; the supplied A6 house 4 versus A8 house 4 disagreement remains unresolved and outside this assigned reading.",
+        "modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 858-859 are not adopted.",
+        "books/astrologia-hermetica/astrologia-hermetica.md:22712-22790 inspected only, not adopted or cited in src. Body 22716-22726 explicitly identifies house 10. The isolated IC at 22714, Meio do Céu label at 22718-22720 and damaged text at 22774-22790 establish no angle alias. Father attribution at 22748-22753 is unadopted pending the parental convention."
+      ]
+    },
+    "11": {
+      "pt": "na casa 11, você encontra os temas das amizades, dos grupos, das associações e da fraternidade. essa área também abrange projetos, esperanças, objetivos amplos e interesses altruístas.",
+      "en": "in house 11, you find the themes of friendships, groups, associations and fellowship. this area also covers projects, hopes, broad goals and altruistic interests.",
+      "keywords": {
+        "pt": [
+          "amizades",
+          "grupos",
+          "associações",
+          "fraternidade",
+          "projetos",
+          "esperanças",
+          "altruísmo"
+        ],
+        "en": [
+          "friendships",
+          "groups",
+          "associations",
+          "fellowship",
+          "projects",
+          "hopes",
+          "altruism"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 41,
+          "to": 42
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 870,
+          "to": 871
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 6 modulo 4/aula-6.md:41-43 and modulo 4/aula 8 modulo 4/aula-8.md:870-872 inspected; only thematic domains adopted, not claims about the reader having particular friends or outcomes.",
+        "Exaltações at modulo 4/aula 6 modulo 4/aula-6.md:43 is ambiguous and unadopted; it supplies no dignity convention. Protections and teachers at modulo 4/aula 8 modulo 4/aula-8.md:871 are unadopted for concision.",
+        "modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 871-872 are not adopted.",
+        "books/astrologia-hermetica/astrologia-hermetica.md:22863-22945 inspected only, not adopted or cited in src. Body 22863-22872 explicitly identifies house 11; text is interleaved at 22885-22915 and 22922-22941. No reconstruction, technology expansion or promised network rewards adopted."
+      ]
+    },
+    "12": {
+      "pt": "na casa 12, você encontra os temas das vidas passadas, da memória ancestral e da vida interior, com contemplação e misticismo. essa área também abrange trabalho solitário, sacrifício, renúncia, relações ocultas e instituições como hospitais, prisões e abrigos.",
+      "en": "in house 12, you find the themes of past lives, ancestral memory and inner life, with contemplation and mysticism. this area also covers solitary work, sacrifice, renunciation, hidden relationships and institutions such as hospitals, prisons and shelters.",
+      "keywords": {
+        "pt": [
+          "vidas passadas",
+          "vida interior",
+          "contemplação",
+          "misticismo",
+          "memória ancestral",
+          "trabalho solitário",
+          "renúncia",
+          "instituições"
+        ],
+        "en": [
+          "past lives",
+          "inner life",
+          "contemplation",
+          "mysticism",
+          "ancestral memory",
+          "solitary work",
+          "renunciation",
+          "institutions"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 6 modulo 4/aula-6.md",
+          "from": 44,
+          "to": 49
+        },
+        {
+          "file": "modulo 4/aula 8 modulo 4/aula-8.md",
+          "from": 886,
+          "to": 887
+        }
+      ],
+      "reviewNotes": [
+        "modulo 4/aula 6 modulo 4/aula-6.md:44-49 and modulo 4/aula 8 modulo 4/aula-8.md:877-879,886-888 inspected; only the stated domains adopted. Institutional themes describe no personal confinement, illness or relationship outcome.",
+        "modulo 4/aula 6 modulo 4/aula-6.md:48-49 explicitly names past lives and conscious, subconscious and unconscious mind as source themes. Past lives is adopted strictly as a house domain, not literal personal history. The mind-level list is omitted and is not a clinical model. Repressions and neuroses at line 46 are not adopted as diagnoses.",
+        "modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; self-abandonment, isolation and illusion at 887-888 are not adopted. Water-house grouping at 877-879 supplies no generic element profile here.",
+        "books/astrologia-hermetica/astrologia-hermetica.md:22981-23106 inspected only, not adopted or cited in src. Body 22981-22990 explicitly identifies house 12; broken or interleaved material at 23006-23055 and 23073-23106 is not reconstructed. Healing and therapy claims at 22995-22998,23065-23071 are unadopted; no advice, clinical model or promised health outcome."
+      ]
+    }
   }
 }
