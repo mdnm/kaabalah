@@ -12,3 +12,5 @@ export * from './numerology';
 export * from './semantic';
 export * from './tarot';
 export * from './visual';
+export * from './tabulate';
+export * from './civil-date';
