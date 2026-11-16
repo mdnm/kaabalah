@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Venus-house descriptions,
+  with typed one-based lookups and retained source qualifications/provenance.
+
 - Add twelve source-audited bilingual natal Mercury-house descriptions,
   with typed one-based lookups and retained source qualifications/provenance.
 
