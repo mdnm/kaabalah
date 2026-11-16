@@ -31,7 +31,7 @@ function expectDeepFrozen(value: unknown): void {
   }
 }
 
-describe.each(["sun", "moon"] as const)("%s in signs descriptions", (planet) => {
+describe.each(["sun", "moon", "mercury"] as const)("%s in signs descriptions", (planet) => {
   it("contains all twelve canonical signs", () => {
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns[planet]!).sort()).toEqual([...signs].sort());
     for (const sign of signs) {
@@ -220,6 +220,54 @@ describe("Moon content regressions", () => {
             to: 28537,
           });
         }
+      }
+    }
+  });
+});
+
+
+describe("Mercury source distinctions", () => {
+  it("keeps slow experiential thought in Taurus without uncited book embellishments", () => {
+    const e = getPlanetSignDescriptionEntry("mercury", "Taurus")!;
+    expect(e.pt).toContain("pensar devagar");
+    expect(e.pt).toContain("experiência do que na inteligência");
+    expect(e.en).toContain("experience than on intelligence");
+    expect(e.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: 9, to: 9 }]);
+    expect(e.keywords.pt).not.toContain("método");
+  });
+
+  it("retains course tensions for Libra, Sagittarius and Aquarius in both languages", () => {
+    for (const [sign, pt, en] of [
+      ["Libra", "falta tato", "tact is lacking"],
+      ["Sagittarius", "falta de ideias próprias", "lack of ideas of your own"],
+      ["Aquarius", "tendência à desonestidade", "tendency toward dishonesty"],
+    ] as const) {
+      const e = getPlanetSignDescriptionEntry("mercury", sign)!;
+      expect(e.pt).toContain(pt);
+      expect(e.en).toContain(en);
+      expect(e.reviewNotes.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps Pisces confused thought, possible brilliant ideas and lying without diagnostic prose", () => {
+    const e = getPlanetSignDescriptionEntry("mercury", "Pisces")!;
+    expect(e.pt).toContain("uma mente confusa, que pode chegar a ideias geniais");
+    expect(e.en).toContain("a confused mind that can produce brilliant ideas");
+    expect(e.pt).toContain("tendência à mentira");
+    expect(e.en).toContain("tendency toward lying");
+    expect(e.pt + e.en).not.toMatch(/loucura|madness|insanity/);
+  });
+
+  it("cites only the audited narrow Mercury course passages and uses direct bilingual copy", () => {
+    for (const sign of signs) {
+      const e = getPlanetSignDescriptionEntry("mercury", sign)!;
+      expect(e.pt).toMatch(/^você |^seu /);
+      expect(e.en).toMatch(/^you |^your /);
+      expect(JSON.stringify(e)).not.toContain("\u2014");
+      for (const source of e.src) {
+        expect(source.file).toBe("modulo 4/aula 12 modulo 4/aula-12.md");
+        expect(source.from).toBeGreaterThanOrEqual(7);
+        expect(source.to).toBeLessThanOrEqual(29);
       }
     }
   });

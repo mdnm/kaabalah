@@ -704,6 +704,343 @@
           "Artistic talent remains possible and may lack coherent expression; credulity/impracticality/changes of mind retain the difficult-aspect condition. Remedial instructions omitted."
         ]
       }
+    },
+    "mercury": {
+      "Aries": {
+        "pt": "você tem mente aberta e atenta, com rapidez e competência intelectual, além de ideias novas e metas bem definidas. também tende a ser confiável e sincero.",
+        "en": "you have an open, attentive mind, with speed and intellectual ability, as well as new ideas and well-defined goals. you also tend to be reliable and sincere.",
+        "keywords": {
+          "pt": [
+            "rapidez mental",
+            "competência intelectual",
+            "ideias novas",
+            "confiabilidade",
+            "sinceridade"
+          ],
+          "en": [
+            "quick thinking",
+            "intellectual ability",
+            "new ideas",
+            "reliability",
+            "sincerity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 7,
+            "to": 8
+          }
+        ],
+        "reviewNotes": [
+          "Used only the course claims; inspected book material on directness and impulsivity but left it unused."
+        ]
+      },
+      "Taurus": {
+        "pt": "você tende a pensar devagar. sua mente se apoia mais na experiência do que na inteligência.",
+        "en": "you tend to think slowly. your mind relies more on experience than on intelligence.",
+        "keywords": {
+          "pt": [
+            "pensamento lento",
+            "experiência"
+          ],
+          "en": [
+            "slow thinking",
+            "experience"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 9,
+            "to": 9
+          }
+        ],
+        "reviewNotes": [
+          "The book opening was inspected but its extracted text was too corrupted to range-map reliably, so it is unused; both sentences and keywords reflect only course line 9."
+        ]
+      },
+      "Gemini": {
+        "pt": "você pode raciocinar com rapidez, ter ideias brilhantes, senso de humor apurado e imaginação aguçada. também há habilidade para discursos, junto de tendência a mentir.",
+        "en": "you may reason quickly, have brilliant ideas, a keen sense of humor and a sharp imagination. you also have a gift for speaking, alongside a tendency to lie.",
+        "keywords": {
+          "pt": [
+            "rapidez de raciocínio",
+            "ideias brilhantes",
+            "imaginação",
+            "tendência a mentir"
+          ],
+          "en": [
+            "quick reasoning",
+            "brilliant ideas",
+            "imagination",
+            "tendency to lie"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 10,
+            "to": 11
+          }
+        ],
+        "reviewNotes": [
+          "Kept the course's explicit negative qualifier, ‘tendências a mentira’, rather than softening it. Book discussion of versatility, curiosity, and adaptation was not added because the course is primary and already supplies the sign's claims."
+        ]
+      },
+      "Cancer": {
+        "pt": "você tem excelente memória, principalmente para fatos ligados às emoções. também pode haver ingenuidade e pouco senso de observação.",
+        "en": "you have an excellent memory, especially for facts linked to emotions. there may also be naivety and limited powers of observation.",
+        "keywords": {
+          "pt": [
+            "memória",
+            "emoções",
+            "ingenuidade",
+            "pouco senso de observação"
+          ],
+          "en": [
+            "memory",
+            "emotions",
+            "naivety",
+            "limited powers of observation"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 12,
+            "to": 13
+          }
+        ],
+        "reviewNotes": [
+          "The course states these traits without conditional qualifiers. Supplemental book claims about emotional communication and intuition were omitted to keep the synthesis narrow and avoid adding generic filler."
+        ]
+      },
+      "Leo": {
+        "pt": "você tem segurança nas próprias ideias e tende à alegria, ao otimismo e à generosidade. há risco de grosseria, preconceitos e vaidade exacerbada.",
+        "en": "you feel confident in your own ideas and tend toward joy, optimism and generosity. there is a risk of rudeness, prejudice and excessive vanity.",
+        "keywords": {
+          "pt": [
+            "segurança nas ideias",
+            "otimismo",
+            "generosidade",
+            "vaidade"
+          ],
+          "en": [
+            "confidence in ideas",
+            "optimism",
+            "generosity",
+            "vanity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 14,
+            "to": 15
+          }
+        ],
+        "reviewNotes": [
+          "Curso é conciso; o livro corrobora confiança e expressão criativa, mas não foi usado para acrescentar liderança, persuasão ou busca de reconhecimento."
+        ]
+      },
+      "Virgo": {
+        "pt": "você tem grande capacidade para o trabalho intelectual, com versatilidade e seletividade. você pode se tornar muito crítico e pedante.",
+        "en": "you have a strong capacity for intellectual work, with versatility and selectiveness. you can become highly critical and pedantic.",
+        "keywords": {
+          "pt": [
+            "trabalho intelectual",
+            "versatilidade",
+            "seletividade",
+            "criticismo"
+          ],
+          "en": [
+            "intellectual work",
+            "versatility",
+            "selectiveness",
+            "criticism"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 16,
+            "to": 17
+          }
+        ],
+        "reviewNotes": [
+          "Livro reforça análise, método e precisão, mas o resumo conserva a formulação mais estreita do curso e sua tensão explícita de crítica/pedantismo."
+        ]
+      },
+      "Libra": {
+        "pt": "seu pensamento pode ser lento, mas você consegue pensar de modo equilibrado. seu intelecto mostra pouca inclinação à especulação, e falta tato.",
+        "en": "your thinking may be slow, though you can think in a balanced way. your intellect shows little inclination toward speculation, and tact is lacking.",
+        "keywords": {
+          "pt": [
+            "pensamento lento",
+            "equilíbrio",
+            "pouca especulação",
+            "falta de tato"
+          ],
+          "en": [
+            "slow thinking",
+            "balance",
+            "little speculation",
+            "lack of tact"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 18,
+            "to": 19
+          }
+        ],
+        "reviewNotes": [
+          "O livro descreve diplomacia, equilíbrio e mediação, em tensão com a falta de tato e a lentidão do curso. A prioridade do curso foi mantida; o material suplementar não foi usado para inverter ou suavizar essas afirmações. OCR do livro está fragmentado."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você conta com inteligência e intuição muito desenvolvidas e grande poder de concentração. há risco de se tornar desconfiado e mentalmente cruel.",
+        "en": "you have highly developed intelligence and intuition, along with strong powers of concentration. there is a risk of becoming suspicious and mentally cruel.",
+        "keywords": {
+          "pt": [
+            "inteligência",
+            "intuição",
+            "concentração",
+            "desconfiança"
+          ],
+          "en": [
+            "intelligence",
+            "intuition",
+            "concentration",
+            "suspicion"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 20,
+            "to": 21
+          }
+        ],
+        "reviewNotes": [
+          "O livro corrobora comunicação intensa, investigação e fala por vezes cortante; o curso, mais específico, sustenta a formulação final. Não se acrescentaram inferências sobre segredos ou intenções."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode ter um senso crítico pouco desenvolvido e tender à superficialidade. seu intelecto pode se mostrar vulnerável, com falta de ideias próprias.",
+        "en": "you may have an underdeveloped critical sense and tend toward superficiality. your intellect may prove vulnerable, with a lack of ideas of your own.",
+        "keywords": {
+          "pt": [
+            "senso crítico pouco desenvolvido",
+            "superficialidade",
+            "vulnerabilidade intelectual",
+            "falta de ideias próprias"
+          ],
+          "en": [
+            "underdeveloped critical sense",
+            "superficiality",
+            "intellectual vulnerability",
+            "lack of ideas of your own"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 22,
+            "to": 23
+          }
+        ],
+        "reviewNotes": [
+          "Course 22-23 gives only tensions; no flattering counterweight was added. The book opening at 34820-34825 instead emphasizes optimism, honesty and philosophical exploration; that divergent emphasis is not blended into the entry."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pensa de modo racional, sério, frio e calculista, com boa memória. sua postura mental pode ser intransigente e recusar a fantasia e a imaginação.",
+        "en": "you think in a rational, serious, cold and calculating way, with a good memory. your mental stance can be intransigent and reject fantasy and imagination.",
+        "keywords": {
+          "pt": [
+            "racionalidade",
+            "boa memória",
+            "cálculo",
+            "intransigência mental"
+          ],
+          "en": [
+            "rationality",
+            "good memory",
+            "calculation",
+            "mental intransigence"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 24,
+            "to": 25
+          }
+        ],
+        "reviewNotes": [
+          "Preserved cold/calculating intelligence and rejection of fantasy/imagination rather than substituting generic pragmatism. The interleaved book opening at 35037-35055 corroborates seriousness/calculation but its responsibility, organization and authority/tradition themes were not added."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você tem curiosidade e gosto pela pesquisa, com a mente voltada para o futuro e ideias originais. há também uma tendência à desonestidade.",
+        "en": "you have curiosity and a taste for research, with a mind oriented toward the future and original ideas. there is also a tendency toward dishonesty.",
+        "keywords": {
+          "pt": [
+            "curiosidade",
+            "pesquisa",
+            "ideias originais",
+            "tendência à desonestidade"
+          ],
+          "en": [
+            "curiosity",
+            "research",
+            "original ideas",
+            "tendency toward dishonesty"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 26,
+            "to": 27
+          }
+        ],
+        "reviewNotes": [
+          "The explicit course tendency toward dishonesty is retained, not replaced with eccentricity. Book 35302-35312 supports original/futuristic thought but emphasizes friendly/open communication, social change and technology; those additions do not override the course tension."
+        ]
+      },
+      "Pisces": {
+        "pt": "você tem muita imaginação e uma mente confusa, que pode chegar a ideias geniais. também há uma tendência à mentira.",
+        "en": "you have a vivid imagination and a confused mind that can produce brilliant ideas. there is also a tendency toward lying.",
+        "keywords": {
+          "pt": [
+            "imaginação",
+            "confusão mental",
+            "ideias geniais",
+            "tendência à mentira"
+          ],
+          "en": [
+            "imagination",
+            "mental confusion",
+            "brilliant ideas",
+            "tendency toward lying"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 12 modulo 4/aula-12.md",
+            "from": 28,
+            "to": 29
+          }
+        ],
+        "reviewNotes": [
+          "The course madness/genius polarity is paraphrased without diagnostic labeling as confusion/brilliant ideas; its explicit tendency toward lying remains. The book opening at 35527 and 35539-35550 is interleaved and emphasizes intuition/empathy; 35565-35568 supports imagination. No missing passage was reconstructed and no empathic counterweight was added.",
+          "Source review keeps confusion as the baseline rather than making it only one pole of an oscillation. The clinical madness label is not carried into the prose; the possible brilliant ideas and lying tendency remain."
+        ]
+      }
     }
   }
 }

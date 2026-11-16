@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add twelve source-audited bilingual natal Mercury-sign descriptions with
+  course-first disagreement notes and no fallback for unsupported planet sets.
+
 - Add twelve bilingual natal Moon-sign descriptions with narrow source audits,
   aspect-condition qualifiers and paired keywords; retain unsupported sets as gaps.
 
