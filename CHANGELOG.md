@@ -4,6 +4,9 @@
 
 ## 6.16.0 - 2026-11-16
 
+- Resolve the public Swiss Ephemeris runtime and WASM asset exports to the
+  current Node and browser builds.
+
 - Add twelve source-audited bilingual natal Jupiter-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 

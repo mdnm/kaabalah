@@ -21,9 +21,13 @@
   "types": "dist/index.d.ts",
   "exports": {
     "./swisseph-runtime": {
-      "default": "./wasm/build/swisseph.js"
+      "node": "./wasm/build/swisseph.node.js",
+      "default": "./wasm/build/swisseph.web.js"
     },
-    "./swisseph-wasm": "./wasm/build/swisseph.wasm",
+    "./swisseph-wasm": {
+      "node": "./wasm/build/swisseph.node.wasm",
+      "default": "./wasm/build/swisseph.web.wasm"
+    },
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
