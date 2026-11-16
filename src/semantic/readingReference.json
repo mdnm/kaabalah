@@ -24,6 +24,32 @@
       "8": "time for the agreement, the contract",
       "9": "the hour of yes or no",
       "10": "it is already in matter"
+    },
+    "step": {
+      "Kether": "the idea still without form",
+      "Chokhmah": "you already see the idea",
+      "Binah": "you already speak of it inside",
+      "Daath": "time to take a pencil and paper",
+      "Chesed": "time to plan it on paper",
+      "Geburah": "time to look at the stumbles",
+      "Tiphareth": "bring it in line with what you believe",
+      "Netzach": "close to becoming real: keep the plan to yourself",
+      "Hod": "time for the agreement, the contract",
+      "Yesod": "the hour of yes or no",
+      "Malkuth": "it is already in matter"
+    },
+    "descent": {
+      "Kether": "The insight. You had an idea, but you cannot hold it yet, because it has no atoms; it is not material.",
+      "Chokhmah": "The visualization. You see the wish in many dimensions inside your head and can turn it left, right, up and down.",
+      "Binah": "The intelligence of sound. You put the wish into words, talking to yourself inside.",
+      "Daath": "The white portal of the highest vibratory consciousness. A link: here touch, sight, speech and hearing are all used. You will need a pencil, any pencil, and paper, any paper. Why the pencil? Because a pencil is a rough diamond, only a little away from freeing the diamond. You will write with a diamond on a tree.",
+      "Chesed": "The planning. With the pencil and paper, and the insight you had, saw and heard, plan how it will happen. And a tip almost nobody teaches: feelings matter enormously. Do it with joy, dedication, love and care.",
+      "Geburah": "One more layer of atoms. Impulsive will says \"I will do it now!\". Here, instead, you look at the possible stumbles: \"if I do it this way, it could go wrong here\". List them once, on paper, and move on.",
+      "Tiphareth": "The beauty of the thing. You bring the insight in line with your moral and ethical standards and contemplate the atoms already added.",
+      "Netzach": "The victory. The wish is very close to becoming matter, and what is asked here is secrecy: tell no one the plans made in the spheres above. The secret is about the plan. With people you keep talking as usual.",
+      "Hod": "The link between two points, the materialization and the insight. It asks for a little more reasoning: it may take a contract, a sponsor, someone to fund your insight.",
+      "Yesod": "As if all of this were a company, this is where it is decided: \"they gave us the go-ahead, shall we give up?\" And the answer: \"yes, I want it. This product is ready to be packaged and become matter.\"",
+      "Malkuth": "The pot of gold at the end of the rainbow. If the answer was yes, it has arrived: the wish has become matter."
     }
   },
   "pt-BR": {
@@ -51,6 +77,32 @@
       "8": "hora do acordo, do contrato",
       "9": "a hora do sim ou não",
       "10": "já está na matéria"
+    },
+    "step": {
+      "Kether": "a ideia ainda sem forma",
+      "Chokhmah": "você já enxerga a ideia",
+      "Binah": "você já fala dela por dentro",
+      "Daath": "hora de pegar um lápis e um papel",
+      "Chesed": "hora de planejar no papel",
+      "Geburah": "hora de olhar os tropeços",
+      "Tiphareth": "harmonizar com o que você acredita",
+      "Netzach": "perto de virar realidade: guarde o plano em segredo",
+      "Hod": "hora do acordo, do contrato",
+      "Yesod": "a hora do sim ou não",
+      "Malkuth": "já está na matéria"
+    },
+    "descent": {
+      "Kether": "O insight. Você teve uma ideia, mas ainda não consegue pegá-la, porque ela não tem átomos, não é material.",
+      "Chokhmah": "A visualização. Você vê o desejo em multidimensões dentro da cabeça e pode girá-lo pra esquerda, pra direita, pra cima, pra baixo.",
+      "Binah": "A inteligência do som. Você verbaliza o desejo, fala consigo mesmo por dentro.",
+      "Daath": "O portal branco da consciência vibratória mais elevada. Um elo de ligação: aqui se usam o tato, a visão, a fala e o ouvido. Você vai precisar de um lápis, qualquer lápis, e um papel, qualquer papel. Por que o lápis? Porque o lápis é um diamante bruto, falta só um pouquinho pra liberar o diamante. Você vai escrever com um diamante sobre uma árvore.",
+      "Chesed": "O planejamento. Com o lápis e o papel, com o insight que você teve, viu e ouviu, planeje como isso vai acontecer. E uma dica que quase ninguém ensina: os sentimentos são importantíssimos. Faz com alegria, dedicação, amor e carinho.",
+      "Geburah": "Mais uma camada de átomos. A vontade impulsiva diz \"vou fazer já!\". Aqui, em vez disso, você olha os possíveis tropeços: \"se eu fizer assim, pode dar errado aqui\". Lista uma vez, no papel, e segue.",
+      "Tiphareth": "A beleza da coisa. Você harmoniza o insight com os seus padrões morais e éticos e contempla os átomos que já foram acrescentados.",
+      "Netzach": "A vitória. O desejo está muito perto de se materializar, e o que se exige aqui é guardar segredo: não contar a ninguém os planos feitos nas esferas de cima. O segredo é sobre o plano. Com as pessoas você continua falando normalmente.",
+      "Hod": "A ligação entre dois pontos, a materialização e o insight. Pede um pouco mais de racionalização: pode exigir um contrato, um patrocinador, alguém que financie o seu insight.",
+      "Yesod": "Como se tudo isso fosse uma empresa, é aqui que se decide: \"me deram o aval, vamos desistir?\" E a resposta: \"eu quero, sim. Este produto está pronto pra ir pra embalagem e se materializar.\"",
+      "Malkuth": "O pote de ouro no fim do arco-íris. Se a resposta foi sim, chegou: o desejo se materializou."
     }
   }
 }

@@ -5,6 +5,11 @@
 - Add twelve source-audited bilingual natal Jupiter-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 
+- Add the eleven-step descent to the reading reference: `step` (one line) and
+  `descent` (told in full) for every sphere, Daath as step 4, in English and
+  Portuguese, with `DESCENT_ORDER`, `DESCENT_STEPS` and `getDescentStep`.
+  `rung` keeps the ten pip ranks unchanged.
+
 - Add twelve source-audited bilingual natal Mars-sign descriptions,
   with typed lookup coverage, retained source qualifications and provenance.
 
