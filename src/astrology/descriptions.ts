@@ -23,6 +23,7 @@ export interface PlanetSignDescriptionEntry {
 
 export type DescriptionHouseNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export type PlanetHouseDescriptionEntry = PlanetSignDescriptionEntry;
+export type HouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
   readonly planetSigns: Readonly<
@@ -31,6 +32,7 @@ export interface AstrologyDescriptions {
   readonly planetHouses: Readonly<
     Partial<Record<DescriptionPlanet, Readonly<Partial<Record<DescriptionHouseNumber, PlanetHouseDescriptionEntry>>>>>
   >;
+  readonly houses?: Readonly<Partial<Record<DescriptionHouseNumber, HouseDescriptionEntry>>>;
 }
 
 /** Imported JSON is shared process-wide, including all nested metadata. */
@@ -87,5 +89,19 @@ export function getPlanetHouseDescription(
   language?: string,
 ): string | undefined {
   const entry = getPlanetHouseDescriptionEntry(planet, house);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Numbered house themes, independent of planet placements and angle identities. */
+export function getHouseDescriptionEntry(house: number): HouseDescriptionEntry | undefined {
+  if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  const houses = ASTROLOGY_DESCRIPTIONS.houses;
+  if (!houses || !Object.prototype.hasOwnProperty.call(houses, house)) return undefined;
+  return houses[house as DescriptionHouseNumber];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getHouseDescription(house: number, language?: string): string | undefined {
+  const entry = getHouseDescriptionEntry(house);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

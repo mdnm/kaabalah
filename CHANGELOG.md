@@ -4,6 +4,9 @@
 
 ## 6.17.0 - 2026-11-16
 
+- Add twelve source-audited bilingual house-theme profiles with typed lookups,
+  frozen provenance and source-qualified editorial review notes.
+
 - Add twelve source-audited bilingual natal Pluto-house descriptions,
   with typed one-based lookups and retained source qualifications/provenance.
 
