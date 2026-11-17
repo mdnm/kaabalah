@@ -78,7 +78,20 @@ Capabilities and runtime: `getCapabilities`, `assertEphemerisReady`, `CAPABILITI
 
 Astrocartography: `computeAstrocartographyMap`, `queryAstrocartographyLocation`, `findParansAtLatitude`, `computeEquatorialPositions`, `computeGMST`, `computeMCLongitude`, `computeICLongitude`, `computeHorizonLongitude`, `geographicAngularDifference`.
 
-Display text: `getAstrologyLabel`, `getPlanetSignDescription`, `getPlanetSignDescriptionEntry`, `ASTROLOGY_LABELS`, `ASTROLOGY_DESCRIPTIONS`.
+Display labels: `getAstrologyLabel`, `ASTROLOGY_LABELS`.
+
+Bilingual descriptions: `ASTROLOGY_DESCRIPTIONS` and the following getter families.
+Each `get…Description` function has a corresponding `get…DescriptionEntry` function
+that returns the readonly bilingual entry, keywords, sources and review notes.
+
+- Natal placements: `getPlanetSignDescription`, `getPlanetHouseDescription`, `getHouseDescription`, `getAngleSignDescription`.
+- Basic factors: `getPlanetDescription`, `getSignDescription`, `getElementDescription`, `getModalityDescription`, `getPolarityDescription`, `getAngleDescription`, `getAspectDescription`.
+- Additional factors: `getPointDescription`, `getPointSignDescription`, `getPointHouseDescription`, `getRetrogradePlanetDescription`, `getSectDescription`.
+- Lunar-node roles: `getLunarNodeDescription`, `getLunarNodeSignDescription`, `getLunarNodeHouseDescription`.
+
+See [Bilingual natal descriptions](/modules/astrology/#bilingual-natal-descriptions)
+for signatures, language selection, source metadata, supported keys, shared aliases
+and version availability. Unsupported combinations return `undefined`.
 
 Constants and enums: `Planet`, `HouseSystem`, `CalcFlag`, `RiseTransitFlag`, `VirtualNodes`, `SIGNS`, `DEFAULT_ASPECT_SPECS`, `DOMICILE_RULERS`, `EXALTATIONS`, `SLOW_PLANETS`, `PLANET_AND_NODE_NAMES`, `ASTROCARTOGRAPHY_DEFAULT_PLANETS`.
 
