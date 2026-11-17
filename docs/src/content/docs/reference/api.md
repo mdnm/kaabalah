@@ -87,6 +87,7 @@ that returns the readonly bilingual entry, keywords, sources and review notes.
 - Natal placements: `getPlanetSignDescription`, `getPlanetHouseDescription`, `getHouseDescription`, `getAngleSignDescription`.
 - Basic factors: `getPlanetDescription`, `getSignDescription`, `getElementDescription`, `getModalityDescription`, `getPolarityDescription`, `getAngleDescription`, `getAspectDescription`.
 - Additional factors: `getPointDescription`, `getPointSignDescription`, `getPointHouseDescription`, `getRetrogradePlanetDescription`, `getSectDescription`.
+- Batch 4 (unreleased): `getHouseCuspSignDescription`, `getRetrogradePlanetSignDescription`, `getRetrogradePlanetHouseDescription`, `getVertexContactDescription`, `getAspectPairDescription`.
 - Lunar-node roles: `getLunarNodeDescription`, `getLunarNodeSignDescription`, `getLunarNodeHouseDescription`.
 
 See [Bilingual natal descriptions](/modules/astrology/#bilingual-natal-descriptions)

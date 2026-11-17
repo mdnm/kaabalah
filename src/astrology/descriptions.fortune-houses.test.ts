@@ -8,7 +8,7 @@ describe("Fortune house descriptions API", () => {
     expectTypeOf(getPointHouseDescriptionEntry).parameters.toEqualTypeOf<[DescriptionPoint, number]>();
     expectTypeOf(getPointHouseDescriptionEntry).returns.toEqualTypeOf<PointHouseDescriptionEntry | undefined>();
     expectTypeOf(getPointHouseDescription).returns.toEqualTypeOf<string | undefined>();
-    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.pointHouses!)).toEqual(["parsFortunae"]);
+    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.pointHouses!)).toEqual(["parsFortunae", "vertex"]);
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.pointHouses!.parsFortunae!)).toEqual(houses.map(String));
   });
 

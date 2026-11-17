@@ -17,16 +17,16 @@ const sourceEnds = new Map([
   ["modulo 4/aula 9 modulo 4/aula-9.md", 1833],
   ["modulo 4/aula 10 modulo 4/aula-10.md", 2999],
   ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
+  ["readings/skills/dazy-natal-reading/references/houses.md", 224],
 ]);
 
-it("exposes typed chart-angle entries with the authored Ascendant set and explicit Descendant gap", () => {
+it("exposes typed chart-angle entries with all four angles authored", () => {
   expectTypeOf(getAngleSignDescriptionEntry).returns.toEqualTypeOf<AngleSignDescriptionEntry | undefined>();
   expectTypeOf(getAngleSignDescription).returns.toEqualTypeOf<string | undefined>();
   expect(authored).toContain("ascendant");
   expect(Object.keys(ASTROLOGY_DESCRIPTIONS.angleSigns!)).toEqual(expect.arrayContaining(authored));
   expect(Object.keys(ASTROLOGY_DESCRIPTIONS.angleSigns!).sort()).toEqual([...authored].sort());
-  // Supplemental-only Descendant coverage needs a separate scope decision.
-  expect(ASTROLOGY_DESCRIPTIONS.angleSigns?.dc).toBeUndefined();
+  expect([...authored].sort()).toEqual([...angles].sort());
 });
 
 describe.each(authored)("%s sign descriptions API", angle => {

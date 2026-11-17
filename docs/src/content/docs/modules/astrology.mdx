@@ -19,14 +19,26 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ## Bilingual natal descriptions
 
-The catalog contains **431 unique bilingual entries**. Shared lookup aliases count
+The catalog contains **1030 unique bilingual entries**. Shared lookup aliases count
 as one authored entry.
 
 **Available in npm version 6.18.0 and later:** the complete 431-entry catalog
-and all description getters below.
+and the getters for it. The 599 entries added afterwards (Descendant signs, signs
+on house cusps, retrograde planets by sign and house, Vertex, and planet-pair
+aspects) and their getters are unreleased.
 
 ```typescript
 import {
+  getAspectPairDescription,
+  getAspectPairDescriptionEntry,
+  getHouseCuspSignDescription,
+  getHouseCuspSignDescriptionEntry,
+  getRetrogradePlanetSignDescription,
+  getRetrogradePlanetSignDescriptionEntry,
+  getRetrogradePlanetHouseDescription,
+  getRetrogradePlanetHouseDescriptionEntry,
+  getVertexContactDescription,
+  getVertexContactDescriptionEntry,
   getLunarNodeHouseDescription,
   getLunarNodeHouseDescriptionEntry,
   getLunarNodeSignDescription,
@@ -123,6 +135,21 @@ getAngleSignDescription('ascendant', 'Aries', 'pt-BR');
 getAngleSignDescriptionEntry('ascendant', 'Aries')?.src;
 getAngleSignDescription('mc', 'Taurus'); // actual Midheaven sign
 getAngleSignDescription('ic', 'Cancer', 'pt-BR'); // actual Imum Coeli sign
+getAngleSignDescription('dc', 'Libra', 'pt-BR'); // actual Descendant sign
+
+getHouseCuspSignDescription(2, 'Taurus', 'pt-BR'); // sign on a numbered house cusp
+getHouseCuspSignDescriptionEntry(2, 'Taurus')?.src;
+
+const speed = chart.planets.mars?.longitudeSpeed;
+getRetrogradePlanetSignDescription('mars', 'Leo', speed, 'pt-BR');
+getRetrogradePlanetHouseDescription('mars', 3, speed, 'pt-BR');
+
+getPointDescription('vertex', 'pt-BR'); // also 'antivertex'
+getPointHouseDescription('vertex', 5, 'pt-BR'); // houses 4-9 only
+getVertexContactDescription('venus', 'pt-BR'); // planet in contact with the Vertex
+
+getAspectPairDescription('trine', 'moon', 'sun', 'pt-BR'); // either planet order
+getAspectPairDescriptionEntry('square', 'sun', 'moon')?.src;
 ```
 
 Lunar-node concepts use explicit astronomical roles `north` and `south`, without
@@ -199,9 +226,29 @@ They do not assign a person's evolutionary level or promise outcomes.
 Numbered house themes describe domains of life. House numbers and angles have
 distinct chart fields. Angle lookups use `ascendant`, `mc`, `ic` and `dc`,
 independently of house cusps. All four general angle concepts are authored.
-For angle-sign placements, currently `ascendant`, `mc` and `ic` are authored. Descendant (`dc`)
-combinations return `undefined`; that supplemental coverage requires a separate
-scope decision.
+Angle-sign placements are authored for all four angles.
+
+Signs on house cusps (`getHouseCuspSignDescription`) are a separate table from the
+angle signs: a house 10 cusp is not the Midheaven in every house system. 139 of the
+144 combinations are authored. Most rest on a supplementary keyword sheet and are a
+single short sentence; five house 6 combinations return `undefined`.
+
+Retrograde placements take the same `longitudeSpeed` guard as the general retrograde
+profiles. All eight planets have the twelve houses. Signs are complete for Mercury
+through Saturn; the source covers Uranus only from Aries to Sagittarius, Neptune
+from Leo to Sagittarius and Pluto from Cancer to Scorpio, and the rest return
+`undefined`.
+
+Vertex lookups use the point getters with `vertex` and `antivertex`, plus
+`getVertexContactDescription`. They cover the two concepts, the Vertex in houses 4 to 9 and planet
+contacts for every planet except Neptune. What counts as a contact is the
+caller's decision; the lookup takes only the planet.
+
+Planet-pair aspects cover conjunction, sextile, square, trine, quincunx and
+opposition between the ten planets: 256 of the 270 combinations. Each entry is the
+theme the source repeats across its per-sign accounts of that pair. Pairs the
+source does not treat return `undefined`, with no fallback to the general aspect
+concept.
 
 The repository keeps a separate source audit for every completed kind under
 `docs/content/astrology-descriptions-*.md`. These audits record narrow

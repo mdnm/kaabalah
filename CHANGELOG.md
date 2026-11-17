@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Add 599 bilingual astrology descriptions: Descendant by sign, signs on house
+  cusps, retrograde planets by sign and by house, Vertex and Antivertex, and
+  planet-pair aspects. New getters: `getHouseCuspSignDescription`,
+  `getRetrogradePlanetSignDescription`, `getRetrogradePlanetHouseDescription`,
+  `getVertexContactDescription` and `getAspectPairDescription`, each with an
+  `Entry` form. `getAngleSignDescription('dc', sign)` now returns text.
+
 ## 6.19.0 - 2026-11-17
 
 - Retell the eleven-step `descent` as the core movement, in English and

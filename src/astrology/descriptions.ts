@@ -41,13 +41,24 @@ export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPolarity = "positive" | "negative";
 export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
-export type DescriptionPoint = "parsFortunae" | "chiron" | "lilith mean" | "lilith true";
+export type DescriptionPoint =
+  | "parsFortunae" | "chiron" | "lilith mean" | "lilith true" | "vertex" | "antivertex";
 export type PointDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type DescriptionRetrogradePlanet = Exclude<DescriptionPlanet, "sun" | "moon">;
 export type RetrogradePlanetDescriptionEntry = PlanetSignDescriptionEntry;
+
+export type RetrogradePlanetSignDescriptionEntry = PlanetSignDescriptionEntry;
+export type RetrogradePlanetHouseDescriptionEntry = PlanetSignDescriptionEntry;
+
+export type HouseCuspSignDescriptionEntry = PlanetSignDescriptionEntry;
+export type VertexContactDescriptionEntry = PlanetSignDescriptionEntry;
+
+/** Unordered planet pair key, always written in Sun-through-Pluto order. */
+export type DescriptionPlanetPair = `${DescriptionPlanet}/${DescriptionPlanet}`;
+export type AspectPairDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type SectDescriptionEntry = PlanetSignDescriptionEntry;
 
@@ -57,6 +68,22 @@ export type LunarNodeSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type LunarNodeHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly aspectPairs?: Readonly<
+    Partial<Record<DescriptionAspect, Readonly<Partial<Record<DescriptionPlanetPair, AspectPairDescriptionEntry>>>>>
+  >;
+  readonly vertexPlanetContacts?: Readonly<Partial<Record<DescriptionPlanet, VertexContactDescriptionEntry>>>;
+  readonly retrogradePlanetHouses?: Readonly<
+    Partial<Record<
+      DescriptionRetrogradePlanet,
+      Readonly<Partial<Record<DescriptionHouseNumber, RetrogradePlanetHouseDescriptionEntry>>>
+    >>
+  >;
+  readonly retrogradePlanetSigns?: Readonly<
+    Partial<Record<DescriptionRetrogradePlanet, Readonly<Partial<Record<Sign, RetrogradePlanetSignDescriptionEntry>>>>>
+  >;
+  readonly houseCuspSigns?: Readonly<
+    Partial<Record<DescriptionHouseNumber, Readonly<Partial<Record<Sign, HouseCuspSignDescriptionEntry>>>>>
+  >;
   readonly lunarNodeHouseAxes?: Readonly<Partial<Record<DescriptionHouseNumber, LunarNodeHouseDescriptionEntry>>>;
   readonly lunarNodeSigns?: Readonly<
     Partial<Record<DescriptionLunarNode, Readonly<Partial<Record<Sign, LunarNodeSignDescriptionEntry>>>>>
@@ -449,5 +476,116 @@ export function getLunarNodeHouseDescription(
   language?: string,
 ): string | undefined {
   const entry = getLunarNodeHouseDescriptionEntry(node, house);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+function own<T extends object, K extends PropertyKey>(table: T | undefined, key: K): T[K & keyof T] | undefined {
+  if (!table || !Object.prototype.hasOwnProperty.call(table, key)) return undefined;
+  return table[key as K & keyof T];
+}
+
+function isRetrogradeSpeed(longitudeSpeed?: number): boolean {
+  return typeof longitudeSpeed === "number" && Number.isFinite(longitudeSpeed) && longitudeSpeed < 0;
+}
+
+/** Sign on a numbered house cusp; not an angle lookup, and source gaps stay absent. */
+export function getHouseCuspSignDescriptionEntry(
+  house: number,
+  sign: Sign,
+): HouseCuspSignDescriptionEntry | undefined {
+  if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  return own(own(ASTROLOGY_DESCRIPTIONS.houseCuspSigns, house as DescriptionHouseNumber), sign);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getHouseCuspSignDescription(house: number, sign: Sign, language?: string): string | undefined {
+  const entry = getHouseCuspSignDescriptionEntry(house, sign);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Natal retrograde sign accounts; requires a finite negative longitude speed. Outer-planet coverage is partial. */
+export function getRetrogradePlanetSignDescriptionEntry(
+  planet: DescriptionRetrogradePlanet,
+  sign: Sign,
+  longitudeSpeed?: number,
+): RetrogradePlanetSignDescriptionEntry | undefined {
+  if (!isRetrogradeSpeed(longitudeSpeed)) return undefined;
+  return own(own(ASTROLOGY_DESCRIPTIONS.retrogradePlanetSigns, planet), sign);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getRetrogradePlanetSignDescription(
+  planet: DescriptionRetrogradePlanet,
+  sign: Sign,
+  longitudeSpeed?: number,
+  language?: string,
+): string | undefined {
+  const entry = getRetrogradePlanetSignDescriptionEntry(planet, sign, longitudeSpeed);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Natal retrograde house accounts; requires a finite negative longitude speed. */
+export function getRetrogradePlanetHouseDescriptionEntry(
+  planet: DescriptionRetrogradePlanet,
+  house: number,
+  longitudeSpeed?: number,
+): RetrogradePlanetHouseDescriptionEntry | undefined {
+  if (!isRetrogradeSpeed(longitudeSpeed)) return undefined;
+  if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  return own(own(ASTROLOGY_DESCRIPTIONS.retrogradePlanetHouses, planet), house as DescriptionHouseNumber);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getRetrogradePlanetHouseDescription(
+  planet: DescriptionRetrogradePlanet,
+  house: number,
+  longitudeSpeed?: number,
+  language?: string,
+): string | undefined {
+  const entry = getRetrogradePlanetHouseDescriptionEntry(planet, house, longitudeSpeed);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Planet in contact with the Vertex; the caller decides what counts as a contact. */
+export function getVertexContactDescriptionEntry(
+  planet: DescriptionPlanet,
+): VertexContactDescriptionEntry | undefined {
+  return own(ASTROLOGY_DESCRIPTIONS.vertexPlanetContacts, planet);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getVertexContactDescription(planet: DescriptionPlanet, language?: string): string | undefined {
+  const entry = getVertexContactDescriptionEntry(planet);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+const DESCRIPTION_PLANET_ORDER: readonly DescriptionPlanet[] = Object.freeze([
+  "sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto",
+]);
+
+/**
+ * Natal aspect between two planets, in either argument order. Only source-located
+ * aspect/pair combinations exist; there is no fallback to the general aspect concept.
+ */
+export function getAspectPairDescriptionEntry(
+  aspect: DescriptionAspect,
+  planetA: DescriptionPlanet,
+  planetB: DescriptionPlanet,
+): AspectPairDescriptionEntry | undefined {
+  const a = DESCRIPTION_PLANET_ORDER.indexOf(planetA);
+  const b = DESCRIPTION_PLANET_ORDER.indexOf(planetB);
+  if (a < 0 || b < 0 || a === b) return undefined;
+  const pair = (a < b ? `${planetA}/${planetB}` : `${planetB}/${planetA}`) as DescriptionPlanetPair;
+  return own(own(ASTROLOGY_DESCRIPTIONS.aspectPairs, aspect), pair);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getAspectPairDescription(
+  aspect: DescriptionAspect,
+  planetA: DescriptionPlanet,
+  planetB: DescriptionPlanet,
+  language?: string,
+): string | undefined {
+  const entry = getAspectPairDescriptionEntry(aspect, planetA, planetB);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

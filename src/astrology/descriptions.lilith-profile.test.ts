@@ -4,9 +4,9 @@ import { ASTROLOGY_DESCRIPTIONS, getPointDescription, getPointDescriptionEntry, 
 const modes = ["lilith mean", "lilith true"] as const;
 describe("shared Lilith general concept API", () => {
   it("accepts exact chart keys with one canonical record and shared identity", () => {
-    expectTypeOf<DescriptionPoint>().toEqualTypeOf<"parsFortunae" | "chiron" | "lilith mean" | "lilith true">();
+    expectTypeOf<DescriptionPoint>().toEqualTypeOf<"parsFortunae" | "chiron" | "lilith mean" | "lilith true" | "vertex" | "antivertex">();
     expectTypeOf(getPointDescriptionEntry).returns.toEqualTypeOf<PointDescriptionEntry | undefined>();
-    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.points!)).toEqual(["parsFortunae", "chiron", "lilith mean"]);
+    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.points!)).toEqual(["parsFortunae", "chiron", "lilith mean", "vertex", "antivertex"]);
     expect(ASTROLOGY_DESCRIPTIONS.points).not.toHaveProperty("lilith true");
     expect(ASTROLOGY_DESCRIPTIONS.points).not.toHaveProperty("lilith");
     expect(getPointDescriptionEntry("lilith mean")).toBe(ASTROLOGY_DESCRIPTIONS.points!["lilith mean"]);
