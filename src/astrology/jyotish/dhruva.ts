@@ -1,5 +1,5 @@
 /**
- * Ernst Wilhelm / Kala "Dhruva" (System 1) equatorial nakshatras.
+ * Ernst Wilhelm / Kala "Dhruva" equatorial nakshatras.
  *
  * Ports the user-supplied, confirmed reference implementation. The method:
  *

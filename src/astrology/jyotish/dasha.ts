@@ -34,7 +34,7 @@ export const YOGINI_YEARS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 
 /** Named year-length reference configurations. */
 export const DASHA_YEAR_LENGTH_REFERENCES = Object.freeze({
-  /** Dhruva (System 1) timelines in the source session. */
+  /** Dhruva timeline year lengths. */
   dhruva: 365.2422,
   /** The saved Lahiri comparison. A reference configuration, not a universal claim. */
   lahiriReference: 365.25,

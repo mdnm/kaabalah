@@ -109,7 +109,7 @@ A real chart cast for the midpoint in time and place of two births. A different 
 _Avoid_: composite (distinct method)
 
 **Dhruva Frame**:
-The user-supplied Ernst Wilhelm / Kala "System 1" nakshatra method: 27 equal sectors measured on the celestial equator from an origin anchored to the Galactic Center. It is not ecliptic longitude minus an ayanamsa; tropical rasis stay independent of it.
+The user-supplied Ernst Wilhelm / Kala Dhruva nakshatra method: 27 equal sectors measured on the celestial equator from an origin anchored to the Galactic Center. It is not ecliptic longitude minus an ayanamsa; tropical rasis stay independent of it.
 _Avoid_: sidereal, Lahiri
 
 **Civil Date**:

@@ -47,7 +47,7 @@ export {
 export const JYOTISH_METHODS = Object.freeze({
   version: "1.0.0",
   dhruva: {
-    name: "Ernst Wilhelm / Kala Dhruva (System 1) equatorial nakshatras",
+    name: "Ernst Wilhelm / Kala Dhruva equatorial nakshatras",
     provenance:
       "User-supplied, confirmed algorithm ported from a reference implementation; constants are the supplied ones and are never calibrated against any chart.",
     anchor: "Galactic Center Sgr A*, ICRS RA 266.40499 deg, Dec -28.93617 deg",

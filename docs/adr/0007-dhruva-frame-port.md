@@ -1,6 +1,6 @@
 # Dhruva nakshatra frame: a TypeScript port, not an ayanamsa
 
-The Ernst Wilhelm / Kala "System 1" (Dhruva) nakshatra method was supplied as a confirmed Python/Astropy implementation. The library ports it to browser-safe TypeScript (`src/astrology/jyotish/frames.ts`, `dhruva.ts`) and offers the conventional Lahiri sidereal comparison next to it.
+The Ernst Wilhelm / Kala Dhruva nakshatra method was supplied as a confirmed Python/Astropy implementation. The library ports it to browser-safe TypeScript (`src/astrology/jyotish/frames.ts`, `dhruva.ts`) and offers the conventional Lahiri sidereal comparison next to it.
 
 ## Context
 

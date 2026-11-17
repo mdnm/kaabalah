@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 6.18.0 - 2026-11-16
+
+- Name the Jyotish equatorial method Dhruva consistently in metadata and documentation.
+
 - Add twelve bilingual directed lunar-node house-axis accounts with explicit shared role/house lookups.
 
 - Add bilingual North/South Node sign profiles with separate astronomical roles and source-qualified learning themes.
@@ -162,7 +166,7 @@
   Davison charts, secondary progressions and solar arcs with declared conventions,
   and bounded profection and firdaria timelines.
 
-- Add Jyotish: the Dhruva (Ernst Wilhelm / Kala System 1) equatorial nakshatra
+- Add Jyotish: the Dhruva (Ernst Wilhelm / Kala) equatorial nakshatra
   method ported to TypeScript, a Lahiri sidereal comparison, chara karakas, and
   Vimshottari and Yogini dashas with explicit year lengths. Validation is recorded
   in `JYOTISH_METHODS`; exact Kala date parity is not claimed and Yogini is not
