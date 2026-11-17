@@ -11595,5 +11595,463 @@
         "Planetary relations are stated explicitly to avoid confusing the interpretive qualification with interpersonal relationships. A10:2567-2569 names the point's relation by sign with planets;2574-2578 includes the ruler's placement and relations. Bodily vitality is not inferred from the source's broader physical-body/life themes."
       ]
     }
+  },
+  "pointSigns": {
+    "parsFortunae": {
+      "Aries": {
+        "pt": "com a Parte da Fortuna em Áries, você tende a buscar atividade e expressar iniciativa. nesse tema, sua expressão pode ser assertiva, pioneira e corajosa.",
+        "en": "with the Part of Fortune in Aries, you may seek activity and express initiative. in this area, your approach may be assertive, pioneering, and courageous.",
+        "keywords": {
+          "pt": [
+            "atividade",
+            "iniciativa",
+            "assertividade",
+            "coragem"
+          ],
+          "en": [
+            "activity",
+            "initiative",
+            "assertiveness",
+            "courage"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2777,
+            "to": 2778
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2838,
+            "to": 2841
+          }
+        ],
+        "reviewNotes": [
+          "Reframed activity and initiative as a chart tendency; the sign-mode clause supports assertive, pioneering, courageous expression. Excluded the claim that obstacles will be overcome and the assurance of sufficient energy/independence.",
+          "Table context at 2822-2830 distinguishes experience field from manner; only the sign-manner clause is used, not house-field content."
+        ]
+      },
+      "Taurus": {
+        "pt": "com a Parte da Fortuna em Touro, você busca coisas sólidas e duradouras, junto de renovação e crescimento. nesse tema, sua expressão pode ser paciente e constante, buscando estabilidade sem pressa.",
+        "en": "with the Part of Fortune in Taurus, you seek solid, lasting things alongside renewal and growth. in this area, your approach may be patient and steady, seeking stability without haste.",
+        "keywords": {
+          "pt": [
+            "solidez",
+            "durabilidade",
+            "renovação",
+            "crescimento",
+            "paciência",
+            "constância"
+          ],
+          "en": [
+            "solidity",
+            "durability",
+            "renewal",
+            "growth",
+            "patience",
+            "steadiness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2780,
+            "to": 2781
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2847,
+            "to": 2847
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2851,
+            "to": 2854
+          }
+        ],
+        "reviewNotes": [
+          "Kept the introductory source's renewal and growth nuance with its search for solid, lasting things, then paired it with the sign-manner passage on patience, constancy, and stability.",
+          "The table's house-field text at 2848-2849 is not attributed to Taurus and was excluded. The source's claim that transformations are for the better and its directive were not turned into guaranteed outcomes or advice."
+        ]
+      },
+      "Gemini": {
+        "pt": "com a Parte da Fortuna em Gêmeos, você pode agir e reagir rapidamente às mudanças e lidar com o que parece temporário. nesse tema, sua expressão pode ser versátil e comunicativa, aberta a adaptar, questionar e aprender.",
+        "en": "with the Part of Fortune in Gemini, you may respond quickly to change and engage with what seems temporary. in this area, your approach may be versatile and communicative, open to adapting, questioning, and learning.",
+        "keywords": {
+          "pt": [
+            "agilidade",
+            "mudança",
+            "comunicação",
+            "versatilidade",
+            "aprendizagem"
+          ],
+          "en": [
+            "quick response",
+            "change",
+            "communication",
+            "versatility",
+            "learning"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2783,
+            "to": 2784
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2857,
+            "to": 2857
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2860,
+            "to": 2864
+          }
+        ],
+        "reviewNotes": [
+          "Reframed the source's rapid response to change and apparently temporary conditions as tendencies; the sign-manner clause supports versatile, communicative, adaptive, questioning, learning-oriented expression.",
+          "Table context at 2822-2830 distinguishes experience field from manner; no house-field claim is used. The directive to avoid being a judge is omitted."
+        ]
+      },
+      "Cancer": {
+        "pt": "com a Parte da Fortuna em Câncer, você se volta à simplicidade e à capacidade de criar e doar. há também um vínculo íntimo com os começos e com sentir-se parte da própria criação.",
+        "en": "with the Part of Fortune in Cancer, you turn toward simplicity and the capacity to create and give. there is also a close connection with beginnings and with feeling part of your own creation.",
+        "keywords": {
+          "pt": [
+            "simplicidade",
+            "criação",
+            "doação",
+            "começos",
+            "participação"
+          ],
+          "en": [
+            "simplicity",
+            "creation",
+            "giving",
+            "beginnings",
+            "participation"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2786,
+            "to": 2787
+          }
+        ],
+        "reviewNotes": [
+          "Adopted simplicity, creation/giving capacity, and close association with beginnings and feeling part of one’s own creation from the introductory passage. The nearby table sign-manner clause at 2873-2876 was inspected but is not cited or used because those claims are not in the profile.",
+          "Table context at 2822-2830 distinguishes experience field from manner; private-home field content is not used as sign meaning. Happiness/satisfaction is not promised as an outcome."
+        ]
+      },
+      "Leo": {
+        "pt": "com a Parte da Fortuna em Leão, você tende a buscar destaque e a contribuir para melhorar a sociedade. você pode expressar criatividade, estilo próprio, orgulho e dignidade nesse tema.",
+        "en": "with the Part of Fortune in Leo, you may seek distinction and contribute to improving society. you can express creativity, individual style, pride, and dignity in this area.",
+        "keywords": {
+          "pt": [
+            "destaque",
+            "contribuição",
+            "criatividade",
+            "estilo próprio",
+            "dignidade"
+          ],
+          "en": [
+            "distinction",
+            "contribution",
+            "creativity",
+            "individual style",
+            "dignity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2789,
+            "to": 2791
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2888,
+            "to": 2892
+          }
+        ],
+        "reviewNotes": [
+          "Reframed aspiration to stand out and improve society as an impulse, with the sign-manner clause supporting creativity, personal style, pride, and dignity. Excluded the source's directives about adapting others and giving advice.",
+          "Table context at 2822-2830 distinguishes experience field from manner; no house-field claim is used."
+        ]
+      },
+      "Virgo": {
+        "pt": "com a Parte da Fortuna em Virgem, você pode ser sensível ao ambiente e manter a atenção no aqui e agora. nesse tema, você pode procurar manter-se conscientemente ocupado, aperfeiçoando o que faz com análise e discernimento.",
+        "en": "with the Part of Fortune in Virgo, you may be sensitive to your surroundings and keep your attention on the here and now. in this area, you may seek to stay consciously engaged, refining what you do through analysis and discernment.",
+        "keywords": {
+          "pt": [
+            "ambiente",
+            "aqui e agora",
+            "ocupação consciente",
+            "trabalho",
+            "aperfeiçoamento",
+            "análise",
+            "discernimento"
+          ],
+          "en": [
+            "environment",
+            "here and now",
+            "conscious engagement",
+            "work",
+            "refinement",
+            "analysis",
+            "discernment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2793,
+            "to": 2795
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2902,
+            "to": 2907
+          }
+        ],
+        "reviewNotes": [
+          "Reframed source language about sensitivity to the environment, here-and-now focus, and being constantly/consciously occupied as a tendency, then included the sign-manner themes of improvement, dedicated work, analysis, and discernment. This is conscious engagement, not generic steadiness or advice.",
+          "The table’s health/day-to-day field at 2897-2900 is excluded; the adopted sign-manner clause is 2902-2907.",
+          "Conscious engagement concerns the manner of dealing with the point's topic, not employment as an inferred house-six domain."
+        ]
+      },
+      "Libra": {
+        "pt": "você tende a buscar harmonia e beleza ao partilhar experiências e cooperar com outras pessoas. a busca por reconhecimento e aceitação social pode afastar você da expressão da sua personalidade, enquanto decisões próprias aparecem como uma necessidade.",
+        "en": "you tend to seek harmony and beauty by sharing experiences and cooperating with others. the search for recognition and social acceptance can draw you away from expressing your personality, while making your own decisions appears as a need.",
+        "keywords": {
+          "pt": [
+            "harmonia",
+            "beleza",
+            "cooperação",
+            "aceitação social",
+            "decisões próprias"
+          ],
+          "en": [
+            "harmony",
+            "beauty",
+            "cooperation",
+            "social acceptance",
+            "independent decisions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2797,
+            "to": 2799
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2919,
+            "to": 2923
+          }
+        ],
+        "reviewNotes": [
+          "The sign-specific prose says seeking recognition and social acceptance can lead you not to express your real personality, and separately says you should make your own decisions. Both are rendered as a possibility or need, without adding a causal benefit or adopting the instruction.",
+          "The table context at 2822-2823 states that the first column is the field of experience and the second is the manner. Only the Libra sign-column manner at 2919-2923 is used; the house-column relationship content at 2911-2917 is excluded."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você tende a perceber transformação e crescimento, buscando os mistérios com intensidade e afinidade com as forças da natureza. pode encontrar satisfação ao esclarecer outras pessoas e ajudá-las a enxergar novos caminhos.",
+        "en": "you tend to notice transformation and growth, approaching mysteries intensely and feeling an affinity with the forces of nature. you may find satisfaction in clarifying things for others and helping them see new paths.",
+        "keywords": {
+          "pt": [
+            "transformação",
+            "crescimento",
+            "mistérios",
+            "natureza",
+            "esclarecimento"
+          ],
+          "en": [
+            "transformation",
+            "growth",
+            "mysteries",
+            "nature",
+            "clarification"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2801,
+            "to": 2804
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2933,
+            "to": 2937
+          }
+        ],
+        "reviewNotes": [
+          "The source describes strong perception of human growth and evolution, clarity about reality, harmony with nature, and happiness when clarifying and showing paths to others. The table's sign-column clause adds intensity, mysteries, and renewal; its imperatives are rendered as tendencies.",
+          "The table context at 2822-2823 assigns the first column to field of experience and the second to manner. The house-column introspection and death content at 2927-2931 is excluded."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você tende a valorizar possibilidades, curiosidade e uma perspectiva otimista, com energia para explorar sem se prender a limites. sua energia pode fluir melhor de modo descontraído e objetivo.",
+        "en": "you tend to value possibilities, curiosity and an optimistic outlook, with energy to explore without feeling confined by limits. your energy may flow more easily in an informal and straightforward manner.",
+        "keywords": {
+          "pt": [
+            "possibilidades",
+            "curiosidade",
+            "otimismo",
+            "perspectiva ampla",
+            "exploração"
+          ],
+          "en": [
+            "possibilities",
+            "curiosity",
+            "optimism",
+            "broad perspective",
+            "exploration"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2806,
+            "to": 2809
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2948,
+            "to": 2951
+          }
+        ],
+        "reviewNotes": [
+          "The prose describes avoiding situations that limit possibilities, curiosity, energy that flows better without ceremony and with objectivity, and an optimistic outlook. The source's caution against transferring personal happiness to others is not turned into a fixed trait or advice.",
+          "The table context at 2822-2823 assigns the first column to field of experience and the second to manner. The sign-column broad perspective and adventure at 2948-2951 are used; house-column travel, philosophies, and religion at 2941-2946 are excluded."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode trazer ambição e esperança para seus objetivos, desenvolvendo força interior e senso de que sua vida está em suas próprias mãos. contribuição social e realização por esforço próprio e valor interior podem marcar esse modo de buscar sucesso.",
+        "en": "you may bring ambition and hope to your goals, developing inner strength and a sense that your life is in your own hands. social contribution and achievement through your own effort and inner worth can mark this way of seeking success.",
+        "keywords": {
+          "pt": [
+            "ambição",
+            "esperança",
+            "força interior",
+            "contribuição social",
+            "esforço próprio"
+          ],
+          "en": [
+            "ambition",
+            "hope",
+            "inner strength",
+            "social contribution",
+            "personal effort"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2811,
+            "to": 2814
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2962,
+            "to": 2962
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2965,
+            "to": 2965
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2967,
+            "to": 2967
+          }
+        ],
+        "reviewNotes": [
+          "The prose connects ambition and hope with overcoming restrictions imposed in youth, developing inner power and agency, social contribution, and objectives reached through one's own efforts and inner worth. The description keeps these as possibilities, not a fixed biography or guaranteed success.",
+          "The source table OCR interleaves the Capricorn house and sign columns at 2955-2959, 2963-2964, and 2966. The table citations are split into exact single-line sign-column clauses at 2962, 2965, and 2967; the interleaved house-column lines are excluded."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você tende a explorar experiências fora dos limites da sociedade estabelecida, com senso de justiça, abertura e independência. originalidade, ideias coletivas e estímulos diferentes podem renovar sua maneira de abordar uma questão.",
+        "en": "you tend to explore experiences beyond the limits of established society, with a sense of fairness, openness and independence. originality, collective ideas and different stimuli can renew how you approach a question.",
+        "keywords": {
+          "pt": [
+            "exploração",
+            "justiça",
+            "abertura",
+            "independência",
+            "originalidade",
+            "coletivo"
+          ],
+          "en": [
+            "exploration",
+            "fairness",
+            "openness",
+            "independence",
+            "originality",
+            "collective ideas"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2816,
+            "to": 2818
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2977,
+            "to": 2982
+          }
+        ],
+        "reviewNotes": [
+          "The source describes experiences outside established society, fairness, lack of prejudice, freedom, and nonconformity. The table adds originality, collective orientation, renewal of vision, and different stimuli. These are rendered as tendencies.",
+          "The source's claim that everyday problems will resolve themselves at 2817-2818 is excluded as an absolute guarantee. The table context at 2822-2823 assigns the first column to field of experience and the second to manner; house-column friends, projects, and cooperation at 2971-2975 are excluded."
+        ]
+      },
+      "Pisces": {
+        "pt": "você tende a valorizar promessas que possa cumprir e pode encontrar alegria em níveis elevados de consciência. a intuição, a fé e a visão interior podem orientar você para além do que é visível.",
+        "en": "you tend to value promises you can keep and may find joy in higher levels of consciousness. intuition, faith and inner vision can guide you beyond what is visible.",
+        "keywords": {
+          "pt": [
+            "compromisso",
+            "consciência",
+            "intuição",
+            "fé",
+            "visão interior"
+          ],
+          "en": [
+            "commitment",
+            "consciousness",
+            "intuition",
+            "faith",
+            "inner vision"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2820,
+            "to": 2821
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2994,
+            "to": 2998
+          }
+        ],
+        "reviewNotes": [
+          "The prose says you do not like making promises you cannot keep and connects joy with elevated levels of consciousness. Only the sign-column clauses support intuition, openness beyond what can be seen, faith, and inner vision; no dreams or images are included because those occur in the house column.",
+          "The source's absolute claim that everything imagined becomes part of reality at 2821 is excluded. The table context at 2822-2823 assigns the first column to field of experience and the second to manner; house-column interior exploration, dreams, reserve, and isolation at 2986-2992 are excluded."
+        ]
+      }
+    }
   }
 }

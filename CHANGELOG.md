@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add twelve bilingual Fortune-sign descriptions with typed point/sign getters and separate sign-column provenance.
+
 - Add a bilingual Part of Fortune concept with a typed chart-point lookup and audited provenance.
 
 - Add nine bilingual aspect-type profiles using existing typed aspect keys,

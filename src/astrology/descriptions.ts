@@ -42,8 +42,12 @@ export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type DescriptionPoint = "parsFortunae";
 export type PointDescriptionEntry = PlanetSignDescriptionEntry;
+export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly pointSigns?: Readonly<
+    Partial<Record<DescriptionPoint, Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>>>
+  >;
   readonly points?: Readonly<Partial<Record<DescriptionPoint, PointDescriptionEntry>>>;
   readonly planetSigns: Readonly<
     Partial<Record<DescriptionPlanet, Readonly<Partial<Record<Sign, PlanetSignDescriptionEntry>>>>>
@@ -258,5 +262,27 @@ export function getPointDescriptionEntry(point: DescriptionPoint): PointDescript
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getPointDescription(point: DescriptionPoint, language?: string): string | undefined {
   const entry = getPointDescriptionEntry(point);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Point-sign manners remain separate from general point and sign profiles. */
+export function getPointSignDescriptionEntry(
+  point: DescriptionPoint,
+  sign: Sign,
+): PointSignDescriptionEntry | undefined {
+  const points = ASTROLOGY_DESCRIPTIONS.pointSigns;
+  if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
+  const signs = points[point];
+  if (!signs || !Object.prototype.hasOwnProperty.call(signs, sign)) return undefined;
+  return signs[sign];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getPointSignDescription(
+  point: DescriptionPoint,
+  sign: Sign,
+  language?: string,
+): string | undefined {
+  const entry = getPointSignDescriptionEntry(point, sign);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
