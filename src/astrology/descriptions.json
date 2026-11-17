@@ -12175,6 +12175,575 @@
           "The source's absolute claim that everything imagined becomes part of reality at 2821 is excluded. The table context at 2822-2823 assigns the first column to field of experience and the second to manner; house-column interior exploration, dreams, reserve, and isolation at 2986-2992 are excluded."
         ]
       }
+    },
+    "lilith mean": {
+      "Aries": {
+        "pt": "com Lilith em Áries, você pode sentir impulsos difíceis de explicar para iniciar, liderar ou buscar estímulos novos, com vontades que mudam de um momento para outro. pode precisar de liberdade para decidir e agir, e buscar reconhecimento; em tensão, a iniciativa pode vir acompanhada de indecisão.",
+        "en": "with Lilith in Aries, you may feel hard-to-explain impulses to begin, lead, or seek new stimulation, with desires that shift from one moment to the next. you may need freedom to decide and act, and seek recognition; under tension, initiative may come with indecision.",
+        "keywords": {
+          "pt": [
+            "iniciativa",
+            "impulso",
+            "reconhecimento"
+          ],
+          "en": [
+            "initiative",
+            "impulse",
+            "recognition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 163,
+            "to": 180
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 183,
+            "to": 184
+          }
+        ],
+        "reviewNotes": [
+          "The source qualifies these traits by chart, degree, and supporting indications, and describes them as latent rather than necessarily extreme (152-155, 159-160). Violence, family outcomes, and sexual excess were excluded."
+        ]
+      },
+      "Taurus": {
+        "pt": "com Lilith em Touro, você pode perceber os sentidos com intensidade e se ligar ao conforto, à segurança e aos prazeres do corpo. pode haver uma necessidade de ter e possuir; em tensão, isso pode se tornar acúmulo compulsivo, ciúme ou dificuldade de manter a perspectiva.",
+        "en": "with Lilith in Taurus, you may experience the senses intensely and feel drawn to comfort, security, and bodily pleasures. there may be a need to have and possess; under tension, this may become compulsive accumulation, jealousy, or difficulty keeping perspective.",
+        "keywords": {
+          "pt": [
+            "sentidos",
+            "conforto",
+            "posse"
+          ],
+          "en": [
+            "senses",
+            "comfort",
+            "possession"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 227,
+            "to": 229
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 233,
+            "to": 238
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 243,
+            "to": 248
+          }
+        ],
+        "reviewNotes": [
+          "The source says Lilith is well placed in Taurus; the summary's Taurus line is sexualized, so it was not used as a generic description. Health claims, resource outcomes, and sexual excess or lack were excluded.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Gemini": {
+        "pt": "com Lilith em Gêmeos, você pode viver uma relação emocional particular com a comunicação, os estudos e as conexões próximas, expressando pensamentos e sentimentos de um jeito próprio. a curiosidade sobre a vida dos outros e a persuasão podem se destacar, mas você também pode ter dificuldade para manter a concentração e se comunicar em harmonia com os outros.",
+        "en": "with Lilith in Gemini, you may have a distinctive emotional relationship with communication, study, and nearby connections, expressing thoughts and feelings in your own way. curiosity about other people's lives and persuasion may stand out, but you may also find it hard to concentrate and communicate harmoniously with others.",
+        "keywords": {
+          "pt": [
+            "comunicação",
+            "curiosidade sobre os outros",
+            "conexões"
+          ],
+          "en": [
+            "communication",
+            "curiosity about others",
+            "connections"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 291,
+            "to": 300
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 302,
+            "to": 305
+          }
+        ],
+        "reviewNotes": [
+          "The summary's Gemini phrase concerns sexuality and was excluded as a generic Lilith statement. Sibling rejection, school distress, and mental-health labels were omitted.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Cancer": {
+        "pt": "com Lilith em Câncer, você pode viver de um jeito particular os vínculos emocionais com a família, as origens e a vida privada. o passado e o lar podem ocupar um lugar emocional particular; dependendo dos aspectos, pode haver vulnerabilidade ou frustração nesse campo.",
+        "en": "with Lilith in Cancer, you may experience emotional ties to family, origins, and private life in a distinctive way. the past and home may hold a distinctive emotional place for you; depending on the aspects, there may be vulnerability or frustration in this area.",
+        "keywords": {
+          "pt": [
+            "família",
+            "origens",
+            "vida privada"
+          ],
+          "en": [
+            "family",
+            "origins",
+            "private life"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 328,
+            "to": 333
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 335,
+            "to": 336
+          }
+        ],
+        "reviewNotes": [
+          "Retains the passage's dependency on related aspects for vulnerability and domestic difficulty. Mediumship, paranoia, traumatic memories, belonging claims, and family dependency were excluded.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Leo": {
+        "pt": "com Lilith em Leão, você pode sentir necessidade de respeito, reconhecimento e autonomia, levando a sério a expressão dos seus talentos e a criação. pode temer não ser reconhecido e, em outros momentos, exagerar na autopromoção; prazer e diversão também podem variar em intensidade.",
+        "en": "with Lilith in Leo, you may feel a need for respect, recognition, and autonomy, taking the expression of your talents and creativity seriously. you may fear not being recognized and, at other times, exaggerate self-promotion; pleasure and enjoyment may also vary in intensity.",
+        "keywords": {
+          "pt": [
+            "reconhecimento",
+            "autonomia",
+            "criação"
+          ],
+          "en": [
+            "recognition",
+            "autonomy",
+            "creativity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 368,
+            "to": 380
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 381,
+            "to": 387
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 389,
+            "to": 393
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 398,
+            "to": 399
+          }
+        ],
+        "reviewNotes": [
+          "The source also discusses children, sex, anger, spending, pregnancy fears, and rejection; these sensitive or outcome-like claims were excluded. Autonomy and talent development are presented as source recommendations, not guaranteed results.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Virgo": {
+        "pt": "com Lilith em Virgem, você pode seguir horários e deveres com rigor em algumas atividades ou fases da vida e não seguir regras nem horários em outras. você pode ser detalhista e ter insights surpreendentes, mas também se perder nos detalhes; interferências emocionais podem dificultar o cumprimento do que planejou.",
+        "en": "with Lilith in Virgo, you may follow schedules and duties strictly in some activities or phases of life and disregard rules or schedules in others. you may be attentive to detail and have surprising insights, but also get lost in details; emotional interference may make it harder to follow through on what you planned.",
+        "keywords": {
+          "pt": [
+            "rotina",
+            "detalhes",
+            "planejamento"
+          ],
+          "en": [
+            "routine",
+            "details",
+            "planning"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 446,
+            "to": 448
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 449,
+            "to": 450
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 452,
+            "to": 458
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 462,
+            "to": 462
+          }
+        ],
+        "reviewNotes": [
+          "The opening line's diagnostic labels and body-related claims (443-444, 459-461) were excluded. The source's possible effects on work and pet preferences were also omitted.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Libra": {
+        "pt": "você pode desejar vínculos profundos que combinem paixão e intensidade com amor gentil, inclusivo e companheiro, embora possa ter dificuldade para construir harmonia. você pode sentir necessidade de ser amado e considerado, recear falhar ou assumir compromissos, e ter dificuldade para pedir ajuda.",
+        "en": "you may want close bonds that combine passion and intensity with gentle, inclusive, companionate love, though you may find it hard to create harmony. you may feel a need to be loved and valued, fear failure or commitment, and find it hard to ask for help.",
+        "keywords": {
+          "pt": [
+            "parcerias",
+            "paixão e companheirismo",
+            "busca de harmonia",
+            "receio de compromisso"
+          ],
+          "en": [
+            "partnerships",
+            "passion and companionship",
+            "search for harmony",
+            "fear of commitment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 496,
+            "to": 499
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 503,
+            "to": 508
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 510,
+            "to": 511
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 515,
+            "to": 516
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 526,
+            "to": 526
+          }
+        ],
+        "reviewNotes": [
+          "Retém desejo de vínculo e dificuldade de harmonia sem afirmar que todos terão medo de compromisso.",
+          "Omite dependência, beleza/status, dramatização e permanência forçada em casamento; não transforma em resultado garantido.",
+          "A fonte recomenda considerar Vênus (525), contexto de leitura do mapa, sem virar instrução no perfil.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Scorpio": {
+        "pt": "você pode viver relações íntimas com intensidade, nas quais poder e controle ganham destaque, e demorar a se desligar de suspeitas ou intuições até esclarecê-las. a busca por profundidade pode coexistir com medo de aprofundar e, se mal administrada, trazer complicações com parceiros.",
+        "en": "you may experience intimate relationships intensely, with power and control taking prominence, and find it hard to let go of suspicions or intuitions until they are clarified. a search for depth can coexist with fear of going deeper and, if poorly managed, bring complications with partners.",
+        "keywords": {
+          "pt": [
+            "intimidade",
+            "poder e controle",
+            "suspeitas e intuições",
+            "profundidade e receio"
+          ],
+          "en": [
+            "intimacy",
+            "power and control",
+            "suspicions and intuitions",
+            "depth and fear"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 564,
+            "to": 571
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 576,
+            "to": 579
+          }
+        ],
+        "reviewNotes": [
+          "Mantém como possibilidade a intensidade, o destaque de poder/controle e o medo de aprofundar; não afirma que controle sempre ocorre.",
+          "Omite carma, ódio/ciúme obsessivo, morbidez, morte, magia e alegações financeiras ou sexuais específicas; não reproduz diagnóstico nem prevê conduta.",
+          "A fonte recomenda considerar Plutão e Marte (582-583), contexto de leitura do mapa, sem virar instrução no perfil.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "você pode se ligar emocionalmente às crenças e ideais que considera corretos e, às vezes, ter dificuldade para acolher perspectivas diferentes ou perceber o ponto de vista alheio. pode haver curiosidade por temas filosóficos, religiosos, éticos ou metafísicos, junto com dificuldade de persistir na pesquisa que exigem.",
+        "en": "you may feel emotionally attached to beliefs and ideals you consider right and sometimes struggle to make room for different perspectives or see another person's point of view. you may be curious about philosophical, religious, ethical, or metaphysical subjects while finding it hard to persist with the research they require.",
+        "keywords": {
+          "pt": [
+            "crenças e ideais",
+            "ponto de vista alheio",
+            "curiosidade filosófica",
+            "persistência na pesquisa"
+          ],
+          "en": [
+            "beliefs and ideals",
+            "others' viewpoints",
+            "philosophical curiosity",
+            "research persistence"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 608,
+            "to": 610
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 613,
+            "to": 616
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 632,
+            "to": 633
+          }
+        ],
+        "reviewNotes": [
+          "A fonte usa rótulos duros como fanático e extremista, mas a redação resume a ligação emocional e a possibilidade de fechar-se a outras perspectivas sem atribuir identidade fixa.",
+          "Omite militância, conversão de pessoas, indiscrição e previsões de impedimento, mantendo apenas temas e tensões adotados; a fonte não qualifica todos como necessariamente presentes.",
+          "A fonte recomenda considerar Júpiter (636-637), contexto de leitura do mapa, sem virar instrução no perfil.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Capricorn": {
+        "pt": "você pode desenvolver responsabilidade, seriedade, praticidade e competência útil à comunidade, enquanto a autocrítica e a exigência elevadas podem tensionar a vida pessoal e os relacionamentos. pode também sentir necessidade de controle, ter dificuldade em obedecer a ordens e buscar reconhecimento.",
+        "en": "you may develop responsibility, seriousness, practicality, and competence that serve your community, while high self-criticism and self-demand can strain personal life and relationships. you may also feel a need for control, find it hard to follow orders, and seek recognition.",
+        "keywords": {
+          "pt": [
+            "responsabilidade e competência",
+            "autocrítica",
+            "controle",
+            "reconhecimento"
+          ],
+          "en": [
+            "responsibility and competence",
+            "self-criticism",
+            "control",
+            "recognition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 671,
+            "to": 680
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 696,
+            "to": 698
+          }
+        ],
+        "reviewNotes": [
+          "A leitura junta capacidade potencial e seus custos descritos na mesma seção; preserva pode e não generaliza como resultado certo.",
+          "Não incorpora a seção explicitamente marcada em tensão (708-720), que traz circunstâncias adicionais como pais autoritários/ausentes; não usa atributos de Príapo como descrição individual.",
+          "A18 chama Capricórnio de masculino (667-670), enquanto a convenção geral de Mat apresenta Capricórnio como feminino/negativo (A2/A11). Mantém a divergência como fonte de convenções distintas e não escolhe uma delas como universal nem a chama de typo.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Aquarius": {
+        "pt": "você pode ter uma relação emocional particular com grupos, projetos e amizades, com forte necessidade de independência e liberdade. o envolvimento profundo pode ser algo que você deseja e teme, e podem surgir dificuldades com regras ou com a convivência em grupos.",
+        "en": "you may have a distinctive emotional relationship with groups, projects, and friendships, with a strong need for independence and freedom. deep involvement may be something you both desire and fear, and difficulties with rules or group relationships may arise.",
+        "keywords": {
+          "pt": [
+            "grupos e projetos",
+            "amizade",
+            "independência",
+            "envolvimento desejado e temido"
+          ],
+          "en": [
+            "groups and projects",
+            "friendship",
+            "independence",
+            "desired and feared involvement"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 755,
+            "to": 761
+          }
+        ],
+        "reviewNotes": [
+          "Resume o envolvimento explicitamente desejado e temido e a necessidade de liberdade como possibilidades.",
+          "Exclui atribuições médicas e corporais (coordenação, espasmos, tornozelo/perna) e os rótulos de egocentrismo/vitimização; não transforma a configuração em diagnóstico.",
+          "A fonte recomenda considerar Urano (773), contexto de leitura do mapa, sem virar instrução no perfil.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      },
+      "Pisces": {
+        "pt": "você pode reagir com autossabotagem ou hipersensibilidade e viver sentimentos de rejeição de forma cíclica. pode também demonstrar amorosidade e compreensão do ser humano, com sensibilidade ao ambiente e possível desgaste diante de situações e pessoas negativas, além de confusão emocional ou arrependimentos.",
+        "en": "you may react with self-sabotage or hypersensitivity and experience feelings of rejection cyclically. you may also show compassion and understanding of others, with sensitivity to your surroundings and possible exhaustion around negative situations and people, as well as emotional confusion or regret.",
+        "keywords": {
+          "pt": [
+            "hipersensibilidade",
+            "autossabotagem",
+            "amorosidade",
+            "confusão emocional"
+          ],
+          "en": [
+            "hypersensitivity",
+            "self-sabotage",
+            "compassion",
+            "emotional confusion"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 152,
+            "to": 155
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 159,
+            "to": 160
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 802,
+            "to": 803
+          },
+          {
+            "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+            "from": 809,
+            "to": 812
+          }
+        ],
+        "reviewNotes": [
+          "Retém a fonte sobre rejeição cíclica, mas qualifica como pode; não apresenta as imagens extremas da introdução como previsão inevitável.",
+          "Omite reclusão e frustração (814) e alegações de ilegalidade/imoralidade, problemas psíquicos, telepatia/mediunidade, vícios e traição (815-820); sem previsão de saúde ou diagnóstico.",
+          "A fonte recomenda considerar Netuno e Júpiter (821-822), contexto de leitura do mapa, sem virar instrução no perfil.",
+          "A18:152-155 e159-160 condiciona a intensidade ao conjunto do mapa e ao grau; características latentes não precisam chegar ao extremo. As possibilidades do perfil não estabelecem biografia nem intensidade automática."
+        ]
+      }
     }
   },
   "pointHouses": {

@@ -28,9 +28,13 @@ describe("shared Lilith general concept API", () => {
     }
   });
 
-  it("does not apply the interpretation alias to unauthored placements", () => {
+  it("keeps the general concept separate from signs and leaves houses unauthored", () => {
     for (const mode of modes) {
-      for (const sign of ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) expect(getPointSignDescriptionEntry(mode, sign)).toBeUndefined();
+      for (const sign of ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) {
+        const placement = getPointSignDescriptionEntry(mode, sign);
+        expect(placement).toBeDefined();
+        expect(placement).not.toBe(getPointDescriptionEntry(mode));
+      }
       for (let house = 1; house <= 12; house++) expect(getPointHouseDescriptionEntry(mode, house)).toBeUndefined();
     }
   });

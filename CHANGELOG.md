@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add twelve bilingual Lilith-sign profiles shared by mean/true interpretation lookups, preserving each mode’s supplied sign and explicit house gaps.
+
 - Add a bilingual Lilith concept shared by the verified mean/true chart-key lookups, with whole-chart and latent-intensity qualifications.
 
 - Add twelve shared bilingual Chiron sign-or-house profiles with explicit typed lookup aliases and a single source record per account.

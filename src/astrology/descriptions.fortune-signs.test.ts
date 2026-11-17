@@ -9,7 +9,7 @@ describe("Fortune sign descriptions API", () => {
     expectTypeOf(getPointSignDescriptionEntry).parameters.toEqualTypeOf<[DescriptionPoint, Sign]>();
     expectTypeOf(getPointSignDescriptionEntry).returns.toEqualTypeOf<PointSignDescriptionEntry | undefined>();
     expectTypeOf(getPointSignDescription).returns.toEqualTypeOf<string | undefined>();
-    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.pointSigns!)).toEqual(["parsFortunae"]);
+    expect(ASTROLOGY_DESCRIPTIONS.pointSigns).toHaveProperty("parsFortunae");
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.pointSigns!.parsFortunae!)).toEqual(signs);
   });
 

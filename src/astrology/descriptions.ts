@@ -278,7 +278,7 @@ const CHIRON_PLACEMENT_SIGN_BY_HOUSE = Object.freeze({
   9: "Sagittarius", 10: "Capricorn", 11: "Aquarius", 12: "Pisces",
 } satisfies Readonly<Record<DescriptionHouseNumber, Sign>>);
 
-/** Fortune sign manners and source-specific shared Chiron accounts. */
+/** Fortune sign manners, shared Lilith modes and combined Chiron accounts. */
 export function getPointSignDescriptionEntry(
   point: DescriptionPoint,
   sign: Sign,
@@ -288,9 +288,10 @@ export function getPointSignDescriptionEntry(
     if (!placements || !Object.prototype.hasOwnProperty.call(placements, sign)) return undefined;
     return placements[sign];
   }
+  const key = point === "lilith true" ? "lilith mean" : point;
   const points = ASTROLOGY_DESCRIPTIONS.pointSigns;
-  if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
-  const signs = points[point];
+  if (!points || !Object.prototype.hasOwnProperty.call(points, key)) return undefined;
+  const signs = points[key];
   if (!signs || !Object.prototype.hasOwnProperty.call(signs, sign)) return undefined;
   return signs[sign];
 }

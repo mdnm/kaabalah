@@ -20,4 +20,4 @@ Primary A15:122-218 supplies the concept;345-746 supplies the12 explicitly combi
 - All358 earlier rows unchanged; existing Fortune getter paths retained. Chiron concept test's prior placement gaps were updated only for the newly approved shared coverage.
 - Public docs remain within the bilingual section. No index,calculation,CLI,package-version,publication or push changes. Unrelated `.DS_Store` deletion remains untouched.
 
-Next: Lilith general concept1 at A18:109-129, then its12 signs as a separate kind. Mean/true are calculation modes with shared interpretation; do not generate separate interpretation grids or unsupported house/aspect profiles. Current exact state is in astrology-descriptions-progress.md.
+Next at this milestone: Lilith general concept1, then its12 signs as a separate kind. Subsequent source audit corrected the general pointer to A18:131-160;109-129 is the sexual sign-summary, not the general concept. Mean/true are calculation modes with shared interpretation; do not generate separate interpretation grids or unsupported house/aspect profiles. Current exact state is in astrology-descriptions-progress.md.
