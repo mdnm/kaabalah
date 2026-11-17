@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add twelve bilingual directed lunar-node house-axis accounts with explicit shared role/house lookups.
+
 - Add bilingual North/South Node sign profiles with separate astronomical roles and source-qualified learning themes.
 
 - Add bilingual astronomical north/south lunar-node concepts through explicit role getters, retaining Mat’s source-convention decisions.

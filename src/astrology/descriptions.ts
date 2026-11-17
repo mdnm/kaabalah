@@ -54,8 +54,10 @@ export type SectDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionLunarNode = "north" | "south";
 export type LunarNodeDescriptionEntry = PlanetSignDescriptionEntry;
 export type LunarNodeSignDescriptionEntry = PlanetSignDescriptionEntry;
+export type LunarNodeHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly lunarNodeHouseAxes?: Readonly<Partial<Record<DescriptionHouseNumber, LunarNodeHouseDescriptionEntry>>>;
   readonly lunarNodeSigns?: Readonly<
     Partial<Record<DescriptionLunarNode, Readonly<Partial<Record<Sign, LunarNodeSignDescriptionEntry>>>>>
   >;
@@ -415,5 +417,37 @@ export function getLunarNodeSignDescription(
   language?: string,
 ): string | undefined {
   const entry = getLunarNodeSignDescriptionEntry(node, sign);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Source aliases for directed joint axes, not a calculation of node positions. */
+const LUNAR_NODE_NORTH_HOUSE_BY_SOUTH_HOUSE = Object.freeze({
+  1: 7, 2: 8, 3: 9, 4: 10, 5: 11, 6: 12,
+  7: 1, 8: 2, 9: 3, 10: 4, 11: 5, 12: 6,
+} satisfies Readonly<Record<DescriptionHouseNumber, DescriptionHouseNumber>>);
+
+/** Each source-declared north/south pair shares one directed axis account. */
+export function getLunarNodeHouseDescriptionEntry(
+  node: DescriptionLunarNode,
+  house: number,
+): LunarNodeHouseDescriptionEntry | undefined {
+  if (node !== "north" && node !== "south") return undefined;
+  if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  const axes = ASTROLOGY_DESCRIPTIONS.lunarNodeHouseAxes;
+  if (!axes) return undefined;
+  const northHouse = node === "north"
+    ? house as DescriptionHouseNumber
+    : LUNAR_NODE_NORTH_HOUSE_BY_SOUTH_HOUSE[house as DescriptionHouseNumber];
+  if (!Object.prototype.hasOwnProperty.call(axes, northHouse)) return undefined;
+  return axes[northHouse];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getLunarNodeHouseDescription(
+  node: DescriptionLunarNode,
+  house: number,
+  language?: string,
+): string | undefined {
+  const entry = getLunarNodeHouseDescriptionEntry(node, house);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

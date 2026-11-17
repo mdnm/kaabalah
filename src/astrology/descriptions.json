@@ -15092,5 +15092,467 @@
         ]
       }
     }
+  },
+  "lunarNodeHouseAxes": {
+    "1": {
+      "pt": "com o nodo norte na casa 1 e o sul na 7, seu aprendizado enfatiza autonomia, confiança e escolhas que honrem suas necessidades. o desafio envolve reconhecer quando você se ajusta demais ao que os outros precisam ou querem, deixando suas próprias escolhas em segundo plano.",
+      "en": "with the North Node in house 1 and the South Node in 7, your learning emphasizes autonomy, confidence, and choices that honor your needs. the challenge involves recognizing when you adapt too much to what others need or want, putting your own choices second.",
+      "keywords": {
+        "pt": [
+          "autonomia",
+          "confiança",
+          "escolhas próprias"
+        ],
+        "en": [
+          "autonomy",
+          "confidence",
+          "your own choices"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 55,
+          "to": 60
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67161,
+          "to": 67168
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67720,
+          "to": 67725
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.",
+        "A direção é autonomia perante ajuste excessivo aos outros; cooperação/compromisso do eixo reverso norte7/sul1 não foi importada como lição deste eixo."
+      ]
+    },
+    "2": {
+      "pt": "com o nodo norte na casa 2 e o sul na 8, seu aprendizado enfatiza desenvolver recursos e valores próprios, segurança material e valor pessoal. esse eixo contrapõe a dependência de recursos e valores alheios à construção de autossuficiência, simplicidade e estabilidade.",
+      "en": "with the North Node in house 2 and the South Node in 8, your learning emphasizes developing your own resources and values, material security, and self-worth. this axis contrasts dependence on other people’s resources and values with developing self-sufficiency, simplicity, and stability.",
+      "keywords": {
+        "pt": [
+          "recursos próprios",
+          "valor pessoal",
+          "autossuficiência"
+        ],
+        "en": [
+          "your own resources",
+          "self-worth",
+          "self-sufficiency"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 65,
+          "to": 70
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67178,
+          "to": 67199
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67727,
+          "to": 67732
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.",
+        "A direção é desenvolver os próprios recursos e autossuficiência. Abertura a receber ajuda e compartilhar recursos é enfatizada pelo eixo reverso norte8/sul2; não se troca a lição entre eixos."
+      ]
+    },
+    "3": {
+      "pt": "com o nodo norte na casa 3 e o sul na 9, seu aprendizado enfatiza comunicação, expressão, curiosidade intelectual e laços locais. a tensão é integrar uma visão ampla e intuitiva ao pensamento racional do cotidiano, explorando o que o ambiente próximo oferece antes de buscar longe.",
+      "en": "with the North Node in house 3 and the South Node in 9, your learning emphasizes communication, expression, intellectual curiosity, and local ties. the tension is to integrate a broad, intuitive outlook with practical reasoning, exploring what your nearby environment offers before looking far away.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "pensamento racional",
+          "ambiente próximo"
+        ],
+        "en": [
+          "communication",
+          "rational thought",
+          "nearby surroundings"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 78,
+          "to": 82
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67201,
+          "to": 67220
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67734,
+          "to": 67740
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "4": {
+      "pt": "com o nodo norte na casa 4 e o sul na 10, seu aprendizado enfatiza trabalho interior, raízes, segurança emocional e vida familiar. a tensão aparece quando sucesso e reconhecimento no mundo exterior deixam pouco espaço para a vida privada e os vínculos familiares.",
+      "en": "with the North Node in house 4 and the South Node in 10, your learning emphasizes inner work, roots, emotional security, and family life. the tension appears when worldly success and recognition leave little room for private life and family ties.",
+      "keywords": {
+        "pt": [
+          "vida privada",
+          "raízes",
+          "segurança emocional"
+        ],
+        "en": [
+          "private life",
+          "roots",
+          "emotional security"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 88,
+          "to": 93
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67222,
+          "to": 67236
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67742,
+          "to": 67747
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "5": {
+      "pt": "com o nodo norte na casa 5 e o sul na 11, seu aprendizado valoriza criatividade, expressão espontânea e desejos próprios. a tensão surge quando metas coletivas fazem você deixar de lado a individuação.",
+      "en": "with the North Node in house 5 and the South Node in 11, your learning values creativity, spontaneous expression, and your own desires. tension arises when collective goals lead you to set individuation aside.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "expressão espontânea",
+          "individuação"
+        ],
+        "en": [
+          "creativity",
+          "spontaneous expression",
+          "individuation"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 100,
+          "to": 105
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67238,
+          "to": 67246
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67749,
+          "to": 67754
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "6": {
+      "pt": "com o nodo norte na casa 6 e o sul na 12, seu aprendizado enfatiza direção prática no cotidiano, responsabilidades e desenvolvimento de capacidades úteis. a tensão está entre recolhimento ou foco espiritual e participação no mundo material, com atenção às tarefas diárias e ao serviço concreto.",
+      "en": "with the North Node in house 6 and the South Node in 12, your learning emphasizes practical direction in daily life, responsibilities, and developing useful abilities. the tension lies between withdrawal or spiritual focus and participation in the material world, with attention to daily tasks and practical service.",
+      "keywords": {
+        "pt": [
+          "cotidiano",
+          "responsabilidade",
+          "capacidades práticas"
+        ],
+        "en": [
+          "daily life",
+          "responsibility",
+          "practical abilities"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 111,
+          "to": 116
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67248,
+          "to": 67256
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67756,
+          "to": 67761
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "7": {
+      "pt": "com o nodo norte na casa 7 e o sul na 1, seu aprendizado enfatiza cooperação e compromisso, ajustando-se às necessidades de outras pessoas, especialmente nos vínculos íntimos. o objetivo é equilibrar a tendência de priorizar excessivamente a si mesmo com relações cooperativas.",
+      "en": "with the North Node in house 7 and the South Node in 1, your learning emphasizes cooperation and commitment, adapting to other people's needs, especially in intimate bonds. the aim is to balance a tendency to prioritize yourself excessively with cooperative relationships.",
+      "keywords": {
+        "pt": [
+          "cooperação",
+          "compromisso",
+          "necessidades alheias"
+        ],
+        "en": [
+          "cooperation",
+          "commitment",
+          "others’ needs"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 61,
+          "to": 64
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67287,
+          "to": 67290
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67631,
+          "to": 67654
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "8": {
+      "pt": "com o nodo norte na casa 8 e o sul na 2, seu aprendizado inclui rever valores rígidos considerando as perspectivas de outras pessoas e permitir apoio mútuo. crises e mudanças podem abrir oportunidades de crescimento, enquanto intimidade, recursos compartilhados e profundidade emocional também são campos desse aprendizado.",
+      "en": "with the North Node in house 8 and the South Node in 2, your learning includes reconsidering rigid values in light of other people's perspectives and allowing mutual support. crises and change may open opportunities for growth, while intimacy, shared resources, and emotional depth are also fields of this learning.",
+      "keywords": {
+        "pt": [
+          "recursos compartilhados",
+          "revisão de valores",
+          "profundidade emocional"
+        ],
+        "en": [
+          "shared resources",
+          "reconsidering values",
+          "emotional depth"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 71,
+          "to": 77
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67258,
+          "to": 67279
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67656,
+          "to": 67671
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "9": {
+      "pt": "com o nodo norte na casa 9 e o sul na 3, seu aprendizado envolve desenvolver intuição, criatividade e sensibilidade, ampliando o conhecimento por estudos, viagens ou contato com outras culturas e ideias. pode haver ênfase excessiva no pensamento racional e no ambiente conhecido, em contraste com essa abertura a perspectivas mais amplas.",
+      "en": "with the North Node in house 9 and the South Node in 3, your learning involves developing intuition, creativity, and sensitivity, broadening knowledge through study, travel, or contact with other cultures and ideas. there may be excessive emphasis on rational thought and familiar surroundings, in contrast with this openness to wider perspectives.",
+      "keywords": {
+        "pt": [
+          "intuição",
+          "expansão do conhecimento",
+          "culturas diferentes"
+        ],
+        "en": [
+          "intuition",
+          "expanding knowledge",
+          "different cultures"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 83,
+          "to": 87
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67309,
+          "to": 67333
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67673,
+          "to": 67690
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "10": {
+      "pt": "com o nodo norte na casa 10 e o sul na 4, seu aprendizado envolve ampliar a atuação para além da base familiar e desenvolver autoridade e utilidade pública. a tendência ao recolhimento pode competir com assumir responsabilidades e metas profissionais que contribuam para a coletividade.",
+      "en": "with the North Node in house 10 and the South Node in 4, your learning involves extending your activity beyond the family base and developing public authority and usefulness. a tendency to withdraw may compete with taking on responsibilities and professional aims that contribute to the wider community.",
+      "keywords": {
+        "pt": [
+          "autoridade",
+          "carreira",
+          "contribuição coletiva"
+        ],
+        "en": [
+          "authority",
+          "career",
+          "contribution to the wider community"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 94,
+          "to": 99
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67335,
+          "to": 67350
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67692,
+          "to": 67698
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.",
+        "Não se inventa uma regra de preservar/equilibrar a vida privada como remédio; a passagem pede ampliar a atuação além da base familiar. Excluída a frase de gênero de A15:96-98."
+      ]
+    },
+    "11": {
+      "pt": "com o nodo norte na casa 11 e o sul na 5, seu aprendizado enfatiza integrar-se a grupos, colaborar em causas comuns e desenvolver consciência social. o desafio é ir além da preocupação exclusiva com seus interesses e prazeres, dando espaço às necessidades coletivas.",
+      "en": "with the North Node in house 11 and the South Node in 5, your learning emphasizes joining groups, contributing to common causes, and developing social awareness. the challenge is to move beyond exclusive concern with your own interests and pleasures, making room for collective needs.",
+      "keywords": {
+        "pt": [
+          "grupos",
+          "causas comuns",
+          "consciência social"
+        ],
+        "en": [
+          "groups",
+          "common causes",
+          "social awareness"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 106,
+          "to": 110
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67352,
+          "to": 67367
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67700,
+          "to": 67706
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero."
+      ]
+    },
+    "12": {
+      "pt": "com o nodo norte na casa 12 e o sul na 6, seu aprendizado enfatiza simpatia, compreensão e abertura do coração para sentir conexão com algo maior. o desafio é ir além de uma postura excessivamente crítica e controlada, desenvolvendo empatia e introspecção.",
+      "en": "with the North Node in house 12 and the South Node in 6, your learning emphasizes sympathy, understanding, and opening the heart to feel connected with something larger. the challenge is to move beyond an excessively critical and controlled stance, developing empathy and introspection.",
+      "keywords": {
+        "pt": [
+          "simpatia",
+          "compreensão",
+          "introspecção"
+        ],
+        "en": [
+          "sympathy",
+          "understanding",
+          "introspection"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 117,
+          "to": 121
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67369,
+          "to": 67383
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 67708,
+          "to": 67719
+        }
+      ],
+      "reviewNotes": [
+        "Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.",
+        "Fonte primária A15 e conferência visual de books/Astrologia Hermetica.pdf: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.",
+        "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.",
+        "A15 enfatiza compreensão versus crítica/controle/racionalidade excessivos; o livro norte12 acrescenta introspecção/empatia. O livro sul6 enfatiza rotina minuciosa e parceria/harmonia, outro foco que não foi convertido em conselho de equilíbrio nem promessa de relações."
+      ]
+    }
   }
 }

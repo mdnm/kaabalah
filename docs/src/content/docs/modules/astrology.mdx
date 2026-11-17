@@ -21,6 +21,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ```typescript
 import {
+  getLunarNodeHouseDescription,
+  getLunarNodeHouseDescriptionEntry,
   getLunarNodeSignDescription,
   getLunarNodeSignDescriptionEntry,
   getLunarNodeDescription,
@@ -63,6 +65,8 @@ getLunarNodeDescription('north', 'pt-BR');
 getLunarNodeDescriptionEntry('south')?.src;
 getLunarNodeSignDescription('north', 'Aries', 'pt-BR');
 getLunarNodeSignDescriptionEntry('south', 'Libra')?.src;
+getLunarNodeHouseDescription('north', 1, 'pt-BR');
+getLunarNodeHouseDescriptionEntry('south', 7)?.src; // same directed axis account
 getSectDescription('diurnal', 'pt-BR');
 getSectDescriptionEntry('nocturnal')?.src;
 getPlanetDescription('sun', 'pt-BR'); // general planetary function
@@ -122,6 +126,10 @@ the existing points adapter can expose derived south-node points. These pure
 role lookups do not derive positions or equate the two calculation modes.
 Node-sign lookups take the actual sign for the specified role. North and South
 have independent authored profiles; one is not inferred from the other’s sign.
+Node-house lookups reuse 12 source-declared directed axes through 24 role/house
+queries. North house 1 and South house 7 return the same joint account; North
+house 7 describes the opposite developmental direction. This is source aliasing,
+not a calculation of a missing position. Houses require integer numbers 1–12.
 
 Sect descriptions accept an already determined `diurnal` or `nocturnal` value,
 such as `chart.sect`. They describe the physical-horizon distinction and retain
@@ -163,7 +171,7 @@ These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 24 lunar-node sign profiles, 2 lunar-node concepts, 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 12 directed lunar-node house-axis accounts, 24 lunar-node sign profiles, 2 lunar-node concepts, 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
