@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## 6.19.0 - 2026-11-17
+
+- Retell the eleven-step `descent` as the core movement, in English and
+  Portuguese: the idea becomes light, then sound, is expressed, planned with
+  good feelings, weighed, harmonized, kept in silence, organized, checked for
+  foundation and manifested. Add `DESCENT_MOVEMENT`, `getDescentMovement` and
+  localized `movement` names: the right column expands, the left contracts
+  and the middle balances. The Yesod gloss becomes "the foundations".
+
 ## 6.18.0 - 2026-11-16
 
 - Name the Jyotish equatorial method Dhruva consistently in metadata and documentation.
