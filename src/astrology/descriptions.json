@@ -14190,5 +14190,103 @@
         "Aula 10 uses houses 1-6 as an illustration while explaining the Part of Fortune (2527-2529); that house range is not adopted as a general rule. The course defines above versus below the horizon but does not specify the exact-horizon boundary. The current implementation classifies using geometric altitude greater than its threshold, so an exact horizon is nocturnal; keep this source/implementation distinction in documentation."
       ]
     }
+  },
+  "lunarNodes": {
+    "north": {
+      "pt": "no seu mapa, o nodo norte corresponde ao cruzamento ascendente da Lua pela eclíptica. ele simboliza uma direção de crescimento, ligada a transformar padrões ultrapassados e enfrentar experiências novas.",
+      "en": "in your chart, the north node corresponds to the Moon’s ascending crossing of the ecliptic. it symbolizes a direction of growth, connected with changing outdated patterns and facing new experiences.",
+      "keywords": {
+        "pt": [
+          "cruzamento ascendente",
+          "crescimento",
+          "novas experiências"
+        ],
+        "en": [
+          "ascending crossing",
+          "growth",
+          "new experiences"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 20,
+          "to": 21
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 24,
+          "to": 26
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 45,
+          "to": 53
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20421,
+          "to": 20426
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20441,
+          "to": 20450
+        }
+      ],
+      "reviewNotes": [
+        "Mat's settled convention is astronomical north/south with no hemisphere inversion. Aula 15's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; its dignity scheme (45-53) is retained as a separate symbolic correspondence. Benefic language is attributed to the teaching and does not guarantee benefit. Aula 21 places Dragon/house in a question about development goals, not a personality generalization.",
+        "O corpo combina a definição astronômica da A15 com a linguagem simbólica de desenvolvimento/recursos do livro, preservando os contextos distintos. A21:867-874 é um roteiro de leitura Dragão/casa e não fornece uma definição norte/sul; não foi usada como citação do corpo. Não afirma biografia de vidas passadas, destino fixo nem resultados garantidos.",
+        "Dignidades da A15, conforme decisão de Mat: norte domicílio Gêmeos, exaltação Aquário, exílio Sagitário, queda Leão; sul inverso (Sagitário, Leão, Gêmeos, Aquário). O contexto diferente da A12 permanece distinto; estas correspondências não alteram cálculos nem criam uma grade de personalidade."
+      ]
+    },
+    "south": {
+      "pt": "no seu mapa, o nodo sul corresponde ao cruzamento descendente da Lua pela eclíptica. ele simboliza talentos naturais, mas também uma bagagem de padrões e crenças que podem limitar sua perspectiva.",
+      "en": "in your chart, the south node corresponds to the Moon’s descending crossing of the ecliptic. it symbolizes natural talents, but also accumulated patterns and beliefs that may limit your perspective.",
+      "keywords": {
+        "pt": [
+          "cruzamento descendente",
+          "talentos naturais",
+          "perspectiva limitada"
+        ],
+        "en": [
+          "descending crossing",
+          "natural talents",
+          "limited perspective"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 20,
+          "to": 21
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 24,
+          "to": 26
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 45,
+          "to": 53
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20549,
+          "to": 20554
+        },
+        {
+          "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+          "from": 20559,
+          "to": 20569
+        }
+      ],
+      "reviewNotes": [
+        "Mat's settled convention is astronomical north/south with no hemisphere inversion. Aula 15's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; the stated inverse dignity scheme (45-53) is retained as a separate symbolic correspondence. Malefic language is attributed to the teaching and does not guarantee harm. Aula 21 places Dragon/house in a question about development goals, not a personality generalization.",
+        "O corpo combina a definição astronômica da A15 com a linguagem simbólica de desenvolvimento/recursos do livro, preservando os contextos distintos. A21:867-874 é um roteiro de leitura Dragão/casa e não fornece uma definição norte/sul; não foi usada como citação do corpo. Não afirma biografia de vidas passadas, destino fixo nem resultados garantidos.",
+        "Dignidades da A15, conforme decisão de Mat: norte domicílio Gêmeos, exaltação Aquário, exílio Sagitário, queda Leão; sul inverso (Sagitário, Leão, Gêmeos, Aquário). O contexto diferente da A12 permanece distinto; estas correspondências não alteram cálculos nem criam uma grade de personalidade."
+      ]
+    }
   }
 }

@@ -51,7 +51,11 @@ export type RetrogradePlanetDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type SectDescriptionEntry = PlanetSignDescriptionEntry;
 
+export type DescriptionLunarNode = "north" | "south";
+export type LunarNodeDescriptionEntry = PlanetSignDescriptionEntry;
+
 export interface AstrologyDescriptions {
+  readonly lunarNodes?: Readonly<Partial<Record<DescriptionLunarNode, LunarNodeDescriptionEntry>>>;
   readonly sects?: Readonly<Partial<Record<Sect, SectDescriptionEntry>>>;
   readonly retrogradePlanets?: Readonly<Partial<Record<DescriptionRetrogradePlanet, RetrogradePlanetDescriptionEntry>>>;
   readonly chironPlacements?: Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>;
@@ -372,5 +376,18 @@ export function getSectDescriptionEntry(sect: Sect): SectDescriptionEntry | unde
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getSectDescription(sect: Sect, language?: string): string | undefined {
   const entry = getSectDescriptionEntry(sect);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Conceptual astronomical roles, independent of mean/true chart storage modes. */
+export function getLunarNodeDescriptionEntry(node: DescriptionLunarNode): LunarNodeDescriptionEntry | undefined {
+  const nodes = ASTROLOGY_DESCRIPTIONS.lunarNodes;
+  if (!nodes || !Object.prototype.hasOwnProperty.call(nodes, node)) return undefined;
+  return nodes[node];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getLunarNodeDescription(node: DescriptionLunarNode, language?: string): string | undefined {
+  const entry = getLunarNodeDescriptionEntry(node);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

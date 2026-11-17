@@ -21,6 +21,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ```typescript
 import {
+  getLunarNodeDescription,
+  getLunarNodeDescriptionEntry,
   getSectDescription,
   getSectDescriptionEntry,
   getRetrogradePlanetDescription,
@@ -55,6 +57,8 @@ import {
   getAngleSignDescriptionEntry,
 } from 'kaabalah/astrology';
 
+getLunarNodeDescription('north', 'pt-BR');
+getLunarNodeDescriptionEntry('south')?.src;
 getSectDescription('diurnal', 'pt-BR');
 getSectDescriptionEntry('nocturnal')?.src;
 getPlanetDescription('sun', 'pt-BR'); // general planetary function
@@ -107,6 +111,12 @@ getAngleSignDescription('mc', 'Taurus'); // actual Midheaven sign
 getAngleSignDescription('ic', 'Cancer', 'pt-BR'); // actual Imum Coeli sign
 ```
 
+Lunar-node concepts use explicit astronomical roles `north` and `south`, without
+hemisphere inversion. Both `chart.planets["mean node"]` and `["true node"]` are
+North Node calculation modes. BirthChart has no dedicated stored South Node;
+the existing points adapter can expose derived south-node points. These pure
+role lookups do not derive positions or equate the two calculation modes.
+
 Sect descriptions accept an already determined `diurnal` or `nocturnal` value,
 such as `chart.sect`. They describe the physical-horizon distinction and retain
 the profection context of the source’s Sun/Moon sect-light association. They do
@@ -147,7 +157,7 @@ These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 2 lunar-node concepts, 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house

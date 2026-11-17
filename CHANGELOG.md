@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add bilingual astronomical north/south lunar-node concepts through explicit role getters, retaining Mat’s source-convention decisions.
+
 - Add bilingual diurnal/nocturnal sect concepts with physical-horizon definitions and source-contextual luminary associations.
 
 - Add eight bilingual natal retrograde planet profiles with typed lookups gated by available finite negative longitude speed.

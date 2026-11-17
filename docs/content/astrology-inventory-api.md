@@ -9,7 +9,7 @@ Inspected current TypeScript source and ran the existing built astrology module 
 | Factor | Existing API | Implication for future content keys |
 |---|---|---|
 | Ten planets | `chart.planets.sun` through `.pluto` | Lowercase English planet keys |
-| Lunar nodes | `chart.planets["mean node"]`, `["true node"]` | Both are north-node calculations; do not mislabel one as south. South-node longitude requires a derived opposite point, currently no dedicated field |
+| Lunar nodes | `chart.planets["mean node"]`, `["true node"]` | Both are north-node calculations; do not mislabel one as south. No dedicated stored South field; current getChartPoints adapter exposes derived south-node-mean/south-node-true opposite points |
 | Lilith | `chart.planets["lilith mean"]`, `["lilith true"]` | Two calculation modes; same textual factor unless sources explicitly distinguish |
 | Chiron | `chart.planets.chiron` | `chiron`, not `quiron` |
 | Position | `planet.zodiacPosition.sign`, `.house` | Signs are title case `Aries` to `Pisces`; houses 1 to 12 |

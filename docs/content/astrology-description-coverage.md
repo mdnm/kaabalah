@@ -100,8 +100,8 @@ Status meanings: **covered** = eligible direct material supports the stated set;
 | Lilith concept and signs | covered | A18:131-160 concept;109-129 summary and162-848 signs | 1 concept +12 rich signs; no independent mean/true interpretation sets |
 | Lilith houses/aspects | not found | Full scoped classes and searched book | 0 dedicated complete placements located; do not infer from sign parallels |
 | Priapus signs | covered | A18:131-848, definition caveat141-144 | 12 profiles, no current chart field. Source says it is not always exactly opposite Lilith |
-| North/South node concepts | partial | A15:4-53; A21:867-874; B:20306-20892 | 2 concepts; hemisphere naming convention unresolved |
-| Nodal house axes | partial | A15:54-121 | 12 directed axes, or24 point-house lookup aliases sharing evidence. Must settle hemisphere convention |
+| North/South node concepts | partial | A15:4-53; A21:867-874; B:20306-20892 | 2 concepts implemented; Mat chose astronomical north/south without hemisphere inversion |
+| Nodal house axes | partial | A15:54-121 | 12 directed axes, or24 point-house lookup aliases sharing evidence. Mat chose no hemisphere inversion |
 | Nodes by sign | covered | Course dignity subset A15:45-53; B north67023-67160, south67402-67629 | 24 book placement profiles; course corroboration partial and dignity disagreements retained |
 | Nodes by house, book accounts | partial | B:67161-67401,67630-67795 | Intended24; cross-synthesize with12 course axes after convention decision and OCR inspection |
 | Node aspects | mentioned | A15:17-32 | General intensification, no aspect-by-pair matrix |
