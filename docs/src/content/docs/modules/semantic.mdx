@@ -29,7 +29,7 @@ import {
 - `tokenizeOccultThemeText`
 - `OCCULT_THEME_STOPWORDS`
 - Reading: `resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`, `collapseHits`, `buildThreads` (see [Reading connections](#reading-connections))
-- Reading reference: `getReadingReference`, `getDescentStep`, `DESCENT_ORDER`, `DESCENT_STEPS` (see [Reading reference and the descent](#reading-reference-and-the-descent))
+- Reading reference: `getReadingReference`, `getDescentStep`, `getDescentMovement`, `DESCENT_ORDER`, `DESCENT_STEPS`, `DESCENT_MOVEMENT` (see [Reading reference and the descent](#reading-reference-and-the-descent))
 - Kaabalistic overlays: `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`, `buildKaabalisticMapData`, the symbol metadata getters, and `getKaabalisticLabel` (see [Kaabalistic overlays](#kaabalistic-overlays))
 - Types: `HouseThemeProfile`, `TarotThemeProfile`, `HouseThemeLookup`, `TarotThemeLookup`, `HouseThemeAxis`, `HouseThemeScope`, `HouseNumber`, `OccultThemeCorrespondence`, `OccultThemeCorrespondences`, `TarotThemeCorrespondences`, `TarotMajorArchetypeReference`, `TokenizeOccultThemeTextOptions`
 
@@ -425,9 +425,12 @@ other readers, and keep their own sentence templates outside the library.
 | `gloss` | A short phrase for each of the eleven spheres |
 | `rung` | A pip's step by its rank, `'1'` to `'10'`. Daath has no pip, so the ten ranks are unchanged |
 | `step` | Each sphere's step of the eleven-step descent, in one line |
-| `descent` | The same step told in full |
+| `descent` | The same step told in full: the idea becomes light, then sound, is expressed, planned with good feelings, weighed, harmonized, kept in silence, organized, checked for foundation and manifested |
+| `movement` | Display names of the three movements: `expansion`, `contraction`, `balance` |
 
 The descent runs from the idea to matter with Daath included: Kether is step 1, Daath is step 4, and Malkuth is step 11.
+
+The Tree is also a game of three movements, one per column: the right column (Chokhmah, Chesed, Netzach) expands, the left column (Binah, Geburah, Hod) contracts, and the middle column (Kether, Daath, Tiphareth, Yesod, Malkuth) balances the two. `DESCENT_MOVEMENT` maps each sphere to its movement and `getDescentMovement(sphere)` looks one up.
 
 ```typescript
 import {

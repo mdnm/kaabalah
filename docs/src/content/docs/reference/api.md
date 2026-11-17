@@ -115,7 +115,7 @@ Readings: `getIChingReading`, `getIChingReadingContent`, `linesFromHexagram`, `p
 
 ### Semantic
 
-Theme profiles: `getTarotThemeProfile`, `listTarotThemeProfiles`, `getHouseThemeProfile`, `listHouseThemeProfiles`, `tokenizeOccultThemeText`, `OCCULT_THEME_STOPWORDS`. Reading: `resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`, `collapseHits`, `buildThreads`, `getReadingReference`, `getDescentStep`, `DESCENT_ORDER`, `DESCENT_STEPS`, `TREE_ORDER`, `PLANET_KEYS`. Kaabalistic overlays: `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`, `buildKaabalisticMapData`, `getPlanetSymbolMetadata`, `getZodiacSignSymbolMetadata`, `getAngleSymbolMetadata`, `getNodeSymbolMetadata` and their `list*SymbolMetadata` counterparts, `getKaabalisticLabel`, `KAABALISTIC_LABELS`. See [Semantic](/modules/semantic/).
+Theme profiles: `getTarotThemeProfile`, `listTarotThemeProfiles`, `getHouseThemeProfile`, `listHouseThemeProfiles`, `tokenizeOccultThemeText`, `OCCULT_THEME_STOPWORDS`. Reading: `resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`, `collapseHits`, `buildThreads`, `getReadingReference`, `getDescentStep`, `getDescentMovement`, `DESCENT_ORDER`, `DESCENT_STEPS`, `DESCENT_MOVEMENT`, `TREE_ORDER`, `PLANET_KEYS`. Kaabalistic overlays: `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`, `buildKaabalisticMapData`, `getPlanetSymbolMetadata`, `getZodiacSignSymbolMetadata`, `getAngleSymbolMetadata`, `getNodeSymbolMetadata` and their `list*SymbolMetadata` counterparts, `getKaabalisticLabel`, `KAABALISTIC_LABELS`. See [Semantic](/modules/semantic/).
 
 ### Visual
 

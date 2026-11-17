@@ -10,7 +10,7 @@
       "Tiphareth": "the heart",
       "Netzach": "the victory built in silence",
       "Hod": "the agreement",
-      "Yesod": "the yes or no",
+      "Yesod": "the foundations",
       "Malkuth": "the pot of gold"
     },
     "rung": {
@@ -39,17 +39,22 @@
       "Malkuth": "it is already in matter"
     },
     "descent": {
-      "Kether": "The insight. You had an idea, but you cannot hold it yet, because it has no atoms; it is not material.",
-      "Chokhmah": "The visualization. You see the wish in many dimensions inside your head and can turn it left, right, up and down.",
-      "Binah": "The intelligence of sound. You put the wish into words: say it, preferably out loud, though speaking it to yourself inside also counts.",
-      "Daath": "The white portal of the highest vibratory consciousness. A link: here touch, sight, speech and hearing are all used. You will need a pencil, any pencil, and paper, any paper. Why the pencil? Because a pencil is a rough diamond, only a little away from freeing the diamond. You will write with a diamond on a tree.",
-      "Chesed": "The planning. With the pencil and paper, and the insight you had, saw and heard, plan how it will happen. And a tip almost nobody teaches: feelings matter enormously. Do it with joy, dedication, love and care.",
-      "Geburah": "One more layer of atoms. Impulsive will says \"I will do it now!\". Here, instead, you weigh the pros and cons. The cons are the possible stumbles, the discipline it will demand, the cost: \"if I do it this way, it could go wrong here\". List them once, on paper. If the cons outweigh the pros, the layers come off and the energy returns to Kether; if the pros outweigh the cons, you move on.",
-      "Tiphareth": "The beauty of the thing. You bring the insight in line with your moral and ethical standards and contemplate the atoms already added.",
-      "Netzach": "The victory. The wish is very close to becoming matter, and what is asked here is secrecy: tell no one the plans made in the spheres above. The secret is about the plan. With people you keep talking as usual.",
-      "Hod": "The link between two points, the materialization and the insight. It asks for a little more reasoning: it may take a contract, a sponsor, someone to fund your insight.",
-      "Yesod": "As if all of this were a company, this is where it is decided: \"they gave us the go-ahead, shall we give up?\" And the answer: \"yes, I want it. This product is ready to be packaged and become matter.\"",
-      "Malkuth": "The pot of gold at the end of the rainbow. If the answer was yes, it has arrived: the wish has become matter."
+      "Kether": "The idea. It arises, still without form.",
+      "Chokhmah": "The idea becomes light: an image, a visualization. You see it and sense it with all the senses.",
+      "Binah": "The light becomes sound, through speech. You understand the idea and say it, out loud or inside.",
+      "Daath": "The sound is expressed: by writing, for example, but also by dancing or gesturing. The idea leaves you and takes a form.",
+      "Chesed": "The good feelings, planned. You plan it feeling good about it.",
+      "Geburah": "The impulse, the discipline required, the stumbles. You weigh what it will demand.",
+      "Tiphareth": "You bring all of this into harmony with your ethics and morals, and see the beauty of it.",
+      "Netzach": "You control your emotions and keep silent.",
+      "Hod": "You control your thoughts: you resolve and organize everything, in the form of a contract for example, and connect the last points.",
+      "Yesod": "You bring it all together feeling deserving of it and checking that the quality is excellent. Last, you check that it all has a foundation; if it does, it moves on.",
+      "Malkuth": "It is manifested."
+    },
+    "movement": {
+      "expansion": "expansion",
+      "contraction": "contraction",
+      "balance": "balance"
     }
   },
   "pt-BR": {
@@ -63,7 +68,7 @@
       "Tiphareth": "o coração",
       "Netzach": "a vitória que se constrói em silêncio",
       "Hod": "o acordo",
-      "Yesod": "o sim ou não",
+      "Yesod": "os fundamentos",
       "Malkuth": "o pote de ouro"
     },
     "rung": {
@@ -92,17 +97,22 @@
       "Malkuth": "já está na matéria"
     },
     "descent": {
-      "Kether": "O insight. Você teve uma ideia, mas ainda não consegue pegá-la, porque ela não tem átomos, não é material.",
-      "Chokhmah": "A visualização. Você vê o desejo em multidimensões dentro da cabeça e pode girá-lo pra esquerda, pra direita, pra cima, pra baixo.",
-      "Binah": "A inteligência do som. Você verbaliza o desejo: fala, de preferência em voz alta, embora falar consigo mesmo por dentro também valha.",
-      "Daath": "O portal branco da consciência vibratória mais elevada. Um elo de ligação: aqui se usam o tato, a visão, a fala e o ouvido. Você vai precisar de um lápis, qualquer lápis, e um papel, qualquer papel. Por que o lápis? Porque o lápis é um diamante bruto, falta só um pouquinho pra liberar o diamante. Você vai escrever com um diamante sobre uma árvore.",
-      "Chesed": "O planejamento. Com o lápis e o papel, com o insight que você teve, viu e ouviu, planeje como isso vai acontecer. E uma dica que quase ninguém ensina: os sentimentos são importantíssimos. Faz com alegria, dedicação, amor e carinho.",
-      "Geburah": "Mais uma camada de átomos. A vontade impulsiva diz \"vou fazer já!\". Aqui, em vez disso, você pesa os prós e os contras. Os contras são os possíveis tropeços, a disciplina que isso vai exigir, o custo: \"se eu fizer assim, pode dar errado aqui\". Lista uma vez, no papel. Se houver mais contras do que prós, as camadas são retiradas e a energia volta a Kether; se houver mais prós do que contras, você segue.",
-      "Tiphareth": "A beleza da coisa. Você harmoniza o insight com os seus padrões morais e éticos e contempla os átomos que já foram acrescentados.",
-      "Netzach": "A vitória. O desejo está muito perto de se materializar, e o que se exige aqui é guardar segredo: não contar a ninguém os planos feitos nas esferas de cima. O segredo é sobre o plano. Com as pessoas você continua falando normalmente.",
-      "Hod": "A ligação entre dois pontos, a materialização e o insight. Pede um pouco mais de racionalização: pode exigir um contrato, um patrocinador, alguém que financie o seu insight.",
-      "Yesod": "Como se tudo isso fosse uma empresa, é aqui que se decide: \"me deram o aval, vamos desistir?\" E a resposta: \"eu quero, sim. Este produto está pronto pra ir pra embalagem e se materializar.\"",
-      "Malkuth": "O pote de ouro no fim do arco-íris. Se a resposta foi sim, chegou: o desejo se materializou."
+      "Kether": "A ideia. Ela surge, ainda sem forma.",
+      "Chokhmah": "A ideia vira luz: imagem, visualização. Você a vê e a sente com todos os sentidos.",
+      "Binah": "A luz vira som, pela fala. Você entende a ideia e a diz, em voz alta ou por dentro.",
+      "Daath": "O som é expressado: por exemplo escrevendo, mas também dançando, gesticulando. A ideia sai de você e ganha uma forma.",
+      "Chesed": "Os sentimentos positivos, planejados. Você planeja sentindo-se bem com aquilo.",
+      "Geburah": "O impulso, a disciplina necessária, os percalços. Você pesa o que aquilo vai exigir.",
+      "Tiphareth": "Você harmoniza tudo isso com a sua ética e a sua moral, e vê a beleza daquilo.",
+      "Netzach": "Você controla as emoções e fica em silêncio.",
+      "Hod": "Você controla os pensamentos: resolve, organiza tudo, por exemplo em forma de contrato, e conecta os últimos pontos.",
+      "Yesod": "Você sintetiza tudo isso sentindo-se merecedor e vendo se a qualidade está ótima. Por último, vê se tudo aquilo tem fundamento; se tem, passa adiante.",
+      "Malkuth": "Está manifestado."
+    },
+    "movement": {
+      "expansion": "expansão",
+      "contraction": "contração",
+      "balance": "equilíbrio"
     }
   }
 }

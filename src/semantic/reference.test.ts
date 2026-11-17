@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { DESCENT_ORDER, DESCENT_STEPS, getDescentStep, getReadingReference } from "./reference";
+import {
+  DESCENT_MOVEMENT,
+  DESCENT_ORDER,
+  DESCENT_STEPS,
+  getDescentMovement,
+  getDescentStep,
+  getReadingReference,
+} from "./reference";
 import { TREE_ORDER } from "./reading";
 
 describe("plain reading reference vocabulary", () => {
@@ -45,5 +52,33 @@ describe("plain reading reference vocabulary", () => {
     expect(getDescentStep("sphere:Chesed")).toBe(5);
     expect(getDescentStep("Malkuth")).toBe(11);
     expect(getDescentStep("Atlantis")).toBeNull();
+  });
+
+  it("gives each column its movement: right expands, left contracts, middle balances", () => {
+    const byMovement = (movement: string) => DESCENT_ORDER.filter((sphere) => DESCENT_MOVEMENT[sphere] === movement);
+    expect(byMovement("expansion")).toEqual(["Chokhmah", "Chesed", "Netzach"]);
+    expect(byMovement("contraction")).toEqual(["Binah", "Geburah", "Hod"]);
+    expect(byMovement("balance")).toEqual(["Kether", "Daath", "Tiphareth", "Yesod", "Malkuth"]);
+    expect(getDescentMovement("sphere:Geburah")).toBe("contraction");
+    expect(getDescentMovement("Atlantis")).toBeNull();
+    expect(getReadingReference("pt-BR").movement).toEqual({
+      expansion: "expansão",
+      contraction: "contração",
+      balance: "equilíbrio",
+    });
+    expect(getReadingReference().movement.balance).toBe("balance");
+  });
+
+  it("tells the core descent: idea, light, sound, expression, down to manifestation", () => {
+    const en = getReadingReference("en").descent;
+    const pt = getReadingReference("pt-BR").descent;
+    expect(pt.Chokhmah).toContain("A ideia vira luz");
+    expect(pt.Binah).toContain("A luz vira som");
+    expect(pt.Daath).toContain("O som é expressado");
+    expect(en.Geburah).not.toContain("Kether");
+    expect(pt.Malkuth).toBe("Está manifestado.");
+    for (const text of [...Object.values(en), ...Object.values(pt)]) {
+      expect(text).not.toMatch(/matchstick|palito/i);
+    }
   });
 });
