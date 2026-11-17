@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add twelve bilingual Fortune-house profiles with typed point/house lookups and audited field-of-experience sources.
+
 - Use source-based Portuguese and English minor-aspect display names while retaining canonical API keys.
 
 - Add twelve bilingual Fortune-sign descriptions with typed point/sign getters and separate sign-column provenance.

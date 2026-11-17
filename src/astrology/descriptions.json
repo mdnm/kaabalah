@@ -12071,5 +12071,497 @@
         ]
       }
     }
+  },
+  "pointHouses": {
+    "parsFortunae": {
+      "1": {
+        "pt": "com a Parte da Fortuna na Casa 1, sua realização pessoal, seu autoconhecimento e a expressão da sua personalidade ganham destaque. concentrar atenção e energia em uma coisa por vez e não se preocupar demais com a imagem que os outros têm de você aparecem como temas de aprendizado.",
+        "en": "with the Part of Fortune in House 1, personal fulfillment, self-understanding, and expressing your personality come into focus. concentrating attention and energy on one thing at a time and not worrying too much about how others see you appear as learning themes.",
+        "keywords": {
+          "pt": [
+            "realização pessoal",
+            "autoconhecimento",
+            "expressão",
+            "atenção",
+            "energia"
+          ],
+          "en": [
+            "personal fulfillment",
+            "self-understanding",
+            "self-expression",
+            "attention",
+            "energy"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2735,
+            "to": 2737
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2834,
+            "to": 2836
+          }
+        ],
+        "reviewNotes": [
+          "Primary passage is instructional; represented its learning themes without turning them into fixed traits. Table HOUSE field clause adds personal realization, self-understanding, and personality expression.",
+          "Used only the HOUSE field description; no sign-manner language was imported."
+        ]
+      },
+      "2": {
+        "pt": "com a Parte da Fortuna na Casa 2, o campo envolve valores pessoais e uso de talentos, além de realizações práticas ligadas à segurança. também entram em foco reconhecer seu valor e separar o que é seu do que pertence aos outros.",
+        "en": "with the Part of Fortune in House 2, the field involves personal values and the use of talents, along with practical accomplishments connected to security. recognizing your own worth and distinguishing what is yours from what belongs to others also come into focus.",
+        "keywords": {
+          "pt": [
+            "valores pessoais",
+            "talentos",
+            "realização prática",
+            "segurança",
+            "valor próprio"
+          ],
+          "en": [
+            "personal values",
+            "talents",
+            "practical accomplishment",
+            "security",
+            "self-worth"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2739,
+            "to": 2741
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2845,
+            "to": 2846
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2848,
+            "to": 2849
+          }
+        ],
+        "reviewNotes": [
+          "Recast the primary learning directives as topics in focus. The HOUSE column includes personal values/talents and practical accomplishments/security.",
+          "The separate SIGN manner column was excluded; no Taurus manner is attributed to House 2."
+        ]
+      },
+      "3": {
+        "pt": "com a Parte da Fortuna na Casa 3, sua realização se associa ao conhecimento, à interação, à comunicação e à mobilidade. sua segurança se liga ao pensamento, e não às coisas materiais, e distinguir sonho e realidade aparece como tema de aprendizado.",
+        "en": "with the Part of Fortune in House 3, your fulfillment is associated with knowledge, interaction, communication, and mobility. your security is linked to thought rather than material things, and distinguishing dreams from reality appears as a learning theme.",
+        "keywords": {
+          "pt": [
+            "conhecimento",
+            "interação",
+            "comunicação",
+            "mobilidade",
+            "pensamento"
+          ],
+          "en": [
+            "knowledge",
+            "interaction",
+            "communication",
+            "mobility",
+            "thought"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2743,
+            "to": 2744
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2856,
+            "to": 2856
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2858,
+            "to": 2858
+          }
+        ],
+        "reviewNotes": [
+          "Recast the primary distinction between thought and material things, and between dream and reality, as interpretive themes rather than directives. The HOUSE field supplies knowledge, interaction, communication, and mobility.",
+          "Excluded the instruction not to judge others; did not import Gemini sign manner."
+        ]
+      },
+      "4": {
+        "pt": "com a Parte da Fortuna na Casa 4, sua realização se associa à privacidade, às pessoas queridas e a um lar onde você se sente bem. concretizar em vez de apenas sonhar e ter princípios sólidos são temas de aprendizado, com possível frustração quando há precipitação.",
+        "en": "with the Part of Fortune in House 4, your fulfillment is associated with privacy, people you care about, and a home where you feel at ease. making things happen rather than only dreaming and having firm principles are learning themes, with possible frustration when acting hastily.",
+        "keywords": {
+          "pt": [
+            "privacidade",
+            "lar",
+            "pessoas queridas",
+            "realização",
+            "princípios sólidos"
+          ],
+          "en": [
+            "privacy",
+            "home",
+            "loved ones",
+            "realization",
+            "firm principles"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2746,
+            "to": 2747
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2866,
+            "to": 2868
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2870,
+            "to": 2871
+          }
+        ],
+        "reviewNotes": [
+          "Preserved the source's qualification that haste can lead to frustration; expressed the directive about realizing rather than only dreaming as a theme, not advice. The HOUSE field supports privacy, loved ones, and a comfortable home.",
+          "The interleaved Cancer SIGN heading at 2869 was not treated as a House 4 meaning.",
+          "The unambiguous solid-principles clause is adopted; no modifier is transferred from principles to objectives."
+        ]
+      },
+      "5": {
+        "pt": "com a Parte da Fortuna na Casa 5, sua realização se associa à criação, à autoexpressão, ao prazer e ao entendimento com filhos, quando houver. desejos e projetos aparecem associados à discrição e à seletividade.",
+        "en": "with the Part of Fortune in House 5, your fulfillment is associated with creation, self-expression, pleasure, and understanding with children, where relevant. desires and projects are associated with discretion and selectivity.",
+        "keywords": {
+          "pt": [
+            "criação",
+            "autoexpressão",
+            "prazer",
+            "discrição",
+            "seletividade"
+          ],
+          "en": [
+            "creation",
+            "self-expression",
+            "pleasure",
+            "discretion",
+            "selectivity"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2749,
+            "to": 2750
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2882,
+            "to": 2886
+          }
+        ],
+        "reviewNotes": [
+          "The HOUSE field supports creation, self-expression, pleasure, giving, and relating to children. The primary caution about desires and projects is described as discretion/selectivity, without turning its claim that desires tend to come true into a guarantee.",
+          "The interleaved Leo SIGN label at 2884 was not used as a house meaning.",
+          "The reflexive giving clause at2884-2885 is not recast as giving of oneself to others. It is omitted from copy/keywords; the other clear house-field themes suffice. Children remain a conditional topic, not a birth prediction."
+        ]
+      },
+      "6": {
+        "pt": "com a Parte da Fortuna na Casa 6, sua realização se associa ao trabalho, à saúde e a pequenas ações diárias significativas. o esforço por um alvo e o afastamento dele podem aparecer como uma tensão, junto do aperfeiçoamento de suas habilidades naturais e da confiança na intuição.",
+        "en": "with the Part of Fortune in House 6, your fulfillment is associated with work, health, and meaningful small daily actions. effort toward a goal and moving farther from it may appear as a tension, alongside refinement of your natural abilities and trust in intuition.",
+        "keywords": {
+          "pt": [
+            "trabalho",
+            "habilidades",
+            "saúde",
+            "ações diárias",
+            "aperfeiçoamento",
+            "intuição"
+          ],
+          "en": [
+            "work",
+            "abilities",
+            "health",
+            "daily actions",
+            "refinement",
+            "intuition"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2752,
+            "to": 2753
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2896,
+            "to": 2900
+          }
+        ],
+        "reviewNotes": [
+          "The primary passage's absolute-sounding effort/goal statement is kept as a possible tension, not a guaranteed failure; its themes of natural abilities and intuition are retained without advice. The HOUSE field includes work, capacity, health as a domain, and meaningful/fulfilling daily actions, not health outcomes.",
+          "The interleaved Virgo SIGN label at 2898 was ignored; no Virgo manner was imported.",
+          "The source states distance from a goal, not merely feeling distant; no subjective-experience claim is substituted. The absolute statement is framed as a possible tension without guaranteed failure."
+        ]
+      },
+      "7": {
+        "pt": "você pode se voltar bastante para a felicidade das outras pessoas, às vezes com dificuldade para reconhecer o que realmente deseja. nas relações, entram em foco a escolha de uma companhia que não apenas afaste a solidão e a facilidade de ser influenciado.",
+        "en": "you may focus strongly on other people's happiness, sometimes finding it difficult to recognize what you truly want. in relationships, choosing companionship that is about more than avoiding loneliness and susceptibility to influence also come into focus.",
+        "keywords": {
+          "pt": [
+            "felicidade alheia",
+            "foco nos outros",
+            "desejos próprios",
+            "companhia",
+            "solidão"
+          ],
+          "en": [
+            "others' happiness",
+            "focus on others",
+            "personal desires",
+            "companionship",
+            "loneliness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2755,
+            "to": 2757
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2911,
+            "to": 2913
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2915,
+            "to": 2917
+          }
+        ],
+        "reviewNotes": [
+          "The house-specific passage describes concern for others' happiness, greater concern for others than oneself, difficulty knowing one's own wishes, and susceptibility to influence. The table's house-column wording adds seeking a suitable person rather than using someone to avoid loneliness; imperative phrasing is not carried over as advice. No acceptance motive is attributed to House 7.",
+          "The table context at 2822-2830 distinguishes house field of experience from sign manner. The Libra sign-column material at 2914 and 2919-2923 is excluded. The wording does not promise relationship outcomes."
+        ]
+      },
+      "8": {
+        "pt": "você pode encontrar sentido na introspecção profunda e na investigação dos mistérios fundamentais da vida. humildade, flexibilidade e menor apego podem fazer parte desse modo de lidar com o que encontra.",
+        "en": "you may find meaning in deep introspection and investigating life's fundamental mysteries. humility, flexibility and less possessiveness may be part of how you engage with what you encounter.",
+        "keywords": {
+          "pt": [
+            "introspecção",
+            "mistérios",
+            "humildade",
+            "flexibilidade",
+            "desapego"
+          ],
+          "en": [
+            "introspection",
+            "mysteries",
+            "humility",
+            "flexibility",
+            "non-possessiveness"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2759,
+            "to": 2760
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2927,
+            "to": 2931
+          }
+        ],
+        "reviewNotes": [
+          "The house-specific prose advises humility, flexibility and non-possessiveness, saying that giving up some ego may make a person happier. The table's house field emphasizes introspection and investigating life's basic mysteries. Advice is rendered as possible themes, not commands or guaranteed happiness.",
+          "The table context at 2822-2830 distinguishes house field from sign manner; Scorpio sign-column instructions at 2933-2937 are excluded. The source's mention of death at 2930-2931 is not turned into a prediction or outcome."
+        ]
+      },
+      "9": {
+        "pt": "com a Parte da Fortuna na Casa 9, sua realização se associa a ampliar a compreensão do mundo por viagens, filosofia e religião. viver e trabalhar no cotidiano, fazer o necessário sem esperar recompensas e ter prazer nas próprias realizações aparecem como temas de aprendizado.",
+        "en": "with the Part of Fortune in House 9, your fulfillment is associated with expanding your understanding of the world through travel, philosophy, and religion. everyday life and work, doing what needs to be done without expecting rewards, and enjoying your accomplishments appear as learning themes.",
+        "keywords": {
+          "pt": [
+            "compreensão do mundo",
+            "viagens",
+            "filosofia",
+            "religião",
+            "cotidiano",
+            "aprendizado"
+          ],
+          "en": [
+            "understanding the world",
+            "travel",
+            "philosophy",
+            "religion",
+            "everyday life",
+            "learning"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2762,
+            "to": 2763
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2941,
+            "to": 2943
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2945,
+            "to": 2946
+          }
+        ],
+        "reviewNotes": [
+          "Mat clarified on2026-11-16: retain both source functions as distinct field of fulfillment and learning theme. The everyday-life passage at2762-2763 is not silently substituted for the table field at2941-2946, nor is a new balancing mechanism invented.",
+          "The table HOUSE field is used; the Sagittarius SIGN manner at2948-2951 is excluded. No prediction, reward promise or practice instruction is added."
+        ]
+      },
+      "10": {
+        "pt": "você pode desejar aceitação da comunidade ou de pessoas em posição de autoridade, dedicando esforço constante ao que busca. sua contribuição ao mundo e um rumo profissional que faça sentido para você também são temas de realização.",
+        "en": "you may seek acceptance from the community or people in positions of authority, applying sustained effort to what you pursue. your contribution to the world and a professional direction that feels meaningful to you are also themes of fulfillment.",
+        "keywords": {
+          "pt": [
+            "aceitação",
+            "comunidade",
+            "autoridade",
+            "esforço",
+            "contribuição",
+            "realização profissional"
+          ],
+          "en": [
+            "acceptance",
+            "community",
+            "authority",
+            "effort",
+            "contribution",
+            "professional fulfillment"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2765,
+            "to": 2766
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2955,
+            "to": 2955
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2958,
+            "to": 2959
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2963,
+            "to": 2964
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2966,
+            "to": 2966
+          }
+        ],
+        "reviewNotes": [
+          "The house-specific source describes desire for acceptance by community or authority, constant effort, and a view that right and wrong are not absolute. Its final OCR-corrupt clause is excluded. The house-column table material connects fulfillment with contribution to the world and professional concerns with personal fulfillment; wording is qualified rather than made a guarantee.",
+          "The table context at 2822-2830 distinguishes house field from sign manner. Table OCR interleaves the Capricorn sign column; only house-column fragments at 2955, 2958-2959, 2963-2964 and 2966 are cited. Sign-column text at 2956-2957, 2960, 2962, 2965 and 2967 is excluded."
+        ]
+      },
+      "11": {
+        "pt": "você pode sentir inquietação e a impressão recorrente de que ainda há algo a fazer ou criar. amizades, projetos coletivos e a busca de soluções com outras pessoas podem ocupar esse campo da sua vida.",
+        "en": "you may feel restless and repeatedly sense that there is still something to do or create. friendships, collective projects and seeking solutions with other people may occupy this area of your life.",
+        "keywords": {
+          "pt": [
+            "inquietação",
+            "criação",
+            "amizades",
+            "projetos coletivos",
+            "soluções conjuntas"
+          ],
+          "en": [
+            "restlessness",
+            "creation",
+            "friendships",
+            "collective projects",
+            "shared solutions"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2768,
+            "to": 2769
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2971,
+            "to": 2975
+          }
+        ],
+        "reviewNotes": [
+          "The house-specific prose says energy is unlimited and that it provokes restlessness, with a constant sense that something remains to be done or created. The absolute claim of unlimited energy is omitted, and the source's separate instruction not to feel trapped by social restrictions is not converted into a causal condition.",
+          "The table's house-column material addresses friends, projects, relating to people and finding solutions together. Its Aquarius sign-column language at 2977-2982 is excluded; no outcome or guaranteed success is claimed."
+        ]
+      },
+      "12": {
+        "pt": "períodos de recolhimento podem favorecer a reflexão sobre sua vida interior, seus sonhos e imagens. esse espaço também pode ajudar você a ponderar seus vínculos e objetivos, mantendo atenção às pessoas que dependem de você.",
+        "en": "periods of solitude may support reflection on your inner life, dreams and images. this space may also help you weigh your connections and goals while remaining mindful of people who depend on you.",
+        "keywords": {
+          "pt": [
+            "recolhimento",
+            "vida interior",
+            "sonhos",
+            "imagens",
+            "vínculos",
+            "objetivos"
+          ],
+          "en": [
+            "solitude",
+            "inner life",
+            "dreams",
+            "images",
+            "connections",
+            "goals"
+          ]
+        },
+        "src": [
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2771,
+            "to": 2773
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2986,
+            "to": 2988
+          },
+          {
+            "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+            "from": 2990,
+            "to": 2992
+          }
+        ],
+        "reviewNotes": [
+          "The house-specific passage says periods of isolation can be beneficial for weighing relationships and objectives, and cautions against thinking only of oneself. Its final OCR-damaged wording is not interpreted beyond the clear reference to people who depend on you.",
+          "The house-column table associates fulfillment with inner understanding, dreams and images, with some reserve or isolation. Pisces sign-column manner clauses are excluded. This is framed as a possible reflective use of solitude, not relationship advice or an outcome claim."
+        ]
+      }
+    }
   }
 }

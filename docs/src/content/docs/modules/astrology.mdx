@@ -21,6 +21,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ```typescript
 import {
+  getPointHouseDescription,
+  getPointHouseDescriptionEntry,
   getPointSignDescription,
   getPointSignDescriptionEntry,
   getPointDescription,
@@ -67,6 +69,8 @@ getPointDescription('parsFortunae', 'pt-BR'); // Part of Fortune concept
 getPointDescriptionEntry('parsFortunae')?.src;
 getPointSignDescription('parsFortunae', 'Aries', 'pt-BR');
 getPointSignDescriptionEntry('parsFortunae', 'Aries')?.src;
+getPointHouseDescription('parsFortunae', 9, 'pt-BR');
+getPointHouseDescriptionEntry('parsFortunae', 9)?.src;
 
 getPlanetSignDescription('sun', 'Aries');          // English (default)
 getPlanetSignDescription('sun', 'Aries', 'pt-BR'); // Portuguese
@@ -97,11 +101,13 @@ The Part of Fortune concept uses `parsFortunae`, matching `chart.nodes.parsFortu
 It describes a virtual point; it does not identify that point with the complete
 Wheel of Fortune symbol. Fortune-sign profiles use the same point key and title-case sign names.
 They describe the manner of expression associated with that placement.
+Fortune-house profiles describe the field of experience and use integer house
+numbers from 1 to 12, independently of the sign lookup.
 These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 12 Fortune-sign profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house

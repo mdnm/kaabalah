@@ -43,8 +43,12 @@ export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPoint = "parsFortunae";
 export type PointDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
+export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly pointHouses?: Readonly<
+    Partial<Record<DescriptionPoint, Readonly<Partial<Record<DescriptionHouseNumber, PointHouseDescriptionEntry>>>>>
+  >;
   readonly pointSigns?: Readonly<
     Partial<Record<DescriptionPoint, Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>>>
   >;
@@ -284,5 +288,28 @@ export function getPointSignDescription(
   language?: string,
 ): string | undefined {
   const entry = getPointSignDescriptionEntry(point, sign);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Point-house fields remain separate from general point and house profiles. */
+export function getPointHouseDescriptionEntry(
+  point: DescriptionPoint,
+  house: number,
+): PointHouseDescriptionEntry | undefined {
+  if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  const points = ASTROLOGY_DESCRIPTIONS.pointHouses;
+  if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
+  const houses = points[point];
+  if (!houses || !Object.prototype.hasOwnProperty.call(houses, house)) return undefined;
+  return houses[house as DescriptionHouseNumber];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getPointHouseDescription(
+  point: DescriptionPoint,
+  house: number,
+  language?: string,
+): string | undefined {
+  const entry = getPointHouseDescriptionEntry(point, house);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
