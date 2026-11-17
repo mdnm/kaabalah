@@ -873,3 +873,71 @@ None. All 36 decans printed and legible.
 - Concept entry: A3 114-122 and A5 570-574 are short, partly keyword-level statements; hedged phrasing used.
 - Every decan entry paraphrases one printed paragraph of generic modern style (the book also prints a word cloud per sign, deliberately ignored for keywords). Keywords come from the paragraph text.
 - Excluded from entries: health/healing statements (Virgo I "saúde e bem-estar", Scorpio III "regeneração e cura") and anything about the angels.
+
+---
+
+## Batch 5 second read: Second-reader review: bilingual astrology descriptions
+
+### dignities-priority (26 entries checked)
+
+Descendant book wording verified against the printed page (PDF p. 503, "Descendente"), since the OCR of that page is garbled; all five book sentences used (Leo, Taurus, Gemini, Virgo, Libra) match the print. Dignity effect words checked against the book's Sun/Moon dignity paragraphs (exaltation "de maneira elevada", exile "menos confortável", fall "desafiada").
+
+- decanConcept: B. "subtom do signo" is not in the cited classes or elsewhere in modulo 4.
+- houseCuspSigns.6.Cancer: B. "reter o que sente" turns the sheet's bodily "retenção" into emotional holding-in; unsupported.
+
+### decans (36 entries checked)
+
+Every decan read against the printed page image (pp. 70, 74, 78, 82, 86, 90, 94, 98, 102, 106, 110, 114). Sign, decan number, ruler and paragraph match in all 36; no invocations or angel practices.
+
+- decans.Pisces.2: B. EN "you may feel fortunate" does not match PT "ter sorte" or the print ("naturalmente sortudos").
+- decans.Virgo.2: C. The print adds diplomacy and charm to interactions, not to service and care.
+
+### sun-ascendant (144 entries checked)
+
+All 144 Sun/Ascendant cells present. Each citation was mapped by script to its "ASCENDENTE EM" block and Sun row in aula-7; every citation lands in its own cell (the two flagged spans, Virgo.Gemini 141-144 and Sagittarius.Sagittarius 423-424, are a repeated block header and an inline row start, not wrong cells). Every text was then read against its cell. Fidelity/infidelity, marriage and sexuality outcomes are dropped or softened throughout.
+
+- sunAscendantSigns.Taurus.Pisces: A. First clause comes from the Pisces-Sun row of the Taurus-Ascendant block (aula-7 118-119), i.e. the swapped cell, and names a Taurus Ascendant.
+- sunAscendantSigns.Gemini.Gemini: C. Keyword "comunicação" not in the cell.
+
+### degrees-1 (120 entries checked: Aries, Taurus, Gemini, Cancer 1-30)
+
+All 360 degree citations across the three degree packets were checked by script against the "<Signo> NN." markers in aula-11: every entry cites its own degree span (degree 30 spans stop before the next sign's header, which is fine), and every source "Ou –" image has an "ou" image in the entry. Each text was then read against its lines. No wrong degree, misattached "ou" image, missing second image or invented detail found in this packet.
+
+- symbolicDegrees.Aries.17: C. PT ungrammatical ("mostra um jovem estudante ... passeia").
+- symbolicDegrees.Aries.18: C. PT/EN ungrammatical ("mostra um homem e uma mulher ... apertam as mãos").
+- symbolicDegrees.Aries.25: C. PT ungrammatical ("mostra um cavaleiro que dá impressão de força monta").
+- symbolicDegrees.Taurus.6: C. Extra closing sentence repeats the meaning and, after the "ou" image, reads as if it belonged to the second image.
+- symbolicDegrees.Taurus.7: C. EN "beautiful, graceful" vs PT "bela" only.
+
+### degrees-2 (120 entries checked: Leo, Virgo, Libra, Scorpio 1-30)
+
+- symbolicDegrees.Libra.5: B. In the source the walker falls into the lake; EN makes the woman fall, PT is ambiguous.
+- symbolicDegrees.Leo.6: C. EN "gauntlet hiding a dagger" vs PT/source "from which a dagger comes out".
+- symbolicDegrees.Leo.10: C. EN "deadly action" vs PT "sua ação".
+- symbolicDegrees.Virgo.25: C. EN "cooing" not in PT or source.
+- symbolicDegrees.Libra.29: C. EN detail "through the branches" missing in PT.
+- symbolicDegrees.Scorpio.9: C. EN detail "barely feathered" missing in PT.
+
+### degrees-3 (120 entries checked: Sagittarius, Capricorn, Aquarius, Pisces 1-30)
+
+(Sagittarius.12 has no "Ou –" dash in the source line, "Ou um homem montado em um bode", so the script flag was a false positive; the entry is right.)
+
+- symbolicDegrees.Aquarius.23: B. EN "side by side" mistranslates "de frente" (head-on).
+- symbolicDegrees.Pisces.18: B. In the source the horse falls; EN makes the rider fall, PT ambiguous.
+- symbolicDegrees.Sagittarius.16: C. PT/EN ungrammatical.
+- symbolicDegrees.Sagittarius.19: C. PT/EN ungrammatical.
+- symbolicDegrees.Pisces.16: C. PT agreement typo "atenta".
+- symbolicDegrees.Pisces.26: C. EN drops "with a shield".
+
+### Systematic patterns
+
+- Sun/Ascendant: cell selection is reliable (all 144 citations land in their own cell). The one real cell error (Taurus.Pisces) came from the source's Taurus-Ascendant block, whose Pisces row and the Pisces-Ascendant block's Taurus row share the same tail, so the writer merged the two. Mirror pairs (X.Y and Y.X) are often word-for-word identical. That is because the source repeats the text, not because of copying.
+- Symbolic degrees: degree spans and "ou" images are attached correctly throughout, and nothing is invented. The remaining issues are (a) PT sentences that bolt a finite verb onto "o grau simbólico mostra ..." and so become ungrammatical, (b) small EN/PT asymmetries where one language kept a source detail the other dropped, and (c) two cases where an ambiguous Portuguese subject ("X ... cai") was given the wrong referent in EN (Libra.5, Pisces.18).
+- Some source "ou" images look shifted by one degree (e.g. Gemini 15/16, Leo 25/26, Sagittarius 14/15). The entries follow the source faithfully, so I flagged nothing, but the owner may want to know about the source itself.
+- Dignities/house cusps: the class-first rule is respected. House-6 entries for Cancer, Scorpio, Sagittarius, Aquarius and Pisces have no class line (only the keyword sheet). They are body-care tendencies, not diagnoses, but they treat organs unevenly: Aquarius and Pisces name body parts, Scorpio and Sagittarius do not.
+
+### Not verified / limits
+
+- The classes give no Descendant or house-cusp wording for the book's DC adjectives. Those adjectives were checked against the printed book page (PDF p. 503), not the classes.
+- "Exaltação ... qualidades favorecidas" is a paraphrase of the book's "de maneira elevada" (Sun/Moon paragraphs); I accepted it as the allowed book effect wording.
+- Every entry in every packet was checked; nothing was sampled.

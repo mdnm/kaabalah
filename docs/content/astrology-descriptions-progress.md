@@ -32,4 +32,4 @@ Approved batches1-3 complete:431 canonical bilingual entries. See astrology-desc
 - Class-versus-class points on the Vertex (A18, A13:1489): Mat accepted all of them as they stand; no entry changes. Lilith by house through the natural sign is confirmed by Mat. Lilith aspects have no source and were not authored.
 - CLI: `astrology:describe` looks up every description family by kind and keys (src/cli/commands/astrology-describe.ts).
 - Not started: timing, synastry, Chinese astrology, Priapus, sign transitions, five-degree angel sectors, Vertex ruler-house scenarios.
-
+- Second read of batch 5 (566 entries, every one checked): 23 findings (1 wrong cell in sunAscendantSigns.Taurus.Pisces, 6 overreach or mismatch, 16 cosmetic), all applied. Report at the end of the open-issues file.

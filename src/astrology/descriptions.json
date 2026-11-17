@@ -18076,18 +18076,18 @@
         ]
       },
       "Cancer": {
-        "pt": "com Câncer na cúspide da casa 6, você pode ligar o cuidado do corpo e da rotina às suas emoções, com tendência a reter o que sente.",
-        "en": "with Cancer on the cusp of house 6, you may link care of your body and routine to your emotions, with a tendency to hold in what you feel.",
+        "pt": "com Câncer na cúspide da casa 6, você pode ligar o cuidado do corpo e da rotina às suas emoções, com atenção ao estômago.",
+        "en": "with Cancer on the cusp of house 6, you may link care of your body and routine to your emotions, with attention to the stomach.",
         "keywords": {
           "pt": [
             "emoções e corpo",
             "cuidado do corpo",
-            "retenção"
+            "estômago"
           ],
           "en": [
             "emotions and body",
             "care of the body",
-            "holding in"
+            "stomach"
           ]
         },
         "src": [
@@ -18099,7 +18099,8 @@
         ],
         "reviewNotes": [
           "New entry (owner ruled house 6 may concern health). Keyword-only, from H house-6 cell, as a tendency about care of the body, habits and sensitivities; no diagnosis or prediction.",
-          "H: 'Saúde ligada às emoções, estômago, retenção'; the organ (stomach) left out. No class prose."
+          "H: 'Saúde ligada às emoções, estômago, retenção'; the organ (stomach) left out. No class prose.",
+          "Second read 2026-11-17 (B): \"com tendência a reter o que sente\" reinterprets the keyword sheet's bodily \"retenção\" (listed beside \"estômago\") as emotional holding-in; no class line supports it. Corrected: pt, en, keywords, src."
         ]
       },
       "Leo": {
@@ -36351,20 +36352,20 @@
         ]
       },
       "Pisces": {
-        "pt": "com Sol em Touro e Ascendente em Peixes, você pode receber do Ascendente em Touro estabilidade e realismo na natureza aérea e confusa de Peixes, com dons artísticos e amor ao belo, à natureza e às tradições. pode aumentar o medo da solidão e, no trabalho, a constância e a teimosia.",
-        "en": "with the Sun in Taurus and the Ascendant in Pisces, you may receive from the Taurus Ascendant stability and realism for the airy, confused nature of Pisces, with artistic gifts and love of beauty, nature and tradition. the fear of loneliness may grow, and at work, constancy and stubbornness.",
+        "pt": "com Sol em Touro e Ascendente em Peixes, você pode ter dons artísticos ampliados, assim como o amor ao belo, à natureza e às tradições. o medo da solidão pode aumentar e, no trabalho, você pode se tornar mais constante e teimoso.",
+        "en": "with the Sun in Taurus and the Ascendant in Pisces, you may have heightened artistic gifts, as well as love of beauty, nature and tradition. the fear of loneliness may grow and, at work, you may become more constant and stubborn.",
         "keywords": {
           "pt": [
-            "estabilidade",
             "dons artísticos",
             "amor ao belo",
-            "medo da solidão"
+            "medo da solidão",
+            "constância"
           ],
           "en": [
-            "stability",
             "artistic gifts",
             "love of beauty",
-            "fear of loneliness"
+            "fear of loneliness",
+            "constancy"
           ]
         },
         "src": [
@@ -36375,7 +36376,8 @@
           }
         ],
         "reviewNotes": [
-          "Adopted from lines 539-541 of block 'Ascendente em Peixes', row TOURO (Sun)."
+          "Adopted from lines 539-541 of block 'Ascendente em Peixes', row TOURO (Sun).",
+          "Second read 2026-11-17 (A): first clause (\"receber do Ascendente em Touro estabilidade e realismo na natureza aérea e confusa de Peixes\") is taken from the Pisces-Sun row of the ASCENDENTE EM TOURO block (aula-7 118-119, i.e. Pisces.Taurus) and contradicts this cell's Pisces Ascendant; the cited cell (539-541) has only the artistic gifts, love of beauty, fear of loneliness and constancy. Corrected: pt, en, keywords, src."
         ]
       }
     },
@@ -36441,13 +36443,13 @@
         "en": "with the Sun in Gemini and the Ascendant in Gemini, you may have the traits of Gemini accentuated, with possibly strong gifts for art and cultural activities. in relationships, there may be a tendency to look for new experiences.",
         "keywords": {
           "pt": [
-            "comunicação",
+            "traços acentuados",
             "arte",
             "cultura",
             "novidade"
           ],
           "en": [
-            "communication",
+            "accentuated traits",
             "art",
             "culture",
             "novelty"
@@ -36461,7 +36463,8 @@
           }
         ],
         "reviewNotes": [
-          "Adopted from lines 131-133 of block 'Ascendente em Gêmeos', row GÊMEOS (Sun). Excluded: constantly changing partners."
+          "Adopted from lines 131-133 of block 'Ascendente em Gêmeos', row GÊMEOS (Sun). Excluded: constantly changing partners.",
+          "Second read 2026-11-17 (C): keyword \"comunicação\" / \"communication\" is not in the cell (aula-7 131-133), which speaks of art, culture and new experiences. Corrected: keywords."
         ]
       },
       "Cancer": {
@@ -40204,7 +40207,7 @@
         ]
       },
       "17": {
-        "pt": "o grau simbólico mostra um jovem estudante com um livro na mão passeia por um caminho sombreado, com os raios do sol passando entre os ramos e iluminando seu rosto; ou um homem ricamente vestido, em pé e imóvel.",
+        "pt": "o grau simbólico mostra um jovem estudante que passeia com um livro na mão por um caminho sombreado, com os raios do sol passando entre os ramos e iluminando seu rosto; ou um homem ricamente vestido, em pé e imóvel.",
         "en": "the symbolic degree shows a young student with a book in hand strolling along a shaded path, the sun's rays passing through the branches and lighting his face; or a richly dressed man, standing still.",
         "keywords": {
           "pt": [
@@ -40227,11 +40230,13 @@
             "to": 412
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): PT is ungrammatical (\"mostra um jovem estudante ... passeia\"); the image itself is faithful. Corrected: pt."
+        ]
       },
       "18": {
-        "pt": "o grau simbólico mostra um homem e uma mulher, ambos em pé, apertam as mãos, com ar bom e doce, e o homem esboça um gesto de proteção; ou uma mulher sentada em um trono com a mão direita levantada.",
-        "en": "the symbolic degree shows a man and a woman, both standing, shake hands with a kind, gentle air, the man making a gesture of protection; or a woman seated on a throne with her right hand raised.",
+        "pt": "o grau simbólico mostra um homem e uma mulher, ambos em pé, que se apertam as mãos com ar bom e doce, enquanto o homem esboça um gesto de proteção; ou uma mulher sentada em um trono com a mão direita levantada.",
+        "en": "the symbolic degree shows a man and a woman, both standing, shaking hands with a kind, gentle air, while the man makes a gesture of protection; or a woman seated on a throne with her right hand raised.",
         "keywords": {
           "pt": [
             "homem e mulher",
@@ -40253,7 +40258,9 @@
             "to": 415
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): PT and EN are ungrammatical (\"mostra um homem e uma mulher ... apertam as mãos\" / \"shows a man and a woman ... shake hands\"); the image itself is faithful. Corrected: pt, en."
+        ]
       },
       "19": {
         "pt": "o grau simbólico mostra um velho de roupão gasto, em um interior pobre, que aperta nervosamente contra o peito dois sacos de pano nos quais se lê a palavra Ouro; ou um homem em pé com as mãos estendidas para um cofre de onde escapa ouro.",
@@ -40418,7 +40425,7 @@
         ]
       },
       "25": {
-        "pt": "o grau simbólico mostra um cavaleiro que dá impressão de força monta um cavalo bravo que mantém firmemente e olha com desprezo um ser malformado, de cabelos desordenados, montado em um carneiro, que se esforça para derrubá-lo; ou um homem de cabelos eriçados montado em um carneiro.",
+        "pt": "o grau simbólico mostra um cavaleiro que dá impressão de força, montado em um cavalo bravo que mantém firmemente, olhando com desprezo um ser malformado, de cabelos desordenados, montado em um carneiro, que se esforça para derrubá-lo; ou um homem de cabelos eriçados montado em um carneiro.",
         "en": "the symbolic degree shows a rider giving an impression of strength, mounted on a spirited horse he holds firmly, looking with contempt at a misshapen being with unruly hair riding a ram, who strives to throw him to the ground; or a man with bristling hair riding a ram.",
         "keywords": {
           "pt": [
@@ -40442,7 +40449,8 @@
           }
         ],
         "reviewNotes": [
-          "Condensed: secondary details of the first image omitted; both images kept."
+          "Condensed: secondary details of the first image omitted; both images kept.",
+          "Second read 2026-11-17 (C): PT is ungrammatical (\"mostra um cavaleiro que dá impressão de força monta um cavalo\"); the image itself is faithful. Corrected: pt."
         ]
       },
       "26": {
@@ -40716,8 +40724,8 @@
         ]
       },
       "6": {
-        "pt": "o grau simbólico mostra uma sala de conferência em que um homem, no apogeu de sua glória, está no estrado com um rolo de papel na mão e a fronte cingida de louro, e na beira do estrado um homem de três cabeças, cada uma olhando para um lado, o que significa a vasta inteligência do sujeito; ou um homem de três cabeças estendendo a mão direita. isso pode indicar uma vasta inteligência.",
-        "en": "the symbolic degree shows a lecture hall in which a man at the height of his glory stands on the platform with a paper scroll in hand and brow wreathed in laurel, and at the edge of the platform a three-headed man, each head looking a different way, signifying the subject's vast intelligence; or a three-headed man extending his right hand. this may indicate a vast intelligence.",
+        "pt": "o grau simbólico mostra uma sala de conferência em que um homem, no apogeu de sua glória, está no estrado com um rolo de papel na mão e a fronte cingida de louro, e na beira do estrado um homem de três cabeças, cada uma olhando para um lado, o que significa a vasta inteligência do sujeito; ou um homem de três cabeças estendendo a mão direita.",
+        "en": "the symbolic degree shows a lecture hall in which a man at the height of his glory stands on the platform with a paper scroll in hand and brow wreathed in laurel, and at the edge of the platform a three-headed man, each head looking a different way, signifying the subject's vast intelligence; or a three-headed man extending his right hand.",
         "keywords": {
           "pt": [
             "estrado",
@@ -40741,11 +40749,12 @@
         ],
         "reviewNotes": [
           "Condensed: secondary details of the first image omitted; both images kept.",
-          "Second sentence adopted because the source itself states the three heads signify vast intelligence."
+          "Second sentence adopted because the source itself states the three heads signify vast intelligence.",
+          "Second read 2026-11-17 (C): the closing sentence \"isso pode indicar uma vasta inteligência\" repeats the meaning already stated and, placed after the \"ou\" image, reads as if the second image carried it; the source attaches it to the three-headed man of the first image only. Corrected: pt, en."
         ]
       },
       "7": {
-        "pt": "o grau simbólico mostra um canto de parque onde pasta uma vaca doméstica, enquanto mais longe uma bela mulher se admira em um espelho de mão; ou uma bela mulher em pé.",
+        "pt": "o grau simbólico mostra um canto de parque onde pasta uma vaca doméstica, enquanto mais longe uma bela e graciosa mulher se admira em um espelho de mão; ou uma bela mulher em pé.",
         "en": "the symbolic degree shows a corner of a park where a domestic cow grazes while farther off a beautiful, graceful woman admires herself in a hand mirror; or a beautiful standing woman.",
         "keywords": {
           "pt": [
@@ -40768,7 +40777,9 @@
             "to": 484
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN has \"beautiful, graceful woman\" where PT has only \"bela mulher\" (source: \"bela e graciosa\"). Corrected: pt."
+        ]
       },
       "8": {
         "pt": "o grau simbólico mostra um velho que se esforça para retirar ramos de um rio engrossado pelas chuvas, enquanto sua mulher, sentada em uma grande pedra, olha sem ver à sua volta, absorta pela dificuldade dele; ou uma mulher triste sentada sobre um monte de pedras.",
@@ -43134,7 +43145,7 @@
       },
       "6": {
         "pt": "o grau simbólico mostra um homem em traje de esgrimista, sem máscara, testando a flexibilidade de uma espada desembainhada, com dois sabres e uma manopla de ferro de onde sai um punhal no chão; ou um homem tendo na mão direita um gládio desembainhado.",
-        "en": "the symbolic degree shows a man in fencing dress, without a mask, testing the flexibility of a drawn sword, with two sabres and an iron gauntlet hiding a dagger on the ground; or a man holding a drawn gladius in his right hand.",
+        "en": "the symbolic degree shows a man in fencing dress, without a mask, testing the flexibility of a drawn sword, with two sabres and an iron gauntlet from which a dagger emerges on the ground; or a man holding a drawn gladius in his right hand.",
         "keywords": {
           "pt": [
             "esgrimista",
@@ -43156,7 +43167,9 @@
             "to": 781
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN \"an iron gauntlet hiding a dagger\" does not match PT \"de onde sai um punhal\" (source: a dagger comes out of the gauntlet treacherously). Corrected: en."
+        ]
       },
       "7": {
         "pt": "o grau simbólico mostra um homem sentado no dorso de um leão, com um cetro cuja ponta tem um diamante que cintila como estrela; ou um homem a cavalo sobre um leão.",
@@ -43238,7 +43251,7 @@
       },
       "10": {
         "pt": "o grau simbólico mostra um esqueleto pendurado num galho de grande carvalho quebrado pela tempestade e, diante dele, o Tempo imóvel com sua foice, perplexo porque sua ação chega tarde demais; ou um esqueleto armado com uma foice.",
-        "en": "the symbolic degree shows a skeleton hanging from the broken branch of a great oak felled by a storm and, before it, Time standing still with his scythe, perplexed because his deadly action comes too late; or a skeleton armed with a scythe.",
+        "en": "the symbolic degree shows a skeleton hanging from the broken branch of a great oak felled by a storm and, before it, Time standing still with his scythe, perplexed because his action comes too late; or a skeleton armed with a scythe.",
         "keywords": {
           "pt": [
             "esqueleto",
@@ -43260,7 +43273,9 @@
             "to": 795
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN keeps \"deadly action\" while PT says only \"sua ação\"; align the two (the source has \"ação mortífera\"). Corrected: en."
+        ]
       },
       "11": {
         "pt": "o grau simbólico mostra duas mulheres em trajes leves estendendo suas taças para serem enchidas por um homem sentado diante de uma mesa farta; ou uma mulher de pé, descobrindo o colo.",
@@ -44394,7 +44409,7 @@
       },
       "25": {
         "pt": "o grau simbólico mostra duas mulheres passeando num belo jardim, inclinadas uma para a outra, fazendo confidências, com um pombo e uma pomba que se agradam a seus pés; ou um homem lançando pedras com uma atiradeira.",
-        "en": "the symbolic degree shows two women strolling in a beautiful garden, leaning toward each other, exchanging confidences, with a dove and his mate cooing at their feet; or a man throwing stones with a sling.",
+        "en": "the symbolic degree shows two women strolling in a beautiful garden, leaning toward each other, exchanging confidences, with a male dove and his mate courting at their feet; or a man throwing stones with a sling.",
         "keywords": {
           "pt": [
             "jardim",
@@ -44415,7 +44430,8 @@
           }
         ],
         "reviewNotes": [
-          "the second image (man with a sling) does not match the first; kept as in the source"
+          "the second image (man with a sling) does not match the first; kept as in the source",
+          "Second read 2026-11-17 (C): EN \"cooing\" is not in PT (\"se agradam\") or the source. Corrected: en."
         ]
       },
       "26": {
@@ -44653,8 +44669,8 @@
         "reviewNotes": []
       },
       "5": {
-        "pt": "o grau simbólico mostra um caminhante que estende a mão a uma mulher que quer ajudar a subir a senda e cai no lago abaixo, enquanto muitos anéis caem ao mesmo tempo; ou uma ave negra de bico e pés vermelhos.",
-        "en": "the symbolic degree shows a walker reaching out a hand to a woman he wants to help up the path, who falls into the lake below, while many rings fall at the same time; or a black bird with red beak and feet.",
+        "pt": "o grau simbólico mostra um caminhante que, ao estender a mão a uma mulher que quer ajudar a subir a senda, cai no lago abaixo, enquanto muitos anéis caem ao mesmo tempo; ou uma ave negra de bico e pés vermelhos.",
+        "en": "the symbolic degree shows a walker who, reaching out a hand to a woman he wants to help up the path, falls into the lake below, while many rings fall at the same time; or a black bird with red beak and feet.",
         "keywords": {
           "pt": [
             "caminhante",
@@ -44677,7 +44693,8 @@
           }
         ],
         "reviewNotes": [
-          "the second image (black bird) does not match the first; kept as in the source"
+          "the second image (black bird) does not match the first; kept as in the source",
+          "Second read 2026-11-17 (B): in the source the walker is the one who falls (\"Um caminhante estendendo a mão a uma mulher ... cai no lago\"); EN makes the woman fall and PT is ambiguous. Corrected: pt, en."
         ]
       },
       "6": {
@@ -45281,7 +45298,7 @@
         "reviewNotes": []
       },
       "29": {
-        "pt": "o grau simbólico mostra um tanque de água sombreado pela folhagem do bosque, em cuja borda um homem está preguiçosamente estendido, com a mão sobre um livro, e leves raios de sol que iluminam um pouco a água e o homem; ou uma mulher em pé, imóvel.",
+        "pt": "o grau simbólico mostra um tanque de água sombreado pela folhagem do bosque, em cuja borda um homem está preguiçosamente estendido, com a mão sobre um livro, e leves raios de sol que passam pelos ramos e iluminam um pouco a água e o homem; ou uma mulher em pé, imóvel.",
         "en": "the symbolic degree shows a pool shaded by the foliage of the grove, on whose edge a man lies lazily stretched, a hand resting on a book, with light sunrays filtering through the branches to illuminate the water and the man a little; or a woman standing still.",
         "keywords": {
           "pt": [
@@ -45304,7 +45321,9 @@
             "to": 1051
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN has the sunrays \"filtering through the branches\", which PT omits (the source has it); align PT. Corrected: pt."
+        ]
       },
       "30": {
         "pt": "o grau simbólico mostra um homem deitado sobre uma trouxa de roupas numa clareira, olhando com pavor para uma lebre assustada, sem ver o gavião que plana sobre ele, a serpente que vai morder sua mão pendente nem o lobo que se prepara para saltar; ou uma lebre saindo de um bosque.",
@@ -45545,7 +45564,7 @@
         "reviewNotes": []
       },
       "9": {
-        "pt": "o grau simbólico mostra uma criança de uns dez anos, pobremente vestida, sentada num tronco, olhando tristemente um ninho caído de uma árvore e duas ou três avezinhas imóveis no chão, com uma espécie de auréola em volta da cabeça; ou uma criança sentada num monte de pedras.",
+        "pt": "o grau simbólico mostra uma criança de uns dez anos, pobremente vestida, sentada num tronco, olhando tristemente um ninho caído de uma árvore e duas ou três avezinhas pouco plumadas imóveis no chão, com uma espécie de auréola em volta da cabeça; ou uma criança sentada num monte de pedras.",
         "en": "the symbolic degree shows a child of about ten, poorly dressed, sitting on a log, sadly looking at a nest fallen from a tree and two or three barely feathered little birds motionless on the ground, a kind of halo around the child's head; or a child sitting on a pile of stones.",
         "keywords": {
           "pt": [
@@ -45568,7 +45587,9 @@
             "to": 1092
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN has \"barely feathered\" little birds, which PT omits (the source has \"pouco plumadas\"); align PT. Corrected: pt."
+        ]
       },
       "10": {
         "pt": "o grau simbólico mostra num camarote, um ator lançando um último olhar sobre seu traje de Mefistófeles, com muitas fantasias penduradas e muitas máscaras sobre a mesa; ou uma cabeça de homem fazendo careta.",
@@ -46511,8 +46532,8 @@
         "reviewNotes": []
       },
       "16": {
-        "pt": "o grau simbólico mostra de uma caverna na montanha parte, com barulho de trovão, um carro vazio puxado por três cavalos atarracados que galopam rumo ao vale fértil, onde se veem um castelo e camponeses trabalhando o domínio; ou um carro vazio.",
-        "en": "the symbolic degree shows from a mountain cave an empty chariot, pulled with a thunderous noise by three stocky horses, gallops toward the fertile valley, where a castle and peasants working the estate are seen; or an empty chariot.",
+        "pt": "o grau simbólico mostra um carro vazio que parte de uma caverna na montanha, puxado com barulho de trovão por três cavalos atarracados que galopam rumo ao vale fértil, onde se veem um castelo e camponeses trabalhando o domínio; ou um carro vazio.",
+        "en": "the symbolic degree shows an empty chariot setting out from a mountain cave, pulled with a thunderous noise by three stocky horses galloping toward the fertile valley, where a castle and peasants working the estate are seen; or an empty chariot.",
         "keywords": {
           "pt": [
             "caverna",
@@ -46534,7 +46555,9 @@
             "to": 1208
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): PT and EN are ungrammatical (\"mostra de uma caverna ... parte ... um carro vazio\" / \"shows from a mountain cave an empty chariot ... gallops\"); the image is faithful. Corrected: pt, en."
+        ]
       },
       "17": {
         "pt": "o grau simbólico mostra sobre uma jangada, no mar, um homem decrépito apoiado em um bastão; ou um homem decrépito apoiado em um bastão.",
@@ -46589,8 +46612,8 @@
         "reviewNotes": []
       },
       "19": {
-        "pt": "o grau simbólico mostra de uma casa cercada por chamas ardentes sai uma serpente fugindo, detida por um círculo de fogo; ou uma casa cercada por tochas ardentes.",
-        "en": "the symbolic degree shows from a house surrounded by blazing flames a fleeing serpent emerges, stopped by a circle of fire; or a house surrounded by burning torches.",
+        "pt": "o grau simbólico mostra uma serpente que sai fugindo de uma casa cercada por chamas ardentes e é detida por um círculo de fogo; ou uma casa cercada por tochas ardentes.",
+        "en": "the symbolic degree shows a serpent fleeing from a house surrounded by blazing flames and stopped by a circle of fire; or a house surrounded by burning torches.",
         "keywords": {
           "pt": [
             "casa",
@@ -46612,7 +46635,9 @@
             "to": 1217
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): PT and EN are ungrammatical (\"mostra de uma casa ... sai uma serpente\" / \"shows from a house ... a fleeing serpent emerges\"); the image is faithful. Corrected: pt, en."
+        ]
       },
       "20": {
         "pt": "o grau simbólico mostra um grupo simpático de homens e mulheres passeando e conversando em um jardim onde se misturam flores do país e plantas exóticas; ou três homens passeando de braços entrelaçados.",
@@ -48234,7 +48259,7 @@
       },
       "23": {
         "pt": "o grau simbólico mostra uma atrelagem de cães, como as do Norte, puxando galhardamente sua carga de potes de leite e, à beira do rio, uma família de castores trabalhando na construção de sua pequena cidade; ou dois cães correndo de frente.",
-        "en": "the symbolic degree shows a team of dogs, as seen in the North, gallantly pulling its load of milk pots and, at the riverside, a family of beavers busy building their little town; or two dogs running side by side.",
+        "en": "the symbolic degree shows a team of dogs, as seen in the North, gallantly pulling its load of milk pots and, at the riverside, a family of beavers busy building their little town; or two dogs running head-on.",
         "keywords": {
           "pt": [
             "cães de trenó",
@@ -48256,7 +48281,9 @@
             "to": 1424
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (B): EN \"two dogs running side by side\" mistranslates PT/source \"correndo de frente\" (head-on), rendered \"head-on\" in Virgo.16. Corrected: en."
+        ]
       },
       "24": {
         "pt": "o grau simbólico mostra um homem frágil e elegante sentado despreocupadamente em um galho de árvore baixa, com um livro aberto na mão, mas que parece sonhar mais do que ler, olhando um lírio selvagem cuja haste pende, sem estar completamente quebrada; ou um homem chorando e enxugando os olhos com as costas da mão.",
@@ -48837,7 +48864,7 @@
         "reviewNotes": []
       },
       "16": {
-        "pt": "o grau simbólico mostra na selva, ao abrigo de uma rocha, um tigre deitado, mas atenta, montando guarda diante de três filhotes, que brincam ou dormem; ou um homem levando um galo.",
+        "pt": "o grau simbólico mostra na selva, ao abrigo de uma rocha, um tigre deitado, mas atento, montando guarda diante de três filhotes, que brincam ou dormem; ou um homem levando um galo.",
         "en": "the symbolic degree shows in the jungle, sheltered by a rock, a tiger lying down but alert, standing guard before three cubs, who play or sleep; or a man carrying a rooster.",
         "keywords": {
           "pt": [
@@ -48860,7 +48887,9 @@
             "to": 1509
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): PT agreement typo \"um tigre deitado, mas atenta\" (should be \"atento\"). Corrected: pt."
+        ]
       },
       "17": {
         "pt": "o grau simbólico mostra um homem caindo na água, de braços levantados, pedindo socorro, apavorado com o desabamento da ponte, enquanto abaixo outro homem corre para se jogar voluntariamente no rio; ou um homem que se lança na água.",
@@ -48887,8 +48916,8 @@
         "reviewNotes": []
       },
       "18": {
-        "pt": "o grau simbólico mostra um cavalo carregando seu cavaleiro sem sela que cai ao saltar uma barreira, levando a desordem ao restante dos cavalos do prado, onde dois se lançam um sobre o outro para se morderem; ou dois cavalos que se batem.",
-        "en": "the symbolic degree shows a horse carrying its unsaddled rider that falls while jumping a barrier, bringing disorder to the rest of the herd of horses in the meadow, where two rush at each other to bite; or two horses fighting.",
+        "pt": "o grau simbólico mostra um cavalo que, carregando seu cavaleiro sem sela, cai ao saltar uma barreira, levando a desordem ao restante dos cavalos do prado, onde dois se lançam um sobre o outro para se morderem; ou dois cavalos que se batem.",
+        "en": "the symbolic degree shows a horse which, carrying its unsaddled rider, falls while jumping a barrier, bringing disorder to the rest of the horses in the meadow, where two rush at each other to bite; or two horses fighting.",
         "keywords": {
           "pt": [
             "cavalo",
@@ -48910,7 +48939,9 @@
             "to": 1515
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (B): in the source the horse is the one that falls (\"Um cavalo carregando seu cavaleiro sem sela cai ao saltar\"); EN makes the rider fall and PT \"que cai\" is ambiguous. Corrected: pt, en."
+        ]
       },
       "19": {
         "pt": "o grau simbólico mostra em um laboratório, sobre uma longa mesa, ferramentas e instrumentos usados em química e em medicina e, na extremidade da mesa, um preparador moendo algo em um almofariz; ou um homem que se perfura com um gládio.",
@@ -49088,7 +49119,7 @@
       },
       "26": {
         "pt": "o grau simbólico mostra um homem armado de lança, protegendo-se com um escudo, vendo um mercenário que se inclina sobre uma sentinela adormecida com a intenção de lhe cravar o sabre curto no corpo; ou uma mulher cortando a cabeça de um guerreiro adormecido.",
-        "en": "the symbolic degree shows a man armed with a spear, shielding himself, watching a mercenary who bends over a sleeping sentinel intending to plunge his short saber into his body; or a woman cutting off the head of a sleeping warrior.",
+        "en": "the symbolic degree shows a man armed with a spear, protecting himself with a shield, watching a mercenary who bends over a sleeping sentinel intending to plunge his short saber into his body; or a woman cutting off the head of a sleeping warrior.",
         "keywords": {
           "pt": [
             "lança",
@@ -49110,7 +49141,9 @@
             "to": 1542
           }
         ],
-        "reviewNotes": []
+        "reviewNotes": [
+          "Second read 2026-11-17 (C): EN \"shielding himself\" drops the shield that PT and the keywords name (\"protegendo-se com um escudo\"). Corrected: en."
+        ]
       },
       "27": {
         "pt": "o grau simbólico mostra um homem nu batendo, durante a noite, à porta de uma casa discreta, no momento em que um tremor de terra desloca a casa, entreabre o solo e desarraiga árvores; ou um homem nu batendo a uma porta.",
@@ -49363,19 +49396,19 @@
     }
   },
   "decanConcept": {
-    "pt": "o decanato divide cada signo em três partes de cerca de dez graus no espaço e dez dias no tempo, tradição egípcia dos trinta e seis decanatos. cada decanato é um subtom do signo: pode ajudar você a ler qualidades intrínsecas da mente, fenômenos intelectuais e emocionais e a riqueza do subconsciente. cada um é visto também como uma das trinta e seis cruzes do zodíaco.",
-    "en": "the decan divides each sign into three parts of about ten degrees in space and ten days in time, in the Egyptian tradition of thirty-six decans. each decan is a sub-tone of the sign: it can help you read intrinsic qualities of the mind, intellectual and emotional phenomena and the richness of the subconscious. each is also seen as one of the thirty-six crosses of the zodiac.",
+    "pt": "o decanato divide cada signo em três partes de cerca de dez graus no espaço e dez dias no tempo, na tradição egípcia dos trinta e seis decanatos. a leitura do decanato pode ajudar você a buscar qualidades intrínsecas da mente, fenômenos intelectuais e emocionais e a riqueza do subconsciente. os trinta e seis decanatos são vistos também como as trinta e seis cruzes do zodíaco.",
+    "en": "the decan divides each sign into three parts of about ten degrees in space and ten days in time, in the Egyptian tradition of thirty-six decans. reading the decan can help you look for intrinsic qualities of the mind, intellectual and emotional phenomena and the richness of the subconscious. the thirty-six decans are also seen as the thirty-six crosses of the zodiac.",
     "keywords": {
       "pt": [
         "dez graus",
         "trinta e seis decanatos",
-        "subtom do signo",
+        "trinta e seis cruzes",
         "qualidades da mente"
       ],
       "en": [
         "ten degrees",
         "thirty-six decans",
-        "sub-tone of the sign",
+        "thirty-six crosses",
         "qualities of the mind"
       ]
     },
@@ -49388,12 +49421,13 @@
       {
         "file": "modulo 4/aula 5 modulo 4/aula-5.md",
         "from": 570,
-        "to": 574
+        "to": 572
       }
     ],
     "reviewNotes": [
       "Adopted A3 104-114 (Egyptian decans: about 10 degrees/10 days, 36 counselor gods, use for intrinsic qualities of the mind and the subconscious) and A5 570-574 (36 crosses). A3 180-182 (colour of the counselor god vs sign colour) not used as it needs an unavailable colour table.",
-      "Excluded the 18 gods above and 18 below the Earth, the hemisphere (left/right) reading and the sidereal 720-year decan (A5) as not needed for a placement description; the book itself uses planetary rulers, not gods."
+      "Excluded the 18 gods above and 18 below the Earth, the hemisphere (left/right) reading and the sidereal 720-year decan (A5) as not needed for a placement description; the book itself uses planetary rulers, not gods.",
+      "Second read 2026-11-17 (B): \"subtom do signo\" / \"sub-tone of the sign\" is not in the cited classes (aula-3 104-114, aula-5 570-574) nor anywhere else in modulo 4; the rest is supported. Corrected: pt, en, keywords, src."
     ]
   },
   "decans": {
@@ -49877,8 +49911,8 @@
         ]
       },
       "2": {
-        "pt": "com um planeta ou ponto no segundo decanato de Virgem, você pode suavizar as características virginianas com harmonia e apreço pela beleza e pelas relações. você pode somar diplomacia e charme ao serviço e ao cuidado, valorizar a estética e o conforto no trabalho e buscar criar beleza até nas tarefas mais mundanas.",
-        "en": "with a planet or point in the second decan of Virgo, you may soften Virgo traits with harmony and appreciation for beauty and relationships. you may add diplomacy and charm to service and care, value aesthetics and comfort at work and seek to create beauty even in the most mundane tasks.",
+        "pt": "com um planeta ou ponto no segundo decanato de Virgem, você pode suavizar as características virginianas com harmonia e apreço pela beleza e pelas relações. você pode ter capacidade para o serviço e o cuidado, com um toque de diplomacia e charme nas interações, valorizar a estética e o conforto no trabalho e buscar criar beleza até nas tarefas mais mundanas.",
+        "en": "with a planet or point in the second decan of Virgo, you may soften Virgo traits with harmony and appreciation for beauty and relationships. you may have a capacity for service and care, with a touch of diplomacy and charm in your interactions, value aesthetics and comfort at work and seek to create beauty even in the most mundane tasks.",
         "keywords": {
           "pt": [
             "harmonia",
@@ -49902,7 +49936,8 @@
         ],
         "reviewNotes": [
           "Read PDF page 90; book span 10-19°59′, book ruler: Vênus; decan description adopted from the printed paragraph.",
-          "Excluded any invocation, angel practice or health claim (none used); keywords taken from the paragraph, not from the word cloud."
+          "Excluded any invocation, angel practice or health claim (none used); keywords taken from the paragraph, not from the word cloud.",
+          "Second read 2026-11-17 (C): the print (p. 90) adds diplomacy and charm to interactions, not to service and care; the entry attaches them to service. Corrected: pt, en."
         ]
       },
       "3": {
@@ -50414,7 +50449,7 @@
       },
       "2": {
         "pt": "com um planeta ou ponto no segundo decanato de Peixes, você pode ampliar a natureza compassiva, generosa e espiritual pisciana, com otimismo, fé e inclinação a buscar significado e verdade em escala mais ampla. você pode ter sorte, ver o melhor nas pessoas e nas situações e buscar expandir horizontes e ajudar os outros.",
-        "en": "with a planet or point in the second decan of Pisces, you may broaden the compassionate, generous and spiritual Piscean nature, with optimism, faith and an inclination to seek meaning and truth on a wider scale. you may feel fortunate, see the best in people and situations and seek to broaden your horizons and help others.",
+        "en": "with a planet or point in the second decan of Pisces, you may broaden the compassionate, generous and spiritual Piscean nature, with optimism, faith and an inclination to seek meaning and truth on a wider scale. you may be lucky, see the best in people and situations and seek to broaden your horizons and help others.",
         "keywords": {
           "pt": [
             "compaixão",
@@ -50438,7 +50473,8 @@
         ],
         "reviewNotes": [
           "Read PDF page 114; book span 10-19°59′, book ruler: Júpiter; decan description adopted from the printed paragraph.",
-          "Excluded any invocation, angel practice or health claim (none used); keywords taken from the paragraph, not from the word cloud."
+          "Excluded any invocation, angel practice or health claim (none used); keywords taken from the paragraph, not from the word cloud.",
+          "Second read 2026-11-17 (B): EN \"you may feel fortunate\" does not match PT \"você pode ter sorte\" or the print (\"tendem a ser naturalmente sortudos\", p. 114). Corrected: en."
         ]
       },
       "3": {
