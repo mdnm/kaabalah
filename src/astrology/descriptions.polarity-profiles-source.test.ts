@@ -25,7 +25,9 @@ describe("polarity source context and classification boundaries", () => {
       expect(entry.en).toContain("in symbolic terminology");
       expect(entry.en).toContain("these labels define neither gender nor moral value");
       expect(`${entry.pt} ${entry.en}`).not.toMatch(/Capricórnio|Capricorn|Áries|Aries|Terra|Earth|Fogo|Fire|homens|mulheres|\bmen\b|\bwomen\b|sect|destino|destiny/);
-      expect(entry.reviewNotes.join(" ")).toContain("unresolved");
+      expect(entry.reviewNotes.join(" ")).toContain("feminine/negative per A2:104-105 and A11:191-194");
+      expect(entry.reviewNotes.join(" ")).toContain("A18:666-670 calls Capricorn masculine in its Lilith/Priapo context");
+      expect(entry.reviewNotes.join(" ")).not.toMatch(/unresolved|pending/);
       expect(entry.reviewNotes.join(" ")).toContain("no sign assignment");
     }
   });

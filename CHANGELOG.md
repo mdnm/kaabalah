@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Record Mat’s Capricorn feminine/negative convention in polarity audit metadata, retaining the alternate Lilith context.
+
 - Apply Mat’s class-8 temperament labels to the four bilingual element profiles, preserving source disagreements.
 
 - Add twelve bilingual Fortune-house profiles with typed point/house lookups and audited field-of-experience sources.

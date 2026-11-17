@@ -23,26 +23,34 @@ Sect is separate: these diurnal/nocturnal category names do not classify a chart
 
 The review and primary audit were read. Required Prumo corrections are applied: split A2:98 and 100-101, A2:104 and 107-109; narrow A11 to 195-196 and 191-192. A2 sign lists at 99/105 and A11 lists at 193-194,197-198 are excluded from src. A2:109 begins a sex-specific continuation after the adopted impressions/experience clause; only the preceding general clause is adopted. Claims about women at 102 and men at 109-110, destiny architect/spectator rhetoric and individual gender dispositions are unadopted.
 
-## Pending Capricorn convention
+## Mat's Capricorn convention
 
-Root reports A18:666-670 calls Capricorn masculine in a Lilith/Priapo-specific passage, unlike A2:104-105 and A11:191-194 negative/feminine membership. A18 was not opened by this worker; its conflict is root/review-reported context, not a new independently adopted source. Mat’s existing question remains pending. No sign/element membership list, classifier or hidden choice is added. Independent generic definitions agree and do not resolve that dispute.
+Mat resolved the general association on2026-11-16: feminine/negative according to A2:104-105 and A11:191-194. This metadata revision reread those actual narrow passages and A18:666-670, where Capricorn is called masculine in the Lilith/Priapo context. That context remains recorded; the course folder is unchanged. No sign classification API, association grid or lookup alias is added. The two generic definitions, keywords, source lists and typed getters remain unchanged.
 
 ## Approved entry source notes
 
 ### positive
 
 - Adopted A2's action, activity, and outer-life wording and response to external events, alongside A11's extroverted/self-expressive description. Masculine, diurnal, odd, and yang are presented only as symbolic category names, not biological or moral claims.
-- A2's claim that this disposition applies even to women at line 102 was inspected and excluded. Sign-membership classifications were excluded; A18 lines 666-670 calls Capricorn masculine in a specific Lilith/Priapo passage, while A2/A11 classify it negative/feminine. This conflict remains unresolved and no sign assignment is made.
+- A2's claim about women at102 was inspected and excluded. This generic definition makes no sign assignment and introduces no sign classifier.
+- Mat resolved the general Capricorn association on2026-11-16: feminine/negative per A2:104-105 and A11:191-194. A18:666-670 calls Capricorn masculine in its Lilith/Priapo context; that different source context remains recorded. The generic display copy and query namespace are unchanged.
 
 ### negative
 
 - Adopted A2's receptivity, inward life, adaptation to influences, accumulation of impressions, and gaining experience, together with A11's introverted/receptive description. Feminine, passive, nocturnal, even, and yin are presented only as symbolic category names, not biological or moral claims.
-- A2's claim that this disposition applies even to men at lines 109-110 was inspected and excluded. Sign-membership classifications were excluded; A18 lines 666-670 calls Capricorn masculine in a specific Lilith/Priapo passage, while A2/A11 classify it negative/feminine. This conflict remains unresolved and no sign assignment is made.
+- A2's claim about men at109-110 was inspected and excluded. This generic definition makes no sign assignment and introduces no sign classifier.
+- Mat resolved the general Capricorn association on2026-11-16: feminine/negative per A2:104-105 and A11:191-194. A18:666-670 calls Capricorn masculine in its Lilith/Priapo context; that different source context remains recorded. The generic display copy and query namespace are unchanged.
 
 ## Implementation boundary
 
 Additive readonly optional polarities bank, common entry alias, exact-key own-property getters, existing deep-freeze and English-default/pt-prefix selection. Prior 317 rows and all existing getters remain unchanged. Only descriptions.json/.ts, two polarity test files and this audit are worker-owned.
 
-## Validation and next kind
+## Original polarity-kind validation (historical)
 
-369 description tests passed in a single fork worker with actual exit0. Build, typecheck, source hashes/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All317 previous rows are unchanged; total319. Next: four general angle concepts, A11:14-139 and supplemental book navigation B:20893-21397. Read actual narrow bodies before adopting any book content.
+At the original two-profile milestone,369 description tests, build, typecheck and public CJS/ESM checks passed with actual exit0. All317 prior rows were preserved; the total then was319. This is historical evidence; the current metadata revision and handoff follow below.
+
+## Resolved metadata handoff
+
+Only the two polarity review-note arrays change in this revision;355 other rows and the generic bodies/keywords/src/getters remain unchanged,total357. Mat's former pending question is resolved as above. Next: Chiron concept1, A15:122-218; inspect the narrow book disagreement B5750-5766 if used.
+
+After resolving the review's stale historical handoff,410 astrology description tests, build, typecheck and public CJS/ESM checks passed with actual exit0. Source hashes/bounds and public-doc ownership passed. The generic text/keywords/src and355 other rows are unchanged,total357.

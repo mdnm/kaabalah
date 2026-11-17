@@ -218,6 +218,6 @@ Paragraph format selected, with source fidelity above fixed length. [Cross-modul
 
 Mat selected A8:796-813 temperament labels: fire sanguine, earth choleric, air phlegmatic and water melancholic. A2:134-157/A3:64-79 use different mappings; retain that source disagreement. Generic independent qualities and symbolic hot/cold/dry/moist attributes remain supported separately. The A8 label choice does not transfer A2/A3 temperament-dependent traits, introduce bodily-humor claims or add Ascendant-element profiles. The response is recorded in the connected note Astrologia- elementos e temperamentos.
 
-## Polarity profile audit: pending Mat decision, 2026-11-16
+## Polarity profile audit: Mat decision, 2026-11-16
 
-A2:104-105 and A11:191-194 classify Capricorn as feminine/negative; A18:666-670 calls Capricorn masculine in its Lilith/Priapus discussion. The specific question is in the connected note Astrologia- polaridade de Capricórnio. Two generic activity/receptivity profiles use A2:98,100-101,104,107-109 and A11:191-192,195-196 without assigning signs or elements to either category. Traditional day/night terminology here does not determine computed chart sect.
+Mat selected Capricorn feminine/negative according to A2:104-105 and A11:191-194. A18:666-670 calls Capricorn masculine in its Lilith/Priapus discussion; that source context is retained, without changing the course or calculations. The response is recorded in Astrologia- polaridade de Capricórnio. Two generic activity/receptivity profiles remain definitions, not a sign classifier. Traditional day/night terminology here does not determine computed chart sect.
