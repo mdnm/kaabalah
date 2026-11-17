@@ -12,8 +12,8 @@ const a8 = "modulo 4/aula 8 modulo 4/aula-8.md";
 describe("generic element independent-source distinctions", () => {
   it("states symbolic hot/cold and dry/moist qualities for all four elements", () => {
     const qualities = {
-      fire: [/simbolicamente, o fogo é quente e seco/, /symbolic qualities are hot and dry/],
-      earth: [/simbolicamente, a terra é fria e seca/, /symbolic qualities are cold and dry/],
+      fire: [/simbolicamente, o fogo é quente e seco/, /symbolically, fire is hot and dry/],
+      earth: [/simbolicamente, a terra é fria e seca/, /symbolically, earth is cold and dry/],
       air: [/em termos simbólicos, o ar é quente e úmido/, /symbolically, air is hot and moist/],
       water: [/em termos simbólicos, a água é fria e úmida/, /symbolically, water is cold and moist/],
     };
@@ -25,9 +25,9 @@ describe("generic element independent-source distinctions", () => {
 
   it("keeps adopted independent clauses within the narrowed physical source ranges", () => {
     const ranges = {
-      fire: [[a2, 134, 137], [a3, 70, 72], [a8, 811, 811]],
+      fire: [[a2, 134, 137], [a3, 70, 72], [a8, 811, 811], [a8, 813, 813]],
       earth: [[a2, 140, 143], [a3, 70, 73], [a8, 803, 804]],
-      air: [[a2, 148, 149], [a3, 74, 74], [a8, 808, 808]],
+      air: [[a2, 148, 149], [a3, 74, 74], [a8, 808, 809]],
       water: [[a2, 154, 155], [a3, 75, 75], [a8, 805, 807]],
     };
     for (const element of elements) {
@@ -47,13 +47,34 @@ describe("generic element independent-source distinctions", () => {
     }
   });
 
-  it("leaves disputed humors and their dependent traits pending instead of silently reassigning them", () => {
+  it("adopts only Mat's resolved A8 labels and retains historical alternatives without their dependent traits", () => {
+    const labels = {
+      fire: ["sanguíneo", "sanguine"],
+      earth: ["colérico", "choleric"],
+      air: ["fleumático", "phlegmatic"],
+      water: ["melancólico", "melancholic"],
+    };
+    const historical = {
+      fire: /A2:137 calls fire bilious and A3:65 irritable/,
+      earth: /A2:144 and A3:66 call earth nervous/,
+      air: /A2:150 and A3:67 call air sanguine/,
+      water: /A2:156 calls water phlegmatic and A3:68 lymphatic/,
+    };
     for (const element of elements) {
       const e = entry(element);
+      const [pt, en] = labels[element];
+      expect(e.pt).toContain(`temperamento ${pt}`);
+      expect(e.en).toContain(`${en} temperament`);
+      expect(e.keywords.pt.at(-1)).toBe(pt);
+      expect(e.keywords.en.at(-1)).toBe(en);
       const authored = [copy(element), ...e.keywords.pt, ...e.keywords.en].join(" ");
-      expect(authored).not.toMatch(/bilios|bílis|bile|coléric|choleric|nervoso|nervous|sanguín|sanguine|fleum|phlegm|linf|lymph|melanc|melanch|temperamento|temperament/);
-      expect(authored).not.toMatch(/espiritualidade|spirituality|honras|honors|tenacidade|tenacity|laborios|industrious|campestres|country tastes|amizade|friendship|concórdia|concord|equidade|equity|inconstância|inconstancy|dissimulação|dissimulation/);
-      expect(e.reviewNotes.join(" ")).toMatch(/pending|aguarda/);
+      expect(authored).not.toMatch(/bilios|bílis|bile|nervoso|nervous|linf|lymph|muco|mucus|blood|sangue|humor|humour|body temperature|temperatura corporal|diagnos/iu);
+      expect(authored).not.toMatch(/espiritualidade|spirituality|entusiasmo|enthusiasm|honras|honors|tenacidade|tenacity|laborios|industrious|campestres|country tastes|amizade|friendship|concórdia|concord|equidade|equity|inconstância|inconstancy|dissimulação|dissimulation|pleasure-seeking/iu);
+      const notes = e.reviewNotes.join(" ");
+      expect(notes).toMatch(historical[element]);
+      expect(notes).toContain("Mat selected A8 labels on2026-11-16");
+      expect(notes).not.toMatch(/pending|aguarda/);
+      expect(notes).toMatch(/not transferred/);
     }
   });
 

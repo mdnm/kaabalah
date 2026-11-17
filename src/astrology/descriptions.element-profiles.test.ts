@@ -27,6 +27,7 @@ describe("four classical element profiles API", () => {
     for (const element of elements) {
       const entry = getElementDescriptionEntry(element)!;
       expect(entry).toBe(ASTROLOGY_DESCRIPTIONS.elements![element]);
+      expect(Object.keys(entry)).toEqual(["pt", "en", "keywords", "src", "reviewNotes"]);
       expect(entry.pt.trim()).not.toBe("");
       expect(entry.en.trim()).not.toBe("");
       expect(entry.pt).not.toBe(entry.en);

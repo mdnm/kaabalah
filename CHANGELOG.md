@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Apply Mat’s class-8 temperament labels to the four bilingual element profiles, preserving source disagreements.
+
 - Add twelve bilingual Fortune-house profiles with typed point/house lookups and audited field-of-experience sources.
 
 - Use source-based Portuguese and English minor-aspect display names while retaining canonical API keys.
