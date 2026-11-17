@@ -22,11 +22,13 @@ describe("general Chiron description API", () => {
     }
   });
 
-  it("leaves Chiron placement profiles explicitly absent", () => {
-    for (const sign of ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) {
-      expect(getPointSignDescriptionEntry("chiron", sign)).toBeUndefined();
-    }
-    for (let house = 1; house <= 12; house++) expect(getPointHouseDescriptionEntry("chiron", house)).toBeUndefined();
+  it("keeps the general concept separate from shared placement accounts", () => {
+    const concept = getPointDescriptionEntry("chiron");
+    const placement = getPointSignDescriptionEntry("chiron", "Aries");
+    expect(concept).toBe(ASTROLOGY_DESCRIPTIONS.points!.chiron);
+    expect(placement).toBeDefined();
+    expect(placement).not.toBe(concept);
+    expect(getPointHouseDescriptionEntry("chiron", 1)).toBe(placement);
   });
 
   it("deeply freezes the authored five-field bilingual record", () => {

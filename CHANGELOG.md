@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add twelve shared bilingual Chiron sign-or-house profiles with explicit typed lookup aliases and a single source record per account.
+
 - Add a bilingual Chiron concept through the typed additional-factor lookup, with mythic framing and source qualifications.
 
 - Record Mat’s Capricorn feminine/negative convention in polarity audit metadata, retaining the alternate Lilith context.

@@ -12626,5 +12626,568 @@
         ]
       }
     }
+  },
+  "chironPlacements": {
+    "Aries": {
+      "pt": "com Quíron em Áries ou na Casa 1, você pode perceber tensão entre afirmar sua independência e buscar aceitação dos outros. você também pode ser amável e sociável, com a aceitação de si entre os temas de aprendizado.",
+      "en": "with Chiron in Aries or the 1st House, you may notice tension between asserting your independence and seeking others' acceptance. you may also be kind and sociable, with self-acceptance among the learning themes.",
+      "keywords": {
+        "pt": [
+          "independência",
+          "aceitação alheia",
+          "aceitação de si",
+          "individualidade"
+        ],
+        "en": [
+          "independence",
+          "others’ acceptance",
+          "self-acceptance",
+          "individuality"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 280,
+          "to": 281
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 345,
+          "to": 345
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 353,
+          "to": 355
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 358,
+          "to": 363
+        }
+      ],
+      "reviewNotes": [
+        "This is the source’s combined Aries/House 1 account. Retains its tension between seeking acceptance/acting for others and asserting individuality, with the gentler example’s independence theme.",
+        "Excludes childhood/adolescence as a presumed event, repression/trauma, self-harm or suicide references, therapist/healer claims, and guaranteed healing.",
+        "The gentler example at280-281 contributes kindness/sociability as well as independence/individuality; the presumed childhood-event clause at282-283 is not adopted. Self-acceptance is a learning theme, not a healing guarantee."
+      ]
+    },
+    "Taurus": {
+      "pt": "com Quíron em Touro ou na Casa 2, você pode sentir insegurança em torno do seu valor, do merecimento e da segurança material. a dor de perder e a culpa ao ganhar aparecem como temas dessa leitura, junto da busca por valores próprios.",
+      "en": "with Chiron in Taurus or the 2nd House, you may feel insecure about your own worth, deserving, and material security. pain around loss and guilt about gaining are themes in this reading, alongside the search for your own values.",
+      "keywords": {
+        "pt": [
+          "valores pessoais",
+          "merecimento",
+          "segurança material",
+          "ganhos",
+          "perdas",
+          "culpa"
+        ],
+        "en": [
+          "personal values",
+          "deserving",
+          "material security",
+          "gains",
+          "losses",
+          "guilt"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 372,
+          "to": 375
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 382,
+          "to": 383
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 388,
+          "to": 388
+        }
+      ],
+      "reviewNotes": [
+        "This is the source’s combined Taurus/House 2 account. Preserves the specific sensitivity around loss, guilt in gaining, and personal worth at 372-375 as possible themes, not events or predictions; keeps material values/security in view.",
+        "Excludes body-image/health claims, financial pathology, and cure/healing promises.",
+        "Loss-related pain and guilt specifically about gaining remain distinct as stated at373; guilt is not reassigned to losing. These are interpretive themes, not asserted events or financial predictions. The self-worth clause is supported at388."
+      ]
+    },
+    "Gemini": {
+      "pt": "com Quíron em Gêmeos ou na Casa 3, você pode sentir insegurança nas próprias ideias, com a liberdade de expressão entre os temas importantes. uma mente versátil e rápida e um estilo próprio de comunicação podem conviver com dificuldade para falar do seu lado emocional.",
+      "en": "with Chiron in Gemini or the 3rd House, you may feel uncertain about your own ideas, with freedom of expression among the important themes. quick, versatile thinking and an individual communication style may coexist with difficulty expressing your emotional side.",
+      "keywords": {
+        "pt": [
+          "ideias próprias",
+          "expressão",
+          "mente versátil",
+          "comunicação"
+        ],
+        "en": [
+          "one’s own ideas",
+          "expression",
+          "versatile mind",
+          "communication"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 404,
+          "to": 404
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 409,
+          "to": 412
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 417,
+          "to": 418
+        }
+      ],
+      "reviewNotes": [
+        "This is the source’s combined Gemini/House 3 account. Uncertainty around one’s ideas/expression is paired with the source’s possible quick, versatile thinking and individual communication style.",
+        "Excludes school/childhood biography, diagnoses and stigmatizing claims, sibling illness or relationship predictions, and therapeutic/healing outcomes.",
+        "The insecurity clause concerns ideas; freedom of expression is a distinct stated need at409. The emotional-expression difficulty at418 qualifies the communicative strengths, without diagnosis or childhood explanation."
+      ]
+    },
+    "Cancer": {
+      "pt": "com Quíron em Câncer ou na Casa 4, você pode sentir uma ligação forte com a humanidade e insegurança diante da possibilidade de falhar. comunidade, raízes e a busca por um lar mais amplo também podem ganhar destaque.",
+      "en": "with Chiron in Cancer or the 4th House, you may feel a strong connection with humanity and insecurity around the possibility of failure. community, roots, and the search for a broader sense of home may also come into focus.",
+      "keywords": {
+        "pt": [
+          "humanidade",
+          "insegurança",
+          "comunidade",
+          "lar",
+          "raízes"
+        ],
+        "en": [
+          "humanity",
+          "insecurity",
+          "community",
+          "home",
+          "roots"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 431,
+          "to": 435
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 455,
+          "to": 456
+        }
+      ],
+      "reviewNotes": [
+        "This is the source's combined Cancer/House4 account. The first sentence retains humanity and insecurity around possible failure at431-435; the second retains community and the wider-home/roots themes at455-456. No fixed family history is inferred.",
+        "Excludes claims about a parent’s gender, rejection, abandonment, death, parental separation, childhood trauma, and relationship consequences. No universal house-parent convention or fixed family history is inferred.",
+        "A15:431-435 directly supports humanity, insecurity around failure and community;455-456 supports the wider-home/roots theme. No parent-gender convention or personal displacement event is inferred."
+      ]
+    },
+    "Leo": {
+      "pt": "com Quíron em Leão ou na Casa 5, você pode encontrar tensão entre o prazer de criar e a necessidade de ser reconhecido. seu estilo próprio e a possibilidade de incentivar a criatividade de outras pessoas também fazem parte desse tema.",
+      "en": "with Chiron in Leo or the 5th House, you may find tension between the pleasure of creating and the need for recognition. your individual style and the possibility of encouraging other people's creativity are also part of this theme.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "autoexpressão",
+          "reconhecimento",
+          "estilo próprio",
+          "criatividade alheia"
+        ],
+        "en": [
+          "creativity",
+          "self-expression",
+          "recognition",
+          "individual style",
+          "others’ creativity"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 457,
+          "to": 457
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 459,
+          "to": 461
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 467,
+          "to": 473
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 485,
+          "to": 486
+        }
+      ],
+      "reviewNotes": [
+        "This is the source’s combined Leo/House 5 account. Retains creativity/self-expression/recognition as sensitive themes and the qualified possibility of supporting others’ creative development.",
+        "Excludes childhood repression or nonacceptance as presumed events, sexual/health claims, child or partner outcomes, therapeutic prescriptions, and promised healing or satisfaction.",
+        "The recognition-versus-creative-pleasure tension is grounded at468-473 rather than an invented motive. The helping-creativity theme at485-486 does not promise therapeutic, child or personal satisfaction outcomes."
+      ]
+    },
+    "Virgo": {
+      "pt": "com Quíron em Virgem ou na Casa 6, seu modo de trabalhar pode ser marcado pela atenção aos detalhes e pela cobrança de perfeição. seu desejo de ajudar pode conviver com o receio de que outras pessoas se aproveitem de você.",
+      "en": "with Chiron in Virgo or the 6th House, your way of working may be marked by attention to detail and demands for perfection. your desire to help may coexist with concern that others could take advantage of you.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "detalhes",
+          "perfeição",
+          "desejo de ajudar",
+          "receio de exploração"
+        ],
+        "en": [
+          "work",
+          "details",
+          "perfection",
+          "desire to help",
+          "concern about exploitation"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 487,
+          "to": 487
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 492,
+          "to": 492
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 496,
+          "to": 497
+        }
+      ],
+      "reviewNotes": [
+        "This is the source’s combined Virgo/House 6 account. Retains work/detail/exacting standards and the tension between wanting to help and concern about being used as possibilities.",
+        "Excludes body dissatisfaction, illness, medical/therapeutic claims, dietary/exercise/meditation advice, hypochondria, and healing outcomes.",
+        "The fear of being used is retained as a concern, not as the source's guaranteed exploitation outcome. Work/detail/perfection and helping-versus-concern are grounded directly at492 and496-497."
+      ]
+    },
+    "Libra": {
+      "pt": "com Quíron na Casa 7 ou em Libra, você pode precisar bastante do contato com outras pessoas e nem sempre achar fácil flexibilizar sua própria posição. cooperar, dividir e reconhecer suas necessidades e seu espaço individual podem ser temas de aprendizado nas relações.",
+      "en": "with Chiron in House 7 or Libra, you may need contact with other people and may not always find it easy to flex your own position. cooperation, sharing, and recognizing your needs and individual space may be learning themes in relationships.",
+      "keywords": {
+        "pt": [
+          "contato",
+          "flexibilidade",
+          "cooperação",
+          "partilha",
+          "necessidades próprias",
+          "espaço individual"
+        ],
+        "en": [
+          "contact",
+          "flexibility",
+          "cooperation",
+          "sharing",
+          "personal needs",
+          "individual space"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 526,
+          "to": 531
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 550,
+          "to": 551
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 561,
+          "to": 568
+        }
+      ],
+      "reviewNotes": [
+        "The account explicitly combines House 7 and Libra. Lines 529-530 describe a strong need for contact and learning to cooperate/share, with flexibility named separately at 531; lines 550-551 and 561-568 support personal needs and individual space. Copy does not turn cooperation into an innate preference or value, and does not claim rejection, childhood cause, partner behavior, separation or marriage outcome.",
+        "The source's therapist/cure language, sexualized framing, rejection biography, family and childhood claims, dependency scripts and imperatives are excluded. The shared sign-or-house portrait is not a claim that signs and houses are equivalent in all astrology."
+      ]
+    },
+    "Scorpio": {
+      "pt": "com Quíron na Casa 8 ou em Escorpião, você pode perceber tensões ligadas à sexualidade, aos valores espirituais e a sentimentos intensos, junto de questões de poder e controle. compreender a própria vulnerabilidade e partilhar recursos podem ser temas importantes nesse campo.",
+      "en": "with Chiron in House 8 or Scorpio, you may encounter tensions involving sexuality, spiritual values and intense feelings, alongside questions of power and control. understanding your own vulnerability and sharing resources may be important themes in this area.",
+      "keywords": {
+        "pt": [
+          "sexualidade",
+          "valores espirituais",
+          "sentimentos intensos",
+          "poder",
+          "controle",
+          "vulnerabilidade",
+          "partilha de recursos"
+        ],
+        "en": [
+          "sexuality",
+          "spiritual values",
+          "intense feelings",
+          "power",
+          "control",
+          "vulnerability",
+          "sharing resources"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 569,
+          "to": 571
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 575,
+          "to": 575
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 578,
+          "to": 578
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 582,
+          "to": 588
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 610,
+          "to": 612
+        }
+      ],
+      "reviewNotes": [
+        "The account explicitly combines House 8 and Scorpio. Lines 569-571 say sexuality and spiritual values may cause conflicts, without specifying that they conflict with each other; line 578 names intense feelings, line 575 power/control, lines 582-588 financial vulnerability, and 610-612 sharing resources. The copy preserves these as possible themes and does not claim the native's rejection, dysfunction, abuse history, partner outcome or deficient trust.",
+        "Excluded sexual dysfunction, abuse/incest/rape, birth or near-death trauma, illness, suicide, regression, clinical labels, therapist/healing claims, guaranteed recovery and imperatives. The mention of death is not turned into a prediction. Confidence in another person mentioned at 610 is not converted into a claim about the native's own trust."
+      ]
+    },
+    "Sagittarius": {
+      "pt": "com Quíron na Casa 9 ou em Sagitário, você pode buscar propósito e significado por meio de símbolos, ideias e diferentes filosofias. convicções distintas podem trazer desafios, enquanto comunicar conceitos abstratos e aprender a conviver com diferenças se tornam temas importantes.",
+      "en": "with Chiron in House 9 or Sagittarius, you may seek purpose and meaning through symbols, ideas and different philosophies. differing convictions may bring challenges, while communicating abstract concepts and learning to live with differences become important themes.",
+      "keywords": {
+        "pt": [
+          "propósito",
+          "significado",
+          "símbolos",
+          "filosofias",
+          "convicções diferentes",
+          "conceitos abstratos",
+          "diferenças"
+        ],
+        "en": [
+          "purpose",
+          "meaning",
+          "symbols",
+          "philosophies",
+          "differing convictions",
+          "abstract concepts",
+          "differences"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 613,
+          "to": 613
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 615,
+          "to": 616
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 618,
+          "to": 623
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 635,
+          "to": 637
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 643,
+          "to": 645
+        }
+      ],
+      "reviewNotes": [
+        "The account explicitly combines House 9 and Sagittarius. Copy draws on symbolic/abstract communication, seeking meaning and purpose, the possibility of clashing with people who follow a different philosophy (619-620), and learning to live with differences (643-645). These are framed as a challenge and learning theme, not fixed intolerance or an assumed openness trait.",
+        "Excluded religious or spiritual prescriptions, guru exploitation, mental-health language, guaranteed cure/liberation, fixed beliefs or biography, and imperatives."
+      ]
+    },
+    "Capricorn": {
+      "pt": "com Quíron na Casa 10 ou em Capricórnio, você pode questionar que lugar ocupa no mundo e sentir pressão em torno de metas e reconhecimento profissional. a autocobrança pode acompanhar a busca por uma vocação própria, e diferentes formas de contribuir profissionalmente continuam tendo valor.",
+      "en": "with Chiron in House 10 or Capricorn, you may question your place in the world and feel pressure around goals and professional recognition. self-pressure may accompany seeking your own vocation, and different forms of professional contribution still have value.",
+      "keywords": {
+        "pt": [
+          "lugar no mundo",
+          "metas",
+          "reconhecimento profissional",
+          "vocação",
+          "autocobrança",
+          "contribuição"
+        ],
+        "en": [
+          "place in the world",
+          "goals",
+          "professional recognition",
+          "vocation",
+          "self-pressure",
+          "contribution"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 646,
+          "to": 647
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 650,
+          "to": 652
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 654,
+          "to": 658
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 676,
+          "to": 679
+        }
+      ],
+      "reviewNotes": [
+        "This is the source's combined Capricorn/House10 account. Copy retains uncertainty about one's role, goals, professional recognition, self-pressure and vocation, then the qualification that different professional roles have value. It does not promise a rank, success, or a mentoring outcome.",
+        "Excluded claims about maternal rejection, parents, childhood, fixed therapist identity, inevitable professional failure/success, age or maturity timing, diagnosis and prescriptive career guidance.",
+        "The final qualification retains676-679: professional roles have value without ranking people as better or worse. It does not invent a desire for distinctive contribution or promise recognition, rank or success."
+      ]
+    },
+    "Aquarius": {
+      "pt": "com Quíron na Casa 11 ou em Aquário, você pode sentir sensibilidade em torno do pertencimento a grupos e da rejeição, junto de interesse por causas sociais. lidar com pessoas diferentes e com imperfeições na vida coletiva pode se tornar um tema importante.",
+      "en": "with Chiron in House 11 or Aquarius, you may feel sensitivity around belonging to groups and rejection, alongside an interest in social causes. engaging with people who differ from you and with imperfections in collective life may become an important theme.",
+      "keywords": {
+        "pt": [
+          "pertencimento",
+          "grupos",
+          "rejeição",
+          "causas sociais",
+          "diferenças",
+          "vida coletiva"
+        ],
+        "en": [
+          "belonging",
+          "groups",
+          "rejection",
+          "social causes",
+          "differences",
+          "collective life"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 680,
+          "to": 683
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 702,
+          "to": 704
+        }
+      ],
+      "reviewNotes": [
+        "The account explicitly combines House 11 and Aquarius. The copy retains group participation, social causes, rejection sensitivity and engaging with differences as possible themes, without asserting the person has experienced rejection.",
+        "Excluded guaranteed leadership, group success, fixed social or political identity, diagnosis, spiritual healing and imperative advice. The shared sign-or-house portrait does not establish universal sign/house equivalence."
+      ]
+    },
+    "Pisces": {
+      "pt": "com Quíron na Casa 12 ou em Peixes, você pode perceber frustrações coletivas e captar sentimentos alheios, com interesse pela vida interior e pelo que ultrapassa o visível. sonhos e imaginação podem funcionar como proteção, enquanto a atenção à vida prática também permanece importante.",
+      "en": "with Chiron in House 12 or Pisces, you may perceive collective frustrations and pick up on others’ feelings, with an interest in inner life and what goes beyond the visible. dreams and imagination may serve a protective function, while attention to practical life remains important too.",
+      "keywords": {
+        "pt": [
+          "frustrações coletivas",
+          "sentimentos alheios",
+          "vida interior",
+          "desconhecido",
+          "sonhos",
+          "proteção",
+          "vida prática"
+        ],
+        "en": [
+          "collective frustrations",
+          "others' feelings",
+          "inner life",
+          "the unknown",
+          "dreams",
+          "protection",
+          "practical life"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 713,
+          "to": 713
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 714,
+          "to": 716
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 721,
+          "to": 721
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 727,
+          "to": 729
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 740,
+          "to": 742
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 746,
+          "to": 746
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 288,
+          "to": 289
+        }
+      ],
+      "reviewNotes": [
+        "The account explicitly combines House 12 and Pisces. Copy retains inner life, dreams as possible protection (742), the unknown, practical-life attention (727-729, 746) and sensitivity to collective frustrations/others' feelings as possible themes. The gentler combined example contributes only the narrow collective-frustrations clause at 288-289.",
+        "Excluded prenatal claims, drugs, depression, delusions, victim identity, carrying others' pain as fixed fact, spiritual healing promises, destiny/evolution language, and instructions. Citations at 713, 727-729, 740-742 and 746 include adjacent material not adopted; this note identifies the specific adopted clause portions and limits. The protective function is retained as source symbolism, not a clinical diagnosis or guaranteed coping outcome.",
+        "A15:714-716 supports interest in the unconscious/hidden realities; the prenatal clause sharing714 is not adopted. Dreams-as-protection is a possible function stated at742, not an instruction or clinical outcome."
+      ]
+    }
   }
 }

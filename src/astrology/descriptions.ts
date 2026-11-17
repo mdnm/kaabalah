@@ -46,6 +46,7 @@ export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly chironPlacements?: Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>;
   readonly pointHouses?: Readonly<
     Partial<Record<DescriptionPoint, Readonly<Partial<Record<DescriptionHouseNumber, PointHouseDescriptionEntry>>>>>
   >;
@@ -269,11 +270,23 @@ export function getPointDescription(point: DescriptionPoint, language?: string):
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Point-sign manners remain separate from general point and sign profiles. */
+/** Aliases only for the course's twelve combined Chiron sign-or-house accounts. */
+const CHIRON_PLACEMENT_SIGN_BY_HOUSE = Object.freeze({
+  1: "Aries", 2: "Taurus", 3: "Gemini", 4: "Cancer",
+  5: "Leo", 6: "Virgo", 7: "Libra", 8: "Scorpio",
+  9: "Sagittarius", 10: "Capricorn", 11: "Aquarius", 12: "Pisces",
+} satisfies Readonly<Record<DescriptionHouseNumber, Sign>>);
+
+/** Fortune sign manners and source-specific shared Chiron accounts. */
 export function getPointSignDescriptionEntry(
   point: DescriptionPoint,
   sign: Sign,
 ): PointSignDescriptionEntry | undefined {
+  if (point === "chiron") {
+    const placements = ASTROLOGY_DESCRIPTIONS.chironPlacements;
+    if (!placements || !Object.prototype.hasOwnProperty.call(placements, sign)) return undefined;
+    return placements[sign];
+  }
   const points = ASTROLOGY_DESCRIPTIONS.pointSigns;
   if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
   const signs = points[point];
@@ -291,12 +304,16 @@ export function getPointSignDescription(
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Point-house fields remain separate from general point and house profiles. */
+/** Fortune house fields and source-specific shared Chiron accounts. */
 export function getPointHouseDescriptionEntry(
   point: DescriptionPoint,
   house: number,
 ): PointHouseDescriptionEntry | undefined {
   if (!Number.isInteger(house) || house < 1 || house > 12) return undefined;
+  if (point === "chiron") {
+    if (!Object.prototype.hasOwnProperty.call(CHIRON_PLACEMENT_SIGN_BY_HOUSE, house)) return undefined;
+    return getPointSignDescriptionEntry("chiron", CHIRON_PLACEMENT_SIGN_BY_HOUSE[house as DescriptionHouseNumber]);
+  }
   const points = ASTROLOGY_DESCRIPTIONS.pointHouses;
   if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
   const houses = points[point];
