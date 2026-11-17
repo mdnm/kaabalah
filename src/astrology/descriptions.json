@@ -11675,6 +11675,48 @@
         "The supplemental book at books/astrologia-hermetica/astrologia-hermetica.md:5756-5774 groups Chiron among software extras and calls the displayed collection spatial noise, with major transits named nearby at5784. This is limited methodological context, not a contrary Chiron natal profile; it provides no adopted personality wording and does not override the primary course.",
         "A15:207-216 recommends considering Chiron with Pluto in a spiritual system. This is retained as contextual qualification without generating an unapproved planet-pair interpretation. Sun harmony/disharmony at192-200 and transits/cycles are not generalized into this concept."
       ]
+    },
+    "lilith mean": {
+      "pt": "no seu mapa, Lilith representa simbolicamente uma área da consciência obscura e pouco acessível, figurada pela ausência de luz. a interpretação depende do conjunto do mapa e do grau, com características latentes que podem aparecer em intensidades diferentes, sem necessariamente chegar ao extremo.",
+      "en": "in your chart, Lilith symbolically represents an obscure, difficult-to-access area of consciousness, figured as an absence of light. interpretation depends on the overall chart and degree, with latent characteristics that may appear at different intensities without necessarily reaching an extreme.",
+      "keywords": {
+        "pt": [
+          "área obscura da consciência",
+          "pouco acessível",
+          "ausência de luz",
+          "latência",
+          "grau"
+        ],
+        "en": [
+          "obscure area of consciousness",
+          "difficult to access",
+          "absence of light",
+          "latency",
+          "degree"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+          "from": 135,
+          "to": 136
+        },
+        {
+          "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+          "from": 152,
+          "to": 155
+        },
+        {
+          "file": "modulo 4/aula 18 modulo 4/aula-18.md",
+          "from": 159,
+          "to": 160
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the symbolic darkness/absence-of-light image for an obscure, difficult-to-access area of consciousness. Retained the actual qualifications: interpretation depends on chart/degree; intensity differs (152-155); characteristics are latent and need not reach extremes (159-160), rather than assuming total dormancy.",
+        "Excluded physical-vacuum claims, gendered odd/even moral classifications, corruption/evil/illegal labels, and practices. Priapus remains separate; the passage itself says it is not invariably opposite Lilith.",
+        "The cited concept does not distinguish mean and true calculation modes. Both verified chart keys share this one textual factor: the sole canonical record is lilith mean, with an explicit lilith true interpretation lookup alias. This does not equate their calculated positions and does not define a bare lilith default."
+      ]
     }
   },
   "pointSigns": {

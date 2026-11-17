@@ -69,6 +69,8 @@ getPointDescription('parsFortunae', 'pt-BR'); // Part of Fortune concept
 getPointDescriptionEntry('parsFortunae')?.src;
 getPointDescription('chiron', 'pt-BR'); // general Chiron concept
 getPointDescriptionEntry('chiron')?.src;
+getPointDescription('lilith mean', 'pt-BR');
+getPointDescriptionEntry('lilith true')?.src; // same shared Lilith concept
 getPointSignDescription('chiron', 'Aries', 'pt-BR');
 getPointHouseDescription('chiron', 1, 'pt-BR'); // same source profile as Chiron/Aries
 getPointSignDescription('parsFortunae', 'Aries', 'pt-BR');
@@ -112,11 +114,14 @@ the wounded-healer image and its symbolic themes. Chiron placements reuse 12 joi
 aliases. Each corresponding sign/house query returns the same frozen entry,
 independent of the general concept. This source-specific aliasing does not equate
 signs with houses across astrology or create a 144-combination grid.
+The Lilith concept accepts `lilith mean` and `lilith true`, matching the two
+chart planet keys. Both return one frozen interpretation entry; their calculated
+positions remain distinct. The bare `lilith` alias does not select a default mode.
 These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house

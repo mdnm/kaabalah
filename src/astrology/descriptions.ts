@@ -40,7 +40,7 @@ export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPolarity = "positive" | "negative";
 export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
-export type DescriptionPoint = "parsFortunae" | "chiron";
+export type DescriptionPoint = "parsFortunae" | "chiron" | "lilith mean" | "lilith true";
 export type PointDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
@@ -257,11 +257,12 @@ export function getAspectDescription(aspect: DescriptionAspect, language?: strin
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Additional natal factor concepts, using canonical chart keys only. */
+/** Additional natal factor concepts; Lilith modes share one interpretation. */
 export function getPointDescriptionEntry(point: DescriptionPoint): PointDescriptionEntry | undefined {
+  const key = point === "lilith true" ? "lilith mean" : point;
   const points = ASTROLOGY_DESCRIPTIONS.points;
-  if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
-  return points[point];
+  if (!points || !Object.prototype.hasOwnProperty.call(points, key)) return undefined;
+  return points[key];
 }
 
 /** English by default; Portuguese for locale strings starting with `pt`. */

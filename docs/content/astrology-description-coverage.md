@@ -97,7 +97,7 @@ Status meanings: **covered** = eligible direct material supports the stated set;
 | Chiron concept | covered | A15:122-218 | 1 rich profile; book software-output critique B:5756-5774, nearby transit context5784, not a contrary natal profile |
 | Chiron in sign and house | partial | A15:345-746; gentler Aries/1 at280-283 and Pisces/12 at284-289 | 12 combined house-or-sign accounts. Can support 24 lookups only with disclosure that they share 12 source profiles; no independent24-cell teaching |
 | Chiron aspects and transits | partial | A15:163-169,192-200,218-274,291-338 | Sun harmony/disharmony and selected transit roles, no full matrix; health/event exclusions may leave gaps |
-| Lilith concept and signs | covered | A18:109-129,131-848 | 1 concept +12 rich signs; no independent mean/true interpretation sets |
+| Lilith concept and signs | covered | A18:131-160 concept;109-129 summary and162-848 signs | 1 concept +12 rich signs; no independent mean/true interpretation sets |
 | Lilith houses/aspects | not found | Full scoped classes and searched book | 0 dedicated complete placements located; do not infer from sign parallels |
 | Priapus signs | covered | A18:131-848, definition caveat141-144 | 12 profiles, no current chart field. Source says it is not always exactly opposite Lilith |
 | North/South node concepts | partial | A15:4-53; A21:867-874; B:20306-20892 | 2 concepts; hemisphere naming convention unresolved |

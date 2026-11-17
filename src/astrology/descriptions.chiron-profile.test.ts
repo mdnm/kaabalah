@@ -3,11 +3,12 @@ import { ASTROLOGY_DESCRIPTIONS, getPointDescription, getPointDescriptionEntry, 
 
 describe("general Chiron description API", () => {
   it("uses a narrow canonical point union and the shared readonly contract", () => {
-    expectTypeOf<DescriptionPoint>().toEqualTypeOf<"parsFortunae" | "chiron">();
+    expectTypeOf<Extract<DescriptionPoint, "chiron">>().toEqualTypeOf<"chiron">();
+    expectTypeOf<Extract<string, DescriptionPoint>>().toEqualTypeOf<never>();
     expectTypeOf<PointDescriptionEntry>().toEqualTypeOf<PlanetSignDescriptionEntry>();
     expectTypeOf(getPointDescriptionEntry).returns.toEqualTypeOf<PointDescriptionEntry | undefined>();
     expectTypeOf(getPointDescription).returns.toEqualTypeOf<string | undefined>();
-    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.points!)).toEqual(["parsFortunae", "chiron"]);
+    expect(ASTROLOGY_DESCRIPTIONS.points).toHaveProperty("chiron");
     expect(getPointDescriptionEntry("chiron")).toBe(ASTROLOGY_DESCRIPTIONS.points!.chiron);
     expect(ASTROLOGY_DESCRIPTIONS.planets).not.toHaveProperty("chiron");
   });

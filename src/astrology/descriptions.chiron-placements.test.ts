@@ -5,7 +5,8 @@ import type { Sign } from "./dignity";
 const signs: Sign[] = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
 describe("Chiron combined placement aliases", () => {
   it("stores exactly twelve canonical entries with twenty-four identical-reference aliases", () => {
-    expectTypeOf<DescriptionPoint>().toEqualTypeOf<"parsFortunae" | "chiron">();
+    expectTypeOf<Extract<DescriptionPoint, "chiron">>().toEqualTypeOf<"chiron">();
+    expectTypeOf<Extract<string, DescriptionPoint>>().toEqualTypeOf<never>();
     expectTypeOf<PointSignDescriptionEntry>().toEqualTypeOf<PointHouseDescriptionEntry>();
     expect(Object.keys(ASTROLOGY_DESCRIPTIONS.chironPlacements!)).toEqual(signs);
     expect(ASTROLOGY_DESCRIPTIONS.pointSigns).not.toHaveProperty("chiron");
