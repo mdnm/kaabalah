@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add the `astrology:describe <kind> [keys...]` CLI command, a lookup for
+  every bilingual astrology description. A combination with no authored text
+  returns `found: false` with exit code 0.
 - Add 599 bilingual astrology descriptions: Descendant by sign, signs on house
   cusps, retrograde planets by sign and by house, Vertex and Antivertex, and
   planet-pair aspects. New getters: `getHouseCuspSignDescription`,

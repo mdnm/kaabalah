@@ -646,7 +646,7 @@ Not fully checked: sextile sun/mars, mercury/mars and mercury/uranus. The OCR is
 
 Mat ruled: classes take priority over the book and the keyword sheet; class-versus-class conflicts go to him; house 6 may speak of health; the retrograde, Vertex-house and aspect-pair gaps are accepted. Vertex by sign and Lilith by house are lookup aliases through the natural house/sign, not authored text (the Lilith alias is an extension of the Vertex ruling and was not stated by Mat for Lilith). Lilith aspects have no source and were not authored. A second page-image read covered 25 aspect entries: 14 kept, 11 rewritten; the Mercury/Jupiter quincunx page is mostly the Mercury/Mars page with the planet name swapped, so that entry rests on the few Jupiter-specific phrases.
 
-### Class versus class (owner to decide)
+### Class versus class (resolved: Mat accepted all six as they stand on 2026-11-17; the Mercury/Venus contact duplication is probably a transcription slip and stays)
 - A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
 - A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
 - A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.
@@ -681,7 +681,7 @@ Class claims kept out because of the writing exclusions:
 - 2.Gemini: "bom funcionamento do corpo como maior bem" (health); 6.Libra: "saúde abalada" (801); 6.Virgo: soap-brand anecdote.
 - A11 111-116 (Descendant as "Tu", what we seek in others) is generic, has no per-sign content; not added (would glue a concept to sign profiles).
 
-### Class versus class (owner to decide)
+### Class versus class (resolved: Mat accepted all six as they stand on 2026-11-17; the Mercury/Venus contact duplication is probably a transcription slip and stays)
 - A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
 - A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
 - A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.

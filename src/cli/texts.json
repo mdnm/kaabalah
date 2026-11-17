@@ -3058,5 +3058,41 @@
   "  kaabalah capabilities --json --compact": {
     "en": "  kaabalah capabilities --json --compact",
     "pt": "  kaabalah capabilities --json --compact"
+  },
+  "Look up a bilingual astrology description by kind and keys": {
+    "en": "Look up a bilingual astrology description by kind and keys",
+    "pt": "Busque uma descrição astrológica bilíngue por tipo e chaves"
+  },
+  "Usage: kaabalah astrology:describe <kind> [keys...]. Kinds: {0}": {
+    "en": "Usage: kaabalah astrology:describe <kind> [keys...]. Kinds: {0}",
+    "pt": "Uso: kaabalah astrology:describe <tipo> [chaves...]. Tipos: {0}"
+  },
+  "Unknown description kind: \"{0}\". Kinds: {1}": {
+    "en": "Unknown description kind: \"{0}\". Kinds: {1}",
+    "pt": "Tipo de descrição desconhecido: \"{0}\". Tipos: {1}"
+  },
+  "Description kind \"{0}\" takes: {1}": {
+    "en": "Description kind \"{0}\" takes: {1}",
+    "pt": "O tipo de descrição \"{0}\" recebe: {1}"
+  },
+  "Invalid {0} for description kind \"{1}\": \"{2}\"": {
+    "en": "Invalid {0} for description kind \"{1}\": \"{2}\"",
+    "pt": "Valor inválido de {0} para o tipo de descrição \"{1}\": \"{2}\""
+  },
+  "No description is authored for {0} {1}.": {
+    "en": "No description is authored for {0} {1}.",
+    "pt": "Não há descrição escrita para {0} {1}."
+  },
+  "Keywords: {0}": {
+    "en": "Keywords: {0}",
+    "pt": "Palavras-chave: {0}"
+  },
+  "Description kind: planet, sign, house, element, modality, polarity, angle, aspect, point, sect, node, dignity, retrograde, vertex-contact, planet-sign, planet-house, angle-sign, cusp-sign, point-sign, point-house, node-sign, node-house, retrograde-sign, retrograde-house, sun-ascendant, aspect-pair, decan, degree, degree-at": {
+    "en": "Description kind: planet, sign, house, element, modality, polarity, angle, aspect, point, sect, node, dignity, retrograde, vertex-contact, planet-sign, planet-house, angle-sign, cusp-sign, point-sign, point-house, node-sign, node-house, retrograde-sign, retrograde-house, sun-ascendant, aspect-pair, decan, degree, degree-at",
+    "pt": "Tipo de descrição: planet, sign, house, element, modality, polarity, angle, aspect, point, sect, node, dignity, retrograde, vertex-contact, planet-sign, planet-house, angle-sign, cusp-sign, point-sign, point-house, node-sign, node-house, retrograde-sign, retrograde-house, sun-ascendant, aspect-pair, decan, degree, degree-at"
+  },
+  "Keys for the kind, in order (for example: mars Leo; 2 Taurus; trine sun moon; 18.5)": {
+    "en": "Keys for the kind, in order (for example: mars Leo; 2 Taurus; trine sun moon; 18.5)",
+    "pt": "Chaves do tipo, em ordem (por exemplo: mars Leo; 2 Taurus; trine sun moon; 18.5)"
   }
 }

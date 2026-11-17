@@ -24,6 +24,7 @@ import {
 } from "./commands/numerology-schedule";
 import { MAX_MANIFEST_BYTES } from "./runtime/stdin";
 import { cmdAstrologyAstrocartography, cmdAstrologyAstrocartographyQuery, cmdAstrologyComposite, cmdAstrologyDecans, cmdAstrologyDodecatemoria, cmdAstrologyFirdaria, cmdAstrologyProfections, cmdAstrologyProfectionsMonthly, cmdAstrologySolarReturn, cmdAstrologySynastry, cmdAstrologyTransits, cmdAstrologyWheel } from "./commands/astrology";
+import { cmdAstrologyDescribe } from "./commands/astrology-describe";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIChing } from "./commands/iching";
@@ -322,6 +323,9 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         return;
       case "astrology:decans":
         cmdAstrologyDecans(args.slice(1), flags, inputPayload);
+        return;
+      case "astrology:describe":
+        cmdAstrologyDescribe(args.slice(1), flags, inputPayload);
         return;
       case "astrology:dodecatemoria":
         cmdAstrologyDodecatemoria(args.slice(1), flags, inputPayload);

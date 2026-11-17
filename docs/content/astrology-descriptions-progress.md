@@ -29,6 +29,7 @@ Approved batches1-3 complete:431 canonical bilingual entries. See astrology-desc
 - Sets: sunAscendantSigns 144 (A7:16-576, outer key Sun, inner Ascendant); symbolicDegrees 360 (A11:341-1556); dignityStatuses 4 (A12/A15 name them, effect wording from the book); decanConcept 1 (classes) and decans 36 (book, read from printed pages 70-114); houseCuspSigns.6 completed to 12.
 - Getters: getSunAscendantDescription(sunSign, ascendantSign); getSymbolicDegreeNumber(longitude) and getSymbolicDegreeDescription(sign, degree); getDignityStatusDescription(status); getDecanDescription(sign?, decan?). Aliases: Vertex by sign through the natural house (Cancer-Sagittarius only); Lilith by house through the natural sign.
 - Mat's rulings applied: classes take priority over the book and the keyword sheet (16 entries rewritten: 5 Descendant signs, 11 cusps); house 6 may speak of health; the retrograde, Vertex-house and aspect-pair gaps are accepted as they are.
-- Still open for Mat: class-versus-class points on the Vertex (A18, A13:1489) listed in the open-issues file. Lilith aspects have no source and were not authored.
+- Class-versus-class points on the Vertex (A18, A13:1489): Mat accepted all of them as they stand; no entry changes. Lilith by house through the natural sign is confirmed by Mat. Lilith aspects have no source and were not authored.
+- CLI: `astrology:describe` looks up every description family by kind and keys (src/cli/commands/astrology-describe.ts).
 - Not started: timing, synastry, Chinese astrology, Priapus, sign transitions, five-degree angel sectors, Vertex ruler-house scenarios.
 

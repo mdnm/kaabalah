@@ -707,6 +707,22 @@ export const COMMANDS: CommandSchema[] = [
     ],
   },
   {
+    name: "astrology:describe",
+    description: "Look up a bilingual astrology description by kind and keys",
+    args: [
+      { name: "kind", type: "string", required: true, description: "Description kind: planet, sign, house, element, modality, polarity, angle, aspect, point, sect, node, dignity, retrograde, vertex-contact, planet-sign, planet-house, angle-sign, cusp-sign, point-sign, point-house, node-sign, node-house, retrograde-sign, retrograde-house, sun-ascendant, aspect-pair, decan, degree, degree-at" },
+      { name: "keys", type: "string", required: false, description: "Keys for the kind, in order (for example: mars Leo; 2 Taurus; trine sun moon; 18.5)" },
+    ],
+    flags: [],
+    examples: [
+      "kaabalah astrology:describe planet-sign mars Leo --json --compact --fields=text",
+      "kaabalah astrology:describe aspect-pair trine sun moon --language pt-BR --json",
+      "kaabalah astrology:describe sun-ascendant Taurus Aries --json --compact",
+      "kaabalah astrology:describe degree-at 18.5 --json --compact --fields=text",
+      "kaabalah astrology:describe decan --json --compact",
+    ],
+  },
+  {
     name: "astrology:dodecatemoria",
     description: "Look up the dodecatemoria (12th part) for a zodiacal longitude",
     args: [

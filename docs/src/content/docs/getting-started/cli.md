@@ -58,6 +58,7 @@ npx kaabalah help
 | `astrology:astrocartography:query <date> [time]` | Query a location for nearby planetary lines |
 | `astrology:decans <longitude>` | Decan (face) lookup for a zodiacal longitude |
 | `astrology:dodecatemoria <longitude>` | Dodecatemoria (12th part) lookup |
+| `astrology:describe <kind> [keys...]` | Bilingual description lookup (placements, aspects, degrees, decans) |
 | `tarot [count]` | Draw tarot cards (default: 3) |
 | `tarot:card <query>` | Look up a specific card by number or name |
 | `tarot:spread [cards...]` | Look up multiple cards by name or number, list/describe spreads, or draw a named spread with `--spread-id` |
@@ -283,7 +284,7 @@ kaabalah astrology 1990-01-15 --lat=40.7128 --lon=-74.006
 | `--wasm-path` | string | - | Override the Swiss Ephemeris WASM runtime path |
 | `--ephe-path` | string | - | Override the ephemeris data directory path |
 
-All Swiss Ephemeris commands (everything under `astrology:` except `decans` and `dodecatemoria`) accept `--wasm-path` and `--ephe-path`.
+All Swiss Ephemeris commands (everything under `astrology:` except `decans`, `dodecatemoria` and `describe`) accept `--wasm-path` and `--ephe-path`.
 
 **House systems:** placidus, koch, porphyrius, regiomontanus, campanus, equal, whole-sign, meridian, morinus, krusinski, alcabitius
 
@@ -543,6 +544,42 @@ kaabalah astrology:dodecatemoria 227.5 --json
 ```
 
 Returns `originalSign`, `originalDegree`, `dodecatemoriaSign`, `dodecatemoriaIndex` (0-11).
+
+### astrology:describe
+
+Look up one bilingual description by kind and keys. Pure lookup, no WASM needed.
+
+```bash
+kaabalah astrology:describe planet-sign mars Leo --json --compact --fields=text
+kaabalah astrology:describe aspect-pair trine sun moon --language pt-BR --json
+kaabalah astrology:describe sun-ascendant Taurus Aries --json --compact
+kaabalah astrology:describe degree-at 18.5 --json --compact --fields=text
+kaabalah astrology:describe decan --json --compact
+```
+
+| Kind | Keys |
+| --- | --- |
+| `planet`, `retrograde`, `vertex-contact` | planet |
+| `sign` | sign |
+| `house` | house number |
+| `element`, `modality`, `polarity`, `sect`, `dignity` | the value (`fire`, `fixed`, `positive`, `diurnal`, `exaltation`) |
+| `angle` | `ascendant`, `mc`, `dc`, `ic` |
+| `aspect` | aspect name |
+| `point` | `fortune`, `chiron`, `lilith`, `vertex`, `antivertex` |
+| `node` | `north` or `south` |
+| `planet-sign`, `retrograde-sign` | planet, sign |
+| `planet-house`, `retrograde-house` | planet, house |
+| `angle-sign` | angle, sign |
+| `cusp-sign` | house, sign |
+| `point-sign` / `point-house` | point, sign / point, house |
+| `node-sign` / `node-house` | role, sign / role, house |
+| `sun-ascendant` | Sun sign, Ascendant sign |
+| `aspect-pair` | aspect, planet, planet (either order) |
+| `decan` | sign, decan number 1-3; no keys for the method concept |
+| `degree` | sign, ordinal degree 1-30 |
+| `degree-at` | ecliptic longitude 0-360 |
+
+Signs are case-insensitive English names. Returns `kind`, `keys`, `found`, `language`, `text`, `keywords`, `pt`, `en`, `src` and `reviewNotes`. `text` and `keywords` follow `--language`. A combination with no authored text is not an error: it returns `found: false` and `text: null` with exit code 0. The `retrograde*` kinds return the retrograde text without checking a chart. `--input-json` takes `{"kind": "...", "keys": [...]}`.
 
 ### astrology:astrocartography
 

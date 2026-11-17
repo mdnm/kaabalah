@@ -146,6 +146,7 @@ describe("CLI contract", () => {
       "astrology:profections:monthly",
       "astrology:firdaria",
       "astrology:decans",
+      "astrology:describe",
       "astrology:dodecatemoria",
       "astrology:astrocartography",
       "astrology:astrocartography:query",
@@ -1532,6 +1533,7 @@ describe("CLI contract", () => {
         expectStderr: true,
       },
       { label: "astrology:decans", args: ["astrology:decans", "15", "--json", "--compact"] },
+      { label: "astrology:describe", args: ["astrology:describe", "aspect-pair", "trine", "moon", "sun", "--json", "--compact"] },
       { label: "astrology:dodecatemoria", args: ["astrology:dodecatemoria", "5", "--json", "--compact"] },
       {
         label: "astrology:astrocartography",
