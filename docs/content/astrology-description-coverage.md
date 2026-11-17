@@ -94,7 +94,7 @@ Status meanings: **covered** = eligible direct material supports the stated set;
 | Retrograde planets, Mercury through Pluto | covered | A16:498-617,1271-1351,2010-2085,2617-2693,3261-3314,3845-3916,4421-4471,4823-4886 | 8 rich natal profiles; book B:122075-122166 is time-dependent and cannot silently fill natal traits |
 | Retrograde planet in sign | partial | A16:618-918,1352-1691,2086-2354,2694-2960,3315-3575,3917-4147,4472-4585,4887-5011; B:122175-123538 | 79 course placements. 17 natal gaps: Uranus Capricorn/Aquarius/Pisces; Neptune Aries/Taurus/Gemini/Cancer/Capricorn/Aquarius/Pisces; Pluto Aries/Taurus/Gemini/Sagittarius/Capricorn/Aquarius/Pisces. Book intended 96 uses a different temporal context |
 | Retrograde planet in house | covered | A16:919-1270,1692-2009,2355-2616,2961-3260,3576-3844,4148-4420,4586-4822,5012-5271 | 96 rich entries, eight planets × twelve houses |
-| Chiron concept | covered | A15:122-218 | 1 rich profile; book dismisses it B:5750-5766 |
+| Chiron concept | covered | A15:122-218 | 1 rich profile; book software-output critique B:5756-5774, nearby transit context5784, not a contrary natal profile |
 | Chiron in sign and house | partial | A15:345-746; gentler Aries/1 example280-289 | 12 combined house-or-sign accounts. Can support 24 lookups only with disclosure that they share 12 source profiles; no independent24-cell teaching |
 | Chiron aspects and transits | partial | A15:163-169,192-200,218-274,291-338 | Sun harmony/disharmony and selected transit roles, no full matrix; health/event exclusions may leave gaps |
 | Lilith concept and signs | covered | A18:109-129,131-848 | 1 concept +12 rich signs; no independent mean/true interpretation sets |

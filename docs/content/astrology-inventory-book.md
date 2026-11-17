@@ -79,7 +79,7 @@ The OCR interleaves columns, sometimes places a heading after its body, drops in
 | Tree and planet correspondences | B:5388-5562; sign-planet sections above | Rich, defines Hermetic sphere interpretation | Separate system authority review, not automatically equivalent to canonical Kaabalah |
 | Sect | No substantive interpretation section located | Search hits for day/night are incidental | 0 confirmed |
 | Dodecatemoria | No section located | Absent in searched OCR | 0 confirmed |
-| Chiron, Lilith, Ceres | B:5750-5766; Chiron mention B:20162-20184 | Mentioned/dismissed, not interpretive profiles | 0 |
+| Chiron, Lilith, Ceres | B:5756-5774; Chiron mention B:20162-20184 | Mentioned among software extras; limited output/selection critique, not a contrary natal profile | 0 |
 | Vertex | No section located | Absent in searched OCR | 0 |
 | Part of Fortune | B:1397-1405, history of Arabic contributions | Mentioned calculation only, no placement profiles | 0 |
 | Transits | B:5784 and retrograde chapter above | Mentioned in introductory method; retrogrades provide actual time-dependent prose | 0 full transit planet/house/aspect matrix confirmed |
@@ -92,7 +92,7 @@ The OCR interleaves columns, sometimes places a heading after its body, drops in
 ## Review flags for Mat
 
 1. **Natal retrograde versus transit language.** B:122012-122074 explicitly says this Hermetic method makes no distinction between normal and reverse planets in a natal chart, and attends to retrogrades only when choosing ritual dates. The eight planet paragraphs and sign-specific subsections are framed as a period for reconsideration, not as enduring natal traits. A chart's natal `retrograde` flag is therefore insufficient reason to expose that prose as natal interpretation. Classes take priority if they teach otherwise.
-2. **Minor aspects and points.** B:5750-5766 calls Lilith, Chiron, Ceres and minor aspects noise, yet B:110850-122011 devotes substantial material to quincunx. Preserve this inconsistency for author review rather than treating length as authority.
+2. **Minor aspects and points.** B:5756-5774 criticizes software output/extra points including Lilith, Chiron, Ceres and minor aspects; B:5784 turns to major transits. B:110850-122011 elsewhere provides substantial quincunx material. Preserve these contexts rather than inferring a universal rejection or treating length as authority.
 3. **Dignity conventions.** Mercury's generic section names exaltation in Aquarius and fall in Leo at B:17742-17776. This differs from the library's current dignity calculation convention and needs explicit comparison with the course. Modern-planet exaltations/falls are discussed rather than uniformly assigned at B:19482-19514, 19835 and 20129-20164. Do not silently replace computed data.
 4. **OCR loss.** Saturn-in-Aries standalone text was not located. The section boundary B:48945-49075 visibly skips from Jupiter houses to Saturn in Taurus. Descendant section B:66690-66780 starts in a damaged Libra paragraph; three early signs were not located. These are source gaps in this Markdown, not permission to invent or claims that the printed book lacks them.
 5. **Column interleaving.** Pluto houses 1/2, for example, begin at B:64436 and B:64438 and alternate their bodies. Midheaven and IC sign paragraphs also interleave. Final citations may need multiple disjoint ranges.

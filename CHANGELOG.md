@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a bilingual Chiron concept through the typed additional-factor lookup, with mythic framing and source qualifications.
+
 - Record Mat’s Capricorn feminine/negative convention in polarity audit metadata, retaining the alternate Lilith context.
 
 - Apply Mat’s class-8 temperament labels to the four bilingual element profiles, preserving source disagreements.

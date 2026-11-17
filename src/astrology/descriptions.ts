@@ -40,7 +40,7 @@ export type ModalityDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPolarity = "positive" | "negative";
 export type PolarityDescriptionEntry = PlanetSignDescriptionEntry;
 
-export type DescriptionPoint = "parsFortunae";
+export type DescriptionPoint = "parsFortunae" | "chiron";
 export type PointDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
@@ -256,7 +256,7 @@ export function getAspectDescription(aspect: DescriptionAspect, language?: strin
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** General virtual-point concepts, using canonical chart node keys only. */
+/** Additional natal factor concepts, using canonical chart keys only. */
 export function getPointDescriptionEntry(point: DescriptionPoint): PointDescriptionEntry | undefined {
   const points = ASTROLOGY_DESCRIPTIONS.points;
   if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;

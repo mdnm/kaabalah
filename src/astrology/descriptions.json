@@ -11628,6 +11628,53 @@
         "The passage attributes luck-related importance and attainment beyond effort to Valens; the profile preserves potential framing and makes no fortune guarantee. The natal point is not conflated with the whole Ark Annu 10 Wheel of Fortune.",
         "Planetary relations are stated explicitly to avoid confusing the interpretive qualification with interpersonal relationships. A10:2567-2569 names the point's relation by sign with planets;2574-2578 includes the ruler's placement and relations. Bodily vitality is not inferred from the source's broader physical-body/life themes."
       ]
+    },
+    "chiron": {
+      "pt": "no seu mapa, Quíron apresenta a imagem simbólica do curador ferido: reconhecer a própria vulnerabilidade pode ajudar a compreender a dor alheia. a imperfeição inevitável da condição humana se liga a temas de aceitação, perdão e compaixão.",
+      "en": "in your chart, Chiron presents the symbolic image of the wounded healer: recognizing your own vulnerability may help you understand others' pain. the inevitable imperfection of the human condition is linked with themes of acceptance, forgiveness, and compassion.",
+      "keywords": {
+        "pt": [
+          "curador ferido",
+          "vulnerabilidade",
+          "dor alheia",
+          "imperfeição humana",
+          "aceitação",
+          "perdão",
+          "compaixão"
+        ],
+        "en": [
+          "wounded healer",
+          "vulnerability",
+          "others' pain",
+          "human imperfection",
+          "acceptance",
+          "forgiveness",
+          "compassion"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 132,
+          "to": 136
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 145,
+          "to": 147
+        },
+        {
+          "file": "modulo 4/aula 15 modulo 4/aula-15.md",
+          "from": 152,
+          "to": 152
+        }
+      ],
+      "reviewNotes": [
+        "Adopted the source's symbolic wounded-healer image: recognizing one's own vulnerability may support understanding others' pain. The inevitable human-imperfection qualification, acceptance, forgiveness and compassion are preserved without a prescribed sequence or promised healing.",
+        "The Hercules/Kíriom myth is context for the metaphor, not a fixed biography or event assigned to a chart owner. No wound, illness, diagnosis, cure, relationship outcome, or healing guarantee is asserted; age/cycle and later placement-specific material are outside this concept profile.",
+        "The supplemental book at books/astrologia-hermetica/astrologia-hermetica.md:5756-5774 groups Chiron among software extras and calls the displayed collection spatial noise, with major transits named nearby at5784. This is limited methodological context, not a contrary Chiron natal profile; it provides no adopted personality wording and does not override the primary course.",
+        "A15:207-216 recommends considering Chiron with Pluto in a spiritual system. This is retained as contextual qualification without generating an unapproved planet-pair interpretation. Sun harmony/disharmony at192-200 and transits/cycles are not generalized into this concept."
+      ]
     }
   },
   "pointSigns": {

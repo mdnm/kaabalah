@@ -3,11 +3,12 @@ import { ASTROLOGY_DESCRIPTIONS, getPointDescription, getPointDescriptionEntry, 
 
 describe("general Fortune description API", () => {
   it("uses the canonical point key and common readonly entry contract", () => {
-    expectTypeOf<DescriptionPoint>().toEqualTypeOf<"parsFortunae">();
+    expectTypeOf<Extract<DescriptionPoint, "parsFortunae">>().toEqualTypeOf<"parsFortunae">();
+    expectTypeOf<Extract<string, DescriptionPoint>>().toEqualTypeOf<never>();
     expectTypeOf<PointDescriptionEntry>().toEqualTypeOf<PlanetSignDescriptionEntry>();
     expectTypeOf(getPointDescriptionEntry).returns.toEqualTypeOf<PointDescriptionEntry | undefined>();
     expectTypeOf(getPointDescription).returns.toEqualTypeOf<string | undefined>();
-    expect(Object.keys(ASTROLOGY_DESCRIPTIONS.points!)).toEqual(["parsFortunae"]);
+    expect(ASTROLOGY_DESCRIPTIONS.points).toHaveProperty("parsFortunae");
     expect(getPointDescriptionEntry("parsFortunae")).toBe(ASTROLOGY_DESCRIPTIONS.points!.parsFortunae);
     expect(ASTROLOGY_DESCRIPTIONS.planets).not.toHaveProperty("parsFortunae");
   });
