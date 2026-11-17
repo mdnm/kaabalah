@@ -8,6 +8,15 @@
   `getRetrogradePlanetSignDescription`, `getRetrogradePlanetHouseDescription`,
   `getVertexContactDescription` and `getAspectPairDescription`, each with an
   `Entry` form. `getAngleSignDescription('dc', sign)` now returns text.
+- Add 550 more bilingual astrology descriptions: Sun sign with Ascendant (144),
+  the 360 symbolic degrees, four dignity statuses, the decan concept and 36
+  decan profiles, and the five remaining house 6 cusp signs. New getters:
+  `getSunAscendantDescription`, `getSymbolicDegreeDescription` with
+  `getSymbolicDegreeNumber`, `getDignityStatusDescription` and
+  `getDecanDescription`. `getPointSignDescription('vertex', sign)` reads the
+  Vertex house account of the sign's natural house, and
+  `getPointHouseDescription` for Lilith reads the sign account of the house's
+  natural sign.
 
 ## 6.19.0 - 2026-11-17
 

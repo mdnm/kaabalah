@@ -60,6 +60,13 @@ export type VertexContactDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionPlanetPair = `${DescriptionPlanet}/${DescriptionPlanet}`;
 export type AspectPairDescriptionEntry = PlanetSignDescriptionEntry;
 
+export type SunAscendantDescriptionEntry = PlanetSignDescriptionEntry;
+export type SymbolicDegreeDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionDignityStatus = "domicile" | "exaltation" | "detriment" | "fall" | "peregrine";
+export type DignityStatusDescriptionEntry = PlanetSignDescriptionEntry;
+export type DescriptionDecanNumber = 1 | 2 | 3;
+export type DecanDescriptionEntry = PlanetSignDescriptionEntry;
+
 export type SectDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type DescriptionLunarNode = "north" | "south";
@@ -68,6 +75,17 @@ export type LunarNodeSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type LunarNodeHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly decans?: Readonly<
+    Partial<Record<Sign, Readonly<Partial<Record<DescriptionDecanNumber, DecanDescriptionEntry>>>>>
+  >;
+  readonly decanConcept?: DecanDescriptionEntry;
+  readonly dignityStatuses?: Readonly<Partial<Record<DescriptionDignityStatus, DignityStatusDescriptionEntry>>>;
+  readonly symbolicDegrees?: Readonly<
+    Partial<Record<Sign, Readonly<Partial<Record<number, SymbolicDegreeDescriptionEntry>>>>>
+  >;
+  readonly sunAscendantSigns?: Readonly<
+    Partial<Record<Sign, Readonly<Partial<Record<Sign, SunAscendantDescriptionEntry>>>>>
+  >;
   readonly aspectPairs?: Readonly<
     Partial<Record<DescriptionAspect, Readonly<Partial<Record<DescriptionPlanetPair, AspectPairDescriptionEntry>>>>>
   >;
@@ -323,11 +341,21 @@ const CHIRON_PLACEMENT_SIGN_BY_HOUSE = Object.freeze({
   9: "Sagittarius", 10: "Capricorn", 11: "Aquarius", 12: "Pisces",
 } satisfies Readonly<Record<DescriptionHouseNumber, Sign>>);
 
-/** Fortune sign manners, shared Lilith modes and combined Chiron accounts. */
+/** The Vertex by sign reuses its house account through the natural house of the sign (Leo = house 5). */
+const NATURAL_HOUSE_BY_SIGN = Object.freeze({
+  Aries: 1, Taurus: 2, Gemini: 3, Cancer: 4, Leo: 5, Virgo: 6,
+  Libra: 7, Scorpio: 8, Sagittarius: 9, Capricorn: 10, Aquarius: 11, Pisces: 12,
+} satisfies Readonly<Record<Sign, DescriptionHouseNumber>>);
+
+/** Fortune sign manners, shared Lilith modes, combined Chiron accounts and Vertex house aliases. */
 export function getPointSignDescriptionEntry(
   point: DescriptionPoint,
   sign: Sign,
 ): PointSignDescriptionEntry | undefined {
+  if (point === "vertex") {
+    if (!Object.prototype.hasOwnProperty.call(NATURAL_HOUSE_BY_SIGN, sign)) return undefined;
+    return own(own(ASTROLOGY_DESCRIPTIONS.pointHouses, "vertex"), NATURAL_HOUSE_BY_SIGN[sign]);
+  }
   if (point === "chiron") {
     const placements = ASTROLOGY_DESCRIPTIONS.chironPlacements;
     if (!placements || !Object.prototype.hasOwnProperty.call(placements, sign)) return undefined;
@@ -360,6 +388,10 @@ export function getPointHouseDescriptionEntry(
   if (point === "chiron") {
     if (!Object.prototype.hasOwnProperty.call(CHIRON_PLACEMENT_SIGN_BY_HOUSE, house)) return undefined;
     return getPointSignDescriptionEntry("chiron", CHIRON_PLACEMENT_SIGN_BY_HOUSE[house as DescriptionHouseNumber]);
+  }
+  if (point === "lilith mean" || point === "lilith true") {
+    // Inferred from the sign accounts through the natural sign of the house (house 5 = Leo).
+    return getPointSignDescriptionEntry(point, CHIRON_PLACEMENT_SIGN_BY_HOUSE[house as DescriptionHouseNumber]);
   }
   const points = ASTROLOGY_DESCRIPTIONS.pointHouses;
   if (!points || !Object.prototype.hasOwnProperty.call(points, point)) return undefined;
@@ -587,5 +619,78 @@ export function getAspectPairDescription(
   language?: string,
 ): string | undefined {
   const entry = getAspectPairDescriptionEntry(aspect, planetA, planetB);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Sun sign combined with the Ascendant sign; distinct from the standalone Ascendant profiles. */
+export function getSunAscendantDescriptionEntry(
+  sunSign: Sign,
+  ascendantSign: Sign,
+): SunAscendantDescriptionEntry | undefined {
+  return own(own(ASTROLOGY_DESCRIPTIONS.sunAscendantSigns, sunSign), ascendantSign);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getSunAscendantDescription(sunSign: Sign, ascendantSign: Sign, language?: string): string | undefined {
+  const entry = getSunAscendantDescriptionEntry(sunSign, ascendantSign);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+const DESCRIPTION_SIGN_ORDER: readonly Sign[] = Object.freeze([
+  "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+  "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+]);
+
+/**
+ * Ordinal symbolic degree of an ecliptic longitude, by the course rule: 18°00′ is the
+ * 18th degree, anything from 18°00′01″ up to 19°00′ is the 19th. An exact sign boundary
+ * therefore belongs to the 30th degree of the previous sign.
+ */
+export function getSymbolicDegreeNumber(longitude: number): { sign: Sign; degree: number } | undefined {
+  if (typeof longitude !== "number" || !Number.isFinite(longitude)) return undefined;
+  const normalized = ((longitude % 360) + 360) % 360;
+  const ordinal = Math.ceil(normalized);
+  if (ordinal === 0) return { sign: "Pisces", degree: 30 };
+  return { sign: DESCRIPTION_SIGN_ORDER[Math.floor((ordinal - 1) / 30)], degree: ((ordinal - 1) % 30) + 1 };
+}
+
+/** Symbolic degree image (monomer) for an ordinal degree 1 to 30 of a sign. */
+export function getSymbolicDegreeDescriptionEntry(
+  sign: Sign,
+  degree: number,
+): SymbolicDegreeDescriptionEntry | undefined {
+  if (!Number.isInteger(degree) || degree < 1 || degree > 30) return undefined;
+  return own(own(ASTROLOGY_DESCRIPTIONS.symbolicDegrees, sign), degree);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getSymbolicDegreeDescription(sign: Sign, degree: number, language?: string): string | undefined {
+  const entry = getSymbolicDegreeDescriptionEntry(sign, degree);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Essential-dignity status concepts; which planet holds which status is computed elsewhere. */
+export function getDignityStatusDescriptionEntry(
+  status: DescriptionDignityStatus,
+): DignityStatusDescriptionEntry | undefined {
+  return own(ASTROLOGY_DESCRIPTIONS.dignityStatuses, status);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getDignityStatusDescription(status: DescriptionDignityStatus, language?: string): string | undefined {
+  const entry = getDignityStatusDescriptionEntry(status);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Decan profile by sign and decan number 1 to 3 (ten degrees each); omit both for the method concept. */
+export function getDecanDescriptionEntry(sign?: Sign, decan?: number): DecanDescriptionEntry | undefined {
+  if (sign === undefined && decan === undefined) return ASTROLOGY_DESCRIPTIONS.decanConcept;
+  if (sign === undefined || decan === undefined || !Number.isInteger(decan) || decan < 1 || decan > 3) return undefined;
+  return own(own(ASTROLOGY_DESCRIPTIONS.decans, sign), decan as DescriptionDecanNumber);
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getDecanDescription(sign?: Sign, decan?: number, language?: string): string | undefined {
+  const entry = getDecanDescriptionEntry(sign, decan);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

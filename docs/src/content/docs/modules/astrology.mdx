@@ -19,16 +19,26 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ## Bilingual natal descriptions
 
-The catalog contains **1030 unique bilingual entries**. Shared lookup aliases count
+The catalog contains **1580 unique bilingual entries**. Shared lookup aliases count
 as one authored entry.
 
 **Available in npm version 6.18.0 and later:** the complete 431-entry catalog
-and the getters for it. The 599 entries added afterwards (Descendant signs, signs
-on house cusps, retrograde planets by sign and house, Vertex, and planet-pair
-aspects) and their getters are unreleased.
+and the getters for it. The 1149 entries added afterwards (Descendant signs, signs
+on house cusps, retrograde planets by sign and house, Vertex, planet-pair
+aspects, Sun with Ascendant, symbolic degrees, dignity statuses and decans) and
+their getters are unreleased.
 
 ```typescript
 import {
+  getSunAscendantDescription,
+  getSunAscendantDescriptionEntry,
+  getSymbolicDegreeNumber,
+  getSymbolicDegreeDescription,
+  getSymbolicDegreeDescriptionEntry,
+  getDignityStatusDescription,
+  getDignityStatusDescriptionEntry,
+  getDecanDescription,
+  getDecanDescriptionEntry,
   getAspectPairDescription,
   getAspectPairDescriptionEntry,
   getHouseCuspSignDescription,
@@ -150,6 +160,18 @@ getVertexContactDescription('venus', 'pt-BR'); // planet in contact with the Ver
 
 getAspectPairDescription('trine', 'moon', 'sun', 'pt-BR'); // either planet order
 getAspectPairDescriptionEntry('square', 'sun', 'moon')?.src;
+
+getSunAscendantDescription('Taurus', 'Aries', 'pt-BR'); // Sun sign, then Ascendant sign
+
+const degree = getSymbolicDegreeNumber(chart.planets.sun.longitude); // { sign, degree }
+if (degree) getSymbolicDegreeDescription(degree.sign, degree.degree, 'pt-BR');
+
+getDignityStatusDescription('exaltation', 'pt-BR'); // domicile, exaltation, detriment, fall
+getDecanDescription('Aries', 2, 'pt-BR'); // sign and decan number 1-3
+getDecanDescription(undefined, undefined, 'pt-BR'); // the decan method concept
+
+getPointSignDescription('vertex', 'Leo', 'pt-BR'); // same account as the Vertex in house 5
+getPointHouseDescription('lilith mean', 2, 'pt-BR'); // same account as Lilith in Taurus
 ```
 
 Lunar-node concepts use explicit astronomical roles `north` and `south`, without
@@ -230,8 +252,8 @@ Angle-sign placements are authored for all four angles.
 
 Signs on house cusps (`getHouseCuspSignDescription`) are a separate table from the
 angle signs: a house 10 cusp is not the Midheaven in every house system. 139 of the
-144 combinations are authored. Most rest on a supplementary keyword sheet and are a
-single short sentence; five house 6 combinations return `undefined`.
+144 combinations are all authored. Most rest on a supplementary keyword sheet and are a
+single short sentence.
 
 Retrograde placements take the same `longitudeSpeed` guard as the general retrograde
 profiles. All eight planets have the twelve houses. Signs are complete for Mercury
@@ -242,13 +264,29 @@ from Leo to Sagittarius and Pluto from Cancer to Scorpio, and the rest return
 Vertex lookups use the point getters with `vertex` and `antivertex`, plus
 `getVertexContactDescription`. They cover the two concepts, the Vertex in houses 4 to 9 and planet
 contacts for every planet except Neptune. What counts as a contact is the
-caller's decision; the lookup takes only the planet.
+caller's decision; the lookup takes only the planet. The Vertex by sign is read
+through the natural house of the sign, so `getPointSignDescription('vertex', sign)`
+answers for Cancer through Sagittarius only. Lilith by house is read the same way
+in reverse: house N returns the account of the Nth sign.
 
 Planet-pair aspects cover conjunction, sextile, square, trine, quincunx and
 opposition between the ten planets: 256 of the 270 combinations. Each entry is the
 theme the source repeats across its per-sign accounts of that pair. Pairs the
 source does not treat return `undefined`, with no fallback to the general aspect
 concept.
+
+Sun with Ascendant covers the 144 ordered combinations and is separate from the
+twelve standalone Ascendant profiles.
+
+Symbolic degrees are the 360 degree images (monomers), usually two per degree. The
+text states the image and adds a meaning only where the source gives one.
+`getSymbolicDegreeNumber(longitude)` applies the course rule: 18°00′ is the 18th
+degree and anything above it up to 19°00′ is the 19th, so an exact sign boundary
+belongs to the 30th degree of the previous sign.
+
+Dignity statuses describe domicile, exaltation, detriment and fall as concepts;
+`getEssentialDignity` still decides which planet holds which status. Decan profiles
+are keyed by sign and decan number and use the same Chaldean rulers as `getDecan`.
 
 The repository keeps a separate source audit for every completed kind under
 `docs/content/astrology-descriptions-*.md`. These audits record narrow

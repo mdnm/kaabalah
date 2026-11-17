@@ -21,3 +21,14 @@ Approved batches1-3 complete:431 canonical bilingual entries. See astrology-desc
 - Method: one source-audit agent per set, no per-kind audit docs or tests. Structure, key sets and source line ranges were machine-checked; a second read then checked the 596 agent-authored entries against their cited lines and its 68 corrections were applied (report in the open-issues file).
 - Not started: Sun x Ascendant 144 (A7:16-576), dignity/decan/degree concepts, timing, synastry, Chinese astrology, Priapus, Lilith houses/aspects, Vertex ruler-house scenarios (A18:1032-1064).
 - Aspect pairs were then re-checked against the printed page images (PDF physical pages 515-782, one pair per page): 179 kept, 77 rewritten. Rendered pages, not the OCR, are the reference for this set.
+
+## Batch 5 (2026-11-17)
+
+550 further entries, catalog total 1580. Notes and open points: astrology-descriptions-batch4-open-issues.md, section "Batch 5".
+
+- Sets: sunAscendantSigns 144 (A7:16-576, outer key Sun, inner Ascendant); symbolicDegrees 360 (A11:341-1556); dignityStatuses 4 (A12/A15 name them, effect wording from the book); decanConcept 1 (classes) and decans 36 (book, read from printed pages 70-114); houseCuspSigns.6 completed to 12.
+- Getters: getSunAscendantDescription(sunSign, ascendantSign); getSymbolicDegreeNumber(longitude) and getSymbolicDegreeDescription(sign, degree); getDignityStatusDescription(status); getDecanDescription(sign?, decan?). Aliases: Vertex by sign through the natural house (Cancer-Sagittarius only); Lilith by house through the natural sign.
+- Mat's rulings applied: classes take priority over the book and the keyword sheet (16 entries rewritten: 5 Descendant signs, 11 cusps); house 6 may speak of health; the retrograde, Vertex-house and aspect-pair gaps are accepted as they are.
+- Still open for Mat: class-versus-class points on the Vertex (A18, A13:1489) listed in the open-issues file. Lilith aspects have no source and were not authored.
+- Not started: timing, synastry, Chinese astrology, Priapus, sign transitions, five-degree angel sectors, Vertex ruler-house scenarios.
+

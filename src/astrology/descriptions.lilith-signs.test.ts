@@ -25,14 +25,14 @@ describe("Lilith sign interpretation aliases", () => {
       for (const language of [undefined, "", "en", "es", "PT-BR", "pt", "pt-BR", "pt-PT"]) expect(getPointSignDescription(mode, sign, language)).toBe(language?.startsWith("pt") ? entry.pt : entry.en);
     }
   });
-  it("rejects unsupported points/signs and leaves all houses as gaps", () => {
+  it("rejects unsupported points/signs and rejects invalid houses", () => {
     for (const point of ["lilith", "Lilith Mean", "Lilith True", "lilithMean", "lilithTrue", "lilith true ", "priapus", "constructor", "__proto__", "toString", "", null]) expect(getPointSignDescriptionEntry(point as DescriptionPoint, "Aries")).toBeUndefined();
     for (const mode of modes) {
       for (const sign of ["aries", "ARIES", "Áries", "unknown", "constructor", "__proto__", "toString", "", null]) {
         expect(getPointSignDescriptionEntry(mode, sign as Sign)).toBeUndefined();
         expect(getPointSignDescription(mode, sign as Sign, "pt")).toBeUndefined();
       }
-      for (const house of [...Array.from({ length: 12 }, (_, i) => i + 1), 0, 13, 1.5, NaN, Infinity, "1", null]) expect(getPointHouseDescriptionEntry(mode, house as number)).toBeUndefined();
+      for (const house of [0, 13, 1.5, NaN, Infinity, "1", null]) expect(getPointHouseDescriptionEntry(mode, house as number)).toBeUndefined();
     }
   });
   it("preserves Chiron shared accounts and Fortune independent manners/fields", () => {

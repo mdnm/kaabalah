@@ -5,7 +5,7 @@ Authored 2026-11-17 by parallel source-audit agents, one per set. Nothing below 
 | Set | JSON key | Authored | Candidate | Not authored |
 | --- | --- | ---: | ---: | --- |
 | Descendant by sign | `angleSigns.dc` | 12 | 12 | none |
-| Sign on house cusp | `houseCuspSigns` | 139 | 144 | house 6: Cancer, Scorpio, Sagittarius, Aquarius, Pisces (health-only keywords) |
+| Sign on house cusp | `houseCuspSigns` | 144 | 144 | none (the five house 6 cells were added in batch 5) |
 | Retrograde planet by sign | `retrogradePlanetSigns` | 79 | 96 | Uranus 3, Neptune 7, Pluto 7 (absent from class 16) |
 | Retrograde planet by house | `retrogradePlanetHouses` | 96 | 96 | none |
 | Vertex / Antivertex | `points.vertex`, `points.antivertex`, `pointHouses.vertex`, `vertexPlanetContacts` | 2 + 6 + 9 | | houses 1-3 and 10-12, Neptune contact, signs (absent from class 18) |
@@ -639,3 +639,237 @@ Not fully checked: sextile sun/mars, mercury/mars and mercury/uranus. The OCR is
 - `opposition` `saturn/uranus` (page 643): closing clause (individual action and harmony) comes from the Aries/Libra paragraphs only; the page's common theme is Uranus's opposite-sign quality making Saturn's structures more innovative and less rigid
 - `opposition` `saturn/neptune` (page 644): current text rests on Cancer/Capricorn wording (welcoming); the page's recurring theme is spiritual depth and sensitivity softening Saturn's structures
 - `opposition` `uranus/pluto` (page 647): current text (fairness, equity, power dynamics) comes from the Aries and Libra paragraphs only; the page's recurring theme is innovative, transformative change in areas such as resources, education, family and service
+
+---
+
+# Batch 5 (2026-11-17)
+
+Mat ruled: classes take priority over the book and the keyword sheet; class-versus-class conflicts go to him; house 6 may speak of health; the retrograde, Vertex-house and aspect-pair gaps are accepted. Vertex by sign and Lilith by house are lookup aliases through the natural house/sign, not authored text (the Lilith alias is an extension of the Vertex ruling and was not stated by Mat for Lilith). Lilith aspects have no source and were not authored. A second page-image read covered 25 aspect entries: 14 kept, 11 rewritten; the Mercury/Jupiter quincunx page is mostly the Mercury/Mars page with the planet name swapped, so that entry rests on the few Jupiter-specific phrases.
+
+### Class versus class (owner to decide)
+- A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
+- A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
+- A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.
+- A18 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
+- A18 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
+- A18 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
+- A9 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
+- No class-vs-class conflicts found in the cusp passages (A9 302-993, A6 house 1) or in the four retrograde logs (all A16). Re-reads covered A9 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and A18 849-1064.
+
+---
+
+## Class priority pass (priority.json)
+Counts: 5 dc rewritten + 11 cusp rewritten + 5 new house-6 cells = 21 entries.
+
+### Rewritten for class priority
+- angleSigns.dc.Leo: now based on A8 1285-1314 (Leo on the Descendant ~ Sun in house 7: self found through the other, seeking a strong figure/prestige/a hero to serve, projecting the solar principle); book's dramatic partners only added.
+- angleSigns.dc.Taurus: A9 823-825 basis (constancy, devotion, possessiveness and jealousy as tendency, marriage as security/financial gain/physical closeness); book partners added.
+- angleSigns.dc.Gemini: A9 487-488 basis (more than one important relationship or one transformed to almost new); book partners added.
+- angleSigns.dc.Virgo: A9 488-490 basis (cautious, discerning in choosing partners; "salvar os outros" with extreme loyalty); book partners added.
+- angleSigns.dc.Libra: A9 825-829 basis, now including the idealized partner / endless search for the perfect partner; book added.
+- houseCuspSigns.2.Gemini (A9 341-344), 2.Taurus (689-694), 2.Libra (691-694): were H-only; now class basis.
+- houseCuspSigns.3.Gemini (A9 373-375), 3.Virgo (376-378), 3.Taurus (710-712): were H-only; now class basis.
+- houseCuspSigns.5.Taurus (A9 770-772), 5.Libra (773-775): were H-only; now class basis.
+- houseCuspSigns.6.Virgo (A9 461-463), 6.Taurus (798-799), 6.Libra (799-801): were H-only; now class basis, H kept only where it does not conflict.
+- Not rewritten, no class content on the Descendant: Aries, Cancer, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces (A8 1313 and the A9 ranges only name Leo, Taurus, Gemini, Virgo, Libra).
+- New (task 3): houseCuspSigns.6.Cancer, Scorpio, Sagittarius, Aquarius, Pisces, from H lines 90, 154, 170, 202, 218 only (no class prose for them); tendencies about care of body/routine, organs left out except nervous system/circulation (Aquarius) and feet/lymphatic system (Pisces) as areas of attention.
+
+Class claims kept out because of the writing exclusions:
+- Leo: "figura de pai" (gendered parent), Diana example, counsellor/arbitration vocations (A8 1306-1313).
+- Taurus: "fidelidade" (fidelity); jealousy kept only as the class's hedged "tendência" (same as houseCuspSigns.7.Taurus). Owner may strike it from both.
+- Libra: Proust example (A9 820), "Áries na casa 1" cross-reference.
+- 2.Gemini: "bom funcionamento do corpo como maior bem" (health); 6.Libra: "saúde abalada" (801); 6.Virgo: soap-brand anecdote.
+- A11 111-116 (Descendant as "Tu", what we seek in others) is generic, has no per-sign content; not added (would glue a concept to sign profiles).
+
+### Class versus class (owner to decide)
+- A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
+- A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
+- A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.
+- A18 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
+- A18 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
+- A18 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
+- A9 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
+- No class-vs-class conflicts found in the cusp passages (A9 302-993, A6 house 1) or in the four retrograde logs (all A16). Re-reads covered A9 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and A18 849-1064.
+
+### Left as is
+- Retrograde logs (all A16, class only): phase vocabulary (Fase I/II/III) omitted by design, not for a book or H source; no change.
+- Retrograde logs: chart-conditional, sexual, marriage, health, past-life and gendered content excluded by the writing rules; no change.
+- Retrograde: uranus Capricorn/Aquarius/Pisces, neptune and pluto missing signs: absent from the class; no change.
+- Vertex: houses 1-3 and 10-12, Neptune contact, sign entries absent from A18; no change.
+- Vertex: A18 997-1020 (reencontro, impediments, divorce, homosexual relationships) and gendered family roles excluded by the writing rules; no change.
+- Vertex: A18 1032-1064 (house of the Vertex's ruler, astrocartography) is another factor, left out; no change.
+- houseCuspSigns 1: A6 is the basis already; "cusp vs Ascendant" assumption stays as logged.
+- houseCuspSigns 4.Gemini, 4.Virgo, 4.Taurus, 4.Libra, 3.Libra, 5.Gemini, 5.Virgo, 6.Gemini and all of 7-12 for Gemini/Virgo/Taurus/Libra: already class-based; H only supplementary. Virgo 5 and Gemini 4 H keywords that differ from class were already set aside.
+- houseCuspSigns 2.Virgo: A9 has no Virgo sentence for house 2, so it stays H-only.
+- houseCuspSigns 7-12 other signs (Aries, Cancer, Leo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces) and 2-6 for those signs: no class prose, H-only stays.
+- houseCuspSigns 8.Gemini (sexual-desire remark generalized) and 12.* ("karma materno" etc.): excluded content stays excluded.
+
+---
+
+## Sun sign x Ascendant (A7, lines 16-576)
+Counts: authored 144 / expected 144
+
+Lines used: `modulo 4/aula 7 modulo 4/aula-7.md` 16-576 (all of it read). Per-entry ranges are in each `src`. The range for the Sagittarius-Sun/Sagittarius-Ascendant row starts on a line it shares with the end of the Scorpio row (line 423); the Scorpio-Sun row there is 420-423.
+
+### Reading of the structure (what confirms it)
+- Twelve blocks, one per Ascendant, each with twelve rows beginning with a Sun sign in capitals. Headings are in mixed case for Taurus-Libra ("Ascendente EM TOURO"), and the Gemini heading is repeated at line 144 (page break); the second occurrence was treated as the same block.
+- Confirmed from the text itself: block = Ascendant, row = Sun.
+  - Taurus block, row GEMEOS: "o Geminiano ... o Ascendente Touro o torna mais fiel e apegado à família" (Gemini person, Taurus Ascendant).
+  - Taurus block, row PEIXES: "O Ascendente em Touro dá estabilidade e realismo ao nativo de Peixes".
+  - Libra block, row ESCORPIÃO: Scorpio traits "filtrados pela extroversão e diplomacia de Libra" (Libra as the outer filter).
+  - Most other rows say "desta combinação" without direction, so only the cases above are decisive.
+- No source statement contradicts the reading. The direction is unambiguous only in those rows; the rest follow the same layout.
+
+### Gaps (keys omitted, with reason and lines inspected)
+None. All 144 rows are present and readable (lines 16-576).
+
+### Inconsistencies and source disagreements (lines; what conflicts; what you chose)
+- Mirror-pair duplication: many (Sun A, Asc B) rows are word-for-word the same text as (Sun B, Asc A), so direction is lost in them (for example Aries block row LIBRA = Libra block row ARIES; Taurus/Leo; Gemini/Libra; Cancer/Leo; Leo/Virgo; Libra/Virgo; Scorpio/Virgo; Sagittarius/Aquarius; Capricorn/Aquarius; and others). I authored both keys from the same text, rewording only where the text names which sign is Sun or Asc (Taurus/Pisces, Libra/Scorpio). Treat these pairs as undifferentiated source text.
+- Same-sign rows (Sun = Asc) are written as intensification, as the source does ("características acentuadas").
+- Asc Taurus/Sun Leo and Asc Leo/Sun Taurus share most phrases; kept both.
+- Gemini block line 144 repeated heading; no row lost (rows ARIES-VIRGEM before it, LIBRA-PEIXES after it).
+- Several rows carry OCR slips ("Carcomi-o" for Capricórnio in Pisces/Capricorn, "urna" for "uma", "Dos personagens"); read by context.
+- Source rows mix the labels "Câncer/Cancer" and "Gêmeos/Geminiano" freely; keys normalized.
+
+### Weak support (entries authored on thin/keyword-only/damaged-OCR evidence; key + reason)
+- Virgo-Sun/Sagittarius-Asc and Sagittarius-Sun/Virgo-Asc ("caráter honesto... criativo e prático"): one short sentence of source.
+- Sagittarius-Sun/Sagittarius-Asc: only two short sentences, three keywords.
+- Pisces-Sun/Capricorn-Asc and Capricorn-Sun/Pisces-Asc: OCR damage in the Capricorn word; reading is by context.
+
+### Dropped in general terms (content policy)
+- Deterministic fidelity/infidelity outcomes and "sudden passions" as fact, changing partners, sexual adventures, "sexual deviations", sexual-quality remarks (Taurus/Scorpio, Gemini/Taurus), "wishes to marry and have children", "marriage will remedy anxiety", marriage for economic advantage. Where a row had an affective theme that could be kept as a tendency in how you relate (tension between commitment and adventure, restless emotional life, stable-relationship difficulty), it is kept hedged; otherwise it was dropped.
+- Health/psychopathology wording ("estados neuróticos", "inibição nervosa", "depressões", "atrações mórbidas", "maníaco") and the gendered label "feminina" for Libra/Cancer; fecundity remarks.
+- Comparative verdict "mais favorável para a carreira do que para a vida afetiva" (Leo/Sagittarius).
+
+---
+
+## Symbolic degrees A: Aries, Taurus, Gemini, Cancer (A11 lines 341-758)
+Counts: authored 120 / expected 120
+Source lines used: reading rule 324-340 (degree key = source's ordinal number; 18°00' = 18th, 18°01'-18°59' = 19th); degrees Aries 341-455, Taurus 460-562, Gemini 567-660, Cancer 664-758.
+
+### Gaps
+None. All four signs have degrees 01-30 present, each exactly once, in order. No skipped or duplicated numbers.
+
+### Inconsistencies and source disagreements
+- Gemini 15/16: second ("Ou") images look swapped or displaced (15 gives "homem com sete cabeças", 16 gives "ponte construída ao lado da correnteza", while the bridge is in the 15 first image and the two-headed man in the 16 first image). Kept as printed.
+- Gemini 28: second image "dois touros de tamanhos diferentes" does not match the sower; kept as printed.
+- Cancer 06/07: second images look swapped (06 "homem mergulhando uma cabra em uma caldeira" matches the 07 first image; 07 "homem puxando uma cabra com seu cinto" matches the 06 horse-noose scene). Kept as printed. Cancer 04/05 and 23 (second image "uma queda d'água") also show loose matches.
+- Aries 08: OCR broke the second image into one word per line; read as one sentence.
+- Source typos/OCR kept faithful in meaning: "forca" (força), "arvore", "caca" (caça); Cancer 25 and others unaffected.
+- Intro (324-340) states monomers "tendem a determinar as tendências astrológicas" but gives no per-degree meanings; only Taurus 06 states a meaning (three heads = vast intelligence), added hedged.
+
+### Weak support
+- Entries state images only (no interpretation), by design. Keywords are concrete motifs from the image. Long first images were condensed (secondary details dropped); those entries carry a "Condensed" reviewNote.
+- Some images carry source-stated impressions ("força tranquila", "ar distraído") kept inside the image text, not as meanings.
+
+---
+
+## Symbolic degrees B (Leo, Virgo, Libra, Scorpio)
+Counts: authored 120 / expected 120
+Source: A11 `modulo 4/aula 11 modulo 4/aula-11.md`, lines 763-1158 (Leão 763-852, Virgem 856-954, Libra 958-1056, Escorpião 1061-1158); intro/reading rule at 324-333 read (degree N = ordinal degree; 18°01'-18°59' is the 19th).
+### Gaps
+None. All 120 degrees present; the source gives only images, no interpretive text for any degree, so no hedged meaning sentence was added anywhere.
+### Inconsistencies and source disagreements
+- Numbering: no skipped or duplicated degree numbers in 763-1158 (01-30 in each sign).
+- Leão 25 and 26: the "Ou" images are shifted (25 Ou = man swimming in choppy waves, which is the main image of 26; 26 Ou = man chopping wood, unrelated to its main image). Kept as written.
+- Many "Ou" images do not relate to the main image (e.g. Leão 15 lion lying; Virgem 16 two dogs; Virgem 25 sling; Libra 5 black bird; Libra 8; Escorpião 15, 25, 28, 30). Kept as written, flagged in reviewNotes where clearly unrelated.
+- Repeated "Ou" images across degrees: Leão 30 and Virgem 19 (man sitting sideways on a horse); Leão 29 and Virgem/other "man and woman holding hands"; Virgem 25 and 26 (sling); Libra 15 and 16 (two winged hearts); Escorpião 25 and 28 (wolf with a duck). Kept as written.
+- Virgem 23: "velas defraudadas" is probably a slip for "enfunadas"; rendered as billowing sails.
+- Libra 8 and 9 mention sickbed scenes; kept as literal images only (no health claim).
+- Escorpião 5: the "Ou" line has no final full stop (source typography).
+- Page-break blank lines inside Leão 9/10, Virgem 3/4, Libra 8/9, Libra 21/22 gaps, Virgem 30 (line 952 blank mid-sentence) and Libra 30 / Escorpião 9 (1090): src ranges span through them.
+### Weak support
+- Main-image descriptions are condensed (minor modifiers and secondary details dropped, e.g. clothing, extra background items); the second "Ou" image is given in full. Only entries where the omission or oddity seemed material carry a reviewNote.
+- Libra 14 source has OCR join "meiasmáscaras" (read as meias-máscaras); Libra 22 "belprazer" (read as bel-prazer).
+
+---
+
+## Symbolic degrees C (Sagittarius, Capricorn, Aquarius, Pisces) from A11
+Counts: authored 120 / expected 120
+Source: modulo 4/aula 11 modulo 4/aula-11.md, lines 1162-1556 (Sagittarius 1162-1254, Capricorn 1258-1346, Aquarius 1350-1450, Pisces 1454-1556). Intro and reading rule read at 324-340 (18°00' = 18th degree, 18°01'-18°59' = 19th).
+
+### Gaps (keys omitted, with reason and lines inspected)
+None. All 120 degrees present in 1162-1556. Lines from 1558 on are personal class notes and were not used.
+
+### Inconsistencies and source disagreements (lines; what conflicts; what you chose)
+- Numbering: sequential 01-30 in every sign, no skips or duplicates.
+- No interpretation or tendency text exists for any of these degrees (images only), so every entry is image-only with no "isso pode indicar" sentence.
+- Sagittarius 26 (1236-1240): the source footnote "GRACAS = jogo com um círculo e duas varinhas" is folded into the image as "as graças (jogo com um círculo e duas varinhas)"; footnote line included in src.
+- Sagittarius 12 (1195): second image reads "Ou um homem montado em um bode" (no dash); treated as the usual "ou".
+- Pisces 30 (1554-1556): "acoite" read as "açoite", rendered "chicote". Aq 28, Sag 25 "taca"/"tacas" read as "taça"/"taças".
+- OCR/translation oddities normalized: "acesso" (Sag 9, 1186) read "aceso"; "trás" (Aq 20, 1413) read "traz"; "terceiro-estado" rendered "terceiro estado".
+- Capricorn 17 (1303-1305): "personagem importante (talvez Luís XIV em Versalhes)" kept as in source.
+- Pisces 16 (1507): "um tigre" kept masculine as in source.
+
+### Weak support (entries authored on thin/keyword-only/damaged-OCR evidence; key + reason)
+- Aquarius 16 (1396): "velas defraudadas" interpreted as "velas içadas" (sails spread); the source word is odd, this is an inference.
+- Entries whose first image was condensed carry a reviewNotes line: Sagittarius 3 and 26, Aquarius 2, 19 and 25, Pisces 4. All other entries are near-complete renderings; very minor setting details (adjectives, "etc.") may be trimmed.
+
+---
+
+## Essential-dignity status concepts (domicile, exaltation, detriment, fall)
+Counts: authored 4 / expected 4 (peregrine omitted)
+
+### Gaps
+- peregrine: no class defines it. grep of A12 and A15 for peregrin hits only unrelated words (A12:275, 876 "peregrinos/Peregrino" as pilgrim; A15:622 "peregrinar" as travel). Book grep: only "peregrinação" (B:19877), unrelated. Omitted.
+- No class says what any status does to a planet's expression. Classes give only structural definitions. The behavioral hedges ("more naturally", "favored", "less at ease", "challenged") come from the book, which is sign-specific OCR: B:17372-17377 (domicile, Moon), 17113-17117 (exile, Sun), 17084-17097 (fall, Sun). Exaltation has no usable book wording (B:17068-17075, 17434-17436 garbled), so "qualities favored" is inferred only from A12 calling exaltation a "Dignidade" and detriment/fall "Debilidades" (A12:1267-1270). Owner may prefer to strip the behavioral clauses.
+- Domicile: classes never define the word; A12 says "regem os signos" (1267-1268) and A15 uses "domicílio"/"trono" in examples (45-51).
+
+### Class tables (data)
+A12 (1239-1272), heliocentric/"natural order" table, columns Natural planet / Exaltation / Fall (table was reconstructed from the PDF by the owner, see the HTML comment at 1253-1264):
+Aries: nat Sun, exalt Sun, fall Saturn | Taurus: Mercury, Moon, Uranus | Gemini: Venus, South Node, North Node | Cancer: Earth, Jupiter, Mars | Leo: Mars, Neptune, Pluto | Virgo: Moon/Asteroids, Mercury, Venus | Libra: Jupiter, Saturn, Sun | Scorpio: Saturn, Uranus, Moon | Sagittarius: Uranus, North Node, South Node | Capricorn: Pluto, Mars, Jupiter | Aquarius: Planet X, Pluto, Neptune | Pisces: Neptune, Venus, Mercury.
+A12 explicitly says the "Planeta Natural" column is NOT rulership or dignity (1265-1269). A12 gives no domicile or detriment table; only the rule: ruler is always in detriment in the opposite sign (180°), and exaltation sits 180° from fall (1270-1272).
+A15 (45-51): no table. Stated: Sun exalted in Aries, domicile Leo; Moon exalted in Taurus, "trono" Cancer. North/Ascending Node: domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo; South Node the inverse. A15 gives no detriment or fall for any planet.
+
+### Inconsistencies and source disagreements
+Versus the standard library table:
+- A12 exaltation by planet (read from the sign column): Sun Aries (matches), Moon Taurus (matches), Mercury Virgo (matches), Venus Pisces (matches), Mars Capricorn (matches), Jupiter Cancer (matches), Saturn Libra (matches). So A12 and the standard table agree on all seven classical exaltations. A12 additionally lists Uranus (Scorpio), Neptune (Leo), Pluto (Aquarius), nodes (see below); these are outside the standard table.
+- A12 falls (read from the table): Sun Libra, Moon Scorpio, Mercury Pisces, Venus Virgo, Mars Cancer, Jupiter Capricorn, Saturn Aries. Each is 180° from its exaltation, consistent with A12's rule. (Standard table lists no falls; implied opposites match.)
+- A12 detriment: stated only as opposite of ruler's sign; no per-planet data, so no comparison possible.
+- A15 Sun (exalt Aries, domicile Leo) and Moon (exalt Taurus, throne Cancer) match the standard table. Nothing else in A15 for the classical planets.
+Between A12 and A15:
+- No disagreement on Sun or Moon (A12 has the same exaltations, no domicile table).
+- Nodes: A12 table has North Node exalted Sagittarius, fall Gemini; South Node exalted Gemini, fall Sagittarius. A15 has Ascending Node domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo. Per the owner these address different things and the node dignities follow A15:45-53; recorded as a note only, not a new conflict. Also not part of the concept entries.
+- A15 itself: "exílio" is used for detriment, "trono" for domicile; A12 uses "Detrimento". Terminology only.
+Book versus classes (not used for tables): book shows e.g. Mercury exalted Aquarius, Sun fall Libra but exile Aquarius, Jupiter exile Gemini/Virgo (B:17050-18800 region), differing from the standard table; irrelevant here since no table is authored.
+
+### Weak support
+- All four entries: structural part is class-sourced, behavioral hedge is book-only or inferred (see Gaps). Exaltation is the weakest (hedge inferred from "dignidade").
+- B line numbers for the book citations were computed from grep offsets within the 16988-20164 range, OCR garbled; ranges are approximate to a few lines.
+
+---
+
+## Decans (method concept + 36 decan profiles)
+Counts: authored 37 / expected 37 (1 concept + 36 decans)
+
+### Decan system used by the book (from the printed pages, PDF page = printed page number)
+All 36 decans printed with explicit degree spans (0-9°59′, 10-19°59′, 20-29°59′) and a planetary ruler. Rulers per sign (I / II / III):
+- Aries: Mars / Sun / Venus (p70)
+- Taurus: Mercury / Moon / Saturn (p74)
+- Gemini: Jupiter / Mars / Sun (p78)
+- Cancer: Venus / Mercury / Moon (p82)
+- Leo: Saturn / Jupiter / Mars (p86)
+- Virgo: Sun / Venus / Mercury (p90)
+- Libra: Moon / Saturn / Jupiter (p94)
+- Scorpio: Mars / Sun / Venus (p98)
+- Sagittarius: Mercury / Moon / Saturn (p102)
+- Capricorn: Jupiter / Mars / Sun (p106)
+- Aquarius: Venus / Mercury / Moon (p110)
+- Pisces: Saturn / Jupiter / Mars (p114)
+
+This is the Chaldean-order sequence (Saturn, Jupiter, Mars, Sun, Venus, Mercury, Moon repeating) starting with Aries I = Mars and running continuously around the zodiac, so it should match the library's computed decan rulers. I compared the sequence by reasoning, not against library code; owner should confirm against the library.
+No Egyptian god/name is attached to any decan in the sign chapters. The book separately prints two Shem angels per decan next to the angel talismans (e.g. Aries I = Vehuiah and Jeliel, p71; Capricorn I = Mebahiah and Poyel, p107; Aquarius I = Umabel and Iah-Hel, p111); these were not used (invocation material).
+
+### Gaps (keys omitted, with reason and lines inspected)
+None. All 36 decans printed and legible.
+
+### Inconsistencies and source disagreements
+- Classes (A3 104-114) describe the Egyptian decan with 36 "counselor gods" (18 above, 18 below the Earth), not planetary rulers; the book uses planetary rulers and no gods. Not contradictory but different systems; the concept entry follows the classes and only mentions the 10-degree/10-day structure and the 36 count.
+- A5 570-577 mentions the sidereal decan (72 years per degree, 720 years per decan) and calls the 36 decans "crosses"; the book has none of this. Concept entry includes the "36 crosses" phrase only.
+- OCR damage suspected for Pisces and a displaced Capricorn heading: on the printed pages neither is a problem. Capricorn decans are all on p106 with correct headings (the displaced heading is only the OCR lines 13875 etc.; p107 is the Capricorn angel list, and the ghosted "Aquarius" heading behind it is a page watermark). Pisces decans are all on p114 (p112 is the sign intro, p113 a full-page illustration). Pisces p114 is slightly skewed and clipped at the right margin but every sentence is readable. The `src` ranges for Pisces (14608-15000) and Capricorn (13719-13887) are wide because the OCR interleaves and displaces text; they were not verified line by line.
+- Book vs class on the A3 180-182 colour method: not applicable (needs a colour table not available).
+
+### Weak support
+- Concept entry: A3 114-122 and A5 570-574 are short, partly keyword-level statements; hedged phrasing used.
+- Every decan entry paraphrases one printed paragraph of generic modern style (the book also prints a word cloud per sign, deliberately ignored for keywords). Keywords come from the paragraph text.
+- Excluded from entries: health/healing statements (Virgo I "saúde e bem-estar", Scorpio III "regeneração e cura") and anything about the angels.
