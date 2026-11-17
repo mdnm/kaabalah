@@ -11260,8 +11260,8 @@
       ]
     },
     "duodecile": {
-      "pt": "no seu mapa, o duodecile se associa a ajustes e harmonização entre as energias envolvidas. ele também envolve o desejo de recomeçar e de concentrar novas possibilidades.",
-      "en": "in your chart, the duodecile is associated with adjustment and harmonization between the energies involved. it also involves the desire to start again and to bring new possibilities together.",
+      "pt": "no seu mapa, o semissextil se associa a ajustes e harmonização entre as energias envolvidas. ele também envolve o desejo de recomeçar e de concentrar novas possibilidades.",
+      "en": "in your chart, the semisextile is associated with adjustment and harmonization between the energies involved. it also involves the desire to start again and to bring new possibilities together.",
       "keywords": {
         "pt": [
           "ajuste",
@@ -11279,6 +11279,11 @@
       "src": [
         {
           "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 561,
+          "to": 561
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
           "from": 598,
           "to": 598
         },
@@ -11289,14 +11294,15 @@
         }
       ],
       "reviewNotes": [
-        "The API key is duodecile. A13's SEMI-SEXTIL section at 561-563 and body at 598-609 describe adjustment and harmonization at the angle used by this API key; the copy uses the API name and does not introduce a source alias.",
-        "A13's later list conflicts in terminology: 1549 labels the 30-degree entry Decil or semi quintil and 1550 labels Semi sextil at 36 degrees. This naming discrepancy is recorded, not used to rename the API key or change calculations. Rebeginning and growth language is qualified as possibility, not promised outcome.",
-        "Root reread A13:625-631: the desire to restart and convergence of new possibilities are adopted directly; they are not transformed into an external opportunity or guaranteed growth outcome."
+        "The API key is duodecile. A13's SEMI-SEXTIL section at 561-563 and body at 598-609 describe adjustment and harmonization at the angle used by this API key; the display copy uses semissextil/semisextile, following the section terminology, while the query key remains duodecile without new aliases.",
+        "A13's later list conflicts in terminology: 1549 labels the 30-degree entry Decil or semi quintil and 1550 labels Semi sextil at 36 degrees. This naming discrepancy is recorded, not used to rename the API key or change calculations. Restarting and convergence of new possibilities are described as desire, not a promised growth outcome.",
+        "Root reread A13:625-631: the desire to restart and convergence of new possibilities are adopted directly; they are not transformed into an external opportunity or guaranteed growth outcome.",
+        "Display terminology follows the actual section heading at A13:561: semissextil in Portuguese and semisextile in English. Canonical query key duodecile, aspect angle, natal meaning and unsupported alias behavior remain unchanged."
       ]
     },
     "octile": {
-      "pt": "no seu mapa, o octile se associa à ação diante de resistência. ele expressa uma dinâmica ativa dentro de limites.",
-      "en": "in your chart, the octile is associated with action in the face of resistance. it expresses active dynamics within limits.",
+      "pt": "no seu mapa, a semiquadratura se associa à ação diante de resistência. ela expressa uma dinâmica ativa dentro de limites.",
+      "en": "in your chart, the semisquare is associated with action in the face of resistance. it expresses active dynamics within limits.",
       "keywords": {
         "pt": [
           "ação",
@@ -11314,6 +11320,11 @@
       "src": [
         {
           "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 764,
+          "to": 764
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
           "from": 769,
           "to": 776
         },
@@ -11325,7 +11336,8 @@
       ],
       "reviewNotes": [
         "The API key is octile. The SEMIQUADRATURA section describes action and resistance and says its dynamic qualities operate within defined limits; the profile keeps that general theme without the section's planetary examples.",
-        "A13:784-791 discusses a future crisis, its possible avoidance, and favorable results. Those predictions and outcomes are excluded; the profile does not add a stress or aspect-pair condition."
+        "A13:784-791 discusses a future crisis, its possible avoidance, and favorable results. Those predictions and outcomes are excluded; the profile does not add a stress or aspect-pair condition.",
+        "Display terminology follows the actual section heading at A13:764: semiquadratura in Portuguese and semisquare in English. Canonical query key octile, aspect angle, natal meaning and unsupported alias behavior remain unchanged."
       ]
     },
     "sextile": {
@@ -11436,8 +11448,8 @@
       ]
     },
     "trioctile": {
-      "pt": "no seu mapa, o trioctile se associa ao esforço de elaborar dificuldades mentalmente. ele também põe em foco a busca de autoconhecimento.",
-      "en": "in your chart, the trioctile is associated with the effort to work through difficulties mentally. it also brings the search for self-knowledge into focus.",
+      "pt": "no seu mapa, a sesquiquadratura se associa ao esforço de elaborar dificuldades mentalmente. ela também põe em foco a busca de autoconhecimento.",
+      "en": "in your chart, the sesquisquare is associated with the effort to work through difficulties mentally. it also brings the search for self-knowledge into focus.",
       "keywords": {
         "pt": [
           "elaboração mental",
@@ -11453,13 +11465,19 @@
       "src": [
         {
           "file": "modulo 4/aula 13 modulo 4/aula-13.md",
+          "from": 1376,
+          "to": 1376
+        },
+        {
+          "file": "modulo 4/aula 13 modulo 4/aula-13.md",
           "from": 1394,
           "to": 1396
         }
       ],
       "reviewNotes": [
         "The API key is trioctile; the source section is titled SESQUIQUADRATURA. A13:1377-1388 contains fractional-arithmetic errors and is not used for numeric prose. A13:1394-1396 gives the qualified natal clause about effort, difficulty, mental elaboration, and self-knowledge.",
-        "A13:1392-1396 says this discussion is more prominent in progressions than natal. Health, disease, pain, therapy, future-event prediction, and specialist progression claims are excluded. The later phrase at 1405-1408 about \"these three angles\" has an ambiguous antecedent and is not adopted."
+        "A13:1392-1396 says this discussion is more prominent in progressions than natal. Health, disease, pain, therapy, future-event prediction, and specialist progression claims are excluded. The later phrase at 1405-1408 about \"these three angles\" has an ambiguous antecedent and is not adopted.",
+        "Display terminology follows the actual section heading at A13:1376: sesquiquadratura in Portuguese and sesquisquare in English. Canonical query key trioctile, aspect angle, natal meaning and unsupported alias behavior remain unchanged."
       ]
     },
     "quincunx": {

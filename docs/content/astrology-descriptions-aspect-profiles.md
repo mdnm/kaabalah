@@ -11,12 +11,12 @@ Integration uses only root’s final approved JSON. Actual adopted A11/A13 narro
 | Key | Adopted citations |
 | --- | --- |
 | conjunction | `modulo 4/aula 11 modulo 4/aula-11.md:154-159` |
-| duodecile | `modulo 4/aula 13 modulo 4/aula-13.md:598-598`; `modulo 4/aula 13 modulo 4/aula-13.md:625-631` |
-| octile | `modulo 4/aula 13 modulo 4/aula-13.md:769-776`; `modulo 4/aula 13 modulo 4/aula-13.md:788-797` |
+| duodecile | `modulo 4/aula 13 modulo 4/aula-13.md:561-561`; `modulo 4/aula 13 modulo 4/aula-13.md:598-598`; `modulo 4/aula 13 modulo 4/aula-13.md:625-631` |
+| octile | `modulo 4/aula 13 modulo 4/aula-13.md:764-764`; `modulo 4/aula 13 modulo 4/aula-13.md:769-776`; `modulo 4/aula 13 modulo 4/aula-13.md:788-797` |
 | sextile | `modulo 4/aula 11 modulo 4/aula-11.md:161-164`; `modulo 4/aula 13 modulo 4/aula-13.md:928-930`; `modulo 4/aula 13 modulo 4/aula-13.md:938-939`; `modulo 4/aula 13 modulo 4/aula-13.md:942-943` |
 | square | `modulo 4/aula 11 modulo 4/aula-11.md:200-206`; `modulo 4/aula 11 modulo 4/aula-11.md:209-210` |
 | trine | `modulo 4/aula 11 modulo 4/aula-11.md:259-265` |
-| trioctile | `modulo 4/aula 13 modulo 4/aula-13.md:1394-1396` |
+| trioctile | `modulo 4/aula 13 modulo 4/aula-13.md:1376-1376`; `modulo 4/aula 13 modulo 4/aula-13.md:1394-1396` |
 | quincunx | `modulo 4/aula 13 modulo 4/aula-13.md:1434-1435`; `modulo 4/aula 13 modulo 4/aula-13.md:1452-1454`; `modulo 4/aula 13 modulo 4/aula-13.md:1563-1563` |
 | opposition | `modulo 4/aula 13 modulo 4/aula-13.md:405-406`; `modulo 4/aula 11 modulo 4/aula-11.md:287-290`; `modulo 4/aula 13 modulo 4/aula-13.md:1566-1566` |
 
@@ -49,8 +49,8 @@ Major author inspected A13:405-429 (conjunction metaphysics/time), A11:165-190 s
 
 ### duodecile
 
-- The API key is duodecile. A13's SEMI-SEXTIL section at 561-563 and body at 598-609 describe adjustment and harmonization at the angle used by this API key; the copy uses the API name and does not introduce a source alias.
-- A13's later list conflicts in terminology: 1549 labels the 30-degree entry Decil or semi quintil and 1550 labels Semi sextil at 36 degrees. This naming discrepancy is recorded, not used to rename the API key or change calculations. Rebeginning and growth language is qualified as possibility, not promised outcome.
+- The API key is duodecile. A13's SEMI-SEXTIL section at 561-563 and body at 598-609 describe adjustment and harmonization at the angle used by this API key; the display copy uses semissextil/semisextile, following the section terminology, while the query key remains duodecile without new aliases.
+- A13's later list conflicts in terminology: 1549 labels the 30-degree entry Decil or semi quintil and 1550 labels Semi sextil at 36 degrees. This naming discrepancy is recorded, not used to rename the API key or change calculations. Restarting and convergence of new possibilities are described as desire, not a promised growth outcome.
 - Root reread A13:625-631: the desire to restart and convergence of new possibilities are adopted directly; they are not transformed into an external opportunity or guaranteed growth outcome.
 
 ### octile
@@ -94,4 +94,12 @@ Prumo final review was read: no copy/API blocker; sextile facilitation versus ce
 
 ## Validation and next kind
 
-387 description tests and the full npm suite (1552 passed,0failed,0pending) passed with actual exit0. Build, typecheck, source hashes/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All323 previous rows are unchanged; total332, including all44 approved basic profiles. See astrology-descriptions-basic-batch-validation.md for the aggregate audit. Next: Part of Fortune general concept, A10:2459-2468,2516-2588; sign/house placement sets remain separate kinds. Read actual narrow bodies first and do not infer natal prose from timing/profection passages.
+At the original basic-batch milestone,387 description tests and the full npm suite (1552 passed,0failed,0pending) passed with actual exit0, along with build, typecheck, source checks and public CJS/ESM lookups. All323 previous rows were preserved; the total then was332. See astrology-descriptions-basic-batch-validation.md. Current continuation is recorded below and in astrology-descriptions-progress.md.
+
+## Display terminology correction
+
+The actual A13 headings561,764,1376 were reread. Reader text uses semissextil/semisextile, semiquadratura/semisquare and sesquiquadratura/sesquisquare. Query keys remain duodecile, octile and trioctile; display terms do not add lookup aliases. Only these three rows change, with their heading citations and review notes; all342 other entries and calculations remain unchanged. Next: Fortune in houses12, A10:2733-2773 plus HOUSE field columns2824-2998.
+
+Display review corrected feminine article/pronoun agreement for semiquadratura and sesquiquadratura, checked Portuguese as well as English display terms remain unsupported query aliases, and removed the obsolete next-kind instruction from the historical validation record.
+
+After the final review corrections,402 astrology description tests, build, typecheck and public CJS/ESM checks passed with actual exit0. The three corrected rows retain their natal meanings;342 other rows remain identical. Source hash/bounds and public-doc section ownership passed.

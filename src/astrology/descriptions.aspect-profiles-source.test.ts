@@ -7,6 +7,16 @@ const a13 = "modulo 4/aula 13 modulo 4/aula-13.md";
 const aspects: DescriptionAspect[] = ["conjunction", "duodecile", "octile", "sextile", "square", "trine", "trioctile", "quincunx", "opposition"];
 
 describe("general natal aspect source qualifications", () => {
+  it("uses the source display terms while keeping canonical query keys", () => {
+    const names = [["duodecile", "o", "semissextil", "semisextile"], ["octile", "a", "semiquadratura", "semisquare"], ["trioctile", "a", "sesquiquadratura", "sesquisquare"]] as const;
+    for (const [key, article, pt, en] of names) {
+      expect(entry(key).pt).toContain(`${article} ${pt} `);
+      expect(entry(key).en).toContain(`the ${en} `);
+      expect(getAspectDescriptionEntry(en as DescriptionAspect)).toBeUndefined();
+      expect(getAspectDescriptionEntry(pt as DescriptionAspect)).toBeUndefined();
+    }
+  });
+
   it("keeps compatibility, orb, release and planet-dependent qualifications attached", () => {
     expect(entry("conjunction").pt).toMatch(/depende da compatibilidade.*aproximação estreita uma pode se sobrepor/);
     expect(entry("conjunction").en).toMatch(/depends on their compatibility.*close orb one may overshadow/);
@@ -40,7 +50,7 @@ describe("general natal aspect source qualifications", () => {
 
   it("keeps trioctile natal mental effort and quincunx tentative philosophical bridge", () => {
     expect(entry("trioctile").en).toContain("effort to work through difficulties mentally");
-    expect(entry("trioctile").src).toEqual([{ file: a13, from: 1394, to: 1396 }]);
+    expect(entry("trioctile").src).toEqual([{ file: a13, from: 1376, to: 1376 }, { file: a13, from: 1394, to: 1396 }]);
     expect(entry("trioctile").reviewNotes.join(" ")).toContain("more prominent in progressions than natal");
     expect(entry("quincunx").pt).toContain("simbolicamente, ele pode representar uma força mediadora entre opostos");
     expect(entry("quincunx").en).toContain("symbolically, it may represent a mediating force between opposites");

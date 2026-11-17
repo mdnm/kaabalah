@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Use source-based Portuguese and English minor-aspect display names while retaining canonical API keys.
+
 - Add twelve bilingual Fortune-sign descriptions with typed point/sign getters and separate sign-column provenance.
 
 - Add a bilingual Part of Fortune concept with a typed chart-point lookup and audited provenance.
