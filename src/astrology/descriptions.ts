@@ -53,8 +53,12 @@ export type SectDescriptionEntry = PlanetSignDescriptionEntry;
 
 export type DescriptionLunarNode = "north" | "south";
 export type LunarNodeDescriptionEntry = PlanetSignDescriptionEntry;
+export type LunarNodeSignDescriptionEntry = PlanetSignDescriptionEntry;
 
 export interface AstrologyDescriptions {
+  readonly lunarNodeSigns?: Readonly<
+    Partial<Record<DescriptionLunarNode, Readonly<Partial<Record<Sign, LunarNodeSignDescriptionEntry>>>>>
+  >;
   readonly lunarNodes?: Readonly<Partial<Record<DescriptionLunarNode, LunarNodeDescriptionEntry>>>;
   readonly sects?: Readonly<Partial<Record<Sect, SectDescriptionEntry>>>;
   readonly retrogradePlanets?: Readonly<Partial<Record<DescriptionRetrogradePlanet, RetrogradePlanetDescriptionEntry>>>;
@@ -389,5 +393,27 @@ export function getLunarNodeDescriptionEntry(node: DescriptionLunarNode): LunarN
 /** English by default; Portuguese for locale strings starting with `pt`. */
 export function getLunarNodeDescription(node: DescriptionLunarNode, language?: string): string | undefined {
   const entry = getLunarNodeDescriptionEntry(node);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Independent node-role/sign records; no opposite-node or chart-mode inference. */
+export function getLunarNodeSignDescriptionEntry(
+  node: DescriptionLunarNode,
+  sign: Sign,
+): LunarNodeSignDescriptionEntry | undefined {
+  const nodes = ASTROLOGY_DESCRIPTIONS.lunarNodeSigns;
+  if (!nodes || !Object.prototype.hasOwnProperty.call(nodes, node)) return undefined;
+  const signs = nodes[node];
+  if (!signs || !Object.prototype.hasOwnProperty.call(signs, sign)) return undefined;
+  return signs[sign];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getLunarNodeSignDescription(
+  node: DescriptionLunarNode,
+  sign: Sign,
+  language?: string,
+): string | undefined {
+  const entry = getLunarNodeSignDescriptionEntry(node, sign);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

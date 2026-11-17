@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add bilingual North/South Node sign profiles with separate astronomical roles and source-qualified learning themes.
+
 - Add bilingual astronomical north/south lunar-node concepts through explicit role getters, retaining Mat’s source-convention decisions.
 
 - Add bilingual diurnal/nocturnal sect concepts with physical-horizon definitions and source-contextual luminary associations.

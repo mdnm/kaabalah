@@ -14288,5 +14288,809 @@
         "Dignidades da A15, conforme decisão de Mat: norte domicílio Gêmeos, exaltação Aquário, exílio Sagitário, queda Leão; sul inverso (Sagitário, Leão, Gêmeos, Aquário). O contexto diferente da A12 permanece distinto; estas correspondências não alteram cálculos nem criam uma grade de personalidade."
       ]
     }
+  },
+  "lunarNodeSigns": {
+    "north": {
+      "Aries": {
+        "pt": "com o nodo norte em Áries, seu desenvolvimento é associado à assertividade, liderança e ação independente. a direção proposta é desenvolver confiança, iniciativa e coragem, deixando dependências e aprendendo a agir com autonomia.",
+        "en": "with the North Node in Aries, your development is associated with assertiveness, leadership, and independent action. the proposed direction is to develop confidence, initiative, and courage, leaving dependencies behind and learning to act autonomously.",
+        "keywords": {
+          "pt": [
+            "assertividade",
+            "iniciativa",
+            "autonomia"
+          ],
+          "en": [
+            "assertiveness",
+            "initiative",
+            "autonomy"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67024,
+            "to": 67029
+          }
+        ],
+        "reviewNotes": [
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Taurus": {
+        "pt": "com o nodo norte em Touro, seu desenvolvimento é associado à estabilidade, paciência e persistência. a direção de aprendizado enfatiza segurança material e emocional, simplicidade, natureza e trabalho constante, superando impulsividade financeira ou emocional.",
+        "en": "with the North Node in Taurus, your development is associated with stability, patience, and persistence. the learning direction emphasizes material and emotional security, simplicity, nature, and steady work, overcoming financial or emotional impulsiveness.",
+        "keywords": {
+          "pt": [
+            "estabilidade",
+            "segurança",
+            "persistência"
+          ],
+          "en": [
+            "stability",
+            "security",
+            "persistence"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67030,
+            "to": 67035
+          }
+        ],
+        "reviewNotes": [
+          "The source calls this a destiny and refers to earlier impulsivity. The description treats these as learning themes, not fixed fate or established past behavior.",
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Gemini": {
+        "pt": "com o nodo norte em Gêmeos, seu aprendizado enfatiza comunicação, curiosidade e flexibilidade. a direção proposta é expressar-se com clareza, interessar-se por diferentes áreas do conhecimento e desenvolver habilidades sociais, deixando rigidezes de pensamento para trás.",
+        "en": "with the North Node in Gemini, your learning emphasizes communication, curiosity, and flexibility. the proposed direction is to express yourself clearly, take interest in different fields of knowledge, and develop social skills, leaving rigid thinking behind.",
+        "keywords": {
+          "pt": [
+            "comunicação",
+            "curiosidade",
+            "flexibilidade"
+          ],
+          "en": [
+            "communication",
+            "curiosity",
+            "flexibility"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67037,
+            "to": 67045
+          }
+        ],
+        "reviewNotes": [
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Cancer": {
+        "pt": "com o nodo norte em Câncer, seu desenvolvimento é associado a nutrição emocional, cuidado e empatia. a direção proposta é desenvolver sensibilidade e compreensão emocional e formar raízes familiares, deixando o excesso de racionalidade e frieza para trás.",
+        "en": "with the North Node in Cancer, your development is associated with emotional care, nurturance, and empathy. the proposed direction is to develop sensitivity and emotional understanding and to form family roots, moving beyond excessive rationality and coldness.",
+        "keywords": {
+          "pt": [
+            "cuidado",
+            "empatia",
+            "raízes"
+          ],
+          "en": [
+            "care",
+            "empathy",
+            "roots"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67047,
+            "to": 67053
+          }
+        ],
+        "reviewNotes": [
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Leo": {
+        "pt": "com o nodo norte em Leão, seu desenvolvimento é associado à expressão pessoal, criatividade e liderança. a direção de aprendizado enfatiza autoconfiança e generosidade, avançando além da insegurança ou da tendência ao servilismo.",
+        "en": "with the North Node in Leo, your development is associated with personal expression, creativity, and leadership. the learning direction emphasizes self-confidence and generosity, moving beyond insecurity or a tendency toward servility.",
+        "keywords": {
+          "pt": [
+            "expressão pessoal",
+            "criatividade",
+            "autoconfiança"
+          ],
+          "en": [
+            "personal expression",
+            "creativity",
+            "self-confidence"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67055,
+            "to": 67062
+          }
+        ],
+        "reviewNotes": [
+          "The source uses destiny language and describes a magnetic presence. The record keeps the explicit development direction and does not turn that quality into a guaranteed trait.",
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Virgo": {
+        "pt": "com o nodo norte em Virgem, seu desenvolvimento é associado à precisão, organização e serviço. esse aprendizado inclui ser mais analítico, detalhista e útil, com foco na melhoria contínua e na superação do caos e da desorganização.",
+        "en": "with the North Node in Virgo, your development is associated with precision, organization, and service. this learning includes becoming more analytical, detail-oriented, and useful, with a focus on continuous improvement and moving beyond chaos and disorganization.",
+        "keywords": {
+          "pt": [
+            "precisão",
+            "organização",
+            "serviço"
+          ],
+          "en": [
+            "precision",
+            "organization",
+            "service"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67119,
+            "to": 67121
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67137,
+            "to": 67138
+          }
+        ],
+        "reviewNotes": [
+          "PDF p. 506 confirms the Virgo fragments and their attribution. Continuous improvement is retained; the health phrase is omitted as requested, with no health outcome inferred.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Libra": {
+        "pt": "com o nodo norte em Libra, seu desenvolvimento é associado à harmonia, parcerias e justiça. a direção de aprendizado enfatiza equilíbrio nas relações, diplomacia, senso de justiça e negociação.",
+        "en": "with the North Node in Libra, your development is associated with harmony, partnerships, and justice. the learning direction emphasizes balance in relationships, diplomacy, a sense of justice, and negotiation.",
+        "keywords": {
+          "pt": [
+            "harmonia",
+            "parcerias",
+            "negociação"
+          ],
+          "en": [
+            "harmony",
+            "partnerships",
+            "negotiation"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67064,
+            "to": 67069
+          }
+        ],
+        "reviewNotes": [
+          "The source says to abandon selfish behavior; this moralized wording was omitted while retaining the stated relational learning direction.",
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Scorpio": {
+        "pt": "com o nodo norte em Escorpião, seu desenvolvimento é associado à transformação, profundidade emocional e regeneração. a direção proposta é explorar temas profundos, desenvolver a intuição e aprender a lidar com perda e renovação.",
+        "en": "with the North Node in Scorpio, your development is associated with transformation, emotional depth, and regeneration. the proposed direction is to explore deep subjects, develop intuition, and learn to deal with loss and renewal.",
+        "keywords": {
+          "pt": [
+            "transformação",
+            "profundidade",
+            "renovação"
+          ],
+          "en": [
+            "transformation",
+            "depth",
+            "renewal"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67070,
+            "to": 67077
+          }
+        ],
+        "reviewNotes": [
+          "The source also uses regeneration and overcoming fear language; the record frames these as learning themes, not guaranteed outcomes.",
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "com o nodo norte em Sagitário, seu desenvolvimento é associado à expansão, filosofia e viagens. a direção de aprendizado é buscar significados mais amplos, aprender com culturas diferentes e ampliar a perspectiva para além de preocupações pequenas e detalhadas.",
+        "en": "with the North Node in Sagittarius, your development is associated with expansion, philosophy, and travel. the learning direction is to seek broader meanings, learn from different cultures, and widen perspective beyond small, detailed concerns.",
+        "keywords": {
+          "pt": [
+            "expansão",
+            "filosofia",
+            "perspectiva"
+          ],
+          "en": [
+            "expansion",
+            "philosophy",
+            "perspective"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67079,
+            "to": 67087
+          }
+        ],
+        "reviewNotes": [
+          "Travel is retained as a source association, not as a promised event.",
+          "Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Capricorn": {
+        "pt": "com o nodo norte em Capricórnio, seu desenvolvimento é associado a responsabilidade, disciplina e ambição. esse aprendizado envolve estruturar a vida, definir metas claras e trabalhar com determinação, superando uma possível tendência ao descompromisso ou à dependência emocional.",
+        "en": "with the North Node in Capricorn, your development is associated with responsibility, discipline, and ambition. this learning involves structuring your life, setting clear goals, and working with determination, moving beyond a possible tendency toward lack of commitment or emotional dependence.",
+        "keywords": {
+          "pt": [
+            "responsabilidade",
+            "disciplina",
+            "metas"
+          ],
+          "en": [
+            "responsibility",
+            "discipline",
+            "goals"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67089,
+            "to": 67098
+          }
+        ],
+        "reviewNotes": [
+          "PDF p. 506 visually confirms clear goals and the qualified tendency toward lack of commitment or emotional dependence.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Aquarius": {
+        "pt": "com o nodo norte em Aquário, seu desenvolvimento é associado à inovação, fraternidade e independência. essa direção inclui espírito comunitário, abertura a novas ideias e senso de individualidade, afastando-se de convenções rígidas e do convencionalismo.",
+        "en": "with the North Node in Aquarius, your development is associated with innovation, fraternity, and independence. this direction includes community spirit, openness to new ideas, and a sense of individuality, moving away from rigid conventions and conventionalism.",
+        "keywords": {
+          "pt": [
+            "inovação",
+            "fraternidade",
+            "novas ideias"
+          ],
+          "en": [
+            "innovation",
+            "fraternity",
+            "new ideas"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67100,
+            "to": 67114
+          }
+        ],
+        "reviewNotes": [
+          "PDF p. 506 visually confirms independence, community spirit, openness to new ideas, individuality, and moving away from rigid conventions and conventionalism.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Pisces": {
+        "pt": "com o nodo norte em Peixes, seu desenvolvimento é associado à empatia, espiritualidade e intuição. essa direção inclui desenvolver compaixão, conexão espiritual e sensibilidade artística, transcendendo limitações racionais e materialistas anteriores.",
+        "en": "with the North Node in Pisces, your development is associated with empathy, spirituality, and intuition. this direction includes developing compassion, spiritual connection, and artistic sensitivity, transcending earlier rational and materialistic limitations.",
+        "keywords": {
+          "pt": [
+            "empatia",
+            "espiritualidade",
+            "compaixão"
+          ],
+          "en": [
+            "empathy",
+            "spirituality",
+            "compassion"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67115,
+            "to": 67134
+          }
+        ],
+        "reviewNotes": [
+          "PDF p. 506 visually confirms compassion, spiritual connection, artistic sensitivity, and transcending earlier rational and material limitations.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      }
+    },
+    "south": {
+      "Aries": {
+        "pt": "no seu mapa, o nodo sul em Áries pode apontar iniciativa e liderança já familiares, junto com uma tendência a agir impulsivamente ou de forma autocentrada. o desafio de aprendizagem é cooperar, equilibrando assertividade e diplomacia.",
+        "en": "in your chart, the South Node in Aries may point to familiar initiative and leadership, alongside a tendency to act impulsively or self-centeredly. the learning challenge is to cooperate, balancing assertiveness with diplomacy.",
+        "keywords": {
+          "pt": [
+            "iniciativa e liderança",
+            "impulsividade",
+            "cooperação",
+            "diplomacia"
+          ],
+          "en": [
+            "initiative and leadership",
+            "impulsiveness",
+            "cooperation",
+            "diplomacy"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67407,
+            "to": 67415
+          }
+        ],
+        "reviewNotes": [
+          "O original apresenta 'vida passada ou habilidades inatas'; a redação mantém habilidades/tendências possíveis e evita afirmar biografia de vida passada.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Taurus": {
+        "pt": "no seu mapa, o nodo sul em Touro pode apontar familiaridade com estabilidade e busca de segurança material, junto com resistência a mudanças ou apego excessivo. o aprendizado envolve abertura a novas experiências e lidar com a impermanência.",
+        "en": "in your chart, the South Node in Taurus may point to familiarity with stability and the pursuit of material security, alongside resistance to change or excessive attachment. the learning involves openness to new experiences and dealing with impermanence.",
+        "keywords": {
+          "pt": [
+            "estabilidade",
+            "segurança material",
+            "resistência à mudança",
+            "impermanência"
+          ],
+          "en": [
+            "stability",
+            "material security",
+            "resistance to change",
+            "impermanence"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67416,
+            "to": 67432
+          }
+        ],
+        "reviewNotes": [
+          "A frase OCR sobre apego excessivo é quebrada e sua recomposição fica parcialmente incerta; conteúdo é limitado ao contraste claramente reconhecível.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Gemini": {
+        "pt": "no seu mapa, o nodo sul em Gêmeos pode indicar habilidades de comunicação e curiosidade intelectual, com possibilidade de dispersão ou superficialidade em relações e interesses. o desafio de aprendizagem é aprofundar o conhecimento e cultivar constância.",
+        "en": "in your chart, the South Node in Gemini may indicate communication skills and intellectual curiosity, with possible scatteredness or superficiality in relationships and interests. the learning challenge is to deepen knowledge and cultivate consistency.",
+        "keywords": {
+          "pt": [
+            "comunicação",
+            "curiosidade intelectual",
+            "aprofundamento",
+            "constância"
+          ],
+          "en": [
+            "communication",
+            "intellectual curiosity",
+            "depth",
+            "consistency"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67434,
+            "to": 67446
+          }
+        ],
+        "reviewNotes": [
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Cancer": {
+        "pt": "no seu mapa, o nodo sul em Câncer pode indicar forte conexão com emoções e família, com possibilidade de dependência ou manipulação emocional. o aprendizado envolve desenvolver autoconfiança e capacidade de cuidar de si.",
+        "en": "in your chart, the South Node in Cancer may indicate a strong connection with emotions and family, with possible dependence or emotional manipulation. the learning involves developing self-confidence and the ability to care for yourself.",
+        "keywords": {
+          "pt": [
+            "emoções e família",
+            "dependência possível",
+            "autoconfiança",
+            "cuidado de si"
+          ],
+          "en": [
+            "emotions and family",
+            "possible dependence",
+            "self-confidence",
+            "self-care"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67448,
+            "to": 67460
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67613,
+            "to": 67613
+          }
+        ],
+        "reviewNotes": [
+          "A frase final aparece truncada como 'capacidade de si mesmo'; interpretar como capacidade de cuidar de si é provável pelo fragmento, mas permanece uma reconstrução OCR.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Leo": {
+        "pt": "com o nodo sul em Leão, você pode expressar criatividade e buscar atenção, mas também mostrar orgulho ou autoritarismo. seu aprendizado envolve cultivar humildade e valorizar as contribuições dos outros.",
+        "en": "with the South Node in Leo, you may express creativity and seek attention, while also showing pride or authoritarianism. your learning involves cultivating humility and valuing others’ contributions.",
+        "keywords": {
+          "pt": [
+            "criatividade",
+            "atenção",
+            "humildade",
+            "contribuições dos outros"
+          ],
+          "en": [
+            "creativity",
+            "attention",
+            "humility",
+            "others contributions"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67548,
+            "to": 67548
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67591,
+            "to": 67594
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67606,
+            "to": 67608
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67615,
+            "to": 67616
+          }
+        ],
+        "reviewNotes": [
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Virgo": {
+        "pt": "com o nodo sul em Virgem, seus padrões podem incluir capacidade analítica e perfeccionismo, além de críticas excessivas e preocupação com detalhes. seu aprendizado envolve aceitar imperfeições e cultivar uma visão mais ampla.",
+        "en": "with the South Node in Virgo, your patterns may include analytical ability and perfectionism, as well as excessive criticism and concern with details. your learning involves accepting imperfections and cultivating a broader view.",
+        "keywords": {
+          "pt": [
+            "capacidade analítica",
+            "perfeccionismo",
+            "aceitar imperfeições"
+          ],
+          "en": [
+            "analytical ability",
+            "perfectionism",
+            "accepting imperfections"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67550,
+            "to": 67551
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67557,
+            "to": 67564
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67568,
+            "to": 67575
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67583,
+            "to": 67584
+          }
+        ],
+        "reviewNotes": [
+          "The isolated phrase at 67581 ('distanciamento emocional') is not assigned because OCR does not establish its sign or full clause.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Atribuição por cabeçalho67583 e fragmentos analíticos/perfeccionismo/criticas/detalhes/imperfeições. Não se adota valorizar tradições67564 nem clareza prática do parágrafo de Peixes.",
+          "Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Libra": {
+        "pt": "no seu mapa, o nodo sul em Libra pode indicar busca por harmonia e relacionamentos equilibrados, junto com indecisão ou dependência da aprovação alheia. o desafio de aprendizagem é desenvolver autoconfiança e capacidade de tomar decisões independentes.",
+        "en": "in your chart, the South Node in Libra may indicate a search for harmony and balanced relationships, alongside indecision or dependence on others' approval. the learning challenge is to develop self-confidence and the ability to make independent decisions.",
+        "keywords": {
+          "pt": [
+            "harmonia e relações",
+            "indecisão",
+            "aprovação alheia",
+            "decisão independente"
+          ],
+          "en": [
+            "harmony and relationships",
+            "indecision",
+            "others' approval",
+            "independent decisions"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67462,
+            "to": 67485
+          }
+        ],
+        "reviewNotes": [
+          "Trecho muito corrompido por OCR e colunas; os temas e o desafio são legíveis em fragmentos, mas a sintaxe e alguns conectores foram reconstruídos com cautela.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Scorpio": {
+        "pt": "no seu mapa, o nodo sul em Escorpião pode indicar intensidade emocional e transformação, com possibilidade de manipulação ou controle. o aprendizado envolve cultivar liberdade emocional e desapego.",
+        "en": "in your chart, the South Node in Scorpio may indicate emotional intensity and transformation, with possible manipulation or control. the learning involves cultivating emotional freedom and detachment.",
+        "keywords": {
+          "pt": [
+            "intensidade emocional",
+            "transformação",
+            "controle possível",
+            "desapego"
+          ],
+          "en": [
+            "emotional intensity",
+            "transformation",
+            "possible control",
+            "detachment"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67491,
+            "to": 67501
+          }
+        ],
+        "reviewNotes": [
+          "O início da linha 67503 parece fragmento de uma cláusula posterior, sem atribuição segura, e não foi incorporado.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Sagittarius": {
+        "pt": "com o nodo sul em Sagitário, você pode ter afinidade com aventura e conhecimento, mas também agir com imprudência ou dar pouca atenção aos detalhes. seu aprendizado envolve desenvolver foco e responsabilidade.",
+        "en": "with the South Node in Sagittarius, you may have an affinity for adventure and knowledge, while also acting imprudently or paying little attention to detail. your learning involves developing focus and responsibility.",
+        "keywords": {
+          "pt": [
+            "aventura",
+            "conhecimento",
+            "foco e responsabilidade"
+          ],
+          "en": [
+            "adventure",
+            "knowledge",
+            "focus and responsibility"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67503,
+            "to": 67522
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67589,
+            "to": 67589
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67600,
+            "to": 67602
+          }
+        ],
+        "reviewNotes": [
+          "Cabeçalho67600-67602 aparece depois do corpo67503-67522 e do fragmento conhecimento67589. A reconstrução de aventura/conhecimento, imprudência/detalhes e foco/responsabilidade é apoiada pela gramática destes fragmentos, conforme auditoria; não usa palavras-chave genéricas para preencher lacunas.",
+          "A linguagem de passado é simbólica e não afirma biografia de outra vida.",
+          "Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Capricorn": {
+        "pt": "no seu mapa, o nodo sul em Capricórnio sugere habilidades de liderança e organização, junto com possível rigidez e excesso de controle. o aprendizado envolve cultivar sensibilidade emocional e flexibilidade.",
+        "en": "in your chart, the South Node in Capricorn suggests leadership and organizational skills, alongside possible rigidity and excessive control. the learning involves cultivating emotional sensitivity and flexibility.",
+        "keywords": {
+          "pt": [
+            "liderança e organização",
+            "rigidez",
+            "controle",
+            "sensibilidade e flexibilidade"
+          ],
+          "en": [
+            "leadership and organization",
+            "rigidity",
+            "control",
+            "sensitivity and flexibility"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67524,
+            "to": 67527
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67531,
+            "to": 67538
+          }
+        ],
+        "reviewNotes": [
+          "A palavra fragmentada após 'mas também pode indicar' foi interpretada como 'rigidez' pelo fragmento 'rigi...'; conferir OCR se original visual for disponibilizado.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Aquarius": {
+        "pt": "com o nodo sul em Aquário, você pode ter familiaridade com inovação e busca por ideais coletivos, junto com distanciamento emocional e rebeldia. seu aprendizado envolve desenvolver conexão emocional e valorizar as tradições.",
+        "en": "with the South Node in Aquarius, you may be familiar with innovation and the pursuit of collective ideals, alongside emotional distance and rebelliousness. your learning involves developing emotional connection and valuing traditions.",
+        "keywords": {
+          "pt": [
+            "inovação",
+            "ideais coletivos",
+            "distanciamento emocional",
+            "conexão emocional"
+          ],
+          "en": [
+            "innovation",
+            "collective ideals",
+            "emotional distance",
+            "emotional connection"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67542,
+            "to": 67546
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67564,
+            "to": 67564
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67581,
+            "to": 67581
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67603,
+            "to": 67605
+          }
+        ],
+        "reviewNotes": [
+          "A linguagem de passado é simbólica e não afirma biografia de outra vida.",
+          "Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      },
+      "Pisces": {
+        "pt": "no seu mapa, o nodo sul em Peixes pode indicar empatia e conexão espiritual, com possibilidade de escapismo ou confusão. o aprendizado envolve desenvolver clareza mental e lidar com a realidade prática.",
+        "en": "in your chart, the South Node in Pisces may indicate empathy and spiritual connection, with possible escapism or confusion. the learning involves developing mental clarity and dealing with practical reality.",
+        "keywords": {
+          "pt": [
+            "empatia",
+            "conexão espiritual",
+            "escapismo possível",
+            "clareza mental"
+          ],
+          "en": [
+            "empathy",
+            "spiritual connection",
+            "possible escapism",
+            "mental clarity"
+          ]
+        },
+        "src": [
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67550,
+            "to": 67556
+          },
+          {
+            "file": "books/astrologia-hermetica/astrologia-hermetica.md",
+            "from": 67566,
+            "to": 67575
+          }
+        ],
+        "reviewNotes": [
+          "Pisces heading 67550 explicitly begins this clause; OCR places empathy/spiritual connection near 67566-67575. The clause about escapism/confusion appears at 67553-67556. Interleaving prevents recovering every connector, but these fragments align to Pisces.",
+          "Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.",
+          "Leitura visual confirmada na página 508 do PDF Astrologia Hermética.",
+          "Conferência visual no original books/Astrologia Hermetica.pdf, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.",
+          "Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada."
+        ]
+      }
+    }
   }
 }
