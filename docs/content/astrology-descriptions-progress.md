@@ -33,3 +33,4 @@ Approved batches1-3 complete:431 canonical bilingual entries. See astrology-desc
 - CLI: `astrology:describe` looks up every description family by kind and keys (src/cli/commands/astrology-describe.ts).
 - Not started: timing, synastry, Chinese astrology, Priapus, sign transitions, five-degree angel sectors, Vertex ruler-house scenarios.
 - Second read of batch 5 (566 entries, every one checked): 23 findings (1 wrong cell in sunAscendantSigns.Taurus.Pisces, 6 overreach or mismatch, 16 cosmetic), all applied. Report at the end of the open-issues file.
+- Release: npm 6.20.0 published as latest on 2026-11-17 with all 1580 entries, the new getters and the astrology:describe CLI command. Tag v6.20.0 points to 3e146356f5e66d1bb1e5d49f99697f41f813d6fa; registry tarball shasum 80f5ce726fd00c1415fbc8a7546e3079ab7bc0f1, downloaded and run (CLI lookup works, 1580 entries counted). Docs site redeployed. Sign transitions from the book are out of scope by Mat's decision.
