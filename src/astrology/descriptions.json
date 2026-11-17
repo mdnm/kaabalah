@@ -14130,5 +14130,65 @@
         "O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas."
       ]
     }
+  },
+  "sects": {
+    "diurnal": {
+      "pt": "no seu mapa, o sect é diurno quando o Sol está acima do horizonte. nas profecções, o Sol é o luminar de sect associado aos nascimentos diurnos.",
+      "en": "in your chart, the sect is diurnal when the Sun is above the horizon. in profections, the Sun is the sect light associated with diurnal births.",
+      "keywords": {
+        "pt": [
+          "Sol acima do horizonte",
+          "luminar diurno"
+        ],
+        "en": [
+          "Sun above the horizon",
+          "diurnal sect light"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2525,
+          "to": 2526
+        },
+        {
+          "file": "modulo 4/aula 17 modulo 4/aula-17.md",
+          "from": 383,
+          "to": 384
+        }
+      ],
+      "reviewNotes": [
+        "Aula 10 uses houses 7-12 as an illustration while explaining the Part of Fortune (2527-2529); that house range is not adopted as a general rule. The course defines above versus below the horizon but does not specify the exact-horizon boundary. The current implementation classifies using geometric altitude greater than its threshold, so an exact horizon is nocturnal; keep this source/implementation distinction in documentation."
+      ]
+    },
+    "nocturnal": {
+      "pt": "no seu mapa, o sect é noturno quando o Sol está abaixo do horizonte. nas profecções, a Lua é o luminar de sect associado aos nascimentos noturnos.",
+      "en": "in your chart, the sect is nocturnal when the Sun is below the horizon. in profections, the Moon is the sect light associated with nocturnal births.",
+      "keywords": {
+        "pt": [
+          "Sol abaixo do horizonte",
+          "luminar noturno"
+        ],
+        "en": [
+          "Sun below the horizon",
+          "nocturnal sect light"
+        ]
+      },
+      "src": [
+        {
+          "file": "modulo 4/aula 10 modulo 4/aula-10.md",
+          "from": 2525,
+          "to": 2526
+        },
+        {
+          "file": "modulo 4/aula 17 modulo 4/aula-17.md",
+          "from": 383,
+          "to": 384
+        }
+      ],
+      "reviewNotes": [
+        "Aula 10 uses houses 1-6 as an illustration while explaining the Part of Fortune (2527-2529); that house range is not adopted as a general rule. The course defines above versus below the horizon but does not specify the exact-horizon boundary. The current implementation classifies using geometric altitude greater than its threshold, so an exact horizon is nocturnal; keep this source/implementation distinction in documentation."
+      ]
+    }
   }
 }

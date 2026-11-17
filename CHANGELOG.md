@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add bilingual diurnal/nocturnal sect concepts with physical-horizon definitions and source-contextual luminary associations.
+
 - Add eight bilingual natal retrograde planet profiles with typed lookups gated by available finite negative longitude speed.
 
 - Add twelve bilingual Lilith-sign profiles shared by mean/true interpretation lookups, preserving each mode’s supplied sign and explicit house gaps.

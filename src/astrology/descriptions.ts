@@ -1,4 +1,5 @@
 import raw from "./descriptions.json";
+import type { Sect } from "./index";
 import type { AspectName } from "./aspects";
 import type { Sign, TriplicityElement } from "./dignity";
 import type { MODALITIES } from "../core/constants";
@@ -48,7 +49,10 @@ export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
 export type DescriptionRetrogradePlanet = Exclude<DescriptionPlanet, "sun" | "moon">;
 export type RetrogradePlanetDescriptionEntry = PlanetSignDescriptionEntry;
 
+export type SectDescriptionEntry = PlanetSignDescriptionEntry;
+
 export interface AstrologyDescriptions {
+  readonly sects?: Readonly<Partial<Record<Sect, SectDescriptionEntry>>>;
   readonly retrogradePlanets?: Readonly<Partial<Record<DescriptionRetrogradePlanet, RetrogradePlanetDescriptionEntry>>>;
   readonly chironPlacements?: Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>;
   readonly pointHouses?: Readonly<
@@ -355,5 +359,18 @@ export function getRetrogradePlanetDescription(
   language?: string,
 ): string | undefined {
   const entry = getRetrogradePlanetDescriptionEntry(planet, longitudeSpeed);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Pure lookup for an already determined chart sect; no altitude or house inference. */
+export function getSectDescriptionEntry(sect: Sect): SectDescriptionEntry | undefined {
+  const sects = ASTROLOGY_DESCRIPTIONS.sects;
+  if (!sects || !Object.prototype.hasOwnProperty.call(sects, sect)) return undefined;
+  return sects[sect];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getSectDescription(sect: Sect, language?: string): string | undefined {
+  const entry = getSectDescriptionEntry(sect);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
