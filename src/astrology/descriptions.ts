@@ -45,7 +45,11 @@ export type PointDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointSignDescriptionEntry = PlanetSignDescriptionEntry;
 export type PointHouseDescriptionEntry = PlanetSignDescriptionEntry;
 
+export type DescriptionRetrogradePlanet = Exclude<DescriptionPlanet, "sun" | "moon">;
+export type RetrogradePlanetDescriptionEntry = PlanetSignDescriptionEntry;
+
 export interface AstrologyDescriptions {
+  readonly retrogradePlanets?: Readonly<Partial<Record<DescriptionRetrogradePlanet, RetrogradePlanetDescriptionEntry>>>;
   readonly chironPlacements?: Readonly<Partial<Record<Sign, PointSignDescriptionEntry>>>;
   readonly pointHouses?: Readonly<
     Partial<Record<DescriptionPoint, Readonly<Partial<Record<DescriptionHouseNumber, PointHouseDescriptionEntry>>>>>
@@ -330,5 +334,26 @@ export function getPointHouseDescription(
   language?: string,
 ): string | undefined {
   const entry = getPointHouseDescriptionEntry(point, house);
+  return language?.startsWith("pt") ? entry?.pt : entry?.en;
+}
+
+/** Natal retrograde profiles require an available finite negative longitude speed. */
+export function getRetrogradePlanetDescriptionEntry(
+  planet: DescriptionRetrogradePlanet,
+  longitudeSpeed?: number,
+): RetrogradePlanetDescriptionEntry | undefined {
+  if (typeof longitudeSpeed !== "number" || !Number.isFinite(longitudeSpeed) || longitudeSpeed >= 0) return undefined;
+  const planets = ASTROLOGY_DESCRIPTIONS.retrogradePlanets;
+  if (!planets || !Object.prototype.hasOwnProperty.call(planets, planet)) return undefined;
+  return planets[planet];
+}
+
+/** English by default; Portuguese for locale strings starting with `pt`. */
+export function getRetrogradePlanetDescription(
+  planet: DescriptionRetrogradePlanet,
+  longitudeSpeed?: number,
+  language?: string,
+): string | undefined {
+  const entry = getRetrogradePlanetDescriptionEntry(planet, longitudeSpeed);
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }

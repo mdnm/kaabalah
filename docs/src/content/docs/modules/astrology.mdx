@@ -21,6 +21,8 @@ Functions that are **pure math** (no WASM) are noted in each section.
 
 ```typescript
 import {
+  getRetrogradePlanetDescription,
+  getRetrogradePlanetDescriptionEntry,
   getPointHouseDescription,
   getPointHouseDescriptionEntry,
   getPointSignDescription,
@@ -53,6 +55,8 @@ import {
 
 getPlanetDescription('sun', 'pt-BR'); // general planetary function
 getPlanetDescriptionEntry('sun')?.src;
+getRetrogradePlanetDescription('mercury', chart.planets.mercury?.longitudeSpeed, 'pt-BR');
+getRetrogradePlanetDescriptionEntry('saturn', chart.planets.saturn?.longitudeSpeed)?.src;
 getSignDescription('Aries', 'pt-BR'); // general zodiacal qualities
 getSignDescriptionEntry('Aries')?.src;
 getElementDescription('fire', 'pt-BR'); // lowercase classical element key
@@ -99,6 +103,12 @@ getAngleSignDescription('mc', 'Taurus'); // actual Midheaven sign
 getAngleSignDescription('ic', 'Cancer', 'pt-BR'); // actual Imum Coeli sign
 ```
 
+Retrograde profiles cover Mercury through Pluto. Pass the planet’s available
+`longitudeSpeed`; only a finite negative number selects a natal retrograde profile.
+Missing, nonfinite, zero or positive speeds return `undefined`, as do unsupported
+Sun, Moon and point keys. These lookups do not accept a natal boolean or supply
+retrograde sign, house or timing interpretations.
+
 Aspect keys match `AspectName`: `conjunction`, `duodecile`, `octile`, `sextile`,
 `square`, `trine`, `trioctile`, `quincunx` and `opposition`. Descriptions concern
 the aspect type; they do not supply planet-pair or synastry interpretations.
@@ -126,7 +136,7 @@ These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Authored coverage: 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add eight bilingual natal retrograde planet profiles with typed lookups gated by available finite negative longitude speed.
+
 - Add twelve bilingual Lilith-sign profiles shared by mean/true interpretation lookups, preserving each mode’s supplied sign and explicit house gaps.
 
 - Add a bilingual Lilith concept shared by the verified mean/true chart-key lookups, with whole-chart and latent-intensity qualifications.
