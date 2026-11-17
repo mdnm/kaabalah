@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Fix the English spelling of sextile in the 22 planet-pair aspect
+  descriptions, which read "in sextil".
+
 ## 6.20.0 - 2026-11-17
 
 - Add the `astrology:describe <kind> [keys...]` CLI command, a lookup for
