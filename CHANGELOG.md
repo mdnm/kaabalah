@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 6.20.0 - 2026-11-17
+
 - Add the `astrology:describe <kind> [keys...]` CLI command, a lookup for
   every bilingual astrology description. A combination with no authored text
   returns `found: false` with exit code 0.
