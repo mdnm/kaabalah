@@ -4,9 +4,9 @@
 
 One additional natal factor concept at `points.chiron`. Final `/tmp/kaabalah-chiron-profile-approved.json` is adopted unchanged after the no-blocker review. Chiron is a celestial body, not a virtual point; the common point-concept bank accommodates both this body and Fortune without adding an ordinary-planet-bank row.
 
-Root reports actual narrow primary inspection A15:122-218 and supplemental B:5756-5774 plus5784. Integration read the supplied audit and review, relying on their inspections rather than reopening sources. The audit additionally records5784-5793 as adjacent context. No whole-course/book read, NOTAS or private client readings were used; later placement accounts345-746 were not opened for this concept.
+Root reports actual narrow primary inspection A15:122-218 and supplemental B:5756-5774 plus5784. Integration read the supplied audit and review, relying on their inspections rather than reopening sources. The audit additionally records5784-5793 as adjacent context. No whole-course/book read, NOTAS or private readings were used; later placement accounts345-746 were not opened for this concept.
 
-Primary: `modulo 4/aula 15 modulo 4/aula-15.md`, manifest857 physical lines, teachingEnd798, NOTASstart799; SHA-256 `6086a561dfeb805fea9103d6cd78aec2dcc6fd4fe864581e39af2d39fc1fd1fa`. Supplemental: `books/astrologia-hermetica/astrologia-hermetica.md`,123692 lines; SHA-256 `4bb23fbbba09fd9dc3db3392add9afbcd4da3703fb94a7bec1574f5527fdbab2`.
+Primary: `class notes`, manifest857 physical lines, teachingEnd798, NOTASstart799; SHA-256 `6086a561dfeb805fea9103d6cd78aec2dcc6fd4fe864581e39af2d39fc1fd1fa`. Supplemental: `reference text`,123692 lines; SHA-256 `4bb23fbbba09fd9dc3db3392add9afbcd4da3703fb94a7bec1574f5527fdbab2`.
 
 ## Adopted primary clauses
 
@@ -30,7 +30,7 @@ A15:122 heading aliases Kíriom/Quíriom remain source context; display Quíron 
 
 - Adopted the source's symbolic wounded-healer image: recognizing one's own vulnerability may support understanding others' pain. The inevitable human-imperfection qualification, acceptance, forgiveness and compassion are preserved without a prescribed sequence or promised healing.
 - The Hercules/Kíriom myth is context for the metaphor, not a fixed biography or event assigned to a chart owner. No wound, illness, diagnosis, cure, relationship outcome, or healing guarantee is asserted; age/cycle and later placement-specific material are outside this concept profile.
-- The supplemental book at books/astrologia-hermetica/astrologia-hermetica.md:5756-5774 groups Chiron among software extras and calls the displayed collection spatial noise, with major transits named nearby at5784. This is limited methodological context, not a contrary Chiron natal profile; it provides no adopted personality wording and does not override the primary course.
+- The supplemental book at reference text:5756-5774 groups Chiron among software extras and calls the displayed collection spatial noise, with major transits named nearby at5784. This is limited methodological context, not a contrary Chiron natal profile; it provides no adopted personality wording and does not override the primary course.
 - A15:207-216 recommends considering Chiron with Pluto in a spiritual system. This is retained as contextual qualification without generating an unapproved planet-pair interpretation. Sun harmony/disharmony at192-200 and transits/cycles are not generalized into this concept.
 
 ## Implementation and preservation

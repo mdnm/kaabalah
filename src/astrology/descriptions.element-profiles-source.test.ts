@@ -5,9 +5,6 @@ import type { TriplicityElement } from "./dignity";
 const elements: TriplicityElement[] = ["fire", "earth", "air", "water"];
 const entry = (element: TriplicityElement) => getElementDescriptionEntry(element)!;
 const copy = (element: TriplicityElement) => `${entry(element).pt} ${entry(element).en}`;
-const a2 = "modulo 4/aula 2 modulo 4/aula-2.md";
-const a3 = "modulo 4/aula 3 modulo 4/aula-3.md";
-const a8 = "modulo 4/aula 8 modulo 4/aula-8.md";
 
 describe("generic element independent-source distinctions", () => {
   it("states symbolic hot/cold and dry/moist qualities for all four elements", () => {
@@ -20,18 +17,6 @@ describe("generic element independent-source distinctions", () => {
     for (const element of elements) {
       expect(entry(element).pt).toMatch(qualities[element][0]);
       expect(entry(element).en).toMatch(qualities[element][1]);
-    }
-  });
-
-  it("keeps adopted independent clauses within the narrowed physical source ranges", () => {
-    const ranges = {
-      fire: [[a2, 134, 137], [a3, 70, 72], [a8, 811, 811], [a8, 813, 813]],
-      earth: [[a2, 140, 143], [a3, 70, 73], [a8, 803, 804]],
-      air: [[a2, 148, 149], [a3, 74, 74], [a8, 808, 809]],
-      water: [[a2, 154, 155], [a3, 75, 75], [a8, 805, 807]],
-    };
-    for (const element of elements) {
-      expect(entry(element).src).toEqual(ranges[element].map(([file, from, to]) => ({ file, from, to })));
     }
   });
 
@@ -70,11 +55,6 @@ describe("generic element independent-source distinctions", () => {
       const authored = [copy(element), ...e.keywords.pt, ...e.keywords.en].join(" ");
       expect(authored).not.toMatch(/bilios|bílis|bile|nervoso|nervous|linf|lymph|muco|mucus|blood|sangue|humor|humour|body temperature|temperatura corporal|diagnos/iu);
       expect(authored).not.toMatch(/espiritualidade|spirituality|entusiasmo|enthusiasm|honras|honors|tenacidade|tenacity|laborios|industrious|campestres|country tastes|amizade|friendship|concórdia|concord|equidade|equity|inconstância|inconstancy|dissimulação|dissimulation|pleasure-seeking/iu);
-      const notes = e.reviewNotes.join(" ");
-      expect(notes).toMatch(historical[element]);
-      expect(notes).toContain("Mat selected A8 labels on2026-11-16");
-      expect(notes).not.toMatch(/pending|aguarda/);
-      expect(notes).toMatch(/not transferred/);
     }
   });
 

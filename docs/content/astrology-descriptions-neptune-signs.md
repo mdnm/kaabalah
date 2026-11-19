@@ -1,6 +1,6 @@
 # Neptune in signs: source audit
 
-Scope: natal Neptune in all twelve canonical signs only. Course-relative primary: `modulo 4/aula 12 modulo 4/aula-12.md` (A), 165–187. Supplemental book: `books/astrologia-hermetica/astrologia-hermetica.md` (B). The course takes priority. No NOTAS, private readings, web, inventory, or other factor source was consulted for this integration.
+Scope: natal Neptune in all twelve canonical signs only. Course-relative primary: `class notes` (A), 165–187. Supplemental book: `reference text` (B). The course takes priority. No NOTAS, private readings, web, inventory, or other factor source was consulted for this integration.
 
 ## Inspected and adopted windows
 

@@ -2,7 +2,7 @@
 
 ## Scope and source method
 
-Twelve sign-energy profiles in the reader’s chart, independent of Sun/Ascendant identity or house/planet blends. Only class 4 general descriptions, functions and vices before the evolutionary-level blocks are adopted. All citations are course-relative, original one-based physical inclusive Markdown lines, read with nl -ba. A4 teaching ends at 603, as verified against the source manifest. No private notes or client readings used.
+Twelve sign-energy profiles in the reader’s chart, independent of Sun/Ascendant identity or house/planet blends. Only class 4 general descriptions, functions and vices before the evolutionary-level blocks are adopted. All citations are course-relative, original one-based physical inclusive Markdown lines, read with nl -ba. A4 teaching ends at 603, as verified against the source manifest. No private notes or private readings used.
 
 Integration uses root’s final /tmp/kaabalah-sign-profiles-a-approved.json, not the superseded A JSON or its obsolete copy table; latest B and C supply the other eight entries. Source workers inspected the complete assigned short sections. Integration rechecked every adopted A/B head/function/vice block directly, and worker C previously read its complete 182-286 assignment.
 
@@ -10,18 +10,18 @@ Integration uses root’s final /tmp/kaabalah-sign-profiles-a-approved.json, not
 
 | Sign | Adopted general/function/vice block | Levels inspected, not adopted |
 | --- | --- | --- |
-| Aries | `modulo 4/aula 4 modulo 4/aula-4.md:8-14` | `modulo 4/aula 4 modulo 4/aula-4.md:15-26` |
-| Taurus | `modulo 4/aula 4 modulo 4/aula-4.md:30-34` | `modulo 4/aula 4 modulo 4/aula-4.md:35-46` |
-| Gemini | `modulo 4/aula 4 modulo 4/aula-4.md:50-55` | `modulo 4/aula 4 modulo 4/aula-4.md:56-68` |
-| Cancer | `modulo 4/aula 4 modulo 4/aula-4.md:72-76` | `modulo 4/aula 4 modulo 4/aula-4.md:77-86` |
-| Leo | `modulo 4/aula 4 modulo 4/aula-4.md:90-94` | `modulo 4/aula 4 modulo 4/aula-4.md:95-105` |
-| Virgo | `modulo 4/aula 4 modulo 4/aula-4.md:109-114` | `modulo 4/aula 4 modulo 4/aula-4.md:115-131` |
-| Libra | `modulo 4/aula 4 modulo 4/aula-4.md:135-139` | `modulo 4/aula 4 modulo 4/aula-4.md:140-158` |
-| Scorpio | `modulo 4/aula 4 modulo 4/aula-4.md:161-165` | `modulo 4/aula 4 modulo 4/aula-4.md:166-179` |
-| Sagittarius | `modulo 4/aula 4 modulo 4/aula-4.md:182-186` | `modulo 4/aula 4 modulo 4/aula-4.md:187-204` |
-| Capricorn | `modulo 4/aula 4 modulo 4/aula-4.md:206-210` | `modulo 4/aula 4 modulo 4/aula-4.md:211-236` |
-| Aquarius | `modulo 4/aula 4 modulo 4/aula-4.md:240-245` | `modulo 4/aula 4 modulo 4/aula-4.md:246-265` |
-| Pisces | `modulo 4/aula 4 modulo 4/aula-4.md:268-272` | `modulo 4/aula 4 modulo 4/aula-4.md:273-286` |
+| Aries | `class notes:8-14` | `class notes:15-26` |
+| Taurus | `class notes:30-34` | `class notes:35-46` |
+| Gemini | `class notes:50-55` | `class notes:56-68` |
+| Cancer | `class notes:72-76` | `class notes:77-86` |
+| Leo | `class notes:90-94` | `class notes:95-105` |
+| Virgo | `class notes:109-114` | `class notes:115-131` |
+| Libra | `class notes:135-139` | `class notes:140-158` |
+| Scorpio | `class notes:161-165` | `class notes:166-179` |
+| Sagittarius | `class notes:182-186` | `class notes:187-204` |
+| Capricorn | `class notes:206-210` | `class notes:211-236` |
+| Aquarius | `class notes:240-245` | `class notes:246-265` |
+| Pisces | `class notes:268-272` | `class notes:273-286` |
 
 ## Adjudications and keyword limits
 
@@ -65,43 +65,43 @@ The complete A4 short sections were inspected for context, but no level branch i
 ### Leo
 
 - Foram usados o bloco geral de qualidades, funções e vícios; nenhum dos três níveis evolutivos foi atribuído ao leitor.
-- A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional.
+- A passagem mitológica de class notes e a repetição em class notes não foram usadas como evidência adicional.
 
 ### Virgo
 
 - Foram usados o bloco geral de qualidades, funções e vícios; detalhismo, pedantismo e mesquinhez aparecem como tendências possíveis, não como atributos pessoais presumidos.
 - O vício racismo consta na lista original, mas não foi selecionado para a descrição curta. Nenhum dos três níveis evolutivos foi atribuído ao leitor.
-- A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional.
+- A passagem mitológica de class notes e a repetição em class notes não foram usadas como evidência adicional.
 
 ### Libra
 
 - Foram usados o bloco geral de qualidades, funções e vícios; as tendências não são atribuídas automaticamente a uma pessoa.
-- Os temas relacionais dos níveis evolutivos não foram importados para o perfil geral. A passagem mitológica de aula 0 e a repetição em aula 5 não foram usadas como evidência adicional.
+- Os temas relacionais dos níveis evolutivos não foram importados para o perfil geral. A passagem mitológica de class notes e a repetição em class notes não foram usadas como evidência adicional.
 
 ### Scorpio
 
 - A descrição mantém a orientação construtiva da força destrutiva explicitada no texto. Crueldade, vingança e agressividade são apresentadas como tendências possíveis, não como diagnóstico ou biografia.
-- Os níveis evolutivos e a parábola mitológica de aula 0 não foram convertidos em afirmações pessoais; a repetição em aula 5 não foi usada como evidência adicional.
+- Os níveis evolutivos e a parábola mitológica de class notes não foram convertidos em afirmações pessoais; a repetição em class notes não foi usada como evidência adicional.
 
 ### Sagittarius
 
-- modulo 4/aula 4 modulo 4/aula-4.md:182-205 inspected in full. Adopted only general qualities/functions/vices at 182-186: philosophy, culture, religion, justice, independence, understanding/education/guidance and possible boastfulness/licentiousness/greed. Vices remain possible expressions of sign energy in the chart, not assigned character or an evolutionary level.
-- Evolutionary-level branches at modulo 4/aula 4 modulo 4/aula-4.md:187-204 are inspected but unadopted, including long-distance travel through dissatisfaction, inner teaching/faith and initiatic/master themes. They are not merged into one person. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
+- class notes:182-205 inspected in full. Adopted only general qualities/functions/vices at 182-186: philosophy, culture, religion, justice, independence, understanding/education/guidance and possible boastfulness/licentiousness/greed. Vices remain possible expressions of sign energy in the chart, not assigned character or an evolutionary level.
+- Evolutionary-level branches at class notes:187-204 are inspected but unadopted, including long-distance travel through dissatisfaction, inner teaching/faith and initiatic/master themes. They are not merged into one person. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
 
 ### Capricorn
 
-- modulo 4/aula 4 modulo 4/aula-4.md:206-239 inspected in full. Adopted only general qualities/functions/vices at 206-210, preserving concentration/patience/constancy, thinking/deduction/concretization and possible avarice/exploitation/irony/pessimism. The wording concerns chart energy, not an automatic Sun/Ascendant identity or bad-person label.
-- Evolutionary levels at modulo 4/aula 4 modulo 4/aula-4.md:211-236 are inspected but unadopted, including status/power compensation, social inhibition, profession and mature responsibility/destiny claims. Stray Uranus label at 238 is not Capricorn evidence. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
+- class notes:206-239 inspected in full. Adopted only general qualities/functions/vices at 206-210, preserving concentration/patience/constancy, thinking/deduction/concretization and possible avarice/exploitation/irony/pessimism. The wording concerns chart energy, not an automatic Sun/Ascendant identity or bad-person label.
+- Evolutionary levels at class notes:211-236 are inspected but unadopted, including status/power compensation, social inhibition, profession and mature responsibility/destiny claims. Stray Uranus label at 238 is not Capricorn evidence. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
 
 ### Aquarius
 
-- modulo 4/aula 4 modulo 4/aula-4.md:240-267 inspected in full. Adopted only general qualities/functions/vices at 240-245. Inadaptação is rendered as difficulty adapting, not a diagnosis. Rebellion/anarchy/extravagance are possible sign-energy expressions, not an assigned level or fixed biography.
-- Evolutionary levels at modulo 4/aula 4 modulo 4/aula-4.md:246-265 are inspected but unadopted: friendship, teamwork/social transformation and cosmic-consciousness branches remain separate source stages. Neptune label at 267 supplies no Aquarius trait. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
+- class notes:240-267 inspected in full. Adopted only general qualities/functions/vices at 240-245. Inadaptação is rendered as difficulty adapting, not a diagnosis. Rebellion/anarchy/extravagance are possible sign-energy expressions, not an assigned level or fixed biography.
+- Evolutionary levels at class notes:246-265 are inspected but unadopted: friendship, teamwork/social transformation and cosmic-consciousness branches remain separate source stages. Neptune label at 267 supplies no Aquarius trait. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
 
 ### Pisces
 
-- modulo 4/aula 4 modulo 4/aula-4.md:268-286 inspected in full. Adopted only general qualities/functions at 268-271 and intrigue from the vices at 272. Impressionability, hesitation and fantasy come from the general list, not from an invented negative level. Service with sacrifice/selflessness is a descriptive function, not recommended conduct.
-- The obsession/hallucination labels at modulo 4/aula 4 modulo 4/aula-4.md:272 are unadopted as reader claims. Evolutionary branches at 273-286, including isolation/escape, emotional projection and liberated higher-self unity, are inspected but unadopted; no personal level or promised peace is assigned. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
+- class notes:268-286 inspected in full. Adopted only general qualities/functions at 268-271 and intrigue from the vices at 272. Impressionability, hesitation and fantasy come from the general list, not from an invented negative level. Service with sacrifice/selflessness is a descriptive function, not recommended conduct.
+- The obsession/hallucination labels at class notes:272 are unadopted as reader claims. Evolutionary branches at 273-286, including isolation/escape, emotional projection and liberated higher-self unity, are inspected but unadopted; no personal level or promised peace is assigned. Optional A0 parable, A5 duplicates and book were not inspected or adopted.
 
 ## Integration boundary
 

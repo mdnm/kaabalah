@@ -1,6 +1,6 @@
 # Mars in houses: source audit
 
-Scope: natal Mars in houses 1–12 only. Primary A9: `modulo 4/aula 9 modulo 4/aula-9.md`; supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. All source numbers are original physical one-based inclusive lines, relative to `/Volumes/AKASH/aula kaabalah/`. All adopted body and keyword claims are primary-only. No book claim is adopted or included in `src`.
+Scope: natal Mars in houses 1–12 only. Primary A9: `class notes`; supplemental B: `reference text`. All source numbers are original physical one-based inclusive lines, relative to the private notes root. All adopted body and keyword claims are primary-only. No book claim is adopted or included in `src`.
 
 ## Actual inspections and adopted references
 
@@ -21,7 +21,7 @@ The following author inspections were performed with `nl -ba` on the originals. 
 | 11 | 1314–1349 | 1319–1325; 1333–1336 | 44080–44450 |
 | 12 | 1350–1391 | 1356–1359; 1366–1367; 1369–1373; 1376–1379 | 44080–44450 |
 
-A/B book windows are shared shard inspections; no whole-book or whole-family inspection is claimed. C reached the following-factor title within its assigned 44080–44450 window but did not research that factor. No NOTAS, private client reading, inventory, web source or other course was used.
+A/B book windows are shared shard inspections; no whole-book or whole-family inspection is claimed. C reached the following-factor title within its assigned 44080–44450 window but did not research that factor. No NOTAS, private reading, inventory, web source or other course was used.
 
 ## Review resolutions
 
@@ -37,7 +37,7 @@ The records below preserve the actual shard inspections and source distinctions.
 
 # Auditoria de fontes: Marte natal nas casas 1–4
 
-Escopo restrito às casas atribuídas. Fonte principal: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 9 modulo 4/aula-9.md`; `src.file` é relativo à raiz `/Volumes/AKASH/aula kaabalah/`. Intervalos `from`/`to` são linhas físicas inclusivas verificadas com `nl -ba`.
+Escopo restrito às casas atribuídas. Fonte principal: `class notes`; `src.file` é relativo à raiz the private notes root. Intervalos `from`/`to` são linhas físicas inclusivas verificadas com `nl -ba`.
 
 ## Curso: intervalos inspecionados e claims adotados
 
@@ -48,7 +48,7 @@ Escopo restrito às casas atribuídas. Fonte principal: `/Volumes/AKASH/aula kaa
 
 ## Livro suplementar: inspeção e não adoção
 
-O arquivo suplementar foi consultado em `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, no intervalo atribuído 43258–43700. Nesse segmento, o bloco de conceitos-chave 43261–43409 intercalava casas, e os blocos de corpo 43411–43517 (casas 1/2) e 43518–43700 (casas 3/4) mantinham colunas e fragmentos misturados. Embora apareçam cabeçalhos de casas 1/2/4 e conteúdo identificável de casa 3, não foi possível atribuir claims adicionais com continuidade textual confiável. Nenhuma fonte do livro foi adotada ou incluída em `src`.
+O arquivo suplementar foi consultado em `reference text`, no intervalo atribuído 43258–43700. Nesse segmento, o bloco de conceitos-chave 43261–43409 intercalava casas, e os blocos de corpo 43411–43517 (casas 1/2) e 43518–43700 (casas 3/4) mantinham colunas e fragmentos misturados. Embora apareçam cabeçalhos de casas 1/2/4 e conteúdo identificável de casa 3, não foi possível atribuir claims adicionais com continuidade textual confiável. Nenhuma fonte do livro foi adotada ou incluída em `src`.
 
 Nenhum arquivo do repositório foi alterado. Os registros não acrescentam instruções, práticas ou promessas de resultado.
 
@@ -59,7 +59,7 @@ A fonte primária foi lida com `nl -ba`; os números abaixo são linhas físicas
 
 ## Fonte primária
 
-`modulo 4/aula 9 modulo 4/aula-9.md`
+`class notes`
 
 - Casa 5: seção 1130–1155, cabeçalho `MARTE NA CASA 5`. Linhas 1132–1138 sustentam espírito competitivo e exigência de expressão dramática e de todo o coração na vida/criatividade. O tema de renovação romântica em 1143–1148 depende de não assustar os outros com intensidade e dos aspectos/posição de Marte no signo; foi omitido. Não se transformaram referências a esportes/esforço físico em instruções. Filhos foram omitidos.
 - Casa 6: seção 1156–1191, cabeçalho `MARTE NA CASA 6`. Linhas 1174–1178 descrevem o modo romano: orgulho no trabalho, detalhes, independência diária e satisfação em concluir tarefas desafiadoras. Linhas 1188–1190 limitam a tendência: Marte bem aspectado tende ao modo romano; aspectos difíceis do Sol, Júpiter, Urano e especialmente Plutão podem se manifestar mais como Ares, pelo menos no começo. Para descrever diretamente esse padrão alternativo sem depender da analogia mitológica, linhas 1160–1164 sustentam pressa e raiva e 1171–1173 impaciência com autoridade/colegas. A formulação conserva “ao menos no começo”. Omitidas alegações sobre dores, lesões, saúde/corpo e recomendações.
@@ -68,7 +68,7 @@ A fonte primária foi lida com `nl -ba`; os números abaixo são linhas físicas
 
 ## Suplemento do livro
 
-Inspecionada a janela estreita 43780–44100 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da família solicitada 43258–44450. O cabeçalho `MARTE NA CASA 05` aparece na linha 43793; a mesma janela contém títulos e texto de casas 6, 7, 8 e 9, com colunas intercaladas, trechos fragmentados e OCR corrompido. Embora algumas partes nomeiem uma casa, a disposição não permite associar com segurança todo o corpo textual aos respectivos títulos. Nenhuma afirmação ou palavra-chave do livro foi adotada; a fonte primária é suficiente.
+Inspecionada a janela estreita 43780–44100 de `reference text`, dentro da família solicitada 43258–44450. O cabeçalho `MARTE NA CASA 05` aparece na linha 43793; a mesma janela contém títulos e texto de casas 6, 7, 8 e 9, com colunas intercaladas, trechos fragmentados e OCR corrompido. Embora algumas partes nomeiem uma casa, a disposição não permite associar com segurança todo o corpo textual aos respectivos títulos. Nenhuma afirmação ou palavra-chave do livro foi adotada; a fonte primária é suficiente.
 
 ## Controle de escopo
 
@@ -83,9 +83,9 @@ Escopo: somente rascunho, sem integração. Lidos AGENTS.md, CONTEXT.md e docs/c
 
 Leitura com `nl -ba` do arquivo original, mantendo números físicos inclusivos:
 
-- Primário absoluto: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 9 modulo 4/aula-9.md`, 1255–1391. Janelas atribuídas: casa 9, 1255–1286; casa 10, 1287–1313; casa 11, 1314–1349; casa 12, 1350–1391. Títulos confirmados em 1255, 1287, 1314 e 1350.
-- Suplementar absoluto: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, somente 44080–44450. Não lida a família inteira 43258–44450. Nenhuma alegação suplementar adotada; o livro não integra `src`.
-- Nenhum NOTAS, leitura de cliente, inventário, outra aula ou fator seguinte foi consultado.
+- Primário absoluto: `class notes`, 1255–1391. Janelas atribuídas: casa 9, 1255–1286; casa 10, 1287–1313; casa 11, 1314–1349; casa 12, 1350–1391. Títulos confirmados em 1255, 1287, 1314 e 1350.
+- Suplementar absoluto: `reference text`, somente 44080–44450. Não lida a família inteira 43258–44450. Nenhuma alegação suplementar adotada; o livro não integra `src`.
+- Nenhum NOTAS, material privado, inventário, outra aula ou fator seguinte foi consultado.
 
 ## Casa 9
 

@@ -5,22 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Pluto house source distinctions", () => {
-  it("uses the final adopted inclusive primary ranges", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[1695, 1700], [1737, 1740], [1748, 1750]], 2: [[1760, 1776]],
-      3: [[1789, 1806]], 4: [[1841, 1847], [1852, 1855], [1861, 1866]],
-      5: [[1892, 1898], [1948, 1952]], 6: [[1987, 2001]],
-      7: [[2029, 2039], [2040, 2047], [2064, 2074]],
-      8: [[2096, 2102], [2111, 2112], [2135, 2143]],
-      9: [[2179, 2184], [2194, 2197]], 10: [[2286, 2288], [2296, 2299]],
-      11: [[2311, 2314], [2331, 2335]], 12: [[2367, 2378], [2379, 2385]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 10 modulo 4/aula-10.md", from, to,
-      })));
-    }
-  });
 
   it("keeps paired direct-address copy, two lowercase sentences and array notes without source notices or cusp aliases", () => {
     for (const house of houses) {
@@ -37,7 +21,6 @@ describe("Pluto house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 
@@ -56,7 +39,6 @@ describe("Pluto house source distinctions", () => {
   it("keeps house 4 vulnerability and post-collapse resources separate despite the erroneous MC heading", () => {
     expect(entry(4).pt).toMatch(/ao se sentir vulnerável em casa.*controlar.*; depois de um colapso, pode encontrar recursos/);
     expect(entry(4).en).toMatch(/when you feel vulnerable at home.*control.*; after a collapse, you may find unexpected resources/);
-    expect(entry(4).reviewNotes.join(" ")).toMatch(/1839.*MEIO DO CÉU.*corpo.*casa 4/);
     expect(`${entry(4).pt} ${entry(4).en}`).not.toMatch(/causar.*colapso|cause.*collapse|colapso familiar|family collapse/);
   });
 
@@ -64,7 +46,6 @@ describe("Pluto house source distinctions", () => {
     expect(entry(5).pt).toMatch(/orgulho inflado.*dúvida.*nos romances.*inibi-los ou buscar força/);
     expect(entry(5).en).toMatch(/inflated pride.*doubt.*in romance.*inhibit them or seek strength/);
     expect([entry(5).pt, entry(5).en, ...entry(5).keywords.pt, ...entry(5).keywords.en].join(" ")).not.toMatch(/trauma|criativ|creativ/);
-    expect(entry(6).src).toHaveLength(1);
     expect(entry(6).pt).toContain("busca compulsiva por mudar métodos de trabalho");
     expect(entry(6).en).toContain("compulsive drive to change work methods");
   });

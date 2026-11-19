@@ -10,16 +10,16 @@ Paths are course-relative and ranges inclusive. A physical range can contain int
 
 | Planet | Adopted citations |
 | --- | --- |
-| sun | `modulo 4/aula 8 modulo 4/aula-8.md:890-901`; `modulo 4/aula 3 modulo 4/aula-3.md:272-285`; `books/astrologia-hermetica/astrologia-hermetica.md:16990-17059` |
-| moon | `modulo 4/aula 8 modulo 4/aula-8.md:789-795`; `books/astrologia-hermetica/astrologia-hermetica.md:17294-17298` |
-| mercury | `modulo 4/aula 8 modulo 4/aula-8.md:767-780`; `books/astrologia-hermetica/astrologia-hermetica.md:17642-17683` |
-| venus | `books/astrologia-hermetica/astrologia-hermetica.md:17895-17930`; `modulo 4/aula 1 modulo 4/aula-1.md:182-183` |
-| mars | `books/astrologia-hermetica/astrologia-hermetica.md:18257-18274`; `books/astrologia-hermetica/astrologia-hermetica.md:18308-18316`; `books/astrologia-hermetica/astrologia-hermetica.md:18327-18334`; `modulo 4/aula 1 modulo 4/aula-1.md:187-188` |
-| jupiter | `books/astrologia-hermetica/astrologia-hermetica.md:18568-18593`; `books/astrologia-hermetica/astrologia-hermetica.md:18629-18648`; `modulo 4/aula 1 modulo 4/aula-1.md:189-190` |
-| saturn | `books/astrologia-hermetica/astrologia-hermetica.md:18963-18980` |
-| uranus | `books/astrologia-hermetica/astrologia-hermetica.md:19370-19385` |
-| neptune | `books/astrologia-hermetica/astrologia-hermetica.md:19733-19744` |
-| pluto | `books/astrologia-hermetica/astrologia-hermetica.md:20029-20034`; `books/astrologia-hermetica/astrologia-hermetica.md:20042-20049` |
+| sun | `class notes:890-901`; `class notes:272-285`; `reference text:16990-17059` |
+| moon | `class notes:789-795`; `reference text:17294-17298` |
+| mercury | `class notes:767-780`; `reference text:17642-17683` |
+| venus | `reference text:17895-17930`; `class notes:182-183` |
+| mars | `reference text:18257-18274`; `reference text:18308-18316`; `reference text:18327-18334`; `class notes:187-188` |
+| jupiter | `reference text:18568-18593`; `reference text:18629-18648`; `class notes:189-190` |
+| saturn | `reference text:18963-18980` |
+| uranus | `reference text:19370-19385` |
+| neptune | `reference text:19733-19744` |
+| pluto | `reference text:20029-20034`; `reference text:20042-20049` |
 
 ## Class authority and context distinctions
 
@@ -45,7 +45,7 @@ The canonical /tmp/kaabalah-planet-profiles-review.md was read. Root’s adjudic
 
 A worker’s adopted-window inspection for Sun includes OCR-interleaved Leo material within 16990-17059, excluded as sign-specific. Moon’s narrow adopted body is 17294-17298; Mercury 17642-17683 has unclear education/information fragments, excluded. B inspected its narrow general Venus/Mars/Jupiter passages and Jupiter’s excluded 18652-18658 domicile text. The Mars ranges above deliberately disclose alternating columns, without reconstructing missing clauses.
 
-C complete inspections: `books/astrologia-hermetica/astrologia-hermetica.md:18962-19060`, `books/astrologia-hermetica/astrologia-hermetica.md:19359-19416`, `books/astrologia-hermetica/astrologia-hermetica.md:19729-19804`, `books/astrologia-hermetica/astrologia-hermetica.md:20023-20128`. Unadopted material includes Saturn domicile from 19034, Uranus broken limits/change/rebellion fragments, Neptune Pisces domicile from 19756 and generational/traditional/dignity discussion 19791-19803, and Pluto healing/regeneration/Scorpio domicile from 20089. These distinct book contexts are not merged into ordinary functions. No missing words or uncertain column sequence reconstructed.
+C complete inspections: `reference text:18962-19060`, `reference text:19359-19416`, `reference text:19729-19804`, `reference text:20023-20128`. Unadopted material includes Saturn domicile from 19034, Uranus broken limits/change/rebellion fragments, Neptune Pisces domicile from 19756 and generational/traditional/dignity discussion 19791-19803, and Pluto healing/regeneration/Scorpio domicile from 20089. These distinct book contexts are not merged into ordinary functions. No missing words or uncertain column sequence reconstructed.
 
 ## Entry-specific source notes
 
@@ -68,43 +68,43 @@ C complete inspections: `books/astrologia-hermetica/astrologia-hermetica.md:1896
 ### venus
 
 - A função geral segue os conceitos legíveis do livro; a frase sobre o símbolo preserva a correspondência ensinada na aula, sem apresentar essa imagem como causa da função natal.
-- A lista de beleza da aula 13 ocorre numa etapa específica da leitura da kundalini e não foi generalizada.
+- A lista de beleza da class notes ocorre numa etapa específica da leitura da kundalini e não foi generalizada.
 
 ### mars
 
 - A função geral usa conceitos do livro; a frase sobre o símbolo registra separadamente a correspondência da aula e não afirma relação causal entre símbolo e função.
-- A referência a guerras na aula 13 pertence à etapa específica da leitura da kundalini; não foi convertida em perfil natal geral.
+- A referência a guerras na class notes pertence à etapa específica da leitura da kundalini; não foi convertida em perfil natal geral.
 - A seção do livro apresenta falhas de extração; os exemplos de Marte em Áries e Escorpião foram excluídos.
 
 ### jupiter
 
 - A frase geral usa expansão, crescimento, significado, sabedoria, otimismo e aprendizado das passagens gerais do livro; não transfere filosofia, aventura ou conhecimento da descrição de Júpiter em Sagitário.
 - A frase sobre o símbolo mantém separada a correspondência alma-matéria ensinada na aula; não a trata como causa da função natal.
-- A expansão na aula 13 aparece numa etapa específica de leitura da kundalini. Referências do livro a sorte, prosperidade e proteção não são apresentadas como resultados garantidos.
+- A expansão na class notes aparece numa etapa específica de leitura da kundalini. Referências do livro a sorte, prosperidade e proteção não são apresentadas como resultados garantidos.
 
 ### saturn
 
-- Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:18962-19060. Adopted 18963-18980: body names Saturn at 18963 and 18972; discipline/responsibility, structure/order, emotional/spiritual maturation and reality/limitations. Prescriptive source verbs are represented as functions, not instructions.
+- Book inspected: reference text:18962-19060. Adopted 18963-18980: body names Saturn at 18963 and 18972; discipline/responsibility, structure/order, emotional/spiritual maturation and reality/limitations. Prescriptive source verbs are represented as functions, not instructions.
 - Book 18982-19060 is unadopted: interleaved obstacles/perseverance, isolation, attainment language and domicile/Capricorn material beginning 19034. No uncertain OCR sequence reconstructed.
-- Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Saturn/Binah matter-over-soul glyph symbolism at 193-194; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with cobranças at 1576 in the explicit kundalini-reading context. Neither is ordinary psychological evidence; selected book functions are independently explicit.
+- Primary inspected but unadopted: class notes:191-199, with Saturn/Binah matter-over-soul glyph symbolism at 193-194; class notes:1568-1578, with cobranças at 1576 in the explicit kundalini-reading context. Neither is ordinary psychological evidence; selected book functions are independently explicit.
 
 ### uranus
 
-- Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:19359-19416. Adopted 19370-19385: body names Uranus at 19370 and 19375; intact possible detachment/impersonality at 19370-19373 and innovation/creativity/originality at 19375,19379-19385. May/pode remains attached to detachment.
+- Book inspected: reference text:19359-19416. Adopted 19370-19385: body names Uranus at 19370 and 19375; intact possible detachment/impersonality at 19370-19373 and innovation/creativity/originality at 19375,19379-19385. May/pode remains attached to detachment.
 - The 19377-19383 limits/barriers column interleaves the innovation text and is unadopted. Other broken text, sudden changes, freedom, rebellion and individualism in the inspected window are unadopted; no OCR repair or event prediction.
-- Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Uranus/Hohimah spirit/soul/matter glyph symbolism at 195-197; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with technology in our being at 1577 in the explicit kundalini-reading context. Book innovation is independently stated, not inferred from that label.
+- Primary inspected but unadopted: class notes:191-199, with Uranus/Hohimah spirit/soul/matter glyph symbolism at 195-197; class notes:1568-1578, with technology in our being at 1577 in the explicit kundalini-reading context. Book innovation is independently stated, not inferred from that label.
 
 ### neptune
 
-- Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:19729-19804. Adopted 19733-19744: Neptune is named at 19733 and in the chart at 19735. Identifiable alternating clauses support deeper spiritual connection at 19733,19737,19741 and possible disillusionment/confusion at 19735,19739,19743-19744; may/pode is retained.
+- Book inspected: reference text:19729-19804. Adopted 19733-19744: Neptune is named at 19733 and in the chart at 19735. Identifiable alternating clauses support deeper spiritual connection at 19733,19737,19741 and possible disillusionment/confusion at 19735,19739,19743-19744; may/pode is retained.
 - Unadopted book material includes fragmentary imagination/encouragement text, Pisces domicile claims at 19756 onward, and generational/traditional-astrology/dignity discussion at 19791-19803. These distinct contexts are not merged into the selected chart-function claims; no missing clause reconstructed.
-- Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Neptune/Kether reception/glyph symbolism at 198-199; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with enchantments at 1578 in the explicit kundalini-reading context. Neither is merged with book spiritual connection.
+- Primary inspected but unadopted: class notes:191-199, with Neptune/Kether reception/glyph symbolism at 198-199; class notes:1568-1578, with enchantments at 1578 in the explicit kundalini-reading context. Neither is merged with book spiritual connection.
 
 ### pluto
 
-- Book inspected: books/astrologia-hermetica/astrologia-hermetica.md:20023-20128. Adopted 20029-20034 and 20042-20049: Pluto is named at 20029; deep transformation/confrontation with shadowy aspects and explicit power/control/domination fragments. The interleaved chart-summary column does not establish inevitable challenges or renewal.
+- Book inspected: reference text:20023-20128. Adopted 20029-20034 and 20042-20049: Pluto is named at 20029; deep transformation/confrontation with shadowy aspects and explicit power/control/domination fragments. The interleaved chart-summary column does not establish inevitable challenges or renewal.
 - Unadopted book material includes healing/complete-renewal claims, tumult/growth rhetoric, subconscious/occult fragments, death/rebirth/regeneration and Scorpio domicile material beginning 20089. No uncertain OCR sequence reconstructed.
-- Primary inspected but unadopted: modulo 4/aula 1 modulo 4/aula-1.md:191-199, with Pluto/Daat spirit-over-soul/matter at 191-192; modulo 4/aula 13 modulo 4/aula-13.md:1568-1578, with mysteries at 1575 in the explicit kundalini-reading context. Glyph cosmology is not expanded into personal power or moral permission.
+- Primary inspected but unadopted: class notes:191-199, with Pluto/Daat spirit-over-soul/matter at 191-192; class notes:1568-1578, with mysteries at 1575 in the explicit kundalini-reading context. Glyph cosmology is not expanded into personal power or moral permission.
 
 ## Integration boundary
 

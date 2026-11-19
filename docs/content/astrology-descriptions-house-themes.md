@@ -10,25 +10,25 @@ The source workers inspected the assigned actual files using original `nl -ba` p
 
 Primary files:
 
-- A6: `modulo 4/aula 6 modulo 4/aula-6.md`
-- A8: `modulo 4/aula 8 modulo 4/aula-8.md`
+- A6: `class notes`
+- A8: `class notes`
 
 A8:815-820 frames houses as thematic divisions. Its element/rhythm grouping supplies no new generic element/modality profile or sign/angle inference. A8:832-833 conditions negative expressions on affliction and poor aspects of the ruling planets. Houses 2-3 retain that condition in both languages and their negative keywords. All other houses omit those negative branches.
 
 | House | Adopted primary citations | Supplemental window inspected only |
 | --- | --- | --- |
-| 1 | `modulo 4/aula 6 modulo 4/aula-6.md:6-8` | `books/astrologia-hermetica/astrologia-hermetica.md:21562-21639` |
-| 2 | `modulo 4/aula 6 modulo 4/aula-6.md:9-11`; `modulo 4/aula 8 modulo 4/aula-8.md:832-833`; `modulo 4/aula 8 modulo 4/aula-8.md:848-851` | `books/astrologia-hermetica/astrologia-hermetica.md:21719-21792` |
-| 3 | `modulo 4/aula 6 modulo 4/aula-6.md:12-15`; `modulo 4/aula 8 modulo 4/aula-8.md:832-833`; `modulo 4/aula 8 modulo 4/aula-8.md:862-866` | `books/astrologia-hermetica/astrologia-hermetica.md:21868-21940` |
-| 4 | `modulo 4/aula 6 modulo 4/aula-6.md:17-19` | `books/astrologia-hermetica/astrologia-hermetica.md:22001-22040` |
-| 5 | `modulo 4/aula 6 modulo 4/aula-6.md:20-22`; `modulo 4/aula 8 modulo 4/aula-8.md:841-842` | `books/astrologia-hermetica/astrologia-hermetica.md:22134-22210` |
-| 6 | `modulo 4/aula 6 modulo 4/aula-6.md:23-25`; `modulo 4/aula 8 modulo 4/aula-8.md:852-855` | `books/astrologia-hermetica/astrologia-hermetica.md:22356-22425` |
-| 7 | `modulo 4/aula 6 modulo 4/aula-6.md:26-28`; `modulo 4/aula 8 modulo 4/aula-8.md:867-869` | `books/astrologia-hermetica/astrologia-hermetica.md:22433-22505` |
-| 8 | `modulo 4/aula 6 modulo 4/aula-6.md:29-33`; `modulo 4/aula 8 modulo 4/aula-8.md:884-885` | `books/astrologia-hermetica/astrologia-hermetica.md:22518-22585` |
-| 9 | `modulo 4/aula 6 modulo 4/aula-6.md:34-36`; `modulo 4/aula 8 modulo 4/aula-8.md:843-844` | `books/astrologia-hermetica/astrologia-hermetica.md:22600-22690` |
-| 10 | `modulo 4/aula 6 modulo 4/aula-6.md:38-40`; `modulo 4/aula 8 modulo 4/aula-8.md:857-858` | `books/astrologia-hermetica/astrologia-hermetica.md:22712-22790` |
-| 11 | `modulo 4/aula 6 modulo 4/aula-6.md:41-42`; `modulo 4/aula 8 modulo 4/aula-8.md:870-871` | `books/astrologia-hermetica/astrologia-hermetica.md:22863-22945` |
-| 12 | `modulo 4/aula 6 modulo 4/aula-6.md:44-49`; `modulo 4/aula 8 modulo 4/aula-8.md:886-887` | `books/astrologia-hermetica/astrologia-hermetica.md:22981-23106` |
+| 1 | `class notes:6-8` | `reference text:21562-21639` |
+| 2 | `class notes:9-11`; `class notes:832-833`; `class notes:848-851` | `reference text:21719-21792` |
+| 3 | `class notes:12-15`; `class notes:832-833`; `class notes:862-866` | `reference text:21868-21940` |
+| 4 | `class notes:17-19` | `reference text:22001-22040` |
+| 5 | `class notes:20-22`; `class notes:841-842` | `reference text:22134-22210` |
+| 6 | `class notes:23-25`; `class notes:852-855` | `reference text:22356-22425` |
+| 7 | `class notes:26-28`; `class notes:867-869` | `reference text:22433-22505` |
+| 8 | `class notes:29-33`; `class notes:884-885` | `reference text:22518-22585` |
+| 9 | `class notes:34-36`; `class notes:843-844` | `reference text:22600-22690` |
+| 10 | `class notes:38-40`; `class notes:857-858` | `reference text:22712-22790` |
+| 11 | `class notes:41-42`; `class notes:870-871` | `reference text:22863-22945` |
+| 12 | `class notes:44-49`; `class notes:886-887` | `reference text:22981-23106` |
 
 ## Qualifications, OCR and unresolved convention
 
@@ -52,7 +52,7 @@ Mat clarified thematic priorities. All adopted claims are independently supporte
 
 ### House 1
 
-- modulo 4/aula 6 modulo 4/aula-6.md:6-8 supports self-image, the image others have of you, identity, independence, initiative and body as domains. The conditional negative self-assertion branch at modulo 4/aula 8 modulo 4/aula-8.md:832-833,837-840 was inspected but is not adopted; no excessive behavior is inferred.
+- class notes:6-8 supports self-image, the image others have of you, identity, independence, initiative and body as domains. The conditional negative self-assertion branch at class notes:832-833,837-840 was inspected but is not adopted; no excessive behavior is inferred.
 - Livro inspecionado apenas em 21562–21639. O OCR atribui alguns blocos à casa 1 no corpo, mas intercala frases e rótulos, inclusive a associação com Ascendente em 21562–21565. Nenhum detalhe do livro foi adotado nem Ascendente foi tratado como sinônimo automático da casa 1.
 
 ### House 2
@@ -67,7 +67,7 @@ Mat clarified thematic priorities. All adopted claims are independently supporte
 
 ### House 4
 
-- modulo 4/aula 6 modulo 4/aula-6.md:17-19 supports home, family, clans and security, with roots and conditioning as secondary domains. Family is broad and is not restricted to blood relations. The opposite-sex parent at line 18 and mother at modulo 4/aula 8 modulo 4/aula-8.md:882 remain unadopted pending Mat’s parental convention. The conditional negative branch at 832-833,883 is inspected but omitted.
+- class notes:17-19 supports home, family, clans and security, with roots and conditioning as secondary domains. Family is broad and is not restricted to blood relations. The opposite-sex parent at line 18 and mother at class notes:882 remain unadopted pending Mat’s parental convention. The conditional negative branch at 832-833,883 is inspected but omitted.
 - Livro inspecionado apenas em 22001–22040. Os blocos nomeiam casa 4 no próprio corpo, mas estão intercalados/corrompidos; títulos a associam a IC/Fundo do Céu. Nenhum claim suplementar foi adotado e não se fez alias automático entre casa 4 e IC.
 
 ### House 5
@@ -92,30 +92,30 @@ Mat clarified thematic priorities. All adopted claims are independently supporte
 
 ### House 9
 
-- Aula 6:34-37 and aula 8:843-845 inspected; adopted only the thematic domains at modulo 4/aula 6 modulo 4/aula-6.md:34-36 and modulo 4/aula 8 modulo 4/aula-8.md:843-844, not a personal disposition or prediction.
-- modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 844-845 are not adopted.
-- books/astrologia-hermetica/astrologia-hermetica.md:22600-22690 inspected only, not adopted or cited in src. Body lines 22600-22614 explicitly identify house 9; later text is interleaved, including 22629-22640 and 22642-22658. No OCR reconstruction or supplemental expansion.
+- class notes:34-37 and class notes:843-845 inspected; adopted only the thematic domains at class notes:34-36 and class notes:843-844, not a personal disposition or prediction.
+- class notes:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 844-845 are not adopted.
+- reference text:22600-22690 inspected only, not adopted or cited in src. Body lines 22600-22614 explicitly identify house 9; later text is interleaved, including 22629-22640 and 22642-22658. No OCR reconstruction or supplemental expansion.
 
 ### House 10
 
-- modulo 4/aula 6 modulo 4/aula-6.md:38-40 and modulo 4/aula 8 modulo 4/aula-8.md:857-859 inspected; only career, social and vocation domains adopted. Mission, future and destiny are not converted into promised outcomes.
-- Parent convention pending Mat reply: same-sex parent at modulo 4/aula 6 modulo 4/aula-6.md:39 is omitted. No parental gender assignment selected; the supplied A6 house 4 versus A8 house 4 disagreement remains unresolved and outside this assigned reading.
-- modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 858-859 are not adopted.
-- books/astrologia-hermetica/astrologia-hermetica.md:22712-22790 inspected only, not adopted or cited in src. Body 22716-22726 explicitly identifies house 10. The isolated IC at 22714, Meio do Céu label at 22718-22720 and damaged text at 22774-22790 establish no angle alias. Father attribution at 22748-22753 is unadopted pending the parental convention.
+- class notes:38-40 and class notes:857-859 inspected; only career, social and vocation domains adopted. Mission, future and destiny are not converted into promised outcomes.
+- Parent convention pending Mat reply: same-sex parent at class notes:39 is omitted. No parental gender assignment selected; the supplied A6 house 4 versus A8 house 4 disagreement remains unresolved and outside this assigned reading.
+- class notes:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 858-859 are not adopted.
+- reference text:22712-22790 inspected only, not adopted or cited in src. Body 22716-22726 explicitly identifies house 10. The isolated IC at 22714, Meio do Céu label at 22718-22720 and damaged text at 22774-22790 establish no angle alias. Father attribution at 22748-22753 is unadopted pending the parental convention.
 
 ### House 11
 
-- modulo 4/aula 6 modulo 4/aula-6.md:41-43 and modulo 4/aula 8 modulo 4/aula-8.md:870-872 inspected; only thematic domains adopted, not claims about the reader having particular friends or outcomes.
-- Exaltações at modulo 4/aula 6 modulo 4/aula-6.md:43 is ambiguous and unadopted; it supplies no dignity convention. Protections and teachers at modulo 4/aula 8 modulo 4/aula-8.md:871 are unadopted for concision.
-- modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 871-872 are not adopted.
-- books/astrologia-hermetica/astrologia-hermetica.md:22863-22945 inspected only, not adopted or cited in src. Body 22863-22872 explicitly identifies house 11; text is interleaved at 22885-22915 and 22922-22941. No reconstruction, technology expansion or promised network rewards adopted.
+- class notes:41-43 and class notes:870-872 inspected; only thematic domains adopted, not claims about the reader having particular friends or outcomes.
+- Exaltações at class notes:43 is ambiguous and unadopted; it supplies no dignity convention. Protections and teachers at class notes:871 are unadopted for concision.
+- class notes:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; the negative expressions at 871-872 are not adopted.
+- reference text:22863-22945 inspected only, not adopted or cited in src. Body 22863-22872 explicitly identifies house 11; text is interleaved at 22885-22915 and 22922-22941. No reconstruction, technology expansion or promised network rewards adopted.
 
 ### House 12
 
-- modulo 4/aula 6 modulo 4/aula-6.md:44-49 and modulo 4/aula 8 modulo 4/aula-8.md:877-879,886-888 inspected; only the stated domains adopted. Institutional themes describe no personal confinement, illness or relationship outcome.
-- modulo 4/aula 6 modulo 4/aula-6.md:48-49 explicitly names past lives and conscious, subconscious and unconscious mind as source themes. Past lives is adopted strictly as a house domain, not literal personal history. The mind-level list is omitted and is not a clinical model. Repressions and neuroses at line 46 are not adopted as diagnoses.
-- modulo 4/aula 8 modulo 4/aula-8.md:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; self-abandonment, isolation and illusion at 887-888 are not adopted. Water-house grouping at 877-879 supplies no generic element profile here.
-- books/astrologia-hermetica/astrologia-hermetica.md:22981-23106 inspected only, not adopted or cited in src. Body 22981-22990 explicitly identifies house 12; broken or interleaved material at 23006-23055 and 23073-23106 is not reconstructed. Healing and therapy claims at 22995-22998,23065-23071 are unadopted; no advice, clinical model or promised health outcome.
+- class notes:44-49 and class notes:877-879,886-888 inspected; only the stated domains adopted. Institutional themes describe no personal confinement, illness or relationship outcome.
+- class notes:48-49 explicitly names past lives and conscious, subconscious and unconscious mind as source themes. Past lives is adopted strictly as a house domain, not literal personal history. The mind-level list is omitted and is not a clinical model. Repressions and neuroses at line 46 are not adopted as diagnoses.
+- class notes:832-833 conditions negative expressions on afflicted and poorly-aspected ruling planets; self-abandonment, isolation and illusion at 887-888 are not adopted. Water-house grouping at 877-879 supplies no generic element profile here.
+- reference text:22981-23106 inspected only, not adopted or cited in src. Body 22981-22990 explicitly identifies house 12; broken or interleaved material at 23006-23055 and 23073-23106 is not reconstructed. Healing and therapy claims at 22995-22998,23065-23071 are unadopted; no advice, clinical model or promised health outcome.
 
 ## Integration boundary
 

@@ -5,21 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Mercury house source distinctions", () => {
-  it("uses the exact adopted primary physical ranges without supplemental book claims", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[304, 309], [317, 318]], 2: [[329, 334], [335, 338]],
-      3: [[359, 362]], 4: [[381, 382], [390, 393]],
-      5: [[407, 412]], 6: [[436, 438], [457, 460]],
-      7: [[467, 472], [475, 478]], 8: [[493, 502], [512, 513]],
-      9: [[521, 527], [529, 530]], 10: [[545, 548]],
-      11: [[564, 569], [580, 581]], 12: [[596, 598], [619, 621], [624, 625]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 9 modulo 4/aula-9.md", from, to,
-      })));
-    }
-  });
 
   it("keeps two lowercase sentences and paired direct bilingual content without source notices or cusp aliases", () => {
     for (const house of houses) {
@@ -52,7 +37,6 @@ describe("Mercury house source distinctions", () => {
     expect(entry(3).en).toMatch(/^when Mercury is not badly aspected.*lively, witty, and observant intellect/);
     expect(entry(3).pt).toContain("selecionar fatos que apoiem o argumento");
     expect(entry(3).en).toContain("select facts that support the case");
-    expect(entry(3).reviewNotes.join(" ")).toMatch(/nonconventional minds.*distinct from learning difficulties/);
     expect(`${entry(3).pt} ${entry(3).en}`).not.toMatch(/dificuldades de aprendizado|learning difficulties|Uranus|Neptune|Pluto/);
   });
 
@@ -66,7 +50,6 @@ describe("Mercury house source distinctions", () => {
     expect(entry(6).en).toMatch(/knowledge through daily life and the body.*excessive need.*lead nowhere.*mentally engaging/);
     expect(entry(8).pt).toMatch(/manter seus próprios pensamentos e motivações em segredo.*investigações e trabalhos de pesquisa/);
     expect(entry(8).en).toMatch(/keep your own thoughts and motives secret.*investigation and research/);
-    expect(entry(8).reviewNotes.join(" ")).toMatch(/Mercúrio ou Virgem.*explicitly includes Mercury alone/);
     expect(`${entry(7).pt} ${entry(7).en}`).not.toMatch(/subjug|secondary gain|ganho secundário/);
   });
 

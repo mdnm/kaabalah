@@ -3,16 +3,6 @@ import { getPointDescriptionEntry } from "./descriptions";
 
 const entry = getPointDescriptionEntry("lilith mean")!;
 describe("Lilith general concept source qualifications", () => {
-  it("uses precise adopted concept clauses within teaching bounds", () => {
-    expect(entry.src).toEqual([[135, 136], [152, 155], [159, 160]].map(([from, to]) => ({ file: "modulo 4/aula 18 modulo 4/aula-18.md", from, to })));
-    for (const source of entry.src) {
-      expect(Number.isSafeInteger(source.from)).toBe(true);
-      expect(Number.isSafeInteger(source.to)).toBe(true);
-      expect(source.from).toBeGreaterThanOrEqual(131);
-      expect(source.to).toBeGreaterThanOrEqual(source.from);
-      expect(source.to).toBeLessThanOrEqual(1065);
-    }
-  });
 
   it("preserves symbolic obscurity and real variable-intensity/latent qualifications", () => {
     expect(entry.pt).toMatch(/simbolicamente.*consciência obscura e pouco acessível.*ausência de luz/);
@@ -36,12 +26,4 @@ describe("Lilith general concept source qualifications", () => {
     }
   });
 
-  it("discloses a textual mode alias without equating positions or merging Priapus", () => {
-    const notes = entry.reviewNotes.join(" ");
-    expect(notes).toContain("not invariably opposite Lilith");
-    expect(notes).toContain("sole canonical record is lilith mean");
-    expect(notes).toContain("explicit lilith true interpretation lookup alias");
-    expect(notes).toContain("does not equate their calculated positions");
-    expect(notes).toContain("does not define a bare lilith default");
-  });
 });

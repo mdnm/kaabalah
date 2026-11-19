@@ -1,6 +1,6 @@
 # Saturn in signs: source audit
 
-Scope: current Saturn only. The primary teaching is `modulo 4/aula 12 modulo 4/aula-12.md`, lines 112–136. Book windows are the narrow sign openings recorded below. The course governs the descriptions; book material is supplemental only when it is legible, narrowly relevant, and explicitly cited. No NOTAS, private readings, web, or other course/inventory passages were consulted for this audit.
+Scope: current Saturn only. The primary teaching is `class notes`, lines 112–136. Book windows are the narrow sign openings recorded below. The course governs the descriptions; book material is supplemental only when it is legible, narrowly relevant, and explicitly cited. No NOTAS, private readings, web, or other course/inventory passages were consulted for this audit.
 
 ## Final source decisions
 

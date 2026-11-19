@@ -30,34 +30,23 @@ const stubNodeGlueInEsm: Plugin = {
 };
 
 /**
- * The authored description rows keep editorial provenance (`src`: file and line ranges into the
- * maintainer's private course and reading folders; `reviewNotes`: review comments). That data stays
- * in src/astrology/descriptions.json for the maintainer but must never ship, so the bundled copy is
- * stripped here. Published entries expose `src: []` and `reviewNotes: []` (see descriptions.ts).
+ * Build guard: the authored description rows must not carry private source paths. Editorial
+ * provenance lives outside the repository (the gitignored provenance/ folder); if a private path
+ * prefix ever shows up in the bundled descriptions, the build fails instead of publishing it.
  */
-const PRIVATE_PROVENANCE_KEYS = new Set(["src", "reviewNotes"]);
+// Matches provenance keys and any document path (folder/name.md or .pdf, or a mounted-volume path). The
+// private folder names are deliberately not spelled out here: this repository must not contain them.
+const PRIVATE_PATH_PREFIX = /"(?:src|reviewNotes|file)"\s*:|[\w -]+\/[\w .-]+\.(?:md|pdf)\b|\/Volumes\//i;
 
-function stripProvenance(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(stripProvenance);
-  if (value && typeof value === "object") {
-    return Object.fromEntries(
-      Object.entries(value)
-        .filter(([key]) => !PRIVATE_PROVENANCE_KEYS.has(key))
-        .map(([key, child]) => [key, stripProvenance(child)]),
-    );
-  }
-  return value;
-}
-
-const stripDescriptionProvenance: Plugin = {
-  name: "kaabalah-strip-description-provenance",
+const guardPrivateProvenance: Plugin = {
+  name: "kaabalah-guard-private-provenance",
   setup(build) {
     build.onLoad({ filter: /src[\\/]astrology[\\/]descriptions\.json$/ }, async (args) => {
-      const stripped = JSON.stringify(stripProvenance(JSON.parse(await readFile(args.path, "utf8"))));
-      if (/readings[\\/]skills|modulo \d+[\\/ ]aula/.test(stripped)) {
-        throw new Error("descriptions.json still carries private provenance paths after stripping");
+      const contents = await readFile(args.path, "utf8");
+      if (PRIVATE_PATH_PREFIX.test(contents)) {
+        throw new Error("descriptions.json carries private provenance paths; keep them in provenance/ only");
       }
-      return { contents: stripped, loader: "json" };
+      return { contents, loader: "json" };
     });
   },
 };
@@ -91,7 +80,7 @@ export default defineConfig([
     publicDir: "wasm/build",
     sourcemap: true,
     clean: true,
-    esbuildPlugins: [stubNodeGlueInEsm, stripDescriptionProvenance],
+    esbuildPlugins: [stubNodeGlueInEsm, guardPrivateProvenance],
     esbuildOptions(options) {
       options.logOverride = { ...options.logOverride, ...logOverride };
     },
@@ -105,7 +94,7 @@ export default defineConfig([
     loader: { ".wasm": "file" },
     sourcemap: true,
     clean: false,
-    esbuildPlugins: [stripDescriptionProvenance],
+    esbuildPlugins: [guardPrivateProvenance],
     esbuildOptions(options) {
       options.logOverride = { ...options.logOverride, ...logOverride };
     },

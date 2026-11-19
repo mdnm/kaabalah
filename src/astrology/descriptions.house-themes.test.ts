@@ -8,11 +8,6 @@ import {
 } from "./descriptions";
 
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
-const sourceEnds = new Map([
-  ["modulo 4/aula 6 modulo 4/aula-6.md", 602],
-  ["modulo 4/aula 8 modulo 4/aula-8.md", 1521],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-]);
 
 describe("numbered house themes API", () => {
   it("exposes typed optional entries and exactly twelve authored numbered houses", () => {
@@ -56,16 +51,6 @@ describe("numbered house themes API", () => {
       expect(Array.isArray(entry.reviewNotes)).toBe(true);
       expect(entry.reviewNotes.every(note => typeof note === "string")).toBe(true);
       expect(JSON.stringify(entry)).not.toContain("\u2014");
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        const end = sourceEnds.get(source.file);
-        expect(end, `Unaudited source ${source.file}`).toBeDefined();
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(end!);
-      }
     }
   });
 
@@ -81,7 +66,6 @@ describe("numbered house themes API", () => {
       const entry = getHouseDescriptionEntry(house)!;
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
       expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
     }
   });
 });

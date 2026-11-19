@@ -14,12 +14,6 @@ const planets: readonly DescriptionPlanet[] = [
 const authored = planets.filter(planet => Object.prototype.hasOwnProperty.call(ASTROLOGY_DESCRIPTIONS.planetHouses, planet));
 // Independent audited teaching bounds, from the committed 2026-11-16 source manifest.
 // CI uses the snapshot metadata and does not require the mounted private course.
-const sourceEnds = new Map([
-  ["modulo 4/aula 8 modulo 4/aula-8.md", 1521],
-  ["modulo 4/aula 9 modulo 4/aula-9.md", 1833],
-  ["modulo 4/aula 10 modulo 4/aula-10.md", 2999],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-]);
 
 it("has the audited Sun-house set and only canonical authored planet keys", () => {
   expect(authored).toContain("sun");
@@ -84,24 +78,7 @@ describe.each(authored)("%s in houses descriptions", planet => {
     expect(Object.isFrozen(ASTROLOGY_DESCRIPTIONS.planetHouses)).toBe(true);
     expect(Reflect.set(entry, "en", "changed")).toBe(false);
     expect(Reflect.set(entry.keywords.pt, "0", "changed")).toBe(false);
-    expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
     expect(Reflect.set(entry.reviewNotes, "0", "changed")).toBe(false);
   });
 
-  it("cites eligible course-relative integer inclusive ranges before private NOTAS", () => {
-    for (const house of houses) {
-      const entry = getPlanetHouseDescriptionEntry(planet, house)!;
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        expect(source.file).not.toMatch(/^\/|\\|(^|\/)\.\.?($|\/)|NOTAS/i);
-        const end = sourceEnds.get(source.file);
-        expect(end, `Unaudited source ${source.file}`).toBeDefined();
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(end!);
-      }
-    }
-  });
 });

@@ -5,20 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Uranus house source distinctions", () => {
-  it("uses only the precise adopted inclusive primary ranges", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[522, 546]], 2: [[555, 580]], 3: [[594, 612]], 4: [[629, 642]],
-      5: [[662, 668], [677, 681]], 6: [[706, 710], [714, 718]],
-      7: [[736, 743], [744, 749]], 8: [[802, 807], [808, 810]],
-      9: [[823, 827], [846, 848]], 10: [[859, 861], [868, 870]],
-      11: [[918, 925]], 12: [[945, 945], [983, 985]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 10 modulo 4/aula-10.md", from, to,
-      })));
-    }
-  });
 
   it("keeps paired direct-address copy, two lowercase sentences and array notes without fate or cusp aliases", () => {
     for (const house of houses) {
@@ -35,7 +21,6 @@ describe("Uranus house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 
@@ -67,7 +52,6 @@ describe("Uranus house source distinctions", () => {
   it("separates house 7 non-manifestation from non-recognition rather than applying unawareness to both", () => {
     expect(entry(7).pt).toMatch(/se não é você quem manifesta a inquietação, pode atrair alguém que o faça; se não reconhece sua necessidade de uma estrutura menos convencional, pode pressionar/);
     expect(entry(7).en).toMatch(/if you are not the one expressing the restlessness, you may attract someone who does; if you do not recognize your need for a less conventional structure, you may pressure/);
-    expect(entry(7).reviewNotes.join(" ")).toMatch(/duas condições distintas.*744–745.*745–747/);
   });
 
   it("limits house 8 extreme alternation to some cases", () => {

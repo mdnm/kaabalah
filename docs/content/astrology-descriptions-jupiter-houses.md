@@ -1,6 +1,6 @@
 # Jupiter in houses: source audit
 
-Scope: natal Jupiter houses 1–12 only. Primary A9: `modulo 4/aula 9 modulo 4/aula-9.md`. Supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are relative to `/Volumes/AKASH/aula kaabalah/`; all ranges are original physical one-based inclusive lines. All adopted description and keyword claims are primary-only; no book claim is adopted or appears in src.
+Scope: natal Jupiter houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. Paths are relative to the private notes root; all ranges are original physical one-based inclusive lines. All adopted description and keyword claims are primary-only; no book claim is adopted or appears in src.
 
 ## Actual inspections and adopted references
 
@@ -21,7 +21,7 @@ The author inspections below used `nl -ba` on original files. Integration read t
 | 11 | 1762–1795 | 1770–1773; 1784–1786 | 48720–49070 |
 | 12 | 1796–1830 | 1803–1804; 1810–1811; 1819–1822 | 48720–49070 |
 
-A’s audit records combined actual book windows 47796–48025, 48097–48134 and 48135–48220; its entry metadata subdivides them as shown above. B and C windows are shared shard inspections, not separate full windows per house. No whole book, whole family, NOTAS/private clients, inventory or next factor was researched.
+A’s audit records combined actual book windows 47796–48025, 48097–48134 and 48135–48220; its entry metadata subdivides them as shown above. B and C windows are shared shard inspections, not separate full windows per house. No whole book, whole family, NOTAS/private readings, inventory or next factor was researched.
 
 ## Final copy and review resolutions
 
@@ -37,7 +37,7 @@ The following records describe the draft stage; their statements about no reposi
 
 # Auditoria de fontes: Júpiter natal nas casas 1–4
 
-Escopo restrito às quatro casas atribuídas. Fonte primária: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 9 modulo 4/aula-9.md`; `src.file` usa caminho relativo à raiz `/Volumes/AKASH/aula kaabalah/`. Os números são linhas físicas inclusivas, conferidas com `nl -ba`.
+Escopo restrito às quatro casas atribuídas. Fonte primária: `class notes`; `src.file` usa caminho relativo à raiz the private notes root. Os números são linhas físicas inclusivas, conferidas com `nl -ba`.
 
 ## Curso: intervalos e decisões por casa
 
@@ -59,7 +59,7 @@ A fonte primária foi lida com `nl -ba`; linhas citadas são numeração física
 
 ## Fonte primária
 
-`modulo 4/aula 9 modulo 4/aula-9.md`
+`class notes`
 
 - Casa 5: seção 1535–1573, cabeçalho `JÚPITER NA CASA 5`. Janelas adotadas 1540–1543 para expressão criativa com audácia/amplitude; 1547–1554 para cooperação condicionada a conduzir o espetáculo e hobbies/saídas artísticas satisfatórios se mantidos tempo suficiente para adquirir conhecimento; 1560–1562 para prejuízo de perspectiva condicionado a Júpiter mal aspectado e excitação/entusiasmo excessivos. Romance, filhos e pessoa nomeada foram omitidos.
 - Casa 6: seção de corpo 1574–1616, embora o cabeçalho 1574 esteja incorretamente rotulado `VÊNUS NA CASA 6`. A identidade foi confirmada diretamente no corpo: linhas 1576–1580 dizem Júpiter na casa 6 e tratam de trabalho/serviço a outros, significado, aprimoramento de habilidades e satisfação; 1581–1588 continuam explicitamente com Júpiter e contrastam correr de tarefa em tarefa com diligência/concentração no pequeno trabalho. A alternativa foi preservada. Passagens sobre saúde, câncer, corpo, dieta e práticas foram excluídas.
@@ -68,7 +68,7 @@ A fonte primária foi lida com `nl -ba`; linhas citadas são numeração física
 
 ## Suplemento do livro
 
-Inspecionada a janela estreita 48180–48745 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da família solicitada 47796–49070. Há rótulos visíveis de casas 5–8 (incluindo casa 5 e 6 em 48289–48294, casa 7 em 48442–48448 e casa 8 em 48539–48545), mas os blocos de texto intercalam colunas de casas diferentes, estão fragmentados e contêm OCR danificado. A identidade de alguns rótulos é discernível, porém o corpo não permite atribuição segura das afirmações adjacentes. Nenhum conteúdo do livro foi adotado; a fonte primária foi suficiente.
+Inspecionada a janela estreita 48180–48745 de `reference text`, dentro da família solicitada 47796–49070. Há rótulos visíveis de casas 5–8 (incluindo casa 5 e 6 em 48289–48294, casa 7 em 48442–48448 e casa 8 em 48539–48545), mas os blocos de texto intercalam colunas de casas diferentes, estão fragmentados e contêm OCR danificado. A identidade de alguns rótulos é discernível, porém o corpo não permite atribuição segura das afirmações adjacentes. Nenhum conteúdo do livro foi adotado; a fonte primária foi suficiente.
 
 ## Controle de escopo
 
@@ -83,9 +83,9 @@ Rascunho somente; nenhuma integração, edição no repositório, staging ou com
 
 Leitura direta com `nl -ba` nos arquivos originais, números físicos um-based inclusivos:
 
-- Primário absoluto: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 9 modulo 4/aula-9.md`, janela exata 1692–1830. Cabeçalhos confirmados em 1692 (9), 1731 (10), 1762 (11) e 1796 (12).
-- Suplementar absoluto: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, janela exata 48720–49070. Não foi lida a família inteira 47796–49070.
-- Não foram consultados NOTAS, leituras privadas/de clientes, inventário, fonte inteira, web ou fator seguinte.
+- Primário absoluto: `class notes`, janela exata 1692–1830. Cabeçalhos confirmados em 1692 (9), 1731 (10), 1762 (11) e 1796 (12).
+- Suplementar absoluto: `reference text`, janela exata 48720–49070. Não foi lida a família inteira 47796–49070.
+- Não foram consultados NOTAS, material privado, inventário, fonte inteira, web ou fator seguinte.
 
 | Casa | Seção primária inspecionada | Faixas primárias adotadas no JSON | Livro inspecionado, não adotado |
 | --- | --- | --- | --- |
@@ -94,7 +94,7 @@ Leitura direta com `nl -ba` nos arquivos originais, números físicos um-based i
 | 11 | 1762–1795 | 1770–1773; 1784–1786 | 48720–49070, janela compartilhada C |
 | 12 | 1796–1830 | 1803–1804; 1810–1811; 1819–1822 | 48720–49070, janela compartilhada C |
 
-Todas as alegações e palavras-chave adotadas são primárias. `src.file` usa `modulo 4/aula 9 modulo 4/aula-9.md`, relativo à raiz do curso. As faixas identificam alegações adotadas, não a adoção de cada palavra da linha de borda: por exemplo, os exemplos que começam em 1709 e a alegação de carreira que começa em 1739 não foram adotados. Livro não aparece em `src`.
+Todas as alegações e palavras-chave adotadas são primárias. `src.file` usa `class notes`, relativo à raiz do curso. As faixas identificam alegações adotadas, não a adoção de cada palavra da linha de borda: por exemplo, os exemplos que começam em 1709 e a alegação de carreira que começa em 1739 não foram adotados. Livro não aparece em `src`.
 
 ## Casa 9: decisões e qualificações
 

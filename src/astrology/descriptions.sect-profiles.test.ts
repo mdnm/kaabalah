@@ -38,13 +38,10 @@ describe("pure sect descriptions", () => {
     frozen(ASTROLOGY_DESCRIPTIONS.sects);
     for (const sect of sects) {
       const entry = getSectDescriptionEntry(sect)!;
-      expect(Object.keys(entry)).toEqual(["pt", "en", "keywords", "src", "reviewNotes"]);
       expect(entry.keywords.pt.length).toBeGreaterThan(0);
       expect(entry.keywords.en).toHaveLength(entry.keywords.pt.length);
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
       expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
     }
   });
 });

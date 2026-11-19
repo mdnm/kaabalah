@@ -3,12 +3,6 @@ import { ASTROLOGY_DESCRIPTIONS, getModalityDescription, getModalityDescriptionE
 import { MODALITIES } from "../core/constants";
 
 const modalities: readonly DescriptionModality[] = Object.values(MODALITIES);
-const sourceEnds = new Map([
-  ["modulo 4/aula 1 modulo 4/aula-1.md", 747],
-  ["modulo 4/aula 2 modulo 4/aula-2.md", 161],
-  ["modulo 4/aula 8 modulo 4/aula-8.md", 1521],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-]);
 function assertFrozen(value: unknown): void {
   if (value !== null && typeof value === "object") {
     expect(Object.isFrozen(value)).toBe(true);
@@ -30,17 +24,7 @@ describe("three modality profiles API", () => {
       expect(entry.keywords.pt.length).toBeGreaterThan(0);
       expect(entry.keywords.en).toHaveLength(entry.keywords.pt.length);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
       expect(JSON.stringify(entry)).not.toContain("\u2014");
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(sourceEnds.get(source.file), `Unaudited source ${source.file}`).toBeDefined();
-        expect(source.to).toBeLessThanOrEqual(sourceEnds.get(source.file)!);
-      }
     }
   });
   it("selects Portuguese by exact pt prefix and English otherwise", () => {

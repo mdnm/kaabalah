@@ -1,6 +1,6 @@
 # Astrology source inventory: classes 0 to 7
 
-Phase 1 only, 2026-11-16. No interpretive entries drafted. Paths below are relative to `/Volumes/AKASH/aula kaabalah/`; `A<n>` means `modulo 4/aula <n> modulo 4/aula-<n>.md`. Line counts use logical lines, including the final unterminated line. All eight files were read through EOF; teaching and private notes are separated below. Notes provide no eligible citation evidence.
+Phase 1 only, 2026-11-16. No interpretive entries drafted. Paths below are relative to the private notes root; `A<n>` means `class notes`. Line counts use logical lines, including the final unterminated line. All eight files were read through EOF; teaching and private notes are separated below. Notes provide no eligible citation evidence.
 
 | Class | Full file lines read | Eligible teaching | NOTAS begins | Teaching inventory |
 |---|---|---|---|---|

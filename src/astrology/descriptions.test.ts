@@ -25,17 +25,14 @@ it("allows only canonical planet keys in the authored data", () => {
   expect(authoredPlanets.length).toBeGreaterThan(0);
 });
 
-// Audited 2026-11-16 source snapshot from astrology-inventory-sources.json.
-// One-based inclusive teaching ends; the next line starts private NOTAS.
-// Keep the fixture here so regular tests require neither AKASH nor research files.
-const teachingEnds = [
-  441, 747, 161, 782, 603, 934, 602, 1561, 1521, 1833, 2999, 1557,
-  1769, 1609, 1599, 798, 5271, 468, 1065, 6948, 290, 882, 29,
-];
-const sourceBounds = new Map<string, number>(teachingEnds.map((end, n) => [
-  `modulo 4/aula ${n} modulo 4/aula-${n}.md`, end,
-]));
-sourceBounds.set("books/astrologia-hermetica/astrologia-hermetica.md", 123692);
+it("exposes empty provenance fields: the repository and the package carry no source paths or review notes", () => {
+  const entry = getPlanetSignDescriptionEntry("sun", "Aries")!;
+  expect(entry.src).toEqual([]);
+  expect(entry.reviewNotes).toEqual([]);
+  expect(Object.isFrozen(entry.src)).toBe(true);
+  expect(Object.isFrozen(entry.reviewNotes)).toBe(true);
+  expect(JSON.stringify(ASTROLOGY_DESCRIPTIONS)).not.toMatch(/\.(md|pdf)"|\/Volumes\//);
+});
 
 function expectDeepFrozen(value: unknown): void {
   if (value !== null && typeof value === "object") {
@@ -106,8 +103,6 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
     expect(Reflect.set(entry.keywords.pt, "0", "changed")).toBe(false);
     expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
     expect(Reflect.set(entry.reviewNotes, "0", "changed")).toBe(false);
-    expect(Reflect.set(entry.src, "0", {})).toBe(false);
-    expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
     expect(getPlanetSignDescription(planet, "Aries")).toBe(original);
   });
 
@@ -121,10 +116,6 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
         expect(keyword.trim().length).toBeGreaterThan(0);
       }
       expect(Array.isArray(entry.reviewNotes)).toBe(true);
-      for (const note of entry.reviewNotes) {
-        expect(typeof note).toBe("string");
-        expect(note.trim().length).toBeGreaterThan(0);
-      }
     }
   });
 
@@ -141,24 +132,6 @@ describe.each(authoredPlanets)("%s in signs descriptions", (planet) => {
     }
   });
 
-  it("cites integer inclusive bounds in audited course-relative sources before NOTAS", () => {
-    for (const sign of signs) {
-      const entry = getPlanetSignDescriptionEntry(planet, sign)!;
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        expect(typeof source.file).toBe("string");
-        expect(source.file.startsWith("/")).toBe(false);
-        expect(source.file).not.toMatch(/\\|(^|\/)\.\.?($|\/)|NOTAS/i);
-        const end = sourceBounds.get(source.file);
-        expect(end, `Unaudited source: ${source.file}`).toBeDefined();
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(end!);
-      }
-    }
-  });
 });
 
 describe("Pluto source distinctions", () => {
@@ -176,13 +149,6 @@ describe("Pluto source distinctions", () => {
   it("completes all ten authored sets and 120 canonical entries", () => {
     expect(authoredPlanets).toEqual(ordinaryPlanets);
     expect(authoredPlanets.flatMap(planet => Object.keys(ASTROLOGY_DESCRIPTIONS.planetSigns[planet]!))).toHaveLength(120);
-  });
-
-  it("adopts exactly the primary inclusive ranges with no book claims", () => {
-    for (const sign of signs) {
-      const [from, to] = bounds[sign];
-      expect(entry(sign).src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from, to }]);
-    }
   });
 
   it("keeps paired direct address and exactly two lowercase-start sentences", () => {
@@ -203,10 +169,8 @@ describe("Pluto source distinctions", () => {
     expect(entry("Aries").pt).toMatch(/instintos poderosos e criatividade\. em outro tema simbólico coletivo.*forças destrutivas do ser humano/);
     expect(entry("Aries").en).toMatch(/powerful instincts and creativity\. in a separate collective symbolic theme.*destructive human forces/);
     expect(entry("Aries").keywords.pt).toContain("liberação das forças destrutivas do ser humano");
-    expect(entry("Aries").reviewNotes.join(" ")).toContain("no causal link");
     expect(entry("Taurus").pt).toMatch(/simbolismo coletivo de destruição do já criado e sexualidade atormentada.*mesmo plano simbólico.*período de estabilidade comercial e prosperidade econômica/);
     expect(entry("Taurus").en).toMatch(/collective symbolism of destruction.*troubled sexuality.*same symbolic level.*period of commercial stability and economic prosperity/);
-    expect(entry("Taurus").reviewNotes.join(" ")).toContain("not inferred actual sexual experience");
   });
 
   it("preserves collective culture, family changes, demographic shifts and a critical generation", () => {
@@ -216,7 +180,6 @@ describe("Pluto source distinctions", () => {
     expect(entry("Cancer").en).toMatch(/collective symbolic level.*radical changes in family structures/);
     expect(entry("Leo").pt).toMatch(/simbolismo geracional.*sofrimento intenso.*hábitos sexuais.*curvas demográficas/);
     expect(entry("Leo").en).toMatch(/generational symbolism.*intense suffering.*sexual habits.*demographic curves/);
-    expect(entry("Leo").reviewNotes.join(" ")).toMatch(/Audáciosidade.*audácia.*clear linguistic paraphrase/);
     expect(entry("Virgo").pt).toMatch(/autocrítica implacável.*dificuldades criativas.*cansaço mental.*nova geração.*espírito crítico agudo/);
     expect(entry("Virgo").en).toMatch(/relentless self-criticism.*creative difficulties.*mental fatigue.*new generation.*sharp critical spirit/);
   });
@@ -226,7 +189,6 @@ describe("Pluto source distinctions", () => {
     expect(entry("Libra").en).toMatch(/collective symbolism.*international crises resolved through diplomacy/);
     expect(entry("Scorpio").pt).toMatch(/simbolismo coletivo de fecundidade.*vitalidade.*progressos científicos.*grandes epidemias difíceis de combater/);
     expect(entry("Scorpio").en).toMatch(/collective symbolism of fertility.*vitality.*scientific advances.*major epidemics that are difficult to combat/);
-    expect(entry("Scorpio").reviewNotes.join(" ")).toContain("No fertility assurance, diagnosis or forecast");
   });
 
   it("preserves clear C themes without reconstructing uncertain OCR", () => {
@@ -236,8 +198,6 @@ describe("Pluto source distinctions", () => {
     expect(entry("Capricorn").en).toMatch(/collective symbolism.*slow creativity.*resentment.*centralization of power.*international political and economic stability/);
     expect(product("Sagittarius")).not.toMatch(/estorço|gelo|esforço coletivo|collective effort|progresso da humanidade|progress of humanity/);
     expect(product("Capricorn")).not.toMatch(/vingara|vingança|revenge/);
-    expect(entry("Sagittarius").reviewNotes.join(" ")).toMatch(/OCR incerto.*estorço coletivo gelo/);
-    expect(entry("Capricorn").reviewNotes.join(" ")).toMatch(/OCR incerto.*vingara/);
     expect(entry("Aquarius").pt).toMatch(/simbolismo coletivo.*brutalidade e crueldade.*descobertas científicas importantes.*fraternidade/);
     expect(entry("Aquarius").en).toMatch(/collective symbolism.*brutality and cruelty.*important scientific discoveries.*fellowship/);
   });
@@ -249,38 +209,13 @@ describe("Pluto source distinctions", () => {
     expect(entry("Pisces").en).toMatch(/symbolic historical level.*new religions or mystical movements/);
     expect(product("Pisces")).not.toMatch(/faculdades psíquicas|psychic faculties|catástrofe|catastrophe|regenera/i);
     expect(product("Cancer")).not.toMatch(/catástrofe|catastrophe/i);
-    expect(entry("Pisces").reviewNotes.join(" ")).toContain("no actual reader behavior or clinical/sexual identity");
-    expect(entry("Cancer").reviewNotes.join(" ")).toMatch(/catastrophes.*omitted/);
-    expect(entry("Pisces").reviewNotes.join(" ")).toMatch(/catástrofes.*omitido/);
     expect(entry("Pisces").keywords.pt).toContain("turbulência sexual");
     expect(entry("Pisces").keywords.en).toContain("sexual turbulence");
   });
 });
 
 describe("Neptune source distinctions", () => {
-  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
-  const book = "books/astrologia-hermetica/astrologia-hermetica.md";
-  const adopted: Record<Sign, readonly (readonly [string, number, number])[]> = {
-    Aries: [[course, 166, 166], [book, 57058, 57061]],
-    Taurus: [[course, 167, 167], [book, 57221, 57226]],
-    Gemini: [[course, 168, 169]],
-    Cancer: [[course, 170, 171]],
-    Leo: [[course, 172, 173]],
-    Virgo: [[course, 174, 175]],
-    Libra: [[course, 176, 177]],
-    Scorpio: [[course, 178, 179]],
-    Sagittarius: [[course, 180, 181]],
-    Capricorn: [[course, 182, 183]],
-    Aquarius: [[course, 184, 185], [book, 59662, 59668]],
-    Pisces: [[course, 186, 187]],
-  };
   const entry = (sign: Sign) => getPlanetSignDescriptionEntry("neptune", sign)!;
-
-  it("matches every adopted source range, including all three book additions", () => {
-    for (const sign of signs) {
-      expect(entry(sign).src).toEqual(adopted[sign].map(([file, from, to]) => ({ file, from, to })));
-    }
-  });
 
   it("keeps two lowercase-start sentences and direct bilingual address", () => {
     for (const sign of signs) {
@@ -333,8 +268,6 @@ describe("Neptune source distinctions", () => {
   it("retains Pisces difficult themes as historical symbolism with diagnostic boundaries in metadata", () => {
     expect(entry("Pisces").pt).toMatch(/plano histórico e coletivo.*temas simbólicos de neuroses de massa e difusão das drogas/);
     expect(entry("Pisces").en).toMatch(/historical and collective level.*symbolic themes of mass neurosis and the spread of drugs/);
-    expect(entry("Pisces").reviewNotes.join(" ")).toMatch(/no clinical diagnosis of reader or cohort and no prediction of substance use/);
-    expect(entry("Scorpio").reviewNotes.join(" ")).toMatch(/Neuroses sexuais e tendências necrófilas foram omitidas/);
     for (const sign of signs) {
       const record = entry(sign);
       expect(`${record.pt} ${record.en}`).not.toMatch(/problemas com a pele|skin problems|desastres no ar|air disasters|lucros|profits|neuroses sexuais|sexual neuroses|necrófil|necrophil/i);
@@ -343,30 +276,10 @@ describe("Neptune source distinctions", () => {
 });
 
 describe("Uranus source distinctions", () => {
-  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
-  const book = "books/astrologia-hermetica/astrologia-hermetica.md";
-  const courseBounds = [[139, 140], [141, 142], [143, 144], [145, 146], [147, 148], [149, 150], [151, 152], [153, 155], [156, 157], [158, 159], [160, 161], [162, 163]] as const;
-  const bookBounds: Partial<Record<(typeof signs)[number], readonly (readonly [number, number])[]>> = {
-    Aries: [[52918, 52929]],
-    Taurus: [[53133, 53139]],
-    Gemini: [[53431, 53440]],
-    Cancer: [[53756, 53759]],
-    Sagittarius: [[54845, 54864], [54875, 54896]],
-    Capricorn: [[55150, 55171]],
-    Aquarius: [[55420, 55430]],
-    Pisces: [[55619, 55623]],
-  };
 
   it("uses canonical signs and exact audited course and adopted-book ranges", () => {
     const authored = ASTROLOGY_DESCRIPTIONS.planetSigns.uranus!;
     expect(Object.keys(authored)).toEqual([...signs]);
-    signs.forEach((sign, index) => {
-      const expected: { file: string; from: number; to: number }[] = [
-        { file: course, from: courseBounds[index][0], to: courseBounds[index][1] },
-      ];
-      for (const [from, to] of bookBounds[sign] ?? []) expected.push({ file: book, from, to });
-      expect(getPlanetSignDescriptionEntry("uranus", sign)!.src).toEqual(expected);
-    });
   });
 
   it("keeps harsh source distinctions and excludes event, health, and identity assertions", () => {
@@ -422,7 +335,6 @@ describe("Uranus source distinctions", () => {
   it("uses two lowercase-started sentences without editorial prose or em dashes", () => {
     for (const sign of signs) {
       const entry = getPlanetSignDescriptionEntry("uranus", sign)!;
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
       for (const text of [entry.pt, entry.en]) {
         expect(text).toMatch(/^(você |you )/);
         const sentences = text.match(/[^.!?]+[.!?]/g)!;
@@ -500,28 +412,7 @@ describe("Moon content regressions", () => {
     }
   });
 
-  it("uses only inspected Moon passages and retains per-sign review notes", () => {
-    for (const sign of signs) {
-      const entry = getPlanetSignDescriptionEntry("moon", sign)!;
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
-      expect(entry.src.some(source => source.file === "modulo 4/aula 18 modulo 4/aula-18.md")).toBe(true);
-      for (const source of entry.src) {
-        if (source.file === "modulo 4/aula 18 modulo 4/aula-18.md") {
-          expect(source.from).toBeGreaterThanOrEqual(4);
-          expect(source.to).toBeLessThanOrEqual(108);
-        } else {
-          expect(sign).toBe("Gemini");
-          expect(source).toEqual({
-            file: "books/astrologia-hermetica/astrologia-hermetica.md",
-            from: 28528,
-            to: 28537,
-          });
-        }
-      }
-    }
-  });
 });
-
 
 describe("Mercury source distinctions", () => {
   it("keeps slow experiential thought in Taurus without uncited book embellishments", () => {
@@ -529,7 +420,6 @@ describe("Mercury source distinctions", () => {
     expect(e.pt).toContain("pensar devagar");
     expect(e.pt).toContain("experiência do que na inteligência");
     expect(e.en).toContain("experience than on intelligence");
-    expect(e.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: 9, to: 9 }]);
     expect(e.keywords.pt).not.toContain("método");
   });
 
@@ -542,7 +432,6 @@ describe("Mercury source distinctions", () => {
       const e = getPlanetSignDescriptionEntry("mercury", sign)!;
       expect(e.pt).toContain(pt);
       expect(e.en).toContain(en);
-      expect(e.reviewNotes.length).toBeGreaterThan(0);
     }
   });
 
@@ -561,15 +450,9 @@ describe("Mercury source distinctions", () => {
       expect(e.pt).toMatch(/^você |^seu /);
       expect(e.en).toMatch(/^you |^your /);
       expect(JSON.stringify(e)).not.toContain("\u2014");
-      for (const source of e.src) {
-        expect(source.file).toBe("modulo 4/aula 12 modulo 4/aula-12.md");
-        expect(source.from).toBeGreaterThanOrEqual(7);
-        expect(source.to).toBeLessThanOrEqual(29);
-      }
     }
   });
 });
-
 
 describe("Venus source distinctions", () => {
   it("keeps distinct unconventional-sexuality and fulfillment clauses without behavior instructions", () => {
@@ -589,7 +472,6 @@ describe("Venus source distinctions", () => {
       const e = getPlanetSignDescriptionEntry("venus", sign)!;
       expect(e.pt).toContain(pt);
       expect(e.en).toContain(en);
-      expect(e.reviewNotes.length).toBeGreaterThan(0);
     }
   });
 
@@ -610,15 +492,9 @@ describe("Venus source distinctions", () => {
       expect(JSON.stringify(e)).not.toContain("\u2014");
       expect(e.pt.match(/[.!?]/g)).toHaveLength(2);
       expect(e.en.match(/[.!?]/g)).toHaveLength(2);
-      for (const source of e.src) {
-        expect(source.file).toBe("modulo 4/aula 12 modulo 4/aula-12.md");
-        expect(source.from).toBeGreaterThanOrEqual(32);
-        expect(source.to).toBeLessThanOrEqual(56);
-      }
     }
   });
 });
-
 
 describe("Mars source distinctions", () => {
   it("retains Sagittarius's explicit male-emphasis qualifier in both languages and keywords", () => {
@@ -627,7 +503,6 @@ describe("Mars source distinctions", () => {
     expect(entry.en).toMatch(/sexual energy.*especially in people of the male sex/);
     expect(entry.keywords.pt.some(keyword => /energia sexual.*principalmente.*sexo masculino/.test(keyword))).toBe(true);
     expect(entry.keywords.en.some(keyword => /sexual energy.*especially.*male sex/.test(keyword))).toBe(true);
-    expect(entry.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: 75, to: 77 }]);
   });
 
   it("keeps rational control distinct from Capricorn's authority, power and anger", () => {
@@ -660,19 +535,12 @@ describe("Mars source distinctions", () => {
     expect(pisces.pt).toContain("abnegação");
     expect(pisces.en).toContain("self-denial");
     expect(pisces.pt + pisces.en).not.toMatch(/inimigos ocultos|hidden enemies|provocações continuas|continuous provocations|compaixão|compassion/);
-    expect(pisces.reviewNotes.join(" ")).toContain("hidden enemies");
   });
 
   it("keeps unresolved OCR omissions and sequence-based Virgo recovery in metadata", () => {
     const aries = getPlanetSignDescriptionEntry("mars", "Aries")!;
-    expect(aries.reviewNotes.join(" ")).toMatch(/afiar/);
-    expect(aries.reviewNotes.join(" ")).toMatch(/perante/);
     const virgo = getPlanetSignDescriptionEntry("mars", "Virgo")!;
-    expect(virgo.reviewNotes.join(" ")).toMatch(/VIAGEM/);
-    expect(virgo.reviewNotes.join(" ")).toMatch(/sequência/);
-    expect(virgo.reviewNotes.join(" ")).toMatch(/incerta/);
     const scorpio = getPlanetSignDescriptionEntry("mars", "Scorpio")!;
-    expect(scorpio.reviewNotes.join(" ")).toMatch(/pede até ser destrutiva/);
     for (const entry of [aries, virgo, scorpio]) {
       expect(entry.pt + entry.en).not.toMatch(/afiar|perante|VIAGEM|pede|destrutiv|destructiv|OCR/);
     }
@@ -685,10 +553,6 @@ describe("Mars source distinctions", () => {
     ];
     signs.forEach((sign, index) => {
       const entry = getPlanetSignDescriptionEntry("mars", sign)!;
-      const expected = [{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: bounds[index][0], to: bounds[index][1] }];
-      if (sign === "Aries") expected.push({ file: "books/astrologia-hermetica/astrologia-hermetica.md", from: 40349, to: 40364 });
-      expect(entry.src).toEqual(expected);
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
       for (const text of [entry.pt, entry.en]) {
         expect(text).toMatch(/^(você |sua |you |your )/);
         expect(text.match(/[.!?]/g)).toHaveLength(2);
@@ -699,23 +563,12 @@ describe("Mars source distinctions", () => {
   });
 });
 
-
 describe("Saturn source distinctions", () => {
-  const course = "modulo 4/aula 12 modulo 4/aula-12.md";
   const bounds = [[113, 114], [115, 116], [117, 118], [119, 120], [121, 122], [123, 124], [125, 126], [127, 128], [129, 130], [131, 132], [133, 134], [135, 136]] as const;
 
   it("uses all twelve canonical Title Case signs and exact Saturn course bounds", () => {
     const authored = ASTROLOGY_DESCRIPTIONS.planetSigns.saturn!;
     expect(Object.keys(authored)).toEqual([...signs]);
-    signs.forEach((sign, index) => {
-      const expected: { file: string; from: number; to: number }[] = [
-        { file: course, from: bounds[index][0], to: bounds[index][1] },
-      ];
-      if (sign === "Leo") {
-        expected.push({ file: "books/astrologia-hermetica/astrologia-hermetica.md", from: 49751, to: 49757 });
-      }
-      expect(getPlanetSignDescriptionEntry("saturn", sign)!.src).toEqual(expected);
-    });
   });
 
   it("preserves the unusual primary claims and source-specific exclusions", () => {
@@ -726,7 +579,6 @@ describe("Saturn source distinctions", () => {
     expect(gemini.pt).toContain("amadurecer cedo");
     expect(gemini.pt).toContain("autocontrole na fala");
     expect(gemini.pt + gemini.en).not.toMatch(/depressão|depression/);
-    expect(gemini.reviewNotes.join(" ")).toMatch(/depressão|depression/);
     const aries = getPlanetSignDescriptionEntry("saturn", "Aries")!;
     expect(aries.pt).toContain("bom controle dos instintos");
     expect(aries.pt).toContain("crueldade");
@@ -743,8 +595,6 @@ describe("Saturn source distinctions", () => {
   it("keeps Saturn copy concise, lowercase-started, and course-prioritized", () => {
     for (const sign of signs) {
       const entry = getPlanetSignDescriptionEntry("saturn", sign)!;
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
-      expect(entry.src).toHaveLength(sign === "Leo" ? 2 : 1);
       for (const text of [entry.pt, entry.en]) {
         expect(text).toMatch(/^(você |you )/);
         const sentences = text.match(/[^.!?]+[.!?]/g)!;
@@ -762,16 +612,6 @@ describe("Saturn source distinctions", () => {
     expect(aquarius.en).toContain("your friendships may include wise people");
     const leo = getPlanetSignDescriptionEntry("saturn", "Leo")!;
     expect(leo.pt).toContain("dificuldades para expressar a criatividade");
-    expect(leo.src).toContainEqual({
-      file: "books/astrologia-hermetica/astrologia-hermetica.md",
-      from: 49751,
-      to: 49757,
-    });
-    for (const sign of ["Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) {
-      expect(getPlanetSignDescriptionEntry("saturn", sign)!.src).toEqual([
-        { file: course, from: bounds[signs.indexOf(sign)][0], to: bounds[signs.indexOf(sign)][1] },
-      ]);
-    }
     expect(JSON.stringify(ASTROLOGY_DESCRIPTIONS.planetSigns.saturn)).not.toContain("\u2014");
   });
 });
@@ -791,8 +631,6 @@ describe("Jupiter source distinctions", () => {
     expect(entry.en).toMatch(/critical view.*practical sense may be lacking/);
     expect(entry.keywords.pt).toContain("falta de senso prático");
     expect(entry.keywords.en).toContain("lack of practical sense");
-    expect(entry.reviewNotes.join(" ")).toMatch(/cetismo/);
-    expect(entry.reviewNotes.join(" ")).toMatch(/sem reconstrução/);
     expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/cetismo|ceticismo|skepticism|scepticism/);
   });
 
@@ -801,8 +639,6 @@ describe("Jupiter source distinctions", () => {
     expect(entry.pt).toMatch(/conservadorismo e à indulgência/);
     expect(entry.en).toMatch(/conservatism and indulgence/);
     expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/digest|aparelho|sucesso|success|segunda metade|second half|life.stage/i);
-    expect(entry.reviewNotes.join(" ")).toMatch(/digestive/);
-    expect(entry.reviewNotes.join(" ")).toMatch(/life-stage success/);
   });
 
   it("preserves Gemini's travel possibility and consistent success omission", () => {
@@ -810,8 +646,6 @@ describe("Jupiter source distinctions", () => {
     expect(entry.pt).toContain("possibilidade de muitas viagens");
     expect(entry.en).toContain("possibility of many trips");
     expect(entry.pt + entry.en).not.toMatch(/sucesso|success|commercial|comercial/);
-    expect(entry.reviewNotes.join(" ")).toContain("success in intellectual or commercial activity is omitted");
-    expect(entry.reviewNotes.join(" ")).toContain("not converted into an invented aptitude");
   });
 
   it("retains Sagittarius's loss of critical view and omits unresolved jogador", () => {
@@ -821,7 +655,6 @@ describe("Jupiter source distinctions", () => {
     expect(entry.pt).toContain("boa capacidade intelectual");
     expect(entry.en).toContain("good intellectual ability");
     expect(entry.pt + entry.en + JSON.stringify(entry.keywords)).not.toMatch(/jogador|jogo|games|gambl|player|sorte|luck/i);
-    expect(entry.reviewNotes.join(" ")).toMatch(/jogador.*unresolved/);
   });
 
   it("retains remaining tensions without invented advancement or support aptitudes", () => {
@@ -845,8 +678,6 @@ describe("Jupiter source distinctions", () => {
       [99, 100], [101, 102], [103, 104], [105, 106], [107, 108], [109, 110]];
     signs.forEach((sign, index) => {
       const entry = getPlanetSignDescriptionEntry("jupiter", sign)!;
-      expect(entry.src).toEqual([{ file: "modulo 4/aula 12 modulo 4/aula-12.md", from: bounds[index][0], to: bounds[index][1] }]);
-      expect(entry.reviewNotes.length).toBeGreaterThan(0);
       expect(entry.pt).toMatch(/^você /);
       expect(entry.en).toMatch(/^you /);
       for (const text of [entry.pt, entry.en]) {

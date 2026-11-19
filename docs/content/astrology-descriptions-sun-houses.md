@@ -1,6 +1,6 @@
 # Sun in houses: source audit
 
-Scope: natal Sun in houses 1–12 only. Primary A8: `modulo 4/aula 8 modulo 4/aula-8.md`. Supplemental book B: `books/astrologia-hermetica/astrologia-hermetica.md`. Every adopted body and keyword claim is primary-only; all book windows below are inspected comparisons, not adopted provenance. All bounds are one-based inclusive and course-relative.
+Scope: natal Sun in houses 1–12 only. Primary A8: `class notes`. Supplemental book B: `reference text`. Every adopted body and keyword claim is primary-only; all book windows below are inspected comparisons, not adopted provenance. All bounds are one-based inclusive and course-relative.
 
 ## Inspected and adopted windows
 

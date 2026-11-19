@@ -5,22 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Jupiter house source distinctions", () => {
-  it("uses precisely the adopted inclusive primary ranges without supplemental provenance", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[1394, 1398], [1416, 1423]], 2: [[1432, 1437], [1447, 1452]],
-      3: [[1459, 1469], [1476, 1479]], 4: [[1505, 1510], [1526, 1527]],
-      5: [[1540, 1543], [1547, 1554], [1560, 1562]],
-      6: [[1576, 1580], [1581, 1588]], 7: [[1632, 1637], [1638, 1640]],
-      8: [[1668, 1673], [1683, 1686]], 9: [[1715, 1718], [1706, 1709]],
-      10: [[1735, 1739], [1743, 1745]], 11: [[1770, 1773], [1784, 1786]],
-      12: [[1803, 1804], [1810, 1811], [1819, 1822]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 9 modulo 4/aula-9.md", from, to,
-      })));
-    }
-  });
 
   it("keeps two lowercase-start sentences, direct address and paired metadata", () => {
     for (const house of houses) {
@@ -37,7 +21,6 @@ describe("Jupiter house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 
@@ -67,8 +50,6 @@ describe("Jupiter house source distinctions", () => {
   });
 
   it("uses the actual Jupiter house 6 body despite the Venus heading and retains alternative task styles", () => {
-    expect(entry(6).src[0].from).toBe(1576);
-    expect(entry(6).reviewNotes.join(" ")).toMatch(/1574.*VÊNUS NA CASA 6.*Júpiter.*1576/);
     expect(entry(6).pt).toMatch(/trabalho e no serviço.*algumas pessoas.*enquanto outras.*diligência e concentração/);
     expect(entry(6).en).toMatch(/work and service.*some people.*while others.*diligence and concentration/);
     expect(`${entry(6).pt} ${entry(6).en}`).not.toMatch(/Vênus|Venus|câncer|cancer|saúde|health|dieta|diet/);
@@ -85,7 +66,6 @@ describe("Jupiter house source distinctions", () => {
     expect(entry(9).pt).toMatch(/leis e verdades básicas.*em casos extremos.*sabe tudo.*aprovação divina/);
     expect(entry(9).en).toMatch(/basic laws and truths.*in extreme cases.*know everything.*divine approval/);
     expect(`${entry(9).pt} ${entry(9).en}`).not.toMatch(/aspect|integrado|integrated/);
-    expect(entry(9).reviewNotes.join(" ")).toMatch(/1705–1706.*sem acrescentar um “não”/);
   });
 
   it("keeps house 10 recognition as a desire and house 11 protection as an expectation", () => {
@@ -93,7 +73,6 @@ describe("Jupiter house source distinctions", () => {
     expect(entry(10).en).toMatch(/want to be seen.*seeking meaning/);
     expect(entry(11).pt).toMatch(/esperar que ele lhe ofereça proteção.*envolvimento excessivo.*dissipar/);
     expect(entry(11).en).toMatch(/expect it to offer you protection.*excessive involvement.*dissipate/);
-    expect(entry(11).reviewNotes.join(" ")).toMatch(/1776–1780.*aspectos difíceis.*omitido/);
   });
 
   it("keeps house 12 faith and inward truth alongside possible external pursuit and imprudence", () => {

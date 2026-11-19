@@ -2,16 +2,16 @@
 
 Inventory date: 2026-11-16. Status: awaiting Mat's approval. No descriptions or getters have been written. No commit or publication has been made.
 
-All 23 module 4 classes were read through EOF. There are 36,205 logical lines, including final unterminated lines, of which 34,469 precede the private NOTAS sections. The book's sections were located and their bodies/boundaries inspected; this is not a claim to have read all 123,692 book lines. Both supplied reference sheets and the earlier Gamu bank were read. The English astrology indexes were used only as navigation. No private client readings were opened. AKASH was read only.
+All 23 classes were read through EOF. There are 36,205 logical lines, including final unterminated lines, of which 34,469 precede the private NOTAS sections. The book's sections were located and their bodies/boundaries inspected; this is not a claim to have read all 123,692 book lines. Both supplied reference sheets and the earlier Gamu bank were read. The English astrology indexes were used only as navigation. No private readings were opened. The private notes were read only.
 
 ## How to audit the table
 
-All course references are relative to `/Volumes/AKASH/aula kaabalah/`:
+All course references are relative to the private notes root:
 
-- `A0` through `A22` expand to `modulo 4/aula N modulo 4/aula-N.md`.
-- `B` expands to `books/astrologia-hermetica/astrologia-hermetica.md`.
-- `H` expands to `readings/skills/dazy-natal-reading/references/houses.md`.
-- `P` expands to `readings/skills/dazy-natal-reading/references/planets.md`.
+- `A0` through `A22` expand to `class notes`.
+- `B` expands to `reference text`.
+- `H` expands to `reading reference notes (houses)`.
+- `P` expands to `reading reference notes (planets)`.
 
 Ranges are one-based and inclusive in the current Markdown, not PDF page numbers. [Source manifest](astrology-inventory-sources.json) retains file hashes and NOTAS boundaries to detect future line drift. Broad ranges locate factor families; final descriptions must cite the narrower passages actually synthesized. Source transcriptions contain OCR mistakes and column interleaving. A heading alone does not establish a recoverable entry.
 
@@ -207,7 +207,7 @@ Validation is documentary: all23 class manifests have valid teaching/NOTAS bound
 
 ## Follow-up research requested by Mat
 
-Paragraph format selected, with source fidelity above fixed length. [Cross-module NOTAS addendum](astrology-inventory-notes.md) records the follow-up search of115 class Markdown files across modules1-5, including plain `NOTAS:` boundaries,526 matching private-note line locations and eligible handout passages outside module4. The [metadata-only search ledger](astrology-inventory-notes-search.json) retains hashes and locations without copying private notes. Existing source gaps remain pending rather than being filled from personal examples. Phase2 scope/order still requires Mat's decision.
+Paragraph format selected, with source fidelity above fixed length. [Cross-module NOTAS addendum](astrology-inventory-notes.md) records the follow-up search of115 class Markdown files across the course including plain `NOTAS:` boundaries,526 matching private-note line locations and eligible handout passages outside the course. The [metadata-only search ledger](astrology-inventory-notes-search.json) retains hashes and locations without copying private notes. Existing source gaps remain pending rather than being filled from personal examples. Phase2 scope/order still requires Mat's decision.
 
 ## Mat decisions, 2026-11-16
 

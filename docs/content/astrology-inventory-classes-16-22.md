@@ -1,8 +1,8 @@
-# Phase 1 source inventory: module 4 classes 16 to 22
+# Phase 1 source inventory: later class notes
 
-Inventory only, 2026-11-16. No interpretive descriptions have been drafted. Course root: `/Volumes/AKASH/aula kaabalah`. All citations below are relative to that root. Read project `AGENTS.md` and `CONTEXT.md` first. Course files were read only. No client reading files were opened.
+Inventory only, 2026-11-16. No interpretive descriptions have been drafted. Course root: the private notes root. All citations below are relative to that root. Read project `AGENTS.md` and `CONTEXT.md` first. Course files were read only. No private reading files were opened.
 
-`aN:L1-L2` below expands to `modulo 4/aula N modulo 4/aula-N.md:L1-L2`. Counts describe source-supported candidate entries, not an approved scope or finished data. Complete means the stated source grid is present, partial means some combinations are absent, and mentioned means the text does not supply a standalone interpretation grid.
+`aN:L1-L2` below expands to `class notes:L1-L2`. Counts describe source-supported candidate entries, not an approved scope or finished data. Complete means the stated source grid is present, partial means some combinations are absent, and mentioned means the text does not supply a standalone interpretation grid.
 
 ## Reading ledger
 

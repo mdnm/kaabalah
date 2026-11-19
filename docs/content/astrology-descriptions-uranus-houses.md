@@ -1,10 +1,10 @@
 # Uranus in houses: source audit
 
-Scope: natal Uranus houses 1–12 only. Primary A10: `modulo 4/aula 10 modulo 4/aula-10.md`; supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are relative to `/Volumes/AKASH/aula kaabalah/`; all lines are original physical one-based inclusive numbers. All adopted body and keyword claims are primary-only. No book claim is adopted or included in src.
+Scope: natal Uranus houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are relative to the private notes root; all lines are original physical one-based inclusive numbers. All adopted body and keyword claims are primary-only. No book claim is adopted or included in src.
 
 ## Actual inspections and adopted references
 
-Authors read original assigned narrow sections with `nl -ba`. Integration read final artifacts/audits and does not claim to have reread A/B source originals. C directly read A10 821–998 and B 56600–57047. Root actually read every adopted primary passage with neighboring qualifiers. A and C were approved; final B preserves the timing in house 5 and separates the two conditions in house 7. Book windows below are shared shard inspections, not separate full reads per entry. No whole book/course/family, inventory, NOTAS/private clients, English index or next factor was researched.
+Authors read original assigned narrow sections with `nl -ba`. Integration read final artifacts/audits and does not claim to have reread A/B source originals. C directly read A10 821–998 and B 56600–57047. Root actually read every adopted primary passage with neighboring qualifiers. A and C were approved; final B preserves the timing in house 5 and separates the two conditions in house 7. Book windows below are shared shard inspections, not separate full reads per entry. No whole book/course/family, inventory, NOTAS/private readings, English index or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ Rascunho somente. Nenhum arquivo do repositório foi alterado. As linhas abaixo 
 
 ## Fonte primária
 
-`modulo 4/aula 10 modulo 4/aula-10.md`
+`class notes`
 
 | Casa | Seção integral lida | Faixas adotadas |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ As quatro seções atribuídas foram lidas por inteiro até o cabeçalho seguint
 
 ## Fonte suplementar, inspecionada e não adotada
 
-Inspecionada somente a janela 55773–56300 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da janela autorizada. A família exibida de resumos começa com fragmentos de casas 7, 2, 8, 3 e 9, com colunas intercaladas (55773–55842). O cabeçalho `URANO NAS CASAS ASTROLÓGICAS` está deslocado para 55880–55881, depois dos fragmentos de resumo, e portanto não identifica sozinho os blocos anteriores.
+Inspecionada somente a janela 55773–56300 de `reference text`, dentro da janela autorizada. A família exibida de resumos começa com fragmentos de casas 7, 2, 8, 3 e 9, com colunas intercaladas (55773–55842). O cabeçalho `URANO NAS CASAS ASTROLÓGICAS` está deslocado para 55880–55881, depois dos fragmentos de resumo, e portanto não identifica sozinho os blocos anteriores.
 
 A identificação das casas 1–4 foi verificada no corpo: casa 1 aparece nomeada no trecho 55845–55846 e novamente em 55920–55928; casa 2 em 55780–55783 e em blocos nomeados a partir de 56030; casa 3 em 55800 e 55804–55808, além de 56143–56221; casa 4 em 55812–55815 e em 56143–56290. Os trechos detalhados são colunas OCR intercaladas; a proximidade entre título e corpo não foi tratada como evidência suficiente quando a atribuição estava incerta. Nenhum claim ou keyword suplementar foi adotado. A fonte primária bastou.
 
@@ -65,7 +65,7 @@ A fonte primária foi lida com `nl -ba`; as referências abaixo são números f�
 
 ## Fonte primária
 
-`modulo 4/aula 10 modulo 4/aula-10.md`
+`class notes`
 
 - Casa 5: seção 660–692, cabeçalho `URANO CASA 5`. Adotadas as linhas 662–668 para autoexpressão inovadora, insatisfação com a própria criação e lampejo de inspiração; linhas 677–681 para romances não convencionais com possíveis começos/fins repentinos e hobbies fora do comum, preservando a qualificação explícita “mais tarde na vida”. A instrução inicial para deixar a individualidade irradiar não virou conselho. Omitidos pessoa nomeada e material sobre filhos, maternidade e custódia.
 - Casa 6: seção 693–733, cabeçalho `URANO NA CASA 6`. Adotadas 706–710 para dificuldade com rotina fixa e preferência por mente ocupada/interessada e tarefas com variação, inventividade e movimento; 714–718 para resistência às pequenas rotinas e tendência a provocar mudanças para tornar a vida mais interessante. Excluídos problemas físicos, saúde, doenças, alergias e práticas/prescrições. A mudança é uma tendência, não previsão de acontecimento.
@@ -74,7 +74,7 @@ A fonte primária foi lida com `nl -ba`; as referências abaixo são números f�
 
 ## Suplemento do livro
 
-Inspecionada a janela estreita 56250–56650 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da família aprovada 55773–57047. Rótulos no corpo identificam casas 5 e 6 em 56322–56327 e casas 7 e 8 em 56535–56537. O título/resumo está deslocado e a extração mistura colunas; mesmo onde um rótulo é legível, textos adjacentes aparecem fragmentados ou associados a outra casa. Nenhuma afirmação ou palavra-chave do livro foi adotada. A fonte primária bastou.
+Inspecionada a janela estreita 56250–56650 de `reference text`, dentro da família aprovada 55773–57047. Rótulos no corpo identificam casas 5 e 6 em 56322–56327 e casas 7 e 8 em 56535–56537. O título/resumo está deslocado e a extração mistura colunas; mesmo onde um rótulo é legível, textos adjacentes aparecem fragmentados ou associados a outra casa. Nenhuma afirmação ou palavra-chave do livro foi adotada. A fonte primária bastou.
 
 ## Controle de escopo
 
@@ -89,9 +89,9 @@ Rascunho somente. Nenhuma edição no repositório, integração, staging ou com
 
 Leitura direta de originais com `nl -ba`, sem renumeração de extrato:
 
-- Primário absoluto: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 10 modulo 4/aula-10.md`, somente 821–998. Cabeçalhos confirmados: casa 9 em 821; casa 10 em 857; casa 11 em 899; casa 12 em 936.
-- Suplementar absoluto: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, somente 56600–57047. Não foi lida a família inteira 55773–57047. O início contém continuação intercalada de casas anteriores, com casa 8 explícita em 56660–56664; não adotada para as casas atribuídas. O limite final contém fragmentos gráficos/título além dos últimos corpos, não investigados como fator seguinte.
-- Nenhum NOTAS, leitura privada/de cliente, inventário, livro/curso inteiro, índice externo, web ou próximo fator foi consultado.
+- Primário absoluto: `class notes`, somente 821–998. Cabeçalhos confirmados: casa 9 em 821; casa 10 em 857; casa 11 em 899; casa 12 em 936.
+- Suplementar absoluto: `reference text`, somente 56600–57047. Não foi lida a família inteira 55773–57047. O início contém continuação intercalada de casas anteriores, com casa 8 explícita em 56660–56664; não adotada para as casas atribuídas. O limite final contém fragmentos gráficos/título além dos últimos corpos, não investigados como fator seguinte.
+- Nenhum NOTAS, material privado, inventário, livro/curso inteiro, índice externo, web ou próximo fator foi consultado.
 
 | Casa | Seção primária inspecionada | Faixas primárias adotadas | Livro inspecionado, não adotado |
 | --- | --- | --- | --- |
@@ -100,7 +100,7 @@ Leitura direta de originais com `nl -ba`, sem renumeração de extrato:
 | 11 | 899–935 | 918–925 | 56600–57047, janela compartilhada C |
 | 12 | 936–998 | 945–945; 983–985 | 56600–57047, janela compartilhada C |
 
-Todas as alegações de corpo e palavras-chave são primárias. `src.file` é `modulo 4/aula 10 modulo 4/aula-10.md`, relativo à raiz `/Volumes/AKASH/aula kaabalah/`. Limites um-based físicos inclusivos e precisos. Livro não consta em src porque nenhuma alegação foi adotada.
+Todas as alegações de corpo e palavras-chave são primárias. `src.file` é `class notes`, relativo à raiz the private notes root. Limites um-based físicos inclusivos e precisos. Livro não consta em src porque nenhuma alegação foi adotada.
 
 As linhas de borda não são adotadas integralmente: 823 começa com metáfora de casa natural/Sagitário, omitida; 848 inicia a possibilidade de mudança abrupta de curso, não adotada; 861 inicia argumento de domicílio de Capricórnio, omitido; 870 termina com analogia mitológica, não adotada. A faixa 918–925 contém exemplos de tipos de grupo e possível saída de grupo, não adotados. A linha 985 inicia o conselho de explorar motivações, não adotado; o produto usa apenas o término da tensão sobre intimidade/segurança.
 

@@ -5,25 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Neptune house source distinctions", () => {
-  it("uses only adopted inclusive A10 ranges, keeping A8 applicability in context metadata", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[1001, 1010], [1038, 1043]], 2: [[1063, 1076], [1077, 1082]],
-      3: [[1105, 1117]], 4: [[1148, 1165], [1181, 1185]],
-      5: [[1221, 1227], [1237, 1243], [1250, 1254], [1258, 1262]],
-      6: [[1274, 1283], [1316, 1323], [1324, 1334]],
-      7: [[1346, 1356], [1358, 1364], [1371, 1376], [1378, 1388]],
-      8: [[1414, 1428], [1441, 1453], [1454, 1465]],
-      9: [[1477, 1480], [1492, 1494]], 10: [[1545, 1546], [1550, 1550]],
-      11: [[1574, 1579], [1582, 1584], [1601, 1602]],
-      12: [[1624, 1625], [1645, 1647]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 10 modulo 4/aula-10.md", from, to,
-      })));
-    }
-    expect(entry(8).reviewNotes.join(" ")).toMatch(/aula-8.md.*877-885.*VIII.*884-885/);
-  });
 
   it("keeps paired direct-address copy, two lowercase sentences and string-array notes", () => {
     for (const house of houses) {
@@ -40,7 +21,6 @@ describe("Neptune house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 
@@ -78,7 +58,6 @@ describe("Neptune house source distinctions", () => {
     expect(entry(8).pt).toMatch(/forma construtiva ou destrutiva de vivenciar o intangível depende dos aspectos de Netuno/);
     expect(entry(8).en).toMatch(/whether intangible experiences are constructive or destructive depends on Neptune’s aspects/);
     expect(`${entry(8).pt} ${entry(8).en}`).not.toMatch(/confusão|confusion|clariv|clairvoy|psíquic|psychic/);
-    expect(entry(8).reviewNotes.join(" ")).toContain("no cusp-sign-element prerequisite");
   });
 
   it("conditions house 9 disappointment on seeking one answer and frames house 10 salvation as belief", () => {

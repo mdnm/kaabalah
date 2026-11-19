@@ -1,10 +1,10 @@
 # Pluto in houses: source audit
 
-Scope: natal Pluto houses 1–12 only. Primary A10: `modulo 4/aula 10 modulo 4/aula-10.md`; supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are course-relative to `/Volumes/AKASH/aula kaabalah/`; references are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim appears in src.
+Scope: natal Pluto houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; references are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim appears in src.
 
 ## Actual inspections and adopted references
 
-Authors used `nl -ba` on original assigned windows. Integration read final artifacts and audits, not the A/B originals; it does not claim their inspections as its own. C directly read A10 2169–2457 and B 64970–65358, rereading A10 2358–2407 after combined output truncation. Root actually read every adopted passage with neighboring qualifiers and approved final A/B/C. Book windows are shared shard inspections, not separate full reads per entry. No NOTAS/private clients, whole source, inventory, index or next factor was researched.
+Authors used `nl -ba` on original assigned windows. Integration read final artifacts and audits, not the A/B originals; it does not claim their inspections as its own. C directly read A10 2169–2457 and B 64970–65358, rereading A10 2358–2407 after combined output truncation. Root actually read every adopted passage with neighboring qualifiers and approved final A/B/C. Book windows are shared shard inspections, not separate full reads per entry. No NOTAS/private readings, whole source, inventory, index or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ Rascunho somente; nenhum arquivo do repositório foi alterado. Os limites são l
 
 ## Fonte primária
 
-`modulo 4/aula 10 modulo 4/aula-10.md`
+`class notes`
 
 | Casa | Seção integral lida | Faixas adotadas |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ As quatro seções foram lidas por inteiro até o cabeçalho seguinte. O corpo d
 
 ## Fonte suplementar, inspecionada e não adotada
 
-Inspecionada apenas a janela 64352–64700 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da família autorizada 64352–65358. A página contém OCR em colunas intercaladas e truncamentos. O início mostra fragmentos de resumo sem atribuição confiável (64352–64405). O bloco detalhado de casa 1 aparece em 64436–64448 e está entrelaçado com casa 2; o bloco de casa 2 em 64438–64576 também se intercala. O rótulo de casa 3 começa em 64578, enquanto fragmentos de casas 3 e 4 são misturados em 64580–64680; há mais fragmentos de casa 4 em 64684–64700. Não foram reconstruídas palavras/negações ou sequências de colunas. Nenhuma alegação do livro foi adotada.
+Inspecionada apenas a janela 64352–64700 de `reference text`, dentro da família autorizada 64352–65358. A página contém OCR em colunas intercaladas e truncamentos. O início mostra fragmentos de resumo sem atribuição confiável (64352–64405). O bloco detalhado de casa 1 aparece em 64436–64448 e está entrelaçado com casa 2; o bloco de casa 2 em 64438–64576 também se intercala. O rótulo de casa 3 começa em 64578, enquanto fragmentos de casas 3 e 4 são misturados em 64580–64680; há mais fragmentos de casa 4 em 64684–64700. Não foram reconstruídas palavras/negações ou sequências de colunas. Nenhuma alegação do livro foi adotada.
 
 ## Condições, diferenças e omissões
 
@@ -70,9 +70,9 @@ O livro não foi fundido mecanicamente com o curso; como os corpos suplementares
 
 ## Scope and source policy
 
-- Primary inspected: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 10 modulo 4/aula-10.md`, physical 1-based lines 1890-2168. Assigned house windows: 1890-1955 (5), 1956-2017 (6), 2018-2090 (7), and 2091-2168 (8). These are the complete assigned sections; the next section was not inspected.
-- Supplemental inspected: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, physical 1-based family window 64759-65025, within the approved narrow vicinity. This includes visible house 5, 6, 7 and 8 headings/body fragments. Supplemental claims were not adopted.
-- Every `src` range in the JSON is inclusive and uses original physical `nl -ba` lines. Its file is the exact course-relative path `modulo 4/aula 10 modulo 4/aula-10.md`. These ranges cover only adopted body/keyword claims; inspected but unadopted windows are separately recorded below. No supplemental source is used in `src`.
+- Primary inspected: `class notes`, physical 1-based lines 1890-2168. Assigned house windows: 1890-1955 (5), 1956-2017 (6), 2018-2090 (7), and 2091-2168 (8). These are the complete assigned sections; the next section was not inspected.
+- Supplemental inspected: `reference text`, physical 1-based family window 64759-65025, within the approved narrow vicinity. This includes visible house 5, 6, 7 and 8 headings/body fragments. Supplemental claims were not adopted.
+- Every `src` range in the JSON is inclusive and uses original physical `nl -ba` lines. Its file is the exact course-relative path `class notes`. These ranges cover only adopted body/keyword claims; inspected but unadopted windows are separately recorded below. No supplemental source is used in `src`.
 - Two lowercase-start sentences per language, Portuguese first then equivalent English. Conditional “may” language retains source possibilities without turning tendencies into events. No Scorpio cusp/angle analogy is blended into Pluto house descriptions.
 
 ## Adopted entries and exact primary support
@@ -107,9 +107,9 @@ Rascunho somente. Nenhuma integração, edição no repositório, staging ou com
 
 Leituras diretas com `nl -ba` dos originais, numeração física um-based inclusiva, sem renumerar extratos:
 
-- Primário absoluto: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 10 modulo 4/aula-10.md`, janela exata 2169–2457. O retorno combinado teve truncamento na transição das casas 11/12; a janela 2358–2407 foi relida separadamente com `nl -ba`, recuperando o trecho e a abertura completa da casa 12. Cabeçalhos confirmados em 2169 (9), 2245 (10), 2303 (11), 2365 (12).
-- Suplementar absoluto: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, somente 64970–65358. Não foi lida a família inteira 64352–65358. A janela começa com continuações fragmentadas de casas anteriores; nenhum desses fragmentos foi adotado ou usado para identificar casas 9–12.
-- Não houve consulta a NOTAS, clientes/leituras privadas, inventário, curso/livro inteiro, índice externo, web ou próximo fator.
+- Primário absoluto: `class notes`, janela exata 2169–2457. O retorno combinado teve truncamento na transição das casas 11/12; a janela 2358–2407 foi relida separadamente com `nl -ba`, recuperando o trecho e a abertura completa da casa 12. Cabeçalhos confirmados em 2169 (9), 2245 (10), 2303 (11), 2365 (12).
+- Suplementar absoluto: `reference text`, somente 64970–65358. Não foi lida a família inteira 64352–65358. A janela começa com continuações fragmentadas de casas anteriores; nenhum desses fragmentos foi adotado ou usado para identificar casas 9–12.
+- Não houve consulta a NOTAS, material privado, inventário, curso/livro inteiro, índice externo, web ou próximo fator.
 
 | Casa | Seção primária inspecionada | Faixas primárias adotadas | Livro inspecionado, não adotado |
 | --- | --- | --- | --- |
@@ -118,7 +118,7 @@ Leituras diretas com `nl -ba` dos originais, numeração física um-based inclus
 | 11 | 2303–2364 | 2311–2314; 2331–2335 | 64970–65358, janela compartilhada C |
 | 12 | 2365–2457 | 2367–2378; 2379–2385 | 64970–65358, janela compartilhada C |
 
-Todos os src usam `modulo 4/aula 10 modulo 4/aula-10.md`, relativo à raiz `/Volumes/AKASH/aula kaabalah/`; os limites são físicos e inclusivos. Cada alegação e palavra-chave adotada se apoia nessas faixas primárias. Nenhuma alegação suplementar foi adotada; livro não consta em src.
+Todos os src usam `class notes`, relativo à raiz the private notes root; os limites são físicos e inclusivos. Cada alegação e palavra-chave adotada se apoia nessas faixas primárias. Nenhuma alegação suplementar foi adotada; livro não consta em src.
 
 As linhas de borda não são adotadas integralmente: 2184 contém metáfora de chão sob os pés, omitida; 2197 inicia exemplo nomeado, omitido. 2288 inicia reforma de instituições, não adotada; 2299 inicia a condição de vocação/uso de poderes que continua em 2300–2301, não adotada. 2314 inicia comentário de complexos, não usado como diagnóstico; 2334–2335 contêm proposta de examinar motivos, não adotada como conselho. 2367 inicia formulação normativa de análise psíquica, omitida; a faixa fundamenta o medo/controle descrito a partir de 2368. A prescrição condicional de fazer as pazes com medo existencial em 2384–2385 não foi adotada como instrução.
 

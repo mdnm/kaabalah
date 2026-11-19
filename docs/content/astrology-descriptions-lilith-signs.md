@@ -8,9 +8,9 @@ General concept, Chiron map/branches, Fortune behavior and all house gaps remain
 
 ## Source audit and final review
 
-Integration read final approved JSON, `/tmp/kaabalah-lilith-signs-audit.md` and `-review.md`. Root independently read adopted actual Lilith clauses and applied all precision refinements before final approval. Integration did not reopen course or private material. Audit reports bounded Lilith-only sections and next-heading checks, without using following Priapus bodies. No whole-course/Moon/private NOTAS/client reading or wider research.
+Integration read final approved JSON, `/tmp/kaabalah-lilith-signs-audit.md` and `-review.md`. Root independently read adopted actual Lilith clauses and applied all precision refinements before final approval. Integration did not reopen course or private material. Audit reports bounded Lilith-only sections and next-heading checks, without using following Priapus bodies. No whole-course/Moon/private NOTAS/private reading or wider research.
 
-Source `modulo 4/aula 18 modulo 4/aula-18.md`; SHA-256 `4da8d52465c0d778c3250b63f4c970d52e964945fff5654ee07d16c09f4cc3ab`; teachingEnd1065, NOTAS1066. Physical-total reports1121/1122 differ and are not used for eligibility. Every record cites general152-155 (chart/degree-dependent varying intensity) and159-160 (latent, not necessarily extreme), plus the exact Lilith-only clauses below. Summary109-129 is sexual shorthand, not generic authority, and is not blended into the rich profiles.
+Source `class notes`; SHA-256 `4da8d52465c0d778c3250b63f4c970d52e964945fff5654ee07d16c09f4cc3ab`; teachingEnd1065, NOTAS1066. Physical-total reports1121/1122 differ and are not used for eligibility. Every record cites general152-155 (chart/degree-dependent varying intensity) and159-160 (latent, not necessarily extreme), plus the exact Lilith-only clauses below. Summary109-129 is sexual shorthand, not generic authority, and is not blended into the rich profiles.
 
 | Sign | Final adopted physical inclusive ranges |
 | --- | --- |

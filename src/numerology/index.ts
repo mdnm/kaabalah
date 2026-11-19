@@ -19,6 +19,7 @@ import {
   MASTER_NUMBERS,
   calculateKaabalisticLifePath,
   calculateStraightAcrossReductionLifePath,
+  doubleDigitValue,
   isMasterNumber,
   mapDatePartsToBlocksOfTwo,
   parseDate,
@@ -390,10 +391,12 @@ export function calculatePersonalMonths(
   const { month } = parseDate(birthDate);
   const firstPersonalMonth = parseInt(month, 10);
 
+  // The month is added to the double-digit personal year (14, not 14/5's 5), then reduced.
+  const yearToAdd = doubleDigitValue(personalYear.reductionSteps);
   const personalMonths: NumerologyModuleTypes.PersonalMonth[] = [];
   for (let i = 0; i < 12; i++) {
     const m = wrapMonth(firstPersonalMonth + i);
-    const value = reduceToSingleWithSteps(personalYear.reducedValue + m, {
+    const value = reduceToSingleWithSteps(yearToAdd + m, {
       preserveMasters: true,
     });
     personalMonths.push({ month: m, value });

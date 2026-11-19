@@ -4,7 +4,7 @@
 
 Twelve Fortune-house profiles only, under `pointHouses.parsFortunae` and numbered houses 1-12. Final `/tmp/kaabalah-fortune-houses-approved.json` is adopted exactly. Integration read audit shards `/tmp/kaabalah-fortune-houses-a.md`, `-b.md` and the final review; the earlier House 9 hold and preliminary draft wording are superseded by Mat's decision and the final approval.
 
-Root reports actual read-only inspection of A10:2703-2773 plus the cited HOUSE table clauses. Integration relies on that supplied audit rather than reopening the course. Source: `modulo 4/aula 10 modulo 4/aula-10.md`; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. Manifest teaching end is 2999, NOTAS start 3000. No NOTAS/private client readings were consulted.
+Root reports actual read-only inspection of A10:2703-2773 plus the cited HOUSE table clauses. Integration relies on that supplied audit rather than reopening the course. Source: `class notes`; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. Manifest teaching end is 2999, NOTAS start 3000. No NOTAS/private readings were consulted.
 
 Table context 2822-2823 and headings 2824-2830 distinguish HOUSE as experience field from SIGN as manner. Only house-field clauses are adopted. Interleaved sign labels are not house claims, and sign manner is not transferred into these profiles.
 

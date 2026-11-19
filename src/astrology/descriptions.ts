@@ -16,16 +16,13 @@ export interface PlanetSignDescriptionEntry {
     readonly pt: readonly string[];
     readonly en: readonly string[];
   };
-  /**
-   * Editorial provenance. Kept in the repository's descriptions.json for the maintainer, stripped
-   * from the published package: it is always an empty array in a published build.
-   */
+  /** Editorial provenance is not published: always an empty array. Kept so callers compile. */
   readonly src: readonly {
     readonly file: string;
     readonly from: number;
     readonly to: number;
   }[];
-  /** Editorial review notes. Same rule as `src`: empty in a published build. */
+  /** Editorial review notes. Same rule as `src`: always an empty array. */
   readonly reviewNotes: readonly string[];
 }
 
@@ -145,7 +142,7 @@ export interface AstrologyDescriptions {
 function freeze<T>(value: T): T {
   if (value !== null && typeof value === "object") {
     const row = value as { pt?: unknown; en?: unknown; keywords?: unknown; src?: unknown; reviewNotes?: unknown };
-    // Published builds strip the editorial provenance (see tsup.config.ts); keep the entry shape stable.
+    // The JSON carries no editorial provenance; fill the empty fields so the entry shape stays stable.
     if (typeof row.pt === "string" && typeof row.en === "string" && row.keywords && typeof row.keywords === "object") {
       row.src ??= [];
       row.reviewNotes ??= [];
@@ -156,7 +153,8 @@ function freeze<T>(value: T): T {
   return value;
 }
 
-export const ASTROLOGY_DESCRIPTIONS: AstrologyDescriptions = freeze(raw);
+// The JSON rows carry no `src`/`reviewNotes`; `freeze` adds the empty arrays the entry types promise.
+export const ASTROLOGY_DESCRIPTIONS: AstrologyDescriptions = freeze(raw as unknown as AstrologyDescriptions);
 
 /** Return the immutable authored entry; inherited keys are never descriptions. */
 export function getPlanetSignDescriptionEntry(

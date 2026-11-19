@@ -110,6 +110,20 @@ export function reduceToSingleWithSteps(
   };
 }
 
+/**
+ * The personal-year value a personal month is added to: the double-digit value before the final
+ * reduction (personal year 14/5 gives 14, not 5). It is the last two-digit step of the reduction
+ * (10-99), so a master year kept as written (11, 22, 33, 44) gives that master, and a year that
+ * reduces without a two-digit step (a sum such as 2004 going straight to 6) gives its final value.
+ */
+export function doubleDigitValue(reductionSteps: readonly number[]): number {
+  for (let i = reductionSteps.length - 1; i >= 0; i--) {
+    const step = reductionSteps[i];
+    if (step >= 10 && step <= 99) return step;
+  }
+  return reductionSteps[reductionSteps.length - 1];
+}
+
 function reduceBlock(block: string): number {
   const n = [...block].reduce(
     (acc, curr) => acc + (curr.charCodeAt(0) - 48),

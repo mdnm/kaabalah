@@ -4,15 +4,15 @@
 
 Three ordinary chart rhythm profiles keyed by canonical MODALITIES values Cardinal, Fixed, Mutable, verified at src/core/constants.ts:138-142 and astrology/labels.json. They do not assign Sun/Ascendant identity, element traits or a personal evolutionary level. Integration uses only the FINALROOT approved map /tmp/kaabalah-modality-profiles-approved.json, superseding earlier author copy.
 
-Actual narrow source bodies read before integration with original nl -ba one-based physical inclusive numbering: `modulo 4/aula 1 modulo 4/aula-1.md:160-167`, `modulo 4/aula 2 modulo 4/aula-2.md:116-131`, `modulo 4/aula 8 modulo 4/aula-8.md:913-930`. These lie within manifest teaching bounds A1:747, A2:161, A8:1521. Course read-only; no private notes/client readings or optional book opened.
+Actual narrow source bodies read before integration with original nl -ba one-based physical inclusive numbering: `class notes:160-167`, `class notes:116-131`, `class notes:913-930`. These lie within manifest teaching bounds A1:747, A2:161, A8:1521. Course read-only; no private notes/private readings or optional book opened.
 
 ## Adopted citations
 
 | Key | Adopted ordinary rhythm sources |
 | --- | --- |
-| Cardinal | `modulo 4/aula 1 modulo 4/aula-1.md:160-160`; `modulo 4/aula 1 modulo 4/aula-1.md:165-165`; `modulo 4/aula 2 modulo 4/aula-2.md:116-119` |
-| Fixed | `modulo 4/aula 1 modulo 4/aula-1.md:161-161`; `modulo 4/aula 1 modulo 4/aula-1.md:166-166`; `modulo 4/aula 2 modulo 4/aula-2.md:122-126` |
-| Mutable | `modulo 4/aula 1 modulo 4/aula-1.md:162-163`; `modulo 4/aula 1 modulo 4/aula-1.md:167-167`; `modulo 4/aula 2 modulo 4/aula-2.md:127-131` |
+| Cardinal | `class notes:160-160`; `class notes:165-165`; `class notes:116-119` |
+| Fixed | `class notes:161-161`; `class notes:166-166`; `class notes:122-126` |
+| Mutable | `class notes:162-163`; `class notes:167-167`; `class notes:127-131` |
 
 ## General-source identities and final wording
 

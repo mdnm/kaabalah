@@ -2,11 +2,11 @@
 
 Status: inventory only, awaiting Mat's scope approval. No descriptions drafted.
 
-Source root is `/Volumes/AKASH/aula kaabalah/`. Every `B:` reference below expands to `books/astrologia-hermetica/astrologia-hermetica.md:`. The current Markdown has 123,692 lines. All ranges are one-based, inclusive, in that file, not PDF page numbers.
+Source root is the private notes root. Every `B:` reference below expands to `reference text:`. The current Markdown has 123,692 lines. All ranges are one-based, inclusive, in that file, not PDF page numbers.
 
 Method: searched the full OCR for factor names and uppercase titles, inspected actual section bodies and boundary windows, and generated a navigational heading index. This is section location, not a claim to have read the complete book. `astrology-inventory-book-headings.tsv` contains 1,317 OCR heading candidates with original spellings and line numbers (dash punctuation normalized to hyphens). They are explicitly unverified candidates, not approved entry citations. An eventual entry must cite the narrow passage actually synthesized.
 
-The OCR interleaves columns, sometimes places a heading after its body, drops initial letters, and appears to omit substantive material. Consecutive heading boundaries are therefore not automatically safe entry boundaries. Counts below distinguish the intended matrix from confirmed recoverable prose. No course notes or private client readings were opened for this inventory.
+The OCR interleaves columns, sometimes places a heading after its body, drops initial letters, and appears to omit substantive material. Consecutive heading boundaries are therefore not automatically safe entry boundaries. Counts below distinguish the intended matrix from confirmed recoverable prose. No course notes or private readings were opened for this inventory.
 
 ## Factor coverage
 

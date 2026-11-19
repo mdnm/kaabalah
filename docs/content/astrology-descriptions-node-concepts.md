@@ -12,25 +12,25 @@ Root verified A15:4-53 and A21:867-874 plus narrow book20421-20455/20543-20569/2
 
 ### north
 
-- `modulo 4/aula 15 modulo 4/aula-15.md:20-21`
-- `modulo 4/aula 15 modulo 4/aula-15.md:24-26`
-- `modulo 4/aula 15 modulo 4/aula-15.md:45-53`
-- `books/astrologia-hermetica/astrologia-hermetica.md:20421-20426`
-- `books/astrologia-hermetica/astrologia-hermetica.md:20441-20450`
+- `class notes:20-21`
+- `class notes:24-26`
+- `class notes:45-53`
+- `reference text:20421-20426`
+- `reference text:20441-20450`
 
-- Mat's settled convention is astronomical north/south with no hemisphere inversion. Aula 15's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; its dignity scheme (45-53) is retained as a separate symbolic correspondence. Benefic language is attributed to the teaching and does not guarantee benefit. Aula 21 places Dragon/house in a question about development goals, not a personality generalization.
+- Mat's settled convention is astronomical north/south with no hemisphere inversion. class notes's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; its dignity scheme (45-53) is retained as a separate symbolic correspondence. Benefic language is attributed to the teaching and does not guarantee benefit. class notes places Dragon/house in a question about development goals, not a personality generalization.
 - O corpo combina a definição astronômica da A15 com a linguagem simbólica de desenvolvimento/recursos do livro, preservando os contextos distintos. A21:867-874 é um roteiro de leitura Dragão/casa e não fornece uma definição norte/sul; não foi usada como citação do corpo. Não afirma biografia de vidas passadas, destino fixo nem resultados garantidos.
 - Dignidades da A15, conforme decisão de Mat: norte domicílio Gêmeos, exaltação Aquário, exílio Sagitário, queda Leão; sul inverso (Sagitário, Leão, Gêmeos, Aquário). O contexto diferente da A12 permanece distinto; estas correspondências não alteram cálculos nem criam uma grade de personalidade.
 
 ### south
 
-- `modulo 4/aula 15 modulo 4/aula-15.md:20-21`
-- `modulo 4/aula 15 modulo 4/aula-15.md:24-26`
-- `modulo 4/aula 15 modulo 4/aula-15.md:45-53`
-- `books/astrologia-hermetica/astrologia-hermetica.md:20549-20554`
-- `books/astrologia-hermetica/astrologia-hermetica.md:20559-20569`
+- `class notes:20-21`
+- `class notes:24-26`
+- `class notes:45-53`
+- `reference text:20549-20554`
+- `reference text:20559-20569`
 
-- Mat's settled convention is astronomical north/south with no hemisphere inversion. Aula 15's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; the stated inverse dignity scheme (45-53) is retained as a separate symbolic correspondence. Malefic language is attributed to the teaching and does not guarantee harm. Aula 21 places Dragon/house in a question about development goals, not a personality generalization.
+- Mat's settled convention is astronomical north/south with no hemisphere inversion. class notes's contrary southern-hemisphere inversion claim (33-45) is not applied to node identity; the stated inverse dignity scheme (45-53) is retained as a separate symbolic correspondence. Malefic language is attributed to the teaching and does not guarantee harm. class notes places Dragon/house in a question about development goals, not a personality generalization.
 - O corpo combina a definição astronômica da A15 com a linguagem simbólica de desenvolvimento/recursos do livro, preservando os contextos distintos. A21:867-874 é um roteiro de leitura Dragão/casa e não fornece uma definição norte/sul; não foi usada como citação do corpo. Não afirma biografia de vidas passadas, destino fixo nem resultados garantidos.
 - Dignidades da A15, conforme decisão de Mat: norte domicílio Gêmeos, exaltação Aquário, exílio Sagitário, queda Leão; sul inverso (Sagitário, Leão, Gêmeos, Aquário). O contexto diferente da A12 permanece distinto; estas correspondências não alteram cálculos nem criam uma grade de personalidade.
 

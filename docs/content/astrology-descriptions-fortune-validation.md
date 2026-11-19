@@ -10,7 +10,7 @@ Validated2026-11-16 on main374509a plus Fortune-house12. The Fortune family cont
 
 Keys match the actual chart node `chart.nodes.parsFortunae`; the lots position is a separate counterpart. All getters use imported deeply frozen readonly JSON, English default, case-sensitive pt-prefix selection and explicit undefined gaps, with no generic fallbacks. Existing calculations, exports and unrelated files remain unchanged.
 
-A10:2459-2468 and2516-2578 support the concept, distinct from the entire ark annu10 Wheel of Fortune. Placement prose and the table at2733-2998 separate HOUSE field from SIGN manner, including OCR-interleaved fragments. The three per-kind audits record actual passages, qualifications, excluded absolute claims and precise inclusive lines. Private NOTAS and client readings are not entry sources.
+A10:2459-2468 and2516-2578 support the concept, distinct from the entire ark annu10 Wheel of Fortune. Placement prose and the table at2733-2998 separate HOUSE field from SIGN manner, including OCR-interleaved fragments. The three per-kind audits record actual passages, qualifications, excluded absolute claims and precise inclusive lines. Private NOTAS and private readings are not entry sources.
 
 Mat resolved house9: retain both the table field of realization and the earlier learning theme, distinctly, without inventing a balancing rule. No formula, lunar-phase/cusp convention, profection or timing interpretation is introduced.
 

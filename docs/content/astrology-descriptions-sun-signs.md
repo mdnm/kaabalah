@@ -1,6 +1,6 @@
 # Sun in signs: bilingual source audit
 
-Completed primary audit: 2026-11-16. Factor: natal Sun in the twelve signs, not generic sign profiles, transits, Sun/Ascendant combinations or evolutionary levels. Course root is `/Volumes/AKASH/aula kaabalah/`; paths and inclusive line ranges below refer to the original Portuguese Markdown.
+Completed primary audit: 2026-11-16. Factor: natal Sun in the twelve signs, not generic sign profiles, transits, Sun/Ascendant combinations or evolutionary levels. Course root is the private notes root; paths and inclusive line ranges below refer to the original Portuguese Markdown.
 
 ## Content and API
 
@@ -10,7 +10,7 @@ Chart source was checked in `index.ts` and `swisseph.ts`: the ten ordinary plane
 
 ## Primary passages actually read
 
-File: `modulo 4/aula 3 modulo 4/aula-3.md`. The complete eligible factor block 272-535 was read. The entry citations retain only passages used in the synthesis.
+File: `class notes`. The complete eligible factor block 272-535 was read. The entry citations retain only passages used in the synthesis.
 
 | Sign | Inclusive lines | Emphasis retained |
 |---|---|---|
@@ -41,7 +41,7 @@ Portuguese uses direct você, lowercase sentence starts and complete accents. Th
 
 Grok 4.7 build-fast independently inspected all twelve narrow psychological openings, comparing them with the course. These are audit pointers, not additional entry text or automatic authority. Angel, ritual and degree-sector blocks were not read or synthesized.
 
-Sun-in-sign audit only. Course handout `modulo 4/aula 3 modulo 4/aula-3.md` 272-535. Book psychological openings in `books/astrologia-hermetica/astrologia-hermetica.md` (angel and ritual blocks left unread). All 12 signs were inspected.
+Sun-in-sign audit only. Course handout `class notes` 272-535. Book psychological openings in `reference text` (angel and ritual blocks left unread). All 12 signs were inspected.
 
 | Sign | Book lines | Agreement | Material conflict |
 |---|---|---|---|
@@ -69,7 +69,7 @@ The table labels emphasis differences as review issues; most are compatible tens
 
 Targeted tests cover all twelve canonical Sun keys, locale selection, bilingual keywords, complete immutable metadata, prototype-key rejection, integer inclusive source bounds before private NOTAS, and specific course nuances for Virgo, Aquarius and Pisces. Ordinary tests require no mounted course folder.
 
-Next factor after Sun completion: Moon in signs, primary `modulo 4/aula 18 modulo 4/aula-18.md:4-108`, supplemental `books/astrologia-hermetica/astrologia-hermetica.md:27771-31599`. Read actual narrow passages before drafting. Remaining ordinary planet-sign sets, planet-house sets and approved natal factors follow the connected research note's batches 1-3. Unsupported sets remain gaps until separately audited and implemented.
+Next factor after Sun completion: Moon in signs, primary `class notes:4-108`, supplemental `reference text:27771-31599`. Read actual narrow passages before drafting. Remaining ordinary planet-sign sets, planet-house sets and approved natal factors follow the connected research note's batches 1-3. Unsupported sets remain gaps until separately audited and implemented.
 
 Mat decided on 2026-11-16: no hemisphere inversion for nodes; retain astronomical north/south meanings. Node dignity disagreements remain a separate decision. No npm publication is authorized.
 

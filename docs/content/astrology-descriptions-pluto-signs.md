@@ -1,6 +1,6 @@
 # Pluto in signs: source audit
 
-Scope: natal Pluto only, twelve canonical English Title Case sign keys. Primary A: `modulo 4/aula 12 modulo 4/aula-12.md`, 189–222. Supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. All adopted body and keyword claims are primary; book comparisons are audit only. No next-factor source, NOTAS, private readings, web or inventory was opened.
+Scope: natal Pluto only, twelve canonical English Title Case sign keys. Primary A: `class notes`, 189–222. Supplemental B: `reference text`. All adopted body and keyword claims are primary; book comparisons are audit only. No next-factor source, NOTAS, private readings, web or inventory was opened.
 
 ## Actual inspection and provenance
 

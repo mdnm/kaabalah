@@ -2,14 +2,14 @@
 
 ## Scope and actual sources
 
-Two independent chart-energy definitions with exact lowercase positive/negative query keys. This is a new description namespace, not PositiveDignity or a sign classifier. Actual public teaching was read with original nl -ba one-based physical inclusive numbering: `modulo 4/aula 2 modulo 4/aula-2.md:3-6,98-110` and `modulo 4/aula 11 modulo 4/aula-11.md:191-198`. Manifest teaching boundaries A2:161 and A11:1557 were verified. No private notes/client readings or book navigation family opened.
+Two independent chart-energy definitions with exact lowercase positive/negative query keys. This is a new description namespace, not PositiveDignity or a sign classifier. Actual public teaching was read with original nl -ba one-based physical inclusive numbering: `class notes:3-6,98-110` and `class notes:191-198`. Manifest teaching boundaries A2:161 and A11:1557 were verified. No private notes/private readings or book navigation family opened.
 
 ## Adopted citations
 
 | Key | Adopted sources |
 | --- | --- |
-| positive | `modulo 4/aula 2 modulo 4/aula-2.md:98-98`; `modulo 4/aula 2 modulo 4/aula-2.md:100-101`; `modulo 4/aula 11 modulo 4/aula-11.md:195-196` |
-| negative | `modulo 4/aula 2 modulo 4/aula-2.md:104-104`; `modulo 4/aula 2 modulo 4/aula-2.md:107-109`; `modulo 4/aula 11 modulo 4/aula-11.md:191-192` |
+| positive | `class notes:98-98`; `class notes:100-101`; `class notes:195-196` |
+| negative | `class notes:104-104`; `class notes:107-109`; `class notes:191-192` |
 
 ## Meanings and terminology
 

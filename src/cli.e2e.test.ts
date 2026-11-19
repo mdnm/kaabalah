@@ -1915,13 +1915,25 @@ describe("numerology as-of and schedule commands", () => {
   it("cycles and snapshot agree on the personal month: cycles currentPersonalMonth is a zero-based index", () => {
     // Born 1990-05-17, evaluated 2026-11-19: the personal year (birthday to birthday) began 2026-05-17,
     // 2026 + 5 + 17 = 2048 -> 14 -> 5. The personal month began 2026-11-17 (phase 7, calendar month 11):
-    // 11 + 5 = 16 -> 7.
+    // the month adds to the double-digit year, 11 + 14 = 25 -> 7.
     const cycles = cli(["numerology:cycles", "1990-05-17", "Ana", "--as-of=2026-11-19"]);
     const snapshot = cli(["numerology:snapshot", "1990-05-17", "Ana", "--as-of=2026-11-19"]);
     expect(cycles.currentPersonalMonth).toBe(6);
     expect(cycles.personalMonths[cycles.currentPersonalMonth]).toMatchObject({ month: 11, value: { reducedValue: 7 } });
     expect(snapshot.personalMonth).toMatchObject({ phase: 7, calendarMonth: 11, value: { value: 7 } });
     expect(snapshot.personalMonth.phase).toBe(cycles.currentPersonalMonth + 1);
+  });
+
+  it("cycles and snapshot add the month to the double-digit personal year (14/5 in June is 6 + 14 = 20 -> 2)", () => {
+    // Same year 14/5 as above. The personal month began 2026-06-17 (phase 2, calendar month 6).
+    // The old single-digit rule gave 6 + 5 = 11 (a master); the double-digit rule gives 6 + 14 = 20 -> 2.
+    const cycles = cli(["numerology:cycles", "1990-05-17", "Ana", "--as-of=2026-06-20"]);
+    const snapshot = cli(["numerology:snapshot", "1990-05-17", "Ana", "--as-of=2026-06-20"]);
+    expect(cycles.personalYear.reductionSteps).toEqual([2048, 14, 5]);
+    expect(cycles.currentPersonalMonth).toBe(1);
+    expect(cycles.personalMonths[cycles.currentPersonalMonth]).toMatchObject({ month: 6, value: { reducedValue: 2 } });
+    expect(snapshot.personalMonth).toMatchObject({ phase: 2, calendarMonth: 6, value: { value: 2, isMaster: false } });
+    expect(snapshot.personalMonth.value.value).toBe(cycles.personalMonths[cycles.currentPersonalMonth].value.reducedValue);
   });
 
   it("legacy cycles report an unavailable soul number for names without vowels, in JSON and text", () => {
@@ -2470,7 +2482,8 @@ describe("chart facts commands", () => {
 
 describe("published bundle keeps editorial provenance private", () => {
   it("ships no provenance paths or review notes in dist, and describe output carries none", () => {
-    const forbidden = /readings\/skills|dazy-natal|modulo \d+\/aula|astrologia-hermetica|Mat selected/;
+    // Any document path (folder/name.md or .pdf) or mounted-volume path; no private folder names here.
+    const forbidden = /[\w -]+\/[\w .-]+\.(?:md|pdf)\b|\/Volumes\//i;
     const walk = (dir: string): string[] =>
       readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
         entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)]

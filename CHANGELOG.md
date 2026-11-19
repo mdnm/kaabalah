@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+## 6.22.1 - 2026-11-19
+
+- **Changes results for some dates.** The personal month is now the month
+  investigated plus the double-digit personal year (the value before the final
+  reduction), then reduced. It used to add the single-digit year. Example:
+  personal year 14/5 in June is 6 + 14 = 20, reduced to 2 (it was 6 + 5 = 11).
+  A year with no two-digit step (a sum such as 2004 going straight to 6) adds
+  its final value, and a master year (11, 22, 33, 44) is added as written; the
+  sum is reduced with the same master policy as before (`masters: "preserve"`
+  keeps 11/22/33/44, `"reduce"` does not). This applies to
+  `calculatePersonalMonths`, `calculatePersonalCycles`, the `personal-month`
+  layer, the snapshot, the calendar frame (`calendar-month`, and `calendar-day`
+  through it), `numerology:cycles`, `numerology:snapshot` and
+  `numerology:timeline`. The method ids become `birthday-personal-month/v2` and
+  `calendar-personal-year-month-day/v2`. For a person born on 1990-05-17, 2 of
+  the 12 personal months of the 2026 birthday year change; across birth dates
+  roughly one personal month in ten differs.
+- Move the editorial provenance of the astrology description rows (`src` file
+  and line ranges, `reviewNotes`) out of the repository. `descriptions.json` no
+  longer carries either key, the private data lives in a gitignored
+  `provenance/` folder, and the build strip is replaced by a guard that fails the
+  build if a document path or a provenance key shows up in the bundled
+  descriptions. The `src` and `reviewNotes` fields stay on the entry types as
+  empty arrays. The authoring notes, coverage documents and tests under
+  `docs/content` and `src/astrology` no longer name private folders, books or
+  files, and the tests that checked source ranges and review notes were removed.
+  Git history and versions already published to npm still contain the old data.
+
 ## 6.22.0 - 2026-11-19
 
 - Add CLI commands for the 6.21.0 library functions: `astrology:condition`
@@ -13,8 +41,8 @@
   quests, Lightning Path, Serpent Path and `HOUSE_SPHERES`).
 - Stop publishing editorial provenance. The description rows no longer carry
   `src` (file and line ranges into private source folders) or `reviewNotes` in
-  the published package: the build strips them from the bundled JSON, which
-  stays complete in the repository. The `src` and `reviewNotes` fields remain on
+  the published package: the build strips them from the bundled JSON (6.22.1
+  then moved them out of the repository as well). The `src` and `reviewNotes` fields remain on
   the entry types and are empty arrays in a published build, so existing callers
   compile and the `...Entry` getters keep working. `astrology:describe` no
   longer prints `src` or `reviewNotes`.

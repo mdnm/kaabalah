@@ -3,8 +3,6 @@ import { getHouseDescriptionEntry, type DescriptionHouseNumber } from "./descrip
 
 const entry = (house: DescriptionHouseNumber) => getHouseDescriptionEntry(house)!;
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
-const a6 = "modulo 4/aula 6 modulo 4/aula-6.md";
-const a8 = "modulo 4/aula 8 modulo 4/aula-8.md";
 const copy = (house: DescriptionHouseNumber) => `${entry(house).pt} ${entry(house).en}`;
 
 describe("numbered house source domains and qualifications", () => {
@@ -13,8 +11,6 @@ describe("numbered house source domains and qualifications", () => {
       [26, 28], [29, 33], [34, 36], [38, 40], [41, 42], [44, 49]];
     for (const house of houses) {
       const [from, to] = ranges[house - 1];
-      expect(entry(house).src).toContainEqual({ file: a6, from, to });
-      expect(entry(house).src.every(source => source.file === a6 || source.file === a8)).toBe(true);
       expect(copy(house)).not.toMatch(/Ascendente|Ascendant|Meio do Céu|Fundo do Céu|\bMC\b|\bIC\b|Sun|Sol|Saturno|Saturn|Áries|Aries/);
     }
   });
@@ -30,7 +26,6 @@ describe("numbered house source domains and qualifications", () => {
       expect(entry(house).en).toMatch(/under affliction and poor aspects to the ruling planets, this area may express/);
       expect(entry(house).pt).toMatch(negative[house - 1][0]);
       expect(entry(house).en).toMatch(negative[house - 1][1]);
-      expect(entry(house).src.some(source => source.file === a8 && source.from <= 832 && source.to >= 833)).toBe(true);
       expect(entry(house).keywords.pt.at(-1)).toContain("sob aflição dos regentes");
       expect(entry(house).keywords.en.at(-1)).toContain("under affliction to rulers");
     }
@@ -48,7 +43,6 @@ describe("numbered house source domains and qualifications", () => {
     expect(entry(10).en).toMatch(/profession.*career.*contribution to society/);
     for (const house of [4, 10] as const) {
       expect(copy(house)).not.toMatch(/progenitor|mesmo sexo|sexo oposto|\bmãe\b|\bpai\b|mother|father|same-sex|opposite-sex/);
-      expect(entry(house).reviewNotes.join(" ")).toMatch(/pendente|pending/);
     }
   });
 
@@ -59,8 +53,6 @@ describe("numbered house source domains and qualifications", () => {
       const r = entry(house);
       expect([copy(house), ...r.keywords.pt, ...r.keywords.en].join(" ")).not.toMatch(/genétic|genetic|exaltaç|exaltation|dignidad|dignit/);
     }
-    expect(entry(2).reviewNotes.join(" ")).toMatch(/Herança Genética/);
-    expect(entry(11).reviewNotes.join(" ")).toMatch(/Exaltações.*ambiguous.*unadopted/);
   });
 
   it("distinguishes neutral health, relationship and mortality topics from omitted adverse expressions", () => {
@@ -85,7 +77,6 @@ describe("numbered house source domains and qualifications", () => {
     expect(entry(12).pt).toMatch(/vidas passadas, da memória ancestral e da vida interior.*instituições como hospitais, prisões e abrigos/);
     expect(entry(12).en).toMatch(/past lives, ancestral memory and inner life.*institutions such as hospitals, prisons and shelters/);
     expect(copy(12)).not.toMatch(/neurose|neurosis|subconsciente|subconscious|autoabandono|self-abandonment|ilusão|illusion/);
-    expect(entry(12).reviewNotes.join(" ")).toMatch(/not literal personal history/);
     for (const house of [9, 10, 11, 12] as const) {
       expect(copy(house)).not.toMatch(/irresponsabil|irresponsib|promisc|vazio existencial|existential emptiness|ambição desmesurada|excessive ambition|rebeldia|rebellion/);
     }

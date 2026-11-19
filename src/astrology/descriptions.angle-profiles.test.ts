@@ -37,7 +37,6 @@ describe("generic angle descriptions API", () => {
       }
     }
     frozen(ASTROLOGY_DESCRIPTIONS.angles);
-    const ends: Record<string, number> = { "modulo 4/aula 11 modulo 4/aula-11.md": 1557 };
     for (const angle of angles) {
       const entry = getAngleDescriptionEntry(angle)!;
       expect(entry.pt).not.toBe(entry.en);
@@ -46,15 +45,6 @@ describe("generic angle descriptions API", () => {
       expect(entry.reviewNotes.every(note => typeof note === "string")).toBe(true);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
       expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
-      for (const source of entry.src) {
-        expect(ends[source.file]).toBeDefined();
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThan(0);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(ends[source.file]);
-      }
     }
   });
 });

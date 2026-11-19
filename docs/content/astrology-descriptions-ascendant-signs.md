@@ -4,24 +4,24 @@
 
 Twelve standalone natal Ascendant-sign descriptions, distinct from Sun signs, combined Sun/Ascendant profiles and numbered house cusps. The chart angle is `chart.houses.ascendant`; no house 1 alias is introduced. Shared APIs are root-owned.
 
-Source workers read the complete assigned primary sections using original `nl -ba` physical numbering. Integration rechecked the actual primary sections at 53-188; this worker previously read complete 190-255. All adopted claims come from `modulo 4/aula 6 modulo 4/aula-6.md`. Citations are course-relative, physical and inclusive. No private notes, client material or personal example was used.
+Source workers read the complete assigned primary sections using original `nl -ba` physical numbering. Integration rechecked the actual primary sections at 53-188; this worker previously read complete 190-255. All adopted claims come from `class notes`. Citations are course-relative, physical and inclusive. No private notes, private readings material or personal example was used.
 
 ## Adopted citations and inspection-only windows
 
 | Sign | Primary section inspected | Adopted primary citations | Supplemental inspection only |
 | --- | --- | --- | --- |
-| Aries | `modulo 4/aula 6 modulo 4/aula-6.md:53-66` | `modulo 4/aula 6 modulo 4/aula-6.md:53-60`; `modulo 4/aula 6 modulo 4/aula-6.md:64-66` | `books/astrologia-hermetica/astrologia-hermetica.md:65522-65535`; `books/astrologia-hermetica/astrologia-hermetica.md:65636-65645`; `books/astrologia-hermetica/astrologia-hermetica.md:65673-65680` |
-| Taurus | `modulo 4/aula 6 modulo 4/aula-6.md:68-80` | `modulo 4/aula 6 modulo 4/aula-6.md:68-79` | `books/astrologia-hermetica/astrologia-hermetica.md:65453-65461`; `books/astrologia-hermetica/astrologia-hermetica.md:65542-65558`; `books/astrologia-hermetica/astrologia-hermetica.md:65655-65684` |
-| Gemini | `modulo 4/aula 6 modulo 4/aula-6.md:82-100` | `modulo 4/aula 6 modulo 4/aula-6.md:82-93`; `modulo 4/aula 6 modulo 4/aula-6.md:97-98` | `books/astrologia-hermetica/astrologia-hermetica.md:65370-65374`; `books/astrologia-hermetica/astrologia-hermetica.md:65860-65880` |
-| Cancer | `modulo 4/aula 6 modulo 4/aula-6.md:102-119` | `modulo 4/aula 6 modulo 4/aula-6.md:102-108` | `books/astrologia-hermetica/astrologia-hermetica.md:65376-65382`; `books/astrologia-hermetica/astrologia-hermetica.md:65867-65876` |
-| Leo | `modulo 4/aula 6 modulo 4/aula-6.md:121-136` | `modulo 4/aula 6 modulo 4/aula-6.md:121-136` | `books/astrologia-hermetica/astrologia-hermetica.md:65417-65440`; `books/astrologia-hermetica/astrologia-hermetica.md:65894-65961` |
-| Virgo | `modulo 4/aula 6 modulo 4/aula-6.md:138-156` | `modulo 4/aula 6 modulo 4/aula-6.md:138-156` | `books/astrologia-hermetica/astrologia-hermetica.md:65894-65924` |
-| Libra | `modulo 4/aula 6 modulo 4/aula-6.md:158-172` | `modulo 4/aula 6 modulo 4/aula-6.md:158-172` | `books/astrologia-hermetica/astrologia-hermetica.md:66001-66090` |
-| Scorpio | `modulo 4/aula 6 modulo 4/aula-6.md:174-188` | `modulo 4/aula 6 modulo 4/aula-6.md:174-188` | `books/astrologia-hermetica/astrologia-hermetica.md:66265-66298` |
-| Sagittarius | `modulo 4/aula 6 modulo 4/aula-6.md:190-205` | `modulo 4/aula 6 modulo 4/aula-6.md:190-195`; `modulo 4/aula 6 modulo 4/aula-6.md:203-205` | `books/astrologia-hermetica/astrologia-hermetica.md:66300-66390` |
-| Capricorn | `modulo 4/aula 6 modulo 4/aula-6.md:207-220` | `modulo 4/aula 6 modulo 4/aula-6.md:207-214`; `modulo 4/aula 6 modulo 4/aula-6.md:216-217` | `books/astrologia-hermetica/astrologia-hermetica.md:66429-66520` |
-| Aquarius | `modulo 4/aula 6 modulo 4/aula-6.md:222-239` | `modulo 4/aula 6 modulo 4/aula-6.md:222-225`; `modulo 4/aula 6 modulo 4/aula-6.md:237-238` | `books/astrologia-hermetica/astrologia-hermetica.md:66566-66689` |
-| Pisces | `modulo 4/aula 6 modulo 4/aula-6.md:241-255` | `modulo 4/aula 6 modulo 4/aula-6.md:241-243`; `modulo 4/aula 6 modulo 4/aula-6.md:249-249`; `modulo 4/aula 6 modulo 4/aula-6.md:254-255` | `books/astrologia-hermetica/astrologia-hermetica.md:66566-66689` |
+| Aries | `class notes:53-66` | `class notes:53-60`; `class notes:64-66` | `reference text:65522-65535`; `reference text:65636-65645`; `reference text:65673-65680` |
+| Taurus | `class notes:68-80` | `class notes:68-79` | `reference text:65453-65461`; `reference text:65542-65558`; `reference text:65655-65684` |
+| Gemini | `class notes:82-100` | `class notes:82-93`; `class notes:97-98` | `reference text:65370-65374`; `reference text:65860-65880` |
+| Cancer | `class notes:102-119` | `class notes:102-108` | `reference text:65376-65382`; `reference text:65867-65876` |
+| Leo | `class notes:121-136` | `class notes:121-136` | `reference text:65417-65440`; `reference text:65894-65961` |
+| Virgo | `class notes:138-156` | `class notes:138-156` | `reference text:65894-65924` |
+| Libra | `class notes:158-172` | `class notes:158-172` | `reference text:66001-66090` |
+| Scorpio | `class notes:174-188` | `class notes:174-188` | `reference text:66265-66298` |
+| Sagittarius | `class notes:190-205` | `class notes:190-195`; `class notes:203-205` | `reference text:66300-66390` |
+| Capricorn | `class notes:207-220` | `class notes:207-214`; `class notes:216-217` | `reference text:66429-66520` |
+| Aquarius | `class notes:222-239` | `class notes:222-225`; `class notes:237-238` | `reference text:66566-66689` |
+| Pisces | `class notes:241-255` | `class notes:241-243`; `class notes:249-249`; `class notes:254-255` | `reference text:66566-66689` |
 
 ## Supplemental limits
 
@@ -78,7 +78,7 @@ No book claim is adopted or included in src. Source workers inspected only the n
 
 ### Libra
 
-- Primary modulo 4/aula 6 modulo 4/aula-6.md:158-172 supports harmony, sociability, intense conflict avoidance, identity difficulty and adaptation hiding desires. Appearance serves desired outcomes at 167; charm replaces diplomacy in tense situations at 169-171. These motives are kept separate, with no inferred motive of keeping someone nearby.
+- Primary class notes:158-172 supports harmony, sociability, intense conflict avoidance, identity difficulty and adaptation hiding desires. Appearance serves desired outcomes at 167; charm replaces diplomacy in tense situations at 169-171. These motives are kept separate, with no inferred motive of keeping someone nearby.
 - Omitted the childhood family story, narcissism label, and imperatives about taking the easy path or being careful. No relationship outcome is promised.
 - Inspected supplemental family 66001-66090. Although the heading says Libra, OCR fragments intermingle emotional intensity, sociability, reserve and other text, with broken word order. House/sign body assignment is unreliable; no supplement adopted.
 
@@ -90,27 +90,27 @@ No book claim is adopted or included in src. Source workers inspected only the n
 
 ### Sagittarius
 
-- modulo 4/aula 6 modulo 4/aula-6.md:190-205 inspected in full. Adopted 190-195 for goals, experience, humor masking problems and discomfort with vulnerability; 203-205 for frankness exceeding limits and unintended offense. No generic Sun-sign profile or angle/house alias.
-- modulo 4/aula 6 modulo 4/aula-6.md:196-202 includes disappointment, unrealistic hopes, overextension, honesty as innate and unhappiness with the wrong person. These are unadopted for concision and to avoid biographical assumptions or relationship outcomes; no optimism-only substitute was invented.
-- books/astrologia-hermetica/astrologia-hermetica.md:66300-66390 inspected only, not adopted or cited in src. Standalone Ascendant/Sagittarius identity appears in the fragmented body at 66306-66315, not merely the heading at 66300-66302. OCR fragments the adventure, optimism, independence and frankness text; incomplete philosophical material at 66385-66390 was not reconstructed. Supplemental positive emphases do not replace the primary limits.
+- class notes:190-205 inspected in full. Adopted 190-195 for goals, experience, humor masking problems and discomfort with vulnerability; 203-205 for frankness exceeding limits and unintended offense. No generic Sun-sign profile or angle/house alias.
+- class notes:196-202 includes disappointment, unrealistic hopes, overextension, honesty as innate and unhappiness with the wrong person. These are unadopted for concision and to avoid biographical assumptions or relationship outcomes; no optimism-only substitute was invented.
+- reference text:66300-66390 inspected only, not adopted or cited in src. Standalone Ascendant/Sagittarius identity appears in the fragmented body at 66306-66315, not merely the heading at 66300-66302. OCR fragments the adventure, optimism, independence and frankness text; incomplete philosophical material at 66385-66390 was not reconstructed. Supplemental positive emphases do not replace the primary limits.
 
 ### Capricorn
 
-- modulo 4/aula 6 modulo 4/aula-6.md:207-220 inspected in full. Adopted 207-214: apparent reserve/distance and elegance concealing shyness at 207-208 are distinct from the protective facade concealing pain at 211-212; responsibility overload extends through 214. The facade is not attributed to concealment of shyness or insecurity. Adopted 216-217 for long-range goals and gradual pursuit of security. The OCR word trio at 207 was not silently repaired into an additional claim.
-- modulo 4/aula 6 modulo 4/aula-6.md:209-215 includes childhood/maturity and childhood-rooted insecurity, distrust and judgment. No childhood biography is asserted. Late-life realization and advice at 217-220 are unadopted; no age, success guarantee or practice is supplied.
-- books/astrologia-hermetica/astrologia-hermetica.md:66429-66520 inspected only, not adopted or cited in src. The standalone Ascendant/Capricorn body identifies the placement at 66434-66441 despite the fragmented heading. Responsibility, discipline, reserve and patience appear in broken or interleaved clauses; no reconstruction, success promise or extra favorable trait adopted.
+- class notes:207-220 inspected in full. Adopted 207-214: apparent reserve/distance and elegance concealing shyness at 207-208 are distinct from the protective facade concealing pain at 211-212; responsibility overload extends through 214. The facade is not attributed to concealment of shyness or insecurity. Adopted 216-217 for long-range goals and gradual pursuit of security. The OCR word trio at 207 was not silently repaired into an additional claim.
+- class notes:209-215 includes childhood/maturity and childhood-rooted insecurity, distrust and judgment. No childhood biography is asserted. Late-life realization and advice at 217-220 are unadopted; no age, success guarantee or practice is supplied.
+- reference text:66429-66520 inspected only, not adopted or cited in src. The standalone Ascendant/Capricorn body identifies the placement at 66434-66441 despite the fragmented heading. Responsibility, discipline, reserve and patience appear in broken or interleaved clauses; no reconstruction, success promise or extra favorable trait adopted.
 
 ### Aquarius
 
-- modulo 4/aula 6 modulo 4/aula-6.md:222-239 inspected in full. Adopted 222-225 and 237-238. Rebellion, excitability and unpredictability explicitly retain the antecedent of trying to conform instead of accepting difference; they are not unconditional traits. The source’s additional unreliability label is omitted.
-- modulo 4/aula 6 modulo 4/aula-6.md:226-236 includes freedom, family, solitude, flexibility and medical/nervous-system claims. None are adopted here; no clinical inference, medical need, childhood history, vibrational practice or promised life pattern. Advice at 238-239 is unadopted.
-- books/astrologia-hermetica/astrologia-hermetica.md:66566-66689 inspected as one narrow interleaved Aquarius/Pisces body window, not adopted or cited in src. Aquarius is explicit in the body at 66570-66578, while Pisces is explicit at 66572-66580; nearest headings cannot assign the alternating clauses. No supplemental progressiveness, networking, rationality or diversity profile was added and no uncertain column sequence reconstructed.
+- class notes:222-239 inspected in full. Adopted 222-225 and 237-238. Rebellion, excitability and unpredictability explicitly retain the antecedent of trying to conform instead of accepting difference; they are not unconditional traits. The source’s additional unreliability label is omitted.
+- class notes:226-236 includes freedom, family, solitude, flexibility and medical/nervous-system claims. None are adopted here; no clinical inference, medical need, childhood history, vibrational practice or promised life pattern. Advice at 238-239 is unadopted.
+- reference text:66566-66689 inspected as one narrow interleaved Aquarius/Pisces body window, not adopted or cited in src. Aquarius is explicit in the body at 66570-66578, while Pisces is explicit at 66572-66580; nearest headings cannot assign the alternating clauses. No supplemental progressiveness, networking, rationality or diversity profile was added and no uncertain column sequence reconstructed.
 
 ### Pisces
 
-- modulo 4/aula 6 modulo 4/aula-6.md:241-255 inspected in full. Adopted 241-243 for idealization and difficulty with confrontation/defined decisions; 249 for idolizing people who confirm one’s viewpoint; 254-255 for difficulty distinguishing mentally created situations from facts. These remain tendencies, not a diagnosis or a biographical assertion.
-- modulo 4/aula 6 modulo 4/aula-6.md:245-246 contains a clinical label, which is unadopted. Don Quixote at 241-242, moralized manipulation/victim labels at 246-253 and coercive self-knowledge framing at 248-249 are also omitted. No unsupported positive compensation, healing claim or instruction is invented.
-- books/astrologia-hermetica/astrologia-hermetica.md:66566-66689 inspected only, not adopted or cited in src. The body explicitly names Pisces at 66572-66580 alongside alternating Aquarius material at 66570-66578. Sensitivity/empathy and later imagination, spirituality and mystical claims are interleaved; their positive emphasis differs from the primary’s emphasis on idealization and discernment. No heading-based reassignment, OCR reconstruction or supplemental-only claim adopted.
+- class notes:241-255 inspected in full. Adopted 241-243 for idealization and difficulty with confrontation/defined decisions; 249 for idolizing people who confirm one’s viewpoint; 254-255 for difficulty distinguishing mentally created situations from facts. These remain tendencies, not a diagnosis or a biographical assertion.
+- class notes:245-246 contains a clinical label, which is unadopted. Don Quixote at 241-242, moralized manipulation/victim labels at 246-253 and coercive self-knowledge framing at 248-249 are also omitted. No unsupported positive compensation, healing claim or instruction is invented.
+- reference text:66566-66689 inspected only, not adopted or cited in src. The body explicitly names Pisces at 66572-66580 alongside alternating Aquarius material at 66570-66578. Sensitivity/empathy and later imagination, spirituality and mystical claims are interleaved; their positive emphasis differs from the primary’s emphasis on idealization and discernment. No heading-based reassignment, OCR reconstruction or supplemental-only claim adopted.
 
 ## Integration boundary
 

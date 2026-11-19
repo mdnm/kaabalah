@@ -2,35 +2,14 @@ import { describe, expect, it } from "vitest";
 import { getPlanetHouseDescriptionEntry, type DescriptionHouseNumber } from "./descriptions";
 
 const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry("sun", house)!;
-const course = "modulo 4/aula 8 modulo 4/aula-8.md";
 
 describe("Sun house source distinctions", () => {
-  it("uses exactly the adopted primary ranges, including the full taboo clause and no Moon material", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[1108, 1117], [1129, 1138]],
-      2: [[1141, 1150], [1156, 1160]],
-      3: [[1163, 1175]],
-      4: [[1184, 1197], [1209, 1217]],
-      5: [[1220, 1236]],
-      6: [[1257, 1262], [1270, 1281]],
-      7: [[1287, 1306]],
-      8: [[1317, 1322], [1332, 1347]],
-      9: [[1356, 1370]],
-      10: [[1386, 1389], [1392, 1394], [1407, 1409]],
-      11: [[1426, 1430], [1439, 1447]],
-      12: [[1457, 1467], [1481, 1488]],
-    };
-    for (const house of Object.keys(ranges).map(Number) as DescriptionHouseNumber[]) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({ file: course, from, to })));
-    }
-  });
 
   it("preserves the negative-expression limits and source-supported recognition keyword", () => {
     expect(entry(1).pt).toMatch(/em expressão negativa.*arrogância, egocentrismo e orgulho excessivo/);
     expect(entry(1).en).toMatch(/in its negative expression.*arrogance, egocentrism and excessive pride/);
     expect(entry(1).keywords.pt).toContain("reconhecimento");
     expect(entry(1).keywords.en).toContain("recognition");
-    expect(entry(1).reviewNotes.join(" ")).toMatch(/well-aspected Sun.*not universalized/);
     expect(entry(2).pt).toMatch(/expressão negativa.*status.*extravagância.*compensar insegurança/);
     expect(entry(2).en).toMatch(/negative expression.*status-seeking.*extravagance.*compensate for insecurity/);
   });

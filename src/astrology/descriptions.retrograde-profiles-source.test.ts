@@ -131,22 +131,7 @@ const ranges: Record<DescriptionRetrogradePlanet, number[][]> = {
     ]
   ]
 };
-const bounds: Record<DescriptionRetrogradePlanet, number[]> = { mercury: [533,617], venus: [1301,1351], mars: [2038,2085], jupiter: [2640,2693], saturn: [3278,3314], uranus: [3871,3916], neptune: [4440,4471], pluto: [4847,4886] };
 describe("natal retrograde profile primary meanings and qualifications", () => {
-  it("pins final adopted inclusive clauses inside personality/karma and teaching boundaries", () => {
-    for (const planet of Object.keys(ranges) as DescriptionRetrogradePlanet[]) {
-      expect(entry(planet).src).toEqual(ranges[planet].map(([from,to]) => ({ file: "modulo 4/aula 16 modulo 4/aula-16.md", from, to })));
-      for (const source of entry(planet).src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(bounds[planet][0]);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(bounds[planet][1]);
-        expect(source.to).toBeLessThanOrEqual(5271);
-      }
-      expect(entry(planet).reviewNotes.join(" ")).toMatch(/não distingue.*perfil natal duradouro.*A16 tem precedência/);
-    }
-  });
   it("keeps two lowercase chart-owner sentences without diagnoses, past-life facts or instructions", () => {
     for (const planet of Object.keys(ranges) as DescriptionRetrogradePlanet[]) {
       expect(entry(planet).pt).toMatch(/você|seu|sua/);

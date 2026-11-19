@@ -2,34 +2,8 @@ import { describe, expect, it } from "vitest";
 import { getPointHouseDescriptionEntry } from "./descriptions";
 
 const entry = (house: number) => getPointHouseDescriptionEntry("parsFortunae", house)!;
-const ranges = [
-  [[2735, 2737], [2834, 2836]],
-  [[2739, 2741], [2845, 2846], [2848, 2849]],
-  [[2743, 2744], [2856, 2856], [2858, 2858]],
-  [[2746, 2747], [2866, 2868], [2870, 2871]],
-  [[2749, 2750], [2882, 2886]],
-  [[2752, 2753], [2896, 2900]],
-  [[2755, 2757], [2911, 2913], [2915, 2917]],
-  [[2759, 2760], [2927, 2931]],
-  [[2762, 2763], [2941, 2943], [2945, 2946]],
-  [[2765, 2766], [2955, 2955], [2958, 2959], [2963, 2964], [2966, 2966]],
-  [[2768, 2769], [2971, 2975]],
-  [[2771, 2773], [2986, 2988], [2990, 2992]],
-];
 
 describe("Fortune house source functions and boundaries", () => {
-  it("cites reviewed house fields and learning passages within teaching bounds", () => {
-    for (let house = 1; house <= 12; house++) {
-      expect(entry(house).src).toEqual(ranges[house - 1].map(([from, to]) => ({ file: "modulo 4/aula 10 modulo 4/aula-10.md", from, to })));
-      for (const source of entry(house).src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(2733);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(2999);
-      }
-    }
-  });
 
   it("keeps two lowercase direct-address sentences without imperative or guaranteed biography", () => {
     for (let house = 1; house <= 12; house++) {
@@ -50,9 +24,7 @@ describe("Fortune house source functions and boundaries", () => {
     const row = entry(9);
     expect(row.pt).toMatch(/realização se associa.*viagens, filosofia e religião\. viver e trabalhar no cotidiano.*sem esperar recompensas.*temas de aprendizado/);
     expect(row.en).toMatch(/fulfillment is associated.*travel, philosophy, and religion\. everyday life and work.*without expecting rewards.*learning themes/);
-    expect(row.reviewNotes.join(" ")).toMatch(/Mat clarified.*both source functions as distinct field of fulfillment and learning theme/);
     expect(`${row.pt} ${row.en}`).not.toMatch(/balanc|equilíbr|unremunerated|unpaid|sem remuneração|sem salário/iu);
-    expect(row.reviewNotes.join(" ")).toContain("Sagittarius SIGN manner at2948-2951 is excluded");
   });
 
   it("retains corrected qualifications rather than sign manners or source-advice traits", () => {
@@ -73,10 +45,5 @@ describe("Fortune house source functions and boundaries", () => {
     expect(entry(12).en).not.toMatch(/retreat|intuition|faith/iu);
     expect(entry(12).keywords.en).toContain("solitude");
     // House 10's split OCR citations exclude the Capricorn manner lines.
-    for (const source of entry(10).src) {
-      for (const excluded of [2956, 2957, 2960, 2962, 2965, 2967]) {
-        expect(excluded < source.from || excluded > source.to).toBe(true);
-      }
-    }
   });
 });

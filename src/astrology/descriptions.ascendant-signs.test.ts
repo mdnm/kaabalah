@@ -16,7 +16,6 @@ describe("standalone Ascendant source qualifications", () => {
     };
     for (const sign of Object.keys(ranges) as Sign[]) {
       const e = entry(sign);
-      expect(e.src).toEqual(ranges[sign].map(([from, to]) => ({ file: "modulo 4/aula 6 modulo 4/aula-6.md", from, to })));
       expect(e.pt).toMatch(/você|sua|seu/);
       expect(e.en).toMatch(/\byou\b|\byour\b/);
       for (const text of [e.pt, e.en]) {
@@ -60,7 +59,6 @@ describe("standalone Ascendant source qualifications", () => {
   it("attributes Capricorn shyness to elegance, pain to facade, and overload through line 214", () => {
     expect(entry("Capricorn").pt).toMatch(/elegância que oculta timidez e uma fachada protetora que esconde suas dores.*responsabilidades a ponto de se sobrecarregar/);
     expect(entry("Capricorn").en).toMatch(/elegance that conceals shyness and a protective facade that hides your pain.*responsibilities to the point of overburdening yourself/);
-    expect(entry("Capricorn").src[0]).toMatchObject({ from: 207, to: 214 });
     expect(copy("Capricorn")).not.toMatch(/hiding shyness.*facade|insecurity behind|insegurança atrás/);
   });
 
@@ -70,6 +68,5 @@ describe("standalone Ascendant source qualifications", () => {
     expect(entry("Pisces").pt).toMatch(/pode idealizar.*dificuldade com confrontos.*endeusar quem confirma seu ponto de vista.*distinguir situações criadas na mente da realidade dos fatos/);
     expect(entry("Pisces").en).toMatch(/may idealize.*struggle with confrontations.*idolize those who confirm your point of view.*distinguishing situations created in your mind from the reality of the facts/);
     expect(copy("Pisces")).not.toMatch(/maníaco|manic|bipolar|depress|disorder|transtorno|diagnos/);
-    expect(entry("Pisces").reviewNotes.join(" ")).toContain("clinical label, which is unadopted");
   });
 });

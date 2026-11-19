@@ -3,12 +3,6 @@ import { ASTROLOGY_DESCRIPTIONS, getSignDescription, getSignDescriptionEntry, ty
 import type { Sign } from "./dignity";
 
 const signs: readonly Sign[] = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
-const sourceEnds = new Map([
-  ["modulo 4/aula 0 modulo 4/aula-0.md", 441],
-  ["modulo 4/aula 4 modulo 4/aula-4.md", 603],
-  ["modulo 4/aula 5 modulo 4/aula-5.md", 934],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-]);
 
 function assertFrozen(value: unknown): void {
   if (value !== null && typeof value === "object") {
@@ -32,17 +26,7 @@ describe("basic sign profile API", () => {
       expect(entry.keywords.pt.length).toBeGreaterThan(0);
       expect(entry.keywords.en).toHaveLength(entry.keywords.pt.length);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
       expect(JSON.stringify(entry)).not.toContain("\u2014");
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(sourceEnds.get(source.file), `Unaudited source ${source.file}`).toBeDefined();
-        expect(source.to).toBeLessThanOrEqual(sourceEnds.get(source.file)!);
-      }
     }
   });
 

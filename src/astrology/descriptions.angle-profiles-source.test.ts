@@ -6,13 +6,6 @@ const angles: DescriptionAngle[] = ["ascendant", "mc", "dc", "ic"];
 const copy = (angle: DescriptionAngle) => `${entry(angle).pt} ${entry(angle).en}`;
 
 describe("general angle primary meanings and boundaries", () => {
-  it("uses only the exact adopted primary ranges", () => {
-    const ranges = { ascendant: [76, 79], mc: [124, 127], dc: [111, 116], ic: [134, 137] };
-    for (const angle of angles) {
-      const [from, to] = ranges[angle];
-      expect(entry(angle).src).toEqual([{ file: "modulo 4/aula 11 modulo 4/aula-11.md", from, to }]);
-    }
-  });
 
   it("separates presented face from the other's relational role", () => {
     expect(entry("ascendant").pt).toMatch(/face que você apresenta ao mundo.*características que mostra.*primeiro contato.*vê neles/);

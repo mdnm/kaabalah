@@ -34,6 +34,7 @@ import {
   calculateKaabalisticLifePath,
   calculateStraightAcrossReductionLifePath,
   MASTER_NUMBERS,
+  doubleDigitValue,
   reduceToSingleWithSteps,
 } from "./core";
 import { computeLifeStages, LIFE_STAGE_METHOD_ID, type LifeStageSpan, type LifeStages } from "./life-stages";
@@ -400,8 +401,8 @@ function buildMetadata(
       formula: "reduce(birthDay + birthMonth + birthdayYear); birthdayYear = year of the most recent birthday; masters per policy",
     },
     "personal-month": {
-      id: "birthday-personal-month/v1",
-      formula: "reduce(personalYear.value + calendarMonthLabel); label = wrap(birthMonth + phase - 1); phase k starts on the birth day of month label k (see shortMonthPolicy)",
+      id: "birthday-personal-month/v2",
+      formula: "reduce(doubleDigitPersonalYear + calendarMonthLabel), where doubleDigitPersonalYear is the personal year before its final reduction (14 for 14/5; a master year is used as is); label = wrap(birthMonth + phase - 1); phase k starts on the birth day of month label k (see shortMonthPolicy)",
     },
     "personal-period": {
       id: "birthday-personal-period/v1",
@@ -422,15 +423,15 @@ function buildMetadata(
         "c1 = reduce(age); c2 = reduce(c1 + 2); c3 = reduce(c1 + c2.rawSum); c(n) = reduce(c(n-2).rawSum + c(n-1).rawSum); single-digit, masters not preserved; age = completed age",
     },
     "calendar-year": {
-      id: "calendar-personal-year-month-day/v1",
+      id: "calendar-personal-year-month-day/v2",
       formula: "calendarPY = reduce(birthDay + birthMonth + calendarYear)",
     },
     "calendar-month": {
-      id: "calendar-personal-year-month-day/v1",
-      formula: "calendarPM = reduce(calendarPY.value + calendarMonth)",
+      id: "calendar-personal-year-month-day/v2",
+      formula: "calendarPM = reduce(doubleDigit(calendarPY) + calendarMonth), where doubleDigit(calendarPY) is the calendar personal year before its final reduction (14 for 14/5; a master year is used as is)",
     },
     "calendar-day": {
-      id: "calendar-personal-year-month-day/v1",
+      id: "calendar-personal-year-month-day/v2",
       formula:
         "calendarPD = reduce(calendarPM.value + calendarDay). Chosen convention (the library has no personal-day calculator); distinct from the birthday frame",
     },
@@ -704,7 +705,7 @@ function buildYearRow(ctx: Ctx, y: number): YearRow | null {
       phase: k + 1,
       calendarMonth: label,
       intendedBirthDay: anchor.day,
-      value: red(ctx, personalYearValue.value + label),
+      value: red(ctx, doubleDigitValue(personalYearValue.reductionSteps) + label),
       startAdjusted: adjusted[k],
       nominalStartText: nominalTexts[k],
       shortMonthPolicy: ctx.policy,
@@ -787,14 +788,14 @@ function calendarMonthInterval(ctx: Ctx, year: number, month: number): CalendarM
   const iv = mkInterval(ctx, { year, month, day: 1 }, next);
   if (!iv) return null;
   const py = calendarYearValue(ctx, year);
-  return { layer: "calendar-month", ...iv, year, month, personalYear: py, personalMonth: red(ctx, py.value + month) };
+  return { layer: "calendar-month", ...iv, year, month, personalYear: py, personalMonth: red(ctx, doubleDigitValue(py.reductionSteps) + month) };
 }
 
 function calendarDayInterval(ctx: Ctx, date: CivilDate): CalendarDayInterval | null {
   const iv = mkInterval(ctx, date, addCivilDays(date, 1));
   if (!iv) return null;
   const py = calendarYearValue(ctx, date.year);
-  const pm = red(ctx, py.value + date.month);
+  const pm = red(ctx, doubleDigitValue(py.reductionSteps) + date.month);
   return { layer: "calendar-day", ...iv, date: fmt(date), personalYear: py, personalMonth: pm, personalDay: red(ctx, pm.value + date.day) };
 }
 

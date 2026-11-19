@@ -47,6 +47,55 @@ const reduceKeep = (n: number): number => {
 const timeline = (birth: string, from: string, to: string, layers: any[], extra: object = {}) =>
   generateNumerologyTimeline({ birth, from, toExclusive: to, layers, ...extra });
 
+describe("personal month = month label + double-digit personal year, then reduced", () => {
+  it("personal year 14/5 in June is 6 + 14 = 20 -> 2, not 6 + 5 = 11", () => {
+    const snap = getNumerologySnapshot({ birth: "1990-05-17", asOf: "2026-06-20" });
+    expect(snap.birthdayYear?.personalYear.reductionSteps).toEqual([2048, 14, 5]);
+    expect(snap.personalMonth).toMatchObject({ phase: 2, calendarMonth: 6 });
+    expect(snap.personalMonth?.value).toMatchObject({ value: 2, isMaster: false });
+    expect(snap.personalMonth?.value.reductionSteps).toEqual([20, 2]);
+  });
+
+  it("the twelve months of the birthday year, the legacy functions and the calendar frame all follow it", () => {
+    const birth = "1990-05-17";
+    const months = timeline(birth, "2026-05-17", "2027-05-17", ["personal-month"]).intervals as PersonalMonthInterval[];
+    expect(months).toHaveLength(12);
+    for (const m of months) expect(m.value.value, `label ${m.calendarMonth}`).toBe(reduceKeep(14 + m.calendarMonth));
+    const legacy = calculatePersonalCycles(localNoon(birth), localNoon("2026-06-20"), "Ana");
+    expect(legacy.personalMonths.map((m) => m.value.reducedValue)).toEqual(months.map((m) => m.value.value));
+    const direct = calculatePersonalMonths(localNoon(birth), calculatePersonalYear(localNoon(birth), localNoon("2026-06-20")), localNoon("2026-06-20"));
+    expect(direct.personalMonths.map((m) => m.value.reducedValue)).toEqual(months.map((m) => m.value.value));
+    // Calendar frame: 1990-05-17 + calendar year 2026 is also 2048 -> 14 -> 5, so June is again 2.
+    const june = timeline(birth, "2026-06-01", "2026-07-01", ["calendar-month"]).intervals[0] as any;
+    expect(june.personalYear.reductionSteps).toEqual([2048, 14, 5]);
+    expect(june.personalMonth.value).toBe(2);
+  });
+
+  it("a master personal year is used as written; under the reduce policy the 11 before the final 2 is still the addend", () => {
+    // 2000-01-01, birthday year 2016: 1 + 1 + 2016 = 2018 -> 11 (kept) or 11 -> 2 (reduced).
+    const preserved = timeline("2000-01-01", "2016-01-01", "2017-01-01", ["personal-year", "personal-month"]).intervals as any[];
+    expect(preserved[0].personalYear).toMatchObject({ value: 11, reductionSteps: [2018, 11], isMaster: true });
+    const preservedMonths = preserved.filter((i) => i.layer === "personal-month");
+    for (const m of preservedMonths) expect(m.value.value, `label ${m.calendarMonth}`).toBe(reduceKeep(11 + m.calendarMonth));
+    expect(preservedMonths.find((m) => m.calendarMonth === 11).value).toMatchObject({ value: 22, isMaster: true });
+
+    const reduced = timeline("2000-01-01", "2016-01-01", "2017-01-01", ["personal-year", "personal-month"], { masters: "reduce" }).intervals as any[];
+    expect(reduced[0].personalYear).toMatchObject({ value: 2, reductionSteps: [2018, 11, 2] });
+    const reducedMonths = reduced.filter((i) => i.layer === "personal-month");
+    expect(reducedMonths.find((m) => m.calendarMonth === 11).value).toMatchObject({ value: 4, isMaster: false }); // 11 + 11 = 22 -> 4
+    expect(reducedMonths.find((m) => m.calendarMonth === 6).value.value).toBe(8); // 11 + 6 = 17 -> 8 (2 + 6 would also be 8)
+    expect(reducedMonths.find((m) => m.calendarMonth === 12).value.value).toBe(5); // 11 + 12 = 23 -> 5 (2 + 12 = 14 -> 5)
+  });
+
+  it("a year that reduces without a two-digit step (sum 2004 -> 6) uses its final value", () => {
+    // 2000-02-02 + 2000: 2 + 2 + 2000 = 2004 -> 6.
+    const year = timeline("2000-02-02", "2000-02-02", "2001-02-02", ["personal-year", "personal-month"]).intervals as any[];
+    expect(year[0].personalYear).toMatchObject({ value: 6, reductionSteps: [2004, 6] });
+    const months = year.filter((i) => i.layer === "personal-month");
+    for (const m of months) expect(m.value.value).toBe(reduceKeep(6 + m.calendarMonth));
+  });
+});
+
 describe("getNumerologySnapshot: birthday frame", () => {
   const snap = getNumerologySnapshot({ birth: "2001-10-20", asOf: "2026-08-30", firstName: "Ana" });
 
@@ -67,8 +116,8 @@ describe("getNumerologySnapshot: birthday frame", () => {
     expect(pm.calendarMonth).toBe(8); // Oct, Nov, ... Aug is the 11th month
     expect(pm.start).toBe("2026-08-20");
     expect(pm.endExclusive).toBe("2026-09-20");
-    expect(pm.value.value).toBe(11); // 3 + 8 = 11, master preserved
-    expect(pm.value.isMaster).toBe(true);
+    expect(pm.value.value).toBe(2); // personal year 12/3: 12 + 8 = 20 -> 2 (not 3 + 8 = 11)
+    expect(pm.value.isMaster).toBe(false);
     const pp = snap.personalPeriod!;
     expect(pp.phase).toBe(3);
     expect(pp.monthPhases).toEqual([9, 12]);
@@ -428,7 +477,7 @@ describe("calendar frame (distinct method)", () => {
     expect(s.calendar?.personalYear.value).toBe(1); // 15+3+2026 = 2044 -> 10 -> 1
     expect(s.calendar?.personalMonth.value).toBe(9); // 1 + 8
     expect(s.calendar?.personalDay.value).toBe(1); // 9 + 19 = 28 -> 10 -> 1
-    expect(s.meta.methods["calendar-day"].id).toBe("calendar-personal-year-month-day/v1");
+    expect(s.meta.methods["calendar-day"].id).toBe("calendar-personal-year-month-day/v2");
     expect(s.meta.methods["calendar-day"].formula).toMatch(/calendarPD = reduce\(calendarPM\.value \+ calendarDay\)/);
     // birthday frame differs: the birthday year in force on 2026-08-19 is 2026 as well here, but the month value is a distinct formula
     expect(s.meta.methods["personal-month"].id).not.toBe(s.meta.methods["calendar-month"].id);

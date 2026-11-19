@@ -161,8 +161,8 @@ The two frames are different calculations and are never mixed:
 
 | Frame | Layers | Year used | Formula |
 |---|---|---|---|
-| Birthday | `personal-year`, `personal-month`, `personal-period`, `heptad`, `age-cycle`, `fibonacci` | year of the most recent birthday | personal year = reduce(birth day + birth month + birthday year); personal month = reduce(personal year + month label) |
-| Calendar | `calendar-year`, `calendar-month`, `calendar-day` | the calendar year/month/day being asked about | calendar year = reduce(birth day + birth month + calendar year); month = reduce(calendar year value + calendar month); day = reduce(calendar month value + calendar day) |
+| Birthday | `personal-year`, `personal-month`, `personal-period`, `heptad`, `age-cycle`, `fibonacci` | year of the most recent birthday | personal year = reduce(birth day + birth month + birthday year); personal month = reduce(double-digit personal year + month label), where the double-digit year is the value before the final reduction (14 for a 14/5 year; a master year is used as written) |
+| Calendar | `calendar-year`, `calendar-month`, `calendar-day` | the calendar year/month/day being asked about | calendar year = reduce(birth day + birth month + calendar year); month = reduce(double-digit calendar year + calendar month); day = reduce(calendar month value + calendar day) |
 
 The library had no personal-day calculator before; the calendar-day formula above is the **chosen convention**, named in `meta.methods["calendar-day"]`. Personal years, months, periods, the calendar frame, life path and pinnacles preserve master numbers (`11`, `22`, `33`, `44`) under the default `masters: "preserve"` (`"reduce"` turns that off). Fibonacci cycles never preserve masters.
 
@@ -173,12 +173,12 @@ The library had no personal-day calculator before; the calendar-day formula abov
 | Layer | Method id |
 |---|---|
 | `personal-year` | `birthday-personal-year/v1` |
-| `personal-month` | `birthday-personal-month/v1` |
+| `personal-month` | `birthday-personal-month/v2` |
 | `personal-period` | `birthday-personal-period/v1`: periods 1, 2, 3 = reduce(birthday year + completed age / life path / first-name vowel soul number) |
 | `heptad` | `fixed-52-day-heptad/v1`: six 52-day segments, the seventh runs to the next birthday (53 or 54 days) |
 | `age-cycle` | `seven-year-age-cycle/v1`: block = floor(age / 7), label = block mod 7 + 1, year position = age mod 7 + 1 |
 | `fibonacci` | `fibonacci-completed-age/v1` |
-| `calendar-year`, `calendar-month`, `calendar-day` | `calendar-personal-year-month-day/v1` |
+| `calendar-year`, `calendar-month`, `calendar-day` | `calendar-personal-year-month-day/v2` |
 | `pinnacle`, `challenge`, `life-period` | `kaabalah-life-stages/1` |
 
 The method options are explicit and echoed back in `meta`:

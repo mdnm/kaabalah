@@ -1,6 +1,6 @@
 # Moon in houses: source audit
 
-Scope: natal Moon in houses 1–12 only. Primary A9: `modulo 4/aula 9 modulo 4/aula-9.md`. Supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. Every final body and keyword claim is primary-only. No book comparison is adopted. All ranges are one-based physical lines, inclusive, and course-relative.
+Scope: natal Moon in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. Every final body and keyword claim is primary-only. No book comparison is adopted. All ranges are one-based physical lines, inclusive, and course-relative.
 
 ## Actual inspection and adopted ranges
 

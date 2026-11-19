@@ -245,9 +245,12 @@ describe("Fibonacci cycle", () => {
 describe("Personal cycles", () => {
   it.each([
     // y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth, soulNumber
-    [2000, 9, 28, "2025-10-01", "John", 25, 1, [7, 3, 6], [1, 11, 3, 4, 2, 3, 4, 5, 6, 7, 8, 9], 0, 0, 6],
-    [2000, 12, 28, "2025-11-01", "John", 24, 3, [5, 5, 5], [6, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4, 5], 2, 10, 6],
-    [1999, 11, 29, "2025-11-25", "Abigail", 25, 3, [6, 4, 3], [5, 6, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4], 2, 11, 4],
+    // Each month adds its label to the double-digit personal year (the value before the final reduction):
+    // year 10/1 -> 9+10=19 -> 1, 10+10=20 -> 2, 12+10=22 (master kept), 1+10=11 (master kept), ...
+    [2000, 9, 28, "2025-10-01", "John", 25, 1, [7, 3, 6], [1, 2, 3, 22, 11, 3, 4, 5, 6, 7, 8, 9], 0, 0, 6],
+    // year 12/3 -> 12+12=24 -> 6, 8+12=20 -> 2, 10+12=22 (master kept)
+    [2000, 12, 28, "2025-11-01", "John", 24, 3, [5, 5, 5], [6, 4, 5, 6, 7, 8, 9, 1, 2, 3, 22, 5], 2, 10, 6],
+    [1999, 11, 29, "2025-11-25", "Abigail", 25, 3, [6, 4, 3], [5, 6, 4, 5, 6, 7, 8, 9, 1, 2, 3, 22], 2, 11, 4],
   ])(
     "produces personal cycles %d-%d-%d → %o",
     (y, m, d, today, name, currentAge, personalYear, personalPeriods, personalMonths, currentPersonalPeriod, currentPersonalMonth, soulNumber) => {

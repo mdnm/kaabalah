@@ -37,7 +37,6 @@ describe("generic polarity descriptions API", () => {
       }
     }
     frozen(ASTROLOGY_DESCRIPTIONS.polarities);
-    const ends: Record<string, number> = { "modulo 4/aula 2 modulo 4/aula-2.md": 161, "modulo 4/aula 11 modulo 4/aula-11.md": 1557 };
     for (const polarity of polarities) {
       const entry = getPolarityDescriptionEntry(polarity)!;
       expect(entry.pt).not.toBe(entry.en);
@@ -46,15 +45,6 @@ describe("generic polarity descriptions API", () => {
       expect(entry.reviewNotes.every(note => typeof note === "string")).toBe(true);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
       expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
-      for (const source of entry.src) {
-        expect(ends[source.file]).toBeDefined();
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThan(0);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(ends[source.file]);
-      }
     }
   });
 });

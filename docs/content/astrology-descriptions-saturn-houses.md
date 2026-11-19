@@ -1,10 +1,10 @@
 # Saturn in houses: source audit
 
-Scope: natal Saturn houses 1–12 only. Primary A10: `modulo 4/aula 10 modulo 4/aula-10.md`; supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are course-relative to `/Volumes/AKASH/aula kaabalah/`; all numbers are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim is adopted or included in src.
+Scope: natal Saturn houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; all numbers are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim is adopted or included in src.
 
 ## Actual inspections and adopted ranges
 
-Authors read original narrow windows with `nl -ba`. Integration read final artifacts and audit records, and does not claim to have reread the A/B original passages. C directly read A10 325–519 and B 52500–52914. Root actually read all adopted primary passages with neighbors and approved the precise corrections; Lume found no material issue with the broad conditions. Supplemental windows below are shared shard inspections, not a separate full read per entry. No whole book/course/family, inventory, NOTAS/private clients or next factor was researched.
+Authors read original narrow windows with `nl -ba`. Integration read final artifacts and audit records, and does not claim to have reread the A/B original passages. C directly read A10 325–519 and B 52500–52914. Root actually read all adopted primary passages with neighbors and approved the precise corrections; Lume found no material issue with the broad conditions. Supplemental windows below are shared shard inspections, not a separate full read per entry. No whole book/course/family, inventory, NOTAS/private readings or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Statements about no repository edits below describe the draft stage. Final sourc
 
 # Auditoria de fontes: Saturno natal nas casas 1–4
 
-Escopo: somente as quatro seções atribuídas do curso, em `/Volumes/AKASH/aula kaabalah/modulo 4/aula 10 modulo 4/aula-10.md`. `src.file` usa caminho relativo à raiz `/Volumes/AKASH/aula kaabalah/`. Os limites citados são números físicos de linha, inclusivos, conferidos com `nl -ba`.
+Escopo: somente as quatro seções atribuídas do curso, em `class notes`. `src.file` usa caminho relativo à raiz the private notes root. Os limites citados são números físicos de linha, inclusivos, conferidos com `nl -ba`.
 
 ## Fonte primária: intervalos adotados e decisões
 
@@ -46,7 +46,7 @@ Escopo: somente as quatro seções atribuídas do curso, em `/Volumes/AKASH/aula
 
 ## Fonte suplementar: janela permitida inspecionada, não adotada
 
-Foi inspecionada a janela 51811–52200 de `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, dentro do intervalo autorizado. Os blocos/cabeçalhos e corpos de casas 1–4 aparecem em colunas intercaladas, com lacunas e corrupção de OCR, especialmente na passagem entre casas 2, 3 e 4. Embora alguns títulos identifiquem uma casa, a atribuição do corpo não foi suficientemente contínua para adotar claims. Nenhuma fonte suplementar consta em `src`.
+Foi inspecionada a janela 51811–52200 de `reference text`, dentro do intervalo autorizado. Os blocos/cabeçalhos e corpos de casas 1–4 aparecem em colunas intercaladas, com lacunas e corrupção de OCR, especialmente na passagem entre casas 2, 3 e 4. Embora alguns títulos identifiquem uma casa, a atribuição do corpo não foi suficientemente contínua para adotar claims. Nenhuma fonte suplementar consta em `src`.
 
 Nenhum arquivo do repositório foi alterado. Não foram acrescentados exercícios, conselhos, práticas ou resultados garantidos.
 
@@ -57,7 +57,7 @@ A leitura primária foi feita com `nl -ba`; os números abaixo são linhas físi
 
 ## Fonte primária
 
-`modulo 4/aula 10 modulo 4/aula-10.md`
+`class notes`
 
 - Casa 5: seção 167–212, cabeçalho `SATURNO NA CASA 5`. Janelas adotadas 178–181 para dificuldade em expressão livre, desejo de ser amado pela originalidade e temor de afastar os outros; 198–202 para o contexto de romance, medo de rejeição, resguardo excessivo e dificuldade de ficar à vontade no romance/alegria. Linhas 182–198 incluem explicações desenvolvimentais e uma admoestação, não convertidas em causa universal nem conselho. Filhos e carreira foram omitidos.
 - Casa 6: seção 213–250, cabeçalho `SATURNO NA CASA 6`. Janela adotada 215–223 para capacidade organizacional/detalhista, compulsão de ordenar ligada a desconfiança mais profunda, rotina opressiva e tensão entre necessidade de rotina e sentir-se preso às próprias estruturas. Passagens de saúde, corpo, doenças, dietas, exercícios e tratamentos (224–240) foram omitidas. O restante sobre trabalho e animais não foi necessário.
@@ -66,7 +66,7 @@ A leitura primária foi feita com `nl -ba`; os números abaixo são linhas físi
 
 ## Suplemento do livro
 
-Inspecionada a janela estreita 52150–52550 de `books/astrologia-hermetica/astrologia-hermetica.md`, dentro da família solicitada 51811–52914. Rótulos de casas aparecem, incluindo casa 5 e 6 em 52296–52305 e casa 7 e 8 em 52438–52442. Os corpos intercalam colunas de casas adjacentes, com trechos truncados e OCR corrompido; não é seguro reconstruir as frases pela proximidade do título. Nenhuma afirmação ou palavra-chave do livro foi adotada. A fonte primária bastou.
+Inspecionada a janela estreita 52150–52550 de `reference text`, dentro da família solicitada 51811–52914. Rótulos de casas aparecem, incluindo casa 5 e 6 em 52296–52305 e casa 7 e 8 em 52438–52442. Os corpos intercalam colunas de casas adjacentes, com trechos truncados e OCR corrompido; não é seguro reconstruir as frases pela proximidade do título. Nenhuma afirmação ou palavra-chave do livro foi adotada. A fonte primária bastou.
 
 ## Controle de escopo
 
@@ -81,11 +81,11 @@ Rascunho somente. Nenhum arquivo do repositório foi editado, nenhuma integraç�
 
 Leitura direta por `nl -ba` dos originais, sem extração renumerada:
 
-- Primário absoluto: `/Volumes/AKASH/aula kaabalah/modulo 4/aula 10 modulo 4/aula-10.md`, janela exata 325–519. Cabeçalhos confirmados: casa 9 em 325, casa 10 em 363, casa 11 em 410, casa 12 em 454.
-- Suplementar absoluto: `/Volumes/AKASH/aula kaabalah/books/astrologia-hermetica/astrologia-hermetica.md`, somente 52500–52914. Não foi lida a família inteira 51811–52914. O início atribuído inclui continuação intercalada de casas 7/8, identificadas no corpo em 52514, 52547 e 52560; essas continuações não foram usadas para as casas 9–12.
-- Não houve consulta a NOTAS, leituras de clientes, inventário, curso/livro inteiro, web ou próximo fator.
+- Primário absoluto: `class notes`, janela exata 325–519. Cabeçalhos confirmados: casa 9 em 325, casa 10 em 363, casa 11 em 410, casa 12 em 454.
+- Suplementar absoluto: `reference text`, somente 52500–52914. Não foi lida a família inteira 51811–52914. O início atribuído inclui continuação intercalada de casas 7/8, identificadas no corpo em 52514, 52547 e 52560; essas continuações não foram usadas para as casas 9–12.
+- Não houve consulta a NOTAS, material privado, inventário, curso/livro inteiro, web ou próximo fator.
 
-Todas as fontes no JSON são relativas à raiz `/Volumes/AKASH/aula kaabalah/`; os limites são físicos, um-based, inclusivos. Todas as alegações e palavras-chave são primárias. Nenhuma alegação suplementar foi adotada; o livro não aparece em `src`.
+Todas as fontes no JSON são relativas à raiz the private notes root; os limites são físicos, um-based, inclusivos. Todas as alegações e palavras-chave são primárias. Nenhuma alegação suplementar foi adotada; o livro não aparece em `src`.
 
 | Casa | Seção primária inspecionada | Faixas primárias adotadas | Livro inspecionado, não adotado |
 | --- | --- | --- | --- |

@@ -1,6 +1,6 @@
 # Astrology descriptions, batch 4: open issues for Mat
 
-Authored 2026-11-17 by parallel source-audit agents, one per set. Nothing below blocks the build; these are the gaps, source disagreements and thin-evidence entries to clear up by hand. Line numbers are physical lines in the course files (root `/Volumes/AKASH/aula kaabalah/`).
+Authored 2026-11-17 by parallel source-audit agents, one per set. Nothing below blocks the build; these are the gaps, source disagreements and thin-evidence entries to clear up by hand. Line numbers are physical lines in the course files (root the private notes root).
 
 | Set | JSON key | Authored | Candidate | Not authored |
 | --- | --- | ---: | ---: | --- |
@@ -134,7 +134,7 @@ None. All 48 keys have an entry.
 ## Retrograde Saturn and Uranus in sign and house (A16)
 Counts: authored 45 / expected 45 (Saturn 12 signs + 12 houses; Uranus 9 signs + 12 houses; 3 Uranus signs absent from the class)
 
-Source: modulo 4/aula 16 modulo 4/aula-16.md. Saturn signs 3315-3575, Saturn houses 3576-3844, Uranus signs 3917-4147, Uranus houses 4148-4420 (verified against section headings; Uranus house 12 ends just before the Netuno heading).
+Source: class notes. Saturn signs 3315-3575, Saturn houses 3576-3844, Uranus signs 3917-4147, Uranus houses 4148-4420 (verified against section headings; Uranus house 12 ends just before the Netuno heading).
 
 ### Gaps (keys omitted, with reason and lines inspected)
 - uranus / Capricorn, Aquarius, Pisces: absent. Lines 3917-4147 have headings only for Aries through Sagittarius (3917, 3941, 3968, 3999, 4022, 4051, 4073, 4095, 4119); the Sagittarius section runs straight into "URANO RETRÓGRADO NA PRIMEIRA CASA" at 4148. A grep of the whole file for "URANO RETR.*(CAPRIC|AQU|PEIX)" returned nothing. Not filled from general knowledge.
@@ -158,7 +158,7 @@ Source: modulo 4/aula 16 modulo 4/aula-16.md. Saturn signs 3315-3575, Saturn hou
 ## Retrograde Neptune and Pluto: signs and houses (A16)
 Counts: authored 34 / expected 48 (Neptune signs 5/12, Pluto signs 5/12, Neptune houses 12/12, Pluto houses 12/12)
 
-Source: modulo 4/aula 16 modulo 4/aula-16.md. Neptune signs 4472-4585, houses 4586-4822; Pluto signs 4887-5011, houses 5012-5270 (5271 blank, `## NOTAS` at 5272). Each entry's src is its full section; reviewNotes cite what was adopted/excluded.
+Source: class notes. Neptune signs 4472-4585, houses 4586-4822; Pluto signs 4887-5011, houses 5012-5270 (5271 blank, `## NOTAS` at 5272). Each entry's src is its full section; reviewNotes cite what was adopted/excluded.
 
 ### Gaps (keys omitted, with reason and lines inspected)
 - Neptune signs: Aries, Taurus, Gemini, Cancer, Capricorn, Aquarius, Pisces absent. Headings in 4440-4585 run only Leo, Virgo, Libra, Scorpio, Sagittarius (confirmed with grep of all "NETUNO RETRÓGRADO EM" headings).
@@ -387,60 +387,60 @@ Counts: authored 42 / expected 42 (sun/mercury, sun/venus, mercury/venus not in 
 
 ### dc-signs (angleSigns.dc) — 12 entries checked
 
-Verified against the rendered PDF page 503 plus the cited aula-9 / houses.md lines. No A/B/C findings.
+Verified against the rendered PDF page 503 plus the cited class notes / reading reference notes lines. No A/B/C findings.
 
 ### vertex (points.vertex/antivertex, pointHouses.vertex, vertexPlanetContacts) — 17 entries checked
 
-No A/B/C findings. (pointHouses.vertex.9 faithfully follows aula-18 991-995, whose wording itself reads like 3rd-house themes; left as is.)
+No A/B/C findings. (pointHouses.vertex.9 faithfully follows class notes 991-995, whose wording itself reads like 3rd-house themes; left as is.)
 
 ### cusps-1-6 (houseCuspSigns 1-6) — 67 entries checked
 
-No A/B/C findings. All house-1 entries match their aula-6 ascendant paragraphs; houses 2-6 stay inside the right houses.md cell (health items such as inflammation, throat, nerves, heart, kidneys, bones correctly left out); aula-9 extras (3.Libra, 4.Taurus/Gemini/Virgo/Libra, 5.Gemini/Virgo, 6.Gemini) are on the right sign and house. (Padded keyword lists, e.g. 6.Aries "energia no trabalho | energia", are noted once in the closing section rather than per entry.)
+No A/B/C findings. All house-1 entries match their class notes ascendant paragraphs; houses 2-6 stay inside the right reading reference notes cell (health items such as inflammation, throat, nerves, heart, kidneys, bones correctly left out); class notes extras (3.Libra, 4.Taurus/Gemini/Virgo/Libra, 5.Gemini/Virgo, 6.Gemini) are on the right sign and house. (Padded keyword lists, e.g. 6.Aries "energia no trabalho | energia", are noted once in the closing section rather than per entry.)
 
 ### cusps-7-12 (houseCuspSigns 7-12) — 72 entries checked
 
-No A/B/C findings. houses.md cells match sign and house; aula-9 extras (7.Taurus/Gemini/Virgo/Libra, 8.Taurus/Gemini/Virgo/Libra, 9.Taurus/Gemini/Virgo/Libra, 10.Taurus/Gemini/Virgo/Libra, 11.Taurus/Gemini/Virgo/Libra, 12.Taurus/Gemini/Virgo/Libra) are read from the right sign sentence despite the run-on transcript. Gendered/health/sexual items in the sources (mother figures, "filosofia matriarcal", "karma materno", "autodestruição", marriage gains, sex as manipulation) were correctly left out. 8.Gemini softens the source's "curious about sexual desire" to "hidden and intimate matters of this house"; acceptable.
+No A/B/C findings. reading reference notes cells match sign and house; class notes extras (7.Taurus/Gemini/Virgo/Libra, 8.Taurus/Gemini/Virgo/Libra, 9.Taurus/Gemini/Virgo/Libra, 10.Taurus/Gemini/Virgo/Libra, 11.Taurus/Gemini/Virgo/Libra, 12.Taurus/Gemini/Virgo/Libra) are read from the right sign sentence despite the run-on transcript. Gendered/health/sexual items in the sources (mother figures, "filosofia matriarcal", "karma materno", "autodestruição", marriage gains, sex as manipulation) were correctly left out. 8.Gemini softens the source's "curious about sexual desire" to "hidden and intimate matters of this house"; acceptable.
 
 ### retro-mercury (retrogradePlanetSigns/Houses.mercury) — 24 entries checked
 
-All 24 match aula-16 on the right sign/house; past-life framing correctly removed.
+All 24 match class notes on the right sign/house; past-life framing correctly removed.
 
 - retrogradePlanetHouses.mercury.3 — C — closing clause unhedged ("ainda assim é um dos pensadores mais analíticos").
 
 ### retro-venus (retrogradePlanetSigns/Houses.venus) — 24 entries checked
 
-All 24 on the right sign/house of aula-16; past-life, "sexo oposto" and marriage/divorce wording correctly softened or dropped.
+All 24 on the right sign/house of class notes; past-life, "sexo oposto" and marriage/divorce wording correctly softened or dropped.
 
 - retrogradePlanetSigns.venus.Sagittarius — C — EN adds "the personal intimacy Venus promises", not in PT.
 - retrogradePlanetSigns.venus.Capricorn — C — EN "responsibilities of old age in youth / freedom of adolescence in old age" fuller than PT.
 
 ### retro-mars (retrogradePlanetSigns/Houses.mars) — 24 entries checked
 
-No A/B/C findings. All on the right aula-16 heading; sexual, gendered (women/men, Electra, male child), marriage and past-life material correctly dropped.
+No A/B/C findings. All on the right class notes heading; sexual, gendered (women/men, Electra, male child), marriage and past-life material correctly dropped.
 
 ### retro-jupiter (retrogradePlanetSigns/Houses.jupiter) — 24 entries checked
 
-No A/B/C findings. All on the right aula-16 heading; marriage, sexual, mediumship and past-life material correctly dropped.
+No A/B/C findings. All on the right class notes heading; marriage, sexual, mediumship and past-life material correctly dropped.
 
 ### retro-saturn (retrogradePlanetSigns/Houses.saturn) — 24 entries checked
 
-All on the right aula-16 heading; Oedipal, sexual-abuse, marriage-to-older-person and past-life material correctly dropped.
+All on the right class notes heading; Oedipal, sexual-abuse, marriage-to-older-person and past-life material correctly dropped.
 
 - retrogradePlanetHouses.saturn.6 — C — "do que no comando" added beyond source; EN adds "others cannot handle" absent from PT.
 
 ### retro-uranus (retrogradePlanetSigns/Houses.uranus) — 21 entries checked
 
-No A/B/C findings. All on the right aula-16 heading; marriage, sexual, abortion, homosexuality and past-life material correctly dropped.
+No A/B/C findings. All on the right class notes heading; marriage, sexual, abortion, homosexuality and past-life material correctly dropped.
 
 ### retro-neptune (retrogradePlanetSigns/Houses.neptune) — 17 entries checked
 
-All on the right aula-16 heading; healing professions, mediumship, sexual and marriage material correctly dropped.
+All on the right class notes heading; healing professions, mediumship, sexual and marriage material correctly dropped.
 
 - retrogradePlanetSigns.neptune.Scorpio — C — support for the last clause sits at lines 4549-4550, outside the cited 4541-4548; extend the range.
 
 ### retro-pluto (retrogradePlanetSigns/Houses.pluto) — 17 entries checked
 
-All on the right aula-16 heading; illness, drugs, sexual nature, child/parent material correctly dropped.
+All on the right class notes heading; illness, drugs, sexual nature, child/parent material correctly dropped.
 
 - retrogradePlanetSigns.pluto.Cancer — C — two claims are supported only at lines 4908-4917, beyond the cited 4887-4898; extend the range.
 
@@ -540,15 +540,15 @@ Pattern: every cell is right. Section headings often sit after the opening parag
 ### Closing notes
 
 Systematic patterns (non-aspect sets):
-- The non-aspect sets are clean on support and cell placement: no wrong-sign/wrong-house/wrong-planet errors were found in dc-signs, vertex, cusps or any retro packet. Run-on aula-9 sentences that switch sign mid-line (e.g. "Gêmeos na casa 7 ... Virgem é mais cautelosa") were split correctly.
+- The non-aspect sets are clean on support and cell placement: no wrong-sign/wrong-house/wrong-planet errors were found in dc-signs, vertex, cusps or any retro packet. Run-on class notes sentences that switch sign mid-line (e.g. "Gêmeos na casa 7 ... Virgem é mais cautelosa") were split correctly.
 - Sensitive source material (illness, sexual and gendered statements, marriage/divorce, past-life biography, abortion, homosexuality, drugs) was consistently left out or softened, matching the house rules.
-- Retro entries (aula-16) run long: typically two sentences but 40-70 words each, often three or four clauses. They stay hedged, but they are longer than "about two short sentences". Not flagged per entry.
+- Retro entries (class notes) run long: typically two sentences but 40-70 words each, often three or four clauses. They stay hedged, but they are longer than "about two short sentences". Not flagged per entry.
 - Several cited ranges stop mid-paragraph, before the line that supports the last clause (retro neptune.Scorpio, pluto.Cancer). Worth a mechanical check across the file: extend each range to the end of the supporting sentence.
 - House-cusp keyword lists are often padded with a third keyword that just repeats the first (e.g. "energia no trabalho | energia", "parcerias livres | liberdade | parcerias"). The padding is supported but adds nothing. Not flagged per entry.
 
 Could not verify / caveats:
 - dc-signs were checked against the rendered PDF page 503 (legible), not the OCR.
-- pointHouses.vertex.9 follows aula-18 faithfully, but that course text itself reads like 3rd-house material (siblings, neighbours). It is a source quirk, not an authoring error.
+- pointHouses.vertex.9 follows class notes faithfully, but that course text itself reads like 3rd-house material (siblings, neighbours). It is a source quirk, not an authoring error.
 
 Systematic patterns (aspectPairs, from the six aspect sub-readers):
 - Wrong cells are rare. The only three found are all sextile entries (jupiter/pluto, saturn/uranus, uranus/pluto). They come from a layout quirk: in the OCR, each sextile section's Virgo/Libra paragraphs are printed before its heading, so a range that ends at the next heading picks up the following pair's text.
@@ -709,7 +709,7 @@ Class claims kept out because of the writing exclusions:
 ## Sun sign x Ascendant (A7, lines 16-576)
 Counts: authored 144 / expected 144
 
-Lines used: `modulo 4/aula 7 modulo 4/aula-7.md` 16-576 (all of it read). Per-entry ranges are in each `src`. The range for the Sagittarius-Sun/Sagittarius-Ascendant row starts on a line it shares with the end of the Scorpio row (line 423); the Scorpio-Sun row there is 420-423.
+Lines used: `class notes` 16-576 (all of it read). Per-entry ranges are in each `src`. The range for the Sagittarius-Sun/Sagittarius-Ascendant row starts on a line it shares with the end of the Scorpio row (line 423); the Scorpio-Sun row there is 420-423.
 
 ### Reading of the structure (what confirms it)
 - Twelve blocks, one per Ascendant, each with twelve rows beginning with a Sun sign in capitals. Headings are in mixed case for Taurus-Libra ("Ascendente EM TOURO"), and the Gemini heading is repeated at line 144 (page break); the second occurrence was treated as the same block.
@@ -766,7 +766,7 @@ None. All four signs have degrees 01-30 present, each exactly once, in order. No
 
 ## Symbolic degrees B (Leo, Virgo, Libra, Scorpio)
 Counts: authored 120 / expected 120
-Source: A11 `modulo 4/aula 11 modulo 4/aula-11.md`, lines 763-1158 (Leão 763-852, Virgem 856-954, Libra 958-1056, Escorpião 1061-1158); intro/reading rule at 324-333 read (degree N = ordinal degree; 18°01'-18°59' is the 19th).
+Source: A11 `class notes`, lines 763-1158 (Leão 763-852, Virgem 856-954, Libra 958-1056, Escorpião 1061-1158); intro/reading rule at 324-333 read (degree N = ordinal degree; 18°01'-18°59' is the 19th).
 ### Gaps
 None. All 120 degrees present; the source gives only images, no interpretive text for any degree, so no hedged meaning sentence was added anywhere.
 ### Inconsistencies and source disagreements
@@ -786,7 +786,7 @@ None. All 120 degrees present; the source gives only images, no interpretive tex
 
 ## Symbolic degrees C (Sagittarius, Capricorn, Aquarius, Pisces) from A11
 Counts: authored 120 / expected 120
-Source: modulo 4/aula 11 modulo 4/aula-11.md, lines 1162-1556 (Sagittarius 1162-1254, Capricorn 1258-1346, Aquarius 1350-1450, Pisces 1454-1556). Intro and reading rule read at 324-340 (18°00' = 18th degree, 18°01'-18°59' = 19th).
+Source: class notes, lines 1162-1556 (Sagittarius 1162-1254, Capricorn 1258-1346, Aquarius 1350-1450, Pisces 1454-1556). Intro and reading rule read at 324-340 (18°00' = 18th degree, 18°01'-18°59' = 19th).
 
 ### Gaps (keys omitted, with reason and lines inspected)
 None. All 120 degrees present in 1162-1556. Lines from 1558 on are personal class notes and were not used.
@@ -882,7 +882,7 @@ None. All 36 decans printed and legible.
 
 Descendant book wording verified against the printed page (PDF p. 503, "Descendente"), since the OCR of that page is garbled; all five book sentences used (Leo, Taurus, Gemini, Virgo, Libra) match the print. Dignity effect words checked against the book's Sun/Moon dignity paragraphs (exaltation "de maneira elevada", exile "menos confortável", fall "desafiada").
 
-- decanConcept: B. "subtom do signo" is not in the cited classes or elsewhere in modulo 4.
+- decanConcept: B. "subtom do signo" is not in the cited classes or elsewhere in the course.
 - houseCuspSigns.6.Cancer: B. "reter o que sente" turns the sheet's bodily "retenção" into emotional holding-in; unsupported.
 
 ### decans (36 entries checked)
@@ -894,14 +894,14 @@ Every decan read against the printed page image (pp. 70, 74, 78, 82, 86, 90, 94,
 
 ### sun-ascendant (144 entries checked)
 
-All 144 Sun/Ascendant cells present. Each citation was mapped by script to its "ASCENDENTE EM" block and Sun row in aula-7; every citation lands in its own cell (the two flagged spans, Virgo.Gemini 141-144 and Sagittarius.Sagittarius 423-424, are a repeated block header and an inline row start, not wrong cells). Every text was then read against its cell. Fidelity/infidelity, marriage and sexuality outcomes are dropped or softened throughout.
+All 144 Sun/Ascendant cells present. Each citation was mapped by script to its "ASCENDENTE EM" block and Sun row in class notes; every citation lands in its own cell (the two flagged spans, Virgo.Gemini 141-144 and Sagittarius.Sagittarius 423-424, are a repeated block header and an inline row start, not wrong cells). Every text was then read against its cell. Fidelity/infidelity, marriage and sexuality outcomes are dropped or softened throughout.
 
-- sunAscendantSigns.Taurus.Pisces: A. First clause comes from the Pisces-Sun row of the Taurus-Ascendant block (aula-7 118-119), i.e. the swapped cell, and names a Taurus Ascendant.
+- sunAscendantSigns.Taurus.Pisces: A. First clause comes from the Pisces-Sun row of the Taurus-Ascendant block (class notes 118-119), i.e. the swapped cell, and names a Taurus Ascendant.
 - sunAscendantSigns.Gemini.Gemini: C. Keyword "comunicação" not in the cell.
 
 ### degrees-1 (120 entries checked: Aries, Taurus, Gemini, Cancer 1-30)
 
-All 360 degree citations across the three degree packets were checked by script against the "<Signo> NN." markers in aula-11: every entry cites its own degree span (degree 30 spans stop before the next sign's header, which is fine), and every source "Ou –" image has an "ou" image in the entry. Each text was then read against its lines. No wrong degree, misattached "ou" image, missing second image or invented detail found in this packet.
+All 360 degree citations across the three degree packets were checked by script against the "<Signo> NN." markers in class notes: every entry cites its own degree span (degree 30 spans stop before the next sign's header, which is fine), and every source "Ou –" image has an "ou" image in the entry. Each text was then read against its lines. No wrong degree, misattached "ou" image, missing second image or invented detail found in this packet.
 
 - symbolicDegrees.Aries.17: C. PT ungrammatical ("mostra um jovem estudante ... passeia").
 - symbolicDegrees.Aries.18: C. PT/EN ungrammatical ("mostra um homem e uma mulher ... apertam as mãos").

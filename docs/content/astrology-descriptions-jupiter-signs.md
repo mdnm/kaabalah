@@ -1,6 +1,6 @@
 # Natal Jupiter in signs: source audit and integration review
 
-Integrated 2026-11-16 from the three four-sign Jupiter JSON/Markdown shards, primary-source audit and material review. This document records final decisions and supersedes draft shard decisions where explicitly resolved below. Primary: `modulo 4/aula 12 modulo 4/aula-12.md`. Supplemental: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are relative to `/Volumes/AKASH/aula kaabalah/`; bounds are exact, one-based and inclusive.
+Integrated 2026-11-16 from the three four-sign Jupiter JSON/Markdown shards, primary-source audit and material review. This document records final decisions and supersedes draft shard decisions where explicitly resolved below. Primary: `class notes`. Supplemental: `reference text`. Paths are relative to the private notes root; bounds are exact, one-based and inclusive.
 
 The primary auditor read 85-110. Shard editors inspected the individual primary and supplemental windows below. The integration agent read the shard files and reviews, verified the corrected Cancer artifact, and applied the listed fixes; it does not claim to have independently reread every source passage. No source reread or editorial decision by an agent is attributed to the user. No Saturn source was loaded. No full family/course/inventory, NOTAS, private readings or web was consulted for this integration.
 
@@ -32,12 +32,12 @@ All twelve entries adopt only their cited primary passage, including keywords. N
 
 ## Validation scope
 
-Generic tests discover all authored canonical planet sets, reject noncanonical authored keys, and check twelve signs, bilingual content/keyword parity, locale selection, missing/inherited keys, nested freezing, audited source bounds and no em dash. A new generic prose-only guard bans “o curso”, “the course”, “foi omitido”, “was omitted”, “não entram na descrição” and “not included in the description” in pt/en. Metadata is deliberately outside this ban so source exclusions remain auditable. Jupiter regressions protect qualifications, OCR omissions, source ambiguity, Cancer exclusions, Gemini consistency, primary tensions and narrow per-sign citations. Tests use committed inline bounds without AKASH. Targeted suite, typecheck, earlier-set value equality and diff check are run and reported in the terminal.
+Generic tests discover all authored canonical planet sets, reject noncanonical authored keys, and check twelve signs, bilingual content/keyword parity, locale selection, missing/inherited keys, nested freezing, audited source bounds and no em dash. A new generic prose-only guard bans “o curso”, “the course”, “foi omitido”, “was omitted”, “não entram na descrição” and “not included in the description” in pt/en. Metadata is deliberately outside this ban so source exclusions remain auditable. Jupiter regressions protect qualifications, OCR omissions, source ambiguity, Cancer exclusions, Gemini consistency, primary tensions and narrow per-sign citations. Tests use committed inline bounds without the private notes. Targeted suite, typecheck, earlier-set value equality and diff check are run and reported in the terminal.
 
 Sun, Moon, Mercury, Venus and Mars entries remain value-identical. Only Jupiter is added. No commit is made.
 
 ## Next factor pointer only
 
-Next exact factor: natal Saturn in signs. Primary navigation: `modulo 4/aula 12 modulo 4/aula-12.md:112-136`. Supplemental navigation: `books/astrologia-hermetica/astrologia-hermetica.md:49071-51810`. The book's Aries body gap must remain explicit; do not fill missing Aries text from generic astrology or treat the family range as pre-approved evidence. These are pointers only: no Saturn source was loaded, drafted or integrated in this work.
+Next exact factor: natal Saturn in signs. Primary navigation: `class notes:112-136`. Supplemental navigation: `reference text:49071-51810`. The book's Aries body gap must remain explicit; do not fill missing Aries text from generic astrology or treat the family range as pre-approved evidence. These are pointers only: no Saturn source was loaded, drafted or integrated in this work.
 
 Final coordinator validation: 88 description tests and npm run typecheck pass; exact cited source hashes match the research manifest, every range is inside eligible teaching, and earlier authored sets are value-identical to HEAD.

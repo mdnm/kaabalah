@@ -32,7 +32,7 @@ Nodes use explicit astronomical north/south roles without hemisphere inversion. 
 
 Mat’s A8 temperament labels, Capricorn feminine/negative convention, opposition=tension, A15 nodal dignity context and distinct Fortune9 realization/learning themes are applied, with disagreements retained. Parent-sex assignments remain unadopted. No pending required editorial decision remains for the implemented scope.
 
-Original PDF books/Astrologia Hermetica.pdf was visually checked: PDF physical pages506/508 for node signs and507/509 for houses (latter printed509/511). SHA25647a85a1b330344cdfc59d684eb573e6ca1035b988263a667b2336e30e0b1a1f5. Images resolve the OCR column order; corresponding Markdown physical fragments stay in src, and PDFpage references stay in notes/audits. Verify original page images before accepting future OCR gaps. Course/PDF remained read-only; no privateNOTAS/client reading was used as entry evidence.
+Original PDF reference text PDF was visually checked: PDF physical pages506/508 for node signs and507/509 for houses (latter printed509/511). SHA25647a85a1b330344cdfc59d684eb573e6ca1035b988263a667b2336e30e0b1a1f5. Images resolve the OCR column order; corresponding Markdown physical fragments stay in src, and PDFpage references stay in notes/audits. Verify original page images before accepting future OCR gaps. Course/PDF remained read-only; no privateNOTAS/private reading was used as entry evidence.
 
 No calculations,index,CLI,numerology,package,tsup,release-version or publication/push changes. Claude’s release6.17.0 work is preserved; own changelog bullets are under Unreleased. The unrelated .DS_Store deletion remains untouched.
 

@@ -4,12 +4,12 @@
 
 Two basic concepts only in `sects.diurnal` / `sects.nocturnal`, adopted exactly from final `/tmp/kaabalah-sect-profiles-approved.json`. Integration read the PASS review and the restored audit ONLY after confirming its heading “Independent source audit: diurnal and nocturnal sect”. The incidentally overwritten audit/review files were not altered by integration.
 
-The independent audit reports actual narrow physical inclusive reads A10:2518-2547 and A17:383-405, also verified by Root. Integration relies on those inspections and did not reopen sources. No whole course, private NOTAS/client readings or wider research.
+The independent audit reports actual narrow physical inclusive reads A10:2518-2547 and A17:383-405, also verified by Root. Integration relies on those inspections and did not reopen sources. No whole course, private NOTAS/private readings or wider research.
 
 | Source | SHA-256 | Adopted clauses |
 | --- | --- | --- |
-| `modulo 4/aula 10 modulo 4/aula-10.md` | `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890` | 2525-2526 |
-| `modulo 4/aula 17 modulo 4/aula-17.md` | `6cbf3c629e855bbfeb659e29b2681a8d8be940e31ef11cb38a83e7d0fbe46238` | 383-384 |
+| `class notes` | `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890` | 2525-2526 |
+| `class notes` | `6cbf3c629e855bbfeb659e29b2681a8d8be940e31ef11cb38a83e7d0fbe46238` | 383-384 |
 
 A10 teachingEnd2999/NOTAS3000 is established in prior source manifests. A17's restored audit records519 physical lines and the bounded383-405 read, but does not give a manifest teachingEnd; integration does not invent one. All adopted A17 lines are the independently audited teaching clauses, not private material.
 

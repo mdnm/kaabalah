@@ -12,7 +12,7 @@ The existing DescriptionPoint union, common entry types, string getters, languag
 
 Root reports reading all adopted clauses and headings before final approval. Integration read supplied audit shards `/tmp/kaabalah-chiron-placements-a.md`, `-b.md` and final review; it did not reopen course or source examples. Authors report bounded account inspection, with the gentler examples limited to adopted Aries280-281 and Pisces288-289 clauses. Raw draft wording/ranges are superseded by the final approved artifact.
 
-Primary: `modulo 4/aula 15 modulo 4/aula-15.md`; teachingEnd798, NOTASstart799; SHA-256 `6086a561dfeb805fea9103d6cd78aec2dcc6fd4fe864581e39af2d39fc1fd1fa`. Supporting artifacts disagree on physical total856 versus857; this nonessential total is not used for eligibility. All adopted clauses are below the verified teaching end. No NOTAS/private client readings, whole-course inspection or book reread; the general concept audit retains the limited book methodology context.
+Primary: `class notes`; teachingEnd798, NOTASstart799; SHA-256 `6086a561dfeb805fea9103d6cd78aec2dcc6fd4fe864581e39af2d39fc1fd1fa`. Supporting artifacts disagree on physical total856 versus857; this nonessential total is not used for eligibility. All adopted clauses are below the verified teaching end. No NOTAS/private readings, whole-course inspection or book reread; the general concept audit retains the limited book methodology context.
 
 | Shared account | Account boundary | Adopted physical inclusive clauses |
 | --- | --- | --- |

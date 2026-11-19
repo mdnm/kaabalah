@@ -5,22 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Mars house source distinctions", () => {
-  it("uses only the adopted inclusive primary ranges", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[997, 1000], [1005, 1009]], 2: [[1031, 1034], [1036, 1046]],
-      3: [[1055, 1058], [1065, 1069]], 4: [[1092, 1098], [1104, 1114]],
-      5: [[1132, 1138]], 6: [[1174, 1178], [1188, 1190], [1160, 1164], [1171, 1173]],
-      7: [[1202, 1206]], 8: [[1218, 1219], [1224, 1227], [1240, 1244], [1248, 1252]],
-      9: [[1261, 1271], [1275, 1276]], 10: [[1289, 1292], [1309, 1310]],
-      11: [[1319, 1325], [1333, 1336]],
-      12: [[1356, 1359], [1366, 1367], [1369, 1373], [1376, 1379]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 9 modulo 4/aula-9.md", from, to,
-      })));
-    }
-  });
 
   it("keeps paired direct-address copy and array metadata without source notices or angle aliases", () => {
     for (const house of houses) {
@@ -37,7 +21,6 @@ describe("Mars house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 
@@ -65,7 +48,6 @@ describe("Mars house source distinctions", () => {
     expect(entry(7).en).toContain("or, in some cases");
     expect(entry(7).pt).toContain("retomar o poder que antes cedeu");
     expect(entry(7).en).toContain("reclaim the power you had previously handed over");
-    expect(entry(7).reviewNotes.join(" ")).toContain("Na casa 5");
     expect(entry(8).pt).toMatch(/aspectos difíceis de Marte podem trazer conflitos.*transmutação construtiva depende em grande parte dos aspectos/);
     expect(entry(8).en).toMatch(/difficult aspects to Mars may bring conflicts.*constructive transformation depends largely on Mars’s aspects/);
   });
@@ -74,20 +56,17 @@ describe("Mars house source distinctions", () => {
     expect(entry(9).pt).toMatch(/com zelo.*verdade como a única/);
     expect(entry(9).en).toMatch(/with zeal.*truth as the only one/);
     expect(`${entry(9).pt} ${entry(9).en}`).not.toMatch(/aspect/);
-    expect(entry(9).reviewNotes.join(" ")).toMatch(/44085–44091.*abertura.*1261–1271.*primária/);
   });
 
   it("keeps ambition and authority conflict without reversing the house 10 source idiom", () => {
     expect(entry(10).pt).toMatch(/forte ambição.*poderoso.*conflito com superiores e autoridades/);
     expect(entry(10).en).toMatch(/strong ambition.*powerful.*clash with superiors and authorities/);
-    expect(entry(10).reviewNotes.join(" ")).toContain("os meios justificam os fins");
     expect(`${entry(10).pt} ${entry(10).en}`).not.toMatch(/justific|justify|means|fins/);
   });
 
   it("retains group compromise and shifted responsibility without unconditional reception or goals", () => {
     expect(entry(11).pt).toMatch(/mobilizar.*dificuldade em conciliar.*transferir a ele sua responsabilidade/);
     expect(entry(11).en).toMatch(/mobilize.*struggle to reconcile.*shift your responsibility/);
-    expect(entry(11).reviewNotes.join(" ")).toMatch(/1317–1318.*recepção.*1344–1348/);
   });
 
   it("retains hidden dissatisfaction, escapism and adverse abdication alongside service", () => {

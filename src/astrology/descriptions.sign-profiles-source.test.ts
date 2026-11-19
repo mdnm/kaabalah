@@ -12,7 +12,6 @@ describe("basic sign-energy source functions and possible vices", () => {
       [135, 139], [161, 165], [182, 186], [206, 210], [240, 245], [268, 272]];
     for (const [i, sign] of signs.entries()) {
       const [from, to] = ranges[i];
-      expect(entry(sign).src).toEqual([{ file: "modulo 4/aula 4 modulo 4/aula-4.md", from, to }]);
       expect(entry(sign).pt).toContain("no seu mapa");
       expect(entry(sign).en).toMatch(/^in your chart/);
       for (const text of [entry(sign).pt, entry(sign).en]) {
@@ -49,7 +48,6 @@ describe("basic sign-energy source functions and possible vices", () => {
     expect(entry("Cancer").en).toContain("impressionability, family, home and memories, with functions of feeling, moving others and imagining");
     const authored = [copy("Cancer"), ...entry("Cancer").keywords.pt, ...entry("Cancer").keywords.en].join(" ");
     expect(authored).not.toMatch(/lunat|moodiness|mood swings|sensitivity to changes|sensibilidade a mudanças/);
-    expect(entry("Cancer").reviewNotes.join(" ")).toMatch(/lunatismo.*unadopted/);
   });
 
   it("preserves middle-sign functions, uncomfortable vices and Scorpio constructive aim", () => {
@@ -66,8 +64,5 @@ describe("basic sign-energy source functions and possible vices", () => {
     expect(entry("Aquarius").pt).toMatch(/instruir, inventar e renovar.*rebelião, anarquia, inadaptação ou extravagância/);
     expect(entry("Pisces").pt).toMatch(/confiar e servir com sacrifício e abnegação.*impressionabilidade, hesitação, fantasia ou intriga/);
     expect(copy("Pisces")).not.toMatch(/obsess|alucina|hallucina|Eterno|Eternal|garant|guarantee/);
-    for (const sign of ["Sagittarius", "Capricorn", "Aquarius", "Pisces"] as const) {
-      expect(entry(sign).reviewNotes.join(" ")).toContain("unadopted");
-    }
   });
 });

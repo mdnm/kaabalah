@@ -1,15 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { getPolarityDescriptionEntry } from "./descriptions";
 
-const a2 = "modulo 4/aula 2 modulo 4/aula-2.md";
-const a11 = "modulo 4/aula 11 modulo 4/aula-11.md";
 const positive = getPolarityDescriptionEntry("positive")!;
 const negative = getPolarityDescriptionEntry("negative")!;
 
 describe("polarity source context and classification boundaries", () => {
   it("uses split generic clauses and labels excluding adjacent sign membership lists", () => {
-    expect(positive.src).toEqual([{ file: a2, from: 98, to: 98 }, { file: a2, from: 100, to: 101 }, { file: a11, from: 195, to: 196 }]);
-    expect(negative.src).toEqual([{ file: a2, from: 104, to: 104 }, { file: a2, from: 107, to: 109 }, { file: a11, from: 191, to: 192 }]);
     expect(positive.pt).toMatch(/ação, à atividade e à vida exterior.*responde aos estímulos e acontecimentos externos/);
     expect(positive.en).toMatch(/action, activity, and outer life.*responding to external stimuli and events/);
     expect(negative.pt).toMatch(/energia receptiva.*vida interior.*acumula impressões e ganha experiências/);
@@ -25,10 +21,6 @@ describe("polarity source context and classification boundaries", () => {
       expect(entry.en).toContain("in symbolic terminology");
       expect(entry.en).toContain("these labels define neither gender nor moral value");
       expect(`${entry.pt} ${entry.en}`).not.toMatch(/Capricórnio|Capricorn|Áries|Aries|Terra|Earth|Fogo|Fire|homens|mulheres|\bmen\b|\bwomen\b|sect|destino|destiny/);
-      expect(entry.reviewNotes.join(" ")).toContain("feminine/negative per A2:104-105 and A11:191-194");
-      expect(entry.reviewNotes.join(" ")).toContain("A18:666-670 calls Capricorn masculine in its Lilith/Priapo context");
-      expect(entry.reviewNotes.join(" ")).not.toMatch(/unresolved|pending/);
-      expect(entry.reviewNotes.join(" ")).toContain("no sign assignment");
     }
   });
 

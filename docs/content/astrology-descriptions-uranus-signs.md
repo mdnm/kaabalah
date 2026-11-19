@@ -1,6 +1,6 @@
 # Uranus in signs: source audit
 
-Scope: Uranus only, all twelve canonical signs. Primary source: `modulo 4/aula 12 modulo 4/aula-12.md`, lines 138–163. The primary course governs; the book contributes only narrow openings actually inspected and cited. Uranus is treated with explicit symbolic/collective framing where appropriate, so slow-planet themes are not presented as certain individual events. No NOTAS, private readings, web, or other course/inventory passages were consulted.
+Scope: Uranus only, all twelve canonical signs. Primary source: `class notes`, lines 138–163. The primary course governs; the book contributes only narrow openings actually inspected and cited. Uranus is treated with explicit symbolic/collective framing where appropriate, so slow-planet themes are not presented as certain individual events. No NOTAS, private readings, web, or other course/inventory passages were consulted.
 
 ## Sign decisions and inspected windows
 

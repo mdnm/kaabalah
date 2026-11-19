@@ -4,8 +4,6 @@ import type { Sign } from "./dignity";
 
 const entry = (sign: Sign) => getAngleSignDescriptionEntry("ic", sign)!;
 const copy = (sign: Sign) => `${entry(sign).pt} ${entry(sign).en}`;
-const a9 = "modulo 4/aula 9 modulo 4/aula-9.md";
-const a10 = "modulo 4/aula 10 modulo 4/aula-10.md";
 
 describe("IC sign direct paragraphs and source qualifiers", () => {
   it("uses adopted IC paragraphs or explicit body bridges with concise direct-address copy", () => {
@@ -17,9 +15,6 @@ describe("IC sign direct paragraphs and source qualifiers", () => {
       Sagittarius: [[1530, 1533]], Capricorn: [[163, 166]], Aquarius: [[656, 658]], Pisces: [[1216, 1218]],
     };
     for (const sign of Object.keys(ranges) as Sign[]) {
-      const file = sign === "Leo" ? "modulo 4/aula 8 modulo 4/aula-8.md"
-        : ["Scorpio", "Capricorn", "Aquarius", "Pisces"].includes(sign) ? a10 : a9;
-      expect(entry(sign).src).toEqual(ranges[sign].map(([from, to]) => ({ file, from, to })));
       expect(entry(sign).pt).toMatch(/você|seu|sua/);
       expect(entry(sign).en).toMatch(/\byou\b|\byour\b/);
       for (const text of [entry(sign).pt, entry(sign).en]) {
@@ -49,7 +44,6 @@ describe("IC sign direct paragraphs and source qualifiers", () => {
     expect(entry("Virgo").pt).toMatch(/autocrítico.*aprimorar a si mesmo.*casa que funcione com eficiência/);
     expect(entry("Virgo").en).toMatch(/self-critical.*improve yourself.*house that functions efficiently/);
     expect(copy("Virgo")).not.toMatch(/base de trabalho|work base|health|saúde/);
-    expect(entry("Virgo").reviewNotes.join(" ")).toMatch(/403.*404/);
   });
 
   it("preserves Leo sometimes-root-search and Cancer feelings not always shown", () => {
@@ -61,8 +55,6 @@ describe("IC sign direct paragraphs and source qualifiers", () => {
   });
 
   it("uses Scorpio closing IC identity and retains defense and vulnerability antecedents", () => {
-    expect(entry("Scorpio").src).toContainEqual({ file: a10, from: 1888, to: 1889 });
-    expect(entry("Scorpio").reviewNotes.join(" ")).toMatch(/1839.*incorrectly.*MC/);
     expect(entry("Scorpio").pt).toMatch(/como defesa contra emoções não resolvidas.*quando se sente mais vulnerável em casa, pode manipular e controlar/);
     expect(entry("Scorpio").en).toMatch(/as a defense against unresolved emotions.*when you feel more vulnerable at home, you may manipulate and control/);
     expect(copy("Scorpio")).not.toMatch(/infância|childhood|trauma|diagnos|regenera/);

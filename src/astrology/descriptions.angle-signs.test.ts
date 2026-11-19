@@ -11,14 +11,6 @@ import type { Sign } from "./dignity";
 const angles: readonly DescriptionAngle[] = ["ascendant", "mc", "dc", "ic"];
 const signs: readonly Sign[] = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
 const authored = angles.filter(angle => Object.prototype.hasOwnProperty.call(ASTROLOGY_DESCRIPTIONS.angleSigns ?? {}, angle));
-const sourceEnds = new Map([
-  ["modulo 4/aula 6 modulo 4/aula-6.md", 602],
-  ["modulo 4/aula 8 modulo 4/aula-8.md", 1521],
-  ["modulo 4/aula 9 modulo 4/aula-9.md", 1833],
-  ["modulo 4/aula 10 modulo 4/aula-10.md", 2999],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-  ["readings/skills/dazy-natal-reading/references/houses.md", 224],
-]);
 
 it("exposes typed chart-angle entries with all four angles authored", () => {
   expectTypeOf(getAngleSignDescriptionEntry).returns.toEqualTypeOf<AngleSignDescriptionEntry | undefined>();
@@ -50,16 +42,6 @@ describe.each(authored)("%s sign descriptions API", angle => {
       expect(Array.isArray(entry.reviewNotes)).toBe(true);
       expect(JSON.stringify(entry)).not.toContain("\u2014");
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
-      expect(entry.src.length).toBeGreaterThan(0);
-      for (const source of entry.src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(sourceEnds.get(source.file), `Unaudited source ${source.file}`).toBeDefined();
-        expect(source.to).toBeLessThanOrEqual(sourceEnds.get(source.file)!);
-      }
     }
   });
 

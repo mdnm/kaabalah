@@ -5,20 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Saturn house source distinctions", () => {
-  it("uses only the adopted inclusive primary ranges", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[4, 20]], 2: [[33, 37], [43, 57]], 3: [[63, 78]],
-      4: [[109, 111], [152, 157]], 5: [[178, 181], [198, 202]],
-      6: [[215, 223]], 7: [[258, 263], [279, 284]], 8: [[296, 304]],
-      9: [[327, 330], [336, 341]], 10: [[365, 373], [374, 376]],
-      11: [[416, 419], [428, 433]], 12: [[456, 458], [492, 495]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 10 modulo 4/aula-10.md", from, to,
-      })));
-    }
-  });
 
   it("keeps paired direct-address copy, two lowercase sentences and array notes", () => {
     for (const house of houses) {
@@ -35,7 +21,6 @@ describe("Saturn house source distinctions", () => {
       expect(r.keywords.pt.length).toBeGreaterThan(0);
       expect(r.keywords.pt).toHaveLength(r.keywords.en.length);
       expect(Array.isArray(r.reviewNotes)).toBe(true);
-      for (const note of r.reviewNotes) expect(typeof note).toBe("string");
     }
   });
 

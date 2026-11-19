@@ -2,16 +2,16 @@
 
 ## Scope and actual sources
 
-Four general chart-angle concepts, using existing DescriptionAngle keys ascendant, mc, dc, ic. Actual primary A11:14-139 was read with original nl -ba one-based physical inclusive numbering; all adopted passages are within manifest teaching boundary 1557. No private notes/client readings or other factor research. The reviewed editorial draft is used unchanged. Prumo final review was read and reports no material issue.
+Four general chart-angle concepts, using existing DescriptionAngle keys ascendant, mc, dc, ic. Actual primary A11:14-139 was read with original nl -ba one-based physical inclusive numbering; all adopted passages are within manifest teaching boundary 1557. No private notes/private readings or other factor research. The reviewed editorial draft is used unchanged. Prumo final review was read and reports no material issue.
 
 ## Adopted primary table
 
 | Angle | Adopted source | Concepts |
 | --- | --- | --- |
-| ascendant | `modulo 4/aula 11 modulo 4/aula-11.md:76-79` | presented face, qualities shown, first contact and what is seen in others |
-| mc | `modulo 4/aula 11 modulo 4/aula-11.md:124-127` | direction, vocations/aspirations/ambitions, social life, reputation, profession/status and public image |
-| dc | `modulo 4/aula 11 modulo 4/aula-11.md:111-116` | other/self relation, qualities sought in others across business/conjugal/friendship relationships |
-| ic | `modulo 4/aula 11 modulo 4/aula-11.md:134-137` | origins, roots, home/childhood and inner life |
+| ascendant | `class notes:76-79` | presented face, qualities shown, first contact and what is seen in others |
+| mc | `class notes:124-127` | direction, vocations/aspirations/ambitions, social life, reputation, profession/status and public image |
+| dc | `class notes:111-116` | other/self relation, qualities sought in others across business/conjugal/friendship relationships |
+| ic | `class notes:134-137` | origins, roots, home/childhood and inner life |
 
 ## Inspected but unadopted primary claims
 
@@ -25,10 +25,10 @@ Integration read Lume’s /tmp/kaabalah-angle-profiles-book-audit.md; it did not
 
 | Angle | Supplemental windows inspected by Lume | Comparison / unused additions |
 | --- | --- | --- |
-| ascendant | `books/astrologia-hermetica/astrologia-hermetica.md:20911-20924`; `books/astrologia-hermetica/astrologia-hermetica.md:20977-20989` | broad first-impression agreement; appearance/style/individuality additions not adopted |
-| dc | `books/astrologia-hermetica/astrologia-hermetica.md:21107-21125`; `books/astrologia-hermetica/astrologia-hermetica.md:21127-21131` | broad relationship agreement; projection/commitment and narrower romantic examples not adopted |
-| mc | `books/astrologia-hermetica/astrologia-hermetica.md:21170-21189`; `books/astrologia-hermetica/astrologia-hermetica.md:21191-21196`; `books/astrologia-hermetica/astrologia-hermetica.md:21198-21204` | public aims/reputation agree; potential success and father/mentor convention not adopted |
-| ic | `books/astrologia-hermetica/astrologia-hermetica.md:21226-21250`; `books/astrologia-hermetica/astrologia-hermetica.md:21252-21258`; `books/astrologia-hermetica/astrologia-hermetica.md:21345-21353`; `books/astrologia-hermetica/astrologia-hermetica.md:21360-21363` | roots/interior agreement; interleaved OCR and protection/security additions not adopted |
+| ascendant | `reference text:20911-20924`; `reference text:20977-20989` | broad first-impression agreement; appearance/style/individuality additions not adopted |
+| dc | `reference text:21107-21125`; `reference text:21127-21131` | broad relationship agreement; projection/commitment and narrower romantic examples not adopted |
+| mc | `reference text:21170-21189`; `reference text:21191-21196`; `reference text:21198-21204` | public aims/reputation agree; potential success and father/mentor convention not adopted |
+| ic | `reference text:21226-21250`; `reference text:21252-21258`; `reference text:21345-21353`; `reference text:21360-21363` | roots/interior agreement; interleaved OCR and protection/security additions not adopted |
 
 The source comparison reports no disagreement affecting adopted copy. The book’s MC father/mentor association is narrower and gendered compared with unspecified primary parent/social context; it is not selected. No missing OCR clauses or column sequence reconstructed by integration.
 

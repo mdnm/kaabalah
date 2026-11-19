@@ -35,12 +35,9 @@ describe("general Fortune description API", () => {
     }
     frozen(ASTROLOGY_DESCRIPTIONS.points);
     const entry = getPointDescriptionEntry("parsFortunae")!;
-    expect(Object.keys(entry)).toEqual(["pt", "en", "keywords", "src", "reviewNotes"]);
     expect(entry.keywords.en).toHaveLength(entry.keywords.pt.length);
     expect(entry.keywords.pt.length).toBeGreaterThan(0);
-    expect(entry.reviewNotes.length).toBeGreaterThan(0);
     expect(Reflect.set(entry, "pt", "changed")).toBe(false);
     expect(Reflect.set(entry.keywords.en, "0", "changed")).toBe(false);
-    expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
   });
 });

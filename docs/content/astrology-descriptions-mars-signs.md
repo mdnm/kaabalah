@@ -1,6 +1,6 @@
 # Natal Mars in signs: source audit and review resolutions
 
-Integrated 2026-11-16 from the three four-sign JSON/Markdown shards, the material source review and the primary-source audit. This document records the final adopted evidence and supersedes draft decisions in those shards. Primary source: `modulo 4/aula 12 modulo 4/aula-12.md`. Supplemental source: `books/astrologia-hermetica/astrologia-hermetica.md`. Paths are relative to `/Volumes/AKASH/aula kaabalah/`; all bounds below are one-based and inclusive.
+Integrated 2026-11-16 from the three four-sign JSON/Markdown shards, the material source review and the primary-source audit. This document records the final adopted evidence and supersedes draft decisions in those shards. Primary source: `class notes`. Supplemental source: `reference text`. Paths are relative to the private notes root; all bounds below are one-based and inclusive.
 
 The primary audit inspected 58-83, including the heading and complete twelve-sign sequence. The original editors inspected their assigned primary passages and the exact book windows listed below. Integration read those artifacts rather than claiming a fresh independent read of every book window. The user additionally confirmed the legibility of Aries 40349-40364 across OCR columns. No next-factor sources were loaded. No private NOTAS, readings, web, English index or generic astrology was used as evidence.
 
@@ -36,10 +36,10 @@ Product copy stays separate from editorial metadata. Entries retain two lowercas
 
 ## Validation scope
 
-The generic suite discovers every authored canonical planet key, rejects noncanonical authored keys and checks twelve signs, bilingual content, locale selection, unsupported/inherited keys, nested freezing, paired keywords, source bounds and no em dash. Mars tests protect the male-emphasis qualifier, independent Capricorn themes, rational restraint, Libra extremes/intuition, OCR omissions and uncertain Virgo recovery, precise citations and external-claim omissions. Tests use inline audited bounds and do not require AKASH. Targeted suite, typecheck, prior-set equality and diff checks are run for integration; results are reported in the terminal.
+The generic suite discovers every authored canonical planet key, rejects noncanonical authored keys and checks twelve signs, bilingual content, locale selection, unsupported/inherited keys, nested freezing, paired keywords, source bounds and no em dash. Mars tests protect the male-emphasis qualifier, independent Capricorn themes, rational restraint, Libra extremes/intuition, OCR omissions and uncertain Virgo recovery, precise citations and external-claim omissions. Tests use inline audited bounds and do not require the private notes. Targeted suite, typecheck, prior-set equality and diff checks are run for integration; results are reported in the terminal.
 
 ## Next factor pointer only
 
-Next exact factor: natal Jupiter in signs. Primary navigation: `modulo 4/aula 12 modulo 4/aula-12.md:85-110`. Supplemental book navigation: `books/astrologia-hermetica/astrologia-hermetica.md:44451-47795`. These are pointers for later narrow passage selection, not pre-approved evidence. No Jupiter passage was loaded, synthesized or added during this Mars integration.
+Next exact factor: natal Jupiter in signs. Primary navigation: `class notes:85-110`. Supplemental book navigation: `reference text:44451-47795`. These are pointers for later narrow passage selection, not pre-approved evidence. No Jupiter passage was loaded, synthesized or added during this Mars integration.
 
 Final coordinator validation: 68 description tests and npm run typecheck pass; exact cited source hashes match the research manifest, every range is inside eligible teaching, and earlier authored sets are value-identical to HEAD.

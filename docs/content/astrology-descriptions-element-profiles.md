@@ -8,13 +8,13 @@ Only the four existing canonical element records are revised. No rows, keys, get
 
 ## Source inspection and integrity
 
-Root reports actual narrow reads A8:796-813, A2:132-157 and A3:64-79. Integration read the supplied label audit and review, relying on those inspections; it did not reopen the course or private material. No NOTAS/private client readings or optional book were used.
+Root reports actual narrow reads A8:796-813, A2:132-157 and A3:64-79. Integration read the supplied label audit and review, relying on those inspections; it did not reopen the course or private material. No NOTAS/private readings or optional book were used.
 
 | Source | Teaching end | SHA-256 |
 | --- | --- | --- |
-| `modulo 4/aula 2 modulo 4/aula-2.md` | 161 | `6fe09a5840ab95c60ab7f2583167f7c7bc3ca6388405d752d6593f20c5f414bb` |
-| `modulo 4/aula 3 modulo 4/aula-3.md` | 782 | `3570d3bdf5981d166aab61559990daef4cc02ca53b41daa700e5a24aa0f5584b` |
-| `modulo 4/aula 8 modulo 4/aula-8.md` | 1521 | `0624fc0034969c135280cae339e33826a7b9fb91aa8bdd874836094d5c31bf97` |
+| `class notes` | 161 | `6fe09a5840ab95c60ab7f2583167f7c7bc3ca6388405d752d6593f20c5f414bb` |
+| `class notes` | 782 | `3570d3bdf5981d166aab61559990daef4cc02ca53b41daa700e5a24aa0f5584b` |
+| `class notes` | 1521 | `0624fc0034969c135280cae339e33826a7b9fb91aa8bdd874836094d5c31bf97` |
 
 A8 manifest records 1577 physical lines, teaching through 1521 and NOTAS from 1522. All citations use one-based inclusive physical lines inside teaching bounds. A3:81-102 Ascendant-specific material remains unadopted.
 
@@ -22,10 +22,10 @@ A8 manifest records 1577 physical lines, teaching through 1521 and NOTAS from 15
 
 | Element | Adopted citations |
 | --- | --- |
-| fire | `modulo 4/aula 2 modulo 4/aula-2.md:134-137`; `modulo 4/aula 3 modulo 4/aula-3.md:70-72`; `modulo 4/aula 8 modulo 4/aula-8.md:811-811`; `modulo 4/aula 8 modulo 4/aula-8.md:813-813` |
-| earth | `modulo 4/aula 2 modulo 4/aula-2.md:140-143`; `modulo 4/aula 3 modulo 4/aula-3.md:70-73`; `modulo 4/aula 8 modulo 4/aula-8.md:803-804` |
-| air | `modulo 4/aula 2 modulo 4/aula-2.md:148-149`; `modulo 4/aula 3 modulo 4/aula-3.md:74-74`; `modulo 4/aula 8 modulo 4/aula-8.md:808-809` |
-| water | `modulo 4/aula 2 modulo 4/aula-2.md:154-155`; `modulo 4/aula 3 modulo 4/aula-3.md:75-75`; `modulo 4/aula 8 modulo 4/aula-8.md:805-807` |
+| fire | `class notes:134-137`; `class notes:70-72`; `class notes:811-811`; `class notes:813-813` |
+| earth | `class notes:140-143`; `class notes:70-73`; `class notes:803-804` |
+| air | `class notes:148-149`; `class notes:74-74`; `class notes:808-809` |
+| water | `class notes:154-155`; `class notes:75-75`; `class notes:805-807` |
 
 Fire's start metaphor cites 811 alone; the new label cites 813 precisely, excluding 812. Air expands its A8 citation to 808-809 for the label; earth uses 804 and water 807 within their retained ranges. Citations sharing a line with bodily claims do not adopt those claims.
 

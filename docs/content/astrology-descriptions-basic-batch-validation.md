@@ -23,7 +23,7 @@ Together with288 previously completed natal rows, this supplies332 bilingual ent
 - Description-only tests in a single fork worker:387 passed,0failed,0pending; actual exit0.
 - `npm run build` and `npm run typecheck`: actual exit0.
 - CJS and ESM public package checks: all332 exact JSON rows, language selection, metadata and explicit unknown/unsupported gaps passed. Deep immutability checked by colocated kind tests and placement package checks.
-- Provenance audit: every cited inclusive range across332 entries is inside its manifest teaching boundary. All13 cited source SHA256 hashes match the inventory manifest. No private NOTAS or client readings are entry sources.
+- Provenance audit: every cited inclusive range across332 entries is inside its manifest teaching boundary. All13 cited source SHA256 hashes match the inventory manifest. No private NOTAS or private readings are entry sources.
 - The aspect-kind addition preserves323 earlier rows in values and bytes. Every basic kind has its own source audit and source/API tests.
 - Public documentation changes stay within the bilingual-description section. Existing calculations, CLI, package version, exports and unrelated work are preserved.
 

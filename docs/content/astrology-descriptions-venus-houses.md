@@ -1,6 +1,6 @@
 # Venus in houses: source audit
 
-Scope: natal Venus in houses 1–12 only. Primary A9: `modulo 4/aula 9 modulo 4/aula-9.md`. Supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. All final body and keyword claims are primary-only; no book claim is adopted. All ranges are physical one-based inclusive lines, course-relative.
+Scope: natal Venus in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. All final body and keyword claims are primary-only; no book claim is adopted. All ranges are physical one-based inclusive lines, course-relative.
 
 ## Actual inspected and adopted windows
 
@@ -35,7 +35,7 @@ Book attribution: A1/2 columns interleave; A3/4 body mixes house identifiers und
 
 ## Product boundaries and detailed metadata
 
-Taurus/Libra house/cusp/angle passages remain separate from Venus-house placement; no automatic alias or MC/IC equivalence is inferred. Named examples, clinical/therapy claims, prescribed practices, universal parental histories and promised health/relationship/financial/career outcomes are excluded. Source/editorial/omission notices remain only in metadata. Conditional/possessive direct address is allowed; every language has two lowercase-start sentences. No NOTAS/private clients, web, whole inventory, old dataset content or next-factor source was consulted.
+Taurus/Libra house/cusp/angle passages remain separate from Venus-house placement; no automatic alias or MC/IC equivalence is inferred. Named examples, clinical/therapy claims, prescribed practices, universal parental histories and promised health/relationship/financial/career outcomes are excluded. Source/editorial/omission notices remain only in metadata. Conditional/possessive direct address is allowed; every language has two lowercase-start sentences. No NOTAS/private readings, web, whole inventory, old dataset content or next-factor source was consulted.
 
 ### House 1
 

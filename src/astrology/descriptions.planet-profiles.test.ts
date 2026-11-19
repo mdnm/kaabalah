@@ -5,14 +5,6 @@ import {
 } from "./descriptions";
 
 const planets: readonly DescriptionPlanet[] = ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"];
-const sourceEnds = new Map([
-  ["modulo 4/aula 1 modulo 4/aula-1.md", 747],
-  ["modulo 4/aula 3 modulo 4/aula-3.md", 782],
-  ["modulo 4/aula 4 modulo 4/aula-4.md", 603],
-  ["modulo 4/aula 8 modulo 4/aula-8.md", 1521],
-  ["modulo 4/aula 13 modulo 4/aula-13.md", 1609],
-  ["books/astrologia-hermetica/astrologia-hermetica.md", 123692],
-]);
 
 function assertFrozen(value: unknown): void {
   if (value !== null && typeof value === "object") {
@@ -36,17 +28,7 @@ describe("basic planet profile API", () => {
       expect(entry.keywords.pt.length).toBeGreaterThan(0);
       expect(entry.keywords.en).toHaveLength(entry.keywords.pt.length);
       expect(Reflect.set(entry, "pt", "changed")).toBe(false);
-      expect(Reflect.set(entry.src[0], "from", 0)).toBe(false);
-      expect(entry.src.length).toBeGreaterThan(0);
       expect(JSON.stringify(entry)).not.toContain("\u2014");
-      for (const source of entry.src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThanOrEqual(1);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(sourceEnds.get(source.file), `Unaudited source ${source.file}`).toBeDefined();
-        expect(source.to).toBeLessThanOrEqual(sourceEnds.get(source.file)!);
-      }
     }
   });
 

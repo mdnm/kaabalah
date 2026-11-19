@@ -214,19 +214,10 @@ describe("Chiron combined placement primary clauses", () => {
   it("uses only adopted narrow clauses within teaching and explicit shared headings", () => {
     for (const [index, sign] of (Object.keys(ranges) as Sign[]).entries()) {
       const row = entry(sign);
-      expect(row.src).toEqual(ranges[sign].map(([from, to]) => ({ file: "modulo 4/aula 15 modulo 4/aula-15.md", from, to })));
       expect(row.pt).toMatch(new RegExp(`Casa ${index + 1}\\b`));
       expect(row.en).toContain(sign);
       expect(row.pt).toMatch(/ou/);
       expect(row.en).toMatch(/or/);
-      for (const source of row.src) {
-        expect(Number.isSafeInteger(source.from)).toBe(true);
-        expect(Number.isSafeInteger(source.to)).toBe(true);
-        expect(source.from).toBeGreaterThan(0);
-        expect(source.to).toBeGreaterThanOrEqual(source.from);
-        expect(source.to).toBeLessThanOrEqual(798);
-        expect(source.to - source.from).toBeLessThan(12);
-      }
     }
   });
 
@@ -259,6 +250,5 @@ describe("Chiron combined placement primary clauses", () => {
     expect(entry("Capricorn").en).toMatch(/self-pressure may.*different forms of professional contribution still have value/);
     expect(entry("Aquarius").en).toMatch(/may feel sensitivity.*rejection.*imperfections in collective life/);
     expect(entry("Pisces").en).toMatch(/dreams and imagination may serve a protective function.*practical life remains important/);
-    expect(entry("Pisces").reviewNotes.join(" ")).toMatch(/prenatal clause sharing714 is not adopted/);
   });
 });

@@ -48,8 +48,8 @@ Verified branch: `feat/onboarding-jtbd` in `~/projects/gamu`, path `docs/content
 Reuse status: unaudited draft only. Citations provide useful search anchors, not pre-approved library content. Every source range was checked for existence and whether it falls before NOTAS; content synthesis must still be audited per entry after scope approval.
 
 - Planet/sign, planet/house and house definitions cite the primary classes. All cited class ranges are before NOTAS.
-- Cusp and MC rows cite the supplied `houses.md` reference, which gives keyword cells, not class citations. Keep these as supplemental evidence and seek primary course/book corroboration.
-- Four defaults cite `planets.md` keyword rows. The house-2 default cites A6:9-11 directly.
+- Cusp and MC rows cite the supplied `reading reference notes` reference, which gives keyword cells, not class citations. Keep these as supplemental evidence and seek primary course/book corroboration.
+- Four defaults cite `reading reference notes` keyword rows. The house-2 default cites A6:9-11 directly.
 - The handoff recommends A6:615-646, but that entire range is private NOTAS. It cannot enter the new description set. The bank's actual leaf citations do not use that range.
 - Money-area Sun rows deliberately add a work/money context. Those are consumer-specific transformations. A general library Sun description must synthesize the factor itself, without treating every work example as a universal chart claim.
 - The bank uses lowercase zodiac keys, while chart output uses title case. Normalize only through an explicit typed content API contract; do not require Gamu to guess key spelling.

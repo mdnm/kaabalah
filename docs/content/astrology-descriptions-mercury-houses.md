@@ -1,6 +1,6 @@
 # Mercury in houses: source audit
 
-Scope: natal Mercury in houses 1–12 only. Primary A9: `modulo 4/aula 9 modulo 4/aula-9.md`. Supplemental B: `books/astrologia-hermetica/astrologia-hermetica.md`. All adopted body/keyword claims are primary-only; no supplemental book claim is adopted. All ranges below are one-based physical lines, inclusive and course-relative.
+Scope: natal Mercury in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. All adopted body/keyword claims are primary-only; no supplemental book claim is adopted. All ranges below are one-based physical lines, inclusive and course-relative.
 
 ## Inspected versus adopted windows
 
@@ -35,7 +35,7 @@ A audit records a broader shared inspection 35793–35818 than the narrower adop
 
 ## Boundaries and detailed metadata
 
-Gemini/Virgo cusp, house and angle passages remain distinct from Mercury-house placement; no automatic alias or MC/IC inference is introduced. Named examples, psychiatric diagnoses, healing promises, health/relationship/family/financial/career guarantees and prescribed practices are excluded. Sources and omission notices remain in metadata, not prose. Every language has two lowercase-start sentences; conditional and possessive direct address is allowed, so the first word need not always be você/you. Source-supported keywords need not repeat the body verbatim. No NOTAS/client readings, web, whole inventory, next factor or old description content was consulted.
+Gemini/Virgo cusp, house and angle passages remain distinct from Mercury-house placement; no automatic alias or MC/IC inference is introduced. Named examples, psychiatric diagnoses, healing promises, health/relationship/family/financial/career guarantees and prescribed practices are excluded. Sources and omission notices remain in metadata, not prose. Every language has two lowercase-start sentences; conditional and possessive direct address is allowed, so the first word need not always be você/you. Source-supported keywords need not repeat the body verbatim. No NOTAS/private readings, web, whole inventory, next factor or old description content was consulted.
 
 ### House 1
 

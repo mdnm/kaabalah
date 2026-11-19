@@ -10,7 +10,7 @@ Eight canonical records in `retrogradePlanets`: mercury, venus, mars, jupiter, s
 
 Integration read final JSON, independent audit and final review. The audit reports actual bounded personality/karma spans and following headings, excluding glyph/symbol and subsequent phase/sign material. Root reviewed adopted clauses and applied the Neptune refinement. Integration did not reopen course/book or read private material.
 
-Course: `modulo 4/aula 16 modulo 4/aula-16.md`; SHA-256 `81f244d1c82f1d1d8d2132c74d51cf3b1e1612fd65f285af45ad57ae5488c078`; physical5304 lines, teachingEnd5271, NOTAS5272. Supplemental book: `books/astrologia-hermetica/astrologia-hermetica.md`; SHA-256 `4bb23fbbba09fd9dc3db3392add9afbcd4da3703fb94a7bec1574f5527fdbab2`,123692 lines. No whole-course/book, NOTAS/private clients or wider research.
+Course: `class notes`; SHA-256 `81f244d1c82f1d1d8d2132c74d51cf3b1e1612fd65f285af45ad57ae5488c078`; physical5304 lines, teachingEnd5271, NOTAS5272. Supplemental book: `reference text`; SHA-256 `4bb23fbbba09fd9dc3db3392add9afbcd4da3703fb94a7bec1574f5527fdbab2`,123692 lines. No whole-course/book, NOTAS/private readings or wider research.
 
 | Planet | Adopted physical inclusive A16 clauses |
 | --- | --- |

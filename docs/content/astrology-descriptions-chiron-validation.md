@@ -8,7 +8,7 @@ Validated2026-11-16 against main09ff826 plus the shared-placement kind. Chiron s
 
 All descriptions remain imported JSON with deeply frozen readonly entries, English default and case-sensitive pt-prefix selection. Unknown/prototype names and invalid houses, including numeric strings/fractions/nonfinite values, return undefined. No general-profile fallback or chart calculation is introduced.
 
-Primary A15:122-218 supplies the concept;345-746 supplies the12 explicitly combined accounts, with selected gentler clauses280-281 and288-289. All citations are precise inclusive physical lines before teachingEnd798/NOTAS799. The supplemental book5756-5774 is a bounded software-output critique with nearby transit context, not a contrary natal profile. No private notes or client readings are sources. Clinical claims, fixed childhood/family events, guaranteed healing/outcomes, ages and practices are not imported into reusable profiles; the per-kind audits retain the chosen themes and qualifications.
+Primary A15:122-218 supplies the concept;345-746 supplies the12 explicitly combined accounts, with selected gentler clauses280-281 and288-289. All citations are precise inclusive physical lines before teachingEnd798/NOTAS799. The supplemental book5756-5774 is a bounded software-output critique with nearby transit context, not a contrary natal profile. No private notes or private readings are sources. Clinical claims, fixed childhood/family events, guaranteed healing/outcomes, ages and practices are not imported into reusable profiles; the per-kind audits retain the chosen themes and qualifications.
 
 ## Validation
 

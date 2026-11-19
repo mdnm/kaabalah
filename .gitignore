@@ -16,6 +16,9 @@
 
 .tgz
 
+# private editorial provenance for src/astrology/descriptions.json (never published)
+provenance/
+
 .astro
 docs/dist
 docs/node_modules

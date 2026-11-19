@@ -3,16 +3,6 @@ import { getPointDescriptionEntry } from "./descriptions";
 
 const entry = getPointDescriptionEntry("chiron")!;
 describe("Chiron general concept source qualifications", () => {
-  it("cites only the adopted primary clauses inside the teaching boundary", () => {
-    expect(entry.src).toEqual([[132, 136], [145, 147], [152, 152]].map(([from, to]) => ({ file: "modulo 4/aula 15 modulo 4/aula-15.md", from, to })));
-    for (const source of entry.src) {
-      expect(Number.isSafeInteger(source.from)).toBe(true);
-      expect(Number.isSafeInteger(source.to)).toBe(true);
-      expect(source.from).toBeGreaterThan(0);
-      expect(source.to).toBeGreaterThanOrEqual(source.from);
-      expect(source.to).toBeLessThanOrEqual(798);
-    }
-  });
 
   it("preserves symbolic own vulnerability, possible understanding and inevitable human imperfection", () => {
     expect(entry.pt).toMatch(/imagem simbólica do curador ferido.*própria vulnerabilidade pode ajudar a compreender a dor alheia/);
@@ -35,11 +25,4 @@ describe("Chiron general concept source qualifications", () => {
     }
   });
 
-  it("records supplemental methodology and Pluto context without importing pair profiles", () => {
-    const notes = entry.reviewNotes.join(" ");
-    expect(notes).toMatch(/methodological context.*no adopted personality wording/);
-    expect(notes).toMatch(/A15:207-216.*Pluto.*without generating an unapproved planet-pair interpretation/);
-    expect(notes).toMatch(/myth is context.*not a fixed biography/);
-    expect(notes).toContain("without a prescribed sequence or promised healing");
-  });
 });

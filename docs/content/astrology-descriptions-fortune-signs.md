@@ -4,7 +4,7 @@
 
 Twelve Fortune-sign profiles only, nested under canonical point key `parsFortunae` and Title Case `Sign` keys. The final root-approved `/tmp/kaabalah-fortune-signs-approved.json` is adopted unchanged, including the corrected Capricorn review note. Raw A/B drafts are not used as copy authority.
 
-Integration read the supplied A/B source-audit shards and final review. Root reports actual primary inspection of A10:2775-2823 and all cited table sign-manner clauses. Integration did not reopen the course, NOTAS or private client readings. Source: `modulo 4/aula 10 modulo 4/aula-10.md`; manifest teaching end 2999, NOTAS start 3000; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`.
+Integration read the supplied A/B source-audit shards and final review. Root reports actual primary inspection of A10:2775-2823 and all cited table sign-manner clauses. Integration did not reopen the course, NOTAS or private readings. Source: `class notes`; manifest teaching end 2999, NOTAS start 3000; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`.
 
 The table context at 2822-2823 and headings at 2824-2830 distinguish HOUSE as field of experience from SIGN as manner. Only point-sign prose and unambiguous sign-manner clauses are adopted; no house-field claims are transferred or generic planetary/sign keywords mechanically blended.
 

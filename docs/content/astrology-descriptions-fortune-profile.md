@@ -4,7 +4,7 @@
 
 One general natal point description, keyed by canonical chart node `parsFortunae`. No sign or house profiles. Integration adopts `/tmp/kaabalah-fortune-profile-approved.json` unchanged after the root's planetary-relations clarification, with the primary audit and review supplied alongside it. No raw draft is used.
 
-The primary audit records actual read-only inspection of `modulo 4/aula 10 modulo 4/aula-10.md` at physical inclusive lines 2459-2468 and 2516-2578. Integration relies on that audit and does not reopen the course. Teaching ends at 2999; private notes begin at 3000. Recorded SHA-256: `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. No NOTAS or private client readings were consulted.
+The primary audit records actual read-only inspection of `class notes` at physical inclusive lines 2459-2468 and 2516-2578. Integration relies on that audit and does not reopen the course. Teaching ends at 2999; private notes begin at 3000. Recorded SHA-256: `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. No NOTAS or private readings were consulted.
 
 | Adopted range | Meaning |
 | --- | --- |

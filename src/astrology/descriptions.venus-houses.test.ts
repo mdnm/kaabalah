@@ -5,21 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Venus house source distinctions", () => {
-  it("uses exactly the adopted physical primary ranges without book provenance", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[656, 659], [663, 665]], 2: [[678, 684]], 3: [[697, 700]],
-      4: [[718, 722]], 5: [[746, 747], [758, 761]],
-      6: [[782, 788], [792, 794]], 7: [[805, 810], [813, 815]],
-      8: [[832, 833], [842, 843]], 9: [[854, 860], [864, 866]],
-      10: [[888, 888], [894, 896]], 11: [[919, 922], [926, 927], [932, 935]],
-      12: [[953, 960], [967, 967]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 9 modulo 4/aula-9.md", from, to,
-      })));
-    }
-  });
 
   it("keeps paired bilingual copy with two lowercase sentences and no source notices or cusp aliases", () => {
     for (const house of houses) {
@@ -68,7 +53,6 @@ describe("Venus house source distinctions", () => {
     expect(entry(7).pt).toMatch(/depender do olhar de outra pessoa.*só se sentir completo quando está em uma relação.*desapontamento e crítica/);
     expect(entry(7).en).toMatch(/depend on another person’s view.*feel complete only when you are in a relationship.*disappointment and criticism/);
     expect(`${entry(7).pt} ${entry(7).en}`).not.toMatch(/Saturno|Saturn|Plutão|Pluto|trabalho duro|hard work|mais feliz|happier/);
-    expect(entry(7).reviewNotes.join(" ")).toMatch(/Saturno\/Plutão.*816–817/);
   });
 
   it("keeps separate conditions for divine expectations, desired work harmony and reciprocal group influence", () => {

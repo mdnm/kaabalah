@@ -1,6 +1,6 @@
-# Astrology description inventory: module 4 classes 8 to 15
+# Astrology description inventory: middle class notes
 
-Phase 1 only. Read on 2026-11-16. No descriptions drafted. All citations below are relative to `/Volumes/AKASH/aula kaabalah/`. `aN:L-L` expands to `modulo 4/aula N modulo 4/aula-N.md:L-L`. Only handout material before `NOTAS` supports coverage. The source folder was read only. No client readings were opened.
+Phase 1 only. Read on 2026-11-16. No descriptions drafted. All citations below are relative to the private notes root. `aN:L-L` expands to `class notes:L-L`. Only handout material before `NOTAS` supports coverage. The source folder was read only. No private readings were opened.
 
 ## Reading ledger
 

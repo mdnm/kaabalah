@@ -4,21 +4,21 @@
 
 Nine canonical AspectName keys, verified against aspects.ts and DEFAULT_ASPECT_SPECS: conjunction 0, duodecile 30, octile 45, sextile 60, square 90, trine 120, trioctile 135, quincunx 150, opposition 180. This is a lookup namespace only: AspectName is imported type-only, with no runtime aspect/swisseph dependency added to descriptions.ts and no calculation change. No aspect-pair, synastry, timing or specialist grid.
 
-Integration uses only root’s final approved JSON. Actual adopted A11/A13 narrow clauses were read with original nl -ba one-based physical inclusive numbering. Authors report additional inspected windows below; these are not falsely claimed as integration reads. All cited A11/A13 ranges lie within manifest teaching bounds 1557/1609. No private notes/client readings or optional book used.
+Integration uses only root’s final approved JSON. Actual adopted A11/A13 narrow clauses were read with original nl -ba one-based physical inclusive numbering. Authors report additional inspected windows below; these are not falsely claimed as integration reads. All cited A11/A13 ranges lie within manifest teaching bounds 1557/1609. No private notes/private readings or optional book used.
 
 ## Adopted source table
 
 | Key | Adopted citations |
 | --- | --- |
-| conjunction | `modulo 4/aula 11 modulo 4/aula-11.md:154-159` |
-| duodecile | `modulo 4/aula 13 modulo 4/aula-13.md:561-561`; `modulo 4/aula 13 modulo 4/aula-13.md:598-598`; `modulo 4/aula 13 modulo 4/aula-13.md:625-631` |
-| octile | `modulo 4/aula 13 modulo 4/aula-13.md:764-764`; `modulo 4/aula 13 modulo 4/aula-13.md:769-776`; `modulo 4/aula 13 modulo 4/aula-13.md:788-797` |
-| sextile | `modulo 4/aula 11 modulo 4/aula-11.md:161-164`; `modulo 4/aula 13 modulo 4/aula-13.md:928-930`; `modulo 4/aula 13 modulo 4/aula-13.md:938-939`; `modulo 4/aula 13 modulo 4/aula-13.md:942-943` |
-| square | `modulo 4/aula 11 modulo 4/aula-11.md:200-206`; `modulo 4/aula 11 modulo 4/aula-11.md:209-210` |
-| trine | `modulo 4/aula 11 modulo 4/aula-11.md:259-265` |
-| trioctile | `modulo 4/aula 13 modulo 4/aula-13.md:1376-1376`; `modulo 4/aula 13 modulo 4/aula-13.md:1394-1396` |
-| quincunx | `modulo 4/aula 13 modulo 4/aula-13.md:1434-1435`; `modulo 4/aula 13 modulo 4/aula-13.md:1452-1454`; `modulo 4/aula 13 modulo 4/aula-13.md:1563-1563` |
-| opposition | `modulo 4/aula 13 modulo 4/aula-13.md:405-406`; `modulo 4/aula 11 modulo 4/aula-11.md:287-290`; `modulo 4/aula 13 modulo 4/aula-13.md:1566-1566` |
+| conjunction | `class notes:154-159` |
+| duodecile | `class notes:561-561`; `class notes:598-598`; `class notes:625-631` |
+| octile | `class notes:764-764`; `class notes:769-776`; `class notes:788-797` |
+| sextile | `class notes:161-164`; `class notes:928-930`; `class notes:938-939`; `class notes:942-943` |
+| square | `class notes:200-206`; `class notes:209-210` |
+| trine | `class notes:259-265` |
+| trioctile | `class notes:1376-1376`; `class notes:1394-1396` |
+| quincunx | `class notes:1434-1435`; `class notes:1452-1454`; `class notes:1563-1563` |
+| opposition | `class notes:405-406`; `class notes:287-290`; `class notes:1566-1566` |
 
 ## Qualifications and root adjudications
 

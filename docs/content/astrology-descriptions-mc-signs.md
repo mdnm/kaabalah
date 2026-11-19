@@ -2,24 +2,24 @@
 
 ## Scope and provenance
 
-Twelve standalone chart.houses.mc sign descriptions; MC is not automatically numbered cusp 10. Actual assigned primary sections were inspected by source workers with original nl -ba physical inclusive numbering. Integration rechecked every adopted primary range and the two adopted book windows from the actual files. Paths below are course-relative. No private notes, client readings, parental convention or childhood biography is used.
+Twelve standalone chart.houses.mc sign descriptions; MC is not automatically numbered cusp 10. Actual assigned primary sections were inspected by source workers with original nl -ba physical inclusive numbering. Integration rechecked every adopted primary range and the two adopted book windows from the actual files. Paths below are course-relative. No private notes, private readings, parental convention or childhood biography is used.
 
 ## Inspected sections and adopted citations
 
 | Sign | Complete primary section inspected | Adopted citations |
 | --- | --- | --- |
-| Aries | `modulo 4/aula 9 modulo 4/aula-9.md:1287-1313` | `modulo 4/aula 9 modulo 4/aula-9.md:1289-1292`; `modulo 4/aula 9 modulo 4/aula-9.md:1311-1312` |
-| Taurus | `modulo 4/aula 9 modulo 4/aula-9.md:884-915` | `modulo 4/aula 9 modulo 4/aula-9.md:904-906` |
-| Gemini | `modulo 4/aula 9 modulo 4/aula-9.md:540-561` | `books/astrologia-hermetica/astrologia-hermetica.md:66825-66845` |
-| Cancer | `modulo 4/aula 9 modulo 4/aula-9.md:208-232` | `modulo 4/aula 9 modulo 4/aula-9.md:210-213`; `modulo 4/aula 9 modulo 4/aula-9.md:226-231`; `modulo 4/aula 9 modulo 4/aula-9.md:232-232` |
-| Leo | `modulo 4/aula 8 modulo 4/aula-8.md:1384-1422` | `modulo 4/aula 8 modulo 4/aula-8.md:1386-1394`; `modulo 4/aula 8 modulo 4/aula-8.md:1405-1409`; `modulo 4/aula 8 modulo 4/aula-8.md:1421-1422` |
-| Virgo | `modulo 4/aula 9 modulo 4/aula-9.md:540-561` | `modulo 4/aula 9 modulo 4/aula-9.md:540-540`; `modulo 4/aula 9 modulo 4/aula-9.md:559-561`; `books/astrologia-hermetica/astrologia-hermetica.md:66874-66878` |
-| Libra | `modulo 4/aula 9 modulo 4/aula-9.md:884-915` | `modulo 4/aula 9 modulo 4/aula-9.md:909-915` |
-| Scorpio | `modulo 4/aula 10 modulo 4/aula-10.md:2245-2302` | `modulo 4/aula 10 modulo 4/aula-10.md:2283-2289`; `modulo 4/aula 10 modulo 4/aula-10.md:2302-2302` |
-| Sagittarius | `modulo 4/aula 9 modulo 4/aula-9.md:1731-1761` | `modulo 4/aula 9 modulo 4/aula-9.md:1738-1739`; `modulo 4/aula 9 modulo 4/aula-9.md:1742-1745`; `modulo 4/aula 9 modulo 4/aula-9.md:1760-1761` |
-| Capricorn | `modulo 4/aula 10 modulo 4/aula-10.md:363-409` | `modulo 4/aula 10 modulo 4/aula-10.md:366-371`; `modulo 4/aula 10 modulo 4/aula-10.md:407-409` |
-| Aquarius | `modulo 4/aula 10 modulo 4/aula-10.md:857-898` | `modulo 4/aula 10 modulo 4/aula-10.md:896-898` |
-| Pisces | `modulo 4/aula 10 modulo 4/aula-10.md:1527-1570` | `modulo 4/aula 10 modulo 4/aula-10.md:1527-1527`; `modulo 4/aula 10 modulo 4/aula-10.md:1545-1546` |
+| Aries | `class notes:1287-1313` | `class notes:1289-1292`; `class notes:1311-1312` |
+| Taurus | `class notes:884-915` | `class notes:904-906` |
+| Gemini | `class notes:540-561` | `reference text:66825-66845` |
+| Cancer | `class notes:208-232` | `class notes:210-213`; `class notes:226-231`; `class notes:232-232` |
+| Leo | `class notes:1384-1422` | `class notes:1386-1394`; `class notes:1405-1409`; `class notes:1421-1422` |
+| Virgo | `class notes:540-561` | `class notes:540-540`; `class notes:559-561`; `reference text:66874-66878` |
+| Libra | `class notes:884-915` | `class notes:909-915` |
+| Scorpio | `class notes:2245-2302` | `class notes:2283-2289`; `class notes:2302-2302` |
+| Sagittarius | `class notes:1731-1761` | `class notes:1738-1739`; `class notes:1742-1745`; `class notes:1760-1761` |
+| Capricorn | `class notes:363-409` | `class notes:366-371`; `class notes:407-409` |
+| Aquarius | `class notes:857-898` | `class notes:896-898` |
+| Pisces | `class notes:1527-1570` | `class notes:1527-1527`; `class notes:1545-1546` |
 
 ## Bridges and adjudications
 
@@ -92,27 +92,27 @@ Gemini has an explicit in-body MC/sign marker despite alternating Sagittarius-co
 
 ### Sagittarius
 
-- modulo 4/aula 9 modulo 4/aula-9.md:1731-1761 inspected in full. Body 1760-1761 explicitly compares Sagittarius on the MC or contained in house 10 with Jupiter in that position. This teaching bridge, not a mechanical planet-house transplant or cusp alias, permits the adopted career themes at 1738-1739 and 1742-1745.
+- class notes:1731-1761 inspected in full. Body 1760-1761 explicitly compares Sagittarius on the MC or contained in house 10 with Jupiter in that position. This teaching bridge, not a mechanical planet-house transplant or cusp alias, permits the adopted career themes at 1738-1739 and 1742-1745.
 - The bridge begins in physical line 1760 after a preceding maternal/childhood statement; only its Sagittarius/MC clause is adopted. Parental material at 1753-1760 is unadopted. Fame worship at 1739, named occupations and travel at 1740-1742, historical examples at 1746-1752 and career-success framing are unadopted; no guaranteed recognition or outcome.
 - No supplemental book passage inspected or adopted. No class/book comparison is asserted. Standalone chart.houses.mc remains distinct from numbered cusps and from Jupiter placements.
-- modulo 4/aula 9 modulo 4/aula-9.md:1744-1745 qualifies working better with authority and room to act, not a preference for authority; both languages preserve this distinction.
+- class notes:1744-1745 qualifies working better with authority and room to act, not a preference for authority; both languages preserve this distinction.
 
 ### Capricorn
 
-- modulo 4/aula 10 modulo 4/aula-10.md:363-409 inspected in full. Body 407 explicitly compares Saturn in house 10 with Capricorn on the MC, and 407-409 directly includes either planet or sign in organization/administration. Adopted 366-371 for public image, recognition and judgment of strict social values. Normally and exceptions at 369 are respected through may/pode rather than a universal rule.
+- class notes:363-409 inspected in full. Body 407 explicitly compares Saturn in house 10 with Capricorn on the MC, and 407-409 directly includes either planet or sign in organization/administration. Adopted 366-371 for public image, recognition and judgment of strict social values. Normally and exceptions at 369 are respected through may/pode rather than a universal rule.
 - Aspect-qualified career realization at 374-375 and delays/obstacles when Saturn is badly aspected at 376 are not adopted; no aspect condition is silently converted into a property of Capricorn MC. Exploitation, rise/fall and historical crime examples at 377-397 are unadopted. All maternal/childhood material at 398-406 is unadopted. No success guarantee, parental-gender convention or invented favorable compensation.
 - No supplemental book passage inspected or adopted. No class/book comparison is asserted. The explicit teaching similarity does not equate chart.houses.mc with numbered cusp 10.
 
 ### Aquarius
 
-- modulo 4/aula 10 modulo 4/aula-10.md:857-898 inspected in full. Body 896 first compares Uranus in house 10 with Aquarius in that position, then explicitly says Aquarius on the MC at 896-898. Only this standalone sign paragraph is adopted. The professional need is expressed as a tendency to seek suitable work, not an instruction or promised social benefit.
-- Planet-house discussion at 859-881, including original/progressive contribution, politics, changes of job, disruptions and named/client examples, is inspected but unadopted. Maternal/childhood claims at 882-895 are entirely unadopted. No negative behavior is invented to balance the narrower standalone sign paragraph.
+- class notes:857-898 inspected in full. Body 896 first compares Uranus in house 10 with Aquarius in that position, then explicitly says Aquarius on the MC at 896-898. Only this standalone sign paragraph is adopted. The professional need is expressed as a tendency to seek suitable work, not an instruction or promised social benefit.
+- Planet-house discussion at 859-881, including original/progressive contribution, politics, changes of job, disruptions and named examples, is inspected but unadopted. Maternal/childhood claims at 882-895 are entirely unadopted. No negative behavior is invented to balance the narrower standalone sign paragraph.
 - No supplemental book passage inspected or adopted. No class/book comparison is asserted. No automatic house/cusp alias or generic Aquarius personality profile.
 
 ### Pisces
 
-- modulo 4/aula 10 modulo 4/aula-10.md:1527-1570 inspected in full. The heading at 1527 explicitly pairs Neptune in house 10 with Pisces on the MC. This is a header-only source bridge: unlike Sagittarius, Capricorn and Aquarius, no separate Pisces-specific body paragraph is present in the assigned window. Adopted only the limited career uncertainty and some-person dissatisfaction claims at 1545-1546, with may/pode retaining possibility and avoiding universal attribution.
-- The OCR word contusão at modulo 4/aula 10 modulo 4/aula-10.md:1545 is not reconstructed as a clinical or psychological claim; the separate readable incerteza supports uncertainty. Public idealization, sacrifice/redemption and historical examples at 1529-1543, occupation/healing list at 1543-1544, underpayment/corruption/client account and forced career loss at 1547-1554 are unadopted. All parental/childhood material at 1555-1570 is unadopted.
+- class notes:1527-1570 inspected in full. The heading at 1527 explicitly pairs Neptune in house 10 with Pisces on the MC. This is a header-only source bridge: unlike Sagittarius, Capricorn and Aquarius, no separate Pisces-specific body paragraph is present in the assigned window. Adopted only the limited career uncertainty and some-person dissatisfaction claims at 1545-1546, with may/pode retaining possibility and avoiding universal attribution.
+- The OCR word contusão at class notes:1545 is not reconstructed as a clinical or psychological claim; the separate readable incerteza supports uncertainty. Public idealization, sacrifice/redemption and historical examples at 1529-1543, occupation/healing list at 1543-1544, underpayment/corruption/private account and forced career loss at 1547-1554 are unadopted. All parental/childhood material at 1555-1570 is unadopted.
 - No supplemental book passage inspected or adopted. No class/book comparison is asserted. Header-only bridge strength is disclosed for root review; this does not identify MC with cusp 10 or license a generic Neptune/Pisces blend.
 
 ## Review status and integration boundary

@@ -5,21 +5,6 @@ const entry = (house: DescriptionHouseNumber) => getPlanetHouseDescriptionEntry(
 const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNumber[];
 
 describe("Moon house source distinctions", () => {
-  it("uses exactly the adopted primary ranges, including physical lines 57 and 181–183", () => {
-    const ranges: Record<DescriptionHouseNumber, readonly (readonly [number, number])[]> = {
-      1: [[4, 8], [15, 22]], 2: [[29, 35], [36, 40]],
-      3: [[43, 51], [52, 57]], 4: [[69, 76]], 5: [[97, 102]],
-      6: [[117, 119], [134, 138]], 7: [[144, 145], [156, 158]],
-      8: [[166, 170], [181, 183]], 9: [[188, 192], [193, 197]],
-      10: [[211, 215], [230, 231]], 11: [[235, 238], [253, 254]],
-      12: [[260, 264], [280, 283]],
-    };
-    for (const house of houses) {
-      expect(entry(house).src).toEqual(ranges[house].map(([from, to]) => ({
-        file: "modulo 4/aula 9 modulo 4/aula-9.md", from, to,
-      })));
-    }
-  });
 
   it("keeps lowercase sentences without source notices or angle/cusp inferences", () => {
     for (const house of houses) {
