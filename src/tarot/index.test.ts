@@ -140,7 +140,7 @@ describe("tarot archetype resolver", () => {
       },
       assetPath: "major/01_the_magician",
       imageUrl:
-        "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/major/01_the_magician.jpg"
+        "https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/major/01_the_magician.jpg"
     });
     expect(mythicMajor?.archetype?.pathSlug).toBe("aleph");
 
@@ -150,7 +150,7 @@ describe("tarot archetype resolver", () => {
         "rider-waite"
       )
     ).toBe(
-      "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/02_the_high_priestess.jpg"
+      "https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/02_the_high_priestess.jpg"
     );
   });
 
@@ -173,10 +173,10 @@ describe("tarot archetype resolver", () => {
       },
       assetPath: "minor/swords/10_swords",
       imageUrl:
-        "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/minor/swords/10_swords.jpg"
+        "https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/minor/swords/10_swords.jpg"
     });
     expect(resolveTarotImageUrl({ tarotCardNumber: 55 }, "mythic")).toBe(
-      "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/minor/swords/10_swords.jpg"
+      "https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/minor/swords/10_swords.jpg"
     );
   });
 
@@ -199,13 +199,13 @@ describe("tarot archetype resolver", () => {
       },
       assetPath: "daat+royalship/wands/king_wands",
       imageUrl:
-        "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/daat+royalship/wands/king_wands.jpg"
+        "https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/daat+royalship/wands/king_wands.jpg"
     });
     expect(court?.archetype).toBeUndefined();
     expect(
       resolveTarotImageUrl({ tarotArkAnnuId: id(TarotTypes.TAROT_ARK_ANNU, "King of Wands") }, "mythic")
     ).toBe(
-      "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/daat+royalship/wands/king_wands.jpg"
+      "https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/daat+royalship/wands/king_wands.jpg"
     );
   });
 
@@ -215,7 +215,7 @@ describe("tarot archetype resolver", () => {
     expect(
       resolveTarotImageUrl({ tarotCardName: "Page of Cups" }, "egyptian")
     ).toBe(
-      "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/egyptian/daat+royalship/cups/page_cups.jpg"
+      "https://d1u8antvu60ox0.cloudfront.net/tarot/egyptian/daat+royalship/cups/page_cups.jpg"
     );
   });
 

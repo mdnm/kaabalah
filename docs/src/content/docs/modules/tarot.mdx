@@ -97,8 +97,8 @@ type TarotCard = {
 | 27–36, 41–50, 55–64, 69–78 | `minor` | Pip cards (Ace–10 per suit) |
 
 <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-end; margin: 1rem 0 0.5rem;">
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/minor/wands/ace_wands.jpg" alt="Ace of Wands" width="100" style="border-radius: 8px;" />
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/daat+royalship/wands/king_wands.jpg" alt="King of Wands" width="100" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/minor/wands/ace_wands.jpg" alt="Ace of Wands" width="100" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/daat+royalship/wands/king_wands.jpg" alt="King of Wands" width="100" style="border-radius: 8px;" />
 </div>
 
 ### `majorArcana`
@@ -111,11 +111,11 @@ import { majorArcana } from 'kaabalah/tarot';
 ```
 
 <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0;">
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician" width="120" style="border-radius: 8px;" />
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/02_the_high_priestess.jpg" alt="The High Priestess" width="120" style="border-radius: 8px;" />
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/05_the_hierophant.jpg" alt="The Hierophant" width="120" style="border-radius: 8px;" />
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/10_the_wheel_of_fortune.jpg" alt="Wheel of Fortune" width="120" style="border-radius: 8px;" />
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/09_the_hermit.jpg" alt="The Hermit" width="120" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician" width="120" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/02_the_high_priestess.jpg" alt="The High Priestess" width="120" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/05_the_hierophant.jpg" alt="The Hierophant" width="120" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/10_the_wheel_of_fortune.jpg" alt="Wheel of Fortune" width="120" style="border-radius: 8px;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/09_the_hermit.jpg" alt="The Hermit" width="120" style="border-radius: 8px;" />
 </div>
 
 ---
@@ -429,7 +429,7 @@ type TarotCorrespondenceProfile =
 ### `TAROT_IMAGE_BASE_URL`
 
 ```typescript
-const TAROT_IMAGE_BASE_URL = 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot';
+const TAROT_IMAGE_BASE_URL = 'https://d1u8antvu60ox0.cloudfront.net/tarot';
 ```
 
 Image URLs follow the pattern:
@@ -445,11 +445,11 @@ Where `assetPath` is:
 For example, resolving The Magician from the Rider-Waite deck:
 
 ```
-https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg
+https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/01_the_magician.jpg
 ```
 
 <div style="display: flex; align-items: flex-start; gap: 1.25rem; margin: 1rem 0;">
-  <img src="https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician — Rider-Waite" width="100" style="border-radius: 8px; flex-shrink: 0;" />
+  <img src="https://d1u8antvu60ox0.cloudfront.net/tarot/rider-waite/major/01_the_magician.jpg" alt="The Magician — Rider-Waite" width="100" style="border-radius: 8px; flex-shrink: 0;" />
   <p style="margin: 0; font-size: 0.9rem; color: inherit;">The Magician (<code>01_the_magician</code>) from the Rider-Waite deck. The URL is assembled from <code>TAROT_IMAGE_BASE_URL + "/" + deckId + "/major/" + tarotCardFilename + ".jpg"</code>.</p>
 </div>
 
@@ -471,7 +471,7 @@ const reps = getTarotRepresentations({ tarotCardNumber: 1 });
 //     archetype: TarotArchetype | undefined,   // populated for major arcana
 //     deck: { id: 'papus_pt', label: 'Papus Kaabalistic' },
 //     assetPath: 'major/01_the_magician',
-//     imageUrl: 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/papus_pt/major/01_the_magician.jpg',
+//     imageUrl: 'https://d1u8antvu60ox0.cloudfront.net/tarot/papus_pt/major/01_the_magician.jpg',
 //     label: 'The Magician - Papus Kaabalistic',
 //     altText: 'The Magician - Papus Kaabalistic',
 //     cardLabel: 'The Magician',
@@ -531,7 +531,7 @@ Convenience shorthand that returns just the image URL string for a card + deck c
 import { resolveTarotImageUrl } from 'kaabalah/tarot';
 
 const url = resolveTarotImageUrl({ tarotCardFilename: '01_the_magician' }, 'mythic');
-// 'https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot/mythic/major/01_the_magician.jpg'
+// 'https://d1u8antvu60ox0.cloudfront.net/tarot/mythic/major/01_the_magician.jpg'
 ```
 
 ---

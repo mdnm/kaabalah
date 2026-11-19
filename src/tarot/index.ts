@@ -246,7 +246,7 @@ export interface TarotRepresentation {
 }
 
 export const TAROT_IMAGE_BASE_URL =
-  "https://kaabalah-app.s3.us-east-1.amazonaws.com/tarot";
+  "https://d1u8antvu60ox0.cloudfront.net/tarot";
 
 type TarotMajorCard = TarotCard & {
   type: "major";
