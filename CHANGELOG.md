@@ -2,6 +2,41 @@
 
 ## Unreleased
 
+## 6.21.0 - 2026-11-19
+
+- The Tree of Life birth map is weighted. Every marker from
+  `buildKaabalisticMapData` carries a `weight` (table exported as
+  `KAABALISTIC_MARKER_WEIGHTS`): Sun, Moon and Ascendant 5, Mercury, Venus and
+  Mars 4, Jupiter, Saturn and MC 2, other points 1; Kaabalistic Life Path 5,
+  day 4, month 3, year 2; gematria synthesis 4, individuality and personality
+  3, letters 1 each and at most 3 per path. The map gains `rawWeightsById`,
+  `weightsById` (percentage points, with astrology 50, numerology 30 and
+  gematria 20 as system shares, rebalanced when a system is absent),
+  `rankedSpheres` and `rankedPaths`. `countsById` is unchanged in meaning but
+  now includes the two new layers below.
+- Two new astrology layers on the map. `decan-sphere`: a body also lights the
+  sphere of its decan (cardinal Chokhmah, Binah, Chesed; fixed Geburah,
+  Tiphareth, Chesed; mutable Hod, Yesod, Malkuth) at half its placement
+  weight. `aspect-sphere`: each aspect lights one sphere (conjunction Kether
+  through opposition Malkuth, none for Tiphareth), weighted by how tight it is
+  and by the two bodies involved, and capped at 5 per sphere.
+- Add `kaabalah/semantic` chart readings in English and Portuguese:
+  `buildHouseQuests` ("Persistent quest for identity", one per house from the
+  sign on its cusp), `buildLightningPath` and `buildSerpentPath` (the eleven
+  sphere carriers read by sign, Kether to Malkuth and back), with their tables
+  and `HOUSE_SPHERES`.
+- Add `kaabalah/astrology` planetary condition: `getDispositors` (chains,
+  final dispositors and loops, with `TRADITIONAL_RULERS` or `MODERN_RULERS`),
+  `getMutualReceptions` (domicile, exaltation and mixed),
+  `getPlanetSectStatus`, `PLANETARY_JOYS` and `isInJoy`, `getStationStatus`
+  (a speed-based approximation), and `getPlanetaryCondition(chart)`, which
+  returns all of it per body.
+- Add Jyotish divisional charts and Jaimini helpers: `getVarga` and
+  `getVargaChart` for the sixteen Parashari vargas (D1 to D60), and
+  `getKarakamsha` / `getSvamsa`, `housesFromKarakamsha`, `getRasiDrishti`,
+  `getRasiDrishtiOnSign`, `getYogakarakas` and `getParivartana`. All are pure
+  arithmetic on longitudes in the frame the caller chooses.
+
 ## 6.20.1 - 2026-11-19
 
 - Tarot card images come from the CloudFront distribution
