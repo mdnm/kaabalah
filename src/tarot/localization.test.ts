@@ -35,6 +35,34 @@ describe("Portuguese tarot content", () => {
     }
   });
 
+  it("gives every Ark Annu Portuguese keywords that match the English list one to one", () => {
+    const majors = Object.values(TAROT_ARKANNUS_DATA).filter(node => node.type === "major");
+    expect(majors).toHaveLength(22);
+    for (const node of majors) {
+      expect(node.keywords?.length).toBeGreaterThan(0);
+      expect(node.keywordsPt).toHaveLength(node.keywords!.length);
+      for (const keyword of node.keywordsPt!) {
+        expect(keyword.trim()).toBeTruthy();
+        expect(keyword).not.toContain(String.fromCharCode(0x2014));
+      }
+    }
+    for (const card of RAW_ARKANNUS.slice(0, 22)) {
+      const lookup = { tarotCardFilename: card.tarotCardFilename };
+      const en = getTarotCardProfile(lookup)!;
+      const pt = getTarotCardProfile(lookup, "pt-BR")!;
+      expect(pt.keywords).toHaveLength(en.keywords!.length);
+      expect(pt.keywords).not.toEqual(en.keywords);
+      expect(getTarotCardProfile(lookup, "pt")!.keywords).toEqual(pt.keywords);
+      expect(getTarotCardProfile(lookup, "fr")!.keywords).toEqual(en.keywords);
+    }
+    const magician = { tarotCardNumber: 1 };
+    expect(getTarotCardProfile(magician)!.keywords).toContain("co-creation");
+    expect(getTarotCardProfile(magician, "pt-BR")!.keywords).toContain("cocriação");
+    expect(getTarotCardProfile({ tarotCardNumber: 21 }, "pt-BR")!.keywords).toContain("pontes de conhecimento");
+    const minor = RAW_ARKANNUS.find(card => !card.tarotCardFilename.match(/^\d\d_/))!;
+    expect(getTarotCardProfile({ tarotCardFilename: minor.tarotCardFilename }, "pt-BR")!.keywords).toBeUndefined();
+  });
+
   it("localizes all lookup forms and representations without poisoning the English cache", () => {
     for (const card of RAW_ARKANNUS) {
       const lookup = { tarotCardFilename: card.tarotCardFilename };

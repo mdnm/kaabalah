@@ -146,6 +146,12 @@ export interface TarotCardProfile {
   tarotCardName: string;
   tarotCardFilename: string;
   tarotMeaning?: string;
+  /**
+   * Keywords of a major Ark Annu (absent for minor and court cards). English by
+   * default; `getTarotCardProfile(lookup, "pt")` returns the Portuguese list, item
+   * for item in the same order.
+   */
+  keywords?: readonly string[];
   kind: TarotCardKind;
   assetPathType: TarotAssetPathType;
   suit?: string;
@@ -267,6 +273,7 @@ type TarotCardProfileCache = {
   byTarotCardName: Map<string, TarotCardProfile>;
   byTarotCardFilename: Map<string, TarotCardProfile>;
   byTarotCardNumber: Map<number, TarotCardProfile>;
+  keywordsPtByArkAnnuId: Map<string, readonly string[]>;
 };
 
 let tarotArchetypeCache: TarotArchetypeCache | undefined;
@@ -746,6 +753,8 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
   });
   const availableDeckIds = TAROT_DECK_METADATA.map((deck) => deck.id);
 
+  const keywordsPtByArkAnnuId = new Map<string, readonly string[]>();
+
   const profiles = ARKANNUS.map((card) => {
     const tarotArkAnnuId = id(TarotTypes.TAROT_ARK_ANNU, card.tarotCard);
     const tarotArkAnnu = tree.getNode(tarotArkAnnuId);
@@ -755,6 +764,10 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
     }
 
     const descriptionsByDeck = buildDescriptionsByDeck(tarotArkAnnu, card);
+    const keywords = tarotArkAnnu.data?.keywords;
+    if (tarotArkAnnu.data?.keywordsPt) {
+      keywordsPtByArkAnnuId.set(String(tarotArkAnnuId), tarotArkAnnu.data.keywordsPt);
+    }
 
     return {
       tarotArkAnnuId,
@@ -764,6 +777,7 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
       tarotMeaning:
         descriptionsByDeck.papus_pt?.meaning ??
         card.meaning,
+      ...(keywords ? { keywords } : {}),
       kind: toTarotCardKind(card),
       assetPathType: toTarotAssetPathType(card),
       suit: card.suit,
@@ -792,7 +806,8 @@ function getTarotCardProfileCache(): TarotCardProfileCache {
     ),
     byTarotCardNumber: new Map(
       profiles.map((profile) => [profile.tarotCardNumber, profile])
-    )
+    ),
+    keywordsPtByArkAnnuId
   };
 
   return tarotCardProfileCache;
@@ -899,10 +914,14 @@ export function getTarotCardProfile(
       };
     }
   }
+  const keywordsPt = getTarotCardProfileCache().keywordsPtByArkAnnuId.get(
+    String(profile.tarotArkAnnuId),
+  );
   return {
     ...profile,
     tarotCardName: row.pt.PAPUS_KAABALISTIC.name,
     tarotMeaning: row.pt.PAPUS_KAABALISTIC.meaning,
+    ...(keywordsPt ? { keywords: keywordsPt } : {}),
     descriptionsByDeck,
   };
 }

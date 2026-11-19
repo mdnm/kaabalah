@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## 6.23.0 - 2026-11-19
+
+- Add Portuguese (pt-BR) keywords for the 22 Ark Annus, item for item with the
+  English ones. `TAROT_ARKANNUS_DATA.<CARD>.keywordsPt` sits next to `keywords`
+  (the English list and the existing shape are unchanged), and
+  `getTarotCardProfile(lookup, language)` now returns `keywords` in that
+  language (English by default, Portuguese for `pt`/`pt-BR`). `TarotCardProfile`
+  gains an optional `keywords` field, present for the major Ark Annus only.
+
 ## 6.22.1 - 2026-11-19
 
 - **Changes results for some dates.** The personal month is now the month
