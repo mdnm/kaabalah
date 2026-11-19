@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+
 import { defineConfig } from "tsup";
 import type { Plugin } from "esbuild";
 
@@ -24,6 +26,39 @@ const stubNodeGlueInEsm: Plugin = {
       contents: "export default undefined;",
       loader: "js",
     }));
+  },
+};
+
+/**
+ * The authored description rows keep editorial provenance (`src`: file and line ranges into the
+ * maintainer's private course and reading folders; `reviewNotes`: review comments). That data stays
+ * in src/astrology/descriptions.json for the maintainer but must never ship, so the bundled copy is
+ * stripped here. Published entries expose `src: []` and `reviewNotes: []` (see descriptions.ts).
+ */
+const PRIVATE_PROVENANCE_KEYS = new Set(["src", "reviewNotes"]);
+
+function stripProvenance(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(stripProvenance);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([key]) => !PRIVATE_PROVENANCE_KEYS.has(key))
+        .map(([key, child]) => [key, stripProvenance(child)]),
+    );
+  }
+  return value;
+}
+
+const stripDescriptionProvenance: Plugin = {
+  name: "kaabalah-strip-description-provenance",
+  setup(build) {
+    build.onLoad({ filter: /src[\\/]astrology[\\/]descriptions\.json$/ }, async (args) => {
+      const stripped = JSON.stringify(stripProvenance(JSON.parse(await readFile(args.path, "utf8"))));
+      if (/readings[\\/]skills|modulo \d+[\\/ ]aula/.test(stripped)) {
+        throw new Error("descriptions.json still carries private provenance paths after stripping");
+      }
+      return { contents: stripped, loader: "json" };
+    });
   },
 };
 
@@ -56,7 +91,7 @@ export default defineConfig([
     publicDir: "wasm/build",
     sourcemap: true,
     clean: true,
-    esbuildPlugins: [stubNodeGlueInEsm],
+    esbuildPlugins: [stubNodeGlueInEsm, stripDescriptionProvenance],
     esbuildOptions(options) {
       options.logOverride = { ...options.logOverride, ...logOverride };
     },
@@ -70,6 +105,7 @@ export default defineConfig([
     loader: { ".wasm": "file" },
     sourcemap: true,
     clean: false,
+    esbuildPlugins: [stripDescriptionProvenance],
     esbuildOptions(options) {
       options.logOverride = { ...options.logOverride, ...logOverride };
     },

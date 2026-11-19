@@ -105,6 +105,9 @@ npx kaabalah numerology:timeline 1990-01-15 --from=2026-01-01 --to=2027-01-01 --
 npx kaabalah astrology 1990-01-15 14:30 --lat=40.71 --lon=-74 --json
 npx kaabalah astrology 1990-01-15 --quality=untimed --lat=40.71 --lon=-74 --json --compact --fields=status,moonDayRange
 npx kaabalah astrology:jyotish 1990-01-15 14:30 --lat=40.71 --lon=-74 --frame=lahiri --as-of=2026-03-01 --json --compact --fields=activeDasha
+npx kaabalah astrology:condition 1990-01-15 14:30 --lat=40.71 --lon=-74 --json --compact --fields=finalDispositors,mutualReceptions
+npx kaabalah astrology:varga 1990-01-15 14:30 --lat=40.71 --lon=-74 --division=9 --json --compact --fields=vargas,karakamsha
+npx kaabalah tree:map 1990-01-15 14:30 --lat=40.71 --lon=-74 --name="Ana Maria Silva" --json --compact --fields=rankedSpheres
 npx kaabalah astrology:collection --manifest=people.json --json --compact --fields=summary
 npx kaabalah capabilities --json --compact
 npx kaabalah astrology:wheel 1990-01-15 14:30 --lat=40.71 --lon=-74 --json --compact --fields=svg

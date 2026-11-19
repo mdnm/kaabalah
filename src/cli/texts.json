@@ -3094,5 +3094,149 @@
   "Keys for the kind, in order (for example: mars Leo; 2 Taurus; trine sun moon; 18.5)": {
     "en": "Keys for the kind, in order (for example: mars Leo; 2 Taurus; trine sun moon; 18.5)",
     "pt": "Chaves do tipo, em ordem (por exemplo: mars Leo; 2 Taurus; trine sun moon; 18.5)"
+  },
+  "Planetary condition of a natal chart: sign, house, dispositor chain, dignities, sect, joy, station and receptions per body, plus final dispositors, loops and mutual receptions": {
+    "en": "Planetary condition of a natal chart: sign, house, dispositor chain, dignities, sect, joy, station and receptions per body, plus final dispositors, loops and mutual receptions",
+    "pt": "Condição planetária de um mapa natal: signo, casa, cadeia de dispositores, dignidades, seita, alegria, estação e recepções por corpo, mais dispositores finais, ciclos e recepções mútuas"
+  },
+  "Sign to ruler table for the traditional or the modern rulership scheme (no birth data needed)": {
+    "en": "Sign to ruler table for the traditional or the modern rulership scheme (no birth data needed)",
+    "pt": "Tabela de signo e regente no esquema de regências tradicional ou moderno (sem dados de nascimento)"
+  },
+  "Jyotish divisional charts (vargas) on tropical longitudes with the lagna; for D9 also the Karakamsha and the houses counted from it": {
+    "en": "Jyotish divisional charts (vargas) on tropical longitudes with the lagna; for D9 also the Karakamsha and the houses counted from it",
+    "pt": "Mapas divisionais jyotish (vargas) em longitudes tropicais com o lagna; no D9 também o Karakamsha e as casas contadas a partir dele"
+  },
+  "Yogakaraka planets (rulers of a kendra and a trikona) for an ascendant sign, given directly or taken from a birth chart": {
+    "en": "Yogakaraka planets (rulers of a kendra and a trikona) for an ascendant sign, given directly or taken from a birth chart",
+    "pt": "Planetas yogakaraka (regentes de um kendra e de um trikona) para um signo ascendente, informado direto ou tirado de um mapa natal"
+  },
+  "Natal birth date in YYYY-MM-DD format (not needed with --ascendant)": {
+    "en": "Natal birth date in YYYY-MM-DD format (not needed with --ascendant)",
+    "pt": "Data natal no formato YYYY-MM-DD (dispensável com --ascendant)"
+  },
+  "Rulership scheme: traditional (seven visible planets) or modern (Pluto, Uranus and Neptune rule Scorpio, Aquarius and Pisces)": {
+    "en": "Rulership scheme: traditional (seven visible planets) or modern (Pluto, Uranus and Neptune rule Scorpio, Aquarius and Pisces)",
+    "pt": "Esquema de regências: traditional (sete planetas visíveis) ou modern (Plutão, Urano e Netuno regem Escorpião, Aquário e Peixes)"
+  },
+  "Division: 1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60, or all for all sixteen": {
+    "en": "Division: 1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60, or all for all sixteen",
+    "pt": "Divisão: 1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60, ou all para as dezesseis"
+  },
+  "Chara karaka scheme for the Karakamsha: 7 or 8": {
+    "en": "Chara karaka scheme for the Karakamsha: 7 or 8",
+    "pt": "Esquema de chara karakas para o Karakamsha: 7 ou 8"
+  },
+  "Ascendant sign (Aries to Pisces); skips the birth chart": {
+    "en": "Ascendant sign (Aries to Pisces); skips the birth chart",
+    "pt": "Signo ascendente (de Aries a Pisces); dispensa o mapa natal"
+  },
+  "Weighted Tree of Life birth map: ranked spheres and paths with their markers (astrology needs a birth time and place; numerology and gematria always run)": {
+    "en": "Weighted Tree of Life birth map: ranked spheres and paths with their markers (astrology needs a birth time and place; numerology and gematria always run)",
+    "pt": "Mapa de nascimento ponderado da Árvore da Vida: esferas e caminhos ordenados com seus marcadores (a astrologia exige hora e local de nascimento; numerologia e gematria sempre rodam)"
+  },
+  "Birth time in HH:MM format; without it the map uses numerology and gematria only": {
+    "en": "Birth time in HH:MM format; without it the map uses numerology and gematria only",
+    "pt": "Hora de nascimento no formato HH:MM; sem ela o mapa usa só numerologia e gematria"
+  },
+  "Full name for the gematria layer (without it gematria is skipped)": {
+    "en": "Full name for the gematria layer (without it gematria is skipped)",
+    "pt": "Nome completo para a camada de gematria (sem ele a gematria é pulada)"
+  },
+  "House quests, Lightning Path and Serpent Path of a natal chart, with the sphere each house touches": {
+    "en": "House quests, Lightning Path and Serpent Path of a natal chart, with the sphere each house touches",
+    "pt": "Missões das casas, Caminho do Raio e Caminho da Serpente de um mapa natal, com a esfera que cada casa toca"
+  },
+  "\nPlanetary condition (rulers {0}, {1} chart)\n": {
+    "en": "\nPlanetary condition (rulers {0}, {1} chart)\n",
+    "pt": "\nCondição planetária (regências {0}, mapa {1})\n"
+  },
+  "  {0} {1} House {2} -> {3} ({4})": {
+    "en": "  {0} {1} House {2} -> {3} ({4})",
+    "pt": "  {0} {1} Casa {2} -> {3} ({4})"
+  },
+  "\n  Final dispositors: {0}": {
+    "en": "\n  Final dispositors: {0}",
+    "pt": "\n  Dispositores finais: {0}"
+  },
+  "  Mutual receptions: {0}": {
+    "en": "  Mutual receptions: {0}",
+    "pt": "  Recepções mútuas: {0}"
+  },
+  "\nSign rulers ({0})\n": {
+    "en": "\nSign rulers ({0})\n",
+    "pt": "\nRegentes dos signos ({0})\n"
+  },
+  "\nD{0} {1} (tropical longitudes)\n": {
+    "en": "\nD{0} {1} (tropical longitudes)\n",
+    "pt": "\nD{0} {1} (longitudes tropicais)\n"
+  },
+  "  {0} {1} House {2}": {
+    "en": "  {0} {1} House {2}",
+    "pt": "  {0} {1} Casa {2}"
+  },
+  "\n  Karakamsha: {0} (Atmakaraka {1})": {
+    "en": "\n  Karakamsha: {0} (Atmakaraka {1})",
+    "pt": "\n  Karakamsha: {0} (Atmakaraka {1})"
+  },
+  "Usage: kaabalah astrology:yogakarakas --ascendant=<sign> or <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>": {
+    "en": "Usage: kaabalah astrology:yogakarakas --ascendant=<sign> or <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>",
+    "pt": "Uso: kaabalah astrology:yogakarakas --ascendant=<sign> ou <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"
+  },
+  "\nYogakarakas for {0} rising\n": {
+    "en": "\nYogakarakas for {0} rising\n",
+    "pt": "\nYogakarakas para ascendente em {0}\n"
+  },
+  "  None": {
+    "en": "  None",
+    "pt": "  Nenhum"
+  },
+  "  {0} rules houses {1}": {
+    "en": "  {0} rules houses {1}",
+    "pt": "  {0} rege as casas {1}"
+  },
+  "Usage: kaabalah tree:map <YYYY-MM-DD> [HH:MM] [--lat=<N> --lon=<N>] [--name=\"Full Name\"]": {
+    "en": "Usage: kaabalah tree:map <YYYY-MM-DD> [HH:MM] [--lat=<N> --lon=<N>] [--name=\"Full Name\"]",
+    "pt": "Uso: kaabalah tree:map <YYYY-MM-DD> [HH:MM] [--lat=<N> --lon=<N>] [--name=\"Nome Completo\"]"
+  },
+  "No birth time: the map uses numerology and gematria only, astrology is left out.": {
+    "en": "No birth time: the map uses numerology and gematria only, astrology is left out.",
+    "pt": "Sem hora de nascimento: o mapa usa só numerologia e gematria, a astrologia fica de fora."
+  },
+  "\nTree of Life birth map: {0}\n": {
+    "en": "\nTree of Life birth map: {0}\n",
+    "pt": "\nMapa de nascimento da Árvore da Vida: {0}\n"
+  },
+  "  Spheres:": {
+    "en": "  Spheres:",
+    "pt": "  Esferas:"
+  },
+  "    {0} {1}%  ({2} markers)": {
+    "en": "    {0} {1}%  ({2} markers)",
+    "pt": "    {0} {1}%  ({2} marcadores)"
+  },
+  "\n  Paths:": {
+    "en": "\n  Paths:",
+    "pt": "\n  Caminhos:"
+  },
+  "\n  Spheres nothing lands on: {0}": {
+    "en": "\n  Spheres nothing lands on: {0}",
+    "pt": "\n  Esferas em que nada cai: {0}"
+  },
+  "\nTree of Life paths: {0} {1}\n": {
+    "en": "\nTree of Life paths: {0} {1}\n",
+    "pt": "\nCaminhos da Árvore da Vida: {0} {1}\n"
+  },
+  "  House quests:": {
+    "en": "  House quests:",
+    "pt": "  Missões das casas:"
+  },
+  "\n  Lightning Path:": {
+    "en": "\n  Lightning Path:",
+    "pt": "\n  Caminho do Raio:"
+  },
+  "\n  Serpent Path:": {
+    "en": "\n  Serpent Path:",
+    "pt": "\n  Caminho da Serpente:"
   }
 }

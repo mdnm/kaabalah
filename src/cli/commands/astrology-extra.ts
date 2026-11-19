@@ -1,6 +1,7 @@
 import { readFileSync, statSync } from "node:fs";
 
 import { cliText } from "../runtime/language";
+import { cliValue } from "../runtime/content";
 import { isJsonMode } from "../runtime/args";
 import { exitWithError } from "../runtime/errors";
 import type { ExecutionContext } from "../runtime/execution";
@@ -11,6 +12,9 @@ import {
   NODE_CONVENTION_NAMES,
   PAIR_MODE_NAMES,
   RETURN_PASS_KIND_NAMES,
+  RULERSHIP_NAMES,
+  VARGA_DIVISIONS,
+  ZODIAC_SIGN_NAMES,
 } from "../runtime/astro-names";
 import {
   booleanOption,
@@ -365,6 +369,155 @@ export async function cmdAstrologyJyotish(args: string[], flags: Flags, payload:
     if (moon) console.log(cliText("  Moon nakshatra index: {0}", [moon.nakshatraIndex]));
     if (chart.vimshottari) console.log(cliText("  Vimshottari periods: {0}", [chart.vimshottari.mahas.length]));
     console.log();
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Planetary condition, rulers, vargas and yogakarakas
+// ---------------------------------------------------------------------------
+
+export async function cmdAstrologyCondition(args: string[], flags: Flags, payload: InputPayload, ctx: ExecutionContext): Promise<void> {
+  const rulers = enumValue(stringOption(flags, payload, "rulers", "rulers"), RULERSHIP_NAMES, "rulers", flags) ?? "traditional";
+  const natal = await readNatal(args, flags, payload, ctx);
+  await withSwissEph(flags, ctx, async (astro) => {
+    const chart = await astro.getBirthChart(buildBirthChartOptions(natal, astro.HouseSystem));
+    ctx.throwIfInterrupted();
+    const condition = astro.getPlanetaryCondition(chart, { rulers });
+    if (isJsonMode(flags)) {
+      outputJson({ ...condition, input: { natal: natalEcho(natal), rulers } }, flags);
+      return;
+    }
+    console.log(cliText("\nPlanetary condition (rulers {0}, {1} chart)\n", [condition.rulers, condition.sect]));
+    for (const body of Object.values(condition.bodies)) {
+      const dignity = body.dignities
+        ? body.dignities.positiveDignities.join("+") || (body.dignities.detriment ? "detriment" : body.dignities.fall ? "fall" : "peregrine")
+        : "-";
+      console.log(cliText("  {0} {1} House {2} -> {3} ({4})", [body.body.padEnd(14), cliValue(body.sign.padEnd(12)), body.house, body.dispositor, dignity]));
+    }
+    console.log(cliText("\n  Final dispositors: {0}", [condition.finalDispositors.join(", ") || "-"]));
+    console.log(cliText("  Mutual receptions: {0}", [condition.mutualReceptions.length]));
+    console.log();
+  });
+}
+
+export function cmdAstrologyRulers(flags: Flags, payload: InputPayload): void {
+  const scheme = enumValue(stringOption(flags, payload, "rulers", "rulers"), RULERSHIP_NAMES, "rulers", flags) ?? "traditional";
+  // Lazy require keeps the pure table lookup free of the Swiss Ephemeris module graph.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getRulerTable } = require("../../astrology/reception") as typeof import("../../astrology/reception");
+  const table = getRulerTable(scheme);
+  if (isJsonMode(flags)) {
+    outputJson({ rulers: scheme, table }, flags);
+    return;
+  }
+  console.log(cliText("\nSign rulers ({0})\n", [scheme]));
+  for (const [sign, ruler] of Object.entries(table)) {
+    console.log(`  ${cliValue(sign.padEnd(12))} ${ruler}`);
+  }
+  console.log();
+}
+
+const VARGA_BODIES = ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "rahu", "ketu", "lagna"] as const;
+
+function parseDivisions(raw: string | undefined, flags: Flags): number[] {
+  if (raw === undefined) return [9];
+  if (raw === "all") return [...VARGA_DIVISIONS];
+  const division = Number(raw);
+  if (raw.trim() === "" || !(VARGA_DIVISIONS as readonly number[]).includes(division)) {
+    exitWithError("INVALID_ARGUMENT", cliText("Unknown value \"{0}\" for --{1}. Valid: {2}.", [raw, "division", `${VARGA_DIVISIONS.join(", ")}, all`]), flags);
+  }
+  return [division];
+}
+
+export async function cmdAstrologyVarga(args: string[], flags: Flags, payload: InputPayload, ctx: ExecutionContext): Promise<void> {
+  const divisions = parseDivisions(stringOption(flags, payload, "division", "division") ?? (typeof payloadValue(payload, "division") === "number" ? String(payloadValue(payload, "division")) : undefined), flags);
+  const node = enumValue(stringOption(flags, payload, "node", "node"), NODE_CONVENTION_NAMES, "node", flags);
+  const schemeRaw = stringOption(flags, payload, "karaka-scheme", "karakaScheme") ?? (typeof payloadValue(payload, "karakaScheme") === "number" ? String(payloadValue(payload, "karakaScheme")) : undefined);
+  const scheme = enumValue(schemeRaw, ["7", "8"] as const, "karaka-scheme", flags);
+  const natal = await readNatal(args, flags, payload, ctx);
+  await withSwissEph(flags, ctx, async (astro) => {
+    const { toUtcDate } = await import("../../astrology/swisseph");
+    const date = await toUtcDate(natal.birthDate, natal.latitude, natal.longitude, natal.timeZoneSettings as never);
+    // Same path as astrology:jyotish (dhruva frame, tropical karaka degrees), so the Atmakaraka matches that command.
+    const chart = astro.getJyotishChart({
+      date,
+      latitude: natal.latitude,
+      longitude: natal.longitude,
+      node,
+      karakaScheme: scheme ? (Number(scheme) as 7 | 8) : undefined,
+    });
+    ctx.throwIfInterrupted();
+    const longitudes: Record<string, number> = {};
+    for (const body of VARGA_BODIES) {
+      const point = chart.dhruva.points[body];
+      if (point) longitudes[body] = point.longitude;
+    }
+    const vargas = divisions.map((division) => {
+      const varga = astro.getVargaChart(longitudes, division);
+      return { division: varga.division, name: astro.VARGA_NAMES[varga.division], lagnaKey: varga.lagnaKey, placements: varga.placements };
+    });
+    let karakamsha: Record<string, unknown> | undefined;
+    if (divisions.includes(9) && chart.karakas) {
+      const found = astro.getKarakamsha(chart.karakas, longitudes);
+      karakamsha = { ...found, houses: astro.housesFromKarakamsha(found, longitudes) };
+    }
+    if (isJsonMode(flags)) {
+      outputJson(
+        {
+          frame: "tropical",
+          node: chart.node,
+          karakaScheme: chart.karakas?.scheme,
+          vargas,
+          ...(karakamsha ? { karakamsha } : {}),
+          input: { natal: natalEcho(natal), birthUtc: date.toISOString(), divisions },
+        },
+        flags
+      );
+      return;
+    }
+    for (const varga of vargas) {
+      console.log(cliText("\nD{0} {1} (tropical longitudes)\n", [varga.division, varga.name]));
+      for (const [body, placement] of Object.entries(varga.placements)) {
+        console.log(cliText("  {0} {1} House {2}", [body.padEnd(10), cliValue(placement.sign.padEnd(12)), placement.house ?? "-"]));
+      }
+    }
+    if (karakamsha) console.log(cliText("\n  Karakamsha: {0} (Atmakaraka {1})", [karakamsha.sign, karakamsha.atmakaraka]));
+    console.log();
+  });
+}
+
+export async function cmdAstrologyYogakarakas(args: string[], flags: Flags, payload: InputPayload, ctx: ExecutionContext): Promise<void> {
+  const ascendantRaw = stringOption(flags, payload, "ascendant", "ascendant");
+  const ascendantFlag = ascendantRaw === undefined ? undefined : ZODIAC_SIGN_NAMES.find((sign) => sign.toLowerCase() === ascendantRaw.trim().toLowerCase());
+  if (ascendantRaw !== undefined && !ascendantFlag) {
+    exitWithError("INVALID_ARGUMENT", cliText("Unknown value \"{0}\" for --{1}. Valid: {2}.", [ascendantRaw, "ascendant", ZODIAC_SIGN_NAMES.join(", ")]), flags);
+  }
+  if (!ascendantFlag && args[0] === undefined && payload?.date === undefined && payload?.natal === undefined) {
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology:yogakarakas --ascendant=<sign> or <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"), flags);
+  }
+  const run = (ascendant: (typeof ZODIAC_SIGN_NAMES)[number], source: string, natal?: NatalInput) => {
+    // Pure arithmetic: the table does not need the ephemeris.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { getYogakarakas } = require("../../astrology/jyotish/jaimini") as typeof import("../../astrology/jyotish/jaimini");
+    const yogakarakas = getYogakarakas(ascendant);
+    if (isJsonMode(flags)) {
+      outputJson({ ascendant, source, yogakarakas, ...(natal ? { input: { natal: natalEcho(natal) } } : {}) }, flags);
+      return;
+    }
+    console.log(cliText("\nYogakarakas for {0} rising\n", [cliValue(ascendant)]));
+    if (yogakarakas.length === 0) console.log(cliText("  None"));
+    for (const entry of yogakarakas) console.log(cliText("  {0} rules houses {1}", [entry.planet, entry.houses.join(", ")]));
+    console.log();
+  };
+  if (ascendantFlag) {
+    run(ascendantFlag, "--ascendant");
+    return;
+  }
+  const natal = await readNatal(args, flags, payload, ctx);
+  await withSwissEph(flags, ctx, async (astro) => {
+    const chart = await astro.getBirthChart(buildBirthChartOptions(natal, astro.HouseSystem));
+    ctx.throwIfInterrupted();
+    run(chart.houses.ascendant.sign as (typeof ZODIAC_SIGN_NAMES)[number], "birth chart (tropical ascendant, whole-sign houses)", natal);
   });
 }
 

@@ -8,7 +8,11 @@ import {
   ORB_PROFILE_NAMES,
   POINT_ID_NAMES,
   RETURN_PASS_KIND_NAMES,
+  RULERSHIP_NAMES,
+  VARGA_DIVISIONS,
+  ZODIAC_SIGN_NAMES,
 } from "./astro-names";
+import { SUPPORTED_VARGAS, TROPICAL_SIGNS } from "../../astrology/jyotish";
 import { KNOWN_ASPECT_NAMES, ORB_POLICY_PROFILES } from "../../astrology/orb-policy";
 import { POINT_IDS } from "../../astrology/points";
 import { PROGRESSED_ANGLE_CONVENTIONS } from "../../astrology/progressions";
@@ -24,5 +28,11 @@ describe("CLI static name lists match the library", () => {
     expect([...INPUT_QUALITY_NAMES]).toEqual(INPUT_QUALITY_KINDS.map((kind) => kind.id));
     for (const kind of DEFAULT_RETURN_PASS_KINDS) expect(RETURN_PASS_KIND_NAMES).toContain(kind);
     expect(MIDPOINT_CONVENTION_NAMES).toHaveLength(2);
+  });
+
+  it("covers rulership schemes, varga divisions and zodiac signs", () => {
+    expect([...RULERSHIP_NAMES]).toEqual(["traditional", "modern"]);
+    expect([...VARGA_DIVISIONS]).toEqual([...SUPPORTED_VARGAS]);
+    expect([...ZODIAC_SIGN_NAMES]).toEqual([...TROPICAL_SIGNS]);
   });
 });

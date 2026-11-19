@@ -1,5 +1,5 @@
 import { spawnSync, type SpawnSyncReturns } from "node:child_process";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
@@ -136,6 +136,8 @@ describe("CLI contract", () => {
       "tree:topology",
       "tree:svg",
       "tree:ascii",
+      "tree:map",
+      "tree:paths",
       "astrology",
       "astrology:wheel",
       "astrology:synastry",
@@ -158,6 +160,10 @@ describe("CLI contract", () => {
       "astrology:profections:timeline",
       "astrology:firdaria:timeline",
       "astrology:jyotish",
+      "astrology:condition",
+      "astrology:rulers",
+      "astrology:varga",
+      "astrology:yogakarakas",
       "astrology:collection",
       "capabilities",
       "help",
@@ -1906,6 +1912,18 @@ describe("numerology as-of and schedule commands", () => {
     cliError(["numerology", "1990-01-15", "--as-of=2026-02-30"], "INVALID_DATE");
   });
 
+  it("cycles and snapshot agree on the personal month: cycles currentPersonalMonth is a zero-based index", () => {
+    // Born 1990-05-17, evaluated 2026-11-19: the personal year (birthday to birthday) began 2026-05-17,
+    // 2026 + 5 + 17 = 2048 -> 14 -> 5. The personal month began 2026-11-17 (phase 7, calendar month 11):
+    // 11 + 5 = 16 -> 7.
+    const cycles = cli(["numerology:cycles", "1990-05-17", "Ana", "--as-of=2026-11-19"]);
+    const snapshot = cli(["numerology:snapshot", "1990-05-17", "Ana", "--as-of=2026-11-19"]);
+    expect(cycles.currentPersonalMonth).toBe(6);
+    expect(cycles.personalMonths[cycles.currentPersonalMonth]).toMatchObject({ month: 11, value: { reducedValue: 7 } });
+    expect(snapshot.personalMonth).toMatchObject({ phase: 7, calendarMonth: 11, value: { value: 7 } });
+    expect(snapshot.personalMonth.phase).toBe(cycles.currentPersonalMonth + 1);
+  });
+
   it("legacy cycles report an unavailable soul number for names without vowels, in JSON and text", () => {
     const json = cli(["numerology:cycles", "1990-01-15", "Ng", "--as-of=2026-03-01"]);
     expect(json.soulNumber).toMatchObject({ available: false });
@@ -2323,6 +2341,149 @@ describe("jyotish", () => {
     cliError(["astrology:jyotish", ...NATAL, "--karaka-scheme=9"], "INVALID_ARGUMENT");
     cliError(["astrology:jyotish", ...NATAL, "--year-length-days=-3"], "INVALID_ARGUMENT");
     cliError(["astrology:jyotish", ...NATAL, "--as-of=2026-02-30"], "INVALID_DATE");
+  });
+});
+
+describe("chart facts commands", () => {
+  const BR = ["1990-05-17", "14:30", "--lat=-23.5505", "--lon=-46.6333"];
+
+  it("astrology:condition returns the per-body condition and the chain summary", () => {
+    const traditional = cli(["astrology:condition", ...BR]);
+    expect(traditional).toMatchObject({ rulers: "traditional", sect: "diurnal", input: { rulers: "traditional" } });
+    expect(traditional.bodies.Sun).toMatchObject({ sign: "Taurus", house: 8, dispositor: "Venus" });
+    expect(traditional.bodies.Sun.dispositorChain.length).toBeGreaterThan(0);
+    expect(traditional.bodies.Venus.dignities.detriment).toBe(true);
+    expect(traditional.finalDispositors).toEqual(expect.any(Array));
+    expect(traditional.loops).toEqual(expect.any(Array));
+    expect(traditional.mutualReceptions).toEqual(expect.any(Array));
+    const modern = cli(["astrology:condition", ...BR, "--rulers=modern", "--fields=rulers,bodies.Mars.dispositor"]);
+    expect(modern).toEqual({ rulers: "modern", bodies: { Mars: { dispositor: "Neptune" } } });
+    expect(traditional.bodies.Mars.dispositor).toBe("Jupiter");
+    cliError(["astrology:condition", ...BR, "--rulers=ancient"], "INVALID_ARGUMENT");
+    cliError(["astrology:condition", "1990-05-17", "14:30"], "MISSING_ARGUMENT");
+  });
+
+  it("astrology:rulers needs no birth data and honors the scheme", () => {
+    const traditional = cli(["astrology:rulers"]);
+    expect(traditional).toMatchObject({ rulers: "traditional", table: { Scorpio: "Mars", Aquarius: "Saturn", Pisces: "Jupiter" } });
+    expect(Object.keys(traditional.table)).toHaveLength(12);
+    expect(cli(["astrology:rulers", "--rulers=modern", "--fields=table.Scorpio,table.Aquarius,table.Pisces"])).toEqual({
+      table: { Scorpio: "Pluto", Aquarius: "Uranus", Pisces: "Neptune" },
+    });
+    cliError(["astrology:rulers", "--rulers=vedic"], "INVALID_ARGUMENT");
+  });
+
+  it("astrology:varga places the chart in D9 with the Karakamsha, and accepts any division or all", () => {
+    const d9 = cli(["astrology:varga", ...BR]);
+    expect(d9.frame).toBe("tropical");
+    expect(d9.vargas).toHaveLength(1);
+    expect(d9.vargas[0]).toMatchObject({ division: 9, name: "Navamsa", lagnaKey: "lagna" });
+    expect(Object.keys(d9.vargas[0].placements)).toEqual(expect.arrayContaining(["sun", "moon", "rahu", "ketu", "lagna"]));
+    expect(d9.vargas[0].placements.sun).toMatchObject({ sign: "Leo", house: 11 });
+    // The Atmakaraka is the one astrology:jyotish ranks first with the same defaults.
+    const jyotish = cli(["astrology:jyotish", ...BR, "--fields=karakas.entries"]);
+    expect(d9.karakamsha.atmakaraka).toBe(jyotish.karakas.entries[0].body);
+    expect(d9.karakamsha).toMatchObject({ atmakaraka: "sun", sign: "Leo" });
+    expect(d9.karakamsha.houses.sun).toBe(1);
+    const d10 = cli(["astrology:varga", ...BR, "--division=10"]);
+    expect(d10.vargas[0].division).toBe(10);
+    expect(d10.karakamsha).toBeUndefined();
+    const all = cli(["astrology:varga", ...BR, "--division=all"]);
+    expect(all.vargas.map((v: { division: number }) => v.division)).toEqual([1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60]);
+    expect(all.karakamsha.sign).toBe("Leo");
+    cliError(["astrology:varga", ...BR, "--division=5"], "INVALID_ARGUMENT");
+    cliError(["astrology:varga", ...BR, "--karaka-scheme=9"], "INVALID_ARGUMENT");
+  });
+
+  it("astrology:yogakarakas works from an ascendant sign or from birth data", () => {
+    expect(cli(["astrology:yogakarakas", "--ascendant=taurus"])).toEqual({
+      ascendant: "Taurus",
+      source: "--ascendant",
+      yogakarakas: [{ planet: "saturn", houses: [9, 10] }],
+    });
+    expect(cli(["astrology:yogakarakas", "--ascendant=Gemini"]).yogakarakas).toEqual([]);
+    const fromChart = cli(["astrology:yogakarakas", ...BR]);
+    expect(fromChart.ascendant).toBe("Libra");
+    expect(fromChart.yogakarakas).toEqual([{ planet: "saturn", houses: [4, 5] }]);
+    cliError(["astrology:yogakarakas", "--ascendant=Ophiuchus"], "INVALID_ARGUMENT");
+    cliError(["astrology:yogakarakas"], "MISSING_ARGUMENT");
+  });
+
+  it("tree:map ranks spheres and paths with their markers, and says when astrology is left out", () => {
+    const full = cli(["tree:map", ...BR, "--name=Maria Silva"]);
+    expect(full.systems).toEqual({ astrology: true, numerology: true, gematria: true });
+    expect(full.note).toBeNull();
+    expect(full.rankedSpheres[0]).toMatchObject({ id: expect.stringMatching(/^sphere:/), share: expect.any(Number) });
+    expect(full.rankedSpheres[0].markers[0]).toEqual({ sourceName: expect.any(String), mapping: expect.any(String), weight: expect.any(Number) });
+    expect(full.rankedPaths[0].id).toMatch(/^path:/);
+    expect(full.rankedSpheres.reduce((sum: number, row: { share: number }) => sum + row.share, 0)).toBeCloseTo(100, 0);
+    expect(Object.keys(full.weightsById).length).toBeGreaterThan(0);
+    expect(Object.keys(full.rawWeightsById).length).toBeGreaterThan(0);
+    expect(full.input).toMatchObject({ date: "1990-05-17", time: "14:30", name: "Maria Silva" });
+
+    const dateOnly = cli(["tree:map", "1990-05-17", "--name=Maria Silva"]);
+    expect(dateOnly.systems).toEqual({ astrology: false, numerology: true, gematria: true });
+    expect(dateOnly.note).toContain("numerology and gematria only");
+    expect(dateOnly.unlitSpheres.length).toBeGreaterThan(0);
+    const litIds = dateOnly.rankedSpheres.map((row: { id: string }) => row.id);
+    for (const sphere of dateOnly.unlitSpheres) expect(litIds).not.toContain(sphere.id);
+    const numerologyOnly = cli(["tree:map", "1990-05-17"]);
+    expect(numerologyOnly.systems.gematria).toBe(false);
+
+    const pt = cli(["tree:map", "1990-05-17", "--language=pt-BR"]);
+    expect(pt.note).toContain("numerologia e gematria");
+    cliError(["tree:map"], "MISSING_ARGUMENT");
+    cliError(["tree:map", "1990-05-17", "14:30"], "MISSING_ARGUMENT");
+    cliError(["tree:map", "1990-02-30"], "INVALID_DATE");
+  });
+
+  it("tree:paths returns house quests, both paths and the house spheres in the requested language", () => {
+    const en = cli(["tree:paths", ...BR]);
+    expect(en.houseQuests).toHaveLength(12);
+    expect(en.houseQuests[0]).toMatchObject({ house: 1, sign: "Libra" });
+    expect(en.lightningPath[0]).toMatchObject({ step: 1, sphere: "Kether" });
+    expect(en.serpentPath[0]).toMatchObject({ step: 1, sphere: "Malkuth" });
+    expect(en.houseSpheres["7"]).toEqual(["Tiphareth", "Netzach"]);
+    expect(en.language).toBe("en");
+    const pt = cli(["tree:paths", ...BR, "--language=pt-BR", "--fields=language,houseQuests"]);
+    expect(pt.language).toBe("pt-BR");
+    expect(pt.houseQuests[0].text).toBe(`Busca ${pt.houseQuests[0].adjective} por ${pt.houseQuests[0].theme}`);
+    expect(pt.houseQuests[0].text).not.toBe(en.houseQuests[0].text);
+    cliError(["tree:paths", "1990-05-17", "14:30"], "MISSING_ARGUMENT");
+  });
+
+  it("lists the new commands in help and capabilities, with Portuguese descriptions", () => {
+    const names = ["astrology:condition", "astrology:rulers", "astrology:varga", "astrology:yogakarakas", "tree:map", "tree:paths"];
+    const help = cli(["help"]) as { commands: Array<{ name: string; examples: string[] }> };
+    const caps = cli(["capabilities"]);
+    for (const name of names) {
+      expect(help.commands.map((c) => c.name), name).toContain(name);
+      expect(caps.cli.commands, name).toContain(name);
+      expect(help.commands.find((c) => c.name === name)!.examples.length, name).toBeGreaterThan(0);
+      const pt = runCli(["help", name, "--language", "pt-BR", "--json", "--compact", "--quiet"]);
+      assertSuccess(pt, `help ${name} pt-BR`);
+      const english = (cli(["help", name]) as { command: { description: string } }).command.description;
+      expect((JSON.parse(pt.stdout) as { command: { description: string } }).command.description, name).not.toBe(english);
+    }
+  });
+});
+
+describe("published bundle keeps editorial provenance private", () => {
+  it("ships no provenance paths or review notes in dist, and describe output carries none", () => {
+    const forbidden = /readings\/skills|dazy-natal|modulo \d+\/aula|astrologia-hermetica|Mat selected/;
+    const walk = (dir: string): string[] =>
+      readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
+        entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)]
+      );
+    const offenders = walk(resolve(ROOT, "dist"))
+      .filter((file) => /\.(js|mjs|cjs|map|ts|mts|cts|json)$/.test(file))
+      .filter((file) => forbidden.test(readFileSync(file, "utf8")));
+    expect(offenders).toEqual([]);
+
+    const entry = cli(["astrology:describe", "planet-sign", "mars", "Leo"]);
+    expect(entry.found).toBe(true);
+    expect(entry).not.toHaveProperty("src");
+    expect(entry).not.toHaveProperty("reviewNotes");
   });
 });
 

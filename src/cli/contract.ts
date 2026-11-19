@@ -90,6 +90,13 @@ const NATAL_ARGS: CommandArg[] = [
   { name: "time", type: "string", required: false, description: "Natal birth time in HH:MM format (default: 12:00)" },
 ];
 
+const RULERS_FLAG: CommandFlag = {
+  name: "rulers",
+  type: "string",
+  default: "traditional",
+  description: "Rulership scheme: traditional (seven visible planets) or modern (Pluto, Uranus and Neptune rule Scorpio, Aquarius and Pisces)",
+};
+
 const POLICY_FLAGS: CommandFlag[] = [
   { name: "orb-profile", type: "string", description: "Generation-time orb policy: ptolemaic-plus-quincunx (adds a policyAspects result; unlike --max-orb it can recover contacts the default orbs omit)" },
   { name: "points", type: "string", description: "Comma-separated typed point IDs (sun, moon, mean-node, asc, mc, lot-fortune, ...) for the points result and policy aspects" },
@@ -448,6 +455,36 @@ export const COMMANDS: CommandSchema[] = [
     examples: [
       "kaabalah tree:ascii --no-json",
       "kaabalah tree:ascii --columns=41 --rows=21 --json --compact",
+    ],
+  },
+  {
+    name: "tree:map",
+    description: "Weighted Tree of Life birth map: ranked spheres and paths with their markers (astrology needs a birth time and place; numerology and gematria always run)",
+    args: [
+      { name: "date", type: "date", required: true, description: "Birth date in YYYY-MM-DD format" },
+      { name: "time", type: "string", required: false, description: "Birth time in HH:MM format; without it the map uses numerology and gematria only" },
+    ],
+    flags: [
+      { name: "name", type: "string", description: "Full name for the gematria layer (without it gematria is skipped)" },
+      ...NATAL_FLAGS,
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah tree:map 1990-06-15 14:30 --lat=48.856 --lon=2.352 --name=\"Ana Maria Silva\" --json --compact --fields=rankedSpheres",
+      "kaabalah tree:map 1990-06-15 --name=\"Ana Maria Silva\" --json --compact --fields=systems,note",
+    ],
+  },
+  {
+    name: "tree:paths",
+    description: "House quests, Lightning Path and Serpent Path of a natal chart, with the sphere each house touches",
+    args: NATAL_ARGS,
+    flags: [
+      ...NATAL_FLAGS,
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah tree:paths 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact --fields=lightningPath",
+      "kaabalah tree:paths 1990-06-15 14:30 --lat=48.856 --lon=2.352 --language pt-BR --json --compact --fields=houseQuests",
     ],
   },
   {
@@ -899,6 +936,60 @@ export const COMMANDS: CommandSchema[] = [
     examples: [
       "kaabalah astrology:jyotish 1990-06-15 14:30 --lat=48.856 --lon=2.352 --frame=lahiri --node=true --as-of=2026-03-01 --json --compact --fields=activeDasha",
       "kaabalah astrology:jyotish 1990-06-15 14:30 --lat=48.856 --lon=2.352 --karaka-scheme=8 --json --compact --fields=karakas",
+    ],
+  },
+  {
+    name: "astrology:condition",
+    description: "Planetary condition of a natal chart: sign, house, dispositor chain, dignities, sect, joy, station and receptions per body, plus final dispositors, loops and mutual receptions",
+    args: NATAL_ARGS,
+    flags: [
+      ...NATAL_FLAGS,
+      RULERS_FLAG,
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah astrology:condition 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact --fields=finalDispositors,mutualReceptions",
+      "kaabalah astrology:condition 1990-06-15 14:30 --lat=48.856 --lon=2.352 --rulers=modern --json --compact --fields=bodies.Sun",
+    ],
+  },
+  {
+    name: "astrology:rulers",
+    description: "Sign to ruler table for the traditional or the modern rulership scheme (no birth data needed)",
+    args: [],
+    flags: [RULERS_FLAG],
+    examples: ["kaabalah astrology:rulers --json --compact", "kaabalah astrology:rulers --rulers=modern --json --compact --fields=table"],
+  },
+  {
+    name: "astrology:varga",
+    description: "Jyotish divisional charts (vargas) on tropical longitudes with the lagna; for D9 also the Karakamsha and the houses counted from it",
+    args: NATAL_ARGS,
+    flags: [
+      ...NATAL_FLAGS,
+      { name: "division", type: "string", default: "9", description: "Division: 1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60, or all for all sixteen" },
+      { name: "node", type: "string", default: "mean", description: "Rahu/Ketu node convention: mean or true" },
+      { name: "karaka-scheme", type: "string", default: "7", description: "Chara karaka scheme for the Karakamsha: 7 or 8" },
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah astrology:varga 1990-06-15 14:30 --lat=48.856 --lon=2.352 --division=9 --json --compact --fields=vargas,karakamsha",
+      "kaabalah astrology:varga 1990-06-15 14:30 --lat=48.856 --lon=2.352 --division=all --json --compact --fields=vargas",
+    ],
+  },
+  {
+    name: "astrology:yogakarakas",
+    description: "Yogakaraka planets (rulers of a kendra and a trikona) for an ascendant sign, given directly or taken from a birth chart",
+    args: [
+      { name: "date", type: "date", required: false, description: "Natal birth date in YYYY-MM-DD format (not needed with --ascendant)" },
+      { name: "time", type: "string", required: false, description: "Natal birth time in HH:MM format (default: 12:00)" },
+    ],
+    flags: [
+      { name: "ascendant", type: "string", description: "Ascendant sign (Aries to Pisces); skips the birth chart" },
+      ...NATAL_FLAGS,
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah astrology:yogakarakas --ascendant=Taurus --json --compact",
+      "kaabalah astrology:yogakarakas 1990-06-15 14:30 --lat=48.856 --lon=2.352 --json --compact --fields=ascendant,yogakarakas",
     ],
   },
   {

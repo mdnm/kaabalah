@@ -16,11 +16,16 @@ export interface PlanetSignDescriptionEntry {
     readonly pt: readonly string[];
     readonly en: readonly string[];
   };
+  /**
+   * Editorial provenance. Kept in the repository's descriptions.json for the maintainer, stripped
+   * from the published package: it is always an empty array in a published build.
+   */
   readonly src: readonly {
     readonly file: string;
     readonly from: number;
     readonly to: number;
   }[];
+  /** Editorial review notes. Same rule as `src`: empty in a published build. */
   readonly reviewNotes: readonly string[];
 }
 
@@ -139,6 +144,12 @@ export interface AstrologyDescriptions {
 /** Imported JSON is shared process-wide, including all nested metadata. */
 function freeze<T>(value: T): T {
   if (value !== null && typeof value === "object") {
+    const row = value as { pt?: unknown; en?: unknown; keywords?: unknown; src?: unknown; reviewNotes?: unknown };
+    // Published builds strip the editorial provenance (see tsup.config.ts); keep the entry shape stable.
+    if (typeof row.pt === "string" && typeof row.en === "string" && row.keywords && typeof row.keywords === "object") {
+      row.src ??= [];
+      row.reviewNotes ??= [];
+    }
     for (const child of Object.values(value)) freeze(child);
     Object.freeze(value);
   }

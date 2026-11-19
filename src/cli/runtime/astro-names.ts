@@ -60,3 +60,9 @@ export const NAKSHATRA_FRAME_NAMES = ["dhruva", "lahiri"] as const;
 export const NODE_CONVENTION_NAMES = ["mean", "true"] as const;
 export const MIDPOINT_CONVENTION_NAMES = ["arithmetic-shorter-arc", "great-circle"] as const;
 export const PAIR_MODE_NAMES = ["all", "pairs", "timed-only"] as const;
+export const RULERSHIP_NAMES = ["traditional", "modern"] as const;
+export const VARGA_DIVISIONS = [1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60] as const;
+export const ZODIAC_SIGN_NAMES = [
+  "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+  "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+] as const;

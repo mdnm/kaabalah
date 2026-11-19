@@ -4,6 +4,7 @@ import { VERSION } from "./contract";
 import { cmdAstrologyChart } from "./commands/astrology-chart";
 import {
   cmdAstrologyCollection,
+  cmdAstrologyCondition,
   cmdAstrologyDavison,
   cmdAstrologyFirdariaTimeline,
   cmdAstrologyJyotish,
@@ -11,7 +12,10 @@ import {
   cmdAstrologyProfectionsTimeline,
   cmdAstrologyProgressions,
   cmdAstrologyReturns,
+  cmdAstrologyRulers,
   cmdAstrologySolarArc,
+  cmdAstrologyVarga,
+  cmdAstrologyYogakarakas,
   cmdCapabilities,
 } from "./commands/astrology-extra";
 import {
@@ -41,6 +45,7 @@ import {
   cmdTreeTopology,
   cmdTreeTypes,
 } from "./commands/tree";
+import { cmdTreeMap, cmdTreePaths } from "./commands/tree-chart";
 import { getFlagBool, isCliParseError, isJsonMode, parseArgs } from "./runtime/args";
 import { isCliConfigError, resolveRuntimeConfig } from "./runtime/config";
 import { configureDebugRuntime } from "./runtime/debug";
@@ -288,6 +293,12 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
       case "tree:ascii":
         cmdTreeAscii(flags);
         return;
+      case "tree:map":
+        await cmdTreeMap(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "tree:paths":
+        await cmdTreePaths(args.slice(1), flags, inputPayload, execution);
+        return;
       case "astrology":
         await cmdAstrologyChart(args.slice(1), flags, inputPayload, execution);
         return;
@@ -353,6 +364,18 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         return;
       case "astrology:jyotish":
         await cmdAstrologyJyotish(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:condition":
+        await cmdAstrologyCondition(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:rulers":
+        cmdAstrologyRulers(flags, inputPayload);
+        return;
+      case "astrology:varga":
+        await cmdAstrologyVarga(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:yogakarakas":
+        await cmdAstrologyYogakarakas(args.slice(1), flags, inputPayload, execution);
         return;
       case "astrology:collection":
         await cmdAstrologyCollection(flags, inputPayload, execution);

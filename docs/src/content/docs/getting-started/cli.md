@@ -52,6 +52,12 @@ npx kaabalah help
 | `astrology:profections:timeline <date> [time]` | Annual profection years for an age or date range |
 | `astrology:firdaria:timeline <date> [time]` | Firdaria periods in a bounded window, nominal and clipped ends |
 | `astrology:jyotish <date> [time]` | Dhruva and Lahiri nakshatras, karakas, Vimshottari and Yogini dashas |
+| `astrology:condition <date> [time]` | Planetary condition per body: dispositor chain, dignities, sect, joy, station, receptions; final dispositors and loops |
+| `astrology:rulers` | Sign to ruler table, traditional or modern (no birth data) |
+| `astrology:varga <date> [time]` | Divisional charts (D1 to D60) on tropical longitudes with the lagna; Karakamsha for D9 |
+| `astrology:yogakarakas [date] [time]` | Yogakaraka planets for an ascendant sign (`--ascendant`) or a birth chart |
+| `tree:map <date> [time]` | Weighted Tree of Life birth map: ranked spheres and paths with markers |
+| `tree:paths <date> [time]` | House quests, Lightning Path and Serpent Path of a natal chart |
 | `astrology:collection` | Bulk people/events/pairs from a manifest (single JSON document, or `--ndjson` stream) |
 | `capabilities` | Machine-readable capabilities, limits, error codes and the CLI command list |
 | `astrology:astrocartography <date> [time]` | Full Astro*Carto*Graphy map |
@@ -237,6 +243,8 @@ Legacy personal cycles. The output family switches on whether `firstName` is pre
 kaabalah numerology:cycles 1990-01-15 --as-of=2026-03-01
 kaabalah numerology:cycles 1990-01-15 John --as-of=2026-03-01 --json --compact
 ```
+
+With a name, `currentPersonalPeriod` and `currentPersonalMonth` are zero-based indexes into `personalPeriods` and `personalMonths` (the text output prints them one-based). The month value is `personalMonths[currentPersonalMonth].value.reducedValue`; it equals `personalMonth.value.value` of `numerology:snapshot` (whose `phase` is the one-based position).
 
 ### numerology:challenges
 
@@ -580,6 +588,54 @@ kaabalah astrology:describe decan --json --compact
 | `degree-at` | ecliptic longitude 0-360 |
 
 Signs are case-insensitive English names. Returns `kind`, `keys`, `found`, `language`, `text`, `keywords`, `pt`, `en`, `src` and `reviewNotes`. `text` and `keywords` follow `--language`. A combination with no authored text is not an error: it returns `found: false` and `text: null` with exit code 0. The `retrograde*` kinds return the retrograde text without checking a chart. `--input-json` takes `{"kind": "...", "keys": [...]}`.
+
+### astrology:condition
+
+The planetary condition of a natal chart (`getPlanetaryCondition`): for each body its sign, house, dispositor and dispositor chain, degree- and sect-aware dignities, sect, joy, station and mutual receptions, plus `finalDispositors`, `loops` and `mutualReceptions`.
+
+```bash
+kaabalah astrology:condition 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --json --compact --fields=finalDispositors,mutualReceptions
+kaabalah astrology:condition 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --rulers=modern --json --compact --fields=bodies.Sun
+```
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--rulers` | string | traditional | `traditional` or `modern` (Pluto, Uranus and Neptune rule Scorpio, Aquarius and Pisces) |
+
+The natal flags are the same as `astrology` (`--lat`, `--lon`, `--location`, `--house-system`, `--timezone`).
+
+### astrology:rulers
+
+The sign to ruler table. No birth data and no WASM needed.
+
+```bash
+kaabalah astrology:rulers --json --compact
+kaabalah astrology:rulers --rulers=modern --json --compact --fields=table
+```
+
+### astrology:varga
+
+Jyotish divisional charts (`getVargaChart`) on tropical longitudes, with the lagna and the whole-sign house of each point counted from the varga lagna. `--division` takes any supported division (1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60) or `all`. When D9 is included the output also carries `karakamsha` (`getKarakamsha`, with the Atmakaraka ranked exactly as in `astrology:jyotish`) and `karakamsha.houses`, the house of each point counted from the Karakamsha.
+
+```bash
+kaabalah astrology:varga 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --division=9 --json --compact --fields=vargas,karakamsha
+kaabalah astrology:varga 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --division=all --json --compact --fields=vargas
+```
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--division` | string | 9 | A supported division, or `all` |
+| `--node` | string | mean | Rahu/Ketu node convention: `mean` or `true` |
+| `--karaka-scheme` | string | 7 | Chara karaka scheme for the Karakamsha: `7` or `8` |
+
+### astrology:yogakarakas
+
+Planets that rule both a kendra and a trikona from an ascendant (`getYogakarakas`). Pass `--ascendant=<sign>` (no birth data needed) or a birth date, time and place, in which case the tropical ascendant sign is used.
+
+```bash
+kaabalah astrology:yogakarakas --ascendant=Taurus --json --compact
+kaabalah astrology:yogakarakas 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --json --compact --fields=ascendant,yogakarakas
+```
 
 ### astrology:astrocartography
 
@@ -946,6 +1002,28 @@ kaabalah tree:ascii --columns=41 --rows=21 --json --compact
 | `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
 | `--columns` | number | 61 | ASCII canvas width in characters (minimum 21) |
 | `--rows` | number | 31 | ASCII canvas height in lines (minimum 11) |
+
+### tree:map
+
+The weighted Tree of Life birth map from `buildKaabalisticMapData`. Numerology (from the birth date) always runs, gematria runs with `--name`, and astrology joins only when a birth time and place are given.
+
+```bash
+kaabalah tree:map 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --name="Maria Silva" --json --compact --fields=rankedSpheres
+kaabalah tree:map 1990-05-17 --name="Maria Silva" --json --compact --fields=systems,note,unlitSpheres
+```
+
+Returns `systems` (which of astrology, numerology and gematria ran), `note` (set when astrology was left out because there is no birth time), `rankedSpheres` and `rankedPaths` (each row with `id`, `name`, `share`, `count` and its `markers`: `sourceName`, `mapping`, `weight`), `unlitSpheres` (spheres nothing lands on), `weightsById` and `rawWeightsById`. Flags: `--name`, `--lat`, `--lon`, `--location`, `--house-system`, `--timezone`.
+
+### tree:paths
+
+House quests, the Lightning Path (Kether to Malkuth), the Serpent Path (Malkuth to Kether) and `HOUSE_SPHERES` for a natal chart, in the language given by `--language`.
+
+```bash
+kaabalah tree:paths 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --json --compact --fields=lightningPath
+kaabalah tree:paths 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --language pt-BR --json --compact --fields=houseQuests
+```
+
+Returns `houseQuests`, `lightningPath`, `serpentPath`, `houseSpheres` and `language`. Steps whose carrier is missing from the chart are omitted.
 
 ## Dated numerology
 

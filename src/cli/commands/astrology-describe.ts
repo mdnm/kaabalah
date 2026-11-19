@@ -8,8 +8,6 @@ type Entry = {
   pt: string;
   en: string;
   keywords: { pt: readonly string[]; en: readonly string[] };
-  src: readonly unknown[];
-  reviewNotes: readonly string[];
 };
 type Descriptions = typeof import("../../astrology/descriptions");
 type KeyKind = "planet" | "sign" | "house" | "point" | "angle" | "aspect" | "node" | "text" | "number";
@@ -162,7 +160,7 @@ export function cmdAstrologyDescribe(args: string[], flags: Flags, inputPayload:
             kind: kindName, keys, found: true, language,
             text: portuguese ? entry.pt : entry.en,
             keywords: portuguese ? entry.keywords.pt : entry.keywords.en,
-            pt: entry.pt, en: entry.en, src: entry.src, reviewNotes: entry.reviewNotes,
+            pt: entry.pt, en: entry.en,
           }
         : { kind: kindName, keys, found: false, language, text: null },
       flags,
