@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 6.20.1 - 2026-11-19
+
+- Tarot card images come from the CloudFront distribution
+  (`https://d1u8antvu60ox0.cloudfront.net/tarot`) instead of the S3 bucket.
+  Same paths, cached at the edge.
 - Fix the English spelling of sextile in the 22 planet-pair aspect
   descriptions, which read "in sextil".
 
