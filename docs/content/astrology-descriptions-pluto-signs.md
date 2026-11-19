@@ -97,7 +97,7 @@ Every entry has two lowercase-start sentences per language with direct você/you
 - Livro inspecionado: 64174–64212; abertura psicológica legível em 64179–64185, seguida de OCR fragmentado em conceitos-chave. Nenhuma adição adotada. Crises espirituais, dissolução de fronteiras pessoais e regeneração/renascimento do livro não substituem obscuridade, caos ou turbulência do curso; não foram inferidos conteúdos nas lacunas.
 - Final resolution: the entire first sentence is explicitly collective symbolism, including merging into the unknown, chaos and sexual turbulence; no actual reader behavior or clinical/sexual identity is assigned. Psychic faculties remain omitted from body and keywords, rather than asserted as a verified or personal ability.
 
-Next pointer only: Sun in houses, A8:1101–1516; B:26584–27770. No next-factor source was opened.
+Next pointer only: Sun in houses, class notes:1101–1516; B:26584–27770. No next-factor source was opened.
 
 Validation: all 141 targeted description tests pass, including generic coverage of all ten sets. JSON report: `/tmp/kaabalah-pluto-tests.json`. `npm run typecheck` and `git diff --check` pass. The previous nine sets remain value-identical to the pre-edit baseline and HEAD; Pluto adds 12 records for 120 total. No commit was created.
 

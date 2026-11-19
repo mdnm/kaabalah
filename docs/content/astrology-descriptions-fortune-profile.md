@@ -17,7 +17,7 @@ The primary audit records actual read-only inspection of `class notes` at physic
 
 Potential remains potential, not fixed biography or guaranteed fortune. The reading considers placement and planetary relations of both point and ruler; relations here are planetary, not interpersonal outcomes. The audit's earlier vitality suggestion is explicitly corrected later in that audit and is not adopted. No health claim, advice or practice is added.
 
-A10:2464-2468 distinguishes the natal point from the entire Ark Annu 10 Wheel of Fortune. The profile preserves that distinction. Formula/day-night and profection context at 2516-2549 is unadopted; timing interpretation from 2580 onward is outside scope. No formula, sect or timing behavior changes.
+class notes:2464-2468 distinguishes the natal point from the entire Ark Annu 10 Wheel of Fortune. The profile preserves that distinction. Formula/day-night and profection context at 2516-2549 is unadopted; timing interpretation from 2580 onward is outside scope. No formula, sect or timing behavior changes.
 
 ## API and preservation
 
@@ -29,4 +29,4 @@ Only the JSON bank, description module, two Fortune tests and this document are 
 
 ## Validation and next kind
 
-397 description tests (394 astrology and3 core/IChing) passed in one fork worker with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All332 previous rows are unchanged; total333. The latest full suite at e0876c2 passed1552 tests before this concept addition. Next: Part of Fortune in signs12, A10:2775-2823 and the repeated combined presentation2824-2998; distinguish sign-specific claims from house content before synthesis. Houses12 follow separately.
+397 description tests (394 astrology and3 core/IChing) passed in one fork worker with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All332 previous rows are unchanged; total333. The latest full suite at e0876c2 passed1552 tests before this concept addition. Next: Part of Fortune in signs12, class notes:2775-2823 and the repeated combined presentation2824-2998; distinguish sign-specific claims from house content before synthesis. Houses12 follow separately.

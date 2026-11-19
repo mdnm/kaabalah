@@ -4,13 +4,13 @@
 
 Twelve Fortune-house profiles only, under `pointHouses.parsFortunae` and numbered houses 1-12. Final `/tmp/kaabalah-fortune-houses-approved.json` is adopted exactly. Integration read audit shards `/tmp/kaabalah-fortune-houses-a.md`, `-b.md` and the final review; the earlier House 9 hold and preliminary draft wording are superseded by Mat's decision and the final approval.
 
-Root reports actual read-only inspection of A10:2703-2773 plus the cited HOUSE table clauses. Integration relies on that supplied audit rather than reopening the course. Source: `class notes`; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. Manifest teaching end is 2999, NOTAS start 3000. No NOTAS/private readings were consulted.
+Root reports actual read-only inspection of class notes:2703-2773 plus the cited HOUSE table clauses. Integration relies on that supplied audit rather than reopening the course. Source: `class notes`; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`. Manifest teaching end is 2999, NOTAS start 3000. No NOTAS/private readings were consulted.
 
 Table context 2822-2823 and headings 2824-2830 distinguish HOUSE as experience field from SIGN as manner. Only house-field clauses are adopted. Interleaved sign labels are not house claims, and sign manner is not transferred into these profiles.
 
 ## Adopted source ranges
 
-| House | Physical inclusive A10 ranges |
+| House | Physical inclusive class notes ranges |
 | --- | --- |
 | 1 | 2735-2737, 2834-2836 |
 | 2 | 2739-2741, 2845-2846, 2848-2849 |
@@ -49,4 +49,4 @@ Only the five agreed files are integration-owned. No index, calculations, CLI, p
 
 ## Validation and next kind
 
-410 astrology description tests and the full npm suite (1575 passed,0failed,0pending) passed with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All345 prior rows remain unchanged; total357, including the complete25 Fortune concept/sign/house rows. Mat's house9 decision is applied as two distinct source functions. Next: four element profiles, applying the selected A8 labels after actual narrow reading796-813, then Capricorn polarity metadata, then the Chiron concept.
+410 astrology description tests and the full npm suite (1575 passed,0failed,0pending) passed with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All345 prior rows remain unchanged; total357, including the complete25 Fortune concept/sign/house rows. Mat's house9 decision is applied as two distinct source functions. Next: four element profiles, applying the selected class notes labels after actual narrow reading796-813, then Capricorn polarity metadata, then the Chiron concept.

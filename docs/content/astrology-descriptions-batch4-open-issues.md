@@ -6,9 +6,9 @@ Authored 2026-11-17 by parallel source-audit agents, one per set. Nothing below 
 | --- | --- | ---: | ---: | --- |
 | Descendant by sign | `angleSigns.dc` | 12 | 12 | none |
 | Sign on house cusp | `houseCuspSigns` | 144 | 144 | none (the five house 6 cells were added in batch 5) |
-| Retrograde planet by sign | `retrogradePlanetSigns` | 79 | 96 | Uranus 3, Neptune 7, Pluto 7 (absent from class 16) |
+| Retrograde planet by sign | `retrogradePlanetSigns` | 79 | 96 | Uranus 3, Neptune 7, Pluto 7 (absent from class notes) |
 | Retrograde planet by house | `retrogradePlanetHouses` | 96 | 96 | none |
-| Vertex / Antivertex | `points.vertex`, `points.antivertex`, `pointHouses.vertex`, `vertexPlanetContacts` | 2 + 6 + 9 | | houses 1-3 and 10-12, Neptune contact, signs (absent from class 18) |
+| Vertex / Antivertex | `points.vertex`, `points.antivertex`, `pointHouses.vertex`, `vertexPlanetContacts` | 2 + 6 + 9 | | houses 1-3 and 10-12, Neptune contact, signs (absent from class notes) |
 | Planet-pair aspects | `aspectPairs` | 256 | 270 | 14 pairs absent from the book family. Square mars/neptune, jupiter/uranus and saturn/uranus were identified by Mat from the printed pages on 2026-11-17 and authored from them |
 
 Total: 599 new entries.
@@ -31,14 +31,14 @@ Counts: authored 12 / expected 12
 ### Gaps (keys omitted, with reason and lines inspected)
 None. Aries, Taurus and Gemini: B 66690-66780 holds no usable OCR for them (the extracted section starts at Libra; the Aries/Taurus/Gemini paragraphs are missing). I rendered PDF physical page 503 (the "Descendente" table, one printed paragraph per sign, left column holds Aries to Virgo, right column Libra to Pisces) and read those three from the image. Pages 502 (Ascendant Aquarius/Pisces) and 507-508 (nodes) were checked and are not the Descendant.
 ### Inconsistencies and source disagreements (lines; what conflicts; what you chose)
-- A8 1313-1314 says Leo on the Descendant means almost the same as Sun in house 7 (looking for a strong figure, projecting the solar principle); B's Leo paragraph is about dramatic, creative partners seeking admiration. Chose B for the text; A8 only cited as context.
-- Taurus: A9 823-825 stresses fidelity and jealousy; B stresses reliable, practical, sensual partners. Used B plus possessiveness and the "security/financial gain/physical closeness" framing; dropped fidelity/jealousy as deterministic.
-- Libra: A9 adds idealizing partners/endless search; B has none of this. Kept only the tact and no-exclusion-driven-compliance point.
+- Class notes 1313-1314 says Leo on the Descendant means almost the same as Sun in house 7 (looking for a strong figure, projecting the solar principle); B's Leo paragraph is about dramatic, creative partners seeking admiration. Chose B for the text; class notes only cited as context.
+- Taurus: class notes 823-825 stresses fidelity and jealousy; B stresses reliable, practical, sensual partners. Used B plus possessiveness and the "security/financial gain/physical closeness" framing; dropped fidelity/jealousy as deterministic.
+- Libra: class notes adds idealizing partners/endless search; B has none of this. Kept only the tact and no-exclusion-driven-compliance point.
 ### Weak support (entries authored on thin/keyword-only/damaged-OCR evidence; key + reason)
 - No entry is keyword-only: each rests on a full B paragraph.
 - Aries, Taurus, Gemini: B lines unusable; text taken from the PDF image (page 503), with Aries's "um certo grau de conflito" phrase dropped as illegible in the scan.
 - Cancer, Leo, Virgo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, Libra: B OCR is interleaved and garbled; each paragraph was reconstructed from the PDF image page 503 rather than the OCR text.
-- A11 111-116 (Descendant as "Tu", what we seek in others) was read but not quoted, to avoid gluing a general concept onto sign profiles.
+- Class notes 111-116 (Descendant as "Tu", what we seek in others) was read but not quoted, to avoid gluing a general concept onto sign profiles.
 
 ---
 
@@ -46,46 +46,46 @@ None. Aries, Taurus and Gemini: B 66690-66780 holds no usable OCR for them (the 
 Counts: authored 67 / expected 72
 
 ### Gaps (keys omitted, with reason and lines inspected)
-- House 6 x Cancer, Scorpio, Sagittarius, Aquarius, Pisces: H (lines 100-226 rows for house 6) offers only health/body keywords for these (stomach, reproductive organs, liver/hips, nervous system/circulation, feet/lymphatic). Excluded by the health rule, nothing left to write. A6/A8/A9 have no cusp-6 prose for these signs.
+- House 6 x Cancer, Scorpio, Sagittarius, Aquarius, Pisces: H (lines 100-226 rows for house 6) offers only health/body keywords for these (stomach, reproductive organs, liver/hips, nervous system/circulation, feet/lymphatic). Excluded by the health rule, nothing left to write. Class notes have no cusp-6 prose for these signs.
 
 ### Inconsistencies and source disagreements (lines; what conflicts; what you chose)
-- Scope of A6:51-255: the whole range is house 1 only ("CASA 01 NOS SIGNOS", one paragraph per sign, written as "O ASCENDENTE <signo>"). There is no prose for houses 2-6 in A6. A8:1090-1099 is a generic note (the subjects of a house follow the sign on its cusp, from the ruler's placement); no sign content. Used for no entry.
-- House 1: A6 describes the Ascendant; entries are phrased as "cusp of house 1" per the task. The two coincide only in some house systems, so this is an assumption to confirm.
-- A9 (Mercury and Venus house chapters, file lines 302-993) is mostly "sign in house N" without cusp wording. Used only where it says cusp, Fundo-do-Céu (taken as house 4 cusp), or "cúspide ou contido na casa": Gemini/Virgo 4 (394-404), Taurus/Libra 4 (732-743), Libra 3 (712-715), Gemini/Virgo 5 (431-433), Gemini 6 (460-461). Pure in-house passages (e.g. Gemini/Virgo in house 3 at 373-378, Taurus in house 3 at 710-712, Gemini/Virgo/Taurus/Libra in house 2 or 6) were not used; those cells rest on H only.
-- Virgo 5 and Gemini 5: A9 wording is "cúspide ou contido na casa 5" / "Virgem nesta posição", so the cusp/occupation split is not clear. Same for Libra 3, Taurus 4, Libra 4.
+- Scope of class notes:51-255: the whole range is house 1 only ("CASA 01 NOS SIGNOS", one paragraph per sign, written as "O ASCENDENTE <signo>"). There is no prose for houses 2-6 in class notes. Class notes:1090-1099 is a generic note (the subjects of a house follow the sign on its cusp, from the ruler's placement); no sign content. Used for no entry.
+- House 1: class notes describes the Ascendant; entries are phrased as "cusp of house 1" per the task. The two coincide only in some house systems, so this is an assumption to confirm.
+- Class notes (Mercury and Venus house chapters, file lines 302-993) is mostly "sign in house N" without cusp wording. Used only where it says cusp, Fundo-do-Céu (taken as house 4 cusp), or "cúspide ou contido na casa": Gemini/Virgo 4 (394-404), Taurus/Libra 4 (732-743), Libra 3 (712-715), Gemini/Virgo 5 (431-433), Gemini 6 (460-461). Pure in-house passages (e.g. Gemini/Virgo in house 3 at 373-378, Taurus in house 3 at 710-712, Gemini/Virgo/Taurus/Libra in house 2 or 6) were not used; those cells rest on H only.
+- Virgo 5 and Gemini 5: class notes wording is "cúspide ou contido na casa 5" / "Virgem nesta posição", so the cusp/occupation split is not clear. Same for Libra 3, Taurus 4, Libra 4.
 - H vs course: no real contradiction found. Minor: Virgo 5 H says "perfeccionismo criativo, estética refinada"; course lists practical crafts (carpentry, refined cooking, sewing, pottery). Course followed; H only supplied the second sentence's "método/perfeição". Gemini 4 H "mudanças de residência" vs course "dois lares / raízes superficiais": course followed, H keyword not used.
 - Dropped H keywords that conflict with exclusion rules: health terms (all of house 6 body parts, "saúde robusta"), "lealdade romântica" (Taurus 5), "sorte financeira" (Sagittarius 2, prediction), "maternagem"/"karma materno" (gendered parent assignment).
 
 ### Weak support (entries authored on thin/keyword-only/damaged-OCR evidence; key + reason)
 - Keyword-only (H sheet, single sentence): houses 2: all 12 signs; house 3: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces; house 4: Aries, Cancer, Leo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces; house 5: Aries, Taurus, Cancer, Leo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces; house 6: Aries, Taurus, Leo, Virgo, Libra, Capricorn (47 keys).
 - Of these, most carry only 2 keywords (H rows give 2-3 phrases and the brief asks for 3 to 5); house 6 entries have 2 keywords with a second word taken literally from the H phrase. Not padded with unsupported terms.
-- Thin course support with an H-based second sentence: Gemini 5, Virgo 5, Gemini 6 (single clause in A9), Libra 3, Taurus 4, Libra 4, Gemini 4, Virgo 4 (course is Mercury/Venus-in-house prose reused for the cusp).
-- Houses 1 (12 keys) are well supported by A6; health, childhood-trauma and manipulation statements left out; "Aquarius" and "Capricorn" kept to personality traits only. A6 is OCR with some noise ("trio" for frio, etc.), meaning clear from context.
+- Thin course support with an H-based second sentence: Gemini 5, Virgo 5, Gemini 6 (single clause in class notes), Libra 3, Taurus 4, Libra 4, Gemini 4, Virgo 4 (course is Mercury/Venus-in-house prose reused for the cusp).
+- Houses 1 (12 keys) are well supported by class notes; health, childhood-trauma and manipulation statements left out; "Aquarius" and "Capricorn" kept to personality traits only. Class notes is OCR with some noise ("trio" for frio, etc.), meaning clear from context.
 
 ---
 
 ## Sign on the cusp, houses 7-12
-Counts: authored 72 / expected 72 (24 from course prose A9, 48 keyword-only from H)
+Counts: authored 72 / expected 72 (24 from course prose class notes, 48 keyword-only from H)
 
 ### Gaps (keys omitted, with reason and lines inspected)
-- None omitted. A6:51-255 only covers the Ascendant (house 1) and A8:1090-1099 is only the general rule (house subjects follow the sign on the cusp, mainly), so neither has per-sign prose for houses 7-12. A9:302-993 (Mercury and Venus in houses 1-12) was read in full; it only names the signs Gemini, Virgo (Mercury) and Taurus, Libra (Venus).
+- None omitted. Class notes:51-255 only covers the Ascendant (house 1) and class notes:1090-1099 is only the general rule (house subjects follow the sign on the cusp, mainly), so neither has per-sign prose for houses 7-12. Class notes:302-993 (Mercury and Venus in houses 1-12) was read in full; it only names the signs Gemini, Virgo (Mercury) and Taurus, Libra (Venus).
 
 ### Inconsistencies and source disagreements (lines; what conflicts; what you chose)
-- A9 mostly says "X na casa N" (sign in the house), not explicitly "on the cusp". Explicit cusp wording: Gemini 10 (557), 11 (585), 12 (644); Virgo 12 (647); Taurus 8 (846), 11 (936), 10 ("meio do céu", 904), 12 (986); Libra 10 ("meio do céu", 909). All other course cells use in-house wording. Chose to use them, guided by A8:1095-1099 (house topics follow the signs where it sits, mainly the cusp). Owner may want to downgrade those.
-- A9:820 (Libra cusp of house 7) is a famous-person example; excluded.
-- H vs course: H does not contradict the course on any cell, but H often gives a different emphasis (e.g. H Taurus 12 "conforto no isolamento, medos de perda material" vs A9 "materialista ou teimoso demais / falta de praticidade"). Course preferred.
+- Class notes mostly says "X na casa N" (sign in the house), not explicitly "on the cusp". Explicit cusp wording: Gemini 10 (557), 11 (585), 12 (644); Virgo 12 (647); Taurus 8 (846), 11 (936), 10 ("meio do céu", 904), 12 (986); Libra 10 ("meio do céu", 909). All other course cells use in-house wording. Chose to use them, guided by class notes:1095-1099 (house topics follow the signs where it sits, mainly the cusp). Owner may want to downgrade those.
+- Class notes:820 (Libra cusp of house 7) is a famous-person example; excluded.
+- H vs course: H does not contradict the course on any cell, but H often gives a different emphasis (e.g. H Taurus 12 "conforto no isolamento, medos de perda material" vs class notes "materialista ou teimoso demais / falta de praticidade"). Course preferred.
 - H lines 24, 13: H calls house 7 "Descendente" and 10 "Meio do Céu"; entries use "cúspide da casa N" per instructions.
 - Excluded H keywords as health, sexuality, death or gendered-parent claims: "morte como conceito intelectual" (Gemini 8), "filosofia matriarcal" (Cancer 9), "karma materno" (Cancer 12), "relações abertas" (Aquarius 7), "autodestruição potencial" (Scorpio 12), "sexo" items. Aquarius 7 uses only "parcerias livres". Cancer 11 keeps "amizades maternais" (a friendship style, not a parent assignment).
 
 ### Weak support (entries authored on thin/keyword-only/damaged-OCR evidence; key + reason)
 - Keyword-only (H), one short sentence each: houses 7-12 for Aries, Cancer, Leo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces (8 signs x 6 houses = 48 keys). Keywords split from H phrases and, where H gave only 2 items, a third was a one-word generalization of those items (e.g. "ação", "misticismo", "durabilidade").
-- Thin course support (one sentence, in-house wording): Gemini 7, 8, 9; Virgo 10. Gemini 8 generalizes a sexual-desire remark (A9:515-516) to "temas ocultos e íntimos", with the sexual content excluded.
-- Virgo 9 (A9:536-537) and Libra 7, 12 (A9:826, 992-993) have light OCR garble; sense restored from context.
+- Thin course support (one sentence, in-house wording): Gemini 7, 8, 9; Virgo 10. Gemini 8 generalizes a sexual-desire remark (class notes:515-516) to "temas ocultos e íntimos", with the sexual content excluded.
+- Virgo 9 (class notes:536-537) and Libra 7, 12 (class notes:826, 992-993) have light OCR garble; sense restored from context.
 - Taurus 9, Libra 8, 9, 11, 12, Virgo 7, 8, 9, 11, Gemini 7, 8, 9: in-house wording only (see Inconsistencies).
 
 ---
 
-## Retrograde Mercury and Venus, natal sign and house (source A16)
+## Retrograde Mercury and Venus, natal sign and house (source class notes)
 Counts: authored 48 / expected 48
 (Mercury signs 618-918, houses 919-1270; Venus signs 1352-1691, houses 1692-2009; all read in full.)
 
@@ -108,7 +108,7 @@ None. Every sign and house has a section in the source.
 
 ---
 
-## Retrograde Mars and Jupiter in signs and houses (A16)
+## Retrograde Mars and Jupiter in signs and houses (class notes)
 Counts: authored 48 / expected 48
 Lines used: Mars signs 2086-2354, Mars houses 2355-2616, Jupiter signs 2694-2960, Jupiter houses 2961-3260 (each entry cites its own section). Range boundaries verified by heading grep; Jupiter house 12 ends at 3260 (Saturn heading follows).
 
@@ -131,7 +131,7 @@ None. All 48 keys have an entry.
 
 ---
 
-## Retrograde Saturn and Uranus in sign and house (A16)
+## Retrograde Saturn and Uranus in sign and house (class notes)
 Counts: authored 45 / expected 45 (Saturn 12 signs + 12 houses; Uranus 9 signs + 12 houses; 3 Uranus signs absent from the class)
 
 Source: class notes. Saturn signs 3315-3575, Saturn houses 3576-3844, Uranus signs 3917-4147, Uranus houses 4148-4420 (verified against section headings; Uranus house 12 ends just before the Netuno heading).
@@ -155,7 +155,7 @@ Source: class notes. Saturn signs 3315-3575, Saturn houses 3576-3844, Uranus sig
 
 ---
 
-## Retrograde Neptune and Pluto: signs and houses (A16)
+## Retrograde Neptune and Pluto: signs and houses (class notes)
 Counts: authored 34 / expected 48 (Neptune signs 5/12, Pluto signs 5/12, Neptune houses 12/12, Pluto houses 12/12)
 
 Source: class notes. Neptune signs 4472-4585, houses 4586-4822; Pluto signs 4887-5011, houses 5012-5270 (5271 blank, `## NOTAS` at 5272). Each entry's src is its full section; reviewNotes cite what was adopted/excluded.
@@ -179,7 +179,7 @@ Source: class notes. Neptune signs 4472-4585, houses 4586-4822; Pluto signs 4887
 
 ---
 
-## Vertex / Antivertex (A18, lines 849-1064)
+## Vertex / Antivertex (class notes, lines 849-1064)
 Counts: authored 17 / expected 17 (2 points, 6 Vertex houses, 9 planet contacts)
 ### Gaps (keys omitted, with reason and lines inspected)
 - Vertex houses 1-3, 10-12: source covers only 4-9 (920-995).
@@ -647,14 +647,14 @@ Not fully checked: sextile sun/mars, mercury/mars and mercury/uranus. The OCR is
 Mat ruled: classes take priority over the book and the keyword sheet; class-versus-class conflicts go to him; house 6 may speak of health; the retrograde, Vertex-house and aspect-pair gaps are accepted. Vertex by sign and Lilith by house are lookup aliases through the natural house/sign, not authored text (the Lilith alias is an extension of the Vertex ruling and was not stated by Mat for Lilith). Lilith aspects have no source and were not authored. A second page-image read covered 25 aspect entries: 14 kept, 11 rewritten; the Mercury/Jupiter quincunx page is mostly the Mercury/Mars page with the planet name swapped, so that entry rests on the few Jupiter-specific phrases.
 
 ### Class versus class (resolved: Mat accepted all six as they stand on 2026-11-17; the Mercury/Venus contact duplication is probably a transcription slip and stays)
-- A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
-- A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
-- A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.
-- A18 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
-- A18 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
-- A18 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
-- A9 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
-- No class-vs-class conflicts found in the cusp passages (A9 302-993, A6 house 1) or in the four retrograde logs (all A16). Re-reads covered A9 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and A18 849-1064.
+- Class notes 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs class notes 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
+- Class notes 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs class notes 997-1020 (always impeded, always separated).
+- Class notes 1489 calls the Vertex "Ponto do Amor" vs class notes 849-858 "ascendente espiritual", not always about relationships.
+- Class notes 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
+- Class notes 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
+- Class notes 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
+- Class notes 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
+- No class-vs-class conflicts found in the cusp passages (class notes 302-993, class notes house 1) or in the four retrograde logs (all class notes). Re-reads covered class notes 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and class notes 849-1064.
 
 ---
 
@@ -662,51 +662,51 @@ Mat ruled: classes take priority over the book and the keyword sheet; class-vers
 Counts: 5 dc rewritten + 11 cusp rewritten + 5 new house-6 cells = 21 entries.
 
 ### Rewritten for class priority
-- angleSigns.dc.Leo: now based on A8 1285-1314 (Leo on the Descendant ~ Sun in house 7: self found through the other, seeking a strong figure/prestige/a hero to serve, projecting the solar principle); book's dramatic partners only added.
-- angleSigns.dc.Taurus: A9 823-825 basis (constancy, devotion, possessiveness and jealousy as tendency, marriage as security/financial gain/physical closeness); book partners added.
-- angleSigns.dc.Gemini: A9 487-488 basis (more than one important relationship or one transformed to almost new); book partners added.
-- angleSigns.dc.Virgo: A9 488-490 basis (cautious, discerning in choosing partners; "salvar os outros" with extreme loyalty); book partners added.
-- angleSigns.dc.Libra: A9 825-829 basis, now including the idealized partner / endless search for the perfect partner; book added.
-- houseCuspSigns.2.Gemini (A9 341-344), 2.Taurus (689-694), 2.Libra (691-694): were H-only; now class basis.
-- houseCuspSigns.3.Gemini (A9 373-375), 3.Virgo (376-378), 3.Taurus (710-712): were H-only; now class basis.
-- houseCuspSigns.5.Taurus (A9 770-772), 5.Libra (773-775): were H-only; now class basis.
-- houseCuspSigns.6.Virgo (A9 461-463), 6.Taurus (798-799), 6.Libra (799-801): were H-only; now class basis, H kept only where it does not conflict.
-- Not rewritten, no class content on the Descendant: Aries, Cancer, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces (A8 1313 and the A9 ranges only name Leo, Taurus, Gemini, Virgo, Libra).
+- angleSigns.dc.Leo: now based on class notes 1285-1314 (Leo on the Descendant ~ Sun in house 7: self found through the other, seeking a strong figure/prestige/a hero to serve, projecting the solar principle); book's dramatic partners only added.
+- angleSigns.dc.Taurus: class notes 823-825 basis (constancy, devotion, possessiveness and jealousy as tendency, marriage as security/financial gain/physical closeness); book partners added.
+- angleSigns.dc.Gemini: class notes 487-488 basis (more than one important relationship or one transformed to almost new); book partners added.
+- angleSigns.dc.Virgo: class notes 488-490 basis (cautious, discerning in choosing partners; "salvar os outros" with extreme loyalty); book partners added.
+- angleSigns.dc.Libra: class notes 825-829 basis, now including the idealized partner / endless search for the perfect partner; book added.
+- houseCuspSigns.2.Gemini (class notes 341-344), 2.Taurus (689-694), 2.Libra (691-694): were H-only; now class basis.
+- houseCuspSigns.3.Gemini (class notes 373-375), 3.Virgo (376-378), 3.Taurus (710-712): were H-only; now class basis.
+- houseCuspSigns.5.Taurus (class notes 770-772), 5.Libra (773-775): were H-only; now class basis.
+- houseCuspSigns.6.Virgo (class notes 461-463), 6.Taurus (798-799), 6.Libra (799-801): were H-only; now class basis, H kept only where it does not conflict.
+- Not rewritten, no class content on the Descendant: Aries, Cancer, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces (class notes 1313 and the class notes ranges only name Leo, Taurus, Gemini, Virgo, Libra).
 - New (task 3): houseCuspSigns.6.Cancer, Scorpio, Sagittarius, Aquarius, Pisces, from H lines 90, 154, 170, 202, 218 only (no class prose for them); tendencies about care of body/routine, organs left out except nervous system/circulation (Aquarius) and feet/lymphatic system (Pisces) as areas of attention.
 
 Class claims kept out because of the writing exclusions:
-- Leo: "figura de pai" (gendered parent), Diana example, counsellor/arbitration vocations (A8 1306-1313).
+- Leo: "figura de pai" (gendered parent), Diana example, counsellor/arbitration vocations (class notes 1306-1313).
 - Taurus: "fidelidade" (fidelity); jealousy kept only as the class's hedged "tendência" (same as houseCuspSigns.7.Taurus). Owner may strike it from both.
-- Libra: Proust example (A9 820), "Áries na casa 1" cross-reference.
+- Libra: Proust example (class notes 820), "Áries na casa 1" cross-reference.
 - 2.Gemini: "bom funcionamento do corpo como maior bem" (health); 6.Libra: "saúde abalada" (801); 6.Virgo: soap-brand anecdote.
-- A11 111-116 (Descendant as "Tu", what we seek in others) is generic, has no per-sign content; not added (would glue a concept to sign profiles).
+- Class notes 111-116 (Descendant as "Tu", what we seek in others) is generic, has no per-sign content; not added (would glue a concept to sign profiles).
 
 ### Class versus class (resolved: Mat accepted all six as they stand on 2026-11-17; the Mercury/Venus contact duplication is probably a transcription slip and stays)
-- A18 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs A18 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
-- A18 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs A18 997-1020 (always impeded, always separated).
-- A13 1489 calls the Vertex "Ponto do Amor" vs A18 849-858 "ascendente espiritual", not always about relationships.
-- A18 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
-- A18 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
-- A18 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
-- A9 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
-- No class-vs-class conflicts found in the cusp passages (A9 302-993, A6 house 1) or in the four retrograde logs (all A16). Re-reads covered A9 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and A18 849-1064.
+- Class notes 849-851 and 856-858 (Vertex axis "nem sempre trata de relacionamentos", also jobs, projects, revelations) vs class notes 997-1020 (Vertex encounters are relationships, "sempre" meet impediments, "sempre ocorrerá algo do destino para separá-los", the relationship does not work after a divorce). Not resolved; points.vertex follows the first, the second was left out as deterministic.
+- Class notes 908-911 (a Vertex contact "pode dar em nada" unless one is ready; may resonate for years) vs class notes 997-1020 (always impeded, always separated).
+- Class notes 1489 calls the Vertex "Ponto do Amor" vs class notes 849-858 "ascendente espiritual", not always about relationships.
+- Class notes 849-850 and 892-893 (Vertex = "ascendente espiritual", yet it "aparece no lado oposto do Ascendente", where the Descendant/Antivertex sits) vs the Antivertex defined as the "descendente espiritual".
+- Class notes 921-923 ("Vertex normalmente fica nas casas 5, 6, 7 e 8") vs 983-995 (rarely 4 and 9, and the house 9 text reads as house 3 themes: siblings, neighbours). Different readings of the same factor inside one class.
+- Class notes 1025 and 1026 (Mercúrio and Vênus contacts) are near-identical text (irmãos/irmãs, filhas, amante, amigas): probable class transcription error, not a disagreement of doctrine.
+- Class notes 341-344 Gemini house 2 ("sagazes e cautelosos com dinheiro") vs H "finanças flutuantes" is a class-vs-H case, resolved for the class, not class-vs-class.
+- No class-vs-class conflicts found in the cusp passages (class notes 302-993, class notes house 1) or in the four retrograde logs (all class notes). Re-reads covered class notes 341-344, 373-378, 431-433, 460-463, 487-490, 689-694, 710-715, 732-743, 770-775, 798-801, 823-829 and class notes 849-1064.
 
 ### Left as is
-- Retrograde logs (all A16, class only): phase vocabulary (Fase I/II/III) omitted by design, not for a book or H source; no change.
+- Retrograde logs (all class notes, class only): phase vocabulary (Fase I/II/III) omitted by design, not for a book or H source; no change.
 - Retrograde logs: chart-conditional, sexual, marriage, health, past-life and gendered content excluded by the writing rules; no change.
 - Retrograde: uranus Capricorn/Aquarius/Pisces, neptune and pluto missing signs: absent from the class; no change.
-- Vertex: houses 1-3 and 10-12, Neptune contact, sign entries absent from A18; no change.
-- Vertex: A18 997-1020 (reencontro, impediments, divorce, homosexual relationships) and gendered family roles excluded by the writing rules; no change.
-- Vertex: A18 1032-1064 (house of the Vertex's ruler, astrocartography) is another factor, left out; no change.
-- houseCuspSigns 1: A6 is the basis already; "cusp vs Ascendant" assumption stays as logged.
+- Vertex: houses 1-3 and 10-12, Neptune contact, sign entries absent from class notes; no change.
+- Vertex: class notes 997-1020 (reencontro, impediments, divorce, homosexual relationships) and gendered family roles excluded by the writing rules; no change.
+- Vertex: class notes 1032-1064 (house of the Vertex's ruler, astrocartography) is another factor, left out; no change.
+- houseCuspSigns 1: class notes is the basis already; "cusp vs Ascendant" assumption stays as logged.
 - houseCuspSigns 4.Gemini, 4.Virgo, 4.Taurus, 4.Libra, 3.Libra, 5.Gemini, 5.Virgo, 6.Gemini and all of 7-12 for Gemini/Virgo/Taurus/Libra: already class-based; H only supplementary. Virgo 5 and Gemini 4 H keywords that differ from class were already set aside.
-- houseCuspSigns 2.Virgo: A9 has no Virgo sentence for house 2, so it stays H-only.
+- houseCuspSigns 2.Virgo: class notes has no Virgo sentence for house 2, so it stays H-only.
 - houseCuspSigns 7-12 other signs (Aries, Cancer, Leo, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces) and 2-6 for those signs: no class prose, H-only stays.
 - houseCuspSigns 8.Gemini (sexual-desire remark generalized) and 12.* ("karma materno" etc.): excluded content stays excluded.
 
 ---
 
-## Sun sign x Ascendant (A7, lines 16-576)
+## Sun sign x Ascendant (class notes, lines 16-576)
 Counts: authored 144 / expected 144
 
 Lines used: `class notes` 16-576 (all of it read). Per-entry ranges are in each `src`. The range for the Sagittarius-Sun/Sagittarius-Ascendant row starts on a line it shares with the end of the Scorpio row (line 423); the Scorpio-Sun row there is 420-423.
@@ -743,7 +743,7 @@ None. All 144 rows are present and readable (lines 16-576).
 
 ---
 
-## Symbolic degrees A: Aries, Taurus, Gemini, Cancer (A11 lines 341-758)
+## Symbolic degrees A: Aries, Taurus, Gemini, Cancer (class notes lines 341-758)
 Counts: authored 120 / expected 120
 Source lines used: reading rule 324-340 (degree key = source's ordinal number; 18°00' = 18th, 18°01'-18°59' = 19th); degrees Aries 341-455, Taurus 460-562, Gemini 567-660, Cancer 664-758.
 
@@ -766,7 +766,7 @@ None. All four signs have degrees 01-30 present, each exactly once, in order. No
 
 ## Symbolic degrees B (Leo, Virgo, Libra, Scorpio)
 Counts: authored 120 / expected 120
-Source: A11 `class notes`, lines 763-1158 (Leão 763-852, Virgem 856-954, Libra 958-1056, Escorpião 1061-1158); intro/reading rule at 324-333 read (degree N = ordinal degree; 18°01'-18°59' is the 19th).
+Source: class notes `class notes`, lines 763-1158 (Leão 763-852, Virgem 856-954, Libra 958-1056, Escorpião 1061-1158); intro/reading rule at 324-333 read (degree N = ordinal degree; 18°01'-18°59' is the 19th).
 ### Gaps
 None. All 120 degrees present; the source gives only images, no interpretive text for any degree, so no hedged meaning sentence was added anywhere.
 ### Inconsistencies and source disagreements
@@ -784,7 +784,7 @@ None. All 120 degrees present; the source gives only images, no interpretive tex
 
 ---
 
-## Symbolic degrees C (Sagittarius, Capricorn, Aquarius, Pisces) from A11
+## Symbolic degrees C (Sagittarius, Capricorn, Aquarius, Pisces) from class notes
 Counts: authored 120 / expected 120
 Source: class notes, lines 1162-1556 (Sagittarius 1162-1254, Capricorn 1258-1346, Aquarius 1350-1450, Pisces 1454-1556). Intro and reading rule read at 324-340 (18°00' = 18th degree, 18°01'-18°59' = 19th).
 
@@ -811,26 +811,26 @@ None. All 120 degrees present in 1162-1556. Lines from 1558 on are personal clas
 Counts: authored 4 / expected 4 (peregrine omitted)
 
 ### Gaps
-- peregrine: no class defines it. grep of A12 and A15 for peregrin hits only unrelated words (A12:275, 876 "peregrinos/Peregrino" as pilgrim; A15:622 "peregrinar" as travel). Book grep: only "peregrinação" (B:19877), unrelated. Omitted.
-- No class says what any status does to a planet's expression. Classes give only structural definitions. The behavioral hedges ("more naturally", "favored", "less at ease", "challenged") come from the book, which is sign-specific OCR: B:17372-17377 (domicile, Moon), 17113-17117 (exile, Sun), 17084-17097 (fall, Sun). Exaltation has no usable book wording (B:17068-17075, 17434-17436 garbled), so "qualities favored" is inferred only from A12 calling exaltation a "Dignidade" and detriment/fall "Debilidades" (A12:1267-1270). Owner may prefer to strip the behavioral clauses.
-- Domicile: classes never define the word; A12 says "regem os signos" (1267-1268) and A15 uses "domicílio"/"trono" in examples (45-51).
+- peregrine: no class defines it. grep of class notes for peregrin hits only unrelated words (class notes:275, 876 "peregrinos/Peregrino" as pilgrim; class notes:622 "peregrinar" as travel). Book grep: only "peregrinação" (B:19877), unrelated. Omitted.
+- No class says what any status does to a planet's expression. Classes give only structural definitions. The behavioral hedges ("more naturally", "favored", "less at ease", "challenged") come from the book, which is sign-specific OCR: B:17372-17377 (domicile, Moon), 17113-17117 (exile, Sun), 17084-17097 (fall, Sun). Exaltation has no usable book wording (B:17068-17075, 17434-17436 garbled), so "qualities favored" is inferred only from class notes calling exaltation a "Dignidade" and detriment/fall "Debilidades" (class notes:1267-1270). Owner may prefer to strip the behavioral clauses.
+- Domicile: classes never define the word; class notes says "regem os signos" (1267-1268) and class notes uses "domicílio"/"trono" in examples (45-51).
 
 ### Class tables (data)
-A12 (1239-1272), heliocentric/"natural order" table, columns Natural planet / Exaltation / Fall (table was reconstructed from the PDF by the owner, see the HTML comment at 1253-1264):
+class notes (1239-1272), heliocentric/"natural order" table, columns Natural planet / Exaltation / Fall (table was reconstructed from the PDF by the owner, see the HTML comment at 1253-1264):
 Aries: nat Sun, exalt Sun, fall Saturn | Taurus: Mercury, Moon, Uranus | Gemini: Venus, South Node, North Node | Cancer: Earth, Jupiter, Mars | Leo: Mars, Neptune, Pluto | Virgo: Moon/Asteroids, Mercury, Venus | Libra: Jupiter, Saturn, Sun | Scorpio: Saturn, Uranus, Moon | Sagittarius: Uranus, North Node, South Node | Capricorn: Pluto, Mars, Jupiter | Aquarius: Planet X, Pluto, Neptune | Pisces: Neptune, Venus, Mercury.
-A12 explicitly says the "Planeta Natural" column is NOT rulership or dignity (1265-1269). A12 gives no domicile or detriment table; only the rule: ruler is always in detriment in the opposite sign (180°), and exaltation sits 180° from fall (1270-1272).
-A15 (45-51): no table. Stated: Sun exalted in Aries, domicile Leo; Moon exalted in Taurus, "trono" Cancer. North/Ascending Node: domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo; South Node the inverse. A15 gives no detriment or fall for any planet.
+class notes explicitly says the "Planeta Natural" column is NOT rulership or dignity (1265-1269). Class notes gives no domicile or detriment table; only the rule: ruler is always in detriment in the opposite sign (180°), and exaltation sits 180° from fall (1270-1272).
+class notes (45-51): no table. Stated: Sun exalted in Aries, domicile Leo; Moon exalted in Taurus, "trono" Cancer. North/Ascending Node: domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo; South Node the inverse. Class notes gives no detriment or fall for any planet.
 
 ### Inconsistencies and source disagreements
 Versus the standard library table:
-- A12 exaltation by planet (read from the sign column): Sun Aries (matches), Moon Taurus (matches), Mercury Virgo (matches), Venus Pisces (matches), Mars Capricorn (matches), Jupiter Cancer (matches), Saturn Libra (matches). So A12 and the standard table agree on all seven classical exaltations. A12 additionally lists Uranus (Scorpio), Neptune (Leo), Pluto (Aquarius), nodes (see below); these are outside the standard table.
-- A12 falls (read from the table): Sun Libra, Moon Scorpio, Mercury Pisces, Venus Virgo, Mars Cancer, Jupiter Capricorn, Saturn Aries. Each is 180° from its exaltation, consistent with A12's rule. (Standard table lists no falls; implied opposites match.)
-- A12 detriment: stated only as opposite of ruler's sign; no per-planet data, so no comparison possible.
-- A15 Sun (exalt Aries, domicile Leo) and Moon (exalt Taurus, throne Cancer) match the standard table. Nothing else in A15 for the classical planets.
-Between A12 and A15:
-- No disagreement on Sun or Moon (A12 has the same exaltations, no domicile table).
-- Nodes: A12 table has North Node exalted Sagittarius, fall Gemini; South Node exalted Gemini, fall Sagittarius. A15 has Ascending Node domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo. Per the owner these address different things and the node dignities follow A15:45-53; recorded as a note only, not a new conflict. Also not part of the concept entries.
-- A15 itself: "exílio" is used for detriment, "trono" for domicile; A12 uses "Detrimento". Terminology only.
+- Class notes exaltation by planet (read from the sign column): Sun Aries (matches), Moon Taurus (matches), Mercury Virgo (matches), Venus Pisces (matches), Mars Capricorn (matches), Jupiter Cancer (matches), Saturn Libra (matches). So class notes and the standard table agree on all seven classical exaltations. Class notes additionally lists Uranus (Scorpio), Neptune (Leo), Pluto (Aquarius), nodes (see below); these are outside the standard table.
+- Class notes falls (read from the table): Sun Libra, Moon Scorpio, Mercury Pisces, Venus Virgo, Mars Cancer, Jupiter Capricorn, Saturn Aries. Each is 180° from its exaltation, consistent with class notes' rule. (Standard table lists no falls; implied opposites match.)
+- Class notes detriment: stated only as opposite of ruler's sign; no per-planet data, so no comparison possible.
+- Class notes Sun (exalt Aries, domicile Leo) and Moon (exalt Taurus, throne Cancer) match the standard table. Nothing else in class notes for the classical planets.
+Between class notes:
+- No disagreement on Sun or Moon (class notes has the same exaltations, no domicile table).
+- Nodes: class notes table has North Node exalted Sagittarius, fall Gemini; South Node exalted Gemini, fall Sagittarius. Class notes has Ascending Node domicile Gemini, exaltation Aquarius, exile Sagittarius, fall Leo. Per the owner these address different things and the node dignities follow class notes:45-53; recorded as a note only, not a new conflict. Also not part of the concept entries.
+- Class notes itself: "exílio" is used for detriment, "trono" for domicile; class notes uses "Detrimento". Terminology only.
 Book versus classes (not used for tables): book shows e.g. Mercury exalted Aquarius, Sun fall Libra but exile Aquarius, Jupiter exile Gemini/Virgo (B:17050-18800 region), differing from the standard table; irrelevant here since no table is authored.
 
 ### Weak support
@@ -864,13 +864,13 @@ No Egyptian god/name is attached to any decan in the sign chapters. The book sep
 None. All 36 decans printed and legible.
 
 ### Inconsistencies and source disagreements
-- Classes (A3 104-114) describe the Egyptian decan with 36 "counselor gods" (18 above, 18 below the Earth), not planetary rulers; the book uses planetary rulers and no gods. Not contradictory but different systems; the concept entry follows the classes and only mentions the 10-degree/10-day structure and the 36 count.
-- A5 570-577 mentions the sidereal decan (72 years per degree, 720 years per decan) and calls the 36 decans "crosses"; the book has none of this. Concept entry includes the "36 crosses" phrase only.
+- Classes (class notes 104-114) describe the Egyptian decan with 36 "counselor gods" (18 above, 18 below the Earth), not planetary rulers; the book uses planetary rulers and no gods. Not contradictory but different systems; the concept entry follows the classes and only mentions the 10-degree/10-day structure and the 36 count.
+- Class notes 570-577 mentions the sidereal decan (72 years per degree, 720 years per decan) and calls the 36 decans "crosses"; the book has none of this. Concept entry includes the "36 crosses" phrase only.
 - OCR damage suspected for Pisces and a displaced Capricorn heading: on the printed pages neither is a problem. Capricorn decans are all on p106 with correct headings (the displaced heading is only the OCR lines 13875 etc.; p107 is the Capricorn angel list, and the ghosted "Aquarius" heading behind it is a page watermark). Pisces decans are all on p114 (p112 is the sign intro, p113 a full-page illustration). Pisces p114 is slightly skewed and clipped at the right margin but every sentence is readable. The `src` ranges for Pisces (14608-15000) and Capricorn (13719-13887) are wide because the OCR interleaves and displaces text; they were not verified line by line.
-- Book vs class on the A3 180-182 colour method: not applicable (needs a colour table not available).
+- Book vs class on the class notes 180-182 colour method: not applicable (needs a colour table not available).
 
 ### Weak support
-- Concept entry: A3 114-122 and A5 570-574 are short, partly keyword-level statements; hedged phrasing used.
+- Concept entry: class notes 114-122 and class notes 570-574 are short, partly keyword-level statements; hedged phrasing used.
 - Every decan entry paraphrases one printed paragraph of generic modern style (the book also prints a word cloud per sign, deliberately ignored for keywords). Keywords come from the paragraph text.
 - Excluded from entries: health/healing statements (Virgo I "saúde e bem-estar", Scorpio III "regeneração e cura") and anything about the angels.
 

@@ -90,26 +90,26 @@ No book claim is adopted or included in src. Source workers inspected only the n
 
 ### Sagittarius
 
-- class notes:190-205 inspected in full. Adopted 190-195 for goals, experience, humor masking problems and discomfort with vulnerability; 203-205 for frankness exceeding limits and unintended offense. No generic Sun-sign profile or angle/house alias.
-- class notes:196-202 includes disappointment, unrealistic hopes, overextension, honesty as innate and unhappiness with the wrong person. These are unadopted for concision and to avoid biographical assumptions or relationship outcomes; no optimism-only substitute was invented.
+- Class notes:190-205 inspected in full. Adopted 190-195 for goals, experience, humor masking problems and discomfort with vulnerability; 203-205 for frankness exceeding limits and unintended offense. No generic Sun-sign profile or angle/house alias.
+- Class notes:196-202 includes disappointment, unrealistic hopes, overextension, honesty as innate and unhappiness with the wrong person. These are unadopted for concision and to avoid biographical assumptions or relationship outcomes; no optimism-only substitute was invented.
 - reference text:66300-66390 inspected only, not adopted or cited in src. Standalone Ascendant/Sagittarius identity appears in the fragmented body at 66306-66315, not merely the heading at 66300-66302. OCR fragments the adventure, optimism, independence and frankness text; incomplete philosophical material at 66385-66390 was not reconstructed. Supplemental positive emphases do not replace the primary limits.
 
 ### Capricorn
 
-- class notes:207-220 inspected in full. Adopted 207-214: apparent reserve/distance and elegance concealing shyness at 207-208 are distinct from the protective facade concealing pain at 211-212; responsibility overload extends through 214. The facade is not attributed to concealment of shyness or insecurity. Adopted 216-217 for long-range goals and gradual pursuit of security. The OCR word trio at 207 was not silently repaired into an additional claim.
-- class notes:209-215 includes childhood/maturity and childhood-rooted insecurity, distrust and judgment. No childhood biography is asserted. Late-life realization and advice at 217-220 are unadopted; no age, success guarantee or practice is supplied.
+- Class notes:207-220 inspected in full. Adopted 207-214: apparent reserve/distance and elegance concealing shyness at 207-208 are distinct from the protective facade concealing pain at 211-212; responsibility overload extends through 214. The facade is not attributed to concealment of shyness or insecurity. Adopted 216-217 for long-range goals and gradual pursuit of security. The OCR word trio at 207 was not silently repaired into an additional claim.
+- Class notes:209-215 includes childhood/maturity and childhood-rooted insecurity, distrust and judgment. No childhood biography is asserted. Late-life realization and advice at 217-220 are unadopted; no age, success guarantee or practice is supplied.
 - reference text:66429-66520 inspected only, not adopted or cited in src. The standalone Ascendant/Capricorn body identifies the placement at 66434-66441 despite the fragmented heading. Responsibility, discipline, reserve and patience appear in broken or interleaved clauses; no reconstruction, success promise or extra favorable trait adopted.
 
 ### Aquarius
 
-- class notes:222-239 inspected in full. Adopted 222-225 and 237-238. Rebellion, excitability and unpredictability explicitly retain the antecedent of trying to conform instead of accepting difference; they are not unconditional traits. The source’s additional unreliability label is omitted.
-- class notes:226-236 includes freedom, family, solitude, flexibility and medical/nervous-system claims. None are adopted here; no clinical inference, medical need, childhood history, vibrational practice or promised life pattern. Advice at 238-239 is unadopted.
+- Class notes:222-239 inspected in full. Adopted 222-225 and 237-238. Rebellion, excitability and unpredictability explicitly retain the antecedent of trying to conform instead of accepting difference; they are not unconditional traits. The source’s additional unreliability label is omitted.
+- Class notes:226-236 includes freedom, family, solitude, flexibility and medical/nervous-system claims. None are adopted here; no clinical inference, medical need, childhood history, vibrational practice or promised life pattern. Advice at 238-239 is unadopted.
 - reference text:66566-66689 inspected as one narrow interleaved Aquarius/Pisces body window, not adopted or cited in src. Aquarius is explicit in the body at 66570-66578, while Pisces is explicit at 66572-66580; nearest headings cannot assign the alternating clauses. No supplemental progressiveness, networking, rationality or diversity profile was added and no uncertain column sequence reconstructed.
 
 ### Pisces
 
-- class notes:241-255 inspected in full. Adopted 241-243 for idealization and difficulty with confrontation/defined decisions; 249 for idolizing people who confirm one’s viewpoint; 254-255 for difficulty distinguishing mentally created situations from facts. These remain tendencies, not a diagnosis or a biographical assertion.
-- class notes:245-246 contains a clinical label, which is unadopted. Don Quixote at 241-242, moralized manipulation/victim labels at 246-253 and coercive self-knowledge framing at 248-249 are also omitted. No unsupported positive compensation, healing claim or instruction is invented.
+- Class notes:241-255 inspected in full. Adopted 241-243 for idealization and difficulty with confrontation/defined decisions; 249 for idolizing people who confirm one’s viewpoint; 254-255 for difficulty distinguishing mentally created situations from facts. These remain tendencies, not a diagnosis or a biographical assertion.
+- Class notes:245-246 contains a clinical label, which is unadopted. Don Quixote at 241-242, moralized manipulation/victim labels at 246-253 and coercive self-knowledge framing at 248-249 are also omitted. No unsupported positive compensation, healing claim or instruction is invented.
 - reference text:66566-66689 inspected only, not adopted or cited in src. The body explicitly names Pisces at 66572-66580 alongside alternating Aquarius material at 66570-66578. Sensitivity/empathy and later imagination, spirituality and mystical claims are interleaved; their positive emphasis differs from the primary’s emphasis on idealization and discernment. No heading-based reassignment, OCR reconstruction or supplemental-only claim adopted.
 
 ## Integration boundary
@@ -118,6 +118,6 @@ Only angleSigns.ascendant is appended. All 252 previous bilingual entries in pla
 
 ## Coordinator validation and handoff
 
-305 description tests, typecheck and build passed. Public CJS/ESM checks cover all12 new rows, locale selection, immutable metadata and explicit missing-angle/sign gaps; all240 prior planet placements pass their package regression checks. All252 earlier rows remain value-identical; A6 hash and eligible line ranges match the source snapshot. Public documentation changes remain inside the bilingual-description section. Full suite after the calculation/release landing passed1463 tests; it started before discovery of the seven new semantic tests, which passed in the targeted305. No calculations or existing exports changed.
+305 description tests, typecheck and build passed. Public CJS/ESM checks cover all12 new rows, locale selection, immutable metadata and explicit missing-angle/sign gaps; all240 prior planet placements pass their package regression checks. All252 earlier rows remain value-identical; class notes hash and eligible line ranges match the source snapshot. Public documentation changes remain inside the bilingual-description section. Full suite after the calculation/release landing passed1463 tests; it started before discovery of the seven new semantic tests, which passed in the targeted305. No calculations or existing exports changed.
 
-Next factor: MC in signs, primary A8:1384-1422; A9:208-232,540-561,884-915,1287-1313,1731-1761; A10:363-409,857-898,1527-1570,2245-2302. Supplemental B:66781-66898. Preserve actual MC identity independently of house10 cusp.
+Next factor: MC in signs, primary class notes:1384-1422; class notes:208-232,540-561,884-915,1287-1313,1731-1761; class notes:363-409,857-898,1527-1570,2245-2302. Supplemental B:66781-66898. Preserve actual MC identity independently of house10 cusp.

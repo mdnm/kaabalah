@@ -73,4 +73,4 @@ Next factor after Sun completion: Moon in signs, primary `class notes:4-108`, su
 
 Mat decided on 2026-11-16: no hemisphere inversion for nodes; retain astronomical north/south meanings. Node dignity disagreements remain a separate decision. No npm publication is authorized.
 
-Validation: `npm run build`, `npm run typecheck`, and `npm run test -- --reporter=dot` passed (595 passed, 1 pre-existing skipped). Built CJS and ESM getters were exercised directly. Every entry citation was checked against the actual mounted file and NOTAS boundary. A3 SHA256 matches the research manifest: `3570d3bdf5981d166aab61559990daef4cc02ca53b41daa700e5a24aa0f5584b`.
+Validation: `npm run build`, `npm run typecheck`, and `npm run test -- --reporter=dot` passed (595 passed, 1 pre-existing skipped). Built CJS and ESM getters were exercised directly. Every entry citation was checked against the actual mounted file and NOTAS boundary. Class notes SHA256 matches the research manifest: `3570d3bdf5981d166aab61559990daef4cc02ca53b41daa700e5a24aa0f5584b`.

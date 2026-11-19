@@ -1,10 +1,10 @@
 # Venus in houses: source audit
 
-Scope: natal Venus in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. All final body and keyword claims are primary-only; no book claim is adopted. All ranges are physical one-based inclusive lines, course-relative.
+Scope: natal Venus in houses 1–12 only. Primary class notes: `class notes`. Supplemental B: `reference text`. All final body and keyword claims are primary-only; no book claim is adopted. All ranges are physical one-based inclusive lines, course-relative.
 
 ## Actual inspected and adopted windows
 
-The table records current shard inspections, with the more specific per-entry book windows and shared audit windows distinguished where they overlap. Integration directly reread A9 678–684, 758–761, 792–794, 805–817 and 957–960 to verify the final corrections. No book reread is claimed during integration; agent inspections are not attributed to Mat or the user.
+The table records current shard inspections, with the more specific per-entry book windows and shared audit windows distinguished where they overlap. Integration directly reread class notes 678–684, 758–761, 792–794, 805–817 and 957–960 to verify the final corrections. No book reread is claimed during integration; agent inspections are not attributed to Mat or the user.
 
 | House | Full primary section inspected in draft | Primary adopted | Book inspected in draft, not adopted |
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ The table records current shard inspections, with the more specific per-entry bo
 | 11 | 916–944 | 919–922; 926–927; 932–935 | 40145–40205; 40201–40245; 40245–40315 |
 | 12 | 945–993 | 953–960; 967–967 | 40145–40205; 40201–40245; 40245–40315 |
 
-Book attribution: A1/2 columns interleave; A3/4 body mixes house identifiers under the house-4 heading, with no reliable continuous mapping. B5/6 headings at 39699–39702 and B7/8 at 39886–39888 do not resolve fragmentary/interleaved body text. C verifies actual body house identity at 40043–40049 (9), 40065–40073 (10), 40206/40210–40215 (11) and 40208/40241–40245 (12), but adopts no supplemental material. Overlapping C windows are listed exactly as read. No OCR reconstruction supplies a product claim.
+Book attribution: class notes/2 columns interleave; class notes/4 body mixes house identifiers under the house-4 heading, with no reliable continuous mapping. B5/6 headings at 39699–39702 and B7/8 at 39886–39888 do not resolve fragmentary/interleaved body text. C verifies actual body house identity at 40043–40049 (9), 40065–40073 (10), 40206/40210–40215 (11) and 40208/40241–40245 (12), but adopts no supplemental material. Overlapping C windows are listed exactly as read. No OCR reconstruction supplies a product claim.
 
 ## Final review resolutions
 

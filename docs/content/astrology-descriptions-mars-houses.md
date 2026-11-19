@@ -1,10 +1,10 @@
 # Mars in houses: source audit
 
-Scope: natal Mars in houses 1–12 only. Primary A9: `class notes`; supplemental B: `reference text`. All source numbers are original physical one-based inclusive lines, relative to the private notes root. All adopted body and keyword claims are primary-only. No book claim is adopted or included in `src`.
+Scope: natal Mars in houses 1–12 only. Primary class notes: `class notes`; supplemental B: `reference text`. All source numbers are original physical one-based inclusive lines, relative to the private notes root. All adopted body and keyword claims are primary-only. No book claim is adopted or included in `src`.
 
 ## Actual inspections and adopted references
 
-The following author inspections were performed with `nl -ba` on the originals. They are author provenance, not attributed to the coordinator or user. Integration read the draft artifacts and their audits; it does not claim to have reread A/B original passages. C directly inspected A9 1255–1391 and B 44080–44450. The primary-only reviewer separately checked A9 994–1391; that review-only scope does not prohibit the explicitly authorized supplemental author inspections.
+The following author inspections were performed with `nl -ba` on the originals. They are author provenance, not attributed to the coordinator or user. Integration read the draft artifacts and their audits; it does not claim to have reread A/B original passages. C directly inspected class notes 1255–1391 and B 44080–44450. The primary-only reviewer separately checked class notes 994–1391; that review-only scope does not prohibit the explicitly authorized supplemental author inspections.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -180,6 +180,6 @@ JSON com chaves numéricas em string 9–12, campos pt/en, keywords.pt/en, src e
 
 All 207 tests in `src/astrology/descriptions*.test.ts` passed; structured report: `/tmp/kaabalah-mars-houses-tests.json`. `npm run typecheck` and `git diff --check` passed. An initial quoted glob matched no test files; rerunning with shell-expanded filenames executed the full requested description set successfully.
 
-Parsed comparison against HEAD confirms all 168 prior rows and every non-Mars value are identical; only the twelve `planetHouses.mars` entries were added. All adopted ranges lie within A9 994–1391 and use the course-relative primary path. C reviewNotes are arrays of strings; C12 copy remains unchanged. Integration writes are restricted to descriptions.json, this audit and descriptions.mars-houses.test.ts. A pre-existing `.DS_Store` deletion was observed before integration and left untouched. Nothing staged or committed.
+Parsed comparison against HEAD confirms all 168 prior rows and every non-Mars value are identical; only the twelve `planetHouses.mars` entries were added. All adopted ranges lie within class notes 994–1391 and use the course-relative primary path. C reviewNotes are arrays of strings; C12 copy remains unchanged. Integration writes are restricted to descriptions.json, this audit and descriptions.mars-houses.test.ts. A pre-existing `.DS_Store` deletion was observed before integration and left untouched. Nothing staged or committed.
 
 Final coordinator validation: 207 description tests, npm run typecheck, build and public CJS/ESM Mars-house getters pass; every cited source hash matches the research snapshot and ranges stay within eligible teaching. All prior sign/house content is value-identical to HEAD. No calculation, index, CLI, numerology, package or build-configuration changes.

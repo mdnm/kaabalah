@@ -1,10 +1,10 @@
 # Uranus in houses: source audit
 
-Scope: natal Uranus houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are relative to the private notes root; all lines are original physical one-based inclusive numbers. All adopted body and keyword claims are primary-only. No book claim is adopted or included in src.
+Scope: natal Uranus houses 1–12 only. Primary class notes: `class notes`; supplemental B: `reference text`. Paths are relative to the private notes root; all lines are original physical one-based inclusive numbers. All adopted body and keyword claims are primary-only. No book claim is adopted or included in src.
 
 ## Actual inspections and adopted references
 
-Authors read original assigned narrow sections with `nl -ba`. Integration read final artifacts/audits and does not claim to have reread A/B source originals. C directly read A10 821–998 and B 56600–57047. Root actually read every adopted primary passage with neighboring qualifiers. A and C were approved; final B preserves the timing in house 5 and separates the two conditions in house 7. Book windows below are shared shard inspections, not separate full reads per entry. No whole book/course/family, inventory, NOTAS/private readings, English index or next factor was researched.
+Authors read original assigned narrow sections with `nl -ba`. Integration read final artifacts/audits and does not claim to have reread A/B source originals. C directly read class notes 821–998 and B 56600–57047. Root actually read every adopted primary passage with neighboring qualifiers. A and C were approved; final B preserves the timing in house 5 and separates the two conditions in house 7. Book windows below are shared shard inspections, not separate full reads per entry. No whole book/course/family, inventory, NOTAS/private readings, English index or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |

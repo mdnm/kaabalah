@@ -27,7 +27,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67720-67725`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 - A direção é autonomia perante ajuste excessivo aos outros; cooperação/compromisso do eixo reverso norte7/sul1 não foi importada como lição deste eixo.
 
@@ -38,7 +38,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67727-67732`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 - A direção é desenvolver os próprios recursos e autossuficiência. Abertura a receber ajuda e compartilhar recursos é enfatizada pelo eixo reverso norte8/sul2; não se troca a lição entre eixos.
 
@@ -49,7 +49,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67734-67740`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 4
@@ -59,7 +59,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67742-67747`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 5
@@ -69,7 +69,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67749-67754`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 6
@@ -79,7 +79,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67756-67761`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 7
@@ -89,7 +89,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67631-67654`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 8
@@ -99,7 +99,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67656-67671`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 9
@@ -109,7 +109,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67673-67690`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 10
@@ -119,9 +119,9 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67692-67698`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
-- Não se inventa uma regra de preservar/equilibrar a vida privada como remédio; a passagem pede ampliar a atuação além da base familiar. Excluída a frase de gênero de A15:96-98.
+- Não se inventa uma regra de preservar/equilibrar a vida privada como remédio; a passagem pede ampliar a atuação além da base familiar. Excluída a frase de gênero de class notes:96-98.
 
 ### North house 11
 
@@ -130,7 +130,7 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67700-67706`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
 
 ### North house 12
@@ -140,10 +140,10 @@ Axes10/11/12 retain actual outward responsibility, collective participation and 
 - `reference text:67708-67719`
 
 - Conta conjunta do eixo dirigido: chave = casa do nodo norte; a casa oposta do nodo sul consulta o mesmo texto. O eixo reverso possui outra conta, sem equiparar signos e casas ou calcular posições.
-- Fonte primária A15 e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
+- Fonte primária class notes e conferência visual de reference text PDF: PDF físico507/509 (páginas impressas509/511). As referências src são fragmentos físicos do Markdown correspondente; a imagem define a ordem das colunas.
 - Papéis astronômicos sem inversão por hemisfério, conforme Mat. Aprendizado é direção temática, não habilidade automática, biografia de vida passada ou resultado garantido. Omitidas previsões médicas, resultados de relações, práticas e atribuições de gênero.
-- A15 enfatiza compreensão versus crítica/controle/racionalidade excessivos; o livro norte12 acrescenta introspecção/empatia. O livro sul6 enfatiza rotina minuciosa e parceria/harmonia, outro foco que não foi convertido em conselho de equilíbrio nem promessa de relações.
+- Class notes enfatiza compreensão versus crítica/controle/racionalidade excessivos; o livro norte12 acrescenta introspecção/empatia. O livro sul6 enfatiza rotina minuciosa e parceria/harmonia, outro foco que não foi convertido em conselho de equilíbrio nem promessa de relações.
 
 Only JSON/TS and this audit are integration-owned. No tests/checks/build/typecheck, per Mat. Root owns final build/typecheck/existing suite, other docs and commit. Report: `/tmp/kaabalah-node-houses-integration.md`.
 
-Root completion:431 total canonical records,12 directed accounts/24 source aliases; reversed-direction leakage and unsourced balancing advice removed through actual A15 and PDF reading. Final build/typecheck/existing fullsuite passed with actualexit0; see astrology-descriptions-final-validation.md. No new tests or per-kind suites for nodes.
+Root completion:431 total canonical records,12 directed accounts/24 source aliases; reversed-direction leakage and unsourced balancing advice removed through actual class notes and PDF reading. Final build/typecheck/existing fullsuite passed with actualexit0; see astrology-descriptions-final-validation.md. No new tests or per-kind suites for nodes.

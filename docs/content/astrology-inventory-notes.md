@@ -24,31 +24,31 @@ Paths are relative to the private notes root. All rows in this table are private
 
 | Topic found | Exact source | How it affects the inventory |
 |---|---|---|
-| Brief explanations of the five major aspects, with selected pairs | class notes:1581-1587 | More context for conjunction/sextile/square/trine/opposition and the opposition disagreement; no complete pair grid |
-| Brief explanations of eleven major/minor aspects | class notes:1644-1655 | Additional informal teaching register, distinct from the handout's degree mistakes; no new full factor matrix |
-| Retrograde interpretive framing | class notes:5301 | Concept context; does not supply the17 missing retrograde-sign placements |
-| Retrograde motion mechanics | class notes:1820 | Mechanics note, not another placement set |
-| Progression and profection remarks | class notes:487-493 | Concept context, not full progressed placements |
-| Three decan stages | class notes:821-823 | Direct notes-only model; still separate from computed Chaldean/Golden Dawn decans and from the book's Egyptian account |
-| Houses, cusps and individual planet-house combinations | class notes:615-646 | Notes contain rich applied examples, but a personal chart is not a universal placement grid |
-| Sign behavior and levels | class notes:168-208; class notes:622-654 | Contextual sign material; many sensitive personal/generalized claims need author review rather than automatic reuse |
-| Cusp proportions and house1 application | class notes:1604-1610 | Reading-method context; not an independent144-cell grid |
-| Fortune terminology and personal application | class notes:3039 | Adds a distinction from the similarly named major; does not establish another house/sign series |
-| Chiron terminology | class notes:851 | Additional short conceptual note; no new signs/houses beyond the combined handout profiles |
-| Lilith, white Moon/Priapus, Vertex, Antivertex | class notes:1068,1092-1104 | Important conceptual context. Do not automatically equate every use of white Moon with an API calculation; no new12-sign Vertex grid |
-| Synastry house7 method | class notes:994-1005; class notes:319-331 | Method/context and personal example, not a complete planet-house overlay set |
-| New-name chart and synastry | class notes:353 | Additional technique mention; no full interpretation corpus |
-| Family synastry / node-Ascendant contact | class notes:237 | Cross-module personal application; no family/private readings identities or autobiographical claims transferred |
-| Saturn placement, angular houses, dignity references | class notes:218-224 | Genuine placement-related context in an unexpected class, embedded in a chart-modification exercise; practice excluded |
-| Moon in Taurus | class notes:221 | Genuine short placement note, useful as an author-review pointer; not silently promoted to publishable source |
-| Neptune Pisces-to-Aries transition | class notes:1029 | Time-specific transit context. Do not reuse the dated duration or turn it into a timeless natal placement claim |
-| Ascendant Capricorn and combined natal placements | class notes:365,395 | Personal applications, not independent generic profiles |
-| Pluto/Scorpio symbolic analogy | class notes:670-672; class notes:368 | Cross-module conceptual analogy, no complete sign/house set |
-| Libra/Aries comparison | class notes:133 | Short notes-only comparison and personal context |
-| Planetary symbolism / metal material | class notes:402-416; class notes:281; class notes:228-232 | Contextual correspondences and practice material, not new placement grids |
-| Astrocartography/ley-line relation | class notes:536 | Concept mention only; does not fill computed planet-angle/paran description gaps |
-| Body-sign sequence | class notes:150-162; class notes:273 | Practice/personal-health context excluded from descriptions; discrepancies must not silently resolve the class14 body-map conflict |
-| Natal placement combination | class notes:605; class notes:3491 | Private applied examples only, not universal statements about everyone with one placement |
+| Brief explanations of the five major aspects, with selected pairs | Class notes:1581-1587 | More context for conjunction/sextile/square/trine/opposition and the opposition disagreement; no complete pair grid |
+| Brief explanations of eleven major/minor aspects | Class notes:1644-1655 | Additional informal teaching register, distinct from the handout's degree mistakes; no new full factor matrix |
+| Retrograde interpretive framing | Class notes:5301 | Concept context; does not supply the17 missing retrograde-sign placements |
+| Retrograde motion mechanics | Class notes:1820 | Mechanics note, not another placement set |
+| Progression and profection remarks | Class notes:487-493 | Concept context, not full progressed placements |
+| Three decan stages | Class notes:821-823 | Direct notes-only model; still separate from computed Chaldean/Golden Dawn decans and from the book's Egyptian account |
+| Houses, cusps and individual planet-house combinations | Class notes:615-646 | Notes contain rich applied examples, but a personal chart is not a universal placement grid |
+| Sign behavior and levels | Class notes:168-208; class notes:622-654 | Contextual sign material; many sensitive personal/generalized claims need author review rather than automatic reuse |
+| Cusp proportions and house1 application | Class notes:1604-1610 | Reading-method context; not an independent144-cell grid |
+| Fortune terminology and personal application | Class notes:3039 | Adds a distinction from the similarly named major; does not establish another house/sign series |
+| Chiron terminology | Class notes:851 | Additional short conceptual note; no new signs/houses beyond the combined handout profiles |
+| Lilith, white Moon/Priapus, Vertex, Antivertex | Class notes:1068,1092-1104 | Important conceptual context. Do not automatically equate every use of white Moon with an API calculation; no new12-sign Vertex grid |
+| Synastry house7 method | Class notes:994-1005; class notes:319-331 | Method/context and personal example, not a complete planet-house overlay set |
+| New-name chart and synastry | Class notes:353 | Additional technique mention; no full interpretation corpus |
+| Family synastry / node-Ascendant contact | Class notes:237 | Cross-module personal application; no family/private readings identities or autobiographical claims transferred |
+| Saturn placement, angular houses, dignity references | Class notes:218-224 | Genuine placement-related context in an unexpected class, embedded in a chart-modification exercise; practice excluded |
+| Moon in Taurus | Class notes:221 | Genuine short placement note, useful as an author-review pointer; not silently promoted to publishable source |
+| Neptune Pisces-to-Aries transition | Class notes:1029 | Time-specific transit context. Do not reuse the dated duration or turn it into a timeless natal placement claim |
+| Ascendant Capricorn and combined natal placements | Class notes:365,395 | Personal applications, not independent generic profiles |
+| Pluto/Scorpio symbolic analogy | Class notes:670-672; class notes:368 | Cross-module conceptual analogy, no complete sign/house set |
+| Libra/Aries comparison | Class notes:133 | Short notes-only comparison and personal context |
+| Planetary symbolism / metal material | Class notes:402-416; class notes:281; class notes:228-232 | Contextual correspondences and practice material, not new placement grids |
+| Astrocartography/ley-line relation | Class notes:536 | Concept mention only; does not fill computed planet-angle/paran description gaps |
+| Body-sign sequence | Class notes:150-162; class notes:273 | Practice/personal-health context excluded from descriptions; discrepancies must not silently resolve the class notes body-map conflict |
+| Natal placement combination | Class notes:605; class notes:3491 | Private applied examples only, not universal statements about everyone with one placement |
 
 The shorthand `class notes:L-L` above means a line range in the class notes. The full source paths are not published.
 
@@ -58,14 +58,14 @@ These passages were checked on the teaching side of the NOTAS boundary. Context 
 
 | Topic | Source relative to course root | Coverage consequence |
 |---|---|---|
-| Karmic astrology and house12 | class notes:423-431 | Explicit extra conceptual support, not a new12-house matrix |
-| Lilith and hidden tendencies | class notes:680-681 | Short chart-role statement; can corroborate a general factor role if that batch is approved |
-| Sun/Ascendant/Moon in a karmic geographic reading | class notes:948-970 | Additional method and sign-geography correspondences. Does not establish ordinary astrocartography line profiles or guaranteed past-life events |
-| Four angle directions | class notes:6-9 | East/West Ascendant/Descendant assignment conflicts with the course chart orientation. Retain a review flag; do not change computed angles |
-| Four aspects in Tree/sphere correspondence tables | class notes:183-205,594-610,1036-1053,1707-1722 | Conjunction/semisquare/square/sesquisquare appear in a separate esoteric correspondence layer, not a natal aspect-pair interpretation grid |
-| Decan/calendar and72 subdivisions | class notes:120-140,276 | Additional calendar/correspondence method, not36 independent computed-decan profiles |
-| Chiron in tarot myth | class notes:175-185 | Mythic figure, not an automatic chart-factor placement source |
-| Lilith in other esoteric layers | class notes:201-205; class notes:80; class notes:26 | Distinct mythic/Tree layers; cannot treat every Lilith occurrence as a statement about astronomical Black Moon |
+| Karmic astrology and house12 | Class notes:423-431 | Explicit extra conceptual support, not a new12-house matrix |
+| Lilith and hidden tendencies | Class notes:680-681 | Short chart-role statement; can corroborate a general factor role if that batch is approved |
+| Sun/Ascendant/Moon in a karmic geographic reading | Class notes:948-970 | Additional method and sign-geography correspondences. Does not establish ordinary astrocartography line profiles or guaranteed past-life events |
+| Four angle directions | Class notes:6-9 | East/West Ascendant/Descendant assignment conflicts with the course chart orientation. Retain a review flag; do not change computed angles |
+| Four aspects in Tree/sphere correspondence tables | Class notes:183-205,594-610,1036-1053,1707-1722 | Conjunction/semisquare/square/sesquisquare appear in a separate esoteric correspondence layer, not a natal aspect-pair interpretation grid |
+| Decan/calendar and72 subdivisions | Class notes:120-140,276 | Additional calendar/correspondence method, not36 independent computed-decan profiles |
+| Chiron in tarot myth | Class notes:175-185 | Mythic figure, not an automatic chart-factor placement source |
+| Lilith in other esoteric layers | Class notes:201-205; class notes:80; class notes:26 | Distinct mythic/Tree layers; cannot treat every Lilith occurrence as a statement about astronomical Black Moon |
 
 The targeted search did not establish any new complete transit/Firdaria/dodecatemoria/astrocartography matrix, missing17 retrograde sign placements, or Vertex-by-sign set. It did find additional context, including real placement statements in private notes. The original gap register therefore remains, with these pointers added for Mat rather than automatically filling cells.
 

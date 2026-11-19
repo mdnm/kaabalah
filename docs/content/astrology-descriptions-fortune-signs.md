@@ -4,13 +4,13 @@
 
 Twelve Fortune-sign profiles only, nested under canonical point key `parsFortunae` and Title Case `Sign` keys. The final root-approved `/tmp/kaabalah-fortune-signs-approved.json` is adopted unchanged, including the corrected Capricorn review note. Raw A/B drafts are not used as copy authority.
 
-Integration read the supplied A/B source-audit shards and final review. Root reports actual primary inspection of A10:2775-2823 and all cited table sign-manner clauses. Integration did not reopen the course, NOTAS or private readings. Source: `class notes`; manifest teaching end 2999, NOTAS start 3000; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`.
+Integration read the supplied A/B source-audit shards and final review. Root reports actual primary inspection of class notes:2775-2823 and all cited table sign-manner clauses. Integration did not reopen the course, NOTAS or private readings. Source: `class notes`; manifest teaching end 2999, NOTAS start 3000; SHA-256 `a43be88f1c891018406b975288199fb6b5a431c16da475ef6452124e06063890`.
 
 The table context at 2822-2823 and headings at 2824-2830 distinguish HOUSE as field of experience from SIGN as manner. Only point-sign prose and unambiguous sign-manner clauses are adopted; no house-field claims are transferred or generic planetary/sign keywords mechanically blended.
 
 ## Adopted ranges
 
-| Sign | Physical inclusive A10 ranges |
+| Sign | Physical inclusive class notes ranges |
 | --- | --- |
 | Aries | 2777-2778, 2838-2841 |
 | Taurus | 2780-2781, 2847-2847, 2851-2854 |
@@ -47,4 +47,4 @@ Only the agreed five files are integration-owned. No index, calculation, CLI, pa
 
 ## Validation and next kind
 
-401 astrology description tests passed in one fork worker with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All333 earlier rows are unchanged; total345. Latest full suite at e0876c2 passed1552 tests before Fortune additions. Next is a brief display-terminology correction for three minor aspect profiles (source Portuguese names, unchanged API keys), followed by Fortune in houses12. Fortune-house sources: A10:2733-2773 and the HOUSE field columns at2824-2998. Keep sign manner claims separate; no timing/profection expansion.
+401 astrology description tests passed in one fork worker with actual exit0. Build, typecheck, source hash/teaching bounds, public CJS/ESM lookups and documentation ownership checks passed. All333 earlier rows are unchanged; total345. Latest full suite at e0876c2 passed1552 tests before Fortune additions. Next is a brief display-terminology correction for three minor aspect profiles (source Portuguese names, unchanged API keys), followed by Fortune in houses12. Fortune-house sources: class notes:2733-2773 and the HOUSE field columns at2824-2998. Keep sign manner claims separate; no timing/profection expansion.

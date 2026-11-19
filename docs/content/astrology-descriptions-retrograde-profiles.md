@@ -12,7 +12,7 @@ Integration read final JSON, independent audit and final review. The audit repor
 
 Course: `class notes`; SHA-256 `81f244d1c82f1d1d8d2132c74d51cf3b1e1612fd65f285af45ad57ae5488c078`; physical5304 lines, teachingEnd5271, NOTAS5272. Supplemental book: `reference text`; SHA-256 `4bb23fbbba09fd9dc3db3392add9afbcd4da3703fb94a7bec1574f5527fdbab2`,123692 lines. No whole-course/book, NOTAS/private readings or wider research.
 
-| Planet | Adopted physical inclusive A16 clauses |
+| Planet | Adopted physical inclusive class notes clauses |
 | --- | --- |
 | mercury | 544-547, 569-575, 613-617 |
 | venus | 1302-1315, 1320-1326, 1333-1337 |
@@ -25,7 +25,7 @@ Course: `class notes`; SHA-256 `81f244d1c82f1d1d8d2132c74d51cf3b1e1612fd65f285af
 
 ## Source disagreement and context
 
-The bounded book context122012-122074 is OCR-damaged/interleaved. Readable122023-122032 describes review/introspection and says Hermetic astrology does not distinguish normal/reverse planets, with a cut-off sentence.122055-122068 attributes natal attention to some astrologers and limits attention to date selection for rituals/consecrations. This differs from A16's enduring natal personality/karma teaching. Adjacent122075-122166 is period/transit material, not authority to fill natal traits. Course precedence is retained; the contexts are not blended, OCR gaps are not reconstructed, and no ritual/date-selection instruction enters body copy.
+The bounded book context122012-122074 is OCR-damaged/interleaved. Readable122023-122032 describes review/introspection and says Hermetic astrology does not distinguish normal/reverse planets, with a cut-off sentence.122055-122068 attributes natal attention to some astrologers and limits attention to date selection for rituals/consecrations. This differs from class notes' enduring natal personality/karma teaching. Adjacent122075-122166 is period/transit material, not authority to fill natal traits. Course precedence is retained; the contexts are not blended, OCR gaps are not reconstructed, and no ritual/date-selection instruction enters body copy.
 
 ## Final precision and qualifications
 
@@ -40,46 +40,46 @@ Karma remains symbolic teaching, not fixed moral/family/past-life biography. No 
 ### mercury
 
 - The course presents reincarnation and unresolved karma as its framework; the description does not assert past-life facts. Lines 555-564 describe separation as something learned, not an innate coldness. Excluded the sexual-orientation diagnosis at 591-595 and the unsupported universal idea of access to earlier universal ideas at 534-540.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### venus
 
 - The course frames karma through a past-life account; the body recasts this as a symbolic pattern, not a verified biography. Excluded gendered claims and the sexual-orientation stereotyping/diagnosis at 1338-1348, as well as deterministic claims about love or relationships.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### mars
 
 - The course states past-life and relationship claims as facts; they are retained only as a symbolic tendency, not biography. The body changes its categorical account to a possibility. Excluded the sexual and gendered claims and the diagnosis-like characterization from 2042-2044 and 2051-2066. The karma section continues to line 2085, but its later clauses were outside the adopted range.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### jupiter
 
 - The course qualifies motivation with 'if well-aspected' (2656) and rancor as an exception under difficult aspects (2664-2669); neither was made a universal trait. Prior-incarnation and déjà-vu claims at 2645-2647 and 2684-2693 were not stated as factual biography. The supplemental book's retrograde account is time-dependent and was not used to alter these natal passages.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### saturn
 
 - The source presents unfinished past work, prior lives, God, and incarnation-specific karma as facts (3279-3287, 3295-3305, 3307-3314). Body reframes these as felt incompletion, gratitude, effort, and learning themes; it does not assert a past-life biography or divine debt.
 - The source says Saturn retrograde is especially natural/comfortable (3310-3314); not included as a universal ranking.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### uranus
 
 - The source's personality passage calls for rebellion and predicts losses of friends, jobs, romances, and loneliness (3873-3888). Body retains resistance/originality and frames social cost as difficulty feeling understood, without guaranteeing losses.
 - The karma section's past-life independence claim (3914-3916) is excluded as fixed biography; the body retains only inner freedom and conflicting impulses as learning themes.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### neptune
 
 - The personality section describes spiritual connection and perception beyond the material plane (4444-4454); body presents this as an intuitive or ideal mode of perception, not as verified supernatural knowledge.
 - The karma section explicitly frames discernment and integration as learning (4456-4471). Body retains those as learning themes and avoids declaring past lives or incomplete past events as facts.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ### pluto
 
 - The source's purification, Christ-consciousness, and civilizational mission language (4851-4863) is not reproduced as a fixed spiritual destiny. The body keeps the stated inner-transformation motif in non-deterministic language.
 - The karma section's race-karma elevation and temporary life-stage withdrawal claims (4877-4886) are excluded as biography or fixed outcome. Collective consciousness/thought and inner reflection (4868-4876) are retained as symbolic learning themes.
-- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. A16 tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
+- O livro suplementar (122023-122032,122055-122068, contexto122075-122166) adota outra abordagem: não distingue o retrógrado como perfil natal duradouro e enfatiza períodos ou escolha de datas. Class notes tem precedência para estes perfis natais; não se misturam os contextos, nem se importam práticas.
 
 ## Preservation and validation
 

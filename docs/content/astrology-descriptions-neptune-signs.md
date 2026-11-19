@@ -91,7 +91,7 @@ The detailed entry metadata follows; these are audit notes, not product prose.
 - Livro inspecionado: 59880–59913, incluindo o indício 59890–59903; nenhuma adição adotada. A abertura individualiza sensibilidade, intuição, empatia e dificuldades de limites; esses atributos não substituem os temas coletivos e difíceis do curso. Cabeçalho corrompido por OCR em 59890.
 - Review resolution: historical collective symbolism only, with no clinical diagnosis of reader or cohort and no prediction of substance use.
 
-Next pointer only: Pluto signs, A12:189–222; B:61283–64351. No Pluto source was read.
+Next pointer only: Pluto signs, class notes:189–222; B:61283–64351. No Pluto source was read.
 
 Validation: all 125 targeted description tests pass (JSON report: `/tmp/kaabalah-neptune-tests.json`); `npm run typecheck` and `git diff --check` pass. The previous eight sets are value-identical to the pre-edit baseline and HEAD; only Neptune is added (12 new records, 108 total).
 

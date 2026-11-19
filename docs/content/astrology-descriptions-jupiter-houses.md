@@ -1,10 +1,10 @@
 # Jupiter in houses: source audit
 
-Scope: natal Jupiter houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. Paths are relative to the private notes root; all ranges are original physical one-based inclusive lines. All adopted description and keyword claims are primary-only; no book claim is adopted or appears in src.
+Scope: natal Jupiter houses 1–12 only. Primary class notes: `class notes`. Supplemental B: `reference text`. Paths are relative to the private notes root; all ranges are original physical one-based inclusive lines. All adopted description and keyword claims are primary-only; no book claim is adopted or appears in src.
 
 ## Actual inspections and adopted references
 
-The author inspections below used `nl -ba` on original files. Integration read the approved draft artifacts and audits, not the A/B source originals; it does not attribute the authors’ inspections to the integrator or user. C directly read A9 1692–1830 and B 48720–49070. Root actual source review and Lume approved all drafts before integration.
+The author inspections below used `nl -ba` on original files. Integration read the approved draft artifacts and audits, not the A/B source originals; it does not attribute the authors’ inspections to the integrator or user. C directly read class notes 1692–1830 and B 48720–49070. Root actual source review and Lume approved all drafts before integration.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |

@@ -14,7 +14,7 @@ The `src` records retain corresponding physical fragments in `reference text` (S
 
 `LunarNodeSignDescriptionEntry` reuses the common readonly shape. `getLunarNodeSignDescriptionEntry(node: DescriptionLunarNode, sign: Sign)` guards own keys at both levels; the string getter defaults to English and uses Portuguese only for case-sensitive pt prefixes. Imported JSON receives the existing recursive freeze. No opposite-node derivation, same-sign assumption, alias/default, chart calculation or DescriptionPoint expansion. Existing getters remain unchanged by this refresh.
 
-Mean/true stored chart modes are both North; existing adapter-derived South remains distinct from stored BirthChart fields. Roles stay astronomical without hemisphere inversion. A15 dignity correspondences remain separate metadata, not generated personality. North profiles retain learning direction rather than innate traits/fixed destiny; South profiles retain talents/patterns without factual past-life biography. No clinical predictions, guaranteed outcomes or practices are introduced. No node-house research or broader source inventory was performed.
+Mean/true stored chart modes are both North; existing adapter-derived South remains distinct from stored BirthChart fields. Roles stay astronomical without hemisphere inversion. Class notes dignity correspondences remain separate metadata, not generated personality. North profiles retain learning direction rather than innate traits/fixed destiny; South profiles retain talents/patterns without factual past-life biography. No clinical predictions, guaranteed outcomes or practices are introduced. No node-house research or broader source inventory was performed.
 
 ## Final approved provenance and visual attribution notes
 
@@ -22,43 +22,43 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 
 - `reference text:67024-67029`
 
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Taurus
 
 - `reference text:67030-67035`
 
 - The source calls this a destiny and refers to earlier impulsivity. The description treats these as learning themes, not fixed fate or established past behavior.
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Gemini
 
 - `reference text:67037-67045`
 
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Cancer
 
 - `reference text:67047-67053`
 
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Leo
 
 - `reference text:67055-67062`
 
 - The source uses destiny language and describes a magnetic presence. The record keeps the explicit development direction and does not turn that quality into a guaranteed trait.
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Virgo
 
@@ -67,34 +67,34 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 
 - PDF p. 506 confirms the Virgo fragments and their attribution. Continuous improvement is retained; the health phrase is omitted as requested, with no health outcome inferred.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Libra
 
 - `reference text:67064-67069`
 
 - The source says to abandon selfish behavior; this moralized wording was omitted while retaining the stated relational learning direction.
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Scorpio
 
 - `reference text:67070-67077`
 
 - The source also uses regeneration and overcoming fear language; the record frames these as learning themes, not guaranteed outcomes.
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Sagittarius
 
 - `reference text:67079-67087`
 
 - Travel is retained as a source association, not as a promised event.
-- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da A15 permanecem uma correspondência distinta, sem fabricar traços por combinação.
+- Perfis do livro descrevem direções de aprendizado, não traços inatos nem destino garantido. Mat mantém os nodos astronômicos sem inversão por hemisfério; dignidades da class notes permanecem uma correspondência distinta, sem fabricar traços por combinação.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Capricorn
 
@@ -102,7 +102,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 
 - PDF p. 506 visually confirms clear goals and the qualified tendency toward lack of commitment or emotional dependence.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Aquarius
 
@@ -110,7 +110,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 
 - PDF p. 506 visually confirms independence, community spirit, openness to new ideas, individuality, and moving away from rigid conventions and conventionalism.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### north / Pisces
 
@@ -118,7 +118,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 
 - PDF p. 506 visually confirms compassion, spiritual connection, artistic sensitivity, and transcending earlier rational and material limitations.
 - Conferência visual no original reference text PDF, página 506 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Aries
 
@@ -128,7 +128,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Taurus
 
@@ -138,7 +138,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Gemini
 
@@ -147,7 +147,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Cancer
 
@@ -158,7 +158,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Leo
 
@@ -171,7 +171,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Virgo
 
@@ -186,7 +186,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Libra
 
@@ -196,7 +196,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Scorpio
 
@@ -206,7 +206,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Sagittarius
 
@@ -219,7 +219,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Capricorn
 
@@ -230,7 +230,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Aquarius
 
@@ -243,7 +243,7 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Conferido visualmente na página 508 do PDF Astrologia Hermética; as colunas confirmam a atribuição dos fragmentos.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 ### south / Pisces
 
@@ -254,6 +254,6 @@ Mean/true stored chart modes are both North; existing adapter-derived South rema
 - Mat mantém os papéis astronômicos sem inversão por hemisfério. O passado mencionado pelo livro é linguagem simbólica do padrão nodal, não uma biografia verificada; aprendizado não equivale a habilidade já adquirida.
 - Leitura visual confirmada na página 508 do PDF Astrologia Hermética.
 - Conferência visual no original reference text PDF, página 508 (índice PDF de1base); a página resolve a ordem das colunas do OCR. As citações src mantêm os fragmentos físicos correspondentes no Markdown, sem atribuir linhas ao PDF.
-- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da A15:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
+- Papéis astronômicos sem inversão por hemisfério, conforme Mat. Dignidades da class notes:45-53 são correspondências distintas e não foram misturadas para gerar traços. Direção de aprendizado não significa resultado garantido nem biografia de vida passada.
 
 Only JSON/TS and this audit are integration-owned. This refresh replaces only the new lunarNodeSigns bank and audit; TypeScript needed no further edits. No tests/checks/build/typecheck, per Mat. Root owns other docs/final checks/commit. Integration report: `/tmp/kaabalah-node-signs-integration.md`.

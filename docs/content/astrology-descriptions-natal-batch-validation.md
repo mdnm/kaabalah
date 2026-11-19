@@ -12,4 +12,4 @@ Detailed descriptions, citations, disagreements, source bridges and editorial ad
 
 Machine-readable local evidence: `/tmp/kaabalah-natal-batch1-full-tests.json`, `/tmp/kaabalah-natal-batch1-provenance.json`, `/tmp/kaabalah-ic-signs-tests.json`, build/typecheck logs and the public-package check scripts. These temporary paths are local evidence, not library assets.
 
-Next kind: basic planet profiles10. Primary A1:190-225; A4:288-335; A8:767-795,890-901,939-954; A13:1568-1578. Supplemental B:16988-20290 is a navigation family, not a request to read it whole. Keep Earth and Vulcan cosmology outside core natal planet keys.
+Next kind: basic planet profiles10. Primary class notes:190-225; class notes:288-335; class notes:767-795,890-901,939-954; class notes:1568-1578. Supplemental B:16988-20290 is a navigation family, not a request to read it whole. Keep Earth and Vulcan cosmology outside core natal planet keys.

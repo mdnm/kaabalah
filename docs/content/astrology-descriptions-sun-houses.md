@@ -1,10 +1,10 @@
 # Sun in houses: source audit
 
-Scope: natal Sun in houses 1–12 only. Primary A8: `class notes`. Supplemental book B: `reference text`. Every adopted body and keyword claim is primary-only; all book windows below are inspected comparisons, not adopted provenance. All bounds are one-based inclusive and course-relative.
+Scope: natal Sun in houses 1–12 only. Primary class notes: `class notes`. Supplemental book B: `reference text`. Every adopted body and keyword claim is primary-only; all book windows below are inspected comparisons, not adopted provenance. All bounds are one-based inclusive and course-relative.
 
 ## Inspected and adopted windows
 
-The table records actual shard inspections, rather than the inconsistent section offsets in the primary-audit summary. The final integration reread A8 1129–1138, 1163–1175, 1209–1217, 1220–1228, 1257–1262, 1287–1306, 1317–1322 and 1332–1353 to check conditions, age, intimacy and the exact taboo citation. These reads are agent actions, not actions attributed to Mat or the user. No book passage was reread during integration.
+The table records actual shard inspections, rather than the inconsistent section offsets in the primary-audit summary. The final integration reread class notes 1129–1138, 1163–1175, 1209–1217, 1220–1228, 1257–1262, 1287–1306, 1317–1322 and 1332–1353 to check conditions, age, intimacy and the exact taboo citation. These reads are agent actions, not actions attributed to Mat or the user. No book passage was reread during integration.
 
 | House | Primary inspected in shard | Primary adopted | Book inspected, none adopted |
 | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ Book identity checks: houses 1 and 2 are explicit in the inspected body; house 3
 
 1 retains individuality/attention with the negative-expression condition for arrogance and egocentrism. Early support dependent on a well-aspected Sun is not generalized. 2 retains own resources/values and possible compensatory status/extravagance, without promising money. Recognition is a valid source-supported keyword even when omitted from concise prose; body-keyword verbatim identity is not a requirement.
 
-3 uses gender-neutral vitalidade/atenção, comparative more alive (A8 1167), and difficult aspects specifically to the Sun for the early-school condition. 4 preserves identity with family roots while the second sentence retains potential greater effectiveness of creativity/self-expression in the second half of life/maturity (1211–1215). It does not invent growing importance of identity or promise later-life health.
+3 uses gender-neutral vitalidade/atenção, comparative more alive (class notes 1167), and difficult aspects specifically to the Sun for the early-school condition. 4 preserves identity with family roots while the second sentence retains potential greater effectiveness of creativity/self-expression in the second half of life/maturity (1211–1215). It does not invent growing importance of identity or promise later-life health.
 
 5 preserves quality of engagement and satisfaction, rather than amount, plus creative expression and possible self-criticism. 6 describes work/routine/self-improvement, service and efficiency with the risk of excessive/obsessive improvement. Routine is a descriptive paraphrase, not a ritual or practice instruction. 7 retains relationship-based identity as a resource alongside the in-some-cases possibility of hiding behind someone strong/influential (1298–1306). No guaranteed relationship success is implied.
 
@@ -50,12 +50,12 @@ No Leo-on-IC/MC/Descendant or other cusp sign is inferred from a Sun house posit
 ### House 3
 
 - The early-school difficulty is explicitly conditional on difficult Sun aspects. Book heading/body around lines 26775–26835 confirms House 3 and discusses communication/learning, but no additional book claims were needed. Omitted sibling rivalry, family outcomes, named writers and career/achievement claims.
-- Final resolution: neutral PT vitalidade and attention keyword; EN more alive matches the comparative in A8 1167, not most alive. School challenges remain conditional on difficult aspects specifically to the Sun.
+- Final resolution: neutral PT vitalidade and attention keyword; EN more alive matches the comparative in class notes 1167, not most alive. School challenges remain conditional on difficult aspects specifically to the Sun.
 
 ### House 4
 
 - The course qualifies later-life creative power, vitality, and self-expression as potentially more effective in maturity; the body retains creative potential/self-expression and omits vitality, with no guarantee. Did not adopt father dynamics, gendered examples, or the interleaved book material whose House 4 body could not be clearly verified. House placement alone does not establish an angle/cusp sign.
-- Final resolution against A8 1211–1215: preserve second-half-of-life/mature qualification and potential effectiveness of creativity/self-expression, not increasing importance of identity. Vitality was left out of body/keywords to avoid a health assurance; no later-life outcome is guaranteed.
+- Final resolution against class notes 1211–1215: preserve second-half-of-life/mature qualification and potential effectiveness of creativity/self-expression, not increasing importance of identity. Vitality was left out of body/keywords to avoid a health assurance; no later-life outcome is guaranteed.
 
 ### House 5
 
@@ -72,7 +72,7 @@ No Leo-on-IC/MC/Descendant or other cusp sign is inferred from a Sun house posit
 ### House 8
 
 - A fonte apresenta evitação de intimidade apenas para alguns (1341-1344); mantida essa possibilidade sem generalizar. Palavras-chave mistério/tabu se apoiam no interesse pelo oculto/misterioso/tabu (1345-1347), embora concisão deixe isso fora das duas frases. Dinheiro/posses, complexos de infância, depressão, morte e previsões/diagnósticos foram omitidos.
-- Final resolution: conditional avoidance directly addresses você/you, not only unspecified other people. Mystery/taboo remain supported keyword-only themes; tabu occurs at A8 1347, so the adopted source range extends through that line. Duplicate keyword pairs were removed. No named example beginning on that same line is adopted.
+- Final resolution: conditional avoidance directly addresses você/you, not only unspecified other people. Mystery/taboo remain supported keyword-only themes; tabu occurs at class notes 1347, so the adopted source range extends through that line. Duplicate keyword pairs were removed. No named example beginning on that same line is adopted.
 
 ### House 9
 
@@ -101,7 +101,7 @@ No Leo-on-IC/MC/Descendant or other cusp sign is inferred from a Sun house posit
 - Livro inspecionado: 27555–27655. Título de casa 12 em 27618; abertura 27619–27629 com palavras deslocadas e frase incompleta, intercalada com casa 11 em 27631 e 27640–27654. Não há identidade de casa intacta no corpo dessa abertura; nenhuma adição adotada nem colunas recompostas.
 - O intervalo primário solicitado também mostrou 1511–1516, que já trata de Lua/Câncer e exemplo de outra configuração; excluído integralmente da síntese. OCR de números de casa e palavras nos parágrafos não foi usado para inferir fatores adicionais.
 
-Next pointer only: Moon in houses, A9:2–301; B:31600–32795. No next-factor source was loaded.
+Next pointer only: Moon in houses, class notes:2–301; B:31600–32795. No next-factor source was loaded.
 
 Validation: `npx vitest run src/astrology/descriptions*.test.ts` passes 154/154 tests across three files, including the root-owned generic house tests. JSON report: `/tmp/kaabalah-sun-houses-tests.json`. `npm run typecheck` and `git diff --check` pass. All 120 planet-sign values remain identical to the pre-edit baseline and HEAD; only `planetHouses.sun` is filled with 12 records. No root-owned API/generic test file or old sign test was edited by this integration; no commit was created.
 

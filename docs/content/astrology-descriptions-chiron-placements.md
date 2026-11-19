@@ -61,7 +61,7 @@ Libra keeps cooperation/sharing as learning rather than innate preference. Scorp
 
 - This is the source's combined Cancer/House4 account. The first sentence retains humanity and insecurity around possible failure at431-435; the second retains community and the wider-home/roots themes at455-456. No fixed family history is inferred.
 - Excludes claims about a parent’s gender, rejection, abandonment, death, parental separation, childhood trauma, and relationship consequences. No universal house-parent convention or fixed family history is inferred.
-- A15:431-435 directly supports humanity, insecurity around failure and community;455-456 supports the wider-home/roots theme. No parent-gender convention or personal displacement event is inferred.
+- Class notes:431-435 directly supports humanity, insecurity around failure and community;455-456 supports the wider-home/roots theme. No parent-gender convention or personal displacement event is inferred.
 
 ### Leo
 
@@ -105,7 +105,7 @@ Libra keeps cooperation/sharing as learning rather than innate preference. Scorp
 
 - The account explicitly combines House 12 and Pisces. Copy retains inner life, dreams as possible protection (742), the unknown, practical-life attention (727-729, 746) and sensitivity to collective frustrations/others' feelings as possible themes. The gentler combined example contributes only the narrow collective-frustrations clause at 288-289.
 - Excluded prenatal claims, drugs, depression, delusions, victim identity, carrying others' pain as fixed fact, spiritual healing promises, destiny/evolution language, and instructions. Citations at 713, 727-729, 740-742 and 746 include adjacent material not adopted; this note identifies the specific adopted clause portions and limits. The protective function is retained as source symbolism, not a clinical diagnosis or guaranteed coping outcome.
-- A15:714-716 supports interest in the unconscious/hidden realities; the prenatal clause sharing714 is not adopted. Dreams-as-protection is a possible function stated at742, not an instruction or clinical outcome.
+- Class notes:714-716 supports interest in the unconscious/hidden realities; the prenatal clause sharing714 is not adopted. Dreams-as-protection is a possible function stated at742, not an instruction or clinical outcome.
 
 ## Ownership and validation
 
@@ -115,4 +115,4 @@ Tests assert24 strict-reference aliases,12 unique records, Fortune Aries !== For
 
 ## Final checks and next kind
 
-426 astrology description tests and the full npm suite (1591 passed,0failed,0pending) passed with actual exit0. Build,typecheck,public CJS/ESM lookups,source hashes/ranges and documentation ownership passed. All358 earlier rows unchanged; total370 unique entries. The12 Chiron placement entries are reused through24 aliases, with strict reference identity verified; Fortune sign and house entries remain distinct. Next: Lilith general concept1, A18:109-129, before its12 signs; verify mean/true chart keys and shared interpretation without inventing separate grids or houses.
+426 astrology description tests and the full npm suite (1591 passed,0failed,0pending) passed with actual exit0. Build,typecheck,public CJS/ESM lookups,source hashes/ranges and documentation ownership passed. All358 earlier rows unchanged; total370 unique entries. The12 Chiron placement entries are reused through24 aliases, with strict reference identity verified; Fortune sign and house entries remain distinct. Next: Lilith general concept1, class notes:109-129, before its12 signs; verify mean/true chart keys and shared interpretation without inventing separate grids or houses.

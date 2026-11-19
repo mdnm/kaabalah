@@ -1,10 +1,10 @@
 # Moon in houses: source audit
 
-Scope: natal Moon in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. Every final body and keyword claim is primary-only. No book comparison is adopted. All ranges are one-based physical lines, inclusive, and course-relative.
+Scope: natal Moon in houses 1–12 only. Primary class notes: `class notes`. Supplemental B: `reference text`. Every final body and keyword claim is primary-only. No book comparison is adopted. All ranges are one-based physical lines, inclusive, and course-relative.
 
 ## Actual inspection and adopted ranges
 
-Full primary house inspections below are reported by the current shards and primary audit. Final integration checked A9 4–8, 52–57, 69–76, 134–138, 166–170, 181–183, 188–192, 211–215 and 230–232 for the disputed conditions and source endpoints. Shard A book windows are the original draft inspection references supplied by the coordinator; they are not a coordinator/root reread or final adopted sources. Other book windows come from current shard audits. No inspection is attributed to Mat or the user.
+Full primary house inspections below are reported by the current shards and primary audit. Final integration checked class notes 4–8, 52–57, 69–76, 134–138, 166–170, 181–183, 188–192, 211–215 and 230–232 for the disputed conditions and source endpoints. Shard A book windows are the original draft inspection references supplied by the coordinator; they are not a coordinator/root reread or final adopted sources. Other book windows come from current shard audits. No inspection is attributed to Mat or the user.
 
 | House | Primary inspected in draft | Primary adopted | Book inspected in draft, not adopted |
 | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ Book identity/column limits: A reports an interleaved house-3 fragment and uncle
 
 ## Adjudicated review resolutions
 
-1: unsupported visible-emotions wording is removed. The aspect caveat directly qualifies sensitivity/receptivity; intuitive perception may still be distorted by personal needs. 2: material security, sentimental attachment, possible financial fluctuation and sensitivity/adaptability are possibilities, not financial guarantees. 3: imagination/memory/knowledge-as-security and changing interests require the range through physical line 57. The relative clause starting later on 57 is not adopted. 4: only A9 69–76 is adopted, retaining home/refuge and early-childhood patterns under pressure; the proposed abstract care claim was already removed. The conditional father-versus-mother care claim at 85–87 is not generalized or imported.
+1: unsupported visible-emotions wording is removed. The aspect caveat directly qualifies sensitivity/receptivity; intuitive perception may still be distorted by personal needs. 2: material security, sentimental attachment, possible financial fluctuation and sensitivity/adaptability are possibilities, not financial guarantees. 3: imagination/memory/knowledge-as-security and changing interests require the range through physical line 57. The relative clause starting later on 57 is not adopted. 4: only class notes 69–76 is adopted, retaining home/refuge and early-childhood patterns under pressure; the proposed abstract care claim was already removed. The conditional father-versus-mother care claim at 85–87 is not generalized or imported.
 
 5: artistic ease remains dependent on Moon aspects; no child or romance outcome is guaranteed. 6: second source range ends at 138, retaining work connection and practical/emotional service without later mother/pet or health claims. 7: excessive adaptation and deriving too much identity from a partner are retained, along with mood/sentiment shifts; no generic positive relationship substitute is introduced. 8: primary ranges are 166–170 and 181–183. Difficult Moon aspects qualify greater anxiety specifically at endings/separations; resources and strength during those crises remain possibilities. Inheritance beginning on 183 and childhood claims beginning on 170 are excluded clauses within inclusive source endpoints.
 
@@ -59,11 +59,11 @@ No Cancer-on-IC/MC/cusp sign is inferred from a house position; no MC=10 or IC=4
 
 ### House 5
 
-- Creative ease remains dependent on Moon aspects at A9 100–102. No universal child/romance outcome, health claim or named example is adopted.
+- Creative ease remains dependent on Moon aspects at class notes 100–102. No universal child/romance outcome, health claim or named example is adopted.
 
 ### House 6
 
-- Adopted ranges tightened to A9 117–119 and 134–138: routine/body needs and emotional work connection/service only. No health prescription, employment result, mother/pet projection or colleague history is adopted.
+- Adopted ranges tightened to class notes 117–119 and 134–138: routine/body needs and emotional work connection/service only. No health prescription, employment result, mother/pet projection or colleague history is adopted.
 
 ### House 7
 
@@ -72,21 +72,21 @@ No Cancer-on-IC/MC/cusp sign is inferred from a house position; no MC=10 or IC=4
 ### House 8
 
 - A condição de aspectos difíceis aplica-se especificamente a encerramentos ou separações; recursos e forças são possibilidade, não promessa.
-- Adopted ranges tightened to A9 166–170 and 181–183. Anxiety applies to endings/separations under difficult Moon aspects, not crises in general; discovered resources/strength remain possible. Inheritance begins on 183 but is not adopted; no childhood narrative from 170 onward is adopted.
+- Adopted ranges tightened to class notes 166–170 and 181–183. Anxiety applies to endings/separations under difficult Moon aspects, not crises in general; discovered resources/strength remain possible. Inheritance begins on 183 but is not adopted; no childhood narrative from 170 onward is adopted.
 
 ### House 9
 
 - Primário inspecionado integralmente para a casa 9: 185–207; adotado: 188–192 e 193–197. A adaptação da filosofia a influências e condições cambiantes e o possível escape do cotidiano permanecem distintos; viagens não são eventos garantidos nem instrução.
 - Não foram adotadas previsão do rumo dos acontecimentos, residência no exterior, imagens maternas/divinas, relações condicionadas a gênero, dificuldades com familiares sob aspectos difíceis à Lua, correlação profissional ou pessoas nomeadas. Signo e aspectos em 202–203 condicionam a imagem de Deus; essa imagem não foi universalizada.
 - Livro inspecionado: 32386–32435. Há título danificado JUA NA CASA 09 em 32396, mas o corpo está fragmentado e não identifica inequivocamente a casa; o subtítulo em 32400 parece deslocado. Nenhum claim do livro adotado ou coluna reconstruída.
-- Final review resolution: mesmo que in A9 190–192 means even if faith is inherited, not an if prerequisite for adapting philosophy. No inherited-faith condition was added; the adapted object is philosophy, not beliefs in general.
+- Final review resolution: mesmo que in class notes 190–192 means even if faith is inherited, not an if prerequisite for adapting philosophy. No inherited-faith condition was added; the adapted object is philosophy, not beliefs in general.
 
 ### House 10
 
 - Primário inspecionado integralmente para a casa 10: 208–232; adotado: 211–215 e 230–231, apenas segurança/status, reputação, busca de aprovação e sensibilidade ao público. Não foram adotadas a narrativa universal de mãe/infância nem a afirmação de domínio dos sentimentos das massas. Nenhum sucesso profissional ou aprovação é garantido.
 - Quadraturas e oposições à Lua em 214–215 condicionam conflitos internos sobre aprovação; esse efeito não foi incluído nem generalizado. Foram excluídos exemplos nomeados, crime/trânsitos, projeção em autoridades, histórias familiares e destinos de cuidado profissional. Câncer no Meio-do-Céu/casa 10 (208, 232) é analogia separada, não signo inferido de ângulo/cúspide nem equivalência MC=10.
 - Livro inspecionado: 32522–32572. O corpo identifica explicitamente Lua na 10o Casa em 32532; o parágrafo 32532–32547 está fragmentado por quebras de coluna/palavras. Nenhum claim do livro adotado; desempenho profissional e oscilação emocional não foram adicionados ao curso por recomposição de fragmentos.
-- Final review resolution: approval desire at physical A9 211–214 is distinct from aspect-conditioned conflict at 214–215. Public-mood sensitivity is at physical 230–231; Cancer-on-MC analogy starts at 232. The product ranges are retained; neither review objection requires a new condition or angle inference.
+- Final review resolution: approval desire at physical class notes 211–214 is distinct from aspect-conditioned conflict at 214–215. Public-mood sensitivity is at physical 230–231; Cancer-on-MC analogy starts at 232. The product ranges are retained; neither review objection requires a new condition or angle inference.
 
 ### House 11
 

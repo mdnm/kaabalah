@@ -4,7 +4,7 @@
 
 One canonical general concept at `points["lilith mean"]`, adopted exactly from final unwrapped `/tmp/kaabalah-lilith-profile-approved.json` after the no-blocker review. Both verified chart modes share this interpretation, not their calculated positions. Exact `lilith true` is an entry-getter lookup alias returning the SAME frozen record. There is no duplicate true-mode record or bare `lilith` default.
 
-Integration read the supplied primary/key audit and final review. The audit reports actual narrow A18:131-160 inspection; integration relies on that inspection rather than reopening the course. A18:109-129 is a sign summary, not the general concept. No Moon1-108, whole course, NOTAS/private notes or private readings were used.
+Integration read the supplied primary/key audit and final review. The audit reports actual narrow class notes:131-160 inspection; integration relies on that inspection rather than reopening the course. Class notes:109-129 is a sign summary, not the general concept. No Moon1-108, whole course, NOTAS/private notes or private readings were used.
 
 Primary: `class notes`; manifest1122 physical lines, teachingEnd1065, NOTASstart1066; SHA-256 `4da8d52465c0d778c3250b63f4c970d52e964945fff5654ee07d16c09f4cc3ab`.
 

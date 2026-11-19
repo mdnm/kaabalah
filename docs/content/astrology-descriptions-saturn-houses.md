@@ -1,10 +1,10 @@
 # Saturn in houses: source audit
 
-Scope: natal Saturn houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; all numbers are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim is adopted or included in src.
+Scope: natal Saturn houses 1–12 only. Primary class notes: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; all numbers are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim is adopted or included in src.
 
 ## Actual inspections and adopted ranges
 
-Authors read original narrow windows with `nl -ba`. Integration read final artifacts and audit records, and does not claim to have reread the A/B original passages. C directly read A10 325–519 and B 52500–52914. Root actually read all adopted primary passages with neighbors and approved the precise corrections; Lume found no material issue with the broad conditions. Supplemental windows below are shared shard inspections, not a separate full read per entry. No whole book/course/family, inventory, NOTAS/private readings or next factor was researched.
+Authors read original narrow windows with `nl -ba`. Integration read final artifacts and audit records, and does not claim to have reread the A/B original passages. C directly read class notes 325–519 and B 52500–52914. Root actually read all adopted primary passages with neighbors and approved the precise corrections; Lume found no material issue with the broad conditions. Supplemental windows below are shared shard inspections, not a separate full read per entry. No whole book/course/family, inventory, NOTAS/private readings or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ Authors read original narrow windows with `nl -ba`. Integration read final artif
 
 ## Final review resolutions
 
-A1 explicitly attributes interpreting reserve/insecurity as coldness to **other people**, not the native’s self-interpretation. A2 source/editorial wording was removed from product copy. A3 describes **difficulty** with small talk, not voluntary avoidance. B5’s adopted romance/rejection range is **198–202**, preserving the complete source support. B7 describes partners absent **in certain respects**, without narrowing absence to an inferred emotional-only interpretation.
+class notes explicitly attributes interpreting reserve/insecurity as coldness to **other people**, not the native’s self-interpretation. Class notes source/editorial wording was removed from product copy. Class notes describes **difficulty** with small talk, not voluntary avoidance. B5’s adopted romance/rejection range is **198–202**, preserving the complete source support. B7 describes partners absent **in certain respects**, without narrowing absence to an inferred emotional-only interpretation.
 
 C10 explicitly retains the conditional scope of 371–373: anger/envy toward those outside social limits arises when the native feels required to limit their own ambitions to those standards. The second sentence retains the separate poorly-aspected condition for delays/obstacles. No universal jealousy, achieved status, guaranteed success or generic discipline/maturity sentence is added. All other approved bodies, keywords and citations remain intact.
 

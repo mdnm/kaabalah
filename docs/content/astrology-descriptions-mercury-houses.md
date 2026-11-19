@@ -1,6 +1,6 @@
 # Mercury in houses: source audit
 
-Scope: natal Mercury in houses 1–12 only. Primary A9: `class notes`. Supplemental B: `reference text`. All adopted body/keyword claims are primary-only; no supplemental book claim is adopted. All ranges below are one-based physical lines, inclusive and course-relative.
+Scope: natal Mercury in houses 1–12 only. Primary class notes: `class notes`. Supplemental B: `reference text`. All adopted body/keyword claims are primary-only; no supplemental book claim is adopted. All ranges below are one-based physical lines, inclusive and course-relative.
 
 ## Inspected versus adopted windows
 

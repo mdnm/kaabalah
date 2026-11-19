@@ -2,7 +2,7 @@
 
 ## Scope and source method
 
-Ten general chart functions, with explicit symbolic correspondences where retained. These are neither planet-sign/house blends nor fallback descriptions. Source workers read the actual narrow assigned passages with original nl -ba physical one-based inclusive numbering. Integration rechecked A1:178-190, A8:767-780,789-795,890-901, A3:272-285 and every adopted A/B book span; worker C previously read all assigned outer-planet windows. Course sources are read-only. The manifest teaching boundaries were checked; no private notes or readings were opened.
+Ten general chart functions, with explicit symbolic correspondences where retained. These are neither planet-sign/house blends nor fallback descriptions. Source workers read the actual narrow assigned passages with original nl -ba physical one-based inclusive numbering. Integration rechecked class notes:178-190, class notes:767-780,789-795,890-901, class notes:272-285 and every adopted A/B book span; worker C previously read all assigned outer-planet windows. Course sources are read-only. The manifest teaching boundaries were checked; no private notes or readings were opened.
 
 ## Adopted sources
 
@@ -23,23 +23,23 @@ Paths are course-relative and ranges inclusive. A physical range can contain int
 
 ## Class authority and context distinctions
 
-A1:178-199 describes glyphs and spirit/soul/matter/Tree correspondences, not ordinary psychological profiles. Venus A1:182-183, Mars 187-188 and Jupiter 189-190 are adopted only in sentences explicitly naming the symbol; their book-derived general functions remain separate, without causal inference. A1:178-186 and 191-199 were inspected but otherwise unadopted.
+class notes:178-199 describes glyphs and spirit/soul/matter/Tree correspondences, not ordinary psychological profiles. Venus class notes:182-183, Mars 187-188 and Jupiter 189-190 are adopted only in sentences explicitly naming the symbol; their book-derived general functions remain separate, without causal inference. Class notes:178-186 and 191-199 were inspected but otherwise unadopted.
 
-A8:767-780 supplies Mercury as mind/instrument of Sun-Moon polarity; Moon functions come from 789-795, and Sun spirit/vitality/expression from 890-901. A3:272-285 explicitly denies guaranteed solar success/honors, retained in copy. Book concepts enrich compatible chart functions without importing rulership or sign traits.
+class notes:767-780 supplies Mercury as mind/instrument of Sun-Moon polarity; Moon functions come from 789-795, and Sun spirit/vitality/expression from 890-901. Class notes:272-285 explicitly denies guaranteed solar success/honors, retained in copy. Book concepts enrich compatible chart functions without importing rulership or sign traits.
 
-A13:1568-1578 explicitly introduces the planet list as a kundalini-reading step. Beauty, wars, expansion, mysteries, cobranças, technology and enchantments are not flattened into a universal natal list. No Sun grande-benêfico or Moon deservingness/luck guarantee is inferred. This whole context is inspection-only, absent from src. No Earth or Vulcan profile.
+class notes:1568-1578 explicitly introduces the planet list as a kundalini-reading step. Beauty, wars, expansion, mysteries, cobranças, technology and enchantments are not flattened into a universal natal list. No Sun grande-benêfico or Moon deservingness/luck guarantee is inferred. This whole context is inspection-only, absent from src. No Earth or Vulcan profile.
 
 ## Review adjudications and OCR
 
 The canonical /tmp/kaabalah-planet-profiles-review.md was read. Root’s adjudications follow actual source:
 
 - Sun: retain not-guaranteed success/honors; interleaved Leo rulership and damaged health wording are unadopted.
-- Moon: use class 789-795 for imagination/assimilation/receptivity and named-Moon book 17294-17298 for protection/security; earlier polarity context 767-788 is not its functional citation.
+- Moon: use class notes 789-795 for imagination/assimilation/receptivity and named-Moon book 17294-17298 for protection/security; earlier polarity context 767-788 is not its functional citation.
 - Mercury: mind working Sun-Moon polarity, reasoning/analysis/communication; no experience-processing claim from damaged book text.
 - Venus: final PT grammar and equivalent EN preserved; beauty remains a supported paired keyword. General affections/value/pleasure function and class symbol are distinct.
 - Mars: reject the strict named-planet objection to determination. Este planeta at book 18257 is in the Mars concept section, named at 18262/18264, and supports determination. The real citation issue is corrected: competition 18308-18316 and aggression/conflict 18327-18334 are narrow fragments amid domicile/Aries text beginning 18298, not an uninterrupted generic paragraph. No Aries/Scorpio trait or pledged violence is adopted.
 - Jupiter: general 18568-18593 and 18629-18648 support expansion/meaning/wisdom/optimism/learning. Sagittarius domicile philosophy/adventure at 18652-18658 is inspected but excluded, not a generic function. Luck/prosperity and class kundalini labels are not promised outcomes.
-- Outer four: book bodies name each planet; A1 glyphs and A13 kundalini labels stay inspection-only. Saturn structure/maturation, Uranus innovation and possible detachment, Neptune spirituality and possible confusion, Pluto transformation and power/control/domination remain distinct functions. Pluto EN function wording matches PT without artificial personal ownership. Notes were shortened while retaining OCR and dignity-context limits.
+- Outer four: book bodies name each planet; class notes glyphs and class notes kundalini labels stay inspection-only. Saturn structure/maturation, Uranus innovation and possible detachment, Neptune spirituality and possible confusion, Pluto transformation and power/control/domination remain distinct functions. Pluto EN function wording matches PT without artificial personal ownership. Notes were shortened while retaining OCR and dignity-context limits.
 
 ## Inspection-only book material
 
@@ -51,19 +51,19 @@ C complete inspections: `reference text:18962-19060`, `reference text:19359-1941
 
 ### sun
 
-- Class 8 presents the Sun as spirit and higher self; the book frames it as central identity, purpose, vitality, and expression. Wording keeps compatible functions without importing sign-specific Leo traits.
-- Class 3 says solar influence does not guarantee success or honors and may be constructive or harmful; the profile retains the qualification and avoids a promised outcome.
-- The book excerpt is OCR-damaged and contains intermixed Leo rulership material; only readable general claims were adopted. Class 1 lines 178-186 were inspected only and not used as ordinary planet-function prose.
+- Class notes presents the Sun as spirit and higher self; the book frames it as central identity, purpose, vitality, and expression. Wording keeps compatible functions without importing sign-specific Leo traits.
+- Class notes says solar influence does not guarantee success or honors and may be constructive or harmful; the profile retains the qualification and avoids a promised outcome.
+- The book excerpt is OCR-damaged and contains intermixed Leo rulership material; only readable general claims were adopted. Class notes lines 178-186 were inspected only and not used as ordinary planet-function prose.
 
 ### moon
 
-- Class 8 lines 789-795 supports imagination, assimilation, sensitivity, self-image, psyche, and receptivity; the book lines 17294-17298 adds protection and security.
-- Earlier polarity and personality context from Class 8 lines 767-788 was inspected but is not cited as support for this profile. The book window is OCR-damaged; Cancer rulership and sign-specific associations were excluded.
+- Class notes lines 789-795 supports imagination, assimilation, sensitivity, self-image, psyche, and receptivity; the book lines 17294-17298 adds protection and security.
+- Earlier polarity and personality context from Class notes lines 767-788 was inspected but is not cited as support for this profile. The book window is OCR-damaged; Cancer rulership and sign-specific associations were excluded.
 
 ### mercury
 
-- Class 8 identifies Mercury with the mind and says it is the instrument by which the essential Sun/Moon polarity is worked; the book supports reasoning, analysis, and verbal/written communication.
-- The book excerpt has OCR gaps, especially around education and information processing; those unclear claims were not included in the profile. Class 1 lines 178-186 were inspected only and not used as ordinary planet-function prose.
+- Class notes identifies Mercury with the mind and says it is the instrument by which the essential Sun/Moon polarity is worked; the book supports reasoning, analysis, and verbal/written communication.
+- The book excerpt has OCR gaps, especially around education and information processing; those unclear claims were not included in the profile. Class notes lines 178-186 were inspected only and not used as ordinary planet-function prose.
 
 ### venus
 
@@ -114,4 +114,4 @@ Only the planets bank, this audit and source-semantic tests are integrated. All 
 
 337 description tests passed in a single fork worker with exit0; typecheck, build, public CJS/ESM checks for all298 rows, the four newly cited source hashes/ranges and preservation of all288 prior rows passed. Public docs changes remain inside the owned bilingual-description section. No calculation, existing export, index, CLI, package or configuration changes. Full natal-batch1492 tests passed at the preceding milestone; repeat full checks at subsequent batch/final handoff.
 
-Next kind: basic sign profiles12, A0:8-90; A4:8-286; A5:608-931. B:9128-15619 is a navigation family only. Distinguish general sign meanings from Sun/Ascendant placements and preserve source-level qualifications without automatic level assignment.
+Next kind: basic sign profiles12, class notes:8-90; class notes:8-286; class notes:608-931. B:9128-15619 is a navigation family only. Distinguish general sign meanings from Sun/Ascendant placements and preserve source-level qualifications without automatic level assignment.

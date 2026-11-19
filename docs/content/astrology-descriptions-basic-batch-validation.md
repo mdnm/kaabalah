@@ -31,8 +31,8 @@ Runtime evidence is under `/tmp/kaabalah-basic-batch-*`, `/tmp/kaabalah-aspect-p
 
 ## Decisions and remaining gaps
 
-Mat resolved opposition as tension, astronomical nodes without hemisphere inversion, and node dignities according to A15:45-53 while preserving the different A12 context. These decisions do not alter calculations.
+Mat resolved opposition as tension, astronomical nodes without hemisphere inversion, and node dignities according to class notes:45-53 while preserving the different class notes context. These decisions do not alter calculations.
 
 Two questions remain pending in Maestri: element humor/temperament label mappings and Capricorn polarity membership. The generic element/polarity definitions do not choose those disputed associations. Parent-sex assignments remain unadopted. Descendant-sign12 and the144 cusp grid still require supplemental scope approval. Aspect-pair grids, timing, synastry and larger specialist sets remain outside this description scope.
 
-Next approved batch starts with the Part of Fortune general concept, then its signs and houses as separate kinds. Primary navigation: A10:2459-2468,2516-2588 for concept/context; placement navigation2703-2998. Each new kind requires its own narrow source reading, implementation, audit and validation before moving on.
+Next approved batch starts with the Part of Fortune general concept, then its signs and houses as separate kinds. Primary navigation: class notes:2459-2468,2516-2588 for concept/context; placement navigation2703-2998. Each new kind requires its own narrow source reading, implementation, audit and validation before moving on.

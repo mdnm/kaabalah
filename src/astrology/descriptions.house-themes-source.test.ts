@@ -6,7 +6,7 @@ const houses = Array.from({ length: 12 }, (_, i) => i + 1) as DescriptionHouseNu
 const copy = (house: DescriptionHouseNumber) => `${entry(house).pt} ${entry(house).en}`;
 
 describe("numbered house source domains and qualifications", () => {
-  it("keeps every domain tied to its own A6 list rather than a planet placement or book label", () => {
+  it("keeps every domain tied to its own class notes list rather than a planet placement or book label", () => {
     const ranges = [[6, 8], [9, 11], [12, 15], [17, 19], [20, 22], [23, 25],
       [26, 28], [29, 33], [34, 36], [38, 40], [41, 42], [44, 49]];
     for (const house of houses) {
@@ -15,7 +15,7 @@ describe("numbered house source domains and qualifications", () => {
     }
   });
 
-  it("retains both ruler qualifications wherever the A8 negative branch is adopted", () => {
+  it("retains both ruler qualifications wherever the negative branch is adopted", () => {
     const negative = [
       [/autoafirmação/, /self-assertion/], [/obstinação e cobiça/, /stubbornness and greed/],
       [/inconstância e superficialidade/, /inconsistency and superficiality/],

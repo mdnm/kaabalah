@@ -32,18 +32,12 @@ describe("generic element independent-source distinctions", () => {
     }
   });
 
-  it("adopts only Mat's resolved A8 labels and retains historical alternatives without their dependent traits", () => {
+  it("adopts only the resolved temperament labels, without the traits that depend on the historical alternatives", () => {
     const labels = {
       fire: ["sanguíneo", "sanguine"],
       earth: ["colérico", "choleric"],
       air: ["fleumático", "phlegmatic"],
       water: ["melancólico", "melancholic"],
-    };
-    const historical = {
-      fire: /A2:137 calls fire bilious and A3:65 irritable/,
-      earth: /A2:144 and A3:66 call earth nervous/,
-      air: /A2:150 and A3:67 call air sanguine/,
-      water: /A2:156 calls water phlegmatic and A3:68 lymphatic/,
     };
     for (const element of elements) {
       const e = entry(element);

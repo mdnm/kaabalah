@@ -1,10 +1,10 @@
 # Pluto in houses: source audit
 
-Scope: natal Pluto houses 1–12 only. Primary A10: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; references are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim appears in src.
+Scope: natal Pluto houses 1–12 only. Primary class notes: `class notes`; supplemental B: `reference text`. Paths are course-relative to the private notes root; references are original physical one-based inclusive lines. All adopted body/keyword claims are primary-only. No book claim appears in src.
 
 ## Actual inspections and adopted references
 
-Authors used `nl -ba` on original assigned windows. Integration read final artifacts and audits, not the A/B originals; it does not claim their inspections as its own. C directly read A10 2169–2457 and B 64970–65358, rereading A10 2358–2407 after combined output truncation. Root actually read every adopted passage with neighboring qualifiers and approved final A/B/C. Book windows are shared shard inspections, not separate full reads per entry. No NOTAS/private readings, whole source, inventory, index or next factor was researched.
+Authors used `nl -ba` on original assigned windows. Integration read final artifacts and audits, not the A/B originals; it does not claim their inspections as its own. C directly read class notes 2169–2457 and B 64970–65358, rereading class notes 2358–2407 after combined output truncation. Root actually read every adopted passage with neighboring qualifiers and approved final A/B/C. Book windows are shared shard inspections, not separate full reads per entry. No NOTAS/private readings, whole source, inventory, index or next factor was researched.
 
 | House | Primary section inspected | Primary adopted | Book inspected, not adopted |
 | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ B’s combined book inspection was 64759–65025. Final adopted ranges above and
 
 ## Final scope and review resolutions
 
-A1 retains both the blocked-progress antecedent and the combined non-recognition of frustration/avoidance of constructive action for indirect rupture. A3 keeps obsessive/destructive thoughts causing fear of speech distinct from vulnerability/exposure fear causing concealment. A4 separates control under domestic vulnerability from resources after collapse; it neither claims manipulation causes collapse nor inserts a source notice. The incorrect MC parenthesis in the house-4 heading at 1839 is resolved by repeated explicit house-4 body identification; Scorpio IC/MC comparisons remain distinct from Pluto-house placements.
+class notes retains both the blocked-progress antecedent and the combined non-recognition of frustration/avoidance of constructive action for indirect rupture. Class notes keeps obsessive/destructive thoughts causing fear of speech distinct from vulnerability/exposure fear causing concealment. Class notes separates control under domestic vulnerability from resources after collapse; it neither claims manipulation causes collapse nor inserts a source notice. The incorrect MC parenthesis in the house-4 heading at 1839 is resolved by repeated explicit house-4 body identification; Scorpio IC/MC comparisons remain distinct from Pluto-house placements.
 
 B5 preserves importance/self-worth extremes and alternative romantic inhibition or conquest/power conflict. The later-life creative-trauma passage is omitted with its timing, not flattened. B7 removes generic breakup-versus-survival outcomes. B8 explicitly limits channeling into accomplishments to **sexual energy** at 2111–2112; power struggles at 2135–2136 are not aspect-conditioned, whereas lasting shared-finance complications at 2140–2143 are especially associated with bad aspects. C11 keeps a difficult aspect on compulsive successive causes, distinct from the omitted many-bad-aspects collective-confusion clause.
 
