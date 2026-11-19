@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## 6.22.0 - 2026-11-19
+
+- Add CLI commands for the 6.21.0 library functions: `astrology:condition`
+  (`getPlanetaryCondition`, `--rulers=traditional|modern`), `astrology:rulers`,
+  `astrology:varga` (`--division=<n>|all`, with the Karakamsha and houses from
+  it for D9), `astrology:yogakarakas` (`--ascendant=<sign>` or birth data),
+  `tree:map` (the weighted Tree of Life birth map, `--name` for gematria; no
+  birth time means numerology and gematria only) and `tree:paths` (house
+  quests, Lightning Path, Serpent Path and `HOUSE_SPHERES`).
+- Stop publishing editorial provenance. The description rows no longer carry
+  `src` (file and line ranges into private source folders) or `reviewNotes` in
+  the published package: the build strips them from the bundled JSON, which
+  stays complete in the repository. The `src` and `reviewNotes` fields remain on
+  the entry types and are empty arrays in a published build, so existing callers
+  compile and the `...Entry` getters keep working. `astrology:describe` no
+  longer prints `src` or `reviewNotes`.
+- Document that `numerology:cycles` reports `currentPersonalMonth` and
+  `currentPersonalPeriod` as zero-based indexes (the personal month value agrees
+  with `numerology:snapshot`).
+
 ## 6.21.0 - 2026-11-19
 
 - The Tree of Life birth map is weighted. Every marker from
