@@ -1,0 +1,71 @@
+{
+  "signAdjectives": {
+    "Aries": { "en": "independent", "pt": "independente" },
+    "Taurus": { "en": "persistent", "pt": "persistente" },
+    "Gemini": { "en": "inquisitive", "pt": "inquisitiva" },
+    "Cancer": { "en": "emotional", "pt": "emocional" },
+    "Leo": { "en": "romantic", "pt": "romântica" },
+    "Virgo": { "en": "meticulous", "pt": "meticulosa" },
+    "Libra": { "en": "analytical", "pt": "analítica" },
+    "Scorpio": { "en": "intense", "pt": "intensa" },
+    "Sagittarius": { "en": "expansive", "pt": "expansiva" },
+    "Capricorn": { "en": "ambitious", "pt": "ambiciosa" },
+    "Aquarius": { "en": "authentic", "pt": "autêntica" },
+    "Pisces": { "en": "sacred", "pt": "sagrada" }
+  },
+  "houseThemes": {
+    "1": { "en": "identity", "pt": "identidade" },
+    "2": { "en": "resources", "pt": "recursos" },
+    "3": { "en": "understanding", "pt": "entendimento" },
+    "4": { "en": "roots and family", "pt": "raízes e família" },
+    "5": { "en": "creativity", "pt": "criatividade" },
+    "6": { "en": "service", "pt": "serviço" },
+    "7": { "en": "guidance", "pt": "orientação" },
+    "8": { "en": "intimacy", "pt": "intimidade" },
+    "9": { "en": "mastership", "pt": "maestria" },
+    "10": { "en": "career", "pt": "carreira" },
+    "11": { "en": "community", "pt": "comunidade" },
+    "12": { "en": "spirituality", "pt": "espiritualidade" }
+  },
+  "signKeywords": {
+    "Aries": { "en": "pioneering, courage and initiative", "pt": "pioneirismo, coragem e iniciativa" },
+    "Taurus": { "en": "stability, grounding and comfort", "pt": "estabilidade, firmeza e conforto" },
+    "Gemini": { "en": "communication, close friends and siblings", "pt": "comunicação, amigos próximos e irmãos" },
+    "Cancer": { "en": "family, home and memories", "pt": "família, lar e recordações" },
+    "Leo": { "en": "pride and the spotlight", "pt": "orgulho e destaque" },
+    "Virgo": { "en": "organization, attention to detail and method", "pt": "organização, atenção aos detalhes e método" },
+    "Libra": { "en": "balance, harmony, beauty, justice and relationship with others", "pt": "equilíbrio, harmonia, beleza, justiça e relação com os outros" },
+    "Scorpio": { "en": "profound emotional experiences and occultism", "pt": "experiências emocionais profundas e ocultismo" },
+    "Sagittarius": { "en": "religious and academic experiences and long trips", "pt": "experiências religiosas e acadêmicas e viagens longas" },
+    "Capricorn": { "en": "responsibility, hard work and structure", "pt": "responsabilidade, trabalho duro e estrutura" },
+    "Aquarius": { "en": "innovation and humanitarian causes", "pt": "inovação e causas humanitárias" },
+    "Pisces": { "en": "mysteries, inspiration and sacrifice", "pt": "mistérios, inspiração e sacrifício" }
+  },
+  "houseQuestTemplate": { "en": "{adjective} quest for {theme}", "pt": "Busca {adjective} por {theme}" },
+  "lightningTemplates": {
+    "Kether": { "function": { "en": "Will", "pt": "Vontade" }, "en": "Will that comes from {k}", "pt": "Vontade que vem de {k}" },
+    "Chokhmah": { "function": { "en": "Imagination", "pt": "Imaginação" }, "en": "Mental images of {k}", "pt": "Imagens mentais de {k}" },
+    "Binah": { "function": { "en": "Understanding and communication", "pt": "Entendimento e comunicação" }, "en": "Understanding and communication through {k}", "pt": "Entendimento e comunicação por meio de {k}" },
+    "Daath": { "function": { "en": "Expression", "pt": "Expressão" }, "en": "Expression through {k}", "pt": "Expressão por meio de {k}" },
+    "Chesed": { "function": { "en": "Good feelings", "pt": "Bons sentimentos" }, "en": "Good feelings from {k}", "pt": "Bons sentimentos a partir de {k}" },
+    "Geburah": { "function": { "en": "Discipline", "pt": "Disciplina" }, "en": "Discipline from {k}", "pt": "Disciplina a partir de {k}" },
+    "Tiphareth": { "function": { "en": "Harmony", "pt": "Harmonia" }, "en": "Beauty and balance from {k}", "pt": "Beleza e equilíbrio a partir de {k}" },
+    "Netzach": { "function": { "en": "Emotional control", "pt": "Controle emocional" }, "en": "Emotional control and right-brain activity through {k}", "pt": "Controle emocional e atividade do hemisfério direito por meio de {k}" },
+    "Hod": { "function": { "en": "Rational control", "pt": "Controle racional" }, "en": "Rational control and left-brain activity through {k}", "pt": "Controle racional e atividade do hemisfério esquerdo por meio de {k}" },
+    "Yesod": { "function": { "en": "Grounding", "pt": "Aterramento" }, "en": "All of that grounded in {k}", "pt": "Tudo isso aterrado em {k}" },
+    "Malkuth": { "function": { "en": "Manifestation", "pt": "Manifestação" }, "en": "You materialize {k}", "pt": "Você materializa {k}" }
+  },
+  "serpentTemplates": {
+    "Malkuth": { "function": { "en": "Starting point", "pt": "Ponto de partida" }, "en": "Starting from {k}", "pt": "Começando por {k}" },
+    "Yesod": { "function": { "en": "Fundamentals", "pt": "Fundamentos" }, "en": "Fundamentals built from {k}", "pt": "Fundamentos construídos a partir de {k}" },
+    "Hod": { "function": { "en": "Theory learning", "pt": "Aprendizado teórico" }, "en": "Theory learning through {k}", "pt": "Aprendizado teórico por meio de {k}" },
+    "Netzach": { "function": { "en": "Practical learning", "pt": "Aprendizado prático" }, "en": "Practical learning through {k}", "pt": "Aprendizado prático por meio de {k}" },
+    "Tiphareth": { "function": { "en": "Mastery", "pt": "Maestria" }, "en": "Mastery from {k}", "pt": "Maestria a partir de {k}" },
+    "Geburah": { "function": { "en": "Discipline", "pt": "Disciplina" }, "en": "Discipline from {k}", "pt": "Disciplina a partir de {k}" },
+    "Chesed": { "function": { "en": "Sharing", "pt": "Compartilhamento" }, "en": "Sharing through {k}", "pt": "Compartilhamento por meio de {k}" },
+    "Daath": { "function": { "en": "Transformative experiences", "pt": "Experiências transformadoras" }, "en": "Transformative experiences through {k}", "pt": "Experiências transformadoras por meio de {k}" },
+    "Binah": { "function": { "en": "Becoming a reference", "pt": "Tornar-se referência" }, "en": "Becoming a reference through {k}", "pt": "Tornar-se referência por meio de {k}" },
+    "Chokhmah": { "function": { "en": "Focus", "pt": "Foco" }, "en": "Focusing on {k}", "pt": "Foco em {k}" },
+    "Kether": { "function": { "en": "Immortalizing yourself", "pt": "Imortalizar-se" }, "en": "Immortalizing yourself through {k}", "pt": "Imortalizar-se por meio de {k}" }
+  }
+}

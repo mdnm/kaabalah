@@ -47,6 +47,7 @@ export {
 export * from "./astrocartography";
 export * from "./aspects";
 export * from "./dignity";
+export * from "./reception";
 export * from "./descriptions";
 export * from "./decans";
 export * from "./dodecatemoria";

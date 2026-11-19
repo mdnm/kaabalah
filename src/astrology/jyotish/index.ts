@@ -28,6 +28,8 @@ export * from "./dhruva";
 export * from "./lahiri";
 export * from "./karakas";
 export * from "./dasha";
+export * from "./vargas";
+export * from "./jaimini";
 export {
   JYOTISH_BODY_IDS,
   EphemerisTracker,
@@ -71,6 +73,26 @@ export const JYOTISH_METHODS = Object.freeze({
     referenceYearLengthDays: DASHA_YEAR_LENGTH_REFERENCES.lahiriReference,
   },
   karakas: "Degree-in-sign ranking, 7 or 8 scheme; Rahu ranks by 30 - degree in the 8 scheme.",
+  vargas: {
+    name: "Parashari divisional charts D1 to D60 (sixteen vargas)",
+    provenance: "Brihat Parashara Hora Shastra rules; pure arithmetic on an ecliptic longitude, no ephemeris call.",
+    frame: "The caller chooses the frame (tropical by default for Wilhelm-style tropical rasis with Vedic techniques); nothing is converted here.",
+    supported: [1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60],
+    degree: "Position inside the varga sign scaled back to [0, 30); D30 scales across each unequal part.",
+    d2: "Parashari Hora: Sun's (Leo) and Moon's (Cancer) hora by odd/even sign; not the Jaimini or Kashinatha variants.",
+    d9: "Fire signs from Aries, earth from Capricorn, air from Libra, water from Cancer.",
+    d30: "Unequal five-part division (5/5/8/7/5 degrees; Mars, Saturn, Jupiter, Mercury, Venus), reversed for even signs.",
+    d60: "Counted from the sign itself, 0.5 degree each, same for odd and even signs.",
+    houses: "Whole-sign houses counted from the varga lagna when a lagna is supplied.",
+  },
+  jaimini: {
+    karakamsha: "Navamsa sign of the Atmakaraka (rank 1 of the supplied chara karakas); Svamsa is the same sign.",
+    rasiDrishti:
+      "Movable aspect fixed signs except the adjacent (next) one; fixed aspect movable except the adjacent (previous) one; dual aspect the other three duals.",
+    yogakarakas:
+      "Planet ruling a kendra (1,4,7,10) and a trikona (5,9) by whole-sign houses and traditional rulers; the 1st counts as both only together with another house.",
+    parivartana: "Mutual exchange of signs between two of the seven classical planets by traditional rulership.",
+  },
   dashas: {
     vimshottari: "120 years; lord sequence ketu venus sun moon mars rahu jupiter saturn mercury.",
     yogini: "36 years; chosen '(nakshatraNumber + 3) mod 8' convention; not matched to a Kala Yogini export.",

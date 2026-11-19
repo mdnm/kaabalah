@@ -1110,3 +1110,4 @@ export * from "./reading";
 export * from "./reference";
 
 export * from "./labels";
+export * from "./chartPaths";

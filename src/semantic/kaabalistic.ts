@@ -48,6 +48,7 @@ export type KaabalisticMarkerSourceType =
   | "node"
   | "number"
   | "letter"
+  | "aspect"
 
 export type KaabalisticMarkerMapping =
   | "sign-sphere"
@@ -59,6 +60,67 @@ export type KaabalisticMarkerMapping =
   | "number-sphere"
   | "number-path"
   | "letter-path"
+  | "decan-sphere"
+  | "aspect-sphere"
+
+/**
+ * Author-defined marker weights, exposed so callers can show the table.
+ *
+ * Astrology: every placement marker of a source carries that source's placement weight
+ * (Sun, Moon and ASC 5; Mercury, Venus and Mars 4; Jupiter, Saturn and MC 2; anything
+ * else `otherPoint`). A decan marker weighs `decanFactor` times its source's weight.
+ * An aspect marker weighs its tightness (`min` to `max`, from how close the orb is to
+ * exact) times the placement weights of the two bodies added together, divided by
+ * `pairDivisor`, rounded to 2 decimals. So Sun square Moon at exact orb weighs 3 and
+ * Uranus conjunction Neptune at exact orb weighs 0.6. On one sphere, all aspect markers
+ * together add at most `sphereCap`.
+ *
+ * Numerology and gematria: the weight applies to the final reduced value; every
+ * intermediate reduction step weighs `intermediateStep`. Only the Kaabalistic Life Path
+ * carries weight; the Straight life path markers stay but weigh 0 at every step.
+ * Gematria letters add up per path but never more than `letterPathCap`.
+ *
+ * Marker `weight` is the raw value. In `weightsById`, the raw sums above are turned into
+ * shares: within spheres, and separately within paths, each system's values are scaled
+ * so the system's total equals its entry in `systemShares` (percentage points). Systems
+ * with no raw weight in that target type are left out and the remaining shares are
+ * rescaled to sum to 100, so astrology plus numerology alone become 62.5 and 37.5.
+ * `rawWeightsById` keeps the sums before this step.
+ */
+export const KAABALISTIC_MARKER_WEIGHTS = {
+  astrology: {
+    placement: {
+      Sun: 5,
+      Moon: 5,
+      ASC: 5,
+      Mercury: 4,
+      Venus: 4,
+      Mars: 4,
+      Jupiter: 2,
+      Saturn: 2,
+      MC: 2,
+    } as Readonly<Record<string, number>>,
+    otherPoint: 1,
+    decanFactor: 0.5,
+  },
+  aspect: { min: 1, max: 3, pairDivisor: 10, sphereCap: 5 },
+  numerology: {
+    kaabalisticLifePath: 5,
+    dayEnergy: 4,
+    monthEnergy: 3,
+    yearEnergy: 2,
+    intermediateStep: 1,
+  },
+  gematria: {
+    letter: 1,
+    letterPathCap: 3,
+    synthesis: 4,
+    individuality: 3,
+    personality: 3,
+    intermediateStep: 1,
+  },
+  systemShares: { astrology: 50, numerology: 30, gematria: 20 },
+} as const
 
 export interface KaabalisticMarkerDescriptor {
   kind: KaabalisticMarkerKind;
@@ -68,6 +130,8 @@ export interface KaabalisticMarkerDescriptor {
   sourceName: string;
   mapping: KaabalisticMarkerMapping;
   label: string;
+  /** Contribution of this marker to the ranking (see KAABALISTIC_MARKER_WEIGHTS). */
+  weight: number;
   sign?: string;
   element?: string;
   planet?: string;
@@ -87,6 +151,14 @@ export interface KaabalisticSummaryTarget {
   count: number;
 }
 
+export interface KaabalisticRankedTarget {
+  id: KaabalisticTargetId;
+  name: string;
+  /** Normalized total of weightsById, in percentage points of its target type. */
+  share: number;
+  count: number;
+}
+
 export interface KaabalisticItemConnection {
   itemLabel: string;
   targets: readonly KaabalisticSummaryTarget[];
@@ -99,6 +171,14 @@ export interface KaabalisticMapData {
   sphereMarkers: Partial<Record<NodeId<KaabalahTypes.SPHERE>, readonly KaabalisticMarkerDescriptor[]>>;
   pathMarkers: Partial<Record<NodeId<KaabalahTypes.PATH>, readonly KaabalisticMarkerDescriptor[]>>;
   countsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>;
+  /** Share-normalized weights in percentage points: spheres sum to 100 and paths sum to 100 (see KAABALISTIC_MARKER_WEIGHTS). */
+  weightsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>;
+  /** Same shape, before normalization: capped sums of marker weights. */
+  rawWeightsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>;
+  /** Touched spheres, heaviest first, ties in the Tree's own order. */
+  rankedSpheres: readonly KaabalisticRankedTarget[];
+  /** Touched paths, heaviest first, ties in path order. */
+  rankedPaths: readonly KaabalisticRankedTarget[];
   itemConnections: {
     astrology: readonly KaabalisticItemConnection[];
     numerology: readonly KaabalisticItemConnection[];
@@ -966,6 +1046,7 @@ function toAstrologyMarkers(
   result: KaabalisticCorrespondenceResult,
   source: AstrologyTreeMarkerSource
 ) {
+  const weight = getPlacementWeight(source.sourceName)
   const sourceGlyph = getAstrologySourceGlyph(source.sourceType, source.sourceName)
   const signGlyph = result.source.sign
     ? lookupSignSymbolMetadata(result.source.sign)?.glyph ?? sourceGlyph
@@ -978,6 +1059,7 @@ function toAstrologyMarkers(
     sourceType: source.sourceType,
     sourceName: source.sourceName,
     mapping: target.mapping,
+    weight,
     label:
       target.mapping === "planet-sign-path" || target.mapping === "carrier-sphere"
         ? signGlyph
@@ -986,6 +1068,143 @@ function toAstrologyMarkers(
     ...(target.element ? { element: target.element } : {}),
     ...(target.planet ? { planet: target.planet } : {}),
   }))
+}
+
+const CARDINAL_SIGNS: readonly string[] = ["Aries", "Cancer", "Libra", "Capricorn"]
+const FIXED_SIGNS: readonly string[] = ["Taurus", "Leo", "Scorpio", "Aquarius"]
+
+/** Sphere of each decan (0-10, 10-20, 20-30 degrees) per modality. Fixed repeats Chesed on purpose. */
+const DECAN_SPHERES: Record<"cardinal" | "fixed" | "mutable", readonly [string, string, string]> = {
+  cardinal: [SPHERES.CHOKHMAH, SPHERES.BINAH, SPHERES.CHESED],
+  fixed: [SPHERES.GEBURAH, SPHERES.TIPHARETH, SPHERES.CHESED],
+  mutable: [SPHERES.HOD, SPHERES.YESOD, SPHERES.MALKUTH],
+}
+
+/** Sphere lit by each aspect. Tiphareth has no aspect. */
+const ASPECT_SPHERES: Record<string, string> = {
+  conjunction: SPHERES.KETHER,
+  duodecile: SPHERES.CHOKHMAH,
+  octile: SPHERES.BINAH,
+  sextile: SPHERES.CHESED,
+  square: SPHERES.GEBURAH,
+  trine: SPHERES.NETZACH,
+  trioctile: SPHERES.HOD,
+  quincunx: SPHERES.YESOD,
+  opposition: SPHERES.MALKUTH,
+}
+
+const ASPECT_LABELS: Record<string, string> = {
+  conjunction: "☌",
+  duodecile: "30°",
+  octile: "45°",
+  sextile: "⚹",
+  square: "□",
+  trine: "△",
+  trioctile: "135°",
+  quincunx: "⚻",
+  opposition: "☍",
+}
+
+function round2(value: number) {
+  return Math.round(value * 100) / 100
+}
+
+function getPlacementWeight(sourceName: string) {
+  const { placement, otherPoint } = KAABALISTIC_MARKER_WEIGHTS.astrology
+  return placement[sourceName] ?? otherPoint
+}
+
+function getDecanSphereId(sign: string, degreeInSign: number) {
+  const normalized = normalizeSignName(sign)
+  if (!normalized || !Number.isFinite(degreeInSign)) {
+    return undefined
+  }
+
+  const modality = CARDINAL_SIGNS.includes(normalized)
+    ? "cardinal"
+    : FIXED_SIGNS.includes(normalized)
+      ? "fixed"
+      : "mutable"
+  const decan = Math.min(2, Math.max(0, Math.floor(degreeInSign / 10)))
+
+  return id(KaabalahTypes.SPHERE, DECAN_SPHERES[modality][decan])
+}
+
+function buildDecanMarker(
+  source: AstrologyTreeMarkerSource,
+  position: { sign?: string; decimalDegrees?: number; longitude?: number } | undefined
+): KaabalisticMarkerDescriptor | undefined {
+  if (!position?.sign) {
+    return undefined
+  }
+
+  const degree = position.decimalDegrees ?? (position.longitude !== undefined ? position.longitude % 30 : NaN)
+  const targetId = getDecanSphereId(position.sign, degree)
+  if (!targetId) {
+    return undefined
+  }
+
+  return {
+    kind: "astrology",
+    targetId,
+    targetType: "sphere",
+    sourceType: source.sourceType,
+    sourceName: source.sourceName,
+    mapping: "decan-sphere",
+    weight: getPlacementWeight(source.sourceName) * KAABALISTIC_MARKER_WEIGHTS.astrology.decanFactor,
+    label: getAstrologySourceGlyph(source.sourceType, source.sourceName),
+    sign: normalizeSignName(position.sign),
+  }
+}
+
+function getAspectTightness(aspect: string, orb: number) {
+  const { min, max } = KAABALISTIC_MARKER_WEIGHTS.aspect
+  const specOrb = DEFAULT_ASPECT_SPECS.find((spec) => spec.name === aspect)?.orb
+  if (!specOrb || !Number.isFinite(orb)) {
+    return min
+  }
+
+  return Math.min(max, Math.max(min, round2(1 + 2 * (1 - orb / specOrb))))
+}
+
+function getAspectWeight(edge: { aspect: string; orb: number; planetA: string; planetB: string }) {
+  const { pairDivisor } = KAABALISTIC_MARKER_WEIGHTS.aspect
+  // Edge names come lowercase ("sun") or as aliases ("ascendant"); the registry label ("Sun", "ASC") hits the table.
+  const pair = getPlacementWeight(aspectPointName(edge.planetA)) + getPlacementWeight(aspectPointName(edge.planetB))
+
+  return round2((getAspectTightness(edge.aspect, edge.orb) * pair) / pairDivisor)
+}
+
+function aspectPointName(name: string) {
+  return symbolRegistry.byKey.get(normalizeLookupKey(name))?.label ?? name
+}
+
+function buildAspectMarkers(aspects: AstrologyTreeChartInput["aspects"]) {
+  const markers: KaabalisticMarkerDescriptor[] = []
+
+  for (const edge of aspects ?? []) {
+    const sphere = ASPECT_SPHERES[edge.aspect]
+    if (
+      !sphere ||
+      defaultExcludedAstrologyPoints.has(normalizeLookupKey(edge.planetA)) ||
+      defaultExcludedAstrologyPoints.has(normalizeLookupKey(edge.planetB))
+    ) {
+      continue
+    }
+
+    markers.push({
+      kind: "astrology",
+      targetId: id(KaabalahTypes.SPHERE, sphere),
+      targetType: "sphere",
+      sourceType: "aspect",
+      sourceName: `${aspectPointName(edge.planetA)} ${edge.aspect} ${aspectPointName(edge.planetB)}`,
+      mapping: "aspect-sphere",
+      weight: getAspectWeight(edge),
+      label: ASPECT_LABELS[edge.aspect] ?? edge.aspect,
+    })
+  }
+
+  return markers
 }
 
 function dedupeMarkers(markers: readonly KaabalisticMarkerDescriptor[]) {
@@ -1034,12 +1253,10 @@ function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartIn
       continue
     }
 
-    markers.push(
-      ...toAstrologyMarkers(correspondences, {
-        sourceType,
-        sourceName: correspondences.source.label,
-      })
-    )
+    const source = { sourceType, sourceName: correspondences.source.label }
+    markers.push(...toAstrologyMarkers(correspondences, source))
+    const decan = buildDecanMarker(source, planet.zodiacPosition)
+    if (decan) markers.push(decan)
   }
 
   for (const node of chart.nodes) {
@@ -1053,12 +1270,10 @@ function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartIn
       continue
     }
 
-    markers.push(
-      ...toAstrologyMarkers(correspondences, {
-        sourceType: "node",
-        sourceName: correspondences.source.label,
-      })
-    )
+    const source = { sourceType: "node" as const, sourceName: correspondences.source.label }
+    markers.push(...toAstrologyMarkers(correspondences, source))
+    const decan = buildDecanMarker(source, node)
+    if (decan) markers.push(decan)
   }
 
   const angleTargets: Array<{ angle: string; position?: ZodiacPosition }> = [
@@ -1082,13 +1297,13 @@ function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartIn
       continue
     }
 
-    markers.push(
-      ...toAstrologyMarkers(correspondences, {
-        sourceType: "angle",
-        sourceName: correspondences.source.label,
-      })
-    )
+    const source = { sourceType: "angle" as const, sourceName: correspondences.source.label }
+    markers.push(...toAstrologyMarkers(correspondences, source))
+    const decan = buildDecanMarker(source, angle.position)
+    if (decan) markers.push(decan)
   }
+
+  markers.push(...buildAspectMarkers(chart.aspects))
 
   return dedupeMarkers(markers)
 }
@@ -1112,10 +1327,17 @@ function resolveNumerologyInput(input: Date | NumerologyTreeInput) {
   }
 }
 
-function buildNumberMarkers(sourceName: string, numbers: readonly number[], kind: KaabalisticMarkerKind) {
+function buildNumberMarkers(
+  sourceName: string,
+  numbers: readonly number[],
+  kind: KaabalisticMarkerKind,
+  finalWeight: number,
+  intermediateWeight: number
+) {
   const markers: KaabalisticMarkerDescriptor[] = []
 
-  for (const number of numbers) {
+  for (const [index, number] of numbers.entries()) {
+    const weight = index === numbers.length - 1 ? finalWeight : intermediateWeight
     const correspondences = getKaabalisticCorrespondenceTargets({
       kind: "number",
       number,
@@ -1135,6 +1357,7 @@ function buildNumberMarkers(sourceName: string, numbers: readonly number[], kind
         sourceName,
         mapping: target.mapping,
         label: String(number),
+        weight,
       })
     }
   }
@@ -1146,31 +1369,41 @@ function englishGetNumerologyTreeMarkers(input: Date | NumerologyTreeInput) {
   const { kaabalisticLifePath, straightAcrossReductionLifePath } = resolveNumerologyInput(input)
   const markers: KaabalisticMarkerDescriptor[] = []
 
-  const sources: Array<{ sourceName: string; numbers: readonly number[] }> = [
+  const w = KAABALISTIC_MARKER_WEIGHTS.numerology
+  const sources: Array<{ sourceName: string; numbers: readonly number[]; weight: number }> = [
     {
       sourceName: "Day Energy",
       numbers: straightAcrossReductionLifePath.dayEnergy.reductionSteps,
+      weight: w.dayEnergy,
     },
     {
       sourceName: "Month Energy",
       numbers: straightAcrossReductionLifePath.monthEnergy.reductionSteps,
+      weight: w.monthEnergy,
     },
     {
       sourceName: "Year Energy",
       numbers: straightAcrossReductionLifePath.yearEnergy.reductionSteps,
+      weight: w.yearEnergy,
     },
     {
       sourceName: `Life Path (Kaabalistic) ${kaabalisticLifePath.lifePath.reducedValue}`,
       numbers: kaabalisticLifePath.lifePath.reductionSteps,
+      weight: w.kaabalisticLifePath,
     },
     {
       sourceName: `Life Path (Straight) ${straightAcrossReductionLifePath.lifePath.reducedValue}`,
       numbers: straightAcrossReductionLifePath.lifePath.reductionSteps,
+      weight: 0,
     },
   ]
 
   for (const source of sources) {
-    markers.push(...buildNumberMarkers(source.sourceName, source.numbers, "numerology"))
+    // The Straight life path markers stay but weigh 0 at every step.
+    const intermediate = source.weight === 0 ? 0 : w.intermediateStep
+    markers.push(
+      ...buildNumberMarkers(source.sourceName, source.numbers, "numerology", source.weight, intermediate)
+    )
   }
 
   return markers
@@ -1200,14 +1433,17 @@ function englishGetGematriaTreeMarkers(input: string | GematriaTreeInput) {
 
   const markers: KaabalisticMarkerDescriptor[] = []
 
-  const numericSources: Array<{ sourceName: string; numbers: readonly number[] }> = [
-    { sourceName: "Vowels", numbers: result.vowels.reductionSteps },
-    { sourceName: "Consonants", numbers: result.consonants.reductionSteps },
-    { sourceName: "Synthesis", numbers: result.synthesis.reductionSteps },
+  const w = KAABALISTIC_MARKER_WEIGHTS.gematria
+  const numericSources: Array<{ sourceName: string; numbers: readonly number[]; weight: number }> = [
+    { sourceName: "Vowels", numbers: result.vowels.reductionSteps, weight: w.individuality },
+    { sourceName: "Consonants", numbers: result.consonants.reductionSteps, weight: w.personality },
+    { sourceName: "Synthesis", numbers: result.synthesis.reductionSteps, weight: w.synthesis },
   ]
 
   for (const source of numericSources) {
-    markers.push(...buildNumberMarkers(source.sourceName, source.numbers, "gematria"))
+    markers.push(
+      ...buildNumberMarkers(source.sourceName, source.numbers, "gematria", source.weight, w.intermediateStep)
+    )
   }
 
   for (const letter of result.includedLetters) {
@@ -1230,6 +1466,7 @@ function englishGetGematriaTreeMarkers(input: string | GematriaTreeInput) {
         sourceName: "Included Letters",
         mapping: target.mapping,
         label: letter.hebrewCharacter,
+        weight: w.letter,
       })
     }
   }
@@ -1252,6 +1489,108 @@ function incrementCounts(
   current[bucket] += 1
   current.total += 1
   countsById[targetId] = current
+}
+
+type WeightsById = Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>
+
+/** Raw capped sums per target: gematria letters capped per path, aspect markers capped per sphere. */
+function computeRawWeightsById(markers: readonly KaabalisticMarkerDescriptor[]) {
+  const rawWeightsById: WeightsById = {}
+  const letterWeights = new Map<KaabalisticTargetId, number>()
+  const aspectWeights = new Map<KaabalisticTargetId, number>()
+  const buckets: Record<KaabalisticMarkerKind, SummaryBucket> = {
+    astrology: "astro",
+    numerology: "numerology",
+    gematria: "gematria",
+  }
+
+  const add = (targetId: KaabalisticTargetId, bucket: SummaryBucket, weight: number) => {
+    const current = rawWeightsById[targetId] ?? { astro: 0, numerology: 0, gematria: 0, total: 0 }
+    current[bucket] = round2(current[bucket] + weight)
+    current.total = round2(current.total + weight)
+    rawWeightsById[targetId] = current
+  }
+
+  for (const marker of markers) {
+    if (marker.kind === "gematria" && marker.sourceType === "letter") {
+      letterWeights.set(marker.targetId, (letterWeights.get(marker.targetId) ?? 0) + marker.weight)
+      continue
+    }
+    if (marker.sourceType === "aspect") {
+      aspectWeights.set(marker.targetId, (aspectWeights.get(marker.targetId) ?? 0) + marker.weight)
+      continue
+    }
+
+    add(marker.targetId, buckets[marker.kind], marker.weight)
+  }
+
+  for (const [targetId, weight] of letterWeights) {
+    add(targetId, "gematria", Math.min(weight, KAABALISTIC_MARKER_WEIGHTS.gematria.letterPathCap))
+  }
+  for (const [targetId, weight] of aspectWeights) {
+    add(targetId, "astro", Math.min(weight, KAABALISTIC_MARKER_WEIGHTS.aspect.sphereCap))
+  }
+
+  return rawWeightsById
+}
+
+/** Scales each system within one target type so its total equals its share, shares renormalized over present systems. */
+function normalizeWeights(
+  rawWeightsById: WeightsById,
+  markers: readonly KaabalisticMarkerDescriptor[]
+) {
+  const weightsById: WeightsById = {}
+  const shares = KAABALISTIC_MARKER_WEIGHTS.systemShares
+  const shareByBucket: Record<SummaryBucket, number> = {
+    astro: shares.astrology,
+    numerology: shares.numerology,
+    gematria: shares.gematria,
+  }
+  const bucketList: SummaryBucket[] = ["astro", "numerology", "gematria"]
+
+  for (const targetType of ["sphere", "path"] as const) {
+    const ids = [...new Set(markers.filter((m) => m.targetType === targetType).map((m) => m.targetId))]
+    const totals: Record<SummaryBucket, number> = { astro: 0, numerology: 0, gematria: 0 }
+    for (const targetId of ids) {
+      for (const bucket of bucketList) {
+        totals[bucket] += rawWeightsById[targetId]?.[bucket] ?? 0
+      }
+    }
+
+    const present = bucketList.filter((bucket) => totals[bucket] > 0)
+    const shareSum = present.reduce((sum, bucket) => sum + shareByBucket[bucket], 0)
+
+    for (const targetId of ids) {
+      const entry = { astro: 0, numerology: 0, gematria: 0, total: 0 }
+      for (const bucket of present) {
+        const raw = rawWeightsById[targetId]?.[bucket] ?? 0
+        entry[bucket] = round2((raw / totals[bucket]) * ((shareByBucket[bucket] / shareSum) * 100))
+      }
+      entry.total = round2(entry.astro + entry.numerology + entry.gematria)
+      weightsById[targetId] = entry
+    }
+  }
+
+  return weightsById
+}
+
+function rankTargets(
+  nodes: readonly Node<KaabalahTypes.SPHERE | KaabalahTypes.PATH>[],
+  weightsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>,
+  countsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>
+): KaabalisticRankedTarget[] {
+  return nodes
+    .map((node) => {
+      const targetId = node.id as KaabalisticTargetId
+      return {
+        id: targetId,
+        name: getTargetName(targetId),
+        share: weightsById[targetId]?.total ?? 0,
+        count: countsById[targetId]?.total ?? 0,
+      }
+    })
+    .filter((row) => row.share > 0)
+    .sort((a, b) => b.share - a.share)
 }
 
 function groupMarkersByTarget(
@@ -1282,11 +1621,15 @@ function buildAstrologySummary(
   const itemConnections: KaabalisticItemConnection[] = []
 
   for (const marker of markers) {
+    // Aspect markers are already counted by the aspect loop below.
+    if (marker.sourceType === "aspect") {
+      continue
+    }
     incrementCounts(countsById, marker.targetId, "astro")
   }
 
   const groupedBySource = groupByKey(
-    markers,
+    markers.filter((marker) => marker.sourceType !== "aspect"),
     (marker) => `${marker.sourceType}|${marker.sourceName}|${marker.sign ?? ""}`
   )
 
@@ -1458,6 +1801,8 @@ function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
       : [],
   }
 
+  const rawWeightsById = computeRawWeightsById(allMarkers)
+  const weightsById = normalizeWeights(rawWeightsById, allMarkers)
   const sphereMarkers = groupMarkersByTarget(allMarkers, "sphere") as Partial<
     Record<NodeId<KaabalahTypes.SPHERE>, readonly KaabalisticMarkerDescriptor[]>
   >
@@ -1472,6 +1817,10 @@ function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
     sphereMarkers,
     pathMarkers,
     countsById,
+    weightsById,
+    rawWeightsById,
+    rankedSpheres: rankTargets(orderedSpheres(), weightsById, countsById),
+    rankedPaths: rankTargets(orderedPaths(), weightsById, countsById),
     itemConnections,
   }
 }
@@ -1492,9 +1841,20 @@ export function getKaabalisticCorrespondenceTargets(lookup: KaabalisticCorrespon
   };
 }
 
+function localizeAspectSourceName(sourceName: string, language: string) {
+  const match = /^(.+) (conjunction|duodecile|octile|sextile|square|trine|trioctile|quincunx|opposition) (.+)$/.exec(sourceName);
+  if (!match) return sourceName;
+  const aspect = getKaabalisticLabel(capitalizeWords(match[2]), language).toLowerCase();
+  return `${getKaabalisticLabel(match[1], language)} ${aspect} ${getKaabalisticLabel(match[3], language)}`;
+}
+
 function localizeMarkers(markers: KaabalisticMarkerDescriptor[], language?: string) {
   if (!language?.startsWith("pt")) return markers;
-  return markers.map(marker => ({ ...marker, sourceName: getKaabalisticLabel(marker.sourceName, language), label: getKaabalisticLabel(marker.label, language) }));
+  return markers.map(marker => ({
+    ...marker,
+    sourceName: marker.sourceType === "aspect" ? localizeAspectSourceName(marker.sourceName, language) : getKaabalisticLabel(marker.sourceName, language),
+    label: getKaabalisticLabel(marker.label, language),
+  }));
 }
 
 /** Marker display labels in Portuguese for pt and pt-BR. Glyphs and target IDs stay unchanged. */
@@ -1519,6 +1879,8 @@ export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput, lan
   }));
   return {
     ...result, markers,
+    rankedSpheres: result.rankedSpheres.map(row => ({ ...row, name: getKaabalisticLabel(row.name, language) })),
+    rankedPaths: result.rankedPaths.map(row => ({ ...row, name: getKaabalisticLabel(row.name, language) })),
     sphereMarkers: groupMarkersByTarget(markers, "sphere"),
     pathMarkers: groupMarkersByTarget(markers, "path"),
     itemConnections: {

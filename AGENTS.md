@@ -74,6 +74,10 @@ Tarot numbering is tree-scoped, not sequential. The canonical default tree is `k
 - `buildKaabalisticMapData(input)` — combines all markers for mixed map views
 - Symbol metadata: `getPlanetSymbolMetadata()`, `getZodiacSignSymbolMetadata()`, `getAngleSymbolMetadata()`, `getNodeSymbolMetadata()` and their `list*` variants
 
+- Weights: every marker has a raw `weight` from `KAABALISTIC_MARKER_WEIGHTS` (placements 5/4/2/1, final numerology and gematria values over reduction steps; the Straight life path weighs 0). `rawWeightsById` holds the capped sums (letters capped per path, aspects capped per sphere).
+- Shares: `weightsById` is share-normalized per target type (spheres and paths separately) so astrology, numerology and gematria total 50/30/20 percentage points, renormalized over the systems present. `rankedSpheres` and `rankedPaths` rank by that total as `share`.
+- Decan layer: each placement, node and angle also lights a sphere by modality and decan (`decan-sphere`, half the placement weight). Aspect layer: each aspect lights one sphere (`aspect-sphere`, tightness times the pair's placement weights over 10) and is not double counted in `countsById`.
+
 These are re-exported from `kaabalah/semantic`.
 
 ## CLI
