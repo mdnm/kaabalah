@@ -79,7 +79,7 @@ describe("transit aspects", () => {
   it("also lights the sphere of the natal planet, at the same weight", () => {
     const markers = getCycleTreeMarkers({ transitAspects: [edge("jupiter", "trine", "sun", 0.5)] })
 
-    expect(markers).toHaveLength(2)
+    expect(markers).toHaveLength(3)
     const [aspect, natal] = markers
     expect(aspect).toMatchObject({ cycleSource: "transit-aspect", targetId: sphere(SPHERES.NETZACH), mapping: "aspect-sphere" })
     expect(natal).toMatchObject({
@@ -102,7 +102,72 @@ describe("transit aspects", () => {
     expect(data.rawWeightsById[sphere(SPHERES.TIPHARETH)]?.transits).toBe(1.4)
     expect(data.rawWeightsById[sphere(SPHERES.NETZACH)]?.transits).toBe(1.4)
     expect(data.rankedSpheres.map((row) => row.name)).toEqual(["Tiphareth", "Netzach"])
-    expect(data.rankedPaths).toEqual([])
+  })
+
+  it("also lights the path of the natal planet, at the aspect's weight", () => {
+    const input = { transitAspects: [edge("jupiter", "trine", "sun", 0.5)] }
+    const markers = getCycleTreeMarkers(input)
+    const natalPath = markers.filter((marker) => marker.cycleSource === "transit-natal-path")
+
+    expect(natalPath).toHaveLength(1)
+    expect(natalPath[0]).toMatchObject({
+      kind: "astrology",
+      system: "transits",
+      sourceType: "aspect",
+      mapping: "planet-sign-path",
+      targetId: path(22),
+      targetType: "path",
+      sourceName: "transit Jupiter trine natal Sun",
+      planet: "Sun",
+      weight: aspectOnly(input)[0].weight,
+      timeLord: false,
+    })
+    expect(natalPath[0].weight).toBe(1.4)
+
+    const data = buildCycleMapData(input)
+    expect(data.rawWeightsById[path(22)]).toEqual({ transits: 1.4, timeLords: 0, numerology: 0, total: 1.4 })
+    expect(data.rankedPaths).toEqual([{ id: path(22), name: "Path 22", share: 100, count: 0 }])
+    expect(data.countsById[path(22)]).toBeUndefined()
+
+    const doubled = getCycleTreeMarkers({ ...input, timeLords: { profection: "Sun" } })
+      .filter((marker) => marker.sourceType === "aspect")
+    expect(doubled.map((marker) => marker.weight)).toEqual([2.8, 2.8, 2.8])
+    expect(doubled.every((marker) => marker.timeLord)).toBe(true)
+  })
+
+  it("lights the path of each classical planet and none for the other natal points", () => {
+    const natalPaths = (natal: string) =>
+      getCycleTreeMarkers({ transitAspects: [edge("saturn", "square", natal)] })
+        .filter((marker) => marker.targetType === "path")
+        .map((marker) => marker.targetId)
+
+    expect(natalPaths("sun")).toEqual([path(22)])
+    expect(natalPaths("moon")).toEqual([path(2)])
+    expect(natalPaths("mercury")).toEqual([path(17)])
+    expect(natalPaths("venus")).toEqual([path(3)])
+    expect(natalPaths("mars")).toEqual([path(11)])
+    expect(natalPaths("jupiter")).toEqual([path(4)])
+    expect(natalPaths("saturn")).toEqual([path(20)])
+    for (const point of ["uranus", "neptune", "pluto", "ascendant", "mc", "mean node", "lilith mean", "chiron"]) {
+      expect(natalPaths(point)).toEqual([])
+    }
+    expect(buildCycleMapData({ transitAspects: [edge("saturn", "square", "uranus")] }).rankedPaths).toEqual([])
+  })
+
+  it("keeps path shares at 100, apart from the spheres", () => {
+    const data = buildCycleMapData({
+      transitAspects: [edge("saturn", "square", "moon", 0), edge("jupiter", "trine", "sun", 0.5), edge("mars", "sextile", "uranus", 0.2)],
+      transitPlacements: [{ name: "Moon", sign: "Pisces" }],
+      numerology: { personalDay: 7 },
+    })
+    const paths = Object.entries(data.weightsById).filter(([targetId]) => targetId.startsWith("path:"))
+
+    expect(shareSum(data, "path")).toBeCloseTo(100, 1)
+    expect(shareSum(data, "sphere")).toBeCloseTo(100, 1)
+    // Transits 75 and numerology 25 on the paths, no time lord lights one.
+    expect(paths.reduce((sum, [, entry]) => sum + entry!.transits, 0)).toBeCloseTo(75, 1)
+    expect(paths.reduce((sum, [, entry]) => sum + entry!.numerology, 0)).toBeCloseTo(25, 1)
+    expect(data.weightsById[path(2)]!.transits).toBeGreaterThan(data.weightsById[path(22)]!.transits)
   })
 
   it("resolves each natal point to the sphere it carries, or to none", () => {
@@ -171,8 +236,8 @@ describe("transit aspects", () => {
       getCycleTreeMarkers({ transitAspects, timeLords }).filter((marker) => marker.sourceType === "aspect")
     const expectPair = (timeLords: CycleTimeLordsInput | undefined, weight: number, timeLord: boolean) => {
       const markers = pair(timeLords)
-      expect(markers.map((marker) => marker.cycleSource)).toEqual(["transit-aspect", "transit-natal-sphere"])
-      expect(markers.map((marker) => marker.targetId)).toEqual([sphere(SPHERES.GEBURAH), sphere(SPHERES.YESOD)])
+      expect(markers.map((marker) => marker.cycleSource)).toEqual(["transit-aspect", "transit-natal-sphere", "transit-natal-path"])
+      expect(markers.map((marker) => marker.targetId)).toEqual([sphere(SPHERES.GEBURAH), sphere(SPHERES.YESOD), path(2)])
       for (const marker of markers) expect(marker).toMatchObject({ weight, timeLord })
     }
 
@@ -191,8 +256,8 @@ describe("transit aspects", () => {
         transitAspects: [edge("mean node", "conjunction", "sun")],
         timeLords: { mahaDasha: lord },
       })
-      // Tightness 3 times (node 1 + Sun 5) over 10, doubled, on Kether and on Tiphareth.
-      expect(markers.map((marker) => marker.targetId)).toEqual([sphere(SPHERES.KETHER), sphere(SPHERES.TIPHARETH)])
+      // Tightness 3 times (node 1 + Sun 5) over 10, doubled, on Kether, on Tiphareth and on Path 22.
+      expect(markers.map((marker) => marker.targetId)).toEqual([sphere(SPHERES.KETHER), sphere(SPHERES.TIPHARETH), path(22)])
       for (const marker of markers) expect(marker).toMatchObject({ weight: 3.6, timeLord: true })
     }
   })
@@ -426,6 +491,8 @@ describe("buildCycleMapData", () => {
     expect(data.markers.filter((marker) => marker.cycleSource === "transit-aspect")).toHaveLength(4)
     // The MC has no sphere of its own.
     expect(data.markers.filter((marker) => marker.cycleSource === "transit-natal-sphere")).toHaveLength(3)
+    expect(data.markers.filter((marker) => marker.cycleSource === "transit-natal-path").map((marker) => marker.targetId))
+      .toEqual([path(2), path(22), path(3)])
   })
 
   it("mirrors the birth map fields and ranks heaviest first", () => {

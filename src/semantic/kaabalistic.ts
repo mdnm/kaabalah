@@ -1868,6 +1868,9 @@ export const kaabalisticInternals = {
     const key = normalizeLookupKey(aspectPointName(point))
     return planetCarrierSphereIdsByKey().get(key) ?? angleCarrierSphereIdsByKey.get(key) ?? []
   },
+  /** Path of a classical planet whatever its sign; nothing for the outer planets and other points. */
+  getPlanetPathIds: (point: string) =>
+    classicalPlanetPathIdsByKey().get(normalizeLookupKey(aspectPointName(point))) ?? [],
   buildNumberMarkers,
   toSummaryTargets,
   toAstrologyMarkers,

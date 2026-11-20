@@ -22,6 +22,7 @@ const {
   getAspectWeight,
   getPlanetCarrierSphereIds,
   getPointCarrierSphereIds,
+  getPlanetPathIds,
   buildNumberMarkers,
   toSummaryTargets,
   toAstrologyMarkers,
@@ -47,18 +48,21 @@ const {
  * birth map). The second is the sphere of the natal body it touches: Tiphareth for the
  * Sun, Yesod for the Moon, and so on for the ten planets, and Malkuth for the ASC. A
  * natal point with no sphere of its own (MC, the nodes, Lilith, Chiron, the Wheel of
- * Fortune) lights only the aspect's sphere. An aspect lights no path.
+ * Fortune) lights only the aspect's sphere. The aspect also lights the path of the
+ * natal planet it touches, for the seven planets that have one: Path 22 for the Sun, 2
+ * for the Moon, 17 for Mercury, 3 for Venus, 11 for Mars, 4 for Jupiter, 20 for Saturn.
+ * Uranus, Neptune, Pluto and every other natal point light no path.
  *
- * Both markers of an aspect carry the same weight. Its tightness runs from `aspect.max`
+ * All the markers of an aspect carry the same weight. Its tightness runs from `aspect.max`
  * at exact to `aspect.min` at `maxOrb`. The weight is that tightness times the
  * placement weights of the two bodies added together, divided by `pairDivisor`, rounded
  * to 2 decimals. When the transiting or the natal body is one of the person's current
  * time lords, the weight is multiplied by `timeLordFactor`, once, however many systems
  * name that planet and even when both bodies are lords. So transit Saturn square natal
- * Moon puts 2.1 on Geburah and 2.1 on Yesod at exact orb, 1.4 at half a degree and 0.7
- * at one degree, and twice that while Saturn or the Moon rules the firdaria. Markers on
- * one sphere add up with no cap. In `countsById` an aspect counts once, on the sphere of
- * the aspect.
+ * Moon puts 2.1 on Geburah, 2.1 on Yesod and 2.1 on Path 2 at exact orb, 1.4 at half a
+ * degree and 0.7 at one degree, and twice that while Saturn or the Moon rules the
+ * firdaria. Markers on one sphere or path add up with no cap. In `countsById` an aspect
+ * counts once, on the sphere of the aspect.
  *
  * Transit placements: only the bodies in `skyBodies` (the Moon) light the tree by where
  * they are in the sky. Such a body lights what its sign and planet light for a natal
@@ -110,6 +114,7 @@ export type KaabalisticCycleSystem = "transits" | "timeLords" | "numerology"
 export type KaabalisticCycleSource =
   | "transit-aspect"
   | "transit-natal-sphere"
+  | "transit-natal-path"
   | "transit-placement"
   | "firdaria-major"
   | "firdaria-sub"
@@ -174,7 +179,7 @@ export interface KaabalisticCycleMarkerDescriptor extends KaabalisticMarkerDescr
   /** The system whose share this marker counts toward. */
   system: KaabalisticCycleSystem;
   cycleSource: KaabalisticCycleSource;
-  /** Both markers of a transit aspect: true when `timeLordFactor` was applied. */
+  /** Every marker of a transit aspect: true when `timeLordFactor` was applied. */
   timeLord?: boolean;
   /** Transit placements only. */
   retrograde?: boolean;
@@ -303,6 +308,16 @@ function buildTransitAspectMarkers(input: BuildCycleMapDataInput, language?: str
         cycleSource: "transit-natal-sphere",
         targetId,
         mapping: "carrier-sphere",
+        planet: aspectPointName(edge.planetB),
+      })
+    }
+    for (const targetId of getPlanetPathIds(edge.planetB)) {
+      markers.push({
+        ...base,
+        cycleSource: "transit-natal-path",
+        targetId,
+        targetType: "path",
+        mapping: "planet-sign-path",
         planet: aspectPointName(edge.planetB),
       })
     }
@@ -519,7 +534,7 @@ export function buildCycleMapData(
 
   for (const marker of markers) {
     // One aspect counts once, on the sphere of the aspect.
-    if (marker.cycleSource === "transit-natal-sphere") continue
+    if (marker.cycleSource === "transit-natal-sphere" || marker.cycleSource === "transit-natal-path") continue
     const current = countsById[marker.targetId] ?? emptyEntry()
     current[marker.system] += 1
     current.total += 1

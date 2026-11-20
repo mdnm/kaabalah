@@ -11,8 +11,9 @@ that existed changes its results.
   day's cycles on the Tree as sphere and path shares, from plain data (transit
   aspects and placements, time lords, personal numbers). The rules are in
   `KAABALISTIC_CYCLE_WEIGHTS`: only the five major aspects within 1 degree
-  count; each lights the sphere of its aspect type and the sphere of the natal
-  planet it touches; an aspect involving a current time lord (firdaria major or
+  count; each lights the sphere of its aspect type, the sphere of the natal
+  planet it touches and that planet's path when it has one (the Sun to
+  Saturn); an aspect involving a current time lord (firdaria major or
   sub, profection, maha or antar dasha) weighs double; the Moon is the only sky
   placement; shares are transits 60, time lords 20, numerology 20, renormalized
   over the systems present. `getAspectTightness` and `getAspectWeight` take an
