@@ -1309,6 +1309,29 @@ now.fraction;         // between 0 and 1
 
 The instants are crossings of the Sun's geocentric apparent longitude, the definition behind published equinox and solstice times, solved with the same crossing solver as the returns. Windows over `MAX_SEASONAL_WINDOW_YEARS` (150) and invalid dates throw a typed `TimelineError`.
 
+### Lunations
+
+`findLunations({ start, end, phases? })` returns the exact instants of the Moon's four principal phases inside the window: the Moon's longitude minus the Sun's equal to 0 (`"new"`), 90 (`"first_quarter"`), 180 (`"full"`) and 270 degrees (`"last_quarter"`), the same spelling as `MoonPhaseName`. Each lunation has the `phase`, the UTC `instant`, the `jd`, the `sunLongitude` and `moonLongitude`, and the Moon's `sign` and `signDegree` at that instant.
+
+```typescript
+import { findLunations } from 'kaabalah/astrology';
+
+const window = { start: new Date(Date.UTC(2024, 2, 20)), end: new Date(Date.UTC(2024, 3, 30)) };
+findLunations(window).lunations.map((l) => `${l.phase} ${l.instant.toISOString()} ${l.sign}`);
+// full 2024-03-25T07:00:19.747Z Libra, last_quarter 2024-04-02T03:14:43.924Z Capricorn,
+// new 2024-04-08T18:20:51.660Z Aries, first_quarter 2024-04-15T19:13:07.173Z Cancer,
+// full 2024-04-23T23:48:58.898Z Scorpio
+
+findLunations({ ...window, phases: ['new', 'full'] }).lunations.length; // 3
+```
+
+- **Window**: `start` and `end` are absolute UTC instants, both inclusive. Results are in time order, so the phases alternate new, first quarter, full, last quarter.
+- **`phases`** limits the search (default: all four). `LUNATION_PHASES` lists the four definitions with their elongation.
+- **`sign`** is the Moon's tropical sign. At a new moon the Sun is in the same degree; at a full moon it is in the opposite sign.
+- Eclipses are not computed: the new moon of 2024-04-08 above is a total solar eclipse, and nothing in the result says so.
+
+The instants are roots of the geocentric apparent elongation, solved with the same solver as the returns on a half day grid (`LUNATION_SCAN_STEP_DAYS`). Windows over `MAX_LUNATION_WINDOW_YEARS` (150), unknown phases and invalid dates throw a typed `TimelineError`.
+
 ### Sign ingress windows
 
 A classical Jyotish rule (Muhurta Chintamani, on the planets' change of signs) says a planet starts giving the effect of the next sign before it enters it. `INGRESS_LEAD_TIMES` holds the figures and `findIngressWindows({ bodies?, start, end })` returns every sign ingress whose lead window overlaps the range, with the instant the window begins.
@@ -1489,6 +1512,33 @@ sa.method.targetSet;                    // ["sun", "moon", "ascendant", "mc"]
 - **Solar arc**: the true arc is progressed Sun minus natal Sun, added uniformly to an **explicit** target set (`targets`, default every body plus the four angles); `arcKind: "naibod"` uses the mean arc instead. Directed points have no speed.
 
 The progressed and directed points are accepted directly by the aspect functions (`sp.points`, `sa.points`).
+
+### Progressed perfections
+
+`findProgressedPerfections({ natalChart, from, to })` returns the real-life instants at which a secondary-progressed body is exactly in aspect to a natal point, inside a window of real dates.
+
+```typescript
+import { findProgressedPerfections } from 'kaabalah/astrology';
+
+const r = findProgressedPerfections({
+  natalChart: chart,
+  from: new Date(Date.UTC(2026, 0, 1)),
+  to: new Date(Date.UTC(2028, 0, 1)),
+});
+r.perfections[0];
+// { progressedBody: "moon", natalPoint: "pluto", aspect: "trine",
+//   exactDate: Date (real-life instant, UTC), progressedJd: 2448093.67, retrograde: false }
+r.method.timeKey.yearLength.spec;   // "julian (365.25 days)"
+```
+
+- **Time key**: the same as `getSecondaryProgressions`, with the same `yearLength` option and default. The window is mapped to progressed Julian Days, the aspects are solved there, and each exact progressed Julian Day (`progressedJd`) is mapped back to the real instant `exactDate`. Passing `exactDate` as `target` to `getSecondaryProgressions` gives the body at the exact aspect.
+- **`progressedBodies`**: lowercase keys as in `chart.planets`; default `sun`, `moon`, `mercury`, `venus`, `mars`. Bodies only: the progressed angles are not searched.
+- **`natalPoints`**: keys of `chart.planets` plus `ascendant` and `mc`; default the ten planets, `mean node`, `chiron`, `ascendant` and `mc`. They are fixed targets.
+- **`aspects`**: default the five major ones (conjunction, sextile, square, trine, opposition).
+- **`retrograde`** is true when the progressed body is moving backwards at that instant.
+- **Precision**: a day of ephemeris time is a year of life, so the solver's 0.001 second tolerance is under half a second of `exactDate`, and the scan step is scaled to the window (at most `MAX_PROGRESSED_SCAN_STEP_DAYS`, a quarter of an ephemeris day). Compare two runs of the same event to the second, not to the millisecond.
+
+The progressed Moon gives about four of these a year over the default natal points; the other bodies a few per decade. Errors are `DerivedChartError` with a `code` (`INVALID_INPUT`, `TARGET_BEFORE_BIRTH`, `AGE_LIMIT_EXCEEDED`).
 
 ## 22. Profection, firdaria and return timelines
 

@@ -55,12 +55,13 @@ import {
   type HydratedPlanet,
   type ZodiacPosition,
 } from "./index";
-import { computeAspects, type TransitAspectPoint } from "./aspects";
+import { computeAspects, DEFAULT_ASPECT_SPECS, type AspectName, type TransitAspectPoint } from "./aspects";
 import { computeLots } from "./lots";
 import { computeMoonPhase } from "./moon-phase";
 import { computeSect } from "./sect";
 import { dateToJd } from "./root-solver";
-import { findSolarReturns } from "./returns";
+import { findSolarReturns, ROOT_SOLVER_METHOD, type RootSolverMethodMetadata } from "./returns";
+import { findTransitPerfections } from "./transit-events";
 
 const MS_PER_DAY = 86_400_000;
 const UNIX_EPOCH_JD = 2440587.5;
@@ -225,6 +226,14 @@ export interface ProgressionTimeKey {
   progressedJd: number;
 }
 
+/** Natal instant (return 0) and every solar return through `throughJd` + 400 days, as UT Julian Days in time order. */
+function solarReturnInstants(natalJd: number, throughJd: number, natalSunLongitude: number): number[] {
+  const from = julianDayToDate(natalJd + 10);
+  const to = julianDayToDate(throughJd + 400);
+  const found = findSolarReturns({ natalLongitude: natalSunLongitude, from, to });
+  return [natalJd, ...found.crossings.map((c) => c.jd)].sort((a, b) => a - b);
+}
+
 function resolveTimeKey(
   natalJd: number,
   targetJd: number,
@@ -244,11 +253,7 @@ function resolveTimeKey(
   if (spec === "solar-return") {
     specLabel = "solar-return (actual years: completed solar returns + fraction of the current interval)";
     days = null;
-    // Natal instant counts as return 0; returns are searched through target + 400 days.
-    const from = julianDayToDate(natalJd + 10);
-    const to = julianDayToDate(targetJd + 400);
-    const found = findSolarReturns({ natalLongitude: natalSunLongitude, from, to });
-    const instants = [natalJd, ...found.crossings.map((c) => c.jd)].sort((a, b) => a - b);
+    const instants = solarReturnInstants(natalJd, targetJd, natalSunLongitude);
     let k = -1;
     for (let i = 0; i + 1 < instants.length; i++) {
       if (targetJd >= instants[i] && targetJd < instants[i + 1]) {
@@ -597,6 +602,245 @@ export function getSolarArcDirections(options: SolarArcOptions): SolarArcResult 
           : "arc = 0.985647 deg per year x age, added to every target; directed speeds are undefined",
       targetSet,
       houses: "natal cusps advanced by the same arc",
+    },
+  };
+}
+
+// ── Progressed perfections ─────────────────────────────────────────────────
+
+/** Progressed bodies searched by default (lowercase keys as in `chart.planets`). */
+export const DEFAULT_PROGRESSED_PERFECTION_BODIES: readonly string[] = Object.freeze([
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+]);
+
+/** Natal points searched by default: the ten planets, the mean node, Chiron, the Ascendant and the MC. */
+export const DEFAULT_PROGRESSED_PERFECTION_NATAL_POINTS: readonly string[] = Object.freeze([
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "mean node",
+  "chiron",
+  "ascendant",
+  "mc",
+]);
+
+/** Aspects searched by default: the five major ones. */
+export const DEFAULT_PROGRESSED_PERFECTION_ASPECTS: readonly AspectName[] = Object.freeze([
+  "conjunction",
+  "sextile",
+  "square",
+  "trine",
+  "opposition",
+] as const);
+
+/** Largest scan step of the progressed bodies, in ephemeris days (about three months of life). */
+export const MAX_PROGRESSED_SCAN_STEP_DAYS = 0.25;
+
+/** Scan steps the progressed window is divided into when it is shorter than that. */
+const PROGRESSED_SCAN_STEPS_PER_WINDOW = 8;
+
+export interface FindProgressedPerfectionsOptions {
+  /** Natal chart (from `getBirthChart`); only its planets, Ascendant, MC and `dateUtc` are used. */
+  natalChart: BirthChart;
+  /** Window of real-life dates (inclusive). Absolute UTC instants. */
+  from: Date;
+  to: Date;
+  /** Year-length convention of the time key (default "julian" = 365.25 days), as in `getSecondaryProgressions`. */
+  yearLength?: YearLengthSpec;
+  /** Progressed bodies to move, lowercase keys as in `chart.planets` (default: sun, moon, mercury, venus, mars). */
+  progressedBodies?: string[];
+  /** Fixed natal points, keys as in `chart.planets` plus `ascendant` and `mc` (default: `DEFAULT_PROGRESSED_PERFECTION_NATAL_POINTS`). */
+  natalPoints?: string[];
+  /** Aspects to search (default: conjunction, sextile, square, trine, opposition). */
+  aspects?: AspectName[];
+  /** Final bracket width in seconds of ephemeris time (default 0.001, under half a second of life). */
+  timeToleranceSeconds?: number;
+  /** Max accepted residual in degrees (default 1e-6). */
+  residualToleranceDegrees?: number;
+}
+
+export interface ProgressedPerfection {
+  progressedBody: string;
+  natalPoint: string;
+  aspect: AspectName;
+  /** Real-life instant (UTC) at which the progressed body is exactly in aspect. */
+  exactDate: Date;
+  /** Ephemeris instant of the exact aspect: the progressed Julian Day (UT). */
+  progressedJd: number;
+  /** The progressed body moving backwards at that instant. */
+  retrograde: boolean;
+}
+
+export interface ProgressedPerfectionsMethod {
+  technique: "secondary progression";
+  /** The same time key as `getSecondaryProgressions`, run forward for the window and backward for each exact instant. */
+  timeKey: {
+    rule: ProgressionTimeKey["rule"];
+    inverse: "real instant = natal JD + (progressed JD - natal JD) x year length; with solar-return years, the same fraction of the return to return interval";
+    yearLength: ProgressionTimeKey["yearLength"];
+    natalJd: number;
+    fromProgressedJd: number;
+    toProgressedJd: number;
+  };
+  targets: "fixed natal longitudes";
+  angles: "progressed angles are not searched";
+  /** Scan step of the progressed bodies, in ephemeris days. */
+  scanStepDays: number;
+  ephemeris: ProgressionMethodBase["ephemeris"];
+  solver: RootSolverMethodMetadata;
+}
+
+export interface ProgressedPerfectionsResult {
+  from: Date;
+  to: Date;
+  progressedBodies: string[];
+  natalPoints: string[];
+  aspects: AspectName[];
+  /** Every exact aspect inside the window, by `exactDate`. */
+  perfections: ProgressedPerfection[];
+  method: ProgressedPerfectionsMethod;
+}
+
+function lowercaseList(values: readonly string[], name: string): string[] {
+  if (!Array.isArray(values) || values.some((v) => typeof v !== "string")) {
+    throw new DerivedChartError("INVALID_INPUT", `\`${name}\` must be an array of strings`);
+  }
+  return [...new Set(values.map((v) => v.toLowerCase()))];
+}
+
+/**
+ * The real-life instants at which a secondary-progressed body is exactly in aspect
+ * to a fixed natal point, inside [from, to].
+ *
+ * The window is mapped to progressed Julian Days with the time key of
+ * `getSecondaryProgressions`, the aspects are solved there by
+ * `findTransitPerfections` (natal longitudes as fixed targets), and each exact
+ * progressed Julian Day is mapped back to a real instant. Bodies only: the
+ * progressed angles are not searched.
+ */
+export function findProgressedPerfections(options: FindProgressedPerfectionsOptions): ProgressedPerfectionsResult {
+  const { natalChart, from, to } = options;
+  for (const [name, value] of [["from", from], ["to", to]] as const) {
+    if (!(value instanceof Date) || !Number.isFinite(value.getTime())) {
+      throw new DerivedChartError("INVALID_INPUT", `a valid \`${name}\` date is required`);
+    }
+  }
+  if (to.getTime() < from.getTime()) throw new DerivedChartError("INVALID_INPUT", "`to` must not be before `from`");
+  const natalSun = natalChart.planets.sun?.longitude;
+  if (natalSun === undefined) throw new DerivedChartError("INVALID_INPUT", "natal chart has no Sun");
+
+  const progressedBodies = lowercaseList(options.progressedBodies ?? DEFAULT_PROGRESSED_PERFECTION_BODIES, "progressedBodies");
+  const knownBodies = new Set(
+    Object.entries(PLANET_AND_NODE_NAMES)
+      .filter(([id]) => !Number.isNaN(Number(id)))
+      .map(([, name]) => name.toLowerCase())
+  );
+  for (const body of progressedBodies) {
+    if (!knownBodies.has(body)) throw new DerivedChartError("INVALID_INPUT", `unknown progressed body "${body}"`);
+  }
+
+  const natalLongitudes: Record<string, number> = {};
+  for (const [key, planet] of Object.entries(natalChart.planets)) natalLongitudes[key] = planet.longitude;
+  natalLongitudes.ascendant = natalChart.houses.ascendant.longitude;
+  natalLongitudes.mc = natalChart.houses.mc.longitude;
+  const natalPointKeys = lowercaseList(options.natalPoints ?? DEFAULT_PROGRESSED_PERFECTION_NATAL_POINTS, "natalPoints");
+  const natalPoints: Record<string, { longitude: number }> = {};
+  for (const key of natalPointKeys) {
+    if (!(key in natalLongitudes)) throw new DerivedChartError("INVALID_INPUT", `unknown natal point "${key}"`);
+    natalPoints[key] = { longitude: natalLongitudes[key] };
+  }
+
+  const aspects = [...new Set(options.aspects ?? DEFAULT_PROGRESSED_PERFECTION_ASPECTS)];
+  const aspectSpecs = aspects.map((name) => {
+    const spec = DEFAULT_ASPECT_SPECS.find((s) => s.name === name);
+    if (!spec) throw new DerivedChartError("INVALID_INPUT", `unknown aspect "${String(name)}"`);
+    return spec;
+  });
+
+  const natalJd = dateToJd(natalChart.dateUtc);
+  const fromKey = resolveTimeKey(natalJd, dateToJd(from), options.yearLength, natalSun);
+  const toKey = resolveTimeKey(natalJd, dateToJd(to), options.yearLength, natalSun);
+  const days = toKey.yearLength.days;
+  // Solar-return years: the same return instants the forward key brackets `to` with.
+  const returns = days === null ? solarReturnInstants(natalJd, toKey.targetJd, natalSun) : null;
+  const realJdOf = (progressedJd: number): number => {
+    const age = progressedJd - natalJd;
+    if (!returns) return natalJd + age * (days as number);
+    const k = Math.max(0, Math.min(Math.floor(age), returns.length - 2));
+    return returns[k] + (age - k) * (returns[k + 1] - returns[k]);
+  };
+
+  // `findTransitPerfections` takes whole-millisecond dates: the progressed window is
+  // widened to the enclosing milliseconds and the results cut back to [from, to] below.
+  const fromUtc = new Date(Math.floor((fromKey.progressedJd - UNIX_EPOCH_JD) * MS_PER_DAY));
+  const toUtc = new Date(Math.ceil((toKey.progressedJd - UNIX_EPOCH_JD) * MS_PER_DAY));
+  // A window of real dates is 365 times shorter in ephemeris time, so the grid is scaled to it.
+  const scanStepDays = Math.min(
+    MAX_PROGRESSED_SCAN_STEP_DAYS,
+    Math.max((toUtc.getTime() - fromUtc.getTime()) / MS_PER_DAY / PROGRESSED_SCAN_STEPS_PER_WINDOW, 1 / MS_PER_DAY)
+  );
+
+  const perfections: ProgressedPerfection[] = [];
+  if (progressedBodies.length > 0 && natalPointKeys.length > 0 && aspectSpecs.length > 0) {
+    const found = findTransitPerfections({
+      natalPoints,
+      transitPlanets: progressedBodies,
+      fromUtc,
+      toUtc,
+      stepDays: scanStepDays,
+      aspectSpecs,
+      timeToleranceSeconds: options.timeToleranceSeconds,
+      residualToleranceDegrees: options.residualToleranceDegrees,
+    });
+    for (const event of found.perfections) {
+      const exactDate = new Date(Math.round((realJdOf(event.exactJd) - UNIX_EPOCH_JD) * MS_PER_DAY));
+      if (exactDate.getTime() < from.getTime() || exactDate.getTime() > to.getTime()) continue;
+      perfections.push({
+        progressedBody: event.transitPlanet,
+        natalPoint: event.natalPlanet,
+        aspect: event.aspect,
+        exactDate,
+        progressedJd: event.exactJd,
+        retrograde: event.retrograde,
+      });
+    }
+    perfections.sort((a, b) => a.exactDate.getTime() - b.exactDate.getTime() || a.progressedJd - b.progressedJd);
+  }
+
+  return {
+    from,
+    to,
+    progressedBodies,
+    natalPoints: natalPointKeys,
+    aspects,
+    perfections,
+    method: {
+      technique: "secondary progression",
+      timeKey: {
+        rule: toKey.rule,
+        inverse:
+          "real instant = natal JD + (progressed JD - natal JD) x year length; with solar-return years, the same fraction of the return to return interval",
+        yearLength: toKey.yearLength,
+        natalJd,
+        fromProgressedJd: fromKey.progressedJd,
+        toProgressedJd: toKey.progressedJd,
+      },
+      targets: "fixed natal longitudes",
+      angles: "progressed angles are not searched",
+      scanStepDays,
+      ephemeris: "Swiss Ephemeris (SWISS_EPH, SPEED), UT Julian Day without millisecond truncation",
+      solver: ROOT_SOLVER_METHOD,
     },
   };
 }

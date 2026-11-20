@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+## 6.25.0 - 2026-11-20
+
+- `kaabalah/astrology`: `findLunations` returns the exact instants of the new
+  moon, first quarter, full moon and last quarter in a window, with the Sun's
+  and the Moon's longitude and the Moon's sign at each. `phases` limits the
+  search. Eclipses are not computed.
+- `findProgressedPerfections` returns the real-life instants at which a
+  secondary-progressed body (the Sun to Mars by default) is exactly in a major
+  aspect to a natal point, in a window of real dates. It uses the time key and
+  the `yearLength` option of `getSecondaryProgressions`, so a returned
+  `exactDate` passed to it as `target` gives the body at the exact aspect.
+  Progressed angles are not searched.
+
 ## 6.24.0 - 2026-11-20
 
 Cycles: what is active for a person on a day, and what changes ahead. Nothing
