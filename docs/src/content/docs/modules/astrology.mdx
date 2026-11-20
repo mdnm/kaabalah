@@ -1089,6 +1089,34 @@ getSect(3);  // "nocturnal"
 | `normalizeAngle` | `(angle) → number` | Wraps any angle to 0–360. |
 | `SIGNS` | `readonly string[]` | `["Aries", ..., "Pisces"]` — 12 sign names in order. |
 
+### Planetary hours
+
+> Requires the Swiss Ephemeris (`await getSwissEph(...)`); the call itself is synchronous.
+
+`getPlanetaryHours({ date, latitude, longitude, timeZoneSettings? })` returns the planetary day that contains the instant `date` at a place: `sunrise` (at or before `date`), `sunset`, `nextSunrise`, the `weekday` of the sunrise (0 = Sunday), its `dayRuler`, the 24 `hours` and `current`, the hour containing `date`. Daylight is cut into 12 equal hours and the night into 12 equal hours (`dayHourMinutes`, `nightHourMinutes`), each with `index` (0-23 from sunrise), `number` (1-12 within day or night), `isDay`, `ruler`, `start` (inclusive) and `end` (exclusive). Rulers follow the Chaldean order (`CHALDEAN_ORDER`: Saturn, Jupiter, Mars, Sun, Venus, Mercury, Moon) from the ruler of the weekday (`WEEKDAY_RULERS`). The planetary day starts at sunrise, so an instant before sunrise still belongs to the previous weekday.
+
+```typescript
+import { getPlanetaryHours } from 'kaabalah/astrology';
+
+const r = getPlanetaryHours({
+  date: new Date('2024-03-20T12:00:00Z'),
+  latitude: 51.4779,
+  longitude: -0.0015,
+  timeZoneSettings: { timeZone: 'Europe/London' },
+});
+if (r.available) {
+  r.sunrise.toISOString();  // "2024-03-20T06:01:30.630Z"
+  r.sunset.toISOString();   // "2024-03-20T18:14:07.554Z"
+  r.dayRuler;               // "Mercury" (Wednesday)
+  r.current.ruler;          // "Sun" (6th day hour)
+  r.method.weekdayBasis;    // "time-zone"
+}
+```
+
+- **Sunrise and sunset** are the Swiss Ephemeris rise and set of the Sun's upper limb with standard refraction at sea level, the convention of published almanac times.
+- **Weekday**: read at the sunrise instant in `timeZoneSettings.utcOffsetMinutes`, else in `timeZoneSettings.timeZone` (IANA), else in the local mean time of the longitude (4 minutes per degree). `method.weekdayBasis` says which (`"utc-offset"`, `"time-zone"`, `"local-mean-time"`). Local mean time gives the civil weekday almost everywhere; pass the zone where civil time sits far from mean time (Kiritimati, UTC+14 at 157 degrees west, is a calendar day ahead). The lat/lon zone lookup of the chart functions is asynchronous and is not used here.
+- **Polar day and night**: when the Sun does not rise or set around `date` the result is `{ available: false, reason: "polar-day" | "polar-night", message, sunApparentAltitude }`; nothing is thrown and no hours are invented. Invalid input throws `TimelineError` (`INVALID_INPUT`).
+
 ---
 
 ## 14. Extended essential dignities
@@ -1212,6 +1240,116 @@ const tl = getReturnPassTimeline({ natalChart: chart, from: new Date(Date.UTC(20
 tl.entries.map((e) => `${e.kind} ${e.passIndex}/${e.passCount} ${e.instant.toISOString().slice(0, 10)}`);
 // jupiter-return 1/6 2011-08-17, ..., jupiter-return 6/6 2024-02-22, saturn-return 1/1 2029-05-16
 ```
+
+### Stations and retrograde periods
+
+`findStations({ body, start, end })` returns every instant at which a body's geocentric longitude speed changes sign inside the window: `kind` is `"retrograde"` when the body turns retrograde and `"direct"` when it turns direct, with the UTC `instant`, `longitude`, `sign` and `signDegree`. `findRetrogradePeriods({ body | bodies, start, end })` pairs them into the retrograde periods that overlap the window, for one body or several (Mercury through Pluto when none is given).
+
+```typescript
+import { findStations, findRetrogradePeriods, Planet } from 'kaabalah/astrology';
+
+const year = { start: new Date(Date.UTC(2025, 0, 1)), end: new Date(Date.UTC(2026, 0, 1)) };
+findStations({ body: Planet.MERCURY, ...year }).stations.map((s) => `${s.kind} ${s.instant.toISOString().slice(0, 10)} ${s.sign}`);
+// retrograde 2025-03-15 Aries, direct 2025-04-07 Pisces, retrograde 2025-07-18 Leo,
+// direct 2025-08-11 Leo, retrograde 2025-11-09 Sagittarius, direct 2025-11-29 Scorpio
+
+const all = findRetrogradePeriods(year);
+const mars = all.periods.find((p) => p.body === Planet.MARS);
+mars.startsBeforeWindow;                        // true
+mars.stationRetrograde.instant.toISOString();   // "2024-12-06T23:33:11.272Z" (inWindow: false)
+mars.stationDirect.instant.toISOString();       // "2025-02-24T01:59:48.025Z"
+```
+
+A period already under way at `start`, or still open at `end`, keeps its true opening or closing station: it is searched outside the window within `outsideSearchDays` (default 200, at most `MAX_STATION_OUTSIDE_SEARCH_DAYS` = 400). A station not found there is `null` and named in `notices`. To ask whether a planet is retrograde on a day, pass that day as the window: a period comes back if and only if the planet is retrograde in it.
+
+Supported bodies are Mercury through Pluto (`STATION_BODIES`). The Sun and Moon never station and give an empty result with a `never-stations` notice. The lunar nodes are left out (the mean node is always retrograde; the true node's brief direct episodes are not retrograde periods), and they, like any other body, throw a typed `TimelineError`, as do windows over `MAX_STATION_WINDOW_YEARS` (150). Stations are refined to one second by default (`timeToleranceSeconds`) on a scan grid of at most 2 days; the same finite-grid coverage note applies.
+
+**Declination.** Two sibling searches work on geocentric declination and never use the words retrograde or direct. `findDeclinationStations({ body, start, end })` returns the turning points of declination, where its speed changes sign: `kind` is `"turns-south"` at a local maximum (`extremum: "maximum"`) and `"turns-north"` at a local minimum, with the `declination`, the ecliptic `longitude` and `sign` at that instant, the true `obliquity` of date and `outOfBounds` (absolute declination greater than that obliquity). `findEquatorCrossings({ body, start, end })` returns the instants declination crosses 0, with `direction` `"northward"` or `"southward"`.
+
+```typescript
+import { findDeclinationStations, findEquatorCrossings, Planet } from 'kaabalah/astrology';
+
+findDeclinationStations({ body: Planet.MERCURY, ...year }).stations
+  .map((s) => `${s.kind} ${s.instant.toISOString().slice(0, 10)} ${s.declination.toFixed(2)}${s.outOfBounds ? ' out of bounds' : ''}`);
+// turns-north 2025-01-15 -23.78 out of bounds, turns-south 2025-03-16 6.84, turns-north 2025-04-12 -1.91,
+// turns-south 2025-06-10 25.31 out of bounds, turns-north 2025-07-24 12.36, turns-south 2025-08-19 17.40,
+// turns-north 2025-11-06 -24.01 out of bounds, turns-south 2025-11-30 -15.45
+
+findEquatorCrossings({ body: Planet.SUN, ...year }).crossings.map((c) => `${c.direction} ${c.instant.toISOString()}`);
+// northward 2025-03-20T09:02:10.847Z, southward 2025-09-22T18:19:09.939Z
+```
+
+These accept the Sun and Moon as well (`DECLINATION_BODIES`, the Sun through Pluto); the Moon is scanned every 0.25 day by default. The Sun's declination stations are the solstices and its equator crossings the equinoxes, but as extrema and zeros of declination, not as longitude crossings: because of the Sun's small ecliptic latitude and the nutation in obliquity they fall within about a minute (equinoxes) and two to three minutes (solstices) of the instants the Sun's longitude reaches 0, 90, 180 and 270 degrees, so the sign at a solstice station can read 29.99 degrees of the sign before. The Sun defines the bound, so its `outOfBounds` is always false. Declination and its speed come from the ephemeris with the equatorial and speed flags (true equator of date), not from a finite difference.
+
+### The eight points of the year
+
+`findSeasonalPoints({ start, end, hemisphere? })` returns the instants at which the Sun's tropical longitude crosses 0, 45, 90, 135, 180, 225, 270 and 315 degrees: the two equinoxes, the two solstices and the four cross-quarter points at 15 degrees of the fixed signs. Each point has a stable `id`, a `kind` (`"equinox"`, `"solstice"`, `"cross-quarter"`), the UTC `instant`, the `longitude`, the `sign` and the `signDegree` (0 or 15). `getSeasonalPosition({ date, hemisphere? })` returns the `previous` and `next` point around an instant and the `fraction` of the time between them that has elapsed.
+
+```typescript
+import { findSeasonalPoints, getSeasonalPosition } from 'kaabalah/astrology';
+
+const year = { start: new Date(Date.UTC(2025, 0, 1)), end: new Date(Date.UTC(2026, 0, 1)) };
+findSeasonalPoints(year).points.map((p) => `${p.id} ${p.instant.toISOString()}`);
+// aquarius-midpoint 2025-02-03T14:10:28.278Z, march-equinox 2025-03-20T09:01:29.128Z,
+// taurus-midpoint 2025-05-05T05:57:11.613Z, june-solstice 2025-06-21T02:42:15.893Z,
+// leo-midpoint 2025-08-07T05:51:34.944Z, september-equinox 2025-09-22T18:19:20.740Z,
+// scorpio-midpoint 2025-11-07T04:04:03.058Z, december-solstice 2025-12-21T15:03:05.414Z
+
+const now = getSeasonalPosition({ date: new Date('2026-11-20T12:00:00Z'), hemisphere: 'south' });
+now.previous.id;      // "scorpio-midpoint"
+now.next.id;          // "december-solstice"
+now.next.season;      // { hemisphere: "south", name: "summer", phase: "start" }
+now.fraction;         // between 0 and 1
+```
+
+- **Ids are hemisphere neutral**: `march-equinox`, `june-solstice`, `september-equinox`, `december-solstice`, and `taurus-midpoint`, `leo-midpoint`, `scorpio-midpoint`, `aquarius-midpoint`. No id names a season or a festival, because the same instant opens spring in one hemisphere and autumn in the other. `SEASONAL_POINTS` lists the eight definitions in zodiacal order.
+- **Season label**: only with `hemisphere: "north" | "south"`. Each point then carries `season: { hemisphere, name, phase }`, where an equinox or solstice is the `"start"` of an astronomical season and a cross-quarter point its `"midpoint"`. The March equinox starts spring in the north and autumn in the south.
+- **Cross-quarter points** are defined by solar longitude (15 degrees of Taurus, Leo, Scorpio, Aquarius), not as the midpoint in time between an equinox and a solstice; the two differ by a day or two.
+- **`fraction`** is elapsed time over the time between the two points, in `[0, 1)`; an instant exactly at a point has that point as `previous` and a fraction of 0.
+
+The instants are crossings of the Sun's geocentric apparent longitude, the definition behind published equinox and solstice times, solved with the same crossing solver as the returns. Windows over `MAX_SEASONAL_WINDOW_YEARS` (150) and invalid dates throw a typed `TimelineError`.
+
+### Sign ingress windows
+
+A classical Jyotish rule (Muhurta Chintamani, on the planets' change of signs) says a planet starts giving the effect of the next sign before it enters it. `INGRESS_LEAD_TIMES` holds the figures and `findIngressWindows({ bodies?, start, end })` returns every sign ingress whose lead window overlaps the range, with the instant the window begins.
+
+| Body | Lead time | In days |
+|---|---|---|
+| Sun | 5 days | 5 |
+| Moon | 3 ghatis (72 minutes) | 0.05 |
+| Mars | 8 days | 8 |
+| Mercury | 7 days | 7 |
+| Venus | 7 days | 7 |
+| Jupiter | 2 months | 60 |
+| Saturn | 6 months | 180 |
+| Rahu (and Ketu) | 3 months | 90 |
+
+```typescript
+import { findIngressWindows, Planet } from 'kaabalah/astrology';
+
+const r = findIngressWindows({
+  bodies: [Planet.SATURN],
+  start: new Date(Date.UTC(2027, 10, 1)),
+  end: new Date(Date.UTC(2027, 11, 1)),
+});
+const w = r.windows[0];
+`${w.id} ${w.fromSign} to ${w.toSign}`;  // "saturn Aries to Taurus"
+w.instant.toISOString();       // "2028-04-13T03:39:44.985Z" (after `end`)
+w.windowStart.toISOString();   // "2027-10-16T03:39:44.985Z"
+w.windowOpenAtStart;           // true
+w.ingressInRange;              // false
+```
+
+Each entry has the point `id` (`sun` ... `pluto`, `mean-node`, `south-node-mean`, ...), the ephemeris `body` and `bodyName`, `fromSign`, `toSign`, `direction`, the exact ingress (`instant`, `jd`), the `boundaryLongitude`, the `leadTime` and the `windowStart` (`windowStartJd`), plus `windowOpenAtStart` and `ingressInRange`. Entries are ordered by exact ingress instant.
+
+- **Which ingresses**: an ingress is returned when it is at or after `start` and its window begins at or before `end`. Each body is searched up to `end` plus its own lead time, so a Saturn ingress up to 180 days after `end` is found when its window is already open in the range. An ingress before `start` is not returned.
+- **Signs are tropical**, as in the rest of the library's sign-change code; there is no zodiac option.
+- **Months and ghatis**: a month counts as 30 days (`INGRESS_MONTH_DAYS`) and a ghati as 24 minutes (`GHATI_MINUTES`). The convention is echoed in `method`.
+- **Rahu and Ketu**: Rahu is the lunar north node. The default body list (`DEFAULT_INGRESS_BODIES`, the Sun through Pluto and the mean node) uses the mean node, the library's default node; pass `Planet.TRUE_NODE` for the true node. Ketu is emitted as the opposite point (`south-node-mean` or `south-node-true`) with the same instant and lead time and the opposite signs; `southNode: false` leaves it out. The nodes move backwards, so their `direction` is `"retrograde"` and they enter the previous sign.
+- **Retrograde re-entries**: every crossing of a sign boundary is returned with its `direction`. A planet that enters a sign, falls back and enters again gives three entries (`"direct"`, `"retrograde"`, `"direct"`). The lead time is subtracted from a retrograde crossing in the same way as from a direct one; the source does not treat that case separately, so filter on `direction` if you only want forward entries.
+- **Bodies without a lead time** in the source (Uranus, Neptune, Pluto, Chiron, Lilith) are returned with the exact ingress, `leadTime: null` and `windowStart: null`. `getIngressLeadTime(body)` gives the lead time of one body.
+
+Ranges over `MAX_INGRESS_WINDOW_YEARS` (150), an empty or unsupported body list and invalid dates throw a typed `TimelineError`. The Moon is scanned every half day and the other bodies every day; the same finite-grid coverage note applies.
 
 ## 16. Points, IDs and legacy dictionaries
 

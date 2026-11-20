@@ -31,6 +31,7 @@ import {
 - Reading: `resolveCard`, `projectChart`, `buildReadingWeights`, `rankedSpheres`, `collapseHits`, `buildThreads` (see [Reading connections](#reading-connections))
 - Reading reference: `getReadingReference`, `getDescentStep`, `getDescentMovement`, `DESCENT_ORDER`, `DESCENT_STEPS`, `DESCENT_MOVEMENT` (see [Reading reference and the descent](#reading-reference-and-the-descent))
 - Kaabalistic overlays: `getKaabalisticCorrespondenceTargets`, `getAstrologyTreeMarkers`, `getNumerologyTreeMarkers`, `getGematriaTreeMarkers`, `buildKaabalisticMapData`, the symbol metadata getters, and `getKaabalisticLabel` (see [Kaabalistic overlays](#kaabalistic-overlays))
+- Cycle map: `buildCycleMapData`, `getCycleTreeMarkers`, `KAABALISTIC_CYCLE_WEIGHTS` (see [Cycle map](#cycle-map))
 - Types: `HouseThemeProfile`, `TarotThemeProfile`, `HouseThemeLookup`, `TarotThemeLookup`, `HouseThemeAxis`, `HouseThemeScope`, `HouseNumber`, `OccultThemeCorrespondence`, `OccultThemeCorrespondences`, `TarotThemeCorrespondences`, `TarotMajorArchetypeReference`, `TokenizeOccultThemeTextOptions`
 
 ## Overview
@@ -502,3 +503,49 @@ Symbol metadata for the glyphs and short labels is available through `getPlanetS
 
 Every function above takes an optional final `language` argument. `'pt'` and `'pt-BR'` translate display labels (`label`, `shortLabel`, `sourceName`, `targetName`, item labels); glyphs, lookup keys, target IDs, mappings, distances and counts are unchanged. `getKaabalisticLabel(text, language?)` translates one supported standalone or generated label such as `Path 5` or `Mars in Aries`, and returns anything it does not know unchanged.
 
+### Cycle map
+
+`buildCycleMapData(input, language?)` answers "what is active for this person today" in the same shape as `buildKaabalisticMapData`, from the person's current cycles instead of the birth data. `getCycleTreeMarkers(input, language?)` returns the markers alone. Both take computed data only and call no ephemeris; every part of the input is optional.
+
+```typescript
+import { getTransitChart, getFirdaria, getAnnualProfection, findActiveDasha } from 'kaabalah/astrology';
+import { getNumerologySnapshot } from 'kaabalah/numerology';
+import { buildCycleMapData, KAABALISTIC_CYCLE_WEIGHTS } from 'kaabalah/semantic';
+
+const transit = await getTransitChart({ natal, transitDate });
+const firdaria = getFirdaria(birthDate, isDiurnal, transitDate);
+const dasha = findActiveDasha(vimshottari, transitDate);
+
+const day = buildCycleMapData({
+  transitAspects: transit.aspects,            // TransitAspectEdge[] as is
+  transitPlacements: transit.transitPlanets,  // Record<string, TransitPlanet> as is
+  timeLords: {
+    firdariaMajor: firdaria.currentMajor.planet,   // 'Venus', 'NorthNode', ...
+    firdariaSub: firdaria.currentSub.planet,
+    profection: getAnnualProfection(natalChart, birthDate, year).ruler,
+    mahaDasha: dasha?.maha.lord,                   // 'venus', 'rahu', 'ketu', ...
+    antarDasha: dasha?.antar?.lord,
+    northNodeSign: natalChart.planets['mean node'].zodiacPosition.sign,
+  },
+  numerology: getNumerologySnapshot(scheduleInput).calendar, // personalYear, personalMonth, personalDay
+});
+
+day.rankedSpheres; // [{ id: 'sphere:Netzach', name: 'Netzach', share: 23.9, count: 5 }, ...]
+day.weightsById;   // { 'sphere:Netzach': { transits: 10.01, timeLords: 5, numerology: 8.89, total: 23.9 }, ... }
+day.markers[0];    // { system: 'transits', cycleSource: 'transit-aspect', sourceName: 'transit Sun trine natal MC', timeLord: false, ... }
+```
+
+The result has the fields of the birth map (`spheres`, `paths`, `markers`, `sphereMarkers`, `pathMarkers`, `countsById`, `weightsById`, `rawWeightsById`, `rankedSpheres`, `rankedPaths`, `itemConnections`). Its entries are split into `transits`, `timeLords` and `numerology` instead of `astro`, `numerology` and `gematria`, and each marker also carries `system`, `cycleSource`, and where they apply `timeLord` and `retrograde`.
+
+`KAABALISTIC_CYCLE_WEIGHTS` is the weight table, and its doc comment states the rules:
+
+| Source | Rule |
+| --- | --- |
+| Transit aspect | Counts only when its type is in `transit.aspects` (conjunction, sextile, square, trine, opposition) and its orb is `transit.maxOrb` (1 degree) or less. Lights two spheres with the same weight: the sphere of the aspect, as in the birth map (`cycleSource: 'transit-aspect'`), and the sphere of the natal planet it touches (`'transit-natal-sphere'`; Malkuth for the ASC, nothing for MC, nodes, Lilith and Chiron). Weight is tightness (3 at exact, 1 at 1 degree) times the two bodies' placement weights added together, over 10. It lights no path. |
+| Time lord factor | An aspect whose transiting or natal body is a current time lord has both markers multiplied by `transit.timeLordFactor` (2), once. |
+| Transiting Moon | The only body in `transit.skyBodies`: it lights what a natal Moon in that sign lights, decan included, at `transit.skyFactor` (0.5) of the natal weight. Other transiting bodies count only through their aspects. |
+| Time lords | Each lights its planet's sphere: firdaria major 2, firdaria sub 1, profection lord 2, maha dasha 2, antar dasha 1. A node as lord lights the sphere of the natal node's sign and needs `timeLords.northNodeSign`; the South Node and Ketu take the opposite sign. |
+| Numerology | Personal day 4, personal month 3, personal year 2; an intermediate reduction step 1. |
+| Shares | Spheres and paths are normalized separately so transits, time lords and numerology total 60, 20 and 20, rescaled over the systems present. |
+
+Placement weights, the tightness scale and the pair divisor come from `KAABALISTIC_MARKER_WEIGHTS`. Aspects of the True Node and Lilith True are skipped, as in the birth map. `countsById` and the `count` of a ranked target count an aspect once, on the aspect's sphere, so a sphere lit only as a natal planet has a share and a count of 0.

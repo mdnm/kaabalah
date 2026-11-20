@@ -18,6 +18,7 @@ import {
 } from "../tarot"
 
 export * from "./kaabalistic"
+export * from "./cycles"
 
 export const OCCULT_THEME_STOPWORDS = [
   "the",

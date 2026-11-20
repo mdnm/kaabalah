@@ -81,6 +81,8 @@ export const JYOTISH_METHODS = Object.freeze({
     degree: "Position inside the varga sign scaled back to [0, 30); D30 scales across each unequal part.",
     d2: "Parashari Hora: Sun's (Leo) and Moon's (Cancer) hora by odd/even sign; not the Jaimini or Kashinatha variants.",
     d9: "Fire signs from Aries, earth from Capricorn, air from Libra, water from Cancer.",
+    vargottama:
+      "Same sign in the D1 and the D9, both read from the one longitude supplied (tropical unless the caller converts): first navamsa of a movable sign, fifth of a fixed sign, ninth of a dual sign.",
     d30: "Unequal five-part division (5/5/8/7/5 degrees; Mars, Saturn, Jupiter, Mercury, Venus), reversed for even signs.",
     d60: "Counted from the sign itself, 0.5 degree each, same for odd and even signs.",
     houses: "Whole-sign houses counted from the varga lagna when a lagna is supplied.",

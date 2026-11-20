@@ -1157,22 +1157,26 @@ function buildDecanMarker(
   }
 }
 
-function getAspectTightness(aspect: string, orb: number) {
+/** `orbRange` is the orb at which tightness reaches `min`; by default the aspect's own orb. */
+function getAspectTightness(aspect: string, orb: number, orbRange?: number) {
   const { min, max } = KAABALISTIC_MARKER_WEIGHTS.aspect
-  const specOrb = DEFAULT_ASPECT_SPECS.find((spec) => spec.name === aspect)?.orb
+  const specOrb = orbRange ?? DEFAULT_ASPECT_SPECS.find((spec) => spec.name === aspect)?.orb
   if (!specOrb || !Number.isFinite(orb)) {
     return min
   }
 
-  return Math.min(max, Math.max(min, round2(1 + 2 * (1 - orb / specOrb))))
+  return Math.min(max, Math.max(min, round2(min + (max - min) * (1 - orb / specOrb))))
 }
 
-function getAspectWeight(edge: { aspect: string; orb: number; planetA: string; planetB: string }) {
+function getAspectWeight(
+  edge: { aspect: string; orb: number; planetA: string; planetB: string },
+  orbRange?: number
+) {
   const { pairDivisor } = KAABALISTIC_MARKER_WEIGHTS.aspect
   // Edge names come lowercase ("sun") or as aliases ("ascendant"); the registry label ("Sun", "ASC") hits the table.
   const pair = getPlacementWeight(aspectPointName(edge.planetA)) + getPlacementWeight(aspectPointName(edge.planetB))
 
-  return round2((getAspectTightness(edge.aspect, edge.orb) * pair) / pairDivisor)
+  return round2((getAspectTightness(edge.aspect, edge.orb, orbRange) * pair) / pairDivisor)
 }
 
 function aspectPointName(name: string) {
@@ -1539,18 +1543,33 @@ function normalizeWeights(
   rawWeightsById: WeightsById,
   markers: readonly KaabalisticMarkerDescriptor[]
 ) {
-  const weightsById: WeightsById = {}
   const shares = KAABALISTIC_MARKER_WEIGHTS.systemShares
-  const shareByBucket: Record<SummaryBucket, number> = {
+
+  return normalizeBucketShares<SummaryBucket>(rawWeightsById, markers, {
     astro: shares.astrology,
     numerology: shares.numerology,
     gematria: shares.gematria,
-  }
-  const bucketList: SummaryBucket[] = ["astro", "numerology", "gematria"]
+  })
+}
+
+/**
+ * The share step itself, for any set of systems: within spheres, and separately within
+ * paths, each bucket is scaled so its total equals its share, and the shares are
+ * renormalized over the buckets that carry raw weight.
+ */
+function normalizeBucketShares<B extends string>(
+  rawWeightsById: Partial<Record<KaabalisticTargetId, Record<B | "total", number>>>,
+  markers: readonly Pick<KaabalisticMarkerDescriptor, "targetId" | "targetType">[],
+  shareByBucket: Readonly<Record<B, number>>
+) {
+  const weightsById: Partial<Record<KaabalisticTargetId, Record<B | "total", number>>> = {}
+  const bucketList = Object.keys(shareByBucket) as B[]
+  const emptyEntry = () =>
+    Object.fromEntries([...bucketList.map((bucket) => [bucket, 0]), ["total", 0]]) as Record<B | "total", number>
 
   for (const targetType of ["sphere", "path"] as const) {
     const ids = [...new Set(markers.filter((m) => m.targetType === targetType).map((m) => m.targetId))]
-    const totals: Record<SummaryBucket, number> = { astro: 0, numerology: 0, gematria: 0 }
+    const totals = emptyEntry()
     for (const targetId of ids) {
       for (const bucket of bucketList) {
         totals[bucket] += rawWeightsById[targetId]?.[bucket] ?? 0
@@ -1561,12 +1580,12 @@ function normalizeWeights(
     const shareSum = present.reduce((sum, bucket) => sum + shareByBucket[bucket], 0)
 
     for (const targetId of ids) {
-      const entry = { astro: 0, numerology: 0, gematria: 0, total: 0 }
+      const entry = emptyEntry()
       for (const bucket of present) {
         const raw = rawWeightsById[targetId]?.[bucket] ?? 0
         entry[bucket] = round2((raw / totals[bucket]) * ((shareByBucket[bucket] / shareSum) * 100))
       }
-      entry.total = round2(entry.astro + entry.numerology + entry.gematria)
+      entry.total = round2(bucketList.reduce((sum, bucket) => sum + entry[bucket], 0))
       weightsById[targetId] = entry
     }
   }
@@ -1576,8 +1595,8 @@ function normalizeWeights(
 
 function rankTargets(
   nodes: readonly Node<KaabalahTypes.SPHERE | KaabalahTypes.PATH>[],
-  weightsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>,
-  countsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>
+  weightsById: Partial<Record<KaabalisticTargetId, { total: number }>>,
+  countsById: Partial<Record<KaabalisticTargetId, { total: number }>>
 ): KaabalisticRankedTarget[] {
   return nodes
     .map((node) => {
@@ -1593,11 +1612,11 @@ function rankTargets(
     .sort((a, b) => b.share - a.share)
 }
 
-function groupMarkersByTarget(
-  markers: readonly KaabalisticMarkerDescriptor[],
+function groupMarkersByTarget<M extends KaabalisticMarkerDescriptor>(
+  markers: readonly M[],
   targetType: KaabalisticTargetType
 ) {
-  const grouped = {} as Partial<Record<KaabalisticTargetId, KaabalisticMarkerDescriptor[]>>
+  const grouped = {} as Partial<Record<KaabalisticTargetId, M[]>>
 
   for (const marker of markers) {
     if (marker.targetType !== targetType) {
@@ -1823,6 +1842,42 @@ function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
     rankedPaths: rankTargets(orderedPaths(), weightsById, countsById),
     itemConnections,
   }
+}
+
+/**
+ * Helpers shared with `cycles.ts`, so the cycle map uses the same lookups, weights and
+ * share step as the birth map.
+ *
+ * @internal Not part of the public API; it can change in any release.
+ */
+export const kaabalisticInternals = {
+  ASPECT_SPHERES,
+  ASPECT_LABELS,
+  round2,
+  normalizeLookupKey,
+  aspectPointName,
+  isExcludedAstrologyPoint: (name: string) => defaultExcludedAstrologyPoints.has(normalizeLookupKey(name)),
+  getAstrologySourceType,
+  getAstrologySourceGlyph,
+  getAspectWeight,
+  getPlacementWeight,
+  getPlanetCarrierSphereIds: (planet: string) =>
+    planetCarrierSphereIdsByKey().get(normalizeLookupKey(normalizePlanetName(planet))) ?? [],
+  /** Sphere a point carries whatever its sign: the planet's sphere, Malkuth for the ASC, nothing for other points. */
+  getPointCarrierSphereIds: (point: string) => {
+    const key = normalizeLookupKey(aspectPointName(point))
+    return planetCarrierSphereIdsByKey().get(key) ?? angleCarrierSphereIdsByKey.get(key) ?? []
+  },
+  buildNumberMarkers,
+  toSummaryTargets,
+  toAstrologyMarkers,
+  buildDecanMarker,
+  normalizeSignName,
+  normalizeBucketShares,
+  rankTargets,
+  groupMarkersByTarget,
+  orderedSpheres,
+  orderedPaths,
 }
 
 function localizeSymbol(row: KaabalisticSymbolMetadata | undefined, language?: string) {

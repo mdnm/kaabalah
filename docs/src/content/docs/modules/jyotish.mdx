@@ -85,6 +85,25 @@ A Dhruva point (`DhruvaPoint`) carries `nakPos`, `nakshatraIndex`, `nakshatraNum
 
 `calculateCharaKarakas(inputs, { scheme, degreeFrame, node })` (also `jyotish.karakas`) ranks the bodies by degree within the sign, descending: the highest degree is the Atmakaraka. The `7` scheme excludes Rahu; the `8` scheme adds Rahu with ranking value `30 - degreeInSign` (it moves retrograde), and the node used (`mean` or `true`) is echoed in `rahuConvention`. The frame of the degree is an explicit input and echoed (`tropical` or `sidereal`): by default `getJyotishChart` ranks **tropical** degrees for the Dhruva frame (what the reference dataset did) and **sidereal** degrees for the Lahiri frame (the traditional practice). Ties within `tieToleranceDegrees` (default `1e-9`) are ordered by a fixed canonical order, flagged `tied: true` and listed in `tieGroups`, so you can apply your own tradition.
 
+## Vargas and vargottama
+
+`getVarga(longitude, division)` gives the divisional placement of one ecliptic longitude (`SUPPORTED_VARGAS`: D1 to D60, Parashari rules) and `getVargaChart(points, division)` maps a record of longitudes, with whole-sign houses from the varga lagna when a `lagna` key is present. Both are pure arithmetic on the longitude they are given and never convert frames.
+
+`isVargottama(longitude)` is true when the longitude holds the same sign in the D1 and the D9: the first navamsa (0 to 3°20') of a movable sign, the fifth (13°20' to 16°40') of a fixed sign and the ninth (26°40' to 30°) of a dual sign. Every D9 placement of `getVargaChart` carries the same answer as `vargottama`; the other divisions do not carry the field. A second argument compares the D1 with another division.
+
+```typescript
+import { getVargaChart, isVargottama } from 'kaabalah/astrology';
+
+isVargottama(135);    // true: 15 Leo, fifth navamsa of a fixed sign
+isVargottama(209.61); // false: 29.61 Libra is Gemini in the D9
+
+const d9 = getVargaChart({ lagna: 32.56, sun: 209.61, venus: 135 }, 9);
+d9.placements.venus.vargottama; // true
+d9.placements.sun.vargottama;   // false
+```
+
+**Frame.** The D1 sign is the sign of the longitude you pass. With the library's own points that is the **tropical** rasi (`jyotish.dhruva.points[body].longitude`, the tropical longitude of date, which is what `kaabalah astrology:varga` uses), so "same sign" means the same tropical sign in the rasi and the navamsa. Pass sidereal longitudes (`jyotish.lahiri`) to get the sidereal answer; the two differ for most charts.
+
 ## Dashas
 
 `generateDashaSchedule`, `generateVimshottariDasha`, `generateYoginiDasha` produce maha and antar schedules; `findActiveDasha(schedule, asOf)` returns the active maha and antar.

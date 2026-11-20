@@ -44,6 +44,8 @@ export interface VargaPlacement {
 export interface VargaHousePlacement extends VargaPlacement {
   /** Whole-sign house 1..12 counted from the varga lagna; only when a lagna was given. */
   house?: number;
+  /** D9 only: the point holds the same sign in the D1 and the D9 (see `isVargottama`). */
+  vargottama?: boolean;
 }
 
 const EPS = 1e-9;
@@ -151,6 +153,20 @@ export function getVarga(longitude: number, division: number): VargaPlacement {
   return { division, sign: TROPICAL_SIGNS[signIndex], signIndex, degree };
 }
 
+/**
+ * Vargottama: the longitude falls in the same sign in the D1 (rasi) and in the varga, the
+ * navamsa (D9) unless another `division` is given. In the D9 this is the first navamsa
+ * (0 to 3 deg 20) of a movable sign, the fifth (13 deg 20 to 16 deg 40) of a fixed sign and
+ * the ninth (26 deg 40 to 30) of a dual sign.
+ *
+ * Both signs are read from the one longitude passed in, so the D1 sign is the sign of that
+ * longitude in the caller's frame (tropical throughout this library unless the caller
+ * converts first); a sidereal longitude gives the sidereal answer.
+ */
+export function isVargottama(longitude: number, division: number = 9): boolean {
+  return getVarga(longitude, 1).signIndex === getVarga(longitude, division).signIndex;
+}
+
 export interface VargaChart<K extends string = string> {
   division: VargaDivision;
   /** Key of the lagna point used for houses, if one was present. */
@@ -166,6 +182,7 @@ export interface VargaChartOptions {
 /**
  * Varga placements of a record of longitudes (planets, nodes, lagna). When the lagna key is
  * present, every placement carries its whole-sign house counted from the varga lagna's sign.
+ * D9 placements also carry `vargottama`.
  */
 export function getVargaChart<K extends string>(
   points: Record<K, number>,
@@ -178,7 +195,11 @@ export function getVargaChart<K extends string>(
   const placements = {} as Record<K, VargaHousePlacement>;
   for (const key of Object.keys(points) as K[]) {
     const v = getVarga(points[key], division);
-    placements[key] = lagnaSign === undefined ? v : { ...v, house: mod12(v.signIndex - lagnaSign) + 1 };
+    placements[key] = {
+      ...v,
+      ...(lagnaSign === undefined ? {} : { house: mod12(v.signIndex - lagnaSign) + 1 }),
+      ...(v.division === 9 ? { vargottama: isVargottama(points[key]) } : {}),
+    };
   }
   return { division: getVarga(0, division).division, ...(hasLagna ? { lagnaKey } : {}), placements };
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SUPPORTED_VARGAS, getVarga, getVargaChart } from "./vargas";
+import { SUPPORTED_VARGAS, getVarga, getVargaChart, isVargottama } from "./vargas";
 
 // [division, Aries first, Aries last, Taurus first, Taurus last] as sign indices (0 = Aries).
 // Aries is an odd sign, Taurus an even sign. Expectations are counted by hand from the BPHS rules.
@@ -110,5 +110,87 @@ describe("getVargaChart", () => {
   it("accepts a custom lagna key", () => {
     const chart = getVargaChart({ asc: 32.56, sun: 209.61 }, 9, { lagnaKey: "asc" });
     expect(chart.placements.sun.house).toBe(6);
+  });
+});
+
+describe("isVargottama", () => {
+  const SIGN_NAMES = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+  const NAVAMSA = 30 / 9; // 3 deg 20
+  // Movable signs: first navamsa. Fixed: fifth. Dual: ninth.
+  const SPAN_BY_MODALITY: Array<[number, number]> = [
+    [0, NAVAMSA],
+    [4 * NAVAMSA, 5 * NAVAMSA],
+    [8 * NAVAMSA, 30],
+  ];
+  const STEP = 0.001;
+
+  for (let s = 0; s < 12; s++) {
+    const [from, to] = SPAN_BY_MODALITY[s % 3];
+    it(`${SIGN_NAMES[s]}: vargottama from ${from.toFixed(2)} to ${to.toFixed(2)} degrees only`, () => {
+      const at = (degree: number) => s * 30 + degree;
+      // Just inside each end of the span.
+      expect(isVargottama(at(from))).toBe(true);
+      expect(isVargottama(at(from + STEP))).toBe(true);
+      expect(isVargottama(at((from + to) / 2))).toBe(true);
+      expect(isVargottama(at(to - STEP))).toBe(true);
+      // Just outside each end, inside the same sign. (A movable sign's span starts at 0 and a
+      // dual sign's ends at 30, so on that side the neighbour is another sign: checked below.)
+      if (from > 0) expect(isVargottama(at(from - STEP))).toBe(false);
+      if (to < 30) expect(isVargottama(at(to))).toBe(false);
+      if (to < 30) expect(isVargottama(at(to + STEP))).toBe(false);
+      // Every navamsa of the sign: exactly one is vargottama.
+      const flags = Array.from({ length: 9 }, (_, k) => isVargottama(at((k + 0.5) * NAVAMSA)));
+      expect(flags.filter(Boolean)).toHaveLength(1);
+      expect(flags.indexOf(true)).toBe([0, 4, 8][s % 3]);
+      expect(getVarga(at((from + to) / 2), 9).signIndex).toBe(s);
+    });
+  }
+
+  it("the end of a dual sign and the start of the movable sign after it are both vargottama, in their own signs", () => {
+    for (const boundary of [90, 180, 270, 360]) {
+      expect(isVargottama(boundary - STEP)).toBe(true);
+      expect(isVargottama(boundary + STEP)).toBe(true);
+      expect(getVarga(boundary - STEP, 9).signIndex).toBe(boundary / 30 - 1);
+      expect(getVarga(boundary + STEP, 9).signIndex).toBe((boundary / 30) % 12);
+    }
+  });
+
+  it("matches the definition for other divisions and normalizes the longitude", () => {
+    expect(isVargottama(123.4, 1)).toBe(true);
+    expect(isVargottama(5, 3)).toBe(true); // first drekkana is the sign itself
+    expect(isVargottama(15, 3)).toBe(false);
+    expect(isVargottama(-359)).toBe(isVargottama(1));
+    expect(isVargottama(361)).toBe(true);
+    expect(() => isVargottama(Number.NaN)).toThrow();
+    expect(() => isVargottama(10, 5)).toThrow();
+  });
+
+  it("known chart values: none of 29.61 Libra, 14.52 Virgo, 2.56 Taurus is vargottama; 15 Leo is", () => {
+    expect([209.61, 164.52, 32.56].map((l) => isVargottama(l))).toEqual([false, false, false]);
+    expect(isVargottama(135)).toBe(true);
+  });
+});
+
+describe("getVargaChart: vargottama flag", () => {
+  const points = { lagna: 32.56, sun: 209.61, moon: 164.52, mars: 1.5, venus: 135, jupiter: 268, saturn: 100 };
+  it("agrees with isVargottama on every D9 placement, with or without a lagna", () => {
+    const chart = getVargaChart(points, 9);
+    for (const key of Object.keys(points) as Array<keyof typeof points>) {
+      expect(chart.placements[key].vargottama).toBe(isVargottama(points[key]));
+    }
+    expect(chart.placements.mars.vargottama).toBe(true); // 1.5 Aries
+    expect(chart.placements.venus.vargottama).toBe(true); // 15 Leo
+    expect(chart.placements.jupiter.vargottama).toBe(true); // 28 Sagittarius
+    expect(chart.placements.sun.vargottama).toBe(false);
+    expect(chart.placements.mars.house).toBeDefined();
+    expect(getVargaChart({ mars: 1.5, sun: 209.61 }, 9).placements).toMatchObject({
+      mars: { vargottama: true },
+      sun: { vargottama: false },
+    });
+  });
+  it("is absent from the other divisions", () => {
+    for (const division of SUPPORTED_VARGAS.filter((d) => d !== 9)) {
+      expect(getVargaChart(points, division).placements.mars).not.toHaveProperty("vargottama");
+    }
   });
 });

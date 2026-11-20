@@ -246,5 +246,61 @@
   "Trioctile": {
     "en": "Trioctile",
     "pt": "Sesquiquadratura"
+  },
+  "North Node": {
+    "en": "North Node",
+    "pt": "Nodo Norte"
+  },
+  "South Node": {
+    "en": "South Node",
+    "pt": "Nodo Sul"
+  },
+  "Rahu": {
+    "en": "Rahu",
+    "pt": "Rahu"
+  },
+  "Ketu": {
+    "en": "Ketu",
+    "pt": "Ketu"
+  },
+  "Personal Day": {
+    "en": "Personal Day",
+    "pt": "Dia pessoal"
+  },
+  "Personal Month": {
+    "en": "Personal Month",
+    "pt": "Mês pessoal"
+  },
+  "Personal Year": {
+    "en": "Personal Year",
+    "pt": "Ano pessoal"
+  },
+  "transit {body}": {
+    "en": "transit {body}",
+    "pt": "{body} em trânsito"
+  },
+  "natal {body}": {
+    "en": "natal {body}",
+    "pt": "{body} natal"
+  },
+  "firdaria lord {planet}": {
+    "en": "firdaria lord {planet}",
+    "pt": "{planet}, regente da firdária"
+  },
+  "firdaria sub lord {planet}": {
+    "en": "firdaria sub lord {planet}",
+    "pt": "{planet}, sub-regente da firdária"
+  },
+  "profection lord {planet}": {
+    "en": "profection lord {planet}",
+    "pt": "{planet}, regente da profecção anual"
+  },
+  "maha dasha lord {planet}": {
+    "en": "maha dasha lord {planet}",
+    "pt": "{planet}, regente do maha dasha"
+  },
+  "antar dasha lord {planet}": {
+    "en": "antar dasha lord {planet}",
+    "pt": "{planet}, regente do antar dasha"
   }
 }

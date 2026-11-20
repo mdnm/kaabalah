@@ -2,6 +2,42 @@
 
 ## Unreleased
 
+## 6.24.0 - 2026-11-20
+
+Cycles: what is active for a person on a day, and what changes ahead. Nothing
+that existed changes its results.
+
+- `kaabalah/semantic`: `buildCycleMapData` and `getCycleTreeMarkers` put a
+  day's cycles on the Tree as sphere and path shares, from plain data (transit
+  aspects and placements, time lords, personal numbers). The rules are in
+  `KAABALISTIC_CYCLE_WEIGHTS`: only the five major aspects within 1 degree
+  count; each lights the sphere of its aspect type and the sphere of the natal
+  planet it touches; an aspect involving a current time lord (firdaria major or
+  sub, profection, maha or antar dasha) weighs double; the Moon is the only sky
+  placement; shares are transits 60, time lords 20, numerology 20, renormalized
+  over the systems present. `getAspectTightness` and `getAspectWeight` take an
+  optional orb range.
+- `kaabalah/astrology`: `getPlanetaryHours` gives sunrise, sunset, the day
+  ruler and the 24 planetary hours at a place, with the hour containing the
+  instant asked. Polar day and night return a typed unavailable result. Pass a
+  time zone: without one the weekday comes from the longitude.
+- `findStations` and `findRetrogradePeriods` return the stations in longitude
+  of Mercury through Pluto, and the retrograde periods overlapping a window
+  with their true opening and closing stations.
+- `findDeclinationStations` and `findEquatorCrossings` return the turning
+  points of a body's declination (with an out of bounds flag) and its
+  crossings of the celestial equator, for the Sun through Pluto.
+- `findSeasonalPoints` and `getSeasonalPosition` give the eight points of the
+  year: the equinoxes, the solstices and the midpoints at 15 degrees of the
+  fixed signs. A season name is given only when a hemisphere is passed.
+- `findIngressWindows` returns each sign ingress with the moment its effect
+  begins, using the lead times of the Muhurta Chintamani
+  (`INGRESS_LEAD_TIMES`: Sun 5 days, Mercury and Venus 7, Mars 8, Moon 3
+  ghatis, Jupiter 2 months, Rahu 3 months, Saturn 6 months). Tropical signs.
+- Jyotish: `isVargottama`, and a `vargottama` flag on the D9 placements of
+  `getVargaChart` (same sign in the D1 and the D9, in the frame of the
+  longitude passed).
+
 ## 6.23.0 - 2026-11-19
 
 - Add Portuguese (pt-BR) keywords for the 22 Ark Annus, item for item with the
