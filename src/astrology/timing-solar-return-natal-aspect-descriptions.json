@@ -1,0 +1,100 @@
+{
+  "solarReturnNatalAspects": {
+    "saturn/conjunction/mars": {
+      "pt": "com Saturno da sua revolução solar conjunto ao seu Marte natal, você tem o anúncio de um mau ano, com doenças, perseguições, perturbações, discórdia, querelas domésticas, acusações e inimizade de pessoas elevadas e poderosas. em signo de Água, há ameaça de afogamento; se Saturno estiver maleficiado, a sobreposição a um planeta natal suscita sempre provações morais ou físicas, cuja natureza depende das casas anuais e natais envolvidas.",
+      "en": "with Saturn in your solar-return chart conjunct your natal Mars, you have an indication of a bad year, with illness, persecution, disturbances, discord, domestic quarrels, accusations and hostility from people of high status and power. in a Water sign, there is a threat of drowning; if Saturn is afflicted, its overlay on a natal planet always brings emotional or physical trials, whose nature depends on the annual and natal houses involved.",
+      "keywords": {
+        "pt": [
+          "doenças e perseguições",
+          "conflitos domésticos",
+          "afogamento condicionado"
+        ],
+        "en": [
+          "illness and persecution",
+          "domestic conflicts",
+          "conditional drowning"
+        ]
+      }
+    },
+    "uranus/conjunction/venus": {
+      "pt": "com Urano da sua revolução solar conjunto à sua Vênus natal, você pode deduzir perturbações na vida sentimental e perigo de problemas sexuais, sobretudo na terceira, quinta e sétima casas. na segunda casa anual ou natal, essas perturbações provocam complicações financeiras; na sexta, indicam doenças nos órgãos íntimos; na décima, há temor de repercussões sobre sua reputação ou situação.",
+      "en": "with Uranus in your solar-return chart conjunct your natal Venus, you may infer disturbances in your love life and danger of sexual problems, especially in the third, fifth and seventh houses. in the annual or natal second house, these disturbances cause financial complications; in the sixth, they indicate diseases of the intimate organs; in the tenth, there is fear of repercussions for your reputation or circumstances.",
+      "keywords": {
+        "pt": [
+          "perturbações sentimentais",
+          "problemas sexuais",
+          "repercussões por casa"
+        ],
+        "en": [
+          "romantic disturbances",
+          "sexual problems",
+          "effects by house"
+        ]
+      }
+    },
+    "neptune/conjunction/jupiter": {
+      "pt": "com Netuno da sua revolução solar conjunto ao seu Júpiter natal, você encontra preocupações e dúvidas provenientes da diminuição do otimismo e do senso prático, além das indicações particulares das casas envolvidas. em um exemplo particular, Júpiter natal na décima primeira e Netuno anual na quarta ligam perturbações nas amizades a assuntos familiares e esperanças frustradas de cura de um parente, em um mapa com outros indícios de morte da mãe.",
+      "en": "with Neptune in your solar-return chart conjunct your natal Jupiter, you encounter worries and doubts arising from diminished optimism and practical sense, alongside the specific indications of the houses involved. in a particular illustration, natal Jupiter in the eleventh and annual Neptune in the fourth link disrupted friendships to family affairs and frustrated hopes for a relative’s recovery, in a chart with other indications of the mother’s death.",
+      "keywords": {
+        "pt": [
+          "preocupações e dúvidas",
+          "otimismo diminuído",
+          "casas anuais e natais"
+        ],
+        "en": [
+          "worries and doubts",
+          "diminished optimism",
+          "annual and natal houses"
+        ]
+      }
+    },
+    "ascendant/conjunction/moon": {
+      "pt": "com o Ascendente da sua revolução solar sobre a sua Lua natal, você tem sempre uma indicação que pode se manifestar em acontecimentos familiares ou advindos de uma mulher. alternativamente, a sobreposição corresponde a deslocamentos ou mudanças de residência para você.",
+      "en": "with the Ascendant of your solar-return chart over your natal Moon, you always have an indication that may manifest as family events or events arising through a woman. alternatively, the overlay corresponds to journeys or changes of residence for you.",
+      "keywords": {
+        "pt": [
+          "acontecimentos familiares",
+          "influência de uma mulher",
+          "mudança de residência"
+        ],
+        "en": [
+          "family events",
+          "a woman’s influence",
+          "change of residence"
+        ]
+      }
+    },
+    "ascendant/conjunction/neptune": {
+      "pt": "com o Ascendente da sua revolução solar sobre o seu Netuno natal, você tem indicação de um ano mais ou menos caótico. é raro que você consiga reagir contra o encadeamento desagradável das circunstâncias.",
+      "en": "with the Ascendant of your solar-return chart over your natal Neptune, you have an indication of a more or less chaotic year. it is rare for you to be able to counter the unpleasant chain of circumstances.",
+      "keywords": {
+        "pt": [
+          "ano caótico",
+          "circunstâncias desagradáveis",
+          "reação dificultada"
+        ],
+        "en": [
+          "chaotic year",
+          "unpleasant circumstances",
+          "difficulty responding"
+        ]
+      }
+    },
+    "ascendant/conjunction/mars": {
+      "pt": "com o Ascendente da sua revolução solar sobre o seu Marte natal, a interpretação depende da condição de Marte reger a sexta ou a décima segunda casa. nessa condição, a leitura anuncia, nos mapas femininos, cistite, metrite ou uma doença semelhante.",
+      "en": "with the Ascendant of your solar-return chart over your natal Mars, the interpretation depends on Mars ruling the sixth or twelfth house. under that condition, the reading indicates cystitis, metritis or a similar illness in women’s charts.",
+      "keywords": {
+        "pt": [
+          "regência da sexta ou décima segunda",
+          "cistite ou metrite",
+          "mapas femininos"
+        ],
+        "en": [
+          "sixth- or twelfth-house rulership",
+          "cystitis or metritis",
+          "women’s charts"
+        ]
+      }
+    }
+  }
+}

@@ -1388,7 +1388,9 @@ export async function cmdAstrologyFirdaria(
     console.log(cliText("\nFirdaria ({0})\n", [isDiurnal ? "Diurnal" : "Nocturnal"]));
     console.log(cliText("  Natal: {0} {1} ({2}, {3})", [natalInput.dateStr, natalInput.timeStr, natalInput.latitude, natalInput.longitude]));
     console.log(cliText("  Current Major: {0} ({1}y)", [cliValue(result.currentMajor.planet), result.currentMajor.years]));
-    console.log(cliText("  Current Sub: {0}", [cliValue(result.currentSub.planet)]));
+    if (result.currentSub) {
+      console.log(cliText("  Current Sub: {0}", [cliValue(result.currentSub.planet)]));
+    }
     console.log(cliText("\n  All Periods:\n"));
     for (const p of result.allPeriods) {
       const start = p.startDate.toISOString().split("T")[0];

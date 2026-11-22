@@ -28,6 +28,8 @@ import {
 } from "./core";
 import { unavailable } from "./schedule-types";
 
+export * from "./timing-descriptions";
+
 export {
   MASTER_NUMBERS,
   calculateKaabalisticLifePath,

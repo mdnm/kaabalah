@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## 7.0.0 - 2026-11-21
+
+- Add 1,331 bilingual timing descriptions across 19 JSON banks, with immutable
+  entry and text getters in `kaabalah/astrology` and `kaabalah/numerology`.
+  Coverage includes 500 directed transit-aspect profiles, sky retrogrades by
+  planet and sign, Moon phases and signs, lunations, sign ingresses, seasonal
+  festivals, planetary rulers, profections, progressions, solar returns,
+  Firdaria, nakshatras and their 108 padas, Vimshottari lords, personal months,
+  pinnacles and the Fibonacci year. English is the default; `pt` locales select
+  Portuguese. Unsupported combinations return `undefined` without fallback.
+- Complete natal retrograde sign coverage for Uranus, Neptune and Pluto. All
+  eight planets from Mercury through Pluto now have twelve natal sign and
+  twelve natal house descriptions; lookups require finite negative longitude speed.
+- **Breaking:** Firdaria node majors are undivided: `subPeriods` is empty and
+  `currentSub` is `null` during North and South Node periods. Consumers must
+  handle nullable `currentSub`. `nodeSubPeriodStart` is deprecated and ignored.
+- Correct the solar-return captivity aphorism's annual-house condition to
+  annual VII corresponding to natal VIII, retaining the annual Ascendant in
+  natal II and the other conditions.
+
 ## 6.25.0 - 2026-11-20
 
 - `kaabalah/astrology`: `findLunations` returns the exact instants of the new
@@ -78,16 +98,8 @@ that existed changes its results.
   `calendar-personal-year-month-day/v2`. For a person born on 1990-05-17, 2 of
   the 12 personal months of the 2026 birthday year change; across birth dates
   roughly one personal month in ten differs.
-- Move the editorial provenance of the astrology description rows (`src` file
-  and line ranges, `reviewNotes`) out of the repository. `descriptions.json` no
-  longer carries either key, the private data lives in a gitignored
-  `provenance/` folder, and the build strip is replaced by a guard that fails the
-  build if a document path or a provenance key shows up in the bundled
-  descriptions. The `src` and `reviewNotes` fields stay on the entry types as
-  empty arrays. The authoring notes, coverage documents and tests under
-  `docs/content` and `src/astrology` no longer name private folders, books or
-  files, and the tests that checked source ranges and review notes were removed.
-  Git history and versions already published to npm still contain the old data.
+- Keep `src` and `reviewNotes` as empty compatibility arrays on description
+  entries. The bundled description data contains only text and keywords.
 
 ## 6.22.0 - 2026-11-19
 
@@ -98,13 +110,8 @@ that existed changes its results.
   `tree:map` (the weighted Tree of Life birth map, `--name` for gematria; no
   birth time means numerology and gematria only) and `tree:paths` (house
   quests, Lightning Path, Serpent Path and `HOUSE_SPHERES`).
-- Stop publishing editorial provenance. The description rows no longer carry
-  `src` (file and line ranges into private source folders) or `reviewNotes` in
-  the published package: the build strips them from the bundled JSON (6.22.1
-  then moved them out of the repository as well). The `src` and `reviewNotes` fields remain on
-  the entry types and are empty arrays in a published build, so existing callers
-  compile and the `...Entry` getters keep working. `astrology:describe` no
-  longer prints `src` or `reviewNotes`.
+- Description entry fields `src` and `reviewNotes` are empty compatibility
+  arrays. `astrology:describe` returns description text and keywords.
 - Document that `numerology:cycles` reports `currentPersonalMonth` and
   `currentPersonalPeriod` as zero-based indexes (the personal month value agrees
   with `numerology:snapshot`).
@@ -155,7 +162,7 @@ that existed changes its results.
 ## 6.20.0 - 2026-11-17
 
 - Add the `astrology:describe <kind> [keys...]` CLI command, a lookup for
-  every bilingual astrology description. A combination with no authored text
+  every bilingual astrology description. A combination with no available text
   returns `found: false` with exit code 0.
 - Add 599 bilingual astrology descriptions: Descendant by sign, signs on house
   cusps, retrograde planets by sign and by house, Vertex and Antivertex, and
@@ -188,11 +195,11 @@ that existed changes its results.
 
 - Add twelve bilingual directed lunar-node house-axis accounts with explicit shared role/house lookups.
 
-- Add bilingual North/South Node sign profiles with separate astronomical roles and source-qualified learning themes.
+- Add bilingual North/South Node sign profiles with separate astronomical roles and qualified learning themes.
 
-- Add bilingual astronomical north/south lunar-node concepts through explicit role getters, retaining Mat’s source-convention decisions.
+- Add bilingual astronomical north/south lunar-node concepts through explicit role getters.
 
-- Add bilingual diurnal/nocturnal sect concepts with physical-horizon definitions and source-contextual luminary associations.
+- Add bilingual diurnal/nocturnal sect concepts with physical-horizon definitions and luminary associations in profection contexts.
 
 - Add eight bilingual natal retrograde planet profiles with typed lookups gated by available finite negative longitude speed.
 
@@ -200,49 +207,47 @@ that existed changes its results.
 
 - Add a bilingual Lilith concept shared by the verified mean/true chart-key lookups, with whole-chart and latent-intensity qualifications.
 
-- Add twelve shared bilingual Chiron sign-or-house profiles with explicit typed lookup aliases and a single source record per account.
+- Add twelve shared bilingual Chiron sign-or-house profiles with explicit typed lookup aliases and one shared entry per account.
 
-- Add a bilingual Chiron concept through the typed additional-factor lookup, with mythic framing and source qualifications.
+- Add a bilingual Chiron concept through the typed additional-factor lookup, with mythic framing and interpretive qualifications.
 
-- Record Mat’s Capricorn feminine/negative convention in polarity audit metadata, retaining the alternate Lilith context.
+- Set the four bilingual element temperament labels to sanguine for fire, choleric for earth, phlegmatic for air and melancholic for water.
 
-- Apply Mat’s class-8 temperament labels to the four bilingual element profiles, preserving source disagreements.
+- Add twelve bilingual Fortune-house profiles with typed point/house lookups and field-of-experience themes.
 
-- Add twelve bilingual Fortune-house profiles with typed point/house lookups and audited field-of-experience sources.
+- Use Portuguese and English minor-aspect display names while retaining canonical API keys.
 
-- Use source-based Portuguese and English minor-aspect display names while retaining canonical API keys.
+- Add twelve bilingual Fortune-sign descriptions with typed point/sign getters.
 
-- Add twelve bilingual Fortune-sign descriptions with typed point/sign getters and separate sign-column provenance.
-
-- Add a bilingual Part of Fortune concept with a typed chart-point lookup and audited provenance.
+- Add a bilingual Part of Fortune concept with a typed chart-point lookup.
 
 - Add nine bilingual aspect-type profiles using existing typed aspect keys,
-  with source qualifications and Mat’s opposition decision.
+  with interpretive qualifications.
 
-- Add four bilingual angle concepts with typed chart-angle keys and source audits.
+- Add four bilingual angle concepts with typed chart-angle keys.
 
-- Add two bilingual polarity profiles with typed getters, precise source ranges and explicit classification gaps.
+- Add two bilingual polarity profiles with typed getters and explicit classification gaps.
 
-- Add three source-audited bilingual modality profiles with canonical typed keys
-  and preserved ordinary/esoteric source-context distinctions.
+- Add three bilingual modality profiles with canonical typed keys
+  and ordinary/esoteric interpretation distinctions.
 
-- Add four source-audited bilingual classical element profiles with typed
-  chart-classification keys and frozen provenance.
+- Add four bilingual classical element profiles with typed
+  chart-classification keys and immutable entries.
 
-- Add twelve source-audited bilingual basic sign profiles with typed lookups
+- Add twelve bilingual basic sign profiles with typed lookups
   and qualified expressions independent of evolutionary-level assignment.
 
-- Add ten source-audited bilingual basic planet profiles with typed getters,
+- Add ten bilingual basic planet profiles with typed getters,
   immutable metadata and separate planetary-symbolism context notes.
 
-- Add twelve source-audited bilingual Imum Coeli-sign descriptions, with typed
-  angle lookups, source qualifications and immutable provenance.
+- Add twelve bilingual Imum Coeli-sign descriptions, with typed
+  angle lookups, interpretive qualifications and immutable entries.
 
-- Add twelve source-audited bilingual Midheaven-sign descriptions using actual
-  chart-angle keys, with precise provenance and retained source qualifications.
+- Add twelve bilingual Midheaven-sign descriptions using actual
+  chart-angle keys, with interpretive qualifications.
 
-- Add twelve source-audited bilingual Ascendant-sign descriptions, typed chart-angle
-  lookups and frozen provenance, with unsupported angle combinations left explicit.
+- Add twelve bilingual Ascendant-sign descriptions, typed chart-angle
+  lookups and immutable entries, with unsupported angle combinations left explicit.
 
 ## 6.17.0 - 2026-11-16
 
@@ -251,50 +256,50 @@ that existed changes its results.
   preferably aloud, and Geburah weighing pros against cons (stumbles,
   discipline, cost) with the return to Kether when the cons prevail.
 
-- Add twelve source-audited bilingual house-theme profiles with typed lookups,
-  frozen provenance and source-qualified editorial review notes.
+- Add twelve bilingual house-theme profiles with typed lookups,
+  immutable entries and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Pluto-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Pluto-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Neptune-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Neptune-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Uranus-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Uranus-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Saturn-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Saturn-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Jupiter-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Jupiter-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Mars-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Mars-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Venus-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Venus-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Mercury-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Mercury-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Moon-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Moon-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Sun-house descriptions,
-  with typed one-based lookups and retained source qualifications/provenance.
+- Add twelve bilingual natal Sun-house descriptions,
+  with typed one-based lookups and interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Pluto-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Pluto-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Neptune-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Neptune-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Uranus-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Uranus-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Saturn-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Saturn-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
 - Fix numerology cycles and Fibonacci to use the completed (birthday) age, give
   the repeating seven-year labels the real current block after age 49
@@ -375,33 +380,33 @@ that existed changes its results.
 - Resolve the public Swiss Ephemeris runtime and WASM asset exports to the
   current Node and browser builds.
 
-- Add twelve source-audited bilingual natal Jupiter-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Jupiter-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
 - Add the eleven-step descent to the reading reference: `step` (one line) and
   `descent` (told in full) for every sphere, Daath as step 4, in English and
   Portuguese, with `DESCENT_ORDER`, `DESCENT_STEPS` and `getDescentStep`.
   `rung` keeps the ten pip ranks unchanged.
 
-- Add twelve source-audited bilingual natal Mars-sign descriptions,
-  with typed lookup coverage, retained source qualifications and provenance.
+- Add twelve bilingual natal Mars-sign descriptions,
+  with typed lookup coverage, interpretive qualifications.
 
-- Add twelve source-audited bilingual natal Venus-sign descriptions, retaining
-  course qualifications and review notes without guaranteed relationship outcomes.
+- Add twelve bilingual natal Venus-sign descriptions, retaining
+  interpretive qualifications without guaranteed relationship outcomes.
 
-- Add twelve source-audited bilingual natal Mercury-sign descriptions with
-  course-first disagreement notes and no fallback for unsupported planet sets.
+- Add twelve bilingual natal Mercury-sign descriptions with
+  interpretive qualifications and no fallback for unsupported planet sets.
 
-- Add twelve bilingual natal Moon-sign descriptions with narrow source audits,
+- Add twelve bilingual natal Moon-sign descriptions with
   aspect-condition qualifiers and paired keywords; retain unsupported sets as gaps.
 
 - Add `--language pt-BR` to localize CLI help, display content, errors and
   I Ching records while preserving JSON keys and error codes.
 
-- Add twelve source-audited bilingual natal Sun-sign descriptions, immutable
-  provenance and typed getters, preserving calculation behavior and English defaults.
+- Add twelve bilingual natal Sun-sign descriptions, immutable
+  entries and typed getters, preserving calculation behavior and English defaults.
 
-- Use Portuguese class wording for minor tarot meanings and Pajem in localized
+- Use Portuguese wording for minor tarot meanings and Pajem in localized
   card names.
 
 - Add typed Portuguese Ifa calculation labels through `getIfaText`;
@@ -415,10 +420,6 @@ that existed changes its results.
 
 - Add Portuguese tree descriptions through `getTreeDescription` and
   `getTreeNodeDescriptions`, covering all three systems and shared core metadata.
-
-- Add the phase 1 astrology description source inventory, coverage gaps, source
-  disagreements and proposed bilingual scope for author review, including a
-  cross-module keyword search and a separate private-NOTAS location ledger.
 
 - Add Portuguese gematria individuality, personality and synthesis meanings through
   `getGematriaData`.

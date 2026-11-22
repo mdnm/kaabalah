@@ -1,0 +1,582 @@
+{
+  "nakshatras": {
+    "Ashwini": {
+      "pt": "ashwini é associada aos Asvins, os gêmeos apresentados como filhos do Sol. na eleição de momentos, a tradição classifica sua natureza como leve e a associa a ornamentação, prazeres, esportes, administração de medicamentos, início de empreendimentos e viagens.",
+      "en": "ashwini is associated with the Asvins, the twins described as sons of the Sun. in electional astrology, the tradition classifies its nature as light and associates it with adornment, pleasures, sports, administering medicine, starting enterprises and travel.",
+      "keywords": {
+        "pt": [
+          "leve",
+          "viagens",
+          "empreendimentos"
+        ],
+        "en": [
+          "light",
+          "travel",
+          "enterprises"
+        ]
+      }
+    },
+    "Bharani": {
+      "pt": "bharani é associada a Yama, apresentado como regente do dharma e da morte. na eleição de momentos, a tradição classifica sua natureza como feroz e a associa a planos nefastos, envenenamento, fraude, aprisionamento, incêndios e outros atos maléficos.",
+      "en": "bharani is associated with Yama, described as the ruler of dharma and death. in electional astrology, the tradition classifies its nature as dreadful and associates it with nefarious plans, poisoning, deceit, imprisonment, arson and other harmful acts.",
+      "keywords": {
+        "pt": [
+          "feroz",
+          "coerção",
+          "destruição"
+        ],
+        "en": [
+          "fierce",
+          "coercion",
+          "destruction"
+        ]
+      }
+    },
+    "Krittika": {
+      "pt": "krittika é associada a Agni, divindade do fogo. na eleição de momentos, a tradição classifica sua natureza como mista e a associa a tarefas de importância cotidiana.",
+      "en": "krittika is associated with Agni, the deity of fire. in electional astrology, the tradition classifies its nature as mixed and associates it with tasks of everyday importance.",
+      "keywords": {
+        "pt": [
+          "mista",
+          "cotidiano",
+          "tarefas"
+        ],
+        "en": [
+          "mixed",
+          "everyday life",
+          "tasks"
+        ]
+      }
+    },
+    "Rohini": {
+      "pt": "rohini é associada a Prajapati na tradição das mansões lunares. na eleição de momentos, a tradição classifica sua natureza como fixa e a associa a coroações, fundação de cidades, semeadura, plantio de árvores e obras permanentes.",
+      "en": "rohini is associated with Prajapati in the lunar-mansion tradition. in electional astrology, the tradition classifies its nature as fixed and associates it with coronations, founding cities, sowing, planting trees and permanent works.",
+      "keywords": {
+        "pt": [
+          "fixa",
+          "plantio",
+          "permanência"
+        ],
+        "en": [
+          "fixed",
+          "planting",
+          "permanence"
+        ]
+      }
+    },
+    "Mrigashira": {
+      "pt": "mrigashira é associada a Soma, divindade da Lua e da bebida sagrada. na eleição de momentos, a tradição classifica sua natureza como suave e a associa a roupas novas, dança, música, belas-artes, união sexual e cerimônias auspiciosas.",
+      "en": "mrigashira is associated with Soma, the deity of the Moon and the sacred drink. in electional astrology, the tradition classifies its nature as soft and associates it with new apparel, dance, music, fine arts, sexual union and auspicious ceremonies.",
+      "keywords": {
+        "pt": [
+          "suave",
+          "artes",
+          "cerimônias"
+        ],
+        "en": [
+          "soft",
+          "arts",
+          "ceremonies"
+        ]
+      }
+    },
+    "Ardra": {
+      "pt": "ardra é associada a Rudra na tradição das mansões lunares. na eleição de momentos, a tradição classifica sua natureza como cortante e a associa a encantamentos, invocação de espíritos, aprisionamento, assassinatos e separação de amigos.",
+      "en": "ardra is associated with Rudra in the lunar-mansion tradition. in electional astrology, the tradition classifies its nature as sharp and associates it with incantations, invoking spirits, imprisonment, murders and separation of friends.",
+      "keywords": {
+        "pt": [
+          "cortante",
+          "separação",
+          "invocação"
+        ],
+        "en": [
+          "sharp",
+          "separation",
+          "invocation"
+        ]
+      }
+    },
+    "Punarvasu": {
+      "pt": "punarvasu é associada a Aditi, apresentada como a infinitude e mãe dos Adityas. na eleição de momentos, a tradição classifica sua natureza como móvel e a associa a aquisição de veículos, jardinagem e procissões.",
+      "en": "punarvasu is associated with Aditi, described as infinity and the mother of the Adityas. in electional astrology, the tradition classifies its nature as movable and associates it with acquiring vehicles, gardening and processions.",
+      "keywords": {
+        "pt": [
+          "móvel",
+          "veículos",
+          "jardinagem"
+        ],
+        "en": [
+          "movable",
+          "vehicles",
+          "gardening"
+        ]
+      }
+    },
+    "Pushya": {
+      "pt": "pushya é associada a Brhaspati, sacerdote dos deuses e divindade ligada a Júpiter. na eleição de momentos, a tradição classifica sua natureza como leve e a associa a ornamentação, prazeres, esportes, administração de medicamentos, início de empreendimentos e viagens.",
+      "en": "pushya is associated with Brhaspati, priest of the gods and the deity linked with Jupiter. in electional astrology, the tradition classifies its nature as light and associates it with adornment, pleasures, sports, administering medicine, starting enterprises and travel.",
+      "keywords": {
+        "pt": [
+          "leve",
+          "viagens",
+          "empreendimentos"
+        ],
+        "en": [
+          "light",
+          "travel",
+          "enterprises"
+        ]
+      }
+    },
+    "Ashlesha": {
+      "pt": "ashlesha é associada às divindades serpentinas Naga e Nagini. na eleição de momentos, a tradição classifica sua natureza como cortante e a associa a encantamentos, invocação de espíritos, aprisionamento, assassinatos e separação de amigos.",
+      "en": "ashlesha is associated with the serpent deities Naga and Nagini. in electional astrology, the tradition classifies its nature as sharp and associates it with incantations, invoking spirits, imprisonment, murders and separation of friends.",
+      "keywords": {
+        "pt": [
+          "cortante",
+          "separação",
+          "invocação"
+        ],
+        "en": [
+          "sharp",
+          "separation",
+          "invocation"
+        ]
+      }
+    },
+    "Magha": {
+      "pt": "magha é associada aos Pitris, os ancestrais divinizados. na eleição de momentos, a tradição classifica sua natureza como feroz e a associa a planos nefastos, envenenamento, fraude, aprisionamento, incêndios e outros atos maléficos.",
+      "en": "magha is associated with the Pitris, the deified ancestors. in electional astrology, the tradition classifies its nature as dreadful and associates it with nefarious plans, poisoning, deceit, imprisonment, arson and other harmful acts.",
+      "keywords": {
+        "pt": [
+          "feroz",
+          "coerção",
+          "destruição"
+        ],
+        "en": [
+          "fierce",
+          "coercion",
+          "destruction"
+        ]
+      }
+    },
+    "Purva_Phalguni": {
+      "pt": "purva phalguni é associada a Bhaga, protetor da felicidade no casamento. na eleição de momentos, a tradição classifica sua natureza como feroz e a associa a planos nefastos, envenenamento, fraude, aprisionamento, incêndios e outros atos maléficos.",
+      "en": "purva phalguni is associated with Bhaga, protector of happiness in marriage. in electional astrology, the tradition classifies its nature as dreadful and associates it with nefarious plans, poisoning, deceit, imprisonment, arson and other harmful acts.",
+      "keywords": {
+        "pt": [
+          "feroz",
+          "coerção",
+          "destruição"
+        ],
+        "en": [
+          "fierce",
+          "coercion",
+          "destruction"
+        ]
+      }
+    },
+    "Uttara_Phalguni": {
+      "pt": "uttara phalguni é associada a Aryaman, divindade que preside a hospitalidade. na eleição de momentos, a tradição classifica sua natureza como fixa e a associa a coroações, fundação de cidades, semeadura, plantio de árvores e obras permanentes.",
+      "en": "uttara phalguni is associated with Aryaman, the deity who presides over hospitality. in electional astrology, the tradition classifies its nature as fixed and associates it with coronations, founding cities, sowing, planting trees and permanent works.",
+      "keywords": {
+        "pt": [
+          "fixa",
+          "plantio",
+          "permanência"
+        ],
+        "en": [
+          "fixed",
+          "planting",
+          "permanence"
+        ]
+      }
+    },
+    "Hasta": {
+      "pt": "hasta é associada às divindades solares Suryadev e Savitr. na eleição de momentos, a tradição classifica sua natureza como leve e a associa a ornamentação, prazeres, esportes, administração de medicamentos, início de empreendimentos e viagens.",
+      "en": "hasta is associated with the solar deities Suryadev and Savitr. in electional astrology, the tradition classifies its nature as light and associates it with adornment, pleasures, sports, administering medicine, starting enterprises and travel.",
+      "keywords": {
+        "pt": [
+          "leve",
+          "viagens",
+          "empreendimentos"
+        ],
+        "en": [
+          "light",
+          "travel",
+          "enterprises"
+        ]
+      }
+    },
+    "Chitra": {
+      "pt": "chitra é associada a Tvastr, o artífice celeste. na eleição de momentos, a tradição classifica sua natureza como suave e a associa a roupas novas, dança, música, belas-artes, união sexual e cerimônias auspiciosas.",
+      "en": "chitra is associated with Tvastr, the heavenly craftsman. in electional astrology, the tradition classifies its nature as soft and associates it with new apparel, dance, music, fine arts, sexual union and auspicious ceremonies.",
+      "keywords": {
+        "pt": [
+          "suave",
+          "artes",
+          "cerimônias"
+        ],
+        "en": [
+          "soft",
+          "arts",
+          "ceremonies"
+        ]
+      }
+    },
+    "Swati": {
+      "pt": "swati é associada a Vayu, divindade do vento e da respiração. na eleição de momentos, a tradição classifica sua natureza como móvel e a associa a aquisição de veículos, jardinagem e procissões.",
+      "en": "swati is associated with Vayu, the deity of wind and breath. in electional astrology, the tradition classifies its nature as movable and associates it with acquiring vehicles, gardening and processions.",
+      "keywords": {
+        "pt": [
+          "móvel",
+          "veículos",
+          "jardinagem"
+        ],
+        "en": [
+          "movable",
+          "vehicles",
+          "gardening"
+        ]
+      }
+    },
+    "Vishakha": {
+      "pt": "vishakha é associada a Indra e Agni na tradição das mansões lunares. na eleição de momentos, a tradição classifica sua natureza como mista e a associa a tarefas de importância cotidiana.",
+      "en": "vishakha is associated with Indra and Agni in the lunar-mansion tradition. in electional astrology, the tradition classifies its nature as mixed and associates it with tasks of everyday importance.",
+      "keywords": {
+        "pt": [
+          "mista",
+          "cotidiano",
+          "tarefas"
+        ],
+        "en": [
+          "mixed",
+          "everyday life",
+          "tasks"
+        ]
+      }
+    },
+    "Anuradha": {
+      "pt": "anuradha é associada a Mitra, divindade que preside a amizade. na eleição de momentos, a tradição classifica sua natureza como suave e a associa a roupas novas, dança, música, belas-artes, união sexual e cerimônias auspiciosas.",
+      "en": "anuradha is associated with Mitra, the deity who presides over friendship. in electional astrology, the tradition classifies its nature as soft and associates it with new apparel, dance, music, fine arts, sexual union and auspicious ceremonies.",
+      "keywords": {
+        "pt": [
+          "suave",
+          "artes",
+          "cerimônias"
+        ],
+        "en": [
+          "soft",
+          "arts",
+          "ceremonies"
+        ]
+      }
+    },
+    "Jyeshtha": {
+      "pt": "jyeshtha é associada a Indra, apresentado como rei dos trinta e três deuses. na eleição de momentos, a tradição classifica sua natureza como cortante e a associa a encantamentos, invocação de espíritos, aprisionamento, assassinatos e separação de amigos.",
+      "en": "jyeshtha is associated with Indra, described as king of the thirty-three gods. in electional astrology, the tradition classifies its nature as sharp and associates it with incantations, invoking spirits, imprisonment, murders and separation of friends.",
+      "keywords": {
+        "pt": [
+          "cortante",
+          "separação",
+          "invocação"
+        ],
+        "en": [
+          "sharp",
+          "separation",
+          "invocation"
+        ]
+      }
+    },
+    "Mula": {
+      "pt": "mula é associada a Niruti na tradição das mansões lunares. na eleição de momentos, a tradição classifica sua natureza como cortante e a associa a encantamentos, invocação de espíritos, aprisionamento, assassinatos e separação de amigos.",
+      "en": "mula is associated with Niruti in the lunar-mansion tradition. in electional astrology, the tradition classifies its nature as sharp and associates it with incantations, invoking spirits, imprisonment, murders and separation of friends.",
+      "keywords": {
+        "pt": [
+          "cortante",
+          "separação",
+          "invocação"
+        ],
+        "en": [
+          "sharp",
+          "separation",
+          "invocation"
+        ]
+      }
+    },
+    "Purva_Ashadha": {
+      "pt": "purva ashadha é associada às Apahs, as divindades das águas. na eleição de momentos, a tradição classifica sua natureza como feroz e a associa a planos nefastos, envenenamento, fraude, aprisionamento, incêndios e outros atos maléficos.",
+      "en": "purva ashadha is associated with the Apahs, the water deities. in electional astrology, the tradition classifies its nature as dreadful and associates it with nefarious plans, poisoning, deceit, imprisonment, arson and other harmful acts.",
+      "keywords": {
+        "pt": [
+          "feroz",
+          "coerção",
+          "destruição"
+        ],
+        "en": [
+          "fierce",
+          "coercion",
+          "destruction"
+        ]
+      }
+    },
+    "Uttara_Ashadha": {
+      "pt": "uttara ashadha é associada aos Visvadevas, um grupo de divindades. na eleição de momentos, a tradição classifica sua natureza como fixa e a associa a coroações, fundação de cidades, semeadura, plantio de árvores e obras permanentes.",
+      "en": "uttara ashadha is associated with the Visvadevas, a group of deities. in electional astrology, the tradition classifies its nature as fixed and associates it with coronations, founding cities, sowing, planting trees and permanent works.",
+      "keywords": {
+        "pt": [
+          "fixa",
+          "plantio",
+          "permanência"
+        ],
+        "en": [
+          "fixed",
+          "planting",
+          "permanence"
+        ]
+      }
+    },
+    "Shravana": {
+      "pt": "shravana é associada a Vishnu, divindade da preservação. na eleição de momentos, a tradição classifica sua natureza como móvel e a associa a aquisição de veículos, jardinagem e procissões.",
+      "en": "shravana is associated with Vishnu, the deity of preservation. in electional astrology, the tradition classifies its nature as movable and associates it with acquiring vehicles, gardening and processions.",
+      "keywords": {
+        "pt": [
+          "móvel",
+          "veículos",
+          "jardinagem"
+        ],
+        "en": [
+          "movable",
+          "vehicles",
+          "gardening"
+        ]
+      }
+    },
+    "Dhanishtha": {
+      "pt": "dhanishtha é associada aos Vasus, um grupo de divindades. na eleição de momentos, a tradição classifica sua natureza como móvel e a associa a aquisição de veículos, jardinagem e procissões.",
+      "en": "dhanishtha is associated with the Vasus, a group of deities. in electional astrology, the tradition classifies its nature as movable and associates it with acquiring vehicles, gardening and processions.",
+      "keywords": {
+        "pt": [
+          "móvel",
+          "veículos",
+          "jardinagem"
+        ],
+        "en": [
+          "movable",
+          "vehicles",
+          "gardening"
+        ]
+      }
+    },
+    "Shatabhisha": {
+      "pt": "shatabhisha é associada a Varuna, divindade do oceano. na eleição de momentos, a tradição classifica sua natureza como móvel e a associa a aquisição de veículos, jardinagem e procissões.",
+      "en": "shatabhisha is associated with Varuna, the deity of the ocean. in electional astrology, the tradition classifies its nature as movable and associates it with acquiring vehicles, gardening and processions.",
+      "keywords": {
+        "pt": [
+          "móvel",
+          "veículos",
+          "jardinagem"
+        ],
+        "en": [
+          "movable",
+          "vehicles",
+          "gardening"
+        ]
+      }
+    },
+    "Purva_Bhadrapada": {
+      "pt": "purva bhadrapada é associada a Ajaikapad na tradição das mansões lunares. na eleição de momentos, a tradição classifica sua natureza como feroz e a associa a planos nefastos, envenenamento, fraude, aprisionamento, incêndios e outros atos maléficos.",
+      "en": "purva bhadrapada is associated with Ajaikapad in the lunar-mansion tradition. in electional astrology, the tradition classifies its nature as dreadful and associates it with nefarious plans, poisoning, deceit, imprisonment, arson and other harmful acts.",
+      "keywords": {
+        "pt": [
+          "feroz",
+          "coerção",
+          "destruição"
+        ],
+        "en": [
+          "fierce",
+          "coercion",
+          "destruction"
+        ]
+      }
+    },
+    "Uttara_Bhadrapada": {
+      "pt": "uttara bhadrapada é associada a Ahirbudhnya, a serpente das profundezas. na eleição de momentos, a tradição classifica sua natureza como fixa e a associa a coroações, fundação de cidades, semeadura, plantio de árvores e obras permanentes.",
+      "en": "uttara bhadrapada is associated with Ahirbudhnya, the serpent of the depths. in electional astrology, the tradition classifies its nature as fixed and associates it with coronations, founding cities, sowing, planting trees and permanent works.",
+      "keywords": {
+        "pt": [
+          "fixa",
+          "plantio",
+          "permanência"
+        ],
+        "en": [
+          "fixed",
+          "planting",
+          "permanence"
+        ]
+      }
+    },
+    "Revati": {
+      "pt": "revati é associada a Pushan, protetor dos rebanhos. na eleição de momentos, a tradição classifica sua natureza como suave e a associa a roupas novas, dança, música, belas-artes, união sexual e cerimônias auspiciosas.",
+      "en": "revati is associated with Pushan, protector of flocks and herds. in electional astrology, the tradition classifies its nature as soft and associates it with new apparel, dance, music, fine arts, sexual union and auspicious ceremonies.",
+      "keywords": {
+        "pt": [
+          "suave",
+          "artes",
+          "cerimônias"
+        ],
+        "en": [
+          "soft",
+          "arts",
+          "ceremonies"
+        ]
+      }
+    }
+  },
+  "vimshottariLords": {
+    "ketu": {
+      "pt": "na leitura do dasha de Ketu, surgem novas oportunidades profissionais e avanço espiritual para você. sob aspectos adversos ou mau posicionamento, são indicadas perda dramática nos assuntos da casa ocupada, infelicidade, possível perda financeira e grande necessidade de isolamento.",
+      "en": "in the reading of Ketu’s dasha, new professional opportunities and spiritual advancement arise for you. under adverse aspects or poor placement, dramatic loss in the occupied house’s matters, unhappiness, possible financial loss and a strong need for seclusion are indicated.",
+      "keywords": {
+        "pt": [
+          "oportunidades profissionais",
+          "perdas condicionadas",
+          "isolamento"
+        ],
+        "en": [
+          "professional opportunities",
+          "conditional losses",
+          "seclusion"
+        ]
+      }
+    },
+    "venus": {
+      "pt": "na leitura do dasha de Vênus, você tem relações bem-sucedidas com pessoas queridas, nascimento de filhos, harmonia social, viagens e aquisições. sob aspectos adversos ou mau posicionamento, prevalece a extravagância e podem ocorrer discussões com pessoas próximas.",
+      "en": "in the reading of Venus’s dasha, you have successful relationships with loved ones, births of children, social harmony, travel and acquisitions. under adverse aspects or poor placement, extravagance prevails and arguments with loved ones may occur.",
+      "keywords": {
+        "pt": [
+          "relações e filhos",
+          "viagens e aquisições",
+          "extravagância e discussões"
+        ],
+        "en": [
+          "relationships and children",
+          "travel and acquisitions",
+          "extravagance and arguments"
+        ]
+      }
+    },
+    "sun": {
+      "pt": "na leitura do dasha do Sol, os assuntos da casa e do signo que ele ocupa se acentuam para você, com foco em viagens, finanças, profissão, educação e aquisição de terras. aspectos adversos, mau posicionamento ou presença nas casas seis, oito ou doze indicam problemas de visão ou dentários, dificuldades com o pai ou autoridades, heranças e perda de posição social.",
+      "en": "in the reading of the Sun’s dasha, the matters of its occupied house and sign are emphasized for you, with a focus on travel, finances, profession, education and acquiring land. adverse aspects, poor placement or presence in houses six, eight or twelve indicate vision or dental ailments, difficulties with your father or authorities, inheritance problems and loss of status.",
+      "keywords": {
+        "pt": [
+          "casa e signo",
+          "viagens e profissão",
+          "saúde e posição condicionadas"
+        ],
+        "en": [
+          "house and sign",
+          "travel and profession",
+          "conditional health and status"
+        ]
+      }
+    },
+    "moon": {
+      "pt": "na leitura do dasha da Lua, você inicia novos negócios, obtém êxito em publicações e vive harmonia, com sorte também para sua mãe, cônjuge ou filhos. sob aspectos adversos ou mau posicionamento, ocorrem oscilações emocionais e podem surgir mal-entendidos com amigos e familiares ou indecisão nos negócios.",
+      "en": "in the reading of the Moon’s dasha, you begin new business ventures, achieve success in publishing and experience harmony, with good fortune also for your mother, spouse or children. under adverse aspects or poor placement, emotional fluctuations occur and misunderstandings with friends and family or indecision in business may arise.",
+      "keywords": {
+        "pt": [
+          "negócios e publicações",
+          "harmonia familiar",
+          "oscilações condicionadas"
+        ],
+        "en": [
+          "business and publishing",
+          "family harmony",
+          "conditional fluctuations"
+        ]
+      }
+    },
+    "mars": {
+      "pt": "na leitura do dasha de Marte, é tempo de você desenvolver uma rotina de saúde e condicionamento físico, com possibilidade de viagens, aventura e ação, determinação nos empreendimentos e ajuda benéfica de amigos. sob aspectos adversos ou mau posicionamento, o período é muito inquieto, há discórdia conjugal e podem ocorrer mudanças de residência ou profissão e discussões com amigos.",
+      "en": "in the reading of Mars’s dasha, it is time for you to develop a health and fitness regimen, with travel, adventure and action possible, determination in undertakings and beneficial help from friends. under adverse aspects or poor placement, the period is very restless, marital discord occurs and changes of residence or profession and arguments with friends may take place.",
+      "keywords": {
+        "pt": [
+          "saúde e condicionamento",
+          "ação e ajuda",
+          "discórdia e mudanças"
+        ],
+        "en": [
+          "health and fitness",
+          "action and help",
+          "discord and changes"
+        ]
+      }
+    },
+    "rahu": {
+      "pt": "na leitura do dasha de Rahu, você alcança sucesso, riqueza e viagens. sob aspectos adversos ou mau posicionamento, ocorrem muitos reveses profissionais, com possibilidade de divórcio ou separação de amigos.",
+      "en": "in the reading of Rahu’s dasha, you attain success, wealth and travel. under adverse aspects or poor placement, many professional setbacks occur, with the possibility of divorce or separation from friends.",
+      "keywords": {
+        "pt": [
+          "sucesso e riqueza",
+          "viagens",
+          "divórcio e reveses condicionados"
+        ],
+        "en": [
+          "success and wealth",
+          "travel",
+          "conditional divorce and setbacks"
+        ]
+      }
+    },
+    "jupiter": {
+      "pt": "na leitura do dasha de Júpiter, você vive um período muito afortunado e próspero, com casamento, filhos ou êxito profissional e interesse por filosofia, religião ou leis. sob aspectos adversos ou mau posicionamento, prevalecem cobiça, indolência, extravagância ou oportunidades perdidas.",
+      "en": "in the reading of Jupiter’s dasha, you experience a very fortunate and prosperous period, with marriage, children or professional success and an interest in philosophy, religion or law. under adverse aspects or poor placement, greed, indolence, extravagance or lost opportunities prevail.",
+      "keywords": {
+        "pt": [
+          "prosperidade e família",
+          "filosofia e leis",
+          "excessos condicionados"
+        ],
+        "en": [
+          "prosperity and family",
+          "philosophy and law",
+          "conditional excesses"
+        ]
+      }
+    },
+    "saturn": {
+      "pt": "na leitura do dasha de Saturno, você colhe o sucesso conquistado por trabalho e persistência, e esforços iniciados antes têm conclusões prósperas se continuar trabalhando com paciência. sob aspectos adversos ou mau posicionamento, prevalecem obstáculos incontroláveis, doença, depressão e solidão.",
+      "en": "in the reading of Saturn’s dasha, you harvest success earned through work and persistence, and efforts begun earlier reach prosperous conclusions if you continue working patiently. under adverse aspects or poor placement, uncontrollable obstacles, illness, depression and loneliness prevail.",
+      "keywords": {
+        "pt": [
+          "trabalho e resultados",
+          "paciência",
+          "doença e obstáculos condicionados"
+        ],
+        "en": [
+          "work and results",
+          "patience",
+          "conditional illness and obstacles"
+        ]
+      }
+    },
+    "mercury": {
+      "pt": "na leitura do dasha de Mercúrio, você obtém sucesso nos negócios e encontra um período para iniciar carreira na escrita ou comunicação, ou retornar aos estudos para uma formação avançada. mudanças de residência ou profissão também podem ocorrer.",
+      "en": "in the reading of Mercury’s dasha, you achieve success in business and find a period for beginning a writing or communications career, or returning to study for an advanced degree. changes of residence or profession may also occur.",
+      "keywords": {
+        "pt": [
+          "sucesso nos negócios",
+          "escrita e formação",
+          "mudanças"
+        ],
+        "en": [
+          "business success",
+          "writing and education",
+          "changes"
+        ]
+      }
+    }
+  }
+}

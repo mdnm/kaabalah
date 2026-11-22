@@ -1,0 +1,1518 @@
+{
+  "nakshatraPadas": {
+    "Ashwini/1": {
+      "pt": "sua mente é instável nesta leitura. você espalha histórias e se diverte às custas dos outros.",
+      "en": "your mind is unsteady in this reading. you spread tales and enjoy yourself at others’ expense.",
+      "keywords": {
+        "pt": [
+          "instabilidade",
+          "fofoca"
+        ],
+        "en": [
+          "unsteadiness",
+          "gossip"
+        ]
+      }
+    },
+    "Ashwini/2": {
+      "pt": "você se interessa por obras religiosas e avalia os outros. assimila boas qualidades.",
+      "en": "you take an interest in religious works and assess others. you absorb good qualities.",
+      "keywords": {
+        "pt": [
+          "religião",
+          "discernimento"
+        ],
+        "en": [
+          "religion",
+          "discernment"
+        ]
+      }
+    },
+    "Ashwini/3": {
+      "pt": "você oferece bons conselhos e se interessa por astrologia. a leitura também lhe atribui jovialidade.",
+      "en": "you offer good counsel and take an interest in astrology. the reading also describes you as jovial.",
+      "keywords": {
+        "pt": [
+          "aconselhamento",
+          "jovialidade"
+        ],
+        "en": [
+          "counsel",
+          "joviality"
+        ]
+      }
+    },
+    "Ashwini/4": {
+      "pt": "você é verdadeiro e esperto nesta leitura. ela também lhe atribui riqueza.",
+      "en": "you are truthful and clever in this reading. it also attributes wealth to you.",
+      "keywords": {
+        "pt": [
+          "veracidade",
+          "riqueza"
+        ],
+        "en": [
+          "truthfulness",
+          "wealth"
+        ]
+      }
+    },
+    "Bharani/1": {
+      "pt": "você vence os rivais e tem capacidade física nesta leitura. também se irrita facilmente.",
+      "en": "you defeat rivals and are physically capable in this reading. you are also easily provoked.",
+      "keywords": {
+        "pt": [
+          "vitória",
+          "capacidade física",
+          "irritação"
+        ],
+        "en": [
+          "victory",
+          "physical capability",
+          "irritability"
+        ]
+      }
+    },
+    "Bharani/2": {
+      "pt": "você tem inteligência e boa reputação. a leitura também menciona leve parcialidade por mulheres.",
+      "en": "you have intellect and a good reputation. the reading also mentions a slight bias toward women.",
+      "keywords": {
+        "pt": [
+          "inteligência",
+          "reputação"
+        ],
+        "en": [
+          "intellect",
+          "reputation"
+        ]
+      }
+    },
+    "Bharani/3": {
+      "pt": "você se irrita facilmente, mas tem boa resistência. a leitura também lhe atribui esnobismo.",
+      "en": "you are easily provoked but have good endurance. the reading also attributes snobbery to you.",
+      "keywords": {
+        "pt": [
+          "resistência",
+          "esnobismo"
+        ],
+        "en": [
+          "endurance",
+          "snobbery"
+        ]
+      }
+    },
+    "Bharani/4": {
+      "pt": "você tem obstinação e teimosia nesta leitura. também reúne ganância e esperteza.",
+      "en": "you are adamant and headstrong in this reading. you also combine greed and cleverness.",
+      "keywords": {
+        "pt": [
+          "ganância",
+          "esperteza"
+        ],
+        "en": [
+          "greed",
+          "cleverness"
+        ]
+      }
+    },
+    "Krittika/1": {
+      "pt": "você tem generosidade e recebe força, resistência e vontade dos planetas. sua coragem pode levar você à carreira militar.",
+      "en": "you are generous and receive strength, stamina and willpower from planets. your courage may draw you toward a military career.",
+      "keywords": {
+        "pt": [
+          "coragem",
+          "carreira militar"
+        ],
+        "en": [
+          "courage",
+          "military career"
+        ]
+      }
+    },
+    "Krittika/2": {
+      "pt": "sua leitura enfatiza a ética. você a manifesta no plano material mais que no espiritual.",
+      "en": "your reading emphasizes ethics. you express it materially more than spiritually.",
+      "keywords": {
+        "pt": [
+          "ética",
+          "materialidade"
+        ],
+        "en": [
+          "ethics",
+          "materiality"
+        ]
+      }
+    },
+    "Krittika/3": {
+      "pt": "você tem generosidade e compaixão. aprender e acumular conhecimento são seus focos nesta leitura.",
+      "en": "you are generous and compassionate. learning and accumulating knowledge are your focus in this reading.",
+      "keywords": {
+        "pt": [
+          "compaixão",
+          "conhecimento"
+        ],
+        "en": [
+          "compassion",
+          "knowledge"
+        ]
+      }
+    },
+    "Krittika/4": {
+      "pt": "você dá grande atenção ao conforto material. a leitura incentiva seus esforços para obtê-lo.",
+      "en": "you are highly conscious of material comfort. the reading encourages your efforts to acquire it.",
+      "keywords": {
+        "pt": [
+          "conforto",
+          "aquisição"
+        ],
+        "en": [
+          "comfort",
+          "acquisition"
+        ]
+      }
+    },
+    "Rohini/1": {
+      "pt": "você busca resultados materiais rápidos. só Sol e Marte muito bem posicionados são descritos como favoráveis aqui.",
+      "en": "you seek swift material results. only a very well-placed Sun and Mars are described as favorable here.",
+      "keywords": {
+        "pt": [
+          "rapidez",
+          "resultados materiais"
+        ],
+        "en": [
+          "speed",
+          "material results"
+        ]
+      }
+    },
+    "Rohini/2": {
+      "pt": "seus planetas geralmente trazem riqueza e desejos satisfeitos, com máxima firmeza nessa realização. a leitura favorece Lua, Mercúrio, Vênus e Saturno, atribuindo excelência ao vargottama.",
+      "en": "your planets generally bring wealth and fulfilled desires, with the greatest grounding in their fulfillment. the reading favors Moon, Mercury, Venus and Saturn, attributing excellence to vargottama.",
+      "keywords": {
+        "pt": [
+          "riqueza",
+          "satisfação"
+        ],
+        "en": [
+          "wealth",
+          "fulfillment"
+        ]
+      }
+    },
+    "Rohini/3": {
+      "pt": "você reúne expressão, ciências, comércio, adaptabilidade e destreza. Mercúrio, Vênus e Saturno dão resultados confiáveis aqui.",
+      "en": "you combine expression, sciences, commerce, adaptability and dexterity. Mercury, Venus and Saturn give reliable results here.",
+      "keywords": {
+        "pt": [
+          "comércio",
+          "adaptabilidade"
+        ],
+        "en": [
+          "commerce",
+          "adaptability"
+        ]
+      }
+    },
+    "Rohini/4": {
+      "pt": "você tem traços maternais, possessivos e extremistas, com renda de viagens curtas. só Lua ou Júpiter bem posicionados funcionam favoravelmente.",
+      "en": "you have maternal, possessive and extreme traits, with income from short journeys. only a well-placed Moon or Jupiter works favorably.",
+      "keywords": {
+        "pt": [
+          "viagens curtas",
+          "possessividade"
+        ],
+        "en": [
+          "short journeys",
+          "possessiveness"
+        ]
+      }
+    },
+    "Mrigashira/1": {
+      "pt": "você reúne raiva e extravagância nesta leitura. também exerce intimidação e poder.",
+      "en": "you combine anger and extravagance in this reading. you also display bullying and power.",
+      "keywords": {
+        "pt": [
+          "raiva",
+          "poder"
+        ],
+        "en": [
+          "anger",
+          "power"
+        ]
+      }
+    },
+    "Mrigashira/2": {
+      "pt": "você flerta e se sente confuso nesta leitura. também apresenta teimosia e ciúme.",
+      "en": "you flirt and feel puzzled in this reading. you also show stubbornness and jealousy.",
+      "keywords": {
+        "pt": [
+          "flerte",
+          "ciúme"
+        ],
+        "en": [
+          "flirtation",
+          "jealousy"
+        ]
+      }
+    },
+    "Mrigashira/3": {
+      "pt": "você tem alegria e felicidade nesta leitura. também reúne fé, espiritualidade e intelecto.",
+      "en": "you are cheerful and happy in this reading. you also combine faith, spirituality and intellect.",
+      "keywords": {
+        "pt": [
+          "fé",
+          "intelecto"
+        ],
+        "en": [
+          "faith",
+          "intellect"
+        ]
+      }
+    },
+    "Mrigashira/4": {
+      "pt": "você tem brilhantismo nesta leitura. agressividade e paixão também fazem parte da interpretação.",
+      "en": "you are brilliant in this reading. aggression and passion also form part of the interpretation.",
+      "keywords": {
+        "pt": [
+          "brilhantismo",
+          "paixão"
+        ],
+        "en": [
+          "brilliance",
+          "passion"
+        ]
+      }
+    },
+    "Ardra/1": {
+      "pt": "você demonstra amor, cuidado e intelecto nesta leitura. sua aparência é bonita e impressionante.",
+      "en": "you show love, care and intellect in this reading. your appearance is attractive and impressive.",
+      "keywords": {
+        "pt": [
+          "aparência",
+          "intelecto"
+        ],
+        "en": [
+          "appearance",
+          "intellect"
+        ]
+      }
+    },
+    "Ardra/2": {
+      "pt": "você tem versatilidade e boa comunicação. também se expressa de maneira direta e franca.",
+      "en": "you are versatile and communicative. you also express yourself directly and frankly.",
+      "keywords": {
+        "pt": [
+          "versatilidade",
+          "franqueza"
+        ],
+        "en": [
+          "versatility",
+          "frankness"
+        ]
+      }
+    },
+    "Ardra/3": {
+      "pt": "esta leitura atribui imunidade fraca a você. também reúne disposição sonhadora e hostilidade.",
+      "en": "this reading attributes weak immunity to you. it also combines dreaminess and hostility.",
+      "keywords": {
+        "pt": [
+          "imunidade fraca",
+          "hostilidade"
+        ],
+        "en": [
+          "weak immunity",
+          "hostility"
+        ]
+      }
+    },
+    "Ardra/4": {
+      "pt": "você se irrita facilmente nesta leitura. ela também menciona impureza, malícia ou falta de compaixão.",
+      "en": "you are short-tempered in this reading. it also mentions impurity, malice or lack of sympathy.",
+      "keywords": {
+        "pt": [
+          "irritabilidade",
+          "malícia"
+        ],
+        "en": [
+          "irritability",
+          "malice"
+        ]
+      }
+    },
+    "Punarvasu/1": {
+      "pt": "você flerta e tem sensualidade nesta leitura. seu humor é variável.",
+      "en": "you are flirtatious and sensual in this reading. your moods are changeable.",
+      "keywords": {
+        "pt": [
+          "sensualidade",
+          "humor variável"
+        ],
+        "en": [
+          "sensuality",
+          "moodiness"
+        ]
+      }
+    },
+    "Punarvasu/2": {
+      "pt": "você reúne introspecção e religiosidade. também tem determinação.",
+      "en": "you combine introspection and religiousness. you also have determination.",
+      "keywords": {
+        "pt": [
+          "introspecção",
+          "determinação"
+        ],
+        "en": [
+          "introspection",
+          "determination"
+        ]
+      }
+    },
+    "Punarvasu/3": {
+      "pt": "você viaja e busca satisfazer os próprios prazeres. a leitura também lhe atribui calma e refinamento cultural.",
+      "en": "you travel and indulge yourself. the reading also attributes calm and cultural refinement to you.",
+      "keywords": {
+        "pt": [
+          "viagens",
+          "autocomplacência"
+        ],
+        "en": [
+          "travel",
+          "self-indulgence"
+        ]
+      }
+    },
+    "Punarvasu/4": {
+      "pt": "você tem compaixão e boa comunicação. também julga sem parcialidade nesta leitura.",
+      "en": "you are compassionate and communicative. you also judge impartially in this reading.",
+      "keywords": {
+        "pt": [
+          "compaixão",
+          "imparcialidade"
+        ],
+        "en": [
+          "compassion",
+          "impartiality"
+        ]
+      }
+    },
+    "Pushya/1": {
+      "pt": "você pensa com esperteza e pratica filantropia. a leitura também lhe atribui solidão e desapego.",
+      "en": "you think shrewdly and practice philanthropy. the reading also attributes loneliness and detachment to you.",
+      "keywords": {
+        "pt": [
+          "filantropia",
+          "desapego"
+        ],
+        "en": [
+          "philanthropy",
+          "detachment"
+        ]
+      }
+    },
+    "Pushya/2": {
+      "pt": "você tem cuidado, emoção e disposição para perdoar. a leitura também lhe atribui qualidade régia.",
+      "en": "you are caring, emotional and forgiving. the reading also describes a royal quality in you.",
+      "keywords": {
+        "pt": [
+          "cuidado",
+          "perdão"
+        ],
+        "en": [
+          "care",
+          "forgiveness"
+        ]
+      }
+    },
+    "Pushya/3": {
+      "pt": "você reúne espontaneidade e senso prático. a leitura também descreve você como alguém amável e desejável.",
+      "en": "you combine spontaneity and practicality. the reading also describes you as lovable and desirable.",
+      "keywords": {
+        "pt": [
+          "espontaneidade",
+          "atração"
+        ],
+        "en": [
+          "spontaneity",
+          "desirability"
+        ]
+      }
+    },
+    "Pushya/4": {
+      "pt": "você tem sociabilidade e agressividade nesta leitura. os outros confiam em você.",
+      "en": "you are sociable and aggressive in this reading. others trust you.",
+      "keywords": {
+        "pt": [
+          "agressividade",
+          "confiança"
+        ],
+        "en": [
+          "aggression",
+          "trust"
+        ]
+      }
+    },
+    "Ashlesha/1": {
+      "pt": "você analisa e pensa profundamente. a leitura também lhe atribui notoriedade.",
+      "en": "you analyze and think deeply. the reading also attributes public recognition to you.",
+      "keywords": {
+        "pt": [
+          "análise",
+          "notoriedade"
+        ],
+        "en": [
+          "analysis",
+          "recognition"
+        ]
+      }
+    },
+    "Ashlesha/2": {
+      "pt": "você tem religiosidade, espiritualidade e egoísmo. sua aparência é adorável nesta leitura.",
+      "en": "you combine religiousness, spirituality and selfishness. your appearance is lovely in this reading.",
+      "keywords": {
+        "pt": [
+          "aparência",
+          "egoísmo"
+        ],
+        "en": [
+          "appearance",
+          "selfishness"
+        ]
+      }
+    },
+    "Ashlesha/3": {
+      "pt": "você tem ganância e atua como instrutor. seu pensamento é passivo nesta leitura.",
+      "en": "you are greedy and act as an instructor. your thinking is passive in this reading.",
+      "keywords": {
+        "pt": [
+          "ganância",
+          "ensino"
+        ],
+        "en": [
+          "greed",
+          "teaching"
+        ]
+      }
+    },
+    "Ashlesha/4": {
+      "pt": "você oferece apoio e tem ambição. a leitura também lhe atribui incompetência.",
+      "en": "you are supportive and ambitious. the reading also attributes incompetence to you.",
+      "keywords": {
+        "pt": [
+          "ambição",
+          "incompetência"
+        ],
+        "en": [
+          "ambition",
+          "incompetence"
+        ]
+      }
+    },
+    "Magha/1": {
+      "pt": "sua vontade ocupa o centro da leitura. você conquista o trono na imagem mítica da serpente Ashlesha morta.",
+      "en": "your willpower is central to the reading. you secure the throne in the mythic image of the slain Ashlesha serpent.",
+      "keywords": {
+        "pt": [
+          "vontade",
+          "trono"
+        ],
+        "en": [
+          "willpower",
+          "throne"
+        ]
+      }
+    },
+    "Magha/2": {
+      "pt": "você ascende ao trono na imagem desta leitura. dever, organização material e boa imagem recebem destaque.",
+      "en": "you ascend the throne in this reading’s image. duty, material organization and a good image receive emphasis.",
+      "keywords": {
+        "pt": [
+          "dever",
+          "ascensão"
+        ],
+        "en": [
+          "duty",
+          "ascension"
+        ]
+      }
+    },
+    "Magha/3": {
+      "pt": "você busca as artes e escuta estudiosos. conhecimento e atividades mentais têm prioridade nesta leitura.",
+      "en": "you pursue the arts and listen to scholars. knowledge and mental activities take priority in this reading.",
+      "keywords": {
+        "pt": [
+          "artes",
+          "conhecimento"
+        ],
+        "en": [
+          "arts",
+          "knowledge"
+        ]
+      }
+    },
+    "Magha/4": {
+      "pt": "você tem gosto por rituais e culto aos ancestrais. seu orgulho familiar também recebe destaque.",
+      "en": "you favor rituals and ancestor worship. your family pride is also emphasized.",
+      "keywords": {
+        "pt": [
+          "ancestrais",
+          "orgulho familiar"
+        ],
+        "en": [
+          "ancestors",
+          "family pride"
+        ]
+      }
+    },
+    "Purva_Phalguni/1": {
+      "pt": "sua leitura enfatiza o eu e a inteligência. você pode usar seu conhecimento para ensinar os outros.",
+      "en": "your reading emphasizes selfhood and intelligence. you can use your knowledge to teach others.",
+      "keywords": {
+        "pt": [
+          "inteligência",
+          "ensino"
+        ],
+        "en": [
+          "intelligence",
+          "teaching"
+        ]
+      }
+    },
+    "Purva_Phalguni/2": {
+      "pt": "você trabalha com empenho nesta leitura. o comércio é lucrativo.",
+      "en": "you work hard in this reading. trade is profitable.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "lucro"
+        ],
+        "en": [
+          "work",
+          "profit"
+        ]
+      }
+    },
+    "Purva_Phalguni/3": {
+      "pt": "sua criatividade venusiana se manifesta nesta leitura. você busca paz e relaxamento.",
+      "en": "your Venusian creativity emerges in this reading. you focus on peace and relaxation.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "paz"
+        ],
+        "en": [
+          "creativity",
+          "peace"
+        ]
+      }
+    },
+    "Purva_Phalguni/4": {
+      "pt": "suas emoções e sua vida familiar recebem destaque. você também reúne coragem e introspecção.",
+      "en": "your emotions and family life receive emphasis. you also combine courage and introspection.",
+      "keywords": {
+        "pt": [
+          "família",
+          "coragem"
+        ],
+        "en": [
+          "family",
+          "courage"
+        ]
+      }
+    },
+    "Uttara_Phalguni/1": {
+      "pt": "você tem ética e gosta de atuar em escala ampla. a leitura atribui isso à influência de Júpiter.",
+      "en": "you are ethical and prefer a broader canvas. the reading attributes this to Jupiter’s influence.",
+      "keywords": {
+        "pt": [
+          "ética",
+          "amplitude"
+        ],
+        "en": [
+          "ethics",
+          "breadth"
+        ]
+      }
+    },
+    "Uttara_Phalguni/2": {
+      "pt": "você pode ter muita disciplina e praticidade. a leitura atribui essas qualidades à regência de Saturno.",
+      "en": "you can be highly disciplined and practical. the reading attributes these qualities to Saturn’s rulership.",
+      "keywords": {
+        "pt": [
+          "disciplina",
+          "praticidade"
+        ],
+        "en": [
+          "discipline",
+          "practicality"
+        ]
+      }
+    },
+    "Uttara_Phalguni/3": {
+      "pt": "você geralmente tem inteligência nesta leitura. sua orientação é para objetivos.",
+      "en": "you are generally intelligent in this reading. you are goal-oriented.",
+      "keywords": {
+        "pt": [
+          "inteligência",
+          "objetivos"
+        ],
+        "en": [
+          "intelligence",
+          "goals"
+        ]
+      }
+    },
+    "Uttara_Phalguni/4": {
+      "pt": "você tende a ter muita espiritualidade. a leitura atribui essa inclinação à influência de Júpiter.",
+      "en": "you tend to be highly spiritual. the reading attributes this inclination to Jupiter’s influence.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "Júpiter"
+        ],
+        "en": [
+          "spirituality",
+          "Jupiter"
+        ]
+      }
+    },
+    "Hasta/1": {
+      "pt": "você tem energia excessiva nesta leitura. também é especialista em atividades escusas.",
+      "en": "you have excessive energy in this reading. you also have expertise in shady activities.",
+      "keywords": {
+        "pt": [
+          "energia",
+          "atividades escusas"
+        ],
+        "en": [
+          "energy",
+          "shady activities"
+        ]
+      }
+    },
+    "Hasta/2": {
+      "pt": "você busca praticidade e prazer material. a leitura lhe atribui mais honestidade que aos outros padas.",
+      "en": "you seek practicality and material enjoyment. the reading attributes greater honesty to you than to other padas.",
+      "keywords": {
+        "pt": [
+          "prazer material",
+          "honestidade"
+        ],
+        "en": [
+          "material enjoyment",
+          "honesty"
+        ]
+      }
+    },
+    "Hasta/3": {
+      "pt": "você tem inteligência e esperteza nesta leitura. o pada se associa a comerciantes e profissionais.",
+      "en": "you have intelligence and cleverness in this reading. the pada is associated with businesspeople and professionals.",
+      "keywords": {
+        "pt": [
+          "inteligência",
+          "comércio"
+        ],
+        "en": [
+          "intelligence",
+          "business"
+        ]
+      }
+    },
+    "Hasta/4": {
+      "pt": "você busca harmonia familiar e segurança material. suas melhores e piores qualidades se manifestam neste pada.",
+      "en": "you focus on family harmony and material security. your best and worst qualities manifest in this pada.",
+      "keywords": {
+        "pt": [
+          "família",
+          "segurança material"
+        ],
+        "en": [
+          "family",
+          "material security"
+        ]
+      }
+    },
+    "Chitra/1": {
+      "pt": "você busca autoconhecimento e aplicação prática. controlar o orgulho permite expressão positiva sem egoísmo.",
+      "en": "you seek self-understanding and practical application. controlling pride allows positive expression without selfishness.",
+      "keywords": {
+        "pt": [
+          "autoconhecimento",
+          "orgulho"
+        ],
+        "en": [
+          "self-understanding",
+          "pride"
+        ]
+      }
+    },
+    "Chitra/2": {
+      "pt": "você desenvolve discernimento, autodisciplina e participação em grupos. suas ambições geralmente se realizam nesta leitura.",
+      "en": "you develop discrimination, self-discipline and group participation. your ambitions usually come to fruition in this reading.",
+      "keywords": {
+        "pt": [
+          "discernimento",
+          "realização"
+        ],
+        "en": [
+          "discrimination",
+          "achievement"
+        ]
+      }
+    },
+    "Chitra/3": {
+      "pt": "você se volta à música, às artes e às ciências exóticas. provavelmente terá gastos desnecessários e desfará trabalho bem-feito.",
+      "en": "you focus on music, arts and exotic sciences. you are likely to incur needless expenses and undo good work.",
+      "keywords": {
+        "pt": [
+          "artes",
+          "despesas"
+        ],
+        "en": [
+          "arts",
+          "expenses"
+        ]
+      }
+    },
+    "Chitra/4": {
+      "pt": "você usa energia excessiva para ambições e objetivos até frágeis. direcioná-la positivamente exige esforço consciente.",
+      "en": "you use excess energy for ambitions and even flimsy goals. directing it positively requires conscious effort.",
+      "keywords": {
+        "pt": [
+          "energia",
+          "ambições"
+        ],
+        "en": [
+          "energy",
+          "ambitions"
+        ]
+      }
+    },
+    "Swati/1": {
+      "pt": "você busca respostas e procura superar a inquietação. a leitura prevê viagens.",
+      "en": "you are inquisitive and seek to overcome restlessness. the reading predicts travel.",
+      "keywords": {
+        "pt": [
+          "curiosidade",
+          "viagens"
+        ],
+        "en": [
+          "curiosity",
+          "travel"
+        ]
+      }
+    },
+    "Swati/2": {
+      "pt": "você tem forte materialismo nesta leitura. também é firme e estável.",
+      "en": "you embody materialism in this reading. you are also grounded and stable.",
+      "keywords": {
+        "pt": [
+          "materialismo",
+          "estabilidade"
+        ],
+        "en": [
+          "materialism",
+          "stability"
+        ]
+      }
+    },
+    "Swati/3": {
+      "pt": "você reúne criatividade, conhecimento e espírito de equipe. busca alcançar objetivos comuns.",
+      "en": "you combine creativity, knowledge and team spirit. you seek to achieve shared goals.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "cooperação"
+        ],
+        "en": [
+          "creativity",
+          "teamwork"
+        ]
+      }
+    },
+    "Swati/4": {
+      "pt": "você tem máxima flexibilidade nesta leitura. acompanha o fluxo com contentamento.",
+      "en": "you are most flexible in this reading. you go contentedly with the tide.",
+      "keywords": {
+        "pt": [
+          "flexibilidade",
+          "contentamento"
+        ],
+        "en": [
+          "flexibility",
+          "contentment"
+        ]
+      }
+    },
+    "Vishakha/1": {
+      "pt": "você tem muita energia e ambição. seu foco são os relacionamentos.",
+      "en": "you are highly energetic and ambitious. your focus is relationships.",
+      "keywords": {
+        "pt": [
+          "energia",
+          "relações"
+        ],
+        "en": [
+          "energy",
+          "relationships"
+        ]
+      }
+    },
+    "Vishakha/2": {
+      "pt": "você reúne durabilidade e resistência. sucesso e fama são muito prováveis nesta leitura.",
+      "en": "you combine durability and endurance. success and fame are very likely in this reading.",
+      "keywords": {
+        "pt": [
+          "resistência",
+          "fama"
+        ],
+        "en": [
+          "endurance",
+          "fame"
+        ]
+      }
+    },
+    "Vishakha/3": {
+      "pt": "você se concentra inteiramente em seus objetivos. essa concentração traz realização e sucesso nesta leitura.",
+      "en": "you focus single-mindedly on your goals. that concentration brings achievement and success in this reading.",
+      "keywords": {
+        "pt": [
+          "concentração",
+          "sucesso"
+        ],
+        "en": [
+          "focus",
+          "success"
+        ]
+      }
+    },
+    "Vishakha/4": {
+      "pt": "você enfrenta turbulência emocional difícil de superar. também há possibilidade de risco nesta leitura.",
+      "en": "you face emotional turmoil that is difficult to overcome. the reading also includes a possibility of risk.",
+      "keywords": {
+        "pt": [
+          "turbulência emocional",
+          "dificuldade"
+        ],
+        "en": [
+          "emotional turmoil",
+          "difficulty"
+        ]
+      }
+    },
+    "Anuradha/1": {
+      "pt": "você decide com justiça e aprecia estudos religiosos ou espirituais. também pratica ações piedosas.",
+      "en": "you decide fairly and enjoy religious or spiritual studies. you also perform pious deeds.",
+      "keywords": {
+        "pt": [
+          "justiça",
+          "piedade"
+        ],
+        "en": [
+          "fairness",
+          "piety"
+        ]
+      }
+    },
+    "Anuradha/2": {
+      "pt": "você reúne arte, criatividade e boa reputação. a leitura também lhe atribui mérito e sorte.",
+      "en": "you combine artistry, creativity and reputation. the reading also attributes worthiness and luck to you.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "sorte"
+        ],
+        "en": [
+          "creativity",
+          "luck"
+        ]
+      }
+    },
+    "Anuradha/3": {
+      "pt": "você tem instrução e beleza nesta leitura. também possui humor e alegria.",
+      "en": "you are literate and attractive in this reading. you also have humor and a fun-loving disposition.",
+      "keywords": {
+        "pt": [
+          "beleza",
+          "humor"
+        ],
+        "en": [
+          "beauty",
+          "humor"
+        ]
+      }
+    },
+    "Anuradha/4": {
+      "pt": "você sente medo, dúvida e desconfiança. a leitura também lhe atribui coragem.",
+      "en": "you feel fear, doubt and suspicion. the reading also attributes courage to you.",
+      "keywords": {
+        "pt": [
+          "desconfiança",
+          "coragem"
+        ],
+        "en": [
+          "suspicion",
+          "courage"
+        ]
+      }
+    },
+    "Jyeshtha/1": {
+      "pt": "seus interesses financeiros ocupam sua atenção. você deseja estudos superiores e demonstra muita generosidade.",
+      "en": "financial interests occupy your attention. you desire higher studies and show great generosity.",
+      "keywords": {
+        "pt": [
+          "finanças",
+          "generosidade"
+        ],
+        "en": [
+          "finances",
+          "generosity"
+        ]
+      }
+    },
+    "Jyeshtha/2": {
+      "pt": "você assume responsabilidades nesta leitura. faz o que é correto, não o que é conveniente.",
+      "en": "you take responsibility in this reading. you do what is right rather than convenient.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "integridade"
+        ],
+        "en": [
+          "responsibility",
+          "integrity"
+        ]
+      }
+    },
+    "Jyeshtha/3": {
+      "pt": "você percebe necessidades alheias e ajuda quanto pode. a leitura adverte contra ficar preso em encontros sexuais estranhos.",
+      "en": "you sense others’ needs and help as much as possible. the reading warns against becoming trapped in strange sexual encounters.",
+      "keywords": {
+        "pt": [
+          "ajuda",
+          "encontros sexuais"
+        ],
+        "en": [
+          "help",
+          "sexual encounters"
+        ]
+      }
+    },
+    "Jyeshtha/4": {
+      "pt": "você se deixa levar facilmente pelas emoções e ama crianças. também se interessa muito por ciências exóticas.",
+      "en": "you are easily carried away by emotions and love children. you also take great interest in exotic sciences.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "crianças"
+        ],
+        "en": [
+          "emotions",
+          "children"
+        ]
+      }
+    },
+    "Mula/1": {
+      "pt": "você aprecia comida e tem comportamento silencioso. sua orientação é progressista nesta leitura.",
+      "en": "you enjoy food and are quiet. your outlook is progressive in this reading.",
+      "keywords": {
+        "pt": [
+          "alimentação",
+          "progresso"
+        ],
+        "en": [
+          "food",
+          "progress"
+        ]
+      }
+    },
+    "Mula/2": {
+      "pt": "você tem elevado profissionalismo e acredita na realidade. a leitura também lhe atribui corpo saudável.",
+      "en": "you are highly professional and believe in reality. the reading also attributes a healthy body to you.",
+      "keywords": {
+        "pt": [
+          "profissionalismo",
+          "saúde"
+        ],
+        "en": [
+          "professionalism",
+          "health"
+        ]
+      }
+    },
+    "Mula/3": {
+      "pt": "você reúne lentidão e astúcia nesta leitura. tem ambição e muitos objetivos.",
+      "en": "you combine sluggishness and cunning in this reading. you are ambitious and full of aims.",
+      "keywords": {
+        "pt": [
+          "astúcia",
+          "ambição"
+        ],
+        "en": [
+          "cunning",
+          "ambition"
+        ]
+      }
+    },
+    "Mula/4": {
+      "pt": "você tem boa forma física nesta leitura. também apresenta dominância e brilhantismo.",
+      "en": "you are physically fit in this reading. you also show dominance and brilliance.",
+      "keywords": {
+        "pt": [
+          "forma física",
+          "brilhantismo"
+        ],
+        "en": [
+          "physical fitness",
+          "brilliance"
+        ]
+      }
+    },
+    "Purva_Ashadha/1": {
+      "pt": "você tem respeito e coragem nesta leitura. suas emoções também recebem destaque.",
+      "en": "you are respectful and courageous in this reading. your emotions are also emphasized.",
+      "keywords": {
+        "pt": [
+          "respeito",
+          "coragem"
+        ],
+        "en": [
+          "respect",
+          "courage"
+        ]
+      }
+    },
+    "Purva_Ashadha/2": {
+      "pt": "você tem extroversão e descuido nesta leitura. também pensa em excesso.",
+      "en": "you are outgoing and careless in this reading. you also overthink.",
+      "keywords": {
+        "pt": [
+          "extroversão",
+          "descuido"
+        ],
+        "en": [
+          "outgoingness",
+          "carelessness"
+        ]
+      }
+    },
+    "Purva_Ashadha/3": {
+      "pt": "você tem felicidade e força mental. também fala bastante.",
+      "en": "you are happy and mentally strong. you are also talkative.",
+      "keywords": {
+        "pt": [
+          "felicidade",
+          "força mental"
+        ],
+        "en": [
+          "happiness",
+          "mental strength"
+        ]
+      }
+    },
+    "Purva_Ashadha/4": {
+      "pt": "você tem muita força de vontade e espírito combativo. também fala com franqueza.",
+      "en": "you have strong willpower and a fighting spirit. you also speak frankly.",
+      "keywords": {
+        "pt": [
+          "vontade",
+          "franqueza"
+        ],
+        "en": [
+          "willpower",
+          "frankness"
+        ]
+      }
+    },
+    "Uttara_Ashadha/1": {
+      "pt": "você tem bondade e atenção nesta leitura. também possui ampla visão.",
+      "en": "you are kind and attentive in this reading. you also have vision.",
+      "keywords": {
+        "pt": [
+          "bondade",
+          "visão"
+        ],
+        "en": [
+          "kindness",
+          "vision"
+        ]
+      }
+    },
+    "Uttara_Ashadha/2": {
+      "pt": "você reúne avareza e versatilidade. a leitura também lhe atribui orgulho.",
+      "en": "you combine miserliness and versatility. the reading also attributes pride to you.",
+      "keywords": {
+        "pt": [
+          "avareza",
+          "orgulho"
+        ],
+        "en": [
+          "miserliness",
+          "pride"
+        ]
+      }
+    },
+    "Uttara_Ashadha/3": {
+      "pt": "a leitura lhe atribui constituição física frágil. você também reúne vanglória e compaixão.",
+      "en": "the reading attributes a frail physique to you. you also combine boasting and sympathy.",
+      "keywords": {
+        "pt": [
+          "constituição frágil",
+          "vanglória"
+        ],
+        "en": [
+          "frail physique",
+          "boasting"
+        ]
+      }
+    },
+    "Uttara_Ashadha/4": {
+      "pt": "você se dedica aos negócios e tem grande resistência. a leitura também lhe atribui riqueza.",
+      "en": "you engage in business and have great endurance. the reading also attributes wealth to you.",
+      "keywords": {
+        "pt": [
+          "negócios",
+          "riqueza"
+        ],
+        "en": [
+          "business",
+          "wealth"
+        ]
+      }
+    },
+    "Shravana/1": {
+      "pt": "você fala suavemente e tem boa comunicação. também possui coragem.",
+      "en": "you speak softly and communicate well. you also have courage.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "coragem"
+        ],
+        "en": [
+          "communication",
+          "courage"
+        ]
+      }
+    },
+    "Shravana/2": {
+      "pt": "você não economiza e tem introversão nesta leitura. sua abordagem é seletiva.",
+      "en": "you are unthrifty and introverted in this reading. your approach is selective.",
+      "keywords": {
+        "pt": [
+          "gastos",
+          "seletividade"
+        ],
+        "en": [
+          "spending",
+          "selectivity"
+        ]
+      }
+    },
+    "Shravana/3": {
+      "pt": "você tem riqueza e disposição sonhadora. também demonstra dedicação.",
+      "en": "you are affluent and dreamy. you also show dedication.",
+      "keywords": {
+        "pt": [
+          "riqueza",
+          "dedicação"
+        ],
+        "en": [
+          "wealth",
+          "dedication"
+        ]
+      }
+    },
+    "Shravana/4": {
+      "pt": "você reúne cuidado, sociabilidade e refinamento. também pratica filantropia.",
+      "en": "you combine care, sociability and sophistication. you also practice philanthropy.",
+      "keywords": {
+        "pt": [
+          "sociabilidade",
+          "filantropia"
+        ],
+        "en": [
+          "sociability",
+          "philanthropy"
+        ]
+      }
+    },
+    "Dhanishtha/1": {
+      "pt": "você tem natureza exuberante nesta leitura. sua aparência é atraente e você fala bastante.",
+      "en": "you have a flamboyant nature in this reading. you are attractive and talkative.",
+      "keywords": {
+        "pt": [
+          "aparência",
+          "exuberância"
+        ],
+        "en": [
+          "appearance",
+          "flamboyance"
+        ]
+      }
+    },
+    "Dhanishtha/2": {
+      "pt": "você trabalha com empenho e tem energia. sua mente também usa artimanhas.",
+      "en": "you work hard and have energy. your mind also uses cunning.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "astúcia"
+        ],
+        "en": [
+          "work",
+          "cunning"
+        ]
+      }
+    },
+    "Dhanishtha/3": {
+      "pt": "você recebe confiança e reconhecimento nesta leitura. também tem dignidade.",
+      "en": "you are trusted and well-known in this reading. you also have dignity.",
+      "keywords": {
+        "pt": [
+          "reconhecimento",
+          "dignidade"
+        ],
+        "en": [
+          "recognition",
+          "dignity"
+        ]
+      }
+    },
+    "Dhanishtha/4": {
+      "pt": "você tem humildade nesta leitura. ela também lhe atribui desespero.",
+      "en": "you are humble in this reading. it also attributes desperation to you.",
+      "keywords": {
+        "pt": [
+          "humildade",
+          "desespero"
+        ],
+        "en": [
+          "humility",
+          "desperation"
+        ]
+      }
+    },
+    "Shatabhisha/1": {
+      "pt": "você tem espiritualidade e religiosidade. também ama a paz.",
+      "en": "you are spiritual and religious. you also love peace.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "paz"
+        ],
+        "en": [
+          "spirituality",
+          "peace"
+        ]
+      }
+    },
+    "Shatabhisha/2": {
+      "pt": "você tem versatilidade e coração sensível. também cuida dos outros.",
+      "en": "you are versatile and tenderhearted. you also care for others.",
+      "keywords": {
+        "pt": [
+          "versatilidade",
+          "cuidado"
+        ],
+        "en": [
+          "versatility",
+          "care"
+        ]
+      }
+    },
+    "Shatabhisha/3": {
+      "pt": "você reúne nobreza e obediência. sua orientação é para o futuro.",
+      "en": "you combine nobility and obedience. your outlook is future-oriented.",
+      "keywords": {
+        "pt": [
+          "nobreza",
+          "futuro"
+        ],
+        "en": [
+          "nobility",
+          "future"
+        ]
+      }
+    },
+    "Shatabhisha/4": {
+      "pt": "você tem sorte e compaixão nesta leitura. também demonstra teimosia.",
+      "en": "you are lucky and compassionate in this reading. you also show stubbornness.",
+      "keywords": {
+        "pt": [
+          "sorte",
+          "teimosia"
+        ],
+        "en": [
+          "luck",
+          "stubbornness"
+        ]
+      }
+    },
+    "Purva_Bhadrapada/1": {
+      "pt": "você ama e cuida das pessoas próximas. também tem consciência da saúde e disposição sonhadora.",
+      "en": "you love and care for loved ones. you are also health-conscious and dreamy.",
+      "keywords": {
+        "pt": [
+          "cuidado",
+          "saúde"
+        ],
+        "en": [
+          "care",
+          "health"
+        ]
+      }
+    },
+    "Purva_Bhadrapada/2": {
+      "pt": "você tem ampla visão nesta leitura. também reúne aparência atraente e espontaneidade.",
+      "en": "you have vision in this reading. you also combine attractiveness and spontaneity.",
+      "keywords": {
+        "pt": [
+          "aparência",
+          "espontaneidade"
+        ],
+        "en": [
+          "appearance",
+          "spontaneity"
+        ]
+      }
+    },
+    "Purva_Bhadrapada/3": {
+      "pt": "você tem traços aristocráticos nesta leitura. também reúne visão e adaptabilidade.",
+      "en": "you have aristocratic traits in this reading. you also combine vision and adaptability.",
+      "keywords": {
+        "pt": [
+          "aristocracia",
+          "adaptabilidade"
+        ],
+        "en": [
+          "aristocracy",
+          "adaptability"
+        ]
+      }
+    },
+    "Purva_Bhadrapada/4": {
+      "pt": "você tem sociabilidade e organização. também escolhe com seletividade.",
+      "en": "you are gregarious and organized. you are also choosy.",
+      "keywords": {
+        "pt": [
+          "organização",
+          "seletividade"
+        ],
+        "en": [
+          "organization",
+          "selectivity"
+        ]
+      }
+    },
+    "Uttara_Bhadrapada/1": {
+      "pt": "você se irrita facilmente nesta leitura. ela também lhe atribui mente instável e fama.",
+      "en": "you are short-tempered in this reading. it also attributes an unstable mind and fame to you.",
+      "keywords": {
+        "pt": [
+          "instabilidade",
+          "fama"
+        ],
+        "en": [
+          "instability",
+          "fame"
+        ]
+      }
+    },
+    "Uttara_Bhadrapada/2": {
+      "pt": "você reúne egoísmo e humanitarismo nesta leitura. seu humor é variável.",
+      "en": "you combine selfishness and humanitarianism in this reading. your moods are changeable.",
+      "keywords": {
+        "pt": [
+          "egoísmo",
+          "humanitarismo"
+        ],
+        "en": [
+          "selfishness",
+          "humanitarianism"
+        ]
+      }
+    },
+    "Uttara_Bhadrapada/3": {
+      "pt": "você compreende lentamente e age sem método nesta leitura. também tem ateísmo.",
+      "en": "you grasp things slowly and act unsystematically in this reading. you are also atheistic.",
+      "keywords": {
+        "pt": [
+          "compreensão lenta",
+          "ateísmo"
+        ],
+        "en": [
+          "slow comprehension",
+          "atheism"
+        ]
+      }
+    },
+    "Uttara_Bhadrapada/4": {
+      "pt": "você se irrita facilmente nesta leitura. também reúne criatividade e travessura.",
+      "en": "you are hot-tempered in this reading. you also combine creativity and mischief.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "travessura"
+        ],
+        "en": [
+          "creativity",
+          "mischief"
+        ]
+      }
+    },
+    "Revati/1": {
+      "pt": "você tem alegria e reflexão nesta leitura. também possui paixão.",
+      "en": "you are joyful and thoughtful in this reading. you also have passion.",
+      "keywords": {
+        "pt": [
+          "alegria",
+          "paixão"
+        ],
+        "en": [
+          "joy",
+          "passion"
+        ]
+      }
+    },
+    "Revati/2": {
+      "pt": "você reúne imaginação e senso prático. também tem intuição.",
+      "en": "you combine imagination and practicality. you also have intuition.",
+      "keywords": {
+        "pt": [
+          "imaginação",
+          "intuição"
+        ],
+        "en": [
+          "imagination",
+          "intuition"
+        ]
+      }
+    },
+    "Revati/3": {
+      "pt": "você tem amor e compaixão nesta leitura. também oferece apoio.",
+      "en": "you are loving and compassionate in this reading. you also offer support.",
+      "keywords": {
+        "pt": [
+          "compaixão",
+          "apoio"
+        ],
+        "en": [
+          "compassion",
+          "support"
+        ]
+      }
+    },
+    "Revati/4": {
+      "pt": "você trabalha com empenho nesta leitura. ela também lhe atribui azar e fracasso.",
+      "en": "you work hard in this reading. it also attributes bad luck and failure to you.",
+      "keywords": {
+        "pt": [
+          "azar",
+          "fracasso"
+        ],
+        "en": [
+          "bad luck",
+          "failure"
+        ]
+      }
+    }
+  }
+}

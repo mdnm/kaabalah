@@ -1,0 +1,1072 @@
+{
+  "moonPhases": {
+    "new": {
+      "pt": "na leitura da lua nova, você encontra um tempo de começar projetos, expandir ideias e atividades sociais, refletir e cultivar a sabedoria interior. essa leitura relaciona a escuridão à renovação e às magias maléficas, descrevendo a suspensão de trabalhos mágicos positivos até a fase crescente.",
+      "en": "in the reading of the new moon, you encounter a time for beginning projects, expanding ideas and social activities, reflecting and cultivating inner wisdom. this reading relates the darkness to renewal and harmful magic, describing the suspension of positive magical work until the waxing phase.",
+      "keywords": {
+        "pt": [
+          "começos",
+          "renovação e reflexão",
+          "magia e escuridão"
+        ],
+        "en": [
+          "beginnings",
+          "renewal and reflection",
+          "magic and darkness"
+        ]
+      }
+    },
+    "waxing_crescent": {
+      "pt": "na lua crescente, você pode dar os primeiros passos para desenvolver o que começou. observe o que mantém você preso à inércia e mobilize os recursos que tem.",
+      "en": "at the waxing crescent moon, you can take the first steps to develop what you have begun. notice what keeps you caught in inertia and mobilize the resources you have.",
+      "keywords": {
+        "pt": [
+          "primeiros passos",
+          "recursos",
+          "inércia"
+        ],
+        "en": [
+          "first steps",
+          "resources",
+          "inertia"
+        ]
+      }
+    },
+    "first_quarter": {
+      "pt": "na leitura do quarto crescente, você avança atividades começadas e encontra uma fase favorável para novos negócios, prosperidade, crescimento espiritual, amor, desejo sexual e atração de pessoas. a tradição também associa essa fase ao fortalecimento do corpo, ao plantio e à construção de bases sólidas, indicando que os rituais nela realizados tendem a apresentar resultados satisfatórios e imediatos.",
+      "en": "in the reading of the first quarter, you advance activities already begun and encounter a favorable phase for new business, prosperity, spiritual growth, love, sexual desire and attracting people. the tradition also associates this phase with strengthening the body, planting and building solid foundations, indicating that rituals performed in it tend to yield satisfactory and immediate results.",
+      "keywords": {
+        "pt": [
+          "crescimento e prosperidade",
+          "amor e desejo",
+          "fortalecimento e rituais"
+        ],
+        "en": [
+          "growth and prosperity",
+          "love and desire",
+          "strengthening and rituals"
+        ]
+      }
+    },
+    "waxing_gibbous": {
+      "pt": "na lua gibosa crescente, você pode avaliar o que já construiu e aperfeiçoar sua forma de trabalhar. identifique o que não funciona e faça ajustes que ajudem a expressar sua intenção.",
+      "en": "at the waxing gibbous moon, you can evaluate what you have already built and refine how you work. identify what does not work and make adjustments that help express your intention.",
+      "keywords": {
+        "pt": [
+          "avaliação",
+          "aperfeiçoamento",
+          "ajustes"
+        ],
+        "en": [
+          "evaluation",
+          "refinement",
+          "adjustments"
+        ]
+      }
+    },
+    "full": {
+      "pt": "na leitura da lua cheia, você vive culminação, maturidade e expressão plena, com grande energia para ritos de intuição, percepção extrassensorial, relações sociais, amor, poder e fertilidade. a leitura também indica maior inquietação e dificuldade de controlar emoções, derrota de ações impulsivas e aumento de brigas, crimes e violência nessa fase.",
+      "en": "in the reading of the full moon, you experience culmination, maturity and full expression, with abundant energy for rites of intuition, extrasensory perception, social relationships, love, power and fertility. the reading also indicates greater restlessness and difficulty controlling emotions, defeat of impulsive actions and increased quarrels, crime and violence during this phase.",
+      "keywords": {
+        "pt": [
+          "culminação e fertilidade",
+          "emoções e impulsividade",
+          "ritos e violência"
+        ],
+        "en": [
+          "culmination and fertility",
+          "emotions and impulsiveness",
+          "rites and violence"
+        ]
+      }
+    },
+    "waning_gibbous": {
+      "pt": "na lua gibosa minguante, você pode compartilhar o que aprendeu e colocar suas ideias em circulação. observe como sua experiência pode ser útil aos outros e acolha o retorno que recebe.",
+      "en": "at the waning gibbous moon, you can share what you have learned and put your ideas into circulation. notice how your experience can benefit others and welcome the feedback you receive.",
+      "keywords": {
+        "pt": [
+          "partilha",
+          "experiência",
+          "retorno"
+        ],
+        "en": [
+          "sharing",
+          "experience",
+          "feedback"
+        ]
+      }
+    },
+    "last_quarter": {
+      "pt": "na leitura do quarto minguante, você encontra desintegração, reflexão e reorganização, encerramento de ciclos e preparo para outro começo. a tradição desaconselha agir ou realizar magia de amor e dinheiro nessa fase, mas a associa a afastar doenças, maldições e energias negativas, terminar vícios e relações ruins e aprofundar intuição e adivinhação.",
+      "en": "in the reading of the last quarter, you encounter disintegration, reflection and reorganization, closing cycles and preparing for another beginning. the tradition discourages action or love and money magic during this phase, but associates it with banishing illness, curses and negative energies, ending addictions and bad relationships and deepening intuition and divination.",
+      "keywords": {
+        "pt": [
+          "encerramentos",
+          "doenças e maldições",
+          "intuição e abandono"
+        ],
+        "en": [
+          "endings",
+          "illness and curses",
+          "intuition and release"
+        ]
+      }
+    },
+    "waning_crescent": {
+      "pt": "na lua balsâmica, você pode reunir o que aprendeu e encerrar questões do ciclo que termina. preserve o que deseja levar adiante e dê espaço ao próximo começo.",
+      "en": "at the balsamic moon, you can bring together what you have learned and resolve matters from the ending cycle. preserve what you wish to carry forward and make room for the next beginning.",
+      "keywords": {
+        "pt": [
+          "síntese",
+          "encerramento",
+          "próximo começo"
+        ],
+        "en": [
+          "synthesis",
+          "closure",
+          "next beginning"
+        ]
+      }
+    }
+  },
+  "dailyMoonSigns": {
+    "Aries": {
+      "pt": "na leitura da Lua em áries, você encontra dias excelentes para começar coisas novas, mas de curta duração. as coisas acontecem rapidamente e terminam com a mesma rapidez.",
+      "en": "in the reading of the Moon in aries, you encounter excellent days for beginning new things, but of short duration. things happen quickly and end just as quickly.",
+      "keywords": {
+        "pt": [
+          "começos",
+          "rapidez",
+          "curta duração"
+        ],
+        "en": [
+          "beginnings",
+          "speed",
+          "short duration"
+        ]
+      }
+    },
+    "Taurus": {
+      "pt": "na leitura da Lua em touro, o que você começa tem maior duração e estabilidade, e negócios iniciados nessa posição tendem a aumentar de valor. dinheiro e finanças são fortemente afetados, de forma positiva ou negativa conforme a Lua esteja crescente ou minguante.",
+      "en": "in the reading of the Moon in taurus, what you begin has greater duration and stability, and business started in this placement tends to increase in value. money and finances are strongly affected, positively or negatively according to whether the Moon is waxing or waning.",
+      "keywords": {
+        "pt": [
+          "estabilidade",
+          "valor dos negócios",
+          "finanças condicionadas"
+        ],
+        "en": [
+          "stability",
+          "business value",
+          "conditional finances"
+        ]
+      }
+    },
+    "Gemini": {
+      "pt": "na leitura da Lua em gêmeos, seus documentos, contratos, estudos e comunicações recebem influência positiva se a Lua está crescente e negativa se está minguante. fala-se muito e consolida-se pouco, com muitas influências externas sobre os acontecimentos.",
+      "en": "in the reading of the Moon in gemini, your documents, contracts, studies and communications receive a positive influence if the Moon is waxing and a negative one if it is waning. much is said and little consolidated, with many external influences on events.",
+      "keywords": {
+        "pt": [
+          "documentos e contratos",
+          "comunicação",
+          "fase crescente ou minguante"
+        ],
+        "en": [
+          "documents and contracts",
+          "communication",
+          "waxing or waning phase"
+        ]
+      }
+    },
+    "Cancer": {
+      "pt": "na leitura da Lua em câncer, mulheres, família, mãe e viagens são afetadas para você de forma positiva ou negativa conforme a Lua esteja crescente ou minguante. a comunicação e as emoções se intensificam, com mais afeto, necessidades humanas mais sensíveis e crescimento emocional.",
+      "en": "in the reading of the Moon in cancer, women, family, mother and travel are affected for you positively or negatively according to whether the Moon is waxing or waning. communication and emotions intensify, with more affection, more sensitive human needs and emotional growth.",
+      "keywords": {
+        "pt": [
+          "família e mãe",
+          "viagens condicionadas",
+          "afeto e emoções"
+        ],
+        "en": [
+          "family and mother",
+          "conditional travel",
+          "affection and emotions"
+        ]
+      }
+    },
+    "Leo": {
+      "pt": "na leitura da Lua em leão, romances, crianças e entretenimento podem ser positivos para você com a Lua crescente ou negativos com a minguante. cresce a busca de afagos, atenção e diversão, com ações mais melodramáticas e interesse por teatro.",
+      "en": "in the reading of the Moon in leo, romance, children and entertainment may be positive for you with the waxing Moon or negative with the waning Moon. the desire for affection, attention and amusement increases, with more melodramatic actions and interest in theater.",
+      "keywords": {
+        "pt": [
+          "romances e crianças",
+          "atenção e diversão",
+          "melodrama"
+        ],
+        "en": [
+          "romance and children",
+          "attention and amusement",
+          "melodrama"
+        ]
+      }
+    },
+    "Virgo": {
+      "pt": "na leitura da Lua em virgem, sua saúde, dieta e organização no lar ou nos negócios recebem influência positiva na crescente e negativa na minguante. a atenção aos detalhes e o perfeccionismo aumentam, com tendência a atitudes ditatoriais e pouca tolerância à independência de ação ou palavra.",
+      "en": "in the reading of the Moon in virgo, your health, diet and organization at home or in business receive a positive influence during waxing and a negative one during waning. attention to detail and perfectionism increase, with a tendency toward dictatorial attitudes and little tolerance for independence in action or speech.",
+      "keywords": {
+        "pt": [
+          "saúde e dieta",
+          "organização",
+          "perfeccionismo e controle"
+        ],
+        "en": [
+          "health and diet",
+          "organization",
+          "perfectionism and control"
+        ]
+      }
+    },
+    "Libra": {
+      "pt": "na leitura da Lua em libra, seus amores, casamento, sociedades, artes e prazeres são favorecidos na crescente e prejudicados na minguante. a consciência de si e das ações aumenta, favorecendo discernimento e interação, mas não a iniciativa espontânea.",
+      "en": "in the reading of the Moon in libra, your love affairs, marriage, partnerships, arts and pleasures are favored during waxing and harmed during waning. awareness of yourself and your actions increases, favoring discernment and interaction, but not spontaneous initiative.",
+      "keywords": {
+        "pt": [
+          "amores e casamento",
+          "artes e sociedades",
+          "discernimento"
+        ],
+        "en": [
+          "love affairs and marriage",
+          "arts and partnerships",
+          "discernment"
+        ]
+      }
+    },
+    "Scorpio": {
+      "pt": "na leitura da Lua em escorpião, sensualidade, ciúme e desconfiança se intensificam para você, menos na crescente e mais na minguante, enquanto a crescente favorece o desenvolvimento psíquico. a leitura associa essa posição ao fim de relações e considera permanentes as rupturas que ocorrem nela, recomendando evitar confrontos.",
+      "en": "in the reading of the Moon in scorpio, sensuality, jealousy and distrust intensify for you, less during waxing and more during waning, while waxing favors psychic development. the reading associates this placement with relationships ending and considers breaks occurring in it permanent, recommending avoidance of confrontations.",
+      "keywords": {
+        "pt": [
+          "ciúme e sensualidade",
+          "rupturas permanentes",
+          "desenvolvimento psíquico"
+        ],
+        "en": [
+          "jealousy and sensuality",
+          "permanent breaks",
+          "psychic development"
+        ]
+      }
+    },
+    "Sagittarius": {
+      "pt": "na leitura da Lua em sagitário, você recebe abundância, prosperidade, dinheiro e expansão na crescente, ou restrições financeiras na minguante. chefes, juízes, banqueiros e autoridades tendem à generosidade na crescente e à negatividade na minguante, enquanto sua imaginação e autoconfiança se expandem.",
+      "en": "in the reading of the Moon in sagittarius, you receive abundance, prosperity, money and expansion during waxing, or financial restrictions during waning. bosses, judges, bankers and authorities tend toward generosity during waxing and negativity during waning, while your imagination and self-confidence expand.",
+      "keywords": {
+        "pt": [
+          "prosperidade ou restrição",
+          "autoridades",
+          "expansão"
+        ],
+        "en": [
+          "prosperity or restriction",
+          "authorities",
+          "expansion"
+        ]
+      }
+    },
+    "Capricorn": {
+      "pt": "na leitura da Lua em capricórnio, agricultura, idosos, heranças e emprego são positivos para você na crescente e negativos na minguante. pessimismo e cautela acompanham maior disciplina e organização, com planejamento meticuloso e cálculo das decisões importantes.",
+      "en": "in the reading of the Moon in capricorn, agriculture, older people, inheritances and employment are positive for you during waxing and negative during waning. pessimism and caution accompany greater discipline and organization, with meticulous planning and calculation of important decisions.",
+      "keywords": {
+        "pt": [
+          "heranças e emprego",
+          "cautela e pessimismo",
+          "disciplina"
+        ],
+        "en": [
+          "inheritances and employment",
+          "caution and pessimism",
+          "discipline"
+        ]
+      }
+    },
+    "Aquarius": {
+      "pt": "na leitura da Lua em aquário, você encontra excentricidade, inovação e ações impulsivas sem consideração pelos resultados. a leitura descreve perigo quando falta controle das ações, relaciona o signo à tecnologia e à bomba atômica e afirma que a Lua minguante duplica a tendência explosiva.",
+      "en": "in the reading of the Moon in aquarius, you encounter eccentricity, innovation and impulsive actions without considering their results. the reading describes danger when actions lack control, relates the sign to technology and the atomic bomb and states that the waning Moon doubles the explosive tendency.",
+      "keywords": {
+        "pt": [
+          "inovação",
+          "impulsividade e perigo",
+          "minguante intensificadora"
+        ],
+        "en": [
+          "innovation",
+          "impulsiveness and danger",
+          "intensifying waning phase"
+        ]
+      }
+    },
+    "Pisces": {
+      "pt": "na leitura da Lua em peixes, você tende ao misticismo, meditação, introspecção, sensibilidade e sonhos proféticos, mas também a excessos de álcool e drogas e à exploração por outras pessoas. a leitura recomenda evitar esses excessos e pessoas explosivas e adiar empréstimos até a Lua sair do signo e sua mente estar mais clara e centrada no mundo material, afirmando que a minguante duplica essas influências.",
+      "en": "in the reading of the Moon in pisces, you tend toward mysticism, meditation, introspection, sensitivity and prophetic dreams, but also excesses of alcohol and drugs and exploitation by other people. the reading recommends avoiding those excesses and explosive people and postponing loans until the Moon leaves the sign and your mind is clearer and more centered on the material world, stating that waning doubles these influences.",
+      "keywords": {
+        "pt": [
+          "misticismo e sonhos",
+          "álcool e drogas",
+          "exploração e empréstimos"
+        ],
+        "en": [
+          "mysticism and dreams",
+          "alcohol and drugs",
+          "exploitation and loans"
+        ]
+      }
+    }
+  },
+  "seasonalFestivals": {
+    "samhain": {
+      "pt": "em samhain, você encontra o festival celta dos mortos e do novo ano, dedicado a meditar sobre natureza, vida e morte. a tradição descreve conexão com ancestrais e espíritos que auxiliaram sua caminhada, quando o véu entre os mundos se torna mais tênue.",
+      "en": "at samhain, you encounter the Celtic festival of the dead and the new year, dedicated to meditating on nature, life and death. the tradition describes connection with ancestors and spirits who aided your path, when the veil between worlds grows thinner.",
+      "keywords": {
+        "pt": [
+          "mortos e ancestrais",
+          "novo ano",
+          "véu entre mundos"
+        ],
+        "en": [
+          "dead and ancestors",
+          "new year",
+          "veil between worlds"
+        ]
+      }
+    },
+    "yule": {
+      "pt": "em yule, no solstício de inverno, você celebra o renascimento da Criança do Sol e o retorno da luz e da vida através do amor dos deuses. a tradição nórdica o considera ano novo, dentro da roda anual e da renovação solar.",
+      "en": "at yule, at the winter solstice, you celebrate the rebirth of the Sun Child and the return of light and life through the gods’ love. the Norse tradition considers it the new year, within the annual wheel and solar renewal.",
+      "keywords": {
+        "pt": [
+          "renascimento solar",
+          "retorno da vida",
+          "ano novo"
+        ],
+        "en": [
+          "solar rebirth",
+          "return of life",
+          "new year"
+        ]
+      }
+    },
+    "imbolc": {
+      "pt": "em imbolc, você celebra o fogo e a chegada da primavera, com Brígida associada à sabedoria, poesia, profecia, adivinhação e cura. a tradição representa novos começos e crescimento pela limpeza do antigo e por ritos de purificação e fertilização dos campos antes do plantio.",
+      "en": "at imbolc, you celebrate fire and the arrival of spring, with Brigid associated with wisdom, poetry, prophecy, divination and healing. the tradition represents new beginnings and growth through clearing away the old and rites of purification and fertilizing fields before planting.",
+      "keywords": {
+        "pt": [
+          "fogo e primavera",
+          "profecia e cura",
+          "purificação e crescimento"
+        ],
+        "en": [
+          "fire and spring",
+          "prophecy and healing",
+          "purification and growth"
+        ]
+      }
+    },
+    "ostara": {
+      "pt": "em ostara, no equinócio de primavera, você celebra a igualdade entre dia e noite, o fortalecimento do Sol e o florescimento da terra em honra a Eostre. ovos coloridos e o coelho simbolizam sorte, fertilidade e prosperidade, enquanto luz e escuridão, vida e morte estão em equilíbrio.",
+      "en": "at ostara, at the spring equinox, you celebrate equal day and night, the Sun’s growing strength and the earth’s flowering in honor of Eostre. colored eggs and the rabbit symbolize luck, fertility and prosperity, while light and darkness, life and death are in balance.",
+      "keywords": {
+        "pt": [
+          "equilíbrio",
+          "fertilidade e prosperidade",
+          "florescimento"
+        ],
+        "en": [
+          "balance",
+          "fertility and prosperity",
+          "flowering"
+        ]
+      }
+    },
+    "beltane": {
+      "pt": "em beltane, você celebra fertilidade, a união sagrada entre Deusa e Deus e as forças masculina e feminina, com a luz e a nova vida percorrendo a criação. a tradição associa as fogueiras e oferendas de Belenos à transmissão de energia e luz às pessoas, aos campos e aos rebanhos.",
+      "en": "at beltane, you celebrate fertility, the sacred union of Goddess and God and masculine and feminine forces, with light and new life moving through creation. the tradition associates Belenos’s bonfires and offerings with transmitting energy and light to people, fields and herds.",
+      "keywords": {
+        "pt": [
+          "fertilidade",
+          "união sagrada",
+          "fogo e energia"
+        ],
+        "en": [
+          "fertility",
+          "sacred union",
+          "fire and energy"
+        ]
+      }
+    },
+    "litha": {
+      "pt": "em litha, no solstício de verão, você celebra fartura e o auge do poder do Deus como Senhor da Luz. a tradição atribui poder de cura às ervas colhidas, curas milagrosas aos banhos em águas naturais, realização aos desejos dessa noite e contato com criaturas mágicas, usando fogueiras contra infortúnio e negatividade.",
+      "en": "at litha, at the summer solstice, you celebrate abundance and the peak of the God’s power as Lord of Light. the tradition attributes healing power to gathered herbs, miraculous cures to bathing in natural waters, fulfillment to that night’s wishes and contact with magical creatures, using bonfires against misfortune and negativity.",
+      "keywords": {
+        "pt": [
+          "plenitude e fartura",
+          "cura e desejos",
+          "criaturas mágicas"
+        ],
+        "en": [
+          "fullness and abundance",
+          "healing and wishes",
+          "magical creatures"
+        ]
+      }
+    },
+    "lammas": {
+      "pt": "em lammas, você celebra a colheita do trigo e agradece à Deusa como Rainha da Terra pelos frutos da natureza. a tradição usa figuras de palha como proteção anual e queima as antigas como combustível simbólico do futuro, enquanto o Deus deixa sua semente para renascer no ciclo de nascimento, morte e renascimento.",
+      "en": "at lammas, you celebrate the wheat harvest and thank the Goddess as Queen of the Earth for nature’s fruits. the tradition uses straw figures for annual protection and burns the old ones as symbolic fuel for the future, while the God leaves his seed to be reborn in the cycle of birth, death and rebirth.",
+      "keywords": {
+        "pt": [
+          "colheita e gratidão",
+          "proteção",
+          "morte e renascimento"
+        ],
+        "en": [
+          "harvest and gratitude",
+          "protection",
+          "death and rebirth"
+        ]
+      }
+    },
+    "mabon": {
+      "pt": "em mabon, no equinócio de outono, você reconhece a igualdade entre dia e noite, a velhice e as faces mais sombrias de Deus e Deusa à medida que o inverno se aproxima. a tradição reúne amigos para celebrar fartura e conquistas e dedica atenção a reparar, abastecer, limpar e abençoar a casa.",
+      "en": "at mabon, at the autumn equinox, you recognize equal day and night, old age and the darker faces of God and Goddess as winter approaches. the tradition gathers friends to celebrate abundance and achievements and gives attention to repairing, stocking, cleaning and blessing the home.",
+      "keywords": {
+        "pt": [
+          "outono e velhice",
+          "fartura e conquistas",
+          "bênção do lar"
+        ],
+        "en": [
+          "autumn and old age",
+          "abundance and achievements",
+          "blessing the home"
+        ]
+      }
+    }
+  },
+  "dayRulers": {
+    "Sun": {
+      "pt": "num dia regido pelo sol, você pode dar atenção à sua identidade e à expressão criativa. escolha onde quer estar presente com mais clareza.",
+      "en": "on a day ruled by the sun, you can give attention to your identity and creative expression. choose where you want to be more fully present.",
+      "keywords": {
+        "pt": [
+          "identidade",
+          "criatividade",
+          "expressão"
+        ],
+        "en": [
+          "identity",
+          "creativity",
+          "expression"
+        ]
+      }
+    },
+    "Moon": {
+      "pt": "num dia regido pela lua, você pode observar suas emoções e o que dá segurança. cuide da forma como acolhe e responde ao que sente.",
+      "en": "on a day ruled by the moon, you can notice your emotions and what gives you security. pay attention to how you receive and respond to what you feel.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "segurança",
+          "acolhimento"
+        ],
+        "en": [
+          "emotions",
+          "security",
+          "care"
+        ]
+      }
+    },
+    "Mars": {
+      "pt": "num dia regido por marte, você pode olhar pra forma como age diante dos desafios. use a iniciativa com atenção aos conflitos que suas escolhas podem abrir.",
+      "en": "on a day ruled by mars, you can look at how you act when facing challenges. take initiative while noticing the conflicts your choices may open.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "ação",
+          "desafios"
+        ],
+        "en": [
+          "initiative",
+          "action",
+          "challenges"
+        ]
+      }
+    },
+    "Mercury": {
+      "pt": "num dia regido por mercúrio, você pode prestar atenção às trocas e ao que quer aprender. organize seus pensamentos antes de comunicar o que importa.",
+      "en": "on a day ruled by mercury, you can pay attention to exchanges and what you want to learn. organize your thoughts before communicating what matters.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "aprendizado",
+          "pensamento"
+        ],
+        "en": [
+          "communication",
+          "learning",
+          "thought"
+        ]
+      }
+    },
+    "Jupiter": {
+      "pt": "num dia regido por Júpiter, sua leitura reúne expansão, grande sorte e fortuna com busca intelectual, filosófica e religiosa. a simbologia de Júpiter amplia o que toca e se relaciona à lei, à autoridade moral e às suas convicções.",
+      "en": "on a day ruled by Jupiter, your reading brings expansion, great luck and fortune together with intellectual, philosophical and religious inquiry. Jupiter’s symbolism magnifies what it touches and relates to law, moral authority and your convictions.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "sorte e fortuna",
+          "leis e convicções"
+        ],
+        "en": [
+          "expansion",
+          "luck and fortune",
+          "law and convictions"
+        ]
+      }
+    },
+    "Venus": {
+      "pt": "num dia regido por vênus, você pode olhar pro que valoriza nos vínculos e nas suas escolhas. dê atenção ao afeto, à beleza e à busca de harmonia.",
+      "en": "on a day ruled by venus, you can look at what you value in relationships and choices. give attention to affection, beauty and the search for harmony.",
+      "keywords": {
+        "pt": [
+          "valores",
+          "afeto",
+          "harmonia"
+        ],
+        "en": [
+          "values",
+          "affection",
+          "harmony"
+        ]
+      }
+    },
+    "Saturn": {
+      "pt": "num dia regido por saturno, você pode reconhecer os limites e as lições que pedem atenção. observe como a experiência ajuda você a enfrentar o que é difícil.",
+      "en": "on a day ruled by saturn, you can acknowledge the limits and lessons asking for attention. notice how experience helps you face what is difficult.",
+      "keywords": {
+        "pt": [
+          "limites",
+          "experiência",
+          "aprendizado"
+        ],
+        "en": [
+          "limits",
+          "experience",
+          "learning"
+        ]
+      }
+    }
+  },
+  "planetaryHourRulers": {
+    "Sun": {
+      "pt": "nesta hora do sol, você pode concentrar a atenção no que quer expressar. dê forma a uma escolha que represente quem você é.",
+      "en": "during this hour of the sun, you can focus on what you want to express. give shape to a choice that represents who you are.",
+      "keywords": {
+        "pt": [
+          "expressão",
+          "identidade",
+          "criatividade"
+        ],
+        "en": [
+          "expression",
+          "identity",
+          "creativity"
+        ]
+      }
+    },
+    "Moon": {
+      "pt": "nesta hora da lua, você pode fazer uma pausa pra reconhecer o que sente. observe o que precisa de cuidado e acolhimento agora.",
+      "en": "during this hour of the moon, you can pause to recognize what you feel. notice what needs care and attention now.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "cuidado",
+          "percepção"
+        ],
+        "en": [
+          "emotions",
+          "care",
+          "awareness"
+        ]
+      }
+    },
+    "Mars": {
+      "pt": "nesta hora de marte, você pode observar o impulso de agir. escolha como enfrentar um desafio sem perder de vista o conflito envolvido.",
+      "en": "during this hour of mars, you can notice your impulse to act. choose how to face a challenge while keeping the conflict involved in view.",
+      "keywords": {
+        "pt": [
+          "ação",
+          "iniciativa",
+          "desafios"
+        ],
+        "en": [
+          "action",
+          "initiative",
+          "challenges"
+        ]
+      }
+    },
+    "Mercury": {
+      "pt": "nesta hora de mercúrio, você pode organizar uma ideia ou esclarecer uma troca. dê atenção às palavras e ao que ainda precisa compreender.",
+      "en": "during this hour of mercury, you can organize an idea or clarify an exchange. pay attention to your words and what you still need to understand.",
+      "keywords": {
+        "pt": [
+          "ideias",
+          "comunicação",
+          "clareza"
+        ],
+        "en": [
+          "ideas",
+          "communication",
+          "clarity"
+        ]
+      }
+    },
+    "Jupiter": {
+      "pt": "numa hora regida por Júpiter, sua leitura reúne expansão, grande sorte e fortuna com busca intelectual, filosófica e religiosa. a simbologia de Júpiter amplia o que toca e se relaciona à lei, à autoridade moral e às suas convicções.",
+      "en": "in an hour ruled by Jupiter, your reading brings expansion, great luck and fortune together with intellectual, philosophical and religious inquiry. Jupiter’s symbolism magnifies what it touches and relates to law, moral authority and your convictions.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "sorte e fortuna",
+          "leis e convicções"
+        ],
+        "en": [
+          "expansion",
+          "luck and fortune",
+          "law and convictions"
+        ]
+      }
+    },
+    "Venus": {
+      "pt": "nesta hora de vênus, você pode perceber o que aprecia numa relação ou numa criação. dê espaço ao afeto e às escolhas que expressam seus valores.",
+      "en": "during this hour of venus, you can notice what you appreciate in a relationship or a creation. make room for affection and choices that express your values.",
+      "keywords": {
+        "pt": [
+          "afeto",
+          "valores",
+          "beleza"
+        ],
+        "en": [
+          "affection",
+          "values",
+          "beauty"
+        ]
+      }
+    },
+    "Saturn": {
+      "pt": "nesta hora de saturno, você pode olhar com calma pra um limite ou uma dificuldade. use o que já aprendeu pra escolher como lidar com isso.",
+      "en": "during this hour of saturn, you can calmly look at a limit or a difficulty. use what you have learned to choose how to work with it.",
+      "keywords": {
+        "pt": [
+          "limites",
+          "experiência",
+          "reflexão"
+        ],
+        "en": [
+          "limits",
+          "experience",
+          "reflection"
+        ]
+      }
+    }
+  },
+  "newMoonSigns": {
+    "Aries": {
+      "pt": "na leitura da lua nova em áries, o início de projetos, a reflexão e a renovação se combinam para você com iniciativa, energia, entusiasmo, individualização e belicosidade. a precipitação e a agressividade também aparecem nessa leitura, junto à força, violência e perigo de fogo, armas ou animais carnívoros.",
+      "en": "in the reading of the new moon in aries, beginning projects, reflection and renewal combine for you with initiative, energy, enthusiasm, individuation and belligerence. haste and aggression also appear in this reading, together with strength, violence and danger from fire, weapons or carnivorous animals.",
+      "keywords": {
+        "pt": [
+          "iniciativa e energia",
+          "agressividade",
+          "fogo e perigo"
+        ],
+        "en": [
+          "initiative and energy",
+          "aggression",
+          "fire and danger"
+        ]
+      }
+    },
+    "Taurus": {
+      "pt": "na leitura da lua nova em touro, o início de projetos, a reflexão e a renovação se combinam para você com produtividade, aquisição, cálculo lucrativo, paciência, persistência artística e sensualidade. você também encontra obstinação, teimosia, arrebatamento, luxúria e gula entre os excessos descritos para o signo.",
+      "en": "in the reading of the new moon in taurus, beginning projects, reflection and renewal combine for you with productivity, acquisition, profitable calculation, patience, artistic persistence and sensuality. you also encounter stubbornness, obstinacy, impetuousness, lust and gluttony among the excesses described for the sign.",
+      "keywords": {
+        "pt": [
+          "produtividade e lucro",
+          "persistência",
+          "sensualidade e excessos"
+        ],
+        "en": [
+          "productivity and profit",
+          "persistence",
+          "sensuality and excesses"
+        ]
+      }
+    },
+    "Gemini": {
+      "pt": "na leitura da lua nova em gêmeos, o início de projetos, a reflexão e a renovação se combinam para você com intelectualidade, comércio, viagens, escritos, comunicação, dualidade e mobilidade. você também encontra inquietação, instabilidade, indecisão, frivolidade, hipocrisia e duplicidade nos desafios dessa leitura.",
+      "en": "in the reading of the new moon in gemini, beginning projects, reflection and renewal combine for you with intellect, commerce, travel, writing, communication, duality and mobility. you also encounter restlessness, instability, indecision, frivolity, hypocrisy and duplicity in this reading’s challenges.",
+      "keywords": {
+        "pt": [
+          "comunicação e comércio",
+          "mobilidade",
+          "duplicidade e indecisão"
+        ],
+        "en": [
+          "communication and commerce",
+          "mobility",
+          "duplicity and indecision"
+        ]
+      }
+    },
+    "Cancer": {
+      "pt": "na leitura da lua nova em câncer, o início de projetos, a reflexão e a renovação se combinam para você com família, lar, pais, maternidade, lembranças, imaginação e passividade. você também encontra flutuações, caprichos, superstição, rotina e lunatismo entre os desafios atribuídos ao signo.",
+      "en": "in the reading of the new moon in cancer, beginning projects, reflection and renewal combine for you with family, home, parents, motherhood, memories, imagination and passivity. you also encounter fluctuations, whims, superstition, routine and lunacy among the challenges attributed to the sign.",
+      "keywords": {
+        "pt": [
+          "família e maternidade",
+          "imaginação e lembranças",
+          "caprichos e flutuações"
+        ],
+        "en": [
+          "family and motherhood",
+          "imagination and memories",
+          "whims and fluctuations"
+        ]
+      }
+    },
+    "Leo": {
+      "pt": "na leitura da lua nova em leão, o início de projetos, a reflexão e a renovação se combinam para você com soberania, vitalidade, generosidade, proteção, riqueza e glória. você também encontra dominação, orgulho, despotismo, exclusivismo e megalomania nos excessos do signo.",
+      "en": "in the reading of the new moon in leo, beginning projects, reflection and renewal combine for you with sovereignty, vitality, generosity, protection, wealth and glory. you also encounter domination, pride, despotism, exclusivism and megalomania in the sign’s excesses.",
+      "keywords": {
+        "pt": [
+          "vitalidade e generosidade",
+          "riqueza e glória",
+          "orgulho e despotismo"
+        ],
+        "en": [
+          "vitality and generosity",
+          "wealth and glory",
+          "pride and despotism"
+        ]
+      }
+    },
+    "Virgo": {
+      "pt": "na leitura da lua nova em virgem, o início de projetos, a reflexão e a renovação se combinam para você com análise, pesquisa, espírito prático, método, ordem e exigência. você também encontra subordinação, excesso de detalhes, pedantismo, mesquinhez e racismo entre os vícios que a leitura atribui ao signo.",
+      "en": "in the reading of the new moon in virgo, beginning projects, reflection and renewal combine for you with analysis, research, practicality, method, order and exacting standards. you also encounter subordination, excessive detail, pedantry, pettiness and racism among the vices the reading attributes to the sign.",
+      "keywords": {
+        "pt": [
+          "análise e pesquisa",
+          "método e ordem",
+          "pedantismo e mesquinhez"
+        ],
+        "en": [
+          "analysis and research",
+          "method and order",
+          "pedantry and pettiness"
+        ]
+      }
+    },
+    "Libra": {
+      "pt": "na leitura da lua nova em libra, o início de projetos, a reflexão e a renovação se combinam para você com equilíbrio, arte, associações, união, conciliação, prazer e diplomacia. você também encontra indiferença, ostentação, conformismo, vaidade e apatia entre os vícios do signo.",
+      "en": "in the reading of the new moon in libra, beginning projects, reflection and renewal combine for you with balance, art, associations, union, conciliation, pleasure and diplomacy. you also encounter indifference, ostentation, conformity, vanity and apathy among the sign’s vices.",
+      "keywords": {
+        "pt": [
+          "união e associações",
+          "arte e diplomacia",
+          "vaidade e apatia"
+        ],
+        "en": [
+          "union and associations",
+          "art and diplomacy",
+          "vanity and apathy"
+        ]
+      }
+    },
+    "Scorpio": {
+      "pt": "na leitura da lua nova em escorpião, o início de projetos, a reflexão e a renovação se combinam para você com força destrutiva voltada à reforma construtiva, investigação, estratégia, ocultismo e regeneração. você também encontra extremismo, crueldade, vingança, agressão, amoralidade e ilegalidade no lado adverso dessa leitura.",
+      "en": "in the reading of the new moon in scorpio, beginning projects, reflection and renewal combine for you with destructive force directed toward constructive reform, investigation, strategy, occultism and regeneration. you also encounter extremism, cruelty, revenge, aggression, amorality and illegality on this reading’s adverse side.",
+      "keywords": {
+        "pt": [
+          "reforma e regeneração",
+          "investigação e ocultismo",
+          "crueldade e ilegalidade"
+        ],
+        "en": [
+          "reform and regeneration",
+          "investigation and occultism",
+          "cruelty and illegality"
+        ]
+      }
+    },
+    "Sagittarius": {
+      "pt": "na leitura da lua nova em sagitário, o início de projetos, a reflexão e a renovação se combinam para você com filosofia, cultura, religião, leis, política, aventuras no exterior, abundância e fé. você também encontra licenciosidade, fanfarronice, cupidez e mania esportiva entre os excessos do signo.",
+      "en": "in the reading of the new moon in sagittarius, beginning projects, reflection and renewal combine for you with philosophy, culture, religion, law, politics, foreign adventures, abundance and faith. you also encounter licentiousness, boasting, greed and sporting obsession among the sign’s excesses.",
+      "keywords": {
+        "pt": [
+          "filosofia e leis",
+          "abundância e fé",
+          "cupidez e excessos"
+        ],
+        "en": [
+          "philosophy and law",
+          "abundance and faith",
+          "greed and excesses"
+        ]
+      }
+    },
+    "Capricorn": {
+      "pt": "na leitura da lua nova em capricórnio, o início de projetos, a reflexão e a renovação se combinam para você com realização, ambição, governo, prudência, resistência, solidão e resignação ao destino. você também encontra avareza, exploração das falhas alheias, ironia e pessimismo nos desafios do signo.",
+      "en": "in the reading of the new moon in capricorn, beginning projects, reflection and renewal combine for you with achievement, ambition, governance, prudence, endurance, solitude and resignation to fate. you also encounter miserliness, exploiting others’ faults, irony and pessimism in the sign’s challenges.",
+      "keywords": {
+        "pt": [
+          "realização e governo",
+          "solidão e destino",
+          "avareza e pessimismo"
+        ],
+        "en": [
+          "achievement and governance",
+          "solitude and fate",
+          "miserliness and pessimism"
+        ]
+      }
+    },
+    "Aquarius": {
+      "pt": "na leitura da lua nova em aquário, o início de projetos, a reflexão e a renovação se combinam para você com renovação, intuição, invenção, ciência, altruísmo, reforma e cooperação. você também encontra excentricidade, rebelião, anarquia, inadaptação e extravagância no lado adverso do signo.",
+      "en": "in the reading of the new moon in aquarius, beginning projects, reflection and renewal combine for you with renewal, intuition, invention, science, altruism, reform and cooperation. you also encounter eccentricity, rebellion, anarchy, maladaptation and extravagance on the sign’s adverse side.",
+      "keywords": {
+        "pt": [
+          "invenção e ciência",
+          "altruísmo e cooperação",
+          "rebelião e inadaptação"
+        ],
+        "en": [
+          "invention and science",
+          "altruism and cooperation",
+          "rebellion and maladaptation"
+        ]
+      }
+    },
+    "Pisces": {
+      "pt": "na leitura da lua nova em peixes, o início de projetos, a reflexão e a renovação se combinam para você com inspiração, religiosidade, caridade, fantasia, mediunidade, sacrifício e abnegação. você também encontra hesitação, submissão, martírio, obsessão, alucinação e intriga entre os desafios descritos para o signo.",
+      "en": "in the reading of the new moon in pisces, beginning projects, reflection and renewal combine for you with inspiration, religiosity, charity, fantasy, mediumship, sacrifice and selflessness. you also encounter hesitation, submission, martyrdom, obsession, hallucination and intrigue among the challenges described for the sign.",
+      "keywords": {
+        "pt": [
+          "inspiração e mediunidade",
+          "sacrifício",
+          "obsessão e alucinação"
+        ],
+        "en": [
+          "inspiration and mediumship",
+          "sacrifice",
+          "obsession and hallucination"
+        ]
+      }
+    }
+  },
+  "fullMoonSigns": {
+    "Aries": {
+      "pt": "na leitura da lua cheia em áries, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com iniciativa, energia, entusiasmo, individualização e belicosidade. a precipitação e a agressividade também aparecem nessa leitura, junto à força, violência e perigo de fogo, armas ou animais carnívoros.",
+      "en": "in the reading of the full moon in aries, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with initiative, energy, enthusiasm, individuation and belligerence. haste and aggression also appear in this reading, together with strength, violence and danger from fire, weapons or carnivorous animals.",
+      "keywords": {
+        "pt": [
+          "iniciativa e energia",
+          "agressividade",
+          "fogo e perigo"
+        ],
+        "en": [
+          "initiative and energy",
+          "aggression",
+          "fire and danger"
+        ]
+      }
+    },
+    "Taurus": {
+      "pt": "na leitura da lua cheia em touro, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com produtividade, aquisição, cálculo lucrativo, paciência, persistência artística e sensualidade. você também encontra obstinação, teimosia, arrebatamento, luxúria e gula entre os excessos descritos para o signo.",
+      "en": "in the reading of the full moon in taurus, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with productivity, acquisition, profitable calculation, patience, artistic persistence and sensuality. you also encounter stubbornness, obstinacy, impetuousness, lust and gluttony among the excesses described for the sign.",
+      "keywords": {
+        "pt": [
+          "produtividade e lucro",
+          "persistência",
+          "sensualidade e excessos"
+        ],
+        "en": [
+          "productivity and profit",
+          "persistence",
+          "sensuality and excesses"
+        ]
+      }
+    },
+    "Gemini": {
+      "pt": "na leitura da lua cheia em gêmeos, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com intelectualidade, comércio, viagens, escritos, comunicação, dualidade e mobilidade. você também encontra inquietação, instabilidade, indecisão, frivolidade, hipocrisia e duplicidade nos desafios dessa leitura.",
+      "en": "in the reading of the full moon in gemini, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with intellect, commerce, travel, writing, communication, duality and mobility. you also encounter restlessness, instability, indecision, frivolity, hypocrisy and duplicity in this reading’s challenges.",
+      "keywords": {
+        "pt": [
+          "comunicação e comércio",
+          "mobilidade",
+          "duplicidade e indecisão"
+        ],
+        "en": [
+          "communication and commerce",
+          "mobility",
+          "duplicity and indecision"
+        ]
+      }
+    },
+    "Cancer": {
+      "pt": "na leitura da lua cheia em câncer, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com família, lar, pais, maternidade, lembranças, imaginação e passividade. você também encontra flutuações, caprichos, superstição, rotina e lunatismo entre os desafios atribuídos ao signo.",
+      "en": "in the reading of the full moon in cancer, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with family, home, parents, motherhood, memories, imagination and passivity. you also encounter fluctuations, whims, superstition, routine and lunacy among the challenges attributed to the sign.",
+      "keywords": {
+        "pt": [
+          "família e maternidade",
+          "imaginação e lembranças",
+          "caprichos e flutuações"
+        ],
+        "en": [
+          "family and motherhood",
+          "imagination and memories",
+          "whims and fluctuations"
+        ]
+      }
+    },
+    "Leo": {
+      "pt": "na leitura da lua cheia em leão, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com soberania, vitalidade, generosidade, proteção, riqueza e glória. você também encontra dominação, orgulho, despotismo, exclusivismo e megalomania nos excessos do signo.",
+      "en": "in the reading of the full moon in leo, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with sovereignty, vitality, generosity, protection, wealth and glory. you also encounter domination, pride, despotism, exclusivism and megalomania in the sign’s excesses.",
+      "keywords": {
+        "pt": [
+          "vitalidade e generosidade",
+          "riqueza e glória",
+          "orgulho e despotismo"
+        ],
+        "en": [
+          "vitality and generosity",
+          "wealth and glory",
+          "pride and despotism"
+        ]
+      }
+    },
+    "Virgo": {
+      "pt": "na leitura da lua cheia em virgem, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com análise, pesquisa, espírito prático, método, ordem e exigência. você também encontra subordinação, excesso de detalhes, pedantismo, mesquinhez e racismo entre os vícios que a leitura atribui ao signo.",
+      "en": "in the reading of the full moon in virgo, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with analysis, research, practicality, method, order and exacting standards. you also encounter subordination, excessive detail, pedantry, pettiness and racism among the vices the reading attributes to the sign.",
+      "keywords": {
+        "pt": [
+          "análise e pesquisa",
+          "método e ordem",
+          "pedantismo e mesquinhez"
+        ],
+        "en": [
+          "analysis and research",
+          "method and order",
+          "pedantry and pettiness"
+        ]
+      }
+    },
+    "Libra": {
+      "pt": "na leitura da lua cheia em libra, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com equilíbrio, arte, associações, união, conciliação, prazer e diplomacia. você também encontra indiferença, ostentação, conformismo, vaidade e apatia entre os vícios do signo.",
+      "en": "in the reading of the full moon in libra, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with balance, art, associations, union, conciliation, pleasure and diplomacy. you also encounter indifference, ostentation, conformity, vanity and apathy among the sign’s vices.",
+      "keywords": {
+        "pt": [
+          "união e associações",
+          "arte e diplomacia",
+          "vaidade e apatia"
+        ],
+        "en": [
+          "union and associations",
+          "art and diplomacy",
+          "vanity and apathy"
+        ]
+      }
+    },
+    "Scorpio": {
+      "pt": "na leitura da lua cheia em escorpião, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com força destrutiva voltada à reforma construtiva, investigação, estratégia, ocultismo e regeneração. você também encontra extremismo, crueldade, vingança, agressão, amoralidade e ilegalidade no lado adverso dessa leitura.",
+      "en": "in the reading of the full moon in scorpio, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with destructive force directed toward constructive reform, investigation, strategy, occultism and regeneration. you also encounter extremism, cruelty, revenge, aggression, amorality and illegality on this reading’s adverse side.",
+      "keywords": {
+        "pt": [
+          "reforma e regeneração",
+          "investigação e ocultismo",
+          "crueldade e ilegalidade"
+        ],
+        "en": [
+          "reform and regeneration",
+          "investigation and occultism",
+          "cruelty and illegality"
+        ]
+      }
+    },
+    "Sagittarius": {
+      "pt": "na leitura da lua cheia em sagitário, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com filosofia, cultura, religião, leis, política, aventuras no exterior, abundância e fé. você também encontra licenciosidade, fanfarronice, cupidez e mania esportiva entre os excessos do signo.",
+      "en": "in the reading of the full moon in sagittarius, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with philosophy, culture, religion, law, politics, foreign adventures, abundance and faith. you also encounter licentiousness, boasting, greed and sporting obsession among the sign’s excesses.",
+      "keywords": {
+        "pt": [
+          "filosofia e leis",
+          "abundância e fé",
+          "cupidez e excessos"
+        ],
+        "en": [
+          "philosophy and law",
+          "abundance and faith",
+          "greed and excesses"
+        ]
+      }
+    },
+    "Capricorn": {
+      "pt": "na leitura da lua cheia em capricórnio, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com realização, ambição, governo, prudência, resistência, solidão e resignação ao destino. você também encontra avareza, exploração das falhas alheias, ironia e pessimismo nos desafios do signo.",
+      "en": "in the reading of the full moon in capricorn, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with achievement, ambition, governance, prudence, endurance, solitude and resignation to fate. you also encounter miserliness, exploiting others’ faults, irony and pessimism in the sign’s challenges.",
+      "keywords": {
+        "pt": [
+          "realização e governo",
+          "solidão e destino",
+          "avareza e pessimismo"
+        ],
+        "en": [
+          "achievement and governance",
+          "solitude and fate",
+          "miserliness and pessimism"
+        ]
+      }
+    },
+    "Aquarius": {
+      "pt": "na leitura da lua cheia em aquário, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com renovação, intuição, invenção, ciência, altruísmo, reforma e cooperação. você também encontra excentricidade, rebelião, anarquia, inadaptação e extravagância no lado adverso do signo.",
+      "en": "in the reading of the full moon in aquarius, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with renewal, intuition, invention, science, altruism, reform and cooperation. you also encounter eccentricity, rebellion, anarchy, maladaptation and extravagance on the sign’s adverse side.",
+      "keywords": {
+        "pt": [
+          "invenção e ciência",
+          "altruísmo e cooperação",
+          "rebelião e inadaptação"
+        ],
+        "en": [
+          "invention and science",
+          "altruism and cooperation",
+          "rebellion and maladaptation"
+        ]
+      }
+    },
+    "Pisces": {
+      "pt": "na leitura da lua cheia em peixes, a culminação, a expressão plena e a intensidade emocional, incluindo inquietação e conflitos se combinam para você com inspiração, religiosidade, caridade, fantasia, mediunidade, sacrifício e abnegação. você também encontra hesitação, submissão, martírio, obsessão, alucinação e intriga entre os desafios descritos para o signo.",
+      "en": "in the reading of the full moon in pisces, culmination, full expression and emotional intensity, including restlessness and conflict combine for you with inspiration, religiosity, charity, fantasy, mediumship, sacrifice and selflessness. you also encounter hesitation, submission, martyrdom, obsession, hallucination and intrigue among the challenges described for the sign.",
+      "keywords": {
+        "pt": [
+          "inspiração e mediunidade",
+          "sacrifício",
+          "obsessão e alucinação"
+        ],
+        "en": [
+          "inspiration and mediumship",
+          "sacrifice",
+          "obsession and hallucination"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,788 @@
+{
+  "firdariaPairs": {
+    "Sun/Sun": {
+      "pt": "no período maior do Sol, o subperíodo do Sol concentra sua identidade, criatividade e propósito, ampliando sua visibilidade e a atenção que recebe. você pode assumir uma liderança antes evitada, mas a exposição traz pressão por desempenho e risco de se ocupar demais consigo.",
+      "en": "within the Sun major period, the Sun sub-period concentrates your identity, creativity and purpose, increasing your visibility and the attention you receive. you may take on previously avoided leadership, but exposure brings performance pressure and the risk of excessive self-concern.",
+      "keywords": {
+        "pt": [
+          "visibilidade",
+          "liderança",
+          "autocentramento"
+        ],
+        "en": [
+          "visibility",
+          "leadership",
+          "self-concern"
+        ]
+      }
+    },
+    "Sun/Venus": {
+      "pt": "no período maior do Sol, o subperíodo de Vênus costuma trazer relações que mudam sua compreensão de si, com novas parcerias ou aprofundamento das existentes. você também pode renovar sua aparência e dar aos projetos uma forma mais estética ou colaborativa, enquanto o prazer se torna mais acessível sem precisar definir toda a sua identidade.",
+      "en": "within the Sun major period, the Venus sub-period often brings relationships that change your self-understanding, through new partnerships or deepening existing ones. you may also renew your appearance and give projects a more aesthetic or collaborative form, while pleasure becomes more accessible without having to define your entire identity.",
+      "keywords": {
+        "pt": [
+          "parcerias",
+          "aparência",
+          "prazer"
+        ],
+        "en": [
+          "partnerships",
+          "appearance",
+          "pleasure"
+        ]
+      }
+    },
+    "Sun/Mercury": {
+      "pt": "no período maior do Sol, o subperíodo de Mercúrio frequentemente acompanha estudos, escrita e comunicação que definem sua direção, como ingressar numa formação ou publicar um trabalho que estabelece sua reputação intelectual. sua atividade mental se intensifica para expressar quem você está se tornando, mas pode dispersar-se entre assuntos demais.",
+      "en": "within the Sun major period, the Mercury sub-period frequently accompanies study, writing and communication that define your direction, such as entering a program or publishing work that establishes your intellectual reputation. your mental activity intensifies to express who you are becoming, but may scatter across too many subjects.",
+      "keywords": {
+        "pt": [
+          "estudos",
+          "publicação",
+          "dispersão"
+        ],
+        "en": [
+          "study",
+          "publication",
+          "distraction"
+        ]
+      }
+    },
+    "Sun/Moon": {
+      "pt": "no período maior do Sol, o subperíodo da Lua costuma revelar as bases emocionais da sua identidade, e um dos seus pais pode precisar de atenção ou uma situação doméstica exigir envolvimento. você percebe mais seus ritmos físicos e emocionais, com a energia podendo variar conforme os sentimentos e a qualidade do ambiente em casa.",
+      "en": "within the Sun major period, the Moon sub-period often reveals the emotional foundations of your identity, and a parent may need attention or a domestic situation require involvement. you notice physical and emotional rhythms more clearly, with energy potentially varying with feelings and the quality of your home environment.",
+      "keywords": {
+        "pt": [
+          "família",
+          "lar",
+          "ritmos físicos"
+        ],
+        "en": [
+          "family",
+          "home",
+          "physical rhythms"
+        ]
+      }
+    },
+    "Sun/Saturn": {
+      "pt": "no período maior do Sol, o subperíodo de Saturno costuma testar a sustentação da identidade que você vem construindo, trazendo obstáculos, atrasos e mais responsabilidade profissional. figuras de autoridade podem oferecer críticas desconfortáveis, mas esse confronto com a realidade revela o que precisa ser reforçado ou abandonado para tornar sua direção mais durável.",
+      "en": "within the Sun major period, the Saturn sub-period often tests the identity you have been building, bringing obstacles, delays and greater professional responsibility. authority figures may offer uncomfortable criticism, but this encounter with reality reveals what needs strengthening or releasing to make your direction more durable.",
+      "keywords": {
+        "pt": [
+          "atrasos",
+          "responsabilidade",
+          "autoridade"
+        ],
+        "en": [
+          "delays",
+          "responsibility",
+          "authority"
+        ]
+      }
+    },
+    "Sun/Jupiter": {
+      "pt": "no período maior do Sol, o subperíodo de Júpiter frequentemente acompanha avanço profissional ou educacional, contatos que apoiam sua direção e viagens ou estudos que ampliam suas possibilidades. sua confiança cresce e pode haver sucesso externo visível, mas aceitar toda oportunidade pode levá-lo a comprometer recursos além do que consegue sustentar.",
+      "en": "within the Sun major period, the Jupiter sub-period frequently accompanies professional or educational advancement, contacts supporting your direction and travel or study that broadens your possibilities. your confidence grows and visible external success may occur, but accepting every opportunity can commit resources beyond what you can sustain.",
+      "keywords": {
+        "pt": [
+          "avanço",
+          "oportunidades",
+          "excesso de compromissos"
+        ],
+        "en": [
+          "advancement",
+          "opportunities",
+          "overcommitment"
+        ]
+      }
+    },
+    "Sun/Mars": {
+      "pt": "no período maior do Sol, o subperíodo de Marte costuma ser a fase de maior energia física, em que você lança iniciativas e leva projetos criativos à produção. a afirmação mais intensa da sua direção pode trazer competição e conflitos, e a urgência pode se tornar disruptiva quando a ação perde um propósito claro.",
+      "en": "within the Sun major period, the Mars sub-period is typically the most physically energized phase, when you launch initiatives and bring creative projects into production. stronger assertion of your direction may bring competition and conflict, and urgency can become disruptive when action loses a clear purpose.",
+      "keywords": {
+        "pt": [
+          "energia física",
+          "iniciativa",
+          "conflito"
+        ],
+        "en": [
+          "physical energy",
+          "initiative",
+          "conflict"
+        ]
+      }
+    },
+    "Venus/Venus": {
+      "pt": "no período maior de Vênus, o subperíodo de Vênus concentra suas relações, valores, beleza e prazer, frequentemente acompanhando o início ou aprofundamento de uma parceria importante e maior produção criativa. o risco é você se entregar ao prazer, à aparência ou à harmonia a ponto de negligenciar outras responsabilidades.",
+      "en": "within the Venus major period, the Venus sub-period concentrates your relationships, values, beauty and pleasure, frequently accompanying the beginning or deepening of an important partnership and greater creative production. the risk is indulging in pleasure, appearance or harmony to the point of neglecting other responsibilities.",
+      "keywords": {
+        "pt": [
+          "parceria importante",
+          "produção criativa",
+          "excessos"
+        ],
+        "en": [
+          "important partnership",
+          "creative production",
+          "overindulgence"
+        ]
+      }
+    },
+    "Venus/Mercury": {
+      "pt": "no período maior de Vênus, o subperíodo de Mercúrio frequentemente traz conversas decisivas sobre parcerias e expressões de afeto que aprofundam seus vínculos. sua escrita, apresentação e criação ganham clareza e elegância, mas analisar demais uma relação pode interferir no calor espontâneo que a sustenta.",
+      "en": "within the Venus major period, the Mercury sub-period frequently brings important partnership conversations and expressions of affection that deepen your bonds. your writing, presentation and creative work gain clarity and elegance, but overanalyzing a relationship can interfere with the spontaneous warmth sustaining it.",
+      "keywords": {
+        "pt": [
+          "conversas afetivas",
+          "escrita",
+          "excesso de análise"
+        ],
+        "en": [
+          "affectionate conversations",
+          "writing",
+          "overanalysis"
+        ]
+      }
+    },
+    "Venus/Moon": {
+      "pt": "no período maior de Vênus, o subperíodo da Lua aprofunda emocionalmente suas relações, fazendo do lar e do conforto compartilhado um espaço central de intimidade. os vínculos com pais, irmãos e filhos também podem ganhar importância, e você pode sentir apego e necessidade de segurança com intensidade difícil de acomodar.",
+      "en": "within the Venus major period, the Moon sub-period deepens your relationships emotionally, making home and shared comfort a central setting for intimacy. bonds with parents, siblings and children may also become more important, and you may feel attachment and a need for security with an intensity that is hard to accommodate.",
+      "keywords": {
+        "pt": [
+          "intimidade",
+          "família",
+          "vulnerabilidade"
+        ],
+        "en": [
+          "intimacy",
+          "family",
+          "vulnerability"
+        ]
+      }
+    },
+    "Venus/Saturn": {
+      "pt": "no período maior de Vênus, o subperíodo de Saturno costuma acompanhar a formalização de compromissos, como casamento, convivência ou contratos de sociedade, ou a percepção de que uma relação não tem bases duradouras. você pode sentir o prazer restringido e os vínculos testados, enquanto a criação exige mais disciplina e consistência.",
+      "en": "within the Venus major period, the Saturn sub-period often accompanies formal commitments such as marriage, living together or partnership contracts, or recognition that a relationship lacks lasting foundations. you may feel pleasure restricted and bonds tested, while creative work demands greater discipline and consistency.",
+      "keywords": {
+        "pt": [
+          "compromisso formal",
+          "bases da relação",
+          "disciplina"
+        ],
+        "en": [
+          "formal commitment",
+          "relationship foundations",
+          "discipline"
+        ]
+      }
+    },
+    "Venus/Jupiter": {
+      "pt": "no período maior de Vênus, o subperíodo de Júpiter amplia sua vida social com novas conexões benéficas e relações que podem se abrir a viagens ou aprendizados compartilhados. celebrações e projetos criativos florescem, mas você pode assumir compromissos sociais demais e perder o tempo necessário para vínculos mais profundos.",
+      "en": "within the Venus major period, the Jupiter sub-period broadens your social life through beneficial new connections and relationships that may open into shared travel or learning. celebrations and creative projects flourish, but you may take on too many social commitments and lose the time needed for deeper bonds.",
+      "keywords": {
+        "pt": [
+          "conexões benéficas",
+          "celebrações",
+          "sobrecarga social"
+        ],
+        "en": [
+          "beneficial connections",
+          "celebrations",
+          "social overextension"
+        ]
+      }
+    },
+    "Venus/Mars": {
+      "pt": "no período maior de Vênus, o subperíodo de Marte intensifica seu desejo e sua iniciativa amorosa, podendo iniciar novas conquistas ou reacender a paixão em relações existentes. projetos criativos ganham urgência, mas conflitos podem expor tensões que a diplomacia vinha disfarçando e que agora exigem confronto direto.",
+      "en": "within the Venus major period, the Mars sub-period intensifies your desire and romantic initiative, potentially beginning new pursuits or reviving passion in existing relationships. creative projects gain urgency, but conflicts may expose tensions that diplomacy had been concealing and that now require direct confrontation.",
+      "keywords": {
+        "pt": [
+          "paixão",
+          "iniciativa amorosa",
+          "confronto"
+        ],
+        "en": [
+          "passion",
+          "romantic initiative",
+          "confrontation"
+        ]
+      }
+    },
+    "Venus/Sun": {
+      "pt": "no período maior de Vênus, o subperíodo do Sol dá mais confiança e expressão à identidade que você desenvolve por meio das relações. parcerias profissionais podem aumentar sua visibilidade e vínculos amorosos apoiar sua criação, enquanto a qualidade das suas conexões se torna uma forma de liderança social.",
+      "en": "within the Venus major period, the Sun sub-period gives greater confidence and expression to the identity you develop through relationships. professional partnerships may increase your visibility and romantic bonds support your creativity, while the quality of your connections becomes a form of social leadership.",
+      "keywords": {
+        "pt": [
+          "visibilidade",
+          "parcerias profissionais",
+          "liderança social"
+        ],
+        "en": [
+          "visibility",
+          "professional partnerships",
+          "social leadership"
+        ]
+      }
+    },
+    "Mercury/Mercury": {
+      "pt": "no período maior de Mercúrio, o subperíodo de Mercúrio concentra sua atividade mental: as ideias e conexões se aceleram, os estudos intensivos são favorecidos e projetos de escrita podem chegar à fase mais produtiva. você corre o risco de sobrecarga e dispersão quando informações, conversas e projetos se multiplicam sem foco suficiente para concluir o trabalho.",
+      "en": "within the Mercury major period, the Mercury sub-period concentrates your mental activity: ideas and connections accelerate, intensive study is supported and writing projects may reach their most productive phase. you risk overload and distraction when information, conversations and projects multiply without enough focus to finish the work.",
+      "keywords": {
+        "pt": [
+          "estudos intensivos",
+          "produtividade",
+          "sobrecarga mental"
+        ],
+        "en": [
+          "intensive study",
+          "productivity",
+          "mental overload"
+        ]
+      }
+    },
+    "Mercury/Moon": {
+      "pt": "no período maior de Mercúrio, o subperíodo da Lua integra seus sentimentos ao raciocínio e costuma produzir uma comunicação de especial ressonância emocional. você pode pesquisar ou planejar assuntos do lar e da família com mais atenção, enquanto a escrita une precisão analítica e autenticidade afetiva sem substituir uma pela outra.",
+      "en": "within the Mercury major period, the Moon sub-period integrates your feelings into reasoning and often produces communication with particular emotional resonance. you may research or plan home and family matters more attentively, while writing joins analytical precision with emotional authenticity without replacing one with the other.",
+      "keywords": {
+        "pt": [
+          "comunicação emocional",
+          "planejamento doméstico",
+          "escrita"
+        ],
+        "en": [
+          "emotional communication",
+          "domestic planning",
+          "writing"
+        ]
+      }
+    },
+    "Mercury/Saturn": {
+      "pt": "no período maior de Mercúrio, o subperíodo de Saturno concentra seus estudos e frequentemente acompanha formações, exames, certificações ou escrita que exige dedicação prolongada. sua comunicação fica mais medida e precisa, mas você pode duvidar do próprio conhecimento e da autoridade para falar, levando essas dúvidas a uma preparação mais rigorosa.",
+      "en": "within the Mercury major period, the Saturn sub-period focuses your study and frequently accompanies formal education, examinations, certifications or writing requiring sustained dedication. your communication becomes more measured and precise, but you may doubt your knowledge and authority to speak, turning those doubts into more rigorous preparation.",
+      "keywords": {
+        "pt": [
+          "certificações",
+          "estudo disciplinado",
+          "dúvida intelectual"
+        ],
+        "en": [
+          "certifications",
+          "disciplined study",
+          "intellectual doubt"
+        ]
+      }
+    },
+    "Mercury/Jupiter": {
+      "pt": "no período maior de Mercúrio, o subperíodo de Júpiter amplia seus horizontes intelectuais e favorece fortemente publicação, ensino e apresentações para públicos maiores, com oportunidades de formação, orientação ou viagens de estudo. a confiança pode ultrapassar sua preparação real, fazendo você comunicar uma especialização que ainda não desenvolveu suficientemente.",
+      "en": "within the Mercury major period, the Jupiter sub-period broadens your intellectual horizons and strongly supports publishing, teaching and presentations to larger audiences, with opportunities for education, mentorship or study travel. confidence can outpace your actual preparation, leading you to communicate expertise you have not yet sufficiently developed.",
+      "keywords": {
+        "pt": [
+          "publicação",
+          "ensino",
+          "inflação intelectual"
+        ],
+        "en": [
+          "publishing",
+          "teaching",
+          "intellectual inflation"
+        ]
+      }
+    },
+    "Mercury/Mars": {
+      "pt": "no período maior de Mercúrio, o subperíodo de Marte torna sua comunicação mais incisiva e costuma levar pesquisas e escritos à conclusão ou publicação com urgência competitiva. você pode entrar em mais debates e conflitos verbais, intelectualmente estimulantes, mas exigentes para as relações e para sua diplomacia.",
+      "en": "within the Mercury major period, the Mars sub-period makes your communication sharper and often drives research and writing toward completion or publication with competitive urgency. you may enter more debates and verbal conflicts that stimulate you intellectually but demand more of your relationships and diplomacy.",
+      "keywords": {
+        "pt": [
+          "publicação",
+          "debate",
+          "conflito verbal"
+        ],
+        "en": [
+          "publication",
+          "debate",
+          "verbal conflict"
+        ]
+      }
+    },
+    "Mercury/Sun": {
+      "pt": "no período maior de Mercúrio, o subperíodo do Sol dá propósito pessoal e mais confiança à sua expressão intelectual, frequentemente produzindo uma contribuição especialmente significativa. você pode publicar um trabalho ou fazer uma apresentação que estabeleça sua identidade profissional, com o desafio de sustentar conteúdo valioso em vez de buscar apenas visibilidade.",
+      "en": "within the Mercury major period, the Sun sub-period gives personal purpose and greater confidence to your intellectual expression, often producing a particularly significant contribution. you may publish work or give a presentation establishing your professional identity, with the challenge of sustaining valuable content rather than seeking visibility alone.",
+      "keywords": {
+        "pt": [
+          "publicação",
+          "identidade profissional",
+          "autoridade intelectual"
+        ],
+        "en": [
+          "publication",
+          "professional identity",
+          "intellectual authority"
+        ]
+      }
+    },
+    "Mercury/Venus": {
+      "pt": "no período maior de Mercúrio, o subperíodo de Vênus refina sua escrita e sua fala, frequentemente favorecendo seus trabalhos de maior qualidade estética e conexões intelectuais mais calorosas e produtivas. suas ideias ganham impacto pela forma, mas a busca de beleza pode amolecer o rigor da análise.",
+      "en": "within the Mercury major period, the Venus sub-period refines your writing and speech, often supporting your most aesthetically accomplished work and warmer, more productive intellectual connections. your ideas gain impact through form, but the pursuit of beauty can soften analytical rigor.",
+      "keywords": {
+        "pt": [
+          "qualidade estética",
+          "conexões intelectuais",
+          "rigor"
+        ],
+        "en": [
+          "aesthetic quality",
+          "intellectual connections",
+          "rigor"
+        ]
+      }
+    },
+    "Moon/Moon": {
+      "pt": "no período maior da Lua, o subperíodo da Lua concentra suas emoções e necessidades de segurança, frequentemente acompanhando mudanças de moradia ou reorganização familiar e tornando mais direta a ligação entre o corpo e o bem-estar emocional. você pode viver grande riqueza afetiva ou sensibilidade avassaladora, conforme a qualidade do apoio emocional e da estabilidade doméstica disponíveis.",
+      "en": "within the Moon major period, the Moon sub-period concentrates your emotions and security needs, frequently accompanying housing changes or family restructuring and making the link between the body and emotional well-being more direct. you may experience profound emotional richness or overwhelming sensitivity, depending on the quality of available emotional support and domestic stability.",
+      "keywords": {
+        "pt": [
+          "reorganização familiar",
+          "corpo e emoções",
+          "apoio emocional"
+        ],
+        "en": [
+          "family restructuring",
+          "body and emotions",
+          "emotional support"
+        ]
+      }
+    },
+    "Moon/Saturn": {
+      "pt": "no período maior da Lua, o subperíodo de Saturno costuma trazer responsabilidades emocionais concretas, como cuidar de um dos pais que envelhece, atender obrigações familiares ou lidar com problemas domésticos de modo prático. você pode sentir esfriamento ou restrição afetiva, enquanto aprende a sustentar o cuidado e os sentimentos por meio de limites e estabilidade.",
+      "en": "within the Moon major period, the Saturn sub-period often brings concrete emotional responsibilities, such as caring for an aging parent, meeting family obligations or handling domestic problems practically. you may feel emotional cooling or restriction while learning to sustain care and feelings through boundaries and stability.",
+      "keywords": {
+        "pt": [
+          "cuidado dos pais",
+          "obrigações familiares",
+          "restrição afetiva"
+        ],
+        "en": [
+          "parental care",
+          "family obligations",
+          "emotional restriction"
+        ]
+      }
+    },
+    "Moon/Jupiter": {
+      "pt": "no período maior da Lua, o subperíodo de Júpiter aumenta sua confiança e generosidade e frequentemente acompanha melhorias no lar, ampliação da casa ou a chegada de um familiar. o ambiente afetivo se aquece, mas oferecer cuidado e disponibilidade além do que você sustenta pode esgotá-lo e criar dependência em quem recebe.",
+      "en": "within the Moon major period, the Jupiter sub-period increases your trust and generosity and frequently accompanies domestic improvements, home expansion or the arrival of a family member. the emotional atmosphere warms, but offering more care and availability than you can sustain can exhaust you and create dependency in the recipient.",
+      "keywords": {
+        "pt": [
+          "ampliação do lar",
+          "chegada de familiar",
+          "excesso de cuidado"
+        ],
+        "en": [
+          "home expansion",
+          "family arrival",
+          "overgiving"
+        ]
+      }
+    },
+    "Moon/Mars": {
+      "pt": "no período maior da Lua, o subperíodo de Marte fortalece sua proteção e seus limites emocionais, frequentemente trazendo confrontos familiares e ação para mudar de casa, reformar ou reorganizar papéis domésticos. sua energia física ligada aos sentimentos aumenta, mas você pode sentir irritação e inquietude quando essa intensidade não encontra uma saída corporal clara.",
+      "en": "within the Moon major period, the Mars sub-period strengthens your protectiveness and emotional boundaries, frequently bringing family confrontations and action to move, renovate or reorganize household roles. your physical energy linked to feelings increases, but you may feel irritability and restlessness when that intensity lacks a clear physical outlet.",
+      "keywords": {
+        "pt": [
+          "confrontos familiares",
+          "mudança doméstica",
+          "irritação"
+        ],
+        "en": [
+          "family confrontations",
+          "domestic change",
+          "irritability"
+        ]
+      }
+    },
+    "Moon/Sun": {
+      "pt": "no período maior da Lua, o subperíodo do Sol faz sua identidade e seu propósito emergirem das experiências emocionais, trazendo reconhecimento de quem você é por meio do que sente e necessita. sua criação pode alcançar especial autenticidade afetiva, quando a direção pessoal incorpora essa verdade emocional em vez de fugir dela.",
+      "en": "within the Moon major period, the Sun sub-period brings your identity and purpose out of emotional experience, revealing who you are through what you feel and need. your creative work may achieve particular emotional authenticity when personal direction incorporates that emotional truth rather than escaping it.",
+      "keywords": {
+        "pt": [
+          "propósito",
+          "autorreconhecimento",
+          "criação autêntica"
+        ],
+        "en": [
+          "purpose",
+          "self-recognition",
+          "authentic creation"
+        ]
+      }
+    },
+    "Moon/Venus": {
+      "pt": "no período maior da Lua, o subperíodo de Vênus costuma ser a fase mais agradável, aprofundando suas relações pelo prazer compartilhado e tornando o lar mais belo e acolhedor. você pode sentir especial satisfação na comida, na companhia e na intimidade, mas o conforto também pode disfarçar questões emocionais que continuam exigindo atenção.",
+      "en": "within the Moon major period, the Venus sub-period is often the most pleasant phase, deepening your relationships through shared enjoyment and making home more beautiful and welcoming. you may find particular satisfaction in food, companionship and intimacy, but comfort can also disguise emotional issues that still require attention.",
+      "keywords": {
+        "pt": [
+          "prazer compartilhado",
+          "lar",
+          "evasão emocional"
+        ],
+        "en": [
+          "shared pleasure",
+          "home",
+          "emotional avoidance"
+        ]
+      }
+    },
+    "Moon/Mercury": {
+      "pt": "no período maior da Lua, o subperíodo de Mercúrio aumenta sua capacidade de nomear sentimentos, comunicar necessidades e compreender padrões emocionais, favorecendo diários, conversas terapêuticas e memórias escritas. suas conversas sobre papéis familiares e organização da casa também se tornam mais produtivas, pois você consegue expressar com clareza a dimensão afetiva das questões práticas.",
+      "en": "within the Moon major period, the Mercury sub-period increases your capacity to name feelings, communicate needs and understand emotional patterns, supporting journals, therapeutic conversations and memoir writing. your conversations about family roles and household arrangements also become more productive because you can clearly express the emotional dimension of practical matters.",
+      "keywords": {
+        "pt": [
+          "expressão emocional",
+          "conversa terapêutica",
+          "comunicação familiar"
+        ],
+        "en": [
+          "emotional expression",
+          "therapeutic conversation",
+          "family communication"
+        ]
+      }
+    },
+    "Saturn/Saturn": {
+      "pt": "no período maior de Saturno, o subperíodo de Saturno concentra suas exigências de construção e manutenção, com responsabilidades profissionais geralmente maiores e possibilidade de assumir autoridade ou projetos de grande alcance. sua capacidade de esforço sustentado também chega ao auge, mas há risco de rigidez, exaustão e perda de espontaneidade.",
+      "en": "within the Saturn major period, the Saturn sub-period concentrates demands for building and maintenance, with professional responsibilities typically increasing and the possibility of assuming authority or large-scale projects. your capacity for sustained effort also peaks, but there is a risk of rigidity, exhaustion and loss of spontaneity.",
+      "keywords": {
+        "pt": [
+          "autoridade",
+          "esforço sustentado",
+          "exaustão"
+        ],
+        "en": [
+          "authority",
+          "sustained effort",
+          "exhaustion"
+        ]
+      }
+    },
+    "Saturn/Jupiter": {
+      "pt": "no período maior de Saturno, o subperíodo de Júpiter costuma trazer avanço profissional, reconhecimento institucional ou marcos educacionais que duram por se apoiarem na competência que você construiu. oportunidades de maior autoridade e influência se abrem pela sua confiabilidade, mas uma expansão que comprometa as bases existentes troca estabilidade por ganhos passageiros.",
+      "en": "within the Saturn major period, the Jupiter sub-period often brings professional advancement, institutional recognition or educational milestones that last because they rest on competence you have built. opportunities for greater authority and influence open through your reliability, but growth undermining existing foundations exchanges stability for temporary gains.",
+      "keywords": {
+        "pt": [
+          "avanço profissional",
+          "reconhecimento",
+          "estabilidade"
+        ],
+        "en": [
+          "professional advancement",
+          "recognition",
+          "stability"
+        ]
+      }
+    },
+    "Saturn/Mars": {
+      "pt": "no período maior de Saturno, o subperíodo de Marte impulsiona seus projetos lentos à conclusão e eleva a resistência física e profissional, unindo planejamento e execução decisiva. você pode sentir frustração quando a urgência encontra limites e preparação demorada, mas canalizar essa tensão pelas estruturas existentes favorece um esforço intenso e eficiente.",
+      "en": "within the Saturn major period, the Mars sub-period drives your slow-moving projects toward completion and raises physical and professional endurance, joining planning with decisive execution. you may feel frustration when urgency meets limits and lengthy preparation, but channeling that tension through existing structures supports intense, efficient effort.",
+      "keywords": {
+        "pt": [
+          "conclusão de projetos",
+          "resistência física",
+          "frustração"
+        ],
+        "en": [
+          "project completion",
+          "physical endurance",
+          "frustration"
+        ]
+      }
+    },
+    "Saturn/Sun": {
+      "pt": "no período maior de Saturno, o subperíodo do Sol torna visível a autoridade que você conquistou por esforço continuado, frequentemente acompanhando um título, prêmio, promoção ou reconhecimento dos colegas. sua expressão ganha credibilidade pela experiência acumulada, com o equilíbrio entre assumir essa autoridade e conservar a humildade que sustentou seu trabalho.",
+      "en": "within the Saturn major period, the Sun sub-period makes the authority you earned through sustained effort visible, frequently accompanying a title, award, promotion or recognition from peers. your expression gains credibility through accumulated experience, with a balance between claiming that authority and retaining the humility that sustained your work.",
+      "keywords": {
+        "pt": [
+          "reconhecimento",
+          "promoção",
+          "autoridade conquistada"
+        ],
+        "en": [
+          "recognition",
+          "promotion",
+          "earned authority"
+        ]
+      }
+    },
+    "Saturn/Venus": {
+      "pt": "no período maior de Saturno, o subperíodo de Vênus costuma trazer alívio às exigências, renovando o calor das suas relações e o prazer no trabalho. parcerias comprometidas podem se aprofundar, e você encontra uma beleza discreta e durável na criação, no artesanato ou na apresentação profissional, unindo afeto e responsabilidade.",
+      "en": "within the Saturn major period, the Venus sub-period often brings relief from demands, renewing warmth in your relationships and pleasure in work. committed partnerships may deepen, and you find understated, durable beauty in creative work, craftsmanship or professional presentation, joining affection with responsibility.",
+      "keywords": {
+        "pt": [
+          "prazer no trabalho",
+          "parceria duradoura",
+          "beleza discreta"
+        ],
+        "en": [
+          "pleasure in work",
+          "lasting partnership",
+          "understated beauty"
+        ]
+      }
+    },
+    "Saturn/Mercury": {
+      "pt": "no período maior de Saturno, o subperíodo de Mercúrio dá precisão à sua análise e favorece fortemente documentação, organização e desenvolvimento profissional por certificações, exames ou formação técnica. sua comunicação tende a ficar mais medida e carregada de autoridade, com menos palavras e maior peso no que você diz.",
+      "en": "within the Saturn major period, the Mercury sub-period gives precision to your analysis and strongly supports documentation, organization and professional development through certifications, examinations or technical training. your communication tends to become more measured and authoritative, with fewer words and greater weight in what you say.",
+      "keywords": {
+        "pt": [
+          "certificações",
+          "documentação",
+          "comunicação precisa"
+        ],
+        "en": [
+          "certifications",
+          "documentation",
+          "precise communication"
+        ]
+      }
+    },
+    "Saturn/Moon": {
+      "pt": "no período maior de Saturno, o subperíodo da Lua costuma trazer cuidados familiares, decisões de moradia e reorganização da casa que exigem sua capacidade de estruturar a vida. você também pode confrontar o custo emocional da disciplina, reconhecendo necessidades antes adiadas e abrindo espaço para elas dentro dos compromissos existentes.",
+      "en": "within the Saturn major period, the Moon sub-period often brings family care, housing decisions and household reorganization that require your capacity to structure life. you may also confront the emotional cost of discipline, recognizing previously deferred needs and making space for them within existing commitments.",
+      "keywords": {
+        "pt": [
+          "cuidados familiares",
+          "decisões de moradia",
+          "necessidades adiadas"
+        ],
+        "en": [
+          "family care",
+          "housing decisions",
+          "deferred needs"
+        ]
+      }
+    },
+    "Jupiter/Jupiter": {
+      "pt": "no período maior de Júpiter, o subperíodo de Júpiter concentra a expansão: suas redes sociais crescem, as oportunidades profissionais se multiplicam e os horizontes educacionais se ampliam. você pode, porém, superestimar sua capacidade ou confundir otimismo com realização, assumindo excessos que as fases seguintes terão de corrigir.",
+      "en": "within the Jupiter major period, the Jupiter sub-period concentrates expansion: your social networks grow, professional opportunities multiply and educational horizons broaden. you may, however, overestimate your capacity or mistake optimism for accomplishment, taking on excesses that later phases will need to correct.",
+      "keywords": {
+        "pt": [
+          "oportunidades profissionais",
+          "expansão",
+          "excesso de confiança"
+        ],
+        "en": [
+          "professional opportunities",
+          "expansion",
+          "overconfidence"
+        ]
+      }
+    },
+    "Jupiter/Mars": {
+      "pt": "no período maior de Júpiter, o subperíodo de Marte une visão estratégica e energia física, e empreendimentos profissionais que você inicia nessa fase costumam ter sucesso. atividades atléticas, empresariais e de liderança são fortemente favorecidas, mas a ousadia pode gerar iniciativas grandes, rápidas ou numerosas demais para seus recursos.",
+      "en": "within the Jupiter major period, the Mars sub-period joins strategic vision with physical energy, and professional ventures you launch in this phase often succeed. athletic, entrepreneurial and leadership activities are strongly supported, but boldness can produce initiatives too large, fast or numerous for your resources.",
+      "keywords": {
+        "pt": [
+          "empreendimentos",
+          "sucesso",
+          "excesso de iniciativa"
+        ],
+        "en": [
+          "ventures",
+          "success",
+          "overextended initiative"
+        ]
+      }
+    },
+    "Jupiter/Sun": {
+      "pt": "no período maior de Júpiter, o subperíodo do Sol traz oportunidades de liderança que dão à sua expansão um propósito pessoal e permitem que sua visão influencie outras pessoas. o reconhecimento público pelas suas realizações e qualidades tende a crescer, e você alcança um público mais amplo por aquilo que tem a oferecer.",
+      "en": "within the Jupiter major period, the Sun sub-period brings leadership opportunities that give your expansion personal purpose and allow your vision to influence others. public recognition for your accomplishments and qualities tends to grow, and you reach a wider audience through what you have to offer.",
+      "keywords": {
+        "pt": [
+          "liderança",
+          "reconhecimento público",
+          "visão pessoal"
+        ],
+        "en": [
+          "leadership",
+          "public recognition",
+          "personal vision"
+        ]
+      }
+    },
+    "Jupiter/Venus": {
+      "pt": "no período maior de Júpiter, o subperíodo de Vênus favorece celebrações, novas relações agradáveis e criações ambiciosas e refinadas, atraindo atenção positiva para você. os vínculos existentes recebem mais calor, mas a combinação pode levar a compromissos sociais excessivos, gastos extravagantes ou escolhas amorosas que privilegiam o prazer sem sustentação.",
+      "en": "within the Jupiter major period, the Venus sub-period supports celebrations, enjoyable new relationships and ambitious, refined creative work, attracting positive attention to you. existing bonds receive greater warmth, but the combination can lead to excessive social commitments, extravagant spending or romantic choices favoring pleasure without sustainability.",
+      "keywords": {
+        "pt": [
+          "novas relações",
+          "criação artística",
+          "gastos excessivos"
+        ],
+        "en": [
+          "new relationships",
+          "artistic creation",
+          "excessive spending"
+        ]
+      }
+    },
+    "Jupiter/Mercury": {
+      "pt": "no período maior de Júpiter, o subperíodo de Mercúrio torna sua visão ampla mais articulada e favorece fortemente estudos formais, ensino, publicação e conexões intelectuais. você consegue organizar e transmitir conhecimentos diversos, mas a facilidade de falar de tudo pode dar aparência de profundidade a uma compreensão que ainda não a possui.",
+      "en": "within the Jupiter major period, the Mercury sub-period makes your broad vision more articulate and strongly supports formal study, teaching, publishing and intellectual connections. you can organize and transmit diverse knowledge, but ease in speaking about everything may lend an appearance of depth to understanding that does not yet possess it.",
+      "keywords": {
+        "pt": [
+          "ensino",
+          "publicação",
+          "profundidade intelectual"
+        ],
+        "en": [
+          "teaching",
+          "publishing",
+          "intellectual depth"
+        ]
+      }
+    },
+    "Jupiter/Moon": {
+      "pt": "no período maior de Júpiter, o subperíodo da Lua costuma trazer ampliação do lar, aprofundamento dos vínculos familiares ou uma abertura emocional que dá raízes pessoais ao seu crescimento externo. sua generosidade familiar pode aumentar, mas a abertura afetiva também pode criar vulnerabilidade difícil de acomodar às exigências da vida pública.",
+      "en": "within the Jupiter major period, the Moon sub-period often brings home expansion, deeper family bonds or emotional openness that gives personal roots to your outward growth. your family generosity may increase, but emotional openness can also create vulnerability that is difficult to accommodate within the demands of public engagement.",
+      "keywords": {
+        "pt": [
+          "ampliação do lar",
+          "vínculos familiares",
+          "vulnerabilidade"
+        ],
+        "en": [
+          "home expansion",
+          "family bonds",
+          "vulnerability"
+        ]
+      }
+    },
+    "Jupiter/Saturn": {
+      "pt": "no período maior de Júpiter, o subperíodo de Saturno costuma desacelerar sua expansão: projetos exigem esforço prolongado e relações sociais são testadas quanto à consistência. na expressão produtiva, você consolida ganhos reais e libera excessos, deixando estruturas profissionais, educacionais ou sociais capazes de preservar essas conquistas.",
+      "en": "within the Jupiter major period, the Saturn sub-period often slows your expansion: projects demand sustained effort and social connections are tested for substance. in its productive expression, you consolidate genuine gains and release overextensions, leaving professional, educational or social structures capable of preserving those achievements.",
+      "keywords": {
+        "pt": [
+          "desaceleração",
+          "consolidação",
+          "estruturas duradouras"
+        ],
+        "en": [
+          "slowdown",
+          "consolidation",
+          "lasting structures"
+        ]
+      }
+    },
+    "Mars/Mars": {
+      "pt": "no período maior de Marte, o subperíodo de Marte leva sua energia física e competitiva ao auge e favorece fortemente esportes e iniciativas profissionais quando a intensidade se dirige a objetivos claros. você corre risco de agressividade, impulsividade e esforço físico prejudicial, e a tensão sem saída corporal pode aparecer em atritos pessoais ou sintomas físicos.",
+      "en": "within the Mars major period, the Mars sub-period brings your physical and competitive energy to its peak and strongly supports sport and professional initiatives when intensity serves clear goals. you risk aggression, impulsivity and harmful physical overexertion, and tension without a physical outlet may appear as interpersonal friction or physical symptoms.",
+      "keywords": {
+        "pt": [
+          "energia física",
+          "agressividade",
+          "sobrecarga corporal"
+        ],
+        "en": [
+          "physical energy",
+          "aggression",
+          "physical overexertion"
+        ]
+      }
+    },
+    "Mars/Sun": {
+      "pt": "no período maior de Marte, o subperíodo do Sol dá direção consciente à sua iniciativa e costuma produzir conquistas de especial significado quando a ação expressa um propósito pessoal autêntico. oportunidades de liderança tendem a surgir, e você é reconhecido não só pela força de agir, mas pela convicção que orienta seu esforço.",
+      "en": "within the Mars major period, the Sun sub-period gives conscious direction to your initiative and often produces particularly meaningful achievements when action expresses an authentic personal purpose. leadership opportunities tend to arise, and you are recognized not only for your drive but for the conviction directing your effort.",
+      "keywords": {
+        "pt": [
+          "conquistas",
+          "propósito",
+          "liderança"
+        ],
+        "en": [
+          "achievements",
+          "purpose",
+          "leadership"
+        ]
+      }
+    },
+    "Mars/Venus": {
+      "pt": "no período maior de Marte, o subperíodo de Vênus frequentemente intensifica sua vida amorosa, com forte química e possíveis novas conquistas que unem ousadia e encanto. sua energia também favorece dança, atuação ou criação que combina vigor e beleza, enquanto o prazer e a convivência aliviam a intensidade incessante da competição.",
+      "en": "within the Mars major period, the Venus sub-period frequently intensifies your romantic life, with strong chemistry and possible new pursuits combining boldness and charm. your energy also supports dance, performance or creative work combining vigor and beauty, while pleasure and companionship relieve the relentless intensity of competition.",
+      "keywords": {
+        "pt": [
+          "química amorosa",
+          "criação artística",
+          "alívio"
+        ],
+        "en": [
+          "romantic chemistry",
+          "artistic creation",
+          "relief"
+        ]
+      }
+    },
+    "Mars/Mercury": {
+      "pt": "no período maior de Marte, o subperíodo de Mercúrio dá precisão estratégica à sua iniciativa e costuma produzir conquistas eficazes em negociações, disputas competitivas e movimentos profissionais. sua fala se torna mais direta e persuasiva, mas a precisão pode virar uma forma de ferir e trazer custos para as relações.",
+      "en": "within the Mars major period, the Mercury sub-period gives strategic precision to your initiative and often produces effective achievements in negotiations, competitive maneuvers and professional moves. your speech becomes more direct and persuasive, but precision can become a way of hurting others and carry relational costs.",
+      "keywords": {
+        "pt": [
+          "negociação",
+          "estratégia",
+          "palavras cortantes"
+        ],
+        "en": [
+          "negotiation",
+          "strategy",
+          "cutting words"
+        ]
+      }
+    },
+    "Mars/Moon": {
+      "pt": "no período maior de Marte, o subperíodo da Lua revela a necessidade de proteger e sustentar quem você ama como força por trás da sua iniciativa, e reparos na casa ou situações familiares podem exigir ação decisiva. quando há envolvimento emocional, sua energia física é abundante, mas ela pode cair sensivelmente se a vida afetiva se desorganiza.",
+      "en": "within the Mars major period, the Moon sub-period reveals the need to protect and provide for those you love as a force behind your initiative, and home repairs or family situations may demand decisive action. when emotionally engaged, your physical energy is abundant, but it may decline noticeably if emotional life is disrupted.",
+      "keywords": {
+        "pt": [
+          "proteção",
+          "reparos domésticos",
+          "vitalidade física"
+        ],
+        "en": [
+          "protection",
+          "home repairs",
+          "physical vitality"
+        ]
+      }
+    },
+    "Mars/Saturn": {
+      "pt": "no período maior de Marte, o subperíodo de Saturno costuma trazer suas conquistas mais duráveis, com iniciativas concluídas, posições asseguradas e bases construídas por esforço disciplinado. sua resistência física chega ao auge, mas a tensão entre resultados imediatos e paciência exige que você canalize a força para objetivos preparados e sustentáveis.",
+      "en": "within the Mars major period, the Saturn sub-period often brings your most durable achievements, with initiatives completed, positions secured and foundations built through disciplined effort. your physical endurance peaks, but tension between immediate results and patience requires you to channel force into prepared, sustainable goals.",
+      "keywords": {
+        "pt": [
+          "conquistas duráveis",
+          "resistência física",
+          "paciência"
+        ],
+        "en": [
+          "durable achievements",
+          "physical endurance",
+          "patience"
+        ]
+      }
+    },
+    "Mars/Jupiter": {
+      "pt": "no período maior de Marte, o subperíodo de Júpiter frequentemente produz conquistas visíveis e bem-sucedidas: você amplia suas metas e cria oportunidades pela própria iniciativa, com um ambiente receptivo à ousadia. as redes profissionais e sociais crescem, mas impulsividade e excesso de confiança podem gerar projetos grandes, rápidos ou mal planejados demais.",
+      "en": "within the Mars major period, the Jupiter sub-period frequently produces visible, successful achievements: you broaden your goals and create opportunities through your own initiative, with an environment receptive to boldness. professional and social networks grow, but impulsivity and overconfidence can produce projects that are too large, fast or poorly planned.",
+      "keywords": {
+        "pt": [
+          "sucesso visível",
+          "iniciativa",
+          "excesso de confiança"
+        ],
+        "en": [
+          "visible success",
+          "initiative",
+          "overconfidence"
+        ]
+      }
+    }
+  }
+}

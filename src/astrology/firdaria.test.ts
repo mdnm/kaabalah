@@ -58,28 +58,21 @@ describe("Firdaria", () => {
     }
   });
 
-  it("NorthNode sub-periods default to Jupiter start (Zoller convention)", () => {
-    const result = getFirdaria(birthDate, true);
-    const nnMajor = result.allPeriods.find((p) => p.planet === "NorthNode")!;
-    expect(nnMajor.subPeriods[0].planet).toBe("Jupiter");
-  });
-
-  it("SouthNode sub-periods default to Saturn start", () => {
-    const result = getFirdaria(birthDate, true);
-    const snMajor = result.allPeriods.find((p) => p.planet === "SouthNode")!;
-    expect(snMajor.subPeriods[0].planet).toBe("Saturn");
-  });
-
-  it("NorthNode with sun-mars option starts from Sun", () => {
-    const result = getFirdaria(birthDate, true, undefined, { nodeSubPeriodStart: "sun-mars" });
-    const nnMajor = result.allPeriods.find((p) => p.planet === "NorthNode")!;
-    expect(nnMajor.subPeriods[0].planet).toBe("Sun");
-  });
-
-  it("SouthNode with sun-mars option starts from Mars", () => {
-    const result = getFirdaria(birthDate, true, undefined, { nodeSubPeriodStart: "sun-mars" });
-    const snMajor = result.allPeriods.find((p) => p.planet === "SouthNode")!;
-    expect(snMajor.subPeriods[0].planet).toBe("Mars");
+  it.each([true, false])("node majors are undivided and currentSub is null (diurnal=%s)", (diurnal) => {
+    const periods = getFirdariaPeriods(birthDate, diurnal);
+    for (const node of periods.filter((p) => p.planet === "NorthNode" || p.planet === "SouthNode")) {
+      expect(node.subPeriods).toEqual([]);
+      const start = getFirdaria(birthDate, diurnal, node.startDate);
+      expect(start.currentMajor.planet).toBe(node.planet);
+      expect(start.currentSub).toBeNull();
+      const last = getFirdaria(birthDate, diurnal, new Date(node.endDate.getTime() - 1));
+      expect(last.currentMajor.planet).toBe(node.planet);
+      expect(last.currentSub).toBeNull();
+      const after = getFirdaria(birthDate, diurnal, node.endDate);
+      expect(after.currentMajor.startDate).toEqual(node.endDate);
+      expect(after.currentMajor.planet).not.toBe(node.planet);
+      if (node.planet === "SouthNode") expect(after.currentSub).not.toBeNull();
+    }
   });
 
   it("75-year cycle: age 76 falls in second cycle (Sun again)", () => {
@@ -97,8 +90,8 @@ describe("Firdaria", () => {
     const result = getFirdaria(birthDate, true, target);
     expect(result.currentMajor.planet).toBe("Sun");
     expect(result.currentSub).toBeDefined();
-    expect(result.currentSub.startDate.getTime()).toBeLessThanOrEqual(target.getTime());
-    expect(result.currentSub.endDate.getTime()).toBeGreaterThan(target.getTime());
+    expect(result.currentSub!.startDate.getTime()).toBeLessThanOrEqual(target.getTime());
+    expect(result.currentSub!.endDate.getTime()).toBeGreaterThan(target.getTime());
   });
 });
 
@@ -138,6 +131,10 @@ describe("Firdaria timeline", () => {
       expect(t.entries[i].endExclusive.getTime()).toBe(t.entries[i + 1].start.getTime());
     }
     for (const e of t.entries) {
+      if (e.planet === "NorthNode" || e.planet === "SouthNode") {
+        expect(e.subPeriods).toEqual([]);
+        continue;
+      }
       expect(e.subPeriods).toHaveLength(7);
       expect(e.subPeriods[0].start.getTime()).toBe(e.start.getTime());
       expect(e.subPeriods[6].endExclusive.getTime()).toBe(e.endExclusive.getTime());
@@ -179,20 +176,18 @@ describe("Firdaria timeline", () => {
     expect(getFirdariaTimeline(birth, true, { from, to, includeSubPeriods: false }).entries[0].subPeriods).toEqual([]);
   });
 
-  it("node sub-period convention is passed through", () => {
-    const t = getFirdariaTimeline(birth, true, {
-      from: new Date(birth.getTime() + 70.5 * YEAR_MS),
-      to: new Date(birth.getTime() + 72.5 * YEAR_MS),
-      nodeSubPeriodStart: "sun-mars",
-    });
-    expect(t.entries[0].planet).toBe("NorthNode");
-    // window starts 0.5y into the 3y node period: the 2nd of 7 subs (~0.43y each); Sun-first order is Sun, Venus, ...
-    expect(t.entries[0].subPeriods[0].planet).toBe("Venus");
-    const dflt = getFirdariaTimeline(birth, true, {
-      from: new Date(birth.getTime() + 70.5 * YEAR_MS),
-      to: new Date(birth.getTime() + 72.5 * YEAR_MS),
-    });
-    expect(dflt.entries[0].subPeriods[0].planet).toBe("Mars"); // Jupiter-first order: Jupiter, Mars, ...
+  it("clipped node timelines stay undivided even with a deprecated start option", () => {
+    for (const nodeSubPeriodStart of [undefined, "sun-mars", "jupiter-saturn"] as const) {
+      const t = getFirdariaTimeline(birth, true, {
+        from: new Date(birth.getTime() + 70.5 * YEAR_MS),
+        to: new Date(birth.getTime() + 74 * YEAR_MS),
+        nodeSubPeriodStart,
+      });
+      expect(t.entries.map((e) => e.planet)).toEqual(["NorthNode", "SouthNode"]);
+      expect(t.entries.every((e) => e.subPeriods.length === 0)).toBe(true);
+      expect(t.entries[0].clippedStart).toBe(true);
+      expect(t.entries[1].clippedEnd).toBe(true);
+    }
   });
 
   it("is bounded with typed errors", () => {

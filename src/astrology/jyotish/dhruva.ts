@@ -1,7 +1,7 @@
 /**
  * Ernst Wilhelm / Kala "Dhruva" equatorial nakshatras.
  *
- * Ports the user-supplied, confirmed reference implementation. The method:
+ * The calculation uses the following method:
  *
  *  - Anchor: Galactic Center (Sgr A*) ICRS RA 266.40499 deg, Dec -28.93617 deg,
  *    taken to the FK5 mean equator/equinox of date (Astropy-equivalent, see

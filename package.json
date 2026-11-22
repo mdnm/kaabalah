@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "6.25.0",
+  "version": "7.0.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "engines": {
     "node": ">=18.18.0"
@@ -121,7 +121,6 @@
     "esoteric",
     "mysticism"
   ],
-  "author": "Mat Moura <matmoura@kaabalah.com>",
   "license": "AGPL-3.0",
   "directories": {
     "doc": "docs",

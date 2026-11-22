@@ -1,0 +1,1540 @@
+{
+  "skyRetrogradeSigns": {
+    "mercury/Aries": {
+      "pt": "com Mercúrio retrógrado em Áries, você pode encontrar comunicação apressada e mal-entendidos. reveja como expressa sua individualidade e impulsividade, repensando decisões rápidas e as consequências das palavras antes de falar.",
+      "en": "with Mercury retrograde in Aries, you may encounter rushed communication and misunderstandings. review how you express individuality and impulsiveness, reconsidering quick decisions and the consequences of words before speaking.",
+      "keywords": {
+        "pt": [
+          "comunicação apressada",
+          "individualidade",
+          "decisões"
+        ],
+        "en": [
+          "rushed communication",
+          "individuality",
+          "decisions"
+        ]
+      }
+    },
+    "mercury/Taurus": {
+      "pt": "com Mercúrio retrógrado em Touro, você pode rever valores e finanças, com possíveis revisões ou atrasos em investimentos e despesas. reavalie suas posses materiais e o que realmente tem valor para você.",
+      "en": "with Mercury retrograde in Taurus, you may review values and finances, with possible revisions or delays in investments and expenses. reassess your material possessions and what truly matters to you.",
+      "keywords": {
+        "pt": [
+          "valores",
+          "finanças",
+          "posses"
+        ],
+        "en": [
+          "values",
+          "finances",
+          "possessions"
+        ]
+      }
+    },
+    "mercury/Gemini": {
+      "pt": "com Mercúrio retrógrado em Gêmeos, você pode sentir esse período mais intensamente pela regência de Mercúrio sobre o signo, com confusões, falhas de comunicação e revisão de planos. revisite ideias antigas e corrija mal-entendidos.",
+      "en": "with Mercury retrograde in Gemini, you may feel this period more intensely through Mercury’s rulership of the sign, with confusion, communication failures and revised plans. revisit old ideas and correct misunderstandings.",
+      "keywords": {
+        "pt": [
+          "regência de Mercúrio",
+          "comunicação",
+          "planos"
+        ],
+        "en": [
+          "Mercury’s rulership",
+          "communication",
+          "plans"
+        ]
+      }
+    },
+    "mercury/Cancer": {
+      "pt": "com Mercúrio retrógrado em Câncer, você pode voltar-se para emoções e comunicação no ambiente doméstico. problemas familiares mal resolvidos podem reaparecer, pedindo cuidado e resolução.",
+      "en": "with Mercury retrograde in Cancer, you may turn inward toward emotions and communication at home. unresolved family problems may resurface, calling for care and resolution.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "comunicação doméstica",
+          "questões familiares"
+        ],
+        "en": [
+          "emotions",
+          "communication at home",
+          "family issues"
+        ]
+      }
+    },
+    "mercury/Leo": {
+      "pt": "com Mercúrio retrógrado em Leão, você pode encontrar problemas na expressão criativa e na comunicação com crianças ou parceiros românticos. repense como se destaca e transmite ideias, buscando clareza e autenticidade.",
+      "en": "with Mercury retrograde in Leo, you may encounter problems in creative expression and communication with children or romantic partners. reconsider how you stand out and convey ideas, seeking clarity and authenticity.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "crianças e romances",
+          "autenticidade"
+        ],
+        "en": [
+          "creativity",
+          "children and romance",
+          "authenticity"
+        ]
+      }
+    },
+    "mercury/Virgo": {
+      "pt": "com Mercúrio retrógrado em Virgem, você pode encontrar perturbações na rotina e no trabalho, num signo também regido por Mercúrio. problemas de organização e detalhes antes ignorados podem emergir, exigindo atenção e correção.",
+      "en": "with Mercury retrograde in Virgo, you may encounter disruptions in routine and work, in a sign also ruled by Mercury. organizational problems and previously overlooked details may emerge, requiring attention and correction.",
+      "keywords": {
+        "pt": [
+          "rotina",
+          "organização",
+          "detalhes"
+        ],
+        "en": [
+          "routine",
+          "organization",
+          "details"
+        ]
+      }
+    },
+    "mercury/Libra": {
+      "pt": "com Mercúrio retrógrado em Libra, você pode encontrar desafios nas parcerias e precisar revisar negociações e acordos. avalie relações e melhore a comunicação com sócios e amigos íntimos.",
+      "en": "with Mercury retrograde in Libra, you may encounter challenges in partnerships and need to revise negotiations and agreements. evaluate relationships and improve communication with business partners and close friends.",
+      "keywords": {
+        "pt": [
+          "parcerias",
+          "acordos",
+          "comunicação"
+        ],
+        "en": [
+          "partnerships",
+          "agreements",
+          "communication"
+        ]
+      }
+    },
+    "mercury/Scorpio": {
+      "pt": "com Mercúrio retrógrado em Escorpião, questões ocultas ou esquecidas podem vir à tona para você. investigue segredos e mal-entendidos que precisam de esclarecimento, pois reflexões profundas podem levar a transformações necessárias.",
+      "en": "with Mercury retrograde in Scorpio, hidden or forgotten issues may surface for you. investigate secrets and misunderstandings needing clarification, as deep reflection may lead to necessary transformations.",
+      "keywords": {
+        "pt": [
+          "questões ocultas",
+          "esclarecimento",
+          "transformação"
+        ],
+        "en": [
+          "hidden issues",
+          "clarification",
+          "transformation"
+        ]
+      }
+    },
+    "mercury/Sagittarius": {
+      "pt": "com Mercúrio retrógrado em Sagitário, você pode revisar planos de viagem, estudos ou crenças. reflita sobre verdade e conhecimento para fundamentar melhor sua busca por significado.",
+      "en": "with Mercury retrograde in Sagittarius, you may revise travel plans, studies or beliefs. reflect on truth and knowledge to give your search for meaning a firmer foundation.",
+      "keywords": {
+        "pt": [
+          "viagens",
+          "estudos",
+          "crenças"
+        ],
+        "en": [
+          "travel",
+          "studies",
+          "beliefs"
+        ]
+      }
+    },
+    "mercury/Capricorn": {
+      "pt": "com Mercúrio retrógrado em Capricórnio, você pode encontrar efeitos nos negócios e na carreira, com planos profissionais em espera ou precisando de ajustes. reavalie metas e responsabilidades para alinhá-las às suas ambições de longo prazo.",
+      "en": "with Mercury retrograde in Capricorn, you may encounter effects on business and career, with professional plans on hold or needing adjustments. reassess goals and responsibilities to align them with your long-term ambitions.",
+      "keywords": {
+        "pt": [
+          "negócios",
+          "carreira",
+          "responsabilidades"
+        ],
+        "en": [
+          "business",
+          "career",
+          "responsibilities"
+        ]
+      }
+    },
+    "mercury/Aquarius": {
+      "pt": "com Mercúrio retrógrado em Aquário, você pode encontrar desafios em projetos de grupo e tecnologia. revise ideias inovadoras e procure clareza e eficácia na comunicação com amigos e colaboradores.",
+      "en": "with Mercury retrograde in Aquarius, you may encounter challenges in group projects and technology. review innovative ideas and seek clear, effective communication with friends and collaborators.",
+      "keywords": {
+        "pt": [
+          "projetos de grupo",
+          "tecnologia",
+          "comunicação"
+        ],
+        "en": [
+          "group projects",
+          "technology",
+          "communication"
+        ]
+      }
+    },
+    "mercury/Pisces": {
+      "pt": "com Mercúrio retrógrado em Peixes, você pode sentir confusão emocional e ter sonhos mais intensos. conecte-se ao seu mundo interior e esclareça mal-entendidos ou percepções equivocadas na vida espiritual ou criativa.",
+      "en": "with Mercury retrograde in Pisces, you may feel emotional confusion and have more intense dreams. connect with your inner world and clarify misunderstandings or mistaken perceptions in spiritual or creative life.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "sonhos",
+          "mundo interior"
+        ],
+        "en": [
+          "emotions",
+          "dreams",
+          "inner world"
+        ]
+      }
+    },
+    "venus/Aries": {
+      "pt": "com Vênus retrógrado em Áries, você pode reavaliar relações amorosas e a maneira de buscar gratificação pessoal. reflita sobre impulsividade no amor e nas finanças, ponderando antes de agir nas questões do coração.",
+      "en": "with Venus retrograde in Aries, you may reassess romantic relationships and how you seek personal gratification. reflect on impulsiveness in love and finances, pausing before acting in matters of the heart.",
+      "keywords": {
+        "pt": [
+          "amor",
+          "gratificação pessoal",
+          "impulsividade"
+        ],
+        "en": [
+          "love",
+          "personal gratification",
+          "impulsiveness"
+        ]
+      }
+    },
+    "venus/Taurus": {
+      "pt": "com Vênus retrógrado em Touro, você pode voltar sua atenção às finanças pessoais e ao valor das relações. reconsidere investimentos e relacionamentos em sua busca por segurança material e afetiva, estabilidade e satisfação.",
+      "en": "with Venus retrograde in Taurus, you may turn your attention to personal finances and the value of relationships. reconsider investments and relationships in your search for material and emotional security, stability and satisfaction.",
+      "keywords": {
+        "pt": [
+          "finanças",
+          "relações",
+          "segurança"
+        ],
+        "en": [
+          "finances",
+          "relationships",
+          "security"
+        ]
+      }
+    },
+    "venus/Gemini": {
+      "pt": "com Vênus retrógrado em Gêmeos, você pode refletir sobre a comunicação nos relacionamentos. revise a maneira de interagir com os outros, resolvendo mal-entendidos e ajustando expectativas em amizades e romances.",
+      "en": "with Venus retrograde in Gemini, you may reflect on communication in relationships. review how you interact with others, resolving misunderstandings and adjusting expectations in friendships and romance.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "amizades",
+          "expectativas"
+        ],
+        "en": [
+          "communication",
+          "friendships",
+          "expectations"
+        ]
+      }
+    },
+    "venus/Cancer": {
+      "pt": "com Vênus retrógrado em Câncer, você pode reavaliar emoções e o ambiente doméstico. procure equilíbrio emocional em casa e nas relações familiares, harmonizando seu espaço e seus laços afetivos.",
+      "en": "with Venus retrograde in Cancer, you may reassess emotions and your home environment. seek emotional balance at home and in family relationships, bringing harmony to your space and emotional bonds.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "lar",
+          "laços familiares"
+        ],
+        "en": [
+          "emotions",
+          "home",
+          "family bonds"
+        ]
+      }
+    },
+    "venus/Leo": {
+      "pt": "com Vênus retrógrado em Leão, você pode revisitar temas de expressão pessoal e romance. reveja como expressa afeto e criatividade e se suas necessidades de reconhecimento estão sendo atendidas.",
+      "en": "with Venus retrograde in Leo, you may revisit themes of personal expression and romance. review how you express affection and creativity and whether your need for recognition is being met.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "romance",
+          "reconhecimento"
+        ],
+        "en": [
+          "personal expression",
+          "romance",
+          "recognition"
+        ]
+      }
+    },
+    "venus/Virgo": {
+      "pt": "com Vênus retrógrado em Virgem, você pode analisar a organização e a praticidade nas relações e nas finanças. reorganize orçamentos e esclareça deveres e direitos nos relacionamentos, buscando eficiência e menos estresse.",
+      "en": "with Venus retrograde in Virgo, you may examine organization and practicality in relationships and finances. reorganize budgets and clarify duties and rights in relationships, seeking efficiency and less stress.",
+      "keywords": {
+        "pt": [
+          "organização",
+          "orçamentos",
+          "deveres e direitos"
+        ],
+        "en": [
+          "organization",
+          "budgets",
+          "duties and rights"
+        ]
+      }
+    },
+    "venus/Libra": {
+      "pt": "com Vênus retrógrado em Libra, você pode sentir esse trânsito como especialmente significativo pela regência de Vênus sobre o signo. revise parcerias e a busca por harmonia, observando justiça e equilíbrio nas relações pessoais e profissionais.",
+      "en": "with Venus retrograde in Libra, you may experience this transit as especially significant through Venus’s rulership of the sign. review partnerships and your pursuit of harmony, considering fairness and balance in personal and professional relationships.",
+      "keywords": {
+        "pt": [
+          "regência de Vênus",
+          "parcerias",
+          "equilíbrio"
+        ],
+        "en": [
+          "Venus’s rulership",
+          "partnerships",
+          "balance"
+        ]
+      }
+    },
+    "venus/Scorpio": {
+      "pt": "com Vênus retrógrado em Escorpião, você pode aprofundar a introspecção sobre relações e finanças. investigue questões de confiança e vulnerabilidade para transformar relações superficiais em conexões mais significativas.",
+      "en": "with Venus retrograde in Scorpio, you may deepen introspection about relationships and finances. investigate trust and vulnerability to transform superficial relationships into more meaningful connections.",
+      "keywords": {
+        "pt": [
+          "relações",
+          "confiança",
+          "vulnerabilidade"
+        ],
+        "en": [
+          "relationships",
+          "trust",
+          "vulnerability"
+        ]
+      }
+    },
+    "venus/Sagittarius": {
+      "pt": "com Vênus retrógrado em Sagitário, você pode revisar ideais e a busca por aventuras no amor e na vida social. reflita se a liberdade pessoal e as novas experiências estão em harmonia com suas necessidades emocionais.",
+      "en": "with Venus retrograde in Sagittarius, you may review ideals and the pursuit of adventure in love and social life. reflect on whether personal freedom and new experiences are in harmony with your emotional needs.",
+      "keywords": {
+        "pt": [
+          "ideais",
+          "liberdade",
+          "necessidades emocionais"
+        ],
+        "en": [
+          "ideals",
+          "freedom",
+          "emotional needs"
+        ]
+      }
+    },
+    "venus/Capricorn": {
+      "pt": "com Vênus retrógrado em Capricórnio, você pode reavaliar metas e responsabilidades no amor e nas finanças. examine se seus relacionamentos e recursos estão alinhados aos objetivos de longo prazo.",
+      "en": "with Venus retrograde in Capricorn, you may reassess goals and responsibilities in love and finances. examine whether your relationships and resources align with long-term goals.",
+      "keywords": {
+        "pt": [
+          "metas",
+          "responsabilidades",
+          "recursos"
+        ],
+        "en": [
+          "goals",
+          "responsibilities",
+          "resources"
+        ]
+      }
+    },
+    "venus/Aquarius": {
+      "pt": "com Vênus retrógrado em Aquário, você pode reconsiderar originalidade e independência nas relações. reveja a dinâmica de grupos e amizades, buscando formas mais autênticas de interação e expressão de afeto.",
+      "en": "with Venus retrograde in Aquarius, you may reconsider originality and independence in relationships. review group and friendship dynamics, seeking more authentic ways to interact and express affection.",
+      "keywords": {
+        "pt": [
+          "originalidade",
+          "independência",
+          "amizades"
+        ],
+        "en": [
+          "originality",
+          "independence",
+          "friendships"
+        ]
+      }
+    },
+    "venus/Pisces": {
+      "pt": "com Vênus retrógrado em Peixes, questões de ilusão e realidade nos relacionamentos podem vir à tona para você. diferencie o ideal do real para esclarecer e curar desilusões emocionais.",
+      "en": "with Venus retrograde in Pisces, issues of illusion and reality in relationships may surface for you. distinguish the ideal from the real to clarify and heal emotional disillusionment.",
+      "keywords": {
+        "pt": [
+          "ilusão",
+          "realidade",
+          "desilusões emocionais"
+        ],
+        "en": [
+          "illusion",
+          "reality",
+          "emotional disillusionment"
+        ]
+      }
+    },
+    "mars/Aries": {
+      "pt": "com Marte retrógrado em Áries, você pode sentir frustração onde normalmente teria assertividade e iniciativa. revise como lida com agressividade e impulsividade, buscando uma abordagem ponderada e menos reativa.",
+      "en": "with Mars retrograde in Aries, you may feel frustration where you would normally have assertiveness and initiative. review how you handle aggression and impulsiveness, seeking a measured and less reactive approach.",
+      "keywords": {
+        "pt": [
+          "frustração",
+          "iniciativa",
+          "impulsividade"
+        ],
+        "en": [
+          "frustration",
+          "initiative",
+          "impulsiveness"
+        ]
+      }
+    },
+    "mars/Taurus": {
+      "pt": "com Marte retrógrado em Touro, você pode perceber desaceleração em processos de trabalho e finanças. reavalie como utiliza recursos e energia para construir uma base mais sólida e evitar desperdícios.",
+      "en": "with Mars retrograde in Taurus, you may notice a slowdown in work and financial processes. reassess how you use resources and energy to build a firmer foundation and avoid waste.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "recursos",
+          "energia"
+        ],
+        "en": [
+          "work",
+          "resources",
+          "energy"
+        ]
+      }
+    },
+    "mars/Gemini": {
+      "pt": "com Marte retrógrado em Gêmeos, você pode encontrar mal-entendidos e atrasos em projetos de comunicação e viagens. reveja como expressa ideias e administra o tempo, evitando dispersão.",
+      "en": "with Mars retrograde in Gemini, you may encounter misunderstandings and delays in communication projects and travel. review how you express ideas and manage time, avoiding scattered effort.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "viagens",
+          "tempo"
+        ],
+        "en": [
+          "communication",
+          "travel",
+          "time"
+        ]
+      }
+    },
+    "mars/Cancer": {
+      "pt": "com Marte retrógrado em Câncer, você pode ser desafiado a rever como lida com segurança e emoções. fortaleça suas defesas emocionais e procure resolver conflitos internos que possam afetar sua paz de espírito.",
+      "en": "with Mars retrograde in Cancer, you may be challenged to review how you handle security and emotions. strengthen your emotional defenses and seek to resolve inner conflicts that may affect your peace of mind.",
+      "keywords": {
+        "pt": [
+          "segurança",
+          "emoções",
+          "conflitos internos"
+        ],
+        "en": [
+          "security",
+          "emotions",
+          "inner conflicts"
+        ]
+      }
+    },
+    "mars/Leo": {
+      "pt": "com Marte retrógrado em Leão, você pode sentir uma diminuição da energia normalmente empregada na expressão criativa e romântica. reconsidere como busca atenção e reconhecimento, equilibrando liderança e colaboração.",
+      "en": "with Mars retrograde in Leo, you may feel less of the energy normally devoted to creative and romantic expression. reconsider how you seek attention and recognition, balancing leadership with collaboration.",
+      "keywords": {
+        "pt": [
+          "energia",
+          "criatividade",
+          "colaboração"
+        ],
+        "en": [
+          "energy",
+          "creativity",
+          "collaboration"
+        ]
+      }
+    },
+    "mars/Virgo": {
+      "pt": "com Marte retrógrado em Virgem, você pode encontrar perturbações na rotina e nos processos de trabalho. revise métodos e eficiência, analisando criticamente o que já não funciona.",
+      "en": "with Mars retrograde in Virgo, you may encounter disruptions in routine and work processes. review methods and efficiency, critically examining what no longer works.",
+      "keywords": {
+        "pt": [
+          "rotina",
+          "métodos",
+          "eficiência"
+        ],
+        "en": [
+          "routine",
+          "methods",
+          "efficiency"
+        ]
+      }
+    },
+    "mars/Libra": {
+      "pt": "com Marte retrógrado em Libra, você pode encontrar tensões nos relacionamentos que exigem paciência e diplomacia. avalie como lida com conflitos e busca harmonia, exercendo assertividade sem perder a justiça.",
+      "en": "with Mars retrograde in Libra, you may encounter relationship tensions requiring patience and diplomacy. evaluate how you handle conflict and seek harmony, practicing assertiveness without losing fairness.",
+      "keywords": {
+        "pt": [
+          "relacionamentos",
+          "diplomacia",
+          "assertividade"
+        ],
+        "en": [
+          "relationships",
+          "diplomacy",
+          "assertiveness"
+        ]
+      }
+    },
+    "mars/Scorpio": {
+      "pt": "com Marte retrógrado em Escorpião, você pode sentir questões de controle e poder se intensificarem. procure entender suas motivações profundas e como maneja influência e transformação na sua vida e na dos outros.",
+      "en": "with Mars retrograde in Scorpio, you may feel issues of control and power intensify. seek to understand your deeper motivations and how you handle influence and transformation in your life and the lives of others.",
+      "keywords": {
+        "pt": [
+          "controle",
+          "poder",
+          "motivações"
+        ],
+        "en": [
+          "control",
+          "power",
+          "motivations"
+        ]
+      }
+    },
+    "mars/Sagittarius": {
+      "pt": "com Marte retrógrado em Sagitário, você pode revisar planos de longo prazo e viagens. reflita sobre crenças e filosofias, ajustando suas ações aos seus verdadeiros ideais.",
+      "en": "with Mars retrograde in Sagittarius, you may revise long-term plans and travel. reflect on beliefs and philosophies, adjusting your actions to your true ideals.",
+      "keywords": {
+        "pt": [
+          "planos",
+          "viagens",
+          "ideais"
+        ],
+        "en": [
+          "plans",
+          "travel",
+          "ideals"
+        ]
+      }
+    },
+    "mars/Capricorn": {
+      "pt": "com Marte retrógrado em Capricórnio, você pode revisar metas profissionais e estratégias de carreira. redefina objetivos e fortaleça sua determinação, evitando pressões desnecessárias e concentrando-se no que é sustentável.",
+      "en": "with Mars retrograde in Capricorn, you may revise professional goals and career strategies. redefine objectives and strengthen your determination, avoiding unnecessary pressure and focusing on what is sustainable.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "determinação",
+          "sustentabilidade"
+        ],
+        "en": [
+          "career",
+          "determination",
+          "sustainability"
+        ]
+      }
+    },
+    "mars/Aquarius": {
+      "pt": "com Marte retrógrado em Aquário, você pode ser desafiado a rever como lida com inovações e projetos comunitários. repense abordagens colaborativas e tecnológicas, procurando alinhamento e participação entre os envolvidos.",
+      "en": "with Mars retrograde in Aquarius, you may be challenged to review how you handle innovation and community projects. reconsider collaborative and technological approaches, seeking alignment and engagement among those involved.",
+      "keywords": {
+        "pt": [
+          "inovação",
+          "comunidade",
+          "colaboração"
+        ],
+        "en": [
+          "innovation",
+          "community",
+          "collaboration"
+        ]
+      }
+    },
+    "mars/Pisces": {
+      "pt": "com Marte retrógrado em Peixes, questões não resolvidas do passado, sobretudo medos e inseguranças, podem reaparecer para você. enfrente esses desafios com coragem, buscando cura e entendimento para seguir em frente.",
+      "en": "with Mars retrograde in Pisces, unresolved issues from the past, especially fears and insecurities, may resurface for you. face these challenges with courage, seeking healing and understanding to move forward.",
+      "keywords": {
+        "pt": [
+          "passado",
+          "medos",
+          "coragem"
+        ],
+        "en": [
+          "past",
+          "fears",
+          "courage"
+        ]
+      }
+    },
+    "jupiter/Aries": {
+      "pt": "com Júpiter retrógrado em Áries, você pode revisitar projetos de expansão pessoal e profissional. avalie se suas ações e seus planos estão alinhados às ambições de longo prazo e conduzem ao crescimento desejado.",
+      "en": "with Jupiter retrograde in Aries, you may revisit projects for personal and professional expansion. evaluate whether your actions and plans align with long-term ambitions and lead toward the growth you seek.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "projetos",
+          "crescimento"
+        ],
+        "en": [
+          "expansion",
+          "projects",
+          "growth"
+        ]
+      }
+    },
+    "jupiter/Taurus": {
+      "pt": "com Júpiter retrógrado em Touro, você pode perceber desaceleração na busca por segurança material e conforto. pondere sobre o que realmente tem valor, dependências financeiras e emocionais, investimentos e aquisições.",
+      "en": "with Jupiter retrograde in Taurus, you may notice a slowdown in the pursuit of material security and comfort. reflect on what truly has value, financial and emotional dependencies, investments and acquisitions.",
+      "keywords": {
+        "pt": [
+          "segurança material",
+          "dependências",
+          "investimentos"
+        ],
+        "en": [
+          "material security",
+          "dependencies",
+          "investments"
+        ]
+      }
+    },
+    "jupiter/Gemini": {
+      "pt": "com Júpiter retrógrado em Gêmeos, você pode revisar suas maneiras de comunicar e aprender. retome estudos interrompidos ou reavalie como compartilha conhecimento e informação, ajustando objetivos educacionais e comunicativos.",
+      "en": "with Jupiter retrograde in Gemini, you may review how you communicate and learn. resume interrupted studies or reassess how you share knowledge and information, adjusting educational and communication goals.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "aprendizado",
+          "estudos"
+        ],
+        "en": [
+          "communication",
+          "learning",
+          "studies"
+        ]
+      }
+    },
+    "jupiter/Cancer": {
+      "pt": "com Júpiter retrógrado em Câncer, você pode sentir necessidade de introspecção sobre emoções e família. reexamine raízes, tradições e segurança emocional, reconsiderando o papel da herança e do ambiente de origem na sua vida.",
+      "en": "with Jupiter retrograde in Cancer, you may feel a need for introspection about emotions and family. reexamine roots, traditions and emotional security, reconsidering the role of heritage and your early environment in your life.",
+      "keywords": {
+        "pt": [
+          "família",
+          "raízes",
+          "segurança emocional"
+        ],
+        "en": [
+          "family",
+          "roots",
+          "emotional security"
+        ]
+      }
+    },
+    "jupiter/Leo": {
+      "pt": "com Júpiter retrógrado em Leão, você pode refletir sobre autenticidade e expressão pessoal. avalie como usa criatividade e liderança e se exerce essas qualidades de maneira justa e eficaz.",
+      "en": "with Jupiter retrograde in Leo, you may reflect on authenticity and personal expression. evaluate how you use creativity and leadership and whether you exercise these qualities fairly and effectively.",
+      "keywords": {
+        "pt": [
+          "autenticidade",
+          "criatividade",
+          "liderança"
+        ],
+        "en": [
+          "authenticity",
+          "creativity",
+          "leadership"
+        ]
+      }
+    },
+    "jupiter/Virgo": {
+      "pt": "com Júpiter retrógrado em Virgem, você pode revisar rotinas diárias e saúde. analise como a gestão do tempo e os hábitos de trabalho contribuem para seu bem-estar e produtividade ou os prejudicam.",
+      "en": "with Jupiter retrograde in Virgo, you may review daily routines and health. examine how time management and work habits support or undermine your well-being and productivity.",
+      "keywords": {
+        "pt": [
+          "rotina",
+          "saúde",
+          "produtividade"
+        ],
+        "en": [
+          "routine",
+          "health",
+          "productivity"
+        ]
+      }
+    },
+    "jupiter/Libra": {
+      "pt": "com Júpiter retrógrado em Libra, você pode encontrar desaceleração em projetos sociais e parcerias. reavalie relações e sua rede de contatos, considerando como influenciam objetivos pessoais e profissionais.",
+      "en": "with Jupiter retrograde in Libra, you may encounter a slowdown in social projects and partnerships. reassess relationships and your network, considering how they influence personal and professional goals.",
+      "keywords": {
+        "pt": [
+          "projetos sociais",
+          "parcerias",
+          "contatos"
+        ],
+        "en": [
+          "social projects",
+          "partnerships",
+          "network"
+        ]
+      }
+    },
+    "jupiter/Scorpio": {
+      "pt": "com Júpiter retrógrado em Escorpião, você pode aprofundar a investigação de controle, poder e transformação. revise e refine estratégias de crescimento pessoal, sobretudo as relacionadas a finanças e intimidade.",
+      "en": "with Jupiter retrograde in Scorpio, you may deepen your examination of control, power and transformation. review and refine personal growth strategies, especially those involving finances and intimacy.",
+      "keywords": {
+        "pt": [
+          "poder",
+          "crescimento",
+          "intimidade"
+        ],
+        "en": [
+          "power",
+          "growth",
+          "intimacy"
+        ]
+      }
+    },
+    "jupiter/Sagittarius": {
+      "pt": "com Júpiter retrógrado em Sagitário, você pode reavaliar planos de expansão e filosofias de vida. reconsidere viagens, estudos superiores e crenças, examinando se ainda correspondem a quem você está se tornando.",
+      "en": "with Jupiter retrograde in Sagittarius, you may reassess expansion plans and philosophies of life. reconsider travel, higher education and beliefs, examining whether they still fit who you are becoming.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "estudos superiores",
+          "crenças"
+        ],
+        "en": [
+          "expansion",
+          "higher education",
+          "beliefs"
+        ]
+      }
+    },
+    "jupiter/Capricorn": {
+      "pt": "com Júpiter retrógrado em Capricórnio, você pode revisar carreira e estruturas de longo prazo. reflita sobre responsabilidades e autoridade, avaliando se o caminho atual está alinhado aos seus objetivos de sucesso e realização.",
+      "en": "with Jupiter retrograde in Capricorn, you may review career and long-term structures. reflect on responsibilities and authority, evaluating whether your current path aligns with your goals for success and fulfillment.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "responsabilidades",
+          "autoridade"
+        ],
+        "en": [
+          "career",
+          "responsibilities",
+          "authority"
+        ]
+      }
+    },
+    "jupiter/Aquarius": {
+      "pt": "com Júpiter retrógrado em Aquário, você pode questionar o estado dos projetos coletivos e ideais humanitários. examine se suas inovações e reformas servem ao bem comum ou precisam de ajustes para refletir melhor suas visões utópicas.",
+      "en": "with Jupiter retrograde in Aquarius, you may question the state of collective projects and humanitarian ideals. examine whether your innovations and reforms serve the common good or need adjustments to better reflect your utopian visions.",
+      "keywords": {
+        "pt": [
+          "projetos coletivos",
+          "ideais",
+          "bem comum"
+        ],
+        "en": [
+          "collective projects",
+          "ideals",
+          "common good"
+        ]
+      }
+    },
+    "jupiter/Pisces": {
+      "pt": "com Júpiter retrógrado em Peixes, você pode entrar numa fase de introspecção espiritual e reavaliação de crenças. explore o subconsciente e o que foi negligenciado, trazendo à luz percepções antes ignoradas ou subestimadas.",
+      "en": "with Jupiter retrograde in Pisces, you may enter a phase of spiritual introspection and reassessment of beliefs. explore the subconscious and what has been neglected, bringing previously ignored or underestimated insights to light.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "crenças",
+          "subconsciente"
+        ],
+        "en": [
+          "spirituality",
+          "beliefs",
+          "subconscious"
+        ]
+      }
+    },
+    "saturn/Aries": {
+      "pt": "com Saturno retrógrado em Áries, você pode reavaliar como enfrenta desafios e responsabilidades. reconsidere seus métodos diante dos obstáculos, desenvolvendo paciência e disciplina para atingir metas de longo prazo.",
+      "en": "with Saturn retrograde in Aries, you may reassess how you face challenges and responsibilities. reconsider your methods for handling obstacles, developing patience and discipline to reach long-term goals.",
+      "keywords": {
+        "pt": [
+          "desafios",
+          "responsabilidades",
+          "disciplina"
+        ],
+        "en": [
+          "challenges",
+          "responsibilities",
+          "discipline"
+        ]
+      }
+    },
+    "saturn/Taurus": {
+      "pt": "com Saturno retrógrado em Touro, questões de segurança material e estabilidade podem ganhar destaque para você. reveja recursos financeiros e compromissos, fazendo os ajustes necessários para construir uma base sólida para o futuro.",
+      "en": "with Saturn retrograde in Taurus, issues of material security and stability may become prominent for you. review financial resources and commitments, making necessary adjustments to build a solid foundation for the future.",
+      "keywords": {
+        "pt": [
+          "segurança material",
+          "recursos",
+          "compromissos"
+        ],
+        "en": [
+          "material security",
+          "resources",
+          "commitments"
+        ]
+      }
+    },
+    "saturn/Gemini": {
+      "pt": "com Saturno retrógrado em Gêmeos, você pode refletir sobre comunicação e conexões. reavalie como compartilha informações e se relaciona com irmãos e vizinhos, buscando maior profundidade e significado nas interações.",
+      "en": "with Saturn retrograde in Gemini, you may reflect on communication and connections. reassess how you share information and relate to siblings and neighbors, seeking greater depth and meaning in interactions.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "irmãos e vizinhos",
+          "profundidade"
+        ],
+        "en": [
+          "communication",
+          "siblings and neighbors",
+          "depth"
+        ]
+      }
+    },
+    "saturn/Cancer": {
+      "pt": "com Saturno retrógrado em Câncer, você pode voltar-se para segurança emocional e familiar. fortaleça suas estruturas domésticas e emocionais, revisando responsabilidades familiares e como são administradas.",
+      "en": "with Saturn retrograde in Cancer, you may turn toward emotional and family security. strengthen your domestic and emotional structures, reviewing family responsibilities and how they are managed.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "família",
+          "responsabilidades"
+        ],
+        "en": [
+          "emotional security",
+          "family",
+          "responsibilities"
+        ]
+      }
+    },
+    "saturn/Leo": {
+      "pt": "com Saturno retrógrado em Leão, você pode reavaliar autoexpressão e liderança. examine criticamente como exerce autoridade e seu impacto nos outros, buscando uma liderança mais responsável e equilibrada.",
+      "en": "with Saturn retrograde in Leo, you may reassess self-expression and leadership. critically examine how you exercise authority and its impact on others, seeking more responsible and balanced leadership.",
+      "keywords": {
+        "pt": [
+          "autoexpressão",
+          "liderança",
+          "autoridade"
+        ],
+        "en": [
+          "self-expression",
+          "leadership",
+          "authority"
+        ]
+      }
+    },
+    "saturn/Virgo": {
+      "pt": "com Saturno retrógrado em Virgem, você pode analisar profundamente os sistemas de trabalho e saúde. revise rotinas e responsabilidades para manter eficiência e pragmatismo sem comprometer seu bem-estar.",
+      "en": "with Saturn retrograde in Virgo, you may examine systems of work and health in depth. review routines and responsibilities to maintain efficiency and practicality without compromising your well-being.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "saúde",
+          "rotinas"
+        ],
+        "en": [
+          "work",
+          "health",
+          "routines"
+        ]
+      }
+    },
+    "saturn/Libra": {
+      "pt": "com Saturno retrógrado em Libra, você pode reavaliar relacionamentos e contratos. aprofunde a reflexão sobre parcerias pessoais e profissionais, promovendo ajustes que as tornem mais justas e equilibradas.",
+      "en": "with Saturn retrograde in Libra, you may reassess relationships and contracts. deepen reflection on personal and professional partnerships, making adjustments toward greater fairness and balance.",
+      "keywords": {
+        "pt": [
+          "relacionamentos",
+          "contratos",
+          "justiça"
+        ],
+        "en": [
+          "relationships",
+          "contracts",
+          "fairness"
+        ]
+      }
+    },
+    "saturn/Scorpio": {
+      "pt": "com Saturno retrógrado em Escorpião, você pode sentir maior necessidade de transformação e renovação. reflita sobre mudanças profundas e procure lidar com controle e poder de maneira mais construtiva.",
+      "en": "with Saturn retrograde in Scorpio, you may feel a greater need for transformation and renewal. reflect on deep changes and seek to handle control and power more constructively.",
+      "keywords": {
+        "pt": [
+          "transformação",
+          "renovação",
+          "poder"
+        ],
+        "en": [
+          "transformation",
+          "renewal",
+          "power"
+        ]
+      }
+    },
+    "saturn/Sagittarius": {
+      "pt": "com Saturno retrógrado em Sagitário, você pode revisitar expansão e crescimento pessoal. reconsidere aventuras e estudos superiores, procurando construir conhecimento mais sólido e duradouro.",
+      "en": "with Saturn retrograde in Sagittarius, you may revisit expansion and personal growth. reconsider adventures and higher education, seeking to build more solid and lasting knowledge.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "estudos superiores",
+          "conhecimento"
+        ],
+        "en": [
+          "expansion",
+          "higher education",
+          "knowledge"
+        ]
+      }
+    },
+    "saturn/Capricorn": {
+      "pt": "com Saturno retrógrado em Capricórnio, você pode revisar estruturas de carreira e metas de longo prazo. avalie se sua direção profissional está alinhada aos seus valores e objetivos pessoais, ajustando o curso quando necessário.",
+      "en": "with Saturn retrograde in Capricorn, you may review career structures and long-term goals. evaluate whether your professional direction aligns with your values and personal objectives, adjusting course when needed.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "metas",
+          "valores"
+        ],
+        "en": [
+          "career",
+          "goals",
+          "values"
+        ]
+      }
+    },
+    "saturn/Aquarius": {
+      "pt": "com Saturno retrógrado em Aquário, você pode questionar ideias e inovações sociais. reavalie projetos coletivos e responsabilidade social, procurando tornar as reformas propostas viáveis e sustentáveis.",
+      "en": "with Saturn retrograde in Aquarius, you may question social ideas and innovations. reassess collective projects and social responsibility, seeking to make proposed reforms viable and sustainable.",
+      "keywords": {
+        "pt": [
+          "ideias sociais",
+          "projetos coletivos",
+          "sustentabilidade"
+        ],
+        "en": [
+          "social ideas",
+          "collective projects",
+          "sustainability"
+        ]
+      }
+    },
+    "saturn/Pisces": {
+      "pt": "com Saturno retrógrado em Peixes, questões espirituais e kármicas podem ganhar destaque para você. reavalie conexões emocionais e espirituais profundas e como influenciam sua jornada pessoal.",
+      "en": "with Saturn retrograde in Pisces, spiritual and karmic issues may become prominent for you. reassess deep emotional and spiritual connections and how they influence your personal journey.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "questões kármicas",
+          "conexões"
+        ],
+        "en": [
+          "spirituality",
+          "karmic issues",
+          "connections"
+        ]
+      }
+    },
+    "uranus/Aries": {
+      "pt": "com Urano retrógrado em Áries, você pode revisar impulsos de independência e inovação. reflita sobre como busca liberdade e renovação, equilibrando ação impulsiva com mudança sustentável.",
+      "en": "with Uranus retrograde in Aries, you may review impulses toward independence and innovation. reflect on how you seek freedom and renewal, balancing impulsive action with sustainable change.",
+      "keywords": {
+        "pt": [
+          "independência",
+          "inovação",
+          "mudança sustentável"
+        ],
+        "en": [
+          "independence",
+          "innovation",
+          "sustainable change"
+        ]
+      }
+    },
+    "uranus/Taurus": {
+      "pt": "com Urano retrógrado em Touro, você pode perceber desaceleração nas mudanças ligadas a finanças e conforto pessoal. reavalie como transformações recentes afetam sua segurança e estabilidade, ajustando planos aos seus valores fundamentais.",
+      "en": "with Uranus retrograde in Taurus, you may notice a slowdown in changes involving finances and personal comfort. reassess how recent transformations affect your security and stability, adjusting plans to your fundamental values.",
+      "keywords": {
+        "pt": [
+          "finanças",
+          "segurança",
+          "valores"
+        ],
+        "en": [
+          "finances",
+          "security",
+          "values"
+        ]
+      }
+    },
+    "uranus/Gemini": {
+      "pt": "com Urano retrógrado em Gêmeos, você pode revisar ideias e comunicações. repense como usa tecnologia e inovação para disseminar informações, examinando a originalidade e a eficácia das suas conexões.",
+      "en": "with Uranus retrograde in Gemini, you may review ideas and communications. reconsider how you use technology and innovation to share information, examining the originality and effectiveness of your connections.",
+      "keywords": {
+        "pt": [
+          "ideias",
+          "tecnologia",
+          "conexões"
+        ],
+        "en": [
+          "ideas",
+          "technology",
+          "connections"
+        ]
+      }
+    },
+    "uranus/Cancer": {
+      "pt": "com Urano retrógrado em Câncer, você pode refletir sobre mudanças no ambiente doméstico e nas relações familiares. reavalie como a busca por independência afeta sua base emocional e sua segurança pessoal.",
+      "en": "with Uranus retrograde in Cancer, you may reflect on changes at home and in family relationships. reassess how the pursuit of independence affects your emotional foundation and personal security.",
+      "keywords": {
+        "pt": [
+          "lar",
+          "família",
+          "independência"
+        ],
+        "en": [
+          "home",
+          "family",
+          "independence"
+        ]
+      }
+    },
+    "uranus/Leo": {
+      "pt": "com Urano retrógrado em Leão, você pode ser desafiado a rever expressão criativa e disposição para o risco. examine como a necessidade de inovação e destaque se alinha aos objetivos de longo prazo, sustentando a criatividade sem perder sua essência.",
+      "en": "with Uranus retrograde in Leo, you may be challenged to review creative expression and willingness to take risks. examine how your need for innovation and visibility aligns with long-term goals, sustaining creativity without losing its essence.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "risco",
+          "inovação"
+        ],
+        "en": [
+          "creativity",
+          "risk",
+          "innovation"
+        ]
+      }
+    },
+    "uranus/Virgo": {
+      "pt": "com Urano retrógrado em Virgem, você pode revisar eficiência e métodos de trabalho. analise mudanças recentes nos sistemas de trabalho, verificando se as inovações realmente melhoram a produtividade.",
+      "en": "with Uranus retrograde in Virgo, you may review efficiency and work methods. examine recent changes in work systems, checking whether innovations truly improve productivity.",
+      "keywords": {
+        "pt": [
+          "eficiência",
+          "métodos",
+          "produtividade"
+        ],
+        "en": [
+          "efficiency",
+          "methods",
+          "productivity"
+        ]
+      }
+    },
+    "uranus/Libra": {
+      "pt": "com Urano retrógrado em Libra, você pode rever o equilíbrio das relações com parceiros e aliados. reflita sobre liberdade individual nas parcerias e como inovação e mudança afetam a harmonia.",
+      "en": "with Uranus retrograde in Libra, you may review balance in relationships with partners and allies. reflect on individual freedom within partnerships and how innovation and change affect harmony.",
+      "keywords": {
+        "pt": [
+          "parcerias",
+          "liberdade",
+          "harmonia"
+        ],
+        "en": [
+          "partnerships",
+          "freedom",
+          "harmony"
+        ]
+      }
+    },
+    "uranus/Scorpio": {
+      "pt": "com Urano retrógrado em Escorpião, você pode aprofundar a necessidade de transformação emocional e psicológica. investigue suas revoluções internas, buscando desapego de antigas obsessões e renovação do poder pessoal.",
+      "en": "with Uranus retrograde in Scorpio, you may deepen the need for emotional and psychological transformation. investigate your inner revolutions, seeking release from old obsessions and renewal of personal power.",
+      "keywords": {
+        "pt": [
+          "transformação",
+          "obsessões",
+          "poder pessoal"
+        ],
+        "en": [
+          "transformation",
+          "obsessions",
+          "personal power"
+        ]
+      }
+    },
+    "uranus/Sagittarius": {
+      "pt": "com Urano retrógrado em Sagitário, você pode reconsiderar crenças e expansões mentais. questione a validade de ideias revolucionárias e da liberdade na busca por conhecimento, ajustando suas filosofias a uma verdade mais autêntica.",
+      "en": "with Uranus retrograde in Sagittarius, you may reconsider beliefs and mental expansion. question the validity of revolutionary ideas and freedom in the pursuit of knowledge, adjusting your philosophies toward a more authentic truth.",
+      "keywords": {
+        "pt": [
+          "crenças",
+          "conhecimento",
+          "ideias revolucionárias"
+        ],
+        "en": [
+          "beliefs",
+          "knowledge",
+          "revolutionary ideas"
+        ]
+      }
+    },
+    "uranus/Capricorn": {
+      "pt": "com Urano retrógrado em Capricórnio, você pode revisar inovações na carreira e nas estruturas sociais. reflita sobre como as mudanças recentes se alinham às ambições de longo prazo e às suas responsabilidades.",
+      "en": "with Uranus retrograde in Capricorn, you may review innovations in career and social structures. reflect on how recent changes align with long-term ambitions and your responsibilities.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "estruturas sociais",
+          "responsabilidades"
+        ],
+        "en": [
+          "career",
+          "social structures",
+          "responsibilities"
+        ]
+      }
+    },
+    "uranus/Aquarius": {
+      "pt": "com Urano retrógrado em Aquário, você pode reexaminar ideias e projetos futuristas. reconsidere como suas visões de futuro se integram à realidade atual, fazendo ajustes para que as inovações sejam viáveis.",
+      "en": "with Uranus retrograde in Aquarius, you may reexamine futuristic ideas and projects. reconsider how your visions of the future fit present reality, making adjustments so innovations are viable.",
+      "keywords": {
+        "pt": [
+          "futuro",
+          "realidade",
+          "viabilidade"
+        ],
+        "en": [
+          "future",
+          "reality",
+          "viability"
+        ]
+      }
+    },
+    "uranus/Pisces": {
+      "pt": "com Urano retrógrado em Peixes, questões de liberação e espiritualidade podem vir à tona para você. explore como harmonizar mudanças disruptivas com sensibilidades espirituais, integrando inovação e compaixão.",
+      "en": "with Uranus retrograde in Pisces, issues of liberation and spirituality may surface for you. explore how to harmonize disruptive changes with spiritual sensitivities, integrating innovation and compassion.",
+      "keywords": {
+        "pt": [
+          "liberação",
+          "espiritualidade",
+          "compaixão"
+        ],
+        "en": [
+          "liberation",
+          "spirituality",
+          "compassion"
+        ]
+      }
+    },
+    "neptune/Aries": {
+      "pt": "com Netuno retrógrado em Áries, você pode reavaliar como lida com ilusão e realidade nas suas ações e motivações. enfrentar ilusões pessoais pode ajudar você a agir com maior clareza e menos impulsividade nas decisões.",
+      "en": "with Neptune retrograde in Aries, you may reassess how you handle illusion and reality in your actions and motivations. facing personal illusions may help you act with greater clarity and less impulsiveness in decisions.",
+      "keywords": {
+        "pt": [
+          "ações",
+          "ilusão e realidade",
+          "clareza"
+        ],
+        "en": [
+          "actions",
+          "illusion and reality",
+          "clarity"
+        ]
+      }
+    },
+    "neptune/Taurus": {
+      "pt": "com Netuno retrógrado em Touro, você pode reexaminar valores e materialismo. reflita sobre o que realmente tem valor e se as posses materiais estão obscurecendo necessidades espirituais mais profundas.",
+      "en": "with Neptune retrograde in Taurus, you may reexamine values and materialism. reflect on what truly has value and whether material possessions are obscuring deeper spiritual needs.",
+      "keywords": {
+        "pt": [
+          "valores",
+          "materialismo",
+          "necessidades espirituais"
+        ],
+        "en": [
+          "values",
+          "materialism",
+          "spiritual needs"
+        ]
+      }
+    },
+    "neptune/Gemini": {
+      "pt": "com Netuno retrógrado em Gêmeos, você pode revisar como comunica ideias criativas e espirituais. reconsidere como usa palavras para expressar suas visões mais inspiradoras, buscando transmitir uma mensagem autêntica.",
+      "en": "with Neptune retrograde in Gemini, you may review how you communicate creative and spiritual ideas. reconsider how you use words to express your most inspiring visions, seeking to convey an authentic message.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "criatividade",
+          "inspiração"
+        ],
+        "en": [
+          "communication",
+          "creativity",
+          "inspiration"
+        ]
+      }
+    },
+    "neptune/Cancer": {
+      "pt": "com Netuno retrógrado em Câncer, você pode questionar como encontra segurança emocional em fantasias ou idealizações. clarifique os limites entre cuidado de si e dependência emocional, buscando maior equilíbrio.",
+      "en": "with Neptune retrograde in Cancer, you may question how you find emotional security in fantasies or idealizations. clarify the boundaries between self-care and emotional dependency, seeking greater balance.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "idealizações",
+          "dependência"
+        ],
+        "en": [
+          "emotional security",
+          "idealizations",
+          "dependency"
+        ]
+      }
+    },
+    "neptune/Leo": {
+      "pt": "com Netuno retrógrado em Leão, você pode revisitar criatividade e romance, com a fronteira entre realidade e fantasia possivelmente turva. fortaleça a expressão criativa e as relações amorosas, procurando reconhecer e esclarecer desilusões nessas áreas.",
+      "en": "with Neptune retrograde in Leo, you may revisit creativity and romance, with the boundary between reality and fantasy possibly blurred. strengthen creative expression and romantic relationships, seeking to recognize and clarify disillusionment in these areas.",
+      "keywords": {
+        "pt": [
+          "criatividade",
+          "romance",
+          "realidade e fantasia"
+        ],
+        "en": [
+          "creativity",
+          "romance",
+          "reality and fantasy"
+        ]
+      }
+    },
+    "neptune/Virgo": {
+      "pt": "com Netuno retrógrado em Virgem, você pode analisar criticamente como integra espiritualidade e pragmatismo. reavalie práticas de trabalho e saúde, buscando uma conexão mais profunda com sua dimensão espiritual.",
+      "en": "with Neptune retrograde in Virgo, you may critically examine how you integrate spirituality and practicality. reassess work and health practices, seeking a deeper connection with your spiritual dimension.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "pragmatismo",
+          "trabalho e saúde"
+        ],
+        "en": [
+          "spirituality",
+          "practicality",
+          "work and health"
+        ]
+      }
+    },
+    "neptune/Libra": {
+      "pt": "com Netuno retrógrado em Libra, você pode revisitar parcerias e justiça, refletindo sobre idealizações nas relações. reequilibre expectativas nos relacionamentos pessoais e profissionais para que se apoiem em realidades concretas.",
+      "en": "with Neptune retrograde in Libra, you may revisit partnerships and fairness, reflecting on idealizations in relationships. rebalance expectations in personal and professional relationships so they rest on concrete realities.",
+      "keywords": {
+        "pt": [
+          "parcerias",
+          "idealizações",
+          "expectativas"
+        ],
+        "en": [
+          "partnerships",
+          "idealizations",
+          "expectations"
+        ]
+      }
+    },
+    "neptune/Scorpio": {
+      "pt": "com Netuno retrógrado em Escorpião, você pode sentir maior desejo de transformação emocional e espiritual. aprofunde a investigação de sua vida psíquica para distinguir intuição de ilusões que possam bloquear seu crescimento pessoal.",
+      "en": "with Neptune retrograde in Scorpio, you may feel a stronger desire for emotional and spiritual transformation. deepen your examination of your psychic life to distinguish intuition from illusions that may block personal growth.",
+      "keywords": {
+        "pt": [
+          "transformação",
+          "intuição",
+          "ilusões"
+        ],
+        "en": [
+          "transformation",
+          "intuition",
+          "illusions"
+        ]
+      }
+    },
+    "neptune/Sagittarius": {
+      "pt": "com Netuno retrógrado em Sagitário, você pode revisar crenças e filosofias, sobretudo as que já não são sustentáveis. examine a validade das suas convicções e ajuste sua busca por sabedoria para incluir uma perspectiva mais espiritualizada.",
+      "en": "with Neptune retrograde in Sagittarius, you may review beliefs and philosophies, especially those no longer sustainable. examine the validity of your convictions and adjust your search for wisdom to include a more spiritual perspective.",
+      "keywords": {
+        "pt": [
+          "crenças",
+          "convicções",
+          "sabedoria"
+        ],
+        "en": [
+          "beliefs",
+          "convictions",
+          "wisdom"
+        ]
+      }
+    },
+    "neptune/Capricorn": {
+      "pt": "com Netuno retrógrado em Capricórnio, você pode refletir sobre responsabilidade e a realidade das ambições e da carreira. reavalie se suas aspirações profissionais estão alinhadas a uma verdade mais profunda, evitando metas ilusórias.",
+      "en": "with Neptune retrograde in Capricorn, you may reflect on responsibility and the reality of ambitions and career. reassess whether professional aspirations align with a deeper truth, avoiding illusory goals.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "carreira",
+          "metas ilusórias"
+        ],
+        "en": [
+          "responsibility",
+          "career",
+          "illusory goals"
+        ]
+      }
+    },
+    "neptune/Aquarius": {
+      "pt": "com Netuno retrógrado em Aquário, você pode questionar ideais de inovação e humanitarismo. reflita sobre como essas ideias se manifestam na realidade, procurando aplicar suas visões utópicas de forma mais prática e eficaz.",
+      "en": "with Neptune retrograde in Aquarius, you may question ideals of innovation and humanitarianism. reflect on how these ideas manifest in reality, seeking to apply your utopian visions more practically and effectively.",
+      "keywords": {
+        "pt": [
+          "inovação",
+          "humanitarismo",
+          "realidade"
+        ],
+        "en": [
+          "innovation",
+          "humanitarianism",
+          "reality"
+        ]
+      }
+    },
+    "neptune/Pisces": {
+      "pt": "com Netuno retrógrado em Peixes, você pode viver forte introspecção e revelação espiritual, com intensidade particular pela regência de Netuno sobre o signo nesta leitura. diferencie ilusões e realidade para buscar uma verdade espiritual mais autêntica.",
+      "en": "with Neptune retrograde in Pisces, you may experience strong introspection and spiritual revelation, with particular intensity through Neptune’s rulership of the sign in this reading. distinguish illusion from reality to seek a more authentic spiritual truth.",
+      "keywords": {
+        "pt": [
+          "regência de Netuno",
+          "introspecção",
+          "verdade espiritual"
+        ],
+        "en": [
+          "Neptune’s rulership",
+          "introspection",
+          "spiritual truth"
+        ]
+      }
+    },
+    "pluto/Aries": {
+      "pt": "com Plutão retrógrado em Áries, você pode enfrentar e transformar questões de poder e controle pessoal. desafios podem levá-lo a reconsiderar atitudes impulsivas e dominadoras, desenvolvendo outra forma de expressar força e liderança.",
+      "en": "with Pluto retrograde in Aries, you may face and transform issues of personal power and control. challenges may lead you to reconsider impulsive and dominating approaches, developing another way to express strength and leadership.",
+      "keywords": {
+        "pt": [
+          "poder",
+          "controle",
+          "liderança"
+        ],
+        "en": [
+          "power",
+          "control",
+          "leadership"
+        ]
+      }
+    },
+    "pluto/Taurus": {
+      "pt": "com Plutão retrógrado em Touro, você pode reavaliar profundamente valores e recursos. desapegue-se de situações e materiais que já não favorecem seu crescimento, transformando sua relação com materialismo e segurança financeira.",
+      "en": "with Pluto retrograde in Taurus, you may deeply reassess values and resources. release situations and possessions that no longer support your growth, transforming your relationship with materialism and financial security.",
+      "keywords": {
+        "pt": [
+          "valores",
+          "recursos",
+          "desapego"
+        ],
+        "en": [
+          "values",
+          "resources",
+          "release"
+        ]
+      }
+    },
+    "pluto/Gemini": {
+      "pt": "com Plutão retrógrado em Gêmeos, você pode aprofundar a reflexão sobre comunicação e conhecimento. reavalie como usa palavras e pensamentos para exercer influência, promovendo uma mudança profunda na maneira de pensar e transmitir informações.",
+      "en": "with Pluto retrograde in Gemini, you may deepen reflection on communication and knowledge. reassess how you use words and thoughts to exert influence, encouraging a deep change in how you think and share information.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "conhecimento",
+          "influência"
+        ],
+        "en": [
+          "communication",
+          "knowledge",
+          "influence"
+        ]
+      }
+    },
+    "pluto/Cancer": {
+      "pt": "com Plutão retrógrado em Câncer, você pode transformar a maneira de lidar com emoções e segurança nas relações familiares. segredos ou ressentimentos antigos podem emergir para serem curados e purificados.",
+      "en": "with Pluto retrograde in Cancer, you may transform how you handle emotions and security in family relationships. old secrets or resentments may surface to be healed and purified.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "família",
+          "ressentimentos"
+        ],
+        "en": [
+          "emotions",
+          "family",
+          "resentments"
+        ]
+      }
+    },
+    "pluto/Leo": {
+      "pt": "com Plutão retrógrado em Leão, você pode revisitar ego e autoridade. questione e transforme como busca reconhecimento e poder, desenvolvendo uma liderança mais autêntica e menos baseada no controle dos outros.",
+      "en": "with Pluto retrograde in Leo, you may revisit ego and authority. question and transform how you seek recognition and power, developing more authentic leadership less dependent on controlling others.",
+      "keywords": {
+        "pt": [
+          "ego",
+          "autoridade",
+          "reconhecimento"
+        ],
+        "en": [
+          "ego",
+          "authority",
+          "recognition"
+        ]
+      }
+    },
+    "pluto/Virgo": {
+      "pt": "com Plutão retrógrado em Virgem, você pode revisar criticamente métodos de trabalho e saúde. elimine práticas obsoletas e renove sua abordagem da eficiência e do serviço, buscando uma regeneração profunda das rotinas diárias.",
+      "en": "with Pluto retrograde in Virgo, you may critically review work and health methods. eliminate obsolete practices and renew your approach to efficiency and service, seeking deep regeneration of daily routines.",
+      "keywords": {
+        "pt": [
+          "trabalho e saúde",
+          "eficiência",
+          "renovação"
+        ],
+        "en": [
+          "work and health",
+          "efficiency",
+          "renewal"
+        ]
+      }
+    },
+    "pluto/Libra": {
+      "pt": "com Plutão retrógrado em Libra, você pode voltar-se para relações e justiça, com desequilíbrios de poder nas parcerias vindo à tona. transforme sua maneira de se relacionar e busque relacionamentos mais equitativos e profundos.",
+      "en": "with Pluto retrograde in Libra, you may turn toward relationships and fairness, with power imbalances in partnerships surfacing. transform how you relate and seek more equitable and profound relationships.",
+      "keywords": {
+        "pt": [
+          "relações",
+          "justiça",
+          "equilíbrio de poder"
+        ],
+        "en": [
+          "relationships",
+          "fairness",
+          "power balance"
+        ]
+      }
+    },
+    "pluto/Scorpio": {
+      "pt": "com Plutão retrógrado em Escorpião, você pode sentir uma necessidade mais intensa de autoconhecimento e transformação pessoal. explore as profundezas da sua psique, enfrentando sombras e renovando o poder pessoal pela regeneração interna.",
+      "en": "with Pluto retrograde in Scorpio, you may feel a stronger need for self-knowledge and personal transformation. explore the depths of your psyche, facing shadows and renewing personal power through inner regeneration.",
+      "keywords": {
+        "pt": [
+          "autoconhecimento",
+          "sombras",
+          "regeneração"
+        ],
+        "en": [
+          "self-knowledge",
+          "shadows",
+          "regeneration"
+        ]
+      }
+    },
+    "pluto/Sagittarius": {
+      "pt": "com Plutão retrógrado em Sagitário, você pode revisar convicções e crenças. questione dogmas e amplie sua visão de mundo, transformando a busca por verdade e justiça em algo mais profundo e inclusivo.",
+      "en": "with Pluto retrograde in Sagittarius, you may review convictions and beliefs. question dogmas and broaden your worldview, transforming the search for truth and justice into something deeper and more inclusive.",
+      "keywords": {
+        "pt": [
+          "crenças",
+          "dogmas",
+          "verdade e justiça"
+        ],
+        "en": [
+          "beliefs",
+          "dogmas",
+          "truth and justice"
+        ]
+      }
+    },
+    "pluto/Capricorn": {
+      "pt": "com Plutão retrógrado em Capricórnio, você pode refletir sobre carreira e estruturas de poder. reconsidere ambições e métodos de controle, promovendo transformação nas bases da sua autoridade e responsabilidade.",
+      "en": "with Pluto retrograde in Capricorn, you may reflect on career and power structures. reconsider ambitions and methods of control, encouraging transformation in the foundations of your authority and responsibility.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "poder",
+          "responsabilidade"
+        ],
+        "en": [
+          "career",
+          "power",
+          "responsibility"
+        ]
+      }
+    },
+    "pluto/Aquarius": {
+      "pt": "com Plutão retrógrado em Aquário, você pode questionar a eficácia e as motivações das suas ideias revolucionárias. reveja reformas sociais e inovações, transformando a maneira de implementar mudanças na sociedade.",
+      "en": "with Pluto retrograde in Aquarius, you may question the effectiveness and motivations of your revolutionary ideas. review social reforms and innovations, transforming how you implement change in society.",
+      "keywords": {
+        "pt": [
+          "reformas sociais",
+          "inovação",
+          "motivações"
+        ],
+        "en": [
+          "social reforms",
+          "innovation",
+          "motivations"
+        ]
+      }
+    },
+    "pluto/Pisces": {
+      "pt": "com Plutão retrógrado em Peixes, você pode aprofundar a conexão espiritual e emocional. explore sua sensibilidade e intuição, transformando vulnerabilidades em forças e purificando sua conexão com o transcendental.",
+      "en": "with Pluto retrograde in Pisces, you may deepen spiritual and emotional connection. explore your sensitivity and intuition, transforming vulnerabilities into strengths and purifying your connection with the transcendent.",
+      "keywords": {
+        "pt": [
+          "espiritualidade",
+          "intuição",
+          "vulnerabilidades"
+        ],
+        "en": [
+          "spirituality",
+          "intuition",
+          "vulnerabilities"
+        ]
+      }
+    }
+  }
+}

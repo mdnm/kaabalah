@@ -1,0 +1,574 @@
+{
+  "solarReturnNatalSigns": {
+    "saturn/jupiter": {
+      "pt": "com Saturno da sua revolução solar no signo ocupado por Júpiter no seu nascimento, você tem indicação de bom ano, herança ou doações, presentes e ganhos inesperados. se Mercúrio estiver em mau aspecto, a leitura anuncia adversidade, processos e querelas imprevistas.",
+      "en": "with Saturn in your solar-return chart in the sign Jupiter occupied at your birth, you have an indication of a good year, inheritance or donations, gifts and unexpected gains. if Mercury is adversely aspected, the reading indicates adversity, lawsuits and unforeseen quarrels.",
+      "keywords": {
+        "pt": [
+          "herança e doações",
+          "ganhos inesperados",
+          "adversidade condicionada"
+        ],
+        "en": [
+          "inheritance and donations",
+          "unexpected gains",
+          "conditional adversity"
+        ]
+      }
+    },
+    "saturn/sun": {
+      "pt": "com Saturno da sua revolução solar no signo ocupado pelo Sol no seu nascimento, você tem indicação de contestações, inimizades, rupturas de afeições e traições de amigos. se o mapa anual for diurno, a leitura também anuncia ganhos penosamente adquiridos, doações ou presentes para você.",
+      "en": "with Saturn in your solar-return chart in the sign the Sun occupied at your birth, you have an indication of disputes, enmities, broken affections and betrayals by friends. if the annual chart is diurnal, the reading also indicates hard-earned gains, donations or gifts for you.",
+      "keywords": {
+        "pt": [
+          "contestações e inimizades",
+          "traições de amigos",
+          "ganhos em mapa diurno"
+        ],
+        "en": [
+          "disputes and enmities",
+          "betrayals by friends",
+          "gains in a diurnal chart"
+        ]
+      }
+    },
+    "saturn/venus": {
+      "pt": "com Saturno da sua revolução solar no signo ocupado por Vênus no seu nascimento, você tem indicação de querelas conjugais, separação, obstáculos nos empreendimentos, adversidades, contestações e processos. nos mapas femininos, há ameaça de aborto; às vezes, a posição também anuncia ameaça de envenenamento.",
+      "en": "with Saturn in your solar-return chart in the sign Venus occupied at your birth, you have an indication of marital quarrels, separation, obstacles in undertakings, adversity, disputes and lawsuits. in women’s charts, there is a threat of pregnancy loss or abortion; the placement also sometimes indicates a threat of poisoning.",
+      "keywords": {
+        "pt": [
+          "querelas e separação",
+          "envenenamento",
+          "ameaça de aborto"
+        ],
+        "en": [
+          "quarrels and separation",
+          "poisoning",
+          "threat of pregnancy loss or abortion"
+        ]
+      }
+    },
+    "saturn/mercury": {
+      "pt": "com Saturno da sua revolução solar no signo ocupado por Mercúrio no seu nascimento, você tem indicação de obstáculos nos empreendimentos. a leitura também anuncia para você decepção de esperanças e inimizades.",
+      "en": "with Saturn in your solar-return chart in the sign Mercury occupied at your birth, you have an indication of obstacles in your undertakings. the reading also indicates disappointed hopes and enmities for you.",
+      "keywords": {
+        "pt": [
+          "obstáculos nos empreendimentos",
+          "esperanças frustradas",
+          "inimizades"
+        ],
+        "en": [
+          "obstacles in undertakings",
+          "disappointed hopes",
+          "enmities"
+        ]
+      }
+    },
+    "saturn/saturn": {
+      "pt": "com Saturno da sua revolução solar no mesmo signo que ocupava no nascimento, você tem indicação de contrariedades, desgostos, inimizades perigosas, obstáculos nos empreendimentos e instabilidade de fortuna. se ele receber quadratura de Marte ou Mercúrio, a leitura anuncia calúnias e perdas de bens para você.",
+      "en": "with Saturn in your solar-return chart in the same sign it occupied at birth, you have an indication of setbacks, distress, dangerous enmities, obstacles in undertakings and unstable fortune. if it receives a square from Mars or Mercury, the reading indicates slander and loss of property for you.",
+      "keywords": {
+        "pt": [
+          "inimizades perigosas",
+          "instabilidade de fortuna",
+          "calúnias e perdas condicionais"
+        ],
+        "en": [
+          "dangerous enmities",
+          "unstable fortune",
+          "conditional slander and losses"
+        ]
+      }
+    },
+    "saturn/moon": {
+      "pt": "com Saturno da sua revolução solar no signo ocupado pela Lua natal, você tem indicação de desgostos no casamento, separação e ruptura com os amigos. a leitura também anuncia calúnias, obstáculos nos empreendimentos, doenças nervosas e queda inesperada para você.",
+      "en": "with Saturn in your solar-return chart in the sign occupied by the natal Moon, you have an indication of marital distress, separation and a break with friends. the reading also indicates slander, obstacles in undertakings, nervous illnesses and an unexpected fall for you.",
+      "keywords": {
+        "pt": [
+          "desgostos no casamento",
+          "doenças nervosas",
+          "queda inesperada"
+        ],
+        "en": [
+          "marital distress",
+          "nervous illnesses",
+          "unexpected fall"
+        ]
+      }
+    },
+    "jupiter/saturn": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado por Saturno no seu nascimento, você recebe a indicação de perigos em viagens e rupturas de sociedades, alianças ou amizades. a leitura também anuncia revoltas de indivíduos contra príncipes, de servos contra seus senhores e de subalternos contra chefes.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by Saturn at your birth, you receive an indication of dangers in travel and breaks in partnerships, alliances or friendships. the reading also announces revolts of individuals against princes, servants against their masters and subordinates against their superiors.",
+      "keywords": {
+        "pt": [
+          "perigos em viagens",
+          "rupturas de alianças",
+          "revoltas contra superiores"
+        ],
+        "en": [
+          "travel dangers",
+          "broken alliances",
+          "revolts against superiors"
+        ]
+      }
+    },
+    "jupiter/jupiter": {
+      "pt": "com Júpiter da sua revolução solar no signo que ele ocupava no seu nascimento, você recebe um presságio que pode ser bom ou mau. o resultado indicado depende do signo e dos aspectos que Júpiter recebe.",
+      "en": "with Jupiter in your solar-return chart in the sign it occupied at your birth, you receive an omen that may be good or bad. the indicated outcome depends on the sign and the aspects Jupiter receives.",
+      "keywords": {
+        "pt": [
+          "presságio bom ou mau",
+          "signo",
+          "aspectos recebidos"
+        ],
+        "en": [
+          "good or bad omen",
+          "sign",
+          "received aspects"
+        ]
+      }
+    },
+    "jupiter/mars": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado por Marte no seu nascimento, você tem indicação de inimizade de pessoas poderosas, calúnias, ataques à reputação, perfídias ativas, viagens perigosas e doenças. se você é uma pessoa poderosa e os aspectos são favoráveis, o ano é geralmente próspero.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by Mars at your birth, you have an indication of hostility from powerful people, slander, attacks on reputation, active treachery, dangerous travel and illness. if you are a powerful person and the aspects are favorable, the year is generally prosperous.",
+      "keywords": {
+        "pt": [
+          "inimizades poderosas",
+          "viagens e doenças",
+          "prosperidade condicionada"
+        ],
+        "en": [
+          "powerful enemies",
+          "travel and illness",
+          "conditional prosperity"
+        ]
+      }
+    },
+    "jupiter/venus": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado por Vênus no seu nascimento, você tem o anúncio de um bom ano, conforme sua condição. esse favorecimento depende de Júpiter não receber aspecto maléfico.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by Venus at your birth, you have an indication of a good year according to your circumstances. this favorable reading depends on Jupiter receiving no malefic aspect.",
+      "keywords": {
+        "pt": [
+          "bom ano",
+          "condição pessoal",
+          "ausência de aspecto maléfico"
+        ],
+        "en": [
+          "good year",
+          "personal circumstances",
+          "absence of a malefic aspect"
+        ]
+      }
+    },
+    "jupiter/mercury": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado por Mercúrio no seu nascimento, você tem indicação de ano próspero e ganhos. se Mercúrio estiver em mau aspecto, a leitura anuncia perturbação dos seus interesses, acusações e prejuízos.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by Mercury at your birth, you have an indication of a prosperous year and gains. if Mercury is adversely aspected, the reading announces disruption of your interests, accusations and losses.",
+      "keywords": {
+        "pt": [
+          "prosperidade e ganhos",
+          "interesses perturbados",
+          "acusações e prejuízos"
+        ],
+        "en": [
+          "prosperity and gains",
+          "disrupted interests",
+          "accusations and losses"
+        ]
+      }
+    },
+    "jupiter/moon": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado pela Lua no seu nascimento, você tem indicação de ano favorável, perigos evitados e doações de mulheres influentes ou pessoas eminentes. se Júpiter estiver maleficiado, ocorre o contrário.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by the Moon at your birth, you have an indication of a favorable year, dangers avoided and gifts from influential women or eminent people. if Jupiter is afflicted, the opposite occurs.",
+      "keywords": {
+        "pt": [
+          "perigos evitados",
+          "doações",
+          "influências favoráveis ou adversas"
+        ],
+        "en": [
+          "dangers avoided",
+          "gifts",
+          "favorable or adverse influences"
+        ]
+      }
+    },
+    "mars/saturn": {
+      "pt": "com Marte da sua revolução solar no signo ocupado por Saturno no seu nascimento, você tem anúncio de mau ano, processos, decepção de esperanças, viagens perigosas, doenças, perigos inesperados, perda de bens, rebeliões contra príncipes e ataques por ódio. se Marte estiver em Áries ou Escorpião, esses presságios se atenuam, exceto nos mapas femininos.",
+      "en": "with Mars in your solar-return chart in the sign occupied by Saturn at your birth, you have an indication of a bad year, lawsuits, disappointed hopes, dangerous travel, illness, unexpected dangers, loss of property, rebellions against princes and attacks driven by hatred. if Mars is in Aries or Scorpio, these omens are mitigated, except in women’s charts.",
+      "keywords": {
+        "pt": [
+          "perigos e doenças",
+          "processos e perdas",
+          "atenuação em Áries ou Escorpião"
+        ],
+        "en": [
+          "dangers and illness",
+          "lawsuits and losses",
+          "mitigation in Aries or Scorpio"
+        ]
+      }
+    },
+    "mars/jupiter": {
+      "pt": "com Marte da sua revolução solar no signo ocupado por Júpiter no seu nascimento, você tem anúncio de ano próspero se é soldado ou dignitário, mas um aspecto maléfico recebido anuncia contrariedades nos empreendimentos e adversidade. com bons aspectos no nascimento e na revolução anual, você tem indicação de ano próspero e lucrativo.",
+      "en": "with Mars in your solar-return chart in the sign occupied by Jupiter at your birth, you have an indication of a prosperous year if you are a soldier or dignitary, but a received malefic aspect announces setbacks in undertakings and adversity. with favorable aspects at birth and in the annual return, you have an indication of a prosperous, profitable year.",
+      "keywords": {
+        "pt": [
+          "soldados ou dignitários",
+          "contrariedades",
+          "prosperidade condicionada"
+        ],
+        "en": [
+          "soldiers or dignitaries",
+          "setbacks",
+          "conditional prosperity"
+        ]
+      }
+    },
+    "mars/mars": {
+      "pt": "com Marte da sua revolução solar no signo que ele ocupava no seu nascimento, você tem anúncio, em um horóscopo diurno, de ano agitado, inimizades, perda de bens e infelicidade para soldados. em um horóscopo noturno, o ano é próspero contanto que Marte esteja em Áries ou Capricórnio.",
+      "en": "with Mars in your solar-return chart in the sign it occupied at your birth, you have an indication, in a diurnal horoscope, of an unsettled year, enmities, loss of property and misfortune for soldiers. in a nocturnal horoscope, the year is prosperous provided Mars is in Aries or Capricorn.",
+      "keywords": {
+        "pt": [
+          "horóscopo diurno ou noturno",
+          "inimizades e perdas",
+          "prosperidade condicionada"
+        ],
+        "en": [
+          "diurnal or nocturnal horoscope",
+          "enmities and losses",
+          "conditional prosperity"
+        ]
+      }
+    },
+    "mars/sun": {
+      "pt": "com Marte da sua revolução solar no signo ocupado pelo Sol no seu nascimento, você tem anúncio de enfermidade perigosa, dores intestinais, perigo decorrente de incêndio, queda ou outro ferimento inesperado, acidentes em viagem e querelas com soldados, com possibilidade de morte se Marte ou o Sol for regente do ano, entendido aqui como regente do Ascendente. com um bom aspecto, o ano é bastante próspero, apesar de algumas armadilhas preparadas pelos seus inimigos.",
+      "en": "with Mars in your solar-return chart in the sign occupied by the Sun at your birth, you have an indication of dangerous illness, intestinal pain, danger from fire, a fall or another unexpected injury, travel accidents and quarrels with soldiers, with the possibility of death if Mars or the Sun is lord of the year, understood here as ruler of the Ascendant. with a favorable aspect, the year is quite prosperous despite some traps laid by your enemies.",
+      "keywords": {
+        "pt": [
+          "doenças e acidentes",
+          "morte condicionada à regência",
+          "prosperidade com armadilhas"
+        ],
+        "en": [
+          "illness and accidents",
+          "death conditional on rulership",
+          "prosperity despite traps"
+        ]
+      }
+    },
+    "mars/venus": {
+      "pt": "com Marte da sua revolução solar no signo ocupado por Vênus no seu nascimento, você tem anúncio de inimizades de mulheres, querelas conjugais, separações, doenças, adultério perigoso, ruptura de amizades e perda de reputação. a leitura também anuncia grande perigo de morte para mulheres grávidas.",
+      "en": "with Mars in your solar-return chart in the sign occupied by Venus at your birth, you have an indication of hostility from women, marital quarrels, separations, illness, dangerous adultery, broken friendships and loss of reputation. the reading also announces great danger of death for pregnant women.",
+      "keywords": {
+        "pt": [
+          "querelas e separações",
+          "adultério perigoso",
+          "perigo para grávidas"
+        ],
+        "en": [
+          "quarrels and separations",
+          "dangerous adultery",
+          "danger for pregnant women"
+        ]
+      }
+    },
+    "mars/mercury": {
+      "pt": "com Marte da sua revolução solar no signo ocupado por Mercúrio no seu nascimento, você tem anúncio de ano atormentado por discórdias, processos, perigos, sofrimentos corporais e particularmente doenças cerebrais, sobretudo se Marte estiver em signo bicorpóreo. se a primeira casa, o Sol e a Lua estiverem livres de aspectos maléficos, esses presságios se atenuam; se os aspectos forem maus, há adversidade e especificamente perdas nos negócios.",
+      "en": "with Mars in your solar-return chart in the sign occupied by Mercury at your birth, you have an indication of a year tormented by discord, lawsuits, dangers, bodily suffering and particularly brain diseases, especially if Mars is in a bicorporeal sign. if the first house, Sun and Moon are free of malefic aspects, these omens are mitigated; if the aspects are adverse, there is adversity and specifically business loss.",
+      "keywords": {
+        "pt": [
+          "doenças cerebrais",
+          "discórdias e processos",
+          "atenuação ou perdas"
+        ],
+        "en": [
+          "brain diseases",
+          "discord and lawsuits",
+          "mitigation or losses"
+        ]
+      }
+    },
+    "mars/moon": {
+      "pt": "com Marte da sua revolução solar no signo ocupado pela Lua no seu nascimento, você tem anúncio de mau ano, rebelião contra príncipes, ataques contra os grandes, processos, acusações, armadilhas e ciladas, desgostos conjugais, separações, rupturas de amizades, revoltas populares, doenças agudas, enfraquecimento da memória ou da vista, ameaça de ferimentos por ferro ou fogo e perigo de afogamento. se a Lua estiver crescente e afligida por maus aspectos, esses presságios são mais temíveis, mas se ela só receber aspectos afortunados, eles se atenuam; nos mapas femininos, há ainda grande perigo para mulheres grávidas e ameaça de uma operação mortal.",
+      "en": "with Mars in your solar-return chart in the sign occupied by the Moon at your birth, you have an indication of a bad year, rebellion against princes, attacks against the powerful, lawsuits, accusations, traps and ambushes, marital sorrows, separations, broken friendships, popular revolts, acute illnesses, weakened memory or sight, threat of wounds from iron or fire and danger of drowning. if the Moon is waxing and afflicted by adverse aspects, these omens are more fearsome, but if it receives only fortunate aspects, they are mitigated; in women’s charts, there is also great danger for pregnant women and the threat of a fatal operation.",
+      "keywords": {
+        "pt": [
+          "doenças e ferimentos",
+          "Lua crescente e aspectos",
+          "perigo na gravidez"
+        ],
+        "en": [
+          "illness and injuries",
+          "waxing Moon and aspects",
+          "danger in pregnancy"
+        ]
+      }
+    },
+    "jupiter/sun": {
+      "pt": "com Júpiter da sua revolução solar no signo ocupado pelo Sol no seu nascimento, a leitura anuncia ascensão de fortuna se você vem de alta estirpe. se você nasceu em condição social mediana, ela anuncia libertação de penas e preocupações, amizades prestativas e começo ou crescimento de fortuna, sobretudo em um horóscopo diurno.",
+      "en": "with Jupiter in your solar-return chart in the sign occupied by the Sun at your birth, the reading announces a rise in fortune if you are of high birth. if you were born into a middling social condition, it announces freedom from pain and cares, helpful friendships and the beginning or growth of fortune, especially in a diurnal horoscope.",
+      "keywords": {
+        "pt": [
+          "ascensão de fortuna",
+          "libertação de preocupações",
+          "amizades prestativas"
+        ],
+        "en": [
+          "rising fortune",
+          "freedom from cares",
+          "helpful friendships"
+        ]
+      }
+    },
+    "venus/saturn": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado por Saturno natal, você tem o presságio de um mau ano, com discórdias conjugais, separações, perda de reputação, inimizades, paixões escandalosas que trazem desonra pública e obstáculos nos empreendimentos. a leitura também anuncia dores intestinais, doenças secretas e vergonhosas e ameaça de envenenamento, sobretudo se Marte e Mercúrio estiverem em quadratura ou oposição a Vênus.",
+      "en": "with Venus in your solar-return chart in the sign occupied by natal Saturn, you have a forecast of a bad year, with marital discord, separations, loss of reputation, enmities, scandalous passions bringing public dishonor and obstacles to undertakings. the reading also announces intestinal pain, secret and shameful illnesses and a threat of poisoning, especially if Mars and Mercury are square or opposite Venus.",
+      "keywords": {
+        "pt": [
+          "discórdias conjugais",
+          "desonra pública",
+          "ameaça de envenenamento"
+        ],
+        "en": [
+          "marital discord",
+          "public dishonor",
+          "threat of poisoning"
+        ]
+      }
+    },
+    "venus/jupiter": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado por Júpiter natal, você tem um presságio favorável para o ano. a indicação específica é de um ano feliz para você.",
+      "en": "with Venus in your solar-return chart in the sign occupied by natal Jupiter, you have a favorable forecast for the year. the specific indication is of a happy year for you.",
+      "keywords": {
+        "pt": [
+          "ano feliz",
+          "presságio favorável"
+        ],
+        "en": [
+          "happy year",
+          "favorable forecast"
+        ]
+      }
+    },
+    "venus/mars": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado por Marte natal, você tem o presságio de um ano atormentado, com discórdias, processos, desgostos em casa e separações. a leitura acrescenta ameaça de sedução para as filhas, adultérios perigosos e perfídias de falsos amigos.",
+      "en": "with Venus in your solar-return chart in the sign occupied by natal Mars, you have a forecast of a troubled year, with discord, lawsuits, distress at home and separations. the reading adds a threat of seduction for daughters, dangerous adulterous affairs and treachery from false friends.",
+      "keywords": {
+        "pt": [
+          "discórdias e processos",
+          "adultérios perigosos",
+          "falsos amigos"
+        ],
+        "en": [
+          "discord and lawsuits",
+          "dangerous adulterous affairs",
+          "false friends"
+        ]
+      }
+    },
+    "venus/sun": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado pelo Sol natal, você tem indicação de um bom ano. a leitura traz um presságio favorável para você nesse período.",
+      "en": "with Venus in your solar-return chart in the sign occupied by the natal Sun, you have an indication of a good year. the reading brings a favorable forecast for you during this period.",
+      "keywords": {
+        "pt": [
+          "bom ano",
+          "presságio favorável"
+        ],
+        "en": [
+          "good year",
+          "favorable forecast"
+        ]
+      }
+    },
+    "venus/venus": {
+      "pt": "com Vênus da sua revolução solar no mesmo signo que ocupava no nascimento, você tem indicação de um ano próspero, sobretudo se ela for regente do ano, entendido aqui como regente do Ascendente. se receber quadratura ou oposição de Saturno ou Marte, não estiver dignificada ou estiver na sexta ou décima segunda casa, a leitura anuncia ciúmes, injustiça e perigo para a vida, além de ameaça de rebelião contra os príncipes.",
+      "en": "with Venus in your solar-return chart in the same sign it occupied at birth, you have an indication of a prosperous year, especially if it is the ruler of the year, understood here as ruler of the Ascendant. if it receives a square or opposition from Saturn or Mars, is not dignified or is in the sixth or twelfth house, the reading announces jealousy, injustice and danger to life, along with a threat of rebellion against princes.",
+      "keywords": {
+        "pt": [
+          "prosperidade",
+          "condições adversas",
+          "perigo para a vida"
+        ],
+        "en": [
+          "prosperity",
+          "adverse conditions",
+          "danger to life"
+        ]
+      }
+    },
+    "venus/mercury": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado por Mercúrio natal, você tem indicação de um ano favorável ao êxito dos empreendimentos, com generosidade e doações. se os aspectos forem benéficos, há lucros nos negócios; caso contrário, a leitura anuncia aflições.",
+      "en": "with Venus in your solar-return chart in the sign occupied by natal Mercury, you have an indication of a year favorable to successful undertakings, with generosity and gifts. if the aspects are benefic, there are business profits; otherwise, the reading announces afflictions.",
+      "keywords": {
+        "pt": [
+          "empreendimentos",
+          "generosidade e doações",
+          "lucros ou aflições"
+        ],
+        "en": [
+          "undertakings",
+          "generosity and gifts",
+          "profits or afflictions"
+        ]
+      }
+    },
+    "venus/moon": {
+      "pt": "com Vênus da sua revolução solar no signo ocupado pela Lua natal, você tem indicação de um ano favorável ao êxito dos empreendimentos. o ano é perturbado por perseguições da inveja e por inimizades que, no entanto, serão desencorajadas ou vencidas.",
+      "en": "with Venus in your solar-return chart in the sign occupied by the natal Moon, you have an indication of a year favorable to successful undertakings. the year is disturbed by persecution born of envy and by enmities that will nevertheless be discouraged or overcome.",
+      "keywords": {
+        "pt": [
+          "êxito nos empreendimentos",
+          "inveja",
+          "inimizades vencidas"
+        ],
+        "en": [
+          "successful undertakings",
+          "envy",
+          "overcome enmities"
+        ]
+      }
+    },
+    "mercury/jupiter": {
+      "pt": "com Mercúrio da sua revolução solar no signo ocupado por Júpiter natal, você tem indicação de um ano próspero. o favorecimento é especialmente associado aos seus empreendimentos de negócios.",
+      "en": "with Mercury in your solar-return chart in the sign occupied by natal Jupiter, you have an indication of a prosperous year. the favorable effect is especially associated with your business undertakings.",
+      "keywords": {
+        "pt": [
+          "prosperidade",
+          "empreendimentos de negócios"
+        ],
+        "en": [
+          "prosperity",
+          "business undertakings"
+        ]
+      }
+    },
+    "mercury/mars": {
+      "pt": "com Mercúrio da sua revolução solar no signo ocupado por Marte natal, você tem o presságio de inimizades, processos, perda de bens e perfídias. a leitura também descreve inclinações desleais e instintos malfeitores dos quais você será vítima e que poderão implicar perigo de morte.",
+      "en": "with Mercury in your solar-return chart in the sign occupied by natal Mars, you have a forecast of enmities, lawsuits, loss of property and treachery. the reading also describes disloyal inclinations and malicious instincts of which you will be the victim and which may involve danger of death.",
+      "keywords": {
+        "pt": [
+          "inimizades e processos",
+          "perda de bens",
+          "perigo de morte"
+        ],
+        "en": [
+          "enmities and lawsuits",
+          "loss of property",
+          "danger of death"
+        ]
+      }
+    },
+    "moon/saturn": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado por Saturno natal, você tem indicação de um ano repleto de vicissitudes, muitos inimigos, obstáculos nos empreendimentos e instabilidade de posição. a leitura anuncia doenças da cabeça ou dos intestinos que trarão perigo de morte, sobretudo com a Lua ocidental, enquanto, se ela for oriental, o perigo será menor.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by natal Saturn, you have an indication of a year full of vicissitudes, many enemies, obstacles to undertakings and instability of position. the reading indicates diseases of the head or intestines that will bring danger of death, especially with an occidental Moon, while the danger will be less if it is oriental.",
+      "keywords": {
+        "pt": [
+          "vicissitudes",
+          "doenças da cabeça ou intestinos",
+          "perigo de morte"
+        ],
+        "en": [
+          "vicissitudes",
+          "diseases of the head or intestines",
+          "danger of death"
+        ]
+      }
+    },
+    "moon/jupiter": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado por Júpiter natal, você tem indicação de ascensão de fortuna e amizades prestativas, caso não haja nenhum aspecto maléfico. sob essa mesma condição, a leitura anuncia casamento feliz e realização das suas esperanças.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by natal Jupiter, you have an indication of rising fortune and helpful friendships if there is no malefic aspect. under that same condition, the reading announces a happy marriage and the fulfillment of your hopes.",
+      "keywords": {
+        "pt": [
+          "ascensão de fortuna",
+          "casamento feliz",
+          "esperanças realizadas"
+        ],
+        "en": [
+          "rising fortune",
+          "happy marriage",
+          "fulfilled hopes"
+        ]
+      }
+    },
+    "moon/mars": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado por Marte natal, sobretudo se ela for oriental, você tem o presságio de um ano difícil, com perigo de perda de sangue, queda ou ferimento por fogo. a leitura acrescenta discórdias domésticas, desgostos no casamento, separação e rebelião popular contra os príncipes.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by natal Mars, especially if it is oriental, you have a forecast of a difficult year, with danger of blood loss, a fall or injury by fire. the reading adds domestic discord, marital distress, separation and popular rebellion against princes.",
+      "keywords": {
+        "pt": [
+          "perda de sangue ou ferimentos",
+          "discórdias domésticas",
+          "rebelião popular"
+        ],
+        "en": [
+          "blood loss or injuries",
+          "domestic discord",
+          "popular rebellion"
+        ]
+      }
+    },
+    "moon/sun": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado pelo Sol natal, você tem o presságio de impedimentos nos empreendimentos e decepção das esperanças. a leitura também anuncia discórdias domésticas e pouca felicidade no casamento.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by the natal Sun, you have a forecast of impediments to undertakings and disappointed hopes. the reading also announces domestic discord and little happiness in marriage.",
+      "keywords": {
+        "pt": [
+          "empreendimentos impedidos",
+          "esperanças frustradas",
+          "discórdias domésticas"
+        ],
+        "en": [
+          "impeded undertakings",
+          "frustrated hopes",
+          "domestic discord"
+        ]
+      }
+    },
+    "moon/venus": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado por Vênus natal, você tem indicação de um bom ano. se ela estiver em mau aspecto, a leitura anuncia desgostos, doenças, perdas de bens ou de posição, ciúme cruel no casamento e rancores familiares, sobretudo nos horóscopos de mulheres.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by natal Venus, you have an indication of a good year. if it is adversely aspected, the reading announces distress, illness, loss of property or position, cruel jealousy in marriage and family resentment, especially in women’s horoscopes.",
+      "keywords": {
+        "pt": [
+          "bom ano",
+          "perdas e doenças condicionais",
+          "ciúme e rancores"
+        ],
+        "en": [
+          "good year",
+          "conditional losses and illness",
+          "jealousy and resentment"
+        ]
+      }
+    },
+    "moon/mercury": {
+      "pt": "com a Lua da sua revolução solar no signo ocupado por Mercúrio natal, você tem indicação de um bom ano para os empreendimentos, mas, sob aflição por maus aspectos, a leitura anuncia discórdias, processos, perturbação dos empreendimentos e perda de bens. se Mercúrio estiver em Gêmeos ou Virgem, há fortuna nos negócios; se estiver em qualquer outro signo, a leitura anuncia ameaça de morte.",
+      "en": "with the Moon in your solar-return chart in the sign occupied by natal Mercury, you have an indication of a good year for undertakings, but under affliction by adverse aspects the reading announces discord, lawsuits, disruption of undertakings and loss of property. if Mercury is in Gemini or Virgo, there is fortune in business; if it is in any other sign, the reading indicates a threat of death.",
+      "keywords": {
+        "pt": [
+          "empreendimentos",
+          "fortuna condicionada",
+          "ameaça de morte"
+        ],
+        "en": [
+          "undertakings",
+          "conditional fortune",
+          "threat of death"
+        ]
+      }
+    },
+    "moon/moon": {
+      "pt": "com a Lua da sua revolução solar no mesmo signo que ocupava no nascimento, você tem indicação de contrariedades nos empreendimentos e inimizades poderosas, sobretudo de mulheres e pessoas do povo, num ano perigoso para os príncipes e os grandes. se a Lua estiver afligida por maus aspectos, há perigos imprevistos, sobretudo se ela for regente do ano, entendido aqui como regente do Ascendente; com bom aspecto, esses presságios são atenuados.",
+      "en": "with the Moon in your solar-return chart in the same sign it occupied at birth, you have an indication of setbacks in undertakings and powerful enmities, especially from women and ordinary people, in a year dangerous for princes and people of high rank. if the Moon is afflicted by adverse aspects, there are unforeseen dangers, especially if it is ruler of the year, understood here as ruler of the Ascendant; with a favorable aspect, these forecasts are mitigated.",
+      "keywords": {
+        "pt": [
+          "empreendimentos contrariados",
+          "inimizades poderosas",
+          "perigos atenuáveis"
+        ],
+        "en": [
+          "setbacks in undertakings",
+          "powerful enmities",
+          "mitigable dangers"
+        ]
+      }
+    }
+  }
+}

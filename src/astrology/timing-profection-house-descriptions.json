@@ -1,0 +1,196 @@
+{
+  "profectionHouses": {
+    "1": {
+      "pt": "com a primeira casa ativada por profecção, os assuntos em destaque incluem sua identidade, sua autoimagem e seu corpo. leia esses temas junto à condição, ao posicionamento natal e aos aspectos do regente do período.",
+      "en": "with the first house activated by profection, the highlighted topics include your identity, self-image and body. read these themes alongside the condition, natal placement and aspects of the period’s ruler.",
+      "keywords": {
+        "pt": [
+          "identidade",
+          "corpo",
+          "autoimagem"
+        ],
+        "en": [
+          "identity",
+          "body",
+          "self-image"
+        ]
+      }
+    },
+    "2": {
+      "pt": "com a segunda casa ativada por profecção, você pode voltar sua atenção ao dinheiro, aos bens pessoais e ao que tem valor para você. leia esses temas de segurança financeira junto à condição do regente do período no mapa natal.",
+      "en": "with the second house activated by profection, you can turn your attention to money, personal possessions and what holds value for you. read these themes of financial security alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "dinheiro",
+          "bens pessoais",
+          "valores"
+        ],
+        "en": [
+          "money",
+          "personal possessions",
+          "values"
+        ]
+      }
+    },
+    "3": {
+      "pt": "com a terceira casa ativada por profecção, você pode observar suas conversas, seus estudos e as relações com irmãos e vizinhos. considere esses assuntos do cotidiano junto à condição do regente do período no mapa natal.",
+      "en": "with the third house activated by profection, you can look at your conversations, studies and relationships with siblings and neighbors. consider these everyday topics alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "estudos",
+          "vizinhança"
+        ],
+        "en": [
+          "communication",
+          "studies",
+          "neighborhood"
+        ]
+      }
+    },
+    "4": {
+      "pt": "com a quarta casa ativada por profecção, você pode dar atenção ao lar, à família e aos clãs aos quais pertence. examine suas raízes e seu senso de segurança junto à condição do regente do período no mapa natal.",
+      "en": "with the fourth house activated by profection, you can give attention to home, family and the clans you belong to. examine your roots and sense of security alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "lar",
+          "família",
+          "raízes"
+        ],
+        "en": [
+          "home",
+          "family",
+          "roots"
+        ]
+      }
+    },
+    "5": {
+      "pt": "com a quinta casa ativada por profecção, os assuntos em destaque incluem seus amores, filhos, prazeres, atividades criativas e especulações. leia esses temas junto à condição, ao posicionamento natal e aos aspectos do regente do período.",
+      "en": "with the fifth house activated by profection, the highlighted topics include your love affairs, children, pleasures, creative activities and speculation. read these themes alongside the condition, natal placement and aspects of the period’s ruler.",
+      "keywords": {
+        "pt": [
+          "amor e filhos",
+          "criatividade",
+          "especulações"
+        ],
+        "en": [
+          "love and children",
+          "creativity",
+          "speculation"
+        ]
+      }
+    },
+    "6": {
+      "pt": "com a sexta casa ativada por profecção, você pode observar seu trabalho, suas tarefas diárias e seus deveres. a saúde também é um tema dessa casa, a ser lido junto à condição do regente do período no mapa natal.",
+      "en": "with the sixth house activated by profection, you can look at your work, daily tasks and duties. health is also a topic of this house, to be read alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "rotina",
+          "saúde",
+          "trabalho"
+        ],
+        "en": [
+          "routine",
+          "health",
+          "work"
+        ]
+      }
+    },
+    "7": {
+      "pt": "com a sétima casa ativada por profecção, os assuntos em destaque incluem seu casamento, suas sociedades, seus conflitos e inimigos declarados. leia esses temas junto à condição, ao posicionamento natal e aos aspectos do regente do período.",
+      "en": "with the seventh house activated by profection, the highlighted topics include your marriage, business partnerships, conflicts and declared enemies. read these themes alongside the condition, natal placement and aspects of the period’s ruler.",
+      "keywords": {
+        "pt": [
+          "casamento",
+          "sociedades",
+          "inimigos declarados"
+        ],
+        "en": [
+          "marriage",
+          "business partnerships",
+          "declared enemies"
+        ]
+      }
+    },
+    "8": {
+      "pt": "com a oitava casa ativada por profecção, os assuntos em destaque incluem sua sexualidade, os recursos alheios, os legados e os temas de nascimento, morte e renascimento. leia esses temas junto à condição, ao posicionamento natal e aos aspectos do regente do período.",
+      "en": "with the eighth house activated by profection, the highlighted topics include your sexuality, others’ resources, legacies and the themes of birth, death and rebirth. read these themes alongside the condition, natal placement and aspects of the period’s ruler.",
+      "keywords": {
+        "pt": [
+          "sexualidade",
+          "legados e recursos alheios",
+          "nascimento e morte"
+        ],
+        "en": [
+          "sexuality",
+          "legacies and others’ resources",
+          "birth and death"
+        ]
+      }
+    },
+    "9": {
+      "pt": "com a nona casa ativada por profecção, você pode voltar sua atenção aos estudos mais profundos, à filosofia e à religião. viagens e contatos com outros países também são temas a considerar junto à condição do regente do período no mapa natal.",
+      "en": "with the ninth house activated by profection, you can turn your attention to deeper studies, philosophy and religion. travel and contact with other countries are also topics to consider alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "estudos aprofundados",
+          "filosofia",
+          "outros países"
+        ],
+        "en": [
+          "deeper studies",
+          "philosophy",
+          "other countries"
+        ]
+      }
+    },
+    "10": {
+      "pt": "com a décima casa ativada por profecção, você pode observar sua profissão, sua carreira e sua contribuição social. considere seus temas de realização e posição no mundo junto à condição do regente do período no mapa natal.",
+      "en": "with the tenth house activated by profection, you can look at your profession, career and social contribution. consider its themes of achievement and standing in the world alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "carreira",
+          "realização",
+          "contribuição social"
+        ],
+        "en": [
+          "career",
+          "achievement",
+          "social contribution"
+        ]
+      }
+    },
+    "11": {
+      "pt": "com a décima primeira casa ativada por profecção, você pode dar atenção às amizades, aos grupos e aos interesses que compartilha com outras pessoas. examine suas esperanças e objetivos mais amplos junto à condição do regente do período no mapa natal.",
+      "en": "with the eleventh house activated by profection, you can give attention to friendships, groups and interests you share with others. examine your hopes and broader goals alongside the condition of the period’s ruler in your natal chart.",
+      "keywords": {
+        "pt": [
+          "amizades",
+          "grupos",
+          "esperanças"
+        ],
+        "en": [
+          "friendships",
+          "groups",
+          "hopes"
+        ]
+      }
+    },
+    "12": {
+      "pt": "com a décima segunda casa ativada por profecção, os assuntos em destaque incluem sua vida interior, os sofrimentos, as repressões e neuroses, os relacionamentos ocultos, as instituições, as lições kármicas e os temas de vidas passadas. leia esses temas junto à condição, ao posicionamento natal e aos aspectos do regente do período.",
+      "en": "with the twelfth house activated by profection, the highlighted topics include your inner life, suffering, repression and neuroses, hidden relationships, institutions, karmic lessons and past-life themes. read these themes alongside the condition, natal placement and aspects of the period’s ruler.",
+      "keywords": {
+        "pt": [
+          "vida interior e vidas passadas",
+          "sofrimentos",
+          "instituições e relações ocultas"
+        ],
+        "en": [
+          "inner life and past lives",
+          "suffering",
+          "institutions and hidden relationships"
+        ]
+      }
+    }
+  }
+}

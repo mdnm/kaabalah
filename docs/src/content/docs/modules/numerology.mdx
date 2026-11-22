@@ -30,7 +30,75 @@ import { calculateKaabalisticLifePath, calculateStraightAcrossReductionLifePath,
 - Partial birth dates: `describePartialBirthDate`, `summarizeBirthDateCandidates`
 - Pinnacles, challenges and life periods: `computeLifeStages`, `LIFE_STAGE_METHOD_ID`
 - `fibonacciFromAge` (Fibonacci cycles from an explicit age)
+- `FIBONACCI_YEAR_DESCRIPTION`, `getFibonacciYearDescriptionEntry`, `getFibonacciYearDescription`
+- `PERSONAL_MONTH_DESCRIPTIONS`, `getPersonalMonthDescriptionEntry`, `getPersonalMonthDescription`
+- `PINNACLE_DESCRIPTIONS`, `getPinnacleDescriptionEntry`, `getPinnacleDescription`
 - Civil-date helpers (`CivilDate`, `parseCivilDate`, `civilDayOrdinal`, `addCivilDays`, `completedYears`, ...) are exported from the package root `kaabalah`, not from `kaabalah/numerology`
+
+## Fibonacci year introduction
+
+```typescript
+import { getFibonacciYearDescription, getFibonacciYearDescriptionEntry } from 'kaabalah/numerology';
+
+getFibonacciYearDescription('pt-BR');
+getFibonacciYearDescription(); // English
+getFibonacciYearDescriptionEntry().keywords.pt;
+```
+
+This bilingual introduction explains how the seven age-derived Fibonacci values
+identify the ruling Ark Annu of the seven birthday-year heptads, in order.
+For example, a sixth value reduced to 5 means Ark Annu 5 rules heptad 6.
+Use that Ark Annu’s existing meaning; no separate Fibonacci number or position
+interpretation is needed. The lookup calculates no values or dates.
+The seed is completed age, as in `calculateFibonacciCycle`, `fibonacciFromAge`
+and the schedule's `fibonacci` layer, rather than the digits of a calendar year.
+Entries and keyword arrays are immutable; public `src` and `reviewNotes`
+compatibility arrays are empty. Locale selection follows a case-sensitive `pt`
+prefix, with English for omitted and other string locales.
+
+## Personal-month descriptions
+
+```typescript
+import { getNumerologySnapshot, getPersonalMonthDescription, getPersonalMonthDescriptionEntry } from 'kaabalah/numerology';
+
+const month = getNumerologySnapshot({ birth: '1990-01-15', asOf: '2026-11-20' }).personalMonth;
+const text = month ? getPersonalMonthDescription(month.value.value, 'pt-BR') : undefined;
+getPersonalMonthDescriptionEntry(11)?.keywords.en;
+```
+
+Each entry contains two short sentences and keywords in English and Portuguese
+for a personal-month value: 1–9, 11, 22, 33 or 44. Pass the calculated `value.value`,
+rather than the month's `phase`. The lookup does not calculate or reduce a number;
+unsupported values return `undefined`.
+
+Entries and keyword arrays are immutable. Locale selection uses the same `pt`
+prefix as the Fibonacci introduction; English is the default. The interpretations
+include difficulties such as health problems.
+The lookup does not assess whether a described condition applies. Personal-year
+text and the existing cycle keyword tables are unchanged.
+
+## Pinnacle descriptions
+
+```typescript
+import { parseCivilDate } from 'kaabalah';
+import { computeLifeStages, getPinnacleDescription, getPinnacleDescriptionEntry } from 'kaabalah/numerology';
+
+const stages = computeLifeStages(parseCivilDate('1990-01-15'), 'preserve');
+getPinnacleDescription(stages.pinnacles[0].value.value, 'pt-BR');
+getPinnacleDescriptionEntry(11)?.keywords.en;
+getPinnacleDescription(33); // master number 33
+```
+
+The bank covers 1–9, 11, 22, 33 and 44 with two sentences and bilingual keywords per value.
+Pass the pinnacle's calculated numerical value, rather than its ordinal position.
+The lookup does not substitute 6 or 8. It returns
+`undefined` for missing or invalid values and does not calculate dates, reduce
+numbers or change the master-number policy in `computeLifeStages`.
+
+The period interpretations include financial, relationship and other outcomes. Qualifications about a first, middle or final
+pinnacle remain conditional in the prose; a value-only lookup does not identify
+which position applies or calculate an event. Entries are immutable; locale
+selection uses a case-sensitive `pt` prefix, with English as the default.
 
 ## Life Path Calculation Methods
 
@@ -248,7 +316,7 @@ summary.selectedDate;                         // null
 - The first pinnacle and challenge end at completed age `36 - L`, where `L` is the life path reduced to a single digit (11 becomes 2, 22 becomes 4, 33 becomes 6, 44 becomes 8); each following span lasts 9 years and the fourth is open-ended. `lifeStages.firstPinnacleEndAge` overrides the age.
 - Three life periods, valued by month, day and year: `lifePeriodRule: "pinnacle-aligned-27"` (default; `[0, 36 - L)`, 27 years, the rest) or `"fixed-28-56"`.
 
-These age transitions and master rules have not been checked against an external reference; sources differ, so treat the options as part of the result's identity.
+These age transitions and master rules have not been independently validated; treat the options as part of the result’s method identity.
 
 ## Legacy cycle functions: behaviour
 

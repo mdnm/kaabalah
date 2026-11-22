@@ -1,0 +1,1922 @@
+{
+  "solarReturnPlanetHouses": {
+    "sun/1": {
+      "pt": "com o Sol na primeira casa da sua revolução solar, sua atividade pessoal é favorecida e você tende a ser mais apreciado, com indicação de sucesso pessoal. a casa anual regida pelo Sol ganha importância especial e pode pesar mais na leitura do que a casa ocupada por ele.",
+      "en": "with the Sun in the first house of your solar-return chart, your personal activity is favored and you tend to be more appreciated, with an indication of personal success. the annual house ruled by the Sun gains particular importance and may weigh more in the reading than the house it occupies.",
+      "keywords": {
+        "pt": [
+          "atividade pessoal",
+          "apreciação",
+          "regência solar"
+        ],
+        "en": [
+          "personal activity",
+          "appreciation",
+          "solar rulership"
+        ]
+      }
+    },
+    "sun/2": {
+      "pt": "com o Sol na segunda casa da sua revolução solar, os ganhos e os negócios tendem a ser facilitados se ele não estiver muito afligido, mas você pode ambicionar demais. nos mapas de mulheres casadas, a leitura também associa essa posição ao aumento dos ganhos do marido.",
+      "en": "with the Sun in the second house of your solar-return chart, earnings and business tend to become easier if it is not heavily afflicted, but you may become overly ambitious. in married women’s charts, the reading also associates this placement with an increase in the husband’s earnings.",
+      "keywords": {
+        "pt": [
+          "ganhos",
+          "negócios",
+          "ambição excessiva"
+        ],
+        "en": [
+          "earnings",
+          "business",
+          "excessive ambition"
+        ]
+      }
+    },
+    "sun/3": {
+      "pt": "com o Sol na terceira casa da sua revolução solar, o favorecimento pode alcançar um irmão, uma irmã ou outro parente mais do que você. para você, a leitura indica êxito nas diligências oficiais e nos estudos conforme os aspectos do Sol, ou fracasso nas diligências quando há numerosos maus aspectos.",
+      "en": "with the Sun in the third house of your solar-return chart, a sibling or another relative may benefit more than you. for you, the reading indicates success in official dealings and studies according to the Sun’s aspects, or failure in those dealings when there are numerous adverse aspects.",
+      "keywords": {
+        "pt": [
+          "parentes",
+          "diligências oficiais",
+          "estudos"
+        ],
+        "en": [
+          "relatives",
+          "official dealings",
+          "studies"
+        ]
+      }
+    },
+    "sun/4": {
+      "pt": "com o Sol na quarta casa da sua revolução solar, os assuntos dos parentes e das propriedades ganham importância, e o último trimestre do ciclo anual recebe destaque especial. os aspectos do Sol e as casas que ele rege indicam acontecimentos favoráveis ou difíceis nesse trecho; sem aflição, a posição facilita suas operações imobiliárias.",
+      "en": "with the Sun in the fourth house of your solar-return chart, relatives and property matters become important, and the final quarter of the annual cycle receives particular emphasis. the Sun’s aspects and the houses it rules indicate favorable or difficult events in that period; without affliction, the placement facilitates your property dealings.",
+      "keywords": {
+        "pt": [
+          "parentes",
+          "propriedades",
+          "último trimestre"
+        ],
+        "en": [
+          "relatives",
+          "property",
+          "final quarter"
+        ]
+      }
+    },
+    "sun/5": {
+      "pt": "com o Sol na quinta casa da sua revolução solar, a expansão pode alcançar a consciência se ele rege o ascendente, a terceira ou a nona casa, sua situação se rege a segunda ou a décima, ou suas relações se rege a décima primeira. a leitura associa o Sol à esterilidade e à dificuldade de fecundação em mapas femininos, mas duvida de uma indicação específica sobre filhos: bons aspectos favorecem suas relações com eles, aflições trazem aborrecimentos, e aspectos mistos exigem o mapa anual inteiro.",
+      "en": "with the Sun in the fifth house of your solar-return chart, expansion may concern awareness if it rules the ascendant, third or ninth house, your circumstances if it rules the second or tenth, or your relationships if it rules the eleventh. the reading associates the Sun with sterility and difficulty conceiving in women’s charts, but doubts a specific indication about children: good aspects favor your relations with them, afflictions bring troubles, and mixed aspects require the whole annual chart.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "regência solar",
+          "filhos e fecundação"
+        ],
+        "en": [
+          "expansion",
+          "solar rulership",
+          "children and conception"
+        ]
+      }
+    },
+    "sun/6": {
+      "pt": "com o Sol na sexta casa da sua revolução solar, a leitura considera desfavoráveis os assuntos da saúde ou, mais frequentemente, os da casa anual que ele rege. se o Sol forma maus aspectos com Marte e se liga à décima casa por regência ou aspectos, ações precipitadas para melhorar sua situação ou obter promoção podem prejudicar suas ocupações.",
+      "en": "with the Sun in the sixth house of your solar-return chart, the reading considers health matters unfavorable or, more often, matters of the annual house it rules. if the Sun forms adverse aspects with Mars and is linked to the tenth house by rulership or aspects, rash actions intended to improve your situation or obtain promotion may harm your occupation.",
+      "keywords": {
+        "pt": [
+          "saúde",
+          "casa regida",
+          "precipitação profissional"
+        ],
+        "en": [
+          "health",
+          "ruled house",
+          "professional rashness"
+        ]
+      }
+    },
+    "sun/7": {
+      "pt": "com o Sol na sétima casa da sua revolução solar, o cônjuge ou sócio tende a ser mais favorecido do que você, enquanto a atividade política ou social e o esclarecimento das relações matrimoniais ou profissionais podem ganhar força. em litígios ou rivalidades, a leitura descreve um adversário forte e apoiado por pessoas influentes, cujo perigo aumenta se o ascendente anual estiver em oposição ao Sol.",
+      "en": "with the Sun in the seventh house of your solar-return chart, your spouse or partner tends to be favored more than you, while political or social activity and clarification of marital or professional relationships may gain strength. in disputes or rivalries, the reading describes a strong opponent backed by influential people, whose danger increases if the annual ascendant opposes the Sun.",
+      "keywords": {
+        "pt": [
+          "cônjuge e sócios",
+          "atividade social",
+          "adversários influentes"
+        ],
+        "en": [
+          "spouse and partners",
+          "social activity",
+          "influential opponents"
+        ]
+      }
+    },
+    "sun/8": {
+      "pt": "na leitura tradicional, o Sol na oitava casa da sua revolução solar é um dos indícios de morte no decorrer do ano. com aspectos benéficos, essa posição favorece suas aplicações financeiras, vitórias e acordos em processos, aumento das rendas e diminuição das dívidas.",
+      "en": "in the traditional reading, the Sun in the eighth house of your solar-return chart is one of the indications of death during the year. with benefic aspects, this placement favors your financial investments, victories and settlements in legal disputes, increased income and reduced debts.",
+      "keywords": {
+        "pt": [
+          "mortalidade",
+          "resultados financeiros",
+          "aspectos benéficos"
+        ],
+        "en": [
+          "mortality",
+          "financial outcomes",
+          "benefic aspects"
+        ]
+      }
+    },
+    "sun/9": {
+      "pt": "com o Sol na nona casa da sua revolução solar, sua ambição tende a aumentar. se ele não estiver muito afligido, a posição favorece sua evolução espiritual, seus estudos, suas grandes viagens e os demais assuntos dessa casa.",
+      "en": "with the Sun in the ninth house of your solar-return chart, your ambition tends to increase. if it is not heavily afflicted, the placement favors your spiritual development, studies, long-distance journeys and the other matters of this house.",
+      "keywords": {
+        "pt": [
+          "ambição",
+          "evolução espiritual",
+          "grandes viagens"
+        ],
+        "en": [
+          "ambition",
+          "spiritual development",
+          "long-distance journeys"
+        ]
+      }
+    },
+    "sun/10": {
+      "pt": "com o Sol na décima casa da sua revolução solar, há indicação de sucesso profissional, aumento da reputação e acesso a crédito ou proteção quando necessários. aflições reduzem esse favorecimento, mas seu progresso ainda pode ocorrer com dificuldades.",
+      "en": "with the Sun in the tenth house of your solar-return chart, there is an indication of professional success, increased reputation and access to credit or protection when needed. afflictions reduce this favorable influence, but your progress may still occur with difficulties.",
+      "keywords": {
+        "pt": [
+          "sucesso profissional",
+          "reputação",
+          "progresso com dificuldades"
+        ],
+        "en": [
+          "professional success",
+          "reputation",
+          "progress through difficulties"
+        ]
+      }
+    },
+    "sun/11": {
+      "pt": "com o Sol na décima primeira casa da sua revolução solar, a realização dos seus projetos e esperanças é facilitada se ele não estiver muito afligido, sobretudo nos assuntos da casa anual que rege. suas ambições podem aumentar, e a posição também indica a presença de um amigo importante durante o ano.",
+      "en": "with the Sun in the eleventh house of your solar-return chart, the fulfillment of your projects and hopes is facilitated if it is not heavily afflicted, especially in matters of the annual house it rules. your ambitions may increase, and the placement also indicates the presence of an important friend during the year.",
+      "keywords": {
+        "pt": [
+          "realização de projetos",
+          "ambição",
+          "amigo importante"
+        ],
+        "en": [
+          "fulfillment of projects",
+          "ambition",
+          "important friend"
+        ]
+      }
+    },
+    "sun/12": {
+      "pt": "na leitura tradicional, o Sol na décima segunda casa da sua revolução solar é associado a mal-estares e doenças que a leitura entende como eliminação de toxinas ou revelação de uma enfermidade oculta, levando você a reconhecê-la e tratá-la. a posição também favorece assuntos dessa casa, mas, se o Sol estiver muito afligido, a leitura a considera ameaçadora para a saúde e indicadora de desgaste do organismo.",
+      "en": "in the traditional reading, the Sun in the twelfth house of your solar-return chart is associated with ailments and illnesses that the reading interprets as eliminating toxins or revealing a hidden illness, leading you to recognize and treat it. the placement also favors matters of this house, but if the Sun is heavily afflicted, the reading considers it threatening to health and indicative of bodily wear.",
+      "keywords": {
+        "pt": [
+          "enfermidade oculta",
+          "revelação de mal-estares",
+          "desgaste do organismo"
+        ],
+        "en": [
+          "hidden illness",
+          "revelation of ailments",
+          "bodily wear"
+        ]
+      }
+    },
+    "moon/1": {
+      "pt": "na leitura tradicional, a Lua na primeira casa da sua revolução solar é perigosa para a saúde, sobretudo em mapas femininos, e, quando mal-aspectada, anuncia perturbações funcionais ou doenças; psicologicamente, aumenta sensibilidade, impressionabilidade, instabilidade e mudanças, sobretudo perto do ascendente. nos mapas masculinos, mulheres têm papel importante no ano; se a Lua rege a segunda ou a décima anual, essa influência alcança sua situação, favoravelmente ou não conforme os aspectos.",
+      "en": "in the traditional reading, the Moon in the first house of your solar-return chart is dangerous for health, especially in women’s charts, and when adversely aspected announces functional disturbances or illnesses; psychologically, it increases sensitivity, impressionability, instability and change, especially near the ascendant. in men’s charts, women play an important role during the year; if the Moon rules the annual second or tenth, this influence affects your circumstances, favorably or otherwise according to its aspects.",
+      "keywords": {
+        "pt": [
+          "sensibilidade e instabilidade",
+          "saúde",
+          "influência feminina"
+        ],
+        "en": [
+          "sensitivity and instability",
+          "health",
+          "influence of women"
+        ]
+      }
+    },
+    "moon/2": {
+      "pt": "com a Lua na segunda casa da sua revolução solar, você fica sujeito a flutuações financeiras, geralmente nos momentos de aspectos simbólicos ou reais. sob aflição, a leitura aponta perigo de roubo ou perda.",
+      "en": "with the Moon in the second house of your solar-return chart, you are subject to financial fluctuations, generally at times of symbolic or actual aspects. under affliction, the reading points to a danger of theft or loss.",
+      "keywords": {
+        "pt": [
+          "flutuações financeiras",
+          "roubo ou perda",
+          "aspectos"
+        ],
+        "en": [
+          "financial fluctuations",
+          "theft or loss",
+          "aspects"
+        ]
+      }
+    },
+    "moon/3": {
+      "pt": "com a Lua na terceira casa da sua revolução solar, deslocamentos e relações com o ambiente ganham destaque, enquanto maus aspectos se associam a desavenças com mulheres do convívio e ao desenvolvimento de doenças ocultas. um aspecto de Saturno indica pouca intimidade com o meio; aspectos desarmônicos de Netuno ou Mercúrio trazem críticas e confusões, e maus aspectos de Marte, discussões e disputas para você; quando a Lua rege a quinta, a leitura também indica numerosas viagens de recreação.",
+      "en": "with the Moon in the third house of your solar-return chart, journeys and relations with your surroundings become prominent, while adverse aspects are associated with disagreements with women in your circle and the development of hidden illnesses. an aspect from Saturn indicates little closeness with your surroundings; discordant aspects from Neptune or Mercury bring criticism and confusion, and adverse aspects from Mars, arguments and disputes for you; when the Moon rules the fifth, the reading also indicates many recreational journeys.",
+      "keywords": {
+        "pt": [
+          "deslocamentos",
+          "doenças ocultas",
+          "conflitos por aspectos"
+        ],
+        "en": [
+          "journeys",
+          "hidden illnesses",
+          "aspect-dependent conflicts"
+        ]
+      }
+    },
+    "moon/4": {
+      "pt": "com a Lua na quarta casa da sua revolução solar, a leitura anuncia mudanças na família ou no lar e frequentemente coloca uma mudança de residência em questão. em signo fixo e sob mau aspecto de Saturno, essa mudança provavelmente não ocorrerá ou enfrentará obstáculos quase insuperáveis, deixando você descontente com a residência; para agricultores, a leitura associa essa condição a más colheitas, enquanto a Lua dignificada e bem-aspectada favorece a agricultura.",
+      "en": "with the Moon in the fourth house of your solar-return chart, the reading announces changes in family or home and often raises the question of moving house. in a fixed sign and under an adverse aspect from Saturn, that move will probably not occur or will face almost insurmountable obstacles, leaving you dissatisfied with your residence; for farmers, the reading associates this condition with poor harvests, while a dignified and well-aspected Moon favors agriculture.",
+      "keywords": {
+        "pt": [
+          "mudança de residência",
+          "obstáculos de Saturno",
+          "agricultura"
+        ],
+        "en": [
+          "moving house",
+          "Saturn’s obstacles",
+          "agriculture"
+        ]
+      }
+    },
+    "moon/5": {
+      "pt": "com a Lua na quinta casa da sua revolução solar, seus sentimentos e sua vida amorosa tendem a mudar, com temor de traição sob aflição; em mapas femininos, a posição parece favorecer a concepção e aparece frequentemente em anos de gravidez, com Júpiter na quinta ou décima reforçando a fecundidade. para pessoas de idade, a leitura trata de crianças ou especulações, com sorte em jogos se a Lua estiver dignificada e bem-aspectada; se rege a terceira ou nona e não está em signo fixo, indica muitas viagens de recreação.",
+      "en": "with the Moon in the fifth house of your solar-return chart, your feelings and romantic life tend to change, with fear of betrayal under affliction; in women’s charts, the placement seems to favor conception and often appears in pregnancy years, with Jupiter in the fifth or tenth reinforcing fertility. for older people, the reading concerns children or speculation, with luck in games if the Moon is dignified and well aspected; if it rules the third or ninth and is not in a fixed sign, it indicates many recreational journeys.",
+      "keywords": {
+        "pt": [
+          "vida amorosa",
+          "concepção e gravidez",
+          "sorte e viagens condicionadas"
+        ],
+        "en": [
+          "romantic life",
+          "conception and pregnancy",
+          "conditional luck and travel"
+        ]
+      }
+    },
+    "moon/6": {
+      "pt": "na leitura tradicional, a Lua na sexta casa da sua revolução solar é uma posição bastante perigosa para a saúde, sobretudo em mapas femininos. se estiver afligida, também representa um presságio desfavorável para seus negócios comerciais.",
+      "en": "in the traditional reading, the Moon in the sixth house of your solar-return chart is a particularly dangerous placement for health, especially in women’s charts. if afflicted, it also represents an unfavorable indication for your commercial business.",
+      "keywords": {
+        "pt": [
+          "saúde",
+          "mapas femininos",
+          "comércio sob aflição"
+        ],
+        "en": [
+          "health",
+          "women’s charts",
+          "business under affliction"
+        ]
+      }
+    },
+    "moon/7": {
+      "pt": "com a Lua na sétima casa da sua revolução solar, a leitura indica ajuda de uma mulher e mudanças vantajosas ou não na sua vida conjugal, social ou nas associações, conforme os aspectos. se a Lua se opõe ao ascendente anual, são indicadas flutuações de saúde, particularmente nas mulheres; em mapas femininos, a posição também favorece a concepção.",
+      "en": "with the Moon in the seventh house of your solar-return chart, the reading indicates help from a woman and advantageous or adverse changes in your marital or social life or associations, according to the aspects. if the Moon opposes the annual ascendant, health fluctuations are indicated, particularly for women; in women’s charts, the placement also favors conception.",
+      "keywords": {
+        "pt": [
+          "ajuda feminina",
+          "mudanças nas relações",
+          "saúde e concepção"
+        ],
+        "en": [
+          "help from women",
+          "relationship changes",
+          "health and conception"
+        ]
+      }
+    },
+    "moon/8": {
+      "pt": "com a Lua na oitava casa da sua revolução solar, a leitura considera o ano ruim para você iniciar um processo, salvo se ela estiver em Touro ou Câncer; dignificada, parece favorecer mais as finanças do cônjuge do que as suas. a posição também representa probabilidade de doença no seu meio de convívio, descrita como doença da mulher nos mapas masculinos.",
+      "en": "with the Moon in the eighth house of your solar-return chart, the reading considers the year poor for starting litigation, unless it is in Taurus or Cancer; dignified, it seems to favor your spouse’s finances more than your own. the placement also represents a likelihood of illness in your social circle, described as illness of the wife in men’s charts.",
+      "keywords": {
+        "pt": [
+          "litígios e exceções",
+          "finanças do cônjuge",
+          "doença no convívio"
+        ],
+        "en": [
+          "litigation and exceptions",
+          "spouse’s finances",
+          "illness in the social circle"
+        ]
+      }
+    },
+    "moon/9": {
+      "pt": "com a Lua na nona casa da sua revolução solar, suas viagens são favorecidas, sobretudo com a família ou pessoas íntimas. a leitura também indica que a posição parece exercer influência muito favorável sobre as experiências científicas, psíquicas e ocultas, mesmo sob mau aspecto, pelo aumento da intuição e por possíveis momentos de inspiração; se a Lua rege a quinta, também indica numerosas viagens de recreação.",
+      "en": "with the Moon in the ninth house of your solar-return chart, your journeys are favored, especially with family or close companions. the reading also indicates the placement seems to exert a very favorable influence on scientific, psychic and occult experiments, even under an adverse aspect, through increased intuition and possible moments of inspiration; if the Moon rules the fifth, it also indicates many recreational journeys.",
+      "keywords": {
+        "pt": [
+          "viagens com íntimos",
+          "intuição",
+          "experiências e inspiração"
+        ],
+        "en": [
+          "journeys with close companions",
+          "intuition",
+          "experiments and inspiration"
+        ]
+      }
+    },
+    "moon/10": {
+      "pt": "com a Lua na décima casa da sua revolução solar, a leitura anuncia grande atividade e mudanças nos negócios, ligadas ao crescimento ou à perda da sua popularidade. se a Lua rege a sétima natal ou anual, pode indicar casamento; se estava na quarta natal ou rege a quarta anual, indica mudanças nos assuntos imobiliários ou familiares.",
+      "en": "with the Moon in the tenth house of your solar-return chart, the reading announces considerable activity and changes in business, linked to growth or loss of your popularity. if the Moon rules the natal or annual seventh, it may indicate marriage; if it was in the natal fourth or rules the annual fourth, it indicates changes in property or family matters.",
+      "keywords": {
+        "pt": [
+          "atividade e popularidade",
+          "casamento por regência",
+          "mudanças familiares"
+        ],
+        "en": [
+          "activity and popularity",
+          "marriage through rulership",
+          "family changes"
+        ]
+      }
+    },
+    "moon/11": {
+      "pt": "com a Lua na décima primeira casa da sua revolução solar, a leitura anuncia mudanças nos seus projetos ou esperanças. nos mapas masculinos, essa posição favorece relações com mulheres, desde que não haja aflições graves.",
+      "en": "with the Moon in the eleventh house of your solar-return chart, the reading announces changes in your projects or hopes. in men’s charts, this placement favors relationships with women, provided there are no severe afflictions.",
+      "keywords": {
+        "pt": [
+          "mudança de projetos",
+          "esperanças",
+          "relações femininas condicionadas"
+        ],
+        "en": [
+          "changing projects",
+          "hopes",
+          "conditional relationships with women"
+        ]
+      }
+    },
+    "moon/12": {
+      "pt": "com a Lua na décima segunda casa da sua revolução solar, a leitura descreve temor de inimizades difíceis de apaziguar e preocupações ou aborrecimentos provenientes de uma mulher. o ano é considerado geralmente desfavorável para suas viagens, para iniciar um comércio ou para empreendimentos que dependam de boa reputação ou publicidade.",
+      "en": "with the Moon in the twelfth house of your solar-return chart, the reading describes fear of enmities that are difficult to appease and worries or troubles originating from a woman. the year is considered generally unfavorable for your journeys, starting a business or undertakings that depend on a good reputation or publicity.",
+      "keywords": {
+        "pt": [
+          "inimizades",
+          "aborrecimentos com mulheres",
+          "viagens e negócios desfavoráveis"
+        ],
+        "en": [
+          "enmities",
+          "troubles involving women",
+          "unfavorable journeys and business"
+        ]
+      }
+    },
+    "mercury/1": {
+      "pt": "com Mercúrio na primeira casa da sua revolução solar, você parece ganhar vivacidade de espírito, eloquência e facilidade de compreensão. a posição favorece seus estudos e atividades que exigem capacidade mental ou senso comercial.",
+      "en": "with Mercury in the first house of your solar-return chart, you seem to gain mental liveliness, eloquence and ease of understanding. the placement favors your studies and activities requiring mental ability or business sense.",
+      "keywords": {
+        "pt": [
+          "vivacidade mental",
+          "eloquência",
+          "senso comercial"
+        ],
+        "en": [
+          "mental liveliness",
+          "eloquence",
+          "business sense"
+        ]
+      }
+    },
+    "mercury/2": {
+      "pt": "com Mercúrio na segunda casa da sua revolução solar, seus ganhos são influenciados unicamente conforme os aspectos que ele recebe de outros planetas. comércio, transações, deslocamentos, jornalistas ou intermediários ganham importância nas suas questões financeiras.",
+      "en": "with Mercury in the second house of your solar-return chart, your earnings are influenced solely according to the aspects it receives from other planets. trade, transactions, journeys, journalists or intermediaries become important in your financial affairs.",
+      "keywords": {
+        "pt": [
+          "ganhos",
+          "aspectos recebidos",
+          "intermediários"
+        ],
+        "en": [
+          "earnings",
+          "received aspects",
+          "intermediaries"
+        ]
+      }
+    },
+    "mercury/3": {
+      "pt": "com Mercúrio na terceira casa da sua revolução solar, você realiza deslocamentos de negócios. suas relações de interesse são favorecidas durante o ano.",
+      "en": "with Mercury in the third house of your solar-return chart, you make business journeys. your business-related connections are favored during the year.",
+      "keywords": {
+        "pt": [
+          "deslocamentos",
+          "negócios",
+          "relações de interesse"
+        ],
+        "en": [
+          "journeys",
+          "business",
+          "business-related connections"
+        ]
+      }
+    },
+    "mercury/4": {
+      "pt": "com Mercúrio na quarta casa da sua revolução solar, você encontra algumas divergências de opinião na família. se ele estiver afligido, sobretudo por Marte e Urano, há temor de disputas domésticas ou familiares.",
+      "en": "with Mercury in the fourth house of your solar-return chart, you encounter some differences of opinion within your family. if it is afflicted, especially by Mars and Uranus, there is reason to fear domestic or family disputes.",
+      "keywords": {
+        "pt": [
+          "divergências",
+          "família",
+          "disputas domésticas"
+        ],
+        "en": [
+          "differences of opinion",
+          "family",
+          "domestic disputes"
+        ]
+      }
+    },
+    "mercury/5": {
+      "pt": "com Mercúrio na quinta casa da sua revolução solar, você controla e analisa todos os seus sentimentos pela razão durante o ano, favorecendo mais os prazeres mentais que os sensuais. seus estudos e sua instrução técnica são beneficiados se Mercúrio não estiver muito mal-aspectado.",
+      "en": "with Mercury in the fifth house of your solar-return chart, you control and analyze all your feelings through reason during the year, favoring mental pleasures more than sensual ones. your studies and technical education benefit if Mercury is not very adversely aspected.",
+      "keywords": {
+        "pt": [
+          "análise dos sentimentos",
+          "prazeres mentais",
+          "instrução técnica"
+        ],
+        "en": [
+          "analysis of feelings",
+          "mental pleasures",
+          "technical education"
+        ]
+      }
+    },
+    "mercury/6": {
+      "pt": "com Mercúrio afligido na sexta casa da sua revolução solar, você enfrenta excesso de fadiga que pode provocar dores de cabeça, sobretudo se ele estiver em Áries ou se essa casa anual se sobrepuser à sua primeira casa natal. as aflições de Mercúrio nessa casa tornam seu esforço mental muito penoso.",
+      "en": "with afflicted Mercury in the sixth house of your solar-return chart, you face excessive fatigue that can cause headaches, especially if it is in Aries or this annual house overlays your natal first house. Mercury’s afflictions in this house make your mental effort very arduous.",
+      "keywords": {
+        "pt": [
+          "fadiga excessiva",
+          "dores de cabeça",
+          "esforço mental"
+        ],
+        "en": [
+          "excessive fatigue",
+          "headaches",
+          "mental effort"
+        ]
+      }
+    },
+    "mercury/7": {
+      "pt": "com Mercúrio na sétima casa da sua revolução solar, seu cônjuge ou sócio é geralmente muito interessado, e, se Mercúrio estiver afligido, você enfrenta desavenças com essas pessoas. a posição indica muito frequentemente uma proposta social ou coletiva e, no mapa de uma jovem, anuncia quase sempre um pedido de casamento.",
+      "en": "with Mercury in the seventh house of your solar-return chart, your spouse or business partner is generally very self-interested, and, if Mercury is afflicted, you face disagreements with these people. the placement very often indicates a social or collective proposal and, in a young woman’s chart, almost always announces a marriage proposal.",
+      "keywords": {
+        "pt": [
+          "cônjuge ou sócio",
+          "desavenças",
+          "propostas"
+        ],
+        "en": [
+          "spouse or business partner",
+          "disagreements",
+          "proposals"
+        ]
+      }
+    },
+    "mercury/8": {
+      "pt": "com Mercúrio na oitava casa da sua revolução solar, você pode mudar suas aplicações financeiras. a outra indicação da posição é um deslocamento em virtude de um falecimento.",
+      "en": "with Mercury in the eighth house of your solar-return chart, you may change your financial investments. the placement’s other indication is a journey occasioned by a death.",
+      "keywords": {
+        "pt": [
+          "aplicações financeiras",
+          "mudança",
+          "deslocamento por falecimento"
+        ],
+        "en": [
+          "financial investments",
+          "change",
+          "journey occasioned by a death"
+        ]
+      }
+    },
+    "mercury/9": {
+      "pt": "com Mercúrio na nona casa da sua revolução solar, você parece ter um ano claramente favorável à atividade mental, posição observada nos anos mais produtivos de numerosos jornalistas e cientistas. ela também significa, quase sempre, viagens de negócios para você.",
+      "en": "with Mercury in the ninth house of your solar-return chart, you seem to have a clearly favorable year for mental activity, a placement observed in the most productive years of many journalists and scientists. it also almost always signifies business journeys for you.",
+      "keywords": {
+        "pt": [
+          "atividade mental",
+          "produtividade",
+          "viagens de negócios"
+        ],
+        "en": [
+          "mental activity",
+          "productivity",
+          "business journeys"
+        ]
+      }
+    },
+    "mercury/10": {
+      "pt": "com Mercúrio na décima casa da sua revolução solar, você tem sua habilidade profissional do ano, e consequentemente sua fama e reputação, indicadas pela condição dele. se Mercúrio estiver afligido por Marte, Urano ou Plutão, você incorre em julgamentos ou ações precipitados.",
+      "en": "with Mercury in the tenth house of your solar-return chart, your professional ability for the year, and consequently your fame and reputation, are indicated by its condition. if Mercury is afflicted by Mars, Uranus or Pluto, you make hasty judgments or take rash actions.",
+      "keywords": {
+        "pt": [
+          "habilidade profissional",
+          "reputação",
+          "ações precipitadas"
+        ],
+        "en": [
+          "professional ability",
+          "reputation",
+          "rash actions"
+        ]
+      }
+    },
+    "mercury/11": {
+      "pt": "com Mercúrio na décima primeira casa da sua revolução solar, seu círculo de relações aumenta, de modo favorável ou não; um aspecto benéfico ou a regência ligando Mercúrio à segunda, oitava ou décima casa torna essas relações vantajosas e parece aumentar sua clientela se você trabalha no comércio ou em profissão liberal. a oposição a um planeta na quinta casa geralmente traz decepções ou confusões provenientes das crianças.",
+      "en": "with Mercury in the eleventh house of your solar-return chart, your circle of connections grows, favorably or otherwise; a beneficial aspect or rulership linking Mercury to the second, eighth or tenth house makes these connections advantageous and seems to increase your clientele if you work in trade or an independent profession. opposition to a planet in the fifth house generally brings disappointments or confusion arising from children.",
+      "keywords": {
+        "pt": [
+          "relações",
+          "clientela",
+          "decepções envolvendo crianças"
+        ],
+        "en": [
+          "connections",
+          "clientele",
+          "disappointments involving children"
+        ]
+      }
+    },
+    "mercury/12": {
+      "pt": "com Mercúrio na décima segunda casa da sua revolução solar, você encontra mais favorecimento nos trabalhos abstratos do que na vida prática. em Virgem ou bem-aspectado, ele parece associar seus trabalhos a cálculos secretos ou combinações produtivas mantidas em segredo.",
+      "en": "with Mercury in the twelfth house of your solar-return chart, you find greater support for abstract work than for practical life. in Virgo or well aspected, it seems to associate your work with secret calculations or productive arrangements kept secret.",
+      "keywords": {
+        "pt": [
+          "trabalhos abstratos",
+          "cálculos secretos",
+          "combinações produtivas"
+        ],
+        "en": [
+          "abstract work",
+          "secret calculations",
+          "productive arrangements"
+        ]
+      }
+    },
+    "venus/1": {
+      "pt": "com Vênus na primeira casa da sua revolução solar, você tende a sentir mais otimismo e sociabilidade, numa atuação psicológica semelhante à de Júpiter. sem maus aspectos, a posição marca um ano fácil e favorece seus êxitos sociais.",
+      "en": "with Venus in the first house of your solar-return chart, you tend to feel greater optimism and sociability, with a psychological effect similar to Jupiter’s. without adverse aspects, the placement marks an easy year and favors your social successes.",
+      "keywords": {
+        "pt": [
+          "otimismo",
+          "sociabilidade",
+          "êxitos sociais"
+        ],
+        "en": [
+          "optimism",
+          "sociability",
+          "social successes"
+        ]
+      }
+    },
+    "venus/2": {
+      "pt": "com Vênus na segunda casa da sua revolução solar, suas finanças são favorecidas e sua sorte nos negócios aumenta, sobretudo em Touro, Libra ou Peixes, ou com bons aspectos. se Vênus estiver afligida por Marte, Júpiter ou Urano, você corre o risco de gastos extravagantes e desordem nos negócios.",
+      "en": "with Venus in the second house of your solar-return chart, your finances are favored and your luck in business increases, especially in Taurus, Libra or Pisces, or with favorable aspects. if Venus is afflicted by Mars, Jupiter or Uranus, you risk extravagant spending and disorder in business.",
+      "keywords": {
+        "pt": [
+          "finanças",
+          "sorte nos negócios",
+          "extravagância"
+        ],
+        "en": [
+          "finances",
+          "business luck",
+          "extravagance"
+        ]
+      }
+    },
+    "venus/3": {
+      "pt": "com Vênus na terceira casa da sua revolução solar, suas relações com as pessoas próximas são favorecidas. a posição parece ter importância especial se você trabalha com literatura imaginativa ou artes.",
+      "en": "with Venus in the third house of your solar-return chart, your relationships with people around you are favored. the placement seems particularly important if you work in imaginative literature or the arts.",
+      "keywords": {
+        "pt": [
+          "relações próximas",
+          "literatura imaginativa",
+          "artes"
+        ],
+        "en": [
+          "close relationships",
+          "imaginative literature",
+          "arts"
+        ]
+      }
+    },
+    "venus/4": {
+      "pt": "com Vênus na quarta casa da sua revolução solar, você geralmente embeleza seu lar e recebe a promessa de ajuda de parentes. a posição também favorece seu trabalho se ele estiver ligado aos assuntos dessa casa, como agricultura, imóveis ou minas.",
+      "en": "with Venus in the fourth house of your solar-return chart, you generally beautify your home and receive the promise of help from relatives. the placement also favors your work if it concerns this house’s affairs, such as farming, property or mines.",
+      "keywords": {
+        "pt": [
+          "embelezamento do lar",
+          "ajuda familiar",
+          "profissões da quarta casa"
+        ],
+        "en": [
+          "home beautification",
+          "family help",
+          "fourth-house occupations"
+        ]
+      }
+    },
+    "venus/5": {
+      "pt": "com Vênus na quinta casa da sua revolução solar, sua sensualidade se acentua e sua vida amorosa é favorecida, particularmente nos mapas masculinos; a posição aparece frequentemente em anos de nascimento de crianças. se Vênus estiver ligada às casas financeiras, você recebe a promessa de êxito no jogo ou na especulação e de ganho na loteria.",
+      "en": "with Venus in the fifth house of your solar-return chart, your sensuality increases and your love life is favored, particularly in men’s charts; the placement often appears in years when children are born. if Venus is connected with the financial houses, you receive the promise of success in gambling or speculation and a lottery win.",
+      "keywords": {
+        "pt": [
+          "sensualidade",
+          "nascimento de crianças",
+          "ganhos especulativos"
+        ],
+        "en": [
+          "sensuality",
+          "birth of children",
+          "speculative gains"
+        ]
+      }
+    },
+    "venus/6": {
+      "pt": "com Vênus na sexta casa da sua revolução solar, sem aflições, você tem proteção para a saúde, os empregos e as relações com empregados domésticos ou subordinados. se ela estiver mal aspectada por Marte e Urano, há receio de doenças dos órgãos genitais ou de órgãos próximos dessa região.",
+      "en": "with Venus in the sixth house of your solar-return chart, without afflictions, you have protection for health, employment and relationships with domestic employees or subordinates. if it is adversely aspected by Mars and Uranus, there is fear of diseases of the genital organs or organs near that region.",
+      "keywords": {
+        "pt": [
+          "proteção da saúde",
+          "emprego",
+          "doenças genitais"
+        ],
+        "en": [
+          "health protection",
+          "employment",
+          "genital diseases"
+        ]
+      }
+    },
+    "venus/7": {
+      "pt": "com Vênus na sétima casa da sua revolução solar, você tem um bom indício de felicidade conjugal, numa posição observada em anos de casamento ou associação. se Vênus estiver retrógrada no aniversário, a posição indica que o casamento não se realiza no ano que começa ou, se ela estiver muito bem aspectada, se realiza depois da época que você desejava.",
+      "en": "with Venus in the seventh house of your solar-return chart, you have a favorable indication of marital happiness, in a placement observed in years of marriage or partnership. if Venus is retrograde at your birthday, the placement indicates that marriage will not occur in the coming year or, if it is very favorably aspected, will occur later than you wanted.",
+      "keywords": {
+        "pt": [
+          "felicidade conjugal",
+          "casamento",
+          "adiamento por retrogradação"
+        ],
+        "en": [
+          "marital happiness",
+          "marriage",
+          "retrograde delay"
+        ]
+      }
+    },
+    "venus/8": {
+      "pt": "com Vênus na oitava casa da sua revolução solar, seus processos judiciais são favorecidos, exceto se ela estiver em Escorpião. a mesma exceção vale para o favorecimento das suas aplicações financeiras.",
+      "en": "with Venus in the eighth house of your solar-return chart, your lawsuits are favored, except when it is in Scorpio. the same exception applies to the favorable effect on your financial investments.",
+      "keywords": {
+        "pt": [
+          "processos judiciais",
+          "aplicações financeiras",
+          "exceção em Escorpião"
+        ],
+        "en": [
+          "lawsuits",
+          "financial investments",
+          "Scorpio exception"
+        ]
+      }
+    },
+    "venus/9": {
+      "pt": "com Vênus na nona casa da sua revolução solar, você tem um presságio de viagens de recreação. a posição também pode se manifestar como o desejo de realizá-las.",
+      "en": "with Venus in the ninth house of your solar-return chart, you have a prediction of recreational travel. the placement can also manifest as the desire to take such trips.",
+      "keywords": {
+        "pt": [
+          "viagens de recreação",
+          "desejo de viajar"
+        ],
+        "en": [
+          "recreational travel",
+          "desire to travel"
+        ]
+      }
+    },
+    "venus/10": {
+      "pt": "com Vênus na décima casa da sua revolução solar, sem maus aspectos, sua fama, seus negócios e sua posição social são favorecidos. afligida por Saturno e Marte, Urano ou Netuno, ela indica perigo de um escândalo que atinja você, geralmente decorrente de relações amorosas.",
+      "en": "with Venus in the tenth house of your solar-return chart, without adverse aspects, your fame, business and social standing are favored. afflicted by Saturn and Mars, Uranus or Neptune, it indicates danger of a scandal affecting you, generally arising from love affairs.",
+      "keywords": {
+        "pt": [
+          "fama",
+          "posição social",
+          "escândalo amoroso"
+        ],
+        "en": [
+          "fame",
+          "social standing",
+          "romantic scandal"
+        ]
+      }
+    },
+    "venus/11": {
+      "pt": "com Vênus na décima primeira casa da sua revolução solar, seus êxitos sociais e a realização dos desejos e esperanças são facilitados, com promessa de satisfações vindas dos amigos e das relações. você pode contar com apoio ou incentivo feminino ou obtido pela simpatia de mulheres, e a posição parece marcar frequentemente a amizade de uma jovem ou uma amizade feminina lisonjeira ou proveitosa.",
+      "en": "with Venus in the eleventh house of your solar-return chart, your social successes and the fulfillment of wishes and hopes are facilitated, with a promise of satisfaction through friends and connections. you may count on support or encouragement from women or gained through their goodwill, and the placement often seems to mark friendship with a young woman or a flattering or beneficial female friendship.",
+      "keywords": {
+        "pt": [
+          "realização de desejos",
+          "amizade feminina",
+          "apoio"
+        ],
+        "en": [
+          "fulfillment of wishes",
+          "female friendship",
+          "support"
+        ]
+      }
+    },
+    "venus/12": {
+      "pt": "com Vênus na décima segunda casa da sua revolução solar, seus sentimentos e desejos ocultos se revelam; bem colocada e bem aspectada, ela protege você dos significados adversos dessa casa, mas em Áries ou Escorpião, ou em aspecto com Marte, indica sensualidade insatisfeita e por isso aumentada. essa posição contraria as promessas de Vênus no seu mapa natal: se ela estava na segunda casa, suas finanças se ressentem; se estava na terceira, suas relações com as pessoas próximas pioram.",
+      "en": "with Venus in the twelfth house of your solar-return chart, your hidden feelings and desires are revealed; well placed and favorably aspected, it protects you from this house’s adverse meanings, but in Aries or Scorpio, or in aspect with Mars, it indicates unsatisfied and therefore heightened sensuality. this placement counters Venus’s promises in your natal chart: if it was in the second house, your finances suffer; if it was in the third, your relationships with people around you worsen.",
+      "keywords": {
+        "pt": [
+          "desejos ocultos",
+          "sensualidade insatisfeita",
+          "promessas natais contrariadas"
+        ],
+        "en": [
+          "hidden desires",
+          "unsatisfied sensuality",
+          "countered natal promises"
+        ]
+      }
+    },
+    "mars/1": {
+      "pt": "com Marte na primeira casa da sua revolução solar, você ganha atividade, iniciativa, ambição, dinamismo e vivacidade, e seu instinto sexual parece se intensificar, sobretudo se Marte estiver ligado a Vênus. afligido, ele aumenta sua irritabilidade, excitação e até brutalidade, com risco de conflitos por palavras ou atos irrefletidos com pessoas da casa que rege ou da casa ocupada pelo planeta que o aflige; em aspecto com Netuno, indica energia desperdiçada numa causa quimérica ou num empreendimento incapaz de corresponder ao esperado.",
+      "en": "with Mars in the first house of your solar-return chart, you gain activity, initiative, ambition, dynamism and liveliness, and your sexual instinct seems to intensify, especially if Mars is connected with Venus. afflicted, it increases your irritability, agitation and even brutality, with a risk of conflicts through thoughtless words or actions with people of the house it rules or the house occupied by the planet afflicting it; in aspect with Neptune, it indicates energy wasted on an illusory cause or an undertaking unable to meet expectations.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "conflitos",
+          "instinto sexual"
+        ],
+        "en": [
+          "initiative",
+          "conflicts",
+          "sexual instinct"
+        ]
+      }
+    },
+    "mars/2": {
+      "pt": "com Marte na segunda casa da sua revolução solar, você tende à imprudência nos negócios ou a gastos exagerados, frequentemente acima dos seus meios. se ele estiver mal aspectado, os aborrecimentos e as dificuldades com dinheiro são apresentados como inevitáveis.",
+      "en": "with Mars in the second house of your solar-return chart, you tend toward business imprudence or excessive spending, often beyond your means. if it is adversely aspected, money troubles and difficulties are presented as inevitable.",
+      "keywords": {
+        "pt": [
+          "imprudência nos negócios",
+          "gastos excessivos",
+          "dificuldades financeiras"
+        ],
+        "en": [
+          "business imprudence",
+          "excessive spending",
+          "financial difficulties"
+        ]
+      }
+    },
+    "mars/3": {
+      "pt": "com Marte na terceira casa da sua revolução solar, você tem motivo para recear más notícias, imprudências verbais ou escritas que causem desavenças, ou disputas com as pessoas próximas. se Marte receber um aspecto maléfico, a prudência nos deslocamentos, sobretudo de automóvel, torna-se necessária; em signos de Ar ou Fogo, a posição indica grande atividade mental.",
+      "en": "with Mars in the third house of your solar-return chart, you have reason to fear bad news, verbal or written indiscretions causing disagreements, or disputes with people around you. if Mars receives a malefic aspect, caution in travel, especially by car, becomes necessary; in Air or Fire signs, the placement indicates great mental activity.",
+      "keywords": {
+        "pt": [
+          "más notícias",
+          "imprudência verbal",
+          "deslocamentos"
+        ],
+        "en": [
+          "bad news",
+          "verbal indiscretion",
+          "travel"
+        ]
+      }
+    },
+    "mars/4": {
+      "pt": "com Marte na quarta casa da sua revolução solar, seu lar geralmente não corresponde às suas aspirações e gostos, e você enfrenta discussões e choques com parentes, às vezes lutas por uma questão vital. afligido e ligado aos pontos vitais do mapa, ele indica perturbações digestivas ou doença do estômago ou intestinos, às vezes dos órgãos genitais nos mapas femininos; numa revolução fortemente desfavorável e ligada a muitos planetas, corresponde a uma desgraça que surpreende parentes, proprietários ou o lar, como incêndio, morte, discórdia familiar ou calamidade pública.",
+      "en": "with Mars in the fourth house of your solar-return chart, your home generally fails to match your aspirations and tastes, and you face arguments and clashes with relatives, sometimes struggles over a vital issue. afflicted and connected with the chart’s vital points, it indicates digestive disturbances or disease of the stomach or intestines, sometimes of the genital organs in women’s charts; in a strongly unfavorable return connected with many planets, it corresponds to a misfortune overtaking relatives, property owners or the home, such as fire, death, family discord or public calamity.",
+      "keywords": {
+        "pt": [
+          "conflitos familiares",
+          "doenças digestivas",
+          "infortúnio doméstico"
+        ],
+        "en": [
+          "family conflicts",
+          "digestive diseases",
+          "domestic misfortune"
+        ]
+      }
+    },
+    "mars/5": {
+      "pt": "com Marte na quinta casa da sua revolução solar, você recebe o conselho de evitar o jogo e a especulação na Bolsa, a menos que ele receba apenas aspectos benéficos. sob configurações desarmônicas, suas relações com pessoas do sexo oposto são claramente desfavorecidas; nos mapas femininos, a leitura é particularmente adversa e conduz quase sempre a condutas impróprias dos homens, sobretudo com Marte poderoso.",
+      "en": "with Mars in the fifth house of your solar-return chart, you receive advice to avoid gambling and stock-market speculation unless it receives only benefic aspects. under disharmonious configurations, your relationships with people of the opposite sex are clearly disadvantaged; in women’s charts, the reading is particularly adverse and leads almost always to improper conduct from men, especially with a powerful Mars.",
+      "keywords": {
+        "pt": [
+          "jogo e especulação",
+          "relações adversas",
+          "conduta imprópria"
+        ],
+        "en": [
+          "gambling and speculation",
+          "adverse relationships",
+          "improper conduct"
+        ]
+      }
+    },
+    "mars/6": {
+      "pt": "com Marte na sexta casa da sua revolução solar, você tem possibilidade de um acidente fisiológico, mas em Capricórnio ele indica boa saúde se não estiver afligido e se as sobreposições das casas não forem ameaçadoras. mesmo dignificado, ele é perigoso se você trabalha como empregado, pois aumenta o desejo de independência e tende a provocar iniciativas acima das suas possibilidades e aborrecimentos.",
+      "en": "with Mars in the sixth house of your solar-return chart, you face the possibility of a physiological accident, but in Capricorn it indicates good health if it is unafflicted and the house overlays are not threatening. even dignified, it is dangerous if you are an employee, because it increases the desire for independence and tends to provoke initiatives beyond your capabilities and resulting troubles.",
+      "keywords": {
+        "pt": [
+          "acidente fisiológico",
+          "saúde condicionada",
+          "independência no emprego"
+        ],
+        "en": [
+          "physiological accident",
+          "conditional health",
+          "independence at work"
+        ]
+      }
+    },
+    "mars/7": {
+      "pt": "com Marte na sétima casa da sua revolução solar, você tem presságio de discussões e disputas com cônjuge ou sócios, além de perigo de confusões e processos. sobretudo em conjunção com a cúspide dessa casa, ele inclina você a ações sociais arriscadas e às vezes violentas, que só podem ter êxito se Marte estiver bem aspectado.",
+      "en": "with Mars in the seventh house of your solar-return chart, you have a prediction of arguments and disputes with a spouse or partners, along with danger of trouble and lawsuits. especially conjunct this house’s cusp, it inclines you toward risky and sometimes violent social actions, which can succeed only if Mars is favorably aspected.",
+      "keywords": {
+        "pt": [
+          "disputas conjugais",
+          "processos",
+          "ações sociais arriscadas"
+        ],
+        "en": [
+          "marital disputes",
+          "lawsuits",
+          "risky social actions"
+        ]
+      }
+    },
+    "mars/8": {
+      "pt": "com Marte na oitava casa da sua revolução solar, você tem uma predisposição a extravagâncias do cônjuge ou sócio, e a posição marca frequentemente um aumento considerável das despesas e até uma vida acima dos meios; também não parece boa para processos judiciais. se Marte reger a décima primeira, terceira ou quarta casa, pode prenunciar uma morte no seu meio de convívio.",
+      "en": "with Mars in the eighth house of your solar-return chart, you have a predisposition to extravagance from a spouse or partner, and the placement frequently marks a considerable increase in expenses and even living beyond available means; it also does not seem favorable for lawsuits. if Mars rules the eleventh, third or fourth house, it may foretell a death among people around you.",
+      "keywords": {
+        "pt": [
+          "despesas crescentes",
+          "processos desfavorecidos",
+          "morte no convívio"
+        ],
+        "en": [
+          "rising expenses",
+          "unfavored lawsuits",
+          "death in one’s circle"
+        ]
+      }
+    },
+    "mars/9": {
+      "pt": "com Marte na nona casa da sua revolução solar, suas viagens se tornam perigosas, com predisposição especial a acidentes de automóvel. psicologicamente, você tende à dúvida e ao ceticismo ou, pelo contrário, a conversões espontâneas, mudanças bruscas de opinião e posições ideológicas rápidas, geralmente mais instintivas que refletidas.",
+      "en": "with Mars in the ninth house of your solar-return chart, your journeys become dangerous, with a particular predisposition to car accidents. psychologically, you tend toward doubt and skepticism or, conversely, spontaneous conversions, abrupt changes of opinion and rapid ideological positions, generally more instinctive than considered.",
+      "keywords": {
+        "pt": [
+          "viagens perigosas",
+          "acidentes de automóvel",
+          "mudanças ideológicas"
+        ],
+        "en": [
+          "dangerous travel",
+          "car accidents",
+          "ideological changes"
+        ]
+      }
+    },
+    "mars/10": {
+      "pt": "com Marte na décima casa da sua revolução solar, você tem presságio de aborrecimentos e dificuldades profissionais; muito afligido, ele indica uma desgraça ou perigo de descrédito. psicologicamente, você tende tanto a ações arriscadas e até perigosas, sobretudo nos signos de Fogo, como a certa negligência nos negócios.",
+      "en": "with Mars in the tenth house of your solar-return chart, you have a prediction of professional troubles and difficulties; heavily afflicted, it indicates a misfortune or danger of discredit. psychologically, you tend both toward risky and even dangerous actions, especially in Fire signs, and toward some negligence in business.",
+      "keywords": {
+        "pt": [
+          "dificuldades profissionais",
+          "descrédito",
+          "ações arriscadas"
+        ],
+        "en": [
+          "professional difficulties",
+          "discredit",
+          "risky actions"
+        ]
+      }
+    },
+    "mars/11": {
+      "pt": "com Marte na décima primeira casa da sua revolução solar, você geralmente faz grandes projetos acima das suas possibilidades e discute com amigos. mal aspectado, ele torna inevitáveis as querelas, os vexames e as desavenças, com grande possibilidade de as circunstâncias e também os amigos se oporem à realização das suas esperanças.",
+      "en": "with Mars in the eleventh house of your solar-return chart, you generally make grand plans beyond your capabilities and argue with friends. adversely aspected, it makes quarrels, humiliations and disagreements inevitable, with a strong possibility that circumstances and friends alike will oppose the fulfillment of your hopes.",
+      "keywords": {
+        "pt": [
+          "projetos excessivos",
+          "disputas com amigos",
+          "esperanças contrariadas"
+        ],
+        "en": [
+          "excessive plans",
+          "disputes with friends",
+          "thwarted hopes"
+        ]
+      }
+    },
+    "mars/12": {
+      "pt": "com Marte na décima segunda casa da sua revolução solar, você recebe os presságios da posição mais adversa desse planeta: doenças, acidentes, inimizades, perseguições, aborrecimentos ou ciladas de todos os tipos. afligido e em signos de Água, ele parece relacionar-se com excessos sexuais e instintos amorais ou mesmo criminosos.",
+      "en": "with Mars in the twelfth house of your solar-return chart, you receive the predictions of this planet’s most adverse placement: illnesses, accidents, enmities, persecution, troubles or traps of every kind. afflicted and in Water signs, it seems connected with sexual excesses and amoral or even criminal instincts.",
+      "keywords": {
+        "pt": [
+          "doenças e acidentes",
+          "perseguições",
+          "excessos sexuais"
+        ],
+        "en": [
+          "illnesses and accidents",
+          "persecution",
+          "sexual excesses"
+        ]
+      }
+    },
+    "jupiter/1": {
+      "pt": "com Júpiter na primeira casa da sua revolução solar, você tende a mais otimismo e generosidade, com necessidade de expansão nos empreendimentos ou no domínio da casa natal à qual essa casa anual se sobrepõe. se Júpiter não estiver muito afligido, o ano é favorável ou, pelo menos, relativamente fácil para você.",
+      "en": "with Jupiter in the first house of your solar-return chart, you tend toward greater optimism and generosity, with a need to expand your undertakings or the area of the natal house overlaid by this annual house. if Jupiter is not heavily afflicted, the year is favorable or at least relatively easy for you.",
+      "keywords": {
+        "pt": [
+          "otimismo",
+          "generosidade",
+          "expansão"
+        ],
+        "en": [
+          "optimism",
+          "generosity",
+          "expansion"
+        ]
+      }
+    },
+    "jupiter/2": {
+      "pt": "com Júpiter na segunda casa da sua revolução solar, você tem indicação de aumento dos ganhos e dos gastos, com sorte nas finanças; a casa regida por Júpiter pode indicar a origem da melhora. se estiver retrógrado, ele não impede a expansão da sua situação, mas impede que ela se traduza em benefícios e indica que você não fica satisfeito com essa expansão.",
+      "en": "with Jupiter in the second house of your solar-return chart, you have an indication of increased earnings and spending, with financial luck; the house Jupiter rules can indicate where the improvement comes from. if retrograde, it does not prevent your circumstances from expanding, but prevents that expansion from yielding benefits and indicates that you remain dissatisfied with it.",
+      "keywords": {
+        "pt": [
+          "ganhos e gastos",
+          "sorte financeira",
+          "expansão insatisfatória"
+        ],
+        "en": [
+          "earnings and spending",
+          "financial luck",
+          "unsatisfying expansion"
+        ]
+      }
+    },
+    "jupiter/3": {
+      "pt": "com Júpiter na terceira casa da sua revolução solar, você tem indicação de contratos vantajosos, propostas interessantes ou benefícios vindos do convívio, sobretudo se trabalha com edição, escrita ou outros assuntos dessa casa. um bom aspecto de Urano e Netuno — e talvez de Plutão — é associado nessa leitura a você escapar de um acidente quase por milagre.",
+      "en": "with Jupiter in the third house of your solar-return chart, you have an indication of advantageous contracts, interesting offers or benefits from your surroundings, especially if you work in publishing, writing or other affairs of this house. a good aspect from Uranus and Neptune — and perhaps Pluto — is associated in this reading with your escaping an accident almost miraculously.",
+      "keywords": {
+        "pt": [
+          "contratos",
+          "propostas",
+          "proteção providencial"
+        ],
+        "en": [
+          "contracts",
+          "offers",
+          "providential protection"
+        ]
+      }
+    },
+    "jupiter/4": {
+      "pt": "com Júpiter na quarta casa da sua revolução solar, você tem favorecidos os assuntos dessa casa e, se ele não estiver muito afligido, a indicação geral é de um fim de ano melhor que o começo. com muita frequência, essa posição promete a você um bom acontecimento no último trimestre do ano contado a partir do aniversário.",
+      "en": "with Jupiter in the fourth house of your solar-return chart, the affairs of this house are favored for you and, if it is not heavily afflicted, the general indication is that the year ends better than it begins. very frequently, this placement promises you a good event in the last quarter of the year counted from your birthday.",
+      "keywords": {
+        "pt": [
+          "quarta casa",
+          "melhora no fim do ano",
+          "último trimestre"
+        ],
+        "en": [
+          "fourth house",
+          "improvement at year end",
+          "last quarter"
+        ]
+      }
+    },
+    "jupiter/5": {
+      "pt": "com Júpiter na quinta casa da sua revolução solar e em seus próprios signos, você tem indicação de um bom ano para empreendimentos conduzidos com otimismo e audácia ponderada e para satisfações sentimentais sadias. se estiver afligido, débil ou peregrino, você tende a arriscar mais, o que pode trazer perdas em empreendimentos ousados ou desavenças sentimentais.",
+      "en": "with Jupiter in the fifth house of your solar-return chart and in its own signs, you have an indication of a good year for undertakings pursued with optimism and measured boldness and for healthy romantic satisfactions. if it is afflicted, weak or peregrine, you tend to take greater risks, which may bring losses in bold ventures or romantic disagreements.",
+      "keywords": {
+        "pt": [
+          "empreendimentos",
+          "satisfações sentimentais",
+          "riscos e perdas"
+        ],
+        "en": [
+          "undertakings",
+          "romantic satisfactions",
+          "risks and losses"
+        ]
+      }
+    },
+    "jupiter/6": {
+      "pt": "com Júpiter na sexta casa da sua revolução solar, você tem indicação de boas relações com subordinados ou, se é empregado, de trabalho fácil. se estiver afligido, a leitura aconselha purificar o sangue e evitar os excessos aos quais essa posição predispõe; se Júpiter rege a primeira ou a quinta casa, você corre perigo de alterações da saúde pelo abuso dos prazeres ou das distrações.",
+      "en": "with Jupiter in the sixth house of your solar-return chart, you have an indication of good relations with subordinates or, if you are an employee, easy work. if it is afflicted, the reading advises purifying the blood and avoiding the excesses to which this placement predisposes you; if Jupiter rules the first or fifth house, you face a danger of impaired health through excessive pleasures or diversions.",
+      "keywords": {
+        "pt": [
+          "trabalho fácil",
+          "subordinados",
+          "excessos e saúde"
+        ],
+        "en": [
+          "easy work",
+          "subordinates",
+          "excess and health"
+        ]
+      }
+    },
+    "jupiter/7": {
+      "pt": "com Júpiter forte e bem-aspectado na sétima casa da sua revolução solar, você tem indicação de felicidade conjugal — ou de vida conjugal calma se essa felicidade não estiver indicada no mapa natal —, entendimento com sócios ou êxito em assuntos legais. se estiver afligido, a leitura aconselha que você confie menos, pois observa muitas vezes abusos de confiança contra você com essa posição.",
+      "en": "with a strong, well-aspected Jupiter in the seventh house of your solar-return chart, you have an indication of marital happiness — or a calm married life if that happiness is not indicated in your natal chart —, understanding with partners or success in legal affairs. if it is afflicted, the reading advises you to be less trusting, having often observed others abusing your trust with this placement.",
+      "keywords": {
+        "pt": [
+          "vida conjugal",
+          "associações",
+          "abuso de confiança"
+        ],
+        "en": [
+          "married life",
+          "partnerships",
+          "abuse of trust"
+        ]
+      }
+    },
+    "jupiter/8": {
+      "pt": "com Júpiter na oitava casa da sua revolução solar, você tem favorecidos os processos e, geralmente, a promessa de presentes ou auxílios financeiros apreciáveis. se estiver afligido, ele tende a aumentar suas dívidas ou a trazer aborrecimentos ligados a elas.",
+      "en": "with Jupiter in the eighth house of your solar-return chart, lawsuits are favored for you and there is generally a promise of gifts or substantial financial assistance. if it is afflicted, it tends to increase your debts or bring troubles connected with them.",
+      "keywords": {
+        "pt": [
+          "processos",
+          "auxílio financeiro",
+          "dívidas"
+        ],
+        "en": [
+          "lawsuits",
+          "financial assistance",
+          "debts"
+        ]
+      }
+    },
+    "jupiter/9": {
+      "pt": "com Júpiter na nona casa da sua revolução solar, você tem indicação de maior reputação, estima geral e generosidade de espírito, com favorecimento das viagens, dos estudos superiores filosóficos, científicos ou morais e das relações com o estrangeiro. se estiver afligido, a leitura aconselha prudência com seus créditos e todas as suas obrigações financeiras.",
+      "en": "with Jupiter in the ninth house of your solar-return chart, you have an indication of greater reputation, general esteem and generosity of spirit, with support for travel, higher philosophical, scientific or moral studies and foreign relations. if it is afflicted, the reading advises prudence with your credit and all your financial obligations.",
+      "keywords": {
+        "pt": [
+          "reputação",
+          "estudos e viagens",
+          "obrigações financeiras"
+        ],
+        "en": [
+          "reputation",
+          "study and travel",
+          "financial obligations"
+        ]
+      }
+    },
+    "jupiter/10": {
+      "pt": "com Júpiter na décima casa da sua revolução solar, você tem frequentemente indicação de acontecimentos felizes que multiplicam a fortuna ou elevam sua posição, e de um bom ano para os negócios se ele não estiver muito mal-aspectado; quando muito afligido, há dificuldades e conflitos por imprudência, objetivos ou projetos excessivamente amplos. para mulheres sem profissão, a leitura inclui ainda a indicação frequente de parto ou gravidez, sobretudo se Júpiter se sobrepõe ao Ascendente natal.",
+      "en": "with Jupiter in the tenth house of your solar-return chart, you frequently have an indication of happy events that multiply your wealth or raise your standing, and of a good business year if it is not very badly aspected; when heavily afflicted, there are difficulties and conflicts through imprudence or excessively ambitious aims or projects. for women without a profession, the reading also includes a frequent indication of childbirth or pregnancy, especially if Jupiter overlays the natal Ascendant.",
+      "keywords": {
+        "pt": [
+          "fortuna e posição",
+          "projetos excessivos",
+          "parto ou gravidez"
+        ],
+        "en": [
+          "wealth and standing",
+          "excessive projects",
+          "childbirth or pregnancy"
+        ]
+      }
+    },
+    "jupiter/11": {
+      "pt": "com Júpiter na décima primeira casa da sua revolução solar, você sente necessidade de expansão material, social ou mundana, conforme o conjunto do mapa, e essa posição parece sempre boa para relações e amizades. se estiver muito mal-aspectado, porém, essas pessoas não oferecem o que você espera e, se ajudam, é por cálculo ou interesse, não por afeto.",
+      "en": "with Jupiter in the eleventh house of your solar-return chart, you feel a need for material, social or worldly expansion according to the whole chart, and this placement seems always good for relationships and friendships. if it is very badly aspected, however, these people do not offer what you expect and, if they help, it is through calculation or self-interest rather than affection.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "amizades",
+          "ajuda por interesse"
+        ],
+        "en": [
+          "expansion",
+          "friendships",
+          "self-interested help"
+        ]
+      }
+    },
+    "jupiter/12": {
+      "pt": "com Júpiter na décima segunda casa da sua revolução solar, você tende a descobrir e impedir os movimentos de inimigos secretos e detratores; dignificado, ele favorece seu progresso em sociedades secretas. se estiver afligido, a leitura indica mal-estares crônicos, geralmente pouco dolorosos, ligados à circulação do sangue ou ao fígado.",
+      "en": "with Jupiter in the twelfth house of your solar-return chart, you tend to discover and thwart the moves of secret enemies and detractors; when dignified, it favors your advancement in secret societies. if it is afflicted, the reading indicates chronic ailments, generally not very painful, connected with blood circulation or the liver.",
+      "keywords": {
+        "pt": [
+          "inimigos secretos",
+          "sociedades secretas",
+          "mal-estares crônicos"
+        ],
+        "en": [
+          "secret enemies",
+          "secret societies",
+          "chronic ailments"
+        ]
+      }
+    },
+    "saturn/1": {
+      "pt": "com Saturno na primeira casa da sua revolução solar, você fica sempre preocupado, deprimido, sobrecarregado e constantemente atrasado nos trabalhos, muitas vezes por uma saúde que tende a enfraquecer. mesmo dignificado e bem-aspectado, ele parece exigir esforços além das suas forças e indicar amiúde fadiga física e moral, marcando frequentemente um ano de lutas cujo êxito ou fracasso depende do conjunto da revolução solar.",
+      "en": "with Saturn in the first house of your solar-return chart, you are always worried, depressed, overburdened and constantly behind in your work, often because your health tends to weaken. even when dignified and well aspected, it seems to demand efforts beyond your strength and often indicate physical and emotional exhaustion, frequently marking a year of struggles whose success or failure depends on the whole solar-return chart.",
+      "keywords": {
+        "pt": [
+          "sobrecarga",
+          "saúde enfraquecida",
+          "lutas"
+        ],
+        "en": [
+          "overburdening",
+          "weakened health",
+          "struggles"
+        ]
+      }
+    },
+    "saturn/2": {
+      "pt": "com Saturno na segunda casa da sua revolução solar, você tem indicação de preocupações financeiras, negócios entravados, atrasos nos recebimentos e dificuldades para realizar projetos financeiros. o ano é desfavorável para você tratar de assuntos imobiliários e, se Saturno estiver afligido, há presságio de grandes perdas.",
+      "en": "with Saturn in the second house of your solar-return chart, you have an indication of financial worries, stalled business, delayed receipts and difficulties in carrying out financial projects. the year is unfavorable for your handling of real-estate affairs and, if Saturn is afflicted, there is a forecast of major losses.",
+      "keywords": {
+        "pt": [
+          "preocupações financeiras",
+          "atrasos",
+          "grandes perdas"
+        ],
+        "en": [
+          "financial worries",
+          "delays",
+          "major losses"
+        ]
+      }
+    },
+    "saturn/3": {
+      "pt": "com Saturno na terceira casa da sua revolução solar, você tende ao pessimismo, a relações tensas ou aborrecimentos no convívio, sobretudo com pessoas mais velhas, e a atrasos em viagens ou outros assuntos dessa casa; suas aflições parecem especialmente desfavoráveis para estudantes, escritores e editores. se Saturno aflige seu Ascendente anual ou natal e simultaneamente reproduz os maus aspectos natais com os luminares, a leitura indica perigo de tuberculose pulmonar ou outra doença dos pulmões.",
+      "en": "with Saturn in the third house of your solar-return chart, you tend toward pessimism, strained relations or troubles in your surroundings, especially with older people, and delays in travel or other affairs of this house; its afflictions seem especially unfavorable for students, writers and publishers. if Saturn afflicts your annual or natal Ascendant while also repeating the adverse natal aspects to the luminaries, the reading indicates a danger of pulmonary tuberculosis or another lung disease.",
+      "keywords": {
+        "pt": [
+          "convívio tenso",
+          "atrasos",
+          "doenças pulmonares condicionais"
+        ],
+        "en": [
+          "strained surroundings",
+          "delays",
+          "conditional lung diseases"
+        ]
+      }
+    },
+    "saturn/4": {
+      "pt": "com Saturno na quarta casa da sua revolução solar, você tem indicação de obrigações e preocupações com imóveis, lar, parentes ou heranças, frequentemente com dificuldades que aumentam perto do fim do ano. se estiver afligido e retrógrado, ele cria para você um ambiente familiar sufocante ou grandes aborrecimentos.",
+      "en": "with Saturn in the fourth house of your solar-return chart, you have an indication of obligations and worries involving property, home, relatives or inheritances, frequently with difficulties increasing toward the end of the year. if it is afflicted and retrograde, it creates a stifling family atmosphere or major troubles for you.",
+      "keywords": {
+        "pt": [
+          "obrigações domésticas",
+          "heranças",
+          "fim do ano"
+        ],
+        "en": [
+          "domestic obligations",
+          "inheritances",
+          "year end"
+        ]
+      }
+    },
+    "saturn/5": {
+      "pt": "com Saturno na quinta casa da sua revolução solar, você tende à insatisfação sentimental: a leitura descreve uma influência aparentemente mais forte nas mulheres, cuja satisfação é impedida, enquanto nos homens geralmente diminuem as necessidades físicas e as tendências sentimentais; mesmo bem-aspectado, ele desfavorece jogos e especulações. essas indicações são frequentemente anuladas se Saturno governa seu Ascendente anual por sua posição em Capricórnio, caso em que ele acentua os assuntos da quinta casa e requer a leitura do conjunto do mapa.",
+      "en": "with Saturn in the fifth house of your solar-return chart, you tend toward romantic dissatisfaction: the reading describes an apparently stronger influence in women, whose fulfillment is obstructed, while in men physical needs and romantic inclinations generally diminish; even when well aspected, it is unfavorable for gambling and speculation. these indications are frequently canceled if Saturn rules your annual Ascendant through its position in Capricorn, in which case it emphasizes fifth-house affairs and requires a reading of the whole chart.",
+      "keywords": {
+        "pt": [
+          "insatisfação sentimental",
+          "jogo e especulação",
+          "exceção por regência"
+        ],
+        "en": [
+          "romantic dissatisfaction",
+          "gambling and speculation",
+          "rulership exception"
+        ]
+      }
+    },
+    "saturn/6": {
+      "pt": "com Saturno na sexta casa da sua revolução solar, você tem indicação de saúde debilitada por doenças ou preocupações mais ou menos constantes, e a recuperação do organismo exige um processo muito longo e difícil. a exceção é Saturno em Libra, Capricórnio ou Aquário, que aumenta sua resistência; se você é empregado, essa posição provoca frequentemente desencanto com o trabalho.",
+      "en": "with Saturn in the sixth house of your solar-return chart, you have an indication of health weakened by illness or more or less constant worries, and bodily recovery requires a very long, difficult process. the exception is Saturn in Libra, Capricorn or Aquarius, which increases your resistance; if you are an employee, this placement frequently brings disenchantment with your work.",
+      "keywords": {
+        "pt": [
+          "saúde debilitada",
+          "recuperação longa",
+          "desencanto profissional"
+        ],
+        "en": [
+          "weakened health",
+          "lengthy recovery",
+          "work disenchantment"
+        ]
+      }
+    },
+    "saturn/7": {
+      "pt": "com Saturno na sétima casa da sua revolução solar, você tem indicação de pouco entendimento com o cônjuge ou sócio, de casamento mais tardio do que espera se planeja casar e de processos que não terminam nesse ano. se Saturno estiver retrógrado e afligido nessa casa, o casamento não ocorre; a leitura distingue esse caso de Saturno apenas reger a sétima estando em outra casa, quando retrogradação e aflições não impedem seu casamento, mas o tornam infeliz, decepcionante e frequentemente breve.",
+      "en": "with Saturn in the seventh house of your solar-return chart, you have an indication of poor understanding with your spouse or partner, marriage later than you expect if you plan to marry, and lawsuits that do not end within the year. if Saturn is retrograde and afflicted in this house, the marriage does not take place; the reading distinguishes this from Saturn merely ruling the seventh while placed elsewhere, when retrogradation and afflictions do not prevent your marriage but make it unhappy, disappointing and frequently short-lived.",
+      "keywords": {
+        "pt": [
+          "entendimento difícil",
+          "casamento adiado",
+          "processos inacabados"
+        ],
+        "en": [
+          "difficult understanding",
+          "delayed marriage",
+          "unfinished lawsuits"
+        ]
+      }
+    },
+    "saturn/8": {
+      "pt": "com Saturno na oitava casa da sua revolução solar, você tem, com certa frequência, indicação de um ano em que se teme uma morte; mais frequentemente, a indicação é de dívidas preocupantes e queda dos rendimentos ou dos valores. de modo geral, o ano é desfavorável para você especular ou comprar títulos e ações.",
+      "en": "with Saturn in the eighth house of your solar-return chart, you have, with some frequency, an indication of a year in which a death is feared; more often, the indication is of worrying debts and falling income or asset values. in general, the year is unfavorable for your speculation or purchases of securities and shares.",
+      "keywords": {
+        "pt": [
+          "temor de morte",
+          "dívidas",
+          "queda dos rendimentos"
+        ],
+        "en": [
+          "fear of death",
+          "debts",
+          "falling income"
+        ]
+      }
+    },
+    "saturn/9": {
+      "pt": "com Saturno na nona casa da sua revolução solar, você tem com muita frequência indicação de aborrecimentos provenientes de cunhados ou cunhadas; dignificado, ele favorece seu julgamento e tende a aprofundar suas concepções filosóficas. se estiver afligido, ele desfavorece suas viagens por atrasos ou obstáculos.",
+      "en": "with Saturn in the ninth house of your solar-return chart, you very frequently have an indication of troubles coming from brothers- or sisters-in-law; when dignified, it favors your judgment and tends to deepen your philosophical conceptions. if it is afflicted, it is unfavorable for your travel through delays or obstacles.",
+      "keywords": {
+        "pt": [
+          "julgamento",
+          "filosofia",
+          "viagens e cunhados"
+        ],
+        "en": [
+          "judgment",
+          "philosophy",
+          "travel and siblings-in-law"
+        ]
+      }
+    },
+    "saturn/10": {
+      "pt": "com Saturno na décima casa da sua revolução solar, seu progresso é impedido: dignificado e bem-aspectado, ele estabiliza sua situação com preocupações; afligido, traz aborrecimentos nos negócios, dificuldades para conservar o nível atingido e perigo de grandes perdas. frequentemente, há um acontecimento infeliz nos negócios ou com repercussão sobre sua situação, e essa posição também prenuncia muitas vezes doença da sua mãe.",
+      "en": "with Saturn in the tenth house of your solar-return chart, your progress is impeded: when dignified and well aspected, it stabilizes your circumstances with worries; when afflicted, it brings business troubles, difficulties maintaining your attained level and a danger of major losses. frequently, there is an unhappy business event or one affecting your circumstances, and this placement also often forecasts illness for your mother.",
+      "keywords": {
+        "pt": [
+          "progresso impedido",
+          "perdas",
+          "doença da mãe"
+        ],
+        "en": [
+          "impeded progress",
+          "losses",
+          "mother’s illness"
+        ]
+      }
+    },
+    "saturn/11": {
+      "pt": "com Saturno na décima primeira casa da sua revolução solar, você tem indicação de atrasos na realização de projetos e esperanças por obstáculos de todos os tipos, além de preocupações com suas relações. às vezes, você leva uma vida retirada e solitária, pois essa posição tende a restringir o círculo de amizades ou o contato com os amigos.",
+      "en": "with Saturn in the eleventh house of your solar-return chart, you have an indication of delays in fulfilling projects and hopes through obstacles of every kind, together with worries about your relationships. at times, you lead a withdrawn, solitary life, since this placement tends to restrict your circle of friends or your contact with them.",
+      "keywords": {
+        "pt": [
+          "projetos atrasados",
+          "preocupações",
+          "solidão"
+        ],
+        "en": [
+          "delayed projects",
+          "worries",
+          "solitude"
+        ]
+      }
+    },
+    "saturn/12": {
+      "pt": "com Saturno na décima segunda casa da sua revolução solar, sua saúde geralmente necessita de repouso completo ou cuidados sistemáticos; os casos observados sugerem que uma doença manifestada sob essa posição deixa marcas profundas, torna-se mais ou menos crônica e tem consequências sentidas por toda a vida. às vezes, com a revolução solar muito afligida, essa posição prenuncia uma fatalidade para você.",
+      "en": "with Saturn in the twelfth house of your solar-return chart, your health generally requires complete rest or systematic care; the observed cases suggest that an illness appearing under this placement leaves deep marks, becomes more or less chronic and has consequences felt throughout life. at times, with a heavily afflicted solar-return chart, this placement forecasts a calamity for you.",
+      "keywords": {
+        "pt": [
+          "repouso e cuidados",
+          "doença crônica",
+          "fatalidade"
+        ],
+        "en": [
+          "rest and care",
+          "chronic illness",
+          "calamity"
+        ]
+      }
+    },
+    "uranus/1": {
+      "pt": "com Urano na primeira casa da sua revolução solar, um imprevisto é anunciado na sua vida; se ele estiver afligido, há perigo de acidente e, se também estiver conjunto ao Ascendente, você será a causa desse acidente. se Urano ocupava a primeira, terceira ou nona casa natal ou regia seu Ascendente natal, são indicados novos interesses, a descoberta do gosto por uma ciência, como o ocultismo, ou uma inspiração ou iniciativa que orienta duradouramente seu pensamento em outra direção.",
+      "en": "with Uranus in the first house of your solar-return chart, an unforeseen event is indicated in your life; if it is afflicted, there is danger of an accident and, if it is also conjunct the Ascendant, you will be the cause of that accident. if Uranus occupied your natal first, third or ninth house or ruled your natal Ascendant, new interests, the discovery of a taste for a science such as occultism, or an inspiration or initiative that gives your thinking a lasting new direction are indicated.",
+      "keywords": {
+        "pt": [
+          "imprevisto",
+          "acidente condicionado",
+          "novos interesses"
+        ],
+        "en": [
+          "unforeseen event",
+          "conditional accident",
+          "new interests"
+        ]
+      }
+    },
+    "uranus/2": {
+      "pt": "com Urano na segunda casa da sua revolução solar, você encontra ganhos ou perdas inesperados e flutuações financeiras bem mais fortes que as indicadas pela Lua nessa casa. frequentemente há uma mudança importante e repentina na sua situação financeira ou instabilidade durante todo o ano, e maus aspectos retiram a possibilidade de aplicações seguras.",
+      "en": "with Uranus in the second house of your solar-return chart, you encounter unexpected gains or losses and financial fluctuations much stronger than those indicated by the Moon in this house. an important sudden change in your financial situation or instability throughout the year is frequent, and adverse aspects remove the possibility of safe investments.",
+      "keywords": {
+        "pt": [
+          "ganhos ou perdas",
+          "mudança repentina",
+          "aplicações inseguras"
+        ],
+        "en": [
+          "gains or losses",
+          "sudden change",
+          "unsafe investments"
+        ]
+      }
+    },
+    "uranus/3": {
+      "pt": "com Urano na terceira casa da sua revolução solar, você pode encontrar aborrecimentos em contratos, escritos, acertos de contas ou deslocamentos; bem-aspectado, ele facilita o estudo das ciências que rege, como astrologia, ocultismo, arqueologia, história antiga, ciências físicas e eletricidade, e pode levar a uma descoberta pessoal. afligido, indica sempre o temor de complicações inesperadas provenientes do seu meio próximo.",
+      "en": "with Uranus in the third house of your solar-return chart, you may encounter trouble with contracts, writing, settling accounts or journeys; well aspected, it facilitates the study of sciences it rules, such as astrology, occultism, archaeology, ancient history, physical sciences and electricity, and may lead to a personal discovery. afflicted, it always indicates fear of unexpected complications arising from your immediate surroundings.",
+      "keywords": {
+        "pt": [
+          "contratos",
+          "descoberta pessoal",
+          "complicações inesperadas"
+        ],
+        "en": [
+          "contracts",
+          "personal discovery",
+          "unexpected complications"
+        ]
+      }
+    },
+    "uranus/4": {
+      "pt": "com Urano na quarta casa da sua revolução solar, você encontra mudanças súbitas e imprevistas na vida doméstica e uma inclinação à mudança de residência. às vezes surgem choques com seus pais, principalmente seu pai, ou um acontecimento importante que os atinge, posição observada muitas vezes em anos da morte dos pais ou da separação entre eles e você.",
+      "en": "with Uranus in the fourth house of your solar-return chart, you encounter sudden unforeseen changes in domestic life and an inclination to move home. sometimes there are clashes with your parents, especially your father, or an important event affecting them, a placement often observed in years of parents’ deaths or separation between them and you.",
+      "keywords": {
+        "pt": [
+          "mudanças domésticas",
+          "pais",
+          "morte ou separação"
+        ],
+        "en": [
+          "domestic changes",
+          "parents",
+          "death or separation"
+        ]
+      }
+    },
+    "uranus/5": {
+      "pt": "com Urano na quinta casa da sua revolução solar, suas tendências sexuais se intensificam e são anunciados amores passageiros, ligações precipitadas ou desfeitas e mudanças sentimentais, sobretudo em mapas masculinos; afligido e retrógrado, ele frequentemente indica aborrecimentos de uma antiga ligação, enquanto em mapas femininos parece relacionar-se a menstruação irregular, gravidez inesperada ou indesejada, abortos e complicações íntimas, muitas vezes decorrentes dessas ocorrências. dignificado e bem-aspectado, promete a você ganhos inesperados e êxito em especulação ou jogo, às vezes presentes apreciáveis, mas algum aspecto maléfico provoca adversidades; em mapas de crianças, refere-se a acontecimentos da vida estudantil.",
+      "en": "with Uranus in the fifth house of your solar-return chart, your sexual tendencies intensify and passing love affairs, hasty or broken attachments and emotional changes are indicated, especially in men’s charts; afflicted and retrograde, it frequently indicates trouble from a former attachment, while in women’s charts it seems linked to irregular menstruation, unexpected or unwanted pregnancy, pregnancy loss or abortion, and intimate complications often resulting from these events. dignified and well aspected, it promises you unexpected gains and success in speculation or gambling, sometimes valuable gifts, but any malefic aspect brings adversity; in children’s charts, it concerns events in school life.",
+      "keywords": {
+        "pt": [
+          "sexualidade",
+          "gravidez e abortos",
+          "ganhos condicionados"
+        ],
+        "en": [
+          "sexuality",
+          "pregnancy and pregnancy loss or abortion",
+          "conditional gains"
+        ]
+      }
+    },
+    "uranus/6": {
+      "pt": "com Urano na sexta casa da sua revolução solar, você encontra indicação de mal-estares ou doenças complexas, incomuns e difíceis de diagnosticar, frequentemente ligados a erros de diagnóstico ou tratamento. se ele estiver bem-aspectado, a leitura associa essas doenças à possibilidade de cura fácil por métodos considerados uranianos nessa leitura, como eletricidade, massagens, magnetismo e métodos heterodoxos ou ultramodernos; a posição quase sempre indica também complicações entre empregados e patrões.",
+      "en": "with Uranus in the sixth house of your solar-return chart, you encounter an indication of discomfort or complex, unusual illnesses that are difficult to diagnose, frequently linked to errors in diagnosis or treatment. if it is well aspected, the reading associates these illnesses with the possibility of an easy cure through methods considered Uranian in this reading, such as electricity, massage, magnetism and unconventional or ultramodern methods; the placement also almost always indicates complications between employees and employers.",
+      "keywords": {
+        "pt": [
+          "doenças incomuns",
+          "diagnóstico e tratamento",
+          "relações de trabalho"
+        ],
+        "en": [
+          "unusual illnesses",
+          "diagnosis and treatment",
+          "work relationships"
+        ]
+      }
+    },
+    "uranus/7": {
+      "pt": "com Urano na sétima casa da sua revolução solar, você sempre encontra o temor de complicações súbitas vindas do cônjuge ou sócio, ou da vida social, com repercussões duradouras sobre seu destino; se ele estiver muito afligido, há perigo de ruptura ou separação. se você tem um processo, o desfecho será mais ou menos inesperado e poderá ser bom ou nefasto, conforme os aspectos do conjunto do mapa.",
+      "en": "with Uranus in the seventh house of your solar-return chart, you always encounter fear of sudden complications from your spouse or partner, or in social life, with lasting repercussions for your destiny; if it is heavily afflicted, there is danger of a breakup or separation. if you have a lawsuit, its outcome will be more or less unexpected and may be good or disastrous, depending on the aspects of the chart as a whole.",
+      "keywords": {
+        "pt": [
+          "complicações súbitas",
+          "separação condicionada",
+          "desfecho judicial"
+        ],
+        "en": [
+          "sudden complications",
+          "conditional separation",
+          "legal outcome"
+        ]
+      }
+    },
+    "uranus/8": {
+      "pt": "com Urano na oitava casa da sua revolução solar, afligido, você encontra às vezes indicação de perigo de morte. de modo geral, essa posição anuncia notícias inesperadas de falecimento, complicações nas aplicações e impossibilidade absoluta de tomar posse de alguns dos seus haveres.",
+      "en": "with Uranus in the eighth house of your solar-return chart, when afflicted, you sometimes encounter an indication of danger of death. in general, this placement indicates unexpected news of a death, complications with investments and an absolute inability to take possession of some of your assets.",
+      "keywords": {
+        "pt": [
+          "morte",
+          "aplicações",
+          "haveres inacessíveis"
+        ],
+        "en": [
+          "death",
+          "investments",
+          "inaccessible assets"
+        ]
+      }
+    },
+    "uranus/9": {
+      "pt": "com Urano na nona casa da sua revolução solar, você frequentemente muda de opinião, realiza viagens, sobretudo aéreas, e encontra uma mudança na família do cônjuge ou sócio. se ele estiver afligido, as viagens serão perigosas, e maus aspectos parecem relacionar-se a desavenças provenientes dos parentes do seu cônjuge.",
+      "en": "with Uranus in the ninth house of your solar-return chart, you frequently change your opinions, undertake journeys, especially by air, and encounter a change in your spouse’s or partner’s family. if it is afflicted, the journeys will be dangerous, and adverse aspects seem linked to disagreements arising from your spouse’s relatives.",
+      "keywords": {
+        "pt": [
+          "mudança de opiniões",
+          "viagens aéreas",
+          "parentes do cônjuge"
+        ],
+        "en": [
+          "changing opinions",
+          "air travel",
+          "spouse’s relatives"
+        ]
+      }
+    },
+    "uranus/10": {
+      "pt": "com Urano na décima casa da sua revolução solar, você encontra modificações inesperadas na situação ou no trabalho, às vezes mudança de profissão, mas mais frequentemente repercussões de acontecimentos coletivos, nacionais ou internacionais independentes da sua vontade; sua intuição profissional se intensifica, com tendência a mudanças e oscilações em projetos e decisões que exigem apreender oportunidades e soluções de improviso. bem-aspectado, ele indica a probabilidade de êxito extraordinário; afligido, anuncia perigo de crise moral ou física, ou até morte, para sua mãe.",
+      "en": "with Uranus in the tenth house of your solar-return chart, you encounter unexpected changes in your situation or work, sometimes a change of profession but more often the effects of collective, national or international events beyond your will; your professional intuition intensifies, with a tendency toward changes and fluctuations in plans and decisions that call for grasping opportunities and solutions on the spot. well aspected, it indicates the likelihood of extraordinary success; afflicted, it announces danger of a moral or physical crisis, or even death, for your mother.",
+      "keywords": {
+        "pt": [
+          "mudança profissional",
+          "êxito extraordinário",
+          "crise materna condicionada"
+        ],
+        "en": [
+          "professional change",
+          "extraordinary success",
+          "conditional maternal crisis"
+        ]
+      }
+    },
+    "uranus/11": {
+      "pt": "com Urano na décima primeira casa da sua revolução solar, seus projetos e suas relações ou amizades mudam, às vezes porque você conhece novas pessoas; dignificado, ele anuncia uma nova amizade ou um contato importante sob algum aspecto. afligido, indica desgostos complicados provenientes de amigos e recomenda prudência com novos contatos; se você estiver doente, a leitura considera prudente mudar de médico.",
+      "en": "with Uranus in the eleventh house of your solar-return chart, your plans and relationships or friendships change, sometimes because you meet new people; dignified, it indicates a new friendship or a contact important in some respect. afflicted, it indicates complicated distress caused by friends and recommends caution with new contacts; if you are ill, the reading considers it prudent to change doctors.",
+      "keywords": {
+        "pt": [
+          "projetos",
+          "novas amizades",
+          "prudência"
+        ],
+        "en": [
+          "plans",
+          "new friendships",
+          "caution"
+        ]
+      }
+    },
+    "uranus/12": {
+      "pt": "com Urano na décima segunda casa da sua revolução solar, você encontra aborrecimentos e complicações que dependem, na maioria das vezes, da casa que ele rege. geralmente surgem lutas e discórdias muito inesperadas, sobretudo de inimigos, rivalidades, intrigas e conspirações, cuja gravidade depende do conjunto do mapa.",
+      "en": "with Uranus in the twelfth house of your solar-return chart, you encounter trouble and complications that most often depend on the house it rules. highly unexpected struggles and discord generally arise, chiefly from enemies, rivalries, intrigues and conspiracies, whose severity depends on the chart as a whole.",
+      "keywords": {
+        "pt": [
+          "regência",
+          "inimigos",
+          "discórdias inesperadas"
+        ],
+        "en": [
+          "rulership",
+          "enemies",
+          "unexpected discord"
+        ]
+      }
+    },
+    "neptune/1": {
+      "pt": "com Netuno na primeira casa da sua revolução solar, você alimenta ilusões ou projetos de difícil realização, cujo domínio é esclarecido pela casa que ele rege no mapa natal e no anual ou pela casa que ocupava no nascimento, enquanto maus aspectos indicam as decepções decorrentes. quase sempre há uma vida interior intensa e, se ele estiver afligido, inquietações e temores mais ou menos secretos.",
+      "en": "with Neptune in the first house of your solar-return chart, you nurture illusions or plans that are difficult to realize, their area clarified by the house it rules in the natal and annual charts or the house it occupied at birth, while adverse aspects indicate the resulting disappointments. there is almost always an intense inner life and, if it is afflicted, more or less secret anxieties and fears.",
+      "keywords": {
+        "pt": [
+          "ilusões",
+          "regência e posição natal",
+          "vida interior"
+        ],
+        "en": [
+          "illusions",
+          "rulership and natal placement",
+          "inner life"
+        ]
+      }
+    },
+    "neptune/2": {
+      "pt": "com Netuno na segunda casa da sua revolução solar, você alimenta ilusões de ganhos e vê suas previsões financeiras desmentidas, com indicação de instabilidade ou insegurança material. muito afligido, ele anuncia o temor de perdas por desonestidade, sobretudo trapaça, abuso de confiança ou fraude, mais que por roubo violento.",
+      "en": "with Neptune in the second house of your solar-return chart, you nurture illusions of gains and see your financial expectations contradicted, with an indication of material instability or insecurity. heavily afflicted, it indicates fear of losses through dishonesty, chiefly trickery, abuse of trust or fraud rather than violent theft.",
+      "keywords": {
+        "pt": [
+          "ilusões de ganhos",
+          "insegurança financeira",
+          "fraude condicionada"
+        ],
+        "en": [
+          "illusions of gains",
+          "financial insecurity",
+          "conditional fraud"
+        ]
+      }
+    },
+    "neptune/3": {
+      "pt": "com Netuno na terceira casa da sua revolução solar, a leitura recomenda que você desconfie das mulheres próximas, que podem trazer dificuldades, traição e outros aborrecimentos, ameaça acentuada por maus aspectos; estudos e trabalhos precisos também não são favorecidos. a posição indica ainda o temor de cartas perdidas ou extraviadas e decepções em deslocamentos, a menos que Netuno esteja bem-aspectado.",
+      "en": "with Neptune in the third house of your solar-return chart, the reading recommends that you distrust women close to you, who may bring difficulties, betrayal and other troubles, a threat intensified by adverse aspects; studies and precise work are also not favored. the placement also indicates fear of lost or misdirected letters and disappointments with journeys, unless Neptune is well aspected.",
+      "keywords": {
+        "pt": [
+          "mulheres próximas",
+          "trabalho preciso",
+          "correspondência e viagens"
+        ],
+        "en": [
+          "women close to you",
+          "precise work",
+          "correspondence and journeys"
+        ]
+      }
+    },
+    "neptune/4": {
+      "pt": "com Netuno na quarta casa da sua revolução solar, você encontra instabilidade familiar, preocupações e inquietações com a família e projetos de lar, família ou imóveis que não se realizam conforme o previsto. se ele estiver afligido, são indicadas complicações muito improváveis, incluindo roubo na sua casa ou traição de uma mulher.",
+      "en": "with Neptune in the fourth house of your solar-return chart, you encounter family instability, worries and anxieties about family and plans for home, family or property that do not unfold as expected. if it is afflicted, highly improbable complications are indicated, including theft from your home or betrayal by a woman.",
+      "keywords": {
+        "pt": [
+          "instabilidade familiar",
+          "projetos domésticos",
+          "traição condicionada"
+        ],
+        "en": [
+          "family instability",
+          "domestic plans",
+          "conditional betrayal"
+        ]
+      }
+    },
+    "neptune/5": {
+      "pt": "com Netuno na quinta casa da sua revolução solar, você geralmente encontra inquietações e preocupações com crianças, enquanto sua vida sentimental se passa mais no plano psíquico que no físico. há perigo de desilusões sentimentais e indicação de especulações decepcionantes, a menos, neste último caso, que Netuno não receba nenhum aspecto maléfico.",
+      "en": "with Neptune in the fifth house of your solar-return chart, you generally encounter anxieties and worries about children, while your love life unfolds more on the psychic than the physical plane. there is danger of emotional disillusionment and an indication of disappointing speculation, unless, in the latter case, Neptune receives no malefic aspect.",
+      "keywords": {
+        "pt": [
+          "crianças",
+          "vida sentimental",
+          "especulações condicionadas"
+        ],
+        "en": [
+          "children",
+          "love life",
+          "conditional speculation"
+        ]
+      }
+    },
+    "neptune/6": {
+      "pt": "com Netuno na sexta casa da sua revolução solar, você encontra indicação de alimentação inadequada à sua natureza, com perigo de envenenamento, ou de doenças cuja origem é mais psíquica e nervosa que física. muito afligido, ele tende a provocar desordem ou complicações no trabalho e indica desonestidade ou imperícia prejudicial dos subordinados.",
+      "en": "with Neptune in the sixth house of your solar-return chart, you encounter an indication of a diet unsuited to your nature, with danger of poisoning, or illnesses whose origin is more psychic and nervous than physical. heavily afflicted, it tends to cause disorder or complications at work and indicates dishonesty or harmful incompetence among subordinates.",
+      "keywords": {
+        "pt": [
+          "alimentação",
+          "envenenamento",
+          "complicações de trabalho"
+        ],
+        "en": [
+          "diet",
+          "poisoning",
+          "work complications"
+        ]
+      }
+    },
+    "neptune/7": {
+      "pt": "com Netuno na sétima casa da sua revolução solar, sua vida conjugal fica pouco harmoniosa. se ele estiver muito afligido, você encontra o temor de engano ou traição por parte do cônjuge ou de pessoas que possam ser consideradas suas sócias.",
+      "en": "with Neptune in the seventh house of your solar-return chart, your married life becomes lacking in harmony. if it is heavily afflicted, you encounter fear of deception or betrayal by your spouse or people who may be regarded as your partners.",
+      "keywords": {
+        "pt": [
+          "desarmonia conjugal",
+          "engano condicionado",
+          "sócios"
+        ],
+        "en": [
+          "marital disharmony",
+          "conditional deception",
+          "partners"
+        ]
+      }
+    },
+    "neptune/8": {
+      "pt": "com Netuno na oitava casa da sua revolução solar, seus interesses financeiros ficam ameaçados, antes de tudo, por alguma trapaça ou negócio escuso. frequentemente isso ocorre por culpa do seu cônjuge ou sócio.",
+      "en": "with Neptune in the eighth house of your solar-return chart, your financial interests are threatened above all by some trickery or shady business. this frequently happens through the fault of your spouse or partner.",
+      "keywords": {
+        "pt": [
+          "interesses financeiros",
+          "trapaça",
+          "cônjuge ou sócio"
+        ],
+        "en": [
+          "financial interests",
+          "trickery",
+          "spouse or partner"
+        ]
+      }
+    },
+    "neptune/9": {
+      "pt": "com Netuno na nona casa da sua revolução solar, você encontra indicação de viagens por água ou para locais junto à água, como um balneário, ou de aumento das tendências místicas, além de perigo de afogamento. muito afligido, ele predispõe a complicações legais, ansiedade, credulidade e angústias que você interpreta como pressentimentos.",
+      "en": "with Neptune in the ninth house of your solar-return chart, you encounter an indication of journeys by water or to places beside water, such as a seaside resort, or increased mystical tendencies, as well as danger of drowning. heavily afflicted, it predisposes you to legal complications, anxiety, credulity and anguish that you interpret as premonitions.",
+      "keywords": {
+        "pt": [
+          "viagens por água",
+          "afogamento",
+          "pressentimentos"
+        ],
+        "en": [
+          "journeys by water",
+          "drowning",
+          "premonitions"
+        ]
+      }
+    },
+    "neptune/10": {
+      "pt": "com Netuno na décima casa da sua revolução solar, você encontra uma situação instável, que pode se elevar pela força das circunstâncias se o conjunto do mapa for favorável, mas que, na maioria das vezes, ameaça se arruinar. se ele estiver afligido, essa posição tende a levar a algum escândalo.",
+      "en": "with Neptune in the tenth house of your solar-return chart, you encounter an unstable situation that may rise through the force of circumstances if the chart as a whole is favorable, but that more often threatens to collapse. if it is afflicted, this placement tends to lead to some scandal.",
+      "keywords": {
+        "pt": [
+          "instabilidade",
+          "elevação condicionada",
+          "escândalo"
+        ],
+        "en": [
+          "instability",
+          "conditional advancement",
+          "scandal"
+        ]
+      }
+    },
+    "neptune/11": {
+      "pt": "com Netuno na décima primeira casa da sua revolução solar, você geralmente encontra amigos com quem não pode contar, a menos que ele esteja muito bem-aspectado. mal-aspectado, ele anuncia decepções nas relações, às vezes por causa de uma terceira pessoa, e a não realização das suas esperanças e projetos.",
+      "en": "with Neptune in the eleventh house of your solar-return chart, you generally encounter friends you cannot count on, unless it is very well aspected. adversely aspected, it indicates disappointments in relationships, sometimes because of a third person, and the failure of your hopes and plans to materialize.",
+      "keywords": {
+        "pt": [
+          "amigos pouco confiáveis",
+          "decepções",
+          "projetos não realizados"
+        ],
+        "en": [
+          "unreliable friends",
+          "disappointments",
+          "unrealized plans"
+        ]
+      }
+    },
+    "neptune/12": {
+      "pt": "com Netuno na décima segunda casa da sua revolução solar, você geralmente encontra segredos ou contenções durante o ano e uma tendência ao enfraquecimento interno da saúde por preocupações, inquietações ou depressão nervosa. se ele estiver muito bem-influenciado, essa posição favorece para você tudo o que diz respeito ao espiritismo ou ao psiquismo.",
+      "en": "with Neptune in the twelfth house of your solar-return chart, you generally encounter secrets or restraints during the year and a tendency for health to weaken from within through worries, anxieties or nervous depression. if it is very favorably influenced, this placement favors for you everything concerning spiritualism or psychic phenomena.",
+      "keywords": {
+        "pt": [
+          "segredos e contenções",
+          "saúde",
+          "espiritismo e psiquismo"
+        ],
+        "en": [
+          "secrets and restraints",
+          "health",
+          "spiritualism and psychic phenomena"
+        ]
+      }
+    },
+    "pluto/1": {
+      "pt": "com Plutão na primeira casa da sua revolução solar, você pode encontrar um ponto de virada na existência, manifestado pelo desejo de buscar um caminho. nessa posição, a leitura indica uma renovação da sua atividade.",
+      "en": "with Pluto in the first house of your solar-return chart, you may encounter a turning point in your existence, expressed through a desire to seek a path. in this placement, the reading indicates a renewal of your activity.",
+      "keywords": {
+        "pt": [
+          "ponto de virada",
+          "busca de caminho",
+          "atividade renovada"
+        ],
+        "en": [
+          "turning point",
+          "seeking a path",
+          "renewed activity"
+        ]
+      }
+    },
+    "pluto/2": {
+      "pt": "com Plutão na segunda casa da sua revolução solar, seus ganhos parecem favorecidos, mas você tende a exagerar suas possibilidades financeiras e encontra surpresas de todos os tipos nos negócios. a posição traz a promessa de novas possibilidades.",
+      "en": "with Pluto in the second house of your solar-return chart, your earnings seem favored, but you tend to overestimate your financial possibilities and encounter all kinds of business surprises. the placement brings the promise of new possibilities.",
+      "keywords": {
+        "pt": [
+          "ganhos",
+          "exagero financeiro",
+          "novas possibilidades"
+        ],
+        "en": [
+          "earnings",
+          "financial overestimation",
+          "new possibilities"
+        ]
+      }
+    },
+    "pluto/3": {
+      "pt": "com Plutão na terceira casa da sua revolução solar, seus compromissos ganham importância ou mudam, assim como pode mudar seu meio próximo, enquanto sua mente fica mais prática e encontra mais facilmente soluções para os problemas cotidianos. em mau aspecto com Marte ou com o Sol, ele indica obrigações morais ou materiais irregulares e parece predispor você à revolta contra elas.",
+      "en": "with Pluto in the third house of your solar-return chart, your commitments gain importance or change, as may your immediate surroundings, while your mind becomes more practical and finds solutions to everyday problems more easily. in an adverse aspect to Mars or the Sun, it indicates irregular moral or material obligations and seems to predispose you to rebel against them.",
+      "keywords": {
+        "pt": [
+          "compromissos",
+          "soluções práticas",
+          "obrigações irregulares"
+        ],
+        "en": [
+          "commitments",
+          "practical solutions",
+          "irregular obligations"
+        ]
+      }
+    },
+    "pluto/4": {
+      "pt": "com Plutão na quarta casa da sua revolução solar, você encontra divergências familiares e pode tender a se fechar, viver só e isolado e não revelar seus pensamentos, ambições e preocupações a ninguém. a posição indica também novas iniciativas relativas à sua residência.",
+      "en": "with Pluto in the fourth house of your solar-return chart, you encounter family disagreements and may tend to withdraw, live alone and isolated, and reveal your thoughts, ambitions and worries to no one. the placement also indicates new initiatives concerning your home.",
+      "keywords": {
+        "pt": [
+          "divergências familiares",
+          "isolamento",
+          "iniciativas residenciais"
+        ],
+        "en": [
+          "family disagreements",
+          "isolation",
+          "housing initiatives"
+        ]
+      }
+    },
+    "pluto/5": {
+      "pt": "com Plutão na quinta casa da sua revolução solar, você parece encontrar incerteza ou mudança sentimental, sem impedimento às satisfações amorosas ou aos ganhos arriscados, mas com circunstâncias incomuns que retiram a estabilidade; a leitura o considera frequentemente mais romanesco que Urano e tão inclinante ao adultério e à união dupla quanto Netuno, sem os escândalos deste, e distingue o temor provocado por Plutão das devastações reais, que só atribui a aflições pesadas. com certa frequência, também são anunciados acontecimentos imprevistos vindos das crianças, mas não necessariamente ruins.",
+      "en": "with Pluto in the fifth house of your solar-return chart, you seem to encounter uncertainty or changes in love, without obstruction to romantic satisfaction or risky gains, but with unusual circumstances that remove stability; the reading considers it frequently more romantic than Uranus and as strongly inclining you toward adultery and a double union as Neptune, without Neptune’s scandals, and distinguishes the fear caused by Pluto from actual devastation, which it attributes only to heavy affliction. unforeseen events arising from children are also indicated with some frequency, but they are not necessarily bad.",
+      "keywords": {
+        "pt": [
+          "incerteza sentimental",
+          "adultério e união dupla",
+          "acontecimentos com crianças"
+        ],
+        "en": [
+          "emotional uncertainty",
+          "adultery and double union",
+          "events involving children"
+        ]
+      }
+    },
+    "pluto/6": {
+      "pt": "com Plutão na sexta casa da sua revolução solar, você parece encontrar frequentemente temores exagerados com a saúde, com ligação maior a doenças mentais, psíquicas e nervosas do que físicas. se você estiver doente, a posição indica uma forma incomum de doença conhecida ou uma enfermidade rara; com bons aspectos, traz a promessa de restabelecimento espetacular da saúde.",
+      "en": "with Pluto in the sixth house of your solar-return chart, you seem frequently to encounter exaggerated fears about health, with a stronger link to mental, psychic and nervous illnesses than physical ones. if you are ill, the placement indicates an unusual form of a known disease or a rare illness; with favorable aspects, it brings the promise of a spectacular recovery of health.",
+      "keywords": {
+        "pt": [
+          "temores com a saúde",
+          "doença rara",
+          "recuperação condicionada"
+        ],
+        "en": [
+          "health fears",
+          "rare illness",
+          "conditional recovery"
+        ]
+      }
+    },
+    "pluto/7": {
+      "pt": "com Plutão na sétima casa da sua revolução solar, você encontra aproximações sociais inesperadas e bruscas ou, se ele estiver muito afligido, complicações imprevisíveis e inquietantes que não parecem durar muito, ou a perspectiva de um processo bastante desagradável e independente da sua vontade. em geral, essas complicações se resolvem sozinhas da melhor forma possível.",
+      "en": "with Pluto in the seventh house of your solar-return chart, you encounter sudden unexpected social approaches or, if it is heavily afflicted, unpredictable unsettling complications that do not seem to last long, or the prospect of a very unpleasant lawsuit beyond your will. in general, these complications resolve themselves in the best possible way.",
+      "keywords": {
+        "pt": [
+          "aproximações inesperadas",
+          "processo condicionado",
+          "resolução espontânea"
+        ],
+        "en": [
+          "unexpected approaches",
+          "conditional lawsuit",
+          "spontaneous resolution"
+        ]
+      }
+    },
+    "pluto/8": {
+      "pt": "com Plutão na oitava casa da sua revolução solar, você encontra uma esperança inútil ou exagerada de aumentar seus bens e preocupações com a liquidação de certas obrigações, às vezes também um temor infundado pela vida de alguém próximo. com outros bons indícios financeiros, a posição frequentemente anuncia restabelecimento da sua situação ou grandes entradas de dinheiro independentes da sua vontade.",
+      "en": "with Pluto in the eighth house of your solar-return chart, you encounter futile or exaggerated hope of increasing your assets and worries about settling certain obligations, sometimes also an unfounded fear for the life of someone close to you. with other favorable financial indications, the placement frequently announces recovery of your situation or large inflows of money beyond your will.",
+      "keywords": {
+        "pt": [
+          "esperanças exageradas",
+          "obrigações",
+          "entradas financeiras condicionadas"
+        ],
+        "en": [
+          "exaggerated hopes",
+          "obligations",
+          "conditional financial inflows"
+        ]
+      }
+    },
+    "pluto/9": {
+      "pt": "com Plutão na nona casa da sua revolução solar, seus esforços mentais parecem favorecidos e você deseja viajar, muitas vezes para escapar de uma existência insatisfatória. a posição frequentemente corresponde a grandes viagens.",
+      "en": "with Pluto in the ninth house of your solar-return chart, your mental efforts seem favored and you wish to travel, often to escape an unsatisfying existence. the placement frequently corresponds to long journeys.",
+      "keywords": {
+        "pt": [
+          "esforço mental",
+          "desejo de evasão",
+          "grandes viagens"
+        ],
+        "en": [
+          "mental effort",
+          "desire to escape",
+          "long journeys"
+        ]
+      }
+    },
+    "pluto/10": {
+      "pt": "com Plutão na décima casa da sua revolução solar, você tende a uma grande atividade em vários domínios, geralmente um pouco desordenada e sobretudo assim quando ele recebe um aspecto maléfico. a posição parece aumentar sua ambição.",
+      "en": "with Pluto in the tenth house of your solar-return chart, you tend toward considerable activity in several areas, generally somewhat disorganized and especially so when it receives a malefic aspect. the placement seems to increase your ambition.",
+      "keywords": {
+        "pt": [
+          "grande atividade",
+          "desordem",
+          "ambição"
+        ],
+        "en": [
+          "considerable activity",
+          "disorganization",
+          "ambition"
+        ]
+      }
+    },
+    "pluto/11": {
+      "pt": "com Plutão na décima primeira casa da sua revolução solar, a realização dos seus projetos depende dos seus esforços pessoais. depende também da ajuda de circunstâncias felizes.",
+      "en": "with Pluto in the eleventh house of your solar-return chart, realizing your plans depends on your personal efforts. it also depends on the help of fortunate circumstances.",
+      "keywords": {
+        "pt": [
+          "projetos",
+          "esforço pessoal",
+          "circunstâncias felizes"
+        ],
+        "en": [
+          "plans",
+          "personal effort",
+          "fortunate circumstances"
+        ]
+      }
+    },
+    "pluto/12": {
+      "pt": "com Plutão na décima segunda casa da sua revolução solar, esquemas ocultos parecem inquietar muito você. preocupações escondidas também parecem causar grande inquietação.",
+      "en": "with Pluto in the twelfth house of your solar-return chart, hidden schemes seem to trouble you greatly. concealed worries also seem to cause considerable unease.",
+      "keywords": {
+        "pt": [
+          "esquemas ocultos",
+          "preocupações",
+          "inquietação"
+        ],
+        "en": [
+          "hidden schemes",
+          "worries",
+          "unease"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "timingTechniques": {
+    "annual-profection": {
+      "pt": "a profecção anual avança um signo a cada aniversário a partir do ascendente natal, e o regente desse signo se torna o senhor do ano. os assuntos que esse regente significa no seu mapa natal são ativados no período, considerando sua dignidade, casa e aspectos.",
+      "en": "annual profection advances one sign from the natal ascendant at each birthday, and that sign’s ruler becomes the lord of the year. matters signified by this ruler in your natal chart are activated during the period, considering its dignity, house and aspects.",
+      "keywords": {
+        "pt": [
+          "aniversário",
+          "casa ativada",
+          "senhor do ano"
+        ],
+        "en": [
+          "birthday",
+          "activated house",
+          "lord of the year"
+        ]
+      }
+    },
+    "monthly-profection": {
+      "pt": "a profecção mensal parte do signo ativado na profecção anual e avança um signo a cada mês, mudando o senhor do período. a casa natal, a força e as condições desse regente qualificam os assuntos que se ativam para você durante o mês.",
+      "en": "monthly profection starts from the annual profected sign and advances one sign each month, changing the lord of the period. this ruler’s natal house, strength and condition qualify the matters activated for you during the month.",
+      "keywords": {
+        "pt": [
+          "mês",
+          "regente mensal",
+          "foco"
+        ],
+        "en": [
+          "month",
+          "monthly ruler",
+          "focus"
+        ]
+      }
+    },
+    "solar-return": {
+      "pt": "a revolução solar é o mapa do instante em que o Sol retorna à posição do seu nascimento, válido até a revolução seguinte. a leitura compara esse mapa ao natal para indicar o assunto principal do ano e áreas tranquilas ou turbulentas, mudanças, surpresas, armadilhas e facilidades.",
+      "en": "a solar return is the chart for the instant when the Sun returns to its position at your birth, valid until the next return. the reading compares this chart with the natal chart to indicate the year’s main subject and calm or turbulent areas, changes, surprises, traps and favorable circumstances.",
+      "keywords": {
+        "pt": [
+          "retorno solar",
+          "ciclo anual",
+          "comparação de mapas"
+        ],
+        "en": [
+          "solar return",
+          "annual cycle",
+          "chart comparison"
+        ]
+      }
+    },
+    "lunar-return": {
+      "pt": "a revolução lunar é o mapa do instante em que a Lua retorna à posição que ocupava no seu nascimento. a comparação desse mapa ao natal fornece indicações sobre os acontecimentos do mês lunar que se abre para você.",
+      "en": "a lunar return is the chart for the instant when the Moon returns to its position at your birth. comparing this chart with the natal chart provides indications about events in the lunar month opening for you.",
+      "keywords": {
+        "pt": [
+          "retorno lunar",
+          "ciclo lunar",
+          "comparação de mapas"
+        ],
+        "en": [
+          "lunar return",
+          "lunar cycle",
+          "chart comparison"
+        ]
+      }
+    },
+    "jupiter-return": {
+      "pt": "o retorno de Júpiter acontece quando ele volta à longitude que ocupava no seu nascimento, em um ciclo de cerca de doze anos. na leitura do novo ciclo, seu signo e os aspectos recebidos qualificam indicações favoráveis ou desfavoráveis, sem reduzir Júpiter a expansão sempre benéfica.",
+      "en": "a Jupiter return occurs when Jupiter returns to its longitude at your birth, in a cycle of about twelve years. in the reading of the new cycle, its sign and received aspects qualify favorable or unfavorable indications, rather than reducing Jupiter to invariably beneficial expansion.",
+      "keywords": {
+        "pt": [
+          "retorno de Júpiter",
+          "ciclo",
+          "expansão"
+        ],
+        "en": [
+          "Jupiter return",
+          "cycle",
+          "expansion"
+        ]
+      }
+    },
+    "saturn-return": {
+      "pt": "o retorno de Saturno acontece quando ele volta à longitude que ocupava no seu nascimento, em um ciclo de cerca de vinte e nove anos. a leitura associa essa idade a um marco de amadurecimento, no qual você começa a cuidar de si, após uma fase mais dependente dos pais e da criação.",
+      "en": "a Saturn return occurs when Saturn returns to its longitude at your birth, in a cycle of about twenty-nine years. the reading associates this age with a milestone of maturation, when you begin caring for yourself after a phase more dependent on parents and upbringing.",
+      "keywords": {
+        "pt": [
+          "retorno de Saturno",
+          "amadurecimento",
+          "cuidado de si"
+        ],
+        "en": [
+          "Saturn return",
+          "maturity",
+          "self-care"
+        ]
+      }
+    },
+    "nodal-return": {
+      "pt": "o retorno nodal acontece quando o nodo norte volta à sua longitude natal, em um ciclo de cerca de dezenove anos. observe as casas do eixo nodal para refletir sobre os temas que ele destaca no seu mapa.",
+      "en": "a nodal return occurs when the north node returns to its natal longitude, in a cycle of about nineteen years. look at the houses of the nodal axis to reflect on the themes it highlights in your chart.",
+      "keywords": {
+        "pt": [
+          "retorno nodal",
+          "eixo",
+          "casas"
+        ],
+        "en": [
+          "nodal return",
+          "axis",
+          "houses"
+        ]
+      }
+    }
+  }
+}

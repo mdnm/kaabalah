@@ -1,0 +1,294 @@
+{
+  "firdariaTechnique": {
+    "pt": "a firdária organiza a vida em períodos maiores e subperíodos com regentes definidos por uma sequência que muda conforme o nascimento seja diurno ou noturno. use esses regentes para relacionar o tema amplo da fase ao foco de cada trecho, olhando também para seu mapa natal.",
+    "en": "firdaria organizes life into major periods and sub-periods with time lords assigned by a sequence that differs for day and night births. use these rulers to connect the broad theme of a phase with the focus of each part, also considering your natal chart.",
+    "keywords": {
+      "pt": [
+        "período maior",
+        "subperíodo",
+        "regentes do tempo"
+      ],
+      "en": [
+        "major period",
+        "sub-period",
+        "time lords"
+      ]
+    }
+  },
+  "firdariaRelationship": {
+    "pt": "o regente maior estabelece o contexto da fase, enquanto o regente do subperíodo modifica esse tema: a combinação de um maior benéfico com subperíodo maléfico descreve uma dificuldade numa fase favorável, e a inversa, um alívio numa fase difícil. os acontecimentos que esses regentes significam no seu mapa natal tendem a ocorrer quando estão ativados, considerando suas casas, aspectos e condições.",
+    "en": "the major ruler sets the phase’s context while the sub-period ruler modifies it: a benefic major with a malefic sub-period describes difficulty within a favorable phase, and the reverse, relief within a difficult phase. events signified by these rulers in your natal chart tend to occur when they are activated, considering their houses, aspects and conditions.",
+    "keywords": {
+      "pt": [
+        "contexto",
+        "foco",
+        "condição natal"
+      ],
+      "en": [
+        "context",
+        "focus",
+        "natal condition"
+      ]
+    }
+  },
+  "firdariaMajorPeriods": {
+    "Sun": {
+      "pt": "quando o Sol rege seu período maior, a leitura dos significados natais destaca identidade, vitalidade, expressão criativa e a experiência do pai ou da autoridade. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when the Sun rules your major period, the reading of natal significations highlights identity, vitality, creative expression and the experience of father or authority. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "identidade e vitalidade",
+          "expressão",
+          "pai e autoridade"
+        ],
+        "en": [
+          "identity and vitality",
+          "expression",
+          "father and authority"
+        ]
+      }
+    },
+    "Moon": {
+      "pt": "quando a Lua rege seu período maior, a leitura dos significados natais destaca emoções, segurança, instintos, influência materna e formas de dar e receber afeto. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when the Moon rules your major period, the reading of natal significations highlights emotions, security, instincts, maternal influence and ways of giving and receiving affection. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "segurança e instintos",
+          "influência materna"
+        ],
+        "en": [
+          "emotions",
+          "security and instincts",
+          "maternal influence"
+        ]
+      }
+    },
+    "Mercury": {
+      "pt": "quando Mercúrio rege seu período maior, a leitura dos significados natais destaca comunicação, conhecimento, pensamentos, irmãos e amigos, com ligação simbólica ao sistema nervoso e à coordenação. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Mercury rules your major period, the reading of natal significations highlights communication, knowledge, thoughts, siblings and friends, with a symbolic link to the nervous system and coordination. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "irmãos e amigos",
+          "sistema nervoso e coordenação"
+        ],
+        "en": [
+          "communication",
+          "siblings and friends",
+          "nervous system and coordination"
+        ]
+      }
+    },
+    "Venus": {
+      "pt": "quando Vênus rege seu período maior, a leitura dos significados natais destaca valores, amor, atração sexual, beleza, relações e harmonia interior e exterior. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Venus rules your major period, the reading of natal significations highlights values, love, sexual attraction, beauty, relationships and inner and outer harmony. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "amor e atração",
+          "valores e beleza",
+          "harmonia"
+        ],
+        "en": [
+          "love and attraction",
+          "values and beauty",
+          "harmony"
+        ]
+      }
+    },
+    "Mars": {
+      "pt": "quando Marte rege seu período maior, a leitura dos significados natais destaca impulso, sexualidade, poder, trabalho e conflitos, com coragem para enfrentar desafios e ligação simbólica ao sistema muscular. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Mars rules your major period, the reading of natal significations highlights impulse, sexuality, power, work and conflict, with courage to face challenges and a symbolic link to the muscular system. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "sexualidade e poder",
+          "trabalho e conflitos",
+          "coragem e músculos"
+        ],
+        "en": [
+          "sexuality and power",
+          "work and conflict",
+          "courage and muscles"
+        ]
+      }
+    },
+    "Jupiter": {
+      "pt": "quando Júpiter rege seu período maior, a leitura dos significados natais destaca grande sorte, fortuna e expansão, com busca intelectual, filosófica e religiosa, leis e autoridade moral. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Jupiter rules your major period, the reading of natal significations highlights great luck, fortune and expansion, with intellectual, philosophical and religious inquiry, law and moral authority. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "sorte e fortuna",
+          "expansão",
+          "filosofia e leis"
+        ],
+        "en": [
+          "luck and fortune",
+          "expansion",
+          "philosophy and law"
+        ]
+      }
+    },
+    "Saturn": {
+      "pt": "quando Saturno rege seu período maior, a leitura dos significados natais destaca limites, velhice, melancolia e desafios difíceis, mas também experiência, inteligência e realizações profundas. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Saturn rules your major period, the reading of natal significations highlights limits, old age, melancholy and difficult challenges, but also experience, intelligence and profound achievements. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "limites e desafios",
+          "velhice e melancolia",
+          "experiência"
+        ],
+        "en": [
+          "limits and challenges",
+          "old age and melancholy",
+          "experience"
+        ]
+      }
+    },
+    "NorthNode": {
+      "pt": "quando o nodo norte rege seu período maior, sua leitura reúne transformação, abandono de padrões ultrapassados e coragem para novas experiências, e a leitura atribui à Cabeça do Dragão influxos benéficos. a leitura relaciona essa transformação ao que você precisa mudar para alcançar maior realização e satisfação.",
+      "en": "when the north node rules your major period, your reading brings transformation, release of outdated patterns and courage for new experiences, and the reading attributes benefic influences to the Dragon’s Head. the reading relates this transformation to what you need to change to reach greater fulfillment and satisfaction.",
+      "keywords": {
+        "pt": [
+          "transformação",
+          "novas experiências",
+          "influxos benéficos"
+        ],
+        "en": [
+          "transformation",
+          "new experiences",
+          "benefic influences"
+        ]
+      }
+    },
+    "SouthNode": {
+      "pt": "quando o nodo sul rege seu período maior, sua leitura destaca talentos naturais e a bagagem de experiências de vidas passadas, que também pode limitar sua perspectiva, enquanto a leitura atribui à Cauda do Dragão influxos maléficos. a leitura apresenta a obra da vida passada como provavelmente ainda não realizada e pede que você abra a mente nos assuntos em que suas crenças se tornaram rígidas.",
+      "en": "when the south node rules your major period, your reading highlights natural talents and the baggage of past-life experiences, which can also limit your perspective, while the reading attributes malefic influences to the Dragon’s Tail. the reading presents the work of the past life as probably still unaccomplished and calls for you to open your mind in matters where your beliefs have become rigid.",
+      "keywords": {
+        "pt": [
+          "talentos e bagagem",
+          "vidas passadas",
+          "influxos maléficos"
+        ],
+        "en": [
+          "talents and baggage",
+          "past lives",
+          "malefic influences"
+        ]
+      }
+    }
+  },
+  "firdariaSubPeriods": {
+    "Sun": {
+      "pt": "quando o Sol rege seu subperíodo, a leitura dos significados natais destaca identidade, vitalidade, expressão criativa e a experiência do pai ou da autoridade. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when the Sun rules your sub-period, the reading of natal significations highlights identity, vitality, creative expression and the experience of father or authority. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "identidade e vitalidade",
+          "expressão",
+          "pai e autoridade"
+        ],
+        "en": [
+          "identity and vitality",
+          "expression",
+          "father and authority"
+        ]
+      }
+    },
+    "Moon": {
+      "pt": "quando a Lua rege seu subperíodo, a leitura dos significados natais destaca emoções, segurança, instintos, influência materna e formas de dar e receber afeto. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when the Moon rules your sub-period, the reading of natal significations highlights emotions, security, instincts, maternal influence and ways of giving and receiving affection. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "segurança e instintos",
+          "influência materna"
+        ],
+        "en": [
+          "emotions",
+          "security and instincts",
+          "maternal influence"
+        ]
+      }
+    },
+    "Mercury": {
+      "pt": "quando Mercúrio rege seu subperíodo, a leitura dos significados natais destaca comunicação, conhecimento, pensamentos, irmãos e amigos, com ligação simbólica ao sistema nervoso e à coordenação. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Mercury rules your sub-period, the reading of natal significations highlights communication, knowledge, thoughts, siblings and friends, with a symbolic link to the nervous system and coordination. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "irmãos e amigos",
+          "sistema nervoso e coordenação"
+        ],
+        "en": [
+          "communication",
+          "siblings and friends",
+          "nervous system and coordination"
+        ]
+      }
+    },
+    "Venus": {
+      "pt": "quando Vênus rege seu subperíodo, a leitura dos significados natais destaca valores, amor, atração sexual, beleza, relações e harmonia interior e exterior. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Venus rules your sub-period, the reading of natal significations highlights values, love, sexual attraction, beauty, relationships and inner and outer harmony. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "amor e atração",
+          "valores e beleza",
+          "harmonia"
+        ],
+        "en": [
+          "love and attraction",
+          "values and beauty",
+          "harmony"
+        ]
+      }
+    },
+    "Mars": {
+      "pt": "quando Marte rege seu subperíodo, a leitura dos significados natais destaca impulso, sexualidade, poder, trabalho e conflitos, com coragem para enfrentar desafios e ligação simbólica ao sistema muscular. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Mars rules your sub-period, the reading of natal significations highlights impulse, sexuality, power, work and conflict, with courage to face challenges and a symbolic link to the muscular system. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "sexualidade e poder",
+          "trabalho e conflitos",
+          "coragem e músculos"
+        ],
+        "en": [
+          "sexuality and power",
+          "work and conflict",
+          "courage and muscles"
+        ]
+      }
+    },
+    "Jupiter": {
+      "pt": "quando Júpiter rege seu subperíodo, a leitura dos significados natais destaca grande sorte, fortuna e expansão, com busca intelectual, filosófica e religiosa, leis e autoridade moral. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Jupiter rules your sub-period, the reading of natal significations highlights great luck, fortune and expansion, with intellectual, philosophical and religious inquiry, law and moral authority. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "sorte e fortuna",
+          "expansão",
+          "filosofia e leis"
+        ],
+        "en": [
+          "luck and fortune",
+          "expansion",
+          "philosophy and law"
+        ]
+      }
+    },
+    "Saturn": {
+      "pt": "quando Saturno rege seu subperíodo, a leitura dos significados natais destaca limites, velhice, melancolia e desafios difíceis, mas também experiência, inteligência e realizações profundas. os acontecimentos significados por esse regente tendem a se manifestar durante sua ativação, conforme suas casas, aspectos e condição natal.",
+      "en": "when Saturn rules your sub-period, the reading of natal significations highlights limits, old age, melancholy and difficult challenges, but also experience, intelligence and profound achievements. events signified by this ruler tend to manifest during its activation, according to its houses, aspects and natal condition.",
+      "keywords": {
+        "pt": [
+          "limites e desafios",
+          "velhice e melancolia",
+          "experiência"
+        ],
+        "en": [
+          "limits and challenges",
+          "old age and melancholy",
+          "experience"
+        ]
+      }
+    }
+  }
+}

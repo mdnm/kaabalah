@@ -4,7 +4,7 @@ import type { AspectName } from "./aspects";
 import type { Sign, TriplicityElement } from "./dignity";
 import type { MODALITIES } from "../core/constants";
 
-/** Lowercase chart planet keys; authored coverage varies by factor kind. */
+/** Lowercase chart planet keys; coverage varies by factor kind. */
 export type DescriptionPlanet =
   | "sun" | "moon" | "mercury" | "venus" | "mars"
   | "jupiter" | "saturn" | "uranus" | "neptune" | "pluto";
@@ -16,13 +16,13 @@ export interface PlanetSignDescriptionEntry {
     readonly pt: readonly string[];
     readonly en: readonly string[];
   };
-  /** Editorial provenance is not published: always an empty array. Kept so callers compile. */
+  /** Legacy compatibility field; always an empty array. */
   readonly src: readonly {
     readonly file: string;
     readonly from: number;
     readonly to: number;
   }[];
-  /** Editorial review notes. Same rule as `src`: always an empty array. */
+  /** Legacy compatibility field; always an empty array. */
   readonly reviewNotes: readonly string[];
 }
 
@@ -142,7 +142,7 @@ export interface AstrologyDescriptions {
 function freeze<T>(value: T): T {
   if (value !== null && typeof value === "object") {
     const row = value as { pt?: unknown; en?: unknown; keywords?: unknown; src?: unknown; reviewNotes?: unknown };
-    // The JSON carries no editorial provenance; fill the empty fields so the entry shape stays stable.
+    // Fill legacy compatibility fields to keep the entry shape stable.
     if (typeof row.pt === "string" && typeof row.en === "string" && row.keywords && typeof row.keywords === "object") {
       row.src ??= [];
       row.reviewNotes ??= [];
@@ -156,7 +156,7 @@ function freeze<T>(value: T): T {
 // The JSON rows carry no `src`/`reviewNotes`; `freeze` adds the empty arrays the entry types promise.
 export const ASTROLOGY_DESCRIPTIONS: AstrologyDescriptions = freeze(raw as unknown as AstrologyDescriptions);
 
-/** Return the immutable authored entry; inherited keys are never descriptions. */
+/** Return the immutable entry; inherited keys are never descriptions. */
 export function getPlanetSignDescriptionEntry(
   planet: DescriptionPlanet,
   sign: Sign,
@@ -343,7 +343,7 @@ export function getPointDescription(point: DescriptionPoint, language?: string):
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Aliases only for the course's twelve combined Chiron sign-or-house accounts. */
+/** Aliases for the twelve combined Chiron sign-or-house descriptions. */
 const CHIRON_PLACEMENT_SIGN_BY_HOUSE = Object.freeze({
   1: "Aries", 2: "Taurus", 3: "Gemini", 4: "Cancer",
   5: "Leo", 6: "Virgo", 7: "Libra", 8: "Scorpio",
@@ -388,7 +388,7 @@ export function getPointSignDescription(
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Fortune house fields and source-specific shared Chiron accounts. */
+/** Fortune house fields and shared Chiron sign-or-house descriptions. */
 export function getPointHouseDescriptionEntry(
   point: DescriptionPoint,
   house: number,
@@ -488,13 +488,13 @@ export function getLunarNodeSignDescription(
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Source aliases for directed joint axes, not a calculation of node positions. */
+/** Aliases for directed joint axes; does not calculate node positions. */
 const LUNAR_NODE_NORTH_HOUSE_BY_SOUTH_HOUSE = Object.freeze({
   1: 7, 2: 8, 3: 9, 4: 10, 5: 11, 6: 12,
   7: 1, 8: 2, 9: 3, 10: 4, 11: 5, 12: 6,
 } satisfies Readonly<Record<DescriptionHouseNumber, DescriptionHouseNumber>>);
 
-/** Each source-declared north/south pair shares one directed axis account. */
+/** Each north/south pair shares one directed axis description. */
 export function getLunarNodeHouseDescriptionEntry(
   node: DescriptionLunarNode,
   house: number,
@@ -529,7 +529,7 @@ function isRetrogradeSpeed(longitudeSpeed?: number): boolean {
   return typeof longitudeSpeed === "number" && Number.isFinite(longitudeSpeed) && longitudeSpeed < 0;
 }
 
-/** Sign on a numbered house cusp; not an angle lookup, and source gaps stay absent. */
+/** Sign on a numbered house cusp; not an angle lookup, and unsupported combinations remain absent. */
 export function getHouseCuspSignDescriptionEntry(
   house: number,
   sign: Sign,
@@ -544,7 +544,7 @@ export function getHouseCuspSignDescription(house: number, sign: Sign, language?
   return language?.startsWith("pt") ? entry?.pt : entry?.en;
 }
 
-/** Natal retrograde sign accounts; requires a finite negative longitude speed. Outer-planet coverage is partial. */
+/** Natal retrograde accounts for Mercury–Pluto in all twelve signs; requires a finite negative longitude speed. */
 export function getRetrogradePlanetSignDescriptionEntry(
   planet: DescriptionRetrogradePlanet,
   sign: Sign,
@@ -605,7 +605,7 @@ const DESCRIPTION_PLANET_ORDER: readonly DescriptionPlanet[] = Object.freeze([
 ]);
 
 /**
- * Natal aspect between two planets, in either argument order. Only source-located
+ * Natal aspect between two planets, in either argument order. Only supported
  * aspect/pair combinations exist; there is no fallback to the general aspect concept.
  */
 export function getAspectPairDescriptionEntry(
@@ -651,7 +651,7 @@ const DESCRIPTION_SIGN_ORDER: readonly Sign[] = Object.freeze([
 ]);
 
 /**
- * Ordinal symbolic degree of an ecliptic longitude, by the course rule: 18°00′ is the
+ * Ordinal symbolic degree of an ecliptic longitude: 18°00′ is the
  * 18th degree, anything from 18°00′01″ up to 19°00′ is the 19th. An exact sign boundary
  * therefore belongs to the 30th degree of the previous sign.
  */

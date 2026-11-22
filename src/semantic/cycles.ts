@@ -143,7 +143,7 @@ export interface CycleTransitPlacementInput {
 
 /**
  * The planets ruling the person's time now, with the names their functions return:
- * `getFirdaria().currentMajor.planet` and `.currentSub.planet`, `getAnnualProfection().ruler`,
+ * `getFirdaria().currentMajor.planet` and `.currentSub?.planet`, `getAnnualProfection().ruler`,
  * `findActiveDasha().maha.lord` and `.antar?.lord`.
  */
 export interface CycleTimeLordsInput {

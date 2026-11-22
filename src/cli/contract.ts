@@ -912,7 +912,7 @@ export const COMMANDS: CommandSchema[] = [
       { name: "from", type: "string", description: "Window start YYYY-MM-DD (default: birth)" },
       { name: "to", type: "string", description: "Exclusive window end YYYY-MM-DD (required)" },
       { name: "sect", type: "string", description: "Override sect: diurnal or nocturnal (default: from the chart)" },
-      { name: "node-sub-period-start", type: "string", description: "Node sub-period start: jupiter-saturn or sun-mars" },
+      { name: "node-sub-period-start", type: "string", description: "Deprecated and ignored: node major periods have no sub-periods" },
       { name: "no-sub-periods", type: "boolean", default: false, description: "Omit sub-periods" },
       ...RUNTIME_FLAGS,
     ],

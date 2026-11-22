@@ -48,11 +48,13 @@ export interface FirdariaMajorPeriod {
 export interface FirdariaResult {
   sect: "diurnal" | "nocturnal";
   currentMajor: FirdariaMajorPeriod;
-  currentSub: FirdariaSubPeriod;
+  /** Null during the undivided North/South Node major periods. */
+  currentSub: FirdariaSubPeriod | null;
   allPeriods: FirdariaMajorPeriod[];
 }
 
 export interface FirdariaOptions {
+  /** @deprecated Ignored: node major periods have no sub-periods. */
   nodeSubPeriodStart?: "jupiter-saturn" | "sun-mars";
 }
 
@@ -98,21 +100,6 @@ function getSubPeriodStart(
   planet: FirdariaPlanet,
   options?: FirdariaOptions
 ): number {
-  const mode = options?.nodeSubPeriodStart ?? "jupiter-saturn";
-
-  if (planet === "NorthNode") {
-    if (mode === "sun-mars") {
-      return CHALDEAN_ORDER.indexOf("Sun");
-    }
-    return CHALDEAN_ORDER.indexOf("Jupiter");
-  }
-  if (planet === "SouthNode") {
-    if (mode === "sun-mars") {
-      return CHALDEAN_ORDER.indexOf("Mars");
-    }
-    return CHALDEAN_ORDER.indexOf("Saturn");
-  }
-
   // For regular planets, find position in Chaldean order
   return CHALDEAN_ORDER.indexOf(planet);
 }
@@ -123,6 +110,8 @@ function buildSubPeriods(
   majorEnd: Date,
   options?: FirdariaOptions
 ): FirdariaSubPeriod[] {
+  // The nodes rule whole major periods, without planetary sub-lords.
+  if (major.planet === "NorthNode" || major.planet === "SouthNode") return [];
   const startIdx = getSubPeriodStart(major.planet, options);
   const totalMs = majorEnd.getTime() - majorStart.getTime();
   const subMs = totalMs / 7;
@@ -180,7 +169,7 @@ export function getFirdaria(
 
   const currentSub = currentMajor.subPeriods.find(
     (s) => target.getTime() >= s.startDate.getTime() && target.getTime() < s.endDate.getTime()
-  ) ?? currentMajor.subPeriods[0];
+  ) ?? currentMajor.subPeriods[0] ?? null;
 
   return { sect, currentMajor, currentSub, allPeriods };
 }
@@ -229,7 +218,7 @@ export interface FirdariaTimelineOptions extends FirdariaOptions {
   from?: Date;
   /** Window end (exclusive). Required: unbounded timelines are refused. */
   to: Date;
-  /** Include the 7 sub-periods of each major (default true). */
+  /** Include the 7 sub-periods of each planetary major (nodes have none) (default true). */
   includeSubPeriods?: boolean;
 }
 
@@ -345,7 +334,7 @@ export function getFirdariaTimeline(
     method: {
       yearLengthDays: 365.25,
       intervals: "half-open [start, endExclusive); consecutive periods share the boundary instant",
-      subPeriods: "each major is split into 7 equal sub-periods in Chaldean order from the major lord (nodes per nodeSubPeriodStart)",
+      subPeriods: "each planetary major is split into 7 equal sub-periods in Chaldean order from the major lord; node majors are undivided",
       sequence: isDiurnal ? "day sequence starting with the Sun" : "night sequence starting with the Moon",
     },
   };

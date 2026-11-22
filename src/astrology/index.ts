@@ -49,6 +49,7 @@ export * from "./aspects";
 export * from "./dignity";
 export * from "./reception";
 export * from "./descriptions";
+export * from "./timing-descriptions";
 export * from "./decans";
 export * from "./dodecatemoria";
 export * from "./profections";

@@ -1,0 +1,660 @@
+{
+  "solarReturnAspects": {
+    "sun/conjunction/moon": {
+      "pt": "com Sol e Lua conjuntos na sua revolução solar, você encontra sempre um ponto nevrálgico do ano: se a conjunção já existia no nascimento, o acontecimento anunciado modifica todo o seu destino, e, nos outros casos, é um fato importante do ano; o signo atua intensamente, com lutas ou desejo de libertação em Áries, esforços tenazes por uma meta em Touro, flutuação e indecisão sob influência do meio em Gêmeos, absorção por preocupações familiares em Câncer e ambições desmedidas que terminam em decepção em Leão. a casa concentra esses efeitos — finanças na segunda, parentes ou vizinhos na terceira, imóveis ou parentes na quarta — e um trígono natal entre os luminares torna a conjunção não muito má, mas ela se associa quase sempre a fatos desagradáveis, como processo ou associação comercial contrária à sua maneira de pensar, mas a única que pode evitar o fechamento do negócio na sétima, venda de propriedade importante na oitava ou expatriação que afasta você de parentes amados na nona.",
+      "en": "with the Sun and Moon conjunct in your solar-return chart, you always encounter a focal point of the year: if the conjunction existed at birth, the indicated event changes your entire destiny, and otherwise it is an important event of the year; the sign acts intensely, with struggles or a desire for freedom in Aries, tenacious efforts toward a goal in Taurus, fluctuation and indecision under environmental influence in Gemini, absorption in family worries in Cancer, and excessive ambitions ending in disappointment in Leo. the house concentrates these effects — finances in the second, relatives or neighbors in the third, property or relatives in the fourth — and a natal trine between the luminaries makes the conjunction not very adverse, but it is almost always associated with unpleasant events, such as a lawsuit or a business partnership contrary to your outlook, but the only one that can avoid closing the business in the seventh, the sale of an important property in the eighth, or expatriation separating you from beloved relatives in the ninth.",
+      "keywords": {
+        "pt": [
+          "ponto nevrálgico anual",
+          "destino e condições natais",
+          "acontecimentos por signo e casa"
+        ],
+        "en": [
+          "annual focal point",
+          "destiny and natal conditions",
+          "events by sign and house"
+        ]
+      }
+    },
+    "sun/conjunction/mars": {
+      "pt": "com Sol e Marte conjuntos na sua revolução solar, você encontra uma configuração que parece indicar violência e brutalidade exercidas, quando situada no Ascendente ou Meio-do-Céu anual, ou sofridas; se havia mau aspecto natal entre eles ou se o Ascendente anual está na sexta ou décima segunda casa natal ou em Escorpião, podem ser deduzidos golpes, tumultos e ofensas. há sempre uma onda crescente de ciúme, ódio, cólera ou outro sentimento forte que acaba em violência, num conflito que costuma tornar-se agudo rapidamente; essa configuração aparece muito frequentemente em dramas passionais e amiúde em anos de rupturas, divórcios e tentativas de suicídio, enquanto na sexta ou décima segunda casa ela pode corresponder a intervenções cirúrgicas.",
+      "en": "with the Sun and Mars conjunct in your solar-return chart, you encounter a configuration that seems to indicate violence and brutality inflicted, when placed on the annual Ascendant or Midheaven, or suffered; if they were adversely aspected natally or the annual Ascendant is in the natal sixth or twelfth house or in Scorpio, blows, upheavals and offenses may be inferred. there is always a rising wave of jealousy, hatred, anger or another strong feeling ending in violence, in a conflict that usually becomes acute quickly; the configuration appears very frequently in dramas driven by passion and often in years of breakups, divorce and suicide attempts, while in the sixth or twelfth house it may correspond to surgical procedures.",
+      "keywords": {
+        "pt": [
+          "violência e brutalidade",
+          "rupturas e conflitos",
+          "cirurgia condicionada"
+        ],
+        "en": [
+          "violence and brutality",
+          "breakups and conflicts",
+          "conditional surgery"
+        ]
+      }
+    },
+    "sun/conjunction/jupiter": {
+      "pt": "com Sol e Júpiter conjuntos na sua revolução solar, você tem ampliadas a ambição, a sede de ganhos e o instinto sexual; se a conjunção estiver afligida por Marte, há perigo para a saúde, como perturbações circulatórias, abscessos, envenenamento do sangue ou flegmões, e predisposição a excessos. sua influência é claramente mais feliz na segunda, décima, quarta e oitava casas do que no Ascendente, onde sua satisfação pessoal é frequentemente acompanhada por euforia despropositada e inteiramente passageira.",
+      "en": "with the Sun and Jupiter conjunct in your solar-return chart, your ambition, hunger for gains and sexual instinct increase; if the conjunction is afflicted by Mars, there is danger to health, such as circulatory disturbances, abscesses, blood poisoning or phlegmons, and a predisposition to excess. its influence is clearly happier in the second, tenth, fourth and eighth houses than on the Ascendant, where your self-satisfaction is frequently accompanied by unwarranted, entirely passing euphoria.",
+      "keywords": {
+        "pt": [
+          "ambição e ganhos",
+          "excessos e saúde",
+          "euforia passageira"
+        ],
+        "en": [
+          "ambition and gains",
+          "excess and health",
+          "passing euphoria"
+        ]
+      }
+    },
+    "sun/conjunction/saturn": {
+      "pt": "com Sol e Saturno conjuntos na sua revolução solar, você encontra solidão moral e física, preocupações constantes, restrições que impedem a felicidade e retardam coisas boas; nos mapas femininos, a leitura indica preocupações e aborrecimentos causados pelo marido, pai ou filho e frequentemente separação deste último, e só atribui influência sobre a saúde se a conjunção estiver na sexta ou décima segunda casa ou se um dos planetas reger uma delas. a configuração só atua de forma feliz se seu Ascendente natal estiver em Capricórnio e Sol e Saturno natais não tiverem aspecto dissonante entre si, caso em que indica progresso, elevação ou mudança correspondente aos seus projetos ou ambições, com influência duradoura e feliz sobre seu destino.",
+      "en": "with the Sun and Saturn conjunct in your solar-return chart, you encounter emotional and physical solitude, constant worries, restrictions that prevent happiness and delay good things; in women’s charts, the reading indicates worries caused by the husband, father or son and frequent separation from the latter, and attributes an influence on health only if the conjunction is in the sixth or twelfth house or either planet rules one of them. the configuration acts happily only if your natal Ascendant is in Capricorn and your natal Sun and Saturn have no dissonant aspect between them, in which case it indicates progress, advancement or a change corresponding to your plans or ambitions, with a lasting, happy influence on your destiny.",
+      "keywords": {
+        "pt": [
+          "solidão e restrições",
+          "condição de saúde",
+          "progresso condicionado"
+        ],
+        "en": [
+          "solitude and restrictions",
+          "health condition",
+          "conditional advancement"
+        ]
+      }
+    },
+    "sun/conjunction/uranus": {
+      "pt": "com Sol e Urano conjuntos na sua revolução solar, você tem sempre o anúncio de transformação profunda e repentina na área da casa ocupada; se o Ascendente está em Leão, você mesmo a desencadeia, às vezes sem perceber nem prever todas as consequências. se havia bom aspecto natal entre os planetas e ambos estão bem-aspectados na revolução, a conjunção anuncia um acontecimento bom, inesperado e imprevisível, como oportunidade maravilhosa pelo auxílio das circunstâncias; em todas as outras condições, é nefasta, sobretudo com quadratura ou oposição natal entre Sol e Urano ou com a conjunção mal-aspectada.",
+      "en": "with the Sun and Uranus conjunct in your solar-return chart, you always have an indication of profound, sudden transformation in the area of the occupied house; if the Ascendant is in Leo, you trigger it yourself, sometimes without realizing it or foreseeing all its consequences. if the planets had a favorable natal aspect and both are well aspected in the return, the conjunction indicates a good, unexpected and unforeseeable event, such as a wonderful opportunity through fortunate circumstances; in all other conditions, it is disastrous, especially with a natal square or opposition between the Sun and Uranus or an adversely aspected conjunction.",
+      "keywords": {
+        "pt": [
+          "transformação repentina",
+          "condições natais e anuais",
+          "oportunidade ou infortúnio"
+        ],
+        "en": [
+          "sudden transformation",
+          "natal and annual conditions",
+          "opportunity or misfortune"
+        ]
+      }
+    },
+    "sun/conjunction/neptune": {
+      "pt": "com Sol e Netuno conjuntos na sua revolução solar, você encontra geralmente um ambiente muito perturbado e suspeito, com regressão dos assuntos da casa ocupada. na maioria das vezes, você vive condições ambíguas que causam temores ou, sob bons aspectos, esperanças fadadas posteriormente ao fracasso.",
+      "en": "with the Sun and Neptune conjunct in your solar-return chart, you generally encounter a very disturbed, suspicious environment, with regression in the affairs of the occupied house. most often, you live in ambiguous conditions that cause fears or, under favorable aspects, hopes destined for later failure.",
+      "keywords": {
+        "pt": [
+          "ambiente suspeito",
+          "regressão",
+          "esperanças frustradas"
+        ],
+        "en": [
+          "suspicious environment",
+          "regression",
+          "frustrated hopes"
+        ]
+      }
+    },
+    "sun/conjunction/pluto": {
+      "pt": "com Sol e Plutão conjuntos na sua revolução solar, você tende principalmente a atitudes mais práticas e utilitárias do que antes e sente necessidade de se esforçar mais. frequentemente, a conjunção indica para você um êxito que supera as esperanças.",
+      "en": "with the Sun and Pluto conjunct in your solar-return chart, you chiefly tend toward more practical, utilitarian attitudes than before and feel a need to make greater efforts. frequently, the conjunction indicates success for you that exceeds your hopes.",
+      "keywords": {
+        "pt": [
+          "senso prático",
+          "esforço ampliado",
+          "êxito além das esperanças"
+        ],
+        "en": [
+          "practical outlook",
+          "increased effort",
+          "success beyond hopes"
+        ]
+      }
+    },
+    "moon/conjunction/mercury": {
+      "pt": "com Lua e Mercúrio conjuntos na sua revolução solar, você tem sobretudo indicação de viagens e deslocamentos e uma clara facilidade de expressão verbal, que frequentemente acompanha progresso político, êxito de representantes comerciais ou trabalho fecundo de jornalistas e escritores. se a conjunção estiver mal-aspectada, você encontra conflito entre sentimentos e interesses.",
+      "en": "with the Moon and Mercury conjunct in your solar-return chart, you chiefly have an indication of travel and journeys and a clear ease of verbal expression, which frequently accompanies political advancement, success for sales representatives or productive work by journalists and writers. if the conjunction is adversely aspected, you encounter conflict between feelings and interests.",
+      "keywords": {
+        "pt": [
+          "viagens",
+          "expressão verbal",
+          "sentimentos e interesses"
+        ],
+        "en": [
+          "travel",
+          "verbal expression",
+          "feelings and interests"
+        ]
+      }
+    },
+    "moon/opposition/mercury": {
+      "pt": "com Lua e Mercúrio em oposição na sua revolução solar, você encontra principalmente conflito entre sentimentos e interesses. sobre o horizonte, a oposição indica antagonismo entre seu desejo e as necessidades da vida cotidiana; sobre o meridiano, predispõe você a embates entre obrigações profissionais e vida familiar.",
+      "en": "with the Moon and Mercury in opposition in your solar-return chart, you chiefly encounter conflict between feelings and interests. on the horizon, the opposition indicates antagonism between your desire and the needs of everyday life; on the meridian, it predisposes you to clashes between professional obligations and family life.",
+      "keywords": {
+        "pt": [
+          "conflito de interesses",
+          "horizonte e meridiano",
+          "trabalho e família"
+        ],
+        "en": [
+          "conflicting interests",
+          "horizon and meridian",
+          "work and family"
+        ]
+      }
+    },
+    "moon/conjunction/venus": {
+      "pt": "com Lua e Vênus conjuntas na sua revolução solar, você encontra uma configuração simultaneamente feliz e lasciva, mais frequentemente ligada aos acontecimentos da sua vida privada do que à vida profissional. nos mapas femininos, ela é um dos indícios de fecundidade, observada amiúde em anos de gravidez e nascimento.",
+      "en": "with the Moon and Venus conjunct in your solar-return chart, you encounter a configuration that is both happy and lustful, more frequently linked to events in your private life than your professional life. in women’s charts, it is one indication of fertility, often observed in years of pregnancy and birth.",
+      "keywords": {
+        "pt": [
+          "vida privada",
+          "lascívia",
+          "fecundidade"
+        ],
+        "en": [
+          "private life",
+          "lustfulness",
+          "fertility"
+        ]
+      }
+    },
+    "moon/conjunction/mars": {
+      "pt": "com Lua e Marte conjuntos na sua revolução solar, você tem o anúncio de excessos e imprudências de todos os tipos e menor flexibilidade nas relações. a conjunção parece mais nociva nos mapas femininos que nos masculinos; se um dos dois planetas reger o Ascendente, você corre perigo de provocar por si mesmo aborrecimentos sérios.",
+      "en": "with the Moon and Mars conjunct in your solar-return chart, you have an indication of excesses and imprudence of every kind and reduced flexibility in relationships. the conjunction seems more harmful in women’s charts than in men’s charts; if either planet rules the Ascendant, you risk causing serious trouble yourself.",
+      "keywords": {
+        "pt": [
+          "excessos",
+          "relações inflexíveis",
+          "aborrecimentos por iniciativa própria"
+        ],
+        "en": [
+          "excesses",
+          "inflexible relationships",
+          "self-caused trouble"
+        ]
+      }
+    },
+    "moon/conjunction/jupiter": {
+      "pt": "com Lua e Júpiter conjuntos na sua revolução solar, a configuração parece indicar sempre para você melhora da fortuna, entradas de dinheiro, presentes apreciáveis e outras vantagens materiais. tal como a conjunção entre Lua e Vênus, ela indica facilidade nos assuntos da casa ocupada.",
+      "en": "with the Moon and Jupiter conjunct in your solar-return chart, the configuration seems always to indicate improved fortune, incoming money, substantial gifts and other material advantages for you. like the conjunction between the Moon and Venus, it indicates ease in the affairs of the occupied house.",
+      "keywords": {
+        "pt": [
+          "melhora da fortuna",
+          "dinheiro e presentes",
+          "facilidade por casa"
+        ],
+        "en": [
+          "improved fortune",
+          "money and gifts",
+          "ease by house"
+        ]
+      }
+    },
+    "moon/conjunction/saturn": {
+      "pt": "com Lua e Saturno conjuntos na sua revolução solar, você encontra indicação de grandes aborrecimentos provenientes das mulheres. nos mapas masculinos, a leitura compara essa atuação à da conjunção entre Sol e Saturno nos mapas femininos.",
+      "en": "with the Moon and Saturn conjunct in your solar-return chart, you encounter an indication of major troubles coming from women. in men’s charts, the reading compares this effect to the conjunction between the Sun and Saturn in women’s charts.",
+      "keywords": {
+        "pt": [
+          "aborrecimentos",
+          "mulheres",
+          "comparação com Sol e Saturno"
+        ],
+        "en": [
+          "troubles",
+          "women",
+          "comparison with Sun and Saturn"
+        ]
+      }
+    },
+    "moon/conjunction/uranus": {
+      "pt": "com Lua e Urano conjuntos na sua revolução solar, você tem sempre a previsão de um desenvolvimento imprevisto dos acontecimentos indicados pela casa e pelo signo, modificando toda a sua existência. a configuração é frequentemente encontrada em anos de acidentes e operações e sempre conduz você a viagens com um forte elemento de surpresa.",
+      "en": "with the Moon and Uranus conjunct in your solar-return chart, you always have a prediction of unforeseen developments in the events indicated by the house and sign, changing your entire existence. the configuration is frequently found in years of accidents and operations and always leads you to journeys with a strong element of surprise.",
+      "keywords": {
+        "pt": [
+          "acontecimentos imprevistos",
+          "acidentes e operações",
+          "viagens surpreendentes"
+        ],
+        "en": [
+          "unforeseen events",
+          "accidents and operations",
+          "surprising journeys"
+        ]
+      }
+    },
+    "moon/conjunction/neptune": {
+      "pt": "com Lua e Netuno conjuntos na sua revolução solar, você aparece mais ou menos desamparado e conta mais com os outros que consigo mesmo; frequentemente, a configuração corresponde a uma engrenagem que reduz suas possibilidades, vontade e até moralidade, inclinando você a ações deploráveis. se havia bom aspecto natal entre os dois planetas ou se a conjunção está bem situada na revolução solar, a leitura a apresenta como o presságio mais seguro de viagens por água e novidades na sua vida sentimental.",
+      "en": "with the Moon and Neptune conjunct in your solar-return chart, you appear more or less helpless and rely more on others than on yourself; frequently, the configuration corresponds to circumstances that diminish your possibilities, will and even morality, inclining you toward deplorable actions. if the two planets had a favorable natal aspect or the conjunction is well placed in the solar return, the reading presents it as the surest indication of journeys by water and new developments in your love life.",
+      "keywords": {
+        "pt": [
+          "desamparo",
+          "vontade e moralidade",
+          "viagens por água"
+        ],
+        "en": [
+          "helplessness",
+          "will and morality",
+          "journeys by water"
+        ]
+      }
+    },
+    "moon/conjunction/pluto": {
+      "pt": "com Lua e Plutão conjuntos na sua revolução solar, você tem indicação de viagens que trazem satisfações e permitem novos conhecimentos. a conjunção também indica uma evolução precipitada dos assuntos da casa ocupada no seu mapa anual.",
+      "en": "with the Moon and Pluto conjunct in your solar-return chart, you have an indication of journeys that bring satisfaction and allow new acquaintances or knowledge. the conjunction also indicates a rapid development in the affairs of the occupied house in your annual chart.",
+      "keywords": {
+        "pt": [
+          "viagens satisfatórias",
+          "novos conhecimentos",
+          "evolução precipitada"
+        ],
+        "en": [
+          "satisfying journeys",
+          "new acquaintances or knowledge",
+          "rapid development"
+        ]
+      }
+    },
+    "mercury/conjunction/venus": {
+      "pt": "com Mercúrio conjunto a Vênus na sua revolução solar, a configuração parece ligar-se particularmente às suas relações com o meio próximo e ganha importância sobretudo quando repete a conjunção natal e ocorre num signo diferente do natal, caso em que a leitura indica que apenas acentua os significados natais. a leitura a considera mais rara do que parece e relata que às vezes ela só aparece cinco ou seis vezes ao longo da sua vida.",
+      "en": "with Mercury conjunct Venus in your solar-return chart, the configuration seems particularly linked to your relationships with your surroundings and gains importance especially when it repeats the natal conjunction and occurs in a different sign from the natal one, in which case the reading indicates it merely emphasizes the natal meanings. the reading considers it rarer than it seems and reports that it sometimes appears only five or six times over your lifetime.",
+      "keywords": {
+        "pt": [
+          "relações próximas",
+          "repetição natal",
+          "raridade"
+        ],
+        "en": [
+          "surrounding relationships",
+          "natal repetition",
+          "rarity"
+        ]
+      }
+    },
+    "mercury/conjunction/mars": {
+      "pt": "com Mercúrio conjunto a Marte na sua revolução solar, você tem indicação de erros, imprudências pessoais e aborrecimentos provocados por você, mesmo que um dos planetas esteja bem colocado, e as casas apenas dirigem essa tendência para determinado domínio. na sexta casa, a configuração pressagia ferimentos nas suas mãos ou braços ou, em certos casos graves, ferimentos causados por mão humana, categoria que parece incluir as operações cirúrgicas.",
+      "en": "with Mercury conjunct Mars in your solar-return chart, you have an indication of errors, personal imprudence and troubles caused by you, even if one planet is well placed, and the houses merely direct this tendency toward a particular area. in the sixth house, the configuration forecasts injuries to your hands or arms or, in some serious cases, injuries inflicted by a human hand, a category that appears to include surgical operations.",
+      "keywords": {
+        "pt": [
+          "imprudência pessoal",
+          "aborrecimentos autoprovocados",
+          "ferimentos condicionados"
+        ],
+        "en": [
+          "personal imprudence",
+          "self-caused troubles",
+          "conditional injuries"
+        ]
+      }
+    },
+    "mercury/opposition/mars": {
+      "pt": "com Mercúrio oposto a Marte na sua revolução solar, você tem indicação de conflitos, discórdias, litígios ou discussões. as casas ocupadas ou a regência determinam os domínios dessas situações para você.",
+      "en": "with Mercury opposite Mars in your solar-return chart, you have an indication of conflicts, discord, litigation or arguments. the occupied houses or rulership determine the areas of these situations for you.",
+      "keywords": {
+        "pt": [
+          "conflitos",
+          "litígios",
+          "casas e regência"
+        ],
+        "en": [
+          "conflicts",
+          "litigation",
+          "houses and rulership"
+        ]
+      }
+    },
+    "mercury/conjunction/jupiter": {
+      "pt": "com Mercúrio conjunto a Júpiter na sua revolução solar, sua habilidade profissional aumenta e a configuração se relaciona com iniciativas felizes nos negócios. seu julgamento sadio, espírito mais tolerante e senso prático ampliado geralmente melhoram as relações com o meio, frequentemente aumentando seus ganhos e resolvendo amigavelmente questões delicadas.",
+      "en": "with Mercury conjunct Jupiter in your solar-return chart, your professional skill increases and the configuration is linked to successful business initiatives. your sound judgment, more tolerant spirit and increased practical sense generally improve relationships with your surroundings, often increasing your earnings and bringing amicable resolutions to delicate matters.",
+      "keywords": {
+        "pt": [
+          "habilidade profissional",
+          "iniciativas felizes",
+          "ganhos e acordos"
+        ],
+        "en": [
+          "professional skill",
+          "successful initiatives",
+          "earnings and agreements"
+        ]
+      }
+    },
+    "mercury/conjunction/saturn": {
+      "pt": "com Mercúrio conjunto a Saturno na sua revolução solar, sua autoconfiança parece diminuir e você enfrenta ansiedade e hesitação. a configuração é melhor para você com um Ascendente saturnino do que com o Ascendente num signo mercuriano.",
+      "en": "with Mercury conjunct Saturn in your solar-return chart, your self-confidence seems to diminish and you face anxiety and hesitation. the configuration is better for you with a Saturnian Ascendant than with the Ascendant in a Mercurial sign.",
+      "keywords": {
+        "pt": [
+          "autoconfiança diminuída",
+          "ansiedade",
+          "Ascendente saturnino"
+        ],
+        "en": [
+          "reduced self-confidence",
+          "anxiety",
+          "Saturnian Ascendant"
+        ]
+      }
+    },
+    "mercury/conjunction/uranus": {
+      "pt": "com Mercúrio conjunto a Urano na sua revolução solar, você encontra novos interesses, uma orientação imprevista do pensamento e iniciativas que levam você para fora da sua esfera habitual. se essa conjunção estiver ligada à décima casa por presença ou regência, ela indica uma nova orientação profissional decidida rapidamente ou uma mudança de atividade.",
+      "en": "with Mercury conjunct Uranus in your solar-return chart, you encounter new interests, an unforeseen direction of thought and initiatives that take you beyond your usual sphere. if this conjunction is connected with the tenth house through placement or rulership, it indicates a rapidly decided new professional direction or a change of activity.",
+      "keywords": {
+        "pt": [
+          "novos interesses",
+          "pensamento imprevisto",
+          "mudança profissional condicionada"
+        ],
+        "en": [
+          "new interests",
+          "unforeseen thinking",
+          "conditional professional change"
+        ]
+      }
+    },
+    "mercury/conjunction/neptune": {
+      "pt": "com Mercúrio conjunto a Netuno na sua revolução solar, você tende a perseguir uma quimera e alimentar esperanças muito exageradas, pois a configuração enfraquece consideravelmente seu senso prático. nas terceira e décima casas, ela pode favorecer suas viagens e seu trabalho mental imaginativo; nos ângulos e também nas segunda, sexta e décima segunda casas, pode indicar uma afeição platônica e decepcionante.",
+      "en": "with Mercury conjunct Neptune in your solar-return chart, you tend to pursue an illusion and nurture greatly exaggerated hopes, since the configuration considerably weakens your practical sense. in the third and tenth houses, it may favor your travel and imaginative mental work; on the angles and also in the second, sixth and twelfth houses, it may indicate a platonic and disappointing affection.",
+      "keywords": {
+        "pt": [
+          "esperanças exageradas",
+          "senso prático enfraquecido",
+          "afeição platônica"
+        ],
+        "en": [
+          "exaggerated hopes",
+          "weakened practical sense",
+          "platonic affection"
+        ]
+      }
+    },
+    "mercury/conjunction/pluto": {
+      "pt": "com Mercúrio conjunto a Plutão na sua revolução solar, você tem claramente favorecidos a matemática, a contabilidade, os estudos e regulamentos, os acertos financeiros de todos os tipos e a criação pessoal. a configuração parece ampliar suas capacidades pessoais e, frequentemente, suas possibilidades materiais na direção indicada pelo lugar que ocupa na revolução solar.",
+      "en": "with Mercury conjunct Pluto in your solar-return chart, mathematics, accounting, studies and regulations, financial settlements of all kinds and personal creation are clearly favored for you. the configuration seems to expand your personal abilities and, frequently, your material possibilities in the direction indicated by its placement in the solar-return chart.",
+      "keywords": {
+        "pt": [
+          "estudos e contabilidade",
+          "acertos financeiros",
+          "capacidades ampliadas"
+        ],
+        "en": [
+          "studies and accounting",
+          "financial settlements",
+          "expanded abilities"
+        ]
+      }
+    },
+    "venus/conjunction/mars": {
+      "pt": "com Vênus conjunta a Marte na sua revolução solar, sua vida sentimental é sempre perturbada, de modo ainda mais acentuado nas primeira, terceira, quinta ou oitava casas, embora isso atue em qualquer casa; a conjunção parece mais nociva que a oposição e parece provocar uma onda de sensualidade que falseia seu julgamento e transforma a vida sexual num problema doloroso. particularmente frequente nos anos de adultério, ela frequentemente evoca a possibilidade de uma breve aventura passional fora das suas amizades e relações habituais, que pode causar perturbações temporárias consideráveis.",
+      "en": "with Venus conjunct Mars in your solar-return chart, your love life is always disturbed, more strongly in the first, third, fifth or eighth houses, although this acts in any house; the conjunction seems more harmful than the opposition and seems to provoke a wave of sensuality that distorts your judgment and turns sexual life into a painful problem. particularly frequent in years of adultery, it often evokes the possibility of a brief passionate affair outside your usual friendships and relationships, which may cause considerable temporary disturbances.",
+      "keywords": {
+        "pt": [
+          "sensualidade",
+          "julgamento falseado",
+          "adultério e aventura passional"
+        ],
+        "en": [
+          "sensuality",
+          "distorted judgment",
+          "adultery and passionate affair"
+        ]
+      }
+    },
+    "venus/conjunction/jupiter": {
+      "pt": "com Vênus conjunta a Júpiter na sua revolução solar, você tem a indicação mais segura de êxito e prosperidade nas casas financeiras ou na décima, e de felicidade nas casas pessoais, com promessa de sorte e vida fácil. se você trabalha, a configuração pressagia melhora da sua situação geral e férias particularmente agradáveis, mas a leitura salienta que nem todas as pessoas encontram essa conjunção ao longo da vida.",
+      "en": "with Venus conjunct Jupiter in your solar-return chart, you have the surest indication of success and prosperity in the financial houses or the tenth, and of happiness in the personal houses, with a promise of luck and an easy life. if you are a worker, the configuration forecasts improvement in your general circumstances and particularly pleasant holidays, but the reading emphasizes that not everyone encounters this conjunction during their lifetime.",
+      "keywords": {
+        "pt": [
+          "êxito e prosperidade",
+          "felicidade",
+          "vida fácil"
+        ],
+        "en": [
+          "success and prosperity",
+          "happiness",
+          "easy life"
+        ]
+      }
+    },
+    "venus/conjunction/saturn": {
+      "pt": "com Vênus conjunta a Saturno na sua revolução solar, você geralmente fica insatisfeito na vida sentimental e encontra uma situação tensa que se prolonga indefinidamente. a configuração é boa para você em Libra e, em grau menor, quando seu Ascendente está num signo saturnino.",
+      "en": "with Venus conjunct Saturn in your solar-return chart, you generally become dissatisfied in your love life and encounter a tense situation that persists indefinitely. the configuration is good for you in Libra and, to a lesser degree, when your Ascendant is in a Saturnian sign.",
+      "keywords": {
+        "pt": [
+          "insatisfação sentimental",
+          "tensão prolongada",
+          "exceção em Libra"
+        ],
+        "en": [
+          "romantic dissatisfaction",
+          "prolonged tension",
+          "Libra exception"
+        ]
+      }
+    },
+    "venus/conjunction/uranus": {
+      "pt": "com Vênus conjunta a Urano na sua revolução solar, você tem o presságio mais seguro de tumulto e transtorno na vida sentimental, particularmente perigoso nos ângulos ou na quinta casa, e, com certa frequência, indicação de amor à primeira vista. na sétima casa, a configuração pressagia ruptura ou, pelo menos, uma perturbação repentina e muito grave da sua vida conjugal.",
+      "en": "with Venus conjunct Uranus in your solar-return chart, you have the surest forecast of turmoil and upheaval in your love life, particularly dangerous on the angles or in the fifth house, and, with some frequency, an indication of love at first sight. in the seventh house, the configuration forecasts a breakup or at least a sudden, very serious disturbance of your married life.",
+      "keywords": {
+        "pt": [
+          "transtorno sentimental",
+          "amor à primeira vista",
+          "ruptura condicionada"
+        ],
+        "en": [
+          "emotional upheaval",
+          "love at first sight",
+          "conditional breakup"
+        ]
+      }
+    },
+    "venus/conjunction/neptune": {
+      "pt": "com Vênus conjunta a Netuno na sua revolução solar, o resultado depende principalmente do aspecto natal entre eles: se havia sextil ou trígono, você tem uma configuração excelente, com inspirações felizes, refinamento, sorte e êxito sem esforço. se havia quadratura ou oposição natal, a configuração é perigosamente nociva para você, indicando traição, fraude, desagregação do afeto ou da união, depressão nervosa que pode chegar à loucura ou à queda moral ou física.",
+      "en": "with Venus conjunct Neptune in your solar-return chart, the outcome depends mainly on their natal aspect: if there was a sextile or trine, you have an excellent configuration, with fortunate inspirations, refinement, luck and effortless success. if there was a natal square or opposition, the configuration is dangerously harmful for you, indicating betrayal, fraud, disintegration of affection or union, nervous depression that may lead to madness or moral or physical decline.",
+      "keywords": {
+        "pt": [
+          "aspecto natal decisivo",
+          "sorte ou traição",
+          "depressão nervosa condicionada"
+        ],
+        "en": [
+          "decisive natal aspect",
+          "luck or betrayal",
+          "conditional nervous depression"
+        ]
+      }
+    },
+    "venus/conjunction/pluto": {
+      "pt": "com Vênus conjunta a Plutão na sua revolução solar, você tem indicação de uma aventura amorosa fora do comum ou de uma vida passional intensa. a configuração parece sobretudo aumentar seu encanto pessoal, facilitando os êxitos, e frequentemente indica uma ligação que traz orgulho ou vantagem.",
+      "en": "with Venus conjunct Pluto in your solar-return chart, you have an indication of an unusual love affair or an intense passionate life. the configuration seems above all to increase your personal charm, facilitating success, and frequently indicates a relationship that brings pride or advantage.",
+      "keywords": {
+        "pt": [
+          "aventura amorosa",
+          "encanto pessoal",
+          "ligação vantajosa"
+        ],
+        "en": [
+          "love affair",
+          "personal charm",
+          "advantageous relationship"
+        ]
+      }
+    },
+    "mars/conjunction/jupiter": {
+      "pt": "com Marte conjunto a Júpiter na sua revolução solar, você tem indicação de um grande esforço amplamente coroado de sucesso, de uma façanha ou desempenho brilhante, permitindo a atletas estabelecer recordes ou chegar em primeiro lugar e indicando promoção entre militares; para os demais, anuncia uma ação arriscada, audaciosa e frequentemente decisiva, cujo perigo e consequências você geralmente não percebe por inteiro. bem-aspectada num ângulo, sobretudo na décima casa, a conjunção sempre marca um grande êxito; mal-aspectada e mal situada, anuncia choques, conflitos, lutas encarniçadas e processos.",
+      "en": "with Mars conjunct Jupiter in your solar-return chart, you have an indication of a major effort amply crowned with success, a feat or brilliant performance, allowing athletes to set records or finish first and indicating promotion among military personnel; for others, it announces a risky, bold and frequently decisive action whose danger and consequences you generally do not fully recognize. well aspected at an angle, especially in the tenth house, the conjunction always marks a great success; adversely aspected and poorly placed, it announces clashes, conflicts, bitter struggles and lawsuits.",
+      "keywords": {
+        "pt": [
+          "grande esforço",
+          "êxito condicionado",
+          "ação arriscada"
+        ],
+        "en": [
+          "major effort",
+          "conditional success",
+          "risky action"
+        ]
+      }
+    },
+    "mars/conjunction/saturn": {
+      "pt": "com Marte conjunto a Saturno na sua revolução solar, você tem indicação de um esforço grande, longo e penoso, mas suportável, sem a sorte da conjunção Marte–Júpiter e com êxito ou fracasso dependente do conjunto do mapa; na sexta ou décima segunda casa, trata-se da reação do organismo para combater um mal, e, se um desses planetas rege o Ascendente, você impõe a si esse esforço, às vezes inútil e improdutivo. aborrecimentos e dificuldades de todos os tipos acompanham a configuração, com esforço físico, psicológico ou moral sempre claramente observável, e ela se refere geralmente a extrações dentárias e operações ósseas.",
+      "en": "with Mars conjunct Saturn in your solar-return chart, you have an indication of a great, lengthy and painful but bearable effort, without the luck of the Mars–Jupiter conjunction and with success or failure depending on the whole chart; in the sixth or twelfth house, it is the body’s reaction in fighting an ailment, and, if either planet rules the Ascendant, you impose this sometimes useless and unproductive effort on yourself. troubles and difficulties of every kind accompany the configuration, with physical, psychological or moral effort always clearly observable, and it generally concerns tooth extractions and bone operations.",
+      "keywords": {
+        "pt": [
+          "esforço penoso",
+          "êxito ou fracasso",
+          "extrações e operações ósseas"
+        ],
+        "en": [
+          "painful effort",
+          "success or failure",
+          "extractions and bone operations"
+        ]
+      }
+    },
+    "mars/opposition/saturn": {
+      "pt": "com Marte oposto a Saturno na sua revolução solar, você encontra uma das configurações tradicionalmente consideradas piores, com grandes preocupações conforme as casas e os signos: em Áries e Libra, perigo de ruptura de casamento ou associação; em Touro e Escorpião, aborrecimentos financeiros; em Gêmeos e Sagitário, crise moral que não exclui dificuldades no convívio. em Câncer e Capricórnio, você tem perigo de desmoronamento da situação e preocupações familiares; em Leão e Aquário, aborrecimentos extrafamiliares e separação de amigos; em Virgem e Peixes, crise de saúde ou de trabalho.",
+      "en": "with Mars opposite Saturn in your solar-return chart, you encounter one of the configurations traditionally considered worst, with major worries according to the houses and signs: in Aries and Libra, danger of a marriage or partnership breaking up; in Taurus and Scorpio, financial troubles; in Gemini and Sagittarius, a moral crisis that does not exclude difficulties with people around you. in Cancer and Capricorn, you face danger of your circumstances collapsing and family worries; in Leo and Aquarius, troubles outside the family and separation from friends; in Virgo and Pisces, a health or work crisis.",
+      "keywords": {
+        "pt": [
+          "grandes preocupações",
+          "casas e signos",
+          "crises condicionadas"
+        ],
+        "en": [
+          "major worries",
+          "houses and signs",
+          "conditional crises"
+        ]
+      }
+    },
+    "mars/conjunction/uranus": {
+      "pt": "com Marte conjunto a Urano na sua revolução solar, você tem anúncio de um acidente ou acontecimento repentino e violento, provocado por você se um desses astros rege o Ascendente ou se a configuração se situa no Oriente, ou inteiramente independente da sua vontade e abatendo-se sobre você como um furacão. psicologicamente, a configuração anuncia impulsividade ampliada, veleidades contraditórias e, muito frequentemente, uma conduta sem grande determinação.",
+      "en": "with Mars conjunct Uranus in your solar-return chart, you have an indication of an accident or a sudden violent event, caused by you if either body rules the Ascendant or the configuration lies in the East, or entirely beyond your will and descending upon you like a hurricane. psychologically, the configuration announces heightened impulsiveness, contradictory inclinations and, very frequently, conduct lacking firm resolve.",
+      "keywords": {
+        "pt": [
+          "acidente ou violência",
+          "regência do Ascendente",
+          "impulsividade"
+        ],
+        "en": [
+          "accident or violence",
+          "Ascendant rulership",
+          "impulsiveness"
+        ]
+      }
+    },
+    "mars/opposition/uranus": {
+      "pt": "com Marte oposto a Urano na sua revolução solar, a interpretação de roubo ou perda de dinheiro se aplica se a oposição ocorrer nas casas financeiras, segunda e oitava. nessa condição, você sofre esse roubo ou essa perda de modo inteiramente independente da sua vontade.",
+      "en": "with Mars opposite Uranus in your solar-return chart, the interpretation of theft or loss of money applies if the opposition occurs in the financial houses, the second and eighth. under that condition, you suffer this theft or loss entirely independently of your will.",
+      "keywords": {
+        "pt": [
+          "casas financeiras",
+          "roubo",
+          "perda involuntária"
+        ],
+        "en": [
+          "financial houses",
+          "theft",
+          "involuntary loss"
+        ]
+      }
+    },
+    "mars/conjunction/neptune": {
+      "pt": "com Marte conjunto a Netuno na sua revolução solar, você tem sobretudo indicação de esforços inúteis e energia desperdiçada, configuração frequentemente observada em anos de busca de uma meta quimérica e inútil ou de trabalho que permanecerá inacabado. surgem também complicações aborrecidas e repentinas no seu convívio e, se a meta for coletiva, há sério temor de um processo, mas a indicação principal é a ação sem resultado e a decepção que substitui os resultados esperados como certos.",
+      "en": "with Mars conjunct Neptune in your solar-return chart, you chiefly have an indication of futile efforts and wasted energy, a configuration frequently observed in years spent pursuing an illusory, useless goal or doing work that will remain unfinished. troublesome sudden complications also arise among people around you and, if the goal is collective, there is serious reason to fear a lawsuit, but the main indication is fruitless action and disappointment replacing results that had been expected as certain.",
+      "keywords": {
+        "pt": [
+          "esforços inúteis",
+          "energia desperdiçada",
+          "decepção"
+        ],
+        "en": [
+          "futile efforts",
+          "wasted energy",
+          "disappointment"
+        ]
+      }
+    },
+    "mars/conjunction/pluto": {
+      "pt": "com Marte conjunto a Plutão na sua revolução solar, você tem aumento de trabalho e expansão das possibilidades materiais, frequentemente bastante inesperada, de que decorre melhora da sua situação. a ajuda de novos amigos parece característica dessa configuração, sobretudo nos mapas femininos.",
+      "en": "with Mars conjunct Pluto in your solar-return chart, you have increased work and an expansion of material possibilities, frequently quite unexpected, from which an improvement in your circumstances follows. help from new friends seems characteristic of this configuration, especially in women’s charts.",
+      "keywords": {
+        "pt": [
+          "aumento de trabalho",
+          "expansão material",
+          "novos amigos"
+        ],
+        "en": [
+          "increased work",
+          "material expansion",
+          "new friends"
+        ]
+      }
+    },
+    "jupiter/conjunction/saturn": {
+      "pt": "com Júpiter conjunto a Saturno na sua revolução solar, os assuntos da casa ocupada se estabilizam para você, num processo que dura além dos limites de uma revolução solar. se um desses planetas rege sua décima casa natal ou anual, a configuração indica consolidação favorável da sua situação.",
+      "en": "with Jupiter conjunct Saturn in your solar-return chart, the affairs of the occupied house stabilize for you in a process lasting beyond the limits of one solar return. if either planet rules your natal or annual tenth house, the configuration indicates a favorable consolidation of your circumstances.",
+      "keywords": {
+        "pt": [
+          "estabilização",
+          "duração prolongada",
+          "regência da décima casa"
+        ],
+        "en": [
+          "stabilization",
+          "extended duration",
+          "tenth-house rulership"
+        ]
+      }
+    },
+    "jupiter/conjunction/uranus": {
+      "pt": "com Júpiter conjunto a Urano na sua revolução solar, você recebe uma nova orientação, na maioria das vezes nos negócios, com impulso das circunstâncias que afeta esse ano e os seguintes; se já havia essa conjunção no nascimento, a leitura atribui a seus retornos periódicos a cada quatorze anos grandes mudanças e acontecimentos fundamentais, cuja natureza é determinada pela revolução solar, enquanto nas demais pessoas a grandeza dos acontecimentos depende unicamente da posição da conjunção no mapa anual. com muita frequência, você tem melhora da existência por novas invenções que mudam os hábitos duradouramente, como no exemplo de comprar um aparelho de televisão.",
+      "en": "with Jupiter conjunct Uranus in your solar-return chart, you receive a new direction, most often in business, with an impetus from circumstances affecting this year and those that follow; if this conjunction was already present at birth, the reading attributes major changes and fundamental events to its periodic returns every fourteen years, their nature determined by the solar return, while for other people the magnitude of events depends solely on the conjunction’s position in the annual chart. very frequently, you have an improvement in life through new inventions that change habits permanently, as in the illustration of buying a television set.",
+      "keywords": {
+        "pt": [
+          "nova orientação",
+          "efeitos duradouros",
+          "invenções"
+        ],
+        "en": [
+          "new direction",
+          "lasting effects",
+          "inventions"
+        ]
+      }
+    },
+    "jupiter/conjunction/neptune": {
+      "pt": "com Júpiter conjunto a Netuno na sua revolução solar, sua vida parece não se desenvolver como você espera e prevê, com acontecimentos inesperados, geralmente caóticos e independentes da sua vontade, nos assuntos da casa ocupada. bem-aspectada, a configuração promete a você um golpe de sorte, mas menos duradouro e menos feliz do que seria lógico esperar, como um ganho na loteria gasto muito depressa.",
+      "en": "with Jupiter conjunct Neptune in your solar-return chart, your life seems not to unfold as you expect and foresee, with unexpected developments, generally chaotic and beyond your will, in the affairs of the occupied house. well aspected, the configuration promises you a stroke of luck, but one less lasting and less happy than it would be logical to expect, such as a lottery win spent very quickly.",
+      "keywords": {
+        "pt": [
+          "desenvolvimentos inesperados",
+          "golpe de sorte",
+          "benefício passageiro"
+        ],
+        "en": [
+          "unexpected developments",
+          "stroke of luck",
+          "short-lived benefit"
+        ]
+      }
+    },
+    "jupiter/conjunction/pluto": {
+      "pt": "com Júpiter conjunto a Plutão na sua revolução solar, você tem aumento do senso religioso e a convicção interior de superar dificuldades presentes ou futuras, convicção que a leitura indica que se revelará justa. a configuração indica para você elevação ou restabelecimento.",
+      "en": "with Jupiter conjunct Pluto in your solar-return chart, you have an increased religious sense and an inner conviction that you will overcome present or future difficulties, a conviction the reading indicates will prove justified. the configuration indicates advancement or recovery for you.",
+      "keywords": {
+        "pt": [
+          "senso religioso",
+          "dificuldades superadas",
+          "elevação ou restabelecimento"
+        ],
+        "en": [
+          "religious sense",
+          "overcoming difficulties",
+          "advancement or recovery"
+        ]
+      }
+    }
+  }
+}

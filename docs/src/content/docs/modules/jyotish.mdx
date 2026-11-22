@@ -7,9 +7,9 @@ sidebar:
 
 import { LinkCard } from '@astrojs/starlight/components';
 
-Jyotish calculations are part of `kaabalah/astrology`. They return **calculation data and method metadata only**, no interpretation text. Two nakshatra frames are provided and kept independent of the tropical zodiac:
+Jyotish calculations are part of `kaabalah/astrology`. They return **calculation data and method metadata only**. Separate description getters provide the bilingual text described below. Two nakshatra frames are provided and kept independent of the tropical zodiac:
 
-- **Dhruva**: the supplied Ernst Wilhelm / Kala Dhruva method, which measures nakshatras on the **celestial equator** from a Galactic Center anchor.
+- **Dhruva**: the Ernst Wilhelm / Kala Dhruva method, which measures nakshatras on the **celestial equator** from a Galactic Center anchor.
 - **Lahiri**: the conventional Chitrapaksha sidereal comparison, which measures nakshatras on the **ecliptic**.
 
 Tropical rasis, tropical longitudes and tropical houses are reported on every point and are never changed by the selected nakshatra frame.
@@ -55,9 +55,53 @@ This is a synthetic input and the values are the real output of the script. In o
 
 `getJyotishChart(input)` takes `date` (a UT instant), `latitude`, `longitude` and optionally `nakshatraFrame` (`"dhruva"` default, or `"lahiri"`; selects which frame drives the karakas' default degree frame and the dashas), `node` (`"mean"` default or `"true"`), `yearLengthDays`, `karakaScheme` (`7` default or `8`), `karakaDegreeFrame`, `timed` (default `true`), `ephemeris` (`"swiss"` default or `"moshier"`), `strictEphemeris` (throw `SwissEphEphemerisMismatchError` if Swiss silently substitutes another ephemeris, for example Moshier outside the installed 1800-2399 files; default `false`) and `through` (exclusive end of dasha generation, default one full cycle). With `timed: false` there is no Moon, lagna, karaka or dasha. `jyotish.method` is `JYOTISH_METHODS`, and `jyotish.ephemerisUsage` (`{ requested, used, substituted, warnings }`) reports which ephemeris actually produced the positions, so a Moshier substitution is never silent.
 
+## Bilingual descriptions
+
+```typescript
+import {
+  getNakshatraDescription, getNakshatraDescriptionEntry,
+  getNakshatraPadaDescription, getNakshatraPadaDescriptionEntry,
+  getVimshottariDashaDescription, getVimshottariDashaDescriptionEntry,
+} from 'kaabalah/astrology';
+
+getNakshatraDescription('Purva_Bhadrapada', 'pt-BR');
+getNakshatraDescriptionEntry('Rohini')?.keywords.en;
+getNakshatraPadaDescription('Ashwini', 1, 'pt-BR');
+getNakshatraPadaDescriptionEntry('Ashwini', 4)?.keywords.en;
+getNakshatraPadaDescription('Revati', 4, 'pt-BR');
+getNakshatraPadaDescription('Bharani', 0); // undefined: invalid quarter
+getVimshottariDashaDescription('ketu', 'pt-BR');
+getVimshottariDashaDescriptionEntry('jupiter')?.keywords.pt;
+```
+
+All 27 nakshatras have two-sentence EN/PT reference entries describing deity
+associations and traditional electional nature. Use the canonical underscored
+`nakshatraId`, rather than the display name. These historical categories describe
+the selection of moments; they do not assign personality traits or predict events.
+The separate pada bank covers all 108 quarters as natal reference
+interpretations, including physical, health, relationship and financial themes
+with their qualifications. Each quarter has a separate entry.
+`getNakshatraPadaDescriptionEntry(nakshatraId, pada)` and its text counterpart
+accept a canonical ID and an integer quarter from 1 to 4; invalid or unwritten
+combinations return `undefined`, without falling back to a whole-nakshatra entry.
+These are natal reference descriptions, not daily Moon-event interpretations.
+The lookup does not calculate a navamsha sign or imply that Dhruva and sidereal
+coordinates are equivalent.
+
+The nine lowercase Vimshottari lord keys have general major-period descriptions:
+`ketu`, `venus`, `sun`, `moon`, `mars`, `rahu`, `jupiter`, `saturn`, `mercury`.
+Placement and aspect qualifications remain in the prose. These getters do not
+assess planetary strength or supply antardasha, major/sub-lord pair or Yogini
+interpretations.
+
+Entries and keywords are immutable. Portuguese locales start with `pt`;
+omitted and other string locales select English. Invalid keys return `undefined`.
+These lookups use the identifier already calculated in your chosen frame and do
+not recalculate positions, change frames or generate period dates.
+
 ## Dhruva method, as implemented
 
-`JYOTISH_METHODS.dhruva` is the authoritative statement. The method is a port of the user-supplied, confirmed algorithm; its constants are the supplied ones and are never calibrated against a chart (`DHRUVA_CONSTANTS`).
+`JYOTISH_METHODS.dhruva` is the authoritative statement. Its constants are fixed in `DHRUVA_CONSTANTS` and are never calibrated against a chart.
 
 | Element | Implementation |
 |---|---|
@@ -68,12 +112,12 @@ This is a synthetic input and the values are the real output of the script. In o
 | Body position | `nakPos = (planet RA of date - zeroRA) mod 360`, where the RA is the Swiss geocentric **apparent** equatorial right ascension (`SEFLG_EQUATORIAL`: true equator and equinox of date, with nutation, aberration and light-time), keeping each body's **actual ecliptic latitude** |
 | Sectors | 27 equal sectors of 40/3 degrees, `index = floor(nakPos / (40/3))`; `pada = floor(4 * elapsedFraction) + 1` (4 padas of 10/3 degrees) |
 | Lagna | RA of the tropical ASC at ecliptic latitude 0 with the true obliquity: `atan2(sin(lambda) cos(eps), cos(lambda))` |
-| Nodes | Latitude-0 node point. **Mean node is primary** (the supplied fixtures); the true node is exposed as a variant (`nodeVariants`). Ketu is the antipode of the corresponding Rahu (RA + 180, declination negated) |
+| Nodes | Latitude-0 node point. **Mean node is primary**; the true node is exposed as a variant (`nodeVariants`). Ketu is the antipode of the corresponding Rahu (RA + 180, declination negated) |
 | Dasha year | `yearLengthDays` 365.2422 by default |
 
 It is **not** ecliptic longitude minus the Lahiri ayanamsa and **not** Swiss sidereal mode 36; a mode number alone does not establish equivalent coordinates. Retaining the planet's latitude matters: Mercury, for example, gives a wrong result if its RA is replaced by a zero-latitude ecliptic projection.
 
-**Mixed mean/apparent caveat.** The Galactic Center anchor is a *mean* FK5 position of date (no nutation), while the bodies use *apparent* equatorial coordinates (with nutation, aberration, light-time). That mixture is what the supplied reference does and it is reproduced as-is; the effect is at most about 0.005 degrees. Do not "correct" one side without changing the method identity.
+**Mixed mean/apparent caveat.** The Galactic Center anchor is a *mean* FK5 position of date (no nutation), while the bodies use *apparent* equatorial coordinates (with nutation, aberration, light-time). The resulting difference is at most about 0.005 degrees. Do not "correct" one side without changing the method identity.
 
 A Dhruva point (`DhruvaPoint`) carries `nakPos`, `nakshatraIndex`, `nakshatraNumber`, `nakshatraId` (for example `Purva_Bhadrapada`), `nakshatra`, `pada`, `elapsedFraction`, `lord` (Vimshottari lord), `rightAscension`, `declination`, the tropical `longitude`/`latitude`, and `tropical` (rasi, `degreeInSign`). The chart's `origin` records the Julian day, the GC right ascension and declination of date, `zeroRightAscension` and the constants. Lower-level functions: `getDhruvaOrigin`, `dhruvaPlacementFromRightAscension`, `dhruvaPointFromBody`, `dhruvaKetuFromRahu`, `dhruvaLagnaFromAscendant`, `icrsToFk5OfDate`, `utcJdToTtJd`, `nakshatraFromPosition`.
 
@@ -119,12 +163,11 @@ d9.placements.sun.vargottama;   // false
 
 What was and was not checked, exactly as recorded in `JYOTISH_METHODS.validation`:
 
-- **Placements and dates are validated separately.** The two user-transcribed Kala fixtures reproduce **18/18** nakshatra and pada placement labels.
-- Their **first-major start dates** retain residuals of **-2.368444 days and -11.501848 days** under the supplied Moshier reference settings. The same comparison run with the production Swiss ephemeris files gives **-2.379069 days and -11.429322 days**, with identical placement labels. The two settings are recorded separately; neither is fitted.
+- **Placements and dates are validated separately.** Two Kala comparison cases reproduce **18/18** nakshatra and pada placement labels.
+- Their **first-major start dates** retain residuals of **-2.368444 days and -11.501848 days** under the Moshier comparison settings. The same comparison run with the production Swiss ephemeris files gives **-2.379069 days and -11.429322 days**, with identical placement labels. The two settings are recorded separately; neither is fitted.
 - **No constant was fitted** to remove those residuals, and **exact Kala date parity is not claimed**.
-- The source **PDFs were not inspected**.
 - **Yogini** arithmetic follows the chosen convention above and has not been matched to a Kala Yogini export.
 - The frame mathematics (GC anchor to FK5 of date) matches the Astropy-based reference to well under `1e-6` degrees on synthetic fixtures; the ephemeris difference between the Swiss files and Moshier is a separate, recorded effect.
-- The fixtures themselves are private and are not in the repository; the repository tests use synthetic inputs and independent invariants (sector and pada boundaries, RA wrap, Ketu antipode, durations, half-open boundaries).
+- Repository tests use synthetic inputs and independent invariants (sector and pada boundaries, RA wrap, Ketu antipode, durations, half-open boundaries).
 
 Pass `ephemeris: 'moshier'` to reproduce the reference Moshier settings. Do not use a mode number or a different precession formula as a substitute for the Dhruva method.

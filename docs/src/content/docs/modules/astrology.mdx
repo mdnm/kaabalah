@@ -20,7 +20,7 @@ Functions that are **pure math** (no WASM) are noted in each section.
 ## Bilingual natal descriptions
 
 The catalog contains **1580 unique bilingual entries**. Shared lookup aliases count
-as one authored entry.
+as one entry.
 
 **Available in npm version 6.18.0 and later:** the complete 431-entry catalog
 and the getters for it. The 1149 entries added afterwards (Descendant signs, signs
@@ -91,65 +91,65 @@ import {
 } from 'kaabalah/astrology';
 
 getLunarNodeDescription('north', 'pt-BR');
-getLunarNodeDescriptionEntry('south')?.src;
+getLunarNodeDescriptionEntry('south')?.keywords.en;
 getLunarNodeSignDescription('north', 'Aries', 'pt-BR');
-getLunarNodeSignDescriptionEntry('south', 'Libra')?.src;
+getLunarNodeSignDescriptionEntry('south', 'Libra')?.keywords.en;
 getLunarNodeHouseDescription('north', 1, 'pt-BR');
-getLunarNodeHouseDescriptionEntry('south', 7)?.src; // same directed axis account
+getLunarNodeHouseDescriptionEntry('south', 7)?.keywords.en; // same directed axis account
 getSectDescription('diurnal', 'pt-BR');
-getSectDescriptionEntry('nocturnal')?.src;
+getSectDescriptionEntry('nocturnal')?.keywords.en;
 getPlanetDescription('sun', 'pt-BR'); // general planetary function
-getPlanetDescriptionEntry('sun')?.src;
+getPlanetDescriptionEntry('sun')?.keywords.en;
 getRetrogradePlanetDescription('mercury', chart.planets.mercury?.longitudeSpeed, 'pt-BR');
-getRetrogradePlanetDescriptionEntry('saturn', chart.planets.saturn?.longitudeSpeed)?.src;
+getRetrogradePlanetDescriptionEntry('saturn', chart.planets.saturn?.longitudeSpeed)?.keywords.en;
 getSignDescription('Aries', 'pt-BR'); // general zodiacal qualities
-getSignDescriptionEntry('Aries')?.src;
+getSignDescriptionEntry('Aries')?.keywords.en;
 getElementDescription('fire', 'pt-BR'); // lowercase classical element key
-getElementDescriptionEntry('fire')?.src;
+getElementDescriptionEntry('fire')?.keywords.en;
 getModalityDescription('Cardinal', 'pt-BR');
-getModalityDescriptionEntry('Cardinal')?.src;
+getModalityDescriptionEntry('Cardinal')?.keywords.en;
 getPolarityDescription('positive', 'pt-BR');
-getPolarityDescriptionEntry('negative')?.src;
+getPolarityDescriptionEntry('negative')?.keywords.en;
 getAngleDescription('dc', 'pt-BR'); // general Descendant concept
-getAngleDescriptionEntry('mc')?.src;
+getAngleDescriptionEntry('mc')?.keywords.en;
 getAspectDescription('opposition', 'pt-BR'); // general tension between planets
-getAspectDescriptionEntry('duodecile')?.src; // semisextile concept
+getAspectDescriptionEntry('duodecile')?.keywords.en; // semisextile concept
 getPointDescription('parsFortunae', 'pt-BR'); // Part of Fortune concept
-getPointDescriptionEntry('parsFortunae')?.src;
+getPointDescriptionEntry('parsFortunae')?.keywords.en;
 getPointDescription('chiron', 'pt-BR'); // general Chiron concept
-getPointDescriptionEntry('chiron')?.src;
+getPointDescriptionEntry('chiron')?.keywords.en;
 getPointDescription('lilith mean', 'pt-BR');
-getPointDescriptionEntry('lilith true')?.src; // same shared Lilith concept
+getPointDescriptionEntry('lilith true')?.keywords.en; // same shared Lilith concept
 getPointSignDescription('lilith true', 'Taurus', 'pt-BR');
-getPointSignDescriptionEntry('lilith mean', 'Taurus')?.src; // same Taurus interpretation
+getPointSignDescriptionEntry('lilith mean', 'Taurus')?.keywords.en; // same Taurus interpretation
 getPointSignDescription('chiron', 'Aries', 'pt-BR');
-getPointHouseDescription('chiron', 1, 'pt-BR'); // same source profile as Chiron/Aries
+getPointHouseDescription('chiron', 1, 'pt-BR'); // same entry as Chiron/Aries
 getPointSignDescription('parsFortunae', 'Aries', 'pt-BR');
-getPointSignDescriptionEntry('parsFortunae', 'Aries')?.src;
+getPointSignDescriptionEntry('parsFortunae', 'Aries')?.keywords.en;
 getPointHouseDescription('parsFortunae', 9, 'pt-BR');
-getPointHouseDescriptionEntry('parsFortunae', 9)?.src;
+getPointHouseDescriptionEntry('parsFortunae', 9)?.keywords.en;
 
 getPlanetSignDescription('sun', 'Aries');          // English (default)
 getPlanetSignDescription('sun', 'Aries', 'pt-BR'); // Portuguese
 const entry = getPlanetSignDescriptionEntry('sun', 'Aries');
-entry?.keywords.pt; // source-supported Portuguese keywords
-entry?.src;         // course-relative files and inclusive line ranges
-entry?.reviewNotes; // retained source disagreements or OCR decisions
+entry?.keywords.pt; // Portuguese keywords
+entry?.en;          // English text
+entry?.pt;          // Portuguese text
 
 getPlanetHouseDescription('sun', 2, 'pt-BR'); // one-based chart house number
-getPlanetHouseDescriptionEntry('sun', 2)?.src;
+getPlanetHouseDescriptionEntry('sun', 2)?.keywords.en;
 
 getHouseDescription(4, 'pt-BR'); // numbered house theme
-getHouseDescriptionEntry(4)?.src;
+getHouseDescriptionEntry(4)?.keywords.en;
 
 getAngleSignDescription('ascendant', 'Aries', 'pt-BR');
-getAngleSignDescriptionEntry('ascendant', 'Aries')?.src;
+getAngleSignDescriptionEntry('ascendant', 'Aries')?.keywords.en;
 getAngleSignDescription('mc', 'Taurus'); // actual Midheaven sign
 getAngleSignDescription('ic', 'Cancer', 'pt-BR'); // actual Imum Coeli sign
 getAngleSignDescription('dc', 'Libra', 'pt-BR'); // actual Descendant sign
 
 getHouseCuspSignDescription(2, 'Taurus', 'pt-BR'); // sign on a numbered house cusp
-getHouseCuspSignDescriptionEntry(2, 'Taurus')?.src;
+getHouseCuspSignDescriptionEntry(2, 'Taurus')?.keywords.en;
 
 const speed = chart.planets.mars?.longitudeSpeed;
 getRetrogradePlanetSignDescription('mars', 'Leo', speed, 'pt-BR');
@@ -160,7 +160,7 @@ getPointHouseDescription('vertex', 5, 'pt-BR'); // houses 4-9 only
 getVertexContactDescription('venus', 'pt-BR'); // planet in contact with the Vertex
 
 getAspectPairDescription('trine', 'moon', 'sun', 'pt-BR'); // either planet order
-getAspectPairDescriptionEntry('square', 'sun', 'moon')?.src;
+getAspectPairDescriptionEntry('square', 'sun', 'moon')?.keywords.en;
 
 getSunAscendantDescription('Taurus', 'Aries', 'pt-BR'); // Sun sign, then Ascendant sign
 
@@ -181,18 +181,17 @@ North Node calculation modes. BirthChart has no dedicated stored South Node;
 the existing points adapter can expose derived south-node points. These pure
 role lookups do not derive positions or equate the two calculation modes.
 Node-sign lookups take the actual sign for the specified role. North and South
-have independent authored profiles; one is not inferred from the other’s sign.
-Node-house lookups reuse 12 source-declared directed axes through 24 role/house
+have independent profiles; one is not inferred from the other’s sign.
+Node-house lookups reuse 12 directed axes through 24 role/house
 queries. North house 1 and South house 7 return the same joint account; North
-house 7 describes the opposite developmental direction. This is source aliasing,
+house 7 describes the opposite developmental direction. These are lookup aliases,
 not a calculation of a missing position. Houses require integer numbers 1–12.
 
 Sect descriptions accept an already determined `diurnal` or `nocturnal` value,
 such as `chart.sect`. They describe the physical-horizon distinction and retain
-the profection context of the source’s Sun/Moon sect-light association. They do
-not calculate sect from houses or add timing interpretations. The source does
-not specify equality at the horizon; the existing calculation’s exact-horizon
-`nocturnal` convention remains unchanged.
+the profection context of the Sun/Moon sect-light association. They do
+not calculate sect from houses or add timing interpretations. The calculation
+treats the exact horizon as `nocturnal`.
 
 Retrograde profiles cover Mercury through Pluto. Pass the planet’s available
 `longitudeSpeed`; only a finite negative number selects a natal retrograde profile.
@@ -213,9 +212,9 @@ They describe the manner of expression associated with that placement.
 Fortune-house profiles describe the field of experience and use integer house
 numbers from 1 to 12, independently of the sign lookup.
 The Chiron concept uses `chiron`, matching `chart.planets.chiron`. It describes
-the wounded-healer image and its symbolic themes. Chiron placements reuse 12 joint sign-or-house source accounts through 24 lookup
+the wounded-healer image and its symbolic themes. Chiron placements reuse 12 joint sign-or-house accounts through 24 lookup
 aliases. Each corresponding sign/house query returns the same frozen entry,
-independent of the general concept. This source-specific aliasing does not equate
+independent of the general concept. This aliasing does not equate
 signs with houses across astrology or create a 144-combination grid.
 The Lilith concept accepts `lilith mean` and `lilith true`, matching the two
 chart planet keys. Both return one frozen interpretation entry; their calculated
@@ -227,40 +226,40 @@ These point getters do not use general sign or planet profiles as fallbacks.
 
 These getters are pure JSON lookups and require no WebAssembly initialization.
 
-Authored coverage: 12 directed lunar-node house-axis accounts, 24 lunar-node sign profiles, 2 lunar-node concepts, 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
+Coverage: 12 directed lunar-node house-axis accounts, 24 lunar-node sign profiles, 2 lunar-node concepts, 2 sect concepts, 8 natal retrograde planet profiles, 10 basic planet profiles, 12 basic sign profiles, 4 classical element profiles, 3 modality profiles, 2 polarity profiles, 4 general angle profiles, 9 aspect-type profiles, 1 Part of Fortune concept, 1 Chiron concept, 1 shared Lilith concept, 12 shared Lilith-sign profiles, 12 shared Chiron placement profiles, 12 Fortune-sign profiles, 12 Fortune-house profiles, 120 planet-sign entries, 120 planet-house entries, 12 numbered house themes
 and 36 angle-sign entries: 12 each for Ascendant, Midheaven (MC) and Imum Coeli (IC).
 Missing combinations and unsupported keys return `undefined`, with no generic profile
 fallback. Planet keys use lowercase chart names, signs use title case, and house
-arguments are integer numbers from 1 to 12 (strings are not coerced). Entries,
-keywords and source metadata are deeply frozen. Portuguese is selected when
+arguments are integer numbers from 1 to 12 (strings are not coerced). Entries
+and keywords are deeply frozen. Portuguese is selected when
 `language?.startsWith('pt')`; other languages use English.
 
 General planet profiles describe each planet's function in a chart. General sign
 profiles describe zodiacal qualities as potential expressions within a chart.
 Element keys are `fire`, `earth`, `air` and `water`, matching `TriplicityElement`.
-Temperament labels follow class notes: sanguine for fire, choleric for earth,
+Temperament labels are sanguine for fire, choleric for earth,
 phlegmatic for air and melancholic for water.
 Modality keys follow `MODALITIES`: `Cardinal`, `Fixed` and `Mutable`.
 Polarity keys are `positive` and `negative`, describing symbolic activity and
 receptivity. These definitions do not classify individual signs or determine chart sect.
 Planet placements describe general tendencies, read with the other factors in a natal chart.
-The course explicitly qualifies its sign profiles this way (class notes, lines 531-535).
 They do not assign a person's evolutionary level or promise outcomes.
 Numbered house themes describe domains of life. House numbers and angles have
 distinct chart fields. Angle lookups use `ascendant`, `mc`, `ic` and `dc`,
-independently of house cusps. All four general angle concepts are authored.
-Angle-sign placements are authored for all four angles.
+independently of house cusps. All four general angle concepts and their sign placements are available.
 
 Signs on house cusps (`getHouseCuspSignDescription`) are a separate table from the
 angle signs: a house 10 cusp is not the Midheaven in every house system. 139 of the
-144 combinations are all authored. Most rest on a supplementary keyword sheet and are a
-single short sentence.
+144 combinations are available, mostly as a single short sentence.
 
 Retrograde placements take the same `longitudeSpeed` guard as the general retrograde
-profiles. All eight planets have the twelve houses. Signs are complete for Mercury
-through Saturn; the source covers Uranus only from Aries to Sagittarius, Neptune
-from Leo to Sagittarius and Pluto from Cancer to Scorpio, and the rest return
-`undefined`.
+profiles. All eight planets from Mercury through Pluto have all twelve natal
+signs and all twelve natal houses: 96 sign entries and 96 house entries, alongside
+eight general natal profiles. Outer-planet sign themes describe a shared
+generational context; the natal house and aspects supply personal context.
+Unsupported bodies or invalid keys return `undefined` without fallback. These
+lookups use natal placements; the sky-retrograde lookups below use current
+transiting placements.
 
 Vertex lookups use the point getters with `vertex` and `antivertex`, plus
 `getVertexContactDescription`. They cover the two concepts, the Vertex in houses 4 to 9 and planet
@@ -272,22 +271,510 @@ in reverse: house N returns the account of the Nth sign.
 
 Planet-pair aspects cover conjunction, sextile, square, trine, quincunx and
 opposition between the ten planets: 256 of the 270 combinations. Each entry is the
-theme the source repeats across its per-sign accounts of that pair. Pairs the
-source does not treat return `undefined`, with no fallback to the general aspect
+shared theme for that pair. Unsupported pairs return `undefined`, with no fallback to the general aspect
 concept.
 
 Sun with Ascendant covers the 144 ordered combinations and is separate from the
 twelve standalone Ascendant profiles.
 
 Symbolic degrees are the 360 degree images (monomers), usually two per degree. The
-text states the image and adds a meaning only where the source gives one.
-`getSymbolicDegreeNumber(longitude)` applies the course rule: 18°00′ is the 18th
+text states the image and its associated meaning where available.
+`getSymbolicDegreeNumber(longitude)` uses the following boundary rule: 18°00′ is the 18th
 degree and anything above it up to 19°00′ is the 19th, so an exact sign boundary
 belongs to the 30th degree of the previous sign.
 
 Dignity statuses describe domicile, exaltation, detriment and fall as concepts;
 `getEssentialDignity` still decides which planet holds which status. Decan profiles
 are keyed by sign and decan number and use the same Chaldean rulers as `getDecan`.
+
+## Bilingual timing descriptions
+
+Timing descriptions use a separate immutable bank, `ASTROLOGY_TIMING_DESCRIPTIONS`.
+It includes current-period themes and separate traditional natal reference entries.
+Each text getter has an `Entry` counterpart
+returning `{ pt, en, keywords, src, reviewNotes }`; the last two fields are empty
+compatibility arrays. English is the
+default; a case-sensitive `pt` locale prefix selects Portuguese.
+
+```typescript
+import {
+  getTransitPlanetDescription,
+  getTransitAspectDescription,
+  getSkyRetrogradePlanetDescription,
+  getSkyRetrogradeSignDescription,
+  getMoonPhaseDescription,
+  getDailyMoonSignDescription,
+  getSignIngressDescription,
+  getLunationSignDescription,
+  getNakshatraDescription,
+  getNakshatraPadaDescription,
+  getVimshottariDashaDescription,
+  getSeasonalFestivalDescription,
+  getSeasonalPointDescription,
+  getDayRulerDescription,
+  getPlanetaryHourRulerDescription,
+  getTimingTechniqueDescription,
+  getFirdariaMajorPeriodDescription,
+  getFirdariaSubPeriodDescription,
+  getFirdariaRelationshipDescription,
+  getFirdariaPairDescription,
+  getSolarReturnPlanetHouseDescription,
+  getSolarReturnAspectDescription,
+  getSolarReturnNatalAspectDescription,
+  getSolarReturnNatalSignDescription,
+  getSolarReturnAphorismDescription,
+  getSolarReturnMcHouseDescription,
+} from 'kaabalah/astrology';
+
+getTransitPlanetDescription('saturn', 'pt-BR');
+getTransitAspectDescription('saturn', 'square', 'sun', 'pt-BR'); // transit Saturn to natal Sun
+getTransitAspectDescription('sun', 'square', 'saturn'); // directed lookup: transit Sun to natal Saturn
+getTransitAspectDescription('sun', 'quincunx', 'saturn'); // undefined: unsupported aspect
+getSkyRetrogradePlanetDescription('mercury', -0.1, 'pt-BR');
+getSkyRetrogradeSignDescription('mercury', 'Aries', -0.1, 'pt-BR');
+getMoonPhaseDescription('full', 'pt-BR');
+getDailyMoonSignDescription('Taurus', 'pt-BR');
+getSignIngressDescription('Aries', 'pt-BR'); // destination-sign themes
+getLunationSignDescription('new', 'Aries', 'pt-BR');
+getLunationSignDescription('full', 'Aries', 'pt-BR'); // Moon in Aries, Sun opposite
+getNakshatraDescription('Purva_Bhadrapada', 'pt-BR');
+getNakshatraPadaDescription('Ashwini', 3, 'pt-BR'); // natal reference theme
+getNakshatraPadaDescription('Bharani', 1); // natal reference for the specified quarter
+getNakshatraPadaDescription('Ashwini', 0); // undefined: invalid quarter
+getVimshottariDashaDescription('ketu', 'pt-BR');
+getSeasonalFestivalDescription('yule', 'pt-BR');
+getSeasonalPointDescription('june-solstice', 'south', 'pt-BR'); // Yule
+getDayRulerDescription('Sun', 'pt-BR');
+getPlanetaryHourRulerDescription('Mercury', 'pt-BR');
+getTimingTechniqueDescription('monthly-profection', 'pt-BR');
+getTimingTechniqueDescription('firdaria', 'pt-BR');
+getFirdariaMajorPeriodDescription('NorthNode', 'pt-BR');
+getFirdariaSubPeriodDescription('Jupiter', 'pt-BR');
+getFirdariaRelationshipDescription('pt-BR');
+getFirdariaPairDescription('Venus', 'Mercury', 'pt-BR');
+getFirdariaPairDescription('Mercury', 'Venus'); // reversed roles select a different entry
+getFirdariaPairDescription('NorthNode', 'Jupiter'); // undefined: unsupported node pair
+getSolarReturnPlanetHouseDescription('sun', 6, 'pt-BR');
+getSolarReturnPlanetHouseDescription('moon', 12, 'pt-BR');
+getSolarReturnPlanetHouseDescription('mercury', 6, 'pt-BR');
+getSolarReturnPlanetHouseDescription('pluto', 12);
+getSolarReturnPlanetHouseDescription('mercury', 0); // undefined: invalid annual house
+getSolarReturnAspectDescription('conjunction', 'sun', 'mars', 'pt-BR');
+getSolarReturnAspectDescription('conjunction', 'mars', 'sun'); // same within-return pair
+getSolarReturnAspectDescription('trine', 'sun', 'mars'); // undefined: unsupported combination
+getSolarReturnNatalAspectDescription('saturn', 'conjunction', 'mars', 'pt-BR');
+getSolarReturnNatalAspectDescription('mars', 'conjunction', 'saturn'); // undefined: different chart roles
+getSolarReturnNatalAspectDescription('ascendant', 'conjunction', 'moon');
+getSolarReturnNatalSignDescription('saturn', 'moon', 'pt-BR');
+getSolarReturnNatalSignDescription('moon', 'saturn'); // reversed roles select a different entry
+getSolarReturnNatalSignDescription('moon', 'moon'); // same sign at birth and return
+getSolarReturnNatalSignDescription('saturn', 'mars'); // undefined: unsupported sign pair
+getSolarReturnAphorismDescription('ascendant-in-natal-jupiter-house', 'pt-BR');
+getSolarReturnAphorismDescription('natal-tenth-sign-in-return-house-7');
+getSolarReturnAphorismDescription('natal-fortune-sign-in-return-house-12');
+getSolarReturnAphorismDescription('return-second-ruler-in-first-financial-situation', 'pt-BR');
+getSolarReturnMcHouseDescription(10); // profession, occupation, fame or fortune
+```
+
+| Lookup | Coverage |
+| --- | --- |
+| `getTransitPlanetDescription` | Sun through Pluto, lowercase chart keys |
+| `getTransitAspectDescription` | All ten transiting planets × five major aspects × all ten natal planets (500 directed profiles); lowercase keys |
+| `getProgressedHouseDescription` | Secondary progressed `sun` and `moon`, each in natal houses 1–12 (24 profiles) |
+| `getProfectionHouseDescription` | All twelve computed profected houses; period-neutral focus themes |
+| `getSolarReturnAscendantHouseDescription` | Solar-return Ascendant in natal houses 1–12; annual interpretations |
+| `getSolarReturnMcHouseDescription` | Solar-return MC in natal houses 1–12; twelve annual situation interpretations |
+| `getSolarReturnPlanetHouseDescription` | All ten return planets, `sun` through `pluto`, each in all twelve annual houses (120 profiles); other bodies absent |
+| `getSolarReturnAspectDescription` | 37 conjunctions and four oppositions between planets in the same return chart; either planet order |
+| `getSolarReturnNatalAspectDescription` | Six directed return-point/natal-planet conjunctions: Saturn→Mars, Uranus→Venus, Neptune→Jupiter, annual Ascendant→Moon/Neptune/Mars |
+| `getSolarReturnNatalSignDescription` | 36 directed annual-planet/natal-planet sign placements: Saturn 6, Jupiter/Mars/Venus/Moon 7 each, Mercury 2; Sun and outer-planet pairs absent |
+| `getSolarReturnAphorismDescription` | 131 conditional references, including Ascendant rules, natal-tenth-sign and natal-Fortune-sign grids, and four annual-rulership examples |
+| `getSkyRetrogradePlanetDescription` | Mercury through Pluto; a finite numeric negative longitude speed is required |
+| `getSkyRetrogradeSignDescription` | Mercury through Pluto × twelve current sky signs (96 profiles); finite negative longitude speed required |
+| `getMoonPhaseDescription` | All eight `MoonPhaseName` values |
+| `getDailyMoonSignDescription` | All twelve title-case zodiac signs, `Aries` through `Pisces` |
+| `getSignIngressDescription` | All twelve destination signs, `Aries` through `Pisces` |
+| `getLunationSignDescription` | `new` and `full`, each with all twelve Moon signs |
+| `getNakshatraDescription` | All 27 canonical underscored `NakshatraId` keys; deity and electional nature |
+| `getNakshatraPadaDescription` | All 27 canonical `NakshatraId` keys × integer quarters 1–4 (108 natal reference entries) |
+| `getVimshottariDashaDescription` | All nine lowercase `VimshottariLord` keys; major-period themes |
+| `getSeasonalFestivalDescription` | `samhain`, `yule`, `imbolc`, `ostara`, `beltane`, `litha`, `lammas`, `mabon` |
+| `getSeasonalPointDescription` | All eight `SeasonalPointId` values, with an explicit `north` or `south` hemisphere |
+| `getDayRulerDescription`, `getPlanetaryHourRulerDescription` | The seven title-case `PlanetaryHourRuler` names |
+| `getTimingTechniqueDescription` | `annual-profection`, `monthly-profection`, `solar-return`, `lunar-return`, `jupiter-return`, `saturn-return`, `nodal-return`, `firdaria` |
+| `getFirdariaMajorPeriodDescription` | The nine `FirdariaPlanet` keys, including `NorthNode` and `SouthNode` |
+| `getFirdariaSubPeriodDescription` | `Sun`, `Moon`, `Mercury`, `Venus`, `Mars`, `Jupiter`, `Saturn` |
+| `getFirdariaRelationshipDescription` | The general major-period/sub-period relationship |
+| `getFirdariaPairDescription` | All seven classical major lords × seven classical sub-lords (49 directed modern profiles); node combinations absent |
+
+`getSkyRetrogradeSignDescriptionEntry(planet, sign, longitudeSpeed)` returns an
+immutable bilingual entry with keywords. Its text counterpart is
+`getSkyRetrogradeSignDescription(planet, sign, longitudeSpeed, language?)`.
+Coverage is all eight planets from Mercury through Pluto in all twelve signs.
+The planet key is lowercase; the sign is the canonical English name, such as
+`Aries` or `Taurus`.
+
+Supply the **transiting planet's current sign** and its computed longitude speed.
+For example, Mercury retrograde in Taurus selects `mercury/Taurus`. The sign
+argument does not select the person's natal Sun or Ascendant. A missing,
+nonfinite, zero or positive speed returns `undefined`, as do unsupported planets,
+sign aliases and invalid runtime keys. There is no natal-placement, whole-planet
+or reversed-key fallback. Portuguese locales begin with `pt`; English is the
+default. The lookup does not calculate positions, retrograde dates or chart
+contacts. These period descriptions include sign-specific themes, possible
+difficulties and qualifications.
+
+The general transit, day-ruler and hour-ruler descriptions adapt planetary
+symbolism to their timing roles. A particular planet/aspect/natal-target reading
+is a separate lookup. Descriptions retain their astrological meanings
+and qualifications; a lookup returns text without assessing chart conditions.
+
+The separate directional transit-aspect bank contains 500 profiles: all ten
+transiting planets (Sun through Pluto), each through conjunction, sextile,
+square, trine and opposition to all ten natal planets. Each direction has its own entry; fast-planet profiles do not imply the duration of slow transits.
+The outer-planet targets retain collective context in their themes.
+Arguments are the **transiting planet**, aspect and **natal planet**, in that order.
+These two-sentence EN/PT themes describe the transit roles, aspect
+qualities and the natal target’s symbolism. The lookup does not calculate exact dates or
+assess natal conditions; qualifications remain in the text. Other aspects and
+unsupported triples return `undefined`;
+there is no reverse-direction or natal aspect-pair fallback.
+
+`getProgressedHouseDescriptionEntry(progressedPlanet, natalHouse)` returns an
+immutable bilingual entry with keywords;
+`getProgressedHouseDescription(progressedPlanet, natalHouse, language?)` returns
+the text (Portuguese for `pt*`, English by default). Coverage is the
+secondary progressed Sun and Moon through all twelve **natal** houses. The caller
+supplies the body and the integer house number from its computed placement;
+the lookup does not calculate a progression or locate a body among house cusps.
+Do not substitute the progressed chart's own house number for a natal-house
+placement. Other bodies, invalid house numbers and unsupported keys return
+`undefined` without coercion or a natal/transit/profection fallback.
+
+These describe progressed-body roles and house topics. The Sun
+specifies that a house ingress alone does not
+indicate a notable occurrence. Moon descriptions include physical, emotional and
+situational changes and potential new events, with favorable or adverse character
+depending on the natal Moon, house ruler and aspects. Those conditions are stated
+in the prose, not assessed by the lookup. No fixed duration, ingress date or
+progressed aspect-pair interpretation is calculated. These are secondary
+progressions, not solar arcs or progressed solar-return charts.
+
+The Moon bank covers all eight phases with their cycle symbolism.
+Bodily, relationship, ritual and event interpretations retain
+their qualifications; intermediate-phase cycle adaptations remain distinct from
+claims about a person born under that phase. Phase selection keeps the library's
+centered 45-degree sectors; description lookup does not classify a phase or
+change its angular boundaries. The daily Moon-sign bank covers all twelve signs with two-sentence
+interpretations and bilingual keywords. Its transit interpretations
+retain waxing/waning and other qualifications in the prose; the sign-only lookup
+does not assess those conditions. No natal or neighboring profile fills a gap.
+
+Sign-ingress descriptions provide two sentences and bilingual keywords for the
+destination sign. Pass the sign being entered, including on a retrograde re-entry.
+They describe general sign symbolism. The entering
+planet and its aspects need to be considered separately; these entries supply
+no planet-by-sign interpretation or ingress date calculation.
+
+Lunation-sign descriptions combine new/full Moon themes with the Moon's sign.
+Use the **Moon's** sign for both phases; at a full Moon the Sun is opposite it.
+Each pair has two sentences and bilingual keywords describing phase and sign
+symbolism. Individual chart conditions must be assessed separately.
+Other phase keys return `undefined`; no lunation date is calculated by the lookup.
+
+Nakshatra entries describe traditional deity associations and electional categories.
+They do not assign natal personality traits. The separate pada bank contains all
+108 quarters as natal reference descriptions, including physical,
+health, relationship, financial and other interpretations with their
+qualifications. Each quarter has its own
+entry. Invalid IDs or quarters return `undefined`, without a whole-nakshatra
+fallback. The bank does not predict daily Moon events, determine navamsha signs
+or equate Dhruva with sidereal coordinates.
+Vimshottari profiles describe the major-period lord and retain conditions about
+placement and aspects in the prose. The lookup does not assess those conditions
+or interpret an antardasha, major/sub-lord pair or Yogini period. These banks use
+already calculated identifiers and leave the selected coordinate frame unchanged.
+
+Seasonal-point lookup associates an astronomical point with seasonal festival
+symbolism for the supplied hemisphere. It does not calculate a festival date or
+equate a fixed civil-calendar celebration with an exact longitude crossing.
+The northern and southern associations are six months apart.
+
+Day and hour getters accept the ruler already computed by `getPlanetaryHours`.
+They keep its standard weekday rulers and unequal sunrise-based hours; the
+description lookup performs no date, location, sunrise or hour calculation.
+
+Technique introductions explain the method without interpreting an individual
+chart. Annual profection uses the whole-sign convention;
+monthly prose follows one sign per month without asserting equal day counts
+(`getMonthlyProfections` uses calendar-month anniversaries). Lunar-return prose
+refers to the Moon returning to its natal longitude. A return-instant finder
+does not calculate or interpret a return chart merely by returning that instant.
+Jupiter, Saturn and nodal return introductions describe approximate cycle lengths
+and interpretive themes. A nodal return refers to the north node returning to its
+natal longitude, using the same mean/true-node convention as the calculation.
+The description getters do not calculate return dates or select a unique pass.
+
+`getProfectionHouseDescriptionEntry(house)` returns one of twelve immutable
+profected-house focus entries, with bilingual text and keywords.
+`getProfectionHouseDescription(house, language?)` returns the localized text
+(Portuguese for `pt*`, English by default). Pass the numerical house already
+computed by the profection method, for example `getProfectionForAge(chart, age).house`.
+Only integer numbers from 1 through 12 are accepted; invalid inputs return
+`undefined` without coercion or fallback.
+
+These combine the profection activation method with house topics, rather than
+claiming a traditional twelve-house event dictionary. Bodily, relationship,
+birth/death/rebirth and difficult house domains remain part of those topics.
+Read the period ruler's natal condition, placement and aspects separately; the
+lookup does not assess them, calculate dates or houses, or interpret a sign/lord
+combination. These entries do not establish a daily profection method.
+
+`getSolarReturnAscendantHouseDescriptionEntry(natalHouse)` returns one of twelve
+immutable bilingual entries with keywords;
+`getSolarReturnAscendantHouseDescription(natalHouse, language?)` returns its text
+(Portuguese for `pt*`, English by default). Supply the already computed **natal**
+house containing the **solar-return Ascendant**. This is a directed overlay;
+the natal Ascendant in a return-chart house is a different placement. The lookup
+does not compute a return chart, choose a return location, locate an Ascendant
+among cusps or equate the tenth house with the MC. Only integer numbers 1–12 are
+accepted; invalid values return `undefined` without coercion or fallback.
+
+These describe annual Ascendant placements with their favorable and
+adverse branches, including health, mortality, reproductive, relationship,
+financial and other event interpretations. Their chart
+conditions remain explicit. Read both charts as a whole; the lookup does not
+assess those conditions or interpret a return-planet/natal-planet aspect.
+
+`getSolarReturnMcHouseDescriptionEntry(natalHouse)` returns an immutable
+bilingual entry with keywords, and
+`getSolarReturnMcHouseDescription(natalHouse, language?)` returns the text
+(Portuguese for `pt*`, English by default). Supply the already computed natal
+house containing the solar-return MC longitude. Coverage is houses **1–12**.
+The tenth-house entry describes the MC returning to its natal position. The lookup does not calculate exact angular
+coincidence or equate the MC with the tenth cusp across house systems.
+
+These twelve interpretations concern social and occupational circumstances,
+including favorable opportunities, dependence, financial outcomes, mortality
+affecting business and professional difficulties. Their conditions
+and contrasting outcomes remain in the prose; the lookup does not assess them.
+This is return MC in natal houses, distinct from natal MC
+in return houses, the return chart's own tenth house, and the return Ascendant
+overlay. Only integer numbers 1–12 are valid inputs; unsupported and invalid
+queries remain `undefined`, without coercion or another bank's fallback.
+No return place, chart, cusp placement, date, aspect or angle tolerance is computed.
+
+`getSolarReturnPlanetHouseDescriptionEntry(planet, annualHouse)` returns an
+immutable bilingual entry with keywords;
+`getSolarReturnPlanetHouseDescription(planet, annualHouse, language?)` returns
+the text (Portuguese for `pt*`, English by default). Use a lowercase planet key
+and its already computed house in the **solar-return chart itself**. Current
+coverage is all ten planets — `sun`, `moon`, `mercury`, `venus`, `mars`, `jupiter`,
+`saturn`, `uranus`, `neptune` and `pluto` — each in **all twelve annual houses**
+(120 bilingual profiles). Other bodies remain unsupported and return `undefined`. Invalid keys,
+non-numeric or non-integer houses and out-of-range values also return
+`undefined`, without coercion or a natal, transit, progression or overlay fallback.
+
+These describe annual planet placements, including favorable and adverse
+outcomes, bodily and mortality interpretations, and their rulership, aspect and
+whole-chart qualifications. The fifth house's focus changes according to the
+houses ruled by the Sun. The sixth and twelfth entries include bodily and mortality interpretations;
+Moon entries retain their aspect, sign, gender and rulership qualifications. The lookup does not identify ruled houses or assess
+aspects and condition. A return planet's annual-house placement is distinct from its
+placement in natal houses or a natal planet in return houses. This lookup does not
+compute a chart, place, date or cusp placement, equate annual house 10 with an MC
+conjunction, or describe a progressed chart or return-to-natal planetary aspect.
+
+The method weighs signs, aspects, rulership and the whole chart, with
+annual-to-natal house overlays taking precedence over isolated annual-house
+indications. The Sun’s fixed return sign is not reweighed for zodiacal strength
+or weakness in this method. Mercury is described as acting more through rulership and aspects
+than through its occupied house. The interpretations treat Mercury or Venus
+conjunct the Sun as reinforcing the occupied annual house; the lookup does not
+calculate this condition.
+
+The interpretations associate Venus with intimate happiness, especially in men’s charts,
+and a pleasant influence in its house, with jealousy in Scorpio; Mars acts rapidly
+through strong anger or desire and signifies the lover in women’s charts. Jupiter
+brings some luck or happiness to its annual house; the interpretations describe an
+increased benefic influence when it was weak natally in Gemini, Virgo or Capricorn,
+is strong at the return and adversely aspects its natal position. Saturn usually
+signifies a burden lasting through the year, requiring attention to aspects,
+rulership and natal links; Uranus more often acts through a sudden, brief event,
+while Neptune acts more inwardly and psychically. Pluto’s
+meanings are approximate and still developing;
+the lookup does not determine whether their conditions hold.
+
+`getSolarReturnAspectDescriptionEntry(aspect, planetA, planetB)` returns an
+immutable bilingual entry for an aspect **between two planets in the same
+solar-return chart**. `getSolarReturnAspectDescription(aspect, planetA, planetB,
+language?)` returns its text. The ten lowercase planet keys are accepted in either
+order; the stored pair uses Sun-through-Pluto order. This normalization applies
+only to this within-return lookup. Identical bodies, unsupported bodies/aspects,
+non-string inputs and unsupported combinations return `undefined`, without natal,
+transit or general-aspect fallback.
+
+Coverage is deliberately sparse: **37 conjunctions and four oppositions**. The
+conjunctions are Sun with Moon and Mars–Pluto; Moon with Mercury–Pluto; Mercury
+with Venus–Pluto; Venus with Mars–Pluto; Mars with Jupiter–Pluto; and Jupiter with
+Saturn–Pluto. The oppositions are Moon–Mercury, Mercury–Mars, Mars–Saturn and
+Mars–Uranus. The last retains the specific financial second/eighth-house condition
+for theft or involuntary money loss. A comparison with Venus–Mars opposition does
+not establish a separate opposition entry; other unlisted combinations remain
+absent. Sign, house, rulership, natal-aspect, annual-aspect and other conditions
+remain in the interpretations, including favorable/adverse health, relationship,
+sexual, financial and event branches. The lookup does not decide whether those
+conditions hold.
+
+The aspect method describes at most 8° for the luminaries in applying
+conjunctions/oppositions and 6° for other planets, with tighter aspects more
+tangible. Separating aspects usually concern something preceding the birthday,
+with only an appearance of realization during the coming year. These are textual
+interpretation conventions; these getters do not select an orb policy, measure aspects,
+compute applying/separating motion or change the calculator. The descriptions also
+associate adverse Uranus–Ascendant aspects with electrical accidents, their
+severity proportional to Uranus’s strength; this general angular clause does not
+identify an individual aspect/pair entry in the planet-only bank.
+
+`getSolarReturnNatalAspectDescriptionEntry(returnPoint, aspect, natalPlanet)` and
+`getSolarReturnNatalAspectDescription(returnPoint, aspect, natalPlanet, language?)`
+are a **separate directed lookup**. The first point belongs to the computed return
+chart and the final planet belongs to the natal chart. Reversing their roles does
+not return the same entry. The return-point type accepts the ten planets plus
+`ascendant` and `mc`; the natal target is one of the ten planets. Current coverage
+is only the six conjunctions in the table above; MC contacts, other pairs and other
+aspects remain `undefined`. It does not infer a contact from an annual/natal house
+number, choose an angular tolerance, or fall back to within-return or transit text.
+
+The descriptions read these contacts through planet nature and both charts’ house
+overlays, giving special prominence to annual Ascendant/MC contacts while still
+prioritizing configurations within the annual chart. Check the
+annual placement of the natal planet contacted. Conditions and examples
+remain explicit: the annual Ascendant–natal Mars reading retains sixth/twelfth
+rulership without specifying which chart supplies those ruled houses; the
+Neptune–Jupiter entry marks its family/recovery/maternal-mortality example as a
+specific chart illustration, alongside the general worry and diminished-optimism
+reading. Changes in annual dignity can improve or aggravate natal indications;
+natal-aspect repetition alone does not guarantee a favorable or unfavorable year.
+Birthday retrogradation is described as prolonging an existing state or obstacles,
+with interpretation subordinate to houses. These lookups assess none of those
+conditions, compute no chart/date and do not describe progressed aspects.
+
+`getSolarReturnNatalSignDescriptionEntry(returnPlanet, natalPlanet)` returns an
+immutable bilingual entry for a return planet occupying **the zodiac sign that
+the natal planet occupied at birth**. `getSolarReturnNatalSignDescription(
+returnPlanet, natalPlanet, language?)` returns its text. Verify the sign placement
+in the two computed charts before calling it. Both IDs use lowercase planet keys;
+no chart, sign comparison, ingress date, exact conjunction or orb is calculated.
+The pair is directed. A same-body key means the planet occupies its natal sign
+at the return, without asserting an exact return to its natal degree.
+
+The 36 available pairs comprise Saturn with natal Saturn, Jupiter, Sun, Venus,
+Mercury and Moon; Jupiter, Mars, Venus and Moon each with all seven classical
+natal planets; and Mercury with natal Jupiter and Mars. Annual Sun pairs,
+Saturn–natal Mars, Mercury’s other targets and all outer-planet pairs remain
+`undefined`. There is no reverse-pair, aspect, house, Firdaria or transit fallback.
+Non-string or unsupported IDs return `undefined`; English/default, case-sensitive
+`pt*` and invalid-locale behavior match the other Timing lookups.
+
+These preserve the aphorisms’ specific favorable/adverse outcomes, including
+illness, mortality, pregnancy, relationship, property, reputation and political
+or social circumstances. Conditions concerning aspects, dignity, sect, annual
+houses, lunar phase, oriental/occidental position, gender and the person’s
+circumstances remain textual. The Mars–Saturn mitigation in Aries or Scorpio
+retains its exception for women’s charts; within this aphorism series, the ruler
+of the year is understood as the Ascendant’s ruler. This is not a definition for
+other Timing methods. Some conditions leave the chart or actor unspecified.
+None of these conditions is assessed by the lookup.
+
+The interpretation context compares the return with transits and adjacent
+annual charts and considers the person’s condition, possibilities and way of
+life. It cautions against turning every configuration into a major event. This
+qualification applies to the predictive interpretations, including difficult outcomes.
+The separate initial Ascendant sign/house aphorisms and later rules requiring
+several chart conditions are not implied by this planet/sign bank.
+
+`getSolarReturnAphorismDescriptionEntry(aphorism)` returns an immutable bilingual
+conditional reference with keywords, and
+`getSolarReturnAphorismDescription(aphorism, language?)` returns its text.
+`SolarReturnAphorismId` is the union of supported IDs. The bank is exposed as
+`ASTROLOGY_TIMING_DESCRIPTIONS.solarReturnAphorisms`; its keys can be enumerated to
+inspect coverage. IDs select reference descriptions. A successful lookup does **not**
+mean that a chart satisfies their conditions. No chart matching, rule evaluation,
+placement, aspect, orb, sign comparison or event date is calculated.
+
+The 131 references preserve the selected aphorisms’ complete prerequisites and
+favorable/adverse branches: combinations of natal and annual houses, rulers,
+aspects, dignity, sect, lunar phase, oriental/occidental position, eclipses and
+other specified factors. They retain health, mortality, captivity, sexuality,
+family, property, reputation, political/status and other outcomes.
+Several aphorisms may discuss a topic addressed by another bank; their distinct
+conditions are kept in the reference text rather than imposed on that bank.
+Unknown IDs and non-string runtime inputs return `undefined` without aliases,
+partial matching or fallback. Locale handling and recursive immutability match
+the other Timing entries.
+
+The initial rules describe the return Ascendant passing through a natal house
+containing a planet. The reciprocal malefic/Ascendant condition is a
+separate configuration with no specified contact orb. In
+`ascendant-second-eighth-venus-saturn-captivity`, the entry places
+the return Ascendant in the natal second house and the annual seventh house
+in correspondence with the natal eighth, with Venus ruling the year and Saturn
+in the fourth. The entry supplies reference prose; it does not calculate or
+match these conditions.
+
+The `natal-tenth-sign-in-return-house-1` through `-12` references concern the
+**sign of the natal tenth house** in the specified annual house. The
+`natal-fortune-sign-in-return-house-1` through `-12` references concern the
+**natal sign of the Part of Fortune**. Neither series asserts an exact MC or
+Fortune longitude contact, or substitutes for the directed return-MC-in-natal-house
+lookup. The caller must resolve the stated placement convention separately.
+These entries preserve all stated natal promise, aspect, circumstance and other
+qualifications, including unfavorable branches.
+
+Four further references describe the **annual** rulers of the second, fifth,
+sixth and eighth houses placed in the **annual first house**. They retain the
+financial planet/dignity/aspect branches, adult/elderly distinction, health/work
+exception and other-chart-confirmation condition, and the natal-rulership
+qualification identifying the person concerned in the eighth-ruler interpretation.
+The stomach-ulcer example illustrates a particular chart. These
+four examples do not establish a complete rulership matrix or a natal-ruler
+placement dictionary, and the lookup does not calculate their conditions.
+
+Interpretation conventions remain textual. Within this aphorism series,
+ruler of the year means Ascendant ruler without a natal/annual chart
+assignment where unspecified. The via-combusta interpretations use the following
+intervals, from the 18th degree of Gemini through the 2nd degree of
+Cancer inclusive and from the 24th degree of Sagittarius through the 2nd degree
+of Capricorn inclusive. These differ from conventional via-combusta
+intervals; they are not solar-combustion conditions. The eclipse
+commentary retains its coincidence-at-return condition, emphasis on solar
+eclipses, Ascendant/health branches and a limited sample of
+four solar eclipses. Unresolved conditions are stated explicitly. The whole-chart and person-circumstance
+interpretation context above also applies to this bank.
+
+Firdaria role profiles distinguish the major lord's broad chapter from the
+sub-lord's emphasis within it. A separate general description explains the
+relationship between period roles.
+
+The separate pair bank contains 49 directed entries: each of the seven classical
+major lords with each of the seven classical sub-lords. Each
+entry retains the major lord's context and the sub-lord's focus; reversing the
+arguments retrieves a different entry. Same-lord pairs describe a
+concentrated emphasis. Read the rulers' natal houses, rulerships, aspects and
+conditions separately; the lookup returns the interpretation without
+assessing those conditions.
+`getFirdariaPairDescriptionEntry(majorLord, subLord)` returns the immutable entry,
+and `getFirdariaPairDescription(majorLord, subLord, language?)` returns its text.
+Unsupported combinations return `undefined`, without reversed or role-profile
+fallback. Neither getter calculates dates, sect or period lengths.
+
+Major-period keys follow `FirdariaPlanet` exactly. North and South Nodes retain
+major-period profiles; node sub-period and pair lookups return `undefined`.
+The pair bank covers planetary partnerships only. The calculator treats node
+majors as undivided: they have empty `subPeriods` and
+`currentSub` is `null` while either node rules. Node pairs are not applicable. Firdaria
+profiles remain independent of dasha and natal-placement descriptions.
 
 ## 1. Birth Charts
 
@@ -722,13 +1209,12 @@ Computes the 75-year planetary period cycle. Sect determines the sequence order:
 const firdaria = getFirdaria(
   new Date('1990-06-15'),
   true,               // isDiurnal — use chart.sect === 'diurnal'
-  new Date('2026-04-22'),
-  { nodeSubPeriodStart: 'jupiter-saturn' } // optional
+  new Date('2026-04-22')
 );
 
 firdaria.sect           // "diurnal"
 firdaria.currentMajor   // FirdariaMajorPeriod
-firdaria.currentSub     // FirdariaSubPeriod
+firdaria.currentSub     // FirdariaSubPeriod | null (null during node majors)
 firdaria.allPeriods     // FirdariaMajorPeriod[]
 ```
 
@@ -744,13 +1230,13 @@ firdaria.allPeriods     // FirdariaMajorPeriod[]
 | `years` | `number` | Duration of the major period. |
 | `startDate` | `Date` | Period start. |
 | `endDate` | `Date` | Period end. |
-| `subPeriods` | `FirdariaSubPeriod[]` | 7 equal sub-periods in Chaldean descent. |
+| `subPeriods` | `FirdariaSubPeriod[]` | 7 equal sub-periods for planets; empty for node majors. |
 
 **`FirdariaOptions`**:
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `nodeSubPeriodStart` | `"jupiter-saturn" \| "sun-mars"` | `"jupiter-saturn"` | Controls which Chaldean position the North/South Node sub-periods start from. |
+| `nodeSubPeriodStart` | `"jupiter-saturn" \| "sun-mars"` | — | Deprecated and ignored; node majors are undivided. |
 
 ---
 
@@ -1144,7 +1630,7 @@ Traditions and conventions (also in `d.tradition` and `DIGNITY_TRADITION`):
 - **Interval endpoints**: every degree interval is half-open `[start, end)`; 12.0 degrees of Pisces belongs to the bound that starts at 12, not to the one that ends there.
 - **Peregrine** is true only when none of domicile, exaltation, any of the three triplicity roles (so it does not depend on sect knowledge), bound or face applies. Detriment and fall do not make a planet non-peregrine and are not substitutes for the positive dignities.
 
-The Egyptian-bound and Dorothean tables were verified against the reference script of the original calculation project only; no independent external source could be fetched, so cross-check them against your own tradition before relying on them.
+The Egyptian-bound and Dorothean tables have not been independently validated against an external reference. Cross-check them against your chosen tradition before relying on them.
 
 ## 15. Exact events and returns
 
@@ -1369,8 +1855,8 @@ Each entry has the point `id` (`sun` ... `pluto`, `mean-node`, `south-node-mean`
 - **Signs are tropical**, as in the rest of the library's sign-change code; there is no zodiac option.
 - **Months and ghatis**: a month counts as 30 days (`INGRESS_MONTH_DAYS`) and a ghati as 24 minutes (`GHATI_MINUTES`). The convention is echoed in `method`.
 - **Rahu and Ketu**: Rahu is the lunar north node. The default body list (`DEFAULT_INGRESS_BODIES`, the Sun through Pluto and the mean node) uses the mean node, the library's default node; pass `Planet.TRUE_NODE` for the true node. Ketu is emitted as the opposite point (`south-node-mean` or `south-node-true`) with the same instant and lead time and the opposite signs; `southNode: false` leaves it out. The nodes move backwards, so their `direction` is `"retrograde"` and they enter the previous sign.
-- **Retrograde re-entries**: every crossing of a sign boundary is returned with its `direction`. A planet that enters a sign, falls back and enters again gives three entries (`"direct"`, `"retrograde"`, `"direct"`). The lead time is subtracted from a retrograde crossing in the same way as from a direct one; the source does not treat that case separately, so filter on `direction` if you only want forward entries.
-- **Bodies without a lead time** in the source (Uranus, Neptune, Pluto, Chiron, Lilith) are returned with the exact ingress, `leadTime: null` and `windowStart: null`. `getIngressLeadTime(body)` gives the lead time of one body.
+- **Retrograde re-entries**: every crossing of a sign boundary is returned with its `direction`. A planet that enters a sign, falls back and enters again gives three entries (`"direct"`, `"retrograde"`, `"direct"`). The lead time is subtracted from a retrograde crossing in the same way as from a direct one; filter on `direction` if you only want forward entries.
+- **Bodies without a configured lead time** (Uranus, Neptune, Pluto, Chiron, Lilith) are returned with the exact ingress, `leadTime: null` and `windowStart: null`. `getIngressLeadTime(body)` gives the lead time of one body.
 
 Ranges over `MAX_INGRESS_WINDOW_YEARS` (150), an empty or unsupported body list and invalid dates throw a typed `TimelineError`. The Moon is scanned every half day and the other bodies every day; the same finite-grid coverage note applies.
 

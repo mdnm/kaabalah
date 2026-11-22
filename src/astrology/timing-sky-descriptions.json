@@ -1,0 +1,488 @@
+{
+  "transitPlanets": {
+    "sun": {
+      "pt": "durante um trânsito do Sol, você pode perceber com mais clareza onde quer colocar sua energia e se expressar. observe o que pede sua presença e uma escolha própria.",
+      "en": "during a Sun transit, you may see more clearly where you want to put your energy and express yourself. notice what calls for your presence and a choice of your own.",
+      "keywords": {
+        "pt": [
+          "vitalidade",
+          "expressão",
+          "atenção"
+        ],
+        "en": [
+          "vitality",
+          "expression",
+          "attention"
+        ]
+      }
+    },
+    "moon": {
+      "pt": "durante um trânsito da Lua, você pode notar mudanças rápidas no humor e no que precisa para se sentir acolhido. dê espaço para reconhecer essas necessidades antes de responder.",
+      "en": "during a Moon transit, you may notice quick changes in your mood and in what helps you feel supported. give yourself room to recognize those needs before responding.",
+      "keywords": {
+        "pt": [
+          "emoções",
+          "necessidades",
+          "acolhimento"
+        ],
+        "en": [
+          "emotions",
+          "needs",
+          "support"
+        ]
+      }
+    },
+    "mercury": {
+      "pt": "durante um trânsito de Mercúrio, você pode dar mais atenção às conversas, às informações e ao que está aprendendo. confira o que entendeu e escolha como comunicar suas ideias.",
+      "en": "during a Mercury transit, you may give more attention to conversations, information and what you are learning. check your understanding and choose how to communicate your ideas.",
+      "keywords": {
+        "pt": [
+          "comunicação",
+          "aprendizado",
+          "informação"
+        ],
+        "en": [
+          "communication",
+          "learning",
+          "information"
+        ]
+      }
+    },
+    "venus": {
+      "pt": "durante um trânsito de Vênus, você pode perceber melhor o que aprecia nas relações e nos prazeres cotidianos. observe como suas escolhas de afeto, conforto e dinheiro refletem o que você valoriza.",
+      "en": "during a Venus transit, you may notice more clearly what you appreciate in relationships and everyday pleasures. observe how your choices about affection, comfort and money reflect what you value.",
+      "keywords": {
+        "pt": [
+          "afeto",
+          "prazer",
+          "valores"
+        ],
+        "en": [
+          "affection",
+          "pleasure",
+          "values"
+        ]
+      }
+    },
+    "mars": {
+      "pt": "durante um trânsito de Marte, você pode perceber mais vontade de agir, se posicionar ou enfrentar um conflito. escolha onde investir seu esforço e observe a pressa antes de agir.",
+      "en": "during a Mars transit, you may feel more inclined to act, stand your ground or face a conflict. choose where to invest your effort and notice any urgency before acting.",
+      "keywords": {
+        "pt": [
+          "ação",
+          "iniciativa",
+          "conflito"
+        ],
+        "en": [
+          "action",
+          "initiative",
+          "conflict"
+        ]
+      }
+    },
+    "jupiter": {
+      "pt": "durante um trânsito de Júpiter, os assuntos da casa por onde ele passa tendem a fluir melhor, com sorte e expansão nessa área da sua vida. a leitura associa esse movimento à ampliação de possibilidades, enquanto o efeito particular depende do seu mapa e do contato formado.",
+      "en": "during a Jupiter transit, matters of the house it moves through tend to flow more easily, with luck and expansion in that area of your life. the reading associates this movement with wider possibilities, while the particular effect depends on your chart and the contact formed.",
+      "keywords": {
+        "pt": [
+          "sorte",
+          "expansão",
+          "assuntos da casa"
+        ],
+        "en": [
+          "luck",
+          "expansion",
+          "house matters"
+        ]
+      }
+    },
+    "saturn": {
+      "pt": "durante um trânsito de Saturno, você pode perceber com mais nitidez suas responsabilidades e os limites do que consegue sustentar. reveja compromissos e escolha o que construir com tempo e constância.",
+      "en": "during a Saturn transit, you may become more aware of your responsibilities and the limits of what you can sustain. review your commitments and choose what to build with time and consistency.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "limites",
+          "estrutura"
+        ],
+        "en": [
+          "responsibility",
+          "limits",
+          "structure"
+        ]
+      }
+    },
+    "uranus": {
+      "pt": "durante um trânsito de Urano, você pode notar a necessidade de mudar hábitos ou experimentar outras formas de viver em meio a mudanças coletivas. observe onde quer mais liberdade e teste alternativas sem exigir uma mudança imediata.",
+      "en": "during a Uranus transit, you may notice a need to change habits or try other ways of living amid collective changes. observe where you want more freedom and test alternatives without demanding an immediate change.",
+      "keywords": {
+        "pt": [
+          "mudança",
+          "liberdade",
+          "experimentação"
+        ],
+        "en": [
+          "change",
+          "freedom",
+          "experimentation"
+        ]
+      }
+    },
+    "neptune": {
+      "pt": "durante um trânsito de Netuno, você pode se voltar para sonhos, sensibilidade e sentido espiritual em meio ao clima coletivo. dê espaço à imaginação e confira o que é concreto antes de se orientar por uma expectativa.",
+      "en": "during a Neptune transit, you may turn toward dreams, sensitivity and spiritual meaning amid the collective mood. give your imagination room and check what is concrete before relying on an expectation.",
+      "keywords": {
+        "pt": [
+          "imaginação",
+          "sensibilidade",
+          "discernimento"
+        ],
+        "en": [
+          "imagination",
+          "sensitivity",
+          "discernment"
+        ]
+      }
+    },
+    "pluto": {
+      "pt": "durante um trânsito de Plutão, você pode prestar mais atenção a questões de poder, controle e transformação que também atravessam a vida coletiva. observe o que tenta preservar e o que precisa reconsiderar com profundidade.",
+      "en": "during a Pluto transit, you may pay more attention to questions of power, control and transformation that also run through collective life. observe what you are trying to preserve and what needs deeper reconsideration.",
+      "keywords": {
+        "pt": [
+          "transformação",
+          "poder",
+          "controle"
+        ],
+        "en": [
+          "transformation",
+          "power",
+          "control"
+        ]
+      }
+    }
+  },
+  "skyRetrogradePlanets": {
+    "mercury": {
+      "pt": "com Mercúrio retrógrado no céu, a leitura associa esse período a confusões, atrasos e mal-entendidos nas suas comunicações, nos negócios, nos transportes e na tecnologia. é um momento propício para você revisar, refletir e corrigir erros.",
+      "en": "with Mercury retrograde in the sky, the reading associates this period with confusion, delays and misunderstandings in your communications, business, transport and technology. it is a suitable time for you to review, reflect and correct errors.",
+      "keywords": {
+        "pt": [
+          "confusões e atrasos",
+          "comunicação e negócios",
+          "revisão"
+        ],
+        "en": [
+          "confusion and delays",
+          "communication and business",
+          "review"
+        ]
+      }
+    },
+    "venus": {
+      "pt": "com Vênus retrógrado no céu, questões de amor, beleza, prazer e finanças podem precisar de reconsideração, e relacionamentos do seu passado podem ressurgir. é um período para você reavaliar o que e quem valoriza, suas relações e seus valores.",
+      "en": "with Venus retrograde in the sky, matters of love, beauty, pleasure and finances may need reconsideration, and relationships from your past may resurface. it is a period for you to reassess what and whom you value, your relationships and your values.",
+      "keywords": {
+        "pt": [
+          "relações passadas",
+          "amor e finanças",
+          "reavaliação de valores"
+        ],
+        "en": [
+          "past relationships",
+          "love and finances",
+          "reassessing values"
+        ]
+      }
+    },
+    "mars": {
+      "pt": "com Marte retrógrado no céu, sua assertividade e sua motivação para novos projetos podem diminuir, enquanto a agressividade interiorizada pode resultar em frustrações. o período pede que você revise estratégias, reconsidere ações impulsivas e cuide da forma como administra essa frustração.",
+      "en": "with Mars retrograde in the sky, your assertiveness and motivation for new projects may decrease, while internalized aggression may result in frustration. the period calls for you to review strategies, reconsider impulsive actions and take care in managing that frustration.",
+      "keywords": {
+        "pt": [
+          "motivação reduzida",
+          "agressividade interiorizada",
+          "revisão de estratégias"
+        ],
+        "en": [
+          "reduced motivation",
+          "internalized aggression",
+          "reviewing strategies"
+        ]
+      }
+    },
+    "jupiter": {
+      "pt": "com Júpiter retrógrado no céu, há uma tendência à introspecção sobre crescimento, expansão e ética na sua vida. é um momento para você refletir sobre sua moralidade e filosofia de vida, ajustando planos de expansão ou de viagens.",
+      "en": "with Jupiter retrograde in the sky, there is a tendency toward introspection about growth, expansion and ethics in your life. it is a time for you to reflect on your morality and philosophy of life, adjusting plans for expansion or travel.",
+      "keywords": {
+        "pt": [
+          "introspecção",
+          "ética e filosofia",
+          "planos de viagens"
+        ],
+        "en": [
+          "introspection",
+          "ethics and philosophy",
+          "travel plans"
+        ]
+      }
+    },
+    "saturn": {
+      "pt": "com Saturno retrógrado no céu, o período é marcado pela revisão das responsabilidades e das estruturas da sua vida. essa retrogradação pressiona você a reavaliar deveres, limites e desafios com o objetivo de fortalecer suas bases.",
+      "en": "with Saturn retrograde in the sky, the period is marked by a review of the responsibilities and structures in your life. this retrogradation presses you to reassess duties, limits and challenges with the aim of strengthening your foundations.",
+      "keywords": {
+        "pt": [
+          "responsabilidades",
+          "pressão e limites",
+          "fortalecimento das bases"
+        ],
+        "en": [
+          "responsibilities",
+          "pressure and limits",
+          "strengthening foundations"
+        ]
+      }
+    },
+    "uranus": {
+      "pt": "com Urano retrógrado no céu, você pode passar por uma revisão interna das mudanças e revoluções da sua vida. é um momento para questionar a autenticidade e a eficácia da sua originalidade e independência.",
+      "en": "with Uranus retrograde in the sky, you may undergo an inner review of the changes and revolutions in your life. it is a time to question the authenticity and effectiveness of your originality and independence.",
+      "keywords": {
+        "pt": [
+          "revisão interna",
+          "originalidade",
+          "independência"
+        ],
+        "en": [
+          "inner review",
+          "originality",
+          "independence"
+        ]
+      }
+    },
+    "neptune": {
+      "pt": "com Netuno retrógrado no céu, sua introspecção espiritual e a reflexão sobre ilusões, sonhos e a ligação com o subconsciente podem se intensificar. esse trânsito desafia você a distinguir realidade e fantasia, incentivando uma busca mais clara pela verdade espiritual.",
+      "en": "with Neptune retrograde in the sky, your spiritual introspection and reflection on illusions, dreams and your connection with the subconscious may intensify. this transit challenges you to distinguish reality from fantasy, encouraging a clearer search for spiritual truth.",
+      "keywords": {
+        "pt": [
+          "introspecção espiritual",
+          "subconsciente",
+          "realidade e fantasia"
+        ],
+        "en": [
+          "spiritual introspection",
+          "subconscious",
+          "reality and fantasy"
+        ]
+      }
+    },
+    "pluto": {
+      "pt": "com Plutão retrógrado no céu, questões de poder, transformação e renascimento ganham sua atenção. é um período para você reconsiderar o uso do poder, sua transformação pessoal e a maneira como lida com mudanças profundas e permanentes.",
+      "en": "with Pluto retrograde in the sky, questions of power, transformation and rebirth draw your attention. it is a period for you to reconsider the use of power, your personal transformation and how you deal with profound and permanent changes.",
+      "keywords": {
+        "pt": [
+          "poder",
+          "renascimento",
+          "mudanças permanentes"
+        ],
+        "en": [
+          "power",
+          "rebirth",
+          "permanent changes"
+        ]
+      }
+    }
+  },
+  "signIngresses": {
+    "Aries": {
+      "pt": "quando um planeta entra em áries, você pode explorar a iniciativa e colocar algo em prática. observe o entusiasmo e a precipitação na sua maneira de agir.",
+      "en": "when a planet enters aries, you can explore initiative and put something into practice. notice enthusiasm and haste in the way you act.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "ação",
+          "precipitação"
+        ],
+        "en": [
+          "initiative",
+          "action",
+          "haste"
+        ]
+      }
+    },
+    "Taurus": {
+      "pt": "quando um planeta entra em touro, você pode dedicar atenção ao que produz e deseja conservar. observe a diferença entre persistir com paciência e insistir por teimosia.",
+      "en": "when a planet enters taurus, you can attend to what you produce and wish to preserve. notice the difference between persisting patiently and insisting out of stubbornness.",
+      "keywords": {
+        "pt": [
+          "produtividade",
+          "persistência",
+          "teimosia"
+        ],
+        "en": [
+          "productivity",
+          "persistence",
+          "stubbornness"
+        ]
+      }
+    },
+    "Gemini": {
+      "pt": "quando um planeta entra em gêmeos, você pode explorar o estudo, a comunicação e a troca de ideias. observe como a flexibilidade convive com a inquietação e a falta de estabilidade.",
+      "en": "when a planet enters gemini, you can explore study, communication and the exchange of ideas. notice how flexibility coexists with restlessness and a lack of stability.",
+      "keywords": {
+        "pt": [
+          "estudo",
+          "comunicação",
+          "inquietação"
+        ],
+        "en": [
+          "study",
+          "communication",
+          "restlessness"
+        ]
+      }
+    },
+    "Cancer": {
+      "pt": "quando um planeta entra em câncer, você pode voltar a atenção à família, ao lar e às recordações. observe como a imaginação e as oscilações dos sentimentos participam dessa experiência.",
+      "en": "when a planet enters cancer, you can turn your attention to family, home and memories. notice how imagination and changing feelings take part in that experience.",
+      "keywords": {
+        "pt": [
+          "família",
+          "recordações",
+          "imaginação"
+        ],
+        "en": [
+          "family",
+          "memories",
+          "imagination"
+        ]
+      }
+    },
+    "Leo": {
+      "pt": "quando um planeta entra em leão, você pode explorar a vontade de dirigir e agir com generosidade. observe quando o orgulho transforma essa vontade em dominação.",
+      "en": "when a planet enters leo, you can explore the wish to lead and act generously. notice when pride turns that wish into domination.",
+      "keywords": {
+        "pt": [
+          "direção",
+          "generosidade",
+          "orgulho"
+        ],
+        "en": [
+          "leadership",
+          "generosity",
+          "pride"
+        ]
+      }
+    },
+    "Virgo": {
+      "pt": "quando um planeta entra em virgem, você pode analisar, selecionar e organizar com método. observe a exigência excessiva e a tendência a se prender aos detalhes.",
+      "en": "when a planet enters virgo, you can analyze, select and organize methodically. notice excessive demands and the tendency to get caught up in details.",
+      "keywords": {
+        "pt": [
+          "análise",
+          "método",
+          "detalhismo"
+        ],
+        "en": [
+          "analysis",
+          "method",
+          "excessive attention to detail"
+        ]
+      }
+    },
+    "Libra": {
+      "pt": "quando um planeta entra em libra, você pode explorar a colaboração e a conciliação de diferenças. observe quando a busca por harmonia se aproxima do conformismo.",
+      "en": "when a planet enters libra, you can explore collaboration and reconciling differences. notice when the search for harmony moves toward conformity.",
+      "keywords": {
+        "pt": [
+          "colaboração",
+          "harmonia",
+          "conformismo"
+        ],
+        "en": [
+          "collaboration",
+          "harmony",
+          "conformity"
+        ]
+      }
+    },
+    "Scorpio": {
+      "pt": "quando um planeta entra em escorpião, você pode investigar o que deseja reformar e dar um rumo construtivo a essa mudança. observe a estratégia que escolhe e a tendência aos extremos.",
+      "en": "when a planet enters scorpio, you can investigate what you wish to reform and give that change a constructive direction. notice the strategy you choose and the tendency toward extremes.",
+      "keywords": {
+        "pt": [
+          "investigação",
+          "reforma",
+          "extremismo"
+        ],
+        "en": [
+          "investigation",
+          "reform",
+          "extremism"
+        ]
+      }
+    },
+    "Sagittarius": {
+      "pt": "quando um planeta entra em sagitário, você pode explorar a filosofia, a cultura e o senso de justiça. observe quando a expressão das suas ideias se transforma em fanfarronice.",
+      "en": "when a planet enters sagittarius, you can explore philosophy, culture and your sense of justice. notice when expressing your ideas turns into boasting.",
+      "keywords": {
+        "pt": [
+          "filosofia",
+          "justiça",
+          "fanfarronice"
+        ],
+        "en": [
+          "philosophy",
+          "justice",
+          "boasting"
+        ]
+      }
+    },
+    "Capricorn": {
+      "pt": "quando um planeta entra em capricórnio, você pode concentrar esforços para dar forma concreta às suas ambições. observe como a paciência e a constância convivem com a dúvida e o pessimismo.",
+      "en": "when a planet enters capricorn, you can concentrate your efforts on giving concrete form to your ambitions. notice how patience and constancy coexist with doubt and pessimism.",
+      "keywords": {
+        "pt": [
+          "realização",
+          "constância",
+          "pessimismo"
+        ],
+        "en": [
+          "accomplishment",
+          "constancy",
+          "pessimism"
+        ]
+      }
+    },
+    "Aquarius": {
+      "pt": "quando um planeta entra em aquário, você pode explorar novas ideias e formas de cooperar. observe quando a originalidade se aproxima da extravagância ou da rebelião.",
+      "en": "when a planet enters aquarius, you can explore new ideas and ways of cooperating. notice when originality moves toward extravagance or rebellion.",
+      "keywords": {
+        "pt": [
+          "originalidade",
+          "cooperação",
+          "renovação"
+        ],
+        "en": [
+          "originality",
+          "cooperation",
+          "renewal"
+        ]
+      }
+    },
+    "Pisces": {
+      "pt": "quando um planeta entra em peixes, você pode explorar a inspiração, a confiança e a vontade de servir. observe a diferença entre a abnegação e o martírio.",
+      "en": "when a planet enters pisces, you can explore inspiration, trust and the wish to serve. notice the difference between selflessness and martyrdom.",
+      "keywords": {
+        "pt": [
+          "inspiração",
+          "abnegação",
+          "martírio"
+        ],
+        "en": [
+          "inspiration",
+          "selflessness",
+          "martyrdom"
+        ]
+      }
+    }
+  }
+}

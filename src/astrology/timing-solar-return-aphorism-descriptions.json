@@ -1,0 +1,2094 @@
+{
+  "solarReturnAphorisms": {
+    "ascendant-in-natal-malefic-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que estava um planeta maléfico no nascimento, você tem o presságio de um mau ano, com perigos para a vida, doenças, acusações e perturbações. a indicação é especialmente acentuada com Saturno em mapa anual noturno ou Marte em mapa anual diurno.",
+      "en": "if the Ascendant of your solar return passes through the house where a malefic planet stood at birth, you have a forecast of a bad year, with danger to life, illness, accusations and disturbances. the indication is especially pronounced with Saturn in a nocturnal annual chart or Mars in a diurnal annual chart.",
+      "keywords": {
+        "pt": [
+          "mau ano",
+          "doenças e perigos",
+          "condição diurna ou noturna"
+        ],
+        "en": [
+          "bad year",
+          "illness and danger",
+          "diurnal or nocturnal condition"
+        ]
+      }
+    },
+    "ascendant-in-natal-jupiter-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que Júpiter estava no nascimento, você tem o presságio de um ano favorável, com perigos evitados, justiça obtida e favor de príncipes e pessoas poderosas. a leitura também anuncia retorno para os exilados e libertação para os prisioneiros.",
+      "en": "if the Ascendant of your solar return passes through the house where Jupiter stood at birth, you have a forecast of a favorable year, with dangers avoided, justice obtained and favor from princes and powerful people. the reading also indicates return for exiles and freedom for prisoners.",
+      "keywords": {
+        "pt": [
+          "ano favorável",
+          "justiça e proteção",
+          "retorno ou libertação"
+        ],
+        "en": [
+          "favorable year",
+          "justice and protection",
+          "return or freedom"
+        ]
+      }
+    },
+    "ascendant-in-natal-sun-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que o Sol estava no nascimento, você tem o presságio de um ano feliz se os aspectos não forem maus. o favorecimento dessa leitura para você permanece sujeito a essa condição dos aspectos.",
+      "en": "if the Ascendant of your solar return passes through the house where the Sun stood at birth, you have a forecast of a happy year if the aspects are not adverse. the favorable indication for you in this reading remains subject to that aspect condition.",
+      "keywords": {
+        "pt": [
+          "ano feliz",
+          "aspectos não adversos"
+        ],
+        "en": [
+          "happy year",
+          "non-adverse aspects"
+        ]
+      }
+    },
+    "ascendant-in-natal-venus-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que Vênus estava no nascimento, você tem o presságio de um bom ano. essa é a indicação favorável da passagem para você.",
+      "en": "if the Ascendant of your solar return passes through the house where Venus stood at birth, you have a forecast of a good year. this is the favorable indication of the passage for you.",
+      "keywords": {
+        "pt": [
+          "bom ano",
+          "passagem do Ascendente"
+        ],
+        "en": [
+          "good year",
+          "Ascendant passage"
+        ]
+      }
+    },
+    "ascendant-in-natal-mercury-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que Mercúrio estava no nascimento, você tem o presságio de um bom ano para os empreendimentos. se Mercúrio estiver maleficiado pelos aspectos, esse bom presságio se transforma no oposto para você.",
+      "en": "if the Ascendant of your solar return passes through the house where Mercury stood at birth, you have a forecast of a good year for undertakings. if Mercury is afflicted by aspects, this favorable indication turns into its opposite for you.",
+      "keywords": {
+        "pt": [
+          "empreendimentos",
+          "aspectos de Mercúrio",
+          "inversão do presságio"
+        ],
+        "en": [
+          "undertakings",
+          "Mercury aspects",
+          "reversal of the forecast"
+        ]
+      }
+    },
+    "ascendant-in-natal-moon-house": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que a Lua estava no nascimento, você tem o presságio de uma alternância entre o bem e o mal. se a Lua estiver em bom aspecto, a leitura anuncia uma viagem proveitosa para você.",
+      "en": "if the Ascendant of your solar return passes through the house where the Moon stood at birth, you have a forecast of alternating good and bad. if the Moon is favorably aspected, the reading indicates a fruitful journey for you.",
+      "keywords": {
+        "pt": [
+          "alternância de bem e mal",
+          "viagem proveitosa",
+          "bom aspecto lunar"
+        ],
+        "en": [
+          "alternating good and bad",
+          "fruitful journey",
+          "favorable lunar aspect"
+        ]
+      }
+    },
+    "ascendant-mars-fire-iron-captivity": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa ocupada por Marte natal e Marte anual está em conjunção, quadratura ou oposição a esse Ascendente, você tem o presságio de ferimento por fogo ou ferro, cativeiro ou exílio. a indicação se acentua sobretudo se Marte ocupa uma casa angular — primeira, quarta, sétima ou décima — ou sucedente — segunda, quinta, oitava ou décima primeira.",
+      "en": "if the Ascendant of your solar return passes through the house occupied by natal Mars and annual Mars is conjunct, square or opposite that Ascendant, you have a forecast of injury by fire or iron, captivity or exile. the indication is especially pronounced if Mars occupies an angular house — the first, fourth, seventh or tenth — or a succedent house — the second, fifth, eighth or eleventh.",
+      "keywords": {
+        "pt": [
+          "ferimentos por fogo ou ferro",
+          "cativeiro ou exílio",
+          "condições angulares e sucedentes"
+        ],
+        "en": [
+          "injury by fire or iron",
+          "captivity or exile",
+          "angular and succedent conditions"
+        ]
+      }
+    },
+    "reciprocal-ascendant-malefic-overlays": {
+      "pt": "se o Ascendente da sua revolução solar passa pela casa em que Saturno ou Marte estava no nascimento e um desses maléficos passa a ocupar a primeira casa, você tem o presságio de grande perigo. essa configuração corresponde à sobreposição do Ascendente anual a um maléfico natal enquanto um maléfico anual se sobrepõe ao seu Ascendente natal.",
+      "en": "if the Ascendant of your solar return passes through the house where Saturn or Mars stood at birth and one of those malefics moves into the first house, you have a forecast of great danger. this configuration corresponds to the annual Ascendant overlaying a natal malefic while an annual malefic overlays your natal Ascendant.",
+      "keywords": {
+        "pt": [
+          "grande perigo",
+          "sobreposições recíprocas",
+          "Ascendente e maléficos"
+        ],
+        "en": [
+          "great danger",
+          "reciprocal overlays",
+          "Ascendant and malefics"
+        ]
+      }
+    },
+    "ascendant-second-eighth-venus-saturn-captivity": {
+      "pt": "se o Ascendente da revolução solar cai na segunda casa natal, Vênus é regente do ano e Saturno ocupa a quarta casa, a condição complementar é a sétima casa anual corresponder à oitava natal. com todas essas condições, você tem o presságio de cativeiro.",
+      "en": "if the solar-return Ascendant falls in the natal second house, Venus is ruler of the year and Saturn occupies the fourth house, the complementary condition is that the annual seventh house corresponds to the natal eighth. with all these conditions, you have a forecast of captivity.",
+      "keywords": {
+        "pt": [
+          "eixo natal da segunda e oitava casas",
+          "Vênus e Saturno",
+          "cativeiro"
+        ],
+        "en": [
+          "natal second/eighth-house axis",
+          "Venus and Saturn",
+          "captivity"
+        ]
+      }
+    },
+    "ascendant-jupiter-twelfth-saturn-mars-danger": {
+      "pt": "se o signo da primeira casa substitui na revolução o signo da décima segunda casa natal, esse signo é domicílio de Júpiter, Saturno o ocupa e Marte está na quarta casa, você tem o presságio de perigos mortais. nessa interpretação, o domicílio de Júpiter corresponde a Peixes, considerado o signo original da décima segunda casa.",
+      "en": "if the first-house sign replaces in the return the sign of the natal twelfth house, that sign is a domicile of Jupiter, Saturn occupies it and Mars is in the fourth house, you have a forecast of mortal dangers. in this interpretation, Jupiter’s domicile refers to Pisces, considered the original sign of the twelfth house.",
+      "keywords": {
+        "pt": [
+          "perigos mortais",
+          "domicílio de Júpiter",
+          "Saturno e Marte"
+        ],
+        "en": [
+          "mortal dangers",
+          "Jupiter domicile",
+          "Saturn and Mars"
+        ]
+      }
+    },
+    "ascendant-year-ruler-house-groups": {
+      "pt": "se o signo da primeira casa se encontra na revolução na primeira, segunda, quarta, quinta, sétima, nona, décima ou décima primeira casa e o regente do ano na terceira, sexta, oitava ou décima segunda, a leitura anuncia para você uma oscilação de coisas boas e ruins. o mesmo vale com esses dois grupos de casas invertidos entre o signo da primeira casa e o regente do ano, com oportunidade de você triunfar sobre as dificuldades por um esforço heroico da inteligência e da vontade.",
+      "en": "if the first-house sign falls in the return’s first, second, fourth, fifth, seventh, ninth, tenth or eleventh house and the ruler of the year in the third, sixth, eighth or twelfth, the reading indicates an alternation of good and bad for you. the same applies with these two house groups exchanged between the first-house sign and the ruler of the year, with an opportunity for you to overcome difficulties through a heroic effort of intelligence and will.",
+      "keywords": {
+        "pt": [
+          "grupos de casas",
+          "alternância de resultados",
+          "inteligência e vontade"
+        ],
+        "en": [
+          "house groups",
+          "alternating outcomes",
+          "intelligence and will"
+        ]
+      }
+    },
+    "mars-or-moon-eleventh-both-charts": {
+      "pt": "se Marte ou a Lua está na décima primeira casa tanto no nascimento quanto na revolução solar, você tem indicação de amigos com quem pouco pode contar. a leitura descreve, sob essa condição nos dois mapas, a pouca confiabilidade dessas amizades para você.",
+      "en": "if Mars or the Moon is in the eleventh house both at birth and in the solar return, you have an indication of friends you can rely on little. under that condition in both charts, the reading describes the unreliability of those friendships for you.",
+      "keywords": {
+        "pt": [
+          "décima primeira casa",
+          "nascimento e revolução",
+          "amigos pouco confiáveis"
+        ],
+        "en": [
+          "eleventh house",
+          "birth and return",
+          "unreliable friends"
+        ]
+      }
+    },
+    "natal-eleventh-ruler-in-return-twelfth-betrayal": {
+      "pt": "se o regente da sua décima primeira casa natal está na décima segunda casa da revolução solar, você tem o presságio de traição de amigos. essa é a indicação específica da passagem desse regente para a casa anual mencionada.",
+      "en": "if the ruler of your natal eleventh house is in the twelfth house of the solar return, you have a forecast of betrayal by friends. this is the specific indication of that ruler’s passage into the stated annual house.",
+      "keywords": {
+        "pt": [
+          "regente natal da décima primeira",
+          "décima segunda anual",
+          "traição de amigos"
+        ],
+        "en": [
+          "natal eleventh-house ruler",
+          "annual twelfth house",
+          "betrayal by friends"
+        ]
+      }
+    },
+    "saturn-rules-eleventh-or-twelfth-friends": {
+      "pt": "se Saturno rege a décima primeira ou a décima segunda casa da sua revolução solar, você tem indicação de amigos infiéis ou pouco constantes. a leitura mantém essas duas possibilidades para as amizades sob essa regência anual.",
+      "en": "if Saturn rules the eleventh or twelfth house of your solar return, you have an indication of unfaithful or fickle friends. the reading retains these two possibilities for friendships under that annual rulership.",
+      "keywords": {
+        "pt": [
+          "regência de Saturno",
+          "amigos infiéis",
+          "inconstância"
+        ],
+        "en": [
+          "Saturn rulership",
+          "unfaithful friends",
+          "fickleness"
+        ]
+      }
+    },
+    "natal-tenth-ruler-jupiter-afflicts-return-sun": {
+      "pt": "se Júpiter rege sua décima casa natal e, na revolução solar, está em quadratura ou oposição ao Sol, sua posição e sua honra estarão em perigo durante o ano. a leitura vincula esse perigo para você à regência natal e ao aspecto anual em conjunto.",
+      "en": "if Jupiter rules your natal tenth house and, in the solar return, is square or opposite the Sun, your position and honor will be in danger during the year. the reading links this danger for you to the natal rulership and annual aspect together.",
+      "keywords": {
+        "pt": [
+          "regência natal da décima",
+          "quadratura ou oposição",
+          "posição e honra"
+        ],
+        "en": [
+          "natal tenth-house rulership",
+          "square or opposition",
+          "position and honor"
+        ]
+      }
+    },
+    "unfortunate-return-year-ruler": {
+      "pt": "se o regente do ano está infortunado na sua revolução solar, você tem o presságio de um mau ano. a leitura também anuncia impedimentos nos seus empreendimentos.",
+      "en": "if the ruler of the year is unfortunate in your solar return, you have a forecast of a bad year. the reading also indicates impediments to your undertakings.",
+      "keywords": {
+        "pt": [
+          "regente do ano infortunado",
+          "mau ano",
+          "empreendimentos impedidos"
+        ],
+        "en": [
+          "unfortunate ruler of the year",
+          "bad year",
+          "impeded undertakings"
+        ]
+      }
+    },
+    "unfortunate-year-ruler-both-charts": {
+      "pt": "se o regente do ano está infortunado tanto no nascimento quanto na sua revolução solar, você tem indicação de inquietudes durante o ano. a leitura acrescenta obstáculos e decepções para você sob essa condição nos dois mapas.",
+      "en": "if the ruler of the year is unfortunate both at birth and in your solar return, you have an indication of anxieties during the year. the reading adds obstacles and disappointments for you under that condition in both charts.",
+      "keywords": {
+        "pt": [
+          "infortúnio nos dois mapas",
+          "inquietudes",
+          "obstáculos e decepções"
+        ],
+        "en": [
+          "misfortune in both charts",
+          "anxieties",
+          "obstacles and disappointments"
+        ]
+      }
+    },
+    "natal-tenth-ruler-in-return-seventh-eighth-twelfth": {
+      "pt": "se o regente da sua décima casa natal está na sétima, oitava ou décima segunda casa da revolução solar, você tem indicação de um ano difícil. a leitura anuncia desgraça junto a príncipes ou a outras pessoas eminentes.",
+      "en": "if the ruler of your natal tenth house is in the seventh, eighth or twelfth house of the solar return, you have an indication of a difficult year. the reading indicates falling out of favor with princes or other eminent people.",
+      "keywords": {
+        "pt": [
+          "regente natal da décima",
+          "ano difícil",
+          "desfavor dos poderosos"
+        ],
+        "en": [
+          "natal tenth-house ruler",
+          "difficult year",
+          "disfavor of the powerful"
+        ]
+      }
+    },
+    "saturn-year-ruler-cadent-to-sixth-eighth": {
+      "pt": "se Saturno é o regente do ano, estava numa casa cadente no nascimento — terceira, sexta, nona ou décima segunda — e passa à sexta ou oitava casa na revolução solar, você tem ameaça de desmoronamento da fortuna. a leitura também anuncia perda de dignidade ou de emprego para você nesse ano.",
+      "en": "if Saturn is ruler of the year, occupied a cadent house at birth — the third, sixth, ninth or twelfth — and passes into the sixth or eighth house in the solar return, you face a threat of your fortune collapsing. the reading also indicates loss of dignity or employment for you that year.",
+      "keywords": {
+        "pt": [
+          "Saturno regente do ano",
+          "casas cadentes",
+          "perda de fortuna ou emprego"
+        ],
+        "en": [
+          "Saturn as ruler of the year",
+          "cadent houses",
+          "loss of fortune or employment"
+        ]
+      }
+    },
+    "tenth-malefic-without-year-rulership-or-sextile-trine": {
+      "pt": "se Saturno ou Marte está na décima casa da sua revolução solar, não é regente do ano e não forma sextil ou trígono com os outros planetas, você tem o presságio de um mau ano. sob essas condições, seu futuro é ameaçado de destruição.",
+      "en": "if Saturn or Mars is in the tenth house of your solar return, is not ruler of the year and forms no sextile or trine with the other planets, you have a forecast of a bad year. under these conditions, your future is threatened with ruin.",
+      "keywords": {
+        "pt": [
+          "maléfico na décima",
+          "ausência de sextil ou trígono",
+          "futuro ameaçado"
+        ],
+        "en": [
+          "malefic in the tenth",
+          "absence of sextile or trine",
+          "threatened future"
+        ]
+      }
+    },
+    "natal-first-ruler-malefic-in-return-second": {
+      "pt": "se o regente da sua primeira casa natal passa à segunda casa da revolução solar e é Saturno ou Marte, você tem ameaça de perda de bens. a leitura exige conjuntamente essa regência natal, a posição anual e a identidade do planeta.",
+      "en": "if the ruler of your natal first house passes into the second house of the solar return and is Saturn or Mars, you face a threat of loss of property. the reading requires that natal rulership, annual placement and planetary identity together.",
+      "keywords": {
+        "pt": [
+          "regente natal da primeira",
+          "Saturno ou Marte",
+          "perda de bens"
+        ],
+        "en": [
+          "natal first-house ruler",
+          "Saturn or Mars",
+          "loss of property"
+        ]
+      }
+    },
+    "angular-year-ruler-repeats-natal-malefic-contact": {
+      "pt": "se o regente do ano ocupa uma casa angular — primeira, quarta, sétima ou décima — e forma quadratura ou oposição com Saturno ou Marte, enquanto no nascimento estava conjunto ao mesmo maléfico, você tem o presságio de um ano muito ruim. a leitura anuncia ameaça de grande perda, aflição e catástrofe sob essa combinação natal e anual.",
+      "en": "if the ruler of the year occupies an angular house — the first, fourth, seventh or tenth — and is square or opposite Saturn or Mars, while at birth it was conjunct that same malefic, you have a forecast of a very bad year. the reading indicates a threat of great loss, grief and catastrophe under that natal and annual combination.",
+      "keywords": {
+        "pt": [
+          "regente angular",
+          "contato com o mesmo maléfico",
+          "perda e catástrofe"
+        ],
+        "en": [
+          "angular ruler",
+          "contact with the same malefic",
+          "loss and catastrophe"
+        ]
+      }
+    },
+    "occidental-or-seventh-twelfth-year-ruler-property": {
+      "pt": "se o regente do ano é ocidental ou ocupa a sétima ou décima segunda casa, está em mau aspecto com Saturno ou Marte e Júpiter não está em bom aspecto com a Lua e com esse regente, você tem ameaça de perda de bens. a leitura mantém juntas a alternativa de posição e as condições dos aspectos, sem atribuir a perda apenas a uma delas.",
+      "en": "if the ruler of the year is occidental or occupies the seventh or twelfth house, is adversely aspected to Saturn or Mars and Jupiter is not favorably aspected to the Moon and that ruler, you face a threat of loss of property. the reading keeps the placement alternative and aspect conditions together, without attributing the loss to just one of them.",
+      "keywords": {
+        "pt": [
+          "regente ocidental ou na sétima ou décima segunda",
+          "condições dos aspectos",
+          "perda de bens"
+        ],
+        "en": [
+          "occidental ruler or seventh or twelfth placement",
+          "aspect conditions",
+          "loss of property"
+        ]
+      }
+    },
+    "afflicted-year-ruler-ascendant-moon-wealth": {
+      "pt": "se o regente do ano, a primeira casa da sua revolução solar e a Lua estão em conjunção, quadratura ou oposição com um planeta maléfico ou maleficiado, você tem ameaça de ruína mesmo das maiores fortunas. se Júpiter ou Vênus estiver conjunto à Lua ou ao regente do ano, esse mau presságio será neutralizado.",
+      "en": "if the ruler of the year, the first house of your solar return and the Moon are conjunct, square or opposite a malefic or afflicted planet, you face a threat of ruin even to the greatest fortunes. if Jupiter or Venus is conjunct the Moon or the ruler of the year, this adverse indication will be neutralized.",
+      "keywords": {
+        "pt": [
+          "ameaça de ruína",
+          "fortunas",
+          "neutralização por benéfico"
+        ],
+        "en": [
+          "threat of ruin",
+          "fortunes",
+          "neutralization by a benefic"
+        ]
+      }
+    },
+    "afflicted-ascendant-ruler-moon-saturn-mars": {
+      "pt": "se a primeira casa da sua revolução solar, seu regente e a Lua estão em conjunção, quadratura ou oposição com Saturno ou Marte, você tem ameaça de ruína. a leitura acrescenta grande aflição para você sob essa configuração conjunta.",
+      "en": "if the first house of your solar return, its ruler and the Moon are conjunct, square or opposite Saturn or Mars, you face a threat of ruin. the reading adds great distress for you under this combined configuration.",
+      "keywords": {
+        "pt": [
+          "primeira casa e regente",
+          "Lua e maléficos",
+          "ruína e aflição"
+        ],
+        "en": [
+          "first house and ruler",
+          "Moon and malefics",
+          "ruin and distress"
+        ]
+      }
+    },
+    "jupiter-sixth-or-twelfth-enemies": {
+      "pt": "se Júpiter está na sexta ou décima segunda casa no nascimento e na revolução solar, você tem indicação de inimigos poderosos e de perseguição por inveja ou ódio. a leitura afirma que esses inimigos não triunfarão sobre você.",
+      "en": "if Jupiter is in the sixth or twelfth house at birth and in the solar return, you have an indication of powerful enemies and persecution through envy or hatred. the reading states that these enemies will not triumph over you.",
+      "keywords": {
+        "pt": [
+          "inimigos poderosos",
+          "perseguição",
+          "inimigos sem triunfo"
+        ],
+        "en": [
+          "powerful enemies",
+          "persecution",
+          "unsuccessful enemies"
+        ]
+      }
+    },
+    "mercury-opposite-seventh-enemies-paralyzed": {
+      "pt": "se Mercúrio está em oposição à sétima casa, a leitura indica que as manobras dos seus inimigos ficam paralisadas. você tem nessa configuração uma indicação de impedimento às ações deles.",
+      "en": "if Mercury is opposite the seventh house, the reading indicates that your enemies’ machinations are paralyzed. this configuration gives you an indication that their actions are impeded.",
+      "keywords": {
+        "pt": [
+          "Mercúrio oposto à sétima",
+          "manobras inimigas",
+          "paralisação"
+        ],
+        "en": [
+          "Mercury opposite the seventh",
+          "enemy machinations",
+          "paralysis"
+        ]
+      }
+    },
+    "mercury-twelfth-natal-and-return-enemy-snares": {
+      "pt": "se Mercúrio está na décima segunda casa no nascimento e na revolução solar, você tem indicação de descobrir as manobras dos inimigos. a leitura também anuncia a descoberta das armadilhas que eles preparam contra você.",
+      "en": "if Mercury is in the twelfth house at birth and in the solar return, you have an indication of discovering your enemies’ machinations. the reading also indicates discovery of the snares they prepare against you.",
+      "keywords": {
+        "pt": [
+          "Mercúrio na décima segunda",
+          "manobras descobertas",
+          "armadilhas inimigas"
+        ],
+        "en": [
+          "Mercury in the twelfth",
+          "discovered machinations",
+          "enemy snares"
+        ]
+      }
+    },
+    "mars-first-enemies-strength-and-jupiter-house": {
+      "pt": "se Marte está na primeira casa em mau aspecto com a Lua e com o regente do ano, você tem indicação de inimigos fortalecidos. se Marte estiver numa casa afortunada de Júpiter, porém, a leitura dá força a você contra os inimigos.",
+      "en": "if Mars is in the first house in adverse aspect to the Moon and the ruler of the year, you have an indication of strengthened enemies. if Mars is in a fortunate house of Jupiter, however, the reading gives you strength against your enemies.",
+      "keywords": {
+        "pt": [
+          "Marte na primeira",
+          "inimigos fortalecidos",
+          "casa afortunada de Júpiter"
+        ],
+        "en": [
+          "Mars in the first",
+          "strengthened enemies",
+          "fortunate house of Jupiter"
+        ]
+      }
+    },
+    "natal-twelfth-ruler-return-first-eighth-eleventh": {
+      "pt": "se o regente da sua décima segunda casa natal passa à primeira casa da revolução solar, a leitura anuncia inimigos numerosos e temíveis. na oitava casa anual, anuncia ameaça de assassinato pelos inimigos; na décima primeira, poucos amigos e muitos inimigos.",
+      "en": "if the ruler of your natal twelfth house moves into the first house of the solar return, the reading indicates numerous formidable enemies. in the annual eighth house, it indicates a threat of murder by enemies; in the eleventh, few friends and many enemies.",
+      "keywords": {
+        "pt": [
+          "regente natal da décima segunda",
+          "inimigos numerosos",
+          "ameaça de assassinato"
+        ],
+        "en": [
+          "natal twelfth-house ruler",
+          "numerous enemies",
+          "threat of murder"
+        ]
+      }
+    },
+    "natal-first-ruler-return-twelfth-enemy-outcome": {
+      "pt": "se o regente da sua primeira casa natal passa à décima segunda casa da revolução solar e está afortunado, a leitura indica derrota dos inimigos. se ele estiver infortunado pelos aspectos, os inimigos triunfarão contra você.",
+      "en": "if the ruler of your natal first house moves into the twelfth house of the solar return and is fortunate, the reading indicates defeat of your enemies. if it is afflicted by aspects, your enemies will triumph against you.",
+      "keywords": {
+        "pt": [
+          "regente natal da primeira",
+          "derrota dos inimigos",
+          "aspectos e triunfo"
+        ],
+        "en": [
+          "natal first-house ruler",
+          "defeat of enemies",
+          "aspects and triumph"
+        ]
+      }
+    },
+    "return-first-ruler-moon-malefic-enemy-power": {
+      "pt": "se a primeira casa da sua revolução solar, seu regente e a Lua estão em maus aspectos com Saturno ou Marte, a leitura coloca a força nas mãos dos inimigos. você tem nessa combinação uma indicação de poder favorável a eles.",
+      "en": "if the first house of your solar return, its ruler and the Moon are in adverse aspects to Saturn or Mars, the reading places power in your enemies’ hands. this combination gives you an indication of power favoring them.",
+      "keywords": {
+        "pt": [
+          "primeira casa e regente",
+          "Lua e maléficos",
+          "poder dos inimigos"
+        ],
+        "en": [
+          "first house and ruler",
+          "Moon and malefics",
+          "enemies’ power"
+        ]
+      }
+    },
+    "return-eclipse-first-tenth-enemy-triumph": {
+      "pt": "se há eclipse solar ou lunar na primeira ou décima casa da sua revolução solar e os regentes dessas casas estão unidos ao signo do eclipse, a leitura anuncia triunfo dos inimigos contra você. a leitura acrescenta que a coincidência da revolução com o momento do eclipse, sobretudo solar, aflige o mapa a ponto de impedir a realização dos bons presságios e, no Ascendente, é muito adversa para as significações da casa natal e sua saúde, mas essa observação se baseia em apenas quatro eclipses solares.",
+      "en": "if there is a solar or lunar eclipse in the first or tenth house of your solar return and the rulers of those houses are united with the eclipse’s sign, the reading indicates your enemies’ triumph against you. the reading adds that a return coinciding with the moment of an eclipse, especially solar, afflicts the chart enough to prevent favorable indications from coming true and, on the Ascendant, is very adverse for the natal house’s meanings and your health, but this observation rests on only four solar eclipses.",
+      "keywords": {
+        "pt": [
+          "eclipse na primeira ou décima",
+          "triunfo dos inimigos",
+          "coincidência e amostra limitada"
+        ],
+        "en": [
+          "eclipse in the first or tenth",
+          "enemies’ triumph",
+          "coincidence and limited sample"
+        ]
+      }
+    },
+    "capricorn-aquarius-secret-enemies": {
+      "pt": "se Capricórnio está na décima segunda casa e Aquário na primeira da sua revolução solar, a leitura indica que seus inimigos secretos param de prejudicar. se Capricórnio ou Aquário estiverem na décima segunda e Saturno na sétima, seus inimigos secretos se tornarão declarados.",
+      "en": "if Capricorn is in the twelfth house and Aquarius in the first of your solar return, the reading indicates that your secret enemies stop causing harm. if Capricorn or Aquarius is in the twelfth and Saturn in the seventh, your secret enemies will become open enemies.",
+      "keywords": {
+        "pt": [
+          "Capricórnio e Aquário",
+          "inimigos secretos",
+          "inimigos declarados"
+        ],
+        "en": [
+          "Capricorn and Aquarius",
+          "secret enemies",
+          "open enemies"
+        ]
+      }
+    },
+    "saturn-first-sixth-seventh-eighth-implacable-enemies": {
+      "pt": "se Saturno está na primeira, sexta, sétima ou oitava casa, a leitura anuncia inimizades encarniçadas contra você. a indicação é de inimigos implacáveis nas condições desse aforismo.",
+      "en": "if Saturn is in the first, sixth, seventh or eighth house, the reading indicates bitter enmities against you. the indication is of implacable enemies under this aphorism’s conditions.",
+      "keywords": {
+        "pt": [
+          "Saturno por casa",
+          "inimizades encarniçadas"
+        ],
+        "en": [
+          "Saturn by house",
+          "bitter enmities"
+        ]
+      }
+    },
+    "return-jupiter-natal-saturn-sign-alliances": {
+      "pt": "se Júpiter da sua revolução solar ocupa o signo em que Saturno estava no nascimento, você tem indicação de instabilidade nas alianças. a leitura também anuncia rupturas de amizade para você.",
+      "en": "if Jupiter in your solar-return chart occupies the sign Saturn occupied at birth, you have an indication of instability in alliances. the reading also indicates breaks in friendship for you.",
+      "keywords": {
+        "pt": [
+          "Júpiter no signo de Saturno natal",
+          "alianças instáveis",
+          "rupturas de amizade"
+        ],
+        "en": [
+          "Jupiter in natal Saturn’s sign",
+          "unstable alliances",
+          "breaks in friendship"
+        ]
+      }
+    },
+    "return-mars-first-seventh-enemies-lawsuits": {
+      "pt": "se Marte está na primeira casa da sua revolução solar, a leitura anuncia inimigos perigosos para você. se estiver na sétima casa anual, anuncia querelas e processos.",
+      "en": "if Mars is in the first house of your solar return, the reading indicates dangerous enemies for you. if it is in the annual seventh house, it indicates quarrels and lawsuits.",
+      "keywords": {
+        "pt": [
+          "Marte na primeira ou sétima",
+          "inimigos perigosos",
+          "querelas e processos"
+        ],
+        "en": [
+          "Mars in the first or seventh",
+          "dangerous enemies",
+          "quarrels and lawsuits"
+        ]
+      }
+    },
+    "sun-seventh-support-twelfth-secret-enemies": {
+      "pt": "se o Sol está na sétima casa no nascimento e na revolução solar, você tem indicação de apoio dos amigos. na décima segunda casa anual e afligido por algum aspecto maléfico, ele anuncia inimigos secretos que podem causar muito mal a você.",
+      "en": "if the Sun is in the seventh house at birth and in the solar return, you have an indication of support from friends. in the annual twelfth house and afflicted by a malefic aspect, it indicates secret enemies who can do you much harm.",
+      "keywords": {
+        "pt": [
+          "apoio dos amigos",
+          "Sol na décima segunda",
+          "inimigos secretos"
+        ],
+        "en": [
+          "support from friends",
+          "Sun in the twelfth",
+          "secret enemies"
+        ]
+      }
+    },
+    "favorable-planet-return-twelfth-enemy-superiority": {
+      "pt": "se Vênus, Júpiter ou outro planeta favorável está na décima segunda casa da sua revolução solar, a leitura anuncia superioridade dos inimigos. você tem nesse aforismo uma indicação de vantagem para eles.",
+      "en": "if Venus, Jupiter or another favorable planet is in the twelfth house of your solar return, the reading indicates your enemies’ superiority. this aphorism gives you an indication of an advantage for them.",
+      "keywords": {
+        "pt": [
+          "planeta favorável na décima segunda",
+          "superioridade dos inimigos"
+        ],
+        "en": [
+          "favorable planet in the twelfth",
+          "enemies’ superiority"
+        ]
+      }
+    },
+    "mercury-seventh-natal-and-return-treacherous-enemies": {
+      "pt": "se Mercúrio está na sétima casa no nascimento e na revolução solar, você tem indicação de muito mal vindo dos inimigos. a leitura caracteriza esses inimigos como astutos e pérfidos.",
+      "en": "if Mercury is in the seventh house at birth and in the solar return, you have an indication of much harm coming from your enemies. the reading describes those enemies as cunning and treacherous.",
+      "keywords": {
+        "pt": [
+          "Mercúrio na sétima",
+          "inimigos astutos",
+          "perfídia"
+        ],
+        "en": [
+          "Mercury in the seventh",
+          "cunning enemies",
+          "treachery"
+        ]
+      }
+    },
+    "return-moon-masculine-malefic-house-ruler-enemies": {
+      "pt": "se a Lua da sua revolução solar está em signo masculino, em quadratura ou oposição a Saturno e Marte, e o regente da casa que ela ocupa é maléfico, a leitura anuncia inimigos poderosos contra você. desses inimigos, a leitura indica que você deve temer tudo.",
+      "en": "if the Moon in your solar return is in a masculine sign, square or opposite Saturn and Mars, and the ruler of the house it occupies is malefic, the reading indicates powerful enemies against you. the reading indicates you have reason to fear everything from those enemies.",
+      "keywords": {
+        "pt": [
+          "Lua em signo masculino",
+          "regente da casa maléfico",
+          "inimigos poderosos"
+        ],
+        "en": [
+          "Moon in a masculine sign",
+          "malefic house ruler",
+          "powerful enemies"
+        ]
+      }
+    },
+    "occidental-year-ruler-seventh-twelfth-enemy-loss": {
+      "pt": "se o regente do ano está na sétima ou décima segunda casa e é ocidental, em mau aspecto com Saturno ou Marte, e Júpiter está sem aspecto com a Lua ou com esse regente, a leitura anuncia perda de bens ou de posição para você. essa perda vem das manobras de inimigos poderosos e encarniçados.",
+      "en": "if the ruler of the year is in the seventh or twelfth house and is occidental, in adverse aspect to Saturn or Mars, and Jupiter is without aspect to the Moon or that ruler, the reading indicates loss of property or position for you. that loss comes through the machinations of powerful, implacable enemies.",
+      "keywords": {
+        "pt": [
+          "regente do ano ocidental",
+          "perda de bens ou posição",
+          "manobras inimigas"
+        ],
+        "en": [
+          "occidental ruler of the year",
+          "loss of property or position",
+          "enemy machinations"
+        ]
+      }
+    },
+    "year-ruler-under-sun-rays-enemy-activity": {
+      "pt": "se o regente do ano está sob os raios do Sol, a leitura anuncia atividade perigosa dos inimigos contra você. a indicação desse aforismo concentra-se no perigo das ações deles.",
+      "en": "if the ruler of the year is under the Sun’s rays, the reading indicates dangerous enemy activity against you. this aphorism’s indication centers on the danger of their actions.",
+      "keywords": {
+        "pt": [
+          "regente sob os raios do Sol",
+          "atividade inimiga perigosa"
+        ],
+        "en": [
+          "ruler under the Sun’s rays",
+          "dangerous enemy activity"
+        ]
+      }
+    },
+    "benefic-year-ruler-mars-opposition-luminary-square-enemies": {
+      "pt": "se o regente do ano é benéfico, oposto a Marte e em quadratura com a Lua ou o Sol, e o regente da primeira casa está sem aspecto com sua própria casa, a leitura anuncia grandes perigos para você. esses perigos serão criados pelos inimigos.",
+      "en": "if the ruler of the year is benefic, opposite Mars and square the Moon or Sun, and the ruler of the first house has no aspect to its own house, the reading indicates great dangers for you. those dangers will be created by enemies.",
+      "keywords": {
+        "pt": [
+          "regente benéfico afligido",
+          "regente sem aspecto à primeira",
+          "perigos dos inimigos"
+        ],
+        "en": [
+          "afflicted benefic ruler",
+          "ruler without aspect to the first",
+          "dangers from enemies"
+        ]
+      }
+    },
+    "natal-eleventh-ruler-return-twelfth-changing-connections": {
+      "pt": "se o regente da sua décima primeira casa natal passa à décima segunda casa da revolução solar, a leitura anuncia mudança de amigos. alternativamente, a mudança pode envolver seus inimigos.",
+      "en": "if the ruler of your natal eleventh house moves into the twelfth house of the solar return, the reading indicates a change of friends. alternatively, the change may involve your enemies.",
+      "keywords": {
+        "pt": [
+          "regente natal da décima primeira",
+          "mudança de amigos ou inimigos"
+        ],
+        "en": [
+          "natal eleventh-house ruler",
+          "change of friends or enemies"
+        ]
+      }
+    },
+    "first-ruler-return-twelfth-enemies-captivity": {
+      "pt": "se o regente da primeira casa está na décima segunda casa da sua revolução solar, a leitura anuncia numerosos inimigos para você. ela também anuncia grandes atribulações e cativeiro.",
+      "en": "if the ruler of the first house is in the twelfth house of your solar return, the reading indicates numerous enemies for you. it also indicates great tribulations and captivity.",
+      "keywords": {
+        "pt": [
+          "regente da primeira na décima segunda",
+          "numerosos inimigos",
+          "cativeiro"
+        ],
+        "en": [
+          "first ruler in the twelfth",
+          "numerous enemies",
+          "captivity"
+        ]
+      }
+    },
+    "south-node-return-first-enemy-capture-flight": {
+      "pt": "se a Cauda do Dragão ocupa a primeira casa da sua revolução solar, a leitura anuncia ameaça de você cair em poder dos inimigos. ela também indica a necessidade de fugir.",
+      "en": "if the Dragon’s Tail occupies the first house of your solar return, the reading indicates a threat of your falling into your enemies’ power. it also indicates the need to flee.",
+      "keywords": {
+        "pt": [
+          "Cauda do Dragão na primeira",
+          "poder dos inimigos",
+          "fuga"
+        ],
+        "en": [
+          "Dragon’s Tail in the first",
+          "enemies’ power",
+          "flight"
+        ]
+      }
+    },
+    "natal-sixth-twelfth-sign-return-first-friends-enemies": {
+      "pt": "se o signo da sua sexta ou décima segunda casa natal passa à primeira casa da revolução solar, a leitura indica que seus amigos se converterão em inimigos. a transformação das amizades em inimizades é a indicação desse aforismo para você.",
+      "en": "if the sign of your natal sixth or twelfth house moves into the first house of the solar return, the reading indicates that your friends will turn into enemies. the transformation of friendships into enmities is this aphorism’s indication for you.",
+      "keywords": {
+        "pt": [
+          "signo natal da sexta ou décima segunda",
+          "amigos convertidos em inimigos"
+        ],
+        "en": [
+          "natal sixth- or twelfth-house sign",
+          "friends turned into enemies"
+        ]
+      }
+    },
+    "return-fourth-seventh-houses-rulers-afflicted-enemy-harm": {
+      "pt": "se a quarta e a sétima casas da sua revolução solar e seus regentes estão afligidos por aspectos maléficos, a leitura anuncia muitos males para você. esses males serão infligidos pelos inimigos.",
+      "en": "if the fourth and seventh houses of your solar return and their rulers are afflicted by malefic aspects, the reading indicates many harms for you. those harms will be inflicted by enemies.",
+      "keywords": {
+        "pt": [
+          "quarta e sétima afligidas",
+          "regentes afligidos",
+          "males dos inimigos"
+        ],
+        "en": [
+          "afflicted fourth and seventh",
+          "afflicted rulers",
+          "harm from enemies"
+        ]
+      }
+    },
+    "return-jupiter-venus-conjunct-moon-year-ruler-deliverance": {
+      "pt": "se Júpiter e Vênus estão em conjunção com a Lua ou com o regente do ano na sua revolução solar, a leitura anuncia libertação do poder dos inimigos. você tem nessa configuração a indicação de escapar ao domínio deles.",
+      "en": "if Jupiter and Venus are conjunct the Moon or the ruler of the year in your solar return, the reading indicates deliverance from your enemies’ power. this configuration gives you an indication of escaping their control.",
+      "keywords": {
+        "pt": [
+          "Júpiter e Vênus conjuntos",
+          "Lua ou regente do ano",
+          "libertação dos inimigos"
+        ],
+        "en": [
+          "conjunct Jupiter and Venus",
+          "Moon or ruler of the year",
+          "deliverance from enemies"
+        ]
+      }
+    },
+    "jupiter-third-natal-and-return-peace": {
+      "pt": "se Júpiter está na terceira casa no nascimento e na revolução solar, a leitura indica atenuação dos perigos para você. ela também anuncia enfraquecimento dos inimigos e paz.",
+      "en": "if Jupiter is in the third house at birth and in the solar return, the reading indicates a lessening of dangers for you. it also indicates weakened enemies and peace.",
+      "keywords": {
+        "pt": [
+          "Júpiter na terceira",
+          "perigos atenuados",
+          "paz"
+        ],
+        "en": [
+          "Jupiter in the third",
+          "lessened dangers",
+          "peace"
+        ]
+      }
+    },
+    "north-node-fifth-natal-and-return-mortal-protection": {
+      "pt": "se a Cabeça do Dragão está na quinta casa no nascimento e na revolução solar, a leitura anuncia proteção para você. a proteção descrita é contra qualquer perigo mortal.",
+      "en": "if the Dragon’s Head is in the fifth house at birth and in the solar return, the reading indicates protection for you. the protection described is against every mortal danger.",
+      "keywords": {
+        "pt": [
+          "Cabeça do Dragão na quinta",
+          "proteção contra perigo mortal"
+        ],
+        "en": [
+          "Dragon’s Head in the fifth",
+          "protection from mortal danger"
+        ]
+      }
+    },
+    "year-ruler-good-aspects-natal-and-return-protection": {
+      "pt": "se o regente do ano está em bom aspecto no nascimento e na revolução solar, a leitura anuncia afastamento dos perigos para você. a indicação desse aforismo é de proteção nessas condições.",
+      "en": "if the ruler of the year is well aspected at birth and in the solar return, the reading indicates that dangers are kept away from you. this aphorism’s indication is of protection under those conditions.",
+      "keywords": {
+        "pt": [
+          "regente do ano bem-aspectado",
+          "nascimento e revolução",
+          "perigos afastados"
+        ],
+        "en": [
+          "well-aspected ruler of the year",
+          "birth and return",
+          "dangers kept away"
+        ]
+      }
+    },
+    "return-saturn-first-captivity-wound-death": {
+      "pt": "se Saturno está na primeira casa da sua revolução solar, a leitura anuncia ameaça de cativeiro para você. ela também anuncia ameaça de ferimento grave e até de morte.",
+      "en": "if Saturn is in the first house of your solar return, the reading indicates a threat of captivity for you. it also indicates a threat of a serious wound and even death.",
+      "keywords": {
+        "pt": [
+          "Saturno na primeira",
+          "cativeiro",
+          "ferimento grave ou morte"
+        ],
+        "en": [
+          "Saturn in the first",
+          "captivity",
+          "serious wound or death"
+        ]
+      }
+    },
+    "saturn-year-ruler-below-horizon-mars-captivity": {
+      "pt": "se Saturno, regente do ano, está sob o horizonte da revolução solar e conjunto a Marte, ou se Marte está no signo que Saturno ocupava no nascimento, e se o regente da primeira casa anual está na sétima e Júpiter e Vênus estão em casas cadentes, terceira, sexta, nona ou décima segunda, a leitura anuncia ameaça iminente de aprisionamento para você. o aforismo mantém esses vínculos entre Saturno, Marte, os regentes e as casas na sua configuração de cativeiro.",
+      "en": "if Saturn, ruler of the year, is below the solar-return horizon and conjunct Mars, or if Mars is in the sign Saturn occupied at birth, and if the annual first-house ruler is in the seventh and Jupiter and Venus are in cadent houses, the third, sixth, ninth or twelfth, the reading indicates an imminent threat of imprisonment for you. the aphorism retains these links among Saturn, Mars, the rulers and the houses in its captivity configuration.",
+      "keywords": {
+        "pt": [
+          "Saturno regente sob o horizonte",
+          "Marte e casas cadentes",
+          "aprisionamento iminente"
+        ],
+        "en": [
+          "Saturn as ruler below the horizon",
+          "Mars and cadent houses",
+          "imminent imprisonment"
+        ]
+      }
+    },
+    "saturn-twelfth-natal-and-return-misfortune-wound": {
+      "pt": "se Saturno está na décima segunda casa no nascimento e na revolução solar, a leitura anuncia ameaça de infortúnio muito grande para você. alternativamente, anuncia ameaça de ferimento perigoso.",
+      "en": "if Saturn is in the twelfth house at birth and in the solar return, the reading indicates a threat of very great misfortune for you. alternatively, it indicates a threat of a dangerous wound.",
+      "keywords": {
+        "pt": [
+          "Saturno na décima segunda",
+          "grande infortúnio",
+          "ferimento perigoso"
+        ],
+        "en": [
+          "Saturn in the twelfth",
+          "great misfortune",
+          "dangerous wound"
+        ]
+      }
+    },
+    "return-saturn-first-ruler-twelfth-no-sun-aspect-captivity": {
+      "pt": "se Saturno na sua revolução solar rege a primeira casa, está na décima segunda e não tem aspecto com o Sol, a leitura anuncia ameaça de cativeiro para você. a indicação mantém juntas a regência, a posição e a ausência de aspecto solar.",
+      "en": "if Saturn in your solar return rules the first house, is in the twelfth and has no aspect to the Sun, the reading indicates a threat of captivity for you. the indication keeps the rulership, placement and absence of a solar aspect together.",
+      "keywords": {
+        "pt": [
+          "Saturno regente da primeira",
+          "sem aspecto ao Sol",
+          "cativeiro"
+        ],
+        "en": [
+          "Saturn as first-house ruler",
+          "no aspect to the Sun",
+          "captivity"
+        ]
+      }
+    },
+    "saturn-sixth-natal-and-return-danger-captivity": {
+      "pt": "se Saturno está na sexta casa no nascimento e na revolução solar, a leitura anuncia perigos para você. ela também anuncia cativeiro nessas condições.",
+      "en": "if Saturn is in the sixth house at birth and in the solar return, the reading indicates dangers for you. it also indicates captivity under those conditions.",
+      "keywords": {
+        "pt": [
+          "Saturno na sexta",
+          "perigos",
+          "cativeiro"
+        ],
+        "en": [
+          "Saturn in the sixth",
+          "dangers",
+          "captivity"
+        ]
+      }
+    },
+    "return-jupiter-capricorn-saturn-sun-mars-misfortune": {
+      "pt": "se Júpiter está em Capricórnio na sua revolução solar, infortunado por Saturno, e o Sol está simultaneamente infortunado por Marte, a leitura anuncia grande infelicidade para você. esse presságio depende da aflição conjunta dos dois planetas pelas configurações indicadas.",
+      "en": "if Jupiter is in Capricorn in your solar return, afflicted by Saturn, and the Sun is simultaneously afflicted by Mars, the reading indicates great misfortune for you. this indication depends on both planets being afflicted through the stated configurations.",
+      "keywords": {
+        "pt": [
+          "Júpiter em Capricórnio",
+          "Saturno e Marte afligindo",
+          "grande infelicidade"
+        ],
+        "en": [
+          "Jupiter in Capricorn",
+          "afflictions from Saturn and Mars",
+          "great misfortune"
+        ]
+      }
+    },
+    "jupiter-year-ruler-under-sun-rays-humiliation": {
+      "pt": "se Júpiter é regente do ano e está sob os raios do Sol, a leitura anuncia humilhações para você. ela também anuncia aflição nessas condições.",
+      "en": "if Jupiter is ruler of the year and is under the Sun’s rays, the reading indicates humiliations for you. it also indicates distress under those conditions.",
+      "keywords": {
+        "pt": [
+          "Júpiter regente do ano",
+          "sob os raios do Sol",
+          "humilhação e aflição"
+        ],
+        "en": [
+          "Jupiter as ruler of the year",
+          "under the Sun’s rays",
+          "humiliation and distress"
+        ]
+      }
+    },
+    "mars-year-ruler-saturn-natal-sign-angular-succedent-captivity": {
+      "pt": "se Marte é regente do ano, Saturno anual ocupa o signo de Marte natal, Marte anual está num ponto cardeal, primeira, quarta, sétima ou décima casa, ou numa casa seguinte, segunda, quinta, oitava ou décima primeira, e acima de Vênus, enquanto os benéficos estão em casas cadentes, terceira, sexta, nona ou décima segunda, a leitura anuncia um mau ano para você. ela também anuncia ameaça de cativeiro sob essa combinação de condições.",
+      "en": "if Mars is ruler of the year, annual Saturn occupies natal Mars’s sign, annual Mars is at a cardinal point, the first, fourth, seventh or tenth house, or in a succedent house, the second, fifth, eighth or eleventh, and above Venus, while the benefics are in cadent houses, the third, sixth, ninth or twelfth, the reading indicates a bad year for you. it also indicates a threat of captivity under this combination of conditions.",
+      "keywords": {
+        "pt": [
+          "Marte regente do ano",
+          "Saturno no signo de Marte natal",
+          "ameaça de cativeiro"
+        ],
+        "en": [
+          "Mars as ruler of the year",
+          "Saturn in natal Mars’s sign",
+          "threat of captivity"
+        ]
+      }
+    },
+    "mars-year-ruler-undignified-in-first": {
+      "pt": "se Marte, regente do ano, está na primeira casa da revolução solar em signo onde não tem dignidade, você tem ameaça de cativeiro. a ameaça é especialmente ressaltada se Marte ocupava sua primeira casa natal ou projetava quadratura ou oposição sobre essa casa.",
+      "en": "if Mars, ruler of the year, is in the first house of the solar return in a sign where it has no dignity, you face a threat of captivity. the threat is especially emphasized if Mars occupied your natal first house or cast a square or opposition to that house.",
+      "keywords": {
+        "pt": [
+          "Marte regente do ano",
+          "ausência de dignidade",
+          "ameaça de cativeiro"
+        ],
+        "en": [
+          "Mars as year ruler",
+          "absence of dignity",
+          "threat of captivity"
+        ]
+      }
+    },
+    "mars-in-natal-and-return-fourth": {
+      "pt": "com Marte na quarta casa no nascimento e na revolução solar, você tem indicação de um mau ano. a leitura anuncia ameaça de queda ou demência para você.",
+      "en": "with Mars in the fourth house at birth and in the solar return, you have an indication of a bad year. the reading announces a threat of a fall or dementia for you.",
+      "keywords": {
+        "pt": [
+          "Marte na quarta casa",
+          "mau ano",
+          "queda ou demência"
+        ],
+        "en": [
+          "Mars in the fourth house",
+          "bad year",
+          "fall or dementia"
+        ]
+      }
+    },
+    "mars-in-return-twelfth-with-natal-house-branches": {
+      "pt": "com Marte na décima segunda casa no nascimento e na revolução solar, você tem ameaça de cativeiro, perda de reputação e perigos. se Marte está na décima segunda anual, mas ocupava outra casa no nascimento, a leitura anuncia algum acidente sinistro e inesperado para você.",
+      "en": "with Mars in the twelfth house at birth and in the solar return, you face a threat of captivity, loss of reputation and dangers. if Mars is in the annual twelfth but occupied another house at birth, the reading announces some sinister, unexpected accident for you.",
+      "keywords": {
+        "pt": [
+          "Marte na décima segunda",
+          "cativeiro e reputação",
+          "acidente inesperado"
+        ],
+        "en": [
+          "Mars in the twelfth",
+          "captivity and reputation",
+          "unexpected accident"
+        ]
+      }
+    },
+    "mars-in-natal-sun-sign-violent-death-or-illness": {
+      "pt": "com Marte da sua revolução solar no signo que o Sol ocupava no nascimento, o perigo de morte violenta é precipitado nesse ano se essa ameaça já existia no mapa natal. a outra indicação é uma doença que pode se tornar mortal para você.",
+      "en": "with Mars in your solar-return chart in the sign the Sun occupied at birth, danger of violent death is unleashed that year if this threat already existed in the natal chart. the other indication is an illness that may become fatal for you.",
+      "keywords": {
+        "pt": [
+          "Marte no signo do Sol natal",
+          "ameaça natal",
+          "morte violenta ou doença"
+        ],
+        "en": [
+          "Mars in the natal Sun’s sign",
+          "natal threat",
+          "violent death or illness"
+        ]
+      }
+    },
+    "mars-in-return-tenth-fall-or-animal-wound": {
+      "pt": "com Marte na décima casa da sua revolução solar, você tem ameaça de queda. alternativamente, a leitura anuncia ameaça de ferimento provocado por um animal quadrúpede.",
+      "en": "with Mars in the tenth house of your solar-return chart, you face a threat of a fall. alternatively, the reading announces a threat of injury caused by a four-footed animal.",
+      "keywords": {
+        "pt": [
+          "Marte na décima",
+          "queda",
+          "ferimento por quadrúpede"
+        ],
+        "en": [
+          "Mars in the tenth",
+          "fall",
+          "injury by a four-footed animal"
+        ]
+      }
+    },
+    "mars-in-natal-saturn-sign-unforeseen-dangers": {
+      "pt": "com Marte da sua revolução solar no signo que Saturno ocupava no nascimento, você tem indicação de um ano muito perigoso. a leitura anuncia perigos imprevistos para você.",
+      "en": "with Mars in your solar-return chart in the sign Saturn occupied at birth, you have an indication of a very dangerous year. the reading announces unforeseen dangers for you.",
+      "keywords": {
+        "pt": [
+          "Marte no signo de Saturno natal",
+          "ano perigoso",
+          "perigos imprevistos"
+        ],
+        "en": [
+          "Mars in natal Saturn’s sign",
+          "dangerous year",
+          "unforeseen dangers"
+        ]
+      }
+    },
+    "return-sun-square-or-opposite-mars-fall": {
+      "pt": "com o Sol em quadratura ou oposição a Marte na sua revolução solar, você tem uma indicação de perigo. o perigo especificado é uma ameaça de queda.",
+      "en": "with the Sun square or opposite Mars in your solar-return chart, you have an indication of danger. the specified danger is a threat of a fall.",
+      "keywords": {
+        "pt": [
+          "Sol e Marte",
+          "quadratura ou oposição",
+          "ameaça de queda"
+        ],
+        "en": [
+          "Sun and Mars",
+          "square or opposition",
+          "threat of a fall"
+        ]
+      }
+    },
+    "sun-in-natal-and-return-twelfth-captivity": {
+      "pt": "com o Sol na décima segunda casa no nascimento e na revolução solar, você tem uma indicação adversa. a leitura anuncia ameaça de cativeiro para você.",
+      "en": "with the Sun in the twelfth house at birth and in the solar return, you have an adverse indication. the reading announces a threat of captivity for you.",
+      "keywords": {
+        "pt": [
+          "Sol na décima segunda",
+          "ameaça de cativeiro"
+        ],
+        "en": [
+          "Sun in the twelfth",
+          "threat of captivity"
+        ]
+      }
+    },
+    "venus-year-ruler-in-via-combusta": {
+      "pt": "se Vênus, regente do ano, está na via combusta descrita nesta leitura — de 18° de Gêmeos até 2° de Câncer inclusive, ou de 24° de Sagitário até 2° de Capricórnio inclusive —, você tem indicação de humilhações. a leitura atribui essas humilhações a mulheres.",
+      "en": "if Venus, ruler of the year, is in the via combusta described in this reading — from 18° Gemini through 2° Cancer inclusive, or from 24° Sagittarius through 2° Capricorn inclusive —, you have an indication of humiliations. the reading attributes these humiliations to women.",
+      "keywords": {
+        "pt": [
+          "Vênus regente do ano",
+          "via combusta nesta interpretação",
+          "humilhações por mulheres"
+        ],
+        "en": [
+          "Venus as year ruler",
+          "via combusta in this interpretation",
+          "humiliations through women"
+        ]
+      }
+    },
+    "mercury-year-ruler-in-via-combusta": {
+      "pt": "se Mercúrio, regente do ano, está em via combusta, você tem indicação de ansiedades e atribulações. a leitura também anuncia adversidade e perdas nos negócios para você.",
+      "en": "if Mercury, ruler of the year, is in via combusta, you have an indication of anxieties and tribulations. the reading also announces adversity and business losses for you.",
+      "keywords": {
+        "pt": [
+          "Mercúrio regente do ano",
+          "via combusta",
+          "perdas nos negócios"
+        ],
+        "en": [
+          "Mercury as year ruler",
+          "via combusta",
+          "business losses"
+        ]
+      }
+    },
+    "return-cancer-moon-aries-sun-malefic-affliction": {
+      "pt": "se, na sua revolução solar, a Lua está unida a Câncer e o Sol a Áries, ambos afligidos por maus aspectos de Saturno ou Marte, você tem indicação de infortúnio e ruína. se a Lua está em quadratura ou oposição a Marte, há ameaça de cegueira, queda ou ferimento provocado por animal quadrúpede.",
+      "en": "if, in your solar-return chart, the Moon is united with Cancer and the Sun with Aries, both afflicted by adverse aspects from Saturn or Mars, you have an indication of misfortune and ruin. if the Moon is square or opposite Mars, there is a threat of blindness, a fall or injury caused by a four-footed animal.",
+      "keywords": {
+        "pt": [
+          "Lua em Câncer e Sol em Áries",
+          "aflição maléfica",
+          "cegueira ou ferimento"
+        ],
+        "en": [
+          "Moon in Cancer and Sun in Aries",
+          "malefic affliction",
+          "blindness or injury"
+        ]
+      }
+    },
+    "return-moon-in-natal-mars-sign-diurnal-dangers": {
+      "pt": "com a Lua da sua revolução solar no signo que Marte ocupava no nascimento, você tem indicação de um ano difícil, sobretudo se a Lua é oriental e o mapa anual é diurno. a leitura anuncia muitos perigos, ameaça de ferimento por queda ou ferro, motins temíveis para os príncipes, insurreições, explosão de rancores domésticos e acusações.",
+      "en": "with the Moon in your solar-return chart in the sign Mars occupied at birth, you have an indication of a difficult year, especially if the Moon is oriental and the annual chart is diurnal. the reading announces many dangers, a threat of injury by a fall or iron, fearful riots for princes, insurrections, an outbreak of domestic hatreds and accusations.",
+      "keywords": {
+        "pt": [
+          "Lua no signo de Marte natal",
+          "Lua oriental e ano diurno",
+          "perigos e rancores"
+        ],
+        "en": [
+          "Moon in natal Mars’s sign",
+          "oriental Moon and diurnal year",
+          "dangers and hatreds"
+        ]
+      }
+    },
+    "masculine-return-moon-afflicted-and-malefic-ruled": {
+      "pt": "se a Lua da sua revolução solar está em signo masculino e em mau aspecto com Saturno e Marte, e Saturno ou Marte rege o signo ocupado pela Lua, você tem uma indicação adversa. a leitura anuncia grande adversidade e grandes perigos para você.",
+      "en": "if the Moon in your solar-return chart is in a masculine sign and adversely aspected to Saturn and Mars, and Saturn or Mars rules the sign occupied by the Moon, you have an adverse indication. the reading announces great adversity and grave dangers for you.",
+      "keywords": {
+        "pt": [
+          "Lua em signo masculino",
+          "regência e aspectos maléficos",
+          "grandes perigos"
+        ],
+        "en": [
+          "Moon in a masculine sign",
+          "malefic rulership and aspects",
+          "grave dangers"
+        ]
+      }
+    },
+    "moon-in-natal-and-return-seventh": {
+      "pt": "com a Lua na sétima casa no nascimento e na revolução solar, você tem indicação de adversidade. a leitura também anuncia inimizades e perigos para você.",
+      "en": "with the Moon in the seventh house at birth and in the solar return, you have an indication of adversity. the reading also announces enmities and dangers for you.",
+      "keywords": {
+        "pt": [
+          "Lua na sétima",
+          "adversidade",
+          "inimizades e perigos"
+        ],
+        "en": [
+          "Moon in the seventh",
+          "adversity",
+          "enmities and dangers"
+        ]
+      }
+    },
+    "year-ruler-benefic-natally-malefic-in-return": {
+      "pt": "se o regente do ano era benéfico no nascimento e é maléfico na revolução solar, com a Lua afligida por mau aspecto, você tem ameaça de atentado de morte ou de ferimento muito grave provocado por mãos inimigas. a leitura também anuncia ameaça de amputação para você.",
+      "en": "if the ruler of the year was benefic at birth and is malefic in the solar return, with the Moon afflicted by an adverse aspect, you face a threat of a fatal assault or a very serious wound at enemy hands. the reading also announces a threat of amputation for you.",
+      "keywords": {
+        "pt": [
+          "mudança de condição do regente",
+          "Lua afligida",
+          "atentado ou amputação"
+        ],
+        "en": [
+          "changed condition of the ruler",
+          "afflicted Moon",
+          "assault or amputation"
+        ]
+      }
+    },
+    "afflicted-year-ruler-in-natal-and-return-sixth": {
+      "pt": "se o regente do ano está na sexta casa no nascimento e na revolução solar e está afligido por mau aspecto, você tem uma indicação adversa. a leitura anuncia ameaça de grande infortúnio para você.",
+      "en": "if the ruler of the year is in the sixth house at birth and in the solar return and is afflicted by an adverse aspect, you have an adverse indication. the reading announces a threat of great misfortune for you.",
+      "keywords": {
+        "pt": [
+          "regente na sexta",
+          "aflição por aspecto",
+          "grande infortúnio"
+        ],
+        "en": [
+          "ruler in the sixth",
+          "affliction by aspect",
+          "great misfortune"
+        ]
+      }
+    },
+    "year-ruler-angular-and-hard-aspected-in-both-charts": {
+      "pt": "se, no nascimento e na revolução solar, o regente do ano ocupa um ponto cardeal — primeira, quarta, sétima ou décima casa — e está em quadratura ou oposição a Saturno ou Marte, você tem uma indicação adversa. a leitura anuncia grande adversidade para você.",
+      "en": "if, at birth and in the solar return, the ruler of the year occupies a cardinal point — the first, fourth, seventh or tenth house — and is square or opposite Saturn or Mars, you have an adverse indication. the reading announces great adversity for you.",
+      "keywords": {
+        "pt": [
+          "regente em ponto cardeal",
+          "quadratura ou oposição",
+          "grande adversidade"
+        ],
+        "en": [
+          "ruler at a cardinal point",
+          "square or opposition",
+          "great adversity"
+        ]
+      }
+    },
+    "afflicted-year-ruler-in-second-sixth-eighth-twelfth": {
+      "pt": "se o regente do ano está afligido por aspecto maléfico e ocupa a segunda, sexta, oitava ou décima segunda casa da sua revolução solar, você tem ameaça de calamidade. a calamidade indicada não será prevista por ninguém.",
+      "en": "if the ruler of the year is afflicted by a malefic aspect and occupies the second, sixth, eighth or twelfth house of your solar-return chart, you face a threat of calamity. the indicated calamity will not be foreseen by anyone.",
+      "keywords": {
+        "pt": [
+          "regente afligido",
+          "casas segunda sexta oitava e décima segunda",
+          "calamidade imprevista"
+        ],
+        "en": [
+          "afflicted ruler",
+          "second sixth eighth and twelfth houses",
+          "unforeseen calamity"
+        ]
+      }
+    },
+    "afflicted-year-ruler-in-seventh-fall-expatriation": {
+      "pt": "se o regente do ano está na sétima casa e afligido por aspecto maléfico, você tem ameaça de queda perigosa. o perigo indicado levará você obrigatoriamente à expatriação.",
+      "en": "if the ruler of the year is in the seventh house and afflicted by a malefic aspect, you face a threat of a dangerous fall. the indicated danger will necessarily force you into expatriation.",
+      "keywords": {
+        "pt": [
+          "regente na sétima",
+          "queda perigosa",
+          "expatriação"
+        ],
+        "en": [
+          "ruler in the seventh",
+          "dangerous fall",
+          "expatriation"
+        ]
+      }
+    },
+    "year-ruler-afflicted-by-angular-or-cadent-hostile-planet": {
+      "pt": "se o regente do ano está afligido por quadratura ou oposição de um planeta em ponto cardeal, você tem ameaça de grande adversidade, grande angústia e grandes perigos. se o planeta hostil está em casa cadente, o presságio é atenuado.",
+      "en": "if the ruler of the year is afflicted by a square or opposition from a planet at a cardinal point, you face a threat of great adversity, great anguish and grave dangers. if the hostile planet is in a cadent house, the forecast is weakened.",
+      "keywords": {
+        "pt": [
+          "planeta hostil",
+          "posição angular ou cadente",
+          "adversidade atenuável"
+        ],
+        "en": [
+          "hostile planet",
+          "angular or cadent position",
+          "mitigable adversity"
+        ]
+      }
+    },
+    "undignified-year-ruler-natal-first-ruler-via-combusta": {
+      "pt": "se o regente do ano não tem dignidade, o regente da primeira casa natal está em via combusta e Sol e Lua também estão maleficiados, você tem ameaça de suicídio ou de cometer uma ação expiada pela morte. se planetas benéficos estão em aspecto favorável com o regente do ano, essas ameaças não se concretizarão.",
+      "en": "if the ruler of the year has no dignity, the ruler of the natal first house is in via combusta and the Sun and Moon are also afflicted, you face a threat of suicide or of committing an action punished by death. if benefic planets are favorably aspected to the ruler of the year, these threats will not materialize.",
+      "keywords": {
+        "pt": [
+          "ausência de dignidade",
+          "via combusta e luminares",
+          "ameaças neutralizadas por benéficos"
+        ],
+        "en": [
+          "absence of dignity",
+          "via combusta and luminaries",
+          "threats neutralized by benefics"
+        ]
+      }
+    },
+    "year-ruler-aspects-to-first-house": {
+      "pt": "se o regente do ano está em quadratura ou oposição à primeira casa, você tem indicação de um mau ano. se está em sextil ou trígono com ela, a leitura anuncia um ano favorável para você.",
+      "en": "if the ruler of the year is square or opposite the first house, you have an indication of a bad year. if it is sextile or trine that house, the reading announces a favorable year for you.",
+      "keywords": {
+        "pt": [
+          "regente e primeira casa",
+          "aspectos adversos",
+          "aspectos favoráveis"
+        ],
+        "en": [
+          "ruler and first house",
+          "adverse aspects",
+          "favorable aspects"
+        ]
+      }
+    },
+    "malefic-year-ruler-natal-seventh-return-moon-first": {
+      "pt": "se o regente do ano é maléfico e ocupava a sétima casa natal, e na revolução aflige a Lua por mau aspecto e ocupa a primeira casa, ou outro maléfico ocupa essa casa, você tem uma indicação de perigo. a leitura especifica perigos muito grandes para você.",
+      "en": "if the ruler of the year is malefic and occupied the natal seventh house, and in the return it afflicts the Moon by an adverse aspect and occupies the first house, or another malefic occupies that house, you have an indication of danger. the reading specifies very great dangers for you.",
+      "keywords": {
+        "pt": [
+          "regente maléfico",
+          "Lua e primeira casa",
+          "perigos muito grandes"
+        ],
+        "en": [
+          "malefic ruler",
+          "Moon and first house",
+          "very great dangers"
+        ]
+      }
+    },
+    "benefic-year-ruler-malefics-first-seventh": {
+      "pt": "se o regente do ano é benéfico e, na revolução solar, há um maléfico na primeira casa e outro na sétima, com um deles afligindo a Lua por mau aspecto, você tem indicação de perigos muito grandes criados por inimigos. isso é especialmente ressaltado se a primeira casa não recebe nenhum aspecto favorável.",
+      "en": "if the ruler of the year is benefic and, in the solar return, a malefic is in the first house and another in the seventh, with either afflicting the Moon by an adverse aspect, you have an indication of very grave dangers created by enemies. this is especially emphasized if the first house receives no favorable aspect.",
+      "keywords": {
+        "pt": [
+          "regente benéfico",
+          "maléficos na primeira e sétima",
+          "perigos por inimigos"
+        ],
+        "en": [
+          "benefic ruler",
+          "malefics in first and seventh",
+          "dangers through enemies"
+        ]
+      }
+    },
+    "year-ruler-natal-cadent-near-sun-return-saturn": {
+      "pt": "se o regente do ano ocupava no nascimento uma casa cadente — terceira, sexta, nona ou décima segunda — junto ao Sol e, na revolução, está na sexta, oitava ou décima segunda, também junto ao Sol e conjunto a Saturno, você tem uma indicação adversa. a leitura anuncia ameaça de calamidades extremas para você.",
+      "en": "if the ruler of the year occupied a cadent house at birth — the third, sixth, ninth or twelfth — near the Sun and, in the return, is in the sixth, eighth or twelfth, again near the Sun and conjunct Saturn, you have an adverse indication. the reading announces a threat of extreme calamities for you.",
+      "keywords": {
+        "pt": [
+          "regente em casa cadente natal",
+          "proximidade do Sol e Saturno",
+          "calamidades extremas"
+        ],
+        "en": [
+          "ruler in a natal cadent house",
+          "proximity to Sun and Saturn",
+          "extreme calamities"
+        ]
+      }
+    },
+    "benefic-year-ruler-unfortunate-house-angular-malefics": {
+      "pt": "se o regente do ano é benéfico, mas ocupa a sexta, oitava ou décima segunda casa da revolução solar, e Saturno ou Marte está na primeira ou décima, você tem indicação de superioridade dos inimigos. a leitura também anuncia ferimento por ferro ou queda para você.",
+      "en": "if the ruler of the year is benefic but occupies the sixth, eighth or twelfth house of the solar return, and Saturn or Mars is in the first or tenth, you have an indication of your enemies’ superiority. the reading also announces injury by iron or a fall for you.",
+      "keywords": {
+        "pt": [
+          "regente benéfico em casa infeliz",
+          "maléficos angulares",
+          "ferimento ou queda"
+        ],
+        "en": [
+          "benefic ruler in an unfortunate house",
+          "angular malefics",
+          "injury or fall"
+        ]
+      }
+    },
+    "malefic-year-ruler-via-combusta-unfortunate-house": {
+      "pt": "se o regente do ano é maléfico e, na revolução, está em via combusta ou em casa infeliz, com a Lua em mau aspecto com Saturno ou Marte e o próprio regente na sexta ou décima segunda, você tem uma indicação adversa. a leitura anuncia ameaça de cativeiro para você.",
+      "en": "if the ruler of the year is malefic and, in the return, is in via combusta or an unfortunate house, with the Moon adversely aspected to Saturn or Mars and the ruler itself in the sixth or twelfth, you have an adverse indication. the reading announces a threat of captivity for you.",
+      "keywords": {
+        "pt": [
+          "regente maléfico",
+          "via combusta ou casa infeliz",
+          "ameaça de cativeiro"
+        ],
+        "en": [
+          "malefic ruler",
+          "via combusta or unfortunate house",
+          "threat of captivity"
+        ]
+      }
+    },
+    "benefic-year-ruler-afflicted-in-both-charts": {
+      "pt": "se o regente do ano é benéfico, mas está afligido por maus aspectos no nascimento e na revolução solar, você tem uma indicação adversa. a leitura anuncia ameaça de adversidades e cativeiro para você.",
+      "en": "if the ruler of the year is benefic but afflicted by adverse aspects at birth and in the solar return, you have an adverse indication. the reading announces a threat of adversities and captivity for you.",
+      "keywords": {
+        "pt": [
+          "regente benéfico afligido",
+          "nascimento e revolução",
+          "adversidades e cativeiro"
+        ],
+        "en": [
+          "afflicted benefic ruler",
+          "birth and return",
+          "adversities and captivity"
+        ]
+      }
+    },
+    "afflicted-return-first-ruler-in-fourth-seventh-tenth": {
+      "pt": "se o regente da primeira casa da revolução solar está na quarta, sétima ou décima e afligido por aspectos maléficos, você tem ameaça de atentado. segundo sua condição, a leitura atribui o atentado a indivíduos contrários aos príncipes ou a servos contrários aos amos.",
+      "en": "if the ruler of the first house of the solar return is in the fourth, seventh or tenth and afflicted by malefic aspects, you face a threat of assault. according to your circumstances, the reading attributes the assault to subjects acting against princes or servants acting against masters.",
+      "keywords": {
+        "pt": [
+          "regente da primeira casa anual",
+          "aflição maléfica",
+          "ameaça de atentado"
+        ],
+        "en": [
+          "ruler of the annual first house",
+          "malefic affliction",
+          "threat of assault"
+        ]
+      }
+    },
+    "return-first-ruler-in-eighth-life-danger": {
+      "pt": "se o regente da primeira casa da sua revolução solar está na oitava casa, você tem uma indicação adversa. a leitura anuncia perigo para sua vida.",
+      "en": "if the ruler of the first house of your solar-return chart is in the eighth house, you have an adverse indication. the reading announces danger to your life.",
+      "keywords": {
+        "pt": [
+          "regente da primeira na oitava",
+          "perigo para a vida"
+        ],
+        "en": [
+          "first-house ruler in the eighth",
+          "danger to life"
+        ]
+      }
+    },
+    "return-first-ruler-conjunct-south-node-poisoning": {
+      "pt": "se o regente da primeira casa da sua revolução solar está conjunto à Cauda do Dragão, você tem ameaça de envenenamento. a leitura afirma que você escapará desse envenenamento.",
+      "en": "if the ruler of the first house of your solar-return chart is conjunct the Dragon’s Tail, you face a threat of poisoning. the reading states that you will escape this poisoning.",
+      "keywords": {
+        "pt": [
+          "regente da primeira casa",
+          "Cauda do Dragão",
+          "envenenamento evitado"
+        ],
+        "en": [
+          "first-house ruler",
+          "Dragon’s Tail",
+          "escaped poisoning"
+        ]
+      }
+    },
+    "saturn-or-mars-in-return-first-adverse-year": {
+      "pt": "com Saturno ou Marte na primeira casa da sua revolução solar, a leitura anuncia sempre um mau ano para você. a indicação é especialmente ressaltada se há mau aspecto com o regente do ano ou com a Lua.",
+      "en": "with Saturn or Mars in the first house of your solar-return chart, the reading always announces a bad year for you. the indication is especially emphasized if there is an adverse aspect to the ruler of the year or the Moon.",
+      "keywords": {
+        "pt": [
+          "Saturno ou Marte na primeira",
+          "mau ano",
+          "regente do ano e Lua"
+        ],
+        "en": [
+          "Saturn or Mars in the first",
+          "bad year",
+          "year ruler and Moon"
+        ]
+      }
+    },
+    "different-malefics-in-natal-and-return-first": {
+      "pt": "se, de dois planetas maléficos, um está na primeira casa da revolução solar e o outro estava na primeira casa natal, você tem uma indicação adversa. a leitura anuncia um ano muito difícil para você.",
+      "en": "if, of two malefic planets, one is in the first house of the solar return and the other was in the natal first house, you have an adverse indication. the reading announces a very difficult year for you.",
+      "keywords": {
+        "pt": [
+          "dois maléficos",
+          "primeira casa natal e anual",
+          "ano muito difícil"
+        ],
+        "en": [
+          "two malefics",
+          "natal and annual first house",
+          "very difficult year"
+        ]
+      }
+    },
+    "return-first-malefic-with-other-natal-affliction": {
+      "pt": "se um maléfico está na primeira casa da sua revolução solar e outro infortunava a Lua ou um ponto cardeal no nascimento — primeira, quarta, sétima ou décima casa —, você tem uma indicação adversa. a leitura anuncia um ano muito atormentado para você.",
+      "en": "if a malefic is in the first house of your solar-return chart and another afflicted the Moon or a cardinal point at birth — the first, fourth, seventh or tenth house —, you have an adverse indication. the reading announces a very troubled year for you.",
+      "keywords": {
+        "pt": [
+          "maléfico na primeira anual",
+          "aflição natal por outro maléfico",
+          "ano atormentado"
+        ],
+        "en": [
+          "malefic in the annual first",
+          "natal affliction by another malefic",
+          "troubled year"
+        ]
+      }
+    },
+    "malefic-square-first-mitigated-by-ruler-benefic-aspects": {
+      "pt": "se um maléfico está em quadratura à primeira casa da revolução solar e o regente dessa casa está em bom aspecto com um benéfico e com a própria primeira casa, você tem uma condição de atenuação. os presságios do maléfico são atenuados para você.",
+      "en": "if a malefic squares the first house of the solar return and that house’s ruler is favorably aspected to a benefic and to the first house itself, you have a mitigating condition. the malefic’s indications are weakened for you.",
+      "keywords": {
+        "pt": [
+          "quadratura à primeira",
+          "bons aspectos do regente",
+          "atenuação"
+        ],
+        "en": [
+          "square to the first",
+          "ruler’s favorable aspects",
+          "mitigation"
+        ]
+      }
+    },
+    "natal-malefic-benefic-aspect-return-hard-contact": {
+      "pt": "se um maléfico estava em aspecto com um benéfico no nascimento e, na revolução solar, está conjunto, em quadratura ou oposição ao mesmo planeta, você tem uma indicação adversa. a leitura anuncia ameaça de golpe mortal infligido pelo ferro.",
+      "en": "if a malefic was aspected to a benefic at birth and, in the solar return, is conjunct, square or opposite the same planet, you have an adverse indication. the reading announces a threat of a fatal blow inflicted by iron.",
+      "keywords": {
+        "pt": [
+          "aspecto natal entre maléfico e benéfico",
+          "contato anual adverso",
+          "golpe mortal por ferro"
+        ],
+        "en": [
+          "natal aspect between malefic and benefic",
+          "adverse annual contact",
+          "fatal blow by iron"
+        ]
+      }
+    },
+    "malefic-in-return-fourth-obstacles": {
+      "pt": "com um planeta maléfico na quarta casa da sua revolução solar, você tem indicação de obstáculos nos empreendimentos. a leitura também anuncia perigos para você.",
+      "en": "with a malefic planet in the fourth house of your solar-return chart, you have an indication of obstacles to undertakings. the reading also announces dangers for you.",
+      "keywords": {
+        "pt": [
+          "maléfico na quarta",
+          "obstáculos nos empreendimentos",
+          "perigos"
+        ],
+        "en": [
+          "malefic in the fourth",
+          "obstacles to undertakings",
+          "dangers"
+        ]
+      }
+    },
+    "return-first-sign-linked-to-natal-malefic": {
+      "pt": "se a primeira casa da sua revolução solar contém um signo ao qual se ligava um maléfico no nascimento, você tem uma indicação adversa. a leitura anuncia ameaça de destruição da fortuna e de exílio para você.",
+      "en": "if the first house of your solar-return chart contains a sign linked to a malefic at birth, you have an adverse indication. the reading announces a threat of the destruction of fortune and exile for you.",
+      "keywords": {
+        "pt": [
+          "signo da primeira anual",
+          "ligação natal com maléfico",
+          "fortuna e exílio"
+        ],
+        "en": [
+          "annual first-house sign",
+          "natal link with a malefic",
+          "fortune and exile"
+        ]
+      }
+    },
+    "repeated-first-house-eclipse-or-waning-moon-saturn": {
+      "pt": "se a primeira casa da revolução solar é a mesma do nascimento, com Sol em eclipse ou Lua decrescente e um deles em mau aspecto com Saturno, você tem uma indicação adversa. a leitura anuncia ameaça de insurreição contra os príncipes.",
+      "en": "if the first house of the solar return is the same as at birth, with the Sun eclipsed or the Moon waning and either adversely aspected to Saturn, you have an adverse indication. the reading announces a threat of insurrection against princes.",
+      "keywords": {
+        "pt": [
+          "primeira casa repetida",
+          "eclipse ou Lua decrescente",
+          "insurreição"
+        ],
+        "en": [
+          "repeated first house",
+          "eclipse or waning Moon",
+          "insurrection"
+        ]
+      }
+    },
+    "malefic-with-year-ruler-in-first-afflicts-moon": {
+      "pt": "se um maléfico está na primeira casa com o regente do ano e aflige a Lua por mau aspecto, você tem uma indicação adversa. a leitura anuncia grandes perigos nesse ano para você.",
+      "en": "if a malefic is in the first house with the ruler of the year and afflicts the Moon by an adverse aspect, you have an adverse indication. the reading announces grave dangers that year for you.",
+      "keywords": {
+        "pt": [
+          "maléfico e regente na primeira",
+          "Lua afligida",
+          "grandes perigos"
+        ],
+        "en": [
+          "malefic and ruler in the first",
+          "afflicted Moon",
+          "grave dangers"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-1": {
+      "pt": "se o signo da sua décima casa natal passa à primeira casa da revolução solar, você tem indicação de um ano feliz para os empreendimentos. se está maleficiado, a leitura anuncia o contrário.",
+      "en": "if the sign of your natal tenth house passes into the first house of the solar return, you have an indication of a happy year for undertakings. if it is afflicted, the reading announces the opposite.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "empreendimentos",
+          "ano feliz ou adverso"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "undertakings",
+          "happy or adverse year"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-2": {
+      "pt": "se o signo da sua décima casa natal passa à segunda casa da revolução solar, você tem indicação de oportunidade feliz e benevolência dos príncipes e dos grandes. se está maleficiado, a leitura anuncia o contrário.",
+      "en": "if the sign of your natal tenth house passes into the second house of the solar return, you have an indication of good luck and benevolence from princes and people of high rank. if it is afflicted, the reading announces the opposite.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "oportunidade feliz",
+          "benevolência dos poderosos"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "good luck",
+          "benevolence of the powerful"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-3": {
+      "pt": "se o signo da sua décima casa natal passa à terceira casa da revolução solar, você tem indicação de um destino medíocre. a leitura especifica mais mal do que bem para você.",
+      "en": "if the sign of your natal tenth house passes into the third house of the solar return, you have an indication of a middling fate. the reading specifies more bad than good for you.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "destino medíocre",
+          "mais mal que bem"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "middling fate",
+          "more bad than good"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-4": {
+      "pt": "se o signo da sua décima casa natal passa à quarta casa da revolução solar, você tem indicação de adversidade e discórdia com os parentes. a leitura também anuncia desgraça junto aos príncipes e aos grandes.",
+      "en": "if the sign of your natal tenth house passes into the fourth house of the solar return, you have an indication of adversity and discord with relatives. the reading also announces disgrace with princes and people of high rank.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "adversidade",
+          "discórdia familiar",
+          "desgraça com poderosos"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "adversity",
+          "family discord",
+          "disgrace with the powerful"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-5": {
+      "pt": "se o signo da sua décima casa natal passa à quinta casa da revolução solar, você tem indicação de inclinação para a libertinagem. a leitura também anuncia consequências perigosas dessa inclinação para você.",
+      "en": "if the sign of your natal tenth house passes into the fifth house of the solar return, you have an indication of an inclination toward licentiousness. the reading also announces dangerous consequences of that inclination for you.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "libertinagem",
+          "consequências perigosas"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "licentiousness",
+          "dangerous consequences"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-6": {
+      "pt": "se o signo da sua décima casa natal passa à sexta casa da revolução solar, você tem indicação de boa época para os empreendimentos. ao mesmo tempo, há ameaça de revelação escandalosa e perda de reputação para você.",
+      "en": "if the sign of your natal tenth house passes into the sixth house of the solar return, you have an indication of a good time for undertakings. at the same time, you face a threat of scandalous revelation and loss of reputation.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "empreendimentos",
+          "revelação escandalosa",
+          "perda de reputação"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "undertakings",
+          "scandalous revelation",
+          "loss of reputation"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-7": {
+      "pt": "se o signo da sua décima casa natal passa à sétima casa da revolução solar, você tem indicação de boa reputação, boa esperança e amor de uma mulher de alta categoria. a leitura também anuncia luto de família.",
+      "en": "if the sign of your natal tenth house passes into the seventh house of the solar return, you have an indication of good reputation, good hope and the love of a woman of high rank. the reading also announces mourning in the family.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "reputação e esperança",
+          "amor de mulher de alta categoria",
+          "luto familiar"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "reputation and hope",
+          "love of a high-ranking woman",
+          "family mourning"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-8": {
+      "pt": "se o signo da sua décima casa natal passa à oitava casa da revolução solar, você tem indicação de ansiedades e reputação ameaçada. a leitura também anuncia dificuldades nos empreendimentos e fortuna em perigo para você.",
+      "en": "if the sign of your natal tenth house passes into the eighth house of the solar return, you have an indication of anxieties and threatened reputation. the reading also announces difficulties in undertakings and endangered fortune for you.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "ansiedades",
+          "reputação ameaçada",
+          "fortuna em perigo"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "anxieties",
+          "threatened reputation",
+          "endangered fortune"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-9": {
+      "pt": "se o signo da sua décima casa natal passa à nona casa da revolução solar, você tem indicação de longas viagens, felizes ou infelizes segundo os aspectos. a leitura também anuncia ligações de amizade, boas ou más conforme os aspectos.",
+      "en": "if the sign of your natal tenth house passes into the ninth house of the solar return, you have an indication of long journeys, fortunate or unfortunate according to the aspects. the reading also announces bonds of friendship, good or bad according to the aspects.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "longas viagens",
+          "amizades",
+          "qualificação pelos aspectos"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "long journeys",
+          "friendships",
+          "qualification by aspects"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-10": {
+      "pt": "se o signo da sua décima casa natal passa à décima casa da revolução solar, você tem uma indicação condicionada pelos aspectos. com aspectos muito favoráveis, a leitura anuncia um ano feliz para você.",
+      "en": "if the sign of your natal tenth house passes into the tenth house of the solar return, you have an indication conditioned by the aspects. with very favorable aspects, the reading announces a happy year for you.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "ano feliz",
+          "aspectos muito favoráveis"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "happy year",
+          "very favorable aspects"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-11": {
+      "pt": "se o signo da sua décima casa natal passa à décima primeira casa da revolução solar, você tem uma indicação condicionada pelos aspectos. se eles não são contrários, a leitura anuncia um bom ano para você.",
+      "en": "if the sign of your natal tenth house passes into the eleventh house of the solar return, you have an indication conditioned by the aspects. if they are not adverse, the reading announces a good year for you.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "bom ano",
+          "aspectos não contrários"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "good year",
+          "non-adverse aspects"
+        ]
+      }
+    },
+    "natal-tenth-sign-in-return-house-12": {
+      "pt": "se o signo da sua décima casa natal passa à décima segunda casa da revolução solar, você tem indicação de desgraça junto aos príncipes e às pessoas eminentes e de perda de bens. a leitura também anuncia perseguição da inveja e da maldade e perda de amigos.",
+      "en": "if the sign of your natal tenth house passes into the twelfth house of the solar return, you have an indication of disgrace with princes and eminent people and loss of property. the reading also announces persecution through envy and malice and loss of friends.",
+      "keywords": {
+        "pt": [
+          "signo da décima natal",
+          "perda de bens e amigos",
+          "desgraça com eminentes",
+          "inveja e maldade"
+        ],
+        "en": [
+          "natal tenth-house sign",
+          "loss of property and friends",
+          "disgrace with eminent people",
+          "envy and malice"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-1": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à primeira casa da revolução solar, você tem uma indicação favorável. a leitura favorece seus empreendimentos.",
+      "en": "if the sign of your natal Part of Fortune passes into the first house of the solar return, you have a favorable indication. the reading favors your undertakings.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "empreendimentos favorecidos"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "favored undertakings"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-2": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à segunda casa da revolução solar, você tem indicação de um bom ano e de proveito. a leitura considera a posição feliz para você se dedicar aos negócios.",
+      "en": "if the sign of your natal Part of Fortune passes into the second house of the solar return, you have an indication of a good year and profit. the reading considers the placement fortunate for your devoting yourself to business.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "bom ano e proveito",
+          "negócios"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "good year and profit",
+          "business"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-3": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à terceira casa da revolução solar, você tem indicação de lucro proveniente dos irmãos. a leitura também admite esse lucro vindo das pessoas próximas.",
+      "en": "if the sign of your natal Part of Fortune passes into the third house of the solar return, you have an indication of profit coming from siblings. the reading also allows for this profit to come from people close to you.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "lucro por irmãos ou pessoas próximas"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "profit through siblings or close people"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-4": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à quarta casa da revolução solar, você tem uma indicação de sorte. a sorte especificada diz respeito aos seus interesses materiais.",
+      "en": "if the sign of your natal Part of Fortune passes into the fourth house of the solar return, you have an indication of good luck. the specified luck concerns your material interests.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "sorte",
+          "interesses materiais"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "good luck",
+          "material interests"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-5": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à quinta casa da revolução solar, você tem indicação de sorte nos amores e nos trabalhos do espírito. a leitura também favorece a prática da medicina para você.",
+      "en": "if the sign of your natal Part of Fortune passes into the fifth house of the solar return, you have an indication of good luck in love and intellectual or creative work. the reading also favors the practice of medicine for you.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "amores",
+          "trabalhos do espírito",
+          "prática da medicina"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "love",
+          "intellectual or creative work",
+          "practice of medicine"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-6": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à sexta casa da revolução solar, você tem uma indicação financeira favorável. a leitura anuncia oportunidade de ganho para você.",
+      "en": "if the sign of your natal Part of Fortune passes into the sixth house of the solar return, you have a favorable financial indication. the reading announces an opportunity for gain for you.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "oportunidade de ganho"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "opportunity for gain"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-7": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à sétima casa da revolução solar, você tem indicação de ganhos em processos. a leitura também anuncia triunfo sobre os inimigos para você.",
+      "en": "if the sign of your natal Part of Fortune passes into the seventh house of the solar return, you have an indication of victories in lawsuits. the reading also announces triumph over enemies for you.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "ganhos em processos",
+          "triunfo sobre inimigos"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "victories in lawsuits",
+          "triumph over enemies"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-8": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à oitava casa da revolução solar, você tem ameaça de espoliação por roubo ou de outra forma. a leitura considera o ano desfavorável para você emprestar dinheiro com segurança.",
+      "en": "if the sign of your natal Part of Fortune passes into the eighth house of the solar return, you face a threat of loss through theft or otherwise. the reading considers the year unfavorable for your lending money safely.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "espoliação ou roubo",
+          "empréstimos inseguros"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "loss or theft",
+          "unsafe lending"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-9": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à nona casa da revolução solar, você tem indicação de viagens proveitosas se o nascimento as pressagiou e de fortuna adquirida em lugar longínquo. se você exerce o sacerdócio, a leitura também indica elevação em dignidade.",
+      "en": "if the sign of your natal Part of Fortune passes into the ninth house of the solar return, you have an indication of profitable journeys if the nativity foretold them and of fortune acquired far away. if you are in the priesthood, the reading also indicates elevation in dignity.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "viagens condicionadas pelo natal",
+          "fortuna distante",
+          "elevação sacerdotal"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "journeys conditioned by the nativity",
+          "distant fortune",
+          "priestly elevation"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-10": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à décima casa da revolução solar, você tem indicação de favor dos príncipes e de pessoas eminentes. a leitura também anuncia lucro nos empreendimentos e realização das suas esperanças.",
+      "en": "if the sign of your natal Part of Fortune passes into the tenth house of the solar return, you have an indication of favor from princes and eminent people. the reading also announces profit in undertakings and the fulfillment of your hopes.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "favor de eminentes",
+          "lucro",
+          "esperanças realizadas"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "favor of eminent people",
+          "profit",
+          "fulfilled hopes"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-11": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à décima primeira casa da revolução solar, você tem indicação de bens ou elevação proporcionados por amigos, protetores ou benfeitores e de êxito nos empreendimentos. é um bom ano para você reaver dinheiro emprestado ou solicitar algum favor de príncipes e dos grandes.",
+      "en": "if the sign of your natal Part of Fortune passes into the eleventh house of the solar return, you have an indication of property or advancement procured by friends, protectors or benefactors and of success in undertakings. it is a good year for you to recover money lent or request a favor from princes and people of high rank.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "amigos e benfeitores",
+          "êxito",
+          "recuperação de empréstimos"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "friends and benefactors",
+          "success",
+          "recovery of loans"
+        ]
+      }
+    },
+    "natal-fortune-sign-in-return-house-12": {
+      "pt": "se o signo da sua Parte da Fortuna natal passa à décima segunda casa da revolução solar, você tem indicação de um ano favorável para obter ganhos ilícitos. a leitura também anuncia proveito advindo de más ações secretas.",
+      "en": "if the sign of your natal Part of Fortune passes into the twelfth house of the solar return, you have an indication of a favorable year for acquiring illicit gains. the reading also announces profit from concealed evil actions.",
+      "keywords": {
+        "pt": [
+          "signo da Parte da Fortuna natal",
+          "ganhos ilícitos",
+          "más ações secretas"
+        ],
+        "en": [
+          "natal Part of Fortune’s sign",
+          "illicit gains",
+          "concealed evil actions"
+        ]
+      }
+    },
+    "return-first-ruler-moon-malefic-affliction-catastrophe": {
+      "pt": "se a primeira casa, seu regente e a Lua estão afligidos por aspecto maléfico na sua revolução solar, você tem uma indicação adversa. a leitura anuncia uma catástrofe do destino no ano regido por esse mapa anual.",
+      "en": "if the first house, its ruler and the Moon are afflicted by a malefic aspect in your solar-return chart, you have an adverse indication. the reading announces a catastrophe of fate in the year governed by that annual chart.",
+      "keywords": {
+        "pt": [
+          "primeira casa regente e Lua",
+          "aflição maléfica",
+          "catástrofe do destino"
+        ],
+        "en": [
+          "first house ruler and Moon",
+          "malefic affliction",
+          "catastrophe of fate"
+        ]
+      }
+    },
+    "return-third-ruler-in-tenth-sibling-death": {
+      "pt": "se o regente da terceira casa está na décima em sua revolução solar, a leitura atribuída a Haly afirma que um irmão morrerá durante o ano. a justificativa apresentada é que a décima é a oitava casa contada a partir da terceira.",
+      "en": "if the ruler of the third house is in the tenth in your solar-return chart, the reading attributed to Haly states that a brother will die during the year. the stated rationale is that the tenth is the eighth house counted from the third.",
+      "keywords": {
+        "pt": [
+          "regente da terceira na décima",
+          "morte de irmão",
+          "casas derivadas"
+        ],
+        "en": [
+          "third-house ruler in the tenth",
+          "death of a brother",
+          "derived houses"
+        ]
+      }
+    },
+    "return-second-ruler-in-first-financial-situation": {
+      "pt": "se o regente da segunda casa está na primeira casa da sua revolução solar, sobretudo em conjunção com o Ascendente, você deseja influenciar e melhorar sua situação financeira e muitas vezes se esforça para isso; com benéficos não afligidos, esse desejo tem muitas probabilidades de se realizar. com maléficos dignificados, seus esforços pessoais devem ser grandes; se o regente é Urano, você tomará disposições financeiras incomuns em que geralmente ainda não pensa no aniversário, e, se é Marte, há temor de imprudências.",
+      "en": "if the second-house ruler is in the first house of your solar-return chart, especially conjunct the Ascendant, you wish to influence and improve your financial situation and often make efforts to do so; with unafflicted benefics, that wish has a strong likelihood of being fulfilled. with dignified malefics, your personal efforts must be great; if the ruler is Uranus, you will make unusual financial arrangements you generally are not yet considering at your birthday, and, if it is Mars, there is reason to fear imprudence.",
+      "keywords": {
+        "pt": [
+          "situação financeira",
+          "esforços pessoais",
+          "regente e condições planetárias"
+        ],
+        "en": [
+          "financial situation",
+          "personal efforts",
+          "ruler and planetary conditions"
+        ]
+      }
+    },
+    "return-fifth-ruler-in-first-passion-or-younger-person": {
+      "pt": "se o regente da quinta casa está na primeira casa da sua revolução solar, você é frequentemente apresentado como fortemente apaixonado, sobretudo se o regente é Marte, Vênus ou Urano e você já não é criança nem chegou à velhice. se você é idoso, a leitura geralmente se refere à influência de uma pessoa muito mais jovem sobre você ou sua vida, normalmente seu próprio filho ou sua filha.",
+      "en": "if the fifth-house ruler is in the first house of your solar-return chart, you are frequently described as strongly in love, especially if the ruler is Mars, Venus or Uranus and you are no longer a child but have not reached old age. if you are elderly, the reading generally concerns the influence of a much younger person on you or your life, normally your own son or daughter.",
+      "keywords": {
+        "pt": [
+          "paixão",
+          "condição de idade",
+          "influência de pessoa mais jovem"
+        ],
+        "en": [
+          "passion",
+          "age condition",
+          "influence of a younger person"
+        ]
+      }
+    },
+    "return-sixth-ruler-in-first-health-and-work": {
+      "pt": "se o regente da sexta casa está na primeira casa da sua revolução solar, a leitura indica uma influência adversa sobre sua saúde e até sobre seu trabalho, exceto se os luminares e os benéficos estiverem muito bem-aspectados. com Marte ou Urano como regente, mal-estares ou doenças repentinas e de curta duração são anunciados na maioria das vezes se outras indicações do mapa confirmarem isso; com Saturno, podem-se pressagiar desgosto pelo trabalho e numerosas fadigas; um exemplo particular dessa configuração envolve problemas inesperados por úlcera no estômago, com Marte em Câncer reforçando sua posição natal na cúspide da quarta casa em Escorpião.",
+      "en": "if the sixth-house ruler is in the first house of your solar-return chart, the reading indicates an adverse influence on your health and even your work, except if the luminaries and benefics are very well aspected. with Mars or Uranus as ruler, sudden, short-lived ailments or illnesses are indicated most often if other chart indications confirm them; with Saturn, the placement may indicate aversion to work and repeated fatigue; a particular illustration of this configuration involves unexpected stomach-ulcer problems, with Mars in Cancer reinforcing its natal position on the fourth-house cusp in Scorpio.",
+      "keywords": {
+        "pt": [
+          "saúde e trabalho",
+          "doenças repentinas condicionadas",
+          "fadiga"
+        ],
+        "en": [
+          "health and work",
+          "conditional sudden illnesses",
+          "fatigue"
+        ]
+      }
+    },
+    "return-eighth-ruler-in-first-death-subject": {
+      "pt": "se o regente da oitava casa está na primeira casa da sua revolução solar, a posição é um dos indícios de morte durante o ano, sobretudo se o regente for um maléfico. a casa regida por esse planeta no seu mapa natal quase sempre designa a pessoa em questão: se regia a terceira, a ameaça recai sobre seu irmão, sua irmã ou outra pessoa indicada por essa casa; se regia a sétima, sobre seu cônjuge ou um associado.",
+      "en": "if the eighth-house ruler is in the first house of your solar-return chart, the placement is one indication of death during the year, especially if the ruler is a malefic. the house ruled by that planet in your natal chart almost always identifies the person concerned: if it ruled the third, the threat concerns your brother, sister or another person indicated by that house; if it ruled the seventh, your spouse or an associate.",
+      "keywords": {
+        "pt": [
+          "indício de morte",
+          "regência natal",
+          "pessoa em questão"
+        ],
+        "en": [
+          "indication of death",
+          "natal rulership",
+          "person concerned"
+        ]
+      }
+    }
+  }
+}

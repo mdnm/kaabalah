@@ -29,22 +29,16 @@ const stubNodeGlueInEsm: Plugin = {
   },
 };
 
-/**
- * Build guard: the authored description rows must not carry private source paths. Editorial
- * provenance lives outside the repository (the gitignored provenance/ folder); if a private path
- * prefix ever shows up in the bundled descriptions, the build fails instead of publishing it.
- */
-// Matches provenance keys and any document path (folder/name.md or .pdf, or a mounted-volume path). The
-// private folder names are deliberately not spelled out here: this repository must not contain them.
-const PRIVATE_PATH_PREFIX = /"(?:src|reviewNotes|file)"\s*:|[\w -]+\/[\w .-]+\.(?:md|pdf)\b|\/Volumes\//i;
+/** Reject internal metadata and local document paths in description data. */
+const PRIVATE_PATH_PREFIX = /"(?:src|reviewNotes|file)"\s*:|[\w -]+\/[\w .-]+\.(?:md|pdf)\b|\/(?:Volumes|Users)\//i;
 
 const guardPrivateProvenance: Plugin = {
   name: "kaabalah-guard-private-provenance",
   setup(build) {
-    build.onLoad({ filter: /src[\\/]astrology[\\/]descriptions\.json$/ }, async (args) => {
+    build.onLoad({ filter: /src[\\/](?:astrology[\\/](?:descriptions|timing-[^\\/]+-descriptions)|numerology[\\/]timing-descriptions)\.json$/ }, async (args) => {
       const contents = await readFile(args.path, "utf8");
       if (PRIVATE_PATH_PREFIX.test(contents)) {
-        throw new Error("descriptions.json carries private provenance paths; keep them in provenance/ only");
+        throw new Error("description JSON contains internal metadata or local document paths");
       }
       return { contents, loader: "json" };
     });

@@ -518,7 +518,7 @@ kaabalah astrology:firdaria 1990-06-15 14:30 --lat=48.856 --lon=2.352 --target-d
 kaabalah astrology:firdaria --input-json='{"natal":{"date":"1990-06-15","time":"14:30","lat":48.856,"lon":2.352},"targetDate":"2030-01-01"}' --json --compact
 ```
 
-Returns `sect`, `currentMajor` (planet, years, start/end, subPeriods[]), `currentSub` (planet, start/end), `allPeriods[]`.
+Returns `sect`, `currentMajor` (planet, years, start/end, subPeriods[]), `currentSub` (planet, start/end; `null` during node majors), `allPeriods[]`.
 
 Day sequence: Sun (10y), Venus (8y), Mercury (13y), Moon (9y), Saturn (11y), Jupiter (12y), Mars (7y), North Node (3y), South Node (2y) = 75 years total.
 

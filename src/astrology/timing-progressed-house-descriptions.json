@@ -1,0 +1,388 @@
+{
+  "progressedHouses": {
+    "sun/1": {
+      "pt": "na leitura do Sol progredido na primeira casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com sua identidade, sua autoimagem e seu corpo. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal first house, your will, vitality and personal expression relate to your identity, self-image and body. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "identidade",
+          "corpo",
+          "autoimagem"
+        ],
+        "en": [
+          "identity",
+          "body",
+          "self-image"
+        ]
+      }
+    },
+    "sun/2": {
+      "pt": "na leitura do Sol progredido na segunda casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seu dinheiro, seus bens e sua segurança financeira. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal second house, your will, vitality and personal expression relate to your money, possessions and financial security. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "dinheiro",
+          "bens",
+          "segurança financeira"
+        ],
+        "en": [
+          "money",
+          "possessions",
+          "financial security"
+        ]
+      }
+    },
+    "sun/3": {
+      "pt": "na leitura do Sol progredido na terceira casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seus estudos, escritos, deslocamentos e relações com irmãos e vizinhos. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal third house, your will, vitality and personal expression relate to your studies, writing, journeys and relationships with siblings and neighbors. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "estudos e escritos",
+          "deslocamentos",
+          "irmãos e vizinhos"
+        ],
+        "en": [
+          "studies and writing",
+          "journeys",
+          "siblings and neighbors"
+        ]
+      }
+    },
+    "sun/4": {
+      "pt": "na leitura do Sol progredido na quarta casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seu lar, sua família, suas raízes e seu senso de segurança. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal fourth house, your will, vitality and personal expression relate to your home, family, roots and sense of security. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "lar",
+          "família e raízes",
+          "segurança"
+        ],
+        "en": [
+          "home",
+          "family and roots",
+          "security"
+        ]
+      }
+    },
+    "sun/5": {
+      "pt": "na leitura do Sol progredido na quinta casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seus amores, filhos, prazeres, atividades criativas e especulações. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal fifth house, your will, vitality and personal expression relate to your love affairs, children, pleasures, creative activities and speculation. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "amor e filhos",
+          "criatividade",
+          "especulações"
+        ],
+        "en": [
+          "love and children",
+          "creativity",
+          "speculation"
+        ]
+      }
+    },
+    "sun/6": {
+      "pt": "na leitura do Sol progredido na sexta casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seu trabalho, suas obrigações, sua saúde e sua dieta. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal sixth house, your will, vitality and personal expression relate to your work, duties, health and diet. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "obrigações",
+          "saúde e dieta"
+        ],
+        "en": [
+          "work",
+          "duties",
+          "health and diet"
+        ]
+      }
+    },
+    "sun/7": {
+      "pt": "na leitura do Sol progredido na sétima casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seu casamento, suas sociedades, seus conflitos e inimigos declarados. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal seventh house, your will, vitality and personal expression relate to your marriage, business partnerships, conflicts and declared enemies. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "casamento",
+          "sociedades",
+          "inimigos declarados"
+        ],
+        "en": [
+          "marriage",
+          "business partnerships",
+          "declared enemies"
+        ]
+      }
+    },
+    "sun/8": {
+      "pt": "na leitura do Sol progredido na oitava casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com sua sexualidade, os recursos alheios, os legados e os temas de nascimento, morte e renascimento. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal eighth house, your will, vitality and personal expression relate to your sexuality, others’ resources, legacies and the themes of birth, death and rebirth. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "sexualidade",
+          "legados e recursos alheios",
+          "nascimento e morte"
+        ],
+        "en": [
+          "sexuality",
+          "legacies and others’ resources",
+          "birth and death"
+        ]
+      }
+    },
+    "sun/9": {
+      "pt": "na leitura do Sol progredido na nona casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com seus estudos elevados, sua filosofia, sua religião e suas viagens ao exterior. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal ninth house, your will, vitality and personal expression relate to your higher studies, philosophy, religion and foreign journeys. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "estudos elevados",
+          "filosofia e religião",
+          "viagens ao exterior"
+        ],
+        "en": [
+          "higher studies",
+          "philosophy and religion",
+          "foreign journeys"
+        ]
+      }
+    },
+    "sun/10": {
+      "pt": "na leitura do Sol progredido na décima casa natal, sua postura pessoal, profissão e reconhecimento ganham relevo, incluindo a projeção do nome e o que você representa. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal tenth house, your personal stance, profession and recognition become prominent, including the visibility of your name and what you represent. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "profissão",
+          "posição social",
+          "reconhecimento"
+        ],
+        "en": [
+          "profession",
+          "social standing",
+          "recognition"
+        ]
+      }
+    },
+    "sun/11": {
+      "pt": "na leitura do Sol progredido na décima primeira casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com suas amizades, seus grupos, seus projetos e suas esperanças. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal eleventh house, your will, vitality and personal expression relate to your friendships, groups, projects and hopes. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "amizades",
+          "projetos",
+          "esperanças"
+        ],
+        "en": [
+          "friendships",
+          "projects",
+          "hopes"
+        ]
+      }
+    },
+    "sun/12": {
+      "pt": "na leitura do Sol progredido na décima segunda casa natal, sua vontade, vitalidade e expressão pessoal se relacionam com sua vida interior, os sofrimentos, as repressões e neuroses, os relacionamentos ocultos, as instituições, as lições kármicas e os temas de vidas passadas. o ingresso não indica por si uma ocorrência marcante, mas uma mudança de conjuntura no sentido do Sol e dessa casa.",
+      "en": "in the reading of the progressed Sun in your natal twelfth house, your will, vitality and personal expression relate to your inner life, suffering, repression and neuroses, hidden relationships, institutions, karmic lessons and past-life themes. the ingress does not itself indicate a notable event, but a change of circumstances in the sense of the Sun and this house.",
+      "keywords": {
+        "pt": [
+          "vida interior e vidas passadas",
+          "sofrimentos",
+          "instituições e relações ocultas"
+        ],
+        "en": [
+          "inner life and past lives",
+          "suffering",
+          "institutions and hidden relationships"
+        ]
+      }
+    },
+    "moon/1": {
+      "pt": "na leitura da Lua progredida na primeira casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a sua identidade, sua autoimagem e seu corpo, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal first house, your sensitivity and emotional reactions intensify around your identity, self-image and body, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "identidade",
+          "corpo",
+          "autoimagem"
+        ],
+        "en": [
+          "identity",
+          "body",
+          "self-image"
+        ]
+      }
+    },
+    "moon/2": {
+      "pt": "na leitura da Lua progredida na segunda casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seu dinheiro, seus bens e sua segurança financeira, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal second house, your sensitivity and emotional reactions intensify around your money, possessions and financial security, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "dinheiro",
+          "bens",
+          "segurança financeira"
+        ],
+        "en": [
+          "money",
+          "possessions",
+          "financial security"
+        ]
+      }
+    },
+    "moon/3": {
+      "pt": "na leitura da Lua progredida na terceira casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seus estudos, escritos, deslocamentos e relações com irmãos e vizinhos, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal third house, your sensitivity and emotional reactions intensify around your studies, writing, journeys and relationships with siblings and neighbors, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "estudos e escritos",
+          "deslocamentos",
+          "irmãos e vizinhos"
+        ],
+        "en": [
+          "studies and writing",
+          "journeys",
+          "siblings and neighbors"
+        ]
+      }
+    },
+    "moon/4": {
+      "pt": "na leitura da Lua progredida na quarta casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seu lar, sua família, suas raízes e seu senso de segurança, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal fourth house, your sensitivity and emotional reactions intensify around your home, family, roots and sense of security, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "lar",
+          "família e raízes",
+          "segurança"
+        ],
+        "en": [
+          "home",
+          "family and roots",
+          "security"
+        ]
+      }
+    },
+    "moon/5": {
+      "pt": "na leitura da Lua progredida na quinta casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seus amores, filhos, prazeres, atividades criativas e especulações, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal fifth house, your sensitivity and emotional reactions intensify around your love affairs, children, pleasures, creative activities and speculation, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "amor e filhos",
+          "criatividade",
+          "especulações"
+        ],
+        "en": [
+          "love and children",
+          "creativity",
+          "speculation"
+        ]
+      }
+    },
+    "moon/6": {
+      "pt": "na leitura da Lua progredida na sexta casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seu trabalho, suas obrigações, sua saúde e sua dieta, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal sixth house, your sensitivity and emotional reactions intensify around your work, duties, health and diet, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "trabalho",
+          "obrigações",
+          "saúde e dieta"
+        ],
+        "en": [
+          "work",
+          "duties",
+          "health and diet"
+        ]
+      }
+    },
+    "moon/7": {
+      "pt": "na leitura da Lua progredida na sétima casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seu casamento, suas sociedades, seus conflitos e inimigos declarados, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal seventh house, your sensitivity and emotional reactions intensify around your marriage, business partnerships, conflicts and declared enemies, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "casamento",
+          "sociedades",
+          "inimigos declarados"
+        ],
+        "en": [
+          "marriage",
+          "business partnerships",
+          "declared enemies"
+        ]
+      }
+    },
+    "moon/8": {
+      "pt": "na leitura da Lua progredida na oitava casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a sua sexualidade, os recursos alheios, os legados e os temas de nascimento, morte e renascimento, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal eighth house, your sensitivity and emotional reactions intensify around your sexuality, others’ resources, legacies and the themes of birth, death and rebirth, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "sexualidade",
+          "legados e recursos alheios",
+          "nascimento e morte"
+        ],
+        "en": [
+          "sexuality",
+          "legacies and others’ resources",
+          "birth and death"
+        ]
+      }
+    },
+    "moon/9": {
+      "pt": "na leitura da Lua progredida na nona casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a seus estudos elevados, sua filosofia, sua religião e suas viagens ao exterior, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal ninth house, your sensitivity and emotional reactions intensify around your higher studies, philosophy, religion and foreign journeys, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "estudos elevados",
+          "filosofia e religião",
+          "viagens ao exterior"
+        ],
+        "en": [
+          "higher studies",
+          "philosophy and religion",
+          "foreign journeys"
+        ]
+      }
+    },
+    "moon/10": {
+      "pt": "na leitura da Lua progredida na décima casa natal, você sente um desejo de realização profissional e pode obter reconhecimento e recompensas, ou se dedicar mais intensamente a buscá-los. as mudanças e os novos acontecimentos desse campo dependem, em seu caráter favorável ou desfavorável, da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal tenth house, you feel a desire for professional achievement and may receive recognition and rewards, or devote yourself more intensely to seeking them. the favorable or unfavorable character of changes and new events in this area depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "profissão",
+          "posição social",
+          "reconhecimento"
+        ],
+        "en": [
+          "profession",
+          "social standing",
+          "recognition"
+        ]
+      }
+    },
+    "moon/11": {
+      "pt": "na leitura da Lua progredida na décima primeira casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a suas amizades, seus grupos, seus projetos e suas esperanças, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal eleventh house, your sensitivity and emotional reactions intensify around your friendships, groups, projects and hopes, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "amizades",
+          "projetos",
+          "esperanças"
+        ],
+        "en": [
+          "friendships",
+          "projects",
+          "hopes"
+        ]
+      }
+    },
+    "moon/12": {
+      "pt": "na leitura da Lua progredida na décima segunda casa natal, sua sensibilidade e suas reações emocionais se intensificam em relação a sua vida interior, os sofrimentos, as repressões e neuroses, os relacionamentos ocultos, as instituições, as lições kármicas e os temas de vidas passadas, com mudanças físicas, emocionais e psicológicas e possibilidade de novos acontecimentos nesse campo. o caráter favorável ou desfavorável depende da Lua natal, do regente da casa e dos aspectos da Lua progredida.",
+      "en": "in the reading of the progressed Moon in your natal twelfth house, your sensitivity and emotional reactions intensify around your inner life, suffering, repression and neuroses, hidden relationships, institutions, karmic lessons and past-life themes, with physical, emotional and psychological changes and the possibility of new events in this area. their favorable or unfavorable character depends on your natal Moon, the house ruler and the progressed Moon’s aspects.",
+      "keywords": {
+        "pt": [
+          "vida interior e vidas passadas",
+          "sofrimentos",
+          "instituições e relações ocultas"
+        ],
+        "en": [
+          "inner life and past lives",
+          "suffering",
+          "institutions and hidden relationships"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "fibonacciYear": {
+    "pt": "do seu aniversário até o próximo, os sete números de Fibonacci derivados da idade que completou correspondem, em ordem, às sete heptadas do seu ano de vida. o valor reduzido de cada número indica o Ark Annu regente daquela heptada: se o sexto valor reduz a 5, o Ark Annu 5 rege a sexta heptada.",
+    "en": "from your birthday to the next, the seven Fibonacci numbers derived from your completed age correspond, in order, to the seven heptads of your year of life. each number’s reduced value identifies the Ark Annu ruling that heptad: if the sixth value reduces to 5, Ark Annu 5 rules the sixth heptad.",
+    "keywords": {
+      "pt": [
+        "heptadas",
+        "Ark Annu regente",
+        "redução de Fibonacci"
+      ],
+      "en": [
+        "heptads",
+        "ruling Ark Annu",
+        "Fibonacci reduction"
+      ]
+    }
+  },
+  "personalMonths": {
+    "1": {
+      "pt": "neste mês, você pode dar atenção a novos inícios e colocar suas ideias em ação. a originalidade e a tomada de decisão são temas desse período.",
+      "en": "this month, you can focus on new beginnings and put your ideas into action. originality and decision-making are themes of this period.",
+      "keywords": {
+        "pt": [
+          "novos inícios",
+          "ação",
+          "originalidade",
+          "tomada de decisão"
+        ],
+        "en": [
+          "new beginnings",
+          "action",
+          "originality",
+          "decision-making"
+        ]
+      }
+    },
+    "2": {
+      "pt": "neste mês, você pode buscar harmonia na cooperação com outras pessoas. observe como a mediação e a passividade aparecem nas suas relações.",
+      "en": "this month, you can seek harmony through cooperation with others. notice how mediation and passivity appear in your relationships.",
+      "keywords": {
+        "pt": [
+          "harmonia",
+          "cooperação",
+          "mediação",
+          "passividade"
+        ],
+        "en": [
+          "harmony",
+          "cooperation",
+          "mediation",
+          "passivity"
+        ]
+      }
+    },
+    "3": {
+      "pt": "neste mês, você pode explorar a liberdade, o entretenimento e a expressão de si. a dispersão também faz parte dos temas desse período.",
+      "en": "this month, you can explore freedom, entertainment and self-expression. scattered attention is also one of this period’s themes.",
+      "keywords": {
+        "pt": [
+          "dispersão",
+          "liberdade",
+          "entretenimento",
+          "autoexpressão"
+        ],
+        "en": [
+          "scattered attention",
+          "freedom",
+          "entertainment",
+          "self-expression"
+        ]
+      }
+    },
+    "4": {
+      "pt": "neste mês, você pode se dedicar ao trabalho e à construção de alicerces. a ordem e uma atitude prática orientam essa dedicação.",
+      "en": "this month, you can devote yourself to work and laying foundations. order and a practical approach guide that effort.",
+      "keywords": {
+        "pt": [
+          "natureza prática",
+          "trabalho",
+          "ordem",
+          "estabelecimento de alicerces"
+        ],
+        "en": [
+          "practical nature",
+          "work",
+          "order",
+          "laying foundations"
+        ]
+      }
+    },
+    "5": {
+      "pt": "neste mês, você pode explorar mudanças e o desejo de liberdade. viagens e novos interesses intelectuais também entram nos temas desse período.",
+      "en": "this month, you can explore change and the desire for freedom. travel and new intellectual interests are also themes of this period.",
+      "keywords": {
+        "pt": [
+          "mudança",
+          "liberdade",
+          "novos interesses intelectuais",
+          "viagens"
+        ],
+        "en": [
+          "change",
+          "freedom",
+          "new intellectual interests",
+          "travel"
+        ]
+      }
+    },
+    "6": {
+      "pt": "neste mês, você pode voltar sua atenção à família e à saúde. a assistência aos outros e o cuidado com seus problemas também são temas desse período.",
+      "en": "this month, you can turn your attention to family and health. helping others and attending to their problems are also themes of this period.",
+      "keywords": {
+        "pt": [
+          "família",
+          "saúde",
+          "assistência",
+          "atenção a problemas dos outros"
+        ],
+        "en": [
+          "family",
+          "health",
+          "assistance",
+          "attention to others’ problems"
+        ]
+      }
+    },
+    "7": {
+      "pt": "neste mês, você encontra autoanálise e realização entre os temas do período. problemas de saúde também fazem parte da leitura do mês pessoal 7.",
+      "en": "this month, you encounter self-analysis and accomplishment among the period’s themes. health problems are also part of the personal-month 7 reading.",
+      "keywords": {
+        "pt": [
+          "autoanálise",
+          "realização",
+          "problemas de saúde"
+        ],
+        "en": [
+          "self-analysis",
+          "accomplishment",
+          "health problems"
+        ]
+      }
+    },
+    "8": {
+      "pt": "neste mês, você pode observar sua relação com os negócios e o dinheiro. o poder e a responsabilidade também estão no centro dessa reflexão.",
+      "en": "this month, you can examine your relationship with business and money. power and responsibility are also central to that reflection.",
+      "keywords": {
+        "pt": [
+          "negócios",
+          "poder",
+          "responsabilidade",
+          "dinheiro"
+        ],
+        "en": [
+          "business",
+          "power",
+          "responsibility",
+          "money"
+        ]
+      }
+    },
+    "9": {
+      "pt": "neste mês, você pode olhar para os términos e para o que significa abrir mão de si em favor dos outros. a prestação de ajuda também é um tema desse período.",
+      "en": "this month, you can reflect on endings and what it means to set yourself aside for others. being of service is also a theme of this period.",
+      "keywords": {
+        "pt": [
+          "abnegação",
+          "términos",
+          "préstimos"
+        ],
+        "en": [
+          "selflessness",
+          "endings",
+          "service"
+        ]
+      }
+    },
+    "11": {
+      "pt": "neste mês, você pode explorar a inspiração e sua relação com a religião. a notoriedade e o reconhecimento público também são temas desse período.",
+      "en": "this month, you can explore inspiration and your relationship with religion. prominence and public recognition are also themes of this period.",
+      "keywords": {
+        "pt": [
+          "notoriedade",
+          "inspiração",
+          "religião"
+        ],
+        "en": [
+          "public recognition",
+          "inspiration",
+          "religion"
+        ]
+      }
+    },
+    "22": {
+      "pt": "neste mês, você pode observar o lugar que o materialismo ocupa na sua vida. grandes empenhos também fazem parte dos temas desse período.",
+      "en": "this month, you can examine the place materialism holds in your life. major undertakings are also among this period’s themes.",
+      "keywords": {
+        "pt": [
+          "materialismo",
+          "grandes empenhos"
+        ],
+        "en": [
+          "materialism",
+          "major undertakings"
+        ]
+      }
+    },
+    "33": {
+      "pt": "neste mês, você pode voltar sua atenção à compaixão pelos outros. reflita sobre os sacrifícios envolvidos nessa dedicação.",
+      "en": "this month, you can turn your attention to compassion for others. reflect on the sacrifices involved in that dedication.",
+      "keywords": {
+        "pt": [
+          "sacrifício",
+          "compaixão pelos outros"
+        ],
+        "en": [
+          "sacrifice",
+          "compassion for others"
+        ]
+      }
+    },
+    "44": {
+      "pt": "neste mês, você pode ajudar outras pessoas a resolver problemas do cotidiano. o aconselhamento é uma forma de oferecer esse auxílio.",
+      "en": "this month, you can help others solve everyday problems. offering advice is one way to provide that help.",
+      "keywords": {
+        "pt": [
+          "auxílio na solução dos problemas cotidianos dos outros",
+          "aconselhamento"
+        ],
+        "en": [
+          "helping solve others’ everyday problems",
+          "offering advice"
+        ]
+      }
+    }
+  },
+  "pinnacles": {
+    "1": {
+      "pt": "na leitura do pináculo 1, você tem oportunidade de liderar com independência e originalidade, dependendo de si para ter sucesso, num período ativo e cheio de mudanças. como primeiro pináculo, pode ser difícil assumir essa coragem e perder oportunidades, tornando-se obstinado ou dominador; em anos mais avançados, oferece a oportunidade de trabalho notável.",
+      "en": "in the reading of pinnacle 1, you have an opportunity to lead with independence and originality, relying on yourself for success in an active period full of changes. as a first pinnacle, taking on that courage can be difficult and opportunities may be lost, with stubbornness or domination; in later years, it offers an opportunity for notable work.",
+      "keywords": {
+        "pt": [
+          "liderança e independência",
+          "mudanças",
+          "obstinação condicionada"
+        ],
+        "en": [
+          "leadership and independence",
+          "changes",
+          "conditional stubbornness"
+        ]
+      }
+    },
+    "2": {
+      "pt": "na leitura do pináculo 2, você trabalha melhor com outras pessoas ou para elas, com cooperação, diplomacia, paciência testada e grande sensibilidade, podendo ocorrer associações e dificuldades nelas, inclusive no casamento. se um 11 aparece nos seus pináculos, a leitura admite dissolução de casamento ou negócio e busca de conforto na religião ou nos estudos espiritualistas.",
+      "en": "in the reading of pinnacle 2, you work better with or for others, with cooperation, diplomacy, tested patience and great sensitivity, and associations or difficulties within them, including marriage, may arise. if an 11 appears among your pinnacles, the reading allows for dissolution of marriage or business and a search for comfort in religion or spiritual studies.",
+      "keywords": {
+        "pt": [
+          "cooperação e sensibilidade",
+          "associações",
+          "dissolução condicionada"
+        ],
+        "en": [
+          "cooperation and sensitivity",
+          "associations",
+          "conditional dissolution"
+        ]
+      }
+    },
+    "3": {
+      "pt": "na leitura do pináculo 3, sua imaginação e seus sentimentos atingem o auge num bom período mental e criativo para escrever, falar, desenhar ou trabalhar com cinema e teatro, também excelente para atrair dinheiro. como primeiro pináculo, as vantagens podem ser desperdiçadas por falta de seriedade para canalizar talentos, e a leitura exige controle das emoções.",
+      "en": "in the reading of pinnacle 3, your imagination and feelings reach a peak in a good mental and creative period for writing, speaking, design or work in film and theater, also excellent for attracting money. as a first pinnacle, its advantages may be wasted through insufficient seriousness in directing talents, and the reading calls for control of emotions.",
+      "keywords": {
+        "pt": [
+          "criatividade e imaginação",
+          "dinheiro",
+          "controle emocional"
+        ],
+        "en": [
+          "creativity and imagination",
+          "money",
+          "emotional control"
+        ]
+      }
+    },
+    "4": {
+      "pt": "na leitura do pináculo 4, você constrói alicerces e poupança para o futuro com trabalho duro, esforço constante, serviço, ordem e aplicação prática das ideias, enquanto a família pode representar enorme responsabilidade ou dever. se for o primeiro pináculo, sua infância é séria e exigente, e você pode precisar trabalhar cedo para ganhar a vida.",
+      "en": "in the reading of pinnacle 4, you build foundations and savings for the future through hard work, sustained effort, service, order and practical application of ideas, while family may represent an enormous responsibility or duty. if it is your first pinnacle, your childhood is serious and demanding, and you may need to work early to earn a living.",
+      "keywords": {
+        "pt": [
+          "trabalho e poupança",
+          "responsabilidade familiar",
+          "infância exigente condicionada"
+        ],
+        "en": [
+          "work and savings",
+          "family responsibility",
+          "conditional demanding childhood"
+        ]
+      }
+    },
+    "5": {
+      "pt": "na leitura do pináculo 5, você vive liberdade, mudanças, inquietação e incerteza, com pouca permanência em casa, necessidade de versatilidade e adaptação a novos amigos e ambientes. o dinheiro oscila entre abundância e escassez, surgem oportunidades cívicas, de propaganda e vendas, e a leitura pede atividade pública sem impulsividade.",
+      "en": "in the reading of pinnacle 5, you experience freedom, changes, restlessness and uncertainty, with little time at home and a need for versatility and adaptation to new friends and surroundings. money fluctuates between abundance and scarcity, opportunities in civic affairs, publicity and sales arise, and the reading calls for public activity without impulsiveness.",
+      "keywords": {
+        "pt": [
+          "liberdade e mudanças",
+          "dinheiro oscilante",
+          "adaptação e atividade"
+        ],
+        "en": [
+          "freedom and changes",
+          "fluctuating money",
+          "adaptation and activity"
+        ]
+      }
+    },
+    "6": {
+      "pt": "na leitura do pináculo 6, você assume deveres no lar, cuidado de crianças, parentes ou propriedades e serviço que pode alcançar a humanidade, com amor e proteção da família. dinheiro exige trabalho e fixação num lugar; como pináculo final, pode trazer recompensa dos esforços, sucesso financeiro e felicidade; se você é solteiro, a leitura do 6 também indica oportunidade de casamento.",
+      "en": "in the reading of pinnacle 6, you take on duties at home, care of children, relatives or property and service that may reach humanity, with love and protection from family. money requires work and settling in one place; as a final pinnacle, it may bring reward for efforts, financial success and happiness; if you are single, the reading of 6 also indicates an opportunity for marriage.",
+      "keywords": {
+        "pt": [
+          "lar e serviço",
+          "recompensas condicionadas",
+          "casamento"
+        ],
+        "en": [
+          "home and service",
+          "conditional rewards",
+          "marriage"
+        ]
+      }
+    },
+    "7": {
+      "pt": "na leitura do pináculo 7, você se volta à educação, ciência, especialização, metafísica e progresso espiritual mais que ao êxito material, podendo ficar introspectivo, sombrio e distante da família ou passar por falta de dinheiro. estudo e compreensão podem trazer sucesso a longo prazo, mas, sem honestidade, paciência e compreensão, a leitura aponta dificuldades no casamento e nas associações.",
+      "en": "in the reading of pinnacle 7, you turn toward education, science, specialization, metaphysics and spiritual progress rather than material success, and may become introspective, somber and distant from family or lack money. study and understanding may bring long-term success, but without honesty, patience and understanding, the reading points to difficulties in marriage and associations.",
+      "keywords": {
+        "pt": [
+          "estudo e espiritualidade",
+          "distância e falta de dinheiro",
+          "relações condicionadas"
+        ],
+        "en": [
+          "study and spirituality",
+          "distance and lack of money",
+          "conditional relationships"
+        ]
+      }
+    },
+    "8": {
+      "pt": "na leitura do pináculo 8, você encontra um período financeiramente excelente, com possibilidade de autoridade, fama e ganho material, exigindo bom julgamento, força, coragem, ambição e esforço constante. pode haver grande gasto para sustentar um empreendimento e problemas por confiar nas pessoas erradas ou na sorte, enquanto trabalho incessante pode torná-lo uma pessoa notável.",
+      "en": "in the reading of pinnacle 8, you encounter a financially excellent period, with the possibility of authority, fame and material gain, requiring sound judgment, strength, courage, ambition and sustained effort. substantial spending to maintain an undertaking and problems from trusting the wrong people or luck may occur, while unceasing work can make you notable.",
+      "keywords": {
+        "pt": [
+          "ganho e autoridade",
+          "esforço constante",
+          "gastos e confiança"
+        ],
+        "en": [
+          "gain and authority",
+          "sustained effort",
+          "spending and trust"
+        ]
+      }
+    },
+    "9": {
+      "pt": "na leitura do pináculo 9, você vive conclusões e provas de compaixão, com beleza, arte e filantropia; dinheiro e sucesso são favorecidos quando trabalha pelo bem da humanidade, mas ressentimento ou egoísmo tornam o período infeliz e pode haver perda seguida de novo ganho de dinheiro. como primeiro pináculo, pode ocorrer divórcio ou amor infeliz que costuma terminar como bênção; como segundo ou terceiro, podem surgir muitas experiências emocionais.",
+      "en": "in the reading of pinnacle 9, you experience completion and tests of compassion, with beauty, art and philanthropy; money and success are favored when you work for humanity’s welfare, but resentment or selfishness makes the period unhappy and money may be lost and gained again. as a first pinnacle, divorce or unhappy love that usually ends as a blessing may occur; as a second or third, many emotional experiences may arise.",
+      "keywords": {
+        "pt": [
+          "conclusões e compaixão",
+          "dinheiro e serviço",
+          "divórcio condicionado"
+        ],
+        "en": [
+          "completion and compassion",
+          "money and service",
+          "conditional divorce"
+        ]
+      }
+    },
+    "11": {
+      "pt": "na leitura do pináculo 11, você tem oportunidade de aparecer diante do público, alcançar fama, iluminação, inspiração e expansão espiritual, ou revelar capacidade inventiva e tendências religiosas. a expectativa elevada sobre você pode trazer tensão nervosa, exigindo ideais acima do comum.",
+      "en": "in the reading of pinnacle 11, you have an opportunity to appear before the public, attain fame, illumination, inspiration and spiritual expansion, or reveal inventive ability and religious tendencies. high expectations of you may bring nervous tension, requiring ideals above the ordinary.",
+      "keywords": {
+        "pt": [
+          "fama e inspiração",
+          "espiritualidade",
+          "tensão nervosa"
+        ],
+        "en": [
+          "fame and inspiration",
+          "spirituality",
+          "nervous tension"
+        ]
+      }
+    },
+    "22": {
+      "pt": "na leitura do pináculo 22, materialismo e idealismo se combinam num amplo campo de atividades que pode trazer grandeza para você e interesse por assuntos internacionais e grandes expansões. a leitura o apresenta como pináculo raro e exigente, no qual você deve pensar grande para beneficiar o mundo.",
+      "en": "in the reading of pinnacle 22, materialism and idealism combine in a broad field of activity that may bring you greatness and an interest in international affairs and wide expansion. the reading presents it as a rare and demanding pinnacle, in which you must think on a large scale for the world’s benefit.",
+      "keywords": {
+        "pt": [
+          "materialismo e idealismo",
+          "grandeza e expansão",
+          "benefício mundial"
+        ],
+        "en": [
+          "materialism and idealism",
+          "greatness and expansion",
+          "worldwide benefit"
+        ]
+      }
+    },
+    "33": {
+      "pt": "na leitura do pináculo 33, amor, família e responsabilidade emocional ganham destaque, com compaixão e serviço expressos no apoio, na orientação e no conforto que você oferece aos outros. use seus talentos criativos e espirituais nessa dedicação, cuidando dos seus limites e de si para não assumir o papel de salvador ou mártir.",
+      "en": "in the reading of pinnacle 33, love, family and emotional responsibility come to the foreground, with compassion and service expressed through the support, guidance and comfort you offer others. use your creative and spiritual talents in that dedication, caring for your boundaries and yourself so that you do not take on the role of savior or martyr.",
+      "keywords": {
+        "pt": [
+          "amor e responsabilidade emocional",
+          "compaixão e serviço",
+          "limites no cuidado"
+        ],
+        "en": [
+          "love and emotional responsibility",
+          "compassion and service",
+          "boundaries in care"
+        ]
+      }
+    },
+    "44": {
+      "pt": "na leitura do pináculo 44, realizações materiais, expansão profissional e construção de estruturas duradouras pedem liderança, organização, disciplina e responsabilidade, incluindo o auxílio aos problemas cotidianos dos outros. administre seu tempo e suas finanças com visão de longo prazo e ética, preservando a saúde e a vida emocional enquanto concretiza seus projetos.",
+      "en": "in the reading of pinnacle 44, material achievement, professional expansion and building lasting structures call for leadership, organization, discipline and responsibility, including help with others’ everyday problems. manage your time and finances with long-term vision and ethics, preserving your health and emotional life as you bring your projects into reality.",
+      "keywords": {
+        "pt": [
+          "realizações e estruturas duradouras",
+          "liderança responsável",
+          "auxílio prático e equilíbrio"
+        ],
+        "en": [
+          "achievement and lasting structures",
+          "responsible leadership",
+          "practical help and balance"
+        ]
+      }
+    }
+  }
+}

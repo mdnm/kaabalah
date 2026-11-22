@@ -12720,6 +12720,54 @@
             "enthusiasm"
           ]
         }
+      },
+      "Capricorn": {
+        "pt": "com Urano retrógrado em Capricórnio, você pode questionar por dentro a autoridade e buscar mudanças práticas em instituições e estruturas duradouras. a leitura favorece reformas responsáveis, mas também aponta o risco de medir liberdade pelo status ou combater sistemas sem planejar alternativas; considere a casa natal e os aspectos.",
+        "en": "with retrograde Uranus in Capricorn, you may privately question authority and seek practical changes in institutions and enduring structures. the reading favors responsible reform but also points to measuring freedom through status or fighting systems without planning alternatives; consider the natal house and aspects.",
+        "keywords": {
+          "pt": [
+            "autoridade",
+            "reforma responsável",
+            "autonomia"
+          ],
+          "en": [
+            "authority",
+            "responsible reform",
+            "autonomy"
+          ]
+        }
+      },
+      "Aquarius": {
+        "pt": "com Urano retrógrado em Aquário, você pode reconsiderar em particular as regras que organizam a individualidade nos grupos, com temas de redes, igualdade e experimentação tecnológica. observe se os ideais coletivos atendem às pessoas que deveriam beneficiar ou se a liberdade abstrata afasta você delas; a casa e os aspectos dão contexto pessoal.",
+        "en": "with retrograde Uranus in Aquarius, you may privately reconsider the rules governing individuality within groups, with themes of networks, equality and technological experimentation. consider whether collective ideals serve the people meant to benefit or abstract freedom distances you from them; the house and aspects provide personal context.",
+        "keywords": {
+          "pt": [
+            "individualidade",
+            "grupos",
+            "igualdade"
+          ],
+          "en": [
+            "individuality",
+            "groups",
+            "equality"
+          ]
+        }
+      },
+      "Pisces": {
+        "pt": "com Urano retrógrado em Peixes, você pode rever em particular formas herdadas de imaginação, expressão artística e prática espiritual, escolhendo quais inspirações orientam suas decisões. a abertura criativa pede limites claros e compromissos viáveis para que uma visão atraente não vire fuga; considere a casa e os aspectos.",
+        "en": "with retrograde Uranus in Pisces, you may privately review inherited forms of imagination, artistic expression and spiritual practice, choosing which inspirations guide your decisions. creative openness calls for clear boundaries and workable commitments so an appealing vision does not become an escape; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "imaginação",
+            "espiritualidade",
+            "limites"
+          ],
+          "en": [
+            "imagination",
+            "spirituality",
+            "boundaries"
+          ]
+        }
       }
     },
     "neptune": {
@@ -12810,6 +12858,118 @@
             "insight",
             "expanding horizons",
             "vision of humanity"
+          ]
+        }
+      },
+      "Aries": {
+        "pt": "com Netuno retrógrado em Áries, você pode examinar intimamente ideais de coragem, independência e ação pioneira, perguntando se uma causa merece seu compromisso. a leitura permite dar um primeiro passo concreto a uma visão, mas alerta para confundir o entusiasmo de começar com a validade do ideal; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Aries, you may inwardly examine ideals of courage, independence and pioneering action, asking whether a cause deserves your commitment. the reading allows for giving a vision a practical first step but cautions against mistaking the excitement of beginning for the soundness of the ideal; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "ideais",
+            "iniciativa",
+            "discernimento"
+          ],
+          "en": [
+            "ideals",
+            "initiative",
+            "discernment"
+          ]
+        }
+      },
+      "Taurus": {
+        "pt": "com Netuno retrógrado em Touro, você pode reconsiderar em particular beleza, conforto e segurança, distinguindo o que realmente tem valor do que apenas tranquiliza. dar forma duradoura à imaginação é uma possibilidade, enquanto idealizar posses ou estabilidade pode obscurecer suas necessidades; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Taurus, you may privately reconsider beauty, comfort and security, distinguishing what truly has value from what merely reassures. giving imagination a lasting form is a possibility, while idealizing possessions or stability may obscure your needs; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "beleza",
+            "segurança",
+            "valores"
+          ],
+          "en": [
+            "beauty",
+            "security",
+            "values"
+          ]
+        }
+      },
+      "Gemini": {
+        "pt": "com Netuno retrógrado em Gêmeos, você pode reexaminar intimamente histórias, explicações e formas de compartilhar informação antes de adotá-las como crenças. a imaginação encontra expressão na linguagem, mas uma narrativa sedutora ou uma explicação engenhosa pode ser confundida com um fato verificado; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Gemini, you may inwardly reexamine stories, explanations and ways of sharing information before adopting them as beliefs. imagination finds expression in language, but a seductive narrative or clever explanation may be mistaken for a verified fact; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "linguagem",
+            "imaginação",
+            "discernimento"
+          ],
+          "en": [
+            "language",
+            "imagination",
+            "discernment"
+          ]
+        }
+      },
+      "Cancer": {
+        "pt": "com Netuno retrógrado em Câncer, você pode examinar em particular ideais de lar, proteção e pertencimento, ligados à memória coletiva e às histórias de família. a compaixão pode criar acolhimento, mas tratar narrativas herdadas como verdades intocáveis ou proteger sem respeitar limites pode dificultar o cuidado; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Cancer, you may privately examine ideals of home, protection and belonging connected with collective memory and family stories. compassion may create welcome, but treating inherited narratives as unquestionable truths or protecting without respecting boundaries may complicate care; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "lar",
+            "memória",
+            "proteção"
+          ],
+          "en": [
+            "home",
+            "memory",
+            "protection"
+          ]
+        }
+      },
+      "Capricorn": {
+        "pt": "com Netuno retrógrado em Capricórnio, você pode questionar intimamente se instituições respeitadas cumprem o que prometem, confrontando ideais com deveres, estruturas e realizações visíveis. construir algo fiel ao propósito é uma possibilidade, mas reputação e títulos podem ser confundidos com substância; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Capricorn, you may inwardly question whether respected institutions fulfill their promises, comparing ideals with duties, structures and visible achievements. building something faithful to its purpose is a possibility, but reputation and titles may be mistaken for substance; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "instituições",
+            "ideais",
+            "realizações"
+          ],
+          "en": [
+            "institutions",
+            "ideals",
+            "achievements"
+          ]
+        }
+      },
+      "Aquarius": {
+        "pt": "com Netuno retrógrado em Aquário, você pode reconsiderar em particular esperanças coletivas, redes e a imagem de um futuro mais igualitário, examinando se seus ideais foram testados ou apenas herdados do grupo. observe os efeitos reais de uma visão compartilhada, pois novidade tecnológica ou aparência progressista não garantem benefício; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Aquarius, you may privately reconsider collective hopes, networks and the image of a more equal future, examining whether your ideals have been tested or merely inherited from a group. consider the real effects of a shared vision, as technological novelty or a progressive image does not guarantee benefit; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "esperanças coletivas",
+            "redes",
+            "progresso"
+          ],
+          "en": [
+            "collective hopes",
+            "networks",
+            "progress"
+          ]
+        }
+      },
+      "Pisces": {
+        "pt": "com Netuno retrógrado em Peixes, você pode examinar em particular ideais espirituais, compaixão e imaginação artística, incluindo a confiança que deposita em experiências interiores intensas. transformar empatia em ajuda sustentável pede limites e discernimento entre esperança, simbolismo e observação concreta; considere a casa e os aspectos.",
+        "en": "with retrograde Neptune in Pisces, you may privately examine spiritual ideals, compassion and artistic imagination, including the trust you place in compelling inner experiences. turning empathy into sustainable help calls for boundaries and discernment between hope, symbolism and concrete observation; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "compaixão",
+            "imaginação espiritual",
+            "limites"
+          ],
+          "en": [
+            "compassion",
+            "spiritual imagination",
+            "boundaries"
           ]
         }
       }
@@ -12912,6 +13072,118 @@
             "transcending",
             "hidden weaknesses",
             "personal quest"
+          ]
+        }
+      },
+      "Aries": {
+        "pt": "com Plutão retrógrado em Áries, você pode reconsiderar intimamente o direito de liderar ou resistir, dentro de temas coletivos de autonomia, sobrevivência e uso da força. reconstruir um propósito com coragem é uma possibilidade, mas confundir poder pessoal com superar todo limite pode levar à oposição impulsiva; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Aries, you may inwardly reconsider the right to lead or resist within collective themes of autonomy, survival and the use of force. rebuilding a purpose with courage is a possibility, but equating personal power with overcoming every limit may lead to impulsive defiance; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "autonomia",
+            "liderança",
+            "uso da força"
+          ],
+          "en": [
+            "autonomy",
+            "leadership",
+            "use of force"
+          ]
+        }
+      },
+      "Taurus": {
+        "pt": "com Plutão retrógrado em Touro, você pode examinar intimamente o significado de segurança quando mudam estruturas de propriedade, trabalho e valor compartilhadas pela sua geração. renovar posses ou instituições exige cuidado para não defender arranjos conhecidos quando seus custos se tornam injustos ou transformar recursos em controle; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Taurus, you may inwardly examine what security means as structures of ownership, labor and value shared by your generation change. renewing possessions or institutions calls for care not to defend familiar arrangements when their costs become unjust or turn resources into control; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "segurança",
+            "propriedade",
+            "recursos"
+          ],
+          "en": [
+            "security",
+            "ownership",
+            "resources"
+          ]
+        }
+      },
+      "Gemini": {
+        "pt": "com Plutão retrógrado em Gêmeos, você pode examinar intimamente como crenças e argumentos ganham autoridade, em meio a temas coletivos de linguagem, educação e comunicação de massa. questionar explicações herdadas pode aprofundar a compreensão, mas palavras engenhosas e informação seletiva também podem servir ao controle da conversa; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Gemini, you may inwardly examine how beliefs and arguments gain authority amid collective themes of language, education and mass communication. questioning inherited explanations may deepen understanding, but clever words and selective information may also serve to control a discussion; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "linguagem",
+            "autoridade",
+            "informação"
+          ],
+          "en": [
+            "language",
+            "authority",
+            "information"
+          ]
+        }
+      },
+      "Sagittarius": {
+        "pt": "com Plutão retrógrado em Sagitário, você pode reelaborar intimamente crenças e questionar autoridades religiosas, educacionais ou filosóficas, dentro de um contexto coletivo de transformação das visões de mundo. preserve a possibilidade de aprender sem apenas trocar de dogma, observando quando uma grande ideologia justifica intolerância ou ignora fatos contrários; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Sagittarius, you may privately rework beliefs and question religious, educational or philosophical authorities within a collective context of changing worldviews. preserve the possibility of learning rather than merely changing dogmas, noticing when a grand ideology justifies intolerance or ignores contrary facts; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "crenças",
+            "visões de mundo",
+            "dogmas"
+          ],
+          "en": [
+            "beliefs",
+            "worldviews",
+            "dogmas"
+          ]
+        }
+      },
+      "Capricorn": {
+        "pt": "com Plutão retrógrado em Capricórnio, você pode questionar intimamente o que dá autoridade às instituições e se hierarquias herdadas ainda servem ao propósito declarado, em meio a temas coletivos de poder e regulação. reconstruir estruturas responsáveis pede distinguir competência de controle organizacional ou status; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Capricorn, you may inwardly question what gives institutions authority and whether inherited hierarchies still serve their stated purpose amid collective themes of power and regulation. rebuilding accountable structures calls for distinguishing competence from organizational control or status; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "instituições",
+            "hierarquias",
+            "responsabilidade"
+          ],
+          "en": [
+            "institutions",
+            "hierarchies",
+            "accountability"
+          ]
+        }
+      },
+      "Aquarius": {
+        "pt": "com Plutão retrógrado em Aquário, você pode questionar em particular narrativas coletivas poderosas e quem controla tecnologias, redes e regras de cooperação. transformar a concentração de influência pede examinar incentivos, acesso e custos reais, pois um grupo ou uma tecnologia não se torna ético apenas por parecer progressista; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Aquarius, you may privately question powerful collective narratives and who controls technologies, networks and rules of cooperation. transforming concentrated influence calls for examining incentives, access and real costs, as a group or technology does not become ethical merely by appearing progressive; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "poder coletivo",
+            "tecnologia",
+            "cooperação"
+          ],
+          "en": [
+            "collective power",
+            "technology",
+            "cooperation"
+          ]
+        }
+      },
+      "Pisces": {
+        "pt": "com Plutão retrógrado em Peixes, você pode examinar intimamente ideais que parecem acima de crítica, dentro de temas coletivos de fé, caridade e cuidado com pessoas vulneráveis. preservar a compaixão ao questionar instituições espirituais exige que uma visão atraente não substitua consentimento, responsabilidade e evidências; considere a casa e os aspectos.",
+        "en": "with retrograde Pluto in Pisces, you may inwardly examine ideals that appear beyond criticism within collective themes of faith, charity and care for vulnerable people. preserving compassion while questioning spiritual institutions requires that an attractive vision not replace consent, accountability and evidence; consider the house and aspects.",
+        "keywords": {
+          "pt": [
+            "fé coletiva",
+            "compaixão",
+            "instituições espirituais"
+          ],
+          "en": [
+            "collective faith",
+            "compassion",
+            "spiritual institutions"
           ]
         }
       }
