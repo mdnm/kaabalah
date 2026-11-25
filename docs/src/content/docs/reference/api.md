@@ -66,6 +66,8 @@ Points of the year, lunations and sign ingress windows: `findSeasonalPoints`, `g
 
 Worldwide eclipses by UT maximum: `findEclipses`, `ECLIPSES_METHOD`, `MAX_ECLIPSE_WINDOW_YEARS`.
 
+Solar return aphorisms that apply to a year: `matchSolarReturnAphorisms`, `SOLAR_RETURN_APHORISM_METHOD`, `SOLAR_RETURN_APHORISM_TRIGGERS`, `GENERAL_SOLAR_RETURN_APHORISMS`, `SolarReturnAphorismFacts`, `ageAtSolarReturn`.
+
 Profections and firdaria: `getAnnualProfection`, `getMonthlyProfections`, `getProfectionForAge`, `getAnnualProfectionTimeline`, `MAX_PROFECTION_TIMELINE_YEARS`, `getFirdaria`, `getFirdariaPeriods`, `getFirdariaTimeline`, `FIRDARIA_CYCLE_YEARS`, `MAX_FIRDARIA_CYCLES`, `MAX_FIRDARIA_WINDOW_YEARS`, `TimelineError`.
 
 Progressions: `JULIAN_YEAR_DAYS`, `TROPICAL_YEAR_DAYS`, `NAIBOD_RATE_DEGREES_PER_YEAR`, `MAX_PROGRESSION_AGE_YEARS`, `PROGRESSED_ANGLE_CONVENTIONS`, `DerivedChartError`.

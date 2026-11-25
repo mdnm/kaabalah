@@ -733,8 +733,60 @@ conditional reference with keywords, and
 `SolarReturnAphorismId` is the union of supported IDs. The bank is exposed as
 `ASTROLOGY_TIMING_DESCRIPTIONS.solarReturnAphorisms`; its keys can be enumerated to
 inspect coverage. IDs select reference descriptions. A successful lookup does **not**
-mean that a chart satisfies their conditions. No chart matching, rule evaluation,
-placement, aspect, orb, sign comparison or event date is calculated.
+mean that a chart satisfies their conditions: the lookup computes nothing. To find the
+aphorisms whose conditions hold, use `matchSolarReturnAphorisms` (below).
+
+#### Matching the aphorisms to a year
+
+`matchSolarReturnAphorisms(natal, solarReturn, options?)` checks every aphorism's "if"
+clause against a natal chart and one of its solar return charts
+(`getSolarReturnChart(...).solarReturnChart`). It returns:
+
+- `specific`: the matching IDs in bank order.
+- `general`: the three rules about return-to-natal contacts that nearly every year meets.
+- `yearRuler` and `firstHouseRuler`: the planets it read.
+- `age` and `method`.
+
+Show each ID with `getSolarReturnAphorismDescription(id, language)`. Qualifiers that only
+shade the outcome ("especially if…", the person's circumstances) are not required; the
+text carries them.
+
+```typescript
+import { getBirthChart, getSolarReturnChart, matchSolarReturnAphorisms, getSolarReturnAphorismDescription } from 'kaabalah/astrology';
+
+const natalChart = await getBirthChart(natal);
+const { solarReturnChart } = await getSolarReturnChart({ natal, year: 2026 });
+const { specific, yearRuler } = matchSolarReturnAphorisms(natalChart, solarReturnChart);
+specific.map((id) => getSolarReturnAphorismDescription(id, 'en'));
+```
+
+Conventions (`SOLAR_RETURN_APHORISM_METHOD`):
+
+- **Ruler of the year.** By default this is the **annual profection lord**: the traditional ruler of
+  the sign that lies, past the natal Ascendant's, as many signs as completed years at the return.
+  Most of these rules come from Junctinus through Volguine's *Technique of Solar Returns*.
+  Junctinus read returns with profections, and the text names "Saturn, ruler of the year" apart
+  from "the annual first-house ruler". `{ yearRuler: 'return-ascendant' }` takes the return
+  Ascendant's ruler instead.
+- **First-house ruler.** The traditional ruler of the return Ascendant sign is "the ruler of the
+  first house" or "its ruler".
+- **Aspects.** Ptolemaic aspects within one chart use `DEFAULT_ASPECT_SPECS` orbs (8, 5, 6, 7, 8).
+  A return point on a natal point must be within 3°.
+- **Afflicted:** a conjunction, square or opposition to Saturn or Mars.
+- **Unfortunate:** afflicted, in detriment or fall, within 8.5° of the Sun, or in house 6, 8 or 12.
+- **Eclipses.** These are the year's eclipses from this return to the next. They are searched with
+  `findEclipses`, so the Swiss Ephemeris must be ready; you can also pass them as `eclipses`, and
+  `[]` skips the two eclipse rules. "The Sun eclipsed" at the return means a solar eclipse maximum
+  within a day of it.
+- **Volguine's readings.**
+  - "Opposite the seventh" is house 1 in either chart.
+  - "A sign linked to a malefic at birth" (§563) is any sign inside the return's first house that
+    a natal malefic occupied.
+  - "Benefic at birth, malefic in the return" (§540) is one planet whose condition turns from
+    fortunate to unfortunate.
+
+`SOLAR_RETURN_APHORISM_TRIGGERS` holds the check for each ID, and `SolarReturnAphorismFacts`
+holds the chart facts they read, for callers that want to test a single rule.
 
 The 141 references preserve the selected aphorisms’ complete prerequisites and
 favorable/adverse branches: combinations of natal and annual houses, rulers,

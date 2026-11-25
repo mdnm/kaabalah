@@ -61,6 +61,7 @@ export * from "./stations";
 export * from "./seasons";
 export * from "./lunations";
 export * from "./eclipses";
+export * from "./solar-return-aphorisms";
 export * from "./ingress-windows";
 export * from "./sect";
 export * from "./lots";
