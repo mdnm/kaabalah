@@ -53,8 +53,10 @@ export type SolarReturnAphorismId = keyof typeof solarReturnAphorisms.solarRetur
 /** Directed annual planet / natal planet whose zodiac sign it occupies, without an orb. */
 export type SolarReturnNatalSignDescriptionKey = `${DescriptionPlanet}/${DescriptionPlanet}`;
 export type SolarReturnDescriptionPoint = DescriptionPlanet | "ascendant" | "mc";
-/** Directed return point / aspect / natal planet; no argument-order normalization. */
-export type SolarReturnNatalAspectDescriptionKey = `${SolarReturnDescriptionPoint}/${AspectName}/${DescriptionPlanet}`;
+/** Point identifiers for directed solar-return-to-natal contacts. */
+export type SolarReturnNatalDescriptionPoint = SolarReturnDescriptionPoint | "mean node" | "chiron";
+/** Directed return point / aspect / natal point; no argument-order normalization. */
+export type SolarReturnNatalAspectDescriptionKey = `${SolarReturnNatalDescriptionPoint}/${AspectName}/${SolarReturnNatalDescriptionPoint}`;
 /** Unordered within-return pair, stored in Sun-through-Pluto order. */
 export type SolarReturnAspectDescriptionKey = `${DescriptionPlanet}/${AspectName}/${DescriptionPlanet}`;
 /** Return planet / house in the return chart itself, distinct from natal-house overlays. */
@@ -73,8 +75,10 @@ export type NakshatraPada = 1 | 2 | 3 | 4;
 export type NakshatraPadaDescriptionKey = `${NakshatraId}/${NakshatraPada}`;
 export type VimshottariDashaDescriptionEntry = TimingDescriptionEntry;
 export type TransitAspectDescriptionEntry = TimingDescriptionEntry;
-/** Ordered transiting planet / aspect / natal planet. */
-export type TransitAspectDescriptionKey = `${DescriptionPlanet}/${AspectName}/${DescriptionPlanet}`;
+export type TransitAspectDescriptionBody = DescriptionPlanet | "mean node" | "chiron";
+export type TransitAspectDescriptionNatalPoint = TransitAspectDescriptionBody | "ascendant" | "mc";
+/** Ordered transiting body / aspect / natal point. */
+export type TransitAspectDescriptionKey = `${TransitAspectDescriptionBody}/${AspectName}/${TransitAspectDescriptionNatalPoint}`;
 export type TimingTechnique =
   | "annual-profection" | "monthly-profection"
   | "solar-return" | "lunar-return" | "jupiter-return" | "saturn-return" | "nodal-return"
@@ -174,23 +178,23 @@ function localized(entry: TimingDescriptionEntry | undefined, language?: string)
 
 /** Directional transit themes. Missing triples never fall back to reversed or natal aspects. */
 export function getTransitAspectDescriptionEntry(
-  transitingPlanet: DescriptionPlanet,
+  transitingBody: TransitAspectDescriptionBody,
   aspect: AspectName,
-  natalPlanet: DescriptionPlanet,
+  natalPoint: TransitAspectDescriptionNatalPoint,
 ): TransitAspectDescriptionEntry | undefined {
-  if (typeof transitingPlanet !== "string" || typeof aspect !== "string" || typeof natalPlanet !== "string") {
+  if (typeof transitingBody !== "string" || typeof aspect !== "string" || typeof natalPoint !== "string") {
     return undefined;
   }
-  return lookup("transitAspects", `${transitingPlanet}/${aspect}/${natalPlanet}`);
+  return lookup("transitAspects", `${transitingBody}/${aspect}/${natalPoint}`);
 }
 
 export function getTransitAspectDescription(
-  transitingPlanet: DescriptionPlanet,
+  transitingBody: TransitAspectDescriptionBody,
   aspect: AspectName,
-  natalPlanet: DescriptionPlanet,
+  natalPoint: TransitAspectDescriptionNatalPoint,
   language?: string,
 ): string | undefined {
-  return localized(getTransitAspectDescriptionEntry(transitingPlanet, aspect, natalPlanet), language);
+  return localized(getTransitAspectDescriptionEntry(transitingBody, aspect, natalPoint), language);
 }
 
 /** Traditional deity associations and electional nature, without natal or pada-specific claims. */
@@ -242,6 +246,10 @@ export function getTransitPlanetDescription(planet: DescriptionPlanet, language?
 const SOLAR_RETURN_DESCRIPTION_PLANETS: readonly DescriptionPlanet[] = Object.freeze([
   "sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto",
 ]);
+const SOLAR_RETURN_NATAL_DESCRIPTION_POINTS: readonly SolarReturnNatalDescriptionPoint[] = Object.freeze([
+  ...SOLAR_RETURN_DESCRIPTION_PLANETS,
+  "mean node", "chiron", "ascendant", "mc",
+]);
 
 /** Within one return chart, in either planet order; no natal or transit fallback. */
 export function getSolarReturnAspectDescriptionEntry(
@@ -268,29 +276,31 @@ export function getSolarReturnAspectDescription(
   return localized(getSolarReturnAspectDescriptionEntry(aspect, planetA, planetB), language);
 }
 
-/** A computed return point contacting a natal planet; the two chart roles are directed. */
+/** A computed return point contacting a natal point; the two chart roles are directed. */
 export function getSolarReturnNatalAspectDescriptionEntry(
-  returnPoint: SolarReturnDescriptionPoint,
+  returnPoint: SolarReturnNatalDescriptionPoint,
   aspect: AspectName,
-  natalPlanet: DescriptionPlanet,
+  natalPoint: SolarReturnNatalDescriptionPoint,
 ): SolarReturnNatalAspectDescriptionEntry | undefined {
-  if (typeof returnPoint !== "string" || typeof aspect !== "string" || typeof natalPlanet !== "string") {
+  if (typeof returnPoint !== "string" || typeof aspect !== "string" || typeof natalPoint !== "string") {
     return undefined;
   }
-  if (returnPoint !== "ascendant" && returnPoint !== "mc" && !SOLAR_RETURN_DESCRIPTION_PLANETS.includes(returnPoint)) {
+  if (
+    !SOLAR_RETURN_NATAL_DESCRIPTION_POINTS.includes(returnPoint) ||
+    !SOLAR_RETURN_NATAL_DESCRIPTION_POINTS.includes(natalPoint)
+  ) {
     return undefined;
   }
-  if (!SOLAR_RETURN_DESCRIPTION_PLANETS.includes(natalPlanet)) return undefined;
-  return lookup("solarReturnNatalAspects", `${returnPoint}/${aspect}/${natalPlanet}`);
+  return lookup("solarReturnNatalAspects", `${returnPoint}/${aspect}/${natalPoint}`);
 }
 
 export function getSolarReturnNatalAspectDescription(
-  returnPoint: SolarReturnDescriptionPoint,
+  returnPoint: SolarReturnNatalDescriptionPoint,
   aspect: AspectName,
-  natalPlanet: DescriptionPlanet,
+  natalPoint: SolarReturnNatalDescriptionPoint,
   language?: string,
 ): string | undefined {
-  return localized(getSolarReturnNatalAspectDescriptionEntry(returnPoint, aspect, natalPlanet), language);
+  return localized(getSolarReturnNatalAspectDescriptionEntry(returnPoint, aspect, natalPoint), language);
 }
 
 /** Annual planet in the natal planet's sign; directed, distinct from an exact conjunction. */

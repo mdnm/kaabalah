@@ -569,6 +569,1030 @@
           "mitigable dangers"
         ]
       }
+    },
+    "sun/sun": {
+      "pt": "na sua revolução solar, o Sol retorna à longitude que ocupava no nascimento e, portanto, sempre ao seu signo natal. a casa anual do Sol, suas regências e os contatos do novo mapa mostram onde os temas solares ganham destaque neste ano.",
+      "en": "in your solar return, the Sun returns to its natal longitude and therefore always to its natal sign. the Sun's annual house, rulerships, and contacts in the new chart show where solar themes come into focus this year.",
+      "keywords": {
+        "pt": [
+          "retorno do Sol",
+          "signo natal",
+          "casa anual do Sol"
+        ],
+        "en": [
+          "return of the Sun",
+          "natal sign",
+          "Sun's annual house"
+        ]
+      }
+    },
+    "sun/moon": {
+      "pt": "com o Sol da sua revolução solar no signo que a Lua ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você busca conforto e pertencimento. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign the Moon occupied at your birth, the impulse to express yourself may draw attention to the way you seek comfort and belonging. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "segurança emocional"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "emotional security"
+        ]
+      }
+    },
+    "sun/mercury": {
+      "pt": "com o Sol da sua revolução solar no signo que Mercúrio ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você pensa e comunica suas conclusões. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Mercury occupied at your birth, the impulse to express yourself may draw attention to the way you think and communicate your conclusions. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "troca de ideias"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "sun/venus": {
+      "pt": "com o Sol da sua revolução solar no signo que Vênus ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você dá e recebe afeto. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Venus occupied at your birth, the impulse to express yourself may draw attention to the way you give and receive affection. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "afeto e prazer"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "sun/mars": {
+      "pt": "com o Sol da sua revolução solar no signo que Marte ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você se afirma diante de resistência. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Mars occupied at your birth, the impulse to express yourself may draw attention to the way you assert yourself when you meet resistance. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "iniciativa"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "initiative"
+        ]
+      }
+    },
+    "sun/jupiter": {
+      "pt": "com o Sol da sua revolução solar no signo que Júpiter ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você dá sentido ao que aprende e acredita. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Jupiter occupied at your birth, the impulse to express yourself may draw attention to the way you make sense of what you learn and believe. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "expansão"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "expansion"
+        ]
+      }
+    },
+    "sun/saturn": {
+      "pt": "com o Sol da sua revolução solar no signo que Saturno ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você responde a limites e obrigações. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Saturn occupied at your birth, the impulse to express yourself may draw attention to the way you respond to limits and obligations. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "responsabilidade"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "responsibility"
+        ]
+      }
+    },
+    "sun/uranus": {
+      "pt": "com o Sol da sua revolução solar no signo que Urano ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Uranus occupied at your birth, the impulse to express yourself may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "sun/neptune": {
+      "pt": "com o Sol da sua revolução solar no signo que Netuno ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Neptune occupied at your birth, the impulse to express yourself may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "sun/pluto": {
+      "pt": "com o Sol da sua revolução solar no signo que Plutão ocupava no seu nascimento, o impulso de se expressar pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar forma a uma ideia própria.",
+      "en": "with the Sun in your solar return in the sign Pluto occupied at your birth, the impulse to express yourself may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may give shape to an idea of your own.",
+      "keywords": {
+        "pt": [
+          "expressão pessoal",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "self-expression",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "moon/uranus": {
+      "pt": "com a Lua da sua revolução solar no signo que Urano ocupava no seu nascimento, a busca por segurança emocional pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço ao que você sente.",
+      "en": "with the Moon in your solar return in the sign Uranus occupied at your birth, the need for emotional security may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for what you feel.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "emotional security",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "moon/neptune": {
+      "pt": "com a Lua da sua revolução solar no signo que Netuno ocupava no seu nascimento, a busca por segurança emocional pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço ao que você sente.",
+      "en": "with the Moon in your solar return in the sign Neptune occupied at your birth, the need for emotional security may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for what you feel.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "emotional security",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "moon/pluto": {
+      "pt": "com a Lua da sua revolução solar no signo que Plutão ocupava no seu nascimento, a busca por segurança emocional pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço ao que você sente.",
+      "en": "with the Moon in your solar return in the sign Pluto occupied at your birth, the need for emotional security may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for what you feel.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "emotional security",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "mercury/sun": {
+      "pt": "com Mercúrio da sua revolução solar no signo que o Sol ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você expressa sua identidade. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign the Sun occupied at your birth, the need to exchange ideas may draw attention to the way you express your identity. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "expressão pessoal"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "self-expression"
+        ]
+      }
+    },
+    "mercury/moon": {
+      "pt": "com Mercúrio da sua revolução solar no signo que a Lua ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você busca conforto e pertencimento. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign the Moon occupied at your birth, the need to exchange ideas may draw attention to the way you seek comfort and belonging. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "segurança emocional"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "emotional security"
+        ]
+      }
+    },
+    "mercury/mercury": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Mercúrio ocupava no seu nascimento, pode ganhar destaque a maneira como você pensa e comunica suas conclusões. os novos aspectos e a casa anual ajudam a mostrar se esse padrão se fortalece ou encontra uma expressão diferente ao longo do ano.",
+      "en": "with Mercury in your solar return in the sign Mercury occupied at your birth, the way you think and communicate your conclusions may come into focus. the new aspects and the annual house help show whether this pattern grows stronger or finds a different expression over the year.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "padrão natal"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "natal pattern"
+        ]
+      }
+    },
+    "mercury/venus": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Vênus ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você dá e recebe afeto. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign Venus occupied at your birth, the need to exchange ideas may draw attention to the way you give and receive affection. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "afeto e prazer"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "mercury/saturn": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Saturno ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você responde a limites e obrigações. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign Saturn occupied at your birth, the need to exchange ideas may draw attention to the way you respond to limits and obligations. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "responsabilidade"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "responsibility"
+        ]
+      }
+    },
+    "mercury/uranus": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Urano ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign Uranus occupied at your birth, the need to exchange ideas may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "mercury/neptune": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Netuno ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign Neptune occupied at your birth, the need to exchange ideas may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mercury/pluto": {
+      "pt": "com Mercúrio da sua revolução solar no signo que Plutão ocupava no seu nascimento, a necessidade de trocar ideias pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode colocar uma ideia em palavras.",
+      "en": "with Mercury in your solar return in the sign Pluto occupied at your birth, the need to exchange ideas may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may put an idea into words.",
+      "keywords": {
+        "pt": [
+          "troca de ideias",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "exchange of ideas",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "venus/uranus": {
+      "pt": "com Vênus da sua revolução solar no signo que Urano ocupava no seu nascimento, a busca por afeto e prazer pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço a algo que lhe dá prazer.",
+      "en": "with Venus in your solar return in the sign Uranus occupied at your birth, the desire for affection and pleasure may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make time for something you enjoy.",
+      "keywords": {
+        "pt": [
+          "afeto e prazer",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "affection and pleasure",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "venus/neptune": {
+      "pt": "com Vênus da sua revolução solar no signo que Netuno ocupava no seu nascimento, a busca por afeto e prazer pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço a algo que lhe dá prazer.",
+      "en": "with Venus in your solar return in the sign Neptune occupied at your birth, the desire for affection and pleasure may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make time for something you enjoy.",
+      "keywords": {
+        "pt": [
+          "afeto e prazer",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "affection and pleasure",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "venus/pluto": {
+      "pt": "com Vênus da sua revolução solar no signo que Plutão ocupava no seu nascimento, a busca por afeto e prazer pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço a algo que lhe dá prazer.",
+      "en": "with Venus in your solar return in the sign Pluto occupied at your birth, the desire for affection and pleasure may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make time for something you enjoy.",
+      "keywords": {
+        "pt": [
+          "afeto e prazer",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "affection and pleasure",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "mars/uranus": {
+      "pt": "com Marte da sua revolução solar no signo que Urano ocupava no seu nascimento, a vontade de tomar a iniciativa pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar o primeiro passo.",
+      "en": "with Mars in your solar return in the sign Uranus occupied at your birth, the urge to take the initiative may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may take the first step.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "initiative",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "mars/neptune": {
+      "pt": "com Marte da sua revolução solar no signo que Netuno ocupava no seu nascimento, a vontade de tomar a iniciativa pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar o primeiro passo.",
+      "en": "with Mars in your solar return in the sign Neptune occupied at your birth, the urge to take the initiative may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may take the first step.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "initiative",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mars/pluto": {
+      "pt": "com Marte da sua revolução solar no signo que Plutão ocupava no seu nascimento, a vontade de tomar a iniciativa pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar o primeiro passo.",
+      "en": "with Mars in your solar return in the sign Pluto occupied at your birth, the urge to take the initiative may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may take the first step.",
+      "keywords": {
+        "pt": [
+          "iniciativa",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "initiative",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "jupiter/uranus": {
+      "pt": "com Júpiter da sua revolução solar no signo que Urano ocupava no seu nascimento, a vontade de ampliar suas possibilidades pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode explorar uma possibilidade que se abriu.",
+      "en": "with Jupiter in your solar return in the sign Uranus occupied at your birth, the desire to expand your possibilities may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "expansion",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "jupiter/neptune": {
+      "pt": "com Júpiter da sua revolução solar no signo que Netuno ocupava no seu nascimento, a vontade de ampliar suas possibilidades pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode explorar uma possibilidade que se abriu.",
+      "en": "with Jupiter in your solar return in the sign Neptune occupied at your birth, the desire to expand your possibilities may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "expansion",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "jupiter/pluto": {
+      "pt": "com Júpiter da sua revolução solar no signo que Plutão ocupava no seu nascimento, a vontade de ampliar suas possibilidades pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode explorar uma possibilidade que se abriu.",
+      "en": "with Jupiter in your solar return in the sign Pluto occupied at your birth, the desire to expand your possibilities may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "expansão",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "expansion",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/mars": {
+      "pt": "com Saturno da sua revolução solar no signo que Marte ocupava no seu nascimento, o jeito conhecido de tomar a iniciativa pode encontrar limites, prazos ou responsabilidades novas. o signo liga os dois temas, e a casa anual de Saturno ajuda a indicar onde sustentar uma decisão pode exigir mais paciência ou esforço.",
+      "en": "with Saturn in your solar return in the sign Mars occupied at your birth, your familiar way of taking the initiative may meet new limits, deadlines, or responsibilities. the sign links the two themes, and Saturn's annual house helps show where following through on a decision may take more patience or effort.",
+      "keywords": {
+        "pt": [
+          "limites",
+          "iniciativa",
+          "paciência"
+        ],
+        "en": [
+          "limits",
+          "initiative",
+          "patience"
+        ]
+      }
+    },
+    "saturn/uranus": {
+      "pt": "com Saturno da sua revolução solar no signo que Urano ocupava no seu nascimento, a necessidade de lidar com limites e responsabilidades pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode assumir um compromisso que você consegue cumprir.",
+      "en": "with Saturn in your solar return in the sign Uranus occupied at your birth, the need to deal with limits and responsibilities may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "responsibility",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/neptune": {
+      "pt": "com Saturno da sua revolução solar no signo que Netuno ocupava no seu nascimento, a necessidade de lidar com limites e responsabilidades pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode assumir um compromisso que você consegue cumprir.",
+      "en": "with Saturn in your solar return in the sign Neptune occupied at your birth, the need to deal with limits and responsibilities may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "responsibility",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/pluto": {
+      "pt": "com Saturno da sua revolução solar no signo que Plutão ocupava no seu nascimento, a necessidade de lidar com limites e responsabilidades pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode assumir um compromisso que você consegue cumprir.",
+      "en": "with Saturn in your solar return in the sign Pluto occupied at your birth, the need to deal with limits and responsibilities may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "responsabilidade",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "responsibility",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/sun": {
+      "pt": "com Urano da sua revolução solar no signo que o Sol ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você expressa sua identidade. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign the Sun occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you express your identity. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "expressão pessoal"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "self-expression"
+        ]
+      }
+    },
+    "uranus/moon": {
+      "pt": "com Urano da sua revolução solar no signo que a Lua ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você busca conforto e pertencimento. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign the Moon occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you seek comfort and belonging. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "segurança emocional"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "emotional security"
+        ]
+      }
+    },
+    "uranus/mercury": {
+      "pt": "com Urano da sua revolução solar no signo que Mercúrio ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você pensa e comunica suas conclusões. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Mercury occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you think and communicate your conclusions. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "troca de ideias"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "uranus/venus": {
+      "pt": "com Urano da sua revolução solar no signo que Vênus ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você dá e recebe afeto. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Venus occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you give and receive affection. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "afeto e prazer"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "uranus/mars": {
+      "pt": "com Urano da sua revolução solar no signo que Marte ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você se afirma diante de resistência. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Mars occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you assert yourself when you meet resistance. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "iniciativa"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "initiative"
+        ]
+      }
+    },
+    "uranus/jupiter": {
+      "pt": "com Urano da sua revolução solar no signo que Júpiter ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você dá sentido ao que aprende e acredita. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Jupiter occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you make sense of what you learn and believe. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "expansão"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "expansion"
+        ]
+      }
+    },
+    "uranus/saturn": {
+      "pt": "com Urano da sua revolução solar no signo que Saturno ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você responde a limites e obrigações. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Saturn occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you respond to limits and obligations. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "responsabilidade"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "responsibility"
+        ]
+      }
+    },
+    "uranus/uranus": {
+      "pt": "com Urano da sua revolução solar no signo que Urano ocupava no seu nascimento, pode ganhar destaque a maneira como você procura liberdade e abre espaço para mudanças. os novos aspectos e a casa anual ajudam a mostrar se esse padrão se fortalece ou encontra uma expressão diferente ao longo do ano.",
+      "en": "with Uranus in your solar return in the sign Uranus occupied at your birth, the way you seek freedom and make room for change may come into focus. the new aspects and the annual house help show whether this pattern grows stronger or finds a different expression over the year.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "padrão natal"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "natal pattern"
+        ]
+      }
+    },
+    "uranus/neptune": {
+      "pt": "com Urano da sua revolução solar no signo que Netuno ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Neptune occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/pluto": {
+      "pt": "com Urano da sua revolução solar no signo que Plutão ocupava no seu nascimento, a vontade de mudar algo e ganhar liberdade pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode experimentar um jeito diferente de fazer as coisas.",
+      "en": "with Uranus in your solar return in the sign Pluto occupied at your birth, the urge to make a change and gain freedom may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "mudança e liberdade",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "change and freedom",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/sun": {
+      "pt": "com Netuno da sua revolução solar no signo que o Sol ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você expressa sua identidade. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign the Sun occupied at your birth, the pull of imagination and ideals may draw attention to the way you express your identity. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "expressão pessoal"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "self-expression"
+        ]
+      }
+    },
+    "neptune/moon": {
+      "pt": "com Netuno da sua revolução solar no signo que a Lua ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você busca conforto e pertencimento. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign the Moon occupied at your birth, the pull of imagination and ideals may draw attention to the way you seek comfort and belonging. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "segurança emocional"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "emotional security"
+        ]
+      }
+    },
+    "neptune/mercury": {
+      "pt": "com Netuno da sua revolução solar no signo que Mercúrio ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você pensa e comunica suas conclusões. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Mercury occupied at your birth, the pull of imagination and ideals may draw attention to the way you think and communicate your conclusions. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "troca de ideias"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "neptune/venus": {
+      "pt": "com Netuno da sua revolução solar no signo que Vênus ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você dá e recebe afeto. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Venus occupied at your birth, the pull of imagination and ideals may draw attention to the way you give and receive affection. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "afeto e prazer"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "neptune/mars": {
+      "pt": "com Netuno da sua revolução solar no signo que Marte ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você se afirma diante de resistência. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Mars occupied at your birth, the pull of imagination and ideals may draw attention to the way you assert yourself when you meet resistance. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "iniciativa"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "initiative"
+        ]
+      }
+    },
+    "neptune/jupiter": {
+      "pt": "com Netuno da sua revolução solar no signo que Júpiter ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você dá sentido ao que aprende e acredita. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Jupiter occupied at your birth, the pull of imagination and ideals may draw attention to the way you make sense of what you learn and believe. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "expansão"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "expansion"
+        ]
+      }
+    },
+    "neptune/saturn": {
+      "pt": "com Netuno da sua revolução solar no signo que Saturno ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você responde a limites e obrigações. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Saturn occupied at your birth, the pull of imagination and ideals may draw attention to the way you respond to limits and obligations. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "responsabilidade"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "responsibility"
+        ]
+      }
+    },
+    "neptune/uranus": {
+      "pt": "com Netuno da sua revolução solar no signo que Urano ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Uranus occupied at your birth, the pull of imagination and ideals may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "neptune/neptune": {
+      "pt": "com Netuno da sua revolução solar no signo que Netuno ocupava no seu nascimento, pode ganhar destaque a maneira como você se orienta pela sensibilidade e pelos ideais. os novos aspectos e a casa anual ajudam a mostrar se esse padrão se fortalece ou encontra uma expressão diferente ao longo do ano.",
+      "en": "with Neptune in your solar return in the sign Neptune occupied at your birth, the way you follow your sensitivity and ideals may come into focus. the new aspects and the annual house help show whether this pattern grows stronger or finds a different expression over the year.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "padrão natal"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "natal pattern"
+        ]
+      }
+    },
+    "neptune/pluto": {
+      "pt": "com Netuno da sua revolução solar no signo que Plutão ocupava no seu nascimento, a força da imaginação e dos ideais pode dar destaque à maneira como você lida com poder, perda e renovação. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode dar espaço à imaginação.",
+      "en": "with Neptune in your solar return in the sign Pluto occupied at your birth, the pull of imagination and ideals may draw attention to the way you deal with power, loss, and renewal. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may make room for imagination.",
+      "keywords": {
+        "pt": [
+          "imaginação e ideais",
+          "signo em comum",
+          "poder e transformação"
+        ],
+        "en": [
+          "imagination and ideals",
+          "shared sign",
+          "power and transformation"
+        ]
+      }
+    },
+    "pluto/sun": {
+      "pt": "com Plutão da sua revolução solar no signo que o Sol ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você expressa sua identidade. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign the Sun occupied at your birth, the pressure to make a deep change may draw attention to the way you express your identity. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "expressão pessoal"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "self-expression"
+        ]
+      }
+    },
+    "pluto/moon": {
+      "pt": "com Plutão da sua revolução solar no signo que a Lua ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você busca conforto e pertencimento. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign the Moon occupied at your birth, the pressure to make a deep change may draw attention to the way you seek comfort and belonging. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "segurança emocional"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "emotional security"
+        ]
+      }
+    },
+    "pluto/mercury": {
+      "pt": "com Plutão da sua revolução solar no signo que Mercúrio ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você pensa e comunica suas conclusões. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Mercury occupied at your birth, the pressure to make a deep change may draw attention to the way you think and communicate your conclusions. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "troca de ideias"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "pluto/venus": {
+      "pt": "com Plutão da sua revolução solar no signo que Vênus ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você dá e recebe afeto. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Venus occupied at your birth, the pressure to make a deep change may draw attention to the way you give and receive affection. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "afeto e prazer"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "pluto/mars": {
+      "pt": "com Plutão da sua revolução solar no signo que Marte ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você se afirma diante de resistência. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Mars occupied at your birth, the pressure to make a deep change may draw attention to the way you assert yourself when you meet resistance. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "iniciativa"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "initiative"
+        ]
+      }
+    },
+    "pluto/jupiter": {
+      "pt": "com Plutão da sua revolução solar no signo que Júpiter ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você dá sentido ao que aprende e acredita. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Jupiter occupied at your birth, the pressure to make a deep change may draw attention to the way you make sense of what you learn and believe. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "expansão"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "expansion"
+        ]
+      }
+    },
+    "pluto/saturn": {
+      "pt": "com Plutão da sua revolução solar no signo que Saturno ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você responde a limites e obrigações. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Saturn occupied at your birth, the pressure to make a deep change may draw attention to the way you respond to limits and obligations. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "responsabilidade"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "responsibility"
+        ]
+      }
+    },
+    "pluto/uranus": {
+      "pt": "com Plutão da sua revolução solar no signo que Urano ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você procura liberdade e abre espaço para mudanças. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Uranus occupied at your birth, the pressure to make a deep change may draw attention to the way you seek freedom and make room for change. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "change and freedom"
+        ]
+      }
+    },
+    "pluto/neptune": {
+      "pt": "com Plutão da sua revolução solar no signo que Netuno ocupava no seu nascimento, a pressão por uma mudança profunda pode dar destaque à maneira como você se orienta pela sensibilidade e pelos ideais. o signo dá um modo comum de expressão a esses temas, e a casa anual indica onde você pode deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with Pluto in your solar return in the sign Neptune occupied at your birth, the pressure to make a deep change may draw attention to the way you follow your sensitivity and ideals. the sign gives these themes a shared way of expressing themselves, and the annual house shows where you may let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "pluto/pluto": {
+      "pt": "com Plutão da sua revolução solar no signo que Plutão ocupava no seu nascimento, pode ganhar destaque a maneira como você lida com poder, perda e renovação. os novos aspectos e a casa anual ajudam a mostrar se esse padrão se fortalece ou encontra uma expressão diferente ao longo do ano.",
+      "en": "with Pluto in your solar return in the sign Pluto occupied at your birth, the way you deal with power, loss, and renewal may come into focus. the new aspects and the annual house help show whether this pattern grows stronger or finds a different expression over the year.",
+      "keywords": {
+        "pt": [
+          "poder e transformação",
+          "signo em comum",
+          "padrão natal"
+        ],
+        "en": [
+          "power and transformation",
+          "shared sign",
+          "natal pattern"
+        ]
+      }
     }
   }
 }

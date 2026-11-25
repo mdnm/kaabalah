@@ -329,6 +329,7 @@ import {
 getTransitPlanetDescription('saturn', 'pt-BR');
 getTransitAspectDescription('saturn', 'square', 'sun', 'pt-BR'); // transit Saturn to natal Sun
 getTransitAspectDescription('sun', 'square', 'saturn'); // directed lookup: transit Sun to natal Saturn
+getTransitAspectDescription('mean node', 'sextile', 'chiron', 'pt-BR');
 getTransitAspectDescription('sun', 'quincunx', 'saturn'); // undefined: unsupported aspect
 getSkyRetrogradePlanetDescription('mercury', -0.1, 'pt-BR');
 getSkyRetrogradeSignDescription('mercury', 'Aries', -0.1, 'pt-BR');
@@ -361,14 +362,14 @@ getSolarReturnPlanetHouseDescription('pluto', 12);
 getSolarReturnPlanetHouseDescription('mercury', 0); // undefined: invalid annual house
 getSolarReturnAspectDescription('conjunction', 'sun', 'mars', 'pt-BR');
 getSolarReturnAspectDescription('conjunction', 'mars', 'sun'); // same within-return pair
-getSolarReturnAspectDescription('trine', 'sun', 'mars'); // undefined: unsupported combination
+getSolarReturnAspectDescription('trine', 'sun', 'mars'); // both planets in the annual chart
 getSolarReturnNatalAspectDescription('saturn', 'conjunction', 'mars', 'pt-BR');
 getSolarReturnNatalAspectDescription('mars', 'conjunction', 'saturn'); // undefined: different chart roles
 getSolarReturnNatalAspectDescription('ascendant', 'conjunction', 'moon');
 getSolarReturnNatalSignDescription('saturn', 'moon', 'pt-BR');
 getSolarReturnNatalSignDescription('moon', 'saturn'); // reversed roles select a different entry
 getSolarReturnNatalSignDescription('moon', 'moon'); // same sign at birth and return
-getSolarReturnNatalSignDescription('saturn', 'mars'); // undefined: unsupported sign pair
+getSolarReturnNatalSignDescription('saturn', 'mars'); // annual Saturn in natal Mars's sign
 getSolarReturnAphorismDescription('ascendant-in-natal-jupiter-house', 'pt-BR');
 getSolarReturnAphorismDescription('natal-tenth-sign-in-return-house-7');
 getSolarReturnAphorismDescription('natal-fortune-sign-in-return-house-12');
@@ -379,15 +380,15 @@ getSolarReturnMcHouseDescription(10); // profession, occupation, fame or fortune
 | Lookup | Coverage |
 | --- | --- |
 | `getTransitPlanetDescription` | Sun through Pluto, lowercase chart keys |
-| `getTransitAspectDescription` | All ten transiting planets × five major aspects × all ten natal planets (500 directed profiles); lowercase keys |
+| `getTransitAspectDescription` | 840 directed profiles across 12 transiting bodies, five major aspects and 14 natal points |
 | `getProgressedHouseDescription` | Secondary progressed `sun` and `moon`, each in natal houses 1–12 (24 profiles) |
 | `getProfectionHouseDescription` | All twelve computed profected houses; period-neutral focus themes |
 | `getSolarReturnAscendantHouseDescription` | Solar-return Ascendant in natal houses 1–12; annual interpretations |
 | `getSolarReturnMcHouseDescription` | Solar-return MC in natal houses 1–12; twelve annual situation interpretations |
 | `getSolarReturnPlanetHouseDescription` | All ten return planets, `sun` through `pluto`, each in all twelve annual houses (120 profiles); other bodies absent |
-| `getSolarReturnAspectDescription` | 37 conjunctions and four oppositions between planets in the same return chart; either planet order |
-| `getSolarReturnNatalAspectDescription` | Six directed return-point/natal-planet conjunctions: Saturn→Mars, Uranus→Venus, Neptune→Jupiter, annual Ascendant→Moon/Neptune/Mars |
-| `getSolarReturnNatalSignDescription` | 36 directed annual-planet/natal-planet sign placements: Saturn 6, Jupiter/Mars/Venus/Moon 7 each, Mercury 2; Sun and outer-planet pairs absent |
+| `getSolarReturnAspectDescription` | 214 major aspects between planets in the same return chart; either planet order |
+| `getSolarReturnNatalAspectDescription` | 947 directed return-to-natal contacts, including source readings and class-grounded syntheses |
+| `getSolarReturnNatalSignDescription` | 100 directed combinations for a return planet occupying a natal planet’s sign |
 | `getSolarReturnAphorismDescription` | 131 conditional references, including Ascendant rules, natal-tenth-sign and natal-Fortune-sign grids, and four annual-rulership examples |
 | `getSkyRetrogradePlanetDescription` | Mercury through Pluto; a finite numeric negative longitude speed is required |
 | `getSkyRetrogradeSignDescription` | Mercury through Pluto × twelve current sky signs (96 profiles); finite negative longitude speed required |
@@ -429,16 +430,19 @@ symbolism to their timing roles. A particular planet/aspect/natal-target reading
 is a separate lookup. Descriptions retain their astrological meanings
 and qualifications; a lookup returns text without assessing chart conditions.
 
-The separate directional transit-aspect bank contains 500 profiles: all ten
-transiting planets (Sun through Pluto), each through conjunction, sextile,
-square, trine and opposition to all ten natal planets. Each direction has its own entry; fast-planet profiles do not imply the duration of slow transits.
-The outer-planet targets retain collective context in their themes.
-Arguments are the **transiting planet**, aspect and **natal planet**, in that order.
-These two-sentence EN/PT themes describe the transit roles, aspect
-qualities and the natal target’s symbolism. The lookup does not calculate exact dates or
-assess natal conditions; qualifications remain in the text. Other aspects and
-unsupported triples return `undefined`;
-there is no reverse-direction or natal aspect-pair fallback.
+The directional transit-aspect bank covers the ten planets, the mean North
+Node and Chiron as transiting bodies. Each has conjunction, sextile, square,
+trine and opposition entries for those same natal points plus the natal
+Ascendant and Midheaven. The bank includes direct course readings such as
+Pluto conjunct the natal Midheaven. Editorial syntheses combine the taught
+transiting and natal roles with the meaning of the aspect.
+
+Pass the **transiting body**, aspect and **natal point** in that order. Use
+`mean node` for the mean North Node and `mc` for the Midheaven. Each contact
+uses the same description across motion directions. Exact timing and
+retrograde status come from the transit calculation. The bilingual
+entries retain chart qualifications in the text. An unlisted combination
+returns `undefined`.
 
 `getProgressedHouseDescriptionEntry(progressedPlanet, natalHouse)` returns an
 immutable bilingual entry with keywords;
@@ -614,17 +618,15 @@ only to this within-return lookup. Identical bodies, unsupported bodies/aspects,
 non-string inputs and unsupported combinations return `undefined`, without natal,
 transit or general-aspect fallback.
 
-Coverage is deliberately sparse: **37 conjunctions and four oppositions**. The
-conjunctions are Sun with Moon and Mars–Pluto; Moon with Mercury–Pluto; Mercury
-with Venus–Pluto; Venus with Mars–Pluto; Mars with Jupiter–Pluto; and Jupiter with
-Saturn–Pluto. The oppositions are Moon–Mercury, Mercury–Mars, Mars–Saturn and
-Mars–Uranus. The last retains the specific financial second/eighth-house condition
-for theft or involuntary money loss. A comparison with Venus–Mars opposition does
-not establish a separate opposition entry; other unlisted combinations remain
-absent. Sign, house, rulership, natal-aspect, annual-aspect and other conditions
-remain in the interpretations, including favorable/adverse health, relationship,
-sexual, financial and event branches. The lookup does not decide whether those
-conditions hold.
+The bank has **214 entries** across conjunction, sextile, square, trine and
+opposition. Eleven combinations are excluded by planetary elongation. A
+Sun–Mercury or Sun–Venus pair supports conjunction only, and Mercury–Venus
+supports conjunction and sextile. The bank combines direct interpretations with
+class-grounded syntheses using both planets in the annual chart. The direct
+Mars–Uranus opposition retains its financial second/eighth-house condition for
+theft or involuntary money loss. Sign, house, rulership, natal-aspect,
+annual-aspect and other conditions remain explicit in the source readings.
+Check those conditions in the full annual chart.
 
 The aspect method describes at most 8° for the luminaries in applying
 conjunctions/oppositions and 6° for other planets, with tighter aspects more
@@ -636,15 +638,46 @@ associate adverse Uranus–Ascendant aspects with electrical accidents, their
 severity proportional to Uranus’s strength; this general angular clause does not
 identify an individual aspect/pair entry in the planet-only bank.
 
-`getSolarReturnNatalAspectDescriptionEntry(returnPoint, aspect, natalPlanet)` and
-`getSolarReturnNatalAspectDescription(returnPoint, aspect, natalPlanet, language?)`
-are a **separate directed lookup**. The first point belongs to the computed return
-chart and the final planet belongs to the natal chart. Reversing their roles does
-not return the same entry. The return-point type accepts the ten planets plus
-`ascendant` and `mc`; the natal target is one of the ten planets. Current coverage
-is only the six conjunctions in the table above; MC contacts, other pairs and other
-aspects remain `undefined`. It does not infer a contact from an annual/natal house
-number, choose an angular tolerance, or fall back to within-return or transit text.
+`getSolarReturnNatalAspectDescriptionEntry(returnPoint, aspect, natalPoint)` and
+`getSolarReturnNatalAspectDescription(returnPoint, aspect, natalPoint, language?)`
+are a **directed lookup**. The first point belongs to the return chart and the
+last point belongs to the natal chart. Both parameters use
+`SolarReturnNatalDescriptionPoint`, which accepts the ten planets from Sun
+through Pluto, `mean node`, `chiron`, `ascendant` and `mc`. Use the chart
+roles and aspect as supplied. The bank covers 947 of the 980 ordered
+combinations across the five major aspects. The other 33 keys return
+`undefined` under Gamu's 1° calendar rule. They cover the defining Sun
+conjunction, the four other Sun-to-Sun aspects and 28 Sun, Mercury and
+Venus combinations ruled out by their maximum angular separation from
+the Sun. Coverage does not certify that each included combination occurs.
+Verify the contact, its orb and any additional conditions in the description
+from the charts.
+
+The angle entries cover annual Ascendant conjunct, square, trine or opposite
+natal Ascendant, annual Midheaven opposite natal Ascendant, and annual Midheaven
+square, trine or opposite natal Midheaven. A. de Thyane’s Ascendant square and
+opposition share a qualified rule. The Midheaven oppositions retain the old-age
+or natal-fourth-house and affliction conditions stated for the respective
+contact. The Ascendant trine and Midheaven trine and square follow Morin’s
+instructions to consider rulers and natal directions. The annual
+Ascendant–natal Saturn entry follows Morin’s rule, including the natal
+eighth-house placement or rulership and corroborating timing conditions.
+
+The planetary conjunction entries include 37 directed natal-place readings
+from the Basel 1559 Latin witness of Abū Maʿshar’s *De revolutionibus
+nativitatum*. The text distinguishes a planet arriving at a natal sign, degree
+or bound. These entries describe the natal-place contact and retain its chart
+conditions. The historical text does not supply the lookup’s angular tolerance.
+
+Brian Clark’s notes also cover Uranus, Neptune and Pluto conjunct the natal
+Sun at the time of the return. These readings relate the contact to successive
+returns and to the houses occupied by the Sun and the outer planet that year.
+
+The editorial syntheses apply taught meanings for the annual body or angle,
+the aspect and the natal target. For example, the annual Moon conjunct natal
+Venus joins emotional security with affection and relationship choices. Read
+these themes in the context of both charts, including the houses and planetary
+conditions involved.
 
 The descriptions read these contacts through planet nature and both charts’ house
 overlays, giving special prominence to annual Ascendant/MC contacts while still
@@ -669,15 +702,15 @@ no chart, sign comparison, ingress date, exact conjunction or orb is calculated.
 The pair is directed. A same-body key means the planet occupies its natal sign
 at the return, without asserting an exact return to its natal degree.
 
-The 36 available pairs comprise Saturn with natal Saturn, Jupiter, Sun, Venus,
-Mercury and Moon; Jupiter, Mars, Venus and Moon each with all seven classical
-natal planets; and Mercury with natal Jupiter and Mars. Annual Sun pairs,
-Saturn–natal Mars, Mercury’s other targets and all outer-planet pairs remain
-`undefined`. There is no reverse-pair, aspect, house, Firdaria or transit fallback.
-Non-string or unsupported IDs return `undefined`; English/default, case-sensitive
-`pt*` and invalid-locale behavior match the other Timing lookups.
+All **100 ordered planet pairs** are covered. The original 36 aphorism
+readings retain their source conditions. The remaining entries include
+class-grounded readings for a shared sign and a `sun/sun` reference for
+the defining return of the Sun. Matching signs can span different degrees
+and houses. Check the annual house, rulerships and aspects when applying
+the themes. An unsupported ID returns `undefined`. English is the default
+and a locale starting with `pt` selects Portuguese.
 
-These preserve the aphorisms’ specific favorable/adverse outcomes, including
+The 36 original entries preserve the aphorisms’ specific favorable/adverse outcomes, including
 illness, mortality, pregnancy, relationship, property, reputation and political
 or social circumstances. Conditions concerning aspects, dignity, sect, annual
 houses, lunar phase, oriental/occidental position, gender and the person’s

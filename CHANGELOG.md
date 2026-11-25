@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Add 941 bilingual solar-return-to-natal contact descriptions and accept the
+  ten planets, mean node, Chiron, Ascendant and Midheaven on either side of the
+  directed lookup.
+  Planetary conjunction sources include the 1559 Latin witness of Abū Maʿshar
+  and Brian Clark’s class notes on outer planets contacting the natal Sun.
+  Class-grounded syntheses fill the remaining major-aspect combinations
+  within the calendar's geometric bounds.
+- Expand the within-return aspect bank to 214 major-aspect descriptions
+  and the directed same-sign bank to 100 solar-return descriptions.
+- Add 340 bilingual ordinary transit descriptions, expanding the directed
+  bank to 840 major-aspect combinations. The mean North Node and Chiron
+  are available on both sides, and the natal Ascendant and Midheaven
+  are available as targets.
+
 ## 7.0.0 - 2026-11-21
 
 - Add 1,331 bilingual timing descriptions across 19 JSON banks, with immutable

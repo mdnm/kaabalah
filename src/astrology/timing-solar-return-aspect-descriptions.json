@@ -655,6 +655,2774 @@
           "advancement or recovery"
         ]
       }
+    },
+    "sun/sextile/moon": {
+      "pt": "com um sextil entre o Sol e a Lua na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a busca por segurança emocional nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a dar espaço ao que você sente, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and the Moon in your solar return, you may find an opening to bring the impulse to express yourself together with the need for emotional security in the areas the two planets occupy. this combination can help you give shape to an idea of your own and make room for what you feel, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "segurança emocional"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "emotional security"
+        ]
+      }
+    },
+    "sun/square/moon": {
+      "pt": "com uma quadratura entre o Sol e a Lua na sua revolução solar, o impulso de se expressar pode entrar em atrito com a busca por segurança emocional nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de dar espaço ao que você sente, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and the Moon in your solar return, the impulse to express yourself may come into friction with the need for emotional security in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or make room for what you feel, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "segurança emocional"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "emotional security"
+        ]
+      }
+    },
+    "sun/trine/moon": {
+      "pt": "com o Sol em trígono com a Lua na sua revolução solar, suas escolhas e necessidades emocionais podem se apoiar com mais facilidade nas áreas indicadas pelas casas dos luminares. num exemplo da aula, esse trígono anual atenua a natureza desfavorável de uma quadratura posterior do Sol em trânsito à Lua, mostrando como a configuração anual pode alterar a leitura de um trânsito.",
+      "en": "with the Sun trine the Moon in your solar return, your choices and emotional needs may support each other more easily in the areas shown by the houses of the luminaries. in a worked example from the lesson, this annual trine softens a later unfavorable square from the transiting Sun to the Moon, showing how the annual configuration can modify the reading of a transit.",
+      "keywords": {
+        "pt": [
+          "escolhas e necessidades",
+          "harmonia dos luminares",
+          "contexto dos trânsitos"
+        ],
+        "en": [
+          "choices and needs",
+          "harmony between the luminaries",
+          "transit context"
+        ]
+      }
+    },
+    "sun/opposition/moon": {
+      "pt": "com o Sol em oposição à Lua na sua revolução solar, Gouchon e Reverchon consideram o ano digno de nota. as casas dos dois luminares ajudam a mostrar onde a tensão entre suas escolhas conscientes e suas necessidades emocionais pode ficar mais visível.",
+      "en": "with the Sun opposite the Moon in your solar return, Gouchon and Reverchon consider the year noteworthy. the houses of the two luminaries help show where tension between your conscious choices and emotional needs may become more apparent.",
+      "keywords": {
+        "pt": [
+          "ano notável",
+          "casas dos luminares",
+          "necessidades emocionais"
+        ],
+        "en": [
+          "noteworthy year",
+          "houses of the luminaries",
+          "emotional needs"
+        ]
+      }
+    },
+    "sun/conjunction/mercury": {
+      "pt": "com o Sol e Mercúrio em conjunção na sua revolução solar, Von Klöckler considerava que o único significado dessa configuração era reforçar a casa anual em que ela ocorre. na leitura de Mercúrio para o ano, considere também suas regências e seus aspectos, que pesam mais do que sua posição por casa isoladamente.",
+      "en": "with the Sun and Mercury conjunct in your solar return, Von Klöckler considered the configuration's sole meaning to be reinforcing the annual house where it occurs. when reading Mercury for the year, consider its rulerships and aspects, which carry more weight than its house placement alone.",
+      "keywords": {
+        "pt": [
+          "casa anual",
+          "regência de Mercúrio",
+          "reforço da casa"
+        ],
+        "en": [
+          "annual house",
+          "Mercury's rulership",
+          "emphasis on the house"
+        ]
+      }
+    },
+    "sun/conjunction/venus": {
+      "pt": "com o Sol e Vênus em conjunção na sua revolução solar, Von Klöckler considerava que o único significado dessa configuração era reforçar a casa anual em que ela ocorre. as regências e os demais aspectos de Vênus ajudam a entender como os assuntos dessa casa se manifestam no ano.",
+      "en": "with the Sun and Venus conjunct in your solar return, Von Klöckler considered the configuration's sole meaning to be reinforcing the annual house where it occurs. Venus's rulerships and other aspects help show how the affairs of that house play out over the year.",
+      "keywords": {
+        "pt": [
+          "casa anual",
+          "regências de Vênus",
+          "reforço da casa"
+        ],
+        "en": [
+          "annual house",
+          "Venus's rulerships",
+          "emphasis on the house"
+        ]
+      }
+    },
+    "sun/sextile/mars": {
+      "pt": "com um sextil entre o Sol e Marte na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a vontade de tomar a iniciativa nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a dar o primeiro passo, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Mars in your solar return, you may find an opening to bring the impulse to express yourself together with the urge to take the initiative in the areas the two planets occupy. this combination can help you give shape to an idea of your own and take the first step, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "iniciativa"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "initiative"
+        ]
+      }
+    },
+    "sun/square/mars": {
+      "pt": "com o Sol em quadratura com Marte na sua revolução solar, pode haver tensão entre afirmar sua vontade e a urgência com que você age. esse contato anual também é associado ao risco de queda na leitura de P. Christian.",
+      "en": "with the Sun square Mars in your solar return, tension may arise between asserting your will and the urgency with which you act. P. Christian also associates this annual configuration with a risk of falling.",
+      "keywords": {
+        "pt": [
+          "vontade e ação",
+          "tensão",
+          "risco de queda"
+        ],
+        "en": [
+          "will and action",
+          "tension",
+          "risk of falling"
+        ]
+      }
+    },
+    "sun/trine/mars": {
+      "pt": "com um trígono entre o Sol e Marte na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a vontade de tomar a iniciativa ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de dar o primeiro passo, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Mars in your solar return, the impulse to express yourself may fit naturally with the urge to take the initiative over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to take the first step, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "iniciativa"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "initiative"
+        ]
+      }
+    },
+    "sun/opposition/mars": {
+      "pt": "com o Sol em oposição a Marte na sua revolução solar, pode haver tensão entre afirmar sua vontade e a urgência com que você age. esse contato anual também é associado ao risco de queda na leitura de P. Christian.",
+      "en": "with the Sun opposite Mars in your solar return, tension may arise between asserting your will and the urgency with which you act. P. Christian also associates this annual configuration with a risk of falling.",
+      "keywords": {
+        "pt": [
+          "vontade e ação",
+          "tensão",
+          "risco de queda"
+        ],
+        "en": [
+          "will and action",
+          "tension",
+          "risk of falling"
+        ]
+      }
+    },
+    "sun/sextile/jupiter": {
+      "pt": "com um sextil entre o Sol e Júpiter na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a vontade de ampliar suas possibilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a explorar uma possibilidade que se abriu, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Jupiter in your solar return, you may find an opening to bring the impulse to express yourself together with the desire to expand your possibilities in the areas the two planets occupy. this combination can help you give shape to an idea of your own and explore a new possibility, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "expansão"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "expansion"
+        ]
+      }
+    },
+    "sun/square/jupiter": {
+      "pt": "com uma quadratura entre o Sol e Júpiter na sua revolução solar, o impulso de se expressar pode entrar em atrito com a vontade de ampliar suas possibilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de explorar uma possibilidade que se abriu, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and Jupiter in your solar return, the impulse to express yourself may come into friction with the desire to expand your possibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or explore a new possibility, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "expansão"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "expansion"
+        ]
+      }
+    },
+    "sun/trine/jupiter": {
+      "pt": "com um trígono entre o Sol e Júpiter na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a vontade de ampliar suas possibilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de explorar uma possibilidade que se abriu, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Jupiter in your solar return, the impulse to express yourself may fit naturally with the desire to expand your possibilities over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to explore a new possibility, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "expansão"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "expansion"
+        ]
+      }
+    },
+    "sun/opposition/jupiter": {
+      "pt": "com uma oposição entre o Sol e Júpiter na sua revolução solar, você pode se sentir dividido quando o impulso de se expressar e a vontade de ampliar suas possibilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar forma a uma ideia própria sem deixar de explorar uma possibilidade que se abriu.",
+      "en": "with an opposition between the Sun and Jupiter in your solar return, you may feel pulled in two directions when the impulse to express yourself and the desire to expand your possibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to give shape to an idea of your own while also finding room to explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expressão pessoal",
+          "expansão"
+        ],
+        "en": [
+          "tension between poles",
+          "self-expression",
+          "expansion"
+        ]
+      }
+    },
+    "sun/sextile/saturn": {
+      "pt": "com um sextil entre o Sol e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Saturn in your solar return, you may find an opening to bring the impulse to express yourself together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you give shape to an idea of your own and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "responsibility"
+        ]
+      }
+    },
+    "sun/square/saturn": {
+      "pt": "com uma quadratura entre o Sol e Saturno na sua revolução solar, o impulso de se expressar pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and Saturn in your solar return, the impulse to express yourself may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "responsibility"
+        ]
+      }
+    },
+    "sun/trine/saturn": {
+      "pt": "com um trígono entre o Sol e Saturno na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Saturn in your solar return, the impulse to express yourself may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "responsibility"
+        ]
+      }
+    },
+    "sun/opposition/saturn": {
+      "pt": "com uma oposição entre o Sol e Saturno na sua revolução solar, você pode se sentir dividido quando o impulso de se expressar e a necessidade de lidar com limites e responsabilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar forma a uma ideia própria sem deixar de assumir um compromisso que você consegue cumprir.",
+      "en": "with an opposition between the Sun and Saturn in your solar return, you may feel pulled in two directions when the impulse to express yourself and the need to deal with limits and responsibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to give shape to an idea of your own while also finding room to make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expressão pessoal",
+          "responsabilidade"
+        ],
+        "en": [
+          "tension between poles",
+          "self-expression",
+          "responsibility"
+        ]
+      }
+    },
+    "sun/sextile/uranus": {
+      "pt": "com um sextil entre o Sol e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Uranus in your solar return, you may find an opening to bring the impulse to express yourself together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you give shape to an idea of your own and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "change and freedom"
+        ]
+      }
+    },
+    "sun/square/uranus": {
+      "pt": "com uma quadratura entre o Sol e Urano na sua revolução solar, o impulso de se expressar pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and Uranus in your solar return, the impulse to express yourself may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "change and freedom"
+        ]
+      }
+    },
+    "sun/trine/uranus": {
+      "pt": "com um trígono entre o Sol e Urano na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Uranus in your solar return, the impulse to express yourself may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "change and freedom"
+        ]
+      }
+    },
+    "sun/opposition/uranus": {
+      "pt": "com uma oposição entre o Sol e Urano na sua revolução solar, você pode se sentir dividido quando o impulso de se expressar e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar forma a uma ideia própria sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between the Sun and Uranus in your solar return, you may feel pulled in two directions when the impulse to express yourself and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to give shape to an idea of your own while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expressão pessoal",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "self-expression",
+          "change and freedom"
+        ]
+      }
+    },
+    "sun/sextile/neptune": {
+      "pt": "com um sextil entre o Sol e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Neptune in your solar return, you may find an opening to bring the impulse to express yourself together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you give shape to an idea of your own and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "sun/square/neptune": {
+      "pt": "com uma quadratura entre o Sol e Netuno na sua revolução solar, o impulso de se expressar pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and Neptune in your solar return, the impulse to express yourself may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "sun/trine/neptune": {
+      "pt": "com um trígono entre o Sol e Netuno na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Neptune in your solar return, the impulse to express yourself may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "sun/opposition/neptune": {
+      "pt": "com uma oposição entre o Sol e Netuno na sua revolução solar, você pode se sentir dividido quando o impulso de se expressar e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar forma a uma ideia própria sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between the Sun and Neptune in your solar return, you may feel pulled in two directions when the impulse to express yourself and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to give shape to an idea of your own while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expressão pessoal",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "self-expression",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "sun/sextile/pluto": {
+      "pt": "com um sextil entre o Sol e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar o impulso de se expressar com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar forma a uma ideia própria e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Sun and Pluto in your solar return, you may find an opening to bring the impulse to express yourself together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you give shape to an idea of your own and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expressão pessoal",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "self-expression",
+          "power and transformation"
+        ]
+      }
+    },
+    "sun/square/pluto": {
+      "pt": "com uma quadratura entre o Sol e Plutão na sua revolução solar, o impulso de se expressar pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar forma a uma ideia própria ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Sun and Pluto in your solar return, the impulse to express yourself may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you give shape to an idea of your own or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expressão pessoal",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "self-expression",
+          "power and transformation"
+        ]
+      }
+    },
+    "sun/trine/pluto": {
+      "pt": "com um trígono entre o Sol e Plutão na sua revolução solar, o impulso de se expressar pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar forma a uma ideia própria quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Sun and Pluto in your solar return, the impulse to express yourself may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to give shape to an idea of your own and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expressão pessoal",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "self-expression",
+          "power and transformation"
+        ]
+      }
+    },
+    "sun/opposition/pluto": {
+      "pt": "com uma oposição entre o Sol e Plutão na sua revolução solar, você pode se sentir dividido quando o impulso de se expressar e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar forma a uma ideia própria sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between the Sun and Pluto in your solar return, you may feel pulled in two directions when the impulse to express yourself and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to give shape to an idea of your own while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expressão pessoal",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "self-expression",
+          "power and transformation"
+        ]
+      }
+    },
+    "moon/sextile/mercury": {
+      "pt": "com um sextil entre a Lua e Mercúrio na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a necessidade de trocar ideias nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a colocar uma ideia em palavras, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Mercury in your solar return, you may find an opening to bring the need for emotional security together with the need to exchange ideas in the areas the two planets occupy. this combination can help you make room for what you feel and put an idea into words, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "troca de ideias"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "moon/square/mercury": {
+      "pt": "com uma quadratura entre a Lua e Mercúrio na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a necessidade de trocar ideias nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de colocar uma ideia em palavras, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Mercury in your solar return, the need for emotional security may come into friction with the need to exchange ideas in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or put an idea into words, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "troca de ideias"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "moon/trine/mercury": {
+      "pt": "com um trígono entre a Lua e Mercúrio na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a necessidade de trocar ideias ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de colocar uma ideia em palavras, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Mercury in your solar return, the need for emotional security may fit naturally with the need to exchange ideas over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to put an idea into words, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "troca de ideias"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "exchange of ideas"
+        ]
+      }
+    },
+    "moon/sextile/venus": {
+      "pt": "com um sextil entre a Lua e Vênus na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a busca por afeto e prazer nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a dar espaço a algo que lhe dá prazer, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Venus in your solar return, you may find an opening to bring the need for emotional security together with the desire for affection and pleasure in the areas the two planets occupy. this combination can help you make room for what you feel and make time for something you enjoy, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "afeto e prazer"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "moon/square/venus": {
+      "pt": "com uma quadratura entre a Lua e Vênus na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a busca por afeto e prazer nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de dar espaço a algo que lhe dá prazer, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Venus in your solar return, the need for emotional security may come into friction with the desire for affection and pleasure in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or make time for something you enjoy, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "afeto e prazer"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "moon/trine/venus": {
+      "pt": "com um trígono entre a Lua e Vênus na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a busca por afeto e prazer ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de dar espaço a algo que lhe dá prazer, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Venus in your solar return, the need for emotional security may fit naturally with the desire for affection and pleasure over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to make time for something you enjoy, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "afeto e prazer"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "moon/opposition/venus": {
+      "pt": "com uma oposição entre a Lua e Vênus na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a busca por afeto e prazer pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de dar espaço a algo que lhe dá prazer.",
+      "en": "with an opposition between the Moon and Venus in your solar return, you may feel pulled in two directions when the need for emotional security and the desire for affection and pleasure demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to make time for something you enjoy.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "afeto e prazer"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "affection and pleasure"
+        ]
+      }
+    },
+    "moon/sextile/mars": {
+      "pt": "com um sextil entre a Lua e Marte na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a vontade de tomar a iniciativa nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a dar o primeiro passo, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Mars in your solar return, you may find an opening to bring the need for emotional security together with the urge to take the initiative in the areas the two planets occupy. this combination can help you make room for what you feel and take the first step, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "iniciativa"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "initiative"
+        ]
+      }
+    },
+    "moon/square/mars": {
+      "pt": "com a Lua em quadratura com Marte na sua revolução solar, você pode sentir tensão entre o que lhe dá segurança e a urgência de agir ou se defender. na série de aforismos sobre acidentes e perigos, P. Christian também associa essa configuração à ameaça de cegueira, queda ou ferimento provocado por um animal quadrúpede.",
+      "en": "with the Moon square Mars in your solar return, you may feel tension between what makes you feel secure and the urgency of acting or defending yourself. in the aphorisms on accidents and dangers, P. Christian also associates this configuration with a threat of blindness, a fall, or injury caused by a four-footed animal.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "urgência de agir",
+          "ameaça de cegueira ou ferimento"
+        ],
+        "en": [
+          "emotional security",
+          "urgency to act",
+          "threat of blindness or injury"
+        ]
+      }
+    },
+    "moon/trine/mars": {
+      "pt": "com um trígono entre a Lua e Marte na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a vontade de tomar a iniciativa ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de dar o primeiro passo, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Mars in your solar return, the need for emotional security may fit naturally with the urge to take the initiative over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to take the first step, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "iniciativa"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "initiative"
+        ]
+      }
+    },
+    "moon/opposition/mars": {
+      "pt": "com a Lua em oposição a Marte na sua revolução solar, você pode sentir tensão entre o que lhe dá segurança e a urgência de agir ou se defender. na série de aforismos sobre acidentes e perigos, P. Christian também associa essa configuração à ameaça de cegueira, queda ou ferimento provocado por um animal quadrúpede.",
+      "en": "with the Moon opposite Mars in your solar return, you may feel tension between what makes you feel secure and the urgency of acting or defending yourself. in the aphorisms on accidents and dangers, P. Christian also associates this configuration with a threat of blindness, a fall, or injury caused by a four-footed animal.",
+      "keywords": {
+        "pt": [
+          "segurança emocional",
+          "urgência de agir",
+          "ameaça de cegueira ou ferimento"
+        ],
+        "en": [
+          "emotional security",
+          "urgency to act",
+          "threat of blindness or injury"
+        ]
+      }
+    },
+    "moon/sextile/jupiter": {
+      "pt": "com um sextil entre a Lua e Júpiter na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a vontade de ampliar suas possibilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a explorar uma possibilidade que se abriu, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Jupiter in your solar return, you may find an opening to bring the need for emotional security together with the desire to expand your possibilities in the areas the two planets occupy. this combination can help you make room for what you feel and explore a new possibility, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "expansão"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "expansion"
+        ]
+      }
+    },
+    "moon/square/jupiter": {
+      "pt": "com uma quadratura entre a Lua e Júpiter na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a vontade de ampliar suas possibilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de explorar uma possibilidade que se abriu, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Jupiter in your solar return, the need for emotional security may come into friction with the desire to expand your possibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or explore a new possibility, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "expansão"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "expansion"
+        ]
+      }
+    },
+    "moon/trine/jupiter": {
+      "pt": "com um trígono entre a Lua e Júpiter na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a vontade de ampliar suas possibilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de explorar uma possibilidade que se abriu, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Jupiter in your solar return, the need for emotional security may fit naturally with the desire to expand your possibilities over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to explore a new possibility, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "expansão"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "expansion"
+        ]
+      }
+    },
+    "moon/opposition/jupiter": {
+      "pt": "com uma oposição entre a Lua e Júpiter na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a vontade de ampliar suas possibilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de explorar uma possibilidade que se abriu.",
+      "en": "with an opposition between the Moon and Jupiter in your solar return, you may feel pulled in two directions when the need for emotional security and the desire to expand your possibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "expansão"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "expansion"
+        ]
+      }
+    },
+    "moon/sextile/saturn": {
+      "pt": "com um sextil entre a Lua e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Saturn in your solar return, you may find an opening to bring the need for emotional security together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you make room for what you feel and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "responsibility"
+        ]
+      }
+    },
+    "moon/square/saturn": {
+      "pt": "com uma quadratura entre a Lua e Saturno na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Saturn in your solar return, the need for emotional security may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "responsibility"
+        ]
+      }
+    },
+    "moon/trine/saturn": {
+      "pt": "com um trígono entre a Lua e Saturno na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Saturn in your solar return, the need for emotional security may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "responsibility"
+        ]
+      }
+    },
+    "moon/opposition/saturn": {
+      "pt": "com uma oposição entre a Lua e Saturno na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a necessidade de lidar com limites e responsabilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de assumir um compromisso que você consegue cumprir.",
+      "en": "with an opposition between the Moon and Saturn in your solar return, you may feel pulled in two directions when the need for emotional security and the need to deal with limits and responsibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "responsabilidade"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "responsibility"
+        ]
+      }
+    },
+    "moon/sextile/uranus": {
+      "pt": "com um sextil entre a Lua e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Uranus in your solar return, you may find an opening to bring the need for emotional security together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you make room for what you feel and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "change and freedom"
+        ]
+      }
+    },
+    "moon/square/uranus": {
+      "pt": "com uma quadratura entre a Lua e Urano na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Uranus in your solar return, the need for emotional security may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "change and freedom"
+        ]
+      }
+    },
+    "moon/trine/uranus": {
+      "pt": "com um trígono entre a Lua e Urano na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Uranus in your solar return, the need for emotional security may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "change and freedom"
+        ]
+      }
+    },
+    "moon/opposition/uranus": {
+      "pt": "com uma oposição entre a Lua e Urano na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between the Moon and Uranus in your solar return, you may feel pulled in two directions when the need for emotional security and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "change and freedom"
+        ]
+      }
+    },
+    "moon/sextile/neptune": {
+      "pt": "com um sextil entre a Lua e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Neptune in your solar return, you may find an opening to bring the need for emotional security together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you make room for what you feel and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "moon/square/neptune": {
+      "pt": "com uma quadratura entre a Lua e Netuno na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Neptune in your solar return, the need for emotional security may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "moon/trine/neptune": {
+      "pt": "com um trígono entre a Lua e Netuno na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Neptune in your solar return, the need for emotional security may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "moon/opposition/neptune": {
+      "pt": "com uma oposição entre a Lua e Netuno na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between the Moon and Neptune in your solar return, you may feel pulled in two directions when the need for emotional security and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "moon/sextile/pluto": {
+      "pt": "com um sextil entre a Lua e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por segurança emocional com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço ao que você sente e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between the Moon and Pluto in your solar return, you may find an opening to bring the need for emotional security together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you make room for what you feel and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "segurança emocional",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "emotional security",
+          "power and transformation"
+        ]
+      }
+    },
+    "moon/square/pluto": {
+      "pt": "com uma quadratura entre a Lua e Plutão na sua revolução solar, a busca por segurança emocional pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço ao que você sente ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between the Moon and Pluto in your solar return, the need for emotional security may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for what you feel or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "segurança emocional",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "emotional security",
+          "power and transformation"
+        ]
+      }
+    },
+    "moon/trine/pluto": {
+      "pt": "com um trígono entre a Lua e Plutão na sua revolução solar, a busca por segurança emocional pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço ao que você sente quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between the Moon and Pluto in your solar return, the need for emotional security may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to make room for what you feel and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "segurança emocional",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "emotional security",
+          "power and transformation"
+        ]
+      }
+    },
+    "moon/opposition/pluto": {
+      "pt": "com uma oposição entre a Lua e Plutão na sua revolução solar, você pode se sentir dividido quando a busca por segurança emocional e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço ao que você sente sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between the Moon and Pluto in your solar return, you may feel pulled in two directions when the need for emotional security and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for what you feel while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "segurança emocional",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "emotional security",
+          "power and transformation"
+        ]
+      }
+    },
+    "mercury/sextile/venus": {
+      "pt": "com Mercúrio em sextil com Vênus na sua revolução solar, você pode encontrar ocasiões para falar de afeto, negociar preferências ou dar forma a um interesse artístico. essa facilidade pode render conversas ou acordos mais agradáveis, embora o que fica sem expressão também possa se tornar motivo de tensão.",
+      "en": "with Mercury sextile Venus in your solar return, you may find openings to talk about affection, negotiate preferences, or give shape to an artistic interest. that ease can lead to more enjoyable conversations or agreements, though what goes unexpressed can also become a source of tension.",
+      "keywords": {
+        "pt": [
+          "conversa e afeto",
+          "preferências",
+          "expressão artística"
+        ],
+        "en": [
+          "conversation and affection",
+          "preferences",
+          "artistic expression"
+        ]
+      }
+    },
+    "mercury/sextile/mars": {
+      "pt": "com um sextil entre Mercúrio e Marte na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a vontade de tomar a iniciativa nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a dar o primeiro passo, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Mars in your solar return, you may find an opening to bring the need to exchange ideas together with the urge to take the initiative in the areas the two planets occupy. this combination can help you put an idea into words and take the first step, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "iniciativa"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "initiative"
+        ]
+      }
+    },
+    "mercury/square/mars": {
+      "pt": "com uma quadratura entre Mercúrio e Marte na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a vontade de tomar a iniciativa nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de dar o primeiro passo, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Mars in your solar return, the need to exchange ideas may come into friction with the urge to take the initiative in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or take the first step, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "iniciativa"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "initiative"
+        ]
+      }
+    },
+    "mercury/trine/mars": {
+      "pt": "com um trígono entre Mercúrio e Marte na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a vontade de tomar a iniciativa ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de dar o primeiro passo, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Mars in your solar return, the need to exchange ideas may fit naturally with the urge to take the initiative over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to take the first step, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "iniciativa"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "initiative"
+        ]
+      }
+    },
+    "mercury/sextile/jupiter": {
+      "pt": "com um sextil entre Mercúrio e Júpiter na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a vontade de ampliar suas possibilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a explorar uma possibilidade que se abriu, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Jupiter in your solar return, you may find an opening to bring the need to exchange ideas together with the desire to expand your possibilities in the areas the two planets occupy. this combination can help you put an idea into words and explore a new possibility, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "expansão"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "expansion"
+        ]
+      }
+    },
+    "mercury/square/jupiter": {
+      "pt": "com uma quadratura entre Mercúrio e Júpiter na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a vontade de ampliar suas possibilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de explorar uma possibilidade que se abriu, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Jupiter in your solar return, the need to exchange ideas may come into friction with the desire to expand your possibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or explore a new possibility, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "expansão"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "expansion"
+        ]
+      }
+    },
+    "mercury/trine/jupiter": {
+      "pt": "com um trígono entre Mercúrio e Júpiter na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a vontade de ampliar suas possibilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de explorar uma possibilidade que se abriu, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Jupiter in your solar return, the need to exchange ideas may fit naturally with the desire to expand your possibilities over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to explore a new possibility, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "expansão"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "expansion"
+        ]
+      }
+    },
+    "mercury/opposition/jupiter": {
+      "pt": "com uma oposição entre Mercúrio e Júpiter na sua revolução solar, você pode se sentir dividido quando a necessidade de trocar ideias e a vontade de ampliar suas possibilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa colocar uma ideia em palavras sem deixar de explorar uma possibilidade que se abriu.",
+      "en": "with an opposition between Mercury and Jupiter in your solar return, you may feel pulled in two directions when the need to exchange ideas and the desire to expand your possibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to put an idea into words while also finding room to explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "troca de ideias",
+          "expansão"
+        ],
+        "en": [
+          "tension between poles",
+          "exchange of ideas",
+          "expansion"
+        ]
+      }
+    },
+    "mercury/sextile/saturn": {
+      "pt": "com um sextil entre Mercúrio e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Saturn in your solar return, you may find an opening to bring the need to exchange ideas together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you put an idea into words and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "responsibility"
+        ]
+      }
+    },
+    "mercury/square/saturn": {
+      "pt": "com uma quadratura entre Mercúrio e Saturno na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Saturn in your solar return, the need to exchange ideas may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "responsibility"
+        ]
+      }
+    },
+    "mercury/trine/saturn": {
+      "pt": "com um trígono entre Mercúrio e Saturno na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Saturn in your solar return, the need to exchange ideas may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "responsibility"
+        ]
+      }
+    },
+    "mercury/opposition/saturn": {
+      "pt": "com uma oposição entre Mercúrio e Saturno na sua revolução solar, você pode se sentir dividido quando a necessidade de trocar ideias e a necessidade de lidar com limites e responsabilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa colocar uma ideia em palavras sem deixar de assumir um compromisso que você consegue cumprir.",
+      "en": "with an opposition between Mercury and Saturn in your solar return, you may feel pulled in two directions when the need to exchange ideas and the need to deal with limits and responsibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to put an idea into words while also finding room to make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "troca de ideias",
+          "responsabilidade"
+        ],
+        "en": [
+          "tension between poles",
+          "exchange of ideas",
+          "responsibility"
+        ]
+      }
+    },
+    "mercury/sextile/uranus": {
+      "pt": "com um sextil entre Mercúrio e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Uranus in your solar return, you may find an opening to bring the need to exchange ideas together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you put an idea into words and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "change and freedom"
+        ]
+      }
+    },
+    "mercury/square/uranus": {
+      "pt": "com uma quadratura entre Mercúrio e Urano na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Uranus in your solar return, the need to exchange ideas may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "change and freedom"
+        ]
+      }
+    },
+    "mercury/trine/uranus": {
+      "pt": "com um trígono entre Mercúrio e Urano na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Uranus in your solar return, the need to exchange ideas may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "change and freedom"
+        ]
+      }
+    },
+    "mercury/opposition/uranus": {
+      "pt": "com uma oposição entre Mercúrio e Urano na sua revolução solar, você pode se sentir dividido quando a necessidade de trocar ideias e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa colocar uma ideia em palavras sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between Mercury and Uranus in your solar return, you may feel pulled in two directions when the need to exchange ideas and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to put an idea into words while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "troca de ideias",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "exchange of ideas",
+          "change and freedom"
+        ]
+      }
+    },
+    "mercury/sextile/neptune": {
+      "pt": "com um sextil entre Mercúrio e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Neptune in your solar return, you may find an opening to bring the need to exchange ideas together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you put an idea into words and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mercury/square/neptune": {
+      "pt": "com uma quadratura entre Mercúrio e Netuno na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Neptune in your solar return, the need to exchange ideas may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mercury/trine/neptune": {
+      "pt": "com um trígono entre Mercúrio e Netuno na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Neptune in your solar return, the need to exchange ideas may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mercury/opposition/neptune": {
+      "pt": "com uma oposição entre Mercúrio e Netuno na sua revolução solar, você pode se sentir dividido quando a necessidade de trocar ideias e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa colocar uma ideia em palavras sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between Mercury and Neptune in your solar return, you may feel pulled in two directions when the need to exchange ideas and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to put an idea into words while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "troca de ideias",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "exchange of ideas",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mercury/sextile/pluto": {
+      "pt": "com um sextil entre Mercúrio e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de trocar ideias com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a colocar uma ideia em palavras e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mercury and Pluto in your solar return, you may find an opening to bring the need to exchange ideas together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you put an idea into words and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "troca de ideias",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "exchange of ideas",
+          "power and transformation"
+        ]
+      }
+    },
+    "mercury/square/pluto": {
+      "pt": "com uma quadratura entre Mercúrio e Plutão na sua revolução solar, a necessidade de trocar ideias pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de colocar uma ideia em palavras ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mercury and Pluto in your solar return, the need to exchange ideas may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you put an idea into words or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "troca de ideias",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "exchange of ideas",
+          "power and transformation"
+        ]
+      }
+    },
+    "mercury/trine/pluto": {
+      "pt": "com um trígono entre Mercúrio e Plutão na sua revolução solar, a necessidade de trocar ideias pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de colocar uma ideia em palavras quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mercury and Pluto in your solar return, the need to exchange ideas may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to put an idea into words and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "troca de ideias",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "exchange of ideas",
+          "power and transformation"
+        ]
+      }
+    },
+    "mercury/opposition/pluto": {
+      "pt": "com uma oposição entre Mercúrio e Plutão na sua revolução solar, você pode se sentir dividido quando a necessidade de trocar ideias e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa colocar uma ideia em palavras sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between Mercury and Pluto in your solar return, you may feel pulled in two directions when the need to exchange ideas and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to put an idea into words while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "troca de ideias",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "exchange of ideas",
+          "power and transformation"
+        ]
+      }
+    },
+    "venus/sextile/mars": {
+      "pt": "com um sextil entre Vênus e Marte na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a vontade de tomar a iniciativa nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a dar o primeiro passo, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Mars in your solar return, you may find an opening to bring the desire for affection and pleasure together with the urge to take the initiative in the areas the two planets occupy. this combination can help you make time for something you enjoy and take the first step, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "iniciativa"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "initiative"
+        ]
+      }
+    },
+    "venus/square/mars": {
+      "pt": "com uma quadratura entre Vênus e Marte na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a vontade de tomar a iniciativa nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de dar o primeiro passo, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Mars in your solar return, the desire for affection and pleasure may come into friction with the urge to take the initiative in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or take the first step, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "iniciativa"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "initiative"
+        ]
+      }
+    },
+    "venus/trine/mars": {
+      "pt": "com um trígono entre Vênus e Marte na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a vontade de tomar a iniciativa ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de dar o primeiro passo, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Mars in your solar return, the desire for affection and pleasure may fit naturally with the urge to take the initiative over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to take the first step, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "iniciativa"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "initiative"
+        ]
+      }
+    },
+    "venus/opposition/mars": {
+      "pt": "com uma oposição entre Vênus e Marte na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a vontade de tomar a iniciativa pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de dar o primeiro passo.",
+      "en": "with an opposition between Venus and Mars in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the urge to take the initiative demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to take the first step.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "iniciativa"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "initiative"
+        ]
+      }
+    },
+    "venus/sextile/jupiter": {
+      "pt": "com um sextil entre Vênus e Júpiter na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a vontade de ampliar suas possibilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a explorar uma possibilidade que se abriu, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Jupiter in your solar return, you may find an opening to bring the desire for affection and pleasure together with the desire to expand your possibilities in the areas the two planets occupy. this combination can help you make time for something you enjoy and explore a new possibility, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "expansão"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "expansion"
+        ]
+      }
+    },
+    "venus/square/jupiter": {
+      "pt": "com uma quadratura entre Vênus e Júpiter na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a vontade de ampliar suas possibilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de explorar uma possibilidade que se abriu, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Jupiter in your solar return, the desire for affection and pleasure may come into friction with the desire to expand your possibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or explore a new possibility, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "expansão"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "expansion"
+        ]
+      }
+    },
+    "venus/trine/jupiter": {
+      "pt": "com um trígono entre Vênus e Júpiter na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a vontade de ampliar suas possibilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de explorar uma possibilidade que se abriu, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Jupiter in your solar return, the desire for affection and pleasure may fit naturally with the desire to expand your possibilities over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to explore a new possibility, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "expansão"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "expansion"
+        ]
+      }
+    },
+    "venus/opposition/jupiter": {
+      "pt": "com uma oposição entre Vênus e Júpiter na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a vontade de ampliar suas possibilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de explorar uma possibilidade que se abriu.",
+      "en": "with an opposition between Venus and Jupiter in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the desire to expand your possibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "expansão"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "expansion"
+        ]
+      }
+    },
+    "venus/sextile/saturn": {
+      "pt": "com um sextil entre Vênus e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Saturn in your solar return, you may find an opening to bring the desire for affection and pleasure together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you make time for something you enjoy and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "responsibility"
+        ]
+      }
+    },
+    "venus/square/saturn": {
+      "pt": "com uma quadratura entre Vênus e Saturno na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Saturn in your solar return, the desire for affection and pleasure may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "responsibility"
+        ]
+      }
+    },
+    "venus/trine/saturn": {
+      "pt": "com um trígono entre Vênus e Saturno na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Saturn in your solar return, the desire for affection and pleasure may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "responsibility"
+        ]
+      }
+    },
+    "venus/opposition/saturn": {
+      "pt": "com uma oposição entre Vênus e Saturno na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a necessidade de lidar com limites e responsabilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de assumir um compromisso que você consegue cumprir.",
+      "en": "with an opposition between Venus and Saturn in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the need to deal with limits and responsibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "responsabilidade"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "responsibility"
+        ]
+      }
+    },
+    "venus/sextile/uranus": {
+      "pt": "com um sextil entre Vênus e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Uranus in your solar return, you may find an opening to bring the desire for affection and pleasure together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you make time for something you enjoy and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "change and freedom"
+        ]
+      }
+    },
+    "venus/square/uranus": {
+      "pt": "com uma quadratura entre Vênus e Urano na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Uranus in your solar return, the desire for affection and pleasure may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "change and freedom"
+        ]
+      }
+    },
+    "venus/trine/uranus": {
+      "pt": "com um trígono entre Vênus e Urano na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Uranus in your solar return, the desire for affection and pleasure may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "change and freedom"
+        ]
+      }
+    },
+    "venus/opposition/uranus": {
+      "pt": "com uma oposição entre Vênus e Urano na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between Venus and Uranus in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "change and freedom"
+        ]
+      }
+    },
+    "venus/sextile/neptune": {
+      "pt": "com um sextil entre Vênus e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Neptune in your solar return, you may find an opening to bring the desire for affection and pleasure together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you make time for something you enjoy and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "venus/square/neptune": {
+      "pt": "com uma quadratura entre Vênus e Netuno na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Neptune in your solar return, the desire for affection and pleasure may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "venus/trine/neptune": {
+      "pt": "com um trígono entre Vênus e Netuno na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Neptune in your solar return, the desire for affection and pleasure may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "venus/opposition/neptune": {
+      "pt": "com uma oposição entre Vênus e Netuno na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between Venus and Neptune in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "venus/sextile/pluto": {
+      "pt": "com um sextil entre Vênus e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a busca por afeto e prazer com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço a algo que lhe dá prazer e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Venus and Pluto in your solar return, you may find an opening to bring the desire for affection and pleasure together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you make time for something you enjoy and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "afeto e prazer",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "affection and pleasure",
+          "power and transformation"
+        ]
+      }
+    },
+    "venus/square/pluto": {
+      "pt": "com uma quadratura entre Vênus e Plutão na sua revolução solar, a busca por afeto e prazer pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço a algo que lhe dá prazer ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Venus and Pluto in your solar return, the desire for affection and pleasure may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you make time for something you enjoy or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "afeto e prazer",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "affection and pleasure",
+          "power and transformation"
+        ]
+      }
+    },
+    "venus/trine/pluto": {
+      "pt": "com um trígono entre Vênus e Plutão na sua revolução solar, a busca por afeto e prazer pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço a algo que lhe dá prazer quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Venus and Pluto in your solar return, the desire for affection and pleasure may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to make time for something you enjoy and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "afeto e prazer",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "affection and pleasure",
+          "power and transformation"
+        ]
+      }
+    },
+    "venus/opposition/pluto": {
+      "pt": "com uma oposição entre Vênus e Plutão na sua revolução solar, você pode se sentir dividido quando a busca por afeto e prazer e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço a algo que lhe dá prazer sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between Venus and Pluto in your solar return, you may feel pulled in two directions when the desire for affection and pleasure and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make time for something you enjoy while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "afeto e prazer",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "affection and pleasure",
+          "power and transformation"
+        ]
+      }
+    },
+    "mars/sextile/jupiter": {
+      "pt": "com um sextil entre Marte e Júpiter na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de tomar a iniciativa com a vontade de ampliar suas possibilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar o primeiro passo e a explorar uma possibilidade que se abriu, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mars and Jupiter in your solar return, you may find an opening to bring the urge to take the initiative together with the desire to expand your possibilities in the areas the two planets occupy. this combination can help you take the first step and explore a new possibility, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "iniciativa",
+          "expansão"
+        ],
+        "en": [
+          "opportunity",
+          "initiative",
+          "expansion"
+        ]
+      }
+    },
+    "mars/square/jupiter": {
+      "pt": "com uma quadratura entre Marte e Júpiter na sua revolução solar, a vontade de tomar a iniciativa pode entrar em atrito com a vontade de ampliar suas possibilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar o primeiro passo ou de explorar uma possibilidade que se abriu, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mars and Jupiter in your solar return, the urge to take the initiative may come into friction with the desire to expand your possibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you take the first step or explore a new possibility, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "iniciativa",
+          "expansão"
+        ],
+        "en": [
+          "pressure and response",
+          "initiative",
+          "expansion"
+        ]
+      }
+    },
+    "mars/trine/jupiter": {
+      "pt": "com um trígono entre Marte e Júpiter na sua revolução solar, a vontade de tomar a iniciativa pode se combinar com naturalidade com a vontade de ampliar suas possibilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar o primeiro passo quanto o de explorar uma possibilidade que se abriu, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mars and Jupiter in your solar return, the urge to take the initiative may fit naturally with the desire to expand your possibilities over the year. the matters of the two houses may support each other and make it easier both to take the first step and to explore a new possibility, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "iniciativa",
+          "expansão"
+        ],
+        "en": [
+          "ease",
+          "initiative",
+          "expansion"
+        ]
+      }
+    },
+    "mars/opposition/jupiter": {
+      "pt": "com uma oposição entre Marte e Júpiter na sua revolução solar, você pode se sentir dividido quando a vontade de tomar a iniciativa e a vontade de ampliar suas possibilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar o primeiro passo sem deixar de explorar uma possibilidade que se abriu.",
+      "en": "with an opposition between Mars and Jupiter in your solar return, you may feel pulled in two directions when the urge to take the initiative and the desire to expand your possibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to take the first step while also finding room to explore a new possibility.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "iniciativa",
+          "expansão"
+        ],
+        "en": [
+          "tension between poles",
+          "initiative",
+          "expansion"
+        ]
+      }
+    },
+    "mars/sextile/saturn": {
+      "pt": "com um sextil entre Marte e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de tomar a iniciativa com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar o primeiro passo e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mars and Saturn in your solar return, you may find an opening to bring the urge to take the initiative together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you take the first step and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "iniciativa",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "initiative",
+          "responsibility"
+        ]
+      }
+    },
+    "mars/square/saturn": {
+      "pt": "com uma quadratura entre Marte e Saturno na sua revolução solar, a vontade de tomar a iniciativa pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar o primeiro passo ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mars and Saturn in your solar return, the urge to take the initiative may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you take the first step or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "iniciativa",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "initiative",
+          "responsibility"
+        ]
+      }
+    },
+    "mars/trine/saturn": {
+      "pt": "com um trígono entre Marte e Saturno na sua revolução solar, a vontade de tomar a iniciativa pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar o primeiro passo quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mars and Saturn in your solar return, the urge to take the initiative may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to take the first step and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "iniciativa",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "initiative",
+          "responsibility"
+        ]
+      }
+    },
+    "mars/sextile/uranus": {
+      "pt": "com um sextil entre Marte e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de tomar a iniciativa com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar o primeiro passo e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mars and Uranus in your solar return, you may find an opening to bring the urge to take the initiative together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you take the first step and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "iniciativa",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "initiative",
+          "change and freedom"
+        ]
+      }
+    },
+    "mars/square/uranus": {
+      "pt": "com uma quadratura entre Marte e Urano na sua revolução solar, a vontade de tomar a iniciativa pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar o primeiro passo ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mars and Uranus in your solar return, the urge to take the initiative may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you take the first step or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "iniciativa",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "initiative",
+          "change and freedom"
+        ]
+      }
+    },
+    "mars/trine/uranus": {
+      "pt": "com um trígono entre Marte e Urano na sua revolução solar, a vontade de tomar a iniciativa pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar o primeiro passo quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mars and Uranus in your solar return, the urge to take the initiative may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to take the first step and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "iniciativa",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "initiative",
+          "change and freedom"
+        ]
+      }
+    },
+    "mars/sextile/neptune": {
+      "pt": "com um sextil entre Marte e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de tomar a iniciativa com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar o primeiro passo e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mars and Neptune in your solar return, you may find an opening to bring the urge to take the initiative together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you take the first step and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "iniciativa",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "initiative",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mars/square/neptune": {
+      "pt": "com uma quadratura entre Marte e Netuno na sua revolução solar, a vontade de tomar a iniciativa pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar o primeiro passo ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mars and Neptune in your solar return, the urge to take the initiative may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you take the first step or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "iniciativa",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "initiative",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mars/trine/neptune": {
+      "pt": "com um trígono entre Marte e Netuno na sua revolução solar, a vontade de tomar a iniciativa pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar o primeiro passo quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mars and Neptune in your solar return, the urge to take the initiative may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to take the first step and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "iniciativa",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "initiative",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mars/opposition/neptune": {
+      "pt": "com uma oposição entre Marte e Netuno na sua revolução solar, você pode se sentir dividido quando a vontade de tomar a iniciativa e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar o primeiro passo sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between Mars and Neptune in your solar return, you may feel pulled in two directions when the urge to take the initiative and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to take the first step while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "iniciativa",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "initiative",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "mars/sextile/pluto": {
+      "pt": "com um sextil entre Marte e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de tomar a iniciativa com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar o primeiro passo e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Mars and Pluto in your solar return, you may find an opening to bring the urge to take the initiative together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you take the first step and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "iniciativa",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "initiative",
+          "power and transformation"
+        ]
+      }
+    },
+    "mars/square/pluto": {
+      "pt": "com uma quadratura entre Marte e Plutão na sua revolução solar, a vontade de tomar a iniciativa pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar o primeiro passo ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Mars and Pluto in your solar return, the urge to take the initiative may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you take the first step or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "iniciativa",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "initiative",
+          "power and transformation"
+        ]
+      }
+    },
+    "mars/trine/pluto": {
+      "pt": "com um trígono entre Marte e Plutão na sua revolução solar, a vontade de tomar a iniciativa pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar o primeiro passo quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Mars and Pluto in your solar return, the urge to take the initiative may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to take the first step and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "iniciativa",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "initiative",
+          "power and transformation"
+        ]
+      }
+    },
+    "mars/opposition/pluto": {
+      "pt": "com uma oposição entre Marte e Plutão na sua revolução solar, você pode se sentir dividido quando a vontade de tomar a iniciativa e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar o primeiro passo sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between Mars and Pluto in your solar return, you may feel pulled in two directions when the urge to take the initiative and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to take the first step while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "iniciativa",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "initiative",
+          "power and transformation"
+        ]
+      }
+    },
+    "jupiter/sextile/saturn": {
+      "pt": "com um sextil entre Júpiter e Saturno na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de ampliar suas possibilidades com a necessidade de lidar com limites e responsabilidades nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a explorar uma possibilidade que se abriu e a assumir um compromisso que você consegue cumprir, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Jupiter and Saturn in your solar return, you may find an opening to bring the desire to expand your possibilities together with the need to deal with limits and responsibilities in the areas the two planets occupy. this combination can help you explore a new possibility and make a commitment you can keep, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expansão",
+          "responsabilidade"
+        ],
+        "en": [
+          "opportunity",
+          "expansion",
+          "responsibility"
+        ]
+      }
+    },
+    "jupiter/square/saturn": {
+      "pt": "com uma quadratura entre Júpiter e Saturno na sua revolução solar, a vontade de ampliar suas possibilidades pode entrar em atrito com a necessidade de lidar com limites e responsabilidades nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de explorar uma possibilidade que se abriu ou de assumir um compromisso que você consegue cumprir, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Jupiter and Saturn in your solar return, the desire to expand your possibilities may come into friction with the need to deal with limits and responsibilities in the areas of the year shown by the two houses. the pressure may spur you to change how you explore a new possibility or make a commitment you can keep, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expansão",
+          "responsabilidade"
+        ],
+        "en": [
+          "pressure and response",
+          "expansion",
+          "responsibility"
+        ]
+      }
+    },
+    "jupiter/trine/saturn": {
+      "pt": "com um trígono entre Júpiter e Saturno na sua revolução solar, a vontade de ampliar suas possibilidades pode se combinar com naturalidade com a necessidade de lidar com limites e responsabilidades ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de explorar uma possibilidade que se abriu quanto o de assumir um compromisso que você consegue cumprir, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Jupiter and Saturn in your solar return, the desire to expand your possibilities may fit naturally with the need to deal with limits and responsibilities over the year. the matters of the two houses may support each other and make it easier both to explore a new possibility and to make a commitment you can keep, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expansão",
+          "responsabilidade"
+        ],
+        "en": [
+          "ease",
+          "expansion",
+          "responsibility"
+        ]
+      }
+    },
+    "jupiter/opposition/saturn": {
+      "pt": "com uma oposição entre Júpiter e Saturno na sua revolução solar, você pode se sentir dividido quando a vontade de ampliar suas possibilidades e a necessidade de lidar com limites e responsabilidades pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa explorar uma possibilidade que se abriu sem deixar de assumir um compromisso que você consegue cumprir.",
+      "en": "with an opposition between Jupiter and Saturn in your solar return, you may feel pulled in two directions when the desire to expand your possibilities and the need to deal with limits and responsibilities demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to explore a new possibility while also finding room to make a commitment you can keep.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expansão",
+          "responsabilidade"
+        ],
+        "en": [
+          "tension between poles",
+          "expansion",
+          "responsibility"
+        ]
+      }
+    },
+    "jupiter/sextile/uranus": {
+      "pt": "com um sextil entre Júpiter e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de ampliar suas possibilidades com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a explorar uma possibilidade que se abriu e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Jupiter and Uranus in your solar return, you may find an opening to bring the desire to expand your possibilities together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you explore a new possibility and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expansão",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "expansion",
+          "change and freedom"
+        ]
+      }
+    },
+    "jupiter/square/uranus": {
+      "pt": "com uma quadratura entre Júpiter e Urano na sua revolução solar, a vontade de ampliar suas possibilidades pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de explorar uma possibilidade que se abriu ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Jupiter and Uranus in your solar return, the desire to expand your possibilities may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you explore a new possibility or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expansão",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "expansion",
+          "change and freedom"
+        ]
+      }
+    },
+    "jupiter/trine/uranus": {
+      "pt": "com um trígono entre Júpiter e Urano na sua revolução solar, a vontade de ampliar suas possibilidades pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de explorar uma possibilidade que se abriu quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Jupiter and Uranus in your solar return, the desire to expand your possibilities may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to explore a new possibility and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expansão",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "expansion",
+          "change and freedom"
+        ]
+      }
+    },
+    "jupiter/opposition/uranus": {
+      "pt": "com uma oposição entre Júpiter e Urano na sua revolução solar, você pode se sentir dividido quando a vontade de ampliar suas possibilidades e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa explorar uma possibilidade que se abriu sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between Jupiter and Uranus in your solar return, you may feel pulled in two directions when the desire to expand your possibilities and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to explore a new possibility while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expansão",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "expansion",
+          "change and freedom"
+        ]
+      }
+    },
+    "jupiter/sextile/neptune": {
+      "pt": "com um sextil entre Júpiter e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de ampliar suas possibilidades com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a explorar uma possibilidade que se abriu e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Jupiter and Neptune in your solar return, you may find an opening to bring the desire to expand your possibilities together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you explore a new possibility and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expansão",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "expansion",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "jupiter/square/neptune": {
+      "pt": "com uma quadratura entre Júpiter e Netuno na sua revolução solar, a vontade de ampliar suas possibilidades pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de explorar uma possibilidade que se abriu ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Jupiter and Neptune in your solar return, the desire to expand your possibilities may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you explore a new possibility or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expansão",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "expansion",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "jupiter/trine/neptune": {
+      "pt": "com um trígono entre Júpiter e Netuno na sua revolução solar, a vontade de ampliar suas possibilidades pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de explorar uma possibilidade que se abriu quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Jupiter and Neptune in your solar return, the desire to expand your possibilities may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to explore a new possibility and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expansão",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "expansion",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "jupiter/opposition/neptune": {
+      "pt": "com uma oposição entre Júpiter e Netuno na sua revolução solar, você pode se sentir dividido quando a vontade de ampliar suas possibilidades e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa explorar uma possibilidade que se abriu sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between Jupiter and Neptune in your solar return, you may feel pulled in two directions when the desire to expand your possibilities and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to explore a new possibility while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expansão",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "expansion",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "jupiter/sextile/pluto": {
+      "pt": "com um sextil entre Júpiter e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de ampliar suas possibilidades com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a explorar uma possibilidade que se abriu e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Jupiter and Pluto in your solar return, you may find an opening to bring the desire to expand your possibilities together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you explore a new possibility and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "expansão",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "expansion",
+          "power and transformation"
+        ]
+      }
+    },
+    "jupiter/square/pluto": {
+      "pt": "com uma quadratura entre Júpiter e Plutão na sua revolução solar, a vontade de ampliar suas possibilidades pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de explorar uma possibilidade que se abriu ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Jupiter and Pluto in your solar return, the desire to expand your possibilities may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you explore a new possibility or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "expansão",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "expansion",
+          "power and transformation"
+        ]
+      }
+    },
+    "jupiter/trine/pluto": {
+      "pt": "com um trígono entre Júpiter e Plutão na sua revolução solar, a vontade de ampliar suas possibilidades pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de explorar uma possibilidade que se abriu quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Jupiter and Pluto in your solar return, the desire to expand your possibilities may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to explore a new possibility and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "expansão",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "expansion",
+          "power and transformation"
+        ]
+      }
+    },
+    "jupiter/opposition/pluto": {
+      "pt": "com uma oposição entre Júpiter e Plutão na sua revolução solar, você pode se sentir dividido quando a vontade de ampliar suas possibilidades e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa explorar uma possibilidade que se abriu sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between Jupiter and Pluto in your solar return, you may feel pulled in two directions when the desire to expand your possibilities and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to explore a new possibility while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "expansão",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "expansion",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/conjunction/uranus": {
+      "pt": "com uma conjunção entre Saturno e Urano na sua revolução solar, a necessidade de lidar com limites e responsabilidades e a vontade de mudar algo e ganhar liberdade podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode assumir um compromisso que você consegue cumprir e experimentar um jeito diferente de fazer as coisas na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra.",
+      "en": "with a conjunction between Saturn and Uranus in your solar return, the need to deal with limits and responsibilities and the urge to make a change and gain freedom can come together in the same situation over the year. when those needs support each other, you may be able to make a commitment you can keep and experiment with a different approach on the same occasion, but if they clash, one can dominate the other.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "responsabilidade",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "convergence",
+          "responsibility",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/sextile/uranus": {
+      "pt": "com um sextil entre Saturno e Urano na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de lidar com limites e responsabilidades com a vontade de mudar algo e ganhar liberdade nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a assumir um compromisso que você consegue cumprir e a experimentar um jeito diferente de fazer as coisas, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Saturn and Uranus in your solar return, you may find an opening to bring the need to deal with limits and responsibilities together with the urge to make a change and gain freedom in the areas the two planets occupy. this combination can help you make a commitment you can keep and experiment with a different approach, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "responsabilidade",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "opportunity",
+          "responsibility",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/square/uranus": {
+      "pt": "com uma quadratura entre Saturno e Urano na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode entrar em atrito com a vontade de mudar algo e ganhar liberdade nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de assumir um compromisso que você consegue cumprir ou de experimentar um jeito diferente de fazer as coisas, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Saturn and Uranus in your solar return, the need to deal with limits and responsibilities may come into friction with the urge to make a change and gain freedom in the areas of the year shown by the two houses. the pressure may spur you to change how you make a commitment you can keep or experiment with a different approach, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "responsabilidade",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "pressure and response",
+          "responsibility",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/trine/uranus": {
+      "pt": "com um trígono entre Saturno e Urano na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode se combinar com naturalidade com a vontade de mudar algo e ganhar liberdade ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de assumir um compromisso que você consegue cumprir quanto o de experimentar um jeito diferente de fazer as coisas, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Saturn and Uranus in your solar return, the need to deal with limits and responsibilities may fit naturally with the urge to make a change and gain freedom over the year. the matters of the two houses may support each other and make it easier both to make a commitment you can keep and to experiment with a different approach, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "responsabilidade",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "ease",
+          "responsibility",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/opposition/uranus": {
+      "pt": "com uma oposição entre Saturno e Urano na sua revolução solar, você pode se sentir dividido quando a necessidade de lidar com limites e responsabilidades e a vontade de mudar algo e ganhar liberdade pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa assumir um compromisso que você consegue cumprir sem deixar de experimentar um jeito diferente de fazer as coisas.",
+      "en": "with an opposition between Saturn and Uranus in your solar return, you may feel pulled in two directions when the need to deal with limits and responsibilities and the urge to make a change and gain freedom demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make a commitment you can keep while also finding room to experiment with a different approach.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "responsabilidade",
+          "mudança e liberdade"
+        ],
+        "en": [
+          "tension between poles",
+          "responsibility",
+          "change and freedom"
+        ]
+      }
+    },
+    "saturn/conjunction/neptune": {
+      "pt": "com uma conjunção entre Saturno e Netuno na sua revolução solar, a necessidade de lidar com limites e responsabilidades e a força da imaginação e dos ideais podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode assumir um compromisso que você consegue cumprir e dar espaço à imaginação na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra.",
+      "en": "with a conjunction between Saturn and Neptune in your solar return, the need to deal with limits and responsibilities and the pull of imagination and ideals can come together in the same situation over the year. when those needs support each other, you may be able to make a commitment you can keep and make room for imagination on the same occasion, but if they clash, one can dominate the other.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "responsabilidade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "convergence",
+          "responsibility",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/sextile/neptune": {
+      "pt": "com um sextil entre Saturno e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de lidar com limites e responsabilidades com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a assumir um compromisso que você consegue cumprir e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Saturn and Neptune in your solar return, you may find an opening to bring the need to deal with limits and responsibilities together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you make a commitment you can keep and make room for imagination, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "responsabilidade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "responsibility",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/square/neptune": {
+      "pt": "com uma quadratura entre Saturno e Netuno na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de assumir um compromisso que você consegue cumprir ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Saturn and Neptune in your solar return, the need to deal with limits and responsibilities may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you make a commitment you can keep or make room for imagination, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "responsabilidade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "responsibility",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/trine/neptune": {
+      "pt": "com um trígono entre Saturno e Netuno na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de assumir um compromisso que você consegue cumprir quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Saturn and Neptune in your solar return, the need to deal with limits and responsibilities may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to make a commitment you can keep and to make room for imagination, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "responsabilidade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "responsibility",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/opposition/neptune": {
+      "pt": "com uma oposição entre Saturno e Netuno na sua revolução solar, você pode se sentir dividido quando a necessidade de lidar com limites e responsabilidades e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa assumir um compromisso que você consegue cumprir sem deixar de dar espaço à imaginação.",
+      "en": "with an opposition between Saturn and Neptune in your solar return, you may feel pulled in two directions when the need to deal with limits and responsibilities and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make a commitment you can keep while also finding room to make room for imagination.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "responsabilidade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "responsibility",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "saturn/conjunction/pluto": {
+      "pt": "com uma conjunção entre Saturno e Plutão na sua revolução solar, a necessidade de lidar com limites e responsabilidades e a pressão por uma mudança profunda podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode assumir um compromisso que você consegue cumprir e deixar para trás um modo de agir que já não lhe serve na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra.",
+      "en": "with a conjunction between Saturn and Pluto in your solar return, the need to deal with limits and responsibilities and the pressure to make a deep change can come together in the same situation over the year. when those needs support each other, you may be able to make a commitment you can keep and let go of a way of acting that no longer serves you on the same occasion, but if they clash, one can dominate the other.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "responsabilidade",
+          "poder e transformação"
+        ],
+        "en": [
+          "convergence",
+          "responsibility",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/sextile/pluto": {
+      "pt": "com um sextil entre Saturno e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a necessidade de lidar com limites e responsabilidades com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a assumir um compromisso que você consegue cumprir e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão.",
+      "en": "with a sextile between Saturn and Pluto in your solar return, you may find an opening to bring the need to deal with limits and responsibilities together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you make a commitment you can keep and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "responsabilidade",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "responsibility",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/square/pluto": {
+      "pt": "com uma quadratura entre Saturno e Plutão na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de assumir um compromisso que você consegue cumprir ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas.",
+      "en": "with a square between Saturn and Pluto in your solar return, the need to deal with limits and responsibilities may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you make a commitment you can keep or let go of a way of acting that no longer serves you, but it can also make both harder.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "responsabilidade",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "responsibility",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/trine/pluto": {
+      "pt": "com um trígono entre Saturno e Plutão na sua revolução solar, a necessidade de lidar com limites e responsabilidades pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de assumir um compromisso que você consegue cumprir quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço.",
+      "en": "with a trine between Saturn and Pluto in your solar return, the need to deal with limits and responsibilities may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to make a commitment you can keep and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "responsabilidade",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "responsibility",
+          "power and transformation"
+        ]
+      }
+    },
+    "saturn/opposition/pluto": {
+      "pt": "com uma oposição entre Saturno e Plutão na sua revolução solar, você pode se sentir dividido quando a necessidade de lidar com limites e responsabilidades e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa assumir um compromisso que você consegue cumprir sem deixar de deixar para trás um modo de agir que já não lhe serve.",
+      "en": "with an opposition between Saturn and Pluto in your solar return, you may feel pulled in two directions when the need to deal with limits and responsibilities and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make a commitment you can keep while also finding room to let go of a way of acting that no longer serves you.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "responsabilidade",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "responsibility",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/conjunction/neptune": {
+      "pt": "com uma conjunção entre Urano e Netuno na sua revolução solar, a vontade de mudar algo e ganhar liberdade e a força da imaginação e dos ideais podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode experimentar um jeito diferente de fazer as coisas e dar espaço à imaginação na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a conjunction between Uranus and Neptune in your solar return, the urge to make a change and gain freedom and the pull of imagination and ideals can come together in the same situation over the year. when those needs support each other, you may be able to experiment with a different approach and make room for imagination on the same occasion, but if they clash, one can dominate the other. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "mudança e liberdade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "convergence",
+          "change and freedom",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/sextile/neptune": {
+      "pt": "com um sextil entre Urano e Netuno na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de mudar algo e ganhar liberdade com a força da imaginação e dos ideais nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a experimentar um jeito diferente de fazer as coisas e a dar espaço à imaginação, embora o potencial sem expressão também possa gerar tensão. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a sextile between Uranus and Neptune in your solar return, you may find an opening to bring the urge to make a change and gain freedom together with the pull of imagination and ideals in the areas the two planets occupy. this combination can help you experiment with a different approach and make room for imagination, though leaving that potential unexpressed can also create tension. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "mudança e liberdade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "opportunity",
+          "change and freedom",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/square/neptune": {
+      "pt": "com uma quadratura entre Urano e Netuno na sua revolução solar, a vontade de mudar algo e ganhar liberdade pode entrar em atrito com a força da imaginação e dos ideais nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de experimentar um jeito diferente de fazer as coisas ou de dar espaço à imaginação, mas também pode dificultar essas duas coisas. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a square between Uranus and Neptune in your solar return, the urge to make a change and gain freedom may come into friction with the pull of imagination and ideals in the areas of the year shown by the two houses. the pressure may spur you to change how you experiment with a different approach or make room for imagination, but it can also make both harder. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "mudança e liberdade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "pressure and response",
+          "change and freedom",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/trine/neptune": {
+      "pt": "com um trígono entre Urano e Netuno na sua revolução solar, a vontade de mudar algo e ganhar liberdade pode se combinar com naturalidade com a força da imaginação e dos ideais ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de experimentar um jeito diferente de fazer as coisas quanto o de dar espaço à imaginação, a ponto de você dar pouco valor a esse avanço. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a trine between Uranus and Neptune in your solar return, the urge to make a change and gain freedom may fit naturally with the pull of imagination and ideals over the year. the matters of the two houses may support each other and make it easier both to experiment with a different approach and to make room for imagination, so much so that you may overlook the progress. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "mudança e liberdade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "ease",
+          "change and freedom",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/opposition/neptune": {
+      "pt": "com uma oposição entre Urano e Netuno na sua revolução solar, você pode se sentir dividido quando a vontade de mudar algo e ganhar liberdade e a força da imaginação e dos ideais pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa experimentar um jeito diferente de fazer as coisas sem deixar de dar espaço à imaginação. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with an opposition between Uranus and Neptune in your solar return, you may feel pulled in two directions when the urge to make a change and gain freedom and the pull of imagination and ideals demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to experiment with a different approach while also finding room to make room for imagination. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "mudança e liberdade",
+          "imaginação e ideais"
+        ],
+        "en": [
+          "tension between poles",
+          "change and freedom",
+          "imagination and ideals"
+        ]
+      }
+    },
+    "uranus/conjunction/pluto": {
+      "pt": "com uma conjunção entre Urano e Plutão na sua revolução solar, a vontade de mudar algo e ganhar liberdade e a pressão por uma mudança profunda podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode experimentar um jeito diferente de fazer as coisas e deixar para trás um modo de agir que já não lhe serve na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a conjunction between Uranus and Pluto in your solar return, the urge to make a change and gain freedom and the pressure to make a deep change can come together in the same situation over the year. when those needs support each other, you may be able to experiment with a different approach and let go of a way of acting that no longer serves you on the same occasion, but if they clash, one can dominate the other. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "mudança e liberdade",
+          "poder e transformação"
+        ],
+        "en": [
+          "convergence",
+          "change and freedom",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/sextile/pluto": {
+      "pt": "com um sextil entre Urano e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a vontade de mudar algo e ganhar liberdade com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a experimentar um jeito diferente de fazer as coisas e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a sextile between Uranus and Pluto in your solar return, you may find an opening to bring the urge to make a change and gain freedom together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you experiment with a different approach and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "mudança e liberdade",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "change and freedom",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/square/pluto": {
+      "pt": "com uma quadratura entre Urano e Plutão na sua revolução solar, a vontade de mudar algo e ganhar liberdade pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de experimentar um jeito diferente de fazer as coisas ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a square between Uranus and Pluto in your solar return, the urge to make a change and gain freedom may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you experiment with a different approach or let go of a way of acting that no longer serves you, but it can also make both harder. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "mudança e liberdade",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "change and freedom",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/trine/pluto": {
+      "pt": "com um trígono entre Urano e Plutão na sua revolução solar, a vontade de mudar algo e ganhar liberdade pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de experimentar um jeito diferente de fazer as coisas quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a trine between Uranus and Pluto in your solar return, the urge to make a change and gain freedom may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to experiment with a different approach and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "mudança e liberdade",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "change and freedom",
+          "power and transformation"
+        ]
+      }
+    },
+    "uranus/opposition/pluto": {
+      "pt": "com uma oposição entre Urano e Plutão na sua revolução solar, você pode se sentir dividido quando a vontade de mudar algo e ganhar liberdade e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa experimentar um jeito diferente de fazer as coisas sem deixar de deixar para trás um modo de agir que já não lhe serve. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with an opposition between Uranus and Pluto in your solar return, you may feel pulled in two directions when the urge to make a change and gain freedom and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to experiment with a different approach while also finding room to let go of a way of acting that no longer serves you. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "mudança e liberdade",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "change and freedom",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/conjunction/pluto": {
+      "pt": "com uma conjunção entre Netuno e Plutão na sua revolução solar, a força da imaginação e dos ideais e a pressão por uma mudança profunda podem se concentrar na mesma situação ao longo do ano. quando essas necessidades se apoiam, você pode dar espaço à imaginação e deixar para trás um modo de agir que já não lhe serve na mesma ocasião, mas, se elas se chocam, uma pode dominar a outra. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a conjunction between Neptune and Pluto in your solar return, the pull of imagination and ideals and the pressure to make a deep change can come together in the same situation over the year. when those needs support each other, you may be able to make room for imagination and let go of a way of acting that no longer serves you on the same occasion, but if they clash, one can dominate the other. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "convergência",
+          "imaginação e ideais",
+          "poder e transformação"
+        ],
+        "en": [
+          "convergence",
+          "imagination and ideals",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/sextile/pluto": {
+      "pt": "com um sextil entre Netuno e Plutão na sua revolução solar, você pode encontrar uma abertura para conciliar a força da imaginação e dos ideais com a pressão por uma mudança profunda nas áreas que os dois planetas ocupam. essa combinação pode ajudar você a dar espaço à imaginação e a deixar para trás um modo de agir que já não lhe serve, embora o potencial sem expressão também possa gerar tensão. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a sextile between Neptune and Pluto in your solar return, you may find an opening to bring the pull of imagination and ideals together with the pressure to make a deep change in the areas the two planets occupy. this combination can help you make room for imagination and let go of a way of acting that no longer serves you, though leaving that potential unexpressed can also create tension. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "oportunidade",
+          "imaginação e ideais",
+          "poder e transformação"
+        ],
+        "en": [
+          "opportunity",
+          "imagination and ideals",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/square/pluto": {
+      "pt": "com uma quadratura entre Netuno e Plutão na sua revolução solar, a força da imaginação e dos ideais pode entrar em atrito com a pressão por uma mudança profunda nas áreas do ano indicadas pelas duas casas. a pressão pode motivar você a mudar sua forma de dar espaço à imaginação ou de deixar para trás um modo de agir que já não lhe serve, mas também pode dificultar essas duas coisas. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a square between Neptune and Pluto in your solar return, the pull of imagination and ideals may come into friction with the pressure to make a deep change in the areas of the year shown by the two houses. the pressure may spur you to change how you make room for imagination or let go of a way of acting that no longer serves you, but it can also make both harder. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "pressão e resposta",
+          "imaginação e ideais",
+          "poder e transformação"
+        ],
+        "en": [
+          "pressure and response",
+          "imagination and ideals",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/trine/pluto": {
+      "pt": "com um trígono entre Netuno e Plutão na sua revolução solar, a força da imaginação e dos ideais pode se combinar com naturalidade com a pressão por uma mudança profunda ao longo do ano. os assuntos das duas casas podem se apoiar e facilitar tanto o esforço de dar espaço à imaginação quanto o de deixar para trás um modo de agir que já não lhe serve, a ponto de você dar pouco valor a esse avanço. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with a trine between Neptune and Pluto in your solar return, the pull of imagination and ideals may fit naturally with the pressure to make a deep change over the year. the matters of the two houses may support each other and make it easier both to make room for imagination and to let go of a way of acting that no longer serves you, so much so that you may overlook the progress. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "facilidade",
+          "imaginação e ideais",
+          "poder e transformação"
+        ],
+        "en": [
+          "ease",
+          "imagination and ideals",
+          "power and transformation"
+        ]
+      }
+    },
+    "neptune/opposition/pluto": {
+      "pt": "com uma oposição entre Netuno e Plutão na sua revolução solar, você pode se sentir dividido quando a força da imaginação e dos ideais e a pressão por uma mudança profunda pedem atenção ao mesmo tempo. as casas mostram onde essa tensão tende a aparecer, e você pode percebê-la quando precisa dar espaço à imaginação sem deixar de deixar para trás um modo de agir que já não lhe serve. esse aspecto lento pode se repetir em vários retornos, e os contatos com pontos mais pessoais ajudam a mostrar o que ele destaca no seu ano.",
+      "en": "with an opposition between Neptune and Pluto in your solar return, you may feel pulled in two directions when the pull of imagination and ideals and the pressure to make a deep change demand your attention at the same time. the houses show where that tension may surface, and you may notice it when you need to make room for imagination while also finding room to let go of a way of acting that no longer serves you. this slow-moving aspect can recur in several returns, and contacts with more personal points help show what it brings into focus in your year.",
+      "keywords": {
+        "pt": [
+          "tensão entre polos",
+          "imaginação e ideais",
+          "poder e transformação"
+        ],
+        "en": [
+          "tension between poles",
+          "imagination and ideals",
+          "power and transformation"
+        ]
+      }
     }
   }
 }
