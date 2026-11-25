@@ -15,6 +15,11 @@ To compile the Swiss Ephemeris to WebAssembly, you will need:
 2. Install Emscripten SDK
 3. Run the compilation script
 
+From the repository root, run `bash wasm/scripts/compile.sh` with the activated
+Emscripten SDK on your path. Run `npm run build` afterward to include the rebuilt
+runtime in the package. If you serve a custom WASM URL, deploy the binary from
+the same build as the JavaScript runtime.
+
 ## Directory Structure
 
 - `swisseph/` - Swiss Ephemeris source code
@@ -39,4 +44,4 @@ The minimal set of Swiss Ephemeris files needed:
 
 ## Usage in Kaabalah
 
-Once compiled, the WebAssembly module will be used by the astrology module to calculate accurate planetary positions and birth charts. 
+Once compiled, the WebAssembly module will be used by the astrology module to calculate accurate planetary positions and birth charts.

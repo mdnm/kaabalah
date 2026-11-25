@@ -1857,9 +1857,24 @@ findLunations({ ...window, phases: ['new', 'full'] }).lunations.length; // 3
 - **Window**: `start` and `end` are absolute UTC instants, both inclusive. Results are in time order, so the phases alternate new, first quarter, full, last quarter.
 - **`phases`** limits the search (default: all four). `LUNATION_PHASES` lists the four definitions with their elongation.
 - **`sign`** is the Moon's tropical sign. At a new moon the Sun is in the same degree; at a full moon it is in the opposite sign.
-- Eclipses are not computed: the new moon of 2024-04-08 above is a total solar eclipse, and nothing in the result says so.
+- Use `findEclipses` for eclipse dates and classifications.
 
 The instants are roots of the geocentric apparent elongation, solved with the same solver as the returns on a half day grid (`LUNATION_SCAN_STEP_DAYS`). Windows over `MAX_LUNATION_WINDOW_YEARS` (150), unknown phases and invalid dates throw a typed `TimelineError`.
+
+### Eclipses
+
+`findEclipses({ start, end })` searches for worldwide solar and lunar eclipses using Swiss Ephemeris. It requires an initialized ephemeris and a WASM build with eclipse support. The search uses the instant of global maximum and returns events in chronological order. The window includes `start` and excludes `end`, with a maximum span of 150 years.
+
+```typescript
+import { findEclipses } from 'kaabalah/astrology';
+
+const { eclipses } = findEclipses({
+  start: new Date('2026-01-01T00:00:00Z'),
+  end: new Date('2027-01-01T00:00:00Z'),
+});
+```
+
+Each event gives its kind, type, UT Julian day, JavaScript date, and apparent tropical longitudes of the Sun and Moon at maximum. `longitude`, `sign`, and `signDegree` refer to the eclipsed body, which is the Sun for a solar eclipse and the Moon for a lunar eclipse. To project eclipses into a solar-return chart, search between two successive exact returns and use each event's `longitude` with the first return's house cusps.
 
 ### Sign ingress windows
 

@@ -64,6 +64,8 @@ Exact events and returns: `findAngularRoots`, `signedAngleDifference`, `dateToJd
 
 Points of the year, lunations and sign ingress windows: `findSeasonalPoints`, `getSeasonalPosition`, `SEASONAL_POINTS`, `SEASONAL_POINTS_METHOD`, `MAX_SEASONAL_WINDOW_YEARS`, `findLunations`, `LUNATION_PHASES`, `LUNATIONS_METHOD`, `LUNATION_SCAN_STEP_DAYS`, `MAX_LUNATION_WINDOW_YEARS`, `findIngressWindows`, `getIngressLeadTime`, `INGRESS_LEAD_TIMES`, `DEFAULT_INGRESS_BODIES`, `INGRESS_WINDOWS_METHOD`, `INGRESS_MONTH_DAYS`, `GHATI_MINUTES`, `MAX_INGRESS_WINDOW_YEARS`.
 
+Worldwide eclipses by UT maximum: `findEclipses`, `ECLIPSES_METHOD`, `MAX_ECLIPSE_WINDOW_YEARS`.
+
 Profections and firdaria: `getAnnualProfection`, `getMonthlyProfections`, `getProfectionForAge`, `getAnnualProfectionTimeline`, `MAX_PROFECTION_TIMELINE_YEARS`, `getFirdaria`, `getFirdariaPeriods`, `getFirdariaTimeline`, `FIRDARIA_CYCLE_YEARS`, `MAX_FIRDARIA_CYCLES`, `MAX_FIRDARIA_WINDOW_YEARS`, `TimelineError`.
 
 Progressions: `JULIAN_YEAR_DAYS`, `TROPICAL_YEAR_DAYS`, `NAIBOD_RATE_DEGREES_PER_YEAR`, `MAX_PROGRESSION_AGE_YEARS`, `PROGRESSED_ANGLE_CONVENTIONS`, `DerivedChartError`.

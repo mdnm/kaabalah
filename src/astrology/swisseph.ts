@@ -1177,6 +1177,12 @@ export function getJulianDayExact(date: Date): number {
   return date.getTime() / 86_400_000 + 2440587.5;
 }
 
+/** Internal bridge to the Swiss Ephemeris global eclipse search. */
+export function nextGlobalEclipse(kind: "solar" | "lunar", startJd: number): { jd: number; flags: number } {
+  checkInitialization();
+  return swissEph!.nextGlobalEclipse(kind, startJd);
+}
+
 /**
  * Find the next rise, set, or meridian transit of a planet at a location.
  * Returns the Julian day of the event.

@@ -834,6 +834,39 @@ export class SwissEph {
       this.module._free(errPtr);
     }
   }
+
+  /** Search for the next global eclipse of the given kind, using UT Julian days. */
+  nextGlobalEclipse(kind: "solar" | "lunar", startJd: number): { jd: number; flags: number } {
+    this.checkInitialized();
+    const search = kind === "solar" ? this.module._swe_sol_eclipse_when_glob : this.module._swe_lun_eclipse_when;
+    if (!search) {
+      throw new SwissEphError("SWISSEPH_ASSET_NOT_FOUND", "The Swiss Ephemeris runtime must be rebuilt with eclipse search exports.");
+    }
+
+    const resultBytes = 10 * 8;
+    const errorBytes = 512;
+    const resultPtr = this.module._malloc(resultBytes + errorBytes);
+    if (!resultPtr) {
+      throw new SwissEphError("SWISSEPH_CALCULATION_FAILED", "Could not allocate memory for the eclipse search.");
+    }
+    const errorPtr = resultPtr + resultBytes;
+    try {
+      this.module.HEAP8.fill(0, resultPtr, errorPtr + errorBytes);
+      const flags = search(startJd, CalcFlag.SWISS_EPH, 0, resultPtr, 0, errorPtr);
+      const jd = this.module.getValue(resultPtr, "double");
+      if (flags <= 0 || !Number.isFinite(jd) || jd <= startJd) {
+        const message = this.module.UTF8ToString(errorPtr);
+        throw new SwissEphError(
+          "SWISSEPH_CALCULATION_FAILED",
+          message || `Swiss Ephemeris failed to find the next ${kind} eclipse.`,
+          { kind, startJd, flags },
+        );
+      }
+      return { jd, flags };
+    } finally {
+      this.module._free(resultPtr);
+    }
+  }
 }
 
 /**

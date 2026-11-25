@@ -60,6 +60,7 @@ export * from "./transit-events";
 export * from "./stations";
 export * from "./seasons";
 export * from "./lunations";
+export * from "./eclipses";
 export * from "./ingress-windows";
 export * from "./sect";
 export * from "./lots";

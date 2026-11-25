@@ -13,6 +13,8 @@ export interface SwissEphModule {
   HEAP8: Int8Array;
   /** Present only when the wasm build exports swe_version (the shipped build does not). */
   _swe_version?(buf: number): number;
+  _swe_sol_eclipse_when_glob?: SweEclipseWhen;
+  _swe_lun_eclipse_when?: SweEclipseWhen;
   fill(value: number, start: number, end: number): void;
   FS?: {
     mkdir(path: string): void;
@@ -50,3 +52,4 @@ export type SweSetTopo = (lon: number, lat: number, altm: number) => void;
 export type SweSetSidMode = (mode: number, t0: number, ayan_t0: number) => void;
 export type SweAzalt = (tjd_ut: number, calc_flag: number, geopos: number, atpress: number, attemp: number, xin: number, xaz: number) => void;
 export type SweRiseTrans = (tjd_ut: number, ipl: number, starname: number, epheflag: number, rsmi: number, geopos: number, atpress: number, attemp: number, tret: number, serr: number) => number;
+export type SweEclipseWhen = (tjd_ut: number, epheflag: number, type: number, tret: number, backward: number, serr: number) => number;
