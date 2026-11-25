@@ -1,5 +1,18 @@
 # Changelog
 
+## 7.3.0 - 2026-11-25
+
+- Add `matchSolarReturnAphorisms` to `kaabalah/astrology`. It checks every
+  solar return aphorism's conditions against a natal chart and its return chart
+  and returns the IDs that apply, with the rulers it read. Until now callers had
+  to evaluate the 141 conditional references themselves.
+- The ruler of the year is the annual profection lord by default, after
+  Junctinus as Volguine translates him. `{ yearRuler: 'return-ascendant' }` takes
+  the return Ascendant's ruler instead. "The first-house ruler" is always the
+  return Ascendant's ruler.
+- The two eclipse rules read the year's eclipses from `findEclipses`, or from
+  an `eclipses` option.
+
 ## 7.2.0 - 2026-11-25
 
 - Add `findEclipses` to `kaabalah/astrology`. Search a date range for worldwide
