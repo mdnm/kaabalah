@@ -3238,5 +3238,105 @@
   "\n  Serpent Path:": {
     "en": "\n  Serpent Path:",
     "pt": "\n  Caminho da Serpente:"
+  },
+  "Local civil date in YYYY-MM-DD format": {
+    "en": "Local civil date in YYYY-MM-DD format",
+    "pt": "Data civil local no formato YYYY-MM-DD"
+  },
+  "Local time in HH:MM (default: 12:00); before sunrise it belongs to the previous vara": {
+    "en": "Local time in HH:MM (default: 12:00); before sunrise it belongs to the previous vara",
+    "pt": "Hora local em HH:MM (padrão: 12:00); antes do nascer do Sol pertence ao vara anterior"
+  },
+  "IANA timezone of the place (auto-resolved if omitted)": {
+    "en": "IANA timezone of the place (auto-resolved if omitted)",
+    "pt": "Fuso horário IANA do lugar, inferido se omitido"
+  },
+  "Sunrise: hindu (disc centre, no refraction) or almanac (upper limb with refraction)": {
+    "en": "Sunrise: hindu (disc centre, no refraction) or almanac (upper limb with refraction)",
+    "pt": "Nascer do Sol: hindu (centro do disco, sem refração) ou almanac (borda superior com refração)"
+  },
+  "Usage: kaabalah astrology:panchanga <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>": {
+    "en": "Usage: kaabalah astrology:panchanga <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>",
+    "pt": "Uso: kaabalah astrology:panchanga <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"
+  },
+  "\nNo panchanga: {0}\n": {
+    "en": "\nNo panchanga: {0}\n",
+    "pt": "\nSem panchanga: {0}\n"
+  },
+  "{0} until {1}": {
+    "en": "{0} until {1}",
+    "pt": "{0} até {1}"
+  },
+  "\nPanchanga {0} ({1})\n": {
+    "en": "\nPanchanga {0} ({1})\n",
+    "pt": "\nPanchanga {0} ({1})\n"
+  },
+  "  Vara: {0} ({1}), sunrise {2}": {
+    "en": "  Vara: {0} ({1}), sunrise {2}",
+    "pt": "  Vara: {0} ({1}), nascer do Sol {2}"
+  },
+  "  Tithi: {0}": {
+    "en": "  Tithi: {0}",
+    "pt": "  Tithi: {0}"
+  },
+  "  Nakshatra: {0}": {
+    "en": "  Nakshatra: {0}",
+    "pt": "  Nakshatra: {0}"
+  },
+  "  Yoga: {0}": {
+    "en": "  Yoga: {0}",
+    "pt": "  Yoga: {0}"
+  },
+  "  Karana: {0}": {
+    "en": "  Karana: {0}",
+    "pt": "  Karana: {0}"
+  },
+  "  Sarvartha Siddhi: none": {
+    "en": "  Sarvartha Siddhi: none",
+    "pt": "  Sarvartha Siddhi: nenhum"
+  },
+  "  Sarvartha Siddhi: {0}": {
+    "en": "  Sarvartha Siddhi: {0}",
+    "pt": "  Sarvartha Siddhi: {0}"
+  },
+  "  Masa: {0} (amanta), {1} (purnimanta), ritu {2}": {
+    "en": "  Masa: {0} (amanta), {1} (purnimanta), ritu {2}",
+    "pt": "  Masa: {0} (amanta), {1} (purnimanta), ritu {2}"
+  },
+  "  Rahu Kala {0}, Yamaganda {1}, Gulika {2}": {
+    "en": "  Rahu Kala {0}, Yamaganda {1}, Gulika {2}",
+    "pt": "  Rahu Kala {0}, Yamaganda {1}, Gulika {2}"
+  },
+  "  Abhijit {0}, Brahma muhurta {1}": {
+    "en": "  Abhijit {0}, Brahma muhurta {1}",
+    "pt": "  Abhijit {0}, Brahma muhurta {1}"
+  },
+  "Panchanga of a day at a place (Lahiri): vara, tithi, nakshatra, yoga and karana with exact start and end times, masa, samvatsara, Rahu Kala, muhurtas and the Sarvartha Siddhi windows": {
+    "en": "Panchanga of a day at a place (Lahiri): vara, tithi, nakshatra, yoga and karana with exact start and end times, masa, samvatsara, Rahu Kala, muhurtas and the Sarvartha Siddhi windows",
+    "pt": "Panchanga de um dia num lugar (Lahiri): vara, tithi, nakshatra, yoga e karana com horários exatos de início e fim, masa, samvatsara, Rahu Kala, muhurtas e as janelas de Sarvartha Siddhi"
+  },
+  "  Dur Muhurta: {0}": {
+    "en": "  Dur Muhurta: {0}",
+    "pt": "  Dur Muhurta: {0}"
+  },
+  "  Varjyam: {0}": {
+    "en": "  Varjyam: {0}",
+    "pt": "  Varjyam: {0}"
+  },
+  "  Amrit Kaal: {0}": {
+    "en": "  Amrit Kaal: {0}",
+    "pt": "  Amrit Kaal: {0}"
+  },
+  "  Choghadiya (day): {0}": {
+    "en": "  Choghadiya (day): {0}",
+    "pt": "  Choghadiya (dia): {0}"
+  },
+  "  Choghadiya (night): {0}": {
+    "en": "  Choghadiya (night): {0}",
+    "pt": "  Choghadiya (noite): {0}"
+  },
+  "  Year: Shaka {0} ({1}), Vikram {2} ({3})": {
+    "en": "  Year: Shaka {0} ({1}), Vikram {2} ({3})",
+    "pt": "  Ano: Shaka {0} ({1}), Vikram {2} ({3})"
   }
 }

@@ -52,6 +52,7 @@ Never instantiate `TreeOfLife` directly. Use `createTree({ system, parts })` or 
 - Derived charts (composite, Davison, progressions, solar arcs, overlays) are separate methods with their conventions echoed in `method`/`notices`; do not conflate composite with Davison.
 - Swiss sidereal mode and topocentric state are process-wide: change them only inside synchronous `withSwissEphState` / `withSiderealMode` scopes.
 - Jyotish (`src/astrology/jyotish/`): Dhruva (equatorial, GC-anchored) is not Lahiri and not Swiss mode 36; keep tropical rasis/houses independent of the nakshatra frame; `JYOTISH_METHODS` is the validation statement (do not fit constants).
+- Panchanga (`jyotish/panchanga.ts`): Lahiri only; masa, year, Rahu Kala, muhurtas, Varjyam, Amrit Kaal and Choghadiya state their conventions and sources in `method`; the day is the vara (sunrise to sunrise), and its sunrise defaults to the Hindu rising (disc centre, no refraction), not the almanac sunrise of `getPlanetaryHours`. The Sarvartha Siddhi table follows Muhurta Chintamani 1.28-29 (oldest source; modern panchang sites disagree with each other), so don't "fix" it from a website.
 - Tests that need the ephemeris use `await getSwissEph({ ephePath: EPHE_PATH, wasmPath: WASM_PATH })`. To run a script outside Vitest use `npx vite-node` (the source imports `?url` assets that plain `tsx` cannot resolve).
 
 ### Dates: Local Noon Convention

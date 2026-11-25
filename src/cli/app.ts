@@ -16,6 +16,7 @@ import {
   cmdAstrologySolarArc,
   cmdAstrologyVarga,
   cmdAstrologyYogakarakas,
+  cmdAstrologyPanchanga,
   cmdCapabilities,
 } from "./commands/astrology-extra";
 import {
@@ -376,6 +377,9 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         return;
       case "astrology:yogakarakas":
         await cmdAstrologyYogakarakas(args.slice(1), flags, inputPayload, execution);
+        return;
+      case "astrology:panchanga":
+        await cmdAstrologyPanchanga(args.slice(1), flags, inputPayload, execution);
         return;
       case "astrology:collection":
         await cmdAstrologyCollection(flags, inputPayload, execution);

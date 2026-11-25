@@ -522,6 +522,93 @@ export async function cmdAstrologyYogakarakas(args: string[], flags: Flags, payl
 }
 
 // ---------------------------------------------------------------------------
+// Panchanga
+// ---------------------------------------------------------------------------
+
+const SUNRISE_NAMES = ["hindu", "almanac"] as const;
+
+export async function cmdAstrologyPanchanga(args: string[], flags: Flags, payload: InputPayload, ctx: ExecutionContext): Promise<void> {
+  if (args[0] === undefined && payload?.date === undefined) {
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology:panchanga <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"), flags);
+  }
+  const place = await parseSingleChartRequest(args, flags, payload, ctx);
+  const sunrise = enumValue(stringOption(flags, payload, "sunrise", "sunrise"), SUNRISE_NAMES, "sunrise", flags) ?? "hindu";
+  await withSwissEph(flags, ctx, async (astro) => {
+    const { toUtcDate } = await import("../../astrology/swisseph");
+    let timeZone = (place.timeZoneSettings as { timeZone?: string }).timeZone;
+    if (!timeZone) {
+      const mod = await import("tz-lookup");
+      const lookup = (mod.default ?? mod) as (lat: number, lon: number) => string;
+      timeZone = lookup(place.latitude, place.longitude);
+    }
+    const date = await toUtcDate(place.birthDate, place.latitude, place.longitude, { timeZone });
+    const result = astro.getPanchanga({
+      date,
+      latitude: place.latitude,
+      longitude: place.longitude,
+      timeZoneSettings: { timeZone },
+      sunriseDefinition: sunrise === "hindu" ? "disc-centre-without-refraction" : "upper-limb-with-refraction",
+    });
+    ctx.throwIfInterrupted();
+    const input = {
+      date: place.dateStr,
+      time: place.timeStr,
+      lat: place.latitude,
+      lon: place.longitude,
+      timeZone,
+      sunrise,
+      instantUtc: date.toISOString(),
+      ...(place.resolvedLocation ? { resolvedLocation: place.resolvedLocation } : {}),
+    };
+    if (isJsonMode(flags)) {
+      outputJson({ ...result, input }, flags);
+      return;
+    }
+    if (!result.available) {
+      console.log(cliText("\nNo panchanga: {0}\n", [result.message]));
+      return;
+    }
+    const time = (d: Date) =>
+      d.toLocaleString("sv-SE", { timeZone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+    const spans = (list: Array<{ value: { name: string }; end: Date }>) =>
+      list.map((s) => cliText("{0} until {1}", [s.value.name, time(s.end)])).join(", ");
+    console.log(cliText("\nPanchanga {0} ({1})\n", [place.dateStr, timeZone]));
+    console.log(cliText("  Vara: {0} ({1}), sunrise {2}", [result.vara.name, result.vara.lord, time(result.vara.sunrise)]));
+    console.log(cliText("  Tithi: {0}", [spans(result.tithi.spans.map((s) => ({ ...s, value: { name: `${s.value.paksha === "shukla" ? "Shukla" : "Krishna"} ${s.value.name}` } })))]));
+    console.log(cliText("  Nakshatra: {0}", [spans(result.nakshatra.spans)]));
+    console.log(cliText("  Yoga: {0}", [spans(result.yoga.spans)]));
+    console.log(cliText("  Karana: {0}", [spans(result.karana.spans)]));
+    const windows = result.specialYogas.sarvarthaSiddhi.windows;
+    console.log(
+      windows.length === 0
+        ? cliText("  Sarvartha Siddhi: none")
+        : cliText("  Sarvartha Siddhi: {0}", [windows.map((w) => `${time(w.start)} - ${time(w.end)} (${w.nakshatra.name})`).join(", ")])
+    );
+    const { masa, year, dayPeriods, muhurtas } = result;
+    const adhika = (flag: boolean) => (flag ? "Adhika " : "");
+    const kshaya = masa.amanta.kshaya ? ` (Kshaya, absorbs ${masa.amanta.absorbs})` : "";
+    console.log(cliText("  Masa: {0} (amanta), {1} (purnimanta), ritu {2}", [
+      `${adhika(masa.amanta.adhika)}${masa.amanta.name}${kshaya}`,
+      `${adhika(masa.purnimanta.adhika)}${masa.purnimanta.name}`,
+      masa.ritu.name,
+    ]));
+    console.log(cliText("  Year: Shaka {0} ({1}), Vikram {2} ({3})", [year.shaka, year.samvatsara.name, year.vikram, year.jovianSamvatsara.name]));
+    const period = (p: { start: Date; end: Date }) => `${time(p.start)} - ${time(p.end)}`;
+    console.log(cliText("  Rahu Kala {0}, Yamaganda {1}, Gulika {2}", [period(dayPeriods.rahuKala), period(dayPeriods.yamaganda), period(dayPeriods.gulika)]));
+    console.log(cliText("  Abhijit {0}, Brahma muhurta {1}", [period(muhurtas.abhijit), muhurtas.brahma ? period(muhurtas.brahma) : "-"]));
+    console.log(cliText("  Dur Muhurta: {0}", [muhurtas.durMuhurtas.map(period).join(", ")]));
+    const ghati = (list: Array<{ start: Date; end: Date; nakshatra: { name: string } }>) =>
+      list.length === 0 ? "-" : list.map((w) => `${period(w)} (${w.nakshatra.name})`).join(", ");
+    console.log(cliText("  Varjyam: {0}", [ghati(result.varjyam)]));
+    console.log(cliText("  Amrit Kaal: {0}", [ghati(result.amritKaal)]));
+    const slots = (list: Array<{ name: string; start: Date }>) => list.map((s) => `${s.name} ${time(s.start).slice(11)}`).join(", ");
+    console.log(cliText("  Choghadiya (day): {0}", [slots(result.choghadiya.day)]));
+    console.log(cliText("  Choghadiya (night): {0}", [slots(result.choghadiya.night)]));
+    console.log();
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Bulk collections
 // ---------------------------------------------------------------------------
 

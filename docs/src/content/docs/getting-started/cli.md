@@ -56,6 +56,7 @@ npx kaabalah help
 | `astrology:rulers` | Sign to ruler table, traditional or modern (no birth data) |
 | `astrology:varga <date> [time]` | Divisional charts (D1 to D60) on tropical longitudes with the lagna; Karakamsha for D9 |
 | `astrology:yogakarakas [date] [time]` | Yogakaraka planets for an ascendant sign (`--ascendant`) or a birth chart |
+| `astrology:panchanga <date> [time]` | Panchanga of a day at a place: vara, tithi, nakshatra, yoga, karana, masa, samvatsara, Rahu Kala, muhurtas and Sarvartha Siddhi |
 | `tree:map <date> [time]` | Weighted Tree of Life birth map: ranked spheres and paths with markers |
 | `tree:paths <date> [time]` | House quests, Lightning Path and Serpent Path of a natal chart |
 | `astrology:collection` | Bulk people/events/pairs from a manifest (single JSON document, or `--ndjson` stream) |
@@ -636,6 +637,21 @@ Planets that rule both a kendra and a trikona from an ascendant (`getYogakarakas
 kaabalah astrology:yogakarakas --ascendant=Taurus --json --compact
 kaabalah astrology:yogakarakas 1990-05-17 14:30 --lat=-23.5505 --lon=-46.6333 --json --compact --fields=ascendant,yogakarakas
 ```
+
+### astrology:panchanga
+
+Panchanga of the vara (sunrise to sunrise) containing a local date and time at a place (`getPanchanga`, Lahiri): vara, tithi, nakshatra, yoga and karana, each with the limb at sunrise, the limb at the given time, and every span in the day with exact start and end. Also gives the lunar month, Shaka and Vikram years with the samvatsara, Rahu Kala, Yamaganda, Gulika, the 30 muhurtas (Vedic names, deities, Abhijit, Brahma muhurta and Dur Muhurta), Varjyam, Amrit Kaal, Choghadiya and the Sarvartha Siddhi windows from the Muhurta Chintamani table. The time defaults to 12:00 local; a time before sunrise belongs to the previous vara.
+
+```bash
+kaabalah astrology:panchanga 2026-11-25 --lat=23.1765 --lon=75.7885 --json --compact --fields=vara,tithi.atSunrise,nakshatra.atSunrise,specialYogas
+kaabalah astrology:panchanga 2026-11-25 18:00 --lat=28.6139 --lon=77.209 --timezone=Asia/Kolkata --json --compact --fields=tithi.atDate
+```
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--lat` / `--lon` | number | | Place (or `--location`) |
+| `--timezone` | string | auto | IANA zone of the place; decides the weekday of the sunrise |
+| `--sunrise` | string | hindu | `hindu` (disc centre, no refraction, as Indian panchangs print it) or `almanac` (upper limb with refraction) |
 
 ### astrology:astrocartography
 

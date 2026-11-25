@@ -30,6 +30,7 @@ export * from "./karakas";
 export * from "./dasha";
 export * from "./vargas";
 export * from "./jaimini";
+export * from "./panchanga";
 export {
   JYOTISH_BODY_IDS,
   EphemerisTracker,

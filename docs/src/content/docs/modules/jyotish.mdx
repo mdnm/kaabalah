@@ -159,6 +159,99 @@ d9.placements.sun.vargottama;   // false
 - **Half-open intervals**: `[start, end)`; a boundary instant belongs to the period that starts there. By default antars of the first maha that ended on or before birth are omitted (`includePreBirthAntars` keeps them).
 - Generation is bounded by `through` (default one full cycle after birth) and `maxMahaPeriods` (default 200; `truncated` reports a stop).
 
+## Panchanga
+
+`getPanchanga({ date, latitude, longitude, timeZoneSettings? })` returns the five limbs of the almanac day that contains `date`. The day is the **vara**, from one sunrise to the next at the place; before sunrise `date` still belongs to the previous vara. Longitudes are Lahiri sidereal (Swiss mode 1, true ayanamsa), geocentric apparent of date. The result holds calculation data only, with no interpretation text.
+
+| Limb | Rule |
+|---|---|
+| Vara | Weekday of the sunrise in the given zone (`Ravivara` … `Shanivara`), with its planet |
+| Tithi | `floor((Moon − Sun) / 12°) + 1`: 1–15 shukla paksha (ends at Purnima), 16–30 krishna paksha (ends at Amavasya) |
+| Nakshatra | Moon's sidereal longitude in 27 sectors of 13°20′ |
+| Yoga | `(Sun + Moon)` sidereal in 27 sectors (Vishkambha … Vaidhriti) |
+| Karana | Half tithi, `floor((Moon − Sun) / 6°)`: Kimstughna, Bava … Vishti eight times, then Shakuni, Chatushpada, Naga |
+
+Each limb comes as `{ atSunrise, atDate, spans }`. `atSunrise` is the limb that names the day, as almanacs print it. `spans` lists every limb running during the vara, with exact `start` and `end` times from the shared root solver, so the first span can start before sunrise and the last can end after the next sunrise.
+
+**Sunrise.** By default the sunrise is the Hindu rising, which is how Indian panchangs print it: the centre of the disc on the geometric horizon with no refraction (Swiss `SE_BIT_HINDU_RISING`). `sunriseDefinition: 'upper-limb-with-refraction'` selects the almanac sunrise of `getPlanetaryHours` instead, about four minutes earlier in India. The sunrise only decides the vara and which limb is "at sunrise"; the limb boundaries do not depend on it.
+
+**Sarvartha Siddhi.** `specialYogas.sarvarthaSiddhi` uses the weekday–nakshatra table of the **Muhurta Chintamani** (Daivajña Rāma, 1600 CE), Śubhāśubha prakaraṇa 1.28–29. The verse names the nakshatras by their deities, and it says it reports earlier authorities ("kathitāni pūrvaiḥ"). Later panchang sites disagree with each other on this table, so the library follows the verse. `SARVARTHA_SIDDHI_SOURCE` holds the transliterated verse and its decoding.
+
+| Vara | Nakshatras |
+|---|---|
+| Sunday | Hasta, Mula, Uttara Phalguni, Uttara Ashadha, Uttara Bhadrapada, Pushya, Ashwini |
+| Monday | Shravana, Rohini, Mrigashira, Pushya, Anuradha |
+| Tuesday | Ashwini, Uttara Bhadrapada, Krittika, Ashlesha |
+| Wednesday | Rohini, Anuradha, Hasta, Krittika, Mrigashira |
+| Thursday | Revati, Anuradha, Ashwini, Punarvasu, Pushya |
+| Friday | Revati, Anuradha, Ashwini, Punarvasu, Shravana |
+| Saturday | Shravana, Rohini, Swati |
+
+The verse gives only the pairs. A window here is the overlap of the vara with a listed nakshatra, the usual almanac reading. No later exclusions (Rahu Kala, Vishti karana, tithi or eclipse rules) are applied.
+
+```typescript
+import { getPanchanga } from 'kaabalah/astrology';
+
+const p = getPanchanga({
+  date: new Date('2026-11-25T06:30:00Z'),
+  latitude: 23.1765,
+  longitude: 75.7885,
+  timeZoneSettings: { timeZone: 'Asia/Kolkata' },
+});
+if (p.available) {
+  p.vara.name;                                    // "Budhavara"
+  p.tithi.atSunrise;                              // { number: 16, paksha: "krishna", name: "Pratipada", ... }
+  p.tithi.spans[1].start;                         // Dwitiya from 16:50:44 IST
+  p.nakshatra.atSunrise.id;                       // "Rohini"
+  p.specialYogas.sarvarthaSiddhi.windows.length;  // 2: Rohini, then Mrigashira
+}
+```
+
+**Validation.** For Ujjain on 25 November 2026, every tithi, nakshatra, yoga and karana boundary and both Sarvartha Siddhi windows fall inside the minute printed by Prokerala's panchang (Lahiri). That page truncates times to the minute. The sunrise agrees within one minute; the city's exact coordinates are not printed. The test suite also checks that Shukla Pratipada starts at the solved new moon.
+
+### Month, year, day periods and muhurtas
+
+Each of these depends on a convention choice. The one used is stated in `method`:
+
+- **`masa`**: the amanta month (new moon to new moon) that contains the sunrise. It is named by the Sun's Lahiri sign at its opening new moon plus one, so Mina gives Chaitra. It is **adhika** when the Sun changes no sign before the closing new moon. `purnimanta` gives the krishna paksha the next month's name, except in an adhika month, which is the same lunation in both counts. `ritu` is the season of the lunar year: two months each, from Vasanta. A month in which the Sun changes two signs is **kshaya**, defined in Bhaskara II's *Siddhanta Shiromani* (1150), Madhyamadhikara, adhimasa verse 6. It carries two names: under the present rule (Sewell & Dikshit, *The Indian Calendar*, Art. 46) it is named by its first sankranti, and `absorbs` holds the dropped second name. `sankrantis` counts the sign changes: 0, 1 or 2. Between 1900 and 2170 the ephemeris finds three kshaya months:
+  - 16 Nov – 16 Dec 1963: Kartika, absorbing Margashirsha
+  - 14 Jan – 13 Feb 1983: Pausha, absorbing Magha
+  - Dec 2123 – Jan 2124
+
+  Each lies between two adhika months, as Bhaskara says it must.
+- **`year`**: the Chaitradi luni-solar count. `shaka` is the Gregorian year in which amanta Chaitra began, minus 78. `vikram` is `shaka + 135`. `samvatsara` is index `(shaka + 11) mod 60` of the 60-year cycle, from Prabhava; Shaka 1948 is Parabhava; this is the South Indian name, where no year is ever skipped. `jovianSamvatsara` is the North Indian (Barhaspatya) name, which goes with the Vikram year. That cycle follows Jupiter's mean motion, so its years are 361 days long, and about every 85 years one name is skipped.
+  - **Rule:** the name current at the Mesha sankranti of the Shaka year names the whole year. It is computed by Surya Siddhanta 1.55 with the bīja correction, in the integer form of Sewell & Dikshit Art. 59c (`jovianSamvatsaraSuryaSiddhanta`). This is the rule current almanacs follow. Sewell gives it for years after 1500 CE. Under it, Manmatha was skipped in 1942 and Durmati is skipped in 2027.
+  - **Older rule:** Brihat Samhita 8.20–21 is available as `jovianSamvatsaraBrihatSamhita`. It disagrees for Vikram 2083: it gives Raudra, the name Patrika prints, where the default gives Siddharthi.
+  - **Spelling:** `SAMVATSARA_NAMES` uses Prokerala's spellings (Angira, Dhatru, Isvara, Bahu Dhanya, …, Anala, Kalayukta, Dundhubhi, Raktaksa, Kshaya). Both the Shaka and the Vikram names match Prokerala's daily panchang for every year from 1980 to 2026.
+- **`dayPeriods`**: sunrise to sunset is cut into 8 equal parts. **Gulika** and **Yamaganda** are Saturn's and Jupiter's parts when the parts go to the weekday lords in order from the lord of the day, the rule of the upagrahas in Brihat Parāśara Horā Śāstra (`dayPartOfPlanet`). **Rahu Kala** follows the South Indian almanac table (`RAHU_KALA_PARTS`: Sun 8, Mon 2, Tue 7, Wed 5, Thu 6, Fri 4, Sat 3). No classical text for that table was found.
+- **`muhurtas`**: 15 equal day muhurtas (sunrise to sunset) and 15 equal night muhurtas (sunset to next sunrise). `abhijit` is day muhurta 8. `brahma` is muhurta 14 of the night before this vara, so it ends one night muhurta before the sunrise. Both are proportional, and no weekday exclusions are applied. Some almanacs drop Abhijit on Wednesdays and print Brahma muhurta as a fixed 48 minutes.
+
+For Ujjain on 25 November 2026, these match Prokerala to the printed minute: Kartika / Agrahayana (Margashirsha), Shaka 1948 Parabhava, Vikram 2083, Rahu Kala 12:13–13:34, Yamaganda 08:11–09:32, Gulika 10:53–12:13, and the 8th day muhurta 11:52–12:35. The tests also check the adhika months of 2023 (Shravana) and 2026 (Jyeshtha), and the Shaka year change at Ugadi.
+
+### Muhurta names, Dur Muhurta, Varjyam, Amrit Kaal and Choghadiya
+
+For each of these the library uses the oldest text found that defines it:
+
+| Field | Source | Rule |
+|---|---|---|
+| `muhurtas.*.vedicName` | Taittiriya Brahmana 3.10.1.1–3 | Fifteen day and fifteen night names, with separate lists for the bright and the dark fortnight (`VEDIC_MUHURTA_NAMES`). The list follows the paksha of the tithi at sunrise. |
+| `muhurtas.*.deity` | Narada Samhita 9.1–3; also Muhurta Martanda and Muhurta Chintamani 6.52–53 | The presiding deities, Rudra … Bhaga by day and Isha … Vayu by night (`MUHURTA_DEITIES`). Day 8 is Abhijit. The common modern list (Rudra, Ahi, Mitra … Satamukhi, Puruhuta …) is this scheme with synonyms and corruptions. |
+| `muhurtas.durMuhurtas` | Narada Samhita 9.4–5 = Muhurta Chintamani 6.54 | By weekday (`DUR_MUHURTAS`): Sun day 14; Mon day 9, 12; Tue day 4, night 7; Wed day 8; Thu day 6, 12; Fri day 9, 4; Sat day 1, 2. The verse does not say whether Tuesday's Agni is a day or night muhurta. It is read as night 7, the only muhurta Agni presides over. |
+| `varjyam` | Narada Samhita (vivaha) 55–60 = Vasishtha Samhita = Muhurta Martanda = Muhurta Chintamani 6.49–51 | Each nakshatra has a start ghaṭī out of 60 (`VARJYAM_START_GHATI`), scaled to its real length. The window lasts 4 ghaṭīs. |
+| `amritKaal` | Verse quoted in the Sanskrit commentary on Prashna Marga 21 (Kerala, 1649) | Same shape, with `AMRIT_KAAL_START_GHATI`. The same commentary first gives a simpler rule, the 4 ghaṭīs after Varjyam, which is not used. None of the older muhurta texts has an Amrit Kaal table. |
+| `choghadiya` | No classical text found | A later North Indian / Gujarati convention. Daytime and night are each cut into 8. Day slots start with the weekday's lord and step 5 weekdays. Night slots start with the lord 4 weekdays on and step 4. Each lord gives a name: Sun Udveg, Moon Amrit, Mars Rog, Mercury Labh, Jupiter Shubh, Venus Char, Saturn Kaal (`choghadiyaPlanet`). |
+
+Varjyam and Amrit Kaal windows are listed when they overlap the vara, and they are not clipped. For Ujjain on 25 November 2026 every value matches Prokerala to the printed minute:
+
+- Varjyam 13:32–14:57 (Rohini) and 01:32–02:57 (Mrigashira)
+- Amrit Kaal 17:46–19:10
+- Dur Muhurta 11:52–12:35
+- Choghadiya starting with Labh 06:51–08:11, and Thursday's full day and night sequences
+
+Variants not followed: a Kerala Varjyam table (Raman's notes to Prashna Marga) gives Ardra 11, Hasta 22 and Mula 20. A "Madhaveeya" Amrit Kaal table gives different values, for example Rohini 35.
+
+Where the Sun does not rise or set, the result is `{ available: false, reason }`.
+
 ## Validation statement
 
 What was and was not checked, exactly as recorded in `JYOTISH_METHODS.validation`:

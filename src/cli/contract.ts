@@ -993,6 +993,26 @@ export const COMMANDS: CommandSchema[] = [
     ],
   },
   {
+    name: "astrology:panchanga",
+    description: "Panchanga of a day at a place (Lahiri): vara, tithi, nakshatra, yoga and karana with exact start and end times, masa, samvatsara, Rahu Kala, muhurtas and the Sarvartha Siddhi windows",
+    args: [
+      { name: "date", type: "date", required: true, description: "Local civil date in YYYY-MM-DD format" },
+      { name: "time", type: "string", required: false, description: "Local time in HH:MM (default: 12:00); before sunrise it belongs to the previous vara" },
+    ],
+    flags: [
+      { name: "lat", type: "number", description: "Latitude (-90 to 90)" },
+      { name: "lon", type: "number", description: "Longitude (-180 to 180)" },
+      { name: "location", type: "string", description: LOCATION_DESCRIPTION },
+      { name: "timezone", type: "string", description: "IANA timezone of the place (auto-resolved if omitted)" },
+      { name: "sunrise", type: "string", default: "hindu", description: "Sunrise: hindu (disc centre, no refraction) or almanac (upper limb with refraction)" },
+      ...RUNTIME_FLAGS,
+    ],
+    examples: [
+      "kaabalah astrology:panchanga 2026-11-25 --lat=23.1765 --lon=75.7885 --json --compact --fields=vara,tithi.atSunrise,nakshatra.atSunrise,specialYogas",
+      "kaabalah astrology:panchanga 2026-11-25 18:00 --lat=28.6139 --lon=77.209 --timezone=Asia/Kolkata --json --compact --fields=tithi.atDate",
+    ],
+  },
+  {
     name: "astrology:collection",
     description: "Bulk collection: people, events and pair selection from a manifest; one natal chart per person, per-item errors, deterministic order",
     args: [],

@@ -164,6 +164,7 @@ describe("CLI contract", () => {
       "astrology:rulers",
       "astrology:varga",
       "astrology:yogakarakas",
+      "astrology:panchanga",
       "astrology:collection",
       "capabilities",
       "help",
@@ -2421,6 +2422,22 @@ describe("chart facts commands", () => {
     cliError(["astrology:yogakarakas"], "MISSING_ARGUMENT");
   });
 
+  it("astrology:panchanga reads the local date, time, zone and sunrise flag", () => {
+    // The calculation itself is tested in panchanga.test.ts; this checks the command's inputs.
+    const UJJAIN = ["2026-11-25", "--lat=23.1765", "--lon=75.7885"];
+    const day = cli(["astrology:panchanga", ...UJJAIN]);
+    // Zone resolved from lat/lon; the default time is 12:00 local.
+    expect(day.input).toMatchObject({ timeZone: "Asia/Kolkata", instantUtc: "2026-11-25T06:30:00.000Z" });
+    expect(day.vara.weekday).toBe(3);
+    const evening = cli(["astrology:panchanga", "2026-11-25", "18:00", "--lat=23.1765", "--lon=75.7885", "--timezone=Asia/Kolkata"]);
+    expect(evening.tithi.atDate.number).toBe(17);
+    const almanac = cli(["astrology:panchanga", ...UJJAIN, "--sunrise=almanac"]);
+    expect(Date.parse(almanac.vara.sunrise)).toBeLessThan(Date.parse(day.vara.sunrise));
+    cliError(["astrology:panchanga", ...UJJAIN, "--sunrise=noon"], "INVALID_ARGUMENT");
+    cliError(["astrology:panchanga"], "MISSING_ARGUMENT");
+    cliError(["astrology:panchanga", "2026-11-25"], "MISSING_ARGUMENT");
+  });
+
   it("tree:map ranks spheres and paths with their markers, and says when astrology is left out", () => {
     const full = cli(["tree:map", ...BR, "--name=Maria Silva"]);
     expect(full.systems).toEqual({ astrology: true, numerology: true, gematria: true });
@@ -2462,21 +2479,6 @@ describe("chart facts commands", () => {
     expect(pt.houseQuests[0].text).toBe(`Busca ${pt.houseQuests[0].adjective} por ${pt.houseQuests[0].theme}`);
     expect(pt.houseQuests[0].text).not.toBe(en.houseQuests[0].text);
     cliError(["tree:paths", "1990-05-17", "14:30"], "MISSING_ARGUMENT");
-  });
-
-  it("lists the new commands in help and capabilities, with Portuguese descriptions", () => {
-    const names = ["astrology:condition", "astrology:rulers", "astrology:varga", "astrology:yogakarakas", "tree:map", "tree:paths"];
-    const help = cli(["help"]) as { commands: Array<{ name: string; examples: string[] }> };
-    const caps = cli(["capabilities"]);
-    for (const name of names) {
-      expect(help.commands.map((c) => c.name), name).toContain(name);
-      expect(caps.cli.commands, name).toContain(name);
-      expect(help.commands.find((c) => c.name === name)!.examples.length, name).toBeGreaterThan(0);
-      const pt = runCli(["help", name, "--language", "pt-BR", "--json", "--compact", "--quiet"]);
-      assertSuccess(pt, `help ${name} pt-BR`);
-      const english = (cli(["help", name]) as { command: { description: string } }).command.description;
-      expect((JSON.parse(pt.stdout) as { command: { description: string } }).command.description, name).not.toBe(english);
-    }
   });
 });
 

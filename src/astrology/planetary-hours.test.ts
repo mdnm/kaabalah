@@ -194,6 +194,18 @@ describe('getPlanetaryHours', () => {
     expect(r.current.isDay).toBe(true);
   });
 
+  it('can use the Hindu rising: disc centre without refraction, later sunrise and earlier sunset', () => {
+    const almanac = available({ date: noon, ...GREENWICH });
+    const hindu = available({ date: noon, ...GREENWICH, sunriseDefinition: 'disc-centre-without-refraction' });
+    const riseDelay = hindu.sunrise.getTime() - almanac.sunrise.getTime();
+    const setAdvance = almanac.sunset.getTime() - hindu.sunset.getTime();
+    // About 50' of altitude at London's equinox: roughly 5 minutes each way.
+    for (const shift of [riseDelay, setAdvance]) {
+      expect(shift).toBeGreaterThan(4 * MINUTE);
+      expect(shift).toBeLessThan(7 * MINUTE);
+    }
+  });
+
   it('rejects invalid input with a typed error', () => {
     const bad: PlanetaryHoursOptions[] = [
       { date: new Date(NaN), ...GREENWICH },
@@ -202,6 +214,7 @@ describe('getPlanetaryHours', () => {
       { date: noon, latitude: Number.NaN, longitude: 0 },
       { date: noon, ...GREENWICH, timeZoneSettings: { utcOffsetMinutes: Number.NaN } },
       { date: noon, ...GREENWICH, timeZoneSettings: { timeZone: 'Not/AZone' } },
+      { date: noon, ...GREENWICH, sunriseDefinition: 'lower-limb' as never },
     ];
     for (const options of bad) {
       let error: unknown;

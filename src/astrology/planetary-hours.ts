@@ -68,7 +68,27 @@ export interface PlanetaryHoursOptions {
    * `resolveTimeZone`) is not used here.
    */
   timeZoneSettings?: Pick<TimeZoneOptions, "timeZone" | "utcOffsetMinutes">;
+  /**
+   * Which sunrise and sunset. Default `"upper-limb-with-refraction"` (published almanac
+   * times). `"disc-centre-without-refraction"` is the Hindu rising (Swiss
+   * `SE_BIT_HINDU_RISING`: the centre of the disc on the geometric horizon, no refraction,
+   * ecliptic latitude ignored), a few minutes later at sunrise and earlier at sunset.
+   */
+  sunriseDefinition?: SunriseDefinition;
 }
+
+export type SunriseDefinition = "upper-limb-with-refraction" | "disc-centre-without-refraction";
+
+/** Swiss rise/set bits per definition: SE_BIT_DISC_CENTER | SE_BIT_NO_REFRACTION | SE_BIT_GEOCTR_NO_ECL_LAT. */
+const SUNRISE_FLAGS: Record<SunriseDefinition, number> = {
+  "upper-limb-with-refraction": 0,
+  "disc-centre-without-refraction": RiseTransitFlag.DISC_CENTER | RiseTransitFlag.NO_REFRACTION | 128,
+};
+
+const SUNRISE_DEFINITION_TEXT: Record<SunriseDefinition, string> = {
+  "upper-limb-with-refraction": "upper limb with standard refraction at sea level",
+  "disc-centre-without-refraction": "disc centre on the geometric horizon without refraction (Hindu rising)",
+};
 
 export interface PlanetaryHour {
   /** 0..23 from sunrise; 0..11 are the day hours, 12..23 the night hours. */
@@ -94,7 +114,7 @@ export interface PlanetaryHoursMethod {
   utcOffsetMinutes: number;
   hourSystem: "unequal";
   rulerOrder: "chaldean";
-  sunriseDefinition: "upper-limb-with-refraction";
+  sunriseDefinition: SunriseDefinition;
   description: string;
 }
 
@@ -148,9 +168,17 @@ const SUNRISE_LOOKBACK_HOURS = [30, 24, 18, 12, 6, 1];
 const UPPER_LIMB_ALTITUDE = -16 / 60;
 
 /** Next sunrise or sunset after `from`, or null when the Sun has none in the ephemeris' search window. */
-function nextSunEvent(from: Date, latitude: number, longitude: number, event: RiseTransitFlag): Date | null {
+function nextSunEvent(
+  from: Date,
+  latitude: number,
+  longitude: number,
+  event: RiseTransitFlag,
+  extraFlags: number
+): Date | null {
   try {
-    return jdToDate(calculateRiseTransit(from, Planet.SUN, latitude, longitude, event));
+    return jdToDate(
+      calculateRiseTransit(from, Planet.SUN, latitude, longitude, (event | extraFlags) as RiseTransitFlag)
+    );
   } catch (error) {
     // swe_rise_trans answers -2 for a circumpolar body; the wrapper turns it into this plain Error.
     if (error instanceof Error && error.name === "Error" && /rise or set not found/i.test(error.message)) {
@@ -254,8 +282,14 @@ export function getPlanetaryHours(options: PlanetaryHoursOptions): PlanetaryHour
     throw invalid("timeZoneSettings.utcOffsetMinutes must be a number of minutes between -1080 and 1080.");
   }
 
+  const sunriseDefinition = options.sunriseDefinition ?? "upper-limb-with-refraction";
+  if (!(sunriseDefinition in SUNRISE_FLAGS)) {
+    throw invalid(`sunriseDefinition must be one of ${Object.keys(SUNRISE_FLAGS).join(", ")}.`);
+  }
+  const riseFlags = SUNRISE_FLAGS[sunriseDefinition];
+
   const t = date.getTime();
-  const rise = (from: Date) => nextSunEvent(from, latitude, longitude, RiseTransitFlag.RISE);
+  const rise = (from: Date) => nextSunEvent(from, latitude, longitude, RiseTransitFlag.RISE, riseFlags);
 
   // The sunrise at or before `date`: first one found from a start in the past, then walked forward.
   let sunrise: Date | null = null;
@@ -271,7 +305,7 @@ export function getPlanetaryHours(options: PlanetaryHoursOptions): PlanetaryHour
     if (!nextSunrise || nextSunrise.getTime() > t) break;
     sunrise = nextSunrise;
   }
-  const sunset = sunrise ? nextSunEvent(sunrise, latitude, longitude, RiseTransitFlag.SET) : null;
+  const sunset = sunrise ? nextSunEvent(sunrise, latitude, longitude, RiseTransitFlag.SET, riseFlags) : null;
 
   if (!sunrise || !sunset || !nextSunrise || sunset.getTime() >= nextSunrise.getTime()) {
     const sun = calculateSinglePlanetPosition(date, Planet.SUN);
@@ -350,12 +384,12 @@ export function getPlanetaryHours(options: PlanetaryHoursOptions): PlanetaryHour
       utcOffsetMinutes: resolved.utcOffsetMinutes,
       hourSystem: "unequal",
       rulerOrder: "chaldean",
-      sunriseDefinition: "upper-limb-with-refraction",
+      sunriseDefinition,
       description:
         "planetary day from sunrise to next sunrise; 12 equal day hours (sunrise to sunset) and 12 equal night hours " +
         "(sunset to next sunrise); rulers in Chaldean order starting from the ruler of the weekday of the sunrise, " +
         `read in ${WEEKDAY_BASIS_TEXT[resolved.basis]}; sunrise and sunset are Swiss Ephemeris rise/set of the Sun's ` +
-        "upper limb with standard refraction at sea level",
+        SUNRISE_DEFINITION_TEXT[sunriseDefinition],
     },
   };
 }
