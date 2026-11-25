@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.2.0 - 2026-11-25
+
+- Add `findEclipses` to `kaabalah/astrology`. Search a date range for worldwide
+  solar and lunar eclipses and get each event's type, time of maximum, and
+  tropical longitude and sign for use in charts such as solar returns.
+- Rebuild the Swiss Ephemeris runtimes for Node and browsers. If you serve your
+  own WASM URL, deploy the binary that ships with this version alongside the
+  updated JavaScript package.
+
 ## 7.1.0 - 2026-11-25
 
 - Add `getPanchanga` (`kaabalah/astrology`) and the `astrology:panchanga`
