@@ -1,7 +1,27 @@
 # Changelog
 
-## Unreleased
+## 7.1.0 - 2026-11-25
 
+- Add `getPanchanga` (`kaabalah/astrology`) and the `astrology:panchanga`
+  command: the Hindu almanac day (sunrise to sunrise) at a place, in the Lahiri
+  frame. Tithi, nakshatra, nitya yoga and karana come at sunrise, at the given
+  time, and as every span of the day with exact start and end.
+- The panchanga also gives:
+  - the lunar month (amanta and purnimanta, adhika and kshaya months) and ritu
+  - Shaka and Vikram years with the South Indian and Jovian samvatsaras
+  - Rahu Kala, Yamaganda and Gulika
+  - the 30 muhurtas with their Vedic names and deities, Abhijit, Brahma
+    muhurta and Dur Muhurta
+  - Varjyam, Amrit Kaal and Choghadiya
+  - the Sarvartha Siddhi windows
+- Each table follows the oldest text found (Muhurta Chintamani, Narada Samhita,
+  Taittiriya Brahmana, Siddhanta Shiromani, Brihat Samhita, Prashna Marga), and
+  `method` states each convention. Choghadiya has no classical source and is
+  marked as such. Times match Prokerala's panchang to the printed minute.
+- `getPlanetaryHours` accepts `sunriseDefinition`: the default stays the
+  almanac sunrise (upper limb with refraction), and
+  `disc-centre-without-refraction` gives the Hindu rising, which the panchanga
+  uses by default.
 - Add 941 bilingual solar-return-to-natal contact descriptions and accept the
   ten planets, mean node, Chiron, Ascendant and Midheaven on either side of the
   directed lookup. Add conditional solar-return references for dignity reversals, adverse angles, Ibn Ezra’s annual-to-natal
