@@ -364,8 +364,10 @@ getSolarReturnAspectDescription('conjunction', 'sun', 'mars', 'pt-BR');
 getSolarReturnAspectDescription('conjunction', 'mars', 'sun'); // same within-return pair
 getSolarReturnAspectDescription('trine', 'sun', 'mars'); // both planets in the annual chart
 getSolarReturnNatalAspectDescription('saturn', 'conjunction', 'mars', 'pt-BR');
-getSolarReturnNatalAspectDescription('mars', 'conjunction', 'saturn'); // undefined: different chart roles
+getSolarReturnNatalAspectDescription('mars', 'conjunction', 'saturn'); // annual Mars to natal Saturn
 getSolarReturnNatalAspectDescription('ascendant', 'conjunction', 'moon');
+getSolarReturnNatalAspectDescription('chiron', 'opposition', 'mercury', 'pt-BR');
+getSolarReturnNatalAspectDescription('sun', 'conjunction', 'sun'); // undefined: defining solar return
 getSolarReturnNatalSignDescription('saturn', 'moon', 'pt-BR');
 getSolarReturnNatalSignDescription('moon', 'saturn'); // reversed roles select a different entry
 getSolarReturnNatalSignDescription('moon', 'moon'); // same sign at birth and return
@@ -646,17 +648,15 @@ last point belongs to the natal chart. Both parameters use
 through Pluto, `mean node`, `chiron`, `ascendant` and `mc`. Use the chart
 roles and aspect as supplied. The bank covers 947 of the 980 ordered
 combinations across the five major aspects. The other 33 keys return
-`undefined` under Gamu's 1° calendar rule. They cover the defining Sun
-conjunction, the four other Sun-to-Sun aspects and 28 Sun, Mercury and
-Venus combinations ruled out by their maximum angular separation from
-the Sun. Coverage does not certify that each included combination occurs.
-Verify the contact, its orb and any additional conditions in the description
-from the charts.
+`undefined`. These are the defining Sun conjunction, the four other
+Sun-to-Sun aspects and 28 combinations among the Sun, Mercury and Venus
+excluded by their maximum angular separation using a 1° reference orb.
+Calculate the contact with your chosen orb before selecting the description.
+Use both charts to verify any additional conditions in the text.
 
-The angle entries cover annual Ascendant conjunct, square, trine or opposite
-natal Ascendant, annual Midheaven opposite natal Ascendant, and annual Midheaven
-square, trine or opposite natal Midheaven. A. de Thyane’s Ascendant square and
-opposition share a qualified rule. The Midheaven oppositions retain the old-age
+Several angle entries preserve specific source rules. A. de Thyane’s rules for
+the annual Ascendant square or opposite the natal Ascendant retain their
+original qualifications. The Midheaven oppositions retain the old-age
 or natal-fourth-house and affliction conditions stated for the respective
 contact. The Ascendant trine and Midheaven trine and square follow Morin’s
 instructions to consider rulers and natal directions. The annual
