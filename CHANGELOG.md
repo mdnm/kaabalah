@@ -4,7 +4,8 @@
 
 - Add 941 bilingual solar-return-to-natal contact descriptions and accept the
   ten planets, mean node, Chiron, Ascendant and Midheaven on either side of the
-  directed lookup.
+  directed lookup. Add conditional solar-return references for dignity reversals, adverse angles, Ibn Ezra’s annual-to-natal
+  planet-position rules, annual rulers and overlays, and Morin’s reception conditions.
   Planetary conjunction sources include the 1559 Latin witness of Abū Maʿshar
   and Brian Clark’s class notes on outer planets contacting the natal Sun.
   Class-grounded syntheses fill the remaining major-aspect combinations

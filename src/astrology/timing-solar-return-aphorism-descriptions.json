@@ -2090,5 +2090,168 @@
         ]
       }
     }
+,
+    "return-dignified-planet-opposite-its-weak-natal-position": {
+      "pt": "se um planeta dignificado na sua revolução solar se opõe à sua própria posição natal fraca, como Marte dignificado em Áries, a oposição não parece constituir um mau presságio. se o planeta anual está bem aspectado, ele contraria as influências natais.",
+      "en": "if a dignified planet in your solar return opposes its own weak natal position, as with Mars dignified in Aries, the opposition does not seem to be an adverse omen. if the annual planet is well aspected, it counteracts the natal influences.",
+      "keywords": {
+        "pt": [
+          "dignidade anual",
+          "oposição à própria posição natal",
+          "fraqueza natal"
+        ],
+        "en": [
+          "annual dignity",
+          "opposition to its own natal position",
+          "natal weakness"
+        ]
+      }
+    },
+    "ibn-ezra-annual-planet-at-another-natal-planets-position": {
+      "pt": "segundo Ibn Ezra, se um benéfico anual ocupa a posição natal de um maléfico no seu mapa, ele elimina o mal indicado pelo maléfico e traz boa fortuna, e o inverso vale quando um maléfico anual ocupa a posição natal de um benéfico. se ambos são benéficos, a boa fortuna se soma à boa fortuna, e se ambos são maléficos, o infortúnio se soma ao infortúnio.",
+      "en": "according to Ibn Ezra, if an annual benefic occupies a malefic’s natal position in your chart, it removes the harm signified by the malefic and brings good fortune, and the reverse applies when an annual malefic occupies a benefic’s natal position. if both are benefics, good fortune adds to good fortune, and if both are malefics, misfortune adds to misfortune.",
+      "keywords": {
+        "pt": [
+          "posição natal de outro planeta",
+          "benéficos e maléficos",
+          "boa fortuna e infortúnio"
+        ],
+        "en": [
+          "another planet’s natal position",
+          "benefics and malefics",
+          "good fortune and misfortune"
+        ]
+      }
+    }
+,
+    "return-ascendant-adverse-aspect-to-natal-midheaven": {
+      "pt": "se o Ascendente anual faz um mau aspecto ao seu Meio do Céu natal, há perigo de você prejudicar a própria situação por iniciativas ou novas ações quando o Ascendente está em signo de Fogo ou Ar, ou por obstinação ou negligência quando está em signo de Terra ou Água. na velhice, essa configuração frequentemente indica dificuldades pelo declínio da vitalidade, esforço acima das suas forças ou atividade reduzida ou interrompida por problemas de saúde.",
+      "en": "if the annual Ascendant makes an adverse aspect to your natal Midheaven, you risk harming your own position through initiatives or new actions when the Ascendant is in a Fire or Air sign, or through obstinacy or neglect when it is in an Earth or Water sign. in old age this configuration often indicates difficulties from declining vitality, exertion beyond your strength, or activity reduced or stopped by health problems.",
+      "keywords": {
+        "pt": [
+          "mau aspecto ao meio do céu natal",
+          "risco para a própria situação",
+          "condições por elemento e idade"
+        ],
+        "en": [
+          "adverse aspect to natal midheaven",
+          "risk to your own position",
+          "conditions by element and age"
+        ]
+      }
+    },
+    "return-to-natal-planetary-aspects-and-reception": {
+      "pt": "segundo Morin, se dois planetas estão em mau aspecto no seu mapa natal e um deles, na revolução anual, alcança um mau aspecto à posição natal do outro, isso é muito desfavorável sem recepção por domicílio ou exaltação, e a recepção reduz o mal; se o planeta anual alcança um bom aspecto à posição natal do outro, sem recepção não se indica bem algum e, com recepção, indica-se pouco bem, em que mal se pode confiar. se o aspecto natal é favorável mas o planeta anual alcança um aspecto desfavorável à posição natal do outro, a recepção mútua com determinação para o bem indica grande bem em meio a contrariedades, enquanto, sem recepção, sobrevém o mal, seja qual for a determinação dos planetas.",
+      "en": "according to Morin, if two planets are in an adverse aspect in your natal chart and one of them in the annual revolution reaches an adverse aspect to the other’s natal position, this is very unfavorable without reception by domicile or exaltation, and reception reduces the harm; if the annual planet reaches a favorable aspect to the other’s natal position, it indicates no good without reception and little good that can scarcely be relied on with reception. if the natal aspect is favorable but the annual planet reaches an adverse aspect to the other’s natal position, mutual reception with determination toward good signifies great good through difficulties, while without reception harm follows regardless of the planets’ determination.",
+      "keywords": {
+        "pt": [
+          "aspecto natal e aspecto anual",
+          "recepção por domicílio ou exaltação",
+          "bem em meio a contrariedades"
+        ],
+        "en": [
+          "natal and annual aspect",
+          "reception by domicile or exaltation",
+          "good through difficulties"
+        ]
+      }
+    },
+    "return-planet-regains-its-natal-position": {
+      "pt": "segundo Ibn Ezra, se um planeta da sua revolução anual volta à posição que ocupava no seu nascimento, ele volta a indicar o que significava na natividade. interprete esse testemunho de acordo com a natureza do planeta e com as casas sobre as quais ele tem regência.",
+      "en": "according to Ibn Ezra, if a planet in your annual revolution returns to its position at your birth, it again signifies what it signified in your nativity. interpret this testimony according to the planet’s nature and the houses it rules.",
+      "keywords": {
+        "pt": [
+          "retorno à posição natal",
+          "natureza do planeta",
+          "regência das casas"
+        ],
+        "en": [
+          "return to the natal position",
+          "planetary nature",
+          "house rulership"
+        ]
+      }
+    }
+,
+    "annual-and-natal-rulers-conjunct-same-house": {
+      "pt": "se o regente de uma casa do seu mapa natal está em conjunção com o regente da mesma casa na revolução solar, essa casa diz respeito ao principal acontecimento do ano. a indicação é especialmente forte quando a conjunção ocorre no Ascendente natal ou anual.",
+      "en": "if the ruler of a house in your natal chart conjoins the ruler of that same house in the solar return, that house concerns the year’s main event. the indication is especially strong when the conjunction occurs at your natal or annual Ascendant.",
+      "keywords": {
+        "pt": [
+          "regentes da mesma Casa",
+          "conjunção natal e anual",
+          "acontecimento principal do ano"
+        ],
+        "en": [
+          "rulers of the same house",
+          "natal and annual conjunction",
+          "year’s major event"
+        ]
+      }
+    },
+    "three-or-more-planets-return-to-natal-positions": {
+      "pt": "se três planetas ou mais voltam na revolução solar às posições que ocupavam no seu nascimento, a importância dos acontecimentos do ano se acentua. dê prioridade às configurações formadas pelos planetas no próprio mapa anual ao interpretar esses acontecimentos.",
+      "en": "if three or more planets return in your solar revolution to the positions they occupied at your birth, the importance of the year’s events increases. give priority to the configurations formed by the planets within the annual chart when interpreting those events.",
+      "keywords": {
+        "pt": [
+          "três ou mais retornos planetários",
+          "posições natais",
+          "acontecimentos importantes"
+        ],
+        "en": [
+          "three or more planetary returns",
+          "natal positions",
+          "important events"
+        ]
+      }
+    },
+    "afflicted-annual-saturn-over-natal-planet": {
+      "pt": "se Saturno está afligido na sua revolução solar e se sobrepõe a um planeta natal, essa configuração sempre suscita provações emocionais ou físicas. a natureza dessas provações pode ser deduzida dos significados combinados das casas anual e natal envolvidas.",
+      "en": "if Saturn is afflicted in your solar return and overlays a natal planet, the configuration always brings emotional or physical trials. their nature can be inferred from the combined meanings of the annual and natal houses involved.",
+      "keywords": {
+        "pt": [
+          "aflição de Saturno anual",
+          "provações emocionais ou físicas",
+          "casas anual e natal"
+        ],
+        "en": [
+          "affliction of annual Saturn",
+          "emotional or physical trials",
+          "annual and natal houses"
+        ]
+      }
+    },
+    "return-planet-strong-natal-contact": {
+      "pt": "na leitura de Brian Clark, quando um planeta da sua revolução solar faz um aspecto forte a um planeta natal, as duas funções podem precisar atuar juntas e receber atenção consciente para funcionar bem durante o ano. a casa natal onde cai o planeta anual indica uma área em que seus temas podem surgir, e o contato com um ângulo natal ressalta especialmente a necessidade de lidar com o que esse planeta representa.",
+      "en": "in Brian Clark’s approach, when a planet in your solar return makes a strong aspect to a natal planet, the two functions may need to work together and receive conscious attention to operate effectively during the year. the natal house occupied by the return planet points to an area where its themes may arise, and a contact with a natal angle especially emphasizes the need to address what the return planet represents.",
+      "keywords": {
+        "pt": [
+          "aspecto forte a um planeta natal",
+          "casa natal ativada",
+          "contato com ângulo natal"
+        ],
+        "en": [
+          "strong aspect to a natal planet",
+          "activated natal house",
+          "contact with a natal angle"
+        ]
+      }
+    },
+    "return-and-natal-contacts-origin-of-events": {
+      "pt": "segundo a leitura de Junctin de Florença citada na aula, uma combinação entre um planeta anual e um planeta natal indica que a causa do acontecimento precede seu aniversário, enquanto uma configuração anual sem relação com o mapa natal indica uma causa posterior. Volguine considera que essa observação costuma se verificar e ressalva que ainda precisa ser esclarecida.",
+      "en": "in the reading attributed in the class to Junctin of Florence, a combination of an annual planet with a natal planet indicates that the cause of the event precedes your birthday, while an annual configuration unrelated to the natal chart indicates a later cause. Volguine says the observation usually holds and adds that it still needs clarification.",
+      "keywords": {
+        "pt": [
+          "origem do acontecimento",
+          "combinação entre mapa anual e natal",
+          "antes ou depois do aniversário"
+        ],
+        "en": [
+          "origin of the event",
+          "annual and natal chart combination",
+          "before or after the birthday"
+        ]
+      }
+    }
   }
 }

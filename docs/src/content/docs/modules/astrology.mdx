@@ -391,7 +391,7 @@ getSolarReturnMcHouseDescription(10); // profession, occupation, fame or fortune
 | `getSolarReturnAspectDescription` | 214 major aspects between planets in the same return chart; either planet order |
 | `getSolarReturnNatalAspectDescription` | 947 directed return-to-natal contacts, including source readings and class-grounded syntheses |
 | `getSolarReturnNatalSignDescription` | 100 directed combinations for a return planet occupying a natal planet’s sign |
-| `getSolarReturnAphorismDescription` | 131 conditional references, including Ascendant rules, natal-tenth-sign and natal-Fortune-sign grids, and four annual-rulership examples |
+| `getSolarReturnAphorismDescription` | 141 conditional references, including Ascendant rules, natal-tenth-sign and natal-Fortune-sign grids, and four annual-rulership examples |
 | `getSkyRetrogradePlanetDescription` | Mercury through Pluto; a finite numeric negative longitude speed is required |
 | `getSkyRetrogradeSignDescription` | Mercury through Pluto × twelve current sky signs (96 profiles); finite negative longitude speed required |
 | `getMoonPhaseDescription` | All eight `MoonPhaseName` values |
@@ -736,7 +736,7 @@ inspect coverage. IDs select reference descriptions. A successful lookup does **
 mean that a chart satisfies their conditions. No chart matching, rule evaluation,
 placement, aspect, orb, sign comparison or event date is calculated.
 
-The 131 references preserve the selected aphorisms’ complete prerequisites and
+The 141 references preserve the selected aphorisms’ complete prerequisites and
 favorable/adverse branches: combinations of natal and annual houses, rulers,
 aspects, dignity, sect, lunar phase, oriental/occidental position, eclipses and
 other specified factors. They retain health, mortality, captivity, sexuality,
@@ -773,6 +773,16 @@ qualification identifying the person concerned in the eighth-ruler interpretatio
 The stomach-ulcer example illustrates a particular chart. These
 four examples do not establish a complete rulership matrix or a natal-ruler
 placement dictionary, and the lookup does not calculate their conditions.
+
+Additional conditional references cover a dignified planet opposing its own
+weak natal position, the annual Ascendant in adverse aspect to the natal
+Midheaven, and Morin’s rule for evaluating natal and annual aspects with reception.
+Ibn Ezra’s references distinguish a planet returning to its own natal position
+from a planet occupying another’s, with the four benefic and malefic cases
+kept together as stated in *Book of Nativities* IV §20. Other references cover
+conjunctions of rulers of the same natal and annual house, the return of at
+least three planets to their natal places, and an afflicted annual Saturn
+overlying a natal planet.
 
 Interpretation conventions remain textual. Within this aphorism series,
 ruler of the year means Ascendant ruler without a natal/annual chart
