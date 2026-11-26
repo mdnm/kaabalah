@@ -16,6 +16,10 @@ import {
   getTreeTopology,
   getTreeDescription,
   getTreeNodeDescriptions,
+  getSphereProfile,
+  getPathProfile,
+  getTreeSection,
+  getSphereSections,
   createTreeWorkspace,
   id,
   parseId,
@@ -30,7 +34,6 @@ import {
   WESTERN_ASPECTS,
   WESTERN_ELEMENTS,
   MELKITZEDEKI_PATHS,
-  LURIANIC_PATHS,
   TREE_TOPOLOGY_LIGHTNING_SPHERE_NAMES,
   FOUR_WORLDS,
   KaabalahTypes,
@@ -77,20 +80,18 @@ const tree = createTree({
 
 | Value                  | Description                              |
 |------------------------|------------------------------------------|
-| `"kaabalah"`           | Traditional Kaabalah (Melkitzedeki paths)|
-| `"hermetic-qabalah"`   | Western Hermetic Qabalah                 |
-| `"lurianic-kabbalah"`  | Lurianic Kabbalah (alternate path layout)|
+| `"kaabalah"`           | Kaabalah as taught by the Melkitzedeki Order. It is the only system; the Hermetic and Lurianic trees were removed in 8.0.0 |
 
 ### Available parts (`PartKey`)
 
-Parts extend the base system with additional nodes and correspondences. Not all parts are available for every system.
+Parts extend the base system with additional nodes and correspondences.
 
-| Part key           | Available in                            | Adds                                         |
-|--------------------|-----------------------------------------|----------------------------------------------|
-| `"westernAstrology"` | `kaabalah`, `hermetic-qabalah`        | Planets, zodiac signs, houses, elements, modalities, aspects |
-| `"tarot"`          | `kaabalah`                              | 78-card tarot deck (major, minor, court) with meanings |
-| `"colors"`         | `kaabalah`, `hermetic-qabalah`          | 12 spectral colors with hex codes            |
-| `"music"`          | `kaabalah`, `hermetic-qabalah`          | 12 musical notes with frequencies            |
+| Part key           | Adds                                         |
+|--------------------|----------------------------------------------|
+| `"westernAstrology"` | Planets, zodiac signs, houses, elements, modalities, aspects |
+| `"tarot"`          | 78-card tarot deck (major, minor, court) with meanings |
+| `"colors"`         | 12 spectral colors with hex codes            |
+| `"music"`          | 12 musical notes with frequencies            |
 
 When multiple parts are loaded, bridges automatically link compatible parts (e.g. colors + music, colors + westernAstrology).
 
@@ -248,7 +249,7 @@ Returns notes attached to a node (`{ kind: "node", nodeId }`) or a correspondenc
 
 ## Portuguese descriptions
 
-Node data is English. `getTreeDescription` and `getTreeNodeDescriptions` return the Portuguese text for it without touching the node, covering all three systems and the shared sphere, world, letter and music metadata. Node names such as Chokhmah and Tiphareth, branded IDs and the original node data never change.
+Node data is English. `getTreeDescription` and `getTreeNodeDescriptions` return the Portuguese text for it without touching the node, covering the sphere, world, letter, color and music metadata. Node names such as Chokhmah and Tiphareth, branded IDs and the original node data never change.
 
 ```typescript
 import { getCanonicalTree, getTreeDescription, getTreeNodeDescriptions, id, KaabalahTypes } from 'kaabalah/core';
@@ -263,6 +264,98 @@ getTreeNodeDescriptions(node, 'pt-BR');
 ```
 
 `getTreeNodeDescriptions` returns the available `meaning`, `colorDescription`, `noteDescription`, `nameMeaning` (the translated meaning of a sphere or world name), `letterMeaning`, `symbol` and `hieroglyph` fields. Custom text without a catalog entry is returned unchanged. `pt` and `pt-BR` select Portuguese; any other language, or none, selects English. In the CLI, `kaabalah tree:node path:1 --language pt-BR` returns the Portuguese descriptions.
+
+## Sphere profiles: `getSphereProfile`
+
+A sphere node carries only its Hebrew spelling and the meaning of its name. `getSphereProfile` returns what the sphere means, for display beside a chart or a reading. Use it to explain a sphere to someone who does not practice: for example, the spheres that weigh most in a `buildKaabalisticMapData` result.
+
+```typescript
+import { getSphereProfile, listSphereProfiles } from 'kaabalah/core';
+
+const geburah = getSphereProfile('Geburah');          // or 'sphere:Geburah', any case
+geburah.essence;      // 'Strength and discipline: the courage that sets limits and cuts away what does not serve.'
+geburah.keywords;     // ['strength', 'discipline', 'courage', 'justice', 'severity', 'initiative']
+geburah.expression;   // { balanced, excess, lack }
+geburah.work;         // 'Justice of every kind, the increase of power, the cutting of ties, ...'
+
+getSphereProfile('Geburah', 'pt-BR');                 // the same profile in Portuguese
+listSphereProfiles();                                 // all eleven, in the Tree's order
+```
+
+The profile has two groups of fields.
+
+| Group | Fields |
+|-------|--------|
+| Plain words | `essence`, `keywords`, `work` (what is worked in the sphere when one walks the Tree), `expression` (`balanced`, `excess`, `lack`) |
+| Correspondences | `nameMeaning`, `titles`, `magicalImage`, `instrument` (on the magician's table), `symbols`, `geometricForm`, `elementalRelation`, `world`, `divineName`, `archangel`, `choir`, `heaven`, `yetziraticText`, `spiritualExperience`, `attributes`, `virtues`, `vices`, `body`, `places`, `lifeAreas`, `animals`, `plants`, `stones`, `metals`, `drugs`, `tarot`, `colors` (one per world), `candles`, `incense` |
+
+`expression` gives the three ways the theme of a sphere shows up in a person. A heavy sphere in a chart means the theme is prominent, not that the person lives it in excess: show the three and let the person recognise which one applies.
+
+Some fields are absent on purpose:
+
+- `expression` is `null` for Kether, Chokhmah, Daath and Malkuth. Balance, excess and lack are given for the seven spheres of the classical planets.
+- Daath has only `essence`, `keywords`, `nameMeaning`, `titles`, `magicalImage`, `instrument`, `work`, `body`, `places`, `animals`, `plants`, `stones`, `metals` and `drugs`.
+
+An unknown sphere returns `undefined`. `pt` and `pt-BR` select Portuguese; any other language, or none, selects English. `SPHERE_PROFILES` is the frozen bilingual source, with `{ en, pt }` in every text field.
+
+## Tree sections: worlds, pillars and triads
+
+`getTreeSection` describes the parts of the Tree that group spheres: the four worlds, the three columns and the three triangles.
+
+```typescript
+import { getTreeSection, listTreeSections, getSphereSections } from 'kaabalah/core';
+
+getTreeSection('pillar:left');             // Pillar of Severity: Binah, Geburah, Hod
+getTreeSection('supernal', 'pt-BR');       // short form of 'triad:supernal', in Portuguese
+listTreeSections({ kind: 'world' });       // Atziluth, Briah, Yetzirah, Assiah
+
+const { world, pillar, triad } = getSphereSections('Geburah');
+// world.id 'world:Briah', pillar.id 'pillar:left', triad.id 'triad:second'
+```
+
+| Kind | IDs | `correspondences` keys |
+|------|-----|------------------------|
+| `world` | `world:Atziluth`, `world:Briah`, `world:Yetzirah`, `world:Assiah` | `letter`, `element`, `suit`, `hierarchy`, `verb`, `mind`, `level` |
+| `pillar` | `pillar:right`, `pillar:left`, `pillar:middle` | `polarity`, `movement`, `name` |
+| `triad` | `triad:supernal`, `triad:second`, `triad:third` | `orientation`, `functions` |
+
+Every section has `id`, `kind`, `name`, `title`, `spheres`, `essence`, `keywords`, `description` and `correspondences`.
+
+- `level` is the level of reading of each world: literal for Assiah, symbolic for Yetzirah, the shivaya (the hermetic garden) for Briah and the unified field for Atziluth.
+- A world lists the spheres whose choir belongs to it. Each sphere also acts in all four worlds at once, which is why a sphere profile has a colour for each world.
+- Daath belongs to the middle pillar and to no world and no triad. Malkuth is the sphere outside the three triangles. `getSphereSections` returns `null` for a section the sphere does not have.
+
+In the CLI, `kaabalah tree:sphere Geburah` and `kaabalah tree:section pillar:left` return the same data.
+
+## Path profiles: `getPathProfile`
+
+A path is one Hebrew letter and one major ark annu between two spheres. `getPathProfile` returns what the path means and what is taught about its ark annu.
+
+```typescript
+import { getPathProfile, listPathProfiles, getSpherePathProfiles } from 'kaabalah/core';
+
+const path = getPathProfile(13);            // or '13', 'path:13', 'Death', 'A Morte', 'Mem'
+path.from;          // 'Geburah'
+path.to;            // 'Hod'
+path.tarotCard;     // 'Death'
+path.essence;       // 'Renewal: the duality above meets the duality below, and what could kill the soul is allowed to die.'
+path.keyPhrase;     // 'I kill what could kill my soul.'
+path.misuse;        // ['destruction', 'fatality', 'loss', ...]
+
+getPathProfile(13, 'pt-BR');                // the same profile in Portuguese
+listPathProfiles();                         // all 22, in order
+getSpherePathProfiles('Geburah');           // the paths that touch a sphere
+```
+
+| Group | Fields |
+|-------|--------|
+| Read from the Tree | `number`, `from`, `to`, `meaning`, `hebrewLetter`, `tarotCard`, `correspondence` (its element, planet or sign) |
+| Plain words | `essence`, `keywords`, `letterQuality`, `keyPhrase`, `affirmation`, `psychology`, `misuse`, `dailyUse` |
+| Practice | `alchemicalNames`, `dialogue`, `mantras`, `mantraNote`, `incense`, `candles`, `instruments`, `body`, `aminoAcid` |
+
+`mantras` are written as they are sounded and are the same in both languages. `letterQuality` is what the letter stands for (silence for Aleph, beauty for Tav) and `aminoAcid` is its amino acid in the book of life, where the first and last letters are pauses. `misuse`, `dialogue`, `mantraNote`, `candles`, `instruments`, `dailyUse` and `body` are absent where the teaching on that ark annu does not give them. The gestures of the ark annu are not part of the profile.
+
+An unknown path returns `undefined`. `PATH_PROFILES` is the frozen bilingual source, keyed by path number. In the CLI, `kaabalah tree:path 13` returns the same data.
 
 ## `TreeOfLife` instance methods
 
@@ -383,14 +476,11 @@ SPHERES_DATA.KETHER  // { hebrewSpelling: "כתר", englishName: "Crown" }
 ### Paths
 
 ```typescript
-import { MELKITZEDEKI_PATHS, LURIANIC_PATHS } from 'kaabalah/core';
+import { MELKITZEDEKI_PATHS } from 'kaabalah/core';
 
 // 22 paths numbered 1–22
 MELKITZEDEKI_PATHS.KETHER_CHOKHMAH   // 1
 MELKITZEDEKI_PATHS.YESOD_MALKUTH     // 22
-
-LURIANIC_PATHS.KETHER_CHOKHMAH       // 1
-LURIANIC_PATHS.YESOD_MALKUTH         // 22
 ```
 
 ### Hebrew letters

@@ -1,0 +1,245 @@
+{
+  "world:Atziluth": {
+    "kind": "world",
+    "name": { "en": "Atziluth", "pt": "Atziluth" },
+    "title": { "en": "World of Emanations, the archetypal or divine world", "pt": "Mundo das Emanações, o mundo arquetípico ou divino" },
+    "spheres": ["Kether", "Chokhmah", "Binah"],
+    "essence": {
+      "en": "Where the first form of everything exists: the idea as it was conceived, before anyone is aware of it.",
+      "pt": "Onde existe a forma primordial de tudo: a ideia como foi idealizada, antes de alguém ter consciência dela."
+    },
+    "keywords": {
+      "en": ["archetype", "emanation", "the divine", "will", "the fundamental fire"],
+      "pt": ["arquétipo", "emanação", "o divino", "vontade", "o fogo fundamental"]
+    },
+    "description": {
+      "en": "Cosmic manifestation happens in four worlds, each made of a quality of matter, from the subtlest to the densest. Atziluth is the first: the mould conceived by the mind of the Great Architect of creation, where the fundamental fire of creation lives. It is here that the gods of each sphere of the Tree reside, the divine names. Every sphere is present in all four worlds at once and acts in each one through a different hierarchy.",
+      "pt": "A manifestação cósmica se dá em quatro mundos, cada qual composto de uma qualidade de matéria, da mais sutil à mais densa. Atziluth é o primeiro: o molde idealizado pela mente do Grande Arquiteto da criação, onde reside o fogo fundamental da criação. É aqui que residem os deuses de cada esfera da Árvore, os nomes divinos. Cada esfera está presente nos quatro mundos ao mesmo tempo e atua em cada um por meio de uma hierarquia diferente."
+    },
+    "correspondences": {
+      "letter": { "en": "Yod, the first letter of the Divine Name", "pt": "Yod, a primeira letra do Nome Divino" },
+      "element": { "en": "Fire", "pt": "Fogo" },
+      "suit": { "en": "Wands", "pt": "Paus" },
+      "hierarchy": { "en": "The gods of each sphere (the divine names)", "pt": "Os deuses de cada esfera (os nomes divinos)" },
+      "verb": { "en": "To will (the lion of the sphinx)", "pt": "Querer (o leão da esfinge)" },
+      "mind": { "en": "The metacortex, the spiritual dimension", "pt": "O metacórtex, a dimensão espiritual" },
+      "level": {
+        "en": "The unified field, the hidden level: no division is left, everything is one continuous flow",
+        "pt": "O campo unificado, o nível oculto: não resta divisão, tudo é um único fluxo contínuo"
+      }
+    }
+  },
+  "world:Briah": {
+    "kind": "world",
+    "name": { "en": "Briah", "pt": "Briah" },
+    "title": { "en": "World of Creation, the mental world", "pt": "Mundo da Criação, o mundo mental" },
+    "spheres": ["Chesed", "Geburah", "Tiphareth"],
+    "essence": {
+      "en": "Where what was conceived becomes conscious: the idea is understood and thought through.",
+      "pt": "Onde aquilo que foi idealizado se torna consciente: a ideia é compreendida e pensada."
+    },
+    "keywords": {
+      "en": ["creation", "awareness", "pure intellect", "knowing", "the fundamental water"],
+      "pt": ["criação", "conscientização", "intelecto puro", "saber", "a água fundamental"]
+    },
+    "description": {
+      "en": "Briah is the becoming aware of what was conceived in the divine world: the intellectual, or mental, side of creation. It is where the archangels act within each sphere, and where pure intellect lives, the fundamental water of creation. It gives love and wisdom to the energy that the will set in motion.",
+      "pt": "Briah é a conscientização daquilo que foi idealizado no mundo divino: o aspecto intelectual, ou mental, da criação. É onde atuam os arcanjos, dentro de cada esfera, e onde reside o intelecto puro, a água fundamental da criação. Dá amor e sabedoria à energia que a vontade colocou em movimento."
+    },
+    "correspondences": {
+      "letter": { "en": "He, the second letter of the Divine Name", "pt": "He, a segunda letra do Nome Divino" },
+      "element": { "en": "Water", "pt": "Água" },
+      "suit": { "en": "Cups", "pt": "Copas" },
+      "hierarchy": { "en": "The archangels", "pt": "Os arcanjos" },
+      "verb": { "en": "To know (the man of the sphinx)", "pt": "Saber (o homem da esfinge)" },
+      "mind": { "en": "The neocortex: reason and intuition", "pt": "O neocórtex: razão e intuição" },
+      "level": {
+        "en": "The shivaya, the hermetic garden: the body seen as a living inner ecosystem",
+        "pt": "O shivaya, o jardim hermético: o corpo visto como um ecossistema interno vivo"
+      }
+    }
+  },
+  "world:Yetzirah": {
+    "kind": "world",
+    "name": { "en": "Yetzirah", "pt": "Yetzirah" },
+    "title": { "en": "World of Formation, the astral world", "pt": "Mundo da Formação, o mundo astral" },
+    "spheres": ["Netzach", "Hod", "Yesod"],
+    "essence": {
+      "en": "Where the forms are moulded: the subtle pattern of what is about to appear in matter.",
+      "pt": "Onde as formas são moldadas: o padrão sutil daquilo que está para se manifestar na matéria."
+    },
+    "keywords": {
+      "en": ["formation", "the astral", "patterns", "daring", "the fundamental air"],
+      "pt": ["formação", "o astral", "padrões", "ousar", "o ar fundamental"]
+    },
+    "description": {
+      "en": "Yetzirah is where the forms being created are shaped. Here live the angels, grouped in choirs that answer to the archangels: messengers and builders of forms. The fundamental air of creation lives here, and with it the subtle patterns of what will show up in the material world, which comes right after. It is where the will that came from above begins to turn outward.",
+      "pt": "Yetzirah é onde se moldam as formas que estão sendo criadas. Aqui residem os anjos, agrupados em coros que respondem aos arcanjos: mensageiros e construtores de formas. Aqui reside o ar fundamental da criação, e com ele os padrões sutis daquilo que irá se manifestar no mundo material, que vem logo a seguir. É onde a vontade emanada de cima começa a se exteriorizar."
+    },
+    "correspondences": {
+      "letter": { "en": "Vav, the third letter of the Divine Name", "pt": "Vav, a terceira letra do Nome Divino" },
+      "element": { "en": "Air", "pt": "Ar" },
+      "suit": { "en": "Swords", "pt": "Espadas" },
+      "hierarchy": { "en": "The angels, in their choirs", "pt": "Os anjos, em seus coros" },
+      "verb": { "en": "To dare (the eagle of the sphinx)", "pt": "Ousar (a águia da esfinge)" },
+      "mind": { "en": "The limbic cortex: emotions and feelings", "pt": "O córtex límbico: emoções e sentimentos" },
+      "level": { "en": "The symbolic level: the same thing read as image and symbol", "pt": "O nível simbólico: a mesma coisa lida como imagem e símbolo" }
+    }
+  },
+  "world:Assiah": {
+    "kind": "world",
+    "name": { "en": "Assiah", "pt": "Assiah" },
+    "title": { "en": "World of Manifestation, the material world", "pt": "Mundo da Manifestação, o mundo material" },
+    "spheres": ["Malkuth"],
+    "essence": {
+      "en": "Where it becomes fact: the densest layer of what began as an idea.",
+      "pt": "Onde vira fato: a camada mais densa daquilo que começou como ideia."
+    },
+    "keywords": { "en": ["manifestation", "matter", "the body", "silence", "earth"], "pt": ["manifestação", "matéria", "o corpo", "calar", "terra"] },
+    "description": {
+      "en": "Assiah holds the densest side of what the archetypal world emanated: it took on mental matter, then astral matter, and finally a denser layer, a physical body, created and manifest. The material world is not the Earth itself or each planet as a body in the sky: it is matter in its subtle side, the energy each planet sends out. In the physical world we keep silent about our projects so that the energies can crystallize into acts and facts.",
+      "pt": "Assiah guarda o aspecto mais denso do que foi emanado pelo mundo arquetípico: revestiu-se de uma matéria mental, depois de uma matéria astral e, por fim, recebeu uma camada mais densa, um corpo físico, criado e manifesto. O mundo material não é a Terra em si nem cada planeta como corpo celeste: é a matéria em seu aspecto sutil, a energia emanada de cada planeta. No mundo físico nos calamos sobre os projetos, para que as energias se cristalizem em atos e fatos."
+    },
+    "correspondences": {
+      "letter": { "en": "He, the last letter of the Divine Name", "pt": "He, a última letra do Nome Divino" },
+      "element": { "en": "Earth", "pt": "Terra" },
+      "suit": { "en": "Pentacles", "pt": "Ouros" },
+      "hierarchy": { "en": "The planetary energies", "pt": "As energias planetárias" },
+      "verb": { "en": "To keep silent (the bull of the sphinx)", "pt": "Calar (o touro da esfinge)" },
+      "mind": { "en": "The reptilian cortex", "pt": "O córtex reptiliano" },
+      "level": { "en": "The literal level: what the body and matter do, as it is", "pt": "O nível literal: o que o corpo e a matéria fazem, como é" }
+    }
+  },
+  "pillar:right": {
+    "kind": "pillar",
+    "name": { "en": "Pillar of Mercy", "pt": "Pilar da Misericórdia" },
+    "title": { "en": "The right column, Jachin", "pt": "A coluna da direita, Jachin" },
+    "spheres": ["Chokhmah", "Chesed", "Netzach"],
+    "essence": {
+      "en": "The column that expands: the active side, which creates, gives and goes outward.",
+      "pt": "A coluna que expande: o lado ativo, que cria, dá e vai para fora."
+    },
+    "keywords": {
+      "en": ["expansion", "creation", "mercy", "the active principle", "the masculine", "the electric"],
+      "pt": ["expansão", "criação", "misericórdia", "o princípio ativo", "o masculino", "o elétrico"]
+    },
+    "description": {
+      "en": "The spheres are set in three columns. The two side columns are the two pillars of the temple, the duality that lives in all things: day and night, heat and cold. The right one is Jachin, which begins with Yod, the masculine and electric principle. It is the pillar of creation and mercy. In the numerology of a name, the consonants belong to it: the personality, the way a person expresses outward.",
+      "pt": "As esferas se dispõem em três colunas. As duas colunas laterais são os dois pilares do templo, a dualidade que habita em todas as coisas: o dia e a noite, o calor e o frio. A da direita é Jachin, que começa por Yod, o princípio masculino e elétrico. É o pilar da criação e da misericórdia. Na numerologia de um nome, as consoantes pertencem a ele: a personalidade, o modo como a pessoa se expressa para fora."
+    },
+    "correspondences": {
+      "polarity": { "en": "Masculine, electric, active", "pt": "Masculino, elétrico, ativo" },
+      "movement": { "en": "Expansion", "pt": "Expansão" },
+      "name": { "en": "The consonants: personality, the number of expression", "pt": "As consoantes: a personalidade, o número de expressão" }
+    }
+  },
+  "pillar:left": {
+    "kind": "pillar",
+    "name": { "en": "Pillar of Severity", "pt": "Pilar da Severidade" },
+    "title": { "en": "The left column, Boaz", "pt": "A coluna da esquerda, Boaz" },
+    "spheres": ["Binah", "Geburah", "Hod"],
+    "essence": {
+      "en": "The column that contracts: the receptive side, which limits, gives form and judges.",
+      "pt": "A coluna que contrai: o lado receptivo, que limita, dá forma e julga."
+    },
+    "keywords": {
+      "en": ["contraction", "limit", "justice", "the passive principle", "the feminine", "the magnetic"],
+      "pt": ["contração", "limite", "justiça", "o princípio passivo", "o feminino", "o magnético"]
+    },
+    "description": {
+      "en": "The left column is Boaz, which begins with Beth, the feminine and magnetic principle. It is the pillar of justice and destruction: what cuts and restrains, so that what the right column expanded can take form. The two pillars are those of Justice and Mercy, the freedom to choose with its consequences. In the numerology of a name, the vowels belong to it: the individuality, the inner life of a person.",
+      "pt": "A coluna da esquerda é Boaz, que começa por Beth, o princípio feminino e magnético. É o pilar da justiça e da destruição: o que corta e contém, para que aquilo que a coluna da direita expandiu possa tomar forma. Os dois pilares são os da Justiça e da Misericórdia, a liberdade de escolha com as suas consequências. Na numerologia de um nome, as vogais pertencem a ele: a individualidade, a vida interior da pessoa."
+    },
+    "correspondences": {
+      "polarity": { "en": "Feminine, magnetic, passive", "pt": "Feminino, magnético, passivo" },
+      "movement": { "en": "Contraction", "pt": "Contração" },
+      "name": { "en": "The vowels: individuality, the number of the soul", "pt": "As vogais: a individualidade, o número da alma" }
+    }
+  },
+  "pillar:middle": {
+    "kind": "pillar",
+    "name": { "en": "Pillar of Balance", "pt": "Pilar do Equilíbrio" },
+    "title": { "en": "The middle column", "pt": "A coluna do meio" },
+    "spheres": ["Kether", "Daath", "Tiphareth", "Yesod", "Malkuth"],
+    "essence": {
+      "en": "The column that balances: where the two sides meet and become one thing.",
+      "pt": "A coluna que equilibra: onde os dois lados se encontram e se tornam uma coisa só."
+    },
+    "keywords": {
+      "en": ["balance", "synthesis", "the path of illumination", "destiny", "unity"],
+      "pt": ["equilíbrio", "síntese", "o caminho da iluminação", "destino", "unidade"]
+    },
+    "description": {
+      "en": "The middle column balances the two polarized side columns: the binary has to be brought back to unity through the number three. It is the path of illumination, the arrow shot from Yesod up the centre of the Tree to Kether. In the numerology of a name, the sum of vowels and consonants belongs to it: the synthesis, the number of destiny.",
+      "pt": "A coluna do meio equilibra as duas colunas laterais polarizadas: é necessário devolver o binário à unidade por meio do número três. É o caminho da iluminação, a flecha lançada de Yesod pelo centro da Árvore até Kether. Na numerologia de um nome, a soma de vogais e consoantes pertence a ela: a síntese, o número do destino."
+    },
+    "correspondences": {
+      "polarity": { "en": "The two polarities in balance", "pt": "As duas polaridades em equilíbrio" },
+      "movement": { "en": "Balance", "pt": "Equilíbrio" },
+      "name": { "en": "Vowels and consonants together: synthesis, the number of destiny", "pt": "Vogais e consoantes juntas: a síntese, o número do destino" }
+    }
+  },
+  "triad:supernal": {
+    "kind": "triad",
+    "name": { "en": "Supernal Triad", "pt": "Tríade Suprema" },
+    "title": { "en": "The first triangle, the Sephirotic Crown", "pt": "O primeiro triângulo, a Coroa Sefirótica" },
+    "spheres": ["Kether", "Chokhmah", "Binah"],
+    "essence": {
+      "en": "Will, light and sound: the idea is born, is seen and is understood.",
+      "pt": "Vontade, luz e som: a ideia nasce, é vista e é compreendida."
+    },
+    "keywords": { "en": ["will", "lights", "sound", "the crown", "above the abyss"], "pt": ["vontade", "luzes", "som", "a coroa", "acima do abismo"] },
+    "description": {
+      "en": "The spheres group into three triangles, one pointing up and two pointing down, and one sphere, Malkuth, falls outside the whole scheme. The first triangle is the supernal triad: Kether, the will; Chokhmah, the lights; Binah, the sound. It is the one that points up. Its divine reflection is the hidden sphere, Daath, the one that is and is not at the same time.",
+      "pt": "As esferas se agrupam em três triângulos, um ascendente e dois descendentes, restando uma esfera caída de todo o esquema, que é Malkuth. O primeiro triângulo é a tríade suprema: Kether, a vontade; Chokhmah, as luzes; Binah, o som. É o triângulo ascendente. Seu reflexo divino é a esfera oculta, Daath, aquela que é e não é ao mesmo tempo."
+    },
+    "correspondences": {
+      "orientation": { "en": "Ascending, apex up", "pt": "Ascendente, vértice para cima" },
+      "functions": { "en": "Will, lights, sound", "pt": "Vontade, luzes, som" }
+    }
+  },
+  "triad:second": {
+    "kind": "triad",
+    "name": { "en": "Second Triad", "pt": "Segunda Tríade" },
+    "title": { "en": "The second triangle, the primary colours", "pt": "O segundo triângulo, as cores primárias" },
+    "spheres": ["Chesed", "Geburah", "Tiphareth"],
+    "essence": {
+      "en": "Expansion, discipline and beauty: the first thing to show below the abyss.",
+      "pt": "Expansão, disciplina e beleza: a primeira manifestação abaixo do abismo."
+    },
+    "keywords": {
+      "en": ["expansion", "discipline", "beauty", "the primary colours", "below the abyss"],
+      "pt": ["expansão", "disciplina", "beleza", "as cores primárias", "abaixo do abismo"]
+    },
+    "description": {
+      "en": "The second triangle is Chesed, expansion; Geburah, discipline; Tiphareth, beauty. Chesed, the blue sphere, is the first manifestation or impulse below the abyss of Daath, the portal between the realms. With it we enter the spectrum of light: blue, red and yellow, the primary colours of the primordial archetypes. This triangle points down.",
+      "pt": "O segundo triângulo é Chesed, a expansão; Geburah, a disciplina; Tiphareth, a beleza. Chesed, a esfera azul, é a primeira manifestação ou impulso abaixo do abismo de Daath, o portal entre os reinos. Com ela entramos no espectro de luz: azul, vermelho e amarelo, as cores primárias dos arquétipos primordiais. Este triângulo é descendente."
+    },
+    "correspondences": {
+      "orientation": { "en": "Descending, apex down", "pt": "Descendente, vértice para baixo" },
+      "functions": { "en": "Expansion, discipline, beauty", "pt": "Expansão, disciplina, beleza" }
+    }
+  },
+  "triad:third": {
+    "kind": "triad",
+    "name": { "en": "Third Triad", "pt": "Terceira Tríade" },
+    "title": { "en": "The third triangle, above the kingdom", "pt": "O terceiro triângulo, acima do reino" },
+    "spheres": ["Netzach", "Hod", "Yesod"],
+    "essence": {
+      "en": "Emotion, reason and foundation: the last adjustments before it becomes matter.",
+      "pt": "Emoção, razão e fundamento: os últimos ajustes antes de virar matéria."
+    },
+    "keywords": {
+      "en": ["silent victory", "glory", "foundations", "the astral realm", "the mental realm"],
+      "pt": ["vitória silenciosa", "glória", "fundamentos", "o reino astral", "o reino mental"]
+    },
+    "description": {
+      "en": "The third triangle is Netzach, the silent victory; Hod, the glory; Yesod, the cubic stone, the foundations. What is already there in the mental realm, the world of Hod, and in the astral realm, the world of Netzach, is grounded in Yesod and materializes in the physical plane, Malkuth. Malkuth is the sphere that falls outside the three triangles: the physical body and its four elements.",
+      "pt": "O terceiro triângulo é Netzach, a vitória silenciosa; Hod, a glória; Yesod, a pedra cúbica, os fundamentos. O que já se verifica no reino mental, o mundo de Hod, e no reino astral, o mundo de Netzach, é fundamentado em Yesod e se materializa no plano físico, Malkuth. Malkuth é a esfera que fica fora dos três triângulos: o corpo físico e os seus quatro elementos."
+    },
+    "correspondences": {
+      "orientation": { "en": "Descending, apex down", "pt": "Descendente, vértice para baixo" },
+      "functions": { "en": "Silent victory, glory, foundations", "pt": "Vitória silenciosa, glória, fundamentos" }
+    }
+  }
+}

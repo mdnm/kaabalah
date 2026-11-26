@@ -79,6 +79,9 @@ npx kaabalah help
 | `tree:types` | List all node types and their counts |
 | `tree:layout` | Return canonical Tree of Life layout coordinates |
 | `tree:topology` | Return the structural topology, paths, and named routes (lightning, serpent) |
+| `tree:sphere [sphere]` | Describe a sphere: meaning, balance, excess and lack, its work, correspondences |
+| `tree:path [path]` | Describe a path: spheres, letter and card, meaning, misuse, mantras, correspondences |
+| `tree:section [section]` | Describe a world, pillar or triad of the Tree |
 | `tree:svg` | Generate a Tree of Life SVG |
 | `tree:ascii` | Render a lightweight ASCII Tree of Life preview |
 | `help [command]` | Show help, or the JSON schema with `--json` |
@@ -927,13 +930,13 @@ Return the canonical Tree of Life layout coordinates. Useful for overlays and cu
 
 ```bash
 kaabalah tree:layout --json --compact
-kaabalah tree:layout --system=hermetic-qabalah --units=percentages --json
+kaabalah tree:layout --units=percentages --json
 kaabalah tree:layout --render-model --activations=activations.json --json --compact
 ```
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
+| `--system` | string | kaabalah | Tree system. `kaabalah` is the only one |
 | `--units` | string | both | Coordinate space: `percentages`, `viewBoxUnits`, or `both` |
 | `--render-model` | boolean | false | Return activation-aware render model geometry instead of the basic layout |
 | `--activations` | string | - | Path to activation JSON array or object with an `activations` array |
@@ -951,12 +954,11 @@ Return the structural Tree of Life topology: spheres, path endpoints, and named 
 ```bash
 kaabalah tree:topology --json --compact
 kaabalah tree:topology --route=lightning --json --compact
-kaabalah tree:topology --system=lurianic-kabbalah --route=lightning --json --compact
 ```
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
+| `--system` | string | kaabalah | Tree system. `kaabalah` is the only one |
 | `--route` | string | all | Route filter: `all`, `lightning`, or `serpent` |
 
 Routes expose both the canonical sphere order and the path targets available in the selected system. The `lightning` route descends:
@@ -966,6 +968,58 @@ Kether -> Chokhmah -> Binah -> Chesed -> Geburah -> Tiphareth -> Netzach -> Hod 
 ```
 
 `serpent` is the reverse route. If a system does not have a direct structural path between two consecutive route spheres, that hop appears in `missingSegments` and `isFullyConnected` is `false`.
+
+### tree:sphere
+
+Describe a sphere: what it means in plain words, how its theme shows in balance, in excess and in lack, what is worked in it, and its correspondences. Without a sphere, list all eleven.
+
+```bash
+kaabalah tree:sphere Geburah --json --compact
+kaabalah tree:sphere Geburah --language pt-BR --json --compact --fields=essence,keywords,work,expression
+kaabalah tree:sphere --json --compact --fields=spheres
+```
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `sphere` | No | Sphere name or node ID (`Geburah`, `sphere:Geburah`), in any case |
+
+The JSON for one sphere is its profile plus `sections`, the IDs of its world, pillar and triad (`null` where it has none). `expression` is given for the seven spheres of the classical planets and is `null` for the others. An unknown sphere exits with `INVALID_ARGUMENT`.
+
+### tree:path
+
+Describe a path: its two spheres, letter and card, what it means in plain words, and what is taught about its ark annu (psychological level, misuse, dialogue, mantras, incense, candles, instruments, daily use). Without a path, list all 22.
+
+```bash
+kaabalah tree:path 13 --json --compact
+kaabalah tree:path "The Hanged Man" --language pt-BR --json --compact --fields=essence,keywords,misuse
+kaabalah tree:path --json --compact --fields=paths
+```
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `path` | No | Path number (1-22), path ID (`path:13`), card name (`Death`, `A Morte`) or Hebrew letter (`Mem`), in any case |
+
+An unknown path exits with `INVALID_ARGUMENT`.
+
+### tree:section
+
+Describe a section of the Tree: one of the four worlds, the three pillars or the three triads. Without a section, list them all.
+
+```bash
+kaabalah tree:section pillar:left --json --compact
+kaabalah tree:section supernal --language pt-BR --json --compact
+kaabalah tree:section --kind=world --json --compact
+```
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `section` | No | Section ID (`world:Briah`, `pillar:left`, `triad:supernal`) or the part after the colon |
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `--kind` | string | - | List only one kind: `world`, `pillar` or `triad` |
+
+An unknown section or kind exits with `INVALID_ARGUMENT`.
 
 ### tree:svg
 
@@ -980,7 +1034,7 @@ kaabalah tree:svg --background=transparent --activations=activations.json --json
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--system` | string | kaabalah | Tree system. Only `kaabalah` has an SVG renderer; `hermetic-qabalah` and `lurianic-kabbalah` exit with `UNSUPPORTED_SYSTEM` |
+| `--system` | string | kaabalah | Tree system. `kaabalah` is the only one |
 | `--width` | string | - | SVG width attribute (e.g. `1110mm`, `800`, `100%`) |
 | `--height` | string | - | SVG height attribute |
 | `--background` | string | white | Background fill color, or `transparent` |
@@ -1015,7 +1069,7 @@ kaabalah tree:ascii --columns=41 --rows=21 --json --compact
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--system` | string | kaabalah | Tree system: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah` |
+| `--system` | string | kaabalah | Tree system. `kaabalah` is the only one |
 | `--columns` | number | 61 | ASCII canvas width in characters (minimum 21) |
 | `--rows` | number | 31 | ASCII canvas height in lines (minimum 11) |
 
@@ -1177,11 +1231,11 @@ All errors in `--json` mode return a structured response:
 
 Exit code is always `1` on error.
 
-**Error codes:** `INVALID_DATE`, `INVALID_ARGUMENT`, `MISSING_ARGUMENT`, `UNKNOWN_COMMAND`, `UNSUPPORTED_SYSTEM`, `CARD_NOT_FOUND`, `INDEX_OUT_OF_POOL`, `INTERNAL_ERROR`, `GEOCODE_ERROR`, `WASM_INIT_ERROR`, `INVALID_JSON`
+**Error codes:** `INVALID_DATE`, `INVALID_ARGUMENT`, `MISSING_ARGUMENT`, `UNKNOWN_COMMAND`, `CARD_NOT_FOUND`, `INDEX_OUT_OF_POOL`, `INTERNAL_ERROR`, `GEOCODE_ERROR`, `WASM_INIT_ERROR`, `INVALID_JSON`
 
 Typed library errors are mapped onto these codes (no extra code exists): date problems, `SWISSEPH_DATE_OUT_OF_RANGE` and strict-ephemeris mismatches are `INVALID_DATE`; invalid options, ranges, manifests, orb policies and derived-chart limits are `INVALID_ARGUMENT`; missing time, location or birth value is `MISSING_ARGUMENT`; missing Swiss Ephemeris assets are `WASM_INIT_ERROR`. Messages end with a separate sentence pointing to `kaabalah help <command>`.
 
-`UNSUPPORTED_SYSTEM` is returned when a tree system has no SVG renderer (`tree:svg`), and `INDEX_OUT_OF_POOL` when a `tarot:spread --method=conscious` index exceeds the eligible pool. The JSON error also carries the CLI `version`. With `--language pt-BR` the `message` is translated and `code` is not.
+`INDEX_OUT_OF_POOL` is returned when a `tarot:spread --method=conscious` index exceeds the eligible pool. The JSON error also carries the CLI `version`. With `--language pt-BR` the `message` is translated and `code` is not.
 
 ## Tips for Programmatic Use
 

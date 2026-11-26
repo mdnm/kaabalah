@@ -7,3 +7,6 @@ export * from './tree-of-life';
 export * from './types';
 export * from './workspace';
 export * from './descriptions';
+export * from './sphere-profiles';
+export * from './tree-sections';
+export * from './path-profiles';

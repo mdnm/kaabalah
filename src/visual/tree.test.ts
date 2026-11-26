@@ -34,15 +34,6 @@ describe("tree renderer layout", () => {
     expect(Object.keys(layout.percentages.paths)).toHaveLength(22);
   });
 
-  it.each(["hermetic-qabalah", "lurianic-kabbalah"] as const)(
-    "rejects SVG rendering for non-Melkitzedeki system %s",
-    (system) => {
-      expect(() => generateTreeSvg({ system })).toThrow(
-        `tree:svg is only supported for the Melkitzedeki system ('kaabalah'); received '${system}'.`
-      );
-    }
-  );
-
   it("characterizes the default coordinates for central-pillar spheres", () => {
     const layout = getTreeLayout();
 
@@ -79,17 +70,6 @@ describe("tree renderer layout", () => {
     }
   });
 
-  it("preserves requested tree system without changing canonical visual geometry", () => {
-    const defaultLayout = getTreeLayout();
-    const hermeticLayout = getTreeLayout("hermetic-qabalah");
-
-    expect(hermeticLayout.system).toBe("hermetic-qabalah");
-    expect(hermeticLayout.sphereOrder).toEqual(defaultLayout.sphereOrder);
-    expect(hermeticLayout.pathOrder).toEqual(defaultLayout.pathOrder);
-    expect(hermeticLayout.percentages.spheres[sphereId("Kether")]).toEqual(
-      defaultLayout.percentages.spheres[sphereId("Kether")]
-    );
-  });
 });
 
 describe("tree renderer model", () => {

@@ -17,7 +17,7 @@ describe("Portuguese tree descriptions", () => {
         }
       }
     }
-    expect(Object.keys(TREE_DESCRIPTIONS)).toHaveLength(184);
+    expect(Object.keys(TREE_DESCRIPTIONS)).toHaveLength(149);
     for (const [english, row] of Object.entries(TREE_DESCRIPTIONS)) {
       expect(row.en).toBe(english);
       expect(row.pt.trim()).toBeTruthy();

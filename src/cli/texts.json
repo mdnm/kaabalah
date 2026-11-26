@@ -319,10 +319,6 @@
     "en": "Return the canonical Tree of Life layout coordinates for overlays and rendering",
     "pt": "Retorne as coordenadas canônicas da árvore da vida para sobreposições e renderização"
   },
-  "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah": {
-    "en": "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah",
-    "pt": "Sistema da árvore: kaabalah, hermetic-qabalah, lurianic-kabbalah"
-  },
   "Coordinate space: percentages, viewBoxUnits, or both": {
     "en": "Coordinate space: percentages, viewBoxUnits, or both",
     "pt": "Espaço de coordenadas: percentages, viewBoxUnits ou both"
@@ -2391,10 +2387,6 @@
     "en": "Summarise every valid day of a year or year-month birth (needs year or year-month knowledge)",
     "pt": "Resume cada dia válido de um nascimento com ano ou ano e mês (exige conhecer o ano ou o ano e o mês)"
   },
-  "Tree system to render: only kaabalah has an SVG renderer (other systems exit UNSUPPORTED_SYSTEM)": {
-    "en": "Tree system to render: only kaabalah has an SVG renderer (other systems exit UNSUPPORTED_SYSTEM)",
-    "pt": "Sistema de árvore a renderizar: só kaabalah tem renderizador SVG (os outros sistemas saem com UNSUPPORTED_SYSTEM)"
-  },
   "Post-filter: drop already-generated default aspects with an orb above this value (it cannot add contacts the default orbs omitted; use --orb-profile for that)": {
     "en": "Post-filter: drop already-generated default aspects with an orb above this value (it cannot add contacts the default orbs omitted; use --orb-profile for that)",
     "pt": "Pós-filtro: descarta aspectos padrão já gerados com orbe acima deste valor (não acrescenta contatos omitidos pelos orbes padrão; use --orb-profile para isso)"
@@ -3338,5 +3330,117 @@
   "  Year: Shaka {0} ({1}), Vikram {2} ({3})": {
     "en": "  Year: Shaka {0} ({1}), Vikram {2} ({3})",
     "pt": "  Ano: Shaka {0} ({1}), Vikram {2} ({3})"
+  },
+  "  Keywords: {0}": {
+    "en": "  Keywords: {0}",
+    "pt": "  Palavras-chave: {0}"
+  },
+  "  Magical image: {0}": {
+    "en": "  Magical image: {0}",
+    "pt": "  Imagem mágica: {0}"
+  },
+  "  Virtues: {0}": {
+    "en": "  Virtues: {0}",
+    "pt": "  Virtudes: {0}"
+  },
+  "  Vices: {0}": {
+    "en": "  Vices: {0}",
+    "pt": "  Vícios: {0}"
+  },
+  "  Body: {0}": {
+    "en": "  Body: {0}",
+    "pt": "  Corpo: {0}"
+  },
+  "  In balance: {0}": {
+    "en": "  In balance: {0}",
+    "pt": "  Em equilíbrio: {0}"
+  },
+  "  In excess: {0}": {
+    "en": "  In excess: {0}",
+    "pt": "  Em excesso: {0}"
+  },
+  "  In lack: {0}": {
+    "en": "  In lack: {0}",
+    "pt": "  Em falta: {0}"
+  },
+  "\n  Use --json for every correspondence.\n": {
+    "en": "\n  Use --json for every correspondence.\n",
+    "pt": "\n  Use --json para ver todas as correspondências.\n"
+  },
+  "Unknown sphere \"{0}\". Valid spheres: {1}.": {
+    "en": "Unknown sphere \"{0}\". Valid spheres: {1}.",
+    "pt": "Esfera desconhecida \"{0}\". Esferas válidas: {1}."
+  },
+  "Unknown section kind \"{0}\". Valid kinds: {1}.": {
+    "en": "Unknown section kind \"{0}\". Valid kinds: {1}.",
+    "pt": "Tipo de seção desconhecido \"{0}\". Tipos válidos: {1}."
+  },
+  "Unknown tree section \"{0}\". Valid sections: {1}.": {
+    "en": "Unknown tree section \"{0}\". Valid sections: {1}.",
+    "pt": "Seção da árvore desconhecida \"{0}\". Seções válidas: {1}."
+  },
+  "Describe a section of the Tree: one of the four worlds, three pillars or three triads": {
+    "en": "Describe a section of the Tree: one of the four worlds, three pillars or three triads",
+    "pt": "Descreve uma seção da Árvore: um dos quatro mundos, três pilares ou três tríades"
+  },
+  "Sphere name or node ID (e.g. Geburah, sphere:Geburah); omit to list all spheres": {
+    "en": "Sphere name or node ID (e.g. Geburah, sphere:Geburah); omit to list all spheres",
+    "pt": "Nome da esfera ou ID do nó (ex.: Geburah, sphere:Geburah); omita para listar todas as esferas"
+  },
+  "Section ID or its short form (e.g. world:Briah, left, supernal); omit to list all sections": {
+    "en": "Section ID or its short form (e.g. world:Briah, left, supernal); omit to list all sections",
+    "pt": "ID da seção ou sua forma curta (ex.: world:Briah, left, supernal); omita para listar todas as seções"
+  },
+  "List only one kind of section: world, pillar or triad": {
+    "en": "List only one kind of section: world, pillar or triad",
+    "pt": "Lista apenas um tipo de seção: world, pillar ou triad"
+  },
+  "Tree system. kaabalah is the only one": {
+    "en": "Tree system. kaabalah is the only one",
+    "pt": "Sistema da árvore. kaabalah é o único"
+  },
+  "  Key phrase: {0}": {
+    "en": "  Key phrase: {0}",
+    "pt": "  Palavra-chave do ark annu: {0}"
+  },
+  "  Affirmation: {0}": {
+    "en": "  Affirmation: {0}",
+    "pt": "  Mentalização: {0}"
+  },
+  "  Misuse: {0}": {
+    "en": "  Misuse: {0}",
+    "pt": "  Mau uso: {0}"
+  },
+  "  Mantras: {0}": {
+    "en": "  Mantras: {0}",
+    "pt": "  Mantras: {0}"
+  },
+  "Unknown path \"{0}\". Use a path number from 1 to 22, a path ID (path:13), a card name or a Hebrew letter.": {
+    "en": "Unknown path \"{0}\". Use a path number from 1 to 22, a path ID (path:13), a card name or a Hebrew letter.",
+    "pt": "Caminho desconhecido \"{0}\". Use um número de caminho de 1 a 22, um ID de caminho (path:13), o nome de uma carta ou uma letra hebraica."
+  },
+  "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences": {
+    "en": "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences",
+    "pt": "Descreve um caminho: suas esferas, letra e carta, significado simples, mau uso, diálogo, mantras e correspondências"
+  },
+  "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths": {
+    "en": "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths",
+    "pt": "Número do caminho (1-22), ID do caminho (path:13), nome da carta ou letra hebraica; omita para listar todos os caminhos"
+  },
+  "Describe a sphere: plain meaning, balance, excess and lack, its work and correspondences": {
+    "en": "Describe a sphere: plain meaning, balance, excess and lack, its work and correspondences",
+    "pt": "Descreve uma esfera: significado simples, equilíbrio, excesso e falta, o seu trabalho e correspondências"
+  },
+  "  Instrument: {0}": {
+    "en": "  Instrument: {0}",
+    "pt": "  Instrumento: {0}"
+  },
+  "  Work: {0}": {
+    "en": "  Work: {0}",
+    "pt": "  Trabalho: {0}"
+  },
+  "  Letter: {0}": {
+    "en": "  Letter: {0}",
+    "pt": "  Letra: {0}"
   }
 }

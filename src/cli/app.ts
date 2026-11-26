@@ -47,6 +47,7 @@ import {
   cmdTreeTypes,
 } from "./commands/tree";
 import { cmdTreeMap, cmdTreePaths } from "./commands/tree-chart";
+import { cmdTreePath, cmdTreeSection, cmdTreeSphere } from "./commands/tree-meaning";
 import { getFlagBool, isCliParseError, isJsonMode, parseArgs } from "./runtime/args";
 import { isCliConfigError, resolveRuntimeConfig } from "./runtime/config";
 import { configureDebugRuntime } from "./runtime/debug";
@@ -287,6 +288,18 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         return;
       case "tree:topology":
         cmdTreeTopology(flags);
+        return;
+      case "tree:sphere":
+        cmdTreeSphere((inputPayload?.sphere as string | undefined) ?? (args.slice(1).join(" ") || undefined), flags);
+        return;
+      case "tree:path":
+        cmdTreePath(
+          inputPayload?.path !== undefined ? String(inputPayload.path) : args.slice(1).join(" ") || undefined,
+          flags
+        );
+        return;
+      case "tree:section":
+        cmdTreeSection((inputPayload?.section as string | undefined) ?? (args.slice(1).join(" ") || undefined), flags);
         return;
       case "tree:svg":
         cmdTreeSvg(flags);

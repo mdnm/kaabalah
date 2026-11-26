@@ -8,9 +8,7 @@ export type TarotTreeId = SystemKey;
 export const DEFAULT_TAROT_TREE_ID: TarotTreeId = "kaabalah";
 
 export const TAROT_TREE_IDS = [
-  "kaabalah",
-  "hermetic-qabalah",
-  "lurianic-kabbalah"
+  "kaabalah"
 ] as const satisfies readonly TarotTreeId[];
 
 export type MajorArcana =

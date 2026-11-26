@@ -651,7 +651,7 @@ interface TreeSvgOptions {
   viewBox?: TreeSvgViewBox;        // override coordinate space (default: 0 0 286 561)
   background?: string | "transparent";  // fill color or "transparent" (default: "white")
   palette?: TreeSvgPalette;        // color scheme (default: "color")
-  system?: SystemKey;              // "kaabalah" | "hermetic-qabalah" | "lurianic-kabbalah" (default: "kaabalah")
+  system?: SystemKey;              // "kaabalah", the only system (default)
   daathLayer?: TreeSvgDaathLayer;  // "front" | "back" (default: "front")
   highlights?: TreeSvgHighlights;  // targeted path/sphere recolors layered on top of the base renderer
   activations?: readonly TreeTargetActivationInput[];  // activation-aware prominence and hit geometry metadata
@@ -966,7 +966,7 @@ Returns the canonical layout data for the Tree of Life without rendering any SVG
 function getTreeLayout(system?: SystemKey): TreeLayout
 ```
 
-`system` defaults to `"kaabalah"`. Valid values: `"kaabalah"`, `"hermetic-qabalah"`, `"lurianic-kabbalah"`.
+`system` defaults to `"kaabalah"`, the only system.
 
 #### `TreeLayout`
 

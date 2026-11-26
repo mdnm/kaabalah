@@ -1,0 +1,1036 @@
+{
+  "Kether": {
+    "number": 1,
+    "essence": {
+      "en": "The will before anything exists: the point where an intention is born, still without form.",
+      "pt": "A vontade antes de qualquer coisa existir: o ponto onde uma intenção nasce, ainda sem forma."
+    },
+    "keywords": {
+      "en": ["will", "origin", "unity", "pure being", "the higher self", "attainment"],
+      "pt": ["vontade", "origem", "unidade", "o ser puro", "o eu superior", "consecução"]
+    },
+    "nameMeaning": { "en": "Crown, or Will", "pt": "Coroa, ou Vontade" },
+    "titles": {
+      "en": ["The Existence of Existences", "The Secret of Secrets", "The Ancient of Ancients", "The Ancient of Days", "The Primordial Point", "The Point within the Circle", "The Most High", "The Vast Countenance", "The Head that is not", "Macroprosopos", "Amen", "Hidden Light", "Inner Light", "He"],
+      "pt": ["A Existência das Existências", "O Segredo dos Segredos", "O Antigo dos Antigos", "O Ancião dos Dias", "O Ponto Primordial", "O Ponto no Círculo", "O Altíssimo", "O Rosto Imenso", "A Cabeça que não existe", "Macroprosopos", "Amém", "Lux Oculta", "Lux Interna", "Ele"]
+    },
+    "magicalImage": { "en": "An old bearded king, seen in profile from the right side.", "pt": "Um velho rei barbado, visto de perfil pelo lado direito." },
+    "instrument": { "en": "The crown of life.", "pt": "A coroa da vida." },
+    "work": {
+      "en": "Where the first rays of plasma happen, the ones that give rise to every manifestation. One does not step on Kether: its energy is brought to the top of the head, as the crown of life.",
+      "pt": "Onde acontecem os raios de plasma iniciais que originam as manifestações. Em Kether não se pisa: a sua energia é trazida para o alto da cabeça, como a coroa da vida."
+    },
+    "symbols": { "en": ["the point", "the crown", "the swastika"], "pt": ["o ponto", "a coroa", "a suástica"] },
+    "geometricForm": { "en": "The point", "pt": "O ponto" },
+    "elementalRelation": { "en": "Fire of Fire", "pt": "Fogo do Fogo" },
+    "world": "Atziluth",
+    "divineName": {
+      "name": "Eheieh",
+      "meaning": { "en": "I am whatever I want to be, always: the pure being.", "pt": "Eu sou o que quiser ser sempre: o ser puro." }
+    },
+    "archangel": {
+      "name": "Metatron",
+      "role": {
+        "en": "Prince of the Faces, the master who leads those who must come before the divine presence. Through him all the archangels receive their virtues.",
+        "pt": "Príncipe das Faces, o mestre que encaminha os que devem comparecer à presença divina. É por ele que todos os arcanjos recebem as suas virtudes."
+      }
+    },
+    "choir": {
+      "name": "Chaioth ha Qadesh",
+      "meaning": { "en": "Holy Living Creatures, the roots of the four elements", "pt": "Sagradas Criaturas Vivas, as raízes dos quatro elementos" },
+      "christianName": { "en": "Seraphim", "pt": "Serafins" }
+    },
+    "heaven": { "name": "Reshith ha-Gilgalim", "meaning": { "en": "The First Swirlings, the Primum Mobile", "pt": "Os Primeiros Remoinhos, o Primum Mobile" } },
+    "yetziraticText": {
+      "en": "The first path is called the Admirable or Hidden Intelligence, the Supreme Crown. It is the light that makes the beginning without beginning understood; it is the First Glory, for no creature can reach its essence.",
+      "pt": "O primeiro caminho é chamado de Inteligência Admirável ou Oculta, a Coroa Suprema. É a luz que faz compreender o princípio sem princípio; é a Glória Primeira, pois nenhuma criatura pode alcançar a sua essência."
+    },
+    "spiritualExperience": { "en": "Union with God.", "pt": "A união com Deus." },
+    "attributes": { "en": ["will"], "pt": ["vontade"] },
+    "virtues": { "en": ["will", "attainment", "completion of the Great Work"], "pt": ["vontade", "consecução", "a realização da Grande Obra"] },
+    "vices": { "en": ["thwarted will (wrath)"], "pt": ["vontade contrariada (ira)"] },
+    "body": {
+      "en": "The skull, the divine spark, the thousand-petalled lotus (crown chakra).",
+      "pt": "O crânio, a centelha divina, o lótus de mil pétalas (chakra da coroa)."
+    },
+    "places": { "en": "The Universe.", "pt": "O Universo." },
+    "lifeAreas": {
+      "en": ["everything that concerns the highest attainment", "latent forces", "the purity of children"],
+      "pt": ["tudo o que se refere à mais alta realização", "forças latentes", "a pureza das crianças"]
+    },
+    "animals": { "en": ["dragon"], "pt": ["dragão"] },
+    "plants": { "en": ["lotus", "lily"], "pt": ["lótus", "lírio"] },
+    "stones": { "en": ["diamond"], "pt": ["diamante"] },
+    "metals": { "en": [], "pt": [] },
+    "drugs": { "en": "Psychedelics.", "pt": "Psicodélicas." },
+    "tarot": [
+      { "card": "Ace of Wands", "meaning": { "en": "Root of the powers of Fire: the beginning.", "pt": "Raiz dos poderes do Fogo: o início." } },
+      {
+        "card": "Ace of Cups",
+        "meaning": { "en": "Root of the powers of Water: emotional initiative.", "pt": "Raiz dos poderes da Água: iniciativa sentimental." }
+      },
+      {
+        "card": "Ace of Swords",
+        "meaning": { "en": "Root of the powers of Air: begetting, living together.", "pt": "Raiz dos poderes do Ar: engendro, coabitação." }
+      },
+      { "card": "Ace of Pentacles", "meaning": { "en": "Root of the powers of Earth: abundance.", "pt": "Raiz dos poderes da Terra: abundância." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Brilliance, colourless", "pt": "Esplendor, incolor" },
+      "briah": { "en": "Pure white brilliance", "pt": "Esplendor branco, puro" },
+      "yetzirah": { "en": "Pure white brilliance", "pt": "Esplendor branco, puro" },
+      "assiah": { "en": "White flecked with gold", "pt": "Branco salpicado de ouro" }
+    },
+    "candles": { "en": "Three white candles.", "pt": "Três velas brancas." },
+    "incense": {
+      "en": ["clove", "myrrh", "musk", "storax", "amber", "laurel", "aloe vera"],
+      "pt": ["cravo", "mirra", "almíscar", "estoraque", "âmbar", "louro", "aloe vera"]
+    },
+    "expression": null
+  },
+  "Chokhmah": {
+    "number": 2,
+    "essence": {
+      "en": "Wisdom as the first light: the impulse that sets everything in motion and lets the idea be seen.",
+      "pt": "A sabedoria como primeira luz: o impulso que coloca tudo em movimento e deixa a ideia ser vista."
+    },
+    "keywords": {
+      "en": ["wisdom", "light", "first impulse", "the father", "devotion", "vision"],
+      "pt": ["sabedoria", "luz", "primeiro impulso", "o pai", "devoção", "visão"]
+    },
+    "nameMeaning": { "en": "Wisdom", "pt": "Sabedoria" },
+    "titles": { "en": ["Ab", "Abba", "The Supernal Father", "The Yod of the Tetragrammaton"], "pt": ["Ab", "Abba", "O Pai Supremo", "O Yod do Tetragrammaton"] },
+    "magicalImage": { "en": "A bearded male figure.", "pt": "Uma figura masculina, barbada." },
+    "instrument": { "en": "The candelabrum that raises the candles, the menorah.", "pt": "O candelabro para elevação das velas, a menorá." },
+    "work": { "en": "The power of the lights: images that are not yet manifest.", "pt": "O poder das luzes: imagens ainda não manifestas." },
+    "symbols": {
+      "en": ["the lingam", "the phallus", "the Yod of the Tetragrammaton", "the Inner Robe of Glory", "the pedestal", "the tower", "the upright sceptre of power", "the obelisk"],
+      "pt": ["o lingam", "o falo", "o Yod do Tetragrammaton", "o Manto Interno da Glória", "o pedestal", "a torre", "o cetro ereto do poder", "o obelisco"]
+    },
+    "geometricForm": { "en": "The line", "pt": "O traço" },
+    "elementalRelation": { "en": "Water of Fire", "pt": "Água do Fogo" },
+    "world": "Atziluth",
+    "divineName": { "name": "Yah", "meaning": { "en": "The Infinite: the ideal divine wisdom.", "pt": "O Infinito: a divina sabedoria ideal." } },
+    "archangel": {
+      "name": "Ratziel",
+      "role": {
+        "en": "Prince of Princes, keeper of the knowledge of hidden and secret things; the bright archangel of the human soul, guide and illuminator of destiny.",
+        "pt": "Príncipe dos Príncipes, a quem é atribuído o conhecimento das coisas ocultas e secretas; o arcanjo brilhante da alma humana, guia e iluminador do destino."
+      }
+    },
+    "choir": {
+      "name": "Auphanim",
+      "meaning": {
+        "en": "Wheels, the rotating forces around the centre of the first movements",
+        "pt": "Rodas, as forças rotativas em torno do centro dos primeiros movimentos"
+      },
+      "christianName": { "en": "Cherubim", "pt": "Querubins" }
+    },
+    "heaven": {
+      "name": "Mazloth",
+      "meaning": {
+        "en": "The Zodiac, the starry sky where the forms of things are laid out",
+        "pt": "O Zodíaco, o céu estrelado onde estão dispostas as formas das coisas"
+      }
+    },
+    "yetziraticText": {
+      "en": "The second path is called the Illuminating Intelligence. It is the Crown of Creation and the Splendour of the Unity, which it equals. It is exalted above every head and the kabbalists call it the Second Glory.",
+      "pt": "O segundo caminho é chamado de Inteligência Iluminadora. É a Coroa da Criação e o Esplendor da Unidade, que a iguala. É exaltada sobre todas as cabeças e os cabalistas a chamam de Segunda Glória."
+    },
+    "spiritualExperience": { "en": "The vision of God face to face.", "pt": "A visão de Deus face a face." },
+    "attributes": { "en": ["will", "wanting", "first impulses"], "pt": ["vontade", "querer", "primeiros impulsos"] },
+    "virtues": { "en": ["love", "devotion"], "pt": ["amor", "devoção"] },
+    "vices": { "en": ["hatred", "selfishness"], "pt": ["ódio", "egoísmo"] },
+    "body": { "en": "The left side of the face.", "pt": "O lado esquerdo da face." },
+    "places": { "en": "The Zodiac.", "pt": "O Zodíaco." },
+    "lifeAreas": {
+      "en": ["power in its masculine representation", "father", "government", "the state", "authorities", "the boss"],
+      "pt": ["o poder com representação masculina", "pai", "governo", "estado", "autoridades", "patrão"]
+    },
+    "animals": { "en": ["man"], "pt": ["o homem"] },
+    "plants": { "en": ["amaranth", "mistletoe", "sacred fig (Ficus religiosa)"], "pt": ["amaranto", "visco", "figueira (Ficus religiosa)"] },
+    "stones": { "en": ["star ruby", "turquoise"], "pt": ["rubi estrela", "turquesa"] },
+    "metals": { "en": [], "pt": [] },
+    "drugs": { "en": "Digital or virtual ones.", "pt": "Digitais ou virtuais." },
+    "tarot": [
+      { "card": "Two of Wands", "meaning": { "en": "Dominion, neutralization.", "pt": "Domínio, neutralização." } },
+      { "card": "Two of Cups", "meaning": { "en": "Unlimited love.", "pt": "Amor ilimitado." } },
+      { "card": "Two of Swords", "meaning": { "en": "Peace restored.", "pt": "Paz restabelecida." } },
+      { "card": "Two of Pentacles", "meaning": { "en": "Lord of material abundance.", "pt": "Senhor da abundância material." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Pure soft blue, over the six colours below Daath", "pt": "Azul suave puro, de fundo com as seis cores abaixo de Daath" },
+      "briah": { "en": "Grey, iridescent violet", "pt": "Cinza, violeta furta-cor" },
+      "yetzirah": { "en": "Iridescent pearl grey", "pt": "Cinza-pérola iridescente" },
+      "assiah": { "en": "White flecked with red, blue and yellow", "pt": "Branco salpicado de vermelho, azul e amarelo" }
+    },
+    "candles": { "en": "Three white, yellow or grey candles.", "pt": "Três velas brancas, amarelas ou cinza." },
+    "incense": {
+      "en": ["clove", "myrrh", "musk", "storax", "amber", "laurel", "aloe vera"],
+      "pt": ["cravo", "mirra", "almíscar", "estoraque", "âmbar", "louro", "aloe vera"]
+    },
+    "expression": null
+  },
+  "Binah": {
+    "number": 3,
+    "essence": {
+      "en": "The intelligence of sound: the understanding that gives form, the mother who holds back the light so that something can exist.",
+      "pt": "A inteligência do som: o entendimento que dá forma, a mãe que retém a luz para que algo possa existir."
+    },
+    "keywords": {
+      "en": ["sound", "understanding", "form", "structure", "silence", "time", "the mother", "destiny"],
+      "pt": ["som", "entendimento", "forma", "estrutura", "silêncio", "tempo", "a mãe", "destino"]
+    },
+    "nameMeaning": { "en": "Intelligence, understanding, comprehension", "pt": "Inteligência, entendimento, compreensão" },
+    "titles": {
+      "en": ["Ama, the dark sterile Mother", "Aima, the bright fertile Mother", "Khorsia, the Throne", "Marah, the Great Sea"],
+      "pt": ["Ama, a Mãe estéril obscura", "Aima, a Mãe fértil brilhante", "Khorsia, o Trono", "Marah, o Grande Mar"]
+    },
+    "magicalImage": {
+      "en": "A mature woman, a matron. An old man with the scythe, the angel of death.",
+      "pt": "Uma mulher madura, uma matrona. Um ancião com a gadanha, o anjo da morte."
+    },
+    "instrument": { "en": "Sound vessels: singing bowls, bells, amphorae.", "pt": "Recipientes sonoros: tigelas tibetanas, sinos, ânforas." },
+    "work": {
+      "en": "Mantras, words, sounds and frequencies are worked here to program the being.",
+      "pt": "Mantras, palavras, sons e frequências são trabalhados aqui para programar o ser."
+    },
+    "symbols": {
+      "en": ["the yoni", "the kteis", "the vesica piscis", "the cup or chalice", "the Outer Robe of Concealment"],
+      "pt": ["o yoni", "o kteis", "a vesica piscis", "a taça ou o cálice", "o Manto Externo do Ocultamento"]
+    },
+    "geometricForm": { "en": "The triangle", "pt": "O triângulo" },
+    "elementalRelation": { "en": "Air of Fire", "pt": "Ar do Fogo" },
+    "world": "Atziluth",
+    "divineName": {
+      "name": "Jehovah Elohim",
+      "meaning": { "en": "The Eternal: the masculine and feminine aspects of God.", "pt": "O Eterno: os aspectos masculino e feminino de Deus." }
+    },
+    "archangel": {
+      "name": "Tzaphkiel",
+      "role": {
+        "en": "The one who contemplates God, prince of the spirit's struggle against evil. He acts in discipline and regeneration, sometimes painfully.",
+        "pt": "Aquele que contempla Deus, o príncipe da luta do espírito contra o mal. Intervém na disciplina e na regeneração, às vezes de forma penosa."
+      }
+    },
+    "choir": {
+      "name": "Aralim",
+      "meaning": { "en": "The Mighty Ones, strong and powerful entities", "pt": "Os Poderosos, entidades fortes e poderosas" },
+      "christianName": { "en": "Thrones", "pt": "Tronos" }
+    },
+    "heaven": { "name": "Shabbathai", "meaning": { "en": "Saturn", "pt": "Saturno" } },
+    "yetziraticText": {
+      "en": "The third path is called the Sanctifying Intelligence and is the Foundation of Primordial Wisdom; it is also called the Creator of Faith. Its roots are the Amen. It is the mother of Faith, the source from which Faith flows.",
+      "pt": "O terceiro caminho é chamado de Inteligência Santificante e é o Fundamento da Sabedoria Primordial; chama-se também Criadora da Fé. Suas raízes são o Amém. É a mãe da Fé, a fonte de onde emana a Fé."
+    },
+    "spiritualExperience": { "en": "The vision of sorrow.", "pt": "A visão da dor." },
+    "attributes": { "en": ["destiny or fate"], "pt": ["destino ou fatalidade"] },
+    "virtues": { "en": ["silence"], "pt": ["o silêncio"] },
+    "vices": { "en": ["avarice"], "pt": ["a avareza"] },
+    "body": { "en": "The right side of the face.", "pt": "O lado direito do rosto." },
+    "places": {
+      "en": "Gloomy, underground, sad, religious and mournful places: cemeteries, pyres, abandoned dwellings, old rubble and ruins, places about to fall from age, solitary dens, caves and wells, still pools, ponds and swamps.",
+      "pt": "Os lugares tenebrosos, subterrâneos, tristes, religiosos e funestos: cemitérios, piras, habitações abandonadas, velhos escombros e ruínas, lugares a ponto de cair pela velhice, antros solitários, cavernas e poços, piscinas paradas, lagoas e pântanos."
+    },
+    "lifeAreas": {
+      "en": ["silence", "inertia", "resistance or limitation", "home", "old age", "agriculture", "real estate", "inheritance", "death", "wills"],
+      "pt": ["silêncio", "inércia", "resistência ou limitação", "lar", "velhice", "agricultura", "patrimônio imobiliário", "herança", "morte", "testamentos"]
+    },
+    "animals": {
+      "en": ["mole", "armadillo", "donkey", "wolf", "hare", "mule", "cat", "bear", "camel", "pig", "monkey", "dragon", "hyena", "basilisk", "toad", "venomous animals", "serpents", "scorpions", "ants", "wasps", "hornets", "crane", "ostrich", "peacock", "owls", "bat", "lapwing", "crow", "quail", "eel", "dogfish", "tortoise", "oysters", "sea sponge"],
+      "pt": ["toupeira", "tatu", "asno", "lobo", "lebre", "mula", "gato", "urso", "camelo", "porco", "macaco", "dragão", "hiena", "basilisco", "sapo", "animais peçonhentos", "serpentes", "escorpiões", "formigas", "vespas", "marimbondos", "grou", "avestruz", "pavão", "mocho e coruja", "morcego", "abibe", "corvo", "codorniz", "enguia", "peixe-cachorro", "tartaruga", "ostras", "esponja marinha"]
+    },
+    "plants": {
+      "en": ["ivy", "yew", "hemlock", "black nightshade", "amaranth", "hemp", "aconite", "rue", "dragonwort", "cumin", "mandrake", "opium", "black fig tree", "pine", "cypress", "passion flower", "angel's trumpet"],
+      "pt": ["hera", "teixo", "cicuta", "erva-moura", "amaranto", "cânhamo", "acônito", "arruda", "erva-de-dragão", "cominho", "mandrágora", "ópio", "figueira preta", "pinheiro", "cipreste", "passiflora", "corneta de anjo"]
+    },
+    "stones": {
+      "en": ["onyx", "jet", "anthracite", "brown jasper", "magnetite", "black pearl"],
+      "pt": ["ônix", "azeviche", "antracite", "jaspe marrom", "magnetita", "pérola negra"]
+    },
+    "metals": { "en": ["lead", "gold, for its weight"], "pt": ["chumbo", "ouro, por seu peso"] },
+    "drugs": { "en": "The deadly ones; overdose.", "pt": "As mortíferas; overdose." },
+    "tarot": [
+      { "card": "Three of Wands", "meaning": { "en": "Established strength, stability.", "pt": "Força estabelecida, estabilidade." } },
+      { "card": "Three of Cups", "meaning": { "en": "Emotional abundance.", "pt": "Abundância sentimental." } },
+      { "card": "Three of Swords", "meaning": { "en": "Pain, suffering.", "pt": "Dor, sofrimento." } },
+      { "card": "Three of Pentacles", "meaning": { "en": "Material work, social works.", "pt": "Trabalhos materiais, obras sociais." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Crimson", "pt": "Carmesim" },
+      "briah": { "en": "Black", "pt": "Negro" },
+      "yetzirah": { "en": "Dark brown", "pt": "Marrom-escuro" },
+      "assiah": { "en": "Grey flecked with pink", "pt": "Cinza salpicado de rosa" }
+    },
+    "candles": { "en": "Three black candles, or black and white.", "pt": "Três velas negras, ou preta e branca." },
+    "incense": {
+      "en": ["epazote", "sulphur", "guinea henweed root", "ginger", "turmeric"],
+      "pt": ["erva-de-santa-maria", "enxofre", "raiz de guiné", "gengibre", "cúrcuma"]
+    },
+    "expression": {
+      "balanced": {
+        "en": "Effort, discipline, acceptance of duties and responsibilities, organization and reliability, with a right sense of duty carried out with rectitude.",
+        "pt": "Esforço, disciplina, aceitação dos deveres e das responsabilidades, organização e confiabilidade, com uma noção correta dos deveres, cumpridos com retidão."
+      },
+      "excess": {
+        "en": "Avarice, lack of faith, personal limitation, rigidity, coldness, inhibition and fears; duty is placed above every other personal need.",
+        "pt": "Avareza, falta de fé, limitações pessoais, rigidez, frieza, inibição e medos; os deveres são colocados acima de todas as demais necessidades pessoais."
+      },
+      "lack": {
+        "en": "Too much pliability, no values of self-preservation or basic structure, disorganization, and an exaggerated faith without foundation.",
+        "pt": "Maleabilidade excessiva, ausência de valores de autopreservação e de estrutura básica, desorganização e um sentimento de fé exagerado e sem fundamento."
+      }
+    }
+  },
+  "Daath": {
+    "number": 11,
+    "essence": {
+      "en": "Knowledge as a door: the hidden sphere where all the spheres are one, the portal across the abyss.",
+      "pt": "O conhecimento como porta: a esfera oculta onde todas as esferas são uma só, o portal sobre o abismo."
+    },
+    "keywords": {
+      "en": ["knowledge", "gnosis", "the abyss", "the portal", "the holy royalship", "unity of the spheres"],
+      "pt": ["conhecimento", "gnose", "o abismo", "o portal", "a santa realeza", "unidade das esferas"]
+    },
+    "nameMeaning": { "en": "Knowledge, gnosis", "pt": "Conhecimento, gnose" },
+    "titles": {
+      "en": ["The Holy Royalship of Daath", "The court figures of the deck", "The guardians of the abyss"],
+      "pt": ["A Santa Realeza de Daath", "As figuras do baralho", "Os guardiões do abismo"]
+    },
+    "magicalImage": { "en": "The four suits of the deck united.", "pt": "Os quatro naipes do baralho unidos." },
+    "instrument": { "en": "The magic cloak.", "pt": "A capa mágica." },
+    "work": {
+      "en": "The cloak is the amplified layer of light of the aura, the electric fire. This sacred fire burns the seeds of the unwanted mental images and warms the wanted ones so that they sprout.",
+      "pt": "A capa é a camada de luz amplificada do campo áurico, o fogo elétrico. Esse fogo sagrado queima as sementes das imagens mentais indesejadas e aquece as almejadas para que germinem."
+    },
+    "body": { "en": "The pineal gland.", "pt": "A glândula pineal." },
+    "places": {
+      "en": "In Daath every sphere exists in its perfect state of infinite sharing. Since all of them radiate the divine light without limit, one cannot be told from another: they are one.",
+      "pt": "Em Daath todas as esferas existem em seu estado perfeito de partilha do infinito. Como todas irradiam a luz divina sem limite, não é possível distinguir uma da outra: elas são uma só."
+    },
+    "animals": { "en": ["fantastic and mystical animals"], "pt": ["animais fantásticos e místicos"] },
+    "plants": { "en": ["magical and mystical plants"], "pt": ["plantas mágicas e místicas"] },
+    "stones": { "en": ["magical and mystical stones"], "pt": ["pedras mágicas e místicas"] },
+    "metals": { "en": [], "pt": [] },
+    "drugs": {
+      "en": "Those that lift the soul and tear the veils, such as jurema and ayahuasca.",
+      "pt": "As que elevam a alma e rasgam os véus, como jurema e ayahuasca."
+    },
+    "expression": null
+  },
+  "Chesed": {
+    "number": 4,
+    "essence": {
+      "en": "Expansion and mercy: the generous power that plans, protects and makes things grow.",
+      "pt": "Expansão e misericórdia: o poder generoso que planeja, protege e faz crescer."
+    },
+    "keywords": {
+      "en": ["expansion", "mercy", "abundance", "kindness", "faith", "majesty"],
+      "pt": ["expansão", "misericórdia", "abundância", "bondade", "fé", "majestade"]
+    },
+    "nameMeaning": { "en": "Mercy, grace, kindness, charity", "pt": "Misericórdia, graça, bondade, caridade" },
+    "titles": { "en": ["Gedulah", "Love", "Majesty", "Abundance"], "pt": ["Gedulah", "Amor", "Majestade", "Abundância"] },
+    "magicalImage": { "en": "A mighty crowned king, seated on his throne.", "pt": "Um poderoso rei coroado, sentado em seu trono." },
+    "instrument": { "en": "The sceptre, staff or wand.", "pt": "O cetro, cajado ou varinha." },
+    "work": {
+      "en": "Abundance, expansion, the amplifying of mental images, mercy. Here the wanted mental images are taken into the simulator to be lived.",
+      "pt": "Abundância, expansões, amplificações das imagens mentais, misericórdias. Aqui as imagens mentais desejadas são levadas ao simulador para serem experienciadas."
+    },
+    "symbols": {
+      "en": ["the solid figure", "the tetrahedron", "the pyramid", "the equal-armed cross", "the orb", "the wand", "the sceptre", "the crook"],
+      "pt": ["a figura sólida", "o tetraedro", "a pirâmide", "a cruz de braços iguais", "o orbe", "o bastão", "o cetro", "o cajado"]
+    },
+    "geometricForm": { "en": "The square", "pt": "O quadrado" },
+    "elementalRelation": { "en": "Fire of Water", "pt": "Fogo da Água" },
+    "world": "Briah",
+    "divineName": {
+      "name": "El",
+      "meaning": {
+        "en": "God of Justice: the evolving principle, from beginning (Aleph) to movement (Lamed).",
+        "pt": "Deus da Justiça: o princípio evolutivo, do começo (Aleph) ao movimento (Lamed)."
+      }
+    },
+    "archangel": {
+      "name": "Tzadkiel",
+      "role": { "en": "The justice of God, prince of mercy and benevolence.", "pt": "A justiça de Deus, o príncipe da misericórdia e da benevolência." }
+    },
+    "choir": {
+      "name": "Chasmalim",
+      "meaning": {
+        "en": "The Shining Ones, pleasant and constructive energies that steady the mind and help self-control and discipline",
+        "pt": "Os Cintilantes, energias agradáveis e construtivas que equilibram a instabilidade mental e ajudam no autocontrole e na disciplina"
+      },
+      "christianName": { "en": "Dominations", "pt": "Dominações" }
+    },
+    "heaven": { "name": "Tzedek", "meaning": { "en": "Jupiter", "pt": "Júpiter" } },
+    "yetziraticText": {
+      "en": "The fourth path is called the Cohesive or Receptive Intelligence, because it contains all the holy powers. From it flow the spiritual virtues with their most refined essences, emanating one from another by virtue of the Primordial Emanation, the Highest Crown.",
+      "pt": "O quarto caminho é chamado de Inteligência Coesiva ou Receptiva, porque contém todos os poderes sagrados. Dele emanam as virtudes espirituais com as suas essências mais requintadas, umas das outras, por virtude da Emanação Primordial, a Coroa Mais Elevada."
+    },
+    "spiritualExperience": { "en": "The vision of love.", "pt": "A visão do amor." },
+    "attributes": { "en": ["power", "abundance", "mercy", "kindness"], "pt": ["poder", "abundância", "misericórdia", "bondade"] },
+    "virtues": { "en": ["obedience"], "pt": ["obediência"] },
+    "vices": { "en": ["fanaticism", "hypocrisy", "gluttony", "tyranny"], "pt": ["fanatismo", "hipocrisia", "gula", "tirania"] },
+    "body": { "en": "The right arm.", "pt": "O braço direito." },
+    "places": {
+      "en": "All privileged places: where councils and assemblies of princes and judges meet, courts, chairs of learning, academies, schools, and every splendid, clean place where sweet scents have spread.",
+      "pt": "Todos os lugares privilegiados: onde se realizam conselhos e assembleias de príncipes e juízes, os tribunais, as cátedras, as academias, as escolas, e todos os lugares esplendorosos, limpos, onde se têm expandido odores suaves."
+    },
+    "animals": {
+      "en": ["unicorn", "horse", "deer", "elephant", "sheep", "lambs", "hens", "partridge", "pheasant", "swallow", "pelican", "cuckoo", "stork", "eagle", "dolphin", "sheatfish"],
+      "pt": ["unicórnio", "cavalo", "veado", "elefante", "ovelhas", "cordeiros", "galinhas", "perdiz", "faisão", "andorinha", "pelicano", "cuco", "cegonha", "águia", "delfim", "siluro"]
+    },
+    "plants": {
+      "en": ["olive tree", "clover", "hyssop", "fig", "sage", "star anise", "nutmeg", "sassafras"],
+      "pt": ["oliveira", "trevo", "hissopo", "figo", "sálvia", "anis-estrelado", "noz-moscada", "sassafrás"]
+    },
+    "stones": {
+      "en": ["amethyst", "sapphire", "lapis lazuli", "blue beryl", "stones of airy colours"],
+      "pt": ["ametista", "safira", "lápis-lazúli", "berilo azul", "pedras de cores aéreas"]
+    },
+    "metals": { "en": ["tin", "silver", "gold, for its temperance"], "pt": ["estanho", "prata", "ouro, em razão de sua temperança"] },
+    "drugs": { "en": "Analgesics.", "pt": "Analgésicos." },
+    "tarot": [
+      { "card": "Four of Wands", "meaning": { "en": "Perfected work.", "pt": "Obra perfeita." } },
+      { "card": "Four of Cups", "meaning": { "en": "Pleasure.", "pt": "Prazer." } },
+      { "card": "Four of Swords", "meaning": { "en": "Rest after the struggle.", "pt": "Repouso após a luta, descanso." } },
+      { "card": "Four of Pentacles", "meaning": { "en": "Earthly power, a rain of gold.", "pt": "Poder terreno, chuva de ouro." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Deep violet", "pt": "Violeta intenso" },
+      "briah": { "en": "Blue", "pt": "Azul" },
+      "yetzirah": { "en": "Deep purple", "pt": "Púrpura intenso" },
+      "assiah": { "en": "Deep blue flecked with yellow", "pt": "Azul intenso salpicado de amarelo" }
+    },
+    "candles": { "en": "Three blue candles.", "pt": "Três velas azuis." },
+    "incense": { "en": ["nutmeg", "clove", "coffee"], "pt": ["noz-moscada", "cravo", "café"] },
+    "expression": {
+      "balanced": { "en": "Faith, trust in a higher power, and kindness.", "pt": "Fé, confiança num poder superior e bondade." },
+      "excess": {
+        "en": "Exaggerated trust in what is outside us, such as other people or established religious and governmental systems. Also scattered energy, irresponsibility, waste, fanaticism, hypocrisy, gluttony, expanding too much and promising too much.",
+        "pt": "Confiança exagerada em coisas que nos são exteriores, como outras pessoas ou sistemas estabelecidos, religiosos ou governamentais. Também dispersão de energia, irresponsabilidade, desperdício, fanatismo, hipocrisia, gula, expandir-se demais e prometer demais."
+      },
+      "lack": {
+        "en": "Distrust, disbelief, inhibition, lack of creativity, rigidity and avarice.",
+        "pt": "Desconfiança, incredulidade, inibição, falta de criatividade, rigidez e avareza."
+      }
+    }
+  },
+  "Geburah": {
+    "number": 5,
+    "essence": {
+      "en": "Strength and discipline: the courage that sets limits and cuts away what does not serve.",
+      "pt": "Força e disciplina: a coragem que coloca limites e corta o que não serve."
+    },
+    "keywords": {
+      "en": ["strength", "discipline", "courage", "justice", "severity", "initiative"],
+      "pt": ["força", "disciplina", "coragem", "justiça", "severidade", "iniciativa"]
+    },
+    "nameMeaning": { "en": "Courage, valour; strength, severity", "pt": "Coragem, valentia; força, severidade" },
+    "titles": { "en": ["Din (justice)", "Pachad (fear)"], "pt": ["Din (justiça)", "Pachad (medo)"] },
+    "magicalImage": { "en": "A mighty warrior in his chariot.", "pt": "Um poderoso guerreiro em seu carro." },
+    "instrument": { "en": "The sword, never a dagger.", "pt": "A espada, nunca uma adaga." },
+    "work": {
+      "en": "Justice of every kind, the increase of power, the cutting of ties, the opening of paths, the cleaning of the crusts of the mind.",
+      "pt": "As justiças de qualquer natureza, o aumento de potências, o corte de laços, a abertura de caminhos, a limpeza das crostas mentais."
+    },
+    "symbols": {
+      "en": ["the pentagon", "the five-petalled Tudor rose", "the sword", "the spear", "the scourge", "the chain"],
+      "pt": ["o pentágono", "a rosa de Tudor de cinco pétalas", "a espada", "a lança", "o açoite", "a corrente"]
+    },
+    "geometricForm": { "en": "The pentagon or pentagram", "pt": "O pentágono ou pentagrama" },
+    "elementalRelation": { "en": "Water of Water", "pt": "Água da Água" },
+    "world": "Briah",
+    "divineName": {
+      "name": "Elohim Gibor",
+      "meaning": { "en": "The mighty God who judges and punishes all evil.", "pt": "O Deus poderoso que julga e pune todo o mal." }
+    },
+    "archangel": {
+      "name": "Khamael",
+      "role": {
+        "en": "Prince of strength and courage, who protects those who feel wronged.",
+        "pt": "O príncipe da força e da coragem, que protege os que se sentem injustiçados."
+      }
+    },
+    "choir": {
+      "name": "Seraphim",
+      "meaning": { "en": "Fiery Serpents, the burning ones", "pt": "Serpentes de Fogo, as inflamadas" },
+      "christianName": { "en": "Powers", "pt": "Potências ou Potestades" }
+    },
+    "heaven": { "name": "Madim", "meaning": { "en": "Mars", "pt": "Marte" } },
+    "yetziraticText": {
+      "en": "The fifth path is called the Radical Intelligence, because it resembles the Unity. It flows from Binah, the Understanding, and joins it, which in turn flows from the depths of Chokhmah, the primordial Wisdom.",
+      "pt": "O quinto caminho é chamado de Inteligência Radical, porque se assemelha à Unidade. Emana de Binah, o Entendimento, e se une a esta, a qual, por sua vez, emana das profundezas de Chokhmah, a Sabedoria primordial."
+    },
+    "spiritualExperience": { "en": "The vision of power.", "pt": "A visão do poder." },
+    "attributes": { "en": ["justice", "severity"], "pt": ["justiça", "severidade"] },
+    "virtues": { "en": ["energy", "courage"], "pt": ["energia", "coragem"] },
+    "vices": { "en": ["cruelty", "destruction", "wrath"], "pt": ["crueldade", "destruição", "ira"] },
+    "body": { "en": "The left arm.", "pt": "O braço esquerdo." },
+    "places": {
+      "en": "Places of fire and blood: furnaces, slaughterhouses, crosses, gallows, and places where ruin, the carnage of war and executions took place.",
+      "pt": "Os lugares de fogo e sangue: os fornos, os matadouros, as cruzes, os patíbulos, e os lugares onde se consumaram ruínas, carnificinas bélicas e execuções."
+    },
+    "lifeAreas": { "en": ["initiative", "starting", "conditions", "disciplines"], "pt": ["iniciativa", "começar", "condições", "disciplinas"] },
+    "animals": {
+      "en": ["basilisk", "horse", "mule", "goat", "wolf", "leopard", "wild ass", "serpents", "mosquito", "flies", "baboons", "eagle", "falcon", "hawk", "owls", "herons", "shark", "pike", "barbel", "sea ram", "sturgeon", "glaucus"],
+      "pt": ["basilisco", "cavalo", "mula", "cabra", "lobo", "leopardo", "asno selvagem", "serpentes", "mosquito", "moscas", "babuínos", "águia", "falcão", "gavião", "mocho e coruja", "garças", "tubarão", "lúcio", "barbo", "carneiro-do-mar", "esturjão", "glauco"]
+    },
+    "plants": {
+      "en": ["wormwood", "pepper", "ginger", "thistle", "nettle", "basil", "lemon tree", "orange tree", "onion", "garlic", "mustard seed", "radish", "holly"],
+      "pt": ["absinto", "pimenta", "gengibre", "cardo", "urtiga", "manjericão", "limoeiro", "laranjeira", "cebola", "alho", "semente de mostarda", "rabanete", "azevinho"]
+    },
+    "stones": {
+      "en": ["ruby", "garnet", "bloodstone (hematite)", "diamond", "magnetite", "blood jasper"],
+      "pt": ["rubi", "granada", "pedra de sangue (hematita)", "diamante", "magnetita", "jaspe-sanguíneo"]
+    },
+    "metals": { "en": ["iron", "red bronze"], "pt": ["ferro", "bronze vermelho"] },
+    "drugs": { "en": "Irritants and caustics.", "pt": "Os irritantes e os cáusticos." },
+    "tarot": [
+      { "card": "Five of Wands", "meaning": { "en": "Conflict for power.", "pt": "Conflito pelo poder." } },
+      { "card": "Five of Cups", "meaning": { "en": "Loss in pleasure, clouded pleasure.", "pt": "Perda no prazer, prazer turvado." } },
+      { "card": "Five of Swords", "meaning": { "en": "Defeat (of rigour).", "pt": "Derrota (do rigor)." } },
+      { "card": "Five of Pentacles", "meaning": { "en": "Earthly conflict, the vanguard.", "pt": "Conflito terreno, vanguarda." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Orange", "pt": "Laranja" },
+      "briah": { "en": "Scarlet red", "pt": "Vermelho-escarlate" },
+      "yetzirah": { "en": "Bright scarlet", "pt": "Escarlate brilhante" },
+      "assiah": { "en": "Red flecked with black", "pt": "Vermelho salpicado de negro" }
+    },
+    "candles": { "en": "Three red candles.", "pt": "Três velas vermelhas." },
+    "incense": {
+      "en": ["sandalwood", "acacia", "cypress", "wormwood", "balsam", "pepper", "onion"],
+      "pt": ["sândalo", "acácia", "cipreste", "absinto", "bálsamo", "pimenta", "cebola"]
+    },
+    "expression": {
+      "balanced": {
+        "en": "Courage, initiative, willpower, determination and strategic objectivity.",
+        "pt": "Coragem, iniciativa, força de vontade, determinação e objetividade estratégica."
+      },
+      "excess": {
+        "en": "Impatience, obstinacy, violence, abuse of authority and of force, feelings of wrath and cruelty.",
+        "pt": "Impaciência, obstinação, violência, abuso de autoridade e de força, sentimentos de ira e crueldade."
+      },
+      "lack": {
+        "en": "Little determination and little initiative, cowardice, fear, a weak will, and dependence on the action and impulse of others.",
+        "pt": "Pouca determinação e pouca iniciativa, covardia, medo, vontade fraca e dependência da ação e do impulso de terceiros."
+      }
+    }
+  },
+  "Tiphareth": {
+    "number": 6,
+    "essence": {
+      "en": "Beauty and harmony: the heart of the Tree, where everything is brought into balance.",
+      "pt": "Beleza e harmonia: o coração da Árvore, onde tudo é trazido ao equilíbrio."
+    },
+    "keywords": {
+      "en": ["beauty", "harmony", "balance", "sovereignty", "the self", "vitality"],
+      "pt": ["beleza", "harmonia", "equilíbrio", "soberania", "o eu", "vitalidade"]
+    },
+    "nameMeaning": { "en": "Splendour, magnificence, glory, beauty", "pt": "Esplendor, magnificência, glória, beleza" },
+    "titles": {
+      "en": ["Zauir Anpin, the Lesser Countenance", "Melekh, the King", "Adam", "The Son", "The Man"],
+      "pt": ["Zauir Anpin, o Rosto Menor", "Melekh, o Rei", "Adão", "O Filho", "O Homem"]
+    },
+    "magicalImage": { "en": "A majestic king. A child. A sacrificed god.", "pt": "Um rei majestoso. Uma criança. Um deus sacrificado." },
+    "instrument": { "en": "The ark or chest where the magnetized magical objects are kept.", "pt": "A arca ou baú onde se guardam os objetos mágicos imantados." },
+    "work": {
+      "en": "The mental images reach a harmonious balance, homeostasis. The line of the father and of the ancestors is named, the masculine forces are restored and spiritual beauty is reached.",
+      "pt": "Os equilíbrios harmoniosos das imagens mentais alcançam a homeostase. Menciona-se a linhagem do pai e dos antepassados, as forças masculinas são restauradas e a beleza espiritual é alcançada."
+    },
+    "symbols": {
+      "en": ["the lamen (a magical pendant worn over the heart)", "the Rose Cross", "the Calvary cross", "the truncated pyramid", "the cube"],
+      "pt": ["o lamen (insígnia mágica pendurada na altura do coração)", "a Rosa-Cruz", "a cruz do Calvário", "a pirâmide truncada", "o cubo"]
+    },
+    "geometricForm": { "en": "The hexagram", "pt": "O hexagrama" },
+    "elementalRelation": { "en": "Air of Water", "pt": "Ar da Água" },
+    "world": "Briah",
+    "divineName": {
+      "name": "Tetragrammaton Aloah Va Daath",
+      "meaning": { "en": "The Omnipotent: God manifest in the mind.", "pt": "O Onipotente: Deus manifesto na mente." }
+    },
+    "archangel": {
+      "name": "Michael",
+      "role": {
+        "en": "The one who is like God, prince of splendour and wisdom. He is the protection against darkness and is invoked before great danger.",
+        "pt": "O Semelhante a Deus, príncipe do esplendor e da sabedoria. É a proteção contra as trevas e deve ser invocado diante de um grande perigo."
+      }
+    },
+    "choir": {
+      "name": "Malachim",
+      "meaning": {
+        "en": "Kings, the spiritual principles of the natural forces and agents of healing",
+        "pt": "Reis, os princípios espirituais das forças naturais e agentes curadores"
+      },
+      "christianName": { "en": "Virtues", "pt": "Virtudes" }
+    },
+    "heaven": { "name": "Shemesh", "meaning": { "en": "The Sun", "pt": "O Sol" } },
+    "yetziraticText": {
+      "en": "The sixth path is called the Mediating Intelligence, for in it the inflows of the emanations are multiplied, and these influences flow into all the reservoirs of blessings with which they unite.",
+      "pt": "O sexto caminho é chamado de Inteligência Mediadora, pois nele se multiplicam os influxos das emanações, fluindo essas influências para todos os reservatórios das bênçãos com que se unem."
+    },
+    "spiritualExperience": {
+      "en": "The vision of the harmony of things. The mysteries of the crucifixion.",
+      "pt": "A visão da harmonia das coisas. Os mistérios da crucificação."
+    },
+    "attributes": { "en": ["harmony", "balance", "sovereignty", "splendour", "beauty"], "pt": ["harmonia", "equilíbrio", "soberania", "esplendor", "beleza"] },
+    "virtues": { "en": ["devotion to the Great Work"], "pt": ["devoção à Grande Obra"] },
+    "vices": { "en": ["pride", "arrogance"], "pt": ["orgulho", "arrogância"] },
+    "body": { "en": "The chest, the solar plexus, the upper trunk.", "pt": "O peito, o plexo solar, a parte superior do tronco." },
+    "places": {
+      "en": "Airy places and serene air, the palaces of kings and the courts of princes, pulpits, theatres, thrones, and everything royal and magnificent.",
+      "pt": "Os lugares arejados, o ar sereno, os palácios dos reis e as cortes dos príncipes, os púlpitos, os teatros, os tronos, e tudo o que é real e magnífico."
+    },
+    "lifeAreas": {
+      "en": ["health", "money", "material goods", "growth", "illumination"],
+      "pt": ["saúde", "dinheiro", "bens materiais", "crescimento", "iluminação"]
+    },
+    "animals": {
+      "en": ["lion", "crocodile", "spotted wolf", "ram", "boar", "bull, king of the herd", "phoenix", "eagle", "vulture", "swan", "rooster", "crow", "hawk", "fireflies", "beetle", "seal", "shellfish", "jellyfish", "starfish", "oyster", "conch"],
+      "pt": ["leão", "crocodilo", "lobo malhado", "carneiro", "javali", "touro, rei do rebanho", "fênix", "águia", "abutre", "cisne", "galo", "corvo", "gavião", "pirilampos", "besouro", "foca", "molusco", "água-viva", "estrela-do-mar", "ostra", "estrombos"]
+    },
+    "plants": {
+      "en": ["marigold", "daisy", "sunflower", "laurel", "vervain", "cedar", "palm tree", "mint", "grapevine", "saffron", "yellow honey", "clove", "cinnamon"],
+      "pt": ["calêndula", "margarida", "girassol", "loureiro", "verbena", "cedro", "palmeira", "hortelã", "videira", "açafrão", "mel amarelo", "cravo", "canela"]
+    },
+    "stones": {
+      "en": ["orange diamond", "topaz", "citrine", "sunstone", "tiger's eye", "heliotrope", "carbuncle", "chrysolite"],
+      "pt": ["diamante laranja", "topázio", "citrino", "pedra do sol", "olho-de-tigre", "heliotrópio", "carbúnculo", "crisólita"]
+    },
+    "metals": { "en": ["gold, for its splendour"], "pt": ["ouro, em razão de seu esplendor"] },
+    "drugs": { "en": "Vanity.", "pt": "A vaidade." },
+    "tarot": [
+      { "card": "Six of Wands", "meaning": { "en": "Balanced victory.", "pt": "Vitória equilibrada." } },
+      { "card": "Six of Cups", "meaning": { "en": "Joy, forgiveness of errors.", "pt": "Alegria, perdão dos erros." } },
+      { "card": "Six of Swords", "meaning": { "en": "Earned success.", "pt": "Sucesso merecido." } },
+      { "card": "Six of Pentacles", "meaning": { "en": "Material success.", "pt": "Sucesso material." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Clear pink", "pt": "Rosa-claro" },
+      "briah": { "en": "Yellow", "pt": "Amarelo" },
+      "yetzirah": { "en": "Deep salmon pink", "pt": "Rosa-salmão intenso" },
+      "assiah": { "en": "Golden amber", "pt": "Âmbar dourado" }
+    },
+    "candles": { "en": "Three yellow candles.", "pt": "Três velas amarelas." },
+    "incense": {
+      "en": ["myrrh", "musk", "storax", "amber", "aloe vera", "clove", "laurel", "frankincense"],
+      "pt": ["mirra", "almíscar", "estoraque", "âmbar", "aloe vera", "cravo", "louro", "olíbano"]
+    },
+    "expression": {
+      "balanced": {
+        "en": "Universal love, faith, a creative and balanced flow of the self, leadership, optimism and confidence.",
+        "pt": "Amor universal, fé, fluxo criativo e equilibrado do eu, liderança, otimismo e confiança."
+      },
+      "excess": {
+        "en": "Pride, an excessive wish to be different from others, and self-centredness: feeling and acting as if the world turned around oneself.",
+        "pt": "Orgulho, desejo excessivo de ser diferente dos outros e egocentrismo: sentir e agir como se o mundo girasse à sua volta."
+      },
+      "lack": {
+        "en": "Apathy, lack of faith, loss of enthusiasm and discouragement: an aura gone dull, without shine.",
+        "pt": "Apatia, falta de fé, perda do entusiasmo e desânimo: uma aura apagada e sem brilho."
+      }
+    }
+  },
+  "Netzach": {
+    "number": 7,
+    "essence": {
+      "en": "Victory built in silence: feeling, pleasure and beauty held with firmness.",
+      "pt": "A vitória construída no silêncio: sentimento, prazer e beleza sustentados com firmeza."
+    },
+    "keywords": {
+      "en": ["victory", "emotions", "love", "beauty", "pleasure", "firmness", "silence"],
+      "pt": ["vitória", "emoções", "amor", "beleza", "prazer", "firmeza", "silêncio"]
+    },
+    "nameMeaning": { "en": "Eternity; victory, beauty", "pt": "Eternidade; vitória, beleza" },
+    "titles": { "en": ["Firmness", "Silence", "Victory", "Appearances", "Emotions"], "pt": ["Firmeza", "Silêncio", "Vitória", "Aparências", "Emoções"] },
+    "magicalImage": { "en": "A beautiful naked young woman.", "pt": "Uma bela jovem nua." },
+    "instrument": { "en": "The magnetized mirror.", "pt": "O espelho imantado." },
+    "work": {
+      "en": "Affections and relationships. In the mirror we see the reflection of our mental images and have to face them.",
+      "pt": "Os afetos e os relacionamentos. No espelho vemos o reflexo de nossas imagens mentais e temos que confrontá-las."
+    },
+    "symbols": { "en": ["the lamp", "the girdle", "the rose"], "pt": ["a lâmpada", "o cinto", "a rosa"] },
+    "geometricForm": { "en": "The heptagram", "pt": "O heptagrama" },
+    "elementalRelation": { "en": "Fire of Air", "pt": "Fogo do Ar" },
+    "world": "Yetzirah",
+    "divineName": {
+      "name": "Jehovah Tzabaoth",
+      "meaning": { "en": "The Lord of Hosts: God of triumph and victory.", "pt": "O Senhor dos Exércitos: Deus das hostes, do triunfo e da vitória." }
+    },
+    "archangel": {
+      "name": "Haniel",
+      "role": {
+        "en": "The Grace of God, who grants wisdom in relationships with all things; prince of love and harmony.",
+        "pt": "A Graça de Deus, que concede a sabedoria nos relacionamentos com todas as coisas; príncipe do amor e da harmonia."
+      }
+    },
+    "choir": {
+      "name": "Elohim",
+      "meaning": { "en": "Gods, who govern nature and have a double polarity", "pt": "Deuses, que governam a natureza e têm dupla polaridade" },
+      "christianName": { "en": "Principalities", "pt": "Principados" }
+    },
+    "heaven": { "name": "Nogah", "meaning": { "en": "Venus", "pt": "Vênus" } },
+    "yetziraticText": {
+      "en": "The seventh path is called the Hidden Intelligence, because it makes a sparkling splendour rise over all the intellectual virtues that are contemplated by the eyes of the spirit and by the ecstasy of faith.",
+      "pt": "O sétimo caminho é chamado de Inteligência Oculta, porque faz emergir um esplendor cintilante sobre todas as virtudes intelectuais que são contempladas pelos olhos do espírito e pelo êxtase da fé."
+    },
+    "spiritualExperience": { "en": "The vision of beauty triumphant.", "pt": "A visão da beleza triunfante." },
+    "attributes": { "en": ["beauty", "victory"], "pt": ["beleza", "vitória"] },
+    "virtues": { "en": ["unselfishness"], "pt": ["desprendimento"] },
+    "vices": { "en": ["shamelessness", "lust"], "pt": ["impudor", "luxúria"] },
+    "body": { "en": "The kidneys, the hips, the legs.", "pt": "Os rins, os quadris, as pernas." },
+    "places": {
+      "en": "Pleasant fountains, green meadows and gardens full of flowers, adorned beds and brothels (according to Orpheus), the sea, the beach, public baths, dance halls, and all places that belong to women.",
+      "pt": "As fontes agradáveis, os prados verdejantes e os jardins cheios de flores, os leitos ornamentados e os bordéis (segundo Orfeu), o mar, a praia, os banhos públicos, os lugares de bailes, e todos os lugares que pertencem às mulheres."
+    },
+    "lifeAreas": {
+      "en": ["right relationships", "altruism", "love", "family relationships", "affection"],
+      "pt": ["relacionamentos corretos", "altruísmo", "amor", "relacionamentos familiares", "afetividade"]
+    },
+    "animals": {
+      "en": ["lynx", "cat", "leopard", "dogs", "rabbits", "goats", "swan", "wagtail", "swallow", "quail", "pelican", "shelduck", "crow", "dove", "turtle dove", "sparrow", "eagle", "sardines", "gilthead", "whiting", "crab", "tithymallus"],
+      "pt": ["lince", "gato", "leopardo", "cães", "coelhos", "cabras e bodes", "cisne", "caminheiro", "andorinha", "codorna", "pelicano", "burgander", "corvo", "pomba", "rola", "pardal", "águia", "sardinhas", "douradas", "pescada", "caranguejo", "titímalo"]
+    },
+    "plants": {
+      "en": ["rose bush", "myrtle", "elder", "geranium", "hyacinth", "thyme", "liquorice", "sandalwood", "pear", "fig", "pomegranate"],
+      "pt": ["roseira", "murta", "sabugueiro", "gerânio", "jacinto", "tomilho", "alcaçuz", "sândalo", "pera", "figo", "romã"]
+    },
+    "stones": {
+      "en": ["emerald", "turquoise", "jade", "malachite", "beryl", "chrysolite", "sapphire", "green jasper", "green coral"],
+      "pt": ["esmeralda", "turquesa", "jade", "malaquita", "berilo", "crisólita", "safira", "jaspe verde", "coral de coloração verde"]
+    },
+    "metals": { "en": ["silver", "bronze, both yellow and red"], "pt": ["prata", "bronze, tanto amarelo quanto vermelho"] },
+    "drugs": { "en": "Aphrodisiacs.", "pt": "Os afrodisíacos." },
+    "tarot": [
+      { "card": "Seven of Wands", "meaning": { "en": "Valour.", "pt": "Valor." } },
+      { "card": "Seven of Cups", "meaning": { "en": "Illusory success.", "pt": "Êxito ilusório." } },
+      { "card": "Seven of Swords", "meaning": { "en": "Unstable effort.", "pt": "Esforço instável." } },
+      { "card": "Seven of Pentacles", "meaning": { "en": "Existential failure.", "pt": "Fracasso existencial." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Amber", "pt": "Âmbar" },
+      "briah": { "en": "Emerald", "pt": "Esmeralda" },
+      "yetzirah": { "en": "Bright yellowish green", "pt": "Verde-amarelado brilhante" },
+      "assiah": { "en": "Olive flecked with gold", "pt": "Oliva salpicado de ouro" }
+    },
+    "candles": { "en": "Three green or pink candles.", "pt": "Três velas verdes ou rosa." },
+    "incense": {
+      "en": ["violet", "roses", "musk", "lavender", "night-blooming jasmine", "saffron"],
+      "pt": ["violeta", "rosas", "almíscar", "lavanda", "dama-da-noite", "açafrão"]
+    },
+    "expression": {
+      "balanced": { "en": "Love, generosity, affection, beauty and pleasure.", "pt": "Amor, generosidade, afetividade, beleza e prazer." },
+      "excess": { "en": "Covetousness, and affection that is held back instead of expressed.", "pt": "Cobiça e expressão afetiva contida." },
+      "lack": {
+        "en": "Lovelessness, emotional neediness, no motivation for social life, apathy in relationships.",
+        "pt": "Desamor, carência afetiva, desmotivação social, apatia nos relacionamentos."
+      }
+    }
+  },
+  "Hod": {
+    "number": 8,
+    "essence": {
+      "en": "Glory through reason: the mind that names, agrees and tells the truth.",
+      "pt": "A glória pela razão: a mente que nomeia, combina e diz a verdade."
+    },
+    "keywords": {
+      "en": ["reason", "truth", "communication", "learning", "agreements", "splendour"],
+      "pt": ["razão", "verdade", "comunicação", "aprendizado", "acordos", "esplendor"]
+    },
+    "nameMeaning": { "en": "Glory, splendour, magnificence", "pt": "Glória, esplendor, magnificência" },
+    "titles": { "en": ["Glories", "Reasons", "Guarantees"], "pt": ["Glórias", "Razões", "Garantias"] },
+    "magicalImage": { "en": "A hermaphrodite.", "pt": "Um hermafrodita." },
+    "instrument": { "en": "The book of magical notes.", "pt": "O livro de anotações mágicas." },
+    "work": {
+      "en": "Reason and healing. Here the story is rewritten, healing the harmful mental images.",
+      "pt": "A razão e a cura. Aqui reescrevemos a história, curando as imagens mentais maléficas."
+    },
+    "symbols": { "en": ["names", "versicles", "the apron"], "pt": ["nomes", "versículos", "o avental"] },
+    "geometricForm": { "en": "The octagram", "pt": "O octagrama" },
+    "elementalRelation": { "en": "Water of Air", "pt": "Água do Ar" },
+    "world": "Yetzirah",
+    "divineName": {
+      "name": "Elohim Tzabaoth",
+      "meaning": {
+        "en": "The God of Hosts, of the Legions, who governs the universe with knowledge and harmony.",
+        "pt": "O Deus das Hostes, das Legiões, que governa o universo com saber e harmonia."
+      }
+    },
+    "archangel": {
+      "name": "Raphael",
+      "role": {
+        "en": "The divine physician, linked to everything that concerns life and health; he renews the energies of healing. Prince of liveliness, beauty and life.",
+        "pt": "O médico divino, ligado a tudo o que diz respeito à vida e à saúde; revitaliza as energias da cura. Príncipe da vivacidade, da beleza e da vida."
+      }
+    },
+    "choir": {
+      "name": "Beni Elohim",
+      "meaning": { "en": "Sons of God, androgynous according to tradition", "pt": "Filhos de Deus, andróginos segundo a tradição" },
+      "christianName": { "en": "Archangels", "pt": "Arcanjos" }
+    },
+    "heaven": { "name": "Kokab", "meaning": { "en": "Mercury", "pt": "Mercúrio" } },
+    "yetziraticText": {
+      "en": "The eighth path is called the Absolute or Perfect Intelligence, for it is the instrument of the Primordial. From it flows the preparation of the principles. It has no roots with which to take hold, except in the hidden places of Gedulah, from which its own essence flows.",
+      "pt": "O oitavo caminho é chamado de Inteligência Absoluta ou Perfeita, pois é o instrumento do Primordial. É dela que emana a preparação dos princípios. Não possui raízes com as quais possa implantar-se, salvo nos lugares ocultos de Gedulah, da qual emana a sua essência característica."
+    },
+    "spiritualExperience": { "en": "The vision of splendour.", "pt": "A visão do esplendor." },
+    "attributes": { "en": ["material truth"], "pt": ["verdade material"] },
+    "virtues": { "en": ["truthfulness"], "pt": ["veracidade"] },
+    "vices": {
+      "en": ["lying", "falsehood", "dishonesty", "improbity", "laziness"],
+      "pt": ["mentira", "falsidade", "desonestidade", "improbidade", "preguiça"]
+    },
+    "body": { "en": "The hips and the legs.", "pt": "Os quadris e as pernas." },
+    "places": {
+      "en": "Shops, schools, warehouses, places where goods are exchanged, and the like.",
+      "pt": "As lojas, as escolas, os armazéns, os postos de troca de mercadoria e outros do gênero."
+    },
+    "lifeAreas": {
+      "en": ["truth", "wisdom", "contracts", "instruction", "teaching", "short trips", "books", "business relations"],
+      "pt": ["verdade", "sabedoria", "contratos", "instrução", "ensino", "pequenas viagens", "livros", "relações comerciais"]
+    },
+    "animals": {
+      "en": ["hermaphrodite animals", "jackal", "monkeys", "foxes", "weasels", "deer", "mules", "hare", "civet", "chameleon", "linnet", "nightingale", "blackbird", "thrush", "lark", "wagtail", "calandra lark", "parrot", "magpie", "ibis", "scarab", "peacock", "hummingbird", "top shell", "octopus", "ray", "mullet"],
+      "pt": ["os hermafroditas", "chacal", "macacos", "raposas", "doninhas", "veados", "mulas", "lebre", "civeta", "camaleão", "pintarroxo", "rouxinol", "melro", "tordo", "cotovia", "lavandeira", "calandra", "papagaio", "pega", "íbis", "escaravelho", "pavão", "colibri", "troquídeo", "pólipo", "arraia", "tainha"]
+    },
+    "plants": {
+      "en": ["peyote", "cannabis", "marjoram", "fennel", "mandrake", "caraway", "dill", "pomegranate", "hazel", "parsley"],
+      "pt": ["peiote", "maconha", "manjerona", "funcho", "mandrágora", "alcaravia", "endro", "romã", "aveleira", "salsa"]
+    },
+    "stones": {
+      "en": ["opal, especially fire opal", "agate", "serpentine", "red marble", "topaz"],
+      "pt": ["opala, especialmente opala de fogo", "ágata", "serpentina", "mármore vermelho", "topázio"]
+    },
+    "metals": { "en": ["mercury", "tin", "silver marcasite"], "pt": ["mercúrio", "estanho", "marcassita de prata"] },
+    "drugs": { "en": "Psychotropics.", "pt": "Os psicotrópicos." },
+    "tarot": [
+      { "card": "Eight of Wands", "meaning": { "en": "Swiftness.", "pt": "Rapidez." } },
+      { "card": "Eight of Cups", "meaning": { "en": "Abandoned success.", "pt": "Êxito abandonado." } },
+      { "card": "Eight of Swords", "meaning": { "en": "Dampened force.", "pt": "Força amortecedora." } },
+      { "card": "Eight of Pentacles", "meaning": { "en": "Prudence.", "pt": "Prudência." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Violet purple", "pt": "Violeta-púrpura" },
+      "briah": { "en": "Orange", "pt": "Laranja" },
+      "yetzirah": { "en": "Russet red", "pt": "Vermelho-roxo" },
+      "assiah": { "en": "Yellowish black flecked with white", "pt": "Preto-amarelado salpicado de branco" }
+    },
+    "candles": { "en": "Three orange candles.", "pt": "Três velas laranja." },
+    "incense": {
+      "en": ["cinnamon", "bay laurel seeds", "jasmine", "benzoin", "lemon peel", "apple"],
+      "pt": ["canela", "sementes de louro", "jasmim", "benjoim", "casca de limão", "maçã"]
+    },
+    "expression": {
+      "balanced": {
+        "en": "Creative use of intelligence, quick reasoning, clear speech, objective understanding, brilliance and the power to persuade.",
+        "pt": "Uso criativo da inteligência, raciocínio rápido, expressão verbal clara, entendimento objetivo, brilhantismo e poder de persuasão."
+      },
+      "excess": {
+        "en": "Misuse of intelligence and of one's skills, too much rationalism, partiality in giving opinions, ambiguity.",
+        "pt": "Mau uso da inteligência e das suas habilidades, excesso de racionalismo, parcialidade na expressão de opiniões, ambiguidade."
+      },
+      "lack": {
+        "en": "Slow reasoning, difficulty in expressing oneself, communication that does not work.",
+        "pt": "Lentidão de raciocínio, dificuldade de se expressar, comunicação ineficiente."
+      }
+    }
+  },
+  "Yesod": {
+    "number": 9,
+    "essence": {
+      "en": "The foundation: the tides of emotion, imagination and the unconscious under everything that takes form.",
+      "pt": "O fundamento: as marés da emoção, da imaginação e do inconsciente por baixo de tudo o que toma forma."
+    },
+    "keywords": {
+      "en": ["foundation", "emotion", "intuition", "the unconscious", "change", "independence"],
+      "pt": ["fundamento", "emoção", "intuição", "o inconsciente", "mudança", "independência"]
+    },
+    "nameMeaning": { "en": "Foundation", "pt": "Fundamento" },
+    "titles": { "en": ["The Foundation"], "pt": ["O Fundamento"] },
+    "magicalImage": { "en": "A beautiful naked man, very strong.", "pt": "Um belo homem desnudo, muito forte." },
+    "instrument": { "en": "The cup or chalice.", "pt": "A taça ou cálice." },
+    "work": {
+      "en": "The moon and the water. The line of the mother and of the feminine is named, and what is said here is turned to emotional health and better relationships.",
+      "pt": "A lua e a água. Menciona-se a linhagem da mãe e do feminino, e as falas aqui são direcionadas para a saúde emocional e a melhora nos relacionamentos."
+    },
+    "symbols": { "en": ["the perfumes", "the sandals"], "pt": ["os perfumes", "as sandálias"] },
+    "geometricForm": { "en": "The enneagram", "pt": "O eneagrama" },
+    "elementalRelation": { "en": "Air of Air", "pt": "Ar do Ar" },
+    "world": "Yetzirah",
+    "divineName": {
+      "name": "Shaddai El Chai",
+      "meaning": {
+        "en": "The Almighty Living God, who spreads benefits and satisfies our desires.",
+        "pt": "O Deus Vivo Todo-Poderoso, que espalha benefícios e satisfaz os nossos desejos."
+      }
+    },
+    "archangel": {
+      "name": "Gabriel",
+      "role": {
+        "en": "The mighty one of God, who favours clairvoyance and clairaudience; the river of the waters of life and prince of changes and alterations.",
+        "pt": "O ser poderoso de Deus, que favorece a clarividência e a clariaudiência; o rio das águas da vida e o príncipe das mudanças e das alterações."
+      }
+    },
+    "choir": {
+      "name": "Kerubim",
+      "meaning": { "en": "The Mighty Ones, the base of the sons", "pt": "Os Poderosos, a base dos filhos" },
+      "christianName": { "en": "Angels", "pt": "Anjos" }
+    },
+    "heaven": { "name": "Levanah", "meaning": { "en": "The Moon", "pt": "A Lua" } },
+    "yetziraticText": {
+      "en": "The ninth path is called the Pure Intelligence, because it purifies the emanations. It proves and corrects the design of their representations and the unity in which they are arranged, without diminution or division.",
+      "pt": "O nono caminho chama-se Inteligência Pura, porque purifica as emanações. Ele prova e corrige o desenho de suas representações e a unidade segundo a qual elas estão dispostas, sem diminuição ou divisão."
+    },
+    "spiritualExperience": { "en": "The vision of the machinery of the universe.", "pt": "A visão do mecanismo do universo." },
+    "attributes": { "en": ["foundation"], "pt": ["fundamento"] },
+    "virtues": { "en": ["independence"], "pt": ["independência"] },
+    "vices": { "en": ["envy"], "pt": ["inveja"] },
+    "body": { "en": "The reproductive organs.", "pt": "Os órgãos reprodutores." },
+    "places": {
+      "en": "Lonely places, deserts, forests, rocks and stony places, mountains, springs, waters, rivers, seas and ports; boats, the countryside and the woods; also public roads and barns.",
+      "pt": "Os lugares ermos, os desertos, as florestas, as rochas e os lugares pedregosos, as montanhas, as fontes, as águas, os rios, os mares e os portos; os barcos, os lugares campestres e os bosques; e também os caminhos públicos e os celeiros."
+    },
+    "lifeAreas": { "en": ["the collective", "changes", "fluctuations", "personality"], "pt": ["coletividade", "mudanças", "flutuações", "personalidade"] },
+    "animals": {
+      "en": ["chameleon", "dogs", "pigs", "does", "goats", "baboon", "panther", "cats", "otters", "geese", "ducks", "grebes", "herons", "scarab", "catfish", "tortoise", "remora", "crab", "oysters", "toads", "frogs"],
+      "pt": ["camaleão", "cães", "suínos", "corças", "cabras", "babuíno", "pantera", "gatos", "lontras", "gansos", "patos", "mergulhões", "garças", "escaravelho", "peixe-gato", "tartaruga", "equeneídeos", "caranguejo", "ostras", "sapos", "rãs"]
+    },
+    "plants": {
+      "en": ["rubber tree", "coconut palm", "palm tree", "watercress", "camphor", "rue", "eucalyptus", "mint", "rosemary", "wormwood", "mugwort", "selenotrope", "hyssop", "chaste tree", "mushroom", "poppy"],
+      "pt": ["seringueira", "coqueiro", "palmeira", "agrião", "cânfora", "arruda", "eucalipto", "hortelã", "alecrim", "absinto", "artemísia", "selenotrópio", "hissopo", "agnocasto", "cogumelo", "papoula"]
+    },
+    "stones": {
+      "en": ["quartz", "crystal", "silver marcasite", "selenite", "pearls"],
+      "pt": ["quartzo", "cristal", "marcassita de prata", "selenita", "pérolas"]
+    },
+    "metals": { "en": ["silver"], "pt": ["prata"] },
+    "drugs": { "en": "Abortifacients: Yesod in its Hecate aspect.", "pt": "Os abortivos: Yesod em seu aspecto Hécate." },
+    "tarot": [
+      { "card": "Nine of Wands", "meaning": { "en": "Great strength.", "pt": "Grande força." } },
+      { "card": "Nine of Cups", "meaning": { "en": "Emotional happiness, fulfilment in love.", "pt": "Felicidade sentimental, realização amorosa." } },
+      { "card": "Nine of Swords", "meaning": { "en": "Cruelty, restrictive images.", "pt": "Crueldade, imagens restritivas." } },
+      { "card": "Nine of Pentacles", "meaning": { "en": "Material gain.", "pt": "Ganho material." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Indigo", "pt": "Índigo" },
+      "briah": { "en": "Violet", "pt": "Violeta" },
+      "yetzirah": { "en": "Citrine flecked with blue", "pt": "Citrino salpicado de azul" },
+      "assiah": { "en": "Very dark purple", "pt": "Púrpura muito escura" }
+    },
+    "candles": { "en": "Three lilac candles.", "pt": "Três velas lilás." },
+    "incense": {
+      "en": ["camphor", "myrtle", "laurel", "rue", "eucalyptus", "mint", "rosemary", "patchouli", "citronella", "wormwood"],
+      "pt": ["cânfora", "murta", "louro", "arruda", "eucalipto", "hortelã", "alecrim", "patchouli", "citronela", "absinto"]
+    },
+    "expression": {
+      "balanced": {
+        "en": "Receptivity, contentment and inner well-being, adaptability and flow, emotions that have been worked through.",
+        "pt": "Receptividade, contentamento e bem-estar interior, adaptabilidade e fluência, emoções bem trabalhadas."
+      },
+      "excess": {
+        "en": "Exaggerated sensitivity, insecurity, fragility, a need for protection and safety, loss of emotional control.",
+        "pt": "Sensibilidade exagerada, insegurança, fragilidade, necessidade de proteção e segurança, descontrole emocional."
+      },
+      "lack": {
+        "en": "A feeling of personal dissatisfaction, and apathy about emotional values, family security and emotional stability.",
+        "pt": "Sentimento de insatisfação pessoal e apatia no que se refere a valores emocionais, à segurança familiar e à estabilidade emocional."
+      }
+    }
+  },
+  "Malkuth": {
+    "number": 10,
+    "essence": {
+      "en": "The kingdom: where everything becomes matter, the body and the physical world.",
+      "pt": "O reino: onde tudo se torna matéria, o corpo e o mundo físico."
+    },
+    "keywords": {
+      "en": ["materialization", "the body", "the physical world", "discernment", "learning", "illusion"],
+      "pt": ["materialização", "o corpo", "o mundo físico", "discernimento", "aprendizado", "ilusão"]
+    },
+    "nameMeaning": { "en": "Kingdom", "pt": "Reino" },
+    "titles": {
+      "en": ["The Gate", "The Gate of Death", "The Gate of the Shadow of Death", "The Gate of Tears", "Vale of Tears", "The Gate of Justice", "The Gate of Prayer", "The Gate of the Daughter of the Mighty Ones", "The Gate of the Garden of Eden", "The Inferior Mother", "Malkah, the Queen", "Kallah, the Bride", "The Virgin", "Isis of nature", "Maya", "Gaia", "Materialization"],
+      "pt": ["A Porta", "A Porta da Morte", "A Porta das Trevas da Morte", "A Porta das Lágrimas", "Vale de Lágrimas", "A Porta da Justiça", "A Porta da Oração", "A Porta da Filha dos Poderosos", "A Porta do Jardim do Éden", "A Mãe Inferior", "Malkah, a Rainha", "Kallah, a Noiva", "A Virgem", "Ísis da natureza", "Maya", "Gaia", "Materialização"]
+    },
+    "magicalImage": { "en": "A young woman, crowned, seated and veiled, on the throne.", "pt": "Uma jovem coroada, sentada e velada, no trono." },
+    "instrument": { "en": "The shield or coin.", "pt": "O escudo ou a moeda." },
+    "work": {
+      "en": "Material life, health and practical matters. Every harmful seed is handed over to be consumed, and one is joined to the blood of mother earth.",
+      "pt": "A vida material, a saúde e os processos. Toda semente daninha é entregue para ser consumida, e a pessoa é integrada ao sangue da mãe terra."
+    },
+    "symbols": {
+      "en": ["the altar of the double cube", "the equal-armed cross", "the magic circle", "the triangle of art"],
+      "pt": ["o altar do cubo duplo", "a cruz de braços iguais", "o círculo mágico", "o triângulo da arte"]
+    },
+    "geometricForm": { "en": "Cubes, squares and quaternaries", "pt": "Cubos, quadrados e quaternários" },
+    "elementalRelation": { "en": "Fire of Earth, Water of Earth and Air of Earth", "pt": "Fogo da Terra, Água da Terra e Ar da Terra" },
+    "world": "Assiah",
+    "divineName": {
+      "name": "Adonai Malekh, or Adonai ha Aretz",
+      "meaning": {
+        "en": "The Lord who is King, the Lord of the Earth: God manifest in nature.",
+        "pt": "O Senhor que é Rei, o Senhor da Terra: Deus manifesto na natureza."
+      }
+    },
+    "archangel": {
+      "name": "Sandalphon",
+      "role": {
+        "en": "Prince of Prayer, pictured as a giant with his feet on the Earth and his head in the infinite, closely tied to Metatron. He receives the orders, examines them and passes them to the angels, who channel them to the elementals.",
+        "pt": "Príncipe da Oração, representado como um gigante com os pés na Terra e a cabeça no infinito, intimamente relacionado a Metatron. Recebe as ordens, examina-as e as transmite aos anjos, que as canalizam para os elementais."
+      }
+    },
+    "choir": {
+      "name": "Ashim",
+      "meaning": { "en": "Souls of Fire, the spark of the sacred fire in us", "pt": "Almas de Fogo, a nossa centelha do fogo sagrado" },
+      "christianName": { "en": "Souls, or initiates", "pt": "Almas, ou iniciados" }
+    },
+    "heaven": { "name": "Olam Yesodoth", "meaning": { "en": "The Sphere of the Elements", "pt": "A Esfera dos Elementos" } },
+    "yetziraticText": {
+      "en": "The tenth path is called the Resplendent Intelligence, because it is exalted above every head and has its seat on the throne of Binah. It lights the splendour of all the lights and makes the influence of the Prince of Faces, the archangel of Kether, flow out.",
+      "pt": "O décimo caminho chama-se Inteligência Resplandecente, porque é exaltada sobre todas as cabeças e tem por assento o trono de Binah. Ela ilumina os esplendores de todas as luzes, fazendo emanar a influência do Príncipe dos Rostos, o arcanjo de Kether."
+    },
+    "spiritualExperience": { "en": "The vision of the Holy Guardian Angel.", "pt": "A visão do Anjo da Guarda Sagrado." },
+    "attributes": { "en": ["materialization", "illusion", "learning"], "pt": ["materialização", "ilusão", "aprendizado"] },
+    "virtues": { "en": ["discernment"], "pt": ["discriminação"] },
+    "vices": { "en": ["avarice", "inertia", "prejudice"], "pt": ["avareza", "inércia", "preconceito"] },
+    "body": { "en": "The feet. The anus.", "pt": "Os pés. O ânus." },
+    "places": {
+      "en": "Schools and prisons. The shadows, dark matter, formless matter, dark energy.",
+      "pt": "Escolas e prisões. As sombras, a matéria escura, a matéria amorfa, a energia escura."
+    },
+    "lifeAreas": { "en": ["bringing accumulated energy into concrete results"], "pt": ["realizações do acúmulo das energias"] },
+    "animals": {
+      "en": ["sphinx (the imaginary animal of the four elements)", "chimeras"],
+      "pt": ["esfinge (animal imaginário dos quatro elementos)", "quimeras"]
+    },
+    "plants": {
+      "en": ["corn", "all cereals and grains", "willow", "lily", "ivy", "weeds"],
+      "pt": ["milho", "todos os cereais e grãos", "salgueiro", "lírio", "hera", "ervas daninhas"]
+    },
+    "stones": { "en": ["rock crystal", "salt"], "pt": ["cristal de rocha", "sal"] },
+    "metals": { "en": [], "pt": [] },
+    "drugs": { "en": "Necrotizing ones.", "pt": "Necrosantes." },
+    "tarot": [
+      { "card": "Ten of Wands", "meaning": { "en": "Oppression.", "pt": "Opressão." } },
+      { "card": "Ten of Cups", "meaning": { "en": "Perfect success.", "pt": "Sucesso perfeito." } },
+      { "card": "Ten of Swords", "meaning": { "en": "Ruin.", "pt": "Ruína." } },
+      { "card": "Ten of Pentacles", "meaning": { "en": "Abandoned wealth.", "pt": "Riqueza abandonada." } }
+    ],
+    "colors": {
+      "atziluth": { "en": "Greenish yellow", "pt": "Amarelo esverdeado" },
+      "briah": { "en": "Citrine, olive, russet and black", "pt": "Citrino, oliva, castanho-avermelhado e preto" },
+      "yetzirah": { "en": "Citrine, olive, russet and black, flecked with gold", "pt": "Citrino, oliva, castanho-avermelhado e preto, salpicado de ouro" },
+      "assiah": { "en": "Black with yellow stripes", "pt": "Preto com listras amarelas" }
+    },
+    "candles": {
+      "en": "One brown to the north, one red to the south, one green to the west, one yellow to the east and one white in the middle.",
+      "pt": "Uma marrom ao norte, uma vermelha ao sul, uma verde ao oeste, uma amarela ao leste e uma branca ao meio."
+    },
+    "incense": {
+      "en": ["epazote", "sulphur", "guinea henweed root", "ginger", "saffron", "turmeric"],
+      "pt": ["erva-de-santa-maria", "enxofre", "raiz de guiné", "gengibre", "açafrão", "cúrcuma"]
+    },
+    "expression": null
+  }
+}

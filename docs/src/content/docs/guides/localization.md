@@ -16,7 +16,8 @@ English is the default. An optional `language` argument that begins with `pt`, i
 | I Ching | `getIChingReadingContent(input, language?)`, `getHexagramText`, `getOracleTextContent`, `getHexagramName`, `formatRecordContent` | The 514 classical texts (as `content`), hexagram names, the printed record |
 | Numerology | `getNumerologyData(language?)` | The eight meaning tables |
 | Gematria | `getGematriaData(language?)` | Individuality, personality and synthesis meanings |
-| Core | `getTreeDescription(text, language?)`, `getTreeNodeDescriptions(node, language?)` | Sphere, world, letter, color and music descriptions for all three tree systems |
+| Core | `getTreeDescription(text, language?)`, `getTreeNodeDescriptions(node, language?)` | Sphere, world, letter, color and music descriptions |
+| Core | `getSphereProfile(sphere, language?)`, `listSphereProfiles(language?)`, `getPathProfile(path, language?)`, `listPathProfiles(language?)`, `getSpherePathProfiles(sphere, language?)`, `getTreeSection(id, language?)`, `listTreeSections({ kind, language })`, `getSphereSections(sphere, language?)` | Sphere and path profiles (meaning, balance, excess and lack, misuse, mantras, correspondences) and the worlds, pillars and triads |
 | Semantic | symbol metadata getters, `getKaabalisticCorrespondenceTargets`, `get*TreeMarkers`, `buildKaabalisticMapData`, `getKaabalisticLabel`, `getReadingReference` | Display labels and the reading reference, including the eleven-step descent |
 | Astrology | `getAstrologyLabel(label, language?)` | Signs, planets, nodes, sect, dignities, aspects, decan tarot names |
 | Ifa | `getIfaText(key, language?)` | Calculation labels |

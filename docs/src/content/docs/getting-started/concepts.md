@@ -113,7 +113,7 @@ Practical tip:
 - **Path**: a connection between spheres (22 paths).
 - **Correspondence**: any linked concept (planet, element, tarot card, Hebrew letter, etc.).
 - **NodeId**: a branded string (`"sphere:Kether"`, `"tarotArkAnnu:The Magician"`) used for type-safe lookups.
-- **System**: the flavor of the tree (`kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah`).
+- **System**: the tree itself. `kaabalah`, as taught by the Melkitzedeki Order, is the only one.
 - **Parts**: optional modules that add more nodes (`westernAstrology`, `tarot`).
 
 Practical tip:

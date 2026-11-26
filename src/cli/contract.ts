@@ -387,7 +387,7 @@ export const COMMANDS: CommandSchema[] = [
     description: "Return the canonical Tree of Life layout coordinates for overlays and rendering",
     args: [],
     flags: [
-      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system. kaabalah is the only one" },
       { name: "units", type: "string", default: "both", description: "Coordinate space: percentages, viewBoxUnits, or both" },
       { name: "render-model", type: "boolean", default: false, description: "Return activation-aware render model geometry instead of the basic layout" },
       { name: "activations", type: "string", description: "Path to activation JSON array or object with an activations array" },
@@ -400,7 +400,7 @@ export const COMMANDS: CommandSchema[] = [
     ],
     examples: [
       "kaabalah tree:layout --json --compact",
-      "kaabalah tree:layout --system=hermetic-qabalah --units=percentages --json",
+      "kaabalah tree:layout --units=percentages --json",
       "kaabalah tree:layout --render-model --activations=activations.json --json --compact",
     ],
   },
@@ -409,13 +409,47 @@ export const COMMANDS: CommandSchema[] = [
     description: "Return the structural Tree of Life topology, paths, and named routes",
     args: [],
     flags: [
-      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system. kaabalah is the only one" },
       { name: "route", type: "string", default: "all", description: "Route filter: all, lightning, or serpent" },
     ],
     examples: [
       "kaabalah tree:topology --json --compact",
       "kaabalah tree:topology --route=lightning --json --compact",
-      "kaabalah tree:topology --system=lurianic-kabbalah --route=lightning --json --compact",
+    ],
+  },
+  {
+    name: "tree:sphere",
+    description: "Describe a sphere: plain meaning, balance, excess and lack, its work and correspondences",
+    args: [{ name: "sphere", type: "string", required: false, description: "Sphere name or node ID (e.g. Geburah, sphere:Geburah); omit to list all spheres" }],
+    flags: [],
+    examples: [
+      "kaabalah tree:sphere Geburah --json --compact",
+      "kaabalah tree:sphere Geburah --language pt-BR --json --compact --fields=essence,keywords,work,expression",
+      "kaabalah tree:sphere --json --compact --fields=spheres",
+    ],
+  },
+  {
+    name: "tree:path",
+    description: "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences",
+    args: [{ name: "path", type: "string", required: false, description: "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths" }],
+    flags: [],
+    examples: [
+      "kaabalah tree:path 13 --json --compact",
+      'kaabalah tree:path "The Hanged Man" --language pt-BR --json --compact --fields=essence,keywords,misuse',
+      "kaabalah tree:path --json --compact --fields=paths",
+    ],
+  },
+  {
+    name: "tree:section",
+    description: "Describe a section of the Tree: one of the four worlds, three pillars or three triads",
+    args: [{ name: "section", type: "string", required: false, description: "Section ID or its short form (e.g. world:Briah, left, supernal); omit to list all sections" }],
+    flags: [
+      { name: "kind", type: "string", description: "List only one kind of section: world, pillar or triad" },
+    ],
+    examples: [
+      "kaabalah tree:section pillar:left --json --compact",
+      "kaabalah tree:section supernal --language pt-BR --json --compact",
+      "kaabalah tree:section --kind=world --json --compact",
     ],
   },
   {
@@ -423,7 +457,7 @@ export const COMMANDS: CommandSchema[] = [
     description: "Generate a structural Tree of Life SVG from the canonical library renderer",
     args: [],
     flags: [
-      { name: "system", type: "string", default: "kaabalah", description: "Tree system to render: only kaabalah has an SVG renderer (other systems exit UNSUPPORTED_SYSTEM)" },
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system. kaabalah is the only one" },
       { name: "width", type: "string", description: 'SVG width attribute (e.g. 1110mm, 800, 100%)' },
       { name: "height", type: "string", description: 'SVG height attribute (e.g. 2220mm, 600, 100%)' },
       { name: "background", type: "string", default: "white", description: 'Background fill color, or "transparent"' },
@@ -448,7 +482,7 @@ export const COMMANDS: CommandSchema[] = [
     description: "Render a lightweight ASCII Tree of Life preview from the canonical layout",
     args: [],
     flags: [
-      { name: "system", type: "string", default: "kaabalah", description: "Tree system: kaabalah, hermetic-qabalah, lurianic-kabbalah" },
+      { name: "system", type: "string", default: "kaabalah", description: "Tree system. kaabalah is the only one" },
       { name: "columns", type: "number", default: 61, description: "ASCII canvas width in characters (minimum 21)" },
       { name: "rows", type: "number", default: 31, description: "ASCII canvas height in lines (minimum 11)" },
     ],

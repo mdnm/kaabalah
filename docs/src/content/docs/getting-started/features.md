@@ -11,11 +11,12 @@ sidebar:
 
 A typed graph structure that maps correspondences across esoteric systems: Kabbalistic spheres and paths, western astrology, tarot cards, Hebrew letters, and more.
 
-- Three built-in systems: `kaabalah`, `hermetic-qabalah`, `lurianic-kabbalah`
+- One system: `kaabalah`, the Tree as taught by the Melkitzedeki Order
 - Opt-in parts: `westernAstrology`, `tarot`
 - Branded `NodeId<T>` types for type-safe graph traversal
 - Factory pattern: `createTree({ system, parts })`
-- Portuguese descriptions for all three systems: `getTreeDescription`, `getTreeNodeDescriptions`
+- Portuguese descriptions: `getTreeDescription`, `getTreeNodeDescriptions`
+- Sphere profiles, path profiles and Tree sections in plain words: `getSphereProfile`, `getPathProfile`, `getTreeSection`
 
 ### Numerology
 

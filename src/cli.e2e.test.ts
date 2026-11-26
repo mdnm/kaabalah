@@ -134,6 +134,9 @@ describe("CLI contract", () => {
       "tree:types",
       "tree:layout",
       "tree:topology",
+      "tree:sphere",
+      "tree:path",
+      "tree:section",
       "tree:svg",
       "tree:ascii",
       "tree:map",
@@ -790,6 +793,68 @@ describe("CLI contract", () => {
     });
   });
 
+  it("describes a sphere and its sections, and rejects an unknown sphere", () => {
+    const one = runCli(["tree:sphere", "sphere:Hod", "--json", "--compact"]);
+    assertSuccess(one, "tree:sphere sphere:Hod");
+    const profile = JSON.parse(one.stdout);
+    expect(profile.sphere).toBe("Hod");
+    expect(profile.language).toBe("en");
+    expect(profile.sections.pillar).toBe("pillar:left");
+
+    const pt = runCli(["tree:sphere", "hod", "--language=pt-BR", "--json", "--compact", "--fields=language,essence"]);
+    assertSuccess(pt, "tree:sphere hod pt-BR");
+    expect(JSON.parse(pt.stdout).language).toBe("pt");
+    expect(JSON.parse(pt.stdout).essence).not.toBe(profile.essence);
+
+    const all = runCli(["tree:sphere", "--json", "--compact"]);
+    assertSuccess(all, "tree:sphere");
+    expect(JSON.parse(all.stdout).spheres).toHaveLength(11);
+
+    const unknown = runCli(["tree:sphere", "Gevurah", "--json", "--compact"]);
+    expect(unknown.status).toBe(1);
+    expect(JSON.parse(unknown.stdout).code).toBe("INVALID_ARGUMENT");
+  });
+
+  it("describes a path by number, card or letter, and rejects an unknown path", () => {
+    const one = runCli(["tree:path", "13", "--json", "--compact"]);
+    assertSuccess(one, "tree:path 13");
+    const profile = JSON.parse(one.stdout);
+    expect(profile.number).toBe(13);
+    expect(profile.language).toBe("en");
+
+    for (const lookup of [profile.tarotCard, profile.hebrewLetter, "path:13"]) {
+      const same = runCli(["tree:path", lookup, "--language=pt-BR", "--json", "--compact", "--fields=number,language"]);
+      assertSuccess(same, `tree:path ${lookup}`);
+      expect(JSON.parse(same.stdout)).toEqual({ number: 13, language: "pt" });
+    }
+
+    const all = runCli(["tree:path", "--json", "--compact"]);
+    assertSuccess(all, "tree:path");
+    expect(JSON.parse(all.stdout).paths).toHaveLength(22);
+
+    const unknown = runCli(["tree:path", "23", "--json", "--compact"]);
+    expect(unknown.status).toBe(1);
+    expect(JSON.parse(unknown.stdout).code).toBe("INVALID_ARGUMENT");
+  });
+
+  it("describes tree sections by ID, short form and kind", () => {
+    const one = runCli(["tree:section", "supernal", "--json", "--compact"]);
+    assertSuccess(one, "tree:section supernal");
+    expect(JSON.parse(one.stdout).id).toBe("triad:supernal");
+
+    const worlds = runCli(["tree:section", "--kind=world", "--json", "--compact"]);
+    assertSuccess(worlds, "tree:section --kind=world");
+    const sections = JSON.parse(worlds.stdout).sections as Array<{ kind: string }>;
+    expect(sections.length).toBeGreaterThan(0);
+    expect(sections.every((section) => section.kind === "world")).toBe(true);
+
+    for (const args of [["tree:section", "nowhere"], ["tree:section", "--kind=row"]]) {
+      const invalid = runCli([...args, "--json", "--compact"]);
+      expect(invalid.status).toBe(1);
+      expect(JSON.parse(invalid.stdout).code).toBe("INVALID_ARGUMENT");
+    }
+  });
+
   it("returns structural tree topology and named route data", () => {
     const result = runCli([
       "tree:topology",
@@ -931,28 +996,14 @@ describe("CLI contract", () => {
     expect(readFileSync(outputPath, "utf8")).toContain(`<svg xmlns="http://www.w3.org/2000/svg"`);
   });
 
-  it.each(["hermetic-qabalah", "lurianic-kabbalah"] as const)(
-    "returns a structured error for tree SVG system %s",
-    (system) => {
-      const result = runCli([
-        "tree:svg",
-        `--system=${system}`,
-        "--json",
-        "--compact",
-      ]);
-
+  it("rejects a tree system that does not exist", () => {
+    for (const command of ["tree:svg", "tree:layout", "tree:topology"]) {
+      const result = runCli([command, "--system=hermetic-qabalah", "--json", "--compact"]);
       expect(result.status).toBe(1);
-      expect(JSON.parse(result.stdout)).toEqual({
-        error: true,
-        code: "UNSUPPORTED_SYSTEM",
-        message:
-          `tree:svg is only supported for the Melkitzedeki system ('kaabalah'); received '${system}'. Run "kaabalah help tree:svg" for command usage.`,
-        version: VERSION,
-      });
-      expect(result.stderr).not.toContain("LOADERS");
-      expect(result.stderr).not.toContain("TypeError");
+      expect(JSON.parse(result.stdout).code).toBe("INVALID_ARGUMENT");
     }
-  );
+    assertSuccess(runCli(["tree:topology", "--system=kaabalah", "--json", "--compact"]), "tree:topology --system=kaabalah");
+  });
 
   it("generates activation-aware tree SVG from an activations file", () => {
     const cwd = makeTempDir();
@@ -2640,12 +2691,6 @@ describe("help contract for the new commands and fixed defects", () => {
     const geocoded = help().commands.flatMap((c) => c.flags.filter((f) => f.name === "location" || f.name === "sr-location"));
     expect(geocoded.length).toBeGreaterThan(5);
     for (const flag of geocoded) expect(flag.description).toContain("KAABALAH_GOOGLE_MAPS_API_KEY");
-  });
-
-  it("tree:svg help matches validation: only kaabalah renders", () => {
-    const system = find("tree:svg").flags.find((f) => f.name === "system")!;
-    expect(system.description).toContain("only kaabalah");
-    cliError(["tree:svg", "--system=hermetic-qabalah"], "UNSUPPORTED_SYSTEM");
   });
 
   it("separates the actionable hint from the message with punctuation", () => {

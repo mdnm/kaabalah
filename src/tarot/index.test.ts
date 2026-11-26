@@ -65,9 +65,7 @@ describe("tarot archetype resolver", () => {
 
   it("lists tarot trees and keeps card-number correspondences direct in the kaabalah tree", () => {
     expect(listTarotTrees()).toEqual([
-      "kaabalah",
-      "hermetic-qabalah",
-      "lurianic-kabbalah"
+      "kaabalah"
     ]);
 
     const tree = getCanonicalTree({
@@ -365,13 +363,4 @@ describe("tarot archetype resolver", () => {
     }
   });
 
-  it("returns undefined for trees without tarot numbering mappings yet", () => {
-    expect(
-      getTarotCardNumber(
-        { tarotCardName: "Ace of Pentacles" },
-        "hermetic-qabalah"
-      )
-    ).toBeUndefined();
-    expect(getTarotCardByNumber(78, "lurianic-kabbalah")).toBeUndefined();
-  });
 });

@@ -10,3 +10,14 @@ export function freezeTextData<T>(value: T): ReadonlyTextData<T> {
   }
   return value as ReadonlyTextData<T>;
 }
+
+/** Resolve every `{ en, pt }` pair in bilingual text data to one language, as a fresh copy. */
+export function pickTextLanguage(value: unknown, language: "en" | "pt"): unknown {
+  if (Array.isArray(value)) return value.map(item => pickTextLanguage(item, language));
+  if (!value || typeof value !== "object") return value;
+  const keys = Object.keys(value);
+  if (keys.length === 2 && "en" in value && "pt" in value) {
+    return pickTextLanguage((value as { en: unknown; pt: unknown })[language], language);
+  }
+  return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, pickTextLanguage(item, language)]));
+}

@@ -1,22 +1,18 @@
 import { TreeOfLife } from "../tree-of-life";
-import * as hermeticQabalah from "./hermetic-qabalah";
 import * as kaabalah from "./kaabalah";
-import * as lurianicKabbalah from "./lurianic-kabbalah";
 
 export type System = {
-  SYSTEM: "kaabalah" | "hermetic-qabalah" | "lurianic-kabbalah";
+  SYSTEM: "kaabalah";
   LOADERS: Record<string, Loader>;
   UNLOADERS: Record<string, Unloader>;
   BRIDGES: Bridge[];
 };
 
-export const SYSTEMS: System[] = [kaabalah, hermeticQabalah, lurianicKabbalah];
+/** The Tree systems. Kaabalah, as taught by the Melkitzedeki Order, is the only one. */
+export const SYSTEMS: System[] = [kaabalah];
 
 export type SystemKey = (typeof SYSTEMS)[number]["SYSTEM"];
-export type PartKey =
-  | keyof typeof kaabalah.LOADERS
-  | keyof typeof hermeticQabalah.LOADERS
-  | keyof typeof lurianicKabbalah.LOADERS;
+export type PartKey = keyof typeof kaabalah.LOADERS;
 
 export type Loader = (t: TreeOfLife) => TreeOfLife;
 export type Unloader = (t: TreeOfLife) => void;

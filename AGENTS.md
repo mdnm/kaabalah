@@ -39,7 +39,16 @@ The astrology module uses Swiss Ephemeris compiled to WebAssembly. Tests require
 
 ### Core: Factory Pattern
 
-Never instantiate `TreeOfLife` directly. Use `createTree({ system, parts })` or `getCanonicalTree({ system, parts })` (cached; prefer it for read-only use).
+`kaabalah` is the only tree system; the Hermetic and Lurianic systems were removed in 8.0.0, so do not add system branches. Never instantiate `TreeOfLife` directly. Use `createTree({ system, parts })` or `getCanonicalTree({ system, parts })` (cached; prefer it for read-only use).
+
+### Core: sphere profiles, path profiles and tree sections
+
+`src/core/sphere-profiles.json` (`getSphereProfile`), `src/core/path-profiles.json` (`getPathProfile`) and `src/core/tree-sections.json` (`getTreeSection`, `getSphereSections`) hold what the spheres, the 22 paths, and the worlds, pillars and triads mean, with `{ en, pt }` in every text field.
+
+- A path's `from`, `to`, letter, card and correspondence are read from the graph, never stored.
+- The content is authored by Mat. Do not fill a gap from other traditions: `expression` (balance, excess, lack) exists for the seven classical-planet spheres and is `null` for the rest, and Daath has a short profile.
+- Nothing from the tree of death goes into the library: no shadow spheres, no tunnels, no names and no correspondences of them. The gestures of the ark annu stay out too.
+- Comments and docs never mention where the content was taught (classes, lessons, handouts). The editorial sources are in the gitignored `provenance/` folder.
 
 ### Civil Dates (new numerology API)
 
@@ -124,7 +133,7 @@ Exit code is always `1` on error.
 
 Typed library errors reuse these codes (no extra code): invalid or out-of-range dates and strict-ephemeris mismatches are `INVALID_DATE`; unknown options/aspects/points/profiles, bad ranges, manifests and orb policies are `INVALID_ARGUMENT`; missing time, location or birth value is `MISSING_ARGUMENT`; missing Swiss Ephemeris assets are `WASM_INIT_ERROR`. `src/cli/runtime/errors.ts` (`classifyLibraryError`) holds the mapping and also applies to errors a command did not catch. Messages end with a separate hint sentence (`Run "kaabalah help <command>" ...`).
 
-**Error codes:** `INVALID_DATE`, `INVALID_ARGUMENT`, `MISSING_ARGUMENT`, `UNKNOWN_COMMAND`, `UNSUPPORTED_SYSTEM` (`tree:svg` for a system without a renderer), `CARD_NOT_FOUND`, `INDEX_OUT_OF_POOL` (`tarot:spread --method=conscious`), `INTERNAL_ERROR`, `GEOCODE_ERROR`, `WASM_INIT_ERROR`, `INVALID_JSON`
+**Error codes:** `INVALID_DATE`, `INVALID_ARGUMENT`, `MISSING_ARGUMENT`, `UNKNOWN_COMMAND`, `CARD_NOT_FOUND`, `INDEX_OUT_OF_POOL` (`tarot:spread --method=conscious`), `INTERNAL_ERROR`, `GEOCODE_ERROR`, `WASM_INIT_ERROR`, `INVALID_JSON`
 
 ### Input Limits
 

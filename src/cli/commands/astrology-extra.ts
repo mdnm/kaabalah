@@ -790,7 +790,6 @@ export async function cmdCapabilities(flags: Flags, ctx: ExecutionContext): Prom
         "INVALID_ARGUMENT",
         "MISSING_ARGUMENT",
         "UNKNOWN_COMMAND",
-        "UNSUPPORTED_SYSTEM",
         "CARD_NOT_FOUND",
         "INDEX_OUT_OF_POOL",
         "INTERNAL_ERROR",

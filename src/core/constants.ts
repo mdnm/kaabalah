@@ -2,31 +2,10 @@ import { getEnglishTarotDeckDescriptions } from "./tarot-content";
 import { KaabalahTypes, LetterTypes, NodeData, NodeId, TarotTypes } from "./types";
 
 
-interface HermeticQabalahSphereData {
-  /**
-   * In Atziluth
-   */
-  divineName: string;
-  /**
-   * In Briah
-   */
-  archangelicName: string;
-  /**
-   * In Yetzirah
-   */
-  angelicName: string;
-  /**
-   * In Assiah
-   */
-  mundaneName: string;
-}
-
 export type SphereData = {
   hebrewSpelling: string;
   englishName: string;
-  // TODO: add magical images
-  magicalImage?: string;
-} & Partial<HermeticQabalahSphereData>;
+};
 
 export type PathData = {
   meaning?: string;
@@ -215,31 +194,6 @@ export const MELKITZEDEKI_PATHS = {
   NETZACH_MALKUTH: 19,
   HOD_YESOD: 20,
   HOD_MALKUTH: 21,
-  YESOD_MALKUTH: 22,
-} as const;
-
-export const LURIANIC_PATHS = {
-  KETHER_CHOKHMAH: 1,
-  KETHER_BINAH: 2,
-  KETHER_TIPHARETH: 3,
-  CHOKHMAH_BINAH: 4,
-  CHOKHMAH_GEBURAH: 5,
-  CHOKHMAH_TIPHARETH: 6,
-  CHOKHMAH_CHESED: 7,
-  BINAH_CHESED: 8,
-  BINAH_TIPHARETH: 9,
-  BINAH_GEBURAH: 10,
-  CHESED_GEBURAH: 11,
-  CHESED_TIPHARETH: 12,
-  CHESED_NETZACH: 13,
-  GEBURAH_TIPHARETH: 14,
-  GEBURAH_HOD: 15,
-  TIPHARETH_NETZACH: 16,
-  TIPHARETH_YESOD: 17,
-  TIPHARETH_HOD: 18,
-  NETZACH_HOD: 19,
-  NETZACH_YESOD: 20,
-  HOD_YESOD: 21,
   YESOD_MALKUTH: 22,
 } as const;
 

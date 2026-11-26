@@ -35,7 +35,7 @@ _Avoid_: origin, provenance
 ### Configuration model
 
 **System**:
-A lens onto the correspondence graph representing a way of arranging, naming, and scoping the Tree of Life. **Kaabalah** (Melkitzedeki Order) is the complete, canonical system — the only one that matters. Hermetic-qabalah and lurianic-kabbalah exist in the code as separate systems but are vestigial; the real slicing need is by correspondence domain (music, colors, biology), not by tradition. Only one system is active at a time.
+A lens onto the correspondence graph representing a way of arranging, naming, and scoping the Tree of Life. **Kaabalah** (Melkitzedeki Order) is the complete, canonical system and the only one in the code. The hermetic-qabalah and lurianic-kabbalah systems were removed in 8.0.0; the real slicing need is by correspondence domain (music, colors, biology), not by tradition.
 _Avoid_: tradition, school, variant
 
 **Part**:

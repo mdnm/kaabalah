@@ -174,28 +174,4 @@ describe("TreeTopology", () => {
     expect(topology.previousInRoute("serpent", "Binah")?.name).toBe("Chesed");
   });
 
-  it("keeps route order system-specific when the topology changes", () => {
-    const topology = getTreeTopology({ system: "lurianic-kabbalah" });
-    const lightning = topology.getRoute("lightning");
-
-    expect(topology.getSphere("Daath")).toBeUndefined();
-    expect(topology.getSpheres()).toHaveLength(10);
-    expect(lightning?.spheres.map((sphere) => sphere.name)).toEqual([
-      "Kether",
-      "Chokhmah",
-      "Binah",
-      "Chesed",
-      "Geburah",
-      "Tiphareth",
-      "Netzach",
-      "Hod",
-      "Yesod",
-      "Malkuth",
-    ]);
-    expect(lightning?.segments.map((segment) => segment.path?.number)).toEqual([
-      1, 4, 8, 11, 14, 16, 19, 21, 22,
-    ]);
-    expect(lightning?.isFullyConnected).toBe(true);
-    expect(topology.nextInRoute("lightning", "Binah")?.name).toBe("Chesed");
-  });
 });
