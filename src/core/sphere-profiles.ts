@@ -46,8 +46,6 @@ export interface SphereProfile {
   divineName?: { name: string; meaning: string };
   archangel?: { name: string; role: string };
   choir?: { name: string; meaning: string; christianName: string };
-  /** The sphere's heaven in Assiah (its cosmic chakra). */
-  heaven?: { name: string; meaning: string };
   yetziraticText?: string;
   spiritualExperience?: string;
   attributes?: string[];
@@ -70,7 +68,7 @@ export interface SphereProfile {
   colors?: { atziluth: string; briah: string; yetzirah: string; assiah: string };
   candles?: string;
   incense?: string[];
-  /** Given for the seven spheres of the classical planets; null for the others. */
+  /** How the theme of the sphere shows in balance, in excess and in lack. */
   expression: SphereExpression | null;
 }
 

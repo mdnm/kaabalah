@@ -40,7 +40,6 @@
       "meaning": { "en": "Holy Living Creatures, the roots of the four elements", "pt": "Sagradas Criaturas Vivas, as raízes dos quatro elementos" },
       "christianName": { "en": "Seraphim", "pt": "Serafins" }
     },
-    "heaven": { "name": "Reshith ha-Gilgalim", "meaning": { "en": "The First Swirlings, the Primum Mobile", "pt": "Os Primeiros Remoinhos, o Primum Mobile" } },
     "yetziraticText": {
       "en": "The first path is called the Admirable or Hidden Intelligence, the Supreme Crown. It is the light that makes the beginning without beginning understood; it is the First Glory, for no creature can reach its essence.",
       "pt": "O primeiro caminho é chamado de Inteligência Admirável ou Oculta, a Coroa Suprema. É a luz que faz compreender o princípio sem princípio; é a Glória Primeira, pois nenhuma criatura pode alcançar a sua essência."
@@ -86,7 +85,20 @@
       "en": ["clove", "myrrh", "musk", "storax", "amber", "laurel", "aloe vera"],
       "pt": ["cravo", "mirra", "almíscar", "estoraque", "âmbar", "louro", "aloe vera"]
     },
-    "expression": null
+    "expression": {
+      "balanced": {
+        "en": "A will in tune with the higher self: the soul open to receive the higher forces, a deep spiritual connection, and the drive to carry the Great Work to its end.",
+        "pt": "Uma vontade afinada com o Eu superior: a alma aberta para receber as forças superiores, uma conexão espiritual profunda e o impulso de levar a Grande Obra até o fim."
+      },
+      "excess": {
+        "en": "The will dissolves into the whole: confusion, illusion and flight from material life; one is carried by the breath of the crowd like a leaf in the wind and loses one's own direction.",
+        "pt": "A vontade se dissolve no todo: confusão, ilusão e fuga da vida material; a pessoa é arrastada pelo alento da multidão como folha ao vento e perde a própria direção."
+      },
+      "lack": {
+        "en": "Cut off from the source: disillusionment, a will with no higher aim, and wrath whenever the will is thwarted.",
+        "pt": "Desligada da fonte: desilusão, uma vontade sem propósito maior e ira sempre que a vontade é contrariada."
+      }
+    }
   },
   "Chokhmah": {
     "number": 2,
@@ -126,13 +138,6 @@
       },
       "christianName": { "en": "Cherubim", "pt": "Querubins" }
     },
-    "heaven": {
-      "name": "Mazloth",
-      "meaning": {
-        "en": "The Zodiac, the starry sky where the forms of things are laid out",
-        "pt": "O Zodíaco, o céu estrelado onde estão dispostas as formas das coisas"
-      }
-    },
     "yetziraticText": {
       "en": "The second path is called the Illuminating Intelligence. It is the Crown of Creation and the Splendour of the Unity, which it equals. It is exalted above every head and the kabbalists call it the Second Glory.",
       "pt": "O segundo caminho é chamado de Inteligência Iluminadora. É a Coroa da Criação e o Esplendor da Unidade, que a iguala. É exaltada sobre todas as cabeças e os cabalistas a chamam de Segunda Glória."
@@ -169,7 +174,20 @@
       "en": ["clove", "myrrh", "musk", "storax", "amber", "laurel", "aloe vera"],
       "pt": ["cravo", "mirra", "almíscar", "estoraque", "âmbar", "louro", "aloe vera"]
     },
-    "expression": null
+    "expression": {
+      "balanced": {
+        "en": "The first impulse put to work: original ideas, creativity and innovation, the vision that sets things in motion, carried by love and devotion; authority used like a father who guides.",
+        "pt": "O primeiro impulso posto em ação: ideias originais, criatividade e inovação, a visão que põe as coisas em movimento, levada pelo amor e pela devoção; a autoridade exercida como um pai que orienta."
+      },
+      "excess": {
+        "en": "Impulse without measure: rebellion for its own sake, sudden breaks, emotional detachment and coldness toward others; selfishness, and authority that imposes itself by force.",
+        "pt": "Impulso sem medida: rebeldia por si mesma, rupturas bruscas, desapego emocional e frieza com os outros; egoísmo e uma autoridade que se impõe à força."
+      },
+      "lack": {
+        "en": "No spark of one's own: only following other people's ideas, fearing the new, with ideas that never set out; love and devotion cool, and hatred can take their place.",
+        "pt": "Sem centelha própria: só segue as ideias dos outros, tem medo do novo e ideias que nunca saem do lugar; o amor e a devoção esfriam, e o ódio pode tomar o seu lugar."
+      }
+    }
   },
   "Binah": {
     "number": 3,
@@ -218,7 +236,6 @@
       "meaning": { "en": "The Mighty Ones, strong and powerful entities", "pt": "Os Poderosos, entidades fortes e poderosas" },
       "christianName": { "en": "Thrones", "pt": "Tronos" }
     },
-    "heaven": { "name": "Shabbathai", "meaning": { "en": "Saturn", "pt": "Saturno" } },
     "yetziraticText": {
       "en": "The third path is called the Sanctifying Intelligence and is the Foundation of Primordial Wisdom; it is also called the Creator of Faith. Its roots are the Amen. It is the mother of Faith, the source from which Faith flows.",
       "pt": "O terceiro caminho é chamado de Inteligência Santificante e é o Fundamento da Sabedoria Primordial; chama-se também Criadora da Fé. Suas raízes são o Amém. É a mãe da Fé, a fonte de onde emana a Fé."
@@ -316,7 +333,20 @@
       "en": "Those that lift the soul and tear the veils, such as jurema and ayahuasca.",
       "pt": "As que elevam a alma e rasgam os véus, como jurema e ayahuasca."
     },
-    "expression": null
+    "expression": {
+      "balanced": {
+        "en": "Knowledge that transforms: the spirit ruling soul and matter, the courage to face one's own shadow, burning the unwanted mental images so the wanted ones can grow; power held in balance.",
+        "pt": "Conhecimento que transforma: o espírito governando a alma e a matéria, a coragem de encarar a própria sombra, queimando as imagens mentais indesejadas para que as almejadas germinem; o poder em equilíbrio."
+      },
+      "excess": {
+        "en": "Power turned into control and domination: knowledge used to bind others, and transformation forced through destruction.",
+        "pt": "O poder convertido em controle e dominação: o conhecimento usado para prender os outros e a transformação forçada pela destruição."
+      },
+      "lack": {
+        "en": "Fear of crossing: avoiding facing one's own shadow, clinging to what should end, with knowledge that stays information and never becomes gnosis.",
+        "pt": "Medo da travessia: evita encarar a própria sombra, apega-se ao que deveria terminar e tem um conhecimento que fica na informação e que nunca se torna gnose."
+      }
+    }
   },
   "Chesed": {
     "number": 4,
@@ -362,7 +392,6 @@
       },
       "christianName": { "en": "Dominations", "pt": "Dominações" }
     },
-    "heaven": { "name": "Tzedek", "meaning": { "en": "Jupiter", "pt": "Júpiter" } },
     "yetziraticText": {
       "en": "The fourth path is called the Cohesive or Receptive Intelligence, because it contains all the holy powers. From it flow the spiritual virtues with their most refined essences, emanating one from another by virtue of the Primordial Emanation, the Highest Crown.",
       "pt": "O quarto caminho é chamado de Inteligência Coesiva ou Receptiva, porque contém todos os poderes sagrados. Dele emanam as virtudes espirituais com as suas essências mais requintadas, umas das outras, por virtude da Emanação Primordial, a Coroa Mais Elevada."
@@ -457,7 +486,6 @@
       "meaning": { "en": "Fiery Serpents, the burning ones", "pt": "Serpentes de Fogo, as inflamadas" },
       "christianName": { "en": "Powers", "pt": "Potências ou Potestades" }
     },
-    "heaven": { "name": "Madim", "meaning": { "en": "Mars", "pt": "Marte" } },
     "yetziraticText": {
       "en": "The fifth path is called the Radical Intelligence, because it resembles the Unity. It flows from Binah, the Understanding, and joins it, which in turn flows from the depths of Chokhmah, the primordial Wisdom.",
       "pt": "O quinto caminho é chamado de Inteligência Radical, porque se assemelha à Unidade. Emana de Binah, o Entendimento, e se une a esta, a qual, por sua vez, emana das profundezas de Chokhmah, a Sabedoria primordial."
@@ -565,7 +593,6 @@
       },
       "christianName": { "en": "Virtues", "pt": "Virtudes" }
     },
-    "heaven": { "name": "Shemesh", "meaning": { "en": "The Sun", "pt": "O Sol" } },
     "yetziraticText": {
       "en": "The sixth path is called the Mediating Intelligence, for in it the inflows of the emanations are multiplied, and these influences flow into all the reservoirs of blessings with which they unite.",
       "pt": "O sexto caminho é chamado de Inteligência Mediadora, pois nele se multiplicam os influxos das emanações, fluindo essas influências para todos os reservatórios das bênçãos com que se unem."
@@ -670,7 +697,6 @@
       "meaning": { "en": "Gods, who govern nature and have a double polarity", "pt": "Deuses, que governam a natureza e têm dupla polaridade" },
       "christianName": { "en": "Principalities", "pt": "Principados" }
     },
-    "heaven": { "name": "Nogah", "meaning": { "en": "Venus", "pt": "Vênus" } },
     "yetziraticText": {
       "en": "The seventh path is called the Hidden Intelligence, because it makes a sparkling splendour rise over all the intellectual virtues that are contemplated by the eyes of the spirit and by the ecstasy of faith.",
       "pt": "O sétimo caminho é chamado de Inteligência Oculta, porque faz emergir um esplendor cintilante sobre todas as virtudes intelectuais que são contempladas pelos olhos do espírito e pelo êxtase da fé."
@@ -769,7 +795,6 @@
       "meaning": { "en": "Sons of God, androgynous according to tradition", "pt": "Filhos de Deus, andróginos segundo a tradição" },
       "christianName": { "en": "Archangels", "pt": "Arcanjos" }
     },
-    "heaven": { "name": "Kokab", "meaning": { "en": "Mercury", "pt": "Mercúrio" } },
     "yetziraticText": {
       "en": "The eighth path is called the Absolute or Perfect Intelligence, for it is the instrument of the Primordial. From it flows the preparation of the principles. It has no roots with which to take hold, except in the hidden places of Gedulah, from which its own essence flows.",
       "pt": "O oitavo caminho é chamado de Inteligência Absoluta ou Perfeita, pois é o instrumento do Primordial. É dela que emana a preparação dos princípios. Não possui raízes com as quais possa implantar-se, salvo nos lugares ocultos de Gedulah, da qual emana a sua essência característica."
@@ -877,7 +902,6 @@
       "meaning": { "en": "The Mighty Ones, the base of the sons", "pt": "Os Poderosos, a base dos filhos" },
       "christianName": { "en": "Angels", "pt": "Anjos" }
     },
-    "heaven": { "name": "Levanah", "meaning": { "en": "The Moon", "pt": "A Lua" } },
     "yetziraticText": {
       "en": "The ninth path is called the Pure Intelligence, because it purifies the emanations. It proves and corrects the design of their representations and the unity in which they are arranged, without diminution or division.",
       "pt": "O nono caminho chama-se Inteligência Pura, porque purifica as emanações. Ele prova e corrige o desenho de suas representações e a unidade segundo a qual elas estão dispostas, sem diminuição ou divisão."
@@ -985,7 +1009,6 @@
       "meaning": { "en": "Souls of Fire, the spark of the sacred fire in us", "pt": "Almas de Fogo, a nossa centelha do fogo sagrado" },
       "christianName": { "en": "Souls, or initiates", "pt": "Almas, ou iniciados" }
     },
-    "heaven": { "name": "Olam Yesodoth", "meaning": { "en": "The Sphere of the Elements", "pt": "A Esfera dos Elementos" } },
     "yetziraticText": {
       "en": "The tenth path is called the Resplendent Intelligence, because it is exalted above every head and has its seat on the throne of Binah. It lights the splendour of all the lights and makes the influence of the Prince of Faces, the archangel of Kether, flow out.",
       "pt": "O décimo caminho chama-se Inteligência Resplandecente, porque é exaltada sobre todas as cabeças e tem por assento o trono de Binah. Ela ilumina os esplendores de todas as luzes, fazendo emanar a influência do Príncipe dos Rostos, o arcanjo de Kether."
@@ -1031,6 +1054,19 @@
       "en": ["epazote", "sulphur", "guinea henweed root", "ginger", "saffron", "turmeric"],
       "pt": ["erva-de-santa-maria", "enxofre", "raiz de guiné", "gengibre", "açafrão", "cúrcuma"]
     },
-    "expression": null
+    "expression": {
+      "balanced": {
+        "en": "Discernment in material life: ideas made concrete, care for the body and health, steady processes, and learning through experience.",
+        "pt": "Discernimento na vida material: ideias concretizadas, cuidado com o corpo e a saúde, processos constantes e aprendizado pela experiência."
+      },
+      "excess": {
+        "en": "Matter over spirit: avarice, attachment to possessions and appearances, the ego taking itself for the whole self, and the illusion that only the visible is real.",
+        "pt": "A matéria sobre o espírito: avareza, apego às posses e às aparências, o ego tomando-se pelo ser inteiro e a ilusão de que só o visível é real."
+      },
+      "lack": {
+        "en": "Inertia: nothing comes down to the ground, health and material life are neglected, and judgment without discernment hardens into prejudice.",
+        "pt": "Inércia: nada desce à terra, a saúde e a vida material ficam esquecidas, e o julgamento sem discernimento endurece em preconceito."
+      }
+    }
   }
 }

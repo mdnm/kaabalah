@@ -287,13 +287,13 @@ The profile has two groups of fields.
 | Group | Fields |
 |-------|--------|
 | Plain words | `essence`, `keywords`, `work` (what is worked in the sphere when one walks the Tree), `expression` (`balanced`, `excess`, `lack`) |
-| Correspondences | `nameMeaning`, `titles`, `magicalImage`, `instrument` (on the magician's table), `symbols`, `geometricForm`, `elementalRelation`, `world`, `divineName`, `archangel`, `choir`, `heaven`, `yetziraticText`, `spiritualExperience`, `attributes`, `virtues`, `vices`, `body`, `places`, `lifeAreas`, `animals`, `plants`, `stones`, `metals`, `drugs`, `tarot`, `colors` (one per world), `candles`, `incense` |
+| Correspondences | `nameMeaning`, `titles`, `magicalImage`, `instrument` (on the magician's table), `symbols`, `geometricForm`, `elementalRelation`, `world`, `divineName`, `archangel`, `choir`, `yetziraticText`, `spiritualExperience`, `attributes`, `virtues`, `vices`, `body`, `places`, `lifeAreas`, `animals`, `plants`, `stones`, `metals`, `drugs`, `tarot`, `colors` (one per world), `candles`, `incense` |
 
 `expression` gives the three ways the theme of a sphere shows up in a person. A heavy sphere in a chart means the theme is prominent, not that the person lives it in excess: show the three and let the person recognise which one applies.
 
 Some fields are absent on purpose:
 
-- `expression` is `null` for Kether, Chokhmah, Daath and Malkuth. Balance, excess and lack are given for the seven spheres of the classical planets.
+- `expression` is given for every sphere. For Kether, Chokhmah, Daath and Malkuth it reads the theme through the sphere's planet in the graph (Neptune, Uranus, Pluto, the Earth).
 - Daath has only `essence`, `keywords`, `nameMeaning`, `titles`, `magicalImage`, `instrument`, `work`, `body`, `places`, `animals`, `plants`, `stones`, `metals` and `drugs`.
 
 An unknown sphere returns `undefined`. `pt` and `pt-BR` select Portuguese; any other language, or none, selects English. `SPHERE_PROFILES` is the frozen bilingual source, with `{ en, pt }` in every text field.
