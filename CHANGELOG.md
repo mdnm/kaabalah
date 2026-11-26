@@ -1,5 +1,24 @@
 # Changelog
 
+## 8.1.0 - 2026-11-26
+
+Sphere profiles:
+
+- Every sphere now has `expression` (balance, excess, lack). Kether,
+  Chokhmah, Daath and Malkuth had `null`; they are read through their planet
+  in the Tree (Neptune, Uranus, Pluto, the Earth).
+- Remove `heaven` and `elementalRelation`. The planet of a sphere comes from
+  the Tree.
+
+Path profiles:
+
+- Remove `alchemicalNames` (and the `PathAlchemicalName` type), `dialogue`,
+  `psychology` and `body`. `kaabalah tree:path` no longer prints the
+  psychological level.
+- Path 1 (the Magician) lists the four main instruments of the magician's
+  table: sceptre, cup, shield or coin, sword. Path 10 (the Wheel) lists the
+  coin or the wheel.
+
 ## 8.0.0 - 2026-11-25
 
 Breaking: Kaabalah is now the only tree system.
