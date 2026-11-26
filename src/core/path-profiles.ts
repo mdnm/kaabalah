@@ -34,8 +34,6 @@ export interface PathProfile {
   keyPhrase: string;
   /** The phrase to hold in mind (palavra para mentalização). */
   affirmation: string;
-  /** The ark annu at the psychological level. */
-  psychology: string;
   /** What the misuse of this force looks like. */
   misuse?: string[];
   /** Mantras, written as they are sounded. The same in every language. */
@@ -46,7 +44,6 @@ export interface PathProfile {
   /** The instruments of the magician's table. */
   instruments?: string[];
   dailyUse?: string;
-  body?: string;
   /** The amino acid of the path's letter in the book of life; the first and last letters are pauses. */
   aminoAcid: string;
 }
@@ -119,7 +116,7 @@ function resolvePathNumber(path: string | number): number | undefined {
 
 /**
  * The profile of a path: its two spheres, letter and card, what it means in plain words, and
- * what is taught about its ark annu (psychological level, misuse,
+ * what is taught about its ark annu (misuse,
  * mantras, incense, candles, instruments, daily use).
  *
  * Takes a path number (13, "13"), a path node ID ("path:13"), the name of its card ("Death",

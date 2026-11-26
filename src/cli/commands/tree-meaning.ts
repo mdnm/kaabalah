@@ -105,7 +105,6 @@ function printPath(profile: PathProfile): void {
   printLine("Affirmation", profile.affirmation);
   printLine("Misuse", profile.misuse);
   printLine("Mantras", profile.mantras);
-  console.log(`\n  ${profile.psychology}`);
   console.log(cliText("\n  Use --json for every correspondence.\n"));
 }
 

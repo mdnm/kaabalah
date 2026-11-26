@@ -11,10 +11,6 @@
     "letterQuality": { "en": "silence", "pt": "o silêncio" },
     "keyPhrase": { "en": "Union of heaven and earth.", "pt": "União dos céus e da terra." },
     "affirmation": { "en": "Co-creation with the waves of energy.", "pt": "Cocriação com as ondas energéticas." },
-    "psychology": {
-      "en": "The Magician is the guide: somewhere inside us there is always a glimpse from the depths of the unconscious that shows which direction to follow or which path to choose.",
-      "pt": "O Mago representa o guia: em algum ponto dentro de nós sempre existe um vislumbre das profundezas do inconsciente que indica que direção seguir ou que caminho escolher."
-    },
     "mantras": ["A"],
     "mantraNote": {
       "en": "The vowel A, for when we notice the power of creation in our own voice.",
@@ -42,10 +38,6 @@
     "letterQuality": { "en": "wisdom", "pt": "a sabedoria" },
     "keyPhrase": { "en": "I re-create to improve my life at every instant.", "pt": "Recrio para melhorar a minha vida a cada instante." },
     "affirmation": { "en": "I draw inspiration from the cosmic mother, nature.", "pt": "Me inspiro na mãe cósmica, a natureza." },
-    "psychology": {
-      "en": "The serpent over her head shows mastery: the fiery serpent of energy that rose up the spine to the top. She is Isis, the priestess wife, on whom all the work to be done rests. She speaks of buried secrets and mysteries that a person is not conscious of.",
-      "pt": "A serpente sobre a cabeça denota a maestria: a serpente ígnea da energia que subiu pela coluna até o topo. Ela é Ísis, a esposa sacerdotisa, na qual se sustenta todo o trabalho a ser realizado. Expressa segredos e mistérios enterrados, de que a pessoa não é consciente."
-    },
     "misuse": {
       "en": ["shadows", "dissimulation", "hypocrisy", "secret intentions never revealed", "sanctimony", "rancour", "hostility or indifference", "fanatical mysticism based on dogma", "superficial knowledge"],
       "pt": ["sombras", "dissimulação", "hipocrisia", "intenções secretas e não reveladas", "beatice", "rancor", "disposição hostil ou indiferença", "misticismo fanático baseado em dogmas", "conhecimento superficial"]
@@ -72,10 +64,6 @@
       "en": "I adapt and evolve in the spiritual world like water in nature.",
       "pt": "Me adapto e evoluo no mundo espiritual como a água na natureza."
     },
-    "psychology": {
-      "en": "The Empress appears in the figure of Persephone, queen of the dark, wife of Hades and daughter of the earth mother Demeter. The path joins Kether, the brain, to Tiphareth, the heart, so that the organs work as one.",
-      "pt": "A Imperatriz aparece na figura de Perséfone, a rainha das trevas, esposa de Hades e filha da mãe terra Deméter. O caminho une Kether, o cérebro, a Tiphareth, o coração, promovendo a unidade de funcionamento dos órgãos."
-    },
     "misuse": {
       "en": ["the divine spark surrounded by darkness", "being imprisoned in the intoxicating darkness around us"],
       "pt": ["a centelha divina rodeada de trevas", "ficar aprisionado nas inebriantes trevas que nos rodeiam"]
@@ -101,10 +89,6 @@
     "affirmation": {
       "en": "I mark my territory, spreading my work by the power of the sacred fire.",
       "pt": "Marco meu território disseminando minha obra pelo poder do fogo sagrado."
-    },
-    "psychology": {
-      "en": "The power of a firm, irrevocable will, set on defending truth, justice and love between people. It is the power of one who has mastered oneself: only who rules oneself can lead others. Listen to your own voice, the higher self; unhappy is the one seduced by the outer voices of the world.",
-      "pt": "O poder da vontade firme e irrevogável, em seu propósito de defender a verdade, a justiça e o amor entre os seres humanos. É o poder daquele que sabe dominar a si mesmo: só quem domina a si mesmo pode dirigir os demais. Ouve a tua própria voz, o eu superior; infeliz é quem se deixa seduzir pelas vozes externas do mundo."
     },
     "misuse": {
       "en": ["results opposite to what was intended", "loss of balance", "a fall", "loss of estate, health or control", "stubborn opposition", "blockage", "hostility", "authoritarianism", "tyranny", "immaturity", "lack of energy", "indecision", "incompetence"],
@@ -135,10 +119,6 @@
     "letterQuality": { "en": "sense", "pt": "o sentido" },
     "keyPhrase": { "en": "Magnetism.", "pt": "Magnetismo." },
     "affirmation": { "en": "I ritualize my life, circulating the quintessence.", "pt": "Ritualizo minha vida circulando a quinta essência." },
-    "psychology": {
-      "en": "The height of this ark annu is reached when one understands the importance of rituals, which are the algorithms of complex sciences. The Hierophant stands for ritual in every act of life, from waking to sleeping and from birth to the transmutation called death. He is also the high priest: inspiration, teaching, a leader.",
-      "pt": "Atinge-se o apogeu deste ark annu quando se entende a importância dos rituais, que são algoritmos de ciências complexas. O Hierofante representa a ritualística em todos os atos da vida, do acordar ao dormir e do nascimento à transmutação chamada morte. É também o sumo sacerdote: a inspiração, o ensino, um chefe."
-    },
     "misuse": {
       "en": ["a sententious leader", "extreme moralism", "narrowness and rigidity", "prisoner of formalities", "dogmatism", "the authoritarian teacher", "the limited theorist", "the hypocritical preacher", "advice with no practical sense"],
       "pt": ["chefe sentencioso", "moralismo ao extremo", "estreiteza e rigidez", "prisioneiro das formalidades", "dogmatismo", "professor autoritário", "teórico limitado", "pregador hipócrita", "conselheiro desprovido de sentido prático"]
@@ -172,10 +152,6 @@
     "letterQuality": { "en": "thought", "pt": "o pensamento" },
     "keyPhrase": { "en": "Dichotomies: the crossroads.", "pt": "Dicotomias: a encruzilhada." },
     "affirmation": { "en": "I am neither victim nor villain.", "pt": "Não sou vítima e nem vilão." },
-    "psychology": {
-      "en": "Avoid acting like Chiron, who, once wounded, first hurt everyone as the villain and then drew all attention as the victim. He healed only when he began to heal the wounds of others. Remember the moments when you made the right decision quickly instead of staying on the fence.",
-      "pt": "Deve-se evitar agir como Quíron, que, ferido, primeiro passou a ferir a todos como vilão e depois chamou toda a atenção para si como vítima. Só conseguiu se curar quando passou a curar as feridas alheias. Lembre-se dos momentos em que você tomou decisões acertadas depressa, sem ficar em cima do muro."
-    },
     "misuse": {
       "en": ["doubt", "indecision", "impotence", "misconduct", "infidelity", "libertinism", "weakness", "failing when put to the test", "dangerous temptations"],
       "pt": ["dúvida", "indecisão", "impotência", "má conduta", "infidelidade", "libertinagem", "debilidade", "falha ao ser posto à prova", "tentações perigosas"]
@@ -205,10 +181,6 @@
       "en": "The vehicles of light stop being governed by other beings and become the whole responsibility of the being I am.",
       "pt": "Os veículos de luz deixam de ser governados por outros seres e se tornam inteira responsabilidade do ser que sou."
     },
-    "psychology": {
-      "en": "To understand changes and know how to surf them, without clinging too much to anything or anyone, awakening unconditional love.",
-      "pt": "Compreender as mudanças e saber surfar nelas, não se apegando excessivamente a nada e a ninguém, despertando o amor incondicional."
-    },
     "misuse": {
       "en": ["losses for one's evolution", "forgetting", "endless restarts"],
       "pt": ["prejuízos para a evolução", "esquecimentos", "recomeços infinitos"]
@@ -224,7 +196,6 @@
     },
     "candles": { "en": "Three orange candles.", "pt": "Três velas laranja." },
     "instruments": { "en": ["the book"], "pt": ["o livro"] },
-    "body": { "en": "Lungs, bronchial system, arms and shoulders.", "pt": "Pulmões, sistema bronquial, braços e ombros." },
     "aminoAcid": { "en": "Methionine", "pt": "Metionina" }
   },
   "8": {
@@ -239,10 +210,6 @@
     "letterQuality": { "en": "sight", "pt": "a visão" },
     "keyPhrase": { "en": "To be just with the being I am, above others.", "pt": "Ser justo com o ser que sou acima dos outros." },
     "affirmation": { "en": "I am just with myself in order to be just with my fellow.", "pt": "Sou justo comigo mesmo para ser justo com meu semelhante." },
-    "psychology": {
-      "en": "Justice is the first of the four cards the initiatic tradition called the four great moral lessons, which form a square: Justice (8), the Hermit (9), Strength (11) and Temperance (14).",
-      "pt": "A Justiça é a primeira das quatro cartas que a iniciática chamava de quatro grandes lições morais, que formam um quadrado: a Justiça (8), o Eremita (9), a Força (11) e a Temperança (14)."
-    },
     "misuse": {
       "en": ["prejudice", "lack of balance", "abuse of justice", "excess of severity", "inequality", "losing in court", "unjust conviction"],
       "pt": ["preconceito", "falta de equilíbrio", "abuso da justiça", "excesso de severidade", "desigualdade", "perda na justiça", "condenação injusta"]
@@ -279,10 +246,6 @@
       "en": "I withdraw to feel the divine presence and so, every day, I receive the bread of the spirit.",
       "pt": "Recolho-me para sentir a divina presença e assim, diariamente, obtenho o pão do espírito."
     },
-    "psychology": {
-      "en": "In daily life one should withdraw for a while to be with oneself, even for a few minutes a day. The isolation should not be excessive, so as not to feed self-pity and depression, and it must never be an escape from taking part in the dance of life. Good times to withdraw: the nine to three days before a birthday, the days before a new year, some weeks of winter.",
-      "pt": "Na vida cotidiana deve-se isolar por algum período para estar consigo mesmo, nem que seja por alguns minutos por dia. O isolamento não deve ser excessivo, para não alimentar a comiseração e a depressão, e nunca deve ser uma fuga da participação na dança da vida. Períodos favoráveis: os nove a três dias que antecedem o aniversário, os dias anteriores ao novo ano, algumas semanas do inverno."
-    },
     "misuse": {
       "en": ["superstition", "idolatry", "scepticism", "sterility", "bad advice", "distrust", "isolation", "a false idea of a situation", "timidity", "depression", "refusal of relationships", "dogmatic ritualism", "exaggerated caution"],
       "pt": ["superstição", "idolatria", "ceticismo", "esterilidade", "maus conselhos", "desconfiança", "isolamento", "concepção falsa de uma situação", "timidez", "depressão", "recusa de relações", "ritualismo dogmático", "circunspecção exagerada"]
@@ -302,7 +265,6 @@
       "en": "Spiritual activity: meditation, reading, breathing practices.",
       "pt": "Atividade espiritual: meditação, leitura, práticas de respiração."
     },
-    "body": { "en": "The heart and the spine.", "pt": "O coração e a espinha dorsal." },
     "aminoAcid": { "en": "Leucine", "pt": "Leucina" }
   },
   "10": {
@@ -319,10 +281,6 @@
     "affirmation": {
       "en": "I live the great wheel, attracting material and spiritual prosperity.",
       "pt": "Vivencio a grande roda atraindo prosperidade material e espiritual."
-    },
-    "psychology": {
-      "en": "This ark annu holds the keys to the riches of the world and the treasures of the spirit, what the thief does not steal and the moth does not eat. The pilgrim understands that nature belongs to all because it gives everything to all.",
-      "pt": "Este ark annu contém as chaves das riquezas do mundo e dos tesouros do espírito, o que o ladrão não rouba e a traça não corrói. O peregrino entende que a natureza é de todos porque a todos tudo dá."
     },
     "misuse": {
       "en": ["instability", "difficult transformations", "carelessness", "insecurity", "unstable gains and losses", "risks", "bad luck", "sudden changes of mood and ideas"],
@@ -360,10 +318,6 @@
       "en": "Every chain of events is a happy one; I join the great current of light.",
       "pt": "Todos os encadeamentos são felizes; me uno à grande corrente de luz."
     },
-    "psychology": {
-      "en": "To pass this initiation is to overcome the instinctive emotions. The lion is blind force; the woman is the superiority of the inner life, intelligence well applied over the blind powers of nature. The aim is not to destroy the opposite but to use the negative to complete the positive, turning the obstacle into help.",
-      "pt": "Vencer esta iniciação equivale a superar as emoções instintivas. O leão é a força cega; a mulher é a superioridade da vida interior, a inteligência bem aplicada sobre os poderes cegos da natureza. A finalidade não é aniquilar o oposto, mas empregar o negativo em complemento do positivo, transformando o obstáculo em ajuda."
-    },
     "misuse": {
       "en": ["becoming a slave of one's own force", "brutality", "abuse of power", "arrogance", "anger", "conquest by violence", "lack of courage", "dejection", "impatience", "impotence"],
       "pt": ["tornar-se escravo da própria força", "brutalidade", "abuso de poder", "arrogância", "cólera", "conquista pela violência", "falta de coragem", "abatimento", "impaciência", "impotência"]
@@ -399,10 +353,6 @@
       "pt": "Realizo a subida da energia do osso sacro até o centro da galáxia."
     },
     "affirmation": { "en": "I make valid sacrifices.", "pt": "Realizo sacrifícios válidos." },
-    "psychology": {
-      "en": "The spiritual path rests on three steps: to die, the psychological death of one's defects; to be born, taking up one's cross; and the sacrifice for humanity, the acts that go beyond the individual.",
-      "pt": "O caminho espiritual se assenta sobre três degraus: morrer, a morte psicológica dos próprios defeitos; nascer, tomar a sua cruz; e o sacrifício pela humanidade, os atos que ultrapassam o indivíduo."
-    },
     "misuse": { "en": ["aborted projects", "promises not kept"], "pt": ["projetos abortados", "promessas não cumpridas"] },
     "mantras": ["LA AL", "LÉ ÉL", "LÊ ÊL", "LI IL", "LÓ ÓL", "LÔ ÔL", "LU UL"],
     "mantraNote": {
@@ -419,7 +369,6 @@
       "en": "Weigh every giving, every valid sacrifice, made for yourself, for another and for the collective, and make a habit of acting this way.",
       "pt": "Avalie toda doação, todo sacrifício válido, feito em prol de si mesmo, do próximo e da coletividade, e habitue-se a agir assim."
     },
-    "body": { "en": "The kidneys.", "pt": "Os rins." },
     "aminoAcid": { "en": "Asparagine", "pt": "Asparagina" }
   },
   "13": {
@@ -434,10 +383,6 @@
     "letterQuality": { "en": "possibility (merit)", "pt": "a possibilidade (mérito)" },
     "keyPhrase": { "en": "I kill what could kill my soul.", "pt": "Mato o que poderia matar a minha alma." },
     "affirmation": { "en": "I accept, and I renew myself in the next cycles.", "pt": "Aceito e me renovo nos próximos ciclos." },
-    "psychology": {
-      "en": "Hades, lord of Death, is the final figure of the cycle of life: when we change, the former way is dead and never returns to its first form. The card is not necessarily a bad ending. A wedding or a birth is also the death of an old way of living, and that loss has to be recognised and mourned.",
-      "pt": "Hades, o senhor da Morte, é a figura final do ciclo da vida: quando mudamos, o caminho anterior está morto e nunca mais volta à sua forma original. A carta não simboliza necessariamente um final negativo. Um casamento ou um nascimento é também a morte de um velho estilo de vida, e essa perda deve ser reconhecida e lamentada."
-    },
     "misuse": {
       "en": ["destruction", "fatality", "loss", "bad news", "failure", "ruin", "spiritual disconnection"],
       "pt": ["destruição", "fatalidade", "perda", "má notícia", "fracasso", "ruína", "desconexão espiritual"]
@@ -450,7 +395,6 @@
     "candles": { "en": "One white candle, two red and one orange.", "pt": "Uma vela branca, duas vermelhas e uma laranja." },
     "instruments": { "en": ["the cup", "the ansate cross", "wine"], "pt": ["a taça", "a cruz ansata", "o vinho"] },
     "dailyUse": { "en": "Every situation that calls for a renewal.", "pt": "Todas as situações em que for necessário um renovo." },
-    "body": { "en": "The whole body.", "pt": "O corpo todo." },
     "aminoAcid": { "en": "Glutamic acid", "pt": "Ácido glutâmico" }
   },
   "14": {
@@ -468,10 +412,6 @@
       "en": "The spirit, the sun, in exchange with the feelings of the soul, the moon.",
       "pt": "O espírito, o sol, interagindo com os sentimentos da alma, a lua."
     },
-    "psychology": {
-      "en": "Iris, Greek goddess of the rainbow and messenger between gods and humans: the bridge between heaven and earth.",
-      "pt": "Íris, a deusa grega do arco-íris e mensageira entre deuses e homens: a ponte entre o céu e a terra."
-    },
     "misuse": {
       "en": ["harmony demanded at any price", "nothing can be discussed", "no conflict is allowed to exist", "disharmony and taking sides"],
       "pt": ["harmonia exigida a qualquer preço", "nada pode ser discutido", "nenhum conflito pode existir", "desarmonias e escolhas de lados"]
@@ -487,7 +427,6 @@
       "en": "Be the best conciliator you can in heated situations, pouring out the cup of emotional healing and not poison.",
       "pt": "Procure ser o melhor conciliador possível nas situações inflamadas, despejando a taça da cura emocional e não destilando veneno."
     },
-    "body": { "en": "The sexual organs.", "pt": "A parte sexual." },
     "aminoAcid": { "en": "Glutamine", "pt": "Glutamina" }
   },
   "15": {
@@ -502,10 +441,6 @@
     "letterQuality": { "en": "dreaming", "pt": "o sonhar" },
     "keyPhrase": { "en": "I transmute passions into ascensions.", "pt": "Transmuto as paixões em ascensões." },
     "affirmation": { "en": "I fight bravely and transmute my weakness into strength.", "pt": "Luto bravamente e transmuto minha fraqueza em força." },
-    "psychology": {
-      "en": "This ark annu warns against being a slave of the appetites of the body, of emotional compulsions and of mental fixations. Every day some vice lays siege to us, physical, emotional or mental. It takes an iron will and a constant watch over one's habits and instincts.",
-      "pt": "Este ark annu avisa do perigo de ser escravo dos apetites carnais, das compulsões emocionais e das fixações mentais. Diariamente somos assediados por algum vício, físico, emocional ou mental. É preciso uma férrea força de vontade e uma vigilância constante sobre os hábitos e os instintos."
-    },
     "misuse": {
       "en": ["fatalities", "violent situations", "lust", "dependency", "libertinism", "success by reprehensible means", "black magic"],
       "pt": ["fatalidades", "situações violentas", "luxúria", "dependência", "libertinagem", "sucesso obtido por vias censuráveis", "magia negra"]
@@ -514,7 +449,6 @@
     "incense": { "en": ["nutmeg", "clove", "coffee"], "pt": ["noz-moscada", "cravo", "café"] },
     "candles": { "en": "One yellow candle and four lilac.", "pt": "Uma vela amarela e quatro lilases." },
     "instruments": { "en": ["the arrow, the fast and direct use of force", "the sceptre"], "pt": ["a flecha, a aplicação rápida e direta da força", "o cetro"] },
-    "body": { "en": "The hips (the pelvis) and the muscles.", "pt": "As cadeiras (região da bacia) e os músculos." },
     "aminoAcid": { "en": "Lysine", "pt": "Lisina" }
   },
   "16": {
@@ -529,10 +463,6 @@
     "letterQuality": { "en": "intent", "pt": "o intento" },
     "keyPhrase": { "en": "Separation.", "pt": "Separação." },
     "affirmation": { "en": "I separate from what is harmful to join what is beneficial.", "pt": "Separo-me do que é pernicioso para unir-me ao que é benéfico." },
-    "psychology": {
-      "en": "Here one meets the need to break with something. Whether the break is for a time or for good, a decision is demanded. Reversed, the Tower shows someone putting off the necessary destruction, refusing to let old cycles go so that new ones can arrive.",
-      "pt": "Aqui nos deparamos com a necessidade de romper com algo. Seja o rompimento temporário ou definitivo, é exigida uma decisão. Revertida, a Torre indica quem está atrasando a destruição necessária, insistindo em não deixar ir ciclos velhos para a chegada de ciclos novos."
-    },
     "misuse": {
       "en": ["losses", "confusion", "illness", "catastrophe that comes from imprudence", "scandal", "hypocrisy", "accident", "bankruptcy", "forced rupture", "abandonment"],
       "pt": ["perdas", "confusão", "enfermidade", "catástrofe resultado de imprudência", "escândalo", "hipocrisia", "acidente", "falência", "ruptura forçada", "abandono"]
@@ -557,10 +487,6 @@
     "affirmation": {
       "en": "I begin to understand my higher octave and to live the seventh heaven. I recycle myself and keep my health.",
       "pt": "Começo a compreender minha oitava superior e a vivenciar o sétimo céu. Me reciclo e mantenho a saúde."
-    },
-    "psychology": {
-      "en": "Pandora and the Star of Hope are the part of us that, despite disappointment, depression and loss, can still hold on to a sense of meaning and of a future. The Star does not bring a plan or a solution. Like the Hermit and the Hanged Man, it recommends waiting: hope is a faint light that guides without clearing all the dark.",
-      "pt": "Pandora e a Estrela da Esperança são a nossa parte que, apesar da decepção, da depressão e da perda, ainda pode prender-se a um sentido de significado e de futuro. A Estrela não traz um plano nem uma solução. Como o Eremita e o Enforcado, recomenda a espera: a esperança é uma tênue luz que guia sem dissipar toda a escuridão."
     },
     "misuse": {
       "en": ["harmony turned away from its aim", "stability that does not last", "inattention", "carelessness", "lack of spontaneity", "frustrated hope", "hopelessness", "disappointment", "imbalance"],
@@ -598,10 +524,6 @@
       "en": "I seek to tell false freedom from true liberation, identifying the hidden enemies inside and outside the being I am.",
       "pt": "Procuro distinguir a falsa liberdade da verdadeira libertação, identificando os inimigos ocultos dentro e fora do ser que sou."
     },
-    "psychology": {
-      "en": "In shamanism this ark annu is worked as the two wolves that live inside each of us. It speaks of the obstacles met when one gives in to the primary instincts and goes backward instead of forward, and of the disappointments that follow vain illusions. Whoever faces what they dream of without first reflecting on what they intend meets the unknown and seeks their own loss.",
-      "pt": "No xamanismo este ark annu é trabalhado como os dois lobos que habitam dentro de cada um de nós. Fala dos obstáculos encontrados quando a pessoa se submete aos instintos primários e retroage em vez de evoluir, e das decepções que acompanham as vãs ilusões. Quem afronta o que sonha sem antes refletir no que pretende encara o desconhecido e procura a própria perda."
-    },
     "misuse": {
       "en": ["learning through pain", "neurotic disturbance", "hallucinations and delusions", "instability", "unexpected obstacles", "a secret made public", "numbness of the will", "confusion", "fear", "insecurity"],
       "pt": ["instrução pela dor", "perturbação neurótica", "alucinações e delírios", "instabilidade", "impedimentos inesperados", "segredo que se torna público", "entorpecimento da vontade", "confusão", "medo", "insegurança"]
@@ -611,7 +533,6 @@
     "candles": { "en": "Three lilac candles.", "pt": "Três velas lilases." },
     "instruments": { "en": ["the censer", "the aspergillum", "the candelabrum"], "pt": ["o incensário", "o aspersório", "o candelabro"] },
     "dailyUse": { "en": "Overcoming the illusions of the mind.", "pt": "Vencer as ilusões mentais." },
-    "body": { "en": "The calves and the ankles.", "pt": "As panturrilhas e os tornozelos." },
     "aminoAcid": { "en": "Tyrosine", "pt": "Tirosina" }
   },
   "19": {
@@ -628,10 +549,6 @@
     "affirmation": {
       "en": "I transmute physical gold into philosophical gold and back again; I am aware of my alchemical band.",
       "pt": "Transmuto ouro físico em ouro filosófico e vice-versa; tenho consciência de minha faixa alquímica."
-    },
-    "psychology": {
-      "en": "Apollo, the sun god, is the image of the power of consciousness to clear away the dark: the impulse towards awareness that exists in all of us. Meeting him brings hope and clarity after the long night of waiting.",
-      "pt": "Apolo, o deus-Sol, é a imagem do poder da consciência em dissipar a escuridão: o impulso para a consciência que existe em todos nós. O encontro com ele traz esperança e clareza após a longa noite de espera."
     },
     "misuse": {
       "en": ["adversity", "darkness", "a feigned appearance", "rupture", "solitude", "delayed success", "the appearance of greatness"],
@@ -662,10 +579,6 @@
       "en": "I look back, learning from the mistakes and from the successes; I make retrospectives.",
       "pt": "Olho para trás, aprendendo com os erros e com os acertos; faço retrospectivas."
     },
-    "psychology": {
-      "en": "The open graves stand for what is material and passing in human life. It is the renewal of one life by another, the waking of the consciousness put to sleep by earthly life. For there to be resurrection there must first be a death: the psychological death of the inner defects, until only the true individuality remains.",
-      "pt": "As sepulturas abertas representam o material e contingente da existência humana. É a renovação de uma vida por outra, a ressurreição da consciência adormecida pela vida terrestre. Para que haja ressurreição é necessário que antes se tenha morrido: a morte psicológica dos defeitos internos, até que fique somente a autêntica individualidade."
-    },
     "misuse": {
       "en": ["error about oneself and about all things", "trials that come from a false judgment", "spiritual wavering", "a dimmed intelligence", "unconsciousness"],
       "pt": ["erro em relação a si mesmo e a todas as coisas", "provas que resultam de um falso juízo", "vacilo espiritual", "ofuscamento da inteligência", "inconsciência"]
@@ -685,7 +598,6 @@
       "en": "At the end of the day, review your actions and omissions. Rescue the essence of past experiences and bring forward, pure, what was good in them.",
       "pt": "Ao final do dia, faça uma retrospectiva das suas ações e omissões. Resgate as essências das experiências passadas, trazendo de forma pura o que for benévolo."
     },
-    "body": { "en": "The head.", "pt": "A cabeça." },
     "aminoAcid": { "en": "Histidine", "pt": "Histidina" }
   },
   "21": {
@@ -702,10 +614,6 @@
     "affirmation": {
       "en": "I stop walking in circles and begin to live the evolutionary spiral.",
       "pt": "Paro de andar em círculos e começo a vivenciar a espiral evolutiva."
-    },
-    "psychology": {
-      "en": "The Fool stands for everything that is unconscious: the mental and spiritual disturbance that follows human error.",
-      "pt": "O Louco é a representação de tudo que constitui a inconsciência: a perturbação mental e espiritual subsequente ao erro humano."
     },
     "misuse": {
       "en": ["going past the limits in a negative way", "madness", "haste", "obsession", "irresponsibility", "being ruled by the instincts", "psychic disorders", "decay", "failure in transmutation"],
@@ -737,10 +645,6 @@
     "affirmation": {
       "en": "I am initiated into the world of causes; I respect the four animals of the sphinx, essence of human nature.",
       "pt": "Me inicio no mundo das causas; respeito os quatro animais da esfinge, essência da natureza humana."
-    },
-    "psychology": {
-      "en": "The hermaphrodite is the image of being complete: male and female as the great polarities that hold all the opposites of life. Wholeness is an ideal goal and not something we can fully own. We glimpse it whenever two parts in conflict inside us come to peace.",
-      "pt": "O hermafrodito é a imagem da experiência de estar completo: macho e fêmea como as grandes polaridades que englobam todos os opostos da vida. A integralidade é uma meta ideal e não algo que possamos possuir totalmente. Podemos vislumbrá-la sempre que duas partes conflitantes dentro de nós chegam à paz."
     },
     "misuse": {
       "en": ["failure", "a formidable obstacle", "hostile surroundings where everyone is against you", "a reversal of luck", "ruin", "stagnation"],
