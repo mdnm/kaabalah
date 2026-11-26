@@ -1,5 +1,39 @@
 # Changelog
 
+## 8.0.0 - 2026-11-25
+
+Breaking: Kaabalah is now the only tree system.
+
+- Remove the `hermetic-qabalah` and `lurianic-kabbalah` systems. `SystemKey`
+  and `TarotTreeId` are `"kaabalah"` only. If you pass `system: "kaabalah"`,
+  nothing changes for you.
+- Remove `LURIANIC_PATHS`, `TREE_SVG_SUPPORTED_SYSTEM` and
+  `getUnsupportedTreeSvgSystemMessage`, and the `divineName`, `archangelicName`,
+  `angelicName`, `mundaneName` and `magicalImage` fields of `SphereData`. Use
+  `getSphereProfile` for that data.
+- In the CLI, `--system` accepts only `kaabalah`. Any other value exits
+  `INVALID_ARGUMENT`; the `UNSUPPORTED_SYSTEM` error code no longer exists.
+- `TREE_DESCRIPTIONS` loses the 35 entries only those two systems used.
+
+Added:
+
+- `getSphereProfile` and `listSphereProfiles` (`kaabalah/core`): what each of
+  the eleven spheres means, in English or Portuguese. Plain words (essence,
+  keywords, what is worked in the sphere, and how its theme shows in balance,
+  in excess and in lack) and correspondences (titles, magical image,
+  instrument, body, places, virtues, vices, animals, plants, stones, colours in
+  the four worlds, incense, tarot cards). Use it to explain the spheres that
+  weigh most in a `buildKaabalisticMapData` result.
+- `getPathProfile`, `listPathProfiles` and `getSpherePathProfiles`: the 22
+  paths, looked up by number, node ID, card name or Hebrew letter. Essence,
+  keywords, the quality of the letter, key phrase, psychological level, misuse,
+  dialogue, mantras, alchemical names, incense, candles, instruments and amino
+  acid.
+- `getTreeSection`, `listTreeSections` and `getSphereSections`: the four
+  worlds, the three pillars and the three triads, and which of them a sphere
+  belongs to.
+- CLI commands `tree:sphere`, `tree:path` and `tree:section`.
+
 ## 7.3.0 - 2026-11-25
 
 - Add `matchSolarReturnAphorisms` to `kaabalah/astrology`. It checks every
