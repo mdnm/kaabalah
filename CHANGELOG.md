@@ -1,5 +1,31 @@
 # Changelog
 
+## 8.2.0 - 2026-11-26
+
+Tree weights:
+
+- Planetary condition combines Western essential dignities and sect with
+  Jyotish dignities. The Jyotish score uses BPHS moolatrikona by default.
+  Set `venusMoolatrikona` to `"saravali"` for the shorter Venus range.
+- Add role bonuses for the chart ruler, final dispositors, the Atmakaraka,
+  planets within five degrees of any of the four angles, and planets in
+  same-degree clusters.
+- Weighted numerology and gematria master numbers also give full weight to
+  their single-digit reduction. The Straight Life Path still has zero weight.
+- Raise the aspect weight cap per sphere from 5 to 8.
+
+Map and chart data:
+
+- `degreeClusters` reports groups of planets at nearby degrees in their signs,
+  including T-squares, their empty arms, and grand crosses. `criticalDegrees`
+  reports which planets and angles are at critical degrees.
+- Markers include a `weightBreakdown` where condition or role bonuses apply,
+  with `pointSources` explaining the condition score. `sphereLenses` combines
+  share and condition to guide a reading of balance, excess, or lack.
+- `ComputedKaabalisticMapData` guarantees the new map facts.
+  `ComputedBirthChartWithLahiri` guarantees `lahiriAyanamsa`. Existing 8.1
+  inputs still work with `KaabalisticMapData` and `ComputedBirthChart`.
+
 ## 8.1.0 - 2026-11-26
 
 Sphere profiles:
