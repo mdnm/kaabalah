@@ -22,7 +22,6 @@
     },
     "symbols": { "en": ["the point", "the crown", "the swastika"], "pt": ["o ponto", "a coroa", "a suástica"] },
     "geometricForm": { "en": "The point", "pt": "O ponto" },
-    "elementalRelation": { "en": "Fire of Fire", "pt": "Fogo do Fogo" },
     "world": "Atziluth",
     "divineName": {
       "name": "Eheieh",
@@ -120,7 +119,6 @@
       "pt": ["o lingam", "o falo", "o Yod do Tetragrammaton", "o Manto Interno da Glória", "o pedestal", "a torre", "o cetro ereto do poder", "o obelisco"]
     },
     "geometricForm": { "en": "The line", "pt": "O traço" },
-    "elementalRelation": { "en": "Water of Fire", "pt": "Água do Fogo" },
     "world": "Atziluth",
     "divineName": { "name": "Yah", "meaning": { "en": "The Infinite: the ideal divine wisdom.", "pt": "O Infinito: a divina sabedoria ideal." } },
     "archangel": {
@@ -218,7 +216,6 @@
       "pt": ["o yoni", "o kteis", "a vesica piscis", "a taça ou o cálice", "o Manto Externo do Ocultamento"]
     },
     "geometricForm": { "en": "The triangle", "pt": "O triângulo" },
-    "elementalRelation": { "en": "Air of Fire", "pt": "Ar do Fogo" },
     "world": "Atziluth",
     "divineName": {
       "name": "Jehovah Elohim",
@@ -371,7 +368,6 @@
       "pt": ["a figura sólida", "o tetraedro", "a pirâmide", "a cruz de braços iguais", "o orbe", "o bastão", "o cetro", "o cajado"]
     },
     "geometricForm": { "en": "The square", "pt": "O quadrado" },
-    "elementalRelation": { "en": "Fire of Water", "pt": "Fogo da Água" },
     "world": "Briah",
     "divineName": {
       "name": "El",
@@ -468,7 +464,6 @@
       "pt": ["o pentágono", "a rosa de Tudor de cinco pétalas", "a espada", "a lança", "o açoite", "a corrente"]
     },
     "geometricForm": { "en": "The pentagon or pentagram", "pt": "O pentágono ou pentagrama" },
-    "elementalRelation": { "en": "Water of Water", "pt": "Água da Água" },
     "world": "Briah",
     "divineName": {
       "name": "Elohim Gibor",
@@ -572,7 +567,6 @@
       "pt": ["o lamen (insígnia mágica pendurada na altura do coração)", "a Rosa-Cruz", "a cruz do Calvário", "a pirâmide truncada", "o cubo"]
     },
     "geometricForm": { "en": "The hexagram", "pt": "O hexagrama" },
-    "elementalRelation": { "en": "Air of Water", "pt": "Ar da Água" },
     "world": "Briah",
     "divineName": {
       "name": "Tetragrammaton Aloah Va Daath",
@@ -679,7 +673,6 @@
     },
     "symbols": { "en": ["the lamp", "the girdle", "the rose"], "pt": ["a lâmpada", "o cinto", "a rosa"] },
     "geometricForm": { "en": "The heptagram", "pt": "O heptagrama" },
-    "elementalRelation": { "en": "Fire of Air", "pt": "Fogo do Ar" },
     "world": "Yetzirah",
     "divineName": {
       "name": "Jehovah Tzabaoth",
@@ -774,7 +767,6 @@
     },
     "symbols": { "en": ["names", "versicles", "the apron"], "pt": ["nomes", "versículos", "o avental"] },
     "geometricForm": { "en": "The octagram", "pt": "O octagrama" },
-    "elementalRelation": { "en": "Water of Air", "pt": "Água do Ar" },
     "world": "Yetzirah",
     "divineName": {
       "name": "Elohim Tzabaoth",
@@ -881,7 +873,6 @@
     },
     "symbols": { "en": ["the perfumes", "the sandals"], "pt": ["os perfumes", "as sandálias"] },
     "geometricForm": { "en": "The enneagram", "pt": "O eneagrama" },
-    "elementalRelation": { "en": "Air of Air", "pt": "Ar do Ar" },
     "world": "Yetzirah",
     "divineName": {
       "name": "Shaddai El Chai",
@@ -988,7 +979,6 @@
       "pt": ["o altar do cubo duplo", "a cruz de braços iguais", "o círculo mágico", "o triângulo da arte"]
     },
     "geometricForm": { "en": "Cubes, squares and quaternaries", "pt": "Cubos, quadrados e quaternários" },
-    "elementalRelation": { "en": "Fire of Earth, Water of Earth and Air of Earth", "pt": "Fogo da Terra, Água da Terra e Ar da Terra" },
     "world": "Assiah",
     "divineName": {
       "name": "Adonai Malekh, or Adonai ha Aretz",

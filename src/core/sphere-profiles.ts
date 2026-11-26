@@ -40,8 +40,6 @@ export interface SphereProfile {
   work: string;
   symbols?: string[];
   geometricForm?: string;
-  /** The sub-element of the sphere, such as "Water of Water". */
-  elementalRelation?: string;
   world?: SphereWorld;
   divineName?: { name: string; meaning: string };
   archangel?: { name: string; role: string };

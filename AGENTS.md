@@ -46,7 +46,7 @@ The astrology module uses Swiss Ephemeris compiled to WebAssembly. Tests require
 `src/core/sphere-profiles.json` (`getSphereProfile`), `src/core/path-profiles.json` (`getPathProfile`) and `src/core/tree-sections.json` (`getTreeSection`, `getSphereSections`) hold what the spheres, the 22 paths, and the worlds, pillars and triads mean, with `{ en, pt }` in every text field.
 
 - A path's `from`, `to`, letter, card and correspondence are read from the graph, never stored.
-- The content is authored by Mat. Do not fill a gap from other traditions: Daath has a short profile. `expression` (balance, excess, lack) exists for every sphere; for Kether, Chokhmah, Daath and Malkuth it is drafted from their planet (Neptune, Uranus, Pluto, Earth) and their own virtues, vices and attributes. There is no `heaven` field: the planet comes from the graph.
+- The content is authored by Mat. Do not fill a gap from other traditions: Daath has a short profile. `expression` (balance, excess, lack) exists for every sphere; for Kether, Chokhmah, Daath and Malkuth it is drafted from their planet (Neptune, Uranus, Pluto, Earth) and their own virtues, vices and attributes. There is no `heaven` or `elementalRelation` field: the planet comes from the graph.
 - Nothing from the tree of death goes into the library: no shadow spheres, no tunnels, no names and no correspondences of them. The gestures of the ark annu stay out too.
 - Comments and docs never mention where the content was taught (classes, lessons, handouts). The editorial sources are in the gitignored `provenance/` folder.
 
