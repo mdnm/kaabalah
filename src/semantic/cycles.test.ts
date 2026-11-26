@@ -451,6 +451,12 @@ describe("cycle numerology", () => {
     expect(data.rawWeightsById[sphere(SPHERES.DAATH)]?.numerology).toBe(1)
     expect(data.rawWeightsById[sphere(SPHERES.YESOD)]?.numerology).toBe(2)
   })
+
+  it("gives the single-digit form of a retained personal-day master the full day weight", () => {
+    const data = buildCycleMapData({ numerology: { personalDay: { value: 11, reductionSteps: [29, 11] } } })
+    expect(data.rawWeightsById[sphere(SPHERES.DAATH)]?.numerology).toBe(4)
+    expect(data.rawWeightsById[sphere(SPHERES.CHOKHMAH)]?.numerology).toBe(4)
+  })
 })
 
 describe("buildCycleMapData", () => {

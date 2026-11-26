@@ -108,6 +108,7 @@ import {
 import { computeLots, type LotsResult } from "./lots";
 import { computeMoonPhase, type MoonPhaseResult } from "./moon-phase";
 import { computeSect, type SectResult } from "./sect";
+import { calculateLahiriAyanamsa } from "./jyotish/lahiri";
 import { findTransitPerfections, type PerfectionSolverMetadata, type TransitClosestApproach } from "./transit-events";
 import { getChartAtJulianDay } from "./progressions";
 import { findPlanetaryReturns, type RootSolverMethodMetadata } from "./returns";
@@ -237,15 +238,20 @@ export interface BirthChart {
   sect: Sect;
   /** Sun altitudes and the exact-horizon convention behind `sect` (always set by `getBirthChart`; optional so hand-built fixtures still type-check). */
   sectDetails?: SectResult;
+  /** True Lahiri ayanamsa in degrees at birth, for deriving sidereal positions in the same frame. */
+  lahiriAyanamsa?: number;
   /** Lots of Fortune and Spirit (sect-reversed counterparts) with formulas used. */
   lots?: LotsResult & { fortunePosition: ZodiacPosition; spiritPosition: ZodiacPosition };
   /** Sun-Moon elongation, phase name and illumination (labelled approximate). */
   moonPhase?: MoonPhaseResult;
 }
 
-/** Chart as returned by `getBirthChart`: the additive fields are always present. */
+/** Structural chart shape, including the computed fields present before Lahiri ayanamsa was added. */
 export type ComputedBirthChart = BirthChart &
   Required<Pick<BirthChart, "sectDetails" | "lots" | "moonPhase">>;
+
+/** Library casts also carry the true Lahiri ayanamsa. */
+export type ComputedBirthChartWithLahiri = ComputedBirthChart & Required<Pick<BirthChart, "lahiriAyanamsa">>;
 
 /**
  * Determines chart sect from the Sun's house position.
@@ -347,7 +353,7 @@ function hydratePlanet(
  */
 export async function getBirthChart(
   options: BirthChartOptions
-): Promise<ComputedBirthChart> {
+): Promise<ComputedBirthChartWithLahiri> {
   try {
     // Validate inputs
     validateInputs(options);
@@ -502,6 +508,7 @@ export async function getBirthChart(
       aspects,
       sect,
       sectDetails,
+      lahiriAyanamsa: calculateLahiriAyanamsa(dateToJd(utcDate)),
       lots,
       moonPhase,
     };

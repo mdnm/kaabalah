@@ -31,6 +31,7 @@
  */
 
 import { julianDayToDate } from "./jyotish/dasha";
+import { calculateLahiriAyanamsa } from "./jyotish/lahiri";
 import {
   calcParsFortunae,
   calculateBodyAtJulianDay,
@@ -51,6 +52,7 @@ import {
   type HouseSystemSubstitution,
   type BirthChart,
   type ComputedBirthChart,
+  type ComputedBirthChartWithLahiri,
   type HydratedNode,
   type HydratedPlanet,
   type ZodiacPosition,
@@ -128,7 +130,7 @@ const CHART_BODY_IDS: Planet[] = [
  * whole-second instant it equals `getBirthChart({ date, timeZoneSettings: { treatAsUTC: true } })`.
  * `dateUtc` is the Julian Day rounded to the millisecond.
  */
-export function getChartAtJulianDay(options: ChartAtJulianDayOptions): ComputedBirthChart {
+export function getChartAtJulianDay(options: ChartAtJulianDayOptions): ComputedBirthChartWithLahiri {
   const { julianDayUt: jd, latitude, longitude } = options;
   if (![jd, latitude, longitude].every(Number.isFinite)) {
     throw new DerivedChartError("INVALID_INPUT", "julianDayUt, latitude and longitude must be finite numbers");
@@ -209,7 +211,20 @@ export function getChartAtJulianDay(options: ChartAtJulianDayOptions): ComputedB
     mc: { longitude: mc.longitude },
   });
 
-  return { dateUtc, houseSystem, ...(houseSystemSubstitution ? { houseSystemSubstitution } : {}), planets, houses, nodes, aspects, sect, sectDetails, lots, moonPhase };
+  return {
+    dateUtc,
+    houseSystem,
+    ...(houseSystemSubstitution ? { houseSystemSubstitution } : {}),
+    planets,
+    houses,
+    nodes,
+    aspects,
+    sect,
+    sectDetails,
+    lahiriAyanamsa: calculateLahiriAyanamsa(jd),
+    lots,
+    moonPhase,
+  };
 }
 
 // ── Time key ───────────────────────────────────────────────────────────────
@@ -410,7 +425,9 @@ function natalAnglesOf(chart: BirthChart): { ascendant: number; mc: number } {
 }
 
 /** Secondary progressions ("a day for a year") with a declared time key and angle conventions. */
-export function getSecondaryProgressions(options: SecondaryProgressionOptions): SecondaryProgressionResult {
+export function getSecondaryProgressions(
+  options: SecondaryProgressionOptions,
+): SecondaryProgressionResult & { chart: ComputedBirthChartWithLahiri } {
   const { natalChart } = options;
   const natalJd = dateToJd(natalChart.dateUtc);
   const targetJd = dateToJd(options.target);

@@ -75,8 +75,9 @@ const {
  * sphere of its own: it lights the sphere or spheres of the sign of the natal node,
  * and nothing when that sign is not given.
  *
- * Numerology: the weight applies to the personal day, month and year numbers; every
- * intermediate reduction step weighs `intermediateStep`.
+ * Numerology: the weight applies to the personal day, month and year numbers and
+ * the single-digit reduction of a retained master number. Earlier reduction steps
+ * weigh `intermediateStep`.
  *
  * Marker `weight` is the raw value. In `weightsById` the raw sums are turned into
  * shares exactly as in the birth map: within spheres, and separately within paths, each

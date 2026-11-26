@@ -1,16 +1,22 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, expectTypeOf, it } from "vitest"
 
 import {
   Planet,
   SIGNS,
   VirtualNodes,
+  getBirthChart,
+  getChartAtJulianDay,
+  HouseSystem,
   type AspectEdge,
   type AspectName,
   type BirthChart,
+  type ComputedBirthChart,
   type HydratedNode,
   type HydratedPlanet,
+  type QualifiedChartInput,
   type ZodiacPosition,
 } from "../astrology"
+import { getSwissEph } from "../astrology/swisseph"
 import {
   KaabalahTypes,
   SPHERES,
@@ -25,6 +31,7 @@ import {
   getNumerologyTreeMarkers,
   getPlanetSymbolMetadata,
   type KaabalisticMarkerDescriptor,
+  type KaabalisticMapData,
 } from "./index"
 
 function sphere(name: string) {
@@ -386,7 +393,256 @@ describe("kaabalistic semantic helpers", () => {
   })
 })
 
+it("accepts 8.1 structural maps and injected charts while guaranteeing facts on library results", () => {
+  type MapResult = ReturnType<typeof buildKaabalisticMapData>
+  type BirthResult = Awaited<ReturnType<typeof getBirthChart>>
+  type LegacyMap = Omit<MapResult, "sphereLenses" | "degreeClusters" | "criticalDegrees">
+  type LegacyChart = Omit<BirthResult, "lahiriAyanamsa">
+  expectTypeOf<LegacyMap>().toMatchTypeOf<KaabalisticMapData>()
+  expectTypeOf<LegacyChart>().toMatchTypeOf<ComputedBirthChart>()
+  expectTypeOf<() => Promise<LegacyChart>>().toMatchTypeOf<NonNullable<QualifiedChartInput["computeChart"]>>()
+  expectTypeOf<MapResult>().toMatchTypeOf<Required<Pick<KaabalisticMapData, "sphereLenses" | "degreeClusters" | "criticalDegrees">>>()
+  expectTypeOf<BirthResult["lahiriAyanamsa"]>().toEqualTypeOf<number>()
+  expectTypeOf<ReturnType<typeof getChartAtJulianDay>["lahiriAyanamsa"]>().toEqualTypeOf<number>()
+})
+
+describe("tropical natal degree facts", () => {
+  const tSquare = [
+    makePlanet(Planet.JUPITER, "Jupiter", "Cancer", 103, 1),
+    makePlanet(Planet.MOON, "Moon", "Aries", 14, 1),
+    makePlanet(Planet.MARS, "Mars", "Capricorn", 285, 1),
+  ]
+
+  it("uses the whole spread and shows the empty arm opposite the T-square apex", () => {
+    const map = buildKaabalisticMapData({ astrology: {
+      planets: tSquare,
+      houses: makeHouses(),
+      nodes: [makeNode(VirtualNodes.PARS_FORTUNAE, "Wheel of Fortune", "Libra", 194, 7)],
+    } })
+    expect(map.degreeClusters).toEqual([{
+      members: [
+        { name: "Jupiter", sign: "Cancer", degree: 13 },
+        { name: "Moon", sign: "Aries", degree: 14 },
+        { name: "Mars", sign: "Capricorn", degree: 15 },
+      ],
+      meanDegree: 14,
+      patterns: [{ kind: "tSquare", apex: "Moon", opposition: ["Jupiter", "Mars"], emptyArm: { sign: "Libra", degree: 14 } }],
+    }])
+    for (const name of ["Jupiter", "Moon", "Mars"]) {
+      const markers = map.markers.filter(({ sourceName }) => sourceName === name)
+      const bonus = markers.find(({ mapping }) => mapping === "carrier-sphere")
+        ?.weightBreakdown?.roleBonuses?.find(({ role }) => role === "sameDegreeCluster")
+      expect(bonus).toMatchObject({ weight: 2, cluster: { meanDegree: 14, members: map.degreeClusters[0].members } })
+      expect(markers.filter(({ mapping }) => mapping !== "carrier-sphere")
+        .flatMap(({ weightBreakdown }) => weightBreakdown?.roleBonuses ?? [])).toEqual([])
+    }
+  })
+
+  it("identifies a complete grand cross and caps the cluster bonus for five members", () => {
+    const map = buildKaabalisticMapData({ astrology: { houses: makeHouses(), planets: [
+      ...tSquare,
+      makePlanet(Planet.VENUS, "Venus", "Libra", 194.5, 7),
+      makePlanet(Planet.MERCURY, "Mercury", "Gemini", 74.2, 1),
+    ] } })
+    expect(map.degreeClusters).toHaveLength(1)
+    expect(map.degreeClusters[0].members).toHaveLength(5)
+    expect(map.degreeClusters[0].patterns).toEqual([{
+      kind: "grandCross", oppositions: expect.arrayContaining([
+        expect.arrayContaining(["Jupiter", "Mars"]), expect.arrayContaining(["Moon", "Venus"]),
+      ]),
+    }])
+    const bonuses = map.markers.flatMap((marker) => marker.weightBreakdown?.roleBonuses ?? [])
+      .filter(({ role }) => role === "sameDegreeCluster")
+    expect(bonuses.map(({ weight }) => weight)).toEqual([3, 3, 3, 3, 3])
+  })
+
+  it("keeps overlapping groups separate and applies one bonus per carrier", () => {
+    const map = buildKaabalisticMapData({ astrology: { houses: makeHouses(), planets: [
+      makePlanet(Planet.SUN, "Sun", "Aries", 10, 1),
+      makePlanet(Planet.MOON, "Moon", "Taurus", 41, 1),
+      makePlanet(Planet.VENUS, "Venus", "Gemini", 72, 1),
+      makePlanet(Planet.MARS, "Mars", "Leo", 133, 1),
+    ] } })
+    expect(map.degreeClusters.map(({ members }) => members.map(({ name }) => name)))
+      .toEqual([["Sun", "Moon", "Venus"], ["Moon", "Venus", "Mars"]])
+    expect(map.markers.flatMap((marker) => marker.weightBreakdown?.roleBonuses ?? [])
+      .filter(({ role }) => role === "sameDegreeCluster").map(({ weight }) => weight)).toEqual([2, 2, 2, 2])
+  })
+
+  it("uses the integer part in all three modalities, with no weight effect", () => {
+    const chart = {
+      houses: { ...makeHouses(), mc: makeZodiacPosition("Aquarius", 321.1, 10) },
+      planets: [
+        makePlanet(Planet.VENUS, "Venus", "Aries", 13, 1),
+        makePlanet(Planet.MOON, "Moon", "Taurus", 39.99, 1),
+        makePlanet(Planet.MERCURY, "Mercury", "Virgo", 167.2, 1),
+      ],
+    }
+    const map = buildKaabalisticMapData({ astrology: chart })
+    expect(map.criticalDegrees.map(({ name, kind, sign, criticalDegree }) => [name, kind, sign, criticalDegree]))
+      .toEqual([["Venus", "body", "Aries", 13], ["Moon", "body", "Taurus", 9],
+        ["Mercury", "body", "Virgo", 17], ["MC", "angle", "Aquarius", 21]])
+    const justBelow = buildKaabalisticMapData({ astrology: {
+      ...chart, planets: [makePlanet(Planet.VENUS, "Venus", "Aries", 12.99, 1), ...chart.planets.slice(1)],
+    } })
+    expect(justBelow.criticalDegrees.some(({ name }) => name === "Venus")).toBe(false)
+    expect(justBelow.rawWeightsById).toEqual(map.rawWeightsById)
+  })
+})
+
 describe("kaabalistic marker weights", () => {
+  it("uses one multiplier per body from the tropical score and adds roles once", () => {
+    const chart = {
+      planets: [
+        makePlanet(Planet.SUN, "Sun", "Libra", 190, 7),
+        makePlanet(Planet.MARS, "Mars", "Aries", 5, 1),
+      ],
+      aspects: [makeEdge("sun", "mars", "square", 0)],
+      houses: makeHouses(),
+      sect: "diurnal" as const,
+      sectDetails: { sunGeometricAltitude: -1 },
+    }
+    const markers = getAstrologyTreeMarkers(chart)
+    const sun = markers.find((marker) => marker.sourceName === "Sun" && marker.mapping === "carrier-sphere")!
+    const mars = markers.find((marker) => marker.sourceName === "Mars" && marker.mapping === "carrier-sphere")!
+    expect(sun.weight).toBe(4.75)
+    expect(sun.weightBreakdown?.contributions[0].condition).toMatchObject({
+      score: -5, multiplier: 0.75, pointSources: [
+        { system: "tropical", dignity: "peregrine", points: 0 },
+        { system: "tropical", dignity: "outOfSect", points: -1 },
+        { system: "tropical", dignity: "fall", points: -4 },
+      ],
+    })
+    expect(mars.weight).toBe(10.4)
+    expect(mars.weightBreakdown?.roleBonuses).toEqual([
+      { role: "chartRuler", weight: 2 }, { role: "finalDispositor", weight: 2 }, { role: "angular", weight: 1 },
+    ])
+    expect(markers.find((marker) => marker.sourceName === "Mars" && marker.mapping === "decan-sphere")).toMatchObject({
+      weight: 2.7, weightBreakdown: { contributions: [{ baseWeight: 2 }] },
+    })
+    const aspect = markers.find((marker) => marker.mapping === "aspect-sphere")!
+    expect(aspect.weight).toBe(2.75)
+    expect(aspect.weightBreakdown?.contributions.map(({ source, baseWeight }) => [source, baseWeight]))
+      .toEqual([["Sun", 1.5], ["Mars", 1.2]])
+    expect(aspect.weightBreakdown?.roleBonuses).toBeUndefined()
+  })
+
+  it("scores Lahiri D1 and D9 with the tropical points, including half-weight navamsa debility", () => {
+    const chart = {
+      ...singlePlanetChart("Jupiter", Planet.JUPITER, "Leo", 15),
+      sect: "diurnal" as const,
+      lahiriAyanamsa: 24,
+    }
+    const marker = getAstrologyTreeMarkers(chart).find(({ mapping }) => mapping === "carrier-sphere")!
+    const condition = marker.weightBreakdown?.contributions[0].condition
+    expect(condition?.pointSources).toEqual(expect.arrayContaining([
+      { system: "tropical", dignity: "inSect", points: 1 },
+      { system: "jyotish", division: 1, sign: "Cancer", dignity: "exaltation", points: 5 },
+      { system: "jyotish", division: 9, sign: "Capricorn", dignity: "debilitation", points: -2.5 },
+    ]))
+    expect(condition?.score).toBe(condition?.pointSources.reduce((sum, row) => sum + row.points, 0))
+    expect(condition?.multiplier).toBe(1 + condition!.score / 20)
+  })
+
+  it.each([
+    ["Mercury", Planet.MERCURY, "Virgo", 14.99, "exaltation", 5],
+    ["Mercury", Planet.MERCURY, "Virgo", 15, "exaltation", 5],
+    ["Mercury", Planet.MERCURY, "Virgo", 15.01, "moolatrikona", 4],
+    ["Mercury", Planet.MERCURY, "Virgo", 20, "ownSign", 3],
+    ["Moon", Planet.MOON, "Taurus", 2.99, "exaltation", 5],
+    ["Moon", Planet.MOON, "Taurus", 3, "exaltation", 5],
+    ["Moon", Planet.MOON, "Taurus", 3.01, "moolatrikona", 4],
+  ] as const)("awards one D1 dignity for %s (body %s) at sidereal %s %s", (name, planet, sign, degree, dignity, points) => {
+    const longitude = SIGNS.indexOf(sign) * 30 + degree + 24
+    const astrology = {
+      planets: [makePlanet(planet, name, SIGNS[Math.floor(longitude / 30)], longitude, 1)],
+      houses: makeHouses(),
+      lahiriAyanamsa: 24,
+    }
+    const marker = getAstrologyTreeMarkers(astrology).find(({ sourceName, mapping }) => sourceName === name && mapping === "carrier-sphere")
+    const sources = marker?.weightBreakdown?.contributions[0].condition?.pointSources
+    expect(sources?.filter((row) => row.system === "jyotish" && row.division === 1)).toEqual([{
+      system: "jyotish", division: 1, sign, dignity, points,
+      ...(dignity === "moolatrikona" ? { reference: "Brihat Parashara Hora Shastra 3.51-54" } : {}),
+    }])
+  })
+
+  it.each([
+    ["ASC", "Aries", 15],
+    ["IC", "Cancer", 105],
+    ["DC", "Libra", 195],
+    ["MC", "Capricorn", 285],
+  ] as const)("awards the angular bonus within five degrees of %s", (_angle, sign, longitude) => {
+    const bonusesAt = (degree: number) => getAstrologyTreeMarkers({
+      planets: [makePlanet(Planet.SUN, "Sun", sign, degree, 1)],
+      houses: makeHouses(),
+    }).find(({ sourceName, mapping }) => sourceName === "Sun" && mapping === "carrier-sphere")
+      ?.weightBreakdown?.roleBonuses ?? []
+    expect(bonusesAt(longitude).filter(({ role }) => role === "angular")).toEqual([{ role: "angular", weight: 1 }])
+    expect(bonusesAt(longitude + 0.01).some(({ role }) => role === "angular")).toBe(false)
+  })
+
+  it.each([
+    [4.99, "moolatrikona", "moolatrikona"],
+    [5, "moolatrikona", "ownSign"],
+    [14.99, "moolatrikona", "ownSign"],
+    [15, "ownSign", "ownSign"],
+  ] as const)("scores the two Venus moolatrikona ranges at %s degrees Libra", (degree, bphs, saravali) => {
+    const astrology = { ...singlePlanetChart("Venus", Planet.VENUS, "Libra", degree), lahiriAyanamsa: 0 }
+    for (const [venusMoolatrikona, dignity, reference] of [
+      [undefined, bphs, "Brihat Parashara Hora Shastra 3.51-54"],
+      ["bphs", bphs, "Brihat Parashara Hora Shastra 3.51-54"],
+      ["saravali", saravali, "Saravali 5.21-24 and Phaladeepika 1.7"],
+    ] as const) {
+      const map = buildKaabalisticMapData({ astrology, venusMoolatrikona })
+      const sources = map.sphereLenses[sphere(SPHERES.NETZACH)].carrierCondition?.pointSources
+      expect(sources?.filter((row) => row.system === "jyotish" && row.division === 1)).toEqual([{
+        system: "jyotish", division: 1, sign: "Libra", dignity, points: dignity === "moolatrikona" ? 4 : 3,
+        ...(dignity === "moolatrikona" ? { reference } : {}),
+      }])
+    }
+  })
+
+  it.each([
+    ["Mars", Planet.MARS, "Capricorn", 1, 1.6],
+    ["Mercury", Planet.MERCURY, "Pisces", 1, 0.6],
+  ] as const)("clamps the combined condition multiplier for %s", (name, planet, sign, degree, multiplier) => {
+    const map = buildKaabalisticMapData({ astrology: { ...singlePlanetChart(name, planet, sign, degree), lahiriAyanamsa: 0 } })
+    const condition = map.markers.find((marker) => marker.mapping === "carrier-sphere" && marker.sourceName === name)
+      ?.weightBreakdown?.contributions[0].condition
+    expect(condition?.multiplier).toBe(multiplier)
+    if (name === "Mars") {
+      expect(condition?.pointSources).toContainEqual({ system: "jyotish", division: 9, sign, dignity: "vargottama", points: 2 })
+    }
+  })
+
+  it("uses carrier condition together with share and ranks Geburah first in the Jobs map", async () => {
+    await getSwissEph({ ephePath: EPHE_PATH, wasmPath: WASM_PATH })
+    const chart = await getBirthChart({
+      date: { year: 1955, month: 2, day: 24, hour: 19, minute: 15, second: 0 },
+      latitude: 37.7749, longitude: -122.4194,
+      houseSystem: HouseSystem.PLACIDUS, timeZoneSettings: { timeZone: "America/Los_Angeles" },
+    })
+    const map = buildKaabalisticMapData({
+      astrology: chart, numerology: new Date(1955, 1, 24, 12), gematria: "Steven Paul Jobs",
+    })
+    const lens = (name: string) => map.sphereLenses[sphere(name)]
+    expect(map.rankedSpheres[0].id).toBe(sphere(SPHERES.GEBURAH))
+    expect(lens(SPHERES.GEBURAH)).toMatchObject({ expression: "excess", carrierCondition: { planet: "Mars" } })
+    expect(lens(SPHERES.CHESED)).toMatchObject({ expression: "balance", carrierCondition: { planet: "Jupiter" } })
+    expect(lens(SPHERES.CHESED).carrierCondition?.pointSources).toContainEqual({ system: "tropical", dignity: "exaltation", points: 4 })
+    expect(lens(SPHERES.KETHER)).toMatchObject({ expression: "balance", carrierCondition: null })
+    expect(lens(SPHERES.BINAH)).toMatchObject({ expression: "excess", carrierCondition: { planet: "Saturn", score: 4 } })
+    expect(lens(SPHERES.BINAH).carrierCondition?.pointSources).toContainEqual({
+      system: "jyotish", division: 1, sign: "Libra", dignity: "exaltation", points: 5,
+    })
+    expect(map.sphereMarkers[sphere(SPHERES.GEBURAH)]).toContainEqual(expect.objectContaining({
+      mapping: "carrier-sphere", weightBreakdown: expect.objectContaining({
+        roleBonuses: [{ role: "finalDispositor", weight: 2 }, { role: "atmakaraka", weight: 2 }],
+      }),
+    }))
+  })
+
   it("weighs astrology placements by source and gives every marker a weight", () => {
     const chart = {
       planets: [
@@ -401,10 +657,10 @@ describe("kaabalistic marker weights", () => {
     const placements = getAstrologyTreeMarkers(chart).filter((marker) => marker.mapping !== "decan-sphere")
     const bySource = (name: string) => weightsOf(placements.filter((marker) => marker.sourceName === name))
 
-    expect(bySource("Sun")).toEqual([5])
-    expect(bySource("Mercury")).toEqual([4])
-    expect(bySource("Saturn")).toEqual([2])
-    expect(bySource("Pluto")).toEqual([1])
+    expect(bySource("Sun")).toEqual([4, 5])
+    expect(bySource("Mercury")).toEqual([4, 5])
+    expect(bySource("Saturn")).toEqual([2.5, 5.5])
+    expect(bySource("Pluto")).toEqual([1, 3])
     expect(bySource("Wheel of Fortune")).toEqual([1])
     expect(bySource("ASC")).toEqual([5])
     expect(bySource("MC")).toEqual([2])
@@ -427,6 +683,37 @@ describe("kaabalistic marker weights", () => {
     expect(weightFor("Year Energy", "1")).toEqual([2])
     expect(weightFor("Year Energy", "19")).toEqual([1])
     expect(weightFor("Year Energy", "10")).toEqual([1])
+  })
+
+  it("gives the single-digit form of a master Life Path the full Life Path weight", () => {
+    const markers = getNumerologyTreeMarkers(new Date(1902, 0, 2, 12))
+    expect(markers).toContainEqual(expect.objectContaining({
+      sourceName: "Life Path (Kaabalistic) 33", label: "6", targetId: sphere(SPHERES.TIPHARETH), weight: 5,
+    }))
+    expect(markers.filter((marker) => marker.sourceName.startsWith("Life Path (Straight)")).every((marker) => marker.weight === 0)).toBe(true)
+  })
+
+  it("keeps both values at full weight for master birth day, month and year energies", () => {
+    const markers = getNumerologyTreeMarkers(new Date(1993, 10, 22, 12))
+    for (const [sourceName, numbers, weight] of [
+      ["Day Energy", ["22", "4"], 4],
+      ["Month Energy", ["11", "2"], 3],
+      ["Year Energy", ["22", "4"], 2],
+    ] as const) {
+      for (const label of numbers) {
+        expect(markers).toContainEqual(expect.objectContaining({ sourceName, label, weight }))
+      }
+    }
+  })
+
+  it.each([
+    ["David", "Vowels", 3],
+    ["Ana Beth", "Consonants", 3],
+    ["MAM", "Synthesis", 4],
+  ] as const)("keeps the gematria master step intermediate for %s %s", (name, sourceName, finalWeight) => {
+    const markers = getGematriaTreeMarkers(name).filter((marker) => marker.sourceName === sourceName)
+    expect(weightsOf(markers.filter(({ label }) => label === "11"))).toEqual([1])
+    expect(weightsOf(markers.filter(({ label }) => label === "2"))).toEqual([finalWeight])
   })
 
   it("gives the Straight life path markers weight 0 at every step and keeps them", () => {
@@ -632,7 +919,7 @@ describe("kaabalistic decan layer", () => {
     const decans = getAstrologyTreeMarkers(chart).filter((marker) => marker.mapping === "decan-sphere")
     const weightOf = (name: string) => decans.find((marker) => marker.sourceName === name)?.weight
 
-    expect(weightOf("Sun")).toBe(2.5)
+    expect(weightOf("Sun")).toBe(2)
     expect(weightOf("ASC")).toBe(2.5)
     expect(weightOf("MC")).toBe(1)
     expect(weightOf("Vertex")).toBe(0.5)
@@ -666,7 +953,7 @@ describe("kaabalistic aspect layer", () => {
   ]
 
   const aspectMarkers = (aspects: AspectEdge[]) =>
-    getAstrologyTreeMarkers(singlePlanetChart("Sun", Planet.SUN, "Aries", 5, aspects)).filter(
+    getAstrologyTreeMarkers({ planets: [], houses: makeHouses(), aspects }).filter(
       (marker) => marker.sourceType === "aspect"
     )
 
@@ -735,11 +1022,11 @@ describe("kaabalistic aspect layer", () => {
     const geburah = sphere(SPHERES.GEBURAH)
 
     expect(withSquare.countsById[geburah]!.astro - (emptyAspects.countsById[geburah]?.astro ?? 0)).toBe(1)
-    expect(withSquare.rawWeightsById[geburah]!.astro - (emptyAspects.rawWeightsById[geburah]?.astro ?? 0)).toBeCloseTo(2.67, 5)
+    expect(withSquare.rawWeightsById[geburah]!.astro - (emptyAspects.rawWeightsById[geburah]?.astro ?? 0)).toBeCloseTo(2.94, 5)
     expect(withSquare.itemConnections.astrology.some((c) => c.itemLabel === "Sun square Moon")).toBe(false)
   })
 
-  it("caps the aspect weight on one sphere at 5 in the raw sum, leaving marker weights alone", () => {
+  it("caps the aspect weight on one sphere at 8 in the raw sum, leaving marker weights alone", () => {
     const base = {
       planets: [makePlanet(Planet.SUN, "Sun", "Aries", 5, 1)],
       houses: makeHouses(),
@@ -756,12 +1043,12 @@ describe("kaabalistic aspect layer", () => {
       .filter((m) => m.sourceType === "aspect")
       .reduce((acc, m) => acc + m.weight, 0)
 
-    expect(KAABALISTIC_MARKER_WEIGHTS.aspect.sphereCap).toBe(5)
-    expect(markerSum).toBe(9)
-    expect(withEdges.rawWeightsById[geburah]!.astro - without.rawWeightsById[geburah]!.astro).toBeCloseTo(5, 5)
+    expect(KAABALISTIC_MARKER_WEIGHTS.aspect.sphereCap).toBe(8)
+    expect(markerSum).toBe(9.6)
+    expect(withEdges.rawWeightsById[geburah]!.astro - without.rawWeightsById[geburah]!.astro).toBeCloseTo(8, 5)
 
     const under = buildKaabalisticMapData({ astrology: { ...base, aspects: [edges[0]] } })
-    expect(under.rawWeightsById[geburah]!.astro - without.rawWeightsById[geburah]!.astro).toBeCloseTo(3, 5)
+    expect(under.rawWeightsById[geburah]!.astro - without.rawWeightsById[geburah]!.astro).toBeCloseTo(3.3, 5)
     // Other layers on the same sphere are not capped.
     expect(without.rawWeightsById[geburah]!.astro).toBeGreaterThan(5)
   })
@@ -817,20 +1104,20 @@ describe("kaabalistic ranking", () => {
       },
     })
 
-    // Raw: Geburah: Sun and ASC Aries sign-sphere (5 + 5). Netzach: the trine (3). Chokhmah: Sun decan (2.5).
-    // Raw total is 34.5 and astrology is the only system, so each raw value becomes raw / 34.5 * 100.
+    // Geburah: exalted Sun (6) and ASC (5). Tiphareth adds the angular bonus to the Sun (7).
+    // The rounded raw total of 38.3 is entirely astrology.
     expect(map.rankedSpheres.map((row) => [row.name, map.rawWeightsById[row.id]!.total])).toEqual([
-      ["Geburah", 10],
+      ["Geburah", 11],
+      ["Tiphareth", 7],
       ["Malkuth", 7],
       ["Binah", 5.5],
-      ["Tiphareth", 5],
-      ["Netzach", 3],
-      ["Chokhmah", 2.5],
+      ["Netzach", 3.3],
+      ["Chokhmah", 3],
       ["Hod", 1],
       ["Yesod", 0.5],
     ])
     expect(map.rankedSpheres.map((row) => row.share)).toEqual(
-      [10, 7, 5.5, 5, 3, 2.5, 1, 0.5].map((raw) => Math.round((raw / 34.5) * 10000) / 100)
+      [11, 7, 7, 5.5, 3.3, 3, 1, 0.5].map((raw) => Math.round((raw / 38.3) * 10000) / 100)
     )
   })
 

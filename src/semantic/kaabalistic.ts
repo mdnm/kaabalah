@@ -1,15 +1,32 @@
 import { getKaabalisticLabel } from "./labels";
 import {
   DEFAULT_ASPECT_SPECS,
+  MODERN_RULERS,
   PLANET_AND_NODE_NAMES,
   SIGNS,
   VirtualNodes,
   computeAspects,
+  calculateCharaKarakas,
+  getDispositors,
+  getEssentialDignity,
+  getEssentialDignities,
+  getPlanetSectStatus,
+  getSectFromAltitude,
+  getVarga,
+  isVargottama,
   type BirthChart,
   type HydratedNode,
   type HydratedPlanet,
+  type KarakaBody,
+  type Sect,
+  type SectResult,
+  type Sign,
+  type TraditionalPlanet,
   type ZodiacPosition,
 } from "../astrology"
+import { signedAngleDifference } from "../astrology/root-solver"
+import { DEGREE_CLUSTER_RULES, natalDegreeFacts, type KaabalisticCriticalDegree, type KaabalisticDegreeCluster } from "./natalDegreeFacts"
+export type { KaabalisticCriticalDegree, KaabalisticDegreeCluster, KaabalisticDegreePattern, KaabalisticDegreePosition } from "./natalDegreeFacts"
 import {
   KaabalahTypes,
   LetterTypes,
@@ -30,6 +47,8 @@ import { calculateGematria } from "../gematria"
 import {
   calculateKaabalisticLifePath,
   calculateStraightAcrossReductionLifePath,
+  isMasterNumber,
+  reduceToSingle,
 } from "../numerology"
 
 type CanonicalTree = ReturnType<typeof getCanonicalTree>
@@ -66,18 +85,26 @@ export type KaabalisticMarkerMapping =
 /**
  * Author-defined marker weights, exposed so callers can show the table.
  *
- * Astrology: every placement marker of a source carries that source's placement weight
+ * Astrology: each placement marker starts with that source's placement weight
  * (Sun, Moon and ASC 5; Mercury, Venus and Mars 4; Jupiter, Saturn and MC 2; anything
- * else `otherPoint`). A decan marker weighs `decanFactor` times its source's weight.
- * An aspect marker weighs its tightness (`min` to `max`, from how close the orb is to
- * exact) times the placement weights of the two bodies added together, divided by
- * `pairDivisor`, rounded to 2 decimals. So Sun square Moon at exact orb weighs 3 and
- * Uranus conjunction Neptune at exact orb weighs 0.6. On one sphere, all aspect markers
- * together add at most `sphereCap`.
+ * else `otherPoint`). Sum tropical essential dignity and sect points with Lahiri
+ * sidereal D1 dignity, D9 dignity at half weight, and vargottama points. D1 scores only
+ * the highest dignity: exaltation, moolatrikona, then own sign. Sect uses the
+ * computed Sun altitude. One multiplier per planet clamps 1 + score / 20 to 0.6 to 1.6.
+ * A decan starts at
+ * `decanFactor` of placement weight. Each body in an aspect contributes its adjusted
+ * placement weight times tightness divided by `pairDivisor`. Their sum is rounded to
+ * 2 decimals, and all aspects on a sphere together add at most `sphereCap`.
+ * Add role bonuses once to the carrier-sphere marker after multiplication. Ruler and
+ * dispositors use modern rulership. Atmakaraka uses seven tropical chara karakas.
+ * Angularity uses the nearest ecliptic distance to ASC, IC, DC or MC.
+ * A tropical same-degree cluster gives +1 per other member, capped at +3 per planet.
+ * Critical degrees are facts only and carry no weight.
  *
- * Numerology and gematria: the weight applies to the final reduced value; every
- * intermediate reduction step weighs `intermediateStep`. Only the Kaabalistic Life Path
- * carries weight; the Straight life path markers stay but weigh 0 at every step.
+ * Numerology and gematria: a weighted final value keeps its full weight. If it is a
+ * retained master number (11, 22, 33 or 44), its single-digit reduction also gets the
+ * full weight wherever the graph has a correspondence. Earlier reduction steps weigh
+ * `intermediateStep`. Straight life path markers stay at 0 and gain no extra marker.
  * Gematria letters add up per path but never more than `letterPathCap`.
  *
  * Marker `weight` is the raw value. In `weightsById`, the raw sums above are turned into
@@ -85,7 +112,8 @@ export type KaabalisticMarkerMapping =
  * so the system's total equals its entry in `systemShares` (percentage points). Systems
  * with no raw weight in that target type are left out and the remaining shares are
  * rescaled to sum to 100, so astrology plus numerology alone become 62.5 and 37.5.
- * `rawWeightsById` keeps the sums before this step.
+ * `rawWeightsById` keeps the sums before this step. Share expresses pathway strength
+ * from frequency and weight. It does not measure importance or quality.
  */
 export const KAABALISTIC_MARKER_WEIGHTS = {
   astrology: {
@@ -102,8 +130,19 @@ export const KAABALISTIC_MARKER_WEIGHTS = {
     } as Readonly<Record<string, number>>,
     otherPoint: 1,
     decanFactor: 0.5,
+    condition: {
+      tropical: {
+        domicile: 5, exaltation: 4, triplicity: 3, bound: 2, face: 1,
+        inSect: 1, peregrine: 0, outOfSect: -1, detriment: -5, fall: -4,
+      },
+      jyotish: { exaltation: 5, moolatrikona: 4, ownSign: 3, debilitation: -5, vargottama: 2, d9Factor: 0.5 },
+      multiplier: { divisor: 20, min: 0.6, max: 1.6 },
+    },
+    roles: { chartRuler: 2, finalDispositor: 2, atmakaraka: 2, angular: 1 },
+    angularOrb: 5,
+    degreeCluster: DEGREE_CLUSTER_RULES,
   },
-  aspect: { min: 1, max: 3, pairDivisor: 10, sphereCap: 5 },
+  aspect: { min: 1, max: 3, pairDivisor: 10, sphereCap: 8 },
   numerology: {
     kaabalisticLifePath: 5,
     dayEnergy: 4,
@@ -122,6 +161,37 @@ export const KAABALISTIC_MARKER_WEIGHTS = {
   systemShares: { astrology: 50, numerology: 30, gematria: 20 },
 } as const
 
+type TropicalDignity = keyof typeof KAABALISTIC_MARKER_WEIGHTS.astrology.condition.tropical
+type PlanetRole = keyof typeof KAABALISTIC_MARKER_WEIGHTS.astrology.roles
+type JyotishSignDignity = "exaltation" | "moolatrikona" | "ownSign" | "debilitation" | "neutral"
+
+export type KaabalisticConditionPoint =
+  | { system: "tropical"; dignity: TropicalDignity; points: number }
+  | { system: "jyotish"; dignity: JyotishSignDignity | "vargottama"; division: 1 | 9; sign: string; points: number; reference?: string }
+
+export interface KaabalisticPlanetWeight {
+  planet: string;
+  score: number;
+  multiplier: number;
+  pointSources: readonly KaabalisticConditionPoint[];
+}
+
+export type KaabalisticRoleBonus =
+  | { role: PlanetRole; weight: number }
+  | { role: "sameDegreeCluster"; weight: number; cluster: Pick<KaabalisticDegreeCluster, "members" | "meanDegree"> }
+
+export interface KaabalisticWeightBreakdown {
+  contributions: readonly { condition: KaabalisticPlanetWeight | null; baseWeight: number; source: string }[];
+  roleBonuses?: readonly KaabalisticRoleBonus[];
+}
+
+export interface KaabalisticSphereLens {
+  share: number;
+  carrierCondition: KaabalisticPlanetWeight | null;
+  /** Lack if score is negative and share below even; possible excess if both are above neutral. Otherwise balance. */
+  expression: "balance" | "excess" | "lack";
+}
+
 export interface KaabalisticMarkerDescriptor {
   kind: KaabalisticMarkerKind;
   targetId: KaabalisticTargetId;
@@ -132,6 +202,8 @@ export interface KaabalisticMarkerDescriptor {
   label: string;
   /** Contribution of this marker to the ranking (see KAABALISTIC_MARKER_WEIGHTS). */
   weight: number;
+  /** Raw terms before rounding and any per-sphere aspect cap. */
+  weightBreakdown?: KaabalisticWeightBreakdown;
   sign?: string;
   element?: string;
   planet?: string;
@@ -177,6 +249,12 @@ export interface KaabalisticMapData {
   rawWeightsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>>;
   /** Touched spheres, heaviest first, ties in the Tree's own order. */
   rankedSpheres: readonly KaabalisticRankedTarget[];
+  /** Reading emphasis per sphere. Light share alone never implies lack. */
+  sphereLenses?: Record<NodeId<KaabalahTypes.SPHERE>, KaabalisticSphereLens>;
+  /** Maximal groups of at least three planets within a two-degree tropical in-sign spread. */
+  degreeClusters?: readonly KaabalisticDegreeCluster[];
+  /** Bodies and angles whose tropical sign degree matches the critical-degree convention. */
+  criticalDegrees?: readonly KaabalisticCriticalDegree[];
   /** Touched paths, heaviest first, ties in path order. */
   rankedPaths: readonly KaabalisticRankedTarget[];
   itemConnections: {
@@ -185,6 +263,10 @@ export interface KaabalisticMapData {
     gematria: readonly KaabalisticItemConnection[];
   };
 }
+
+/** The library builder always supplies the extended facts, even for an empty map. */
+export type ComputedKaabalisticMapData = KaabalisticMapData &
+  Required<Pick<KaabalisticMapData, "sphereLenses" | "degreeClusters" | "criticalDegrees">>;
 
 export interface KaabalisticSymbolMetadata {
   kind: "planet" | "sign" | "angle" | "node";
@@ -280,6 +362,11 @@ export interface AstrologyTreeChartInput {
   houses: BirthChart["houses"];
   nodes?: readonly HydratedNode[] | Record<string, HydratedNode>;
   aspects?: BirthChart["aspects"];
+  /** Optional precomputed sect. Solar altitude takes precedence when both are supplied. */
+  sect?: Sect;
+  sectDetails?: Pick<SectResult, "sunGeometricAltitude">;
+  /** True Lahiri ayanamsa for the supplied tropical positions. Omit if the sidereal frame is unavailable. */
+  lahiriAyanamsa?: number;
 }
 
 export interface NumerologyTreeInput {
@@ -293,7 +380,12 @@ export interface GematriaTreeInput {
   result?: ReturnType<typeof calculateGematria>;
 }
 
-export interface BuildKaabalisticMapDataInput {
+export interface KaabalisticAstrologyWeightOptions {
+  /** Venus in sidereal Libra: BPHS [0, 15), or Saravali and Phaladeepika [0, 5). Default "bphs". */
+  venusMoolatrikona?: "bphs" | "saravali";
+}
+
+export interface BuildKaabalisticMapDataInput extends KaabalisticAstrologyWeightOptions {
   astrology?: BirthChart | AstrologyTreeChartInput | null;
   numerology?: Date | NumerologyTreeInput | null;
   gematria?: string | GematriaTreeInput | null;
@@ -415,15 +507,10 @@ const symbolRegistry = createSymbolRegistry([
   ...NODE_SYMBOLS,
 ])
 
-const classicalPlanetKeys = new Set([
-  normalizeLookupKey(PLANETS.SUN),
-  normalizeLookupKey(PLANETS.MOON),
-  normalizeLookupKey(PLANETS.MERCURY),
-  normalizeLookupKey(PLANETS.VENUS),
-  normalizeLookupKey(PLANETS.MARS),
-  normalizeLookupKey(PLANETS.JUPITER),
-  normalizeLookupKey(PLANETS.SATURN),
-])
+const CLASSICAL_PLANETS = [
+  PLANETS.SUN, PLANETS.MOON, PLANETS.MERCURY, PLANETS.VENUS, PLANETS.MARS, PLANETS.JUPITER, PLANETS.SATURN,
+] as const satisfies readonly TraditionalPlanet[]
+const classicalPlanetKeys = new Set(CLASSICAL_PLANETS.map(normalizeLookupKey))
 
 const defaultExcludedAstrologyPoints = new Set([
   normalizeLookupKey("True Node"),
@@ -1044,7 +1131,8 @@ function englishGetKaabalisticCorrespondenceTargets(
 
 function toAstrologyMarkers(
   result: KaabalisticCorrespondenceResult,
-  source: AstrologyTreeMarkerSource
+  source: AstrologyTreeMarkerSource,
+  planet?: AstrologyPlanetWeight
 ) {
   const weight = getPlacementWeight(source.sourceName)
   const sourceGlyph = getAstrologySourceGlyph(source.sourceType, source.sourceName)
@@ -1059,7 +1147,7 @@ function toAstrologyMarkers(
     sourceType: source.sourceType,
     sourceName: source.sourceName,
     mapping: target.mapping,
-    weight,
+    ...placementAdjustment(source.sourceName, weight, planet, target.mapping === "carrier-sphere"),
     label:
       target.mapping === "planet-sign-path" || target.mapping === "carrier-sphere"
         ? signGlyph
@@ -1114,6 +1202,143 @@ function getPlacementWeight(sourceName: string) {
   return placement[sourceName] ?? otherPoint
 }
 
+type AstrologyPlanetWeight = {
+  condition: KaabalisticPlanetWeight | null;
+  roles: NonNullable<KaabalisticWeightBreakdown["roleBonuses"]>;
+}
+
+// Brihat Parashara Hora Shastra 3.51-54. Sidereal D1 ranges are half-open except
+// the Moon's 3 Taurus and Mercury's 15 Virgo exaltation points. Moolatrikona starts just after those points.
+const MOOLATRIKONA = {
+  Sun: ["Leo", 0, 20],
+  Moon: ["Taurus", 3, 30],
+  Mars: ["Aries", 0, 12],
+  Mercury: ["Virgo", 15, 20],
+  Jupiter: ["Sagittarius", 0, 10],
+  Venus: ["Libra", 0, 15],
+  Saturn: ["Aquarius", 0, 20],
+} as const satisfies Record<TraditionalPlanet, readonly [Sign, number, number]>
+
+function jyotishConditionPoints(
+  planet: TraditionalPlanet,
+  longitude: number,
+  venusMoolatrikona: NonNullable<KaabalisticAstrologyWeightOptions["venusMoolatrikona"]>
+): KaabalisticConditionPoint[] {
+  const values = KAABALISTIC_MARKER_WEIGHTS.astrology.condition.jyotish
+  const points: KaabalisticConditionPoint[] = []
+  const [moolaSign, start, bphsEnd] = MOOLATRIKONA[planet]
+  const shortVenus = planet === "Venus" && venusMoolatrikona === "saravali"
+  // Saravali 5.21-24 and Phaladeepika 1.7 use the shorter Venus range.
+  const end = shortVenus ? 5 : bphsEnd
+
+  for (const division of [1, 9] as const) {
+    const { sign, degree } = getVarga(longitude, division)
+    const signDignities = getEssentialDignity(planet, sign)
+    // The Moon and Mercury split their exaltation sign into degree ranges in D1.
+    const degreeExaltation = (planet !== "Moon" || degree <= 3) && (planet !== "Mercury" || degree <= 15)
+    const exalted = signDignities.exaltation && (division === 9 || degreeExaltation)
+    const moolatrikona = division === 1 && sign === moolaSign && degree >= start && degree < end
+    const dignity: JyotishSignDignity = exalted ? "exaltation"
+      : moolatrikona ? "moolatrikona"
+      : signDignities.domicile ? "ownSign"
+      : signDignities.fall ? "debilitation" : "neutral"
+    const factor = division === 9 ? values.d9Factor : 1
+    points.push({
+      system: "jyotish", dignity, division, sign, points: dignity === "neutral" ? 0 : values[dignity] * factor,
+      ...(dignity === "moolatrikona" ? {
+        reference: shortVenus ? "Saravali 5.21-24 and Phaladeepika 1.7" : "Brihat Parashara Hora Shastra 3.51-54",
+      } : {}),
+    })
+    if (division === 9 && isVargottama(longitude)) {
+      points.push({ system: "jyotish", dignity: "vargottama", division, sign, points: values.vargottama })
+    }
+  }
+  return points
+}
+
+function astrologyPlanetWeights(
+  input: BirthChart | AstrologyTreeChartInput,
+  { venusMoolatrikona = "bphs" }: KaabalisticAstrologyWeightOptions,
+  degreeClusters: readonly KaabalisticDegreeCluster[]
+) {
+  const chart = normalizeChartInput(input)
+  const altitude = input.sectDetails?.sunGeometricAltitude
+  const sect = altitude !== undefined && Number.isFinite(altitude) ? getSectFromAltitude(altitude) : input.sect ?? null
+  const placements = Object.fromEntries(chart.planets.flatMap((planet) => {
+    const sign = normalizeSignName(planet.zodiacPosition.sign)
+    return sign ? [[aspectPointName(planet.name), sign] as const] : []
+  }))
+  const finalDispositors = new Set(getDispositors(placements, { rulers: "modern" }).finalDispositors)
+  const rising = normalizeSignName(chart.houses.ascendant.sign)
+  const chartRuler = rising ? MODERN_RULERS[rising] : undefined
+  const { ascendant, ic, dc, mc } = chart.houses
+  const angles = [ascendant, ic, dc, mc]
+  const sunLongitude = chart.planets.find(({ name }) => aspectPointName(name) === "Sun")?.longitude
+  const karakaInputs = CLASSICAL_PLANETS.flatMap((name) => {
+    const degreeInSign = chart.planets.find((planet) => aspectPointName(planet.name) === name)?.zodiacPosition.decimalDegrees
+    return degreeInSign !== undefined && degreeInSign >= 0 && degreeInSign < 30
+      ? [{ body: name.toLowerCase() as KarakaBody, degreeInSign }] : []
+  })
+  const atmakaraka = karakaInputs.length === CLASSICAL_PLANETS.length
+    ? calculateCharaKarakas(karakaInputs, { scheme: 7, degreeFrame: "tropical" }).entries[0].body : undefined
+  const config = KAABALISTIC_MARKER_WEIGHTS.astrology
+  const ayanamsa = input.lahiriAyanamsa
+  const weights = new Map<string, AstrologyPlanetWeight>()
+
+  for (const planet of chart.planets) {
+    const name = aspectPointName(planet.name)
+    if (!planetCarrierSphereIdsByKey().has(normalizeLookupKey(name)) || !Number.isFinite(planet.longitude)) continue
+    const classical = CLASSICAL_PLANETS.find((candidate) => candidate === name)
+    const dignities = classical ? getEssentialDignities(classical, planet.longitude, sect) : null
+    const inSect = sect ? getPlanetSectStatus(name, sect, { longitude: planet.longitude, sunLongitude }) : undefined
+    const pointSources: KaabalisticConditionPoint[] = (Object.keys(config.condition.tropical) as TropicalDignity[]).filter((factor) => {
+      if (factor === "inSect") return inSect === true
+      if (factor === "outOfSect") return inSect === false
+      return dignities?.[factor] ?? false
+    }).map((dignity) => ({ system: "tropical", dignity, points: config.condition.tropical[dignity] }))
+    if (classical && ayanamsa !== undefined && Number.isFinite(ayanamsa)) {
+      pointSources.push(...jyotishConditionPoints(classical, planet.longitude - ayanamsa, venusMoolatrikona))
+    }
+    const roleFlags: Record<PlanetRole, boolean> = {
+      chartRuler: name === chartRuler,
+      finalDispositor: finalDispositors.has(name),
+      atmakaraka: name.toLowerCase() === atmakaraka,
+      angular: angles.some((angle) => angle && Math.abs(signedAngleDifference(planet.longitude - angle.longitude)) <= config.angularOrb),
+    }
+    const roles: KaabalisticRoleBonus[] = (Object.keys(config.roles) as PlanetRole[])
+      .filter((role) => roleFlags[role]).map((role) => ({ role, weight: config.roles[role] }))
+    const cluster = degreeClusters.reduce<KaabalisticDegreeCluster | undefined>((best, candidate) =>
+      candidate.members.length > (best?.members.length ?? 0)
+      && candidate.members.some((member) => normalizeLookupKey(member.name) === normalizeLookupKey(name)) ? candidate : best, undefined)
+    if (cluster) {
+      const { members, meanDegree } = cluster
+      const { perOtherMember, maxBonus } = config.degreeCluster
+      roles.push({
+        role: "sameDegreeCluster",
+        weight: Math.min(maxBonus, perOtherMember * (members.length - 1)),
+        cluster: { members, meanDegree },
+      })
+    }
+    const { divisor, min, max } = config.condition.multiplier
+    const score = pointSources.reduce((sum, point) => sum + point.points, 0)
+    const multiplier = Math.min(max, Math.max(min, 1 + score / divisor))
+    const condition = dignities || inSect !== undefined ? { planet: name, score, multiplier, pointSources } : null
+    weights.set(name, { condition, roles })
+  }
+  return weights
+}
+
+function placementAdjustment(source: string, baseWeight: number, planet?: AstrologyPlanetWeight, carrier = false) {
+  const condition = planet?.condition ?? null
+  const roleBonuses = carrier ? planet?.roles : undefined
+  const adjustedWeight = baseWeight * (condition?.multiplier ?? 1) + (roleBonuses?.reduce((sum, role) => sum + role.weight, 0) ?? 0)
+  const breakdown = condition || roleBonuses?.length ? {
+    contributions: [{ source, baseWeight, condition }],
+    ...(roleBonuses?.length ? { roleBonuses } : {}),
+  } : undefined
+  return { weight: round2(adjustedWeight), ...(breakdown ? { weightBreakdown: breakdown } : {}) }
+}
+
 function getDecanSphereId(sign: string, degreeInSign: number) {
   const normalized = normalizeSignName(sign)
   if (!normalized || !Number.isFinite(degreeInSign)) {
@@ -1132,7 +1357,8 @@ function getDecanSphereId(sign: string, degreeInSign: number) {
 
 function buildDecanMarker(
   source: AstrologyTreeMarkerSource,
-  position: { sign?: string; decimalDegrees?: number; longitude?: number } | undefined
+  position: { sign?: string; decimalDegrees?: number; longitude?: number } | undefined,
+  planet?: AstrologyPlanetWeight
 ): KaabalisticMarkerDescriptor | undefined {
   if (!position?.sign) {
     return undefined
@@ -1151,7 +1377,7 @@ function buildDecanMarker(
     sourceType: source.sourceType,
     sourceName: source.sourceName,
     mapping: "decan-sphere",
-    weight: getPlacementWeight(source.sourceName) * KAABALISTIC_MARKER_WEIGHTS.astrology.decanFactor,
+    ...placementAdjustment(source.sourceName, getPlacementWeight(source.sourceName) * KAABALISTIC_MARKER_WEIGHTS.astrology.decanFactor, planet),
     label: getAstrologySourceGlyph(source.sourceType, source.sourceName),
     sign: normalizeSignName(position.sign),
   }
@@ -1183,7 +1409,7 @@ function aspectPointName(name: string) {
   return symbolRegistry.byKey.get(normalizeLookupKey(name))?.label ?? name
 }
 
-function buildAspectMarkers(aspects: AstrologyTreeChartInput["aspects"]) {
+function buildAspectMarkers(aspects: AstrologyTreeChartInput["aspects"], weights: ReadonlyMap<string, AstrologyPlanetWeight>) {
   const markers: KaabalisticMarkerDescriptor[] = []
 
   for (const edge of aspects ?? []) {
@@ -1196,6 +1422,12 @@ function buildAspectMarkers(aspects: AstrologyTreeChartInput["aspects"]) {
       continue
     }
 
+    const baseFactor = getAspectTightness(edge.aspect, edge.orb) / KAABALISTIC_MARKER_WEIGHTS.aspect.pairDivisor
+    const contributions = [edge.planetA, edge.planetB].map((body) => {
+      const source = aspectPointName(body)
+      return { source, baseWeight: getPlacementWeight(source) * baseFactor, condition: weights.get(source)?.condition ?? null }
+    })
+    const adjusted = contributions.some((contribution) => contribution.condition !== null)
     markers.push({
       kind: "astrology",
       targetId: id(KaabalahTypes.SPHERE, sphere),
@@ -1203,7 +1435,10 @@ function buildAspectMarkers(aspects: AstrologyTreeChartInput["aspects"]) {
       sourceType: "aspect",
       sourceName: `${aspectPointName(edge.planetA)} ${edge.aspect} ${aspectPointName(edge.planetB)}`,
       mapping: "aspect-sphere",
-      weight: getAspectWeight(edge),
+      weight: adjusted
+        ? round2(contributions.reduce((sum, { baseWeight, condition }) => sum + baseWeight * (condition?.multiplier ?? 1), 0))
+        : getAspectWeight(edge),
+      ...(adjusted ? { weightBreakdown: { contributions } } : {}),
       label: ASPECT_LABELS[edge.aspect] ?? edge.aspect,
     })
   }
@@ -1236,7 +1471,12 @@ function dedupeMarkers(markers: readonly KaabalisticMarkerDescriptor[]) {
   })
 }
 
-function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartInput) {
+function englishGetAstrologyTreeMarkers(
+  input: BirthChart | AstrologyTreeChartInput,
+  options: KaabalisticAstrologyWeightOptions,
+  degreeClusters = natalDegreeFacts(normalizeChartInput(input)).degreeClusters
+) {
+  const weights = astrologyPlanetWeights(input, options, degreeClusters)
   const chart = normalizeChartInput(input)
   const markers: KaabalisticMarkerDescriptor[] = []
 
@@ -1258,8 +1498,9 @@ function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartIn
     }
 
     const source = { sourceType, sourceName: correspondences.source.label }
-    markers.push(...toAstrologyMarkers(correspondences, source))
-    const decan = buildDecanMarker(source, planet.zodiacPosition)
+    const weight = weights.get(source.sourceName)
+    markers.push(...toAstrologyMarkers(correspondences, source, weight))
+    const decan = buildDecanMarker(source, planet.zodiacPosition, weight)
     if (decan) markers.push(decan)
   }
 
@@ -1307,7 +1548,7 @@ function englishGetAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartIn
     if (decan) markers.push(decan)
   }
 
-  markers.push(...buildAspectMarkers(chart.aspects))
+  markers.push(...buildAspectMarkers(chart.aspects, weights))
 
   return dedupeMarkers(markers)
 }
@@ -1340,8 +1581,14 @@ function buildNumberMarkers(
 ) {
   const markers: KaabalisticMarkerDescriptor[] = []
 
-  for (const [index, number] of numbers.entries()) {
-    const weight = index === numbers.length - 1 ? finalWeight : intermediateWeight
+  const finalIndex = numbers.length - 1
+  const finalNumber = numbers[finalIndex]
+  const values = finalWeight > 0 && isMasterNumber(finalNumber)
+    ? [...numbers, reduceToSingle(finalNumber)]
+    : numbers
+
+  for (const [index, number] of values.entries()) {
+    const weight = index >= finalIndex ? finalWeight : intermediateWeight
     const correspondences = getKaabalisticCorrespondenceTargets({
       kind: "number",
       number,
@@ -1798,11 +2045,31 @@ function capitalizeWords(value: string) {
     .join(" ")
 }
 
-function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): KaabalisticMapData {
+function buildSphereLenses(
+  sphereMarkers: KaabalisticMapData["sphereMarkers"],
+  weightsById: KaabalisticMapData["weightsById"]
+): ComputedKaabalisticMapData["sphereLenses"] {
+  const spheres = orderedSpheres()
+  const evenShare = round2(100 / spheres.length)
+  return Object.fromEntries(spheres.map(({ id: sphereId }) => {
+    const share = weightsById[sphereId]?.total ?? 0
+    const carrier = sphereMarkers[sphereId]?.find((marker) => marker.mapping === "carrier-sphere")
+    const carrierCondition = carrier?.weightBreakdown?.contributions[0]?.condition ?? null
+    const score = carrierCondition?.score ?? 0
+    // Use lack or possible excess only when the condition and share point the same way.
+    const expression = score < 0 && share < evenShare ? "lack"
+      : score > 0 && share > evenShare ? "excess" : "balance"
+    return [sphereId, { share, carrierCondition, expression }] as const
+  }))
+}
+
+function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): ComputedKaabalisticMapData {
   const countsById: Partial<Record<KaabalisticTargetId, KaabalisticCountsEntry>> = {}
   const allMarkers: KaabalisticMarkerDescriptor[] = []
 
-  const astrologyMarkers = input.astrology ? getAstrologyTreeMarkers(input.astrology) : []
+  const degreeFacts = input.astrology
+    ? natalDegreeFacts(normalizeChartInput(input.astrology)) : { degreeClusters: [], criticalDegrees: [] }
+  const astrologyMarkers = input.astrology ? englishGetAstrologyTreeMarkers(input.astrology, input, degreeFacts.degreeClusters) : []
   const numerologyMarkers = input.numerology ? getNumerologyTreeMarkers(input.numerology) : []
   const gematriaMarkers = input.gematria ? getGematriaTreeMarkers(input.gematria) : []
 
@@ -1839,6 +2106,8 @@ function englishBuildKaabalisticMapData(input: BuildKaabalisticMapDataInput): Ka
     weightsById,
     rawWeightsById,
     rankedSpheres: rankTargets(orderedSpheres(), weightsById, countsById),
+    sphereLenses: buildSphereLenses(sphereMarkers, weightsById),
+    ...degreeFacts,
     rankedPaths: rankTargets(orderedPaths(), weightsById, countsById),
     itemConnections,
   }
@@ -1916,8 +2185,12 @@ function localizeMarkers(markers: KaabalisticMarkerDescriptor[], language?: stri
 }
 
 /** Marker display labels in Portuguese for pt and pt-BR. Glyphs and target IDs stay unchanged. */
-export function getAstrologyTreeMarkers(input: BirthChart | AstrologyTreeChartInput, language?: string) {
-  return localizeMarkers(englishGetAstrologyTreeMarkers(input), language);
+export function getAstrologyTreeMarkers(
+  input: BirthChart | AstrologyTreeChartInput,
+  language?: string,
+  options: KaabalisticAstrologyWeightOptions = {}
+) {
+  return localizeMarkers(englishGetAstrologyTreeMarkers(input, options), language);
 }
 export function getNumerologyTreeMarkers(input: Date | NumerologyTreeInput, language?: string) {
   return localizeMarkers(englishGetNumerologyTreeMarkers(input), language);
@@ -1927,7 +2200,7 @@ export function getGematriaTreeMarkers(input: string | GematriaTreeInput, langua
 }
 
 /** Complete map with localized display labels; English remains the default. */
-export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput, language?: string): KaabalisticMapData {
+export function buildKaabalisticMapData(input: BuildKaabalisticMapDataInput, language?: string): ComputedKaabalisticMapData {
   const result = englishBuildKaabalisticMapData(input);
   if (!language?.startsWith("pt")) return result;
   const markers = localizeMarkers([...result.markers], language);
