@@ -5,12 +5,6 @@ import type { SphereName } from "./sphere-profiles";
 import { id, KaabalahTypes, type Node, type NodeType } from "./types";
 import { getCanonicalTree } from "./workspace";
 
-export interface PathAlchemicalName {
-  latin: string;
-  /** Absent where only the Latin name is known. */
-  meaning?: string;
-}
-
 /**
  * What a path means, in one language. A path is one Hebrew letter and one major ark annu, so
  * the profile is also the profile of that card as a path between two spheres.
@@ -36,7 +30,6 @@ export interface PathProfile {
   keywords: string[];
   /** What the Hebrew letter of the path stands for, such as silence for Aleph. */
   letterQuality: string;
-  alchemicalNames: PathAlchemicalName[];
   /** The key word or phrase of the ark annu. */
   keyPhrase: string;
   /** The phrase to hold in mind (palavra para mentalização). */
@@ -45,8 +38,6 @@ export interface PathProfile {
   psychology: string;
   /** What the misuse of this force looks like. */
   misuse?: string[];
-  /** The dialogue of the ark annu: what is asked and answered on this path. */
-  dialogue?: string;
   /** Mantras, written as they are sounded. The same in every language. */
   mantras?: string[];
   mantraNote?: string;
@@ -128,7 +119,7 @@ function resolvePathNumber(path: string | number): number | undefined {
 
 /**
  * The profile of a path: its two spheres, letter and card, what it means in plain words, and
- * what is taught about its ark annu (psychological level, misuse, dialogue,
+ * what is taught about its ark annu (psychological level, misuse,
  * mantras, incense, candles, instruments, daily use).
  *
  * Takes a path number (13, "13"), a path node ID ("path:13"), the name of its card ("Death",

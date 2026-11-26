@@ -987,7 +987,7 @@ The JSON for one sphere is its profile plus `sections`, the IDs of its world, pi
 
 ### tree:path
 
-Describe a path: its two spheres, letter and card, what it means in plain words, and what is taught about its ark annu (psychological level, misuse, dialogue, mantras, incense, candles, instruments, daily use). Without a path, list all 22.
+Describe a path: its two spheres, letter and card, what it means in plain words, and what is taught about its ark annu (psychological level, misuse, mantras, incense, candles, instruments, daily use). Without a path, list all 22.
 
 ```bash
 kaabalah tree:path 13 --json --compact

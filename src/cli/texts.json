@@ -3419,9 +3419,9 @@
     "en": "Unknown path \"{0}\". Use a path number from 1 to 22, a path ID (path:13), a card name or a Hebrew letter.",
     "pt": "Caminho desconhecido \"{0}\". Use um número de caminho de 1 a 22, um ID de caminho (path:13), o nome de uma carta ou uma letra hebraica."
   },
-  "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences": {
-    "en": "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences",
-    "pt": "Descreve um caminho: suas esferas, letra e carta, significado simples, mau uso, diálogo, mantras e correspondências"
+  "Describe a path: its spheres, letter and card, plain meaning, misuse, mantras and correspondences": {
+    "en": "Describe a path: its spheres, letter and card, plain meaning, misuse, mantras and correspondences",
+    "pt": "Descreve um caminho: suas esferas, letra e carta, significado simples, mau uso, mantras e correspondências"
   },
   "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths": {
     "en": "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths",

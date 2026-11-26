@@ -430,7 +430,7 @@ export const COMMANDS: CommandSchema[] = [
   },
   {
     name: "tree:path",
-    description: "Describe a path: its spheres, letter and card, plain meaning, misuse, dialogue, mantras and correspondences",
+    description: "Describe a path: its spheres, letter and card, plain meaning, misuse, mantras and correspondences",
     args: [{ name: "path", type: "string", required: false, description: "Path number (1-22), path ID (path:13), card name or Hebrew letter; omit to list all paths" }],
     flags: [],
     examples: [

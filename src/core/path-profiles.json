@@ -9,20 +9,11 @@
       "pt": ["cocriação", "a voz", "vontade", "início", "união dos céus e da terra"]
     },
     "letterQuality": { "en": "silence", "pt": "o silêncio" },
-    "alchemicalNames": [
-      { "latin": "Magus Princips", "meaning": { "en": "magical principle", "pt": "princípio mágico" } },
-      { "latin": "Regibus Magis", "meaning": { "en": "magician king", "pt": "rei mago" } },
-      { "latin": "Magike Tekhne", "meaning": { "en": "technology of waves", "pt": "tecnologia de ondas" } }
-    ],
     "keyPhrase": { "en": "Union of heaven and earth.", "pt": "União dos céus e da terra." },
     "affirmation": { "en": "Co-creation with the waves of energy.", "pt": "Cocriação com as ondas energéticas." },
     "psychology": {
       "en": "The Magician is the guide: somewhere inside us there is always a glimpse from the depths of the unconscious that shows which direction to follow or which path to choose.",
       "pt": "O Mago representa o guia: em algum ponto dentro de nós sempre existe um vislumbre das profundezas do inconsciente que indica que direção seguir ou que caminho escolher."
-    },
-    "dialogue": {
-      "en": "The dialogue of this ark annu is the hymn of Osiris, known in the Bible as Psalm 23.",
-      "pt": "O diálogo deste ark annu se encontra no hino de Osíris, conhecido na Bíblia como o salmo 23."
     },
     "mantras": ["A"],
     "mantraNote": {
@@ -32,6 +23,10 @@
     "incense": {
       "en": ["clove", "myrrh", "musk", "storax", "amber", "laurel", "aloe vera", "sandalwood", "acacia", "cypress", "wormwood", "balsam", "pepper", "onion"],
       "pt": ["cravo", "mirra", "almíscar", "estoraque", "âmbar", "louro", "aloe vera", "sândalo", "acácia", "cipreste", "absinto", "bálsamo", "pimenta", "cebola"]
+    },
+    "instruments": {
+      "en": ["the sceptre", "the cup", "the shield or coin", "the sword"],
+      "pt": ["o cetro", "a taça", "o escudo ou a moeda", "a espada"]
     },
     "aminoAcid": { "en": "Pause", "pt": "Pausa" }
   },
@@ -45,11 +40,6 @@
       "pt": ["intuição", "os véus", "silêncio", "discrição", "iluminação interior", "paciência"]
     },
     "letterQuality": { "en": "wisdom", "pt": "a sabedoria" },
-    "alchemicalNames": [
-      { "latin": "Isis Cortinarum vela", "meaning": { "en": "the veils of Isis", "pt": "os véus de Ísis" } },
-      { "latin": "Separatio cortinarum vela", "meaning": { "en": "veils of separation", "pt": "véus de separação" } },
-      { "latin": "Scissis velorum", "meaning": { "en": "the veils were torn", "pt": "os véus se rasgaram" } }
-    ],
     "keyPhrase": { "en": "I re-create to improve my life at every instant.", "pt": "Recrio para melhorar a minha vida a cada instante." },
     "affirmation": { "en": "I draw inspiration from the cosmic mother, nature.", "pt": "Me inspiro na mãe cósmica, a natureza." },
     "psychology": {
@@ -59,10 +49,6 @@
     "misuse": {
       "en": ["shadows", "dissimulation", "hypocrisy", "secret intentions never revealed", "sanctimony", "rancour", "hostility or indifference", "fanatical mysticism based on dogma", "superficial knowledge"],
       "pt": ["sombras", "dissimulação", "hipocrisia", "intenções secretas e não reveladas", "beatice", "rancor", "disposição hostil ou indiferença", "misticismo fanático baseado em dogmas", "conhecimento superficial"]
-    },
-    "dialogue": {
-      "en": "The seeker says: \"I am who I am. I accept my mutations.\" The Priestess answers: \"Are you who you are? Or do you become what I transform you into?\"",
-      "pt": "O buscador diz: \"Sou quem sou. Aceito minhas mutações.\" A Sacerdotisa responde: \"Sois quem sois? Ou vos tornais no que vos transformo?\""
     },
     "mantras": ["ISAS", "ISES", "ISIS", "ISOS", "ISUS"],
     "mantraNote": { "en": "Each one may end in M.", "pt": "Cada um pode terminar em M." },
@@ -81,11 +67,6 @@
       "pt": ["adaptação", "fecundidade", "geração", "a água da vida", "natureza"]
     },
     "letterQuality": { "en": "sustenance", "pt": "o sustento" },
-    "alchemicalNames": [
-      { "latin": "Accommodatio" },
-      { "latin": "Aquas vitam aeternam" },
-      { "latin": "Adaptive imperatrix" }
-    ],
     "keyPhrase": { "en": "Adaptation.", "pt": "Adaptação." },
     "affirmation": {
       "en": "I adapt and evolve in the spiritual world like water in nature.",
@@ -98,10 +79,6 @@
     "misuse": {
       "en": ["the divine spark surrounded by darkness", "being imprisoned in the intoxicating darkness around us"],
       "pt": ["a centelha divina rodeada de trevas", "ficar aprisionado nas inebriantes trevas que nos rodeiam"]
-    },
-    "dialogue": {
-      "en": "The Empress: \"I am the generatrix; now that you know part of my nature, fecundate me.\" The pilgrim: \"I am the generator; I fecundated you to know you whole.\"",
-      "pt": "A Imperatriz: \"Sou a geratriz; agora que conheces parte de minha natureza, fecunda-me.\" O peregrino: \"Sou o gerador; te fecundei para conhecer-te por inteiro.\""
     },
     "mantras": ["GAM", "GEM", "GIM", "GOM", "GUM"],
     "incense": { "en": ["nutmeg", "clove", "coffee"], "pt": ["noz-moscada", "cravo", "café"] },
@@ -120,11 +97,6 @@
       "pt": ["autoridade", "vontade firme", "domínio de si", "território", "o fogo sagrado", "proteção"]
     },
     "letterQuality": { "en": "fruition", "pt": "a frutificação" },
-    "alchemicalNames": [
-      { "latin": "Caesar", "meaning": { "en": "emperor", "pt": "imperador" } },
-      { "latin": "Iovem", "meaning": { "en": "Zeus", "pt": "Zeus" } },
-      { "latin": "Iovem Imperatoris", "meaning": { "en": "emperor Zeus", "pt": "imperador Zeus" } }
-    ],
     "keyPhrase": { "en": "Authority: to fence in one's objectives.", "pt": "Autoridade: cercar objetivos." },
     "affirmation": {
       "en": "I mark my territory, spreading my work by the power of the sacred fire.",
@@ -137,10 +109,6 @@
     "misuse": {
       "en": ["results opposite to what was intended", "loss of balance", "a fall", "loss of estate, health or control", "stubborn opposition", "blockage", "hostility", "authoritarianism", "tyranny", "immaturity", "lack of energy", "indecision", "incompetence"],
       "pt": ["resultados contrários ao pretendido", "ruptura do equilíbrio", "queda", "perda de patrimônio, da saúde ou do domínio", "oposição tenaz", "bloqueio", "hostilidade", "autoritarismo", "tirania", "imaturidade", "falta de energia", "indecisão", "incompetência"]
-    },
-    "dialogue": {
-      "en": "The Emperor asks: \"Will you give me to drink?\" The pilgrim: \"How can I, being so small?\" The Emperor: \"Whoever drinks water from a natural spring will thirst again; the water I give becomes a spring that leaps into eternal life.\" The pilgrim: \"Give me that water that burns!\" The Emperor: \"The spring is inside you; it is the water of life.\"",
-      "pt": "O Imperador pergunta: \"Dá-me de beber?\" O peregrino: \"Como posso eu, sendo pequenino?\" O Imperador: \"Quem beber da água de fonte natural tornará a ter sede; a água que eu der se fará uma fonte que salta para a vida eterna.\" O peregrino: \"Dai-me de beber dessa água que queima!\" O Imperador: \"A fonte está dentro de ti; ela é a água da vida.\""
     },
     "mantras": ["DAM", "DEM", "DIM", "DOM", "DUM"],
     "incense": {
@@ -165,11 +133,6 @@
       "pt": ["magnetismo", "ritual", "a quinta essência", "ensino", "bênção", "compaixão"]
     },
     "letterQuality": { "en": "sense", "pt": "o sentido" },
-    "alchemicalNames": [
-      { "latin": "Agnus Dei" },
-      { "latin": "Essentia cingi" },
-      { "latin": "Hierophantus Magnetismus" }
-    ],
     "keyPhrase": { "en": "Magnetism.", "pt": "Magnetismo." },
     "affirmation": { "en": "I ritualize my life, circulating the quintessence.", "pt": "Ritualizo minha vida circulando a quinta essência." },
     "psychology": {
@@ -207,11 +170,6 @@
       "pt": ["escolha", "a encruzilhada", "dicotomias", "o caminho do meio", "amor divino", "liberdade"]
     },
     "letterQuality": { "en": "thought", "pt": "o pensamento" },
-    "alchemicalNames": [
-      { "latin": "Cuntactio" },
-      { "latin": "Arbitrium inter duas vias" },
-      { "latin": "Novus Enamoratium" }
-    ],
     "keyPhrase": { "en": "Dichotomies: the crossroads.", "pt": "Dicotomias: a encruzilhada." },
     "affirmation": { "en": "I am neither victim nor villain.", "pt": "Não sou vítima e nem vilão." },
     "psychology": {
@@ -221,10 +179,6 @@
     "misuse": {
       "en": ["doubt", "indecision", "impotence", "misconduct", "infidelity", "libertinism", "weakness", "failing when put to the test", "dangerous temptations"],
       "pt": ["dúvida", "indecisão", "impotência", "má conduta", "infidelidade", "libertinagem", "debilidade", "falha ao ser posto à prova", "tentações perigosas"]
-    },
-    "dialogue": {
-      "en": "\"When you make the male and the female one and the same, so that the male is not male and the female is not female, then you will enter the kingdom of Heaven.\" (Gospel of Thomas, logion 22)",
-      "pt": "\"Quando transformardes o masculino e o feminino em um só, de forma que o masculino não seja masculino e o feminino não seja feminino, então entrareis no reino dos Céus.\" (Evangelho de Tomé, logion 22)"
     },
     "mantras": ["VAUM", "VEUM", "VIUM", "VOUM", "VUUM"],
     "incense": {
@@ -246,12 +200,6 @@
       "pt": ["a merkaabah", "assumir as rédeas", "movimento", "responsabilidade", "amor incondicional", "desapego"]
     },
     "letterQuality": { "en": "movement", "pt": "o movimento" },
-    "alchemicalNames": [
-      { "latin": "Curriculum Vitae Hermeticus" },
-      { "latin": "Merkaabah" },
-      { "latin": "Ignus Raeda" },
-      { "latin": "Raeda Siderium" }
-    ],
     "keyPhrase": { "en": "I take on and build my Merkaabah.", "pt": "Assumo e construo minha Merkaabah." },
     "affirmation": {
       "en": "The vehicles of light stop being governed by other beings and become the whole responsibility of the being I am.",
@@ -264,10 +212,6 @@
     "misuse": {
       "en": ["losses for one's evolution", "forgetting", "endless restarts"],
       "pt": ["prejuízos para a evolução", "esquecimentos", "recomeços infinitos"]
-    },
-    "dialogue": {
-      "en": "The sphinx: \"Defeat me and harness me to your chariot, and you will be lord of the world.\" The master: \"Your head tells me to know, your lion's claws to dare, your bull's flanks to will, your eagle's wings to keep silent. One must know in order to dare, dare in order to be able, be able in order to reach the kingdom, and to reign one must keep silent.\"",
-      "pt": "A esfinge: \"Vence-me e atrela-me ao teu carro, e serás o senhor do mundo.\" O mestre: \"Tua cabeça me recomenda saber, as tuas garras de leão me dizem ousar, os teus flancos de touro me ensinam a querer, as tuas asas de águia me mandam calar. É preciso saber para ousar, ousar para poder, poder para alcançar o reino, e para reinar é preciso calar.\""
     },
     "mantras": ["ZA", "ZE", "ZI", "ZO", "ZU"],
     "mantraNote": {
@@ -293,12 +237,6 @@
       "pt": ["justiça", "equilíbrio", "imparcialidade", "karma", "ser justo consigo mesmo"]
     },
     "letterQuality": { "en": "sight", "pt": "a visão" },
-    "alchemicalNames": [
-      { "latin": "Iustitia", "meaning": { "en": "justice", "pt": "justiça" } },
-      { "latin": "Divinum Iudicium", "meaning": { "en": "divine judgment", "pt": "julgamento divino" } },
-      { "latin": "Aequum Iudicium", "meaning": { "en": "impartial court", "pt": "tribunal imparcial" } },
-      { "latin": "Suffragium", "meaning": { "en": "the vote of Minerva", "pt": "voto de Minerva" } }
-    ],
     "keyPhrase": { "en": "To be just with the being I am, above others.", "pt": "Ser justo com o ser que sou acima dos outros." },
     "affirmation": { "en": "I am just with myself in order to be just with my fellow.", "pt": "Sou justo comigo mesmo para ser justo com meu semelhante." },
     "psychology": {
@@ -308,10 +246,6 @@
     "misuse": {
       "en": ["prejudice", "lack of balance", "abuse of justice", "excess of severity", "inequality", "losing in court", "unjust conviction"],
       "pt": ["preconceito", "falta de equilíbrio", "abuso da justiça", "excesso de severidade", "desigualdade", "perda na justiça", "condenação injusta"]
-    },
-    "dialogue": {
-      "en": "Themis: \"Every man and every woman is a star.\" The magician: \"And their orbits must be respected.\"",
-      "pt": "Themis: \"Todo homem e toda mulher é uma estrela.\" O mago: \"E suas órbitas devem ser respeitadas.\""
     },
     "mantras": ["CHAM", "CHEM", "CHIM", "CHOM", "CHUM"],
     "mantraNote": {
@@ -337,11 +271,6 @@
       "pt": ["introspecção", "recolhimento", "a luz oculta", "silêncio", "a própria verdade", "prudência"]
     },
     "letterQuality": { "en": "learning", "pt": "o aprendizado" },
-    "alchemicalNames": [
-      { "latin": "Lux Occultum", "meaning": { "en": "hidden light", "pt": "luz oculta" } },
-      { "latin": "Hermita", "meaning": { "en": "hermit", "pt": "ermitão" } },
-      { "latin": "Operuit lux", "meaning": { "en": "covered light", "pt": "luz encoberta" } }
-    ],
     "keyPhrase": {
       "en": "\"What is truth?\" The answer is silence: each one must seek their own truth.",
       "pt": "\"O que é a verdade?\" A resposta é o silêncio: cada um deve buscar a sua verdade."
@@ -357,10 +286,6 @@
     "misuse": {
       "en": ["superstition", "idolatry", "scepticism", "sterility", "bad advice", "distrust", "isolation", "a false idea of a situation", "timidity", "depression", "refusal of relationships", "dogmatic ritualism", "exaggerated caution"],
       "pt": ["superstição", "idolatria", "ceticismo", "esterilidade", "maus conselhos", "desconfiança", "isolamento", "concepção falsa de uma situação", "timidez", "depressão", "recusa de relações", "ritualismo dogmático", "circunspecção exagerada"]
-    },
-    "dialogue": {
-      "en": "\"Stay alone and apart, because nothing that is materialized, nothing that is aware of separation, nothing that is not eternal, can come to your aid.\"",
-      "pt": "\"Mantém-te só e isolado, porque nada que está materializado, nada que tem consciência da separação, nada que não seja eterno, pode vir em teu auxílio.\""
     },
     "mantras": ["VAN SAM CHAM"],
     "mantraNote": {
@@ -390,11 +315,6 @@
       "pt": ["ciclos", "repetições", "prosperidade", "mudança", "quebrar padrões", "ascensão"]
     },
     "letterQuality": { "en": "touch", "pt": "o toque" },
-    "alchemicalNames": [
-      { "latin": "Rote Fortunae", "meaning": { "en": "wheel of fortune", "pt": "roda da fortuna" } },
-      { "latin": "Panis Pudoris", "meaning": { "en": "bread of shame", "pt": "pão da vergonha" } },
-      { "latin": "Rote Animarum", "meaning": { "en": "wheel of souls", "pt": "roda das almas" } }
-    ],
     "keyPhrase": { "en": "I break the great wheel and ascend!", "pt": "Quebro a grande roda e ascensiono!" },
     "affirmation": {
       "en": "I live the great wheel, attracting material and spiritual prosperity.",
@@ -408,10 +328,6 @@
       "en": ["instability", "difficult transformations", "carelessness", "insecurity", "unstable gains and losses", "risks", "bad luck", "sudden changes of mood and ideas"],
       "pt": ["instabilidade", "transformações difíceis", "descuido", "insegurança", "situação instável de ganhos e perdas", "riscos", "má sorte", "mudanças bruscas de humor e de ideias"]
     },
-    "dialogue": {
-      "en": "Here the animals of the sphinx appear: the bull, the animal instincts to be mastered; the lion, the spirit of leadership and vanity to be raised into spiritual dignity; the human head, the mediator between the animal and the angelic.",
-      "pt": "Aqui surgem os animais da esfinge: o touro, os instintos animais que devem ser dominados; o leão, o espírito de liderança e de vaidade que deve ser sublimado em altivez espiritual; a cabeça humana, a mediadora entre o reino animal e o angélico."
-    },
     "mantras": ["I", "I.A.O."],
     "mantraNote": {
       "en": "Picture the letter Yod above the head as a flame and pronounce the vowel I ten times.",
@@ -422,6 +338,10 @@
       "pt": ["canela", "sementes de louro", "jasmim", "benjoim", "casca de limão", "maçã"]
     },
     "candles": { "en": "Three light green candles.", "pt": "Três velas verde-claras." },
+    "instruments": {
+      "en": ["the coin or the wheel"],
+      "pt": ["a moeda ou a roda"]
+    },
     "dailyUse": { "en": "Breaking the automatic patterns we keep repeating.", "pt": "Quebrar padrões automatizados que estamos sempre repetindo." },
     "aminoAcid": { "en": "Isoleucine", "pt": "Isoleucina" }
   },
@@ -435,11 +355,6 @@
       "pt": ["força", "coragem", "domínio de si", "domar os instintos", "união", "poder moral"]
     },
     "letterQuality": { "en": "life", "pt": "a vida" },
-    "alchemicalNames": [
-      { "latin": "Leo Dominatus", "meaning": { "en": "mastery of the lion", "pt": "domínio do leão" } },
-      { "latin": "In Virtude", "meaning": { "en": "strength", "pt": "a força" } },
-      { "latin": "In Animo", "meaning": { "en": "courage", "pt": "a coragem" } }
-    ],
     "keyPhrase": { "en": "Strength.", "pt": "A força." },
     "affirmation": {
       "en": "Every chain of events is a happy one; I join the great current of light.",
@@ -452,10 +367,6 @@
     "misuse": {
       "en": ["becoming a slave of one's own force", "brutality", "abuse of power", "arrogance", "anger", "conquest by violence", "lack of courage", "dejection", "impatience", "impotence"],
       "pt": ["tornar-se escravo da própria força", "brutalidade", "abuso de poder", "arrogância", "cólera", "conquista pela violência", "falta de coragem", "abatimento", "impaciência", "impotência"]
-    },
-    "dialogue": {
-      "en": "\"Who is the bravest man or woman?\" \"The one who conquers oneself.\"",
-      "pt": "\"Quem é o homem ou a mulher mais valente?\" \"Aquele ou aquela que vence a si mesmo.\""
     },
     "mantras": ["CAM", "CEM", "CIM", "COM", "CUM"],
     "incense": {
@@ -483,12 +394,6 @@
       "pt": ["sacrifício válido", "uma nova perspectiva", "entrega", "provações", "serviço"]
     },
     "letterQuality": { "en": "potency", "pt": "a potência" },
-    "alchemicalNames": [
-      { "latin": "Sacrificium", "meaning": { "en": "sacrifice", "pt": "sacrifício" } },
-      { "latin": "Suspensus est homo", "meaning": { "en": "the hanged man", "pt": "o enforcado" } },
-      { "latin": "Tentorium", "meaning": { "en": "the suspended one", "pt": "o pendurado" } },
-      { "latin": "Validum sacrum officium", "meaning": { "en": "valid sacred office", "pt": "sacro ofício válido" } }
-    ],
     "keyPhrase": {
       "en": "I raise the energy from the sacrum to the centre of the galaxy.",
       "pt": "Realizo a subida da energia do osso sacro até o centro da galáxia."
@@ -499,10 +404,6 @@
       "pt": "O caminho espiritual se assenta sobre três degraus: morrer, a morte psicológica dos próprios defeitos; nascer, tomar a sua cruz; e o sacrifício pela humanidade, os atos que ultrapassam o indivíduo."
     },
     "misuse": { "en": ["aborted projects", "promises not kept"], "pt": ["projetos abortados", "promessas não cumpridas"] },
-    "dialogue": {
-      "en": "\"Until when, or how many times, do you intend to make this sacrifice?\" \"Seven lives I will give for the sake of freedom.\"",
-      "pt": "\"Até quando, ou quantas vezes, pretendes realizar tal sacrifício?\" \"Sete vidas darei em prol da liberdade.\""
-    },
     "mantras": ["LA AL", "LÉ ÉL", "LÊ ÊL", "LI IL", "LÓ ÓL", "LÔ ÔL", "LU UL"],
     "mantraNote": {
       "en": "One pair for each note of the scale, from do to si. The letter L stands for elevation.",
@@ -531,11 +432,6 @@
       "pt": ["renovação", "encerramentos", "transformação", "mudança de ciclo", "deixar ir", "renascimento"]
     },
     "letterQuality": { "en": "possibility (merit)", "pt": "a possibilidade (mérito)" },
-    "alchemicalNames": [
-      { "latin": "Renovationis exolvuntur", "meaning": { "en": "renewal of the cycle", "pt": "renovação de ciclo" } },
-      { "latin": "Mortem", "meaning": { "en": "death", "pt": "morte" } },
-      { "latin": "Invisibilia infernum", "meaning": { "en": "invisible Hades", "pt": "Hades invisível" } }
-    ],
     "keyPhrase": { "en": "I kill what could kill my soul.", "pt": "Mato o que poderia matar a minha alma." },
     "affirmation": { "en": "I accept, and I renew myself in the next cycles.", "pt": "Aceito e me renovo nos próximos ciclos." },
     "psychology": {
@@ -545,10 +441,6 @@
     "misuse": {
       "en": ["destruction", "fatality", "loss", "bad news", "failure", "ruin", "spiritual disconnection"],
       "pt": ["destruição", "fatalidade", "perda", "má notícia", "fracasso", "ruína", "desconexão espiritual"]
-    },
-    "dialogue": {
-      "en": "\"What is needed to reach immortality?\" \"It is by dying that one is reborn to eternal life.\"",
-      "pt": "\"O que é preciso para alcançar a imortalidade?\" \"É morrendo que se renasce para a vida eterna.\""
     },
     "mantras": ["AM", "AEM", "AIM", "AOM", "AUM"],
     "incense": {
@@ -571,12 +463,6 @@
       "pt": ["equilíbrio", "harmonia das diferenças", "conciliação", "moderação", "cura emocional"]
     },
     "letterQuality": { "en": "aroma", "pt": "o aroma" },
-    "alchemicalNames": [
-      { "latin": "Deducto Reversibilitas", "meaning": { "en": "reversibility of conduct", "pt": "reversibilidade de conduta" } },
-      { "latin": "Temperantia", "meaning": { "en": "temperance", "pt": "temperança" } },
-      { "latin": "Ut in statera", "meaning": { "en": "to keep the balance", "pt": "guardar o equilíbrio" } },
-      { "latin": "Miscere bene", "meaning": { "en": "to mix well", "pt": "misturar bem" } }
-    ],
     "keyPhrase": { "en": "I harmonize what is different.", "pt": "Harmonizo as heterogenias." },
     "affirmation": {
       "en": "The spirit, the sun, in exchange with the feelings of the soul, the moon.",
@@ -589,10 +475,6 @@
     "misuse": {
       "en": ["harmony demanded at any price", "nothing can be discussed", "no conflict is allowed to exist", "disharmony and taking sides"],
       "pt": ["harmonia exigida a qualquer preço", "nada pode ser discutido", "nenhum conflito pode existir", "desarmonias e escolhas de lados"]
-    },
-    "dialogue": {
-      "en": "\"What can I do for my own good and for all humanity?\" \"Having passed every trial and resolved to serve the human race, go down to the fifth hell and up to the seventh heaven, separating justly the dense from the subtle.\"",
-      "pt": "\"Que posso fazer para o meu próprio bem e de toda a humanidade?\" \"Após teres vencido todas as provas e resolvido servir a raça humana, desce ao quinto dos infernos e sobe até o sétimo céu, separando de forma justa o espesso do sutil.\""
     },
     "mantras": ["NAM", "NEM", "NIM", "NOM", "NUM"],
     "incense": {
@@ -618,13 +500,6 @@
       "pt": ["tentação", "vício e virtude", "desejo", "transmutação", "força de vontade", "vigilância"]
     },
     "letterQuality": { "en": "dreaming", "pt": "o sonhar" },
-    "alchemicalNames": [
-      { "latin": "Testimonium intelligenti", "meaning": { "en": "intelligence of the trial", "pt": "inteligência da prova" } },
-      { "latin": "Temptatio", "meaning": { "en": "temptation", "pt": "tentação" } },
-      { "latin": "Logica" },
-      { "latin": "Concupiscentia", "meaning": { "en": "sexual desire", "pt": "desejo sexual" } },
-      { "latin": "Nahash", "meaning": { "en": "serpent", "pt": "serpente" } }
-    ],
     "keyPhrase": { "en": "I transmute passions into ascensions.", "pt": "Transmuto as paixões em ascensões." },
     "affirmation": { "en": "I fight bravely and transmute my weakness into strength.", "pt": "Luto bravamente e transmuto minha fraqueza em força." },
     "psychology": {
@@ -634,10 +509,6 @@
     "misuse": {
       "en": ["fatalities", "violent situations", "lust", "dependency", "libertinism", "success by reprehensible means", "black magic"],
       "pt": ["fatalidades", "situações violentas", "luxúria", "dependência", "libertinagem", "sucesso obtido por vias censuráveis", "magia negra"]
-    },
-    "dialogue": {
-      "en": "\"Is to err not part of being human?\" \"Yes, but to persist in the error is the devil's domain.\"",
-      "pt": "\"Errar não é uma contingência humana?\" \"Sim, mas persistir no erro é domínio diabólico.\""
     },
     "mantras": ["SAM", "SEM", "SIM", "SOM", "SUM"],
     "incense": { "en": ["nutmeg", "clove", "coffee"], "pt": ["noz-moscada", "cravo", "café"] },
@@ -656,12 +527,6 @@
       "pt": ["separação", "ruptura", "destruição do falso", "decisão", "abrir espaço para o novo"]
     },
     "letterQuality": { "en": "intent", "pt": "o intento" },
-    "alchemicalNames": [
-      { "latin": "Destructa turrim", "meaning": { "en": "the destroyed tower", "pt": "a torre destruída" } },
-      { "latin": "Radius turris", "meaning": { "en": "tower with lightning", "pt": "torre com raio" } },
-      { "latin": "Domum Deus", "meaning": { "en": "the House of God", "pt": "a Casa de Deus" } },
-      { "latin": "Turrim Vigilius", "meaning": { "en": "watchtower", "pt": "torre de vigília" } }
-    ],
     "keyPhrase": { "en": "Separation.", "pt": "Separação." },
     "affirmation": { "en": "I separate from what is harmful to join what is beneficial.", "pt": "Separo-me do que é pernicioso para unir-me ao que é benéfico." },
     "psychology": {
@@ -671,10 +536,6 @@
     "misuse": {
       "en": ["losses", "confusion", "illness", "catastrophe that comes from imprudence", "scandal", "hypocrisy", "accident", "bankruptcy", "forced rupture", "abandonment"],
       "pt": ["perdas", "confusão", "enfermidade", "catástrofe resultado de imprudência", "escândalo", "hipocrisia", "acidente", "falência", "ruptura forçada", "abandono"]
-    },
-    "dialogue": {
-      "en": "The Hierophant: \"They raised the fire of the earth to the heavens but did not know how to separate with care the dense from the subtle. So the fire is given back to the earth, so that duality is broken for good and unity is restored through the triad.\"",
-      "pt": "O Hierofante: \"Elevaram o fogo da terra aos céus, porém não souberam separar com esmero o espesso do sutil. Sendo assim o fogo é devolvido à terra, para que se rompa definitivamente com a dualidade e através da tríade se restabeleça a unidade.\""
     },
     "mantras": ["Om Ayim Hrim Klim Namo Namah"],
     "incense": { "en": ["epazote", "sulphur", "guinea henweed root", "ginger"], "pt": ["erva-de-santa-maria", "enxofre", "raiz de guiné", "gengibre"] },
@@ -692,13 +553,6 @@
       "pt": ["esperança", "fecundação", "ecologia", "êxtase", "intuição", "renovação da saúde"]
     },
     "letterQuality": { "en": "freedom", "pt": "a liberdade" },
-    "alchemicalNames": [
-      { "latin": "Spes Renovata", "meaning": { "en": "renewed hope", "pt": "esperança renovada" } },
-      { "latin": "Perspectus", "meaning": { "en": "intuition", "pt": "intuição" } },
-      { "latin": "Laetitia", "meaning": { "en": "fertility", "pt": "fertilidade" } },
-      { "latin": "Divinae Viriae Naturalis", "meaning": { "en": "natural divine forces", "pt": "forças divinas naturais" } },
-      { "latin": "Stella Magnun", "meaning": { "en": "greater star", "pt": "estrela maior" } }
-    ],
     "keyPhrase": { "en": "Fecundation, ecology, ecstasy.", "pt": "Fecundação, ecologia, êxtase." },
     "affirmation": {
       "en": "I begin to understand my higher octave and to live the seventh heaven. I recycle myself and keep my health.",
@@ -712,7 +566,6 @@
       "en": ["harmony turned away from its aim", "stability that does not last", "inattention", "carelessness", "lack of spontaneity", "frustrated hope", "hopelessness", "disappointment", "imbalance"],
       "pt": ["harmonia desviada de seu objetivo", "estabilidade pouco duradoura", "falta de atenção", "descuido", "ausência de espontaneidade", "esperança frustrada", "desesperança", "decepção", "desequilíbrio"]
     },
-    "dialogue": { "en": "\"What comes after the storm?\" \"The calm.\"", "pt": "\"O que vem após a tempestade?\" \"A bonança.\"" },
     "mantras": ["FAM", "FEM", "FIM", "FOM", "FUM"],
     "mantraNote": {
       "en": "Pronounced on the note fa, which helps to increase faith in oneself.",
@@ -740,12 +593,6 @@
       "pt": ["inimigos ocultos", "ilusão", "vigilância", "autossabotagem", "os instintos", "falsa liberdade"]
     },
     "letterQuality": { "en": "nourishment", "pt": "o alimento" },
-    "alchemicalNames": [
-      { "latin": "Crepusculum", "meaning": { "en": "twilight", "pt": "crepúsculo" } },
-      { "latin": "Occulta pericula", "meaning": { "en": "hidden dangers", "pt": "perigos ocultos" } },
-      { "latin": "Occultis hostibus", "meaning": { "en": "hidden enemies", "pt": "inimigos ocultos" } },
-      { "latin": "Gravitatis dissonantia", "meaning": { "en": "gravitational dissonance", "pt": "dissonância gravitacional" } }
-    ],
     "keyPhrase": { "en": "Hidden enemies.", "pt": "Inimigos ocultos." },
     "affirmation": {
       "en": "I seek to tell false freedom from true liberation, identifying the hidden enemies inside and outside the being I am.",
@@ -758,10 +605,6 @@
     "misuse": {
       "en": ["learning through pain", "neurotic disturbance", "hallucinations and delusions", "instability", "unexpected obstacles", "a secret made public", "numbness of the will", "confusion", "fear", "insecurity"],
       "pt": ["instrução pela dor", "perturbação neurótica", "alucinações e delírios", "instabilidade", "impedimentos inesperados", "segredo que se torna público", "entorpecimento da vontade", "confusão", "medo", "insegurança"]
-    },
-    "dialogue": {
-      "en": "\"How does the inexorable law act in both cases?\" \"Do not forget that the Magician defeats ark annu 18 from the very start, with the holy 8 above his head.\"",
-      "pt": "\"Como age a lei inexorável em ambos os casos?\" \"Não te esqueças que o Mago vence o ark annu 18 desde o início, tendo o santo 8 acima de sua cabeça.\""
     },
     "mantras": ["TSAM", "TSEM", "TSIM", "TSOM", "TSUM"],
     "incense": { "en": ["epazote", "sulphur", "guinea henweed root", "ginger"], "pt": ["erva-de-santa-maria", "enxofre", "raiz de guiné", "gengibre"] },
@@ -781,12 +624,6 @@
       "pt": ["o ouro filosófico", "clareza", "consciência", "vitalidade", "êxito", "verdade"]
     },
     "letterQuality": { "en": "contentment", "pt": "o contentamento" },
-    "alchemicalNames": [
-      { "latin": "Aurum Philosophale", "meaning": { "en": "philosophical gold", "pt": "ouro filosófico" } },
-      { "latin": "Lux Resplendens", "meaning": { "en": "reflecting light", "pt": "luz refletora" } },
-      { "latin": "Veritas Fecundas", "meaning": { "en": "truth that fertilizes", "pt": "verdade que fecunda" } },
-      { "latin": "Virtus Humana", "meaning": { "en": "human virtue", "pt": "virtude humana" } }
-    ],
     "keyPhrase": { "en": "The philosophical gold.", "pt": "O ouro filosófico." },
     "affirmation": {
       "en": "I transmute physical gold into philosophical gold and back again; I am aware of my alchemical band.",
@@ -799,10 +636,6 @@
     "misuse": {
       "en": ["adversity", "darkness", "a feigned appearance", "rupture", "solitude", "delayed success", "the appearance of greatness"],
       "pt": ["adversidade", "escuridão", "aparência simulada", "rompimento", "solidão", "êxito demorado", "aparência de grandeza"]
-    },
-    "dialogue": {
-      "en": "\"How can we turn the filth of the earth into philosophical and material gold?\" \"Walk hand in hand, bringing into harmony the different languages that were broken apart when the tower fell, and gold will rain, philosophical and physical, in due proportion.\"",
-      "pt": "\"Como podemos transformar as imundícies da terra em ouro filosófico e material?\" \"Caminhem de mãos dadas harmonizando as diferentes linguagens que foram decompostas quando da queda da torre, e choverá ouro filosófico e físico nas devidas proporções.\""
     },
     "mantras": ["KARAM", "KERAM", "KIAIII", "KARAOM", "KAUM"],
     "incense": { "en": ["nutmeg", "coffee", "clove", "cinnamon", "sunflower"], "pt": ["noz-moscada", "café", "cravo", "canela", "girassol"] },
@@ -824,13 +657,6 @@
       "pt": ["retrospectiva", "despertar", "ressurreição", "aprender com o passado", "renovação da vida"]
     },
     "letterQuality": { "en": "peace", "pt": "a paz" },
-    "alchemicalNames": [
-      { "latin": "Ressurrecto Mortuum", "meaning": { "en": "resurrection of the dead", "pt": "ressurreição dos mortos" } },
-      { "latin": "Atractio Divina", "meaning": { "en": "divine attraction", "pt": "atração divina" } },
-      { "latin": "Transformati Astralis", "meaning": { "en": "astral transformation", "pt": "transformação astral" } },
-      { "latin": "Tempus Vicissitudo", "meaning": { "en": "mutation of time", "pt": "mutação do tempo" } },
-      { "latin": "Quod Temporaria Tectum", "meaning": { "en": "temporal prison", "pt": "prisão temporal" } }
-    ],
     "keyPhrase": { "en": "The last judgment.", "pt": "O juízo final." },
     "affirmation": {
       "en": "I look back, learning from the mistakes and from the successes; I make retrospectives.",
@@ -843,10 +669,6 @@
     "misuse": {
       "en": ["error about oneself and about all things", "trials that come from a false judgment", "spiritual wavering", "a dimmed intelligence", "unconsciousness"],
       "pt": ["erro em relação a si mesmo e a todas as coisas", "provas que resultam de um falso juízo", "vacilo espiritual", "ofuscamento da inteligência", "inconsciência"]
-    },
-    "dialogue": {
-      "en": "\"Those whose bodies lay for a time in these urns: did they resurrect or ascend? Will any memory of the past remain in them?\" \"Both things happened. Some awoke sooner, others took eternities. The more perfected the vehicle of light, the more it keeps the essential memories; the impurities are burned by the divine fire.\"",
-      "pt": "\"Aqueles cujos corpos estiveram temporariamente nestas urnas ressuscitaram ou ascenderam? Neles restará alguma lembrança do passado?\" \"Ambas as coisas aconteceram. Alguns despertaram mais depressa, outros levaram eternidades. Sendo mais aperfeiçoado o veículo de luz, retém as memórias essenciais; as impurezas são queimadas pelo fogo divino.\""
     },
     "mantras": ["RA", "RE", "RI", "RO", "RU"],
     "mantraNote": {
@@ -876,13 +698,6 @@
       "pt": ["a ponte sobre o abismo", "o salto", "a espiral", "conexões de conhecimento", "o inconsciente"]
     },
     "letterQuality": { "en": "duty", "pt": "o dever" },
-    "alchemicalNames": [
-      { "latin": "Insanus", "meaning": { "en": "insanity", "pt": "insanidade" } },
-      { "latin": "Stultum", "meaning": { "en": "foolish", "pt": "insensato" } },
-      { "latin": "Perturbatur", "meaning": { "en": "disturbed", "pt": "perturbado" } },
-      { "latin": "Confusum", "meaning": { "en": "confused", "pt": "confuso" } },
-      { "latin": "Nocte Tenebris dat anima", "meaning": { "en": "the dark night of the soul", "pt": "a noite escura da alma" } }
-    ],
     "keyPhrase": { "en": "The bridge over the abyss.", "pt": "A ponte sobre o abismo." },
     "affirmation": {
       "en": "I stop walking in circles and begin to live the evolutionary spiral.",
@@ -895,10 +710,6 @@
     "misuse": {
       "en": ["going past the limits in a negative way", "madness", "haste", "obsession", "irresponsibility", "being ruled by the instincts", "psychic disorders", "decay", "failure in transmutation"],
       "pt": ["ultrapassar os limites de forma negativa", "loucura", "precipitação", "obsessão", "irresponsabilidade", "subjugação pelos instintos", "transtornos psíquicos", "decadência", "fracasso na transmutação"]
-    },
-    "dialogue": {
-      "en": "\"What does the precipice of ark annu 21 mean for consciousness?\" \"The Tree of Lives was created over the great abyss of darkness. The great web of light exists thanks to those who knew how to join matter and antimatter, light and shadow, so that life could exist.\"",
-      "pt": "\"O que significa para a consciência o precipício do ark annu 21?\" \"A Árvore das Vidas foi criada sobre o grande abismo de trevas. A grande teia de luz existe graças aos que souberam conjugar matéria e antimatéria, luz e sombra, para que pudesse existir vida.\""
     },
     "mantras": ["SHAM", "SHEM", "SHIM", "SHOM", "SHUM"],
     "incense": {
@@ -922,11 +733,6 @@
       "pt": ["vitória", "conclusão", "integralidade", "integração dos opostos", "o mundo das causas"]
     },
     "letterQuality": { "en": "beauty", "pt": "a beleza" },
-    "alchemicalNames": [
-      { "latin": "Corona Magica", "meaning": { "en": "the magic of the crown", "pt": "a magia da coroa" } },
-      { "latin": "Coronam Vitae", "meaning": { "en": "crown of life", "pt": "coroa da vida" } },
-      { "latin": "Vitoriam Regnum", "meaning": { "en": "victory in the kingdom", "pt": "vitória no reino" } }
-    ],
     "keyPhrase": { "en": "Victory: to overcome the world.", "pt": "A vitória: vencer o mundo." },
     "affirmation": {
       "en": "I am initiated into the world of causes; I respect the four animals of the sphinx, essence of human nature.",
@@ -939,10 +745,6 @@
     "misuse": {
       "en": ["failure", "a formidable obstacle", "hostile surroundings where everyone is against you", "a reversal of luck", "ruin", "stagnation"],
       "pt": ["fracasso", "obstáculo formidável", "ambiente hostil onde todos estão contra", "revés da sorte", "ruína", "estancamento"]
-    },
-    "dialogue": {
-      "en": "\"Having walked these paths in my mind, how can I come to know the will of the planetary, solar and galactic Logos?\" \"You hold the map and the keys of the temple, but the walk has to be made by you.\"",
-      "pt": "\"Tendo percorrido mentalmente estes caminhos, como posso conhecer a vontade do Logos planetário, solar e galáctico?\" \"Tens em vossas mãos o mapa e as chaves do templo, porém a caminhada terá que ser empreendida por vós.\""
     },
     "mantras": ["TAM", "TEM", "TIM", "TOM", "TUM"],
     "incense": {
