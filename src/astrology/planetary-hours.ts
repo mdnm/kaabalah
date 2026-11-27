@@ -19,12 +19,11 @@
  */
 
 import { TimelineError } from "./firdaria";
-import { jdToDate } from "./root-solver";
+import { getSunriseWindow, nextSunEvent } from "./solar-events";
 import {
   Planet,
   RiseTransitFlag,
   calculateAzalt,
-  calculateRiseTransit,
   calculateSinglePlanetPosition,
   type TimeZoneOptions,
 } from "./swisseph";
@@ -160,33 +159,9 @@ export interface PlanetaryHoursUnavailable {
 
 export type PlanetaryHoursResult = PlanetaryHours | PlanetaryHoursUnavailable;
 
-const HOUR_MS = 3_600_000;
 const MINUTE_MS = 60_000;
-/** How far back the sunrise that starts the planetary day is looked for, latest start last. */
-const SUNRISE_LOOKBACK_HOURS = [30, 24, 18, 12, 6, 1];
 /** Apparent altitude of the Sun's centre when its upper limb touches the horizon (semi-diameter 16'). */
 const UPPER_LIMB_ALTITUDE = -16 / 60;
-
-/** Next sunrise or sunset after `from`, or null when the Sun has none in the ephemeris' search window. */
-function nextSunEvent(
-  from: Date,
-  latitude: number,
-  longitude: number,
-  event: RiseTransitFlag,
-  extraFlags: number
-): Date | null {
-  try {
-    return jdToDate(
-      calculateRiseTransit(from, Planet.SUN, latitude, longitude, (event | extraFlags) as RiseTransitFlag)
-    );
-  } catch (error) {
-    // swe_rise_trans answers -2 for a circumpolar body; the wrapper turns it into this plain Error.
-    if (error instanceof Error && error.name === "Error" && /rise or set not found/i.test(error.message)) {
-      return null;
-    }
-    throw error;
-  }
-}
 
 function invalid(message: string): TimelineError {
   return new TimelineError("INVALID_INPUT", message);
@@ -289,22 +264,7 @@ export function getPlanetaryHours(options: PlanetaryHoursOptions): PlanetaryHour
   const riseFlags = SUNRISE_FLAGS[sunriseDefinition];
 
   const t = date.getTime();
-  const rise = (from: Date) => nextSunEvent(from, latitude, longitude, RiseTransitFlag.RISE, riseFlags);
-
-  // The sunrise at or before `date`: first one found from a start in the past, then walked forward.
-  let sunrise: Date | null = null;
-  let nextSunrise: Date | null = null;
-  for (const hoursBack of SUNRISE_LOOKBACK_HOURS) {
-    const found = rise(new Date(t - hoursBack * HOUR_MS));
-    if (!found) continue;
-    if (found.getTime() <= t) sunrise = found;
-    break;
-  }
-  while (sunrise) {
-    nextSunrise = rise(new Date(sunrise.getTime() + MINUTE_MS));
-    if (!nextSunrise || nextSunrise.getTime() > t) break;
-    sunrise = nextSunrise;
-  }
+  const { sunrise, nextSunrise } = getSunriseWindow(date, latitude, longitude, riseFlags);
   const sunset = sunrise ? nextSunEvent(sunrise, latitude, longitude, RiseTransitFlag.SET, riseFlags) : null;
 
   if (!sunrise || !sunset || !nextSunrise || sunset.getTime() >= nextSunrise.getTime()) {

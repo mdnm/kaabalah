@@ -106,6 +106,14 @@ Practical tip:
 
 - Treat this like a deterministic "daily signature" for a given date.
 
+### Maya astrology
+
+The Tzolk’in combines 20 day signs and 13 numbers into a 260-day cycle. The Haab is a 365-day calendar. Kenneth Johnson’s Calendar Board uses the Tzolk’in to locate points in a natal chart and derive timing and relationship charts. See [Maya astrology](/modules/maya/).
+
+### Tattwa
+
+The Tatwameter starts a repeating sequence of five Tattwas at each local sunrise. Each period lasts 24 minutes unless the next sunrise ends it earlier. See [Tattwa](/modules/tattwa/).
+
 ### Core (Tree of Life)
 
 - **Tree of Life**: a graph of nodes (spheres, paths, correspondences).

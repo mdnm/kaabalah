@@ -1,0 +1,362 @@
+{
+  "chuen": {
+    "themes": {
+      "en": "Arts, monkey, and the thread of destiny",
+      "pt": "Artes, macaco e fio do destino"
+    },
+    "animal": {
+      "en": "Monkey",
+      "pt": "Macaco"
+    },
+    "body": {
+      "en": "Veins",
+      "pt": "Veias"
+    },
+    "plant": {
+      "en": "Carnation",
+      "pt": "Cravo"
+    }
+  },
+  "eb": {
+    "themes": {
+      "en": "Road of life, destiny, and the tooth",
+      "pt": "Caminho da vida, destino e dente"
+    },
+    "animal": {
+      "en": "Bobcat",
+      "pt": "Lince-vermelho"
+    },
+    "body": {
+      "en": "Soles of the feet",
+      "pt": "Plantas dos pés"
+    },
+    "plant": {
+      "en": "Pine",
+      "pt": "Pinheiro"
+    }
+  },
+  "ben": {
+    "themes": {
+      "en": "Renewal of the maize, cane, reed, and authority",
+      "pt": "Renovação do milho, cana, junco e autoridade"
+    },
+    "animal": {
+      "en": "Armadillo",
+      "pt": "Tatu"
+    },
+    "body": {
+      "en": "Spinal column",
+      "pt": "Coluna vertebral"
+    },
+    "plant": {
+      "en": "Sugar cane",
+      "pt": "Cana-de-açúcar"
+    }
+  },
+  "ix": {
+    "themes": {
+      "en": "Jaguar, vigor, magic, and sacred earth",
+      "pt": "Jaguar, vigor, magia e terra sagrada"
+    },
+    "animal": {
+      "en": "Jaguar",
+      "pt": "Jaguar"
+    },
+    "body": {
+      "en": "Blood",
+      "pt": "Sangue"
+    },
+    "plant": {
+      "en": "White rose",
+      "pt": "Rosa branca"
+    }
+  },
+  "men": {
+    "themes": {
+      "en": "Bird vision, eagle, wisdom, and fortune",
+      "pt": "Visão da ave, águia, sabedoria e fortuna"
+    },
+    "animal": {
+      "en": "Quetzal",
+      "pt": "Quetzal"
+    },
+    "body": {
+      "en": "Eyes",
+      "pt": "Olhos"
+    },
+    "plant": {
+      "en": "Sunflower",
+      "pt": "Girassol"
+    }
+  },
+  "cib": {
+    "themes": {
+      "en": "Wrongdoing, forgiveness, vulture, and the ancestors",
+      "pt": "Transgressão, perdão, abutre e ancestrais"
+    },
+    "animal": {
+      "en": "Vulture",
+      "pt": "Abutre"
+    },
+    "body": {
+      "en": "Female sexual organs",
+      "pt": "Órgãos sexuais femininos"
+    },
+    "plant": {
+      "en": "Violet",
+      "pt": "Violeta"
+    }
+  },
+  "caban": {
+    "themes": {
+      "en": "Cosmic vision, thought, and knowledge",
+      "pt": "Visão do cosmos, pensamento e conhecimento"
+    },
+    "animal": {
+      "en": "Gazelle",
+      "pt": "Gazela"
+    },
+    "body": {
+      "en": "Brain",
+      "pt": "Cérebro"
+    },
+    "plant": {
+      "en": "Basil",
+      "pt": "Manjericão"
+    }
+  },
+  "etznab": {
+    "themes": {
+      "en": "Obsidian blade, pain, and healing",
+      "pt": "Lâmina de obsidiana, dor e cura"
+    },
+    "animal": {
+      "en": "Wolf",
+      "pt": "Lobo"
+    },
+    "body": {
+      "en": "Teeth and tongue",
+      "pt": "Dentes e língua"
+    },
+    "plant": {
+      "en": "Mallow",
+      "pt": "Malva"
+    }
+  },
+  "cauac": {
+    "themes": {
+      "en": "Rain, family, community, and the Divine Feminine",
+      "pt": "Chuva, família, comunidade e Divino Feminino"
+    },
+    "animal": {
+      "en": "Lion",
+      "pt": "Leão"
+    },
+    "body": {
+      "en": "Heart",
+      "pt": "Coração"
+    },
+    "plant": {
+      "en": "Maguey",
+      "pt": "Maguey"
+    }
+  },
+  "ahau": {
+    "themes": {
+      "en": "Sun, hunter, marksman, hero, and the ancestors",
+      "pt": "Sol, caçador, atirador, herói e ancestrais"
+    },
+    "animal": {
+      "en": "Eagle",
+      "pt": "Águia"
+    },
+    "body": {
+      "en": "Chest",
+      "pt": "Peito"
+    },
+    "plant": {
+      "en": "Horsetail",
+      "pt": "Cavalinha"
+    }
+  },
+  "imix": {
+    "themes": {
+      "en": "Crocodile, water, the left hand, and madness",
+      "pt": "Crocodilo, água, mão esquerda e loucura"
+    },
+    "animal": {
+      "en": "Fish",
+      "pt": "Peixe"
+    },
+    "body": {
+      "en": "Muscles",
+      "pt": "Músculos"
+    },
+    "plant": {
+      "en": "Cypress",
+      "pt": "Cipreste"
+    }
+  },
+  "ik": {
+    "themes": {
+      "en": "Wind, breath of life, air, and Lord Tepeu",
+      "pt": "Vento, sopro da vida, ar e Senhor Tepeu"
+    },
+    "animal": {
+      "en": "Weasel",
+      "pt": "Doninha"
+    },
+    "body": {
+      "en": "Respiratory system",
+      "pt": "Sistema respiratório"
+    },
+    "plant": {
+      "en": "Mint",
+      "pt": "Hortelã"
+    }
+  },
+  "akbal": {
+    "themes": {
+      "en": "Dawn, harmony, and darkness",
+      "pt": "Amanhecer, harmonia e escuridão"
+    },
+    "animal": {
+      "en": "Fawn",
+      "pt": "Filhote de cervo"
+    },
+    "body": {
+      "en": "Stomach",
+      "pt": "Estômago"
+    },
+    "plant": {
+      "en": "Cinnamon",
+      "pt": "Canela"
+    }
+  },
+  "kan": {
+    "themes": {
+      "en": "Net, womb, heat, and fire",
+      "pt": "Rede, ventre, calor e fogo"
+    },
+    "animal": {
+      "en": "Lizard",
+      "pt": "Lagarto"
+    },
+    "body": {
+      "en": "Rib cage",
+      "pt": "Caixa torácica"
+    },
+    "plant": {
+      "en": "Marshmallow plant",
+      "pt": "Alteia"
+    }
+  },
+  "chicchan": {
+    "themes": {
+      "en": "Feathered Serpent and snake",
+      "pt": "Serpente Emplumada e cobra"
+    },
+    "animal": {
+      "en": "Snake",
+      "pt": "Cobra"
+    },
+    "body": {
+      "en": "Nervous system",
+      "pt": "Sistema nervoso"
+    },
+    "plant": {
+      "en": "Blackberry",
+      "pt": "Amora-silvestre"
+    }
+  },
+  "cimi": {
+    "themes": {
+      "en": "Death, rebirth, and the eternal present",
+      "pt": "Morte, renascimento e presente eterno"
+    },
+    "animal": {
+      "en": "Owl",
+      "pt": "Coruja"
+    },
+    "body": {
+      "en": "Fingernails",
+      "pt": "Unhas das mãos"
+    },
+    "plant": {
+      "en": "Grapefruit",
+      "pt": "Toranja"
+    }
+  },
+  "manik": {
+    "themes": {
+      "en": "Deer, pillars of the universe, and the four directions",
+      "pt": "Cervo, pilares do universo e quatro direções"
+    },
+    "animal": {
+      "en": "Deer",
+      "pt": "Cervo"
+    },
+    "body": {
+      "en": "Hands",
+      "pt": "Mãos"
+    },
+    "plant": {
+      "en": "Olive tree",
+      "pt": "Oliveira"
+    }
+  },
+  "lamat": {
+    "themes": {
+      "en": "Renewal of the earth, seed, ripening, and the colors of maize",
+      "pt": "Renovação da terra, semente, amadurecimento e cores do milho"
+    },
+    "animal": {
+      "en": "Rabbit",
+      "pt": "Coelho"
+    },
+    "body": {
+      "en": "Sperm and eggs",
+      "pt": "Espermatozoides e óvulos"
+    },
+    "plant": {
+      "en": "Maize leaves",
+      "pt": "Folhas de milho"
+    }
+  },
+  "muluc": {
+    "themes": {
+      "en": "Offering, repayment, thunder, fire, suffering, and atonement",
+      "pt": "Oferenda, pagamento, trovão, fogo, sofrimento e expiação"
+    },
+    "animal": {
+      "en": "Shark",
+      "pt": "Tubarão"
+    },
+    "body": {
+      "en": "Ears",
+      "pt": "Orelhas"
+    },
+    "plant": {
+      "en": "Grape leaves",
+      "pt": "Folhas de videira"
+    }
+  },
+  "oc": {
+    "themes": {
+      "en": "Law, spiritual authority, dog, and raccoon",
+      "pt": "Lei, autoridade espiritual, cão e guaxinim"
+    },
+    "animal": {
+      "en": "Tepezcuintle (paca)",
+      "pt": "Paca"
+    },
+    "body": {
+      "en": "Nose",
+      "pt": "Nariz"
+    },
+    "plant": {
+      "en": "Lily",
+      "pt": "Lírio"
+    }
+  }
+}

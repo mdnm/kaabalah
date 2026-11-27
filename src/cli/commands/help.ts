@@ -56,6 +56,7 @@ function generateHelp(): string {
   lines.push(cliText("  kaabalah tarot:card 7"));
   lines.push(cliText("  kaabalah gematria:reverse 22"));
   lines.push(cliText("  kaabalah ifa 1990-01-15"));
+  lines.push("  kaabalah maya:natal 1961-08-18 --json --compact");
   lines.push(cliText("  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006"));
   lines.push(cliText("  kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006 --orb-profile=ptolemaic-plus-quincunx --json --compact"));
   lines.push(cliText("  kaabalah astrology:synastry --input-json=- --json --compact < synastry.json"));

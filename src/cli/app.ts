@@ -33,6 +33,8 @@ import { cmdAstrologyDescribe } from "./commands/astrology-describe";
 import { cmdGematria, cmdReverseGematria } from "./commands/gematria";
 import { cmdHelp } from "./commands/help";
 import { cmdIChing } from "./commands/iching";
+import { cmdMaya } from "./commands/maya";
+import { cmdTattwa } from "./commands/tattwa";
 import { cmdIfa } from "./commands/ifa";
 import { cmdChallenges, cmdCycles, cmdFibonacci, cmdLifePath, cmdNumerology } from "./commands/numerology";
 import { cmdTarot, cmdTarotCard, cmdTarotSpread } from "./commands/tarot";
@@ -253,6 +255,18 @@ async function runCliInLanguage(argv: string[]): Promise<void> {
         });
         return;
       }
+      case "maya:day":
+      case "maya:sign":
+      case "maya:board":
+      case "maya:natal":
+      case "maya:relationship":
+      case "maya:timing":
+        await cmdMaya(command, args.slice(1), flags, inputPayload, execution);
+        return;
+      case "tattwa:schedule":
+      case "tattwa:svg":
+        await cmdTattwa(command, args.slice(1), flags, inputPayload, execution);
+        return;
       case "iching:cast":
       case "iching:hexagram":
       case "iching:reading":

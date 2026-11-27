@@ -546,23 +546,11 @@ export async function parseTwoChartCommand(
   };
 }
 
-export async function parseSingleChartRequest(
-  args: string[],
+export async function resolveChartLocation(
   flags: Flags,
   inputPayload: InputPayload,
   executionContext: ExecutionContext
-): Promise<ParsedChartInput & { resolvedLocation?: string }> {
-  const dateStr = (inputPayload?.date as string) ?? args[0];
-  if (!dateStr) {
-    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"), flags);
-  }
-  validateDateString(dateStr, flags);
-
-  const { timeStr, hour, minute } = parseTimeValue((inputPayload?.time as string) ?? args[1] ?? "12:00", flags, {
-    invalidFormat: (value) => cliText("Invalid time format: \"{0}\". Use HH:MM format.", [value]),
-    invalidValue: (value) => cliText("Invalid time: \"{0}\". Hours 0-23, minutes 0-59.", [value]),
-  });
-
+) {
   const locationStr = (inputPayload?.location as string) ?? getFlagString(flags, "location");
   const latFlag = inputPayload?.lat != null ? Number(inputPayload.lat) : getFlagNumber(flags, "lat");
   const lonFlag = inputPayload?.lon != null ? Number(inputPayload.lon) : getFlagNumber(flags, "lon");
@@ -591,6 +579,26 @@ export async function parseSingleChartRequest(
     invalidLatitude: (value) => cliText("Latitude must be between -90 and 90, got {0}.", [value]),
     invalidLongitude: (value) => cliText("Longitude must be between -180 and 180, got {0}.", [value]),
   });
+  return { ...coordinates, resolvedLocation };
+}
+
+export async function parseSingleChartRequest(
+  args: string[],
+  flags: Flags,
+  inputPayload: InputPayload,
+  executionContext: ExecutionContext
+): Promise<ParsedChartInput & { resolvedLocation?: string }> {
+  const dateStr = (inputPayload?.date as string) ?? args[0];
+  if (!dateStr) {
+    exitWithError("MISSING_ARGUMENT", cliText("Usage: kaabalah astrology <YYYY-MM-DD> [HH:MM] --lat=<N> --lon=<N>"), flags);
+  }
+  validateDateString(dateStr, flags);
+
+  const { timeStr, hour, minute } = parseTimeValue((inputPayload?.time as string) ?? args[1] ?? "12:00", flags, {
+    invalidFormat: (value) => cliText("Invalid time format: \"{0}\". Use HH:MM format.", [value]),
+    invalidValue: (value) => cliText("Invalid time: \"{0}\". Hours 0-23, minutes 0-59.", [value]),
+  });
+  const { latitude, longitude, resolvedLocation } = await resolveChartLocation(flags, inputPayload, executionContext);
 
   const { houseSystem, houseSystemCode } = parseHouseSystem(
     (inputPayload?.houseSystem as string) ?? getFlagString(flags, "house-system") ?? "placidus",
@@ -603,8 +611,8 @@ export async function parseSingleChartRequest(
 
   const parsedInput = {
     birthDate: buildBirthDate(dateStr, hour, minute),
-    latitude: coordinates.latitude,
-    longitude: coordinates.longitude,
+    latitude,
+    longitude,
     houseSystem,
     houseSystemCode,
     timeZoneSettings,

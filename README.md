@@ -30,6 +30,8 @@ All modules are tree-shakable and can be imported independently:
 | Gematria | `kaabalah/gematria` | Hebrew letter numerology |
 | Tarot | `kaabalah/tarot` | 78-card deck with profiles, archetypes, correspondences, multi-deck images, spread engine |
 | I Ching | `kaabalah/iching` | 64 hexagrams, classical Chinese and original English, Han technical derivations, tree-backed Kaabalah, coin casting |
+| Maya astrology | `kaabalah/maya` | Kenneth Johnson’s *Mayan Calendar Astrology* (2011): Tzolk’in day, Calendar Board, five-point cross, Feathered Serpent, Road of Life, personal lunar month, Year Lord, relationship composite |
+| Tattwa | `kaabalah/tattwa` | Sunrise-anchored Tatwameter periods and single or nested SVG symbols |
 | Ifa | `kaabalah/ifa` | Odu divination |
 | Semantic | `kaabalah/semantic` | Theme profiles, kaabalistic overlay correspondences, symbol metadata |
 | Visual | `kaabalah/visual` | Tree of Life and astrology wheel SVG generation plus layout/render-model data |
@@ -97,6 +99,7 @@ npx kaabalah help --language pt-BR    # Portuguese help
 npx kaabalah iching:reading --lines 879777 --json --compact
 npx kaabalah iching:hexagram 25 --json --compact
 npx kaabalah iching:cast --json --compact
+npx kaabalah maya:natal 1961-08-18 --json --compact
 npx kaabalah tarot:spread --spread-id=celtic-cross --json --compact
 npx kaabalah tree:topology --route=lightning --json --compact
 npx kaabalah numerology 1990-01-15 --json --compact

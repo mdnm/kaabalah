@@ -105,6 +105,23 @@ Ifa divination from a date.
 - Deterministic — same date always returns the same values
 - Portuguese calculation labels: `getIfaText`
 
+### Maya astrology
+
+- Tzolk’in, trecenas, Haab dates, and day-sign and month glyphs.
+- Kenneth Johnson’s Calendar Board, natal cross, Feathered Serpent, and relationship composite.
+- Road of Life, Year Lord, and personal lunar month timing with English and Brazilian Portuguese readings.
+- Birth-time solar and lunar cycles and local sunset welcomes.
+
+See the [Maya module guide](/modules/maya/).
+
+### Tattwa
+
+- Tatwameter schedules in fixed 24-minute periods from local sunrise to the following sunrise.
+- Active period for a given instant and a schedule calculation that accepts existing sunrise times.
+- SVG generation for each of the five Tattwas and for nested symbols.
+
+See the [Tattwa module guide](/modules/tattwa/).
+
 ### Semantic
 
 Occult theme profiles for NLP, search, and content tagging.

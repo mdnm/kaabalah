@@ -1,4 +1,5 @@
 import { TAROT_CONTENT } from "../core/tarot-content";
+import { KAABALAH_IMAGE_BASE_URL } from "../asset-urls";
 /**
  * Tarot interpretation functions
  */
@@ -251,8 +252,7 @@ export interface TarotRepresentation {
   description?: TarotDeckDescription;
 }
 
-export const TAROT_IMAGE_BASE_URL =
-  "https://d1u8antvu60ox0.cloudfront.net/tarot";
+export const TAROT_IMAGE_BASE_URL = `${KAABALAH_IMAGE_BASE_URL}/tarot`;
 
 type TarotMajorCard = TarotCard & {
   type: "major";

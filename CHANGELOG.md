@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.3.0 - 2026-11-26
+
+- Add `kaabalah/maya` and CLI commands for the Calendar Board, Haab, day-sign references, natal
+  chart, timing, and relationship composite presented by Kenneth Johnson in
+  *Mayan Calendar Astrology: Mapping Your Inner Cosmos* (2011).
+- Add Maya glyph references, bilingual readings, birth-time solar and lunar cycles, and local sunset welcome timing.
+- Add `kaabalah/tattwa` and CLI commands for sunrise-based Tatwameter schedules and single or nested SVGs.
+
 ## 8.2.0 - 2026-11-26
 
 Tree weights:

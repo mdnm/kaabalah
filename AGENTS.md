@@ -19,7 +19,7 @@ npx vitest run src/path/to/file.test.ts
 
 ## Architecture Overview
 
-TypeScript library for esoteric calculations. Exports **9 tree-shakable modules**: `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/iching`, `kaabalah/ifa`, `kaabalah/semantic`, `kaabalah/visual`. The package also exports the Swiss Ephemeris runtime assets as `kaabalah/swisseph-runtime` and `kaabalah/swisseph-wasm`.
+TypeScript library for esoteric calculations. Exports **11 tree-shakable modules**: `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/iching`, `kaabalah/ifa`, `kaabalah/maya`, `kaabalah/tattwa`, `kaabalah/semantic`, `kaabalah/visual`. The package also exports the Swiss Ephemeris runtime assets as `kaabalah/swisseph-runtime` and `kaabalah/swisseph-wasm`.
 
 Tests are colocated with source files (`*.test.ts`). Framework is Vitest with V8 coverage.
 

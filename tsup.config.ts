@@ -35,7 +35,7 @@ const PRIVATE_PATH_PREFIX = /"(?:src|reviewNotes|file)"\s*:|[\w -]+\/[\w .-]+\.(
 const guardPrivateProvenance: Plugin = {
   name: "kaabalah-guard-private-provenance",
   setup(build) {
-    build.onLoad({ filter: /src[\\/](?:astrology[\\/](?:descriptions|timing-[^\\/]+-descriptions)|numerology[\\/]timing-descriptions)\.json$/ }, async (args) => {
+    build.onLoad({ filter: /src[\\/](?:astrology[\\/](?:descriptions|timing-[^\\/]+-descriptions)|numerology[\\/]timing-descriptions|maya[\\/][^\\/]+)\.json$/ }, async (args) => {
       const contents = await readFile(args.path, "utf8");
       if (PRIVATE_PATH_PREFIX.test(contents)) {
         throw new Error("description JSON contains internal metadata or local document paths");
@@ -53,12 +53,14 @@ const libraryEntries = [
   "src/index.ts",
   "src/core/index.ts",
   "src/numerology/index.ts",
+  "src/maya/index.ts",
   "src/astrology/index.ts",
   "src/gematria/index.ts",
   "src/ifa/index.ts",
   "src/iching/index.ts",
   "src/semantic/index.ts",
   "src/tarot/index.ts",
+  "src/tattwa/index.ts",
   "src/visual/index.ts",
 ];
 

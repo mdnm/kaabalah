@@ -38,16 +38,16 @@ import { ARKANNUS, shuffleTarotDeck } from 'kaabalah/tarot';
 import { getIChingReading } from 'kaabalah/iching';
 import { createTree } from 'kaabalah/core';
 import { calculateOdu } from 'kaabalah/ifa';
+import { getMayaCalendarDay } from 'kaabalah/maya';
+import { generateTattwaSvg } from 'kaabalah/tattwa';
 import { getTarotThemeProfile } from 'kaabalah/semantic';
 import { generateTreeSvg } from 'kaabalah/visual';
 ```
 
-## Astrology module — WebAssembly requirement
+## WebAssembly requirements
 
 <Aside type="caution">
-`kaabalah/astrology` uses Swiss Ephemeris compiled to WebAssembly. It is the only module that requires additional setup.
-
-All other modules (`numerology`, `gematria`, `tarot`, `iching`, `core`, `ifa`, `semantic`, `visual`) are pure TypeScript with no native dependencies.
+`kaabalah/astrology` uses Swiss Ephemeris compiled to WebAssembly. The Maya birth-cycle and sunset calculations and the location-based Tattwa schedule also use Swiss Ephemeris. Date-only Maya calculations, Tattwa schedules computed from supplied sunrise times, and Tattwa SVG generation run without initializing it.
 </Aside>
 
 For browser and bundler configuration, follow the integration guide:

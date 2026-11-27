@@ -1,0 +1,192 @@
+{
+  "roles": {
+    "core": {
+      "en": "The center describes the relationship as a whole. Its day sign gives the bond its basic character, and the number modifies how that character takes shape. The hands and destiny show how that foundation is supported or tested.",
+      "pt": "O centro descreve a relação como um todo. O signo do dia indica o caráter básico do vínculo, e o número modifica a forma como esse caráter se manifesta. As mãos e o destino mostram como essa base encontra apoio ou é posta à prova."
+    },
+    "conception": {
+      "en": "The Conception Sign describes what each person brings to the relationship from before it began, such as family patterns and earlier experiences. A very high number here can suggest an inheritance that takes work to understand and integrate.",
+      "pt": "O Signo da Concepção descreve o que cada pessoa traz de antes do início da relação, como padrões familiares e experiências anteriores. Um número muito alto nessa posição pode sugerir uma herança que exige trabalho para ser compreendida e integrada."
+    },
+    "rightHand": {
+      "en": "The Right Hand describes the practical, outward side of the partnership. Read its sign and number for how the two reason, decide and act together in work, money and other shared plans.",
+      "pt": "A Mão Direita descreve o lado prático da parceria, voltado para o mundo. Seu signo e número ajudam a entender como as duas pessoas raciocinam, decidem e agem juntas no trabalho, nas finanças e em outros planos em comum."
+    },
+    "leftHand": {
+      "en": "The Left Hand describes the inner, intuitive side of the partnership. Read its sign and number for how the two share feelings, understand impressions and make room for the spiritual side of the bond.",
+      "pt": "A Mão Esquerda descreve o lado interior e intuitivo da parceria. Seu signo e número ajudam a entender como as duas pessoas compartilham sentimentos, compreendem impressões e abrem espaço para o lado espiritual do vínculo."
+    },
+    "destiny": {
+      "en": "The Destiny Sign shows what the relationship may bring out over time. Read it alongside the center. A difficult destiny has more weight when the foundation is already unstable.",
+      "pt": "O Signo do Destino mostra o que a relação pode trazer à tona com o tempo. Leia-o em conjunto com o centro. Um destino difícil pesa mais quando a base já é instável."
+    }
+  },
+  "signs": {
+    "imix": {
+      "en": "Imix brings the depth of dreams and feelings. It can give a bond imagination, passion and emotional vitality. That sensitivity can also express itself as mood swings, a quick temper or emotional pressure.",
+      "pt": "Imix traz a profundidade dos sonhos e dos sentimentos. Pode dar ao vínculo imaginação, paixão e vitalidade afetiva. Essa sensibilidade também pode se manifestar como oscilações de humor, irritação fácil ou pressão emocional."
+    },
+    "ik": {
+      "en": "Ik brings the breath of life: a lively, articulate bond with plenty of energy and resilience. It is also the most anger-prone of the signs, so the same wind can rise into storms, sudden reversals and words that wound.",
+      "pt": "Ik traz o sopro da vida: um vínculo animado, expressivo, com muita energia e resiliência. É também o signo mais propenso à raiva, e o mesmo vento pode virar tempestade, mudanças bruscas e palavras que ferem."
+    },
+    "akbal": {
+      "en": "Akbal favors romance, tenderness and eloquence. The relationship can hold both intimacy and a need for solitude. Its extremes of passion can also show up as restlessness or infidelity.",
+      "pt": "Akbal favorece o romance, a ternura e a eloquência. A relação pode acolher tanto a intimidade quanto a necessidade de ficar a sós. Seus extremos de paixão também podem se manifestar como inquietação ou infidelidade."
+    },
+    "kan": {
+      "en": "Kan is the net that holds and protects, and it can make the two excellent, sensual partners who build security together, in love as well as in money. The net can also entangle, through strong appetites or one partner trying to fix the other.",
+      "pt": "Kan é a rede que segura e protege, e pode fazer dos dois parceiros excelentes e sensuais, que constroem segurança juntos, no amor e no dinheiro. A rede também pode prender, por meio de apetites fortes ou de um tentando consertar o outro."
+    },
+    "chicchan": {
+      "en": "Chicchan brings the serpent's vital and sexual energy, which can make the bond intense, magnetic and searching for deep truths together. At its hardest, that intensity becomes obsession or the urge to control the other.",
+      "pt": "Chicchan traz a energia vital e sexual da serpente, que pode tornar o vínculo intenso, magnético e voltado à busca conjunta de verdades profundas. No seu lado mais difícil, essa intensidade vira obsessão ou vontade de controlar o outro."
+    },
+    "cimi": {
+      "en": "Cimi joins endings and renewal, and it can give the bond generosity, loyalty in hard times and the ability to begin again after loss. It can also bring grief into the relationship, or a habit of one partner carrying blame that is not theirs.",
+      "pt": "Cimi une fim e renovação e pode dar ao vínculo generosidade, lealdade nos momentos difíceis e a capacidade de recomeçar depois de uma perda. Também pode trazer luto para a relação, ou o hábito de um dos parceiros carregar uma culpa que não é sua."
+    },
+    "manik": {
+      "en": "Manik brings strength, devotion and attachment to family. Family ties can help sustain the bond and also place demands on it. Intensity can become domination, fixation or a temptation to look beyond the relationship.",
+      "pt": "Manik traz força, dedicação e apego à família. Os laços familiares podem sustentar o vínculo e também trazer exigências. A intensidade pode se tornar dominação, obsessão ou tentação de buscar outras relações."
+    },
+    "lamat": {
+      "en": "Lamat is the seed of abundance and is very fortunate in relationships: it favors gentleness, patience and a bond that ripens with time. Its risk is dependence, with one partner leaning on the other to carry responsibilities that are theirs.",
+      "pt": "Lamat é a semente da abundância e é muito afortunado nas relações: favorece a delicadeza, a paciência e um vínculo que amadurece com o tempo. O risco é a dependência, com um dos parceiros se apoiando no outro para carregar responsabilidades que são suas."
+    },
+    "muluc": {
+      "en": "Muluc is the offering and the repayment of debts, and it can make the bond warm, caring and devoted to service. Pride, jealousy and impulsive reactions can strain it, and the relationship may feel like a place where old obligations come due.",
+      "pt": "Muluc é a oferenda e o pagamento de dívidas, e pode tornar o vínculo caloroso, cuidadoso e dedicado ao serviço. Orgulho, ciúme e reações impulsivas podem tensioná-lo, e a relação pode parecer um lugar onde antigas obrigações vêm à tona."
+    },
+    "oc": {
+      "en": "Oc brings loyalty, kindness and a shared sense of justice, and the two can stand up for each other with real strength. The bond works best between equals; when one insists on making the rules or knowing best, it turns controlling.",
+      "pt": "Oc traz lealdade, bondade e um senso de justiça compartilhado, e os dois podem defender um ao outro com força de verdade. O vínculo funciona melhor entre iguais; quando um insiste em ditar as regras ou saber o que é melhor, ele se torna controlador."
+    },
+    "chuen": {
+      "en": "Johnson considers Chuen one of the more favorable signs. It can bring enthusiasm, creativity and a willingness to work for the bond. Expecting too much from each other can turn that optimism into disappointment.",
+      "pt": "Johnson considera Chuen um dos signos mais favoráveis. Ele pode trazer entusiasmo, criatividade e disposição para cultivar o vínculo. Esperar demais da outra pessoa pode transformar esse otimismo em decepção."
+    },
+    "eb": {
+      "en": "Eb favors a shared life of travel, learning and goodwill. It can also bring a restlessness that makes fidelity harder, while caution can develop into distrust or a need to be right.",
+      "pt": "Eb favorece uma vida em comum com viagens, aprendizado e boa vontade. Também pode trazer uma inquietação que dificulta a fidelidade, enquanto a cautela pode virar desconfiança ou necessidade de ter razão."
+    },
+    "ben": {
+      "en": "Ben brings initiative and a clear sense of direction to running a household or carrying out shared plans. Projects can stall when the couple's attention scatters, and a drive for justice or perfection can override a partner's needs.",
+      "pt": "Ben traz iniciativa e um rumo claro à organização da casa ou à realização de planos em comum. Projetos podem ficar pelo caminho quando a atenção se dispersa, e a busca por justiça ou perfeição pode passar por cima das necessidades da outra pessoa."
+    },
+    "ix": {
+      "en": "Ix, the Jaguar, brings the earth's strength and power, and can give the bond endurance and the courage to pursue a large vision together. Johnson lists it among the signs of the Seven Shames: vanity, quick temper and the pursuit of power can make the foundation unstable.",
+      "pt": "Ix, o Jaguar, traz a força e o poder da terra e pode dar ao vínculo resistência e coragem para buscar juntos uma grande visão. Johnson o inclui entre os signos das Sete Vergonhas: vaidade, irritação fácil e a busca de poder podem tornar a base instável."
+    },
+    "men": {
+      "en": "Men is the far-seeing bird, and it can give the two a wide view of their life together, a gift for mediating disputes and for spotting opportunities. Its risk is restlessness: shared plans may be dropped when boredom sets in, unless the bond finds a purpose worth sustaining.",
+      "pt": "Men é o pássaro que vê longe e pode dar aos dois uma visão ampla da vida em comum, talento para mediar conflitos e para perceber oportunidades. O risco é a inquietação: planos em comum podem ser abandonados quando bate o tédio, a menos que o vínculo encontre um propósito que valha sustentar."
+    },
+    "cib": {
+      "en": "Cib is linked to the ancestors and the work of forgiveness, and it can make the bond reflective and responsible, a place where old patterns are faced. Responsibility can swing between obsession and neglect, and Johnson notes this sign's difficulty with faithfulness; pride or withdrawal can also cool the bond.",
+      "pt": "Cib está ligado aos ancestrais e ao trabalho do perdão, e pode tornar o vínculo reflexivo e responsável, um lugar onde velhos padrões são encarados. A responsabilidade pode oscilar entre a obsessão e a negligência, e Johnson aponta a dificuldade desse signo com a fidelidade; o orgulho ou o retraimento também podem esfriar o vínculo."
+    },
+    "caban": {
+      "en": "Caban favors thoughtful decisions, loyalty and endurance in relationships. Direct speech can hurt, and ambitious shared plans can falter when practical details receive too little attention.",
+      "pt": "Caban favorece decisões ponderadas, lealdade e constância nas relações. A franqueza pode ferir, e planos ambiciosos em comum podem fracassar quando os detalhes práticos recebem pouca atenção."
+    },
+    "etznab": {
+      "en": "Etznab is the two-edged blade of the warrior and the healer, and it can give the bond sharp insight and the power to heal each other. Johnson says this sign does not do well with relationships: strong wills can seek submission from the other, and the blade can turn into quarrels.",
+      "pt": "Etznab é a lâmina de dois gumes do guerreiro e do curador e pode dar ao vínculo percepção aguçada e o poder de curar um ao outro. Johnson diz que esse signo não se dá bem com relacionamentos: vontades fortes podem buscar a submissão do outro, e a lâmina pode virar briga."
+    },
+    "cauac": {
+      "en": "Cauac brings the warmth of family, friends and community into the bond. Care and romance can bring the two closer. Family loyalties can also pull in different directions, and care can become stifling.",
+      "pt": "Cauac traz para o vínculo o calor da família, das amizades e da comunidade. O cuidado e o romance podem aproximar as duas pessoas. Lealdades familiares também podem puxar em direções diferentes, e o cuidado pode se tornar sufocante."
+    },
+    "ahau": {
+      "en": "Ahau is the Sun, and it brings generosity, courage and a bright, creative bond with a sense of the ancestors. The two need to tend the relationship rather than take it for granted, since ego, the need to prevail and domination can dim it.",
+      "pt": "Ahau é o Sol e traz generosidade, coragem e um vínculo luminoso e criativo, com um senso dos ancestrais. Os dois precisam cuidar da relação em vez de considerá-la garantida, porque o ego, a necessidade de prevalecer e a dominação podem apagá-la."
+    }
+  },
+  "tones": {
+    "1": {
+      "en": "One is associated with beginnings and resolve. In the relationship, it can give the qualities of this position the impetus to take shape and become action.",
+      "pt": "O número 1 está associado aos começos e à determinação. Na relação, pode dar impulso para que as qualidades dessa posição ganhem forma e se traduzam em ação."
+    },
+    "2": {
+      "en": "Two is the number of partnership and love. It can help the two people hold different needs together, though doing so may make shared decisions harder.",
+      "pt": "O número 2 está ligado à parceria e ao amor. Pode ajudar as duas pessoas a conciliar necessidades diferentes, embora isso possa dificultar as decisões em comum."
+    },
+    "3": {
+      "en": "Johnson treats the low, odd number three as one of the weakest. The qualities it modifies can lack direction and clarity. At the center, this can leave the bond with a fragile foundation.",
+      "pt": "Johnson considera o número 3, baixo e ímpar, um dos mais fracos. As qualidades que ele modifica podem carecer de direção e clareza. No centro, isso pode deixar o vínculo sobre uma base frágil."
+    },
+    "4": {
+      "en": "Four brings balance and wholeness. It can give the qualities of this position stability and staying power.",
+      "pt": "O número 4 traz equilíbrio e inteireza. Pode dar estabilidade e constância às qualidades dessa posição."
+    },
+    "5": {
+      "en": "Five evokes the hand at work. It can bring initiative and energy to what the two undertake, along with a tendency to act before they have thought things through.",
+      "pt": "O número 5 evoca a mão em ação. Pode trazer iniciativa e energia ao que as duas pessoas empreendem, junto com a tendência a agir antes de refletir bem."
+    },
+    "6": {
+      "en": "Six evokes the stability of the World Tree. It can ground the qualities of this position in the practical work of daily life together.",
+      "pt": "O número 6 evoca a estabilidade da Árvore do Mundo. Pode dar às qualidades dessa posição uma base no trabalho prático da vida em comum."
+    },
+    "7": {
+      "en": "Seven is the crest of the count. The two can see every side and find solutions that reconcile them, though the same breadth can delay decisions.",
+      "pt": "Sete é o ápice da contagem. Os dois conseguem ver todos os lados e encontrar soluções que os conciliem, embora essa mesma amplitude possa atrasar decisões."
+    },
+    "8": {
+      "en": "Eight is completion and the thread of time. The bond has a sense of wholeness, yet feelings and minds may change quickly within it.",
+      "pt": "Oito é completude e o fio do tempo. O vínculo tem um senso de inteireza, mas sentimentos e opiniões podem mudar depressa dentro dele."
+    },
+    "9": {
+      "en": "Johnson singles out nine among the odd numbers for its balance and favorable qualities. In the relationship it can add steadiness and a nurturing, feminine quality to this position.",
+      "pt": "Johnson destaca o número 9 entre os ímpares por seu equilíbrio e suas qualidades favoráveis. Na relação, ele pode acrescentar firmeza e uma qualidade feminina de cuidado a essa posição."
+    },
+    "10": {
+      "en": "Ten is two hands working together, the number of bonds between people. The relationship can look very stable while remaining sensitive beneath the surface, through the ups and downs of shared life.",
+      "pt": "Dez são duas mãos trabalhando juntas, o número dos laços entre as pessoas. A relação pode parecer muito estável e continuar sensível sob a superfície, nos altos e baixos da vida em comum."
+    },
+    "11": {
+      "en": "Johnson treats eleven as the least balanced of the high numbers. It can bring creativity as well as controversy or a sense of drifting. When the position's sign already carries a difficult trait, eleven can intensify it.",
+      "pt": "Johnson considera o número 11 o menos equilibrado entre os números altos. Pode trazer criatividade, além de controvérsia ou sensação de falta de rumo. Quando o signo da posição já traz um traço difícil, o 11 pode intensificá-lo."
+    },
+    "12": {
+      "en": "Twelve is the highest even number, reflection on what has been lived. The bond has abundant energy and grows by gathering its experiences into a shared understanding.",
+      "pt": "Doze é o maior número par, a reflexão sobre o que foi vivido. O vínculo tem energia abundante e cresce reunindo suas experiências num entendimento comum."
+    },
+    "13": {
+      "en": "Thirteen brings intensity and is associated with intuition, visions and the spirit world. In this position, it can make those dimensions especially important to how the two experience the bond.",
+      "pt": "O número 13 traz intensidade e está associado à intuição, às visões e ao mundo espiritual. Nessa posição, pode tornar essas dimensões especialmente importantes na forma como as duas pessoas vivem o vínculo."
+    }
+  },
+  "affinities": {
+    "sameDirection": {
+      "shared": {
+        "en": "The birth signs share a cardinal direction. Johnson presents this as the most common form of compatibility among the Daykeepers he consulted. It can bring a natural ease to friendship, work or love.",
+        "pt": "Os signos de nascimento compartilham uma direção cardeal. Johnson apresenta essa como a forma de compatibilidade mais comum entre os guardiões dos dias que consultou. Ela pode trazer uma facilidade natural à amizade, ao trabalho ou ao amor."
+      },
+      "different": {
+        "en": "The birth signs belong to different directional families. Johnson treats direction as one clue and considers other features of the charts when reading the bond.",
+        "pt": "Os signos de nascimento pertencem a famílias direcionais diferentes. Johnson trata a direção como um dos indícios e considera outros aspectos dos mapas ao interpretar o vínculo."
+      }
+    },
+    "sameYearLordFamily": {
+      "shared": {
+        "en": "The birth signs belong to the same Year Lord family. Each family includes one sign from each direction. Johnson considers this a particularly strong affinity that can sometimes become a deep, lasting spiritual bond. In his reading it especially favors lifelong friendships and loves that are remembered for life.",
+        "pt": "Os signos de nascimento pertencem à mesma família do Senhor do Ano. Cada família inclui um signo de cada direção. Johnson considera essa afinidade especialmente forte e diz que ela às vezes pode se tornar um vínculo espiritual profundo e duradouro. Em sua leitura, favorece em especial amizades para a vida toda e amores que ficam na memória."
+      },
+      "different": {
+        "en": "The birth signs belong to different Year Lord families. Johnson uses the composite to explore how the relationship works in its own right.",
+        "pt": "Os signos de nascimento pertencem a famílias diferentes do Senhor do Ano. Johnson usa o mapa composto para explorar a dinâmica própria da relação."
+      }
+    }
+  },
+  "recurrence": {
+    "shared": {
+      "en": "Some composite signs also appear in this person's five-point natal chart. In Johnson's worked example, repeated signs suggest that the relationship may help the person develop qualities already present in their own chart.",
+      "pt": "Alguns signos do composto também aparecem no mapa natal de cinco pontos dessa pessoa. No exemplo de Johnson, a repetição sugere que a relação pode ajudar a pessoa a desenvolver qualidades que já estão presentes no próprio mapa."
+    },
+    "none": {
+      "en": "The five composite signs and this person's five natal signs are distinct.",
+      "pt": "Os cinco signos do composto são diferentes dos cinco signos do mapa natal dessa pessoa."
+    }
+  }
+}

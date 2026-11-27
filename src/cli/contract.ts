@@ -71,11 +71,11 @@ const STRICT_EPHEMERIS_FLAG: CommandFlag = {
   description: "Fail instead of silently using the Moshier ephemeris outside the shipped Swiss Ephemeris files",
 };
 
-const RUNTIME_FLAGS: CommandFlag[] = [
+const EPHEMERIS_PATH_FLAGS: CommandFlag[] = [
   { name: "wasm-path", type: "string", description: "Override the Swiss Ephemeris WASM runtime path" },
   { name: "ephe-path", type: "string", description: "Override the ephemeris data directory path" },
-  STRICT_EPHEMERIS_FLAG,
 ];
+const RUNTIME_FLAGS = [...EPHEMERIS_PATH_FLAGS, STRICT_EPHEMERIS_FLAG];
 
 const NATAL_FLAGS: CommandFlag[] = [
   { name: "lat", type: "number", description: "Natal latitude (-90 to 90)" },
@@ -88,6 +88,14 @@ const NATAL_FLAGS: CommandFlag[] = [
 const NATAL_ARGS: CommandArg[] = [
   { name: "date", type: "date", required: true, description: "Natal birth date in YYYY-MM-DD format" },
   { name: "time", type: "string", required: false, description: "Natal birth time in HH:MM format (default: 12:00)" },
+];
+
+const SOLAR_LOCATION_FLAGS: CommandFlag[] = [
+  { name: "lat", type: "number", description: "Observer latitude (-90 to 90)" },
+  { name: "lon", type: "number", description: "Observer longitude (-180 to 180)" },
+  { name: "location", type: "string", description: LOCATION_DESCRIPTION },
+  { name: "timezone", type: "string", description: "Observer IANA time zone (resolved from coordinates if omitted)" },
+  ...EPHEMERIS_PATH_FLAGS,
 ];
 
 const RULERS_FLAG: CommandFlag = {
@@ -120,6 +128,76 @@ export const COMMANDS: CommandSchema[] = [
       {name:"hexagram",type:"number",description:"King Wen number, instead of --lines (--input-json: \"hexagramNumber\")"},
       {name:"moving",type:"string",description:"Unique moving positions, comma-separated (1 bottom, 6 top) (--input-json: \"movingLines\" array)"},
     ], examples: ["kaabalah iching:reading --lines 879777 --json --compact", "kaabalah iching:reading --hexagram 30 --moving 2,4 --json --compact", `kaabalah iching:reading --input-json='{"hexagramNumber":25,"movingLines":[4]}' --json --compact`, `kaabalah iching:reading --input-json='{"lines":[8,7,9,7,7,7]}' --json --compact`],
+  },
+  {
+    name: "maya:day", description: "Look up the Tzolk’in day, Haab date, trecena and Year Lord",
+    args: [{ name: "date", type: "date", required: true, description: "Civil date YYYY-MM-DD" }],
+    flags: [
+      { name: "haab-count", type: "string", default: "momostenango", description: "Haab count (momostenango or classic-gmt)" },
+      { name: "glyphs", type: "boolean", description: "Include PNG references for the Tzolk’in day sign and Haab month" },
+      ...SOLAR_LOCATION_FLAGS,
+    ],
+    examples: ["kaabalah maya:day 1961-08-18 --json --compact", "kaabalah maya:day 2012-12-21 --haab-count classic-gmt --glyphs --json --compact"],
+  },
+  {
+    name: "maya:sign", description: "Look up Maya day-sign correspondences and codex glyphs",
+    args: [{ name: "sign", type: "string", required: false, description: "Day-sign ID (all signs if omitted)" }],
+    flags: [],
+    examples: ["kaabalah maya:sign chuen --json --compact"],
+  },
+  {
+    name: "maya:board", description: "Show Kenneth Johnson’s 260-day Calendar Board, optionally marking a civil date",
+    args: [{ name: "date", type: "date", required: false, description: "Civil date to highlight (YYYY-MM-DD)" }],
+    flags: [],
+    examples: ["kaabalah maya:board --json --compact", "kaabalah maya:board 1961-08-18"],
+  },
+  {
+    name: "maya:natal", description: "Read a Johnson Maya natal chart, Feathered Serpent and optional birth-time cycles",
+    args: [{ name: "birth", type: "date", required: true, description: "Civil birth date YYYY-MM-DD" }],
+    flags: [
+      { name: "instant", type: "string", description: "Birth timestamp with Z or a UTC offset for Sun and Moon cycles" },
+      { name: "lat", type: "number", description: "Latitude for the solar quarter (-90 to 90)" },
+      { name: "lon", type: "number", description: "Longitude for the solar quarter (-180 to 180)" },
+      ...EPHEMERIS_PATH_FLAGS,
+    ],
+    examples: [
+      "kaabalah maya:natal 1961-08-18 --json --compact",
+      "kaabalah maya:natal 2024-04-08 --instant 2024-04-08T13:17:00-05:00 --lat 32.78 --lon=-96.80 --json --compact",
+    ],
+  },
+  {
+    name: "maya:relationship", description: "Read the five-point Maya relationship composite, affinities and shared natal signs",
+    args: [
+      { name: "first", type: "date", required: true, description: "First civil birth date YYYY-MM-DD" },
+      { name: "second", type: "date", required: true, description: "Second civil birth date YYYY-MM-DD" },
+    ],
+    flags: [],
+    examples: ["kaabalah maya:relationship 1926-06-01 1914-11-25 --json --compact"],
+  },
+  {
+    name: "maya:timing", description: "Calculate Road of Life, personal lunar month, trecena and natal recurrences",
+    args: [
+      { name: "birth", type: "date", required: true, description: "Civil birth date YYYY-MM-DD" },
+      { name: "from", type: "date", required: true, description: "First evaluation date YYYY-MM-DD (inclusive)" },
+    ],
+    flags: [{ name: "days", type: "number", default: 1, description: "Number of consecutive civil dates (1–260)" }],
+    examples: ["kaabalah maya:timing 1961-08-18 2025-02-20 --days 29 --json --compact"],
+  },
+  {
+    name: "tattwa:schedule", description: "Calculate the sunrise-anchored Tatwameter schedule for a location",
+    args: [{ name: "instant", type: "string", required: true, description: "ISO timestamp with Z or a UTC offset" }],
+    flags: SOLAR_LOCATION_FLAGS,
+    examples: ["kaabalah tattwa:schedule 2024-02-24T07:00:00+01:00 --lat=41.39 --lon=2.17 --json --compact --fields=current"],
+  },
+  {
+    name: "tattwa:svg", description: "Render a standalone tattwa SVG, optionally with a complementary tattwa inside",
+    args: [{ name: "tattwa", type: "string", required: true, description: "Tattwa ID (akash, vayu, tejas, prithvi or apas)" }],
+    flags: [
+      { name: "inner", type: "string", description: "Complementary tattwa to draw inside the main symbol" },
+      { name: "size", type: "number", default: 256, description: "Longest SVG side in pixels (1–4096)" },
+      { name: "output", type: "string", description: "Path to save the SVG file" },
+    ],
+    examples: ["kaabalah tattwa:svg vayu --inner=tejas --no-json", "kaabalah tattwa:svg prithvi --inner=apas --output=tattwa.svg --json --compact"],
   },
   {
     name: "gematria",

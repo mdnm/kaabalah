@@ -103,6 +103,14 @@ export function parseUtcNoonDate(dateStr: string, flags: Flags): Date {
   return new Date(`${dateStr}${UTC_NOON_SUFFIX}`);
 }
 
+/** Parse an absolute instant without depending on the host time zone. */
+export function parseOffsetTimestamp(value: unknown): Date | null {
+  const timestamp = /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:[0-5]\d)$/;
+  if (typeof value !== "string" || !timestamp.test(value) || !parseCivilDate(value.slice(0, 10))) return null;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date : null;
+}
+
 export function parseTimeValue(timeStr: string, flags: Flags, messages: TimeMessages): ParsedTime {
   const timeMatch = timeStr.match(/^(\d{1,2}):(\d{2})$/);
   if (!timeMatch) {
@@ -128,11 +136,11 @@ export function parseCoordinates(
     exitWithError("MISSING_ARGUMENT", messages.missing, flags);
   }
 
-  if (latitude < -90 || latitude > 90) {
+  if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90) {
     exitWithError("INVALID_ARGUMENT", messages.invalidLatitude(latitude), flags);
   }
 
-  if (longitude < -180 || longitude > 180) {
+  if (!Number.isFinite(longitude) || longitude < -180 || longitude > 180) {
     exitWithError("INVALID_ARGUMENT", messages.invalidLongitude(longitude), flags);
   }
 

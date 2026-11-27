@@ -52,7 +52,7 @@ The Swiss Ephemeris WebAssembly integration is used by the astrology module to p
 
 The WebAssembly module is loaded dynamically at runtime, making it compatible with both Node.js and browser environments. This approach ensures that:
 
-1. The heavy WebAssembly code is only loaded when needed (the CLI also imports the astrology module lazily, so non-astrology commands never start it)
+1. WebAssembly loads on demand for astrology calculations, Maya birth cycles and sunset welcomes, and location-based Tattwa schedules.
 2. The same code works in both Node.js and browsers
 3. Initialization happens once per process; `getSwissEph()` is a no-op after the first call
 

@@ -1,6 +1,6 @@
 {
   "name": "kaabalah",
-  "version": "8.2.0",
+  "version": "8.3.0",
   "description": "The de-facto library for any esoteric calculations and tooling",
   "engines": {
     "node": ">=18.18.0"
@@ -38,6 +38,11 @@
       "require": "./dist/core/index.js",
       "import": "./dist/core/index.mjs"
     },
+    "./maya": {
+      "types": "./dist/maya/index.d.ts",
+      "require": "./dist/maya/index.js",
+      "import": "./dist/maya/index.mjs"
+    },
     "./numerology": {
       "types": "./dist/numerology/index.d.ts",
       "require": "./dist/numerology/index.js",
@@ -57,6 +62,11 @@
       "types": "./dist/tarot/index.d.ts",
       "require": "./dist/tarot/index.js",
       "import": "./dist/tarot/index.mjs"
+    },
+    "./tattwa": {
+      "types": "./dist/tattwa/index.d.ts",
+      "require": "./dist/tattwa/index.js",
+      "import": "./dist/tattwa/index.mjs"
     },
     "./ifa": {
       "types": "./dist/ifa/index.d.ts",

@@ -1,4 +1,351 @@
 {
+  "Observer latitude (-90 to 90)": { "en": "Observer latitude (-90 to 90)", "pt": "Latitude do observador (-90 a 90)" },
+  "Observer longitude (-180 to 180)": { "en": "Observer longitude (-180 to 180)", "pt": "Longitude do observador (-180 a 180)" },
+  "Observer IANA time zone (resolved from coordinates if omitted)": {
+    "en": "Observer IANA time zone (resolved from coordinates if omitted)",
+    "pt": "Fuso horário IANA do observador (obtido pelas coordenadas se omitido)"
+  },
+  "Calculate the sunrise-anchored Tatwameter schedule for a location": {
+    "en": "Calculate the sunrise-anchored Tatwameter schedule for a location",
+    "pt": "Calcule os horários do Tatwametro a partir do nascer do sol no local"
+  },
+  "Render a standalone tattwa SVG, optionally with a complementary tattwa inside": {
+    "en": "Render a standalone tattwa SVG, optionally with a complementary tattwa inside",
+    "pt": "Gere um SVG de tattwa, com a opção de incluir um tattwa complementar no interior"
+  },
+  "ISO timestamp with Z or a UTC offset": { "en": "ISO timestamp with Z or a UTC offset", "pt": "Data e hora em ISO com Z ou deslocamento UTC" },
+  "Tattwa ID (akash, vayu, tejas, prithvi or apas)": {
+    "en": "Tattwa ID (akash, vayu, tejas, prithvi or apas)", "pt": "Identificador do tattwa (akash, vayu, tejas, prithvi ou apas)"
+  },
+  "Complementary tattwa to draw inside the main symbol": {
+    "en": "Complementary tattwa to draw inside the main symbol", "pt": "Tattwa complementar a desenhar dentro do símbolo principal"
+  },
+  "Longest SVG side in pixels (1–4096)": { "en": "Longest SVG side in pixels (1–4096)", "pt": "Maior lado do SVG em pixels (1–4096)" },
+  "Path to save the SVG file": { "en": "Path to save the SVG file", "pt": "Caminho para salvar o arquivo SVG" },
+  "SVG written to {0}": { "en": "SVG written to {0}", "pt": "SVG salvo em {0}" },
+  "Unknown IANA time zone \"{0}\".": { "en": "Unknown IANA time zone \"{0}\".", "pt": "Fuso horário IANA desconhecido \"{0}\"." },
+  "Too many tattwa arguments.": { "en": "Too many tattwa arguments.", "pt": "Argumentos em excesso para o comando de tattwa." },
+  "A tattwa ID is required.": { "en": "A tattwa ID is required.", "pt": "Informe o identificador do tattwa." },
+  "Tattwa ID must be a string.": { "en": "Tattwa ID must be a string.", "pt": "O identificador do tattwa deve ser um texto." },
+  "A tattwa schedule requires an instant.": { "en": "A tattwa schedule requires an instant.", "pt": "Informe a data e a hora para calcular os períodos dos tattwas." },
+  "Tattwa instant must be an ISO timestamp with Z or a UTC offset.": {
+    "en": "Tattwa instant must be an ISO timestamp with Z or a UTC offset.",
+    "pt": "A data e a hora para o tattwa devem estar no formato ISO com Z ou deslocamento UTC."
+  },
+  "Tattwa SVG size must be an integer from 1 to 4096.": {
+    "en": "Tattwa SVG size must be an integer from 1 to 4096.", "pt": "O tamanho do SVG de tattwa deve ser um número inteiro de 1 a 4096."
+  },
+  "Tattwa schedule requires a valid instant and geographic coordinates.": {
+    "en": "Tattwa schedule requires a valid instant and geographic coordinates.",
+    "pt": "O cálculo dos períodos dos tattwas exige data, hora e coordenadas geográficas válidas."
+  },
+  "Tattwa schedule requires an instant between consecutive sunrises, at most 36 hours apart.": {
+    "en": "Tattwa schedule requires an instant between consecutive sunrises, at most 36 hours apart.",
+    "pt": "O cálculo dos tattwas exige um horário entre dois nasceres do sol consecutivos separados por até 36 horas."
+  },
+  "No tattwa schedule for this location and instant because consecutive sunrises are unavailable.": {
+    "en": "No tattwa schedule for this location and instant because consecutive sunrises are unavailable.",
+    "pt": "Os períodos dos tattwas estão indisponíveis neste local e horário por falta de dois nasceres do sol consecutivos."
+  },
+  "Tatwameter schedule · {0}": { "en": "Tatwameter schedule · {0}", "pt": "Horários do Tatwametro · {0}" },
+  "Sunset welcome · {0}": { "en": "Sunset welcome · {0}", "pt": "Acolhida ao pôr do sol · {0}" },
+  "The incoming day opens the next trecena.": { "en": "The incoming day opens the next trecena.", "pt": "O dia que chega abre a próxima trezena." },
+  "Local sunset · {0} ({1})": { "en": "Local sunset · {0} ({1})", "pt": "Pôr do sol local · {0} ({1})" },
+  "No sunset on this local date.": { "en": "No sunset on this local date.", "pt": "O Sol não se põe nesta data local." },
+  "Maya sunset requires valid geographic coordinates.": {
+    "en": "Maya sunset requires valid geographic coordinates.", "pt": "O cálculo do pôr do sol maia exige coordenadas geográficas válidas."
+  },
+  "Published observance · {0}": {
+    "en": "Published observance · {0}",
+    "pt": "Observância do exemplo publicado · {0}"
+  },
+  "Day-sign practice · {0}": {
+    "en": "Day-sign practice · {0}",
+    "pt": "Prática do signo do dia · {0}"
+  },
+  "Look up the Tzolk’in day, Haab date, trecena and Year Lord": {
+    "en": "Look up the Tzolk’in day, Haab date, trecena and Year Lord",
+    "pt": "Consulte o dia do Tzolk’in, a data do Haab, a trezena e o Senhor do Ano"
+  },
+  "Haab count (momostenango or classic-gmt)": {
+    "en": "Haab count (momostenango or classic-gmt)",
+    "pt": "Contagem do Haab (momostenango ou classic-gmt)"
+  },
+  "Include PNG references for the Tzolk’in day sign and Haab month": {
+    "en": "Include PNG references for the Tzolk’in day sign and Haab month",
+    "pt": "Inclua as referências PNG do signo do dia do Tzolk’in e do mês do Haab"
+  },
+  "Look up Maya day-sign correspondences and codex glyphs": {
+    "en": "Look up Maya day-sign correspondences and codex glyphs",
+    "pt": "Consulte as correspondências dos signos maias e seus glifos nos códices"
+  },
+  "Day-sign ID (all signs if omitted)": {
+    "en": "Day-sign ID (all signs if omitted)",
+    "pt": "Identificador do signo do dia (todos os signos se omitido)"
+  },
+  "Unknown Maya Haab count. Use momostenango or classic-gmt.": {
+    "en": "Unknown Maya Haab count. Use momostenango or classic-gmt.",
+    "pt": "Contagem do Haab desconhecida. Use momostenango ou classic-gmt."
+  },
+  "Unknown Maya day sign.": {
+    "en": "Unknown Maya day sign.",
+    "pt": "Signo do dia maia desconhecido."
+  },
+  "Haab · Classic GMT · {0} {1}": {
+    "en": "Haab · Classic GMT · {0} {1}",
+    "pt": "Haab · GMT clássico · {0} {1}"
+  },
+  "Haab · Momostenango · {0} {1}": {
+    "en": "Haab · Momostenango · {0} {1}",
+    "pt": "Haab · Momostenango · {0} {1}"
+  },
+  "Animal · {0} / Body · {1} / Plant · {2}": {
+    "en": "Animal · {0} / Body · {1} / Plant · {2}",
+    "pt": "Animal · {0} / Corpo · {1} / Planta · {2}"
+  },
+  "Codex glyph · Morley, figure {0}{1}": {
+    "en": "Codex glyph · Morley, figure {0}{1}",
+    "pt": "Glifo de códice · Morley, figura {0}{1}"
+  },
+  "Year Lord number · synthesis · {0}": {
+    "en": "Year Lord number · synthesis · {0}",
+    "pt": "Número do Senhor do Ano · síntese · {0}"
+  },
+  "red": { "en": "red", "pt": "vermelho" },
+  "black": { "en": "black", "pt": "preto" },
+  "white": { "en": "white", "pt": "branco" },
+  "yellow": { "en": "yellow", "pt": "amarelo" },
+  "air": { "en": "air", "pt": "ar" },
+  "earth": { "en": "earth", "pt": "terra" },
+  "water": { "en": "water", "pt": "água" },
+  "fire": { "en": "fire", "pt": "fogo" },
+  "Show Kenneth Johnson’s 260-day Calendar Board, optionally marking a civil date": {
+    "en": "Show Kenneth Johnson’s 260-day Calendar Board, optionally marking a civil date",
+    "pt": "Mostre o quadro de 260 dias de Kenneth Johnson, com a opção de marcar uma data civil"
+  },
+  "Civil date YYYY-MM-DD": {
+    "en": "Civil date YYYY-MM-DD",
+    "pt": "Data civil AAAA-MM-DD"
+  },
+  "Civil date to highlight (YYYY-MM-DD)": {
+    "en": "Civil date to highlight (YYYY-MM-DD)",
+    "pt": "Data civil a destacar (AAAA-MM-DD)"
+  },
+  "Tzolk’in Calendar Board · tone and position": {
+    "en": "Tzolk’in Calendar Board · tone and position",
+    "pt": "Quadro do Tzolk’in · tom e posição"
+  },
+  "Trecena · {0}": {
+    "en": "Trecena · {0}",
+    "pt": "Trezena · {0}"
+  },
+  "Year Lord · {0}": {
+    "en": "Year Lord · {0}",
+    "pt": "Senhor do Ano · {0}"
+  },
+  "Center": {
+    "en": "Center",
+    "pt": "Centro"
+  },
+  "Conception": {
+    "en": "Conception",
+    "pt": "Concepção"
+  },
+  "Right hand": {
+    "en": "Right hand",
+    "pt": "Mão direita"
+  },
+  "Left hand": {
+    "en": "Left hand",
+    "pt": "Mão esquerda"
+  },
+  "Destiny": {
+    "en": "Destiny",
+    "pt": "Destino"
+  },
+  "Directional affinity · {0}": {
+    "en": "Directional affinity · {0}",
+    "pt": "Afinidade pela direção · {0}"
+  },
+  "Year Lord family affinity · {0}": {
+    "en": "Year Lord family affinity · {0}",
+    "pt": "Afinidade pela família do Senhor do Ano · {0}"
+  },
+  "First natal chart · {0}": {
+    "en": "First natal chart · {0}",
+    "pt": "Primeiro mapa natal · {0}"
+  },
+  "Second natal chart · {0}": {
+    "en": "Second natal chart · {0}",
+    "pt": "Segundo mapa natal · {0}"
+  },
+  "{0} · composite {1} / natal {2}": {
+    "en": "{0} · composite {1} / natal {2}",
+    "pt": "{0} · composto ({1}) / natal ({2})"
+  },
+  "Personal lunar month · {0}/{1}": {
+    "en": "Personal lunar month · {0}/{1}",
+    "pt": "Mês lunar pessoal · {0}/{1}"
+  },
+  "north": {
+    "en": "north",
+    "pt": "norte"
+  },
+  "south": {
+    "en": "south",
+    "pt": "sul"
+  },
+  "east": {
+    "en": "east",
+    "pt": "leste"
+  },
+  "west": {
+    "en": "west",
+    "pt": "oeste"
+  },
+  "Read a Johnson Maya natal chart, Feathered Serpent and optional birth-time cycles": {
+    "en": "Read a Johnson Maya natal chart, Feathered Serpent and optional birth-time cycles",
+    "pt": "Leia o mapa natal maia e a Serpente Emplumada pelo método de Johnson, com ciclos opcionais para o horário de nascimento"
+  },
+  "Birth timestamp with Z or a UTC offset for Sun and Moon cycles": {
+    "en": "Birth timestamp with Z or a UTC offset for Sun and Moon cycles",
+    "pt": "Data e hora do nascimento com Z ou deslocamento UTC para os ciclos do Sol e da Lua"
+  },
+  "Latitude for the solar quarter (-90 to 90)": {
+    "en": "Latitude for the solar quarter (-90 to 90)",
+    "pt": "Latitude para o quarto do ciclo solar (-90 a 90)"
+  },
+  "Longitude for the solar quarter (-180 to 180)": {
+    "en": "Longitude for the solar quarter (-180 to 180)",
+    "pt": "Longitude para o quarto do ciclo solar (-180 a 180)"
+  },
+  "Maya birth coordinates require --instant.": {
+    "en": "Maya birth coordinates require --instant.",
+    "pt": "As coordenadas do nascimento no mapa maia exigem --instant."
+  },
+  "Maya birth instant must be an ISO timestamp with Z or a UTC offset.": {
+    "en": "Maya birth instant must be an ISO timestamp with Z or a UTC offset.",
+    "pt": "A data e a hora de nascimento do mapa maia devem estar no formato ISO com Z ou deslocamento UTC."
+  },
+  "Maya birth instant must have the same local date as the natal date.": {
+    "en": "Maya birth instant must have the same local date as the natal date.",
+    "pt": "A data local em --instant deve ser a mesma data informada para o mapa natal maia."
+  },
+  "Maya solar quarters require both latitude and longitude.": {
+    "en": "Maya solar quarters require both latitude and longitude.",
+    "pt": "O cálculo dos quartos do ciclo solar maia exige latitude e longitude."
+  },
+  "Maya birth cycles require a valid birth instant.": {
+    "en": "Maya birth cycles require a valid birth instant.",
+    "pt": "Os ciclos de nascimento maias exigem uma data e um horário válidos."
+  },
+  "Maya birth cycles require latitude from -90 to 90 and longitude from -180 to 180.": {
+    "en": "Maya birth cycles require latitude from -90 to 90 and longitude from -180 to 180.",
+    "pt": "Os ciclos de nascimento maias exigem latitude de -90 a 90 e longitude de -180 a 180."
+  },
+  "Natal positions · synthesis": {
+    "en": "Natal positions · synthesis",
+    "pt": "Posições natais · síntese"
+  },
+  "Feathered Serpent links · synthesis": {
+    "en": "Feathered Serpent links · synthesis",
+    "pt": "Elos da Serpente Emplumada · síntese"
+  },
+  "right": { "en": "right", "pt": "direita" },
+  "center": { "en": "center", "pt": "centro" },
+  "left": { "en": "left", "pt": "esquerda" },
+  "Solar quarter · {0}": {
+    "en": "Solar quarter · {0}",
+    "pt": "Quarto do ciclo solar · {0}"
+  },
+  "Solar quarter unavailable for this solar day.": {
+    "en": "Solar quarter unavailable for this solar day.",
+    "pt": "Quarto do ciclo solar indisponível para este dia solar."
+  },
+  "Lunar phase · {0}": {
+    "en": "Lunar phase · {0}",
+    "pt": "Fase lunar · {0}"
+  },
+  "midnight to dawn": { "en": "midnight to dawn", "pt": "meia-noite ao amanhecer" },
+  "dawn to noon": { "en": "dawn to noon", "pt": "amanhecer ao meio-dia" },
+  "noon to sunset": { "en": "noon to sunset", "pt": "meio-dia ao pôr do sol" },
+  "sunset to midnight": { "en": "sunset to midnight", "pt": "pôr do sol à meia-noite" },
+  "new Moon": { "en": "new Moon", "pt": "Lua nova" },
+  "waxing Moon": { "en": "waxing Moon", "pt": "Lua crescente" },
+  "full Moon": { "en": "full Moon", "pt": "Lua cheia" },
+  "waning Moon": { "en": "waning Moon", "pt": "Lua minguante" },
+  "Read the five-point Maya relationship composite, affinities and shared natal signs": {
+    "en": "Read the five-point Maya relationship composite, affinities and shared natal signs",
+    "pt": "Leia o mapa maia composto de cinco pontos, as afinidades e os signos que se repetem nos mapas natais"
+  },
+  "Calculate Road of Life, personal lunar month, trecena and natal recurrences": {
+    "en": "Calculate Road of Life, personal lunar month, trecena and natal recurrences",
+    "pt": "Calcule o Caminho da Vida, o mês lunar pessoal, a trezena e as recorrências natais"
+  },
+  "Civil birth date YYYY-MM-DD": {
+    "en": "Civil birth date YYYY-MM-DD",
+    "pt": "Data civil de nascimento AAAA-MM-DD"
+  },
+  "First civil birth date YYYY-MM-DD": {
+    "en": "First civil birth date YYYY-MM-DD",
+    "pt": "Primeira data civil de nascimento AAAA-MM-DD"
+  },
+  "Second civil birth date YYYY-MM-DD": {
+    "en": "Second civil birth date YYYY-MM-DD",
+    "pt": "Segunda data civil de nascimento AAAA-MM-DD"
+  },
+  "First evaluation date YYYY-MM-DD (inclusive)": {
+    "en": "First evaluation date YYYY-MM-DD (inclusive)",
+    "pt": "Primeira data de avaliação AAAA-MM-DD (inclusive)"
+  },
+  "Number of consecutive civil dates (1–260)": {
+    "en": "Number of consecutive civil dates (1–260)",
+    "pt": "Número de datas civis consecutivas (1–260)"
+  },
+  "Maya requires the {0} date (YYYY-MM-DD).": {
+    "en": "Maya requires the {0} date (YYYY-MM-DD).",
+    "pt": "Informe a data {0} (AAAA-MM-DD) para o cálculo maia."
+  },
+  "Maya date {0} must be a YYYY-MM-DD string.": {
+    "en": "Maya date {0} must be a YYYY-MM-DD string.",
+    "pt": "A data {0} deve estar no formato AAAA-MM-DD."
+  },
+  "Too many Maya date arguments.": {
+    "en": "Too many Maya date arguments.",
+    "pt": "O comando maia recebeu argumentos de data em excesso."
+  },
+  "Invalid Maya civil date": {
+    "en": "Invalid Maya civil date",
+    "pt": "Data civil inválida para o cálculo maia"
+  },
+  "Maya timing days must be an integer from 1 to 260": {
+    "en": "Maya timing days must be an integer from 1 to 260",
+    "pt": "O número de dias deve ser um inteiro de 1 a 260"
+  },
+  "Maya timing starts before birth": {
+    "en": "Maya timing starts before birth",
+    "pt": "A data inicial é anterior ao nascimento"
+  },
+  "Maya relationship composite · synthesis": {
+    "en": "Maya relationship composite · synthesis",
+    "pt": "Mapa maia composto da relação · síntese"
+  },
+  "Maya birth sign: {0}": {
+    "en": "Maya birth sign: {0}",
+    "pt": "Signo maia de nascimento: {0}"
+  },
+  "youth": {
+    "en": "youth",
+    "pt": "juventude"
+  },
+  "adult": {
+    "en": "adult",
+    "pt": "idade adulta"
+  },
+  "mature": {
+    "en": "mature",
+    "pt": "maturidade"
+  },
   "\"text\" must be a string in --input-json.": {
     "en": "\"text\" must be a string in --input-json.",
     "pt": "\"text\" deve ser uma string em --input-json."

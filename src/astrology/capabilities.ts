@@ -34,6 +34,8 @@ import {
   type ShortMonthPolicy,
 } from "../numerology/schedule-types";
 import { TIMELINE_LAYERS } from "../numerology/schedule";
+import { MAYA_JOHNSON_METHOD, TZOLKIN_CYCLE_DAYS } from "../maya/calendar";
+import { TATTWA_METHOD, TATTWA_ORDER } from "../tattwa/schedule";
 
 export const CAPABILITIES_SCHEMA_VERSION = 1;
 
@@ -45,6 +47,8 @@ export const KAABALAH_MODULES = [
   "tarot",
   "iching",
   "ifa",
+  "maya",
+  "tattwa",
   "semantic",
   "visual",
 ] as const;
@@ -121,7 +125,10 @@ export interface Capabilities {
     masterPolicies: MasterPolicy[];
     shortMonthPolicies: ShortMonthPolicy[];
   };
+  maya: { method: typeof MAYA_JOHNSON_METHOD };
+  tattwa: { method: typeof TATTWA_METHOD; order: typeof TATTWA_ORDER };
   limits: {
+    maya: { maxTimingDays: number };
     collection: { maxPeople: number; maxEvents: number; maxPairs: number; maxConcurrency: number };
     numerology: {
       maxScheduleYear: number;
@@ -230,7 +237,10 @@ export function getCapabilities(): Capabilities {
       masterPolicies: [...MASTER_POLICIES],
       shortMonthPolicies: [...SHORT_MONTH_POLICIES],
     },
+    maya: { method: MAYA_JOHNSON_METHOD },
+    tattwa: { method: TATTWA_METHOD, order: TATTWA_ORDER },
     limits: {
+      maya: { maxTimingDays: TZOLKIN_CYCLE_DAYS },
       collection: { ...COLLECTION_HARD_LIMITS },
       numerology: {
         maxScheduleYear: MAX_SCHEDULE_YEAR,

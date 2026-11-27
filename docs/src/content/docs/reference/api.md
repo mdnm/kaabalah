@@ -16,6 +16,8 @@ sidebar:
 | [Tarot](/modules/tarot/) | 78 tarot cards with meanings, spreads, and interpretations |
 | [I Ching](/modules/iching/) | 64 hexagrams, classical text, plain-language descriptions, Han derivations, and coin casting |
 | [Ifa](/modules/ifa/) | Calculate Odu numbers based on dates for Ifa divination |
+| [Maya astrology](/modules/maya/) | Tzolk’in and Haab calendars, glyphs, natal charts, timing, and relationship composites |
+| [Tattwa](/modules/tattwa/) | Sunrise-based Tatwameter schedules and single or nested SVG symbols |
 | [Core](/modules/core/) | Tree of Life system for building correspondences across different esoteric systems |
 | [Visual](/modules/visual/) | Tree of Life SVG generation, interactive render model with hit targets and tooltip anchors |
 | [Semantic](/modules/semantic/) | Occult theme profiles for search, content tagging, and Kaabalistic map data |
@@ -27,7 +29,7 @@ Every module is a separate, tree-shakable entry point. The package root re-expor
 | Import | Contents |
 | ------ | -------- |
 | `kaabalah` | Everything below, re-exported |
-| `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/iching`, `kaabalah/ifa`, `kaabalah/semantic`, `kaabalah/visual` | The nine library modules |
+| `kaabalah/core`, `kaabalah/numerology`, `kaabalah/astrology`, `kaabalah/gematria`, `kaabalah/tarot`, `kaabalah/iching`, `kaabalah/ifa`, `kaabalah/maya`, `kaabalah/tattwa`, `kaabalah/semantic`, `kaabalah/visual` | The eleven library modules |
 | `kaabalah/swisseph-runtime` | The Swiss Ephemeris runtime script (`swisseph.node.js` for Node.js, `swisseph.web.js` otherwise) |
 | `kaabalah/swisseph-wasm` | The Swiss Ephemeris WebAssembly binary (`swisseph.node.wasm` / `swisseph.web.wasm`) |
 | `kaabalah` (binary) | The [command-line interface](/getting-started/cli/) |
@@ -121,6 +123,14 @@ Readings: `getIChingReading`, `getIChingReadingContent`, `linesFromHexagram`, `p
 ### Ifa
 
 `calculateOdu`, `getIfaText`, `IFA_TEXTS`. See [Ifa](/modules/ifa/).
+
+### Maya astrology
+
+Calendar: `getTzolkinDay`, `getTzolkinTrecena`, `getTzolkinCycle`, `getMayaCalendarDay`, `getMayaCalendarBoard`, `getMayaHaabDate`. Glyphs and correspondences: `getMayaDaySignReference`, `getMayaHaabMonthReference`, `listMayaDaySignReferences`, `listMayaHaabMonthReferences`. Charts and timing: `calculateMayaNatal`, `calculateMayaRelationship`, `calculateMayaTiming`, `calculateMayaBirthCycles`, `getMayaSunsetWelcome`. Readings and profiles: `getMayaNatalReading`, `getMayaRelationshipReading`, `getMayaBirthCycleReading`, `getMayaYearLordReading`, `getMayaPersonalLunarMonthGuidance`, `getMayaTrecenaGuidance`, `getMayaSignDescription`, `getMayaToneDescription`, `getMayaRoleDescription`, `getMayaStageDescription`, `getMayaYearLordDescription`. See [Maya astrology](/modules/maya/).
+
+### Tattwa
+
+`getTattwaSchedule`, `calculateTattwaSchedule`, `generateTattwaSvg`, `TATTWA_ORDER`, `TATTWA_METHOD`, `TattwaError`. See [Tattwa](/modules/tattwa/).
 
 ### Semantic
 

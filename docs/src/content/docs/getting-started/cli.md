@@ -72,6 +72,12 @@ npx kaabalah help
 | `iching:reading` | Derive a reading from six lines, or from a hexagram and its moving lines |
 | `iching:hexagram <n>` | Look up one hexagram with its Han, nuclear, Kaabalah, and sovereign layers |
 | `iching:cast` | Cast three coins per line and derive the reading |
+| `maya:day <date>` | Tzolk’in and Haab dates, trecena and Year Lord |
+| `maya:sign [sign]` | Day-sign correspondences and PNG glyph references |
+| `maya:board [date]` | Johnson’s Calendar Board, 20 day signs by 13 columns, optionally marking a date |
+| `maya:natal <birth>` | Johnson’s natal chart: five-point cross, Tree of Life, Feathered Serpent, Year Lord |
+| `maya:timing <birth> <from>` | Road of Life, personal lunar month, trecena and natal matches for consecutive dates |
+| `maya:relationship <first> <second>` | Johnson’s relationship composite, affinities and shared signs with each natal cross |
 | `ifa <date>` | Calculate Odu from a date |
 | `tree` | Show Tree of Life structure with all nodes, data, and edges |
 | `tree:node <id>` | Look up a node and all its correspondences |
@@ -107,6 +113,7 @@ kaabalah iching:reading --lines 879777 --json --compact
 kaabalah iching:reading --hexagram 30 --moving 2,4 --language pt-BR --json --compact
 kaabalah iching:hexagram 25 --json --compact
 kaabalah iching:cast --json --compact
+kaabalah maya:natal 1961-08-18 --json --compact
 kaabalah gematria:reverse 22
 kaabalah ifa 1990-01-15
 kaabalah astrology 1990-01-15 14:30 --lat=40.7128 --lon=-74.006
@@ -852,6 +859,48 @@ kaabalah iching:cast --language pt-BR --no-json
 ```
 
 Store the resulting `lines` (or `lineCode`) if you want to reproduce the reading later with `iching:reading`; nothing in the cast is seeded.
+
+### Maya commands
+
+The Maya commands follow Kenneth Johnson, *Mayan Calendar Astrology: Mapping Your Inner Cosmos* (2011). Dates are supplied explicitly as civil `YYYY-MM-DD` days, counted from midnight. Tzolk’in days use the GMT correlation 584283. JSON results carry a `method` block whose `source` cites Johnson. See the [Maya module](/modules/maya/) for the calendar and chart methods.
+
+| Command | What it does |
+|---------|--------------|
+| `maya:day <date>` | Tzolk’in and Haab dates, trecena, Year Lord and the sign welcomed at sunset. Coordinates or `--location` add local sunset. `--haab-count classic-gmt` selects the Classic Haab anchor and `--glyphs` adds both glyph references |
+| `maya:sign [sign]` | Symbolic correspondences and a PNG reference for one day sign or the full table |
+| `maya:board [date]` | Johnson’s Calendar Board: 20 day-sign rows by 13 columns, starting at 8 Chuen. A date marks that day; without one, nothing is marked |
+| `maya:natal <birth>` | Birth day, trecena, Year Lord, nine natal positions and eight Feathered Serpent links. `--instant` adds the lunar phase. `--lat` and `--lon` also add the solar quarter |
+| `maya:timing <birth> <from>` | For each date from `from`, the Road of Life row, personal lunar month, trecena and natal matches. `--days` accepts 1–260 dates and defaults to 1 |
+| `maya:relationship <first> <second>` | Five-point composite reading, both affinity indicators, and shared signs with each natal cross. Swapping the birth dates swaps the natal comparisons |
+
+```bash
+kaabalah maya:day 1961-08-18 --json --compact
+kaabalah maya:day 2012-12-21 --haab-count classic-gmt --glyphs --json --compact
+kaabalah maya:sign chuen --json --compact
+kaabalah maya:board 1961-08-18 --json --compact
+kaabalah maya:natal 1961-08-18 --json --compact
+kaabalah maya:natal 2024-04-08 --instant 2024-04-08T13:17:00-05:00 --lat 32.78 --lon=-96.80 --json --compact
+kaabalah maya:timing 1952-04-21 2010-08-21 --days 29 --json --compact
+kaabalah maya:relationship 1926-06-01 1914-11-25 --json --compact
+kaabalah maya:natal --input-json='{"birth":"1961-08-18"}' --json --compact
+```
+
+With `--input-json`, pass `date` (`maya:day`, `maya:board`), `sign` (`maya:sign`), `birth` (`maya:natal`), `birth`, `from` and `days` (`maya:timing`), or `first` and `second` (`maya:relationship`). The optional day fields are `haabCount` and `glyphs`. A missing required date exits with `MISSING_ARGUMENT`, an impossible one with `INVALID_DATE`, and `--days` outside 1–260 or a `from` before `birth` with `INVALID_ARGUMENT`. `--language pt-BR` translates the display text and descriptions. Keys and sign IDs stay the same.
+
+The examples are Johnson’s: 1961-08-18 is 10 Manik, the person born 1952-04-21 (10 Imix) starts a personal lunar month on 2010-08-21 (9 Manik), and the composite of 1926-06-01 and 1914-11-25 is centred on 3 Ix.
+
+The natal command includes the birth Year Lord profile in `descriptions.yearLord`, its number modifier in `descriptions.yearLordNumber`, and the nine positions and eight links in `descriptions.positions` and `descriptions.connections`. For the Sun and Moon reading, `--instant` accepts an ISO timestamp with `Z` or a UTC offset. Its local date must match `<birth>`. Supply both `--lat` and `--lon` to calculate the solar quarter. With `--input-json`, use `instant`, `latitude` and `longitude` alongside `birth`.
+
+The timing command lists Road of Life text once per stage under `descriptions.stages` and observance guidance by civil date under `descriptions.observances`. Each observance records whether the text summarizes a published sign-and-tone example or general day-sign practice.
+
+### Tattwa commands
+
+| Command | What it does |
+|---------|--------------|
+| `tattwa:schedule <instant>` | Tatwameter periods for the solar day at a location. Supply an ISO timestamp with `Z` or an offset and `--lat`/`--lon` or `--location` |
+| `tattwa:svg <tattwa>` | Standalone SVG. `--inner` adds a complementary tattwa and `--output` saves the SVG to a file |
+
+See the [Tattwa module](/modules/tattwa/) for the sunrise convention and examples.
 
 ### ifa
 

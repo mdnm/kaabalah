@@ -109,6 +109,22 @@ const odu = calculateOdu(new Date('1990-01-15'));
 console.log(odu.north, odu.south, odu.east, odu.west, odu.center);
 ```
 
+### Maya astrology
+
+```typescript
+import { getMayaCalendarDay } from 'kaabalah/maya';
+
+console.log(getMayaCalendarDay('2026-11-26'));
+```
+
+### Tattwa
+
+```typescript
+import { generateTattwaSvg } from 'kaabalah/tattwa';
+
+const svg = generateTattwaSvg('apas', { inner: 'tejas' });
+```
+
 ### Command line
 
 ```bash

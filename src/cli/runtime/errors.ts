@@ -63,6 +63,8 @@ export function classifyLibraryError(err: unknown): { code: ErrorCode; message: 
       if (libraryCode === "INVALID_DATE") return { code: "INVALID_DATE", message };
       if (libraryCode === "MISSING_BIRTH_DATE") return { code: "MISSING_ARGUMENT", message };
       return { code: "INVALID_ARGUMENT", message };
+    case "MayaCalculationError":
+      return { code: libraryCode === "INVALID_DATE" ? "INVALID_DATE" : "INVALID_ARGUMENT", message };
     case "AspectConfigError":
       return { code: "INVALID_ARGUMENT", message };
     case "InputQualityError":
@@ -70,6 +72,7 @@ export function classifyLibraryError(err: unknown): { code: ErrorCode; message: 
       if (libraryCode === "MISSING_TIME" || libraryCode === "MISSING_LOCATION") return { code: "MISSING_ARGUMENT", message };
       return { code: "INVALID_ARGUMENT", message };
     case "TimelineError":
+    case "TattwaError":
       return { code: "INVALID_ARGUMENT", message };
     case "DerivedChartError":
       if (libraryCode === "SOLAR_RETURN_NOT_FOUND") return { code: "INTERNAL_ERROR", message };

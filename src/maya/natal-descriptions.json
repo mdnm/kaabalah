@@ -1,0 +1,54 @@
+{
+  "guardians": {
+    "youth.right": {
+      "en": "The right-hand guardian of conception shows the practical support available to the inherited themes of the Conception Sign. Read its sign and number for ways of reasoning or acting that can help during the formative years. A difficult combination can point to practical skills that take time to develop.",
+      "pt": "O guardião da mão direita da concepção mostra o apoio prático aos temas herdados que aparecem no Signo da Concepção. Seu signo e número indicam formas de raciocinar ou agir que podem ajudar nos anos de formação. Uma combinação difícil pode apontar habilidades práticas que levam tempo para se desenvolver."
+    },
+    "youth.left": {
+      "en": "The left-hand guardian of conception describes the feelings, dreams and intuitions that can support the Conception Sign during the formative years. A difficult combination can make it harder to distinguish an early intuition from an impulsive feeling or an apprehension.",
+      "pt": "O guardião da mão esquerda da concepção descreve os sentimentos, sonhos e intuições que podem apoiar o Signo da Concepção nos anos de formação. Uma combinação difícil pode tornar mais difícil distinguir uma intuição inicial de um impulso emocional ou de uma apreensão."
+    },
+    "mature.right": {
+      "en": "The right-hand guardian of destiny shows the practical support of the Destiny Sign from age 52 until 78. Its sign and number suggest ways to reason and act on future possibilities. A difficult combination can show which skills or conditions still need to be developed.",
+      "pt": "O guardião da mão direita do destino mostra o apoio prático ao Signo do Destino dos 52 até os 78 anos. Seu signo e número sugerem formas de raciocinar e agir diante de possibilidades futuras. Uma combinação difícil pode indicar quais habilidades ou condições ainda precisam ser desenvolvidas."
+    },
+    "mature.left": {
+      "en": "The left-hand guardian of destiny shows the intuitive support of the Destiny Sign from age 52 until 78. Feelings, dreams and inner perception can guide the development of what that sign promises. A difficult combination calls for care with illusions or unsettled feelings.",
+      "pt": "O guardião da mão esquerda do destino mostra o apoio intuitivo ao Signo do Destino dos 52 até os 78 anos. Sentimentos, sonhos e percepção interior podem orientar o desenvolvimento do que esse signo promete. Uma combinação difícil pede cuidado com ilusões ou sentimentos instáveis."
+    }
+  },
+  "links": {
+    "youth.right": {
+      "en": "Begin with the practical qualities of the right-hand guardian. Read its sign and number alongside the Conception Sign to see how inherited themes might find expression through action.",
+      "pt": "Comece pelas qualidades práticas do guardião da mão direita. Leia seu signo e número em conjunto com o Signo da Concepção para perceber como temas herdados podem se expressar por meio da ação."
+    },
+    "youth.center": {
+      "en": "Read the Conception Sign alongside the right hand of the birth row. Consider which inherited habits or resources might support, complicate or shape the way the person makes decisions and acts.",
+      "pt": "Leia o Signo da Concepção em conjunto com a mão direita da linha de nascimento. Considere quais hábitos ou recursos herdados podem apoiar, dificultar ou moldar a maneira como a pessoa decide e age."
+    },
+    "adult.right": {
+      "en": "This link crosses from the practical hand of the birth row to the intuitive guardian of conception. Compare the sign and number of each to consider how acting in the world might bring inherited feelings or intuitions to the surface.",
+      "pt": "Este elo atravessa o mapa da mão prática da linha de nascimento ao guardião intuitivo da concepção. Compare o signo e o número de cada ponto para considerar como agir no mundo pode trazer à tona sentimentos ou intuições herdados."
+    },
+    "youth.left": {
+      "en": "Read the intuitive guardian of conception alongside the Birth Sign. Consider how its dreams, feelings or inherited impressions might reinforce or complicate the way the central sign and number express themselves.",
+      "pt": "Leia o guardião intuitivo da concepção em conjunto com o Signo de Nascimento. Considere como seus sonhos, sentimentos ou impressões herdadas podem reforçar ou complicar a maneira como o signo e o número centrais se expressam."
+    },
+    "adult.center": {
+      "en": "Compare the birth sign and number with the practical guardian of destiny. Look for qualities of the birth archetype that could become skills for developing the future indicated by the destiny row.",
+      "pt": "Compare o signo e o número de nascimento com o guardião prático do destino. Procure qualidades do arquétipo de nascimento que possam se tornar habilidades para desenvolver as possibilidades indicadas pela linha do destino."
+    },
+    "mature.right": {
+      "en": "This link returns from the practical guardian of destiny to the intuitive hand of the birth row. Read the two combinations together for ways that future plans and present feelings might guide or pull against each other.",
+      "pt": "Este elo volta do guardião prático do destino à mão intuitiva da linha de nascimento. Leia as duas combinações em conjunto para perceber como planos futuros e sentimentos presentes podem se orientar mutuamente ou entrar em tensão."
+    },
+    "adult.left": {
+      "en": "Read the intuitive hand alongside the Destiny Sign. Emotional or imaginative gifts can feed the emerging destiny, and so can the difficulties of the sign and number that carry those gifts.",
+      "pt": "Leia a mão intuitiva em conjunto com o Signo do Destino. Dons afetivos ou imaginativos podem alimentar o destino em formação, assim como as dificuldades do signo e do número que trazem esses dons."
+    },
+    "mature.center": {
+      "en": "The last link joins the Destiny Sign to its intuitive guardian. Compare the two sign-and-number combinations for ways that feeling, dreams or intuition might sustain what the Destiny Sign brings forward.",
+      "pt": "O último elo une o Signo do Destino ao seu guardião intuitivo. Compare as duas combinações de signo e número para perceber como sentimentos, sonhos ou intuição podem sustentar o que o Signo do Destino traz à tona."
+    }
+  }
+}

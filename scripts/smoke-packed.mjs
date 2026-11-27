@@ -44,6 +44,12 @@ const REQUIRED_TARBALL_FILES = [
   "package/dist/swisseph.node.js",
   "package/dist/swisseph.node.wasm",
   "package/dist/cli.js",
+  "package/dist/maya/index.js",
+  "package/dist/maya/index.mjs",
+  "package/dist/maya/index.d.ts",
+  "package/dist/tattwa/index.js",
+  "package/dist/tattwa/index.mjs",
+  "package/dist/tattwa/index.d.ts",
   "package/ephe/seas_18.se1",
   "package/ephe/semo_18.se1",
   "package/ephe/sepl_18.se1",
@@ -133,9 +139,14 @@ const SMOKE_BODY = `
     longitude: 0,
     timeZoneSettings: { utcOffsetMinutes: 0 },
   });
+  const tattwaSchedule = await tattwa.getTattwaSchedule({ date: new Date("2000-01-01T12:00:00Z"), latitude: 0, longitude: 0 });
+  const tattwaSvg = tattwa.generateTattwaSvg("vayu", { inner: "tejas" });
   const info = typeof astrology.getSwissEphInfo === "function" ? astrology.getSwissEphInfo() : null;
   process.stdout.write("SMOKE_JSON=" + JSON.stringify({
     sun: chart.planets.sun.longitude,
+    mayaDay: maya.getMayaCalendarDay("1961-08-18").day,
+    tattwaAvailable: tattwaSchedule.available,
+    nestedTattwaSvg: tattwaSvg.includes("<title>tejas in vayu</title>"),
     notices,
     info: info && {
       mountMode: info.mountMode,
@@ -152,8 +163,8 @@ function runSmoke(projectDir, format) {
   const file = format === "cjs" ? "smoke.cjs" : "smoke.mjs";
   const source =
     format === "cjs"
-      ? `const astrology = require("kaabalah/astrology");\n(async () => {${SMOKE_BODY}})().catch((e) => { console.error(e); process.exit(1); });\n`
-      : `import * as astrology from "kaabalah/astrology";\n${SMOKE_BODY.replace(/^/, "")}\n`;
+      ? `const astrology = require("kaabalah/astrology");\nconst maya = require("kaabalah/maya");\nconst tattwa = require("kaabalah/tattwa");\n(async () => {${SMOKE_BODY}})().catch((e) => { console.error(e); process.exit(1); });\n`
+      : `import * as astrology from "kaabalah/astrology";\nimport * as maya from "kaabalah/maya";\nimport * as tattwa from "kaabalah/tattwa";\n${SMOKE_BODY.replace(/^/, "")}\n`;
   writeFileSync(join(projectDir, file), source);
   const result = run("node", [file], { cwd: projectDir });
   const line = result.stdout.split("\n").find((entry) => entry.startsWith("SMOKE_JSON="));
@@ -174,6 +185,12 @@ function runCli(projectDir, label) {
   const sun = parsed?.planets?.sun?.longitude;
   check(`${label}: installed CLI returns the Sun longitude`, typeof sun === "number", `sun=${sun}`);
   check(`${label}: CLI Sun within ${TOLERANCE_DEG} deg of ${EXPECTED_SUN_LONGITUDE}`, Math.abs(sun - EXPECTED_SUN_LONGITUDE) < TOLERANCE_DEG);
+  const maya = JSON.parse(run(
+    bin,
+    ["maya:day", "1961-08-18", "--json", "--compact", "--fields", "day.sign,day.tone"],
+    { cwd: projectDir }
+  ).stdout);
+  check(`${label}: installed Maya CLI calculates 10 Manik`, maya.day?.sign === "manik" && maya.day?.tone === 10);
   return sun;
 }
 
@@ -199,6 +216,8 @@ try {
       Math.abs(result.sun - EXPECTED_SUN_LONGITUDE) < TOLERANCE_DEG,
       `sun=${result.sun}`
     );
+    check(`${format}: Maya package calculates Johnson’s 10 Manik example`, result.mayaDay.sign === "manik" && result.mayaDay.tone === 10);
+    check(`${format}: Tattwa package finds a schedule and renders a nested symbol`, result.tattwaAvailable && result.nestedTattwaSvg);
     if (result.info) {
       check(`${format}: probe confirms Swiss ephemeris files (not Moshier)`, result.info.probe?.ephemeris === "swiss");
     }
